@@ -90,7 +90,7 @@ const Kidz = () => {
           <div className="hero-content">
             {/* Left Text */}
             <div className="hero-text-area col-md-6 col-lg-6">
-              <h1 className="hero-title">Next-Gen <span className="text-success">Learning</span></h1>
+              <h1 className="hero-title">Next-Gen <span className="text-success text-shine">Learning</span></h1>
               <p className="hero-text text-muted">
                 At Urbancode Edutech, we nurture young minds through structured coding,
                 cognitive learning and problem-solving activities. Our programs combine
@@ -108,7 +108,7 @@ const Kidz = () => {
       </section>
 
       <div className="container py-5">
-        <h2 className="section-title">Our Kids <span className='text-success'>&nbsp;Courses</span></h2>
+        <h2 className="section-title">Our Kids <span className='text-success text-shine'>&nbsp;Courses</span></h2>
         <p className="section-subtitle text-muted">
           Explore expertly designed courses tailored for young learners. Each program blends engaging, interactive activities with structured learning outcomes to build strong foundational skills and future-ready knowledge.
         </p>
@@ -186,7 +186,7 @@ const Kidz = () => {
         <div className="container text-center">
           {/* Heading */}
           <h2 className="kids-heading fw-semibold mb-3">
-            Why Choose <span className="text-success">Urbancode for Kids?</span>
+            Why Choose <span className="text-success text-shine">Urbancode for Kids?</span>
           </h2>
 
           {/* Subheading */}
@@ -283,7 +283,7 @@ const Kidz = () => {
                 and age-appropriate tech education for their children.
               </p>
               <div className="d-flex flex-wrap gap-3">
-                <button className="btn-demo" onClick={() => setShowEnquiry(true)}>Book Free Demo Class</button>
+                <button className="btn-demo bg-success" onClick={() => setShowEnquiry(true)}>Book Free Demo Class</button>
                 {showEnquiry && (
                   <EnquiryFormModal
                     isOpen={showEnquiry}
@@ -292,7 +292,7 @@ const Kidz = () => {
                   />
                 )}
                 &nbsp;&nbsp;
-                <a href="callto:+919878798797" className="btn-link">Speak with Counselor →</a>
+                <a href="callto:+919878798797" className="btn-link text-success">Speak with Counselor →</a>
               </div>
             </div>
 

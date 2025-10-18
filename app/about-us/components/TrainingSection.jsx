@@ -68,7 +68,7 @@ const TrainingSection = () => {
             src="/images/about/g1.jpg" // replace with your image path
             alt="Training"
             className="img-fluid rounded shadow"
-            style={{ height: '100%', objectFit: 'cover' }} // full height and cover
+            style={{ height: '100%', objectFit:'cover', objectPosition:'left' }} // full height and cover
           />
         </div>
       </div>

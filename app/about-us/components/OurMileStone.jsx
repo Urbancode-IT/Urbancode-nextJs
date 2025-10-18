@@ -9,7 +9,7 @@ const OurMileStone = () => {
         Our Milestone
       </h2>
       <p className="milestone-subtitle">
-        From a small vision to a thriving institute, we’ve empowered thousands of learners with real-world skills.
+        From a small vision to a thriving institute, we’ve empowered thousands of learners with skills.
       </p>
 
       {/* Internal Video */}

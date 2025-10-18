@@ -43,7 +43,7 @@
 }
 .custom-card:hover .careerCardTitleText,
 .custom-card:hover .careerCardDescription {
-  color: #fff;
+  color: #fff!important;
 }
 
 

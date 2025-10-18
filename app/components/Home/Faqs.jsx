@@ -32,10 +32,10 @@ const Faqs = () => {
 
   return (
     <div className="faq-section container  py-5">
-      <h5 className="text-center mb-5 faq-subtitle">- Let's know more about us -</h5>
+      
       <div className="row align-items-start g-4">
         {/* Left Section */}
-        <div className="col-lg-4 col-md-12 ">
+        <div className="col-lg-4 col-md-12 order-1 order-sm-2order-lg-1 ">
           <div className="faq-left text-center text-lg-start">
             <h4 className="faq-title fw-bold d-none d-md-block">Frequently <br /> Asked Questions</h4>
             <div className="faq-contact-box mt-5 p-4 rounded-4 shadow-sm">
@@ -49,7 +49,8 @@ const Faqs = () => {
         </div>
 
         {/* Right Section */}
-        <div className="col-lg-8 col-md-12">
+        <div className="col-lg-8 col-md-12 order-2 order-sm-1 order-lg-2">
+          <h5 className="text-center mb-5 faq-subtitle">- Let's get you more info -</h5>
           {faqs.map((faq, index) => (
             <div key={index} className="faq-item mb-3">
               <button

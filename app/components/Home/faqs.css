@@ -37,10 +37,10 @@
 .faq-left::before {
   content: "?";
   position: absolute;
-  font-size: 28rem;
+  font-size: 25rem;
   color: #a0a1a3;
   font-weight: 700;
-  top: -50px;
+  top: -40px;
   left: 0;
   z-index: 0;
 }

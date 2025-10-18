@@ -171,7 +171,7 @@ const CourseCategoryPage = () => {
 
       {/* Courses Header */}
       <div className="courses-header text-center">
-        <h2 className="courses-title">Course Categories</h2>
+        <h2 className="courses-title">Course <span className="text-shine">Categories</span></h2>
         <p className="courses-subtitle">
           Master the skills that drive today’s digital world.
         </p>
@@ -197,7 +197,7 @@ const CourseCategoryPage = () => {
               />
             </div>
             <h3 className="card-title">{course.title}</h3>
-            <p className="card-text">{course.desc}</p>
+            <p className="card-text text-muted">{course.desc}</p>
             <div className="badge">{course.badge}</div>
           </div>
         ))}
