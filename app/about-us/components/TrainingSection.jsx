@@ -17,7 +17,7 @@ const TrainingSection = () => {
           <p className="mb-3">
             Urbancode Edutech offers personalized IT training designed to match
             individual career goals with real-world industry skills and
-            guaranteed placement support.
+            guaranteed placement assistance.
           </p>
 
           <h3 className="fw-bold mt-4 mb-3">We are Specialized In</h3>
@@ -37,7 +37,7 @@ const TrainingSection = () => {
               <div className="p-2 rounded py-3 h-100" style={{ minHeight: 'auto' }}>
                 <h6 className="fw-bold mb-1">Career Guidance for IT & Non-IT Courses</h6>
                 <p className="mb-0" style={{ fontSize: '0.9rem' }}>
-                  We empower learners with cutting-edge skills, placement support, and career guidance to succeed in the digital world.
+                  We empower learners with cutting-edge skills, placement assistance, and career guidance to succeed in the digital world.
                 </p>
               </div>
             </div>
@@ -53,7 +53,7 @@ const TrainingSection = () => {
 
             <div className="col-md-6">
               <div className="p-2 py-3 h-100" style={{ minHeight: 'auto' }}>
-                <h6 className="fw-bold mb-1">Placement Support & Global Opportunities</h6>
+                <h6 className="fw-bold mb-1">Placement assistance & Global Opportunities</h6>
                 <p className="mb-0" style={{ fontSize: '0.9rem' }}>
                   Through placements, interview prep, and industry tie-ups, Urbancode unlocks global IT career opportunities for learners.
                 </p>

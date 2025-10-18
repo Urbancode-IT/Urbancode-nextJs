@@ -70,7 +70,7 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <div className="home_header_main_container pt-5">
+    <div className="home_header_main_container pt-lg-3">
       <div className="container home_header_container">
         <div className="row align-items-center justify-content-center  text-start mx-2 py-5">
           {/* Left Section */}
