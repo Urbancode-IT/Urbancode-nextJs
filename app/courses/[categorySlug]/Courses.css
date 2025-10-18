@@ -1,0 +1,183 @@
+
+.overall-bg{
+  background: hsla(0, 0%, 92%, 1);
+}
+.overall-green-bg{
+  background: linear-gradient(180deg, hsla(0, 0%, 92%, 1),hsla(157, 100%, 35%, 0.2), hsla(0, 0%, 92%, 1));
+}
+.overall-green-bg h1{
+  font-size: 2rem;
+  font-weight: 900;
+  
+}
+
+
+.course-title{
+    font-size: 2rem!important;
+    font-weight: 600;
+    color:hsla(210, 29%, 24%, 1);
+
+}
+.card {
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5) !important;
+  background-color: hsla(0, 0%, 92%, 1) !important;
+  /* background-color: hsla(0, 0%, 100%, 1) !important; */
+}
+.card:hover{
+    background-color: hsla(0, 0%, 52%, 1) !important;
+    color: #fff !important;;
+}
+.card:hover .card-img{
+    transform: scale(1.1);
+    transition: all 0.3s ease-in-out;
+    filter: grayscale(0);
+    
+}
+.card:hover .card-title{
+    color: #fff !important;
+}
+.card:hover .card-text{
+    color: #fff !important;;
+}
+.main-title{
+    color: #2C3E50;
+    font-size:2.2rem!important;
+}
+.cust-bg{
+  background-color:hsla(0, 0%, 88%, 0.35)!important;
+}
+.list-group-item{
+    font-size: 0.8rem !important;;
+    font-weight: 400!important;
+}
+.list-group-item:hover{
+    background-color: hsla(0, 0%, 80%, 1)!important;
+    border-color: hsla(0, 0%, 100%, 1)!important;
+}
+.list-group-item.active {
+  background-color:  hsla(157, 100%, 35%, 0.6)!important; /* your green shade */
+  border-color: hsla(157, 100%, 35%, 0.6)!important;
+  color: #fff !important;
+  font-weight: 600;
+}
+
+.search-bar{
+  background: #dedede!important;
+  color:hsla(0, 0%, 55%, 1);
+border: 1px solid hsla(0, 0%, 83%, 1);
+max-width: 300px;
+margin-left: auto;
+letter-spacing: -2%;
+font-size: 0.8rem!important;
+font-weight: 400;
+
+}
+.search-bar:focus{
+  box-shadow: 0 0 0 .25rem hsla(157, 100%, 35%, 0.2)!important;
+  border: 1px solid hsla(157, 100%, 35%, 0.6)!important;
+  
+}
+.enroll-btn{
+    background: hsla(0, 0%, 52%, 1)!important;
+    border:none!important;
+}
+.card-course-title{
+    font-size: 1rem!important;
+    font-weight: 600;
+    text-align: center;
+}
+.course-desc{
+    font-size: 0.8rem!important;
+    font-weight: 400;
+    line-height: -2%;
+    
+}
+@media (max-width:1500px){
+    .course-desc{
+        font-size: 0.7rem!important;
+    }
+    .card-course-title{
+        font-size: 0.9rem!important;
+    }
+    .fs-11{
+        font-size: 0.7rem!important;
+    }
+} 
+.img-holder{
+    overflow: hidden;
+    height:200px;
+}
+
+
+.card-img{
+    filter: grayscale(100%);
+    transition: all 0.3s ease-in-out;
+    width:100%;
+    height:100%;
+}
+@media (max-width:1500px){
+    .img-holder{
+        height: 140px !important;
+    }
+}
+/* ===============================
+   ✅ RESPONSIVE ADJUSTMENTS
+   =============================== */
+@media (max-width: 992px) {
+  .main-title {
+    font-size: 1.6rem !important;
+    text-align: center;
+  }
+  .overall-green-bg p {
+    text-align: center;
+  }
+  .img-holder {
+    height: 100px;
+  }
+}
+
+@media (max-width: 768px) {
+  .overall-bg {
+    padding: 0 1rem !important;
+  }
+  .search-bar {
+    max-width: 100% !important;
+    font-size: 0.9rem !important;
+  }
+  .cust-bg {
+    font-size: 0.9rem !important;
+  }
+  .card {
+    padding: 1rem !important;
+  }
+  .card-course-title {
+    font-size: 0.95rem !important;
+  }
+  .course-desc {
+    font-size: 0.75rem !important;
+    text-align: center;
+  }
+  .img-holder {
+    height: 100px;
+  }
+  .course-title {
+    font-size: 1.5rem !important;
+  }
+  .list-group-item {
+    font-size: 0.9rem !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .img-holder {
+    height: 100px;
+  }
+  .card {
+    margin: 0 auto;
+    width: 100%;
+  }
+  .enroll-btn {
+    font-size: 0.75rem !important;
+    padding: 0.4rem 0.8rem !important;
+  }
+}

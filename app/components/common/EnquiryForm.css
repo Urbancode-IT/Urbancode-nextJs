@@ -1,0 +1,105 @@
+.enquiry-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.enquiry-modal {
+ max-width: 600px;
+  width: 90%;
+  background: linear-gradient(180deg, #e3f0eb 0%, #f3f5f3 100%);
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  padding: 24px;
+  position: relative;
+  text-align: left;
+}
+
+.enquiry-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.enquiry-header h3 {
+  font-weight: 600;
+  color: #222;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  color: #444;
+}
+
+.enquiry-modal form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.enquiry-modal input,
+.enquiry-modal select {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  outline: none;
+  font-size: 14px;
+}
+
+.enquiry-modal input:focus,
+.enquiry-modal select:focus {
+  border-color: #28a745;
+  box-shadow: 0 0 3px rgba(40, 167, 69, 0.3);
+}
+
+.enquiry-modal .submit-btn {
+  background: #444;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 0;
+  margin-top: 6px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.enquiry-modal .submit-btn:hover {
+  background: #2e2e2e;
+}
+.status-message {
+  text-align: center;
+  margin-top: 10px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  padding: 8px 12px;
+  border-radius: 10px;
+}
+
+.status-message.loading {
+  color: #555;
+  background: #f3f3f3;
+}
+
+.status-message.success {
+  color: #0f5132;
+  background: #d1e7dd;
+}
+
+.status-message.error {
+  color: #842029;
+  background: #f8d7da;
+}
+
+.text-danger {
+  font-size: 13px;
+  color: #d9534f;
+}

@@ -1,0 +1,38 @@
+.aboutus-hero h1,.aboutus-hero h2,.aboutus-hero h3,.aboutus-hero h4,.aboutus-hero h5,.aboutus-hero h6{
+    color: hsla(210, 29%, 24%, 1);
+    font-weight: 700;
+}
+.aboutus-hero .about-image {
+  height: 100%;        /* Match parent height */
+  max-height: 400px;   /* Optional: limit max height */
+  width: auto;         /* Maintain aspect ratio */
+  object-fit: cover;   /* Cover the available height */
+  border-radius: 1rem; /* Optional: rounded corners */
+}
+.aboutus-hero{
+        background: linear-gradient(180deg, #EBEBEB, #EDFFFB, #EBEBEB);
+        padding: 90px 0 90px 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .aboutus-hero .about-image {
+    width: 90%;       /* smaller width for tablet/mobile */
+    height: auto;     /* let height adjust automatically */
+    max-height: none;
+  }
+}
+
+.aboutus-hero p {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.6; /* optional: improves readability */
+  color: #333;      /* optional: nice contrast */
+}
+
+/* Responsive adjustment for smaller screens */
+@media (max-width: 768px) {
+  .aboutus-hero p {
+    font-size: 16px;
+  }
+}

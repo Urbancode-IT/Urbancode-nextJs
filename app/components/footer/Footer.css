@@ -1,0 +1,214 @@
+.footer {
+  background: #d2d2d2;
+  color: #565151;
+  padding: 40px 0 10px;
+}
+.footer-logo img {
+  width: 14rem;
+  height:auto;
+  margin-bottom: 10px;
+}
+.footer-logo p {
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+.footer h4 {
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 15px;
+  color: #484848;
+;
+}
+.footer a {
+  color: #4d4d4d;
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 400;
+  transition: color 0.3s;
+}
+.footer a:hover {
+  color: #000;
+}
+.social-icons a {
+ 
+  margin-right: 10px;
+  color: #565151;
+}
+.social-icons i{
+    font-size: 1.3rem;
+}
+.social-icons a:hover {
+  color: #000;
+}
+.footer-bottom {
+  border-top: 1px solid #bbb;
+  padding: 15px 0;
+  text-align: center;
+  font-size: 13px;
+  background: #d3d3d3; /* same as footer bg */
+}
+.footer-bottom p {
+  margin: 0;
+}
+
+/* Additional Responsive Styles */
+/* Mobile First Approach */
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+    .footer-container {
+        padding: 0 15px;
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .footer-container {
+        padding: 0 20px;
+        gap: 30px;
+    }
+    
+    .footer-column {
+        flex: 1;
+        min-width: 200px;
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .footer-container {
+        padding: 0 30px;
+        gap: 40px;
+        flex-wrap: nowrap;
+    }
+    
+    .footer-column {
+        flex: 1;
+    }
+    
+    .footer-logo {
+        flex: 1.5;
+    }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    .footer-container {
+        padding: 0;
+    }
+}
+
+/* Specific adjustments for very small screens */
+@media (max-width: 375px) {
+    .footer {
+        padding: 30px 0 10px;
+    }
+    
+    .footer-logo img {
+        width: 150px;
+    }
+    
+    .footer-container {
+        padding: 0 10px;
+        gap: 10px;
+    }
+}
+
+/* Adjust social icons for better touch targets on mobile */
+@media (max-width: 768px) {
+    .social-icons a {
+        font-size: 20px;
+        margin: 0 8px;
+        display: inline-block;
+        padding: 5px;
+    }
+}
+
+/* Ensure text remains readable on very small devices */
+@media (max-width: 320px) {
+    .footer {
+        padding: 25px 0 8px;
+    }
+    
+    .footer-logo img {
+        width: 130px;
+    }
+    
+    .footer h4 {
+        font-size: 14px;
+    }
+    
+    .footer a {
+        font-size: 12px;
+    }
+}
+
+/* Prevent horizontal scrolling on mobile */
+.footer {
+    overflow-x: hidden;
+}
+
+/* Improve touch targets for mobile navigation */
+@media (max-width: 768px) {
+    .footer a {
+        padding: 4px 0;
+        margin-bottom: 6px;
+    }
+}
+
+/* Adjust footer bottom for mobile */
+@media (max-width: 576px) {
+    .footer-bottom {
+        padding: 12px 0;
+        font-size: 12px;
+    }
+}
+
+/* Ensure images don't overflow on small screens */
+.footer-logo img {
+    height: auto;
+}
+
+/* Add smooth scaling for logos */
+.footer-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media (min-width: 768px) {
+    .footer-logo {
+        align-items: flex-start;
+    }
+}
+
+/* Improve spacing for stacked layout */
+@media (max-width: 991px) {
+    .footer-column {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    
+    .footer-column:last-child {
+        margin-bottom: 0;
+    }
+}
+
+/* Enhanced tablet layout */
+@media (min-width: 768px) and (max-width: 991px) {
+    .footer-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+        text-align: left;
+    }
+    
+    .footer-logo {
+        grid-column: 1 / -1;
+        text-align: center;
+    }
+    
+    .footer-column {
+        margin-bottom: 0;
+    }
+}

@@ -1,0 +1,61 @@
+.aboutus-events{
+  background: transparent;
+}
+
+
+/* fade + slide animation */
+.aboutus-events .fade-in-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease-out;
+}
+
+.aboutus-events .fade-in-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* event card */
+.aboutus-events .event-card {
+  border-radius: 1rem;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.aboutus-events .event-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.event-img-wrapper {
+  position: relative;
+}
+
+.event-img {
+  height: 260px;
+  width: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.event-card:hover .event-img {
+  transform: scale(1.1);
+}
+
+.img-overlay {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.event-card:hover .img-overlay {
+  opacity: 1;
+}
+
+/* carousel controls */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  background-size: 60%;
+}
