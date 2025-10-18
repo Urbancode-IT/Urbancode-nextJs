@@ -3,24 +3,24 @@
 import Image from "next/image";
 import "./CoursesCategoryPage.css";
 
-import expertImg from "@/public/images/courses-images/expert.jpg";
+import expertImg from "@/public/images/courses-images/expert.webp";
 
-import programmingImg from "@/public/images/courses-images/programming.jpg";
-import webDevImg from "@/public/images/courses-images/web.jpg";
-import uiuxImg from "@/public/images/courses-images/UIUX.jpg";
-import cloudImg from "@/public/images/courses-images/Cloud.jpg";
-import dataAnalysisImg from "@/public/images/courses-images/DataAnalysis.jpg";
-import dataScienceImg from "@/public/images/courses-images/datascience.jpg";
-import databaseImg from "@/public/images/courses-images/database.jpg";
-import dataVisualImg from "@/public/images/courses-images/dataVisual.jpg";
-import softwareTestingImg from "@/public/images/courses-images/softwaretesting.jpg";
-import cyberSecurityImg from "@/public/images/courses-images/cybersecurity.jpg";
-import seoImg from "@/public/images/courses-images/SEO.jpg";
-import medicalCodingImg from "@/public/images/courses-images/medical.jpg";
-import languagesImg from "@/public/images/courses-images/languages.jpg";
-import englishImg from "@/public/images/courses-images/english.jpg";
-import crmImg from "@/public/images/courses-images/CRM.jpg";
-import appDevImg from "@/public/images/courses-images/app.jpg";
+import programmingImg from "@/public/images/courses-images/programming.webp";
+import webDevImg from "@/public/images/courses-images/web.webp";
+import uiuxImg from "@/public/images/courses-images/UIUX.webp";
+import cloudImg from "@/public/images/courses-images/Cloud.webp";
+import dataAnalysisImg from "@/public/images/courses-images/DataAnalysis.webp";
+import dataScienceImg from "@/public/images/courses-images/datascience.webp";
+import databaseImg from "@/public/images/courses-images/database.webp";
+import dataVisualImg from "@/public/images/courses-images/dataVisual.webp";
+import softwareTestingImg from "@/public/images/courses-images/softwaretesting.webp";
+import cyberSecurityImg from "@/public/images/courses-images/cybersecurity.webp";
+import seoImg from "@/public/images/courses-images/SEO.webp";
+import medicalCodingImg from "@/public/images/courses-images/medical.webp";
+import languagesImg from "@/public/images/courses-images/languages.webp";
+import englishImg from "@/public/images/courses-images/english.webp";
+import crmImg from "@/public/images/courses-images/CRM.webp";
+import appDevImg from "@/public/images/courses-images/app.webp";
 
 const courses = [
   {
