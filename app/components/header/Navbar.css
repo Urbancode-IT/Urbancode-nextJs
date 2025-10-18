@@ -187,7 +187,8 @@
 
    .nav-links a {
     font-size: 18px;     /* increase nav text size */
-    line-height: 22px;   /* keep vertical spacing balanced */
+    line-height: 22px;
+     font-weight: 100;   /* keep vertical spacing balanced */
   }
 
   .navbar-brand {
@@ -195,6 +196,7 @@
   }
   .nav-links button{
         font-size: 18px;
+        font-weight: 10;
   }
 }
 
