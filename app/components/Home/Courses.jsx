@@ -22,7 +22,7 @@ const Courses = () => {
       description:
         'Programming languages like Python and JavaScript serve as excellent starting points for beginners and are essential in modern web development. Alongside powerful languages such as C++, Java, HTML, and CSS, they form the foundation for building dynamic, scalable, and interactive digital experiences.',
       courses: '6 Courses',
-      img: '/images/home/img1.jpg',
+      img: '/images/home/img1.webp',
       link:"/courses/programming-languages"
     },
     {
@@ -30,7 +30,7 @@ const Courses = () => {
       description:
         'UI/UX design blends aesthetics with usability to create seamless digital experiences. UI focuses on visual elements like layout, colors, and typography to guide user interaction. UX ensures smooth navigation, accessibility, and satisfaction throughout the user journey. Together, they shape products that are intuitive, engaging, and user-centered.',
       courses: '4 Courses',
-      img: '/images/home/img2.jpg',
+      img: '/images/home/img2.webp',
       link:"/courses/data-analytics"
     },
     {
@@ -38,7 +38,7 @@ const Courses = () => {
       description:
         'With the cutting-edge Software Testing tools and frameworks like Selenium and Playwright, learn to automate, validate, and enhance application performance using JavaScript and TypeScript, and gain the skills to ensure seamless, high-quality software delivery.',
       courses: '3 Courses',
-      img: '/images/home/img3.jpg',
+      img: '/images/home/img3.webp',
       link:"/courses/software-testing"
     },
     {
@@ -46,7 +46,7 @@ const Courses = () => {
       description:
         'In Full Stack Development with in-demand technologies like MERN, MEAN, Java Stack, .Net Angular and React Native. Master end-to-end web and mobile application development — from dynamic frontends to powerful backends.',
       courses: '5 Courses',
-      img: '/images/home/img4.jpg',
+      img: '/images/home/img4.webp',
       link:"/courses/web-development"
     },
   ];

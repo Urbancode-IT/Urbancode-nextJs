@@ -4,14 +4,14 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import "./ImageGallery.css";
 
-import img1 from "@/public/images/about/g1.jpg";
-import img2 from "@/public/images/about/g2.jpg";
-import img3 from "@/public/images/about/g3.jpg";
-import img4 from "@/public/images/about/g4.jpg";
-import img5 from "@/public/images/about/g5.jpg";
-import img6 from "@/public/images/about/g6.jpg";
-import img7 from "@/public/images/about/g7.jpg";
-import img8 from "@/public/images/about/g8.jpg";
+import img1 from "@/public/images/about/g1.webp";
+import img2 from "@/public/images/about/g2.webp";
+import img3 from "@/public/images/about/g3.webp";
+import img4 from "@/public/images/about/g4.webp";
+import img5 from "@/public/images/about/g5.webp";
+import img6 from "@/public/images/about/g6.webp";
+import img7 from "@/public/images/about/g7.webp";
+import img8 from "@/public/images/about/g8.webp";
 
 const ImageGallery = () => {
   const images = [img1, img2, img3, img4, img5, img6, img7, img8];
