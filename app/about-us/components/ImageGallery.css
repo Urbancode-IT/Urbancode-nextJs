@@ -16,14 +16,7 @@
 
 /* Add staggered margin-top effect for columns 1 and 3 */
 @media (min-width: 992px) {
-  .masonry-item:nth-child(1)
- {
-    margin-top: 60px; /* adjust this value as you like (e.g., 30px–60px) */
-  }
-   .masonry-item:nth-child(7) img{
-    margin-top: 70px!important; /* adjust this value as you like (e.g., 30px–60px) */
-  }
-}
+ 
 
 /* Adjust for tablet & mobile */
 @media (max-width: 992px) {
@@ -64,3 +57,4 @@
 }
 
 
+}
