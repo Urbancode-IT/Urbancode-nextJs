@@ -10,7 +10,7 @@
   align-items: center;
   justify-content: start;
   background: linear-gradient(to right, #e9ecef, #f8f9fa);
-  width: 50%;
+  width: 60%;
   padding: 1rem 1.5rem;
   transition: all 0.3s ease;
   position: relative;
@@ -25,12 +25,12 @@
 }
 
 .feature-1 {
-  width: calc( 50% + 120px );
+  width: calc( 60% + 120px );
   z-index: 1;
 }
 
 .feature-2 {
-  width:calc( 50% + 240px );
+  width:calc( 60% + 240px );
   z-index: 2;
 }
 

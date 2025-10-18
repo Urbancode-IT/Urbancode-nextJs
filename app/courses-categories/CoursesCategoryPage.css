@@ -238,3 +238,25 @@
     font-size: 1.8rem;
   }
 }
+
+
+@keyframes shine {
+  0% { background-position: 200% center; }
+  100% { background-position: -200% center; }
+}
+
+.text-shine {
+  background: linear-gradient(
+    90deg,
+    #002a11 20%,
+    #0b0703 40%,
+    #17944d 60%,
+    #036c2d 80%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% auto;
+  animation: shine 4.5s linear infinite;
+  font-weight: 700;
+}
