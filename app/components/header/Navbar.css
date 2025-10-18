@@ -193,6 +193,9 @@
   .navbar-brand {
     width: 230px;        /* slightly larger logo if needed */
   }
+  .nav-links button{
+        font-size: 18px;
+  }
 }
 
 /* Dropdown Base */
