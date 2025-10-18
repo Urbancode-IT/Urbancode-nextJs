@@ -203,6 +203,36 @@
   color: #fff;
 }
 
+
+.text-shine {
+  position: relative;
+  display: inline-block;
+  background: linear-gradient(
+    90deg,
+    #036c2d,
+    #17944d,
+    #002a11,
+    #0b0703,
+    #17944d,
+    #036c2d    
+  );
+  background-size: 300%;
+  -webkit-background-clip: text;
+  background-clip:text ;
+  -webkit-text-fill-color: transparent;
+  animation: shine 4.5s linear infinite;
+}
+
+@keyframes shine {
+  0% {
+    background-position: -100%;
+  }
+  100% {
+    background-position: 200%;
+  }
+}
+
+
 /* -------------------
    Responsive Fixes
 ------------------- */

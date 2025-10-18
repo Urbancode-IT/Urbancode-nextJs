@@ -92,6 +92,8 @@ font-weight: 400;
     line-height: -2%;
     
 }
+
+
 @media (max-width:1500px){
     .course-desc{
         font-size: 0.7rem!important;

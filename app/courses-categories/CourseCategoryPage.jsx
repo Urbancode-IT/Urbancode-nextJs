@@ -146,7 +146,7 @@ const CourseCategoryPage = () => {
           <div className="expert-text">
             <h1>
               Empower Your Future with <br />
-              <span className="text-success">Expert-Led Courses</span>
+              <span className="text-success text-shine">Expert-Led Courses</span>
             </h1>
             <p>
               Unlock your potential with our wide range of industry-focused
