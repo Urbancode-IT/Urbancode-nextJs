@@ -84,7 +84,7 @@ const Projects = () => {
   };
 
   return (
-    <div className="projects-page pt-5">
+    <div className="projects-page">
       {/* HERO SECTION */}
       <section className="ph-hero-section ">
         <div className="container ph-hero-container">
