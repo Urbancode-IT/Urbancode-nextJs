@@ -19,7 +19,7 @@ const Kidz = () => {
    
     {
       title: "Python Core",
-      img: "/images/KidsImages/pythoncore.png",
+      img: "/images/KidsImages/pythonCore.png",
       duration: "2 Month",
       desc: "Start from zero and build strong coding fundamentals—variables, loops, functions, OOP—and complete mini-projects with confidence.",
       stars: "★★★★★",
