@@ -194,7 +194,6 @@ html {
   scroll-behavior: smooth;
 }
 
-
 /* Project Cards */
 .projects-page .project-card {
   background: #fff;
@@ -204,8 +203,11 @@ html {
   transition: transform 0.4s ease, box-shadow 0.4s ease;
   position: relative;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
 }
 
+/* Overlay gradient */
 .projects-page .project-card::before {
   content: '';
   position: absolute;
@@ -213,19 +215,24 @@ html {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, rgba(0,123,255,0.1) 0%, rgba(0, 255, 140, 0.1) 100%);
+  background: linear-gradient(135deg, rgba(0,123,255,0.15) 0%, rgba(0, 255, 140,0.15) 100%);
   opacity: 0;
   transition: opacity 0.4s ease;
   z-index: 1;
   pointer-events: none;
 }
 
-.projects-page .project-card:hover::before { opacity: 1; }
+.projects-page .project-card:hover::before { 
+  opacity: 1; 
+  transform: scale(1.02); /* subtle highlight effect */
+}
+
 .projects-page .project-card:hover {
   transform: translateY(-10px);
   box-shadow: 0 15px 30px rgba(0,0,0,0.15);
 }
 
+/* Image wrapper */
 .projects-page .img-wrap {
   position: relative;
   overflow: hidden;
@@ -235,27 +242,34 @@ html {
 
 .projects-page .img-wrap img {
   width: 100%;
-  height: 220px;
+  height: auto;           /* auto height keeps full image */
+  max-height: 300px;      /* optional: limit very tall images */
   object-fit: cover;
-  transition: transform 0.8s ease, filter 0.5s ease;
+  transition: transform 0.6s ease, filter 0.5s ease;
+  display: block;
 }
 
+/* Highlight on hover */
 .projects-page .project-card:hover img {
   transform: scale(1.08);
-  filter: brightness(1.1);
+  filter: brightness(1.15);
 }
 
+/* Overlay inside image (optional) */
 .projects-page .overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent 50%);
+  background: linear-gradient(to top, rgba(0,0,0,0.5), transparent 50%);
   opacity: 0;
   transition: opacity 0.4s ease;
   border-radius: 18px;
 }
 
-.projects-page .project-card:hover .overlay { opacity: 1; }
+.projects-page .project-card:hover .overlay { 
+  opacity: 1; 
+}
 
+/* Icon buttons */
 .projects-page .icons {
   position: absolute;
   bottom: 15px;
@@ -279,11 +293,12 @@ html {
   transform: scale(1.1);
 }
 
+/* Card content */
 .projects-page .card-content {
   padding: 20px;
   position: relative;
   z-index: 2;
-  height: 140px;
+  min-height: 140px;       /* auto-expands for text */
   overflow: hidden; 
 }
 
@@ -303,6 +318,7 @@ html {
   font-size: 15px;
   line-height: 1.6;
 }
+
 
 /* ========== ABOUT US SECTION ========== */
 .projects-page .about-section {
