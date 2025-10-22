@@ -15,7 +15,7 @@
 }
 
 /* Responsive adjustments */
-@media (max-width: 992px) {
+@media (max-width: 1900px) {
   .aboutus-hero .about-image {
     width: 90%;       /* smaller width for tablet/mobile */
     height: auto;     /* let height adjust automatically */
