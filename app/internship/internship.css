@@ -1,7 +1,6 @@
-      
 
-        /* Hero Section */
-        .internship-hero {
+/* Hero Section */
+.internship-page .internship-hero {
             width: 100%;
             min-height: 570px;
             display: flex;
@@ -16,7 +15,7 @@
             );
         }
 
-        .hero-title {
+        .internship-page .hero-title {
             font-weight: 700;
             font-size: 48px;
             line-height: 100%;
@@ -25,14 +24,14 @@
             max-width: 700px;
             margin: 0 auto 20px auto;
         }
-        .hero-title span {
+        .internship-page .hero-title span {
             color: #198754;
             padding: 0 8px;
             border-radius: 4px;
             display: inline-block;
         }
 
-        .hero-subtitle {
+        .internship-page .hero-subtitle {
             font-weight: 400;
             font-size: 16px;
             line-height: 19px;
@@ -43,7 +42,7 @@
         }
 
         /* Internships Section */
-        .internship-section {
+        .internship-page .internship-section {
             width: 100%;
             margin-top: 0;
             text-align: center;
@@ -55,14 +54,14 @@
             padding: 40px 0 60px 0;
         }
 
-        .internship-heading {
+        .internship-page .internship-heading {
             font-weight: 600;
             font-size: 32px;
             line-height: 39px;
             color: #2c3e50;
             margin-bottom: 12px;
         }
-        .internship-subtext {
+        .internship-page .internship-subtext {
             font-weight: 400;
             font-size: 12px;
             line-height: 15px;
@@ -73,7 +72,7 @@
         }
 
         /* Cards Grid */
-        .cards-container {
+        .internship-page .cards-container {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 30px;
@@ -83,7 +82,7 @@
         }
 
         /* Card Container */
-        .custom-card {
+        .internship-page .custom-card {
             width: 100%;
             height: 313px;
             background: #fff;
@@ -93,13 +92,13 @@
             transition: all 0.3s ease-in-out;
             position: relative;
         }
-        .custom-card:hover {
+        .internship-page .custom-card:hover {
             background: #7e7d7d;
             color: #fff;
         }
 
         /* Card Image */
-        .custom-card img {
+        .internship-page .custom-card img {
             width: 100%;
             height: 144px;
             border-radius: 6px;
@@ -107,12 +106,12 @@
             filter: grayscale(100%);
             transition: filter 0.3s ease-in-out;
         }
-        .custom-card:hover img {
+        .internship-page .custom-card:hover img {
             filter: grayscale(0%);
         }
 
         /* Card Heading */
-        .custom-card h5 {
+        .internship-page .custom-card h5 {
             font-weight: 600;
             font-size: 16px;
             color: #2c3e50;
@@ -121,12 +120,12 @@
             transition: color 0.3s;
             text-align: left;
         }
-        .custom-card:hover h5 {
+        .internship-page .custom-card:hover h5 {
             color: #fff;
         }
 
         /* Card Paragraph */
-        .custom-card p {
+        .internship-page .custom-card p {
             font-weight: 400;
             font-size: 12px;
             line-height: 1.2;
@@ -135,12 +134,12 @@
             transition: color 0.3s;
             text-align: left;
         }
-        .custom-card:hover p {
+        .internship-page .custom-card:hover p {
             color: #fff;
         }
 
         /* Duration Capsule */
-        .duration {
+        .internship-page .duration {
             display: flex;
             align-items: flex-start;
             background: #d9d9d9;
@@ -152,7 +151,7 @@
             text-align: left;
             width: 80px;
         }
-        .duration i {
+        .internship-page .duration i {
             margin-right: 5px;
             font-size: 10px;
             color: #595959;
@@ -160,7 +159,7 @@
         }
 
         /* Apply Button */
-        .apply-btn {
+        .internship-page .apply-btn {
             position: absolute;
             bottom: 20px;
             right: 20px;
@@ -177,12 +176,12 @@
             display: inline-block;
             transition: background 0.3s;
         }
-        .custom-card:hover .apply-btn {
+        .internship-page .custom-card:hover .apply-btn {
             background: #0db23c;
         }
 
         /* Why Choose Section - FIXED FOR MOBILE */
-        .why-internship-section {
+        .internship-page .why-internship-section {
             padding: 80px 0;
             text-align: center;
             background: linear-gradient(
@@ -192,19 +191,19 @@
             );
         }
 
-        .section-title {
+        .internship-page .section-title {
             font-weight: 600;
             font-size: 32px;
             color: #2C3E50;
         }
-        .section-subtitle {
+        .internship-page .section-subtitle {
             font-weight: 400;
             font-size: 12px;
             color: #000;
             margin-top: -5px;
         }
 
-        .cards-wrapper {
+        .internship-page .cards-wrapper {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
@@ -213,7 +212,7 @@
             padding: 0 15px;
         }
 
-        .internship-card {
+        .internship-page .internship-card {
             width: 306px;
             height: 182px;
             background: #fff;
@@ -229,12 +228,12 @@
             padding: 20px;
         }
 
-        .internship-card:hover {
+        .internship-page .internship-card:hover {
             transform: scale(1.05);
             box-shadow: 0px 8px 20px rgba(0,0,0,0.3);
         }
 
-        .icon-bg {
+        .internship-page .icon-bg {
             width: 47px;
             height: 42px;
             background: linear-gradient(90deg, rgba(0, 181, 111, 0.4) 0%, #198754 37.98%);
@@ -244,12 +243,12 @@
             justify-content: center;
             margin-bottom: 15px;
         }
-        .icon {
+        .internship-page .icon {
             width: 25px;
             height: 25px;
             color: white;
         }
-        .card-title {
+        .internship-page .card-title {
             font-weight: 600;
             font-size: 16px;
             line-height: 100%;
@@ -258,7 +257,7 @@
             color: #000;
             margin-bottom: 10px;
         }
-        .card-text {
+        .internship-page .card-text {
             font-weight: 400;
             font-size: 12px;
             line-height: 100%;
@@ -268,7 +267,7 @@
         }
 
         /* Application Section */
-        .application-section {
+        .internship-page .application-section {
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -280,7 +279,7 @@
             );
         }
 
-        .application-card {
+        .internship-page .application-card {
             width: 100%;
             max-width: 888px;
             height: auto;
@@ -292,40 +291,40 @@
             padding: 40px 30px;
         }
 
-        .form-title {
+        .internship-page .form-title {
             font-size: 20px;
             font-weight: 600;
             color: #2C3E50;
         }
 
-        .form-subtitle {
+        .internship-page .form-subtitle {
             font-size: 13px;
             color: #000;
             letter-spacing: -0.02em;
             margin-bottom: 20px;
         }
 
-        label {
+        .internship-page label {
             font-weight: 500;
             font-size: 14px;
             margin-bottom: 5px;
             color: #2C3E50;
         }
 
-        .custom-input {
+        .internship-page .custom-input {
             background: #EBEBEB;
             border: 1px solid #D0D0D0;
             border-radius: 7px;
             font-size: 14px;
         }
 
-        .custom-input:focus {
+        .internship-page .custom-input:focus {
             outline: none;
             box-shadow: none;
             border-color: #2C3E50;
         }
 
-        .App .submit-btn {
+        .internship-page .App .submit-btn {
             background: #595959;
             border-radius: 9px;
             font-weight: 500;
@@ -334,12 +333,12 @@
             transition: background 0.3s ease;
         }
 
-        .App .submit-btn:hover {
+        .internship-page .App .submit-btn:hover {
             background: #198754;
             color: #fff;
         }
 
-        form .row.g-3 {
+        .internship-page form .row.g-3 {
             row-gap: 20px;
         }
 
@@ -347,158 +346,158 @@
 
         /* Large Desktops (1440px to 1900px) */
         @media (min-width: 1440px) and (max-width: 1900px) {
-            .container {
+            .internship-page .container {
                 max-width: 1400px;
             }
             
-            .hero-title {
+            .internship-page .hero-title {
                 font-size: 56px;
                 max-width: 900px;
             }
             
-            .hero-subtitle {
+            .internship-page .hero-subtitle {
                 font-size: 18px;
                 line-height: 24px;
                 max-width: 800px;
             }
             
-            .cards-container {
+            .internship-page .cards-container {
                 grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
                 gap: 50px;
                 max-width: 1400px;
             }
             
-            .internship-heading {
+            .internship-page .internship-heading {
                 font-size: 40px;
             }
             
-            .internship-subtext {
+            .internship-page .internship-subtext {
                 font-size: 14px;
                 max-width: 600px;
             }
             
-            .cards-wrapper {
+            .internship-page .cards-wrapper {
                 gap: 180px;
             }
             
-            .application-card {
+            .internship-page .application-card {
                 max-width: 1000px;
                 min-height: 980px;
             }
             
-            .form-title {
+            .internship-page .form-title {
                 font-size: 24px;
             }
             
-            .form-subtitle {
+            .internship-page .form-subtitle {
                 font-size: 15px;
             }
             
-            .section-title {
+            .internship-page .section-title {
                 font-size: 40px;
             }
             
-            .section-subtitle {
+            .internship-page .section-subtitle {
                 font-size: 16px;
             }
         }
 
         /* Extra Large Desktops (1900px and above) */
         @media (min-width: 1900px) {
-            .container {
+            .internship-page .container {
                 max-width: 1800px;
             }
             
-            .hero-title {
+            .internship-page .hero-title {
                 font-size: 64px;
                 max-width: 1000px;
             }
             
-            .hero-subtitle {
+            .internship-page .hero-subtitle {
                 font-size: 20px;
                 line-height: 28px;
                 max-width: 900px;
             }
             
-            .cards-container {
+            .internship-page .cards-container {
                 grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
                 gap: 60px;
                 max-width: 1800px;
             }
             
-            .custom-card {
+            .internship-page .custom-card {
                 height: 340px;
             }
             
-            .custom-card h5 {
+            .internship-page .custom-card h5 {
                 font-size: 18px;
             }
             
-            .custom-card p {
+            .internship-page .custom-card p {
                 font-size: 11px;
             }
             
-            .duration {
+            .internship-page .duration {
                 font-size: 12px;
                 width: 90px;
             }
             
-            .apply-btn {
+            .internship-page .apply-btn {
                 width: 85px;
                 height: 20px;
                 font-size: 11px;
                 line-height: 20px;
             }
             
-            .internship-heading {
+            .internship-page .internship-heading {
                 font-size: 44px;
             }
             
-            .internship-subtext {
+            .internship-page .internship-subtext {
                 font-size: 16px;
                 max-width: 700px;
             }
             
-            .cards-wrapper {
+            .internship-page .cards-wrapper {
                 gap: 220px;
             }
             
-            .internship-card {
+            .internship-page .internship-card {
                 width: 350px;
                 height: 200px;
             }
             
-            .card-title {
+            .internship-page .card-title {
                 font-size: 18px;
             }
             
-            .card-text {
+            .internship-page .card-text {
                 font-size: 14px;
             }
             
-            .application-card {
+            .internship-page .application-card {
                 max-width: 1200px;
                 min-height: 1050px;
             }
             
-            .form-title {
+            .internship-page .form-title {
                 font-size: 28px;
             }
             
-            .form-subtitle {
+            .internship-page .form-subtitle {
                 font-size: 16px;
             }
             
-            label {
+            .internship-page label {
                 font-size: 16px;
             }
             
-            .custom-input {
+            .internship-page .custom-input {
                 font-size: 16px;
                 padding: 12px;
             }
             
-            .App .submit-btn {
+            .internship-page .App .submit-btn {
                 font-size: 18px;
                 padding: 12px 40px;
             }
@@ -506,19 +505,19 @@
 
         /* Small Laptops (1024px to 1439px) */
         @media (max-width: 1439px) and (min-width: 1024px) {
-            .cards-container {
+            .internship-page .cards-container {
                 gap: 40px;
             }
             
-            .cards-wrapper {
+            .internship-page .cards-wrapper {
                 gap: 100px;
             }
             
-            .application-card {
+            .internship-page .application-card {
                 padding: 30px;
             }
             
-            .internship-hero {
+            .internship-page .internship-hero {
                 min-height: 500px;
                 padding-top: 80px;
             }
@@ -526,59 +525,59 @@
 
         /* Tablets (768px to 1023px) */
         @media (max-width: 1023px) and (min-width: 768px) {
-            .hero-title {
+            .internship-page .hero-title {
                 font-size: 36px;
                 line-height: 44px;
                 padding: 0 15px;
             }
             
-            .hero-subtitle {
+            .internship-page .hero-subtitle {
                 font-size: 14px;
                 line-height: 20px;
                 padding: 0 15px;
             }
             
-            .cards-container {
+            .internship-page .cards-container {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 30px;
             }
             
-            .internship-heading {
+            .internship-page .internship-heading {
                 font-size: 28px;
             }
             
-            .internship-subtext {
+            .internship-page .internship-subtext {
                 font-size: 11px;
                 padding: 0 20px;
             }
             
-            .cards-wrapper {
+            .internship-page .cards-wrapper {
                 gap: 60px;
                 margin-top: 50px;
             }
             
-            .application-section {
+            .internship-page .application-section {
                 padding: 40px 15px;
             }
             
-            .application-card {
+            .internship-page .application-card {
                 border-radius: 20px;
                 padding: 25px 20px;
             }
             
-            .form-title {
+            .internship-page .form-title {
                 font-size: 18px;
             }
             
-            .form-subtitle {
+            .internship-page .form-subtitle {
                 font-size: 12px;
             }
             
-            .section-title {
+            .internship-page .section-title {
                 font-size: 28px;
             }
             
-            .section-subtitle {
+            .internship-page .section-subtitle {
                 font-size: 11px;
                 padding: 0 15px;
             }
@@ -586,87 +585,87 @@
 
         /* Mobile Devices (576px to 767px) */
         @media (max-width: 767px) and (min-width: 576px) {
-            .hero-title {
+            .internship-page .hero-title {
                 font-size: 32px;
                 line-height: 40px;
             }
             
-            .hero-subtitle {
+            .internship-page .hero-subtitle {
                 font-size: 14px;
                 line-height: 18px;
             }
             
-            .internship-hero {
+            .internship-page .internship-hero {
                 min-height: 450px;
                 padding: 80px 10px 40px 10px;
             }
             
-            .cards-container {
+            .internship-page .cards-container {
                 grid-template-columns: 1fr;
                 gap: 25px;
             }
             
-            .internship-heading {
+            .internship-page .internship-heading {
                 font-size: 26px;
                 line-height: 32px;
             }
             
-            .internship-subtext {
+            .internship-page .internship-subtext {
                 font-size: 11px;
                 margin-bottom: 30px;
             }
             
-            .custom-card {
+            .internship-page .custom-card {
                 height: auto;
                 min-height: 313px;
                 padding: 20px;
             }
             
-            .custom-card img {
+            .internship-page .custom-card img {
                 height: 120px;
             }
             
-            .cards-wrapper {
+            .internship-page .cards-wrapper {
                 flex-direction: column;
                 align-items: center;
                 gap: 40px;
                 margin-top: 50px;
             }
             
-            .section-title {
+            .internship-page .section-title {
                 font-size: 26px;
             }
             
-            .section-subtitle {
+            .internship-page .section-subtitle {
                 font-size: 11px;
             }
             
-            .why-internship-section {
+            .internship-page .why-internship-section {
                 padding: 50px 0;
             }
             
-            .application-card {
+            .internship-page .application-card {
                 padding: 20px 15px;
                 border-radius: 15px;
             }
             
-            .form-title {
+            .internship-page .form-title {
                 font-size: 18px;
             }
             
-            .form-subtitle {
+            .internship-page .form-subtitle {
                 font-size: 12px;
             }
             
-            label {
+            .internship-page label {
                 font-size: 13px;
             }
             
-            .custom-input {
+            .internship-page .custom-input {
                 font-size: 13px;
             }
             
-            .App .submit-btn {
+            .internship-page .App .submit-btn {
                 font-size: 14px;
                 padding: 10px 30px;
             }
@@ -674,117 +673,117 @@
 
         /* Small Mobile Devices (575px and below) */
         @media (max-width: 575px) {
-            .hero-title {
+            .internship-page .hero-title {
                 font-size: 28px;
                 line-height: 36px;
                 padding: 0 10px;
             }
             
-            .hero-subtitle {
+            .internship-page .hero-subtitle {
                 font-size: 13px;
                 line-height: 18px;
                 padding: 0 10px;
             }
             
-            .internship-hero {
+            .internship-page .internship-hero {
                 min-height: 400px;
                 padding: 80px 10px 40px 10px;
             }
             
-            .internship-heading {
+            .internship-page .internship-heading {
                 font-size: 24px;
                 line-height: 30px;
             }
             
-            .internship-subtext {
+            .internship-page .internship-subtext {
                 font-size: 10px;
                 margin-bottom: 30px;
                 padding: 0 15px;
             }
             
-            .cards-container {
+            .internship-page .cards-container {
                 grid-template-columns: 1fr;
                 gap: 20px;
             }
             
-            .custom-card {
+            .internship-page .custom-card {
                 width: 100%;
                 height: auto;
                 min-height: 313px;
                 padding: 15px;
             }
             
-            .custom-card img {
+            .internship-page .custom-card img {
                 height: 120px;
             }
             
-            .section-title {
+            .internship-page .section-title {
                 font-size: 24px;
             }
             
-            .section-subtitle {
+            .internship-page .section-subtitle {
                 font-size: 10px;
                 padding: 0 10px;
             }
             
-            .why-internship-section {
+            .internship-page .why-internship-section {
                 padding: 40px 0;
             }
             
-            .cards-wrapper {
+            .internship-page .cards-wrapper {
                 flex-direction: column;
                 align-items: center;
                 gap: 30px;
                 margin-top: 40px;
             }
             
-            .application-section {
+            .internship-page .application-section {
                 padding: 30px 10px;
             }
             
-            .application-card {
+            .internship-page .application-card {
                 padding: 15px 10px;
                 border-radius: 15px;
             }
             
-            .form-title {
+            .internship-page .form-title {
                 font-size: 16px;
             }
             
-            .form-subtitle {
+            .internship-page .form-subtitle {
                 font-size: 11px;
             }
             
-            label {
+            .internship-page label {
                 font-size: 12px;
             }
             
-            .custom-input {
+            .internship-page .custom-input {
                 font-size: 12px;
                 padding: 8px;
             }
             
-            .App .submit-btn {
+            .internship-page .App .submit-btn {
                 font-size: 14px;
                 padding: 10px 25px;
             }
             
-            .card-title {
+            .internship-page .card-title {
                 font-size: 15px;
             }
             
-            .card-text {
+            .internship-page .card-text {
                 font-size: 11px;
             }
         }
 
         /* Height adjustments for very tall screens */
         @media (min-height: 900px) {
-            .internship-hero {
+            .internship-page .internship-hero {
                 min-height: 70vh;
             }
             
-            .application-section {
+            .internship-page .application-section {
                 min-height: 100vh;
                 padding: 80px 15px;
             }
@@ -792,12 +791,12 @@
 
         /* Custom Card Adjustment (1200px to 1496px) */
 @media (min-width: 1200px) and (max-width: 1597px) {
-    .custom-card {
+    .internship-page .custom-card {
         width: 320px;
         height: 311px;
     }
 
-    .cards-container {
+    .internship-page .cards-container {
         justify-content: center;
         grid-template-columns: repeat(auto-fit, 320px);
     }
@@ -805,17 +804,17 @@
 
 /* Custom + Application Card Adjustment (1200px to 1496px) */
 @media (min-width: 1200px) and (max-width: 1496px) {
-    .custom-card {
+    .internship-page .custom-card {
         width: 320px;
         height: 311px;
     }
 
-    .application-card {
+    .internship-page .application-card {
         width: 888px;
         height: 945px;
     }
 
-    .cards-container {
+    .internship-page .cards-container {
         justify-content: center;
         grid-template-columns: repeat(auto-fit, 320px);
         gap: 30px; /* keep spacing consistent */
@@ -824,7 +823,7 @@
 
 /* Why Choose Internship Cards 2x2 Layout (1400px to 1540px) */
 @media (min-width: 1400px) and (max-width: 1540px) {
-    .cards-wrapper {
+    .internship-page .cards-wrapper {
         display: grid;
         grid-template-columns: repeat(2, 306px); /* fixed width for each card */
         grid-template-rows: repeat(2, auto);
@@ -833,8 +832,7 @@
         row-gap: 60px;             /* vertical spacing between cards */
     }
 
-    .internship-card {
+    .internship-page .internship-card {
         margin: 0; /* remove auto margins so grid handles spacing */
     }
 }
-
