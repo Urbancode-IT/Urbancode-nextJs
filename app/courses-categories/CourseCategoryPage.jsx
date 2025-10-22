@@ -149,10 +149,7 @@ const CourseCategoryPage = () => {
               <span className="text-success text-shine">Expert-Led Courses</span>
             </h1>
             <p>
-              Unlock your potential with our wide range of industry-focused
-              courses. Whether you’re a beginner or looking to upgrade your
-              skills, our expert trainers and hands-on learning approach prepare
-              you for real-world success.
+              Discover a diverse range of career-focused programs designed to help you master in-demand skills in programming, cloud computing, DevOps, data analytics, cybersecurity, software testing, and more. Whether you’re a beginner or a professional seeking to upgrade your expertise, our expert trainers and practical, hands-on learning approach ensure you gain the knowledge and confidence needed to excel in the real world.. "Start your learning journey today with Urbancode".
             </p>
           </div>
           <div className="expert-image">
