@@ -1,9 +1,7 @@
-
-
-
+/* ...existing code... */
 
 /* Smooth background transition from hero to main content */
-.hero-section {
+.kidz-page .hero-section {
   background: linear-gradient(
     180deg,
     rgba(216, 234, 227, 0.8) 0%,
@@ -14,12 +12,12 @@
   );
     padding: 80px 0px;
 }
-.color-bg{
+.kidz-page .color-bg{
     background-color: hsla(0, 0%, 92%, 1);
 }
 
 /* Container */
-/* .hero-section .container {
+/* .kidz-page .hero-section .container {
   max-width: 1296px;
   margin: 0 auto;
   padding-left: 15px;
@@ -29,7 +27,7 @@
 } */
 
 /* Hero Content Block */
-.hero-content {
+.kidz-page .hero-content {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -39,11 +37,11 @@
 
 
 /* Hero Text Area */
-.hero-text-area {
+.kidz-page .hero-text-area {
   max-width: 620px;
 }
 
-.hero-title {
+.kidz-page .hero-title {
  
   font-weight: 700;
   font-size: 3rem!important;
@@ -52,11 +50,11 @@
   color: #2C3E50;
 }
 
-.hero-title span {
+.kidz-page .hero-title span {
   color: #00A676;
 }
 
-.hero-text {
+.kidz-page .hero-text {
   font-family: 'Segoe UI', sans-serif;
   font-size: 16px;
   line-height: 25px;
@@ -65,7 +63,7 @@
 }
 
 /* Hero Image */
-.hero-img {
+.kidz-page .hero-img {
   width: 498px;
   max-width: 100%;
   height: 295px;
@@ -76,14 +74,14 @@
 }
 
 /* Section Styling */
-.section-title {
+.kidz-page .section-title {
   font-weight: 600;
   font-size: 32px;
   line-height: 48px;
   text-align: center;
   margin-bottom: 10px;
 }
-.section-subtitle {
+.kidz-page .section-subtitle {
   font-size: 1rem;
   text-align: center;
   color: #2C3E50;
@@ -116,7 +114,7 @@
   width: 100%;
   filter:grayscale(80%);
 }
-.badge-duration {
+.kidz-page .badge-duration {
   position: absolute;
   top: 12px;
   right: 12px;
@@ -128,20 +126,20 @@
   padding: 4px 8px;
   opacity: 0.8;
 }
-.course-body {
+.kidz-page .course-body {
   padding: 10px 0;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: stretch;
 }
-.kids-course-title {
+.kidz-page .kids-course-title {
   font-size: 16px;
   font-weight: 600;
   margin-bottom: 10px;
 }
 
-.course-desc {
+.kidz-page .course-desc {
   font-size: 0.8rem;
   color: #64748B;
   margin-bottom: 15px;
@@ -149,7 +147,7 @@
 .kidz-page .course-card:hover .course-desc {
   color: #fff;
 }
-.rating {
+.kidz-page .rating {
   display: flex;
   align-items: center;
   font-size: 0.8rem;
@@ -157,10 +155,10 @@
   justify-content: space-between;
   margin-bottom: 15px;
 }
-.rating-stars {
+.kidz-page .rating-stars {
   color: #FFDD57;
 }
-.btn-enroll {
+.kidz-page .btn-enroll {
   background: #595959;
   color: #fff;
   width: 100%;
@@ -174,7 +172,7 @@
 }
 
 /* Why Choose Section */
-.why-choose-kids .overlay {
+.kidz-page .why-choose-kids .overlay {
   width: 64px;
   height: 64px;
   background: #DDEBE6;
@@ -184,20 +182,20 @@
   justify-content: center;
 }
 
-.kids-heading {
+.kidz-page .kids-heading {
   color: #2C3E50;
   font-size: 32px;
   line-height: 48px;
 }
 
-.kids-subheading {
+.kidz-page .kids-subheading {
   max-width: 650px;
   font-size: 1rem;
   line-height: 20px;
   color: #000;
 }
 
-.kids-card {
+.kidz-page .kids-card {
   border-radius: 12px;
   box-shadow: 0px 0px 8px 1px rgba(0, 0, 0, 0.25);
   border: none;
@@ -205,7 +203,7 @@
   background-color: #fff !important;
 }
 
-.kids-card:hover {
+.kidz-page .kids-card:hover {
   background-color: #fff !important;;
   box-shadow: 5px 20px 20px rgba(0, 0, 0, 0.3)!important;
 }
@@ -214,19 +212,19 @@
     color: #fff!important;
 }
 
-.kids-card-title {
+.kidz-page .kids-card-title {
   font-size: 20px;
   color: #020817;
 }
 
-.kids-card-text {
+.kidz-page .kids-card-text {
   font-size: 16px;
   line-height: 26px;
   color: #64748B;
 }
 
 /* Tech Journey Section */
-.tech-journey {
+.kidz-page .tech-journey {
   background: linear-gradient(90deg, #DDEAE5 1.32%, #DCEAE5 100%);
   border-radius: 24px;
   padding: 60px;
@@ -234,20 +232,20 @@
   margin: 0 auto;
 }
 
-.tech-heading {
+.kidz-page .tech-heading {
   font-size: 28px;
   line-height: 34px;
   color: #2C3E50;
 }
 
-.tech-subheading {
+.kidz-page .tech-subheading {
   font-size: 1rem;
   line-height: 20px;
   color: #64748B;
   max-width: 560px;
 }
 
-.btn-demo {
+.kidz-page .btn-demo {
   background: #1ABC9C;
   border: 1px solid #1ABC9C;
   border-radius: 6px;
@@ -259,12 +257,12 @@
   transition: all 0.3s ease;
 }
 
-.btn-demo:hover {
+.kidz-page .btn-demo:hover {
   background: #16a085;
   border-color: #16a085;
 }
 
-.btn-link {
+.kidz-page .btn-link {
   font-weight: 700;
   font-size: 16px;
   line-height: 24px;
@@ -272,12 +270,12 @@
   text-decoration: none;
 }
 
-.btn-link:hover {
+.kidz-page .btn-link:hover {
   text-decoration: underline;
   color: #1ABC9C;
 }
 
-.stat-card {
+.kidz-page .stat-card {
   background: #fff;
   border-radius: 12px;
   padding: 20px;
@@ -289,12 +287,12 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.stat-card:hover {
+.kidz-page .stat-card:hover {
   transform: translateY(-5px);
   box-shadow: 0px 4px 12px rgba(0,0,0,0.15);
 }
 
-.stat-card h4 {
+.kidz-page .stat-card h4 {
   color: #198754;
   font-weight: 700;
   font-size: 22px;
@@ -302,63 +300,63 @@
   margin-bottom: 5px;
 }
 
-.stat-card p {
+.kidz-page .stat-card p {
   color: #64748B;
   font-size: 1rem;
   margin: 0;
 }
 
-.d-flex.flex-wrap.gap-3 {
+.kidz-page .d-flex.flex-wrap.gap-3 {
   align-items: baseline;
 }
 
 /* Media Query for Large Screens (1496px - 2000px) */
 @media (min-width: 1596px) and (max-width: 2000px) {
-  .hero-section .container,
-  .tech-journey {
+  .kidz-page .hero-section .container,
+  .kidz-page .tech-journey {
     
     margin: 0 auto;
   }
   
-  .hero-content {
+  .kidz-page .hero-content {
     
     justify-content: space-between;
   }
   
-  .hero-text-area {
+  .kidz-page .hero-text-area {
     max-width: 700px;
     flex: 1;
   }
   
-  .hero-title {
+  .kidz-page .hero-title {
     font-size: 56px;
     line-height: 66px;
   }
   
-  .hero-text {
+  .kidz-page .hero-text {
     font-size: 18px;
     line-height: 28px;
     margin-top: 25px;
   }
   
-  .hero-img {
+  .kidz-page .hero-img {
     width: 600px;
     height: 355px;
     flex-shrink: 0;
   }
   
-  .section-title {
+  .kidz-page .section-title {
     font-size: 40px;
     line-height: 52px;
   }
   
-  .section-subtitle {
+  .kidz-page .section-subtitle {
     font-size: 16px;
     max-width: 800px;
   }
   
   /* Course cards grid adjustment */
-  .courses-container {
+  .kidz-page .courses-container {
     max-width: 95%;
     margin: 0 auto;
   }
@@ -367,92 +365,92 @@
     border-radius: 28px;
   }
   
-  .course-img {
+  .kidz-page .course-img {
     height: 260px;
   }
   
-  .kids-course-title {
+  .kidz-page .kids-course-title {
     font-size: 22px;
   }
   
-  .course-desc {
+  .kidz-page .course-desc {
     font-size: 15px;
   }
   
   /* Why Choose Section */
-  .why-choose-container {
+  .kidz-page .why-choose-container {
     max-width: 95%;
     margin: 0 auto;
   }
   
-  .kids-heading {
+  .kidz-page .kids-heading {
     font-size: 40px;
     line-height: 52px;
   }
   
-  .kids-subheading {
+  .kidz-page .kids-subheading {
     font-size: 16px;
     line-height: 24px;
     max-width: 800px;
   }
   
-  .kids-card {
+  .kidz-page .kids-card {
     border-radius: 16px;
     background-color: #fff !important;
   }
 
   
-  .kids-card-title {
+  .kidz-page .kids-card-title {
     font-size: 22px;
   }
   
-  .kids-card-text {
+  .kidz-page .kids-card-text {
     font-size: 17px;
     line-height: 28px;
   }
   
-  .overlay {
+  .kidz-page .overlay {
     width: 72px;
     height: 72px;
   }
   
   /* Tech Journey Section */
-  .tech-journey {
+  .kidz-page .tech-journey {
     padding: 80px;
     border-radius: 28px;
   }
   
-  .tech-heading {
+  .kidz-page .tech-heading {
     font-size: 32px;
     line-height: 40px;
   }
   
-  .tech-subheading {
+  .kidz-page .tech-subheading {
     font-size: 16px;
     line-height: 24px;
     max-width: 650px;
   }
   
-  .btn-demo {
+  .kidz-page .btn-demo {
     font-size: 18px;
     padding: 10px 24px;
   }
   
-  .btn-link {
+  .kidz-page .btn-link {
     font-size: 18px;
   }
   
-  .stat-card {
+  .kidz-page .stat-card {
     padding: 25px;
     border-radius: 16px;
   }
   
-  .stat-card h4 {
+  .kidz-page .stat-card h4 {
     font-size: 26px;
     line-height: 40px;
   }
   
-  .stat-card p {
+  .kidz-page .stat-card p {
     font-size: 16px;
   }
 }
@@ -460,27 +458,27 @@
 /* Optional: Additional media query for very large screens above 1800px */
 @media (min-width: 1800px) and (max-width: 2000px) {
    
-  .courses-container,
-  .why-choose-container {
+  .kidz-page .courses-container,
+  .kidz-page .why-choose-container {
     max-width: 1700px;
   }
   
-  .hero-title {
+  .kidz-page .hero-title {
     font-size: 64px;
     line-height: 74px;
   }
   
-  .hero-text {
+  .kidz-page .hero-text {
     font-size: 20px;
     line-height: 32px;
   }
   
-  .hero-img {
+  .kidz-page .hero-img {
     width: 700px;
     height: 415px;
   }
   
-  .section-title {
+  .kidz-page .section-title {
     font-size: 44px;
   }
 }
@@ -489,46 +487,46 @@
 @media (max-width: 768px) {
 
   /* Hero Section */
-  .hero-section {
+  .kidz-page .hero-section {
     padding: 50px 0;
     text-align: center;
   }
 
-  .hero-content {
+  .kidz-page .hero-content {
     flex-direction: column;
     
   }
 
-  .hero-text-area {
+  .kidz-page .hero-text-area {
     max-width: 100%;
     padding: 0 15px;
   }
 
-  .hero-title {
+  .kidz-page .hero-title {
     font-size: 32px;
     line-height: 42px;
   }
 
-  .hero-text {
+  .kidz-page .hero-text {
     font-size: 1rem;
     line-height: 22px;
     margin-top: 15px;
   }
 
-  .hero-img {
+  .kidz-page .hero-img {
     width: 100%;
     height: auto;
     border-radius: 16px;
   }
 
   /* Section Headings */
-  .section-title {
+  .kidz-page .section-title {
     font-size: 24px;
     line-height: 32px;
     margin-bottom: 8px;
   }
 
-  .section-subtitle {
+  .kidz-page .section-subtitle {
     font-size: 13px;
     margin-bottom: 25px;
     padding: 0 15px;
@@ -539,96 +537,96 @@
     margin-bottom: 20px;
   }
 
-  .course-img {
+  .kidz-page .course-img {
     height: 180px;
   }
 
-  .kids-course-title {
+  .kidz-page .kids-course-title {
     font-size: 18px;
   }
 
-  .course-desc {
+  .kidz-page .course-desc {
     font-size: 13px;
   }
 
-  .btn-enroll {
+  .kidz-page .btn-enroll {
     font-size: 1rem;
   }
 
   /* Why Choose Section */
-  .kids-heading {
+  .kidz-page .kids-heading {
     font-size: 24px;
     line-height: 32px;
   }
 
-  .kids-subheading {
+  .kidz-page .kids-subheading {
     font-size: 13px;
     line-height: 20px;
     padding: 0 10px;
   }
 
-  .kids-card {
+  .kidz-page .kids-card {
     margin-bottom: 20px;
   }
 
-  .overlay {
+  .kidz-page .overlay {
     width: 48px;
     height: 48px;
   }
 
-  .kids-card-title {
+  .kidz-page .kids-card-title {
     font-size: 18px;
   }
 
-  .kids-card-text {
+  .kidz-page .kids-card-text {
     font-size: 1rem;
     line-height: 22px;
   }
 
   /* Tech Journey Section */
-  .tech-journey {
+  .kidz-page .tech-journey {
     padding: 30px 20px;
     border-radius: 16px;
   }
 
-  .tech-heading {
+  .kidz-page .tech-heading {
     font-size: 22px;
     line-height: 28px;
   }
 
-  .tech-subheading {
+  .kidz-page .tech-subheading {
     font-size: 13px;
     line-height: 20px;
     max-width: 100%;
   }
 
-  .btn-demo, 
-  .btn-link {
+  .kidz-page .btn-demo, 
+  .kidz-page .btn-link {
     font-size: 1rem;
     padding: 8px 16px;
   }
 
-  .stat-card {
+  .kidz-page .stat-card {
     padding: 15px;
     margin-bottom: 15px;
   }
 
-  .stat-card h4 {
+  .kidz-page .stat-card h4 {
     font-size: 18px;
     line-height: 28px;
   }
 
-  .stat-card p {
+  .kidz-page .stat-card p {
     font-size: 13px;
   }
 
   /* General Layout Adjustments */
-  .container {
+  .kidz-page .container {
     padding-left: 10px;
     padding-right: 10px;
   }
 
-  .d-flex.flex-wrap.gap-3 {
+  .kidz-page .d-flex.flex-wrap.gap-3 {
     flex-direction: column;
     
   }
@@ -638,47 +636,47 @@
 @media (min-width: 769px) and (max-width: 1187px) {
 
   /* Hero Section */
-  .hero-section {
+  .kidz-page .hero-section {
     padding: 60px 0;
   }
 
-  .hero-content {
+  .kidz-page .hero-content {
     flex-direction: column;
     align-items: center;
     text-align: center;
     
   }
 
-  .hero-text-area {
+  .kidz-page .hero-text-area {
     max-width: 90%;
     margin: 0 auto;
   }
 
-  .hero-title {
+  .kidz-page .hero-title {
     font-size: 38px;
     line-height: 46px;
   }
 
-  .hero-text {
+  .kidz-page .hero-text {
     font-size: 15px;
     line-height: 24px;
     margin-top: 18px;
   }
 
-  .hero-img {
+  .kidz-page .hero-img {
     width: 420px;
     height: auto;
     border-radius: 20px;
   }
 
   /* Section Titles */
-  .section-title {
+  .kidz-page .section-title {
     font-size: 28px;
     line-height: 38px;
     margin-bottom: 8px;
   }
 
-  .section-subtitle {
+  .kidz-page .section-subtitle {
     font-size: 1rem;
     margin-bottom: 30px;
     max-width: 600px;
@@ -692,30 +690,30 @@
     margin-bottom: 25px;
   }
 
-  .course-img {
+  .kidz-page .course-img {
     height: 200px;
   }
 
-  .kids-course-title {
+  .kidz-page .kids-course-title {
     font-size: 18px;
   }
 
-  .course-desc {
+  .kidz-page .course-desc {
     font-size: 13.5px;
   }
 
-  .btn-enroll {
+  .kidz-page .btn-enroll {
     font-size: 1rem;
   }
 
   /* Why Choose Section */
-  .kids-heading {
+  .kidz-page .kids-heading {
     font-size: 28px;
     line-height: 40px;
     text-align: center;
   }
 
-  .kids-subheading {
+  .kidz-page .kids-subheading {
     font-size: 1rem;
     line-height: 22px;
     text-align: center;
@@ -723,40 +721,40 @@
     max-width: 550px;
   }
 
-  .kids-card {
+  .kidz-page .kids-card {
     border-radius: 12px;
     margin-bottom: 20px;
   }
 
-  .kids-card-title {
+  .kidz-page .kids-card-title {
     font-size: 18px;
   }
 
-  .kids-card-text {
+  .kidz-page .kids-card-text {
     font-size: 1rem;
     line-height: 22px;
   }
 
-  .overlay {
+  .kidz-page .overlay {
     width: 56px;
     height: 56px;
   }
 
   /* Tech Journey Section */
-  .tech-journey {
+  .kidz-page .tech-journey {
     padding: 45px 30px;
     border-radius: 20px;
     max-width: 90%;
     margin: 0 auto;
   }
 
-  .tech-heading {
+  .kidz-page .tech-heading {
     font-size: 24px;
     line-height: 30px;
     text-align: center;
   }
 
-  .tech-subheading {
+  .kidz-page .tech-subheading {
     font-size: 1rem;
     line-height: 22px;
     max-width: 500px;
@@ -764,37 +762,37 @@
     text-align: center;
   }
 
-  .btn-demo {
+  .kidz-page .btn-demo {
     font-size: 15px;
     padding: 8px 18px;
   }
 
-  .btn-link {
+  .kidz-page .btn-link {
     font-size: 15px;
   }
 
-  .stat-card {
+  .kidz-page .stat-card {
     padding: 18px;
     border-radius: 12px;
     text-align: center;
   }
 
-  .stat-card h4 {
+  .kidz-page .stat-card h4 {
     font-size: 20px;
     line-height: 30px;
   }
 
-  .stat-card p {
+  .kidz-page .stat-card p {
     font-size: 13.5px;
   }
 
   /* Layout Tweaks */
-  .container {
+  .kidz-page .container {
     padding-left: 15px;
     padding-right: 15px;
   }
 
-  .d-flex.flex-wrap.gap-3 {
+  .kidz-page .d-flex.flex-wrap.gap-3 {
     justify-content: center;
     gap: 20px;
   }
