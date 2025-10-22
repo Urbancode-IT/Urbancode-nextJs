@@ -97,7 +97,8 @@ const Courses = () => {
 
         {/* Browse All button */}
         <div className="d-flex justify-content-center align-items-center">
-          <button className="gradient-btn d-flex align-items-center justify-content-between px-5 py-2 rounded-pill border-0 text-dark" onClick={() => window.location.href = '/courses-categories'}>
+          <button className="btn enroll_btn rounded-pill px-4 py-2 mt-5" onClick={() => window.location.href = '/courses-categories'}>
+          {/* <button className="gradient-btn d-flex align-items-center justify-content-between px-5 py-2 rounded-pill border-0 text-dark" onClick={() => window.location.href = '/courses-categories'}> */}
             <span className="me-3 fw-semibold">View all courses</span>
             <span className="arrow-circle">
               <FaArrowRight />
@@ -105,8 +106,20 @@ const Courses = () => {
           </button>
         </div>
 
+        
+
         {/* Student Lifecycle Image */}
-        <div className="student-lifecycle-container text-center py-3 py-lg-5 py-sm-2">
+        <div className=" pt-5 pt-lg-5 pt-sm-2 mt-5"> 
+          <h5 className="section-title text-center">
+          <span className="mx-2">―</span>
+          Students Lifecycle
+          <span className="mx-2">―</span>
+        </h5>
+
+        <h4 className="text-center text-muted mb-5 fw-semibold">
+          Explore the students lifecycle at Urbancode
+        </h4>
+        <div className="student-lifecycle-container">
           <Image
             src={
               isMobile
@@ -119,6 +132,7 @@ const Courses = () => {
             className="student-lifecycle-img img-fluid w-100"
             priority
           />
+          </div>
         </div>
       </div>
     </div>
