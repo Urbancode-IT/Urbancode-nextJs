@@ -169,7 +169,7 @@ function App() {
   ]
 
   return (
-    <div className="App">
+    <div className="internship-page">
       {/* Hero Section */}
       <section className="internship-hero d-flex align-items-center">
         <div className="container text-center">
