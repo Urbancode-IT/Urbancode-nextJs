@@ -441,27 +441,32 @@ const projectsData = [
   {
     title: "TECHTRENDZ",
     description: "IT consulting services dedicated to helping businesses reach their full potential through technology.",
-    image: "/images/ProjectPageImages/Techtrendz.png"
+    image: "/images/ProjectPageImages/Techtrendz.png",
+    url: "https://tech-trendz.be/"
   },
   {
     title: "SYNERGY",
     description: "Tax consulting, GST filing, and financial training services to empower clients with expert tax education.",
-    image: "/images/ProjectPageImages/Synergy.png"
+    image: "/images/ProjectPageImages/Synergy.png",
+    url: "https://www.synergytaxed.com/"
   },
   {
     title: "BODHISHIKSHAK",
     description: "High-quality online education in Mathematics, Science, and English with personalized learning approach.",
-    image: "/images/ProjectPageImages/Bodhishikshak.png"
+    image: "/images/ProjectPageImages/Bodhishikshak.png",
+    url: "https://bodhishikshak.com/about.html"
   },
   {
     title: "JOBZENTER",
     description: "Software training and placements specializing in Full Stack Development, Software Testing, and Business Intelligence.",
-    image: "/images/ProjectPageImages/Jobzenter.png"
+    image: "/images/ProjectPageImages/Jobzenter.png",
+    url: "https://jobzenter.in/"
   },
   {
     title: "CRAFTLOGICALLYME",
     description: "Natural stone jewelry featuring authentic stones like turquoise, amethyst, and jade, handcrafted to perfection.",
-    image: "/images/ProjectPageImages/Craftlogicallyme.png"
+    image: "/images/ProjectPageImages/Craftlogicallyme.png",
+    url: "https://www.craftlogicallyme.com/home-decor"
   }
 ];
 
