@@ -68,6 +68,7 @@
   line-height: 18px;
   display: flex;
   align-items: center;
+  justify-content: center;
   position: relative;       /* for pseudo-element */
   transition: color 0.3s ease;
 }
@@ -150,6 +151,15 @@
     justify-content: center;
     padding: 15px 0;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  .nav-links .dropdown{
+    width: 100%;
+    justify-content: center;
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  .dropdown-menu{
+    border:none;
   }
 
   .nav-links a:last-child {
