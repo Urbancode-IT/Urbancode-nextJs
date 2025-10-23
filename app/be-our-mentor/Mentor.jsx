@@ -232,7 +232,7 @@ const Mentor = () => {
           <form onSubmit={handleSubmit}>
             <div className="row g-3">
               <div className="col-md-6">
-                <label htmlFor="name">Name</label>
+                {/* <label htmlFor="name">Name</label> */}
                 <input
                   type="text"
                   id="name"
@@ -244,7 +244,7 @@ const Mentor = () => {
               </div>
 
               <div className="col-6">
-                <label htmlFor="email">Email</label>
+                {/* <label htmlFor="email">Email</label> */}
                 <input
                   type="email"
                   id="email"
@@ -256,7 +256,7 @@ const Mentor = () => {
               </div>
 
               <div className="col-6">
-                <label htmlFor="mobile">Mobile Number</label>
+                {/* <label htmlFor="mobile">Mobile Number</label> */}
                 <input
                   type="tel"
                   id="mobile"
@@ -268,7 +268,7 @@ const Mentor = () => {
               </div>
 
               <div className="col-6">
-                <label htmlFor="experience">Experience</label>
+                {/* <label htmlFor="experience">Experience</label> */}
                 <select
                   id="experience"
                   className="form-select custom-input"
@@ -284,7 +284,7 @@ const Mentor = () => {
               </div>
 
               <div className="col-12">
-                <label htmlFor="interest">Your Message</label>
+                {/* <label htmlFor="interest">Your Message</label> */}
                 <textarea
                   id="interest"
                   className="form-control custom-input"
