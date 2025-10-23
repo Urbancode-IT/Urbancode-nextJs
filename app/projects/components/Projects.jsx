@@ -119,7 +119,7 @@ const Projects = () => {
             <div className="img-wrap">
               <img src={project.image} alt={project.title} />
               <div className="overlay"></div>
-              <div className="icons"><a href="#">View Site</a></div>
+              <div className="icons"><a href={project.url}>View Site</a></div>
             </div>
             <div className="card-content">
               <h3>{project.title}</h3>
@@ -435,7 +435,8 @@ const projectsData = [
   {
     title: "PETROKENS",
     description: "Engineering & consultancy delivering innovative solutions across oil & gas, infrastructure, and industrial projects.",
-    image: "/images/ProjectPageImages/Petrokens.png" // <-- notice the leading slash
+    image: "/images/ProjectPageImages/Petrokens.png", // <-- notice the leading slash
+    url: "https://www.petrokens.com/"
   },
   {
     title: "TECHTRENDZ",
