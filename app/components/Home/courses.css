@@ -219,7 +219,7 @@
 @media (max-width: 767px) {
   .student-lifecycle-img {
     width: 100%;
-    margin: -150px 0; 
+    /* margin: -150px 0;  */
   }
   
 }
