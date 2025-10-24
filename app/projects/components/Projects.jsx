@@ -115,7 +115,7 @@ const Projects = () => {
     <div className="row g-4 justify-content-center">
       {projectsData.map((project, index) => (
         <div key={index} className="col-md-4">
-          <div className="project-card">
+          <div className="project-card h-100">
             <div className="img-wrap">
               <img src={project.image} alt={project.title} />
               <div className="overlay"></div>

@@ -7,6 +7,7 @@ import "./Courses.css";
 import coursesData from "./coursesData";
 import EnquiryFormModal from "@/app/components/common/EnquiryFormModal.jsx";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 const categories = [
   "Programming Languages",
   "Web Development",
@@ -146,52 +147,57 @@ export default function Courses({ categorySlug }) {
   >
               <Row>
                 {filteredCourses && filteredCourses.length > 0 ? (
-                  filteredCourses.map((course, idx) => (
-                    <Col xs={12} sm={6} lg={4} className="mb-4" key={idx}>
-                      <Card className="h-100 card rounded-4 p-2 p-sm-3 p-md-4">
-                        <div className="img-holder rounded-3 position-relative" style={{ height: "200px" }}>
-                          <Image
-                            src={course.img}
-                            alt={course.title}
-                            fill
-                            className="rounded-3 card-img object-cover"
-                          />
-                        </div>
-                        <Card.Body className="p-0 pt-3">
-                          <Card.Title className="card-course-title text-center">
-                            {course.title}
-                          </Card.Title>
-                          <Card.Text className="text-muted course-desc text-center text-sm-start">
-                            {course.desc}
-                          </Card.Text>
-                          <div className="d-flex justify-content-between text-muted fs-11">
-                            <span>★★★★★ {course.rating}</span>
-                            <span>👥 {course.students}</span>
+                  filteredCourses.map((course, idx) => {
+                    const courseSlug = course.title.toLowerCase().replace(/\s+/g, "-");
+                    return (
+                      <Col xs={12} sm={6} lg={4} className="mb-4" key={idx}>
+                        <Link key={course.title} href={`/courses/${categorySlug}/${courseSlug}`} style={{ textDecoration: "none" }}>
+                        <Card className="h-100 card rounded-4 p-2 p-sm-3 p-md-4">
+                          <div className="img-holder rounded-3 position-relative" style={{ height: "200px" }}>
+                            <Image
+                              src={course.img}
+                              alt={course.title}
+                              fill
+                              className="rounded-3 card-img object-cover"
+                            />
                           </div>
-                          <div className="d-flex justify-content-between align-items-center mt-2 fs-11">
-                            <span className="text-muted small">
-                              ⏳ {course.duration}
-                            </span>
-                            <Button
-                              variant="dark"
-                              size="sm"
-                              className="enroll-btn fs-11"
-                              onClick={() => setSelectedCourse(course)}
-                            >
-                              Enroll now
-                            </Button>
-                            {selectedCourse && (
-                    <EnquiryFormModal
-                      isOpen={!!selectedCourse}
-                      onClose={() => setSelectedCourse(null)}
-                      courseName={selectedCourse.title}
-                    />
-                  )}
-                          </div>
-                        </Card.Body>
-                      </Card>
-                    </Col>
-                  ))
+                          <Card.Body className="p-0 pt-3">
+                            <Card.Title className="card-course-title text-center">
+                              {course.title}
+                            </Card.Title>
+                            <Card.Text className="text-muted course-desc text-center text-sm-start">
+                              {course.desc}
+                            </Card.Text>
+                            <div className="d-flex justify-content-between text-muted fs-11">
+                              <span>★★★★★ {course.rating}</span>
+                              <span>👥 {course.students}</span>
+                            </div>
+                            <div className="d-flex justify-content-between align-items-center mt-2 fs-11">
+                              <span className="text-muted small">
+                                ⏳ {course.duration}
+                              </span>
+                              <Button
+                                variant="dark"
+                                size="sm"
+                                className="enroll-btn fs-11"
+                                onClick={() => setSelectedCourse(course)}
+                              >
+                                Enroll now
+                              </Button>
+                              {selectedCourse && (
+                        <EnquiryFormModal
+                          isOpen={!!selectedCourse}
+                          onClose={() => setSelectedCourse(null)}
+                          courseName={selectedCourse.title}
+                        />
+                      )}
+                            </div>
+                          </Card.Body>
+                        </Card>
+                        </Link>
+                      </Col>
+                    );
+                  })
                 ) : (
                   <p className="text-muted">No courses found.</p>
                 )}
