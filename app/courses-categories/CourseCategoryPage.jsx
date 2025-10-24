@@ -3,7 +3,7 @@
 import Image from "next/image";
 import "./CoursesCategoryPage.css";
 
-import expertImg from "@/public/images/courses-images/expert.webp";
+import expertImg from "@/public/images/courses-images/courseCategory.webp";
 
 import programmingImg from "@/public/images/courses-images/programming.webp";
 import webDevImg from "@/public/images/courses-images/web.webp";

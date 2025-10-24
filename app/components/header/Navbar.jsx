@@ -22,7 +22,7 @@ export default function Navbar() {
 
   return (
     <nav className="navbar">
-      <div className="navbar container pb-3">
+      <div className="navbar container">
         {/* Logo */}
         <Link href="/" className="navbar-brand" onClick={handleLinkClick}>
           <Image
@@ -45,7 +45,7 @@ export default function Navbar() {
           <div
             className="dropdown"
             onMouseEnter={() => window.innerWidth > 768 && setCareerOpen(true)}
-            onMouseLeave={() => window.innerWidth > 768 && setCareerOpen(false)}
+            // onMouseLeave={() => window.innerWidth > 768 && setCareerOpen(false)}
           >
             <button
               className={`dropdown-toggle ${careerOpen ? 'active' : ''}`}
@@ -55,7 +55,7 @@ export default function Navbar() {
               <span className="arrow"></span>
             </button>
 
-            <div className={`dropdown-menu ${careerOpen ? 'show' : ''}`}>
+            <div className={`dropdown-menu ${careerOpen ? 'show' : ''}`  }>
               <Link href="/be-our-mentor" onClick={handleLinkClick}>
                 Become a Mentor
               </Link>
