@@ -139,7 +139,7 @@ const courses = [
 
 const CourseCategoryPage = () => {
   return (
-    <div className="courses-wrapper1">
+    <div className="courses-wrapper1 ">
       {/* Expert-Led Courses Section */}
       <section className="expert-section">
         <div className="expert-container">
