@@ -149,7 +149,7 @@ const CourseCategoryPage = () => {
               <span className="text-success text-shine">Expert-Led Courses</span>
             </h1>
             <p>
-              Discover a diverse range of career-focused programs designed to help you master in-demand skills in programming, cloud computing, DevOps, data analytics, cybersecurity, software testing, and more. Whether you’re a beginner or a professional seeking to upgrade your expertise, our expert trainers and practical, hands-on learning approach ensure you gain the knowledge and confidence needed to excel in the real world.. "Start your learning journey today with Urbancode".
+              Discover a diverse range of career-focused programs designed to help you master in-demand skills in programming, cloud computing, DevOps, data analytics, cybersecurity, software testing, and more. Whether you’re a beginner or a professional seeking to upgrade your expertise, our expert trainers and practical, hands-on learning approach ensure you gain the knowledge and confidence needed to excel in the real world.
             </p>
           </div>
           <div className="expert-image">
@@ -170,7 +170,7 @@ const CourseCategoryPage = () => {
       <div className="courses-header text-center">
         <h2 className="courses-title">Course <span className="text-shine">Categories</span></h2>
         <p className="courses-subtitle">
-          Master the skills that drive today’s digital world.
+          Master the skills that drive today’s digital world. Start your learning journey today with Urbancode.
         </p>
       </div>
 
