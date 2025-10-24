@@ -50,7 +50,7 @@ const EnquiryFormModal = ({ isOpen, onClose, courseName }) => {
 
     try {
       const response = await submitEnquiryForm(formData);
-      setStatus({ type: "success", message: response.message || "Enquiry submitted successfully!" });
+      setStatus({ type: "success", message: response.message || "Enquiry submitted successfully! Our team will get back to you soon with brochure and details." });
 
       setFormData({
         name: "",
