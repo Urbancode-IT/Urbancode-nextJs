@@ -1,13 +1,17 @@
 .aboutus-hero h1,.aboutus-hero h2,.aboutus-hero h3,.aboutus-hero h4,.aboutus-hero h5,.aboutus-hero h6{
     color: hsla(210, 29%, 24%, 1);
     font-weight: 700;
+    margin-top: 50px;
+    
 }
 .aboutus-hero .about-image {
   height: 100%;        /* Match parent height */
-  max-height: 400px;   /* Optional: limit max height */
-  width: auto;         /* Maintain aspect ratio */
+  max-height: 350px;   /* Optional: limit max height */
+  width: 550px;         /* Maintain aspect ratio */
   object-fit: cover;   /* Cover the available height */
   border-radius: 1rem; /* Optional: rounded corners */
+  margin-left: 100px;
+  margin-top: 60px
 }
 .aboutus-hero{
         background: linear-gradient(180deg, #EBEBEB, #EDFFFB, #EBEBEB);
@@ -20,19 +24,54 @@
     width: 90%;       /* smaller width for tablet/mobile */
     height: auto;     /* let height adjust automatically */
     max-height: none;
+    margin-left: auto;  /* Center the image */
+    margin-right: auto; /* Center the image */
+    display: block;     /* Ensure block-level display for centering */
+  }
+}
+
+/* Mobile-specific adjustments */
+@media (max-width: 768px) {
+  .aboutus-hero {
+    padding: 60px 0 60px 0; /* Reduced padding for mobile */
+    text-align: center;     /* Center text content */
+  }
+  
+  .aboutus-hero .about-image {
+    width: 85%;            /* Slightly smaller width for mobile */
+    margin-left: auto;     /* Center horizontally */
+    margin-right: auto;    /* Center horizontally */
+    margin-top: 30px;      /* Reduced top margin for mobile */
+    display: block;        /* Ensure proper centering */
+    max-height: 300px;     /* Adjusted max height for mobile */
+  }
+  
+  .aboutus-hero h1,.aboutus-hero h2,.aboutus-hero h3,.aboutus-hero h4,.aboutus-hero h5,.aboutus-hero h6 {
+    margin-top: 30px;      /* Reduced top margin for mobile */
+  }
+  
+  .aboutus-hero p {
+    font-size: 16px;
+    text-align: center;    /* Center paragraph text */
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+  .aboutus-hero .about-image {
+    width: 90%;           /* Use more width on very small screens */
+    max-height: 250px;    /* Further reduce height */
+    margin-top: 20px;     /* Less top margin */
+  }
+  
+  .aboutus-hero {
+    padding: 40px 0 40px 0; /* Even smaller padding */
   }
 }
 
 .aboutus-hero p {
   font-size: 16px;
   font-weight: 300;
-  line-height: 1.6; /* optional: improves readability */
+  line-height: 1.8; /* optional: improves readability */
   color: #333;      /* optional: nice contrast */
-}
-
-/* Responsive adjustment for smaller screens */
-@media (max-width: 768px) {
-  .aboutus-hero p {
-    font-size: 16px;
-  }
 }

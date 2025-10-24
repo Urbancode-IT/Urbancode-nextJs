@@ -88,7 +88,7 @@ export default function EventsSection() {
             inView ? "fade-in-up visible" : "fade-in-up"
           }`}
         >
-          <h2 className=" fw-bold text-success mb-3">Events</h2>
+          <h2 className=" fw-bold text-success mb-3 text-shine">Events</h2>
           <p className="lead text-muted mx-auto" style={{ maxWidth: "700px" }}>
             Stay updated with our latest events, conferences, and networking
             opportunities
@@ -112,7 +112,7 @@ export default function EventsSection() {
                   {group.map((event) => (
                     <div
                       key={event.id}
-                      className="col-12 col-md-6 col-lg-4 d-flex justify-content-center mb-4"
+                      className="col-12 col-md-6 col-lg-4 d-flex justify-content-center"
                     >
                       <div className="event-card card border-0 shadow-lg">
                         <div className="event-img-wrapper position-relative overflow-hidden rounded-top">

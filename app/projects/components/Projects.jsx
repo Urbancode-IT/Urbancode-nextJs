@@ -91,8 +91,8 @@ const Projects = () => {
           <div className="ph-left-content">
             <h2>
               <span className="large-text">Premium <span className="text-shine">Web Development</span></span><br />
-              Building Digital Excellence<br />
-              With Innovation
+              Building digital excellence<br />
+              with innovation
             </h2>
             <p>Crafting cutting-edge web solutions for modern businesses</p>
             <div className="ph-btn-group">
@@ -108,7 +108,7 @@ const Projects = () => {
 <section id="projects" className="projects-section">
   <div className="container text-center">
     <div className="projects-header mb-5">
-      <h2 className="projects-title text-shine">Our Featured Projects</h2>
+      <h2 className="projects-title text-shine">Our Featured <span className='fw-bold'>Projects</span></h2>
       <p className="projects-desc">Transform businesses and create exceptional digital experiences</p>
     </div>
 
@@ -119,7 +119,7 @@ const Projects = () => {
             <div className="img-wrap">
               <img src={project.image} alt={project.title} />
               <div className="overlay"></div>
-              <div className="icons"><a href="#">View Site</a></div>
+              <div className="icons"><a href={project.url}>View Site</a></div>
             </div>
             <div className="card-content">
               <h3>{project.title}</h3>
@@ -142,7 +142,7 @@ const Projects = () => {
               <span>About Us</span>
               <div className="dot"></div>
             </div>
-            <h2>Crafting Digital <span className="gradient-text">Excellence</span></h2>
+            <h2>Crafting Digital <span className="text-success text-shine">Excellence</span></h2>
             <p>Our team combines creativity with technical expertise to deliver solutions that drive business growth.</p>
           </div>
 
@@ -174,9 +174,9 @@ const Projects = () => {
 
       {/* CLIENT SECTION */}
       <section className="client-section py-5">
-        <div className="container text-center">
+        <div className="text-center">
           <h2 className="client-heading">
-            Trusted by <span className="client-accent-text">Leading Companies</span>
+            Trusted by <span className="text-success text-shine">Leading Companies</span>
           </h2>
           <p className="client-subheading mb-5">
             We've had the privilege of working with amazing companies across various industries.
@@ -214,8 +214,8 @@ const Projects = () => {
               <small className="fw-bold text-uppercase">Testimonials</small>
               <div className="rounded-circle bg-success" style={{width: '8px', height: '8px'}}></div>
             </div>
-            <h2 className="fw-bold" style={{fontSize: '2.5rem'}}>
-              What Our <span className="text-success">Clients Say</span>
+            <h2 className="" style={{fontSize: '2.5rem'}}>
+              What Our <span className="text-shine">Clients Say</span>
             </h2>
             <p className="text-muted mt-3" style={{maxWidth: '700px', margin: 'auto'}}>
               Don't just take our word for it. Here's what our satisfied clients have to say about their experience working with us.
@@ -226,7 +226,7 @@ const Projects = () => {
           <div className="row g-4">
             {testimonialsData.map((testimonial, index) => (
               <div key={index} className="col-md-6 col-lg-4">
-                <div className="testimonial-card card h-100 border-0 shadow-sm position-relative">
+                <div className="testimonial-card-project card h-100 border-0 shadow-sm position-relative">
                   <i className="bi bi-quote"></i>
                   <div className="card-body d-flex flex-column">
                     <div className="d-flex align-items-center mb-3">
@@ -267,8 +267,8 @@ const Projects = () => {
               <small className="fw-bold text-uppercase">Contact Us</small>
               <div className="rounded-circle bg-success" style={{width: '8px', height: '8px'}}></div>
             </div>
-            <h2 className="fw-bold" style={{fontSize: '2.5rem'}}>
-              Let's Build Something <span className="text-success" style={{background: 'linear-gradient(to right, #10b981, #059669)', WebkitBackgroundClip: 'text', backgroundClip: 'text', color: 'transparent'}}>Amazing</span>
+            <h2 className="" style={{fontSize: '2.5rem'}}>
+              Let's Build Something <span className="text-shine" >Amazing</span>
             </h2>
             <p className="text-muted mt-3" style={{maxWidth: '700px', margin: 'auto'}}>
               Ready to transform your digital presence? We'd love to hear from you.
@@ -277,7 +277,7 @@ const Projects = () => {
 
           <div className="row g-4 align-items-center" id="contact">
             {/* Left Info */}
-            <div className="col-lg-5">
+            <div className="col-lg-5" style={{ height: '445px' }}>
               <div className="p-4 rounded-4 shadow-sm bg-white h-100">
                 <h4 className="fw-bold mb-4">Get in Touch</h4>
                 <p className="text-muted mb-4">
@@ -435,32 +435,38 @@ const projectsData = [
   {
     title: "PETROKENS",
     description: "Engineering & consultancy delivering innovative solutions across oil & gas, infrastructure, and industrial projects.",
-    image: "/images/ProjectPageImages/Petrokens.png" // <-- notice the leading slash
+    image: "/images/ProjectPageImages/Petrokens.png", // <-- notice the leading slash
+    url: "https://www.petrokens.com/"
   },
   {
     title: "TECHTRENDZ",
     description: "IT consulting services dedicated to helping businesses reach their full potential through technology.",
-    image: "/images/ProjectPageImages/Techtrendz.png"
+    image: "/images/ProjectPageImages/Techtrendz.png",
+    url: "https://tech-trendz.be/"
   },
   {
     title: "SYNERGY",
     description: "Tax consulting, GST filing, and financial training services to empower clients with expert tax education.",
-    image: "/images/ProjectPageImages/Synergy.png"
+    image: "/images/ProjectPageImages/Synergy.png",
+    url: "https://www.synergytaxed.com/"
   },
   {
     title: "BODHISHIKSHAK",
     description: "High-quality online education in Mathematics, Science, and English with personalized learning approach.",
-    image: "/images/ProjectPageImages/Bodhishikshak.png"
+    image: "/images/ProjectPageImages/Bodhishikshak.png",
+    url: "https://bodhishikshak.com/about.html"
   },
   {
     title: "JOBZENTER",
     description: "Software training and placements specializing in Full Stack Development, Software Testing, and Business Intelligence.",
-    image: "/images/ProjectPageImages/Jobzenter.png"
+    image: "/images/ProjectPageImages/Jobzenter.png",
+    url: "https://jobzenter.in/"
   },
   {
     title: "CRAFTLOGICALLYME",
     description: "Natural stone jewelry featuring authentic stones like turquoise, amethyst, and jade, handcrafted to perfection.",
-    image: "/images/ProjectPageImages/Craftlogicallyme.png"
+    image: "/images/ProjectPageImages/Craftlogicallyme.png",
+    url: "https://www.craftlogicallyme.com/home-decor"
   }
 ];
 
@@ -494,39 +500,39 @@ const clientLogos = [
 
 const testimonialsData = [
   {
-    name: "Sarah Johnson",
+    name: "Govindaraj Murali",
     position: "CEO at Petrokens",
-    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face",
+    avatar: "/images/ProjectPageImages/petrologo.png",
     quote: "From concept to completion, Urbancode’s web development team exceeded our expectations. They created a robust, visually appealing website that aligns perfectly with our industrial brand. The attention to technical detail and responsiveness made the entire experience smooth and efficient."
   },
   {
-    name: "Michael Chen",
+    name: "Ryan",
     position: "Founder of Synergy",
-    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face",
+    avatar: "/images/ProjectPageImages/synlogo.png",
     quote: "Urbancode Edutech gave our firm the digital presence it truly deserved. The website they built is sleek, professional, and perfectly aligned with our financial services. Their team understood our goals, delivered on time, and supported us even after launch — truly a reliable tech partner!"
   },
   {
-    name: "Emma Rodriguez",
-    position: "CEO at TechTrendz",
-    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&crop=face",
+    name: "Iswarya Balasubramani",
+    position: "Founder & Director at TechTrendz",
+    avatar: "/images/ProjectPageImages/techilogo.jpg",
     quote: "The Urbancode team did a phenomenal job building our tech services website. They combined creativity with technical precision to deliver a modern, responsive site that perfectly reflects our brand identity. Communication and delivery timelines were spot on!"
   },
   {
-    name: "David Park",
-    position: "Director at Bodhi Shikshak",
-    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face",
+    name: "Anu Revathi E",
+    position: "Founder at Bodhi Shikshak",
+    avatar: "/images/ProjectPageImages/logo5.png",
     quote: "Working with Urbancode was a great decision. Their team patiently worked with us through every stage — from content planning to launch. The final website looks elegant, loads fast, and has received wonderful feedback from our learners and educators alike."
   },
   {
-    name: "Lisa Thompson",
+    name: "Ramaa Ayyappan",
     position: "Founder at Craftlogically Me",
-    avatar: "https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?w=80&h=80&fit=crop&crop=face",
+    avatar: "/images/ProjectPageImages/logo4.webp",
     quote: "Collaborating with Urbancode Edutech to build our website was a fantastic experience. They understood the essence of Craftlogically Me — our handmade jewelry, resin art, and home décor — and translated it into a beautiful, user-friendly digital space. The team was professional, creative, and always responsive. Our online presence now truly reflects the passion and craftsmanship behind every piece we create. — Ramaa, Founder, Craftlogically Me"
   },
   {
-    name: "James Wilson",
+    name: "Krithika Varshini",
     position: "Founder of We Penit",
-    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&h=80&fit=crop&crop=face",
+    avatar: "/images/ProjectPageImages/wepenitlogo.jpg",
     quote: "Working with Urbancode Edutech has been an incredible experience. They understood our vision for We Pen It and crafted a website that perfectly reflects our creative writing and content services. The team was attentive, professional, and ensured the final product was both visually appealing and highly functional. Our online presence has never looked better"
   }
 ];

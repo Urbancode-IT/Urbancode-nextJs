@@ -123,8 +123,8 @@ const Courses = () => {
           <Image
             src={
               isMobile
-                ? '/images/home/lifecycle-mob.png'
-                : '/images/home/lifecycle.png'
+                ? '/images/home/Mobile.webp'
+                : '/images/home/Desktop.webp'
             }
             alt="Student lifecycle"
             width={1200}

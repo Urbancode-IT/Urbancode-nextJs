@@ -1,5 +1,3 @@
-
-
 .milestone-title {
   font-size: 28px;
   font-weight: 600;
@@ -21,14 +19,92 @@
   max-width: 700px;
   margin: 0 auto;
 }
+
 .milestone_main_conatiner{
     background-color: #ebebeb;
   opacity: 0.9;
+  padding: 40px 20px; /* Added padding for better spacing */
 }
+
 .milestone-video-container {
-  
   width: 100%;
   border-radius: 10px;
   overflow: hidden;
-  
+  margin: 0 auto; /* Center the container */
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  .milestone-title {
+    font-size: 22px; /* Smaller font for mobile */
+    margin-bottom: 15px;
+    text-align: center; /* Center align on mobile */
+  }
+
+  .arrow {
+    font-size: 20px; /* Smaller arrows */
+    margin: 0 5px; /* Less spacing */
+  }
+
+  .milestone-subtitle {
+    font-size: 14px; /* Smaller text for mobile */
+    max-width: 100%; /* Use full width on mobile */
+    padding: 0 15px; /* Add some side padding */
+    text-align: center; /* Center align text */
+    line-height: 1.5; /* Slightly tighter line height */
+  }
+
+  .milestone_main_conatiner {
+    padding: 30px 15px; /* Adjusted padding for mobile */
+  }
+
+  .milestone-video-container {
+    width: 100%; /* Full width on mobile */
+    max-width: 100%; /* Ensure it doesn't exceed screen width */
+    border-radius: 8px; /* Slightly smaller border radius */
+  }
+
+  /* Ensure video element inside container is responsive */
+  .milestone-video-container video,
+  .milestone-video-container iframe {
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100%;
+    display: block;
+  }
+}
+
+/* Extra small devices (phones) */
+@media (max-width: 480px) {
+  .milestone-title {
+    font-size: 20px; /* Even smaller for very small screens */
+    margin-bottom: 12px;
+  }
+
+  .arrow {
+    font-size: 18px;
+    margin: 0 3px;
+  }
+
+  .milestone-subtitle {
+    font-size: 13px;
+    padding: 0 10px;
+    line-height: 1.4;
+  }
+
+  .milestone_main_conatiner {
+    padding: 20px 10px;
+  }
+
+  .milestone-video-container {
+    border-radius: 6px;
+  }
+}
+
+/* Tablet adjustments */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .milestone-video-container {
+    max-width: 90%; /* Slightly smaller on tablets */
+    margin: 0 auto;
+  }
 }

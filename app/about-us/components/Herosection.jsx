@@ -6,7 +6,7 @@ const Herosection = () => {
       <div className="container d-flex flex-column flex-lg-row align-items-center">
         {/* Left Content */}
         <div className="col-lg-6 mb-4 mb-lg-0">
-          <h1 className="fw-bold">About Us</h1>
+          <h1 className="fw-bold"><span className="text-success text-shine">About Us</span></h1>
           <p className="text-muted">
             Urbancode Edutech Solutions Pvt. Ltd. is a premier skill development
             and technology training provider, dedicated to shaping future-ready
@@ -28,3 +28,4 @@ const Herosection = () => {
 };
 
 export default Herosection;
+"text-success text-shine"

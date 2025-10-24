@@ -3,6 +3,7 @@
 
 /* Full-width navbar */
 .navbar {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif!important;
   position: fixed;   /* navbar fixed at top */
   top: 0;
   left: 0;
