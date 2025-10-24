@@ -1,105 +1,110 @@
-/* ---------- Desktop / tablet (row layout) ---------- */
-.aboutus-hero {
-  display: flex;
-  align-items: center;
-  justify-content: center; /* center horizontally on wide screens */
-  gap: 36px;
-  padding: 90px 20px;
-  background: linear-gradient(180deg, #EBEBEB, #EDFFFB, #EBEBEB);
-  box-sizing: border-box;
+.milestone-title {
+  font-size: 28px;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 20px;
 }
 
-/* content wrapper for text */
-.aboutus-hero .about-content {
-  max-width: 680px;
-  flex: 1 1 50%;
+.arrow {
+  font-size: 28px;
+  margin: 0 10px;
+  color: #2c3e50;
 }
 
-/* image styling (desktop) */
-.aboutus-hero .about-image {
-  flex: 0 0 550px;      /* prefer 550px but will shrink if needed */
-  max-width: 45%;
-  max-height: 350px;
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  border-radius: 1rem;
-  margin: 0;            /* remove large left/top margins */
-}
-
-/* headings and paragraph */
-.aboutus-hero h1,
-.aboutus-hero h2,
-.aboutus-hero h3,
-.aboutus-hero h4,
-.aboutus-hero h5,
-.aboutus-hero h6 {
-  color: hsla(210, 29%, 24%, 1);
-  font-weight: 700;
-  margin-top: 0.5rem; /* smaller, consistent spacing */
-  margin-bottom: 0.75rem;
-}
-
-.aboutus-hero p {
+.milestone-subtitle {
   font-size: 16px;
-  font-weight: 300;
-  line-height: 1.8;
-  color: #333;
-  margin: 0;
+  font-weight: 400;
+  color: #555;
+  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto;
 }
 
-/* ---------- Responsive: stack and center on smaller screens ---------- */
-@media (max-width: 994px) {
-  .aboutus-hero {
-    flex-direction: column;
-    align-items: center;
-    padding: 60px 18px;
-    gap: 18px;
-    text-align: center; /* centers inline text like headings and p */
+.milestone_main_conatiner{
+    background-color: #ebebeb;
+  opacity: 0.9;
+  padding: 40px 20px; /* Added padding for better spacing */
+}
+
+.milestone-video-container {
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 0 auto; /* Center the container */
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  .milestone-title {
+    font-size: 22px; /* Smaller font for mobile */
+    margin-bottom: 15px;
+    text-align: center; /* Center align on mobile */
   }
 
-  .aboutus-hero .about-content {
-    width: 100%;
-    max-width: 760px;
-    padding: 0 8px;
+  .arrow {
+    font-size: 20px; /* Smaller arrows */
+    margin: 0 5px; /* Less spacing */
   }
 
-  .aboutus-hero .about-image {
-    width: 90%;
-    max-width: 420px;
-    max-height: none;
-    height: auto;
+  .milestone-subtitle {
+    font-size: 14px; /* Smaller text for mobile */
+    max-width: 100%; /* Use full width on mobile */
+    padding: 0 15px; /* Add some side padding */
+    text-align: center; /* Center align text */
+    line-height: 1.5; /* Slightly tighter line height */
+  }
+
+  .milestone_main_conatiner {
+    padding: 30px 15px; /* Adjusted padding for mobile */
+  }
+
+  .milestone-video-container {
+    width: 100%; /* Full width on mobile */
+    max-width: 100%; /* Ensure it doesn't exceed screen width */
+    border-radius: 8px; /* Slightly smaller border radius */
+  }
+
+  /* Ensure video element inside container is responsive */
+  .milestone-video-container video,
+  .milestone-video-container iframe {
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100%;
+    display: block;
+  }
+}
+
+/* Extra small devices (phones) */
+@media (max-width: 480px) {
+  .milestone-title {
+    font-size: 20px; /* Even smaller for very small screens */
+    margin-bottom: 12px;
+  }
+
+  .arrow {
+    font-size: 18px;
+    margin: 0 3px;
+  }
+
+  .milestone-subtitle {
+    font-size: 13px;
+    padding: 0 10px;
+    line-height: 1.4;
+  }
+
+  .milestone_main_conatiner {
+    padding: 20px 10px;
+  }
+
+  .milestone-video-container {
+    border-radius: 6px;
+  }
+}
+
+/* Tablet adjustments */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .milestone-video-container {
+    max-width: 90%; /* Slightly smaller on tablets */
     margin: 0 auto;
-    object-fit: cover;
-  }
-
-  .aboutus-hero h1,
-  .aboutus-hero h2,
-  .aboutus-hero h3,
-  .aboutus-hero h4,
-  .aboutus-hero h5,
-  .aboutus-hero h6 {
-    margin-top: 0.5rem;
-  }
-
-  .aboutus-hero p {
-    font-size: 15px;
-  }
-}
-
-/* ---------- Small phones ---------- */
-@media (max-width: 420px) {
-  .aboutus-hero {
-    padding: 40px 14px;
-    gap: 12px;
-  }
-
-  .aboutus-hero .about-image {
-    width: 95%;
-    border-radius: 0.75rem;
-  }
-
-  .aboutus-hero p {
-    font-size: 14px;
   }
 }
