@@ -28,7 +28,7 @@ const directions = [
   return (
     <div className="main_gallery_container py-5">
       <div className="container my-5">
-        <h2 className="text-center fw-bold mb-4">Our Gallery</h2>
+        <h2 className="text-center fw-bold mb-4">Our <span className="text-shine">Gallery</span></h2>
 
         <div className="masonry-gallery">
           {images.map((src, index) => {

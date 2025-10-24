@@ -1,13 +1,17 @@
 .aboutus-hero h1,.aboutus-hero h2,.aboutus-hero h3,.aboutus-hero h4,.aboutus-hero h5,.aboutus-hero h6{
     color: hsla(210, 29%, 24%, 1);
     font-weight: 700;
+    margin-top: 50px;
+    
 }
 .aboutus-hero .about-image {
   height: 100%;        /* Match parent height */
-  max-height: 400px;   /* Optional: limit max height */
-  width: auto;         /* Maintain aspect ratio */
+  max-height: 350px;   /* Optional: limit max height */
+  width: 550px;         /* Maintain aspect ratio */
   object-fit: cover;   /* Cover the available height */
   border-radius: 1rem; /* Optional: rounded corners */
+  margin-left: 100px;
+  margin-top: 60px
 }
 .aboutus-hero{
         background: linear-gradient(180deg, #EBEBEB, #EDFFFB, #EBEBEB);
@@ -26,7 +30,7 @@
 .aboutus-hero p {
   font-size: 16px;
   font-weight: 300;
-  line-height: 1.6; /* optional: improves readability */
+  line-height: 1.8; /* optional: improves readability */
   color: #333;      /* optional: nice contrast */
 }
 
