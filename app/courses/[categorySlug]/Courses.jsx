@@ -21,8 +21,8 @@ const categories = [
   "Cyber Security",
   "SEO",
   "Health Care",
-  // "Languages",
-  // "English Proficiency",
+  "Languages",
+  "English Proficiency",
   "CRM",
   "App Development",
 ];

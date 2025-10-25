@@ -107,20 +107,20 @@ const courses = [
     link: "/courses/medical-coding",
     badge: "3 Courses",
   },
-  // {
-  //   title: "Languages",
-  //   desc: "Learn to speak, read, and write with confidence in global languages like English, Spanish, French & Japanese.",
-  //   img: languagesImg,
-  //   link: "/courses/languages",
-  //   badge: "5 Courses",
-  // },
-  // {
-  //   title: "English Proficiency Exams",
-  //   desc: "Prepare for IELTS, TOEFL, and more with expert guidance and practice sessions.",
-  //   img: englishImg,
-  //   link: "/courses/english-proficiency-exams",
-  //   badge: "6 Courses",
-  // },
+  {
+    title: "Languages",
+    desc: "Learn to speak, read, and write with confidence in global languages like English, Spanish, French & Japanese.",
+    img: languagesImg,
+    link: "/courses/languages",
+    badge: "5 Courses",
+  },
+  {
+    title: "English Proficiency Exams",
+    desc: "Prepare for IELTS, TOEFL, and more with expert guidance and practice sessions.",
+    img: englishImg,
+    link: "/courses/english-proficiency-exams",
+    badge: "6 Courses",
+  },
   {
     title: "CRM",
     desc: "Learn to manage customer data, track leads, and automate sales processes with CRM systems.",
@@ -128,13 +128,13 @@ const courses = [
     link: "/courses/crm",
     badge: "4 Courses",
   },
-  // {
-  //   title: "App Development",
-  //   desc: "Create impactful mobile and desktop apps combining creativity and technology.",
-  //   img: appDevImg,
-  //   link: "/courses/app-development",
-  //   badge: "5 Courses",
-  // },
+  {
+    title: "App Development",
+    desc: "Create impactful mobile and desktop apps combining creativity and technology.",
+    img: appDevImg,
+    link: "/courses/app-development",
+    badge: "5 Courses",
+  },
 ];
 
 const CourseCategoryPage = () => {
