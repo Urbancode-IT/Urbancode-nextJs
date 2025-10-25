@@ -231,7 +231,7 @@ img:"/images/courses/PySpark.jpg"      },
      
     ]
   },
-  "Medical Coding": {
+  "Health Care": {
     mainCategoryDesc: "Coding for medical professionals.",
     subDesc: "Training in Python, R, and cybersecurity practices. Get into high demanding feilds like AI, Data Science, Web Development, and more.",
     subHeading:"Learn the world's most in-demand programming languages with real projects.",

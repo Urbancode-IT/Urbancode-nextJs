@@ -19,7 +19,7 @@ const categories = [
   "Software Testing",
   "Cyber Security",
   "SEO",
-  "Medical Coding",
+  "Health Care",
   // "Languages",
   // "English Proficiency",
   "CRM",

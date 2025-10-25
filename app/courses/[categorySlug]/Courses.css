@@ -6,15 +6,15 @@
   background: linear-gradient(180deg, hsla(0, 0%, 92%, 1),hsla(157, 100%, 35%, 0.2), hsla(0, 0%, 92%, 1));
 }
 .overall-green-bg h1{
-  font-size: 2rem;
-  font-weight: 900;
+  font-size: 2rem!important;
+  font-weight: 500;
   
 }
 
 
 .course-title{
-    font-size: 2rem!important;
-    font-weight: 600;
+    font-size: 1.9rem!important;
+    font-weight: 500;
     color:hsla(210, 29%, 24%, 1);
 
 }

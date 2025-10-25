@@ -14,7 +14,7 @@ export async function generateStaticParams() {
     "Software Testing",
     "Cyber Security",
     "SEO",
-    "Medical Coding",
+    "Health Care",
     "CRM",
     "App Development",
   ];
