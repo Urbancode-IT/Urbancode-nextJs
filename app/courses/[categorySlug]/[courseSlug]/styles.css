@@ -1,0 +1,228 @@
+
+
+
+.single-coursepage * {
+    box-sizing: border-box;
+}
+
+.single-coursepage .bg-gray{
+    background-color: #ebebeb!important;
+}
+
+.single-coursepage .custom-accordion-item{
+    border-radius: 12px!important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1)!important;
+}
+
+.single-coursepage .accordion-button:not(.collapsed){
+    box-shadow: none!important;
+}
+
+.single-coursepage .gray-bg{
+    background-color: #ebebeb;
+}
+
+.single-coursepage .btn-dark{
+    background-color: hsl(0, 0%, 35%,1)!important;
+}
+
+.single-coursepage h1,
+.single-coursepage h2,
+.single-coursepage h3,
+.single-coursepage h4,
+.single-coursepage h5,
+.single-coursepage h6{
+    color: hsla(210, 29%, 24%, 1)!important;
+}
+
+/* Responsive typography */
+.single-coursepage h1 {
+    font-size: 1.75rem;
+}
+
+.single-coursepage h2 {
+    font-size: 1.5rem!important;
+}
+
+.single-coursepage .fs-7 {
+    font-size: 0.75rem;
+}
+
+.single-coursepage .fs-9 {
+    font-size: 0.875rem!important;
+}
+
+.single-coursepage .enroll-btn{
+    background: hsla(0, 0%, 52%, 1)!important;
+    border: none!important;
+    transition: all 1s ease;
+}
+
+.single-coursepage .enroll-btn:hover{
+    background: linear-gradient(135deg, #98dec4, #00a86b)!important;
+}
+
+.single-coursepage .dark-shine-btn {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+    background: #111;
+    border: none;
+    padding: 12px 24px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+/* Glow and subtle lift on hover */
+.single-coursepage .dark-shine-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+/* Diagonal shine streak */
+.single-coursepage .dark-shine-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        rgba(255, 255, 255, 0.7) 10%,
+        rgba(255, 255, 255, 0.2) 20%,
+        rgba(255, 255, 255, 0) 60%
+    );
+    transform: skewX(-45deg);
+    opacity: 0.5;
+}
+
+/* Animate the streak only on hover */
+.single-coursepage .dark-shine-btn::before { 
+    animation: dark-shine-move 1.5s linear alternate infinite; 
+}
+
+@keyframes dark-shine-move {
+    0% {
+        left: -75%;
+    }
+    100% {
+        left: 125%;
+    }
+}
+
+/* Mobile-first responsive design */
+@media (max-width: 576px) {
+    .single-coursepage .bg-gray {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+    
+    .single-coursepage h1 {
+        font-size: 1.5rem;
+        line-height: 1.3;
+    }
+    
+    .single-coursepage h2 {
+        font-size: 1.25rem !important;
+    }
+    
+    .single-coursepage .card-wyl {
+        margin-bottom: 0.5rem;
+    }
+    
+    .single-coursepage .sticky-lg-top {
+        position: static !important;
+    }
+}
+
+/* Tablet styles */
+@media (min-width: 768px) {
+    .single-coursepage h1 {
+        font-size: 2rem;
+    }
+    
+    .single-coursepage h2 {
+        font-size: 1.625rem !important;
+    }
+    
+    .single-coursepage .fs-md-9 {
+        font-size: 0.9rem !important;
+    }
+}
+
+/* Desktop styles */
+@media (min-width: 992px) {
+    .single-coursepage h1 {
+        font-size: 2.25rem;
+    }
+    
+    .single-coursepage h2 {
+        font-size: 1.75rem !important;
+    }
+    
+    .single-coursepage .sticky-lg-top {
+        position: sticky;
+        top: 2rem;
+    }
+    
+    .single-coursepage .custom-accordion-item {
+        border-radius: 50px !important;
+    }
+}
+
+/* Large desktop styles */
+@media (min-width: 1200px) {
+    .single-coursepage h1 {
+        font-size: 2.5rem;
+    }
+    
+    .single-coursepage h2 {
+        font-size: 2rem !important;
+    }
+    
+    .single-coursepage .container {
+        max-width: 1140px;
+    }
+}
+
+/* Extra large screens */
+@media (min-width: 1400px) {
+    .single-coursepage .container {
+        max-width: 1320px;
+    }
+}
+
+/* Utility classes for better spacing */
+.single-coursepage .mh-135 {
+    min-height: 135px;
+}
+
+.single-coursepage .lh-base {
+    line-height: 1.5;
+}
+
+.single-coursepage .lh-sm {
+    line-height: 1.25;
+}
+
+/* Improve card shadows on different screens */
+@media (max-width: 768px) {
+    .single-coursepage .shadow-md-lg {
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+    }
+}
+
+/* Better accordion responsiveness */
+.single-coursepage .accordion-button {
+    font-size: inherit;
+    white-space: normal;
+}
+
+/* Ensure images are responsive */
+.single-coursepage .img-fluid {
+    max-width: 100%;
+    height: auto;
+}
