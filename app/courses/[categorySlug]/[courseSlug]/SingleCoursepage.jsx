@@ -83,32 +83,33 @@ export default function SingleCoursepage({ params }) {
                 alt={course.title}
               />
               <div className="card-body d-flex flex-column justify-content-around p-0">
-                <ul className="list-unstyled small px-2 px-md-3 text-secondary">
-                  <li className="mb-2 mb-md-3 d-flex align-items-start">
-                    <span className="me-2">⏰</span>
-                    <span>Hours of Instructor-Led Training</span>
-                  </li>
-                  <li className="mb-2 mb-md-3 d-flex align-items-start">
-                    <span className="me-2">💻</span>
-                    <span>Hands-on Projects across Web, Data & AI</span>
-                  </li>
-                  <li className="mb-2 mb-md-3 d-flex align-items-start">
-                    <span className="me-2">🧠</span>
-                    <span>Includes Beginner → Expert Level Topics</span>
-                  </li>
-                  <li className="mb-2 mb-md-3 d-flex align-items-start">
-                    <span className="me-2">👨‍🏫</span>
-                    <span>Mentor Support, Assignments & Code Reviews</span>
-                  </li>
-                  <li className="mb-2 mb-md-3 d-flex align-items-start">
-                    <span className="me-2">💼</span>
-                    <span>Job Assistance & Portfolio Guidance</span>
-                  </li>
-                  <li className="mb-2 mb-md-3 d-flex align-items-start">
-                    <span className="me-2">📜</span>
-                    <span>Urbancode Certificate of Completion</span>
-                  </li>
-                </ul>
+<ul className="small px-2 px-md-3 text-secondary">
+  <li className="mb-2 mb-md-3 d-flex align-items-start">
+    <i className="bi bi-check-circle-fill text-success me-2"></i>
+    <span>Hours of Instructor-Led Training</span>
+  </li>
+  <li className="mb-2 mb-md-3 d-flex align-items-start">
+    <i className="bi bi-check-circle-fill text-success me-2"></i>
+    <span>Hands-on Projects across Web, Data & AI</span>
+  </li>
+  <li className="mb-2 mb-md-3 d-flex align-items-start">
+    <i className="bi bi-check-circle-fill text-success me-2"></i>
+    <span>Includes Beginner → Expert Level Topics</span>
+  </li>
+  <li className="mb-2 mb-md-3 d-flex align-items-start">
+    <i className="bi bi-check-circle-fill text-success me-2"></i>
+    <span>Mentor Support, Assignments & Code Reviews</span>
+  </li>
+  <li className="mb-2 mb-md-3 d-flex align-items-start">
+    <i className="bi bi-check-circle-fill text-success me-2"></i>
+    <span>Job Assistance & Portfolio Guidance</span>
+  </li>
+  <li className="mb-2 mb-md-3 d-flex align-items-start">
+    <i className="bi bi-check-circle-fill text-success me-2"></i>
+    <span>Urbancode Certificate of Completion</span>
+  </li>
+</ul>
+
                 <button 
                   className="btn btn-dark w-100 dark-shine-btn rounded-4 mt-2"  
                   onClick={() => setShowEnquiry(true)}
