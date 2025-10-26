@@ -6,7 +6,7 @@
   background: linear-gradient(180deg, hsla(0, 0%, 92%, 1),hsla(157, 100%, 35%, 0.2), hsla(0, 0%, 92%, 1));
 }
 .overall-green-bg h1{
-  font-size: 2rem!important;
+  font-size: 2.5rem!important;
   font-weight: 500;
   
 }
@@ -34,10 +34,10 @@
     
 }
 .card:hover .card-title{
-    color: #fff !important;
+    color: #000000 !important;
 }
 .card:hover .card-text{
-    color: #fff !important;;
+    color: #000 !important;;
 }
 .main-title{
     color: #2C3E50;
