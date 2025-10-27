@@ -55,7 +55,7 @@
 }
 
 .kidz-page .hero-text {
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'inter', sans-serif;
   font-size: 16px;
   line-height: 25px;
   color: #000;
@@ -469,8 +469,8 @@
   }
   
   .kidz-page .hero-text {
-    font-size: 20px;
-    line-height: 32px;
+    font-size: 17px;
+    line-height: 30px;
   }
   
   .kidz-page .hero-img {

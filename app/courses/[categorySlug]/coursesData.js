@@ -6,7 +6,298 @@ const coursesData = {
     mainImage: "/images/courses/Programming_Languages.jpg",
 
     courses: [
+
       {
+        title: "Core JAVA",
+        desc: "Master the fundamentals of Core Java with hands-on projects, OOP concepts, and industry-relevant exercises. Build strong programming skills to kickstart your career in software development.",
+        rating: 4.5,
+        duration: "3 months",
+        students: "9,556",
+        img: "/images/courses/Core_JAVA.jpg",
+        aboutData: {
+          topic: "Master Core Java to Build Strong Object-Oriented Programming Skills",
+          content1: "Develop solid foundations in Java programming with hands-on experience. Learn OOP concepts, exception handling, multithreading, and collection frameworks used in enterprise applications.",
+          content2: "The Core Java course at Urbancode prepares you for real-world software development with projects, tools, and strong programming discipline."
+        },
+        courseContentData: [
+          {
+            id: 1,
+            title: "Java Fundamentals",
+            icon: "bi bi-braces",
+            defaultOpen: true,
+            items: [
+              "Java environment setup",
+              "Syntax and data types",
+              "Control statements and operators",
+              "Arrays and strings"
+            ]
+          },
+          {
+            id: 2,
+            title: "Object-Oriented Programming",
+            icon: "bi bi-diagram-3",
+            items: [
+              "Classes, objects, and methods",
+              "Constructors and overloading",
+              "Inheritance, polymorphism, abstraction, and encapsulation",
+              "Interfaces and packages"
+            ]
+          },
+          {
+            id: 3,
+            title: "Exception Handling & File I/O",
+            icon: "bi bi-file-earmark-text",
+            items: [
+              "Try, catch, and finally blocks",
+              "Custom exceptions",
+              "Working with files and buffers",
+              "Serialization basics"
+            ]
+          },
+          {
+            id: 4,
+            title: "Advanced Core Concepts",
+            icon: "bi bi-gear",
+            items: [
+              "Multithreading and concurrency",
+              "Java Collection Framework",
+              "JDBC database connectivity",
+              "Introduction to JVM memory model"
+            ]
+          }
+        ],
+        whatYouLearnData: [
+          { title: "Master OOP Programming", desc: "Design scalable software using object-oriented principles.", icon: "bi bi-lightning-charge" },
+          { title: "Develop Console Applications", desc: "Build functional applications using Core Java libraries.", icon: "bi bi-terminal" },
+          { title: "Integrate Databases", desc: "Apply JDBC for real-time database operations.", icon: "bi bi-hdd-network" }
+        ]
+
+      },
+      {
+  title: "Advanced Java",
+  desc: "Master Advanced Java with hands-on training in OOP, JDBC, Servlets, Spring Boot, and Microservices. Build enterprise-grade applications and become industry-ready.",
+  rating: 4.6,
+  duration: "1 month",
+  students: "11,842",
+  img: "/images/courses/Advanced_Java.png",
+  aboutData: {
+    topic: "Master Advanced Java — From Core Concepts to Enterprise Development!",
+    content1:
+      "Take your Java skills beyond the basics. Learn advanced OOP, JDBC, Servlets, JSP, and Spring Boot while building scalable web and enterprise applications. This course blends theory with practical projects to make you job-ready.",
+    content2:
+      "The Advanced Java course by Urbancode goes beyond syntax to cover real-world application development. You’ll learn multi-threading, collections, and exception handling, then move into frameworks like Spring, Hibernate, and JPA. The course also includes training in RESTful APIs, Microservices, and DevOps integration to prepare you for enterprise-level roles in backend and full-stack development."
+  },
+  courseContentData: [
+    {
+      id: 1,
+      title: "Beginner – Core Java Refresher",
+      icon: "bi bi-book",
+      defaultOpen: true,
+      items: [
+        "Introduction to Java and JVM architecture",
+        "Setting up the Java environment (JDK, IDEs)",
+        "Data types, operators, and control structures",
+        "Classes, objects, and methods",
+        "Constructors, inheritance, and polymorphism",
+        "Exception handling and debugging"
+      ]
+    },
+    {
+      id: 2,
+      title: "Beginner – Working with Collections",
+      icon: "bi bi-database",
+      items: [
+        "Arrays and ArrayList",
+        "Collections Framework (List, Set, Map)",
+        "Generics and Wrapper classes",
+        "Comparable vs Comparator",
+        "Iterators and enhanced for-loops"
+      ]
+    },
+    {
+      id: 3,
+      title: "Beginner – Input/Output and Threads",
+      icon: "bi bi-window",
+      items: [
+        "File handling with Java I/O and NIO",
+        "Serialization and deserialization",
+        "Multithreading and synchronization",
+        "Thread lifecycle and concurrency",
+        "Lambda expressions and functional interfaces"
+      ]
+    },
+    {
+      id: 4,
+      title: "Intermediate – Database Connectivity (JDBC)",
+      icon: "bi bi-gear",
+      items: [
+        "Introduction to JDBC",
+        "Connecting Java with MySQL / PostgreSQL",
+        "Executing SQL queries from Java",
+        "PreparedStatement and ResultSet",
+        "Transaction management"
+      ]
+    },
+    {
+      id: 5,
+      title: "Intermediate – Web Development with Servlets & JSP",
+      icon: "bi bi-bar-chart-line",
+      items: [
+        "Introduction to Java EE and web architecture",
+        "Servlet lifecycle and configuration",
+        "Request and response handling",
+        "JSP scripting and directives",
+        "Session management and cookies"
+      ]
+    },
+    {
+      id: 6,
+      title: "Intermediate – Frameworks and ORM",
+      icon: "bi bi-window-stack",
+      items: [
+        "Introduction to Hibernate and JPA",
+        "Object-relational mapping (ORM)",
+        "Annotations and configuration",
+        "CRUD operations using Hibernate",
+        "Integration with Spring Boot"
+      ]
+    },
+    {
+      id: 7,
+      title: "Expert – Spring & Spring Boot Development",
+      icon: "bi bi-diagram-3",
+      items: [
+        "Spring Core and Dependency Injection",
+        "Spring MVC architecture",
+        "Building RESTful APIs",
+        "Spring Boot auto-configuration",
+        "Spring Data JPA and testing"
+      ]
+    },
+    {
+      id: 8,
+      title: "Expert – Microservices and Advanced Topics",
+      icon: "bi bi-robot",
+      items: [
+        "Microservices architecture with Spring Boot",
+        "Service discovery (Eureka, API Gateway)",
+        "Security and authentication with Spring Security",
+        "Docker and containerization",
+        "CI/CD and deployment best practices"
+      ]
+    },
+    {
+      id: 9,
+      title: "Expert – Enterprise Integration & Capstone",
+      icon: "bi bi-cpu",
+      items: [
+        "Integration with third-party APIs",
+        "Performance tuning and optimization",
+        "Testing and debugging enterprise apps",
+        "Final project – Build a full-stack Java application"
+      ]
+    }
+  ],
+  whatYouLearnData: [
+    {
+      title: "Master Core & Advanced Java",
+      desc: "Deep dive into OOP, multithreading, collections, and exception handling.",
+      icon: "bi bi-lightning-charge"
+    },
+    {
+      title: "Build Enterprise Web Apps",
+      desc: "Develop scalable web applications using Servlets, JSP, and Spring Boot.",
+      icon: "bi bi-window-stack"
+    },
+    {
+      title: "Work with Databases",
+      desc: "Connect Java applications to SQL databases using JDBC and Hibernate.",
+      icon: "bi bi-database"
+    },
+    {
+      title: "Create RESTful APIs",
+      desc: "Build secure and efficient APIs using Spring MVC and Spring Boot.",
+      icon: "bi bi-gear"
+    },
+    {
+      title: "Learn Microservices & DevOps",
+      desc: "Deploy Spring Boot microservices with Docker and CI/CD pipelines.",
+      icon: "bi bi-diagram-3"
+    },
+    {
+      title: "Capstone Project",
+      desc: "Build and deploy a complete enterprise-grade application end-to-end.",
+      icon: "bi bi-award"
+    }
+  ]
+}
+,
+     
+       {
+        title: "Core Python",
+        desc: "Master the foundations of Python programming with hands-on projects, logic building, and real-world applications. Build a strong coding base to excel in advanced technologies and kickstart your IT career.",
+        rating: 4.5,
+        duration: "3 months",
+        students: "9,556",
+        img: "/images/courses/Core_Python.jpg",
+        aboutData: {
+          topic: "Build Strong Python Foundations from Scratch",
+          content1: "Learn the fundamentals of Python programming with hands-on exercises and practical examples. Understand syntax, logic building, data structures, and modular programming techniques used in real-world applications.",
+          content2: "This course prepares you to move confidently into advanced technologies like web development, automation, data analytics, and AI."
+        },
+        courseContentData: [
+          {
+            id: 1,
+            title: "Python Basics",
+            icon: "bi bi-braces",
+            defaultOpen: true,
+            items: [
+              "Python installation and IDE usage",
+              "Variables, data types, and operators",
+              "Input, output, and type casting",
+              "Conditional statements and loops"
+            ]
+          },
+          {
+            id: 2,
+            title: "Data Handling in Python",
+            icon: "bi bi-collection",
+            items: [
+              "Lists, tuples, sets, and dictionaries",
+              "String manipulation",
+              "Functions and lambda expressions",
+              "Modules and packages"
+            ]
+          },
+          {
+            id: 3,
+            title: "Error Handling and Files",
+            icon: "bi bi-file-code",
+            items: [
+              "Exception handling techniques",
+              "Working with text and binary files",
+              "Importing and using external libraries"
+            ]
+          },
+          {
+            id: 4,
+            title: "Introduction to OOP",
+            icon: "bi bi-diagram-2",
+            items: [
+              "Classes and objects",
+              "Constructors and special methods",
+              "Encapsulation, inheritance, and polymorphism"
+            ]
+          }
+        ],
+        whatYouLearnData: [
+          { title: "Write Python Programs", desc: "Develop clean and efficient code with beginner-friendly syntax.", icon: "bi bi-lightbulb" },
+          { title: "Data and File Handling", desc: "Work confidently with user data and file operations.", icon: "bi bi-folder2-open" },
+          { title: "OOP Foundation", desc: "Build a strong base for advanced Python development.", icon: "bi bi-cpu" }
+        ]
+
+      },
+       {
         title: "Advanced Python",
         desc: "Master Advanced Python with hands-on training in OOP, APIs, Data Science, and Automation. Build real-world projects and get industry-ready.",
         rating: 4.5,
@@ -160,1239 +451,1591 @@ const coursesData = {
           },
         ]
       },
-      {
-        title: "HTML",
-        desc: "Master the building blocks of web development with our hands-on HTML training. Learn to create structured, responsive, and professional websites from scratch.",
-        rating: 5.0,
-        duration: "1 month",
-        students: "7,556",
-        img: "/images/courses/HTML.jpg",
-        aboutData: {
-          topic: "Master the Foundations of Web Development with HTML",
-          content1: "Learn how the web works by mastering HTML, the core language behind every website. Understand page structuring, semantic elements, media integration, and accessibility standards to build professional web pages from scratch.",
-          content2: "The HTML course at Urbancode focuses on developing strong fundamentals through hands-on practice. You will create structured, responsive layouts and learn the latest HTML5 features used in modern web development."
-        },
-        courseContentData: [
-          {
-            id: 1,
-            title: "HTML Basics",
-            icon: "bi bi-code-slash",
-            defaultOpen: true,
-            items: [
-              "What is HTML and how the web works",
-              "HTML document structure",
-              "Tags, elements, and attributes",
-              "Head vs body sections",
-              "Text formatting elements"
-            ]
-          },
-          {
-            id: 2,
-            title: "Working with Page Layout",
-            icon: "bi bi-layout-sidebar",
-            items: [
-              "HTML lists and tables",
-              "Hyperlinks and navigation",
-              "Images and media elements",
-              "Divs, spans, and semantic elements",
-              "Metadata and SEO basics"
-            ]
-          },
-          {
-            id: 3,
-            title: "Forms & User Input",
-            icon: "bi bi-ui-checks-grid",
-            items: [
-              "Form tags and controls",
-              "Input types and validation",
-              "Labels, fieldsets, and accessibility",
-              "Form submission and method types"
-            ]
-          },
-          {
-            id: 4,
-            title: "HTML5 Advanced Features",
-            icon: "bi bi-boxes",
-            items: [
-              "Audio and video elements",
-              "Canvas and SVG graphics",
-              "Local storage and geolocation",
-              "Responsive structure with semantic tags"
-            ]
-          }
-        ],
-        whatYouLearnData: [
-          { title: "Build Web Page Structures", desc: "Create properly structured HTML pages with professional standards.", icon: "bi bi-diagram-3" },
-          { title: "Use Modern HTML5 Elements", desc: "Leverage multimedia and graphics capabilities.", icon: "bi bi-camera-video" },
-          { title: "Work with Forms & SEO", desc: "Build interactive forms and optimize pages for search engines.", icon: "bi bi-search" }
-        ]
 
-      },
-      {
-        title: "Core JAVA",
-        desc: "Master the fundamentals of Core Java with hands-on projects, OOP concepts, and industry-relevant exercises. Build strong programming skills to kickstart your career in software development.",
-        rating: 4.5,
-        duration: "3 months",
-        students: "9,556",
-        img: "/images/courses/Core_JAVA.jpg",
-        aboutData: {
-          topic: "Master Core Java to Build Strong Object-Oriented Programming Skills",
-          content1: "Develop solid foundations in Java programming with hands-on experience. Learn OOP concepts, exception handling, multithreading, and collection frameworks used in enterprise applications.",
-          content2: "The Core Java course at Urbancode prepares you for real-world software development with projects, tools, and strong programming discipline."
-        },
-        courseContentData: [
-          {
-            id: 1,
-            title: "Java Fundamentals",
-            icon: "bi bi-braces",
-            defaultOpen: true,
-            items: [
-              "Java environment setup",
-              "Syntax and data types",
-              "Control statements and operators",
-              "Arrays and strings"
-            ]
-          },
-          {
-            id: 2,
-            title: "Object-Oriented Programming",
-            icon: "bi bi-diagram-3",
-            items: [
-              "Classes, objects, and methods",
-              "Constructors and overloading",
-              "Inheritance, polymorphism, abstraction, and encapsulation",
-              "Interfaces and packages"
-            ]
-          },
-          {
-            id: 3,
-            title: "Exception Handling & File I/O",
-            icon: "bi bi-file-earmark-text",
-            items: [
-              "Try, catch, and finally blocks",
-              "Custom exceptions",
-              "Working with files and buffers",
-              "Serialization basics"
-            ]
-          },
-          {
-            id: 4,
-            title: "Advanced Core Concepts",
-            icon: "bi bi-gear",
-            items: [
-              "Multithreading and concurrency",
-              "Java Collection Framework",
-              "JDBC database connectivity",
-              "Introduction to JVM memory model"
-            ]
-          }
-        ],
-        whatYouLearnData: [
-          { title: "Master OOP Programming", desc: "Design scalable software using object-oriented principles.", icon: "bi bi-lightning-charge" },
-          { title: "Develop Console Applications", desc: "Build functional applications using Core Java libraries.", icon: "bi bi-terminal" },
-          { title: "Integrate Databases", desc: "Apply JDBC for real-time database operations.", icon: "bi bi-hdd-network" }
-        ]
+{
+  title: "C and C++ Programming",
+  desc: "Learn C and C++ programming from scratch. Master the fundamentals of logic, syntax, object-oriented programming, and efficient problem-solving through practical coding exercises.",
+  rating: 4.8,
+  duration: "1.5 months",
+  students: "15,278",
+  img: "/images/courses/C_CPP.jpeg",
+  aboutData: {
+    topic: "Master C and C++ — Build Strong Programming Foundations!",
+    content1:
+      "Start your programming journey with C and C++, two of the most powerful and widely used languages in software development. Understand how computers process logic, manage memory, and execute code efficiently.",
+    content2:
+      "The C and C++ course by Urbancode takes you from basic syntax to advanced object-oriented programming. You'll learn how to build programs, use functions, manage data structures, and apply OOP concepts — preparing you for high-performance application development and competitive programming."
+  },
+  courseContentData: [
+    {
+      id: 1,
+      title: "Beginner – Getting Started with C",
+      icon: "bi bi-terminal",
+      defaultOpen: true,
+      items: [
+        "Introduction to C and its history",
+        "Setting up the compiler and writing your first program",
+        "Basic syntax, keywords, and data types",
+        "Variables, constants, and operators",
+        "Input and output in C"
+      ]
+    },
+    {
+      id: 2,
+      title: "Beginner – Control Flow and Loops",
+      icon: "bi bi-arrow-repeat",
+      items: [
+        "Conditional statements (if, else, switch)",
+        "Loops (for, while, do-while)",
+        "Break, continue, and goto statements",
+        "Practical examples and pattern problems"
+      ]
+    },
+    {
+      id: 3,
+      title: "Intermediate – Functions and Arrays",
+      icon: "bi bi-braces",
+      items: [
+        "Defining and calling functions",
+        "Function parameters and return types",
+        "Understanding arrays and multi-dimensional arrays",
+        "Passing arrays to functions",
+        "Scope and lifetime of variables"
+      ]
+    },
+    {
+      id: 4,
+      title: "Intermediate – Pointers and Memory Management",
+      icon: "bi bi-memory",
+      items: [
+        "Introduction to pointers and addresses",
+        "Pointer arithmetic",
+        "Dynamic memory allocation (malloc, calloc, free)",
+        "Pointers with arrays and functions"
+      ]
+    },
+    {
+      id: 5,
+      title: "Advanced – Structures and File Handling",
+      icon: "bi bi-file-earmark-text",
+      items: [
+        "Structures and unions",
+        "Working with files (read, write, append)",
+        "Command-line arguments",
+        "Error handling in C"
+      ]
+    },
+    {
+      id: 6,
+      title: "Advanced – Introduction to C++",
+      icon: "bi bi-code-slash",
+      items: [
+        "Differences between C and C++",
+        "Basic syntax, I/O streams, and namespaces",
+        "Functions and function overloading",
+        "Introduction to classes and objects"
+      ]
+    },
+    {
+      id: 7,
+      title: "Expert – Object-Oriented Programming (OOP)",
+      icon: "bi bi-diagram-3",
+      items: [
+        "Encapsulation, inheritance, and polymorphism",
+        "Constructors and destructors",
+        "Operator and function overloading",
+        "Friend functions and classes",
+        "Virtual functions and abstract classes"
+      ]
+    },
+    {
+      id: 8,
+      title: "Expert – Advanced Concepts and Project",
+      icon: "bi bi-award",
+      items: [
+        "Templates and exception handling",
+        "File handling in C++",
+        "STL (Vectors, Lists, Maps, and Iterators)",
+        "Mini project: Console-based application in C++"
+      ]
+    }
+  ],
+  whatYouLearnData: [
+    {
+      title: "Master Core Programming Concepts",
+      desc: "Understand how computers process instructions, manage memory, and execute logic.",
+      icon: "bi bi-cpu"
+    },
+    {
+      title: "Build Logic and Problem-Solving Skills",
+      desc: "Practice loops, conditions, and functions to strengthen your logical thinking.",
+      icon: "bi bi-lightbulb"
+    },
+    {
+      title: "Work with Memory and Pointers",
+      desc: "Gain deep knowledge of pointers, dynamic memory, and efficient resource management.",
+      icon: "bi bi-memory"
+    },
+    {
+      title: "Learn Object-Oriented Programming",
+      desc: "Master OOP principles like inheritance, polymorphism, and abstraction using C++.",
+      icon: "bi bi-diagram-3"
+    },
+    {
+      title: "Explore the Standard Template Library",
+      desc: "Use STL containers and algorithms to write clean, optimized, reusable code.",
+      icon: "bi bi-collection"
+    },
+    {
+      title: "Build Real-World Applications",
+      desc: "Develop a functional console-based project using modern C++ practices.",
+      icon: "bi bi-award"
+    }
+  ]
+}
 
-      },
-      {
-        title: "C and C++",
-        desc: "Master the fundamentals of programming with our C & C++ training program. Build strong problem-solving skills and develop a solid foundation for advanced technologies.",
-        rating: 4.5,
-        duration: "3 months",
-        students: "9,556",
-        img: "/images/courses/c.jpg",
-        aboutData: {
-          topic: "Master Structured and Object-Oriented Programming with C and C++",
-          content1: "Start with strong programming fundamentals using C and progress into advanced object-oriented concepts with C++. Develop problem-solving and coding skills that build a solid foundation for a software career.",
-          content2: "This comprehensive course takes you from logic building to advanced C++ applications. Practice memory management, file handling, and real-time programming techniques used in system-level development."
-        },
-        courseContentData: [
-          {
-            id: 1,
-            title: "Programming Basics with C",
-            icon: "bi bi-code-square",
-            defaultOpen: true,
-            items: [
-              "Introduction to programming and IDE setup",
-              "Variables, operators, and data types",
-              "Conditional statements and loops",
-              "Functions and recursion",
-              "Arrays and strings"
-            ]
-          },
-          {
-            id: 2,
-            title: "Advanced C Concepts",
-            icon: "bi bi-motherboard",
-            items: [
-              "Pointers and memory management",
-              "Structures, unions, and enums",
-              "Dynamic memory allocation",
-              "File handling and modular programming"
-            ]
-          },
-          {
-            id: 3,
-            title: "Transition to C++",
-            icon: "bi bi-shuffle",
-            items: [
-              "Difference between C and C++",
-              "Basic syntax, streams, and namespaces",
-              "Inline functions and function overloading"
-            ]
-          },
-          {
-            id: 4,
-            title: "Object-Oriented Programming in C++",
-            icon: "bi bi-cpu",
-            items: [
-              "Classes and objects",
-              "Constructors and destructors",
-              "Inheritance, polymorphism, abstraction, and encapsulation",
-              "Operator overloading and templates"
-            ]
-          }
-        ],
-        whatYouLearnData: [
-          { title: "Strong Logic Building", desc: "Write optimized and structured programs using C.", icon: "bi bi-bar-chart-line" },
-          { title: "Master OOP", desc: "Develop scalable software using C++ object-oriented concepts.", icon: "bi bi-diagram-3" },
-          { title: "Work with Memory and Files", desc: "Handle pointers, memory allocation, and file operations confidently.", icon: "bi bi-hdd" }
-        ]
+,
 
-      },
-      {
-        title: "Core Python",
-        desc: "Master the foundations of Python programming with hands-on projects, logic building, and real-world applications. Build a strong coding base to excel in advanced technologies and kickstart your IT career.",
-        rating: 4.5,
-        duration: "3 months",
-        students: "9,556",
-        img: "/images/courses/Core_Python.jpg",
-        aboutData: {
-          topic: "Build Strong Python Foundations from Scratch",
-          content1: "Learn the fundamentals of Python programming with hands-on exercises and practical examples. Understand syntax, logic building, data structures, and modular programming techniques used in real-world applications.",
-          content2: "This course prepares you to move confidently into advanced technologies like web development, automation, data analytics, and AI."
-        },
-        courseContentData: [
-          {
-            id: 1,
-            title: "Python Basics",
-            icon: "bi bi-braces",
-            defaultOpen: true,
-            items: [
-              "Python installation and IDE usage",
-              "Variables, data types, and operators",
-              "Input, output, and type casting",
-              "Conditional statements and loops"
-            ]
-          },
-          {
-            id: 2,
-            title: "Data Handling in Python",
-            icon: "bi bi-collection",
-            items: [
-              "Lists, tuples, sets, and dictionaries",
-              "String manipulation",
-              "Functions and lambda expressions",
-              "Modules and packages"
-            ]
-          },
-          {
-            id: 3,
-            title: "Error Handling and Files",
-            icon: "bi bi-file-code",
-            items: [
-              "Exception handling techniques",
-              "Working with text and binary files",
-              "Importing and using external libraries"
-            ]
-          },
-          {
-            id: 4,
-            title: "Introduction to OOP",
-            icon: "bi bi-diagram-2",
-            items: [
-              "Classes and objects",
-              "Constructors and special methods",
-              "Encapsulation, inheritance, and polymorphism"
-            ]
-          }
-        ],
-        whatYouLearnData: [
-          { title: "Write Python Programs", desc: "Develop clean and efficient code with beginner-friendly syntax.", icon: "bi bi-lightbulb" },
-          { title: "Data and File Handling", desc: "Work confidently with user data and file operations.", icon: "bi bi-folder2-open" },
-          { title: "OOP Foundation", desc: "Build a strong base for advanced Python development.", icon: "bi bi-cpu" }
-        ]
+{
+  title: "Data Structures & Algorithms (DSA)",
+  desc: "Master Data Structures and Algorithms with hands-on coding in C++, Java, or Python. Learn problem-solving, optimize your logic, and prepare for top tech interviews.",
+  rating: 4.8,
+  duration: "1.5 months",
+  students: "15,204",
+  img: "/images/courses/DSA.png",
+  aboutData: {
+    topic: "Master Data Structures & Algorithms — Build Strong Foundations for Coding and Interviews!",
+    content1:
+      "Learn how to think like a programmer and solve complex problems efficiently. This DSA course covers every essential concept — arrays, linked lists, stacks, queues, trees, graphs, recursion, dynamic programming, and more — all taught through real coding examples and challenges.",
+    content2:
+      "The DSA course by Urbancode focuses on practical understanding and problem-solving. You’ll master core data structures, algorithmic techniques, and pattern-based problem-solving used in coding interviews. Each module includes coding exercises, mock tests, and real-world challenges designed to prepare you for competitive programming and top-tier tech placements."
+  },
+  courseContentData: [
+    {
+      id: 1,
+      title: "Beginner – Programming Foundations",
+      icon: "bi bi-book",
+      defaultOpen: true,
+      items: [
+        "Introduction to programming and logic building",
+        "Understanding time and space complexity",
+        "Big O notation and performance analysis",
+        "Recursion fundamentals",
+        "Mathematical problems and patterns"
+      ]
+    },
+    {
+      id: 2,
+      title: "Beginner – Arrays and Strings",
+      icon: "bi bi-database",
+      items: [
+        "1D and 2D arrays",
+        "Common array problems and optimizations",
+        "String manipulation and pattern matching",
+        "Sliding window and two-pointer techniques"
+      ]
+    },
+    {
+      id: 3,
+      title: "Intermediate – Linked Lists & Stacks",
+      icon: "bi bi-diagram-3",
+      items: [
+        "Singly and doubly linked lists",
+        "Fast and slow pointer approaches",
+        "Stack operations and implementation",
+        "Applications of stacks (parsing, evaluation, etc.)"
+      ]
+    },
+    {
+      id: 4,
+      title: "Intermediate – Queues & Hashing",
+      icon: "bi bi-gear",
+      items: [
+        "Queue and circular queue implementation",
+        "Priority queues and Deque",
+        "Hash tables and hash maps",
+        "Collision handling and optimization"
+      ]
+    },
+    {
+      id: 5,
+      title: "Intermediate – Trees and Binary Search Trees",
+      icon: "bi bi-tree",
+      items: [
+        "Binary trees and traversals (DFS, BFS)",
+        "Binary Search Trees (BST) operations",
+        "Tree recursion and height-balanced trees",
+        "Applications in searching and sorting"
+      ]
+    },
+    {
+      id: 6,
+      title: "Advanced – Heaps and Graphs",
+      icon: "bi bi-diagram-2",
+      items: [
+        "Heap data structure and heap sort",
+        "Priority queue applications",
+        "Graph representations (adjacency list/matrix)",
+        "BFS, DFS, shortest path (Dijkstra, Bellman-Ford)"
+      ]
+    },
+    {
+      id: 7,
+      title: "Advanced – Sorting & Searching Algorithms",
+      icon: "bi bi-search",
+      items: [
+        "Merge sort, quick sort, and heap sort",
+        "Binary search and its variations",
+        "Counting sort and radix sort",
+        "Search optimizations and edge cases"
+      ]
+    },
+    {
+      id: 8,
+      title: "Expert – Dynamic Programming",
+      icon: "bi bi-cpu",
+      items: [
+        "Recursion to DP transition",
+        "Memoization and tabulation techniques",
+        "Classic DP problems (Knapsack, LCS, LIS, etc.)",
+        "Optimization and overlapping subproblems"
+      ]
+    },
+    {
+      id: 9,
+      title: "Expert – Advanced Topics & Interview Prep",
+      icon: "bi bi-award",
+      items: [
+        "Greedy algorithms and backtracking",
+        "Bit manipulation techniques",
+        "Divide and conquer strategies",
+        "Mock interview problems and contests"
+      ]
+    }
+  ],
+  whatYouLearnData: [
+    {
+      title: "Master Core DSA Concepts",
+      desc: "Understand how data structures and algorithms work under the hood.",
+      icon: "bi bi-lightning-charge"
+    },
+    {
+      title: "Improve Problem-Solving Skills",
+      desc: "Solve 100+ real-world problems to build strong analytical thinking.",
+      icon: "bi bi-braces"
+    },
+    {
+      title: "Crack Technical Interviews",
+      desc: "Get interview-ready with pattern-based coding questions and mock tests.",
+      icon: "bi bi-person-check"
+    },
+    {
+      title: "Learn Multiple Languages",
+      desc: "Practice DSA in C++, Java, or Python with language-specific examples.",
+      icon: "bi bi-code-slash"
+    },
+    {
+      title: "Understand Algorithmic Efficiency",
+      desc: "Analyze and optimize your code using time and space complexity.",
+      icon: "bi bi-speedometer2"
+    },
+    {
+      title: "Capstone Problem Solving",
+      desc: "Apply all concepts in advanced projects and algorithmic challenges.",
+      icon: "bi bi-trophy"
+    }
+  ]
+}
+,
+{
+  title: "HTML and CSS",
+  desc: "Master HTML and CSS from scratch. Learn to structure web pages, style them beautifully, and build responsive layouts for modern websites.",
+  rating: 4.6,
+  duration: "1 month",
+  students: "12,432",
+  img: "/images/courses/HTML_CSS.jpeg",
+  aboutData: {
+    topic: "Master HTML and CSS — Build and Design Modern, Responsive Websites!",
+    content1:
+      "Start your web development journey by learning how to build and style stunning websites using HTML and CSS. Understand the core structure of webpages, layout techniques, and responsive design fundamentals.",
+    content2:
+      "The HTML and CSS course by Urbancode covers everything from basic syntax to advanced styling techniques. You’ll learn how to create layouts, work with typography, colors, animations, and responsive design — all through hands-on projects that help you gain real-world web development experience."
+  },
+  courseContentData: [
+    {
+      id: 1,
+      title: "Beginner – Introduction to HTML",
+      icon: "bi bi-book",
+      defaultOpen: true,
+      items: [
+        "What is HTML and how the web works",
+        "HTML structure and basic tags",
+        "Headings, paragraphs, lists, and links",
+        "Images, audio, and video embedding",
+        "Semantic HTML and best practices"
+      ]
+    },
+    {
+      id: 2,
+      title: "Beginner – Page Layout and Structure",
+      icon: "bi bi-columns-gap",
+      items: [
+        "Divs, spans, and containers",
+        "Tables and forms in HTML",
+        "iframes and embedding external content",
+        "Meta tags, favicons, and SEO-friendly structure"
+      ]
+    },
+    {
+      id: 3,
+      title: "Intermediate – Introduction to CSS",
+      icon: "bi bi-palette",
+      items: [
+        "What is CSS and how it works with HTML",
+        "Inline, internal, and external stylesheets",
+        "Selectors, properties, and values",
+        "Colors, backgrounds, and borders",
+        "Typography and text styling"
+      ]
+    },
+    {
+      id: 4,
+      title: "Intermediate – Box Model and Positioning",
+      icon: "bi bi-bounding-box",
+      items: [
+        "Understanding the CSS box model",
+        "Margins, padding, and borders",
+        "Positioning: static, relative, absolute, fixed, sticky",
+        "z-index and stacking context"
+      ]
+    },
+    {
+      id: 5,
+      title: "Advanced – Layout Design with Flexbox and Grid",
+      icon: "bi bi-layout-text-sidebar-reverse",
+      items: [
+        "Introduction to Flexbox",
+        "Flex container and item properties",
+        "Building responsive layouts with CSS Grid",
+        "Combining Flexbox and Grid for advanced designs"
+      ]
+    },
+    {
+      id: 6,
+      title: "Advanced – Responsive Web Design",
+      icon: "bi bi-phone",
+      items: [
+        "Introduction to responsive design",
+        "Media queries and breakpoints",
+        "Relative units (%, em, rem, vh, vw)",
+        "Building mobile-first layouts"
+      ]
+    },
+    {
+      id: 7,
+      title: "Expert – Advanced Styling Techniques",
+      icon: "bi bi-stars",
+      items: [
+        "CSS transitions and animations",
+        "Pseudo-classes and pseudo-elements",
+        "CSS variables and custom properties",
+        "Working with shadows, gradients, and filters"
+      ]
+    },
+    {
+      id: 8,
+      title: "Expert – Project & Modern Practices",
+      icon: "bi bi-award",
+      items: [
+        "Build a personal portfolio website",
+        "Responsive landing page project",
+        "Cross-browser compatibility",
+        "Modern CSS tools and best practices"
+      ]
+    }
+  ],
+  whatYouLearnData: [
+    {
+      title: "Build and Structure Web Pages",
+      desc: "Learn HTML to create clean, semantic, and well-structured web pages.",
+      icon: "bi bi-file-earmark-code"
+    },
+    {
+      title: "Style Websites Professionally",
+      desc: "Use CSS to add colors, layouts, animations, and design precision.",
+      icon: "bi bi-palette"
+    },
+    {
+      title: "Create Responsive Designs",
+      desc: "Make your websites look great on all devices using media queries and grids.",
+      icon: "bi bi-phone"
+    },
+    {
+      title: "Understand Modern Layouts",
+      desc: "Master Flexbox and CSS Grid for advanced layout control.",
+      icon: "bi bi-layout-text-sidebar-reverse"
+    },
+    {
+      title: "Animate with CSS",
+      desc: "Add interactivity and movement using transitions and keyframes.",
+      icon: "bi bi-stars"
+    },
+    {
+      title: "Build Real Projects",
+      desc: "Design and deploy a responsive website from scratch.",
+      icon: "bi bi-award"
+    }
+  ]
+}
 
-      },
-      {
-        title: "PySpark",
-        desc: "Master PySpark with hands-on training designed to handle big data processing at scale. Learn real-world data engineering and analytics skills to excel in modern data-driven careers.",
-        rating: 4.5,
-        duration: "3 months",
-        students: "9,556",
-        img: "/images/courses/PySpark.jpg",
-        aboutData: {
-          topic: "Master PySpark for Big Data Processing & Analytics",
-          content1: "Learn PySpark to process and analyze large-scale datasets efficiently. Gain real-world data engineering and distributed computation skills required in modern industries.",
-          content2: "This course covers PySpark RDDs, DataFrames, streaming, MLlib, and performance optimization. You will work with real-time workflows and enterprise-level datasets."
-        },
-        courseContentData: [
-          {
-            id: 1,
-            title: "Big Data & PySpark Fundamentals",
-            icon: "bi bi-cloud-arrow-up",
-            defaultOpen: true,
-            items: [
-              "Introduction to Big Data and Hadoop ecosystem",
-              "Apache Spark architecture",
-              "Installing and configuring PySpark",
-              "RDD basics and transformations"
-            ]
-          },
-          {
-            id: 2,
-            title: "DataFrames & SQL Analytics",
-            icon: "bi bi-table",
-            items: [
-              "Creating and managing DataFrames",
-              "Spark SQL operations",
-              "Schema handling and data cleaning",
-              "Joins, aggregations, and window functions"
-            ]
-          },
-          {
-            id: 3,
-            title: "Machine Learning with PySpark",
-            icon: "bi bi-brain",
-            items: [
-              "Using MLlib",
-              "Supervised and unsupervised models",
-              "Feature engineering and pipelines"
-            ]
-          },
-          {
-            id: 4,
-            title: "Spark Streaming & Optimization",
-            icon: "bi bi-speedometer2",
-            items: [
-              "Structured streaming basics",
-              "Performance tuning",
-              "Cluster deployment overview",
-              "Integrating with cloud platforms"
-            ]
-          }
-        ],
-        whatYouLearnData: [
-          { title: "Work with Distributed Data", desc: "Process massive datasets using Spark RDDs and DataFrames.", icon: "bi bi-database" },
-          { title: "Perform Big Data Analytics", desc: "Apply SQL and ML techniques on real-time data flows.", icon: "bi bi-graph-up-arrow" },
-          { title: "Optimize and Deploy Workloads", desc: "Tune performance and manage distributed applications.", icon: "bi bi-gear" }
-        ]
 
-      },
+     
+     
 
 
     ],
   },
 
-  "Web Development": {
+  "Web and App Development": {
     mainCategoryDesc: "Full Stack Web Development Mastery",
     subDesc: "Master the complete spectrum of frontend and backend development with in-depth training in MERN, MEAN, and Java Full Stack technologies. Develop robust, dynamic, and interactive web applications while gaining practical skills that make you industry-ready.",
     subHeading: "Acquire the expertise to grow as a professional Full Stack Web Developer and build a strong career in today’s digital-first world.",
     mainImage: "/images/courses/Web_Development.jpg",
 
     courses: [
+
       {
-        title: "JavaScript",
-        desc: "Master JavaScript from basics to advanced with hands-on projects, real-world use cases, and expert guidance. Build strong coding logic, interactive web apps, and prepare for high-demand developer roles.",
-        rating: 5.0,
-        duration: "1 month",
-        students: "10,556",
-        img: "/images/courses/JAVA_Script.jpg",
-        aboutData: {
-          topic: "Master JavaScript — From Fundamentals to Full-Stack Development!",
-          content1:
-            "Learn JavaScript from the ground up and gain the skills needed to become a professional developer. From core syntax to asynchronous programming, DOM manipulation, APIs, and frameworks, this course helps you build dynamic and interactive web applications.",
-          content2:
-            "The JavaScript course by Urbancode covers everything from basic syntax to advanced concepts like ES6+, promises, async/await, and modular programming. You’ll also dive into real-world applications using React, Node.js, and Express. By the end of this course, you’ll be ready to build responsive websites, APIs, and modern full-stack applications."
-        },
-        courseContentData: [
-          {
-            id: 1,
-            title: "Beginner – JavaScript Fundamentals",
-            icon: "bi bi-book",
-            defaultOpen: true,
-            items: [
-              "Introduction to JavaScript and its role in web development",
-              "Setting up the development environment",
-              "Variables, constants, and data types",
-              "Operators and expressions",
-              "Conditional statements and loops",
-              "Functions and scope"
-            ]
-          },
-          {
-            id: 2,
-            title: "Beginner – Working with the DOM",
-            icon: "bi bi-braces",
-            items: [
-              "Understanding the Document Object Model (DOM)",
-              "Selecting and manipulating HTML elements",
-              "Handling user events",
-              "Dynamic content updates",
-              "Form validation and interactivity"
-            ]
-          },
-          {
-            id: 3,
-            title: "Beginner – Working with Data",
-            icon: "bi bi-database",
-            items: [
-              "Arrays and array methods",
-              "Objects and object manipulation",
-              "JSON and data structures",
-              "LocalStorage and SessionStorage",
-              "Fetching and displaying data"
-            ]
-          },
-          {
-            id: 4,
-            title: "Intermediate – Advanced JavaScript Concepts",
-            icon: "bi bi-gear",
-            items: [
-              "ES6+ features (let, const, arrow functions, destructuring, spread/rest)",
-              "Modules and imports/exports",
-              "Closures, callbacks, and higher-order functions",
-              "Promises, async/await, and the event loop",
-              "Error handling and debugging"
-            ]
-          },
-          {
-            id: 5,
-            title: "Intermediate – Browser & APIs",
-            icon: "bi bi-window",
-            items: [
-              "Browser events and event propagation",
-              "Web APIs and Fetch API",
-              "AJAX and asynchronous requests",
-              "Working with third-party APIs",
-              "CORS and data security"
-            ]
-          },
-          {
-            id: 6,
-            title: "Intermediate – Object-Oriented JavaScript",
-            icon: "bi bi-diagram-3",
-            items: [
-              "Prototypes and inheritance",
-              "Classes and constructors (ES6)",
-              "Encapsulation and polymorphism",
-              "Design patterns and modular code"
-            ]
-          },
-          {
-            id: 7,
-            title: "Expert – Frontend Frameworks",
-            icon: "bi bi-window-stack",
-            items: [
-              "Introduction to React.js and component-based architecture",
-              "State management and hooks",
-              "Routing and single-page applications (SPA)",
-              "Working with APIs in React",
-              "Building and deploying React apps"
-            ]
-          },
-          {
-            id: 8,
-            title: "Expert – Backend with Node.js",
-            icon: "bi bi-cpu",
-            items: [
-              "Introduction to Node.js and npm",
-              "Creating servers with Express.js",
-              "Routing and middleware",
-              "Working with databases (MongoDB)",
-              "Authentication and JWT tokens"
-            ]
-          },
-          {
-            id: 9,
-            title: "Expert – Full-Stack JavaScript Projects",
-            icon: "bi bi-layers",
-            items: [
-              "Building RESTful APIs",
-              "Connecting frontend and backend",
-              "Real-time apps with WebSockets",
-              "Deploying full-stack applications",
-              "Version control and DevOps integration"
-            ]
-          }
-        ],
-        whatYouLearnData: [
-          {
-            title: "Master Core JavaScript Concepts",
-            desc: "Learn variables, data types, loops, and ES6+ syntax with real examples.",
-            icon: "bi bi-lightning-charge"
-          },
-          {
-            title: "Build Interactive Web Applications",
-            desc: "Use DOM manipulation, events, and APIs to create dynamic web pages.",
-            icon: "bi bi-braces"
-          },
-          {
-            title: "Work with Modern JavaScript Tools",
-            desc: "Use Node.js, npm, and Webpack for modern development workflows.",
-            icon: "bi bi-tools"
-          },
-          {
-            title: "Create Scalable Frontend Apps",
-            desc: "Develop powerful user interfaces using React and component-based design.",
-            icon: "bi bi-window-stack"
-          },
-          {
-            title: "Develop Full-Stack Projects",
-            desc: "Integrate frontend and backend with Node.js, Express, and MongoDB.",
-            icon: "bi bi-layers"
-          },
-          {
-            title: "Get Industry-Ready Skills",
-            desc: "Learn debugging, version control, deployment, and best coding practices.",
-            icon: "bi bi-briefcase"
-          }
-        ]
-      }
-      ,
-      {
-        title: "Full Stack Development",
-        desc: "Master Full Stack Development with hands-on training in Frontend, Backend, Databases, and Deployment. Transform into an industry-ready developer with real-time projects and placement assistance.",
-        rating: 5.0,
-        duration: "1 month",
-        students: "10,556",
-        img: "/images/courses/Full_Stack_Development.jpg",
-        aboutData: {
-          topic: "Become a Full Stack Developer — From Frontend to Backend & Deployment!",
-          content1: "This Full Stack Development course takes you from beginner to expert with a practical, project-driven approach. You’ll learn to build complete web applications — from creating stunning frontends with HTML, CSS, and JavaScript to managing databases and deploying scalable backends.",
-          content2: "The program covers core technologies like React, Node.js, Express, and MongoDB. You’ll gain hands-on experience in API integration, authentication, cloud deployment, and version control. By the end of this course, you’ll have the skills and portfolio to become a job-ready Full Stack Developer capable of building modern, high-performance web applications."
-        },
-        courseContentData: [
-          {
-            id: 1,
-            title: "Frontend Fundamentals – HTML, CSS & JavaScript",
-            icon: "bi bi-window",
-            defaultOpen: true,
-            items: [
-              "Introduction to Web Development",
-              "HTML structure and semantic elements",
-              "CSS styling, flexbox, and grid layouts",
-              "Responsive design and media queries",
-              "JavaScript basics – variables, functions, DOM manipulation",
-              "Creating interactive web pages"
-            ]
-          },
-          {
-            id: 2,
-            title: "Frontend Framework – React.js",
-            icon: "bi bi-layers",
-            items: [
-              "Introduction to React and component architecture",
-              "JSX and state management",
-              "Props, events, and hooks (useState, useEffect)",
-              "React Router and navigation",
-              "Working with APIs in React",
-              "Building single-page applications (SPAs)"
-            ]
-          },
-          {
-            id: 3,
-            title: "Backend Development – Node.js & Express.js",
-            icon: "bi bi-server",
-            items: [
-              "Introduction to Node.js environment",
-              "Setting up Express servers",
-              "Routing and middleware",
-              "RESTful APIs and CRUD operations",
-              "Error handling and API validation",
-              "Authentication using JWT"
-            ]
-          },
-          {
-            id: 4,
-            title: "Database Management – MongoDB & SQL",
-            icon: "bi bi-database",
-            items: [
-              "Introduction to Databases – SQL vs NoSQL",
-              "MongoDB CRUD operations",
-              "Mongoose for data modeling",
-              "Database relationships and schema design",
-              "Aggregation and indexing",
-              "Connecting backend with database"
-            ]
-          },
-          {
-            id: 5,
-            title: "Version Control & Collaboration",
-            icon: "bi bi-git",
-            items: [
-              "Git and GitHub basics",
-              "Branching and merging",
-              "Collaborating on projects",
-              "Using Git in real-world development"
-            ]
-          },
-          {
-            id: 6,
-            title: "Deployment & DevOps Basics",
-            icon: "bi bi-cloud-upload",
-            items: [
-              "Hosting static and dynamic websites",
-              "Deploying Node.js apps on cloud (Render, Vercel, Netlify, etc.)",
-              "Environment variables and configuration",
-              "Introduction to CI/CD pipelines",
-              "Monitoring and scaling applications"
-            ]
-          },
-          {
-            id: 7,
-            title: "Advanced Topics & Real-World Projects",
-            icon: "bi bi-rocket-takeoff",
-            items: [
-              "Advanced React (Context API, Redux Toolkit)",
-              "Authentication & Authorization (JWT, OAuth)",
-              "File upload and storage (Cloudinary, AWS S3)",
-              "Building and integrating REST APIs",
-              "Final Full Stack Project – MERN App Deployment"
-            ]
-          }
-        ],
-        whatYouLearnData: [
-          {
-            title: "Build Full Stack Web Applications",
-            desc: "Learn to design, develop, and deploy complete web apps using MERN stack.",
-            icon: "bi bi-window-stack"
-          },
-          {
-            title: "Master Frontend Development",
-            desc: "Create modern, responsive, and interactive UIs with HTML, CSS, JavaScript, and React.",
-            icon: "bi bi-laptop"
-          },
-          {
-            title: "Develop Powerful Backends",
-            desc: "Build RESTful APIs and scalable server-side applications using Node.js and Express.js.",
-            icon: "bi bi-hdd-network"
-          },
-          {
-            title: "Work with Databases",
-            desc: "Integrate MongoDB and SQL databases for data storage, querying, and optimization.",
-            icon: "bi bi-database"
-          },
-          {
-            title: "Implement Authentication & Security",
-            desc: "Secure your apps using JWT, OAuth, and best practices for data protection.",
-            icon: "bi bi-shield-lock"
-          },
-          {
-            title: "Deploy and Maintain Applications",
-            desc: "Host, monitor, and scale your web apps using modern DevOps and cloud tools.",
-            icon: "bi bi-cloud-arrow-up"
-          }
-        ]
-      }
-      ,
-      {
-        title: "MERN Stack",
-        desc: "Master MongoDB, Express, React, and Node.js with real-world projects and hands-on learning. Build full-stack apps and launch your career with industry-ready skills.",
-        rating: 5.0,
-        duration: "1 month",
-        students: "7,556",
-        img: "/images/courses/MERN_Stack.jpg",
+  title: "Java Full Stack Development",
+  desc: "Become a full stack Java developer by mastering both front-end and back-end technologies. Learn HTML, CSS, JavaScript, Java, Spring Boot, and databases through hands-on projects.",
+  rating: 4.8,
+  duration: "3 months",
+  students: "17,652",
+  img: "/images/courses/Java_Full_Stack.jpeg",
+  aboutData: {
+    topic: "Master Java Full Stack Development — Build Scalable Web Applications from Front-End to Back-End!",
+    content1:
+      "Learn how to develop complete web applications using Java technologies. This course takes you from the basics of front-end web design to advanced back-end development with Spring Boot and databases, making you a job-ready full stack developer.",
+    content2:
+      "The Java Full Stack Development course by Urbancode combines the power of modern front-end frameworks with robust Java-based back-end systems. You’ll gain expertise in HTML, CSS, JavaScript, Java, JDBC, Hibernate, Spring Boot, REST APIs, and MySQL — along with deployment skills using tools like Docker and AWS."
+  },
+  courseContentData: [
+    {
+      id: 1,
+      title: "Beginner – Web Foundations",
+      icon: "bi bi-code-slash",
+      defaultOpen: true,
+      items: [
+        "Introduction to web development and full stack architecture",
+        "HTML5: structure and semantic elements",
+        "CSS3: styling, layout, and responsive design",
+        "JavaScript basics and DOM manipulation",
+        "Version control with Git and GitHub"
+      ]
+    },
+    {
+      id: 2,
+      title: "Beginner – Programming with Java",
+      icon: "bi bi-cup-hot",
+      items: [
+        "Core Java syntax and OOP principles",
+        "Control structures, arrays, and strings",
+        "Classes, inheritance, and polymorphism",
+        "Exception handling and file I/O",
+        "Collections framework and generics"
+      ]
+    },
+    {
+      id: 3,
+      title: "Intermediate – Database Management",
+      icon: "bi bi-database",
+      items: [
+        "Introduction to SQL and relational databases",
+        "CRUD operations using MySQL",
+        "Database design and normalization",
+        "JDBC for database connectivity",
+        "Connecting Java applications with MySQL"
+      ]
+    },
+    {
+      id: 4,
+      title: "Intermediate – Back-End Development",
+      icon: "bi bi-gear",
+      items: [
+        "Introduction to Java EE and Servlets",
+        "JSP (JavaServer Pages) and MVC architecture",
+        "Building dynamic web applications",
+        "Form handling and session management",
+        "Deploying Java web apps on Tomcat"
+      ]
+    },
+    {
+      id: 5,
+      title: "Advanced – Spring Framework & Hibernate",
+      icon: "bi bi-diagram-3",
+      items: [
+        "Spring Core and Dependency Injection",
+        "Spring Boot setup and auto-configuration",
+        "Building RESTful APIs with Spring Boot",
+        "ORM with Hibernate and JPA",
+        "Spring Data JPA and query methods"
+      ]
+    },
+    {
+      id: 6,
+      title: "Advanced – Front-End Integration",
+      icon: "bi bi-window-stack",
+      items: [
+        "Advanced JavaScript and ES6 concepts",
+        "Introduction to React.js for front-end UI",
+        "Connecting React with REST APIs",
+        "State management and component-based architecture",
+        "Responsive UI design and deployment"
+      ]
+    },
+    {
+      id: 7,
+      title: "Expert – DevOps & Deployment",
+      icon: "bi bi-cloud-upload",
+      items: [
+        "Build automation using Maven and Gradle",
+        "Introduction to Docker and containerization",
+        "Version control and CI/CD pipelines",
+        "Deploying Java apps on AWS / cloud platforms",
+        "Monitoring and maintaining applications"
+      ]
+    },
+    {
+      id: 8,
+      title: "Expert – Capstone Project",
+      icon: "bi bi-award",
+      items: [
+        "Build a complete full stack project (React + Spring Boot + MySQL)",
+        "Implement authentication and authorization",
+        "Host and deploy your project online",
+        "Final presentation and portfolio building"
+      ]
+    }
+  ],
+  whatYouLearnData: [
+    {
+      title: "Full Stack Web Development",
+      desc: "Learn to build complete web applications from front-end UI to back-end logic.",
+      icon: "bi bi-code-square"
+    },
+    {
+      title: "Master Front-End Skills",
+      desc: "Create responsive web pages using HTML, CSS, JavaScript, and React.js.",
+      icon: "bi bi-window-stack"
+    },
+    {
+      title: "Develop Robust Back-End Systems",
+      desc: "Build APIs and business logic using Java, Spring Boot, and Hibernate.",
+      icon: "bi bi-diagram-3"
+    },
+    {
+      title: "Work with Databases",
+      desc: "Use SQL and MySQL for data storage, retrieval, and integration with Java apps.",
+      icon: "bi bi-database"
+    },
+    {
+      title: "Deploy Applications",
+      desc: "Dockerize and deploy full stack projects to AWS or cloud servers.",
+      icon: "bi bi-cloud-upload"
+    },
+    {
+      title: "Build Real-World Projects",
+      desc: "Complete a full stack capstone project to showcase your skills to employers.",
+      icon: "bi bi-award"
+    }
+  ]
+}
+,
+{
+  title: "Angular",
+  desc: "Learn Angular to build dynamic, scalable, and modern web applications using TypeScript. Master components, directives, services, and real-world project development.",
+  rating: 4.8,
+  duration: "1.5 months",
+  students: "11,238",
+  img: "/images/courses/Angular.png",
+  aboutData: {
+    topic: "Master Angular — Build Modern, Scalable Front-End Applications with TypeScript!",
+    content1:
+      "Angular is one of the most powerful front-end frameworks for building enterprise-grade web applications. This course takes you from the fundamentals to advanced concepts with practical projects and real-world examples.",
+    content2:
+      "The Angular course by Urbancode helps you understand the complete architecture of Angular — from components and data binding to routing, services, and APIs. You’ll learn to build structured, maintainable, and high-performance front-end applications."
+  },
+  courseContentData: [
+    {
+      id: 1,
+      title: "Beginner – Getting Started with Angular",
+      icon: "bi bi-lightbulb",
+      defaultOpen: true,
+      items: [
+        "Introduction to Angular and its ecosystem",
+        "Setting up the Angular development environment",
+        "Understanding TypeScript and ES6 features",
+        "Angular project structure and file organization",
+        "Creating your first Angular app"
+      ]
+    },
+    {
+      id: 2,
+      title: "Beginner – Core Concepts",
+      icon: "bi bi-box",
+      items: [
+        "Components and templates",
+        "Data binding and interpolation",
+        "Directives: built-in and custom",
+        "Event handling and property binding",
+        "Component communication (Input & Output)"
+      ]
+    },
+    {
+      id: 3,
+      title: "Intermediate – Services and Dependency Injection",
+      icon: "bi bi-gear",
+      items: [
+        "Creating and using services",
+        "Dependency Injection in Angular",
+        "Observable and RxJS introduction",
+        "Managing data flow with services",
+        "Reusable logic with service layers"
+      ]
+    },
+    {
+      id: 4,
+      title: "Intermediate – Routing and Navigation",
+      icon: "bi bi-map",
+      items: [
+        "Routing setup and configuration",
+        "Navigating between views",
+        "Route parameters and query strings",
+        "Lazy loading modules",
+        "Route guards and authentication"
+      ]
+    },
+    {
+      id: 5,
+      title: "Advanced – Forms and Validation",
+      icon: "bi bi-ui-checks-grid",
+      items: [
+        "Template-driven forms",
+        "Reactive forms and form groups",
+        "Custom form validation",
+        "Error handling and dynamic feedback",
+        "Handling form submissions with APIs"
+      ]
+    },
+    {
+      id: 6,
+      title: "Advanced – HTTP and APIs",
+      icon: "bi bi-cloud-arrow-down",
+      items: [
+        "Using HttpClient for API communication",
+        "GET, POST, PUT, DELETE requests",
+        "Handling observables and async data",
+        "Error handling and interceptors",
+        "Integrating RESTful APIs"
+      ]
+    },
+    {
+      id: 7,
+      title: "Expert – Advanced Features",
+      icon: "bi bi-layers",
+      items: [
+        "Lifecycle hooks and change detection",
+        "Custom pipes and directives",
+        "Angular Material and UI components",
+        "State management with RxJS and NgRx",
+        "Optimizing performance in large applications"
+      ]
+    },
+    {
+      id: 8,
+      title: "Expert – Project and Deployment",
+      icon: "bi bi-award",
+      items: [
+        "Building a real-world Angular project",
+        "Integrating backend APIs",
+        "Environment configuration for production",
+        "Deploying Angular apps to Firebase or Netlify",
+        "Final project presentation"
+      ]
+    }
+  ],
+  whatYouLearnData: [
+    {
+      title: "Build Modern Web Apps",
+      desc: "Develop dynamic and interactive web applications using Angular and TypeScript.",
+      icon: "bi bi-code-square"
+    },
+    {
+      title: "Master Components & Modules",
+      desc: "Learn how to structure scalable applications using Angular’s modular architecture.",
+      icon: "bi bi-box"
+    },
+    {
+      title: "Integrate REST APIs",
+      desc: "Connect your Angular front-end to real back-end services using HttpClient.",
+      icon: "bi bi-cloud-arrow-down"
+    },
+    {
+      title: "Work with Reactive Forms",
+      desc: "Create and validate dynamic forms with Angular’s reactive form module.",
+      icon: "bi bi-ui-checks-grid"
+    },
+    {
+      title: "Use Angular Material",
+      desc: "Build polished UI with Angular Material components and custom themes.",
+      icon: "bi bi-palette"
+    },
+    {
+      title: "Deploy Real Projects",
+      desc: "Deploy and host your Angular applications on modern cloud platforms.",
+      icon: "bi bi-cloud-upload"
+    }
+  ]
+}
+,
 
-        aboutData: {
-          topic: "Become a Full-Stack Web Developer with MERN — MongoDB, Express, React, and Node.js!",
-          content1:
-            "Dive into full-stack web development with the MERN stack. Learn how to build scalable web applications from scratch using MongoDB, Express.js, React.js, and Node.js. This course combines backend logic, frontend interactivity, and database integration to make you a complete developer.",
-          content2:
-            "The MERN Stack course by Urbancode takes you from web fundamentals to advanced full-stack projects. You’ll start by understanding how the stack components interact, then learn to create RESTful APIs, dynamic UIs, authentication systems, and deploy production-ready apps. By the end, you’ll be ready to build and deploy full-scale applications with confidence."
-        },
+{
+  title: "Mean Stack",
+  desc: "Master the MEAN Stack and build powerful, full-stack web applications from scratch. Learn backend APIs with Node.js & Express and create dynamic frontends using Angular.",
+  rating: 4.8,
+  duration: "2 months",
+  students: "10,982",
+  img: "/images/courses/MEAN_Stack.png",
+  aboutData: {
+    topic: "Master the MEAN Stack — Build Full-Stack Web Apps with MongoDB, Express, Angular, and Node.js!",
+    content1:
+      "The MEAN Stack course helps you become a full-stack developer capable of building end-to-end web applications. You’ll learn to manage data with MongoDB, build backend APIs with Express and Node.js, and create interactive frontends with Angular.",
+    content2:
+      "This program covers everything from the fundamentals of JavaScript to advanced full-stack project deployment. By the end, you’ll be able to design, develop, and deploy production-ready applications using the complete MEAN stack architecture."
+  },
+  courseContentData: [
+    {
+      id: 1,
+      title: "Beginner – Introduction to MEAN Stack",
+      icon: "bi bi-lightbulb",
+      defaultOpen: true,
+      items: [
+        "Overview of full-stack development",
+        "Understanding the MEAN architecture",
+        "Installing Node.js, npm, and Angular CLI",
+        "Project setup and folder structure",
+        "Intro to REST APIs and JSON"
+      ]
+    },
+    {
+      id: 2,
+      title: "Beginner – JavaScript & TypeScript Essentials",
+      icon: "bi bi-code",
+      items: [
+        "JavaScript fundamentals and ES6 features",
+        "Asynchronous programming (Promises & async/await)",
+        "Working with JSON data",
+        "TypeScript basics for Angular",
+        "Error handling and debugging"
+      ]
+    },
+    {
+      id: 3,
+      title: "Intermediate – Node.js and Express.js",
+      icon: "bi bi-server",
+      items: [
+        "Creating servers with Node.js",
+        "Routing and middleware in Express",
+        "Handling requests and responses",
+        "Building RESTful APIs",
+        "Working with authentication and JWT"
+      ]
+    },
+    {
+      id: 4,
+      title: "Intermediate – MongoDB and Mongoose",
+      icon: "bi bi-database",
+      items: [
+        "Introduction to NoSQL databases",
+        "CRUD operations in MongoDB",
+        "Modeling data with Mongoose",
+        "Schema validation and relationships",
+        "Connecting MongoDB with Node.js"
+      ]
+    },
+    {
+      id: 5,
+      title: "Advanced – Angular Frontend Development",
+      icon: "bi bi-window-stack",
+      items: [
+        "Creating Angular components and modules",
+        "Data binding and dependency injection",
+        "Working with forms and validations",
+        "Routing and navigation",
+        "Integrating REST APIs with Angular services"
+      ]
+    },
+    {
+      id: 6,
+      title: "Advanced – Integration and Authentication",
+      icon: "bi bi-link-45deg",
+      items: [
+        "Connecting frontend with backend",
+        "User registration and login",
+        "JWT-based authentication and authorization",
+        "Role-based access control",
+        "Error handling between client and server"
+      ]
+    },
+    {
+      id: 7,
+      title: "Expert – Deployment and DevOps Basics",
+      icon: "bi bi-cloud-upload",
+      items: [
+        "Environment variables and configuration",
+        "Preparing production builds",
+        "Hosting backend on Render or AWS",
+        "Deploying Angular frontend on Netlify or Firebase",
+        "Connecting domain and SSL setup"
+      ]
+    },
+    {
+      id: 8,
+      title: "Expert – Capstone Project",
+      icon: "bi bi-award",
+      items: [
+        "Building a complete MEAN stack application",
+        "API integration with user authentication",
+        "Admin dashboard and analytics",
+        "Testing and debugging full-stack workflows",
+        "Final project deployment and presentation"
+      ]
+    }
+  ],
+  whatYouLearnData: [
+    {
+      title: "Master Full-Stack Development",
+      desc: "Learn to build complete web applications using MongoDB, Express, Angular, and Node.js.",
+      icon: "bi bi-laptop"
+    },
+    {
+      title: "Create RESTful APIs",
+      desc: "Develop secure and scalable backend APIs using Node.js and Express.",
+      icon: "bi bi-server"
+    },
+    {
+      title: "Work with MongoDB",
+      desc: "Perform CRUD operations, design schemas, and manage data using MongoDB and Mongoose.",
+      icon: "bi bi-database"
+    },
+    {
+      title: "Build Dynamic Frontends",
+      desc: "Use Angular to create responsive, real-time web interfaces connected to your backend.",
+      icon: "bi bi-window-stack"
+    },
+    {
+      title: "Implement Authentication",
+      desc: "Add login, JWT authentication, and role-based authorization to your apps.",
+      icon: "bi bi-shield-lock"
+    },
+    {
+      title: "Deploy Full Projects",
+      desc: "Deploy your full-stack applications to the cloud with modern DevOps practices.",
+      icon: "bi bi-cloud-upload"
+    }
+  ]
+}
+,
+{
+  title: "Mern Stack",
+  desc: "Master the MERN Stack and build modern full-stack web applications. Learn MongoDB, Express, React, and Node.js with real-world projects and API integration.",
+  rating: 4.9,
+  duration: "2 months",
+  students: "14,325",
+  img: "/images/courses/MERN_Stack.jpg",
+  aboutData: {
+    topic: "Master the MERN Stack — Build Powerful Full-Stack Web Applications with React and Node.js!",
+    content1:
+      "This course takes you through every layer of the MERN stack, combining front-end and back-end technologies to help you build complete, dynamic web applications. You’ll learn React for UI, Node.js and Express for APIs, and MongoDB for managing data.",
+    content2:
+      "The MERN Stack program by Urbancode covers modern JavaScript development from the ground up. You’ll move from basic React components to complex API-driven applications, finishing with deployment and optimization of real-world full-stack projects."
+  },
+  courseContentData: [
+    {
+      id: 1,
+      title: "Beginner – Introduction to MERN Stack",
+      icon: "bi bi-lightbulb",
+      defaultOpen: true,
+      items: [
+        "Overview of full-stack development",
+        "Understanding the MERN architecture",
+        "Setting up Node.js, npm, and MongoDB",
+        "Intro to REST APIs and JSON",
+        "Creating your first full-stack project structure"
+      ]
+    },
+    {
+      id: 2,
+      title: "Beginner – JavaScript & ES6 Essentials",
+      icon: "bi bi-code",
+      items: [
+        "JavaScript fundamentals and modern syntax",
+        "Working with arrays, objects, and functions",
+        "Asynchronous JavaScript (Promises, async/await)",
+        "Error handling and debugging techniques",
+        "Using npm and managing dependencies"
+      ]
+    },
+    {
+      id: 3,
+      title: "Intermediate – Node.js and Express.js",
+      icon: "bi bi-server",
+      items: [
+        "Building a backend with Express.js",
+        "Routing and middleware concepts",
+        "Handling requests, responses, and validation",
+        "Creating and testing RESTful APIs",
+        "Authentication with JWT and bcrypt"
+      ]
+    },
+    {
+      id: 4,
+      title: "Intermediate – MongoDB and Mongoose",
+      icon: "bi bi-database",
+      items: [
+        "Introduction to MongoDB and NoSQL databases",
+        "CRUD operations using Mongoose",
+        "Schema design and data relationships",
+        "Aggregation pipelines and indexing",
+        "Connecting MongoDB to Node.js apps"
+      ]
+    },
+    {
+      id: 5,
+      title: "Advanced – React.js Frontend Development",
+      icon: "bi bi-window-stack",
+      items: [
+        "Understanding React components and JSX",
+        "State, props, and component lifecycle",
+        "Hooks: useState, useEffect, and custom hooks",
+        "Routing with React Router",
+        "Building reusable and dynamic UI"
+      ]
+    },
+    {
+      id: 6,
+      title: "Advanced – Integration and API Handling",
+      icon: "bi bi-link-45deg",
+      items: [
+        "Connecting React frontend with Express backend",
+        "Fetching data using Axios and Fetch API",
+        "Handling authentication and protected routes",
+        "Managing global state with Context API",
+        "Error handling and data synchronization"
+      ]
+    },
+    {
+      id: 7,
+      title: "Expert – Authentication & Security",
+      icon: "bi bi-shield-lock",
+      items: [
+        "JWT-based authentication flow",
+        "Password hashing with bcrypt",
+        "Securing APIs and frontend routes",
+        "Role-based access control",
+        "Best practices for production security"
+      ]
+    },
+    {
+      id: 8,
+      title: "Expert – Deployment & Capstone Project",
+      icon: "bi bi-cloud-upload",
+      items: [
+        "Preparing environment variables and builds",
+        "Deploying backend to Render or AWS",
+        "Deploying frontend to Netlify or Vercel",
+        "Connecting domain and SSL setup",
+        "Final project: Building a complete MERN app"
+      ]
+    }
+  ],
+  whatYouLearnData: [
+    {
+      title: "Master Full-Stack JavaScript",
+      desc: "Work confidently across frontend and backend using MongoDB, Express, React, and Node.js.",
+      icon: "bi bi-laptop"
+    },
+    {
+      title: "Build Scalable REST APIs",
+      desc: "Design secure and efficient APIs using Node.js and Express.js.",
+      icon: "bi bi-server"
+    },
+    {
+      title: "Develop Dynamic Frontends",
+      desc: "Create powerful, component-based UIs with React and modern hooks.",
+      icon: "bi bi-window-stack"
+    },
+    {
+      title: "Integrate Frontend & Backend",
+      desc: "Connect React applications with Express APIs for smooth data flow.",
+      icon: "bi bi-link-45deg"
+    },
+    {
+      title: "Implement Authentication",
+      desc: "Add JWT-based authentication and user access control to your apps.",
+      icon: "bi bi-shield-lock"
+    },
+    {
+      title: "Deploy Real Projects",
+      desc: "Host and manage your MERN stack applications on cloud platforms.",
+      icon: "bi bi-cloud-upload"
+    }
+  ]
+}
+,
+{
+  title: "React Native",
+  desc: "Master React Native and build real-world mobile apps for Android and iOS. Learn cross-platform development using JavaScript, React, and native APIs.",
+  rating: 4.9,
+  duration: "1.5 months",
+  students: "10,556",
+  img: "/images/courses/React_Native.jpg",
+  aboutData: {
+    topic: "Master React Native — Build High-Performance Cross-Platform Mobile Apps!",
+    content1:
+      "React Native lets you build mobile apps using JavaScript and React — no need to learn separate languages for Android or iOS. This course takes you from setup to advanced mobile development with live projects.",
+    content2:
+      "The React Native course by Urbancode covers everything from React fundamentals to mobile-specific APIs, navigation, and backend integration. You’ll build, test, and deploy apps that run seamlessly across both Android and iOS platforms."
+  },
+  courseContentData: [
+    {
+      id: 1,
+      title: "Beginner – Introduction to React Native",
+      icon: "bi bi-lightbulb",
+      defaultOpen: true,
+      items: [
+        "What is React Native and how it works",
+        "Setting up your environment (Expo and CLI)",
+        "Project structure and app components",
+        "Understanding React vs React Native",
+        "Running your first mobile app"
+      ]
+    },
+    {
+      id: 2,
+      title: "Beginner – Core Concepts",
+      icon: "bi bi-box",
+      items: [
+        "JSX and component structure",
+        "Props and state management",
+        "Conditional rendering and styling",
+        "Flexbox layout for mobile UI",
+        "Reusable components and composition"
+      ]
+    },
+    {
+      id: 3,
+      title: "Intermediate – Navigation and State Management",
+      icon: "bi bi-compass",
+      items: [
+        "Using React Navigation (Stack, Tab, Drawer)",
+        "Passing parameters between screens",
+        "Global state management with Context API",
+        "Async data flow with Redux Toolkit",
+        "Persisting app data with AsyncStorage"
+      ]
+    },
+    {
+      id: 4,
+      title: "Intermediate – Working with APIs",
+      icon: "bi bi-cloud-arrow-down",
+      items: [
+        "Fetching data from REST APIs",
+        "POST, PUT, DELETE operations",
+        "Handling loading states and errors",
+        "Integration with backend services",
+        "Authentication using JWT tokens"
+      ]
+    },
+    {
+      id: 5,
+      title: "Advanced – Native Features and Device APIs",
+      icon: "bi bi-phone",
+      items: [
+        "Accessing camera and image gallery",
+        "Working with location and maps",
+        "Push notifications setup",
+        "Handling permissions and native modules",
+        "Integrating third-party libraries"
+      ]
+    },
+    {
+      id: 6,
+      title: "Advanced – UI/UX and Animations",
+      icon: "bi bi-palette",
+      items: [
+        "Building responsive mobile layouts",
+        "Custom themes and design systems",
+        "Using Animated API for transitions",
+        "Gesture handling and interactions",
+        "Optimizing UI for performance"
+      ]
+    },
+    {
+      id: 7,
+      title: "Expert – Testing and Deployment",
+      icon: "bi bi-award",
+      items: [
+        "Debugging and performance profiling",
+        "Unit testing with Jest",
+        "Preparing app for release",
+        "Publishing to Google Play and App Store",
+        "Maintaining app updates"
+      ]
+    },
+    {
+      id: 8,
+      title: "Expert – Capstone Project",
+      icon: "bi bi-star",
+      items: [
+        "Building a complete mobile application",
+        "Integrating API and authentication",
+        "Implementing navigation and state management",
+        "Testing and debugging",
+        "Final deployment and presentation"
+      ]
+    }
+  ],
+  whatYouLearnData: [
+    {
+      title: "Build Cross-Platform Apps",
+      desc: "Create mobile apps for Android and iOS using a single React Native codebase.",
+      icon: "bi bi-phone"
+    },
+    {
+      title: "Master React Fundamentals",
+      desc: "Learn React components, state, props, and hooks tailored for mobile development.",
+      icon: "bi bi-lightning-charge"
+    },
+    {
+      title: "Work with APIs",
+      desc: "Fetch, send, and manage real-time data with RESTful API integration.",
+      icon: "bi bi-cloud-arrow-down"
+    },
+    {
+      title: "Use Native Device Features",
+      desc: "Access camera, GPS, notifications, and sensors using React Native libraries.",
+      icon: "bi bi-geo-alt"
+    },
+    {
+      title: "Design Responsive Interfaces",
+      desc: "Build pixel-perfect, adaptive UIs using Flexbox and responsive styling.",
+      icon: "bi bi-palette"
+    },
+    {
+      title: "Deploy to App Stores",
+      desc: "Test, package, and publish your apps to Google Play and Apple App Store.",
+      icon: "bi bi-cloud-upload"
+    }
+  ]
+}
+,
 
-        courseContentData: [
-          {
-            id: 1,
-            title: "Beginner – Web Development Fundamentals",
-            icon: "bi bi-globe",
-            defaultOpen: true,
-            items: [
-              "Introduction to full-stack development",
-              "Overview of MERN architecture",
-              "HTML, CSS, and JavaScript basics",
-              "Version control with Git and GitHub",
-              "Understanding client-server communication",
-              "Setting up VS Code and Node.js environment"
-            ]
-          },
-          {
-            id: 2,
-            title: "Beginner – JavaScript Essentials",
-            icon: "bi bi-code-slash",
-            items: [
-              "ES6+ features and syntax",
-              "Functions, promises, and async/await",
-              "Modules and package management with npm",
-              "Error handling and debugging",
-              "APIs and JSON data handling"
-            ]
-          },
-          {
-            id: 3,
-            title: "Intermediate – Node.js and Express.js",
-            icon: "bi bi-server",
-            items: [
-              "Introduction to Node.js and its architecture",
-              "Building RESTful APIs using Express.js",
-              "Routing, middleware, and controllers",
-              "Working with MongoDB and Mongoose",
-              "CRUD operations and validation",
-              "Authentication with JWT"
-            ]
-          },
-          {
-            id: 4,
-            title: "Intermediate – React.js Frontend Development",
-            icon: "bi bi-laptop",
-            items: [
-              "Introduction to React and component architecture",
-              "JSX and props handling",
-              "State management and hooks",
-              "Routing with React Router",
-              "Forms and controlled components",
-              "Connecting React frontend with backend APIs"
-            ]
-          },
-          {
-            id: 5,
-            title: "Intermediate – MongoDB and Database Design",
-            icon: "bi bi-database",
-            items: [
-              "Introduction to NoSQL databases",
-              "MongoDB CRUD operations",
-              "Schema design and relationships",
-              "Aggregation pipelines and indexing",
-              "Using Mongoose ORM effectively",
-              "Database security and optimization"
-            ]
-          },
-          {
-            id: 6,
-            title: "Expert – Advanced MERN Concepts",
-            icon: "bi bi-gear",
-            items: [
-              "State management using Redux or Context API",
-              "File uploads and cloud storage",
-              "Authentication and role-based authorization",
-              "Error handling and logging",
-              "Building reusable components",
-              "Environment variables and configuration management"
-            ]
-          },
-          {
-            id: 7,
-            title: "Expert – Deployment & DevOps",
-            icon: "bi bi-cloud-arrow-up",
-            items: [
-              "Preparing apps for production",
-              "Environment setup for deployment",
-              "Hosting backend and frontend apps",
-              "Using services like Vercel, Render, and MongoDB Atlas",
-              "Continuous Integration/Continuous Deployment (CI/CD)",
-              "Performance optimization and monitoring"
-            ]
-          },
-          {
-            id: 8,
-            title: "Expert – Capstone Full-Stack Project",
-            icon: "bi bi-briefcase",
-            items: [
-              "Plan and structure a complete MERN project",
-              "Build a real-world web application (e.g., e-commerce or social media app)",
-              "Implement authentication, API integration, and data storage",
-              "Deploy and maintain the app on cloud servers",
-              "Showcase project on portfolio and GitHub"
-            ]
-          }
-        ],
+{
+  title: ".NET + Angular",
+  desc: "Master full-stack web development using .NET for backend and Angular for frontend. Learn to build secure, scalable, and enterprise-grade web applications with real-world projects.",
+  rating: 4.8,
+  duration: "2 months",
+  students: "9,874",
+  img: "/images/courses/DotNet_Angular.png",
+  aboutData: {
+    topic: "Master .NET + Angular — Build Scalable Enterprise Web Applications End-to-End!",
+    content1:
+      "This course combines the power of Microsoft’s .NET backend with Angular’s dynamic frontend framework. You’ll learn to build complete, production-ready web applications that integrate seamlessly between client and server.",
+    content2:
+      "The .NET + Angular course by Urbancode covers everything from backend API development in ASP.NET Core to creating responsive frontends in Angular. You’ll work on real-world projects, learn deployment best practices, and gain hands-on experience with full-stack architecture."
+  },
+  courseContentData: [
+    {
+      id: 1,
+      title: "Beginner – Introduction to Full-Stack Development",
+      icon: "bi bi-lightbulb",
+      defaultOpen: true,
+      items: [
+        "Overview of full-stack web development",
+        "Understanding .NET and Angular architecture",
+        "Setting up Visual Studio and Angular CLI",
+        "Creating your first .NET + Angular project",
+        "Understanding client-server communication"
+      ]
+    },
+    {
+      id: 2,
+      title: "Beginner – C# and ASP.NET Core Basics",
+      icon: "bi bi-code",
+      items: [
+        "C# fundamentals and syntax",
+        "OOP concepts in C#",
+        "Introduction to ASP.NET Core framework",
+        "Creating controllers and routes",
+        "Dependency Injection and Middleware"
+      ]
+    },
+    {
+      id: 3,
+      title: "Intermediate – Building RESTful APIs with .NET",
+      icon: "bi bi-server",
+      items: [
+        "Setting up RESTful services with ASP.NET Core",
+        "CRUD operations with Entity Framework Core",
+        "Working with LINQ and data models",
+        "API versioning and validation",
+        "Implementing authentication and authorization"
+      ]
+    },
+    {
+      id: 4,
+      title: "Intermediate – Frontend Development with Angular",
+      icon: "bi bi-window-stack",
+      items: [
+        "Angular architecture and TypeScript basics",
+        "Creating components, directives, and pipes",
+        "Data binding and event handling",
+        "Reactive forms and validations",
+        "Routing and lazy loading"
+      ]
+    },
+    {
+      id: 5,
+      title: "Advanced – Connecting Angular with .NET API",
+      icon: "bi bi-link-45deg",
+      items: [
+        "Integrating Angular frontend with .NET backend",
+        "Fetching and displaying API data",
+        "JWT authentication and secure endpoints",
+        "Handling errors and API responses",
+        "Building a role-based user management system"
+      ]
+    },
+    {
+      id: 6,
+      title: "Advanced – Database & Entity Framework",
+      icon: "bi bi-database",
+      items: [
+        "Connecting SQL Server with .NET",
+        "Creating models and migrations",
+        "Database relationships (One-to-Many, Many-to-Many)",
+        "Stored procedures and raw queries",
+        "Optimizing database performance"
+      ]
+    },
+    {
+      id: 7,
+      title: "Expert – Deployment and DevOps Integration",
+      icon: "bi bi-cloud-upload",
+      items: [
+        "Preparing production builds for Angular and .NET",
+        "Hosting backend APIs on Azure or AWS",
+        "Deploying Angular frontend to cloud or IIS",
+        "Using CI/CD pipelines for automation",
+        "Monitoring and maintaining live applications"
+      ]
+    },
+    {
+      id: 8,
+      title: "Expert – Capstone Project",
+      icon: "bi bi-award",
+      items: [
+        "Designing a full-stack .NET + Angular application",
+        "Implementing authentication and CRUD modules",
+        "Testing API endpoints and frontend integration",
+        "Deploying the final project to production",
+        "Final code review and presentation"
+      ]
+    }
+  ],
+  whatYouLearnData: [
+    {
+      title: "Master Full-Stack Development",
+      desc: "Build and integrate scalable frontends and backends using Angular and .NET.",
+      icon: "bi bi-laptop"
+    },
+    {
+      title: "Create RESTful APIs",
+      desc: "Design, develop, and secure APIs with ASP.NET Core and Entity Framework.",
+      icon: "bi bi-server"
+    },
+    {
+      title: "Develop Dynamic Frontends",
+      desc: "Use Angular to create responsive, component-driven web interfaces.",
+      icon: "bi bi-window-stack"
+    },
+    {
+      title: "Implement Authentication",
+      desc: "Add JWT-based authentication and user authorization across your stack.",
+      icon: "bi bi-shield-lock"
+    },
+    {
+      title: "Work with Databases",
+      desc: "Integrate SQL Server and manage data efficiently with Entity Framework.",
+      icon: "bi bi-database"
+    },
+    {
+      title: "Deploy Enterprise Applications",
+      desc: "Host and maintain your .NET + Angular projects on modern cloud platforms.",
+      icon: "bi bi-cloud-upload"
+    }
+  ]
+}
+,
 
-        whatYouLearnData: [
-          {
-            title: "Master the MERN Stack",
-            desc: "Learn MongoDB, Express.js, React.js, and Node.js from basics to advanced level.",
-            icon: "bi bi-layers"
-          },
-          {
-            title: "Build Full-Stack Applications",
-            desc: "Create real-world, data-driven applications with frontend and backend integration.",
-            icon: "bi bi-window-stack"
-          },
-          {
-            title: "Work with Databases",
-            desc: "Design, query, and manage NoSQL databases using MongoDB and Mongoose.",
-            icon: "bi bi-database"
-          },
-          {
-            title: "Develop RESTful APIs",
-            desc: "Build and test secure APIs for scalable and maintainable web architectures.",
-            icon: "bi bi-link-45deg"
-          },
-          {
-            title: "Master React Development",
-            desc: "Learn React Hooks, routing, and state management to build interactive UIs.",
-            icon: "bi bi-code"
-          },
-          {
-            title: "Deploy and Manage Apps",
-            desc: "Deploy apps using Vercel, Render, or AWS with CI/CD automation and monitoring.",
-            icon: "bi bi-cloud-upload"
-          }
-        ]
-      }
-      ,
-      {
-        title: "HTML and CSS",
-        desc: "Master the fundamentals of web design with our HTML & CSS Training Program. Build responsive, modern websites from scratch with hands-on projects.",
-        rating: 5.0,
-        duration: "1 month",
-        students: "7,556",
-        img: "/images/courses/HTML_and_CSS.jpg",
-        aboutData: {
-          topic: "Learn HTML & CSS — Build Beautiful, Responsive Websites from Scratch!",
-          content1: "This course is the ultimate starting point for your web development journey. Learn how to structure web pages with HTML and bring them to life with CSS. Whether you’re a complete beginner or refreshing your skills, this hands-on program will teach you everything from web page fundamentals to modern responsive design.",
-          content2: "The HTML & CSS course by Urbancode provides in-depth training on front-end web development. You’ll master semantic HTML, forms, multimedia integration, layout design using Flexbox and Grid, and responsive design techniques. By the end, you’ll be able to design and launch stunning websites that work seamlessly across all devices."
-        },
-        courseContentData: [
-          {
-            id: 1,
-            title: "Beginner – Introduction to HTML",
-            icon: "bi bi-filetype-html",
-            defaultOpen: true,
-            items: [
-              "What is HTML and how the web works",
-              "HTML document structure and elements",
-              "Headings, paragraphs, and text formatting",
-              "Links, images, and lists",
-              "Creating tables and forms",
-              "Best practices for clean and semantic HTML"
-            ]
-          },
-          {
-            id: 2,
-            title: "Beginner – Introduction to CSS",
-            icon: "bi bi-filetype-css",
-            items: [
-              "Understanding CSS syntax and selectors",
-              "Applying inline, internal, and external styles",
-              "Colors, backgrounds, borders, and typography",
-              "Box model and element sizing",
-              "Using classes and IDs effectively"
-            ]
-          },
-          {
-            id: 3,
-            title: "Intermediate – Layouts & Positioning",
-            icon: "bi bi-layout-text-window",
-            items: [
-              "Display, position, and z-index properties",
-              "Creating multi-column layouts",
-              "Flexbox fundamentals",
-              "Grid layout techniques",
-              "Centering elements perfectly"
-            ]
-          },
-          {
-            id: 4,
-            title: "Intermediate – Responsive Web Design",
-            icon: "bi bi-phone",
-            items: [
-              "Introduction to responsive design principles",
-              "Using media queries for different screen sizes",
-              "Viewport and relative units (em, rem, %, vw, vh)",
-              "Building mobile-first websites",
-              "Responsive navigation menus"
-            ]
-          },
-          {
-            id: 5,
-            title: "Intermediate – Advanced Styling Techniques",
-            icon: "bi bi-palette",
-            items: [
-              "CSS variables and custom properties",
-              "Pseudo-classes and pseudo-elements",
-              "Transitions, transforms, and animations",
-              "Hover effects and visual enhancements",
-              "Using Google Fonts and icon libraries"
-            ]
-          },
-          {
-            id: 6,
-            title: "Expert – Modern Web Design Projects",
-            icon: "bi bi-window-stack",
-            items: [
-              "Building a personal portfolio website",
-              "Designing landing pages with responsive layouts",
-              "Creating modern navigation bars and hero sections",
-              "Using Flexbox and Grid together for advanced layouts",
-              "Optimizing and deploying your website"
-            ]
-          }
-        ],
-        whatYouLearnData: [
-          {
-            title: "Master HTML Structure",
-            desc: "Learn to build semantic and accessible web pages using proper HTML tags.",
-            icon: "bi bi-filetype-html"
-          },
-          {
-            title: "Style with Modern CSS",
-            desc: "Use CSS to design visually stunning, responsive layouts and interfaces.",
-            icon: "bi bi-palette"
-          },
-          {
-            title: "Build Responsive Websites",
-            desc: "Make websites look great on all devices using Flexbox, Grid, and media queries.",
-            icon: "bi bi-phone"
-          },
-          {
-            title: "Create Interactive UI Effects",
-            desc: "Add animations, transitions, and hover effects to enhance user experience.",
-            icon: "bi bi-stars"
-          },
-          {
-            title: "Work on Real Projects",
-            desc: "Design and build your own portfolio website and landing pages from scratch.",
-            icon: "bi bi-window"
-          },
-          {
-            title: "Prepare for Front-End Development",
-            desc: "Gain the foundational skills needed to move into JavaScript and React.",
-            icon: "bi bi-code-slash"
-          }
-        ]
-      }
-      ,
-      {
-        title: "Robotic Process Automation",
-        desc: "Master the future of automation with our RPA Training Program—learn to design, build, and deploy bots that transform business processes. Gain hands-on expertise in leading RPA tools to accelerate your career in intelligent automation.",
-        rating: 5.0,
-        duration: "1 month",
-        students: "7,556",
-        img: "/images/courses/Robotic_Process_Automation.jpg",
+{
+  title: "React.js",
+  desc: "Learn React.js from scratch — build interactive, component-driven web applications with reusable UI, efficient state management, and real-world projects.",
+  rating: 5.0,
+  duration: "1 month",
+  students: "12,642",
+  img: "/images/courses/React.jpg",
+  aboutData: {
+    topic: "Master React.js — Build Dynamic, Modern Web Applications from the Ground Up!",
+    content1:
+      "This course takes you from the basics of React to advanced concepts like hooks, context API, and optimized rendering. You’ll learn how React works under the hood and how to build scalable, maintainable user interfaces.",
+    content2:
+      "Through hands-on projects, you’ll understand how to manage state effectively, interact with APIs, and deploy full React applications. By the end, you’ll have the confidence to build production-ready apps using React.js."
+  },
+  courseContentData: [
+    {
+      id: 1,
+      title: "Beginner – Getting Started with React",
+      icon: "bi bi-lightbulb",
+      defaultOpen: true,
+      items: [
+        "Introduction to React and its ecosystem",
+        "Setting up the development environment",
+        "JSX syntax and rendering elements",
+        "Understanding components and props",
+        "Creating your first React app"
+      ]
+    },
+    {
+      id: 2,
+      title: "Beginner – Components and State",
+      icon: "bi bi-puzzle",
+      items: [
+        "Functional vs Class components",
+        "State and setState basics",
+        "Event handling in React",
+        "Conditional rendering",
+        "Lists and keys"
+      ]
+    },
+    {
+      id: 3,
+      title: "Intermediate – React Hooks",
+      icon: "bi bi-diagram-3",
+      items: [
+        "Introduction to Hooks",
+        "Using useState and useEffect",
+        "Managing multiple states",
+        "Custom hooks and reusability",
+        "Lifecycle equivalents with Hooks"
+      ]
+    },
+    {
+      id: 4,
+      title: "Intermediate – State Management and Context API",
+      icon: "bi bi-diagram-2",
+      items: [
+        "Prop drilling problem and solutions",
+        "Using Context API for global state",
+        "Building custom context providers",
+        "Integrating useReducer for complex states",
+        "Structuring large-scale React apps"
+      ]
+    },
+    {
+      id: 5,
+      title: "Advanced – React Router and API Integration",
+      icon: "bi bi-globe",
+      items: [
+        "Routing with React Router",
+        "Dynamic routes and nested navigation",
+        "Fetching data with Fetch and Axios",
+        "Handling API errors and loading states",
+        "Displaying and managing remote data"
+      ]
+    },
+    {
+      id: 6,
+      title: "Advanced – Performance Optimization",
+      icon: "bi bi-speedometer2",
+      items: [
+        "Memoization with React.memo and useMemo",
+        "Optimizing re-renders",
+        "Code splitting and lazy loading",
+        "Error boundaries and fallback UI",
+        "Using React DevTools for debugging"
+      ]
+    },
+    {
+      id: 7,
+      title: "Expert – Project and Deployment",
+      icon: "bi bi-award",
+      items: [
+        "Building a complete React project",
+        "Connecting to APIs and managing routes",
+        "Implementing form validation",
+        "Optimizing and deploying to Vercel/Netlify",
+        "Version control with Git and GitHub"
+      ]
+    }
+  ],
+  whatYouLearnData: [
+    {
+      title: "Understand React Fundamentals",
+      desc: "Learn the core concepts of React including components, JSX, and props.",
+      icon: "bi bi-laptop"
+    },
+    {
+      title: "Work with Hooks",
+      desc: "Master useState, useEffect, and custom hooks to manage component logic.",
+      icon: "bi bi-diagram-3"
+    },
+    {
+      title: "Manage State Efficiently",
+      desc: "Use Context API and reducers to handle global application state.",
+      icon: "bi bi-diagram-2"
+    },
+    {
+      title: "Integrate APIs",
+      desc: "Connect your React app with real-world APIs using Fetch or Axios.",
+      icon: "bi bi-globe"
+    },
+    {
+      title: "Optimize Performance",
+      desc: "Apply techniques to reduce re-renders and boost speed in large apps.",
+      icon: "bi bi-speedometer2"
+    },
+    {
+      title: "Deploy React Apps",
+      desc: "Host your React applications on platforms like Vercel or Netlify.",
+      icon: "bi bi-cloud-upload"
+    }
+  ]
+}
+,
 
-        aboutData: {
-          topic: "Become an RPA Expert — Automate, Optimize, and Transform Business Operations!",
-          content1:
-            "Learn how to automate repetitive business tasks using Robotic Process Automation. This course covers every aspect of RPA — from the fundamentals of automation to advanced bot deployment and management using tools like UiPath, Blue Prism, and Automation Anywhere.",
-          content2:
-            "The RPA Training Program by Urbancode helps you build a strong foundation in automation design, development, and orchestration. Through hands-on projects, you’ll master process discovery, workflow creation, AI integration, and enterprise-level automation. Perfect for professionals aiming to lead the digital transformation era."
-        },
-
-        courseContentData: [
-          {
-            id: 1,
-            title: "Beginner – Introduction to RPA",
-            icon: "bi bi-robot",
-            defaultOpen: true,
-            items: [
-              "Understanding Robotic Process Automation (RPA)",
-              "History and evolution of automation",
-              "Key RPA concepts and terminology",
-              "Business benefits and use cases of RPA",
-              "Overview of top RPA tools: UiPath, Blue Prism, Automation Anywhere"
-            ]
-          },
-          {
-            id: 2,
-            title: "Beginner – Process Identification & Design",
-            icon: "bi bi-diagram-3",
-            items: [
-              "Identifying automation opportunities",
-              "Process mapping and documentation",
-              "RPA lifecycle and project phases",
-              "Designing automation workflows",
-              "Understanding process exceptions and business rules"
-            ]
-          },
-          {
-            id: 3,
-            title: "Beginner – Getting Started with UiPath",
-            icon: "bi bi-window",
-            items: [
-              "Setting up the UiPath Studio environment",
-              "Building your first automation project",
-              "Working with variables, arguments, and data types",
-              "Recording and playback of automation steps",
-              "Debugging and publishing simple bots"
-            ]
-          },
-          {
-            id: 4,
-            title: "Intermediate – Advanced Workflow Automation",
-            icon: "bi bi-gear",
-            items: [
-              "Control flow and exception handling",
-              "Data manipulation using Excel, PDFs, and emails",
-              "Web and desktop automation",
-              "Selectors, anchors, and dynamic elements",
-              "Error handling and debugging advanced workflows"
-            ]
-          },
-          {
-            id: 5,
-            title: "Intermediate – Integration & Orchestration",
-            icon: "bi bi-link-45deg",
-            items: [
-              "Integrating APIs and databases in RPA workflows",
-              "Using Orchestrator for bot management",
-              "Scheduling, queuing, and monitoring robots",
-              "Version control and deployment best practices"
-            ]
-          },
-          {
-            id: 6,
-            title: "Intermediate – Automation Anywhere & Blue Prism",
-            icon: "bi bi-layers",
-            items: [
-              "Introduction to Automation Anywhere and its architecture",
-              "Creating and managing bots in Automation Anywhere",
-              "Overview of Blue Prism Studio and Process Designer",
-              "Best practices across RPA tools"
-            ]
-          },
-          {
-            id: 7,
-            title: "Expert – Cognitive Automation & AI Integration",
-            icon: "bi bi-cpu",
-            items: [
-              "Introduction to Intelligent Automation",
-              "Integrating AI, ML, and OCR into RPA",
-              "Natural Language Processing (NLP) for document and chat automation",
-              "Cognitive decision-making and predictive automation"
-            ]
-          },
-          {
-            id: 8,
-            title: "Expert – Enterprise RPA Implementation",
-            icon: "bi bi-building-check",
-            items: [
-              "RPA Center of Excellence (CoE) setup",
-              "Governance, compliance, and scalability strategies",
-              "Monitoring and maintaining large-scale bots",
-              "Security and data privacy in automation",
-              "Case studies of enterprise RPA success"
-            ]
-          },
-          {
-            id: 9,
-            title: "Expert – Capstone Project",
-            icon: "bi bi-award",
-            items: [
-              "End-to-end RPA project design and execution",
-              "Process discovery, documentation, and automation build",
-              "Testing, deployment, and monitoring of bots",
-              "Final project presentation and review"
-            ]
-          }
-        ],
-
-        whatYouLearnData: [
-          {
-            title: "Master RPA Tools",
-            desc: "Gain hands-on experience with UiPath, Automation Anywhere, and Blue Prism for real-world automation.",
-            icon: "bi bi-robot"
-          },
-          {
-            title: "Design and Build Bots",
-            desc: "Learn to design, develop, test, and deploy bots for various business processes.",
-            icon: "bi bi-gear"
-          },
-          {
-            title: "Automate Complex Workflows",
-            desc: "Automate repetitive and data-heavy tasks using control flow, loops, and conditional logic.",
-            icon: "bi bi-diagram-3"
-          },
-          {
-            title: "Integrate AI & Cognitive Technologies",
-            desc: "Enhance automation with AI, OCR, NLP, and machine learning models.",
-            icon: "bi bi-cpu"
-          },
-          {
-            title: "Manage Enterprise Automation",
-            desc: "Deploy bots at scale with Orchestrator, manage resources, and ensure compliance.",
-            icon: "bi bi-building-check"
-          },
-          {
-            title: "Lead Digital Transformation",
-            desc: "Drive organizational efficiency and innovation through intelligent process automation.",
-            icon: "bi bi-lightning-charge"
-          }
-        ]
-      }
-      ,
-      {
-        title: ".Net + Angular Full Stack",
-        desc: "Master modern full-stack development with .Net & Angular—build enterprise-grade apps from front-end to back-end. Gain hands-on projects, expert mentorship, and job-ready skills to excel in today’s IT industry.",
-        rating: 5.0,
-        duration: "1 month",
-        students: "7,556",
-        img: "/images/courses/Net_Angular_Full_Stack.jpg",
-
-        aboutData: {
-          topic: "Become a Full Stack Developer with .Net & Angular — Build Scalable, Enterprise-Grade Applications!",
-          content1: "This course takes you on a complete journey through full-stack development using .NET for the backend and Angular for the frontend. You’ll learn to design robust APIs, build responsive single-page applications (SPAs), and integrate modern development practices like authentication, testing, and deployment.",
-          content2: "The .Net + Angular Full Stack course by Urbancode is designed for those who want to master both front-end and back-end technologies. You’ll start with C# and ASP.NET Core fundamentals, progress through Entity Framework and RESTful API development, and then dive into Angular for building interactive UI. By the end, you’ll develop full-fledged enterprise-level applications and deploy them using CI/CD pipelines and cloud technologies."
-        },
-
-        courseContentData: [
-          {
-            id: 1,
-            title: "Beginner – Getting Started with .Net & Angular",
-            icon: "bi bi-rocket-takeoff",
-            defaultOpen: true,
-            items: [
-              "Introduction to Full Stack Development",
-              "Overview of .NET and Angular",
-              "Setting up Visual Studio & Node.js",
-              "Understanding C#, TypeScript, and ES6",
-              "Basic project setup and architecture overview"
-            ],
-          },
-          {
-            id: 2,
-            title: "Beginner – Core C# & ASP.NET Fundamentals",
-            icon: "bi bi-code-square",
-            items: [
-              "C# syntax and data types",
-              "Classes, objects, and inheritance",
-              "Collections and LINQ",
-              "Working with ASP.NET Core MVC",
-              "Routing, controllers, and models"
-            ],
-          },
-          {
-            id: 3,
-            title: "Beginner – Frontend Basics with Angular",
-            icon: "bi bi-window",
-            items: [
-              "Introduction to Angular and TypeScript",
-              "Angular CLI and project setup",
-              "Components, modules, and templates",
-              "Data binding and event handling",
-              "Services and dependency injection"
-            ],
-          },
-          {
-            id: 4,
-            title: "Intermediate – Backend Development with .NET Core",
-            icon: "bi bi-hdd-network",
-            items: [
-              "Building RESTful APIs with ASP.NET Core",
-              "Entity Framework Core and database migrations",
-              "CRUD operations and repositories",
-              "Data validation and exception handling",
-              "Authentication and JWT implementation"
-            ],
-          },
-          {
-            id: 5,
-            title: "Intermediate – Advanced Angular Concepts",
-            icon: "bi bi-stack",
-            items: [
-              "Routing and navigation",
-              "Reactive forms and validation",
-              "HTTP client and API integration",
-              "Angular Pipes and Directives",
-              "State management with RxJS and Observables"
-            ],
-          },
-          {
-            id: 6,
-            title: "Intermediate – Integrating Frontend and Backend",
-            icon: "bi bi-link-45deg",
-            items: [
-              "Connecting Angular app with ASP.NET API",
-              "Handling HTTP requests and responses",
-              "Managing authentication and tokens",
-              "Error handling and user feedback",
-              "Building a complete full-stack CRUD project"
-            ],
-          },
-          {
-            id: 7,
-            title: "Expert – Enterprise Architecture & Best Practices",
-            icon: "bi bi-diagram-3",
-            items: [
-              "Clean architecture and SOLID principles",
-              "Dependency injection and middleware",
-              "Advanced API security and authorization",
-              "Performance optimization and caching",
-              "Version control and Git workflow"
-            ],
-          },
-          {
-            id: 8,
-            title: "Expert – Deployment & DevOps Integration",
-            icon: "bi bi-cloud-upload",
-            items: [
-              "Containerization with Docker",
-              "CI/CD pipelines using Azure DevOps or GitHub Actions",
-              "Cloud deployment on Azure or AWS",
-              "Monitoring and logging with Serilog and Application Insights",
-              "Final project deployment and testing"
-            ],
-          },
-          {
-            id: 9,
-            title: "Expert – Capstone Project",
-            icon: "bi bi-award",
-            items: [
-              "Design and plan a full-stack project",
-              "Develop both backend and frontend",
-              "Implement authentication and authorization",
-              "Deploy application to cloud",
-              "Project presentation and review"
-            ],
-          },
-        ],
-
-        whatYouLearnData: [
-          {
-            title: "Master .NET Core and C#",
-            desc: "Develop scalable, high-performance back-end systems using ASP.NET Core and C#.",
-            icon: "bi bi-code-square",
-          },
-          {
-            title: "Build Dynamic Angular Applications",
-            desc: "Create powerful single-page apps using Angular, TypeScript, and RxJS.",
-            icon: "bi bi-window",
-          },
-          {
-            title: "Develop RESTful APIs",
-            desc: "Design, build, and test secure APIs with ASP.NET Core and integrate them with front-end apps.",
-            icon: "bi bi-hdd-network",
-          },
-          {
-            title: "Integrate Frontend & Backend Seamlessly",
-            desc: "Connect Angular UI with .NET Core APIs for complete full-stack functionality.",
-            icon: "bi bi-link-45deg",
-          },
-          {
-            title: "Learn DevOps & Cloud Deployment",
-            desc: "Use Docker, Azure DevOps, and CI/CD pipelines to deploy and manage applications.",
-            icon: "bi bi-cloud-upload",
-          },
-          {
-            title: "Build Real-World Enterprise Projects",
-            desc: "Work on capstone projects to showcase full-stack expertise in modern business solutions.",
-            icon: "bi bi-award",
-          },
-        ]
-      }
-      ,
-    ],
+{
+  title: "Python Full Stack",
+  desc: "Master full stack web development using Python. Build dynamic web applications with front-end, back-end, and database integration using modern Python frameworks.",
+  rating: 4.9,
+  duration: "2 months",
+  students: "11,845",
+  img: "/images/courses/Python_Stack.jpg",
+  aboutData: {
+    topic: "Master Python Full Stack Development — Build Complete Web Applications from Scratch!",
+    content1:
+      "This course takes you through the full journey of Python web development — from front-end design with HTML, CSS, and JavaScript to building powerful back-end applications with Flask and Django.",
+    content2:
+      "By the end of the course, you’ll be able to design responsive UIs, connect to databases like MySQL or MongoDB, manage APIs, and deploy full stack Python web apps on cloud platforms."
+  },
+  courseContentData: [
+    {
+      id: 1,
+      title: "Frontend Development",
+      icon: "bi bi-window",
+      defaultOpen: true,
+      items: [
+        "HTML5, CSS3, and JavaScript fundamentals",
+        "Responsive layouts with Flexbox and Grid",
+        "Bootstrap for rapid UI development",
+        "Integrating APIs into front-end",
+        "Version control with Git and GitHub"
+      ]
+    },
+    {
+      id: 2,
+      title: "Backend Development with Python",
+      icon: "bi bi-cpu",
+      items: [
+        "Python basics and object-oriented programming",
+        "Flask framework – routing, templates, and APIs",
+        "Django framework – MVC pattern and ORM",
+        "Session and authentication handling",
+        "RESTful API creation with Flask and Django REST Framework"
+      ]
+    },
+    {
+      id: 3,
+      title: "Database Management",
+      icon: "bi bi-database",
+      items: [
+        "Relational databases – MySQL and PostgreSQL",
+        "CRUD operations and relationships",
+        "ORM with Django models and SQLAlchemy",
+        "Connecting back-end to databases",
+        "MongoDB basics for NoSQL storage"
+      ]
+    },
+    {
+      id: 4,
+      title: "Advanced Concepts",
+      icon: "bi bi-gear",
+      items: [
+        "Working with JSON and APIs",
+        "Error handling and logging",
+        "User authentication and authorization",
+        "File uploads and form validation",
+        "Performance optimization and caching"
+      ]
+    },
+    {
+      id: 5,
+      title: "Project & Deployment",
+      icon: "bi bi-rocket",
+      items: [
+        "Building a complete full stack web app",
+        "Integrating front-end and back-end",
+        "Testing with Postman and unit tests",
+        "Deploying apps to cloud (Render, Heroku, AWS)",
+        "Real-world project: Task Manager or E-commerce App"
+      ]
+    }
+  ],
+  whatYouLearnData: [
+    {
+      title: "Master Frontend Basics",
+      desc: "Build visually appealing interfaces with HTML, CSS, and JavaScript.",
+      icon: "bi bi-brush"
+    },
+    {
+      title: "Develop Python Backends",
+      desc: "Use Flask and Django to handle routing, logic, and APIs.",
+      icon: "bi bi-cpu"
+    },
+    {
+      title: "Work with Databases",
+      desc: "Perform CRUD operations using MySQL, PostgreSQL, and MongoDB.",
+      icon: "bi bi-database"
+    },
+    {
+      title: "Integrate APIs",
+      desc: "Connect the front-end and back-end seamlessly through RESTful APIs.",
+      icon: "bi bi-link-45deg"
+    },
+    {
+      title: "Deploy Applications",
+      desc: "Host and manage your full stack Python projects on cloud servers.",
+      icon: "bi bi-cloud-upload"
+    },
+    {
+      title: "Build Real Projects",
+      desc: "Apply everything you learn to build and deploy a complete live project.",
+      icon: "bi bi-code-slash"
+    }
+  ]
+}
+,
+  ],
   },
 
   "UI UX Designing": {
@@ -2703,7 +3346,7 @@ const coursesData = {
 
     courses: [
       {
-        title: "Data Science",
+        title: "AI & ML",
         desc: "Master Data Science with hands-on training in Python, Machine Learning, and AI. Gain industry-ready skills to build a rewarding career in analytics.",
         rating: 5.0,
         duration: "1 month",
@@ -2953,10 +3596,290 @@ const coursesData = {
             title: "Enhance Industry Readiness",
             desc: "Combine Python programming and AI integration skills to be job-ready for modern tech roles.",
             icon: "bi bi-lightning-charge"
+          },
+          
+        ]
+      }
+      ,
+      {
+        title: "SAS",
+        desc: "Master SAS with hands-on training designed for real-world data analytics and business intelligence applications. Join our program to gain in-demand skills and boost your career in analytics.",
+        rating: 5.0,
+        duration: "1 month",
+        students: "10,556",
+        img: "/images/courses/SAS.jpg",
+        aboutData: {
+          topic: "Master SAS — From Data Management to Advanced Analytics!",
+          content1: "Learn SAS from scratch and advance to complex data analytics, reporting, and predictive modeling. This course provides hands-on experience with real-world datasets, ensuring you gain practical skills for business and data-driven decision-making.",
+          content2: "The SAS course covers the full spectrum of data analytics, from data manipulation and reporting to advanced analytics techniques like predictive modeling, regression analysis, and business intelligence dashboards. You'll gain expertise in Base SAS, SAS Macros, SQL, and SAS Enterprise Guide, preparing you for analytics roles across industries."
+        },
+        courseContentData: [
+          {
+            id: 1,
+            title: "Beginner – SAS Fundamentals",
+            icon: "bi bi-book",
+            defaultOpen: true,
+            items: [
+              "Introduction to SAS and its applications",
+              "Installing and navigating SAS environment",
+              "Data types, variables, and datasets",
+              "Basic SAS programming syntax",
+              "Reading and writing datasets",
+              "Debugging and error handling"
+            ]
+          },
+          {
+            id: 2,
+            title: "Beginner – Data Management in SAS",
+            icon: "bi bi-database",
+            items: [
+              "Data step basics and data manipulation",
+              "Sorting, merging, and concatenating datasets",
+              "Creating new variables and functions",
+              "Conditional logic and loops in SAS",
+              "Working with dates and character variables"
+            ]
+          },
+          {
+            id: 3,
+            title: "Intermediate – Advanced SAS Programming",
+            icon: "bi bi-gear",
+            items: [
+              "SAS Macros for automation",
+              "SQL in SAS (PROC SQL)",
+              "Arrays, Do loops, and iterative processing",
+              "Advanced data manipulation techniques",
+              "Error handling and debugging best practices"
+            ]
+          },
+          {
+            id: 4,
+            title: "Intermediate – Data Analysis and Reporting",
+            icon: "bi bi-bar-chart-line",
+            items: [
+              "Descriptive statistics and summary reports",
+              "PROC MEANS, PROC FREQ, PROC UNIVARIATE",
+              "Data visualization using PROC SGPLOT & PROC REPORT",
+              "Generating automated reports",
+              "Introduction to statistical procedures"
+            ]
+          },
+          {
+            id: 5,
+            title: "Intermediate – Business Intelligence with SAS",
+            icon: "bi bi-window-stack",
+            items: [
+              "SAS Enterprise Guide basics",
+              "Creating dashboards and reports",
+              "Exporting results to Excel and PDF",
+              "Integrating SAS with databases",
+              "Automation of recurring analytics tasks"
+            ]
+          },
+          {
+            id: 6,
+            title: "Expert – Predictive Analytics & Advanced Modeling",
+            icon: "bi bi-robot",
+            items: [
+              "Regression analysis and forecasting",
+              "Time series analysis",
+              "Logistic regression and classification",
+              "Predictive modeling using SAS procedures",
+              "Best practices in analytics projects"
+            ]
+          },
+          {
+            id: 7,
+            title: "Expert – SAS for Real-World Projects",
+            icon: "bi bi-diagram-3",
+            items: [
+              "Data cleansing and preparation at scale",
+              "Advanced reporting and visualization",
+              "Implementing business rules and logic",
+              "Project work with real-world datasets",
+              "SAS certification preparation guidance"
+            ]
+          }
+        ],
+        whatYouLearnData: [
+          {
+            title: "Master SAS Programming",
+            desc: "Learn data step, PROC SQL, SAS macros, and advanced programming concepts.",
+            icon: "bi bi-lightning-charge"
+          },
+          {
+            title: "Data Management & Analytics",
+            desc: "Manipulate, clean, and analyze large datasets efficiently.",
+            icon: "bi bi-database"
+          },
+          {
+            title: "Reporting & Visualization",
+            desc: "Create dashboards, charts, and automated reports for business insights.",
+            icon: "bi bi-bar-chart-line"
+          },
+          {
+            title: "Predictive Modeling & Statistics",
+            desc: "Apply regression, classification, and time series analysis using SAS.",
+            icon: "bi bi-robot"
+          },
+          {
+            title: "Business Intelligence Skills",
+            desc: "Build real-world BI projects using SAS Enterprise Guide.",
+            icon: "bi bi-window-stack"
+          },
+          {
+            title: "Industry-Ready SAS Expertise",
+            desc: "Gain practical skills applicable to analytics, data science, and BI roles.",
+            icon: "bi bi-diagram-3"
           }
         ]
       }
       ,
+      {
+        "title": "R Programming",
+        "desc": "Master R Programming with hands-on training designed for data analysis, visualization, and statistical modeling. Gain industry-ready skills to excel in analytics, research, and data-driven decision making.",
+        "rating": 5.0,
+        "duration": "1 month",
+        "students": "10,556",
+        "img": "/images/courses/R_Programming.jpg",
+        "aboutData": {
+          "topic": "Master R Programming — From Fundamentals to Advanced Analytics!",
+          "content1": "Learn R Programming from scratch and gain the skills to perform data analysis, statistical modeling, and visualization. This course provides hands-on projects to help you transform raw data into actionable insights.",
+          "content2": "The R Programming course by Urbancode covers everything from basic syntax to advanced data analysis techniques. You’ll start with fundamentals like vectors, lists, and data frames, then move on to visualization with ggplot2, statistical modeling, and machine learning integration. By the end, you’ll be capable of applying R for real-world analytics projects, making you ready for roles in data science, research, and analytics."
+        },
+        "courseContentData": [
+          {
+            "id": 1,
+            "title": "Beginner – R Fundamentals",
+            "icon": "bi bi-book",
+            "defaultOpen": true,
+            "items": [
+              "Introduction to R and RStudio",
+              "R syntax, variables, and data types",
+              "Vectors, lists, and data frames",
+              "Basic operations and functions",
+              "Control structures: if, for, while",
+              "Reading and writing data files"
+            ]
+          },
+          {
+            "id": 2,
+            "title": "Beginner – Data Manipulation",
+            "icon": "bi bi-database",
+            "items": [
+              "Data cleaning and preprocessing",
+              "Using dplyr for data manipulation",
+              "Filtering, sorting, and summarizing data",
+              "Merging and joining datasets",
+              "Handling missing values"
+            ]
+          },
+          {
+            "id": 3,
+            "title": "Intermediate – Data Visualization",
+            "icon": "bi bi-bar-chart-line",
+            "items": [
+              "Introduction to ggplot2",
+              "Creating bar, line, and scatter plots",
+              "Customizing plots with themes and labels",
+              "Interactive visualizations with plotly",
+              "Visualization best practices"
+            ]
+          },
+          {
+            "id": 4,
+            "title": "Intermediate – Statistical Analysis",
+            "icon": "bi bi-calculator",
+            "items": [
+              "Descriptive statistics",
+              "Probability distributions",
+              "Hypothesis testing",
+              "Correlation and regression analysis",
+              "ANOVA and Chi-square tests"
+            ]
+          },
+          {
+            "id": 5,
+            "title": "Intermediate – Working with Real Data",
+            "icon": "bi bi-folder",
+            "items": [
+              "Exploratory data analysis (EDA)",
+              "Time series analysis",
+              "Data reshaping with tidyr",
+              "Working with large datasets",
+              "Project: Analyzing real-world datasets"
+            ]
+          },
+          {
+            "id": 6,
+            "title": "Expert – Advanced R Programming",
+            "icon": "bi bi-gear",
+            "items": [
+              "Writing custom functions and packages",
+              "Functional programming in R",
+              "Error handling and debugging",
+              "Advanced data structures",
+              "Performance optimization"
+            ]
+          },
+          {
+            "id": 7,
+            "title": "Expert – Machine Learning with R",
+            "icon": "bi bi-robot",
+            "items": [
+              "Introduction to machine learning concepts",
+              "Linear and logistic regression",
+              "Decision trees and random forests",
+              "Clustering and classification",
+              "Integrating R with ML libraries"
+            ]
+          },
+          {
+            "id": 8,
+            "title": "Expert – Reporting and Dashboards",
+            "icon": "bi bi-window-stack",
+            "items": [
+              "Creating reproducible reports with R Markdown",
+              "Interactive dashboards with Shiny",
+              "Data storytelling techniques",
+              "Automating reports and workflows"
+            ]
+          }
+        ],
+        "whatYouLearnData": [
+          {
+            "title": "Master R Programming Concepts",
+            "desc": "Understand R syntax, data structures, functions, and advanced programming techniques.",
+            "icon": "bi bi-lightning-charge"
+          },
+          {
+            "title": "Perform Data Analysis",
+            "desc": "Use R for statistical analysis, hypothesis testing, and real-world data exploration.",
+            "icon": "bi bi-bar-chart-line"
+          },
+          {
+            "title": "Create Stunning Visualizations",
+            "desc": "Visualize data effectively using ggplot2, plotly, and interactive dashboards.",
+            "icon": "bi bi-window-stack"
+          },
+          {
+            "title": "Implement Machine Learning",
+            "desc": "Build predictive models using regression, classification, and clustering techniques in R.",
+            "icon": "bi bi-robot"
+          },
+          {
+            "title": "Automate Reporting & Dashboards",
+            "desc": "Generate dynamic reports and interactive dashboards with R Markdown and Shiny.",
+            "icon": "bi bi-gear"
+          },
+          {
+            "title": "Handle Real-World Data Projects",
+            "desc": "Apply R programming to practical datasets, clean, analyze, and present actionable insights.",
+            "icon": "bi bi-cpu"
+          }
+        ]
+      }
+      
     ],
   },
 
@@ -4019,139 +4942,632 @@ const coursesData = {
     mainImage: "/images/courses/Software_Testing.jpg",
 
     courses: [
+
       {
-        "title": "Selenium with Python",
-        "desc": "Learn Selenium with Python to master automation testing – from basics to advanced frameworks, with real-time hands-on projects.",
-        "rating": 5.0,
-        "duration": "1 month",
-        "students": "10,556",
-        "img": "/images/courses/Selenium_with_Python.jpg",
-        "aboutData": {
-          "topic": "Master Selenium Automation — From Basics to Advanced Python Frameworks!",
-          "content1": "Become an expert in automation testing using Selenium with Python! Learn to create robust test scripts, automate web applications, and integrate frameworks for real-world testing scenarios. This course helps you move from beginner to automation expert with hands-on exercises and live projects.",
-          "content2": "The Selenium with Python course covers everything from the fundamentals of Selenium and Python to advanced automation frameworks. Starting with Python basics and Selenium setup, you'll progress through WebDriver, locators, waits, and browser interactions. Advanced topics include Page Object Model, TestNG/PyTest integration, and CI/CD pipeline implementation for automated testing. By the end, you'll be ready to work as a professional automation tester."
-        },
-        "courseContentData": [
-          {
-            "id": 1,
-            "title": "Beginner – Python & Selenium Fundamentals",
-            "icon": "bi bi-book",
-            "defaultOpen": true,
-            "items": [
-              "Introduction to Python for automation",
-              "Setting up Selenium with Python",
-              "Overview of WebDriver and browser automation",
-              "Understanding locators: ID, Name, Class, XPath, CSS",
-              "Navigating web pages and handling elements",
-              "Basic scripting and debugging"
-            ]
-          },
-          {
-            "id": 2,
-            "title": "Beginner – Handling Web Elements",
-            "icon": "bi bi-mouse",
-            "items": [
-              "Working with text boxes, buttons, and links",
-              "Dropdowns, checkboxes, and radio buttons",
-              "Handling alerts, frames, and windows",
-              "Mouse actions: hover, drag-and-drop",
-              "Keyboard interactions"
-            ]
-          },
-          {
-            "id": 3,
-            "title": "Intermediate – Selenium WebDriver Advanced",
-            "icon": "bi bi-gear",
-            "items": [
-              "Explicit and implicit waits",
-              "Handling dynamic elements",
-              "Working with JavaScriptExecutor",
-              "Capturing screenshots and logs",
-              "Managing cookies and sessions"
-            ]
-          },
-          {
-            "id": 4,
-            "title": "Intermediate – Test Automation Frameworks",
-            "icon": "bi bi-window-stack",
-            "items": [
-              "Introduction to PyTest and unittest frameworks",
-              "Creating reusable test scripts",
-              "Parameterization and data-driven testing",
-              "Page Object Model (POM) implementation",
-              "Logging and reporting with Allure or HTML reports"
-            ]
-          },
-          {
-            "id": 5,
-            "title": "Advanced – CI/CD & Automation Integration",
-            "icon": "bi bi-diagram-3",
-            "items": [
-              "Integrating Selenium tests with Jenkins",
-              "Running automated tests in parallel",
-              "Cross-browser testing using Selenium Grid",
-              "Docker and cloud-based test execution",
-              "Best practices for scalable automation frameworks"
-            ]
-          },
-          {
-            "id": 6,
-            "title": "Expert – Real-Time Project Implementation",
-            "icon": "bi bi-robot",
-            "items": [
-              "Building an end-to-end automation project",
-              "Automating a web application workflow",
-              "Integrating API testing with Selenium scripts",
-              "Generating test reports and dashboards",
-              "Industry-level project deployment and CI/CD"
-            ]
-          }
-        ],
-        "whatYouLearnData": [
-          {
-            "title": "Master Selenium Basics",
-            "desc": "Understand WebDriver, locators, waits, and browser interactions.",
-            "icon": "bi bi-lightning-charge"
-          },
-          {
-            "title": "Develop Automation Scripts",
-            "desc": "Write robust Python scripts for automated web testing.",
-            "icon": "bi bi-gear"
-          },
-          {
-            "title": "Build Automation Frameworks",
-            "desc": "Implement Page Object Model, PyTest, and unittest frameworks.",
-            "icon": "bi bi-window-stack"
-          },
-          {
-            "title": "Integrate CI/CD",
-            "desc": "Run tests on Jenkins, Docker, Selenium Grid, and cloud platforms.",
-            "icon": "bi bi-diagram-3"
-          },
-          {
-            "title": "Work on Real Projects",
-            "desc": "Automate web applications end-to-end and generate reports.",
-            "icon": "bi bi-robot"
-          },
-          {
-            "title": "Cross-Browser & Parallel Testing",
-            "desc": "Ensure test reliability with Selenium Grid and multiple browsers.",
-            "icon": "bi bi-cpu"
-          }
-        ]
+  "title": "Java",
+  "desc": "Learn Core Java from scratch — covering programming fundamentals, OOP, collections, exception handling, and file operations with practical examples.",
+  "rating": 5.0,
+  "duration": "1 month",
+  "students": "12,364",
+  "img": "/images/courses/Software_Testing.png",
+  "aboutData": {
+    "topic": "Master Core Java — The Foundation of Every Developer & Tester!",
+    "content1": "This course is built for anyone who wants to gain strong command over Core Java. You’ll learn everything from basic syntax to advanced concepts like OOP, collections, exceptions, and file handling — all with a focus on real-world problem-solving.",
+    "content2": "The Java course takes a hands-on approach. You’ll start with programming basics and progress into object-oriented design, data structures, and multithreading. You’ll also explore Java utilities, error handling, and best practices used in software development and testing. By the end, you’ll be confident in writing efficient, reusable, and industry-ready Java code."
+  },
+  "courseContentData": [
+    {
+      "id": 1,
+      "title": "Beginner – Java Basics",
+      "icon": "bi bi-book",
+      "defaultOpen": true,
+      "items": [
+        "Introduction to Java and its ecosystem",
+        "Installing Java and setting up IDE (Eclipse/IntelliJ)",
+        "Writing your first Java program",
+        "Variables, data types, and operators",
+        "Conditional statements and loops"
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Beginner – Object-Oriented Programming (OOP)",
+      "icon": "bi bi-diagram-3",
+      "items": [
+        "Understanding classes and objects",
+        "Methods, constructors, and overloading",
+        "Inheritance and method overriding",
+        "Encapsulation and abstraction",
+        "Polymorphism and interface concepts"
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Intermediate – Data Structures & Collections",
+      "icon": "bi bi-stack",
+      "items": [
+        "Arrays and multi-dimensional arrays",
+        "String and StringBuilder manipulation",
+        "Introduction to the Collections Framework",
+        "List, Set, and Map interfaces",
+        "Generics and iterators"
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Intermediate – Exception Handling & File Operations",
+      "icon": "bi bi-folder",
+      "items": [
+        "Types of exceptions in Java",
+        "Try-catch-finally and custom exceptions",
+        "Working with files using FileReader and FileWriter",
+        "Reading and writing data using Buffered classes",
+        "Introduction to serialization and deserialization"
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Advanced – Multithreading & Advanced Concepts",
+      "icon": "bi bi-cpu",
+      "items": [
+        "Understanding threads and concurrency",
+        "Thread lifecycle and synchronization",
+        "Java Memory Management and Garbage Collection",
+        "Working with Lambda expressions and Streams",
+        "Functional programming in Java"
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Expert – Real-World Applications & Framework Integration",
+      "icon": "bi bi-briefcase",
+      "items": [
+        "Building console-based mini projects",
+        "Connecting Java with databases using JDBC",
+        "Working with APIs and JSON data",
+        "Introduction to Maven and version control (Git)",
+        "Final project: end-to-end Java application"
+      ]
+    }
+  ],
+  "whatYouLearnData": [
+    {
+      "title": "Master Core Java Programming",
+      "desc": "Learn the core syntax, logic building, and problem-solving in Java.",
+      "icon": "bi bi-lightning-charge"
+    },
+    {
+      "title": "Understand OOP Concepts",
+      "desc": "Build scalable and reusable code using OOP principles.",
+      "icon": "bi bi-diagram-3"
+    },
+    {
+      "title": "Work with Data Structures",
+      "desc": "Use arrays, collections, and generics to manage data efficiently.",
+      "icon": "bi bi-stack"
+    },
+    {
+      "title": "Handle Exceptions & Files",
+      "desc": "Write error-free code with exception handling and file I/O operations.",
+      "icon": "bi bi-folder"
+    },
+    {
+      "title": "Explore Advanced Java Topics",
+      "desc": "Dive into multithreading, streams, and functional programming.",
+      "icon": "bi bi-cpu"
+    },
+    {
+      "title": "Build Real Java Projects",
+      "desc": "Develop console and database-based Java applications from scratch.",
+      "icon": "bi bi-briefcase"
+    }
+  ]
+}
+,
+
+{
+  "title": "Selenium",
+  "desc": "Master Selenium for web automation testing — learn setup, locators, waits, frameworks, and real-time project implementation from scratch.",
+  "rating": 5.0,
+  "duration": "1 month",
+  "students": "14,872",
+  "img": "/images/courses/Selenium.jpg",
+  "aboutData": {
+    "topic": "Master Selenium — The Industry Standard for Web Automation Testing!",
+    "content1": "This course is designed to make you a complete Selenium automation tester. You’ll start with the basics of Selenium WebDriver and gradually move toward building full automation frameworks with TestNG, POM, and CI/CD integration.",
+    "content2": "Selenium remains the core tool for browser automation across the QA industry. In this course, you’ll learn everything — from locators, waits, and browser interactions to cross-browser testing, reporting, and integration with build tools. You’ll also get hands-on experience through real-time projects that simulate industry scenarios."
+  },
+  "courseContentData": [
+    {
+      "id": 1,
+      "title": "Beginner – Selenium Basics",
+      "icon": "bi bi-book",
+      "defaultOpen": true,
+      "items": [
+        "Introduction to Selenium and its architecture",
+        "Setting up Selenium WebDriver and browser drivers",
+        "Understanding the Selenium ecosystem",
+        "Creating and executing your first test case",
+        "Working with locators: ID, Name, Class, XPath, CSS"
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Beginner – Browser Automation Essentials",
+      "icon": "bi bi-mouse",
+      "items": [
+        "Interacting with web elements (buttons, inputs, dropdowns)",
+        "Handling alerts, popups, and frames",
+        "Working with multiple browser windows and tabs",
+        "Using waits: implicit and explicit",
+        "Taking screenshots and managing sessions"
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Intermediate – Selenium WebDriver Advanced",
+      "icon": "bi bi-gear",
+      "items": [
+        "Executing JavaScript in Selenium",
+        "Mouse and keyboard interactions with Actions class",
+        "Handling dynamic elements and AJAX calls",
+        "Working with cookies and browser options",
+        "Capturing logs and debugging automation"
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Intermediate – Framework Design with Selenium",
+      "icon": "bi bi-window-stack",
+      "items": [
+        "Building modular and reusable test scripts",
+        "Understanding Page Object Model (POM)",
+        "Integrating TestNG or PyTest for test management",
+        "Parameterization and data-driven testing",
+        "Logging and HTML report generation"
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Advanced – Cross-Browser & Parallel Testing",
+      "icon": "bi bi-diagram-3",
+      "items": [
+        "Using Selenium Grid for distributed testing",
+        "Executing tests on multiple browsers and devices",
+        "Integrating Selenium with CI/CD tools like Jenkins",
+        "Running tests in Docker and cloud environments",
+        "Best practices for scaling automation projects"
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Expert – Real-Time Project Implementation",
+      "icon": "bi bi-robot",
+      "items": [
+        "Building a complete Selenium automation framework",
+        "Automating a real-world web application",
+        "Implementing reports and reusable utilities",
+        "Integrating version control (Git) and CI pipelines",
+        "Final project: end-to-end web automation delivery"
+      ]
+    }
+  ],
+  "whatYouLearnData": [
+    {
+      "title": "Master Selenium WebDriver",
+      "desc": "Learn to automate browsers, handle web elements, and manage sessions.",
+      "icon": "bi bi-lightning-charge"
+    },
+    {
+      "title": "Handle Real-World Web Applications",
+      "desc": "Work with alerts, frames, dynamic content, and popups.",
+      "icon": "bi bi-mouse"
+    },
+    {
+      "title": "Design Automation Frameworks",
+      "desc": "Implement reusable and scalable test structures using POM and TestNG.",
+      "icon": "bi bi-window-stack"
+    },
+    {
+      "title": "Execute Parallel & Cross-Browser Tests",
+      "desc": "Run Selenium tests across multiple browsers using Grid and CI tools.",
+      "icon": "bi bi-diagram-3"
+    },
+    {
+      "title": "Integrate with DevOps Tools",
+      "desc": "Connect Selenium with Jenkins, Maven, and Docker for automation pipelines.",
+      "icon": "bi bi-gear"
+    },
+    {
+      "title": "Build End-to-End Test Projects",
+      "desc": "Develop a complete automation project with reporting and version control.",
+      "icon": "bi bi-robot"
+    }
+  ]
+}
+
+      ,
+      {
+  "title": "Playwright",
+  "desc": "Master Playwright end-to-end testing — automate modern web apps with JavaScript/TypeScript, from basics to advanced frameworks.",
+  "rating": 5.0,
+  "duration": "1 month",
+  "students": "11,204",
+  "img": "/images/courses/Playwright.jpg",
+  "aboutData": {
+    "topic": "Master Playwright — Modern End-to-End Automation for Web Applications!",
+    "content1": "Learn Playwright from scratch and become an expert in web automation testing using JavaScript or TypeScript. This course teaches you how to automate browsers, handle dynamic elements, perform cross-browser testing, and design scalable test frameworks with ease.",
+    "content2": "The Playwright course by Urbancode covers everything from setup to deployment. You’ll begin with the fundamentals of Playwright, understand its locators, and move on to advanced testing, API automation, parallel execution, and CI/CD integration. By the end, you’ll be able to build robust, maintainable automation frameworks used in real-world QA environments."
+  },
+  "courseContentData": [
+    {
+      "id": 1,
+      "title": "Beginner – Getting Started with Playwright",
+      "icon": "bi bi-book",
+      "defaultOpen": true,
+      "items": [
+        "Introduction to Playwright and its advantages over Selenium",
+        "Installing and setting up Playwright with Node.js",
+        "Understanding browser contexts and Playwright architecture",
+        "Creating and running your first test",
+        "Exploring Playwright Test Runner and configuration options"
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Beginner – Working with Locators and Elements",
+      "icon": "bi bi-cursor",
+      "items": [
+        "Locators: CSS, XPath, Text, Role, and advanced selectors",
+        "Interacting with input fields, buttons, dropdowns, and checkboxes",
+        "Handling alerts, frames, and multiple tabs",
+        "Mouse and keyboard actions",
+        "Dealing with dynamic elements and waits"
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Intermediate – Assertions, Waits & Debugging",
+      "icon": "bi bi-check2-square",
+      "items": [
+        "Using Playwright’s built-in assertion library",
+        "Waits and timeouts: automatic vs manual",
+        "Network request interception and mocking",
+        "Capturing screenshots, videos, and traces",
+        "Debugging Playwright tests effectively"
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Intermediate – Test Structure & Framework Design",
+      "icon": "bi bi-window-stack",
+      "items": [
+        "Organizing tests and using fixtures",
+        "Implementing Page Object Model (POM)",
+        "Parameterization and data-driven testing",
+        "Environment variables and test configuration",
+        "Custom helpers and reusable utilities"
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Advanced – Cross-Browser & Parallel Execution",
+      "icon": "bi bi-diagram-3",
+      "items": [
+        "Running tests across Chromium, Firefox, and WebKit",
+        "Headless vs headed browser testing",
+        "Parallel execution and sharding",
+        "Visual testing and screenshot comparison",
+        "Scaling tests using Docker and Playwright Cloud"
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Expert – CI/CD Integration & Real-World Projects",
+      "icon": "bi bi-robot",
+      "items": [
+        "Integrating Playwright tests into Jenkins and GitHub Actions",
+        "Building an end-to-end automation framework",
+        "Testing modern SPAs (React, Angular, Vue)",
+        "Generating HTML and Allure reports",
+        "Implementing best practices for production-grade automation"
+      ]
+    }
+  ],
+  "whatYouLearnData": [
+    {
+      "title": "Master Playwright Fundamentals",
+      "desc": "Understand Playwright architecture, locators, and automation principles.",
+      "icon": "bi bi-lightning-charge"
+    },
+    {
+      "title": "Automate Modern Web Apps",
+      "desc": "Create reliable automation for React, Angular, and Vue applications.",
+      "icon": "bi bi-browser-chrome"
+    },
+    {
+      "title": "Build Scalable Test Frameworks",
+      "desc": "Design maintainable frameworks using the Page Object Model pattern.",
+      "icon": "bi bi-window-stack"
+    },
+    {
+      "title": "Run Tests in Parallel & Across Browsers",
+      "desc": "Execute tests on Chromium, Firefox, and WebKit efficiently.",
+      "icon": "bi bi-cpu"
+    },
+    {
+      "title": "Integrate CI/CD Pipelines",
+      "desc": "Automate testing workflows with Jenkins, GitHub Actions, and Docker.",
+      "icon": "bi bi-diagram-3"
+    },
+    {
+      "title": "Work on Real Projects",
+      "desc": "Develop a complete Playwright automation project from scratch with reporting and CI/CD.",
+      "icon": "bi bi-robot"
+    }
+  ]
       }
       ,
+
+      {
+  "title": "TypeScript",
+  "desc": "Master testing in TypeScript — write reliable, maintainable, and high-quality tests using Jest, Mocha, and Playwright with TypeScript.",
+  "rating": 5.0,
+  "duration": "1 month",
+  "students": "10,556",
+  "img": "/images/courses/TypeScript_Testing.jpg",
+  "aboutData": {
+    "topic": "Master Testing with TypeScript — From Unit Tests to End-to-End Automation!",
+    "content1": "Learn to write clean and type-safe tests for modern web applications using TypeScript. This course covers everything from unit and integration testing to end-to-end automation using tools like Jest, Mocha, Chai, and Playwright — all powered by TypeScript.",
+    "content2": "You’ll start by understanding the testing fundamentals and environment setup in TypeScript, then move to writing tests for components, APIs, and full-stack applications. The course also includes advanced topics like mocking, coverage reports, CI/CD integration, and real-world automation projects to make you job-ready."
+  },
+  "courseContentData": [
+    {
+      "id": 1,
+      "title": "Beginner – TypeScript & Testing Fundamentals",
+      "icon": "bi bi-book",
+      "defaultOpen": true,
+      "items": [
+        "Introduction to testing concepts and test-driven development (TDD)",
+        "Setting up a TypeScript project with testing tools",
+        "TypeScript basics for testing",
+        "Writing your first test with Jest and Mocha",
+        "Assertions, matchers, and error handling in tests"
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Beginner – Unit Testing in TypeScript",
+      "icon": "bi bi-lightning-charge",
+      "items": [
+        "Testing functions, classes, and modules",
+        "Working with mocks and stubs",
+        "Testing async and promise-based functions",
+        "Code coverage reports and analysis",
+        "Best practices for writing clean unit tests"
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Intermediate – Integration Testing",
+      "icon": "bi bi-diagram-3",
+      "items": [
+        "Testing APIs and services using Supertest",
+        "Mocking databases and external APIs",
+        "Integration testing in Node.js and Express apps",
+        "Validating data flow across components",
+        "Error handling and logging tests"
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Intermediate – Frontend Testing with TypeScript",
+      "icon": "bi bi-window-stack",
+      "items": [
+        "Testing React and Next.js components using Jest and Testing Library",
+        "Snapshot testing and DOM assertions",
+        "Mocking browser APIs",
+        "Simulating user interactions and events",
+        "Accessibility and UI behavior testing"
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Advanced – End-to-End Testing with Playwright",
+      "icon": "bi bi-phone",
+      "items": [
+        "Setting up Playwright with TypeScript",
+        "Writing end-to-end test suites",
+        "Cross-browser and mobile testing",
+        "Test fixtures and parallel execution",
+        "Reporting and debugging automation tests"
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Expert – CI/CD, Test Optimization & Real Projects",
+      "icon": "bi bi-gear",
+      "items": [
+        "Integrating tests into CI/CD pipelines (GitHub Actions, Jenkins)",
+        "Optimizing test performance and speed",
+        "Maintaining scalable test suites",
+        "Real-world project: complete test automation for a web app",
+        "Test documentation and reporting best practices"
+      ]
+    }
+  ],
+  "whatYouLearnData": [
+    {
+      "title": "Master Testing in TypeScript",
+      "desc": "Write reliable and type-safe tests for any JavaScript or TypeScript project.",
+      "icon": "bi bi-lightning-charge"
+    },
+    {
+      "title": "Work with Modern Testing Tools",
+      "desc": "Use Jest, Mocha, Chai, and Playwright to cover all testing levels.",
+      "icon": "bi bi-tools"
+    },
+    {
+      "title": "Perform Unit, Integration & E2E Tests",
+      "desc": "Test APIs, databases, and full-stack apps efficiently.",
+      "icon": "bi bi-diagram-3"
+    },
+    {
+      "title": "Automate Frontend Testing",
+      "desc": "Test UI components and user flows with Playwright and Testing Library.",
+      "icon": "bi bi-window-stack"
+    },
+    {
+      "title": "Integrate with CI/CD Pipelines",
+      "desc": "Run automated tests across environments for continuous delivery.",
+      "icon": "bi bi-gear"
+    },
+    {
+      "title": "Work on Real Projects",
+      "desc": "Build, test, and deploy automation suites for production-grade web apps.",
+      "icon": "bi bi-briefcase"
+    }
+  ]
+}
+
+
+
+
+
+
 
     ],
   },
 
-  "Cyber Security": {
+  "Net Working": {
     mainCategoryDesc: "Defend the Digital World",
     subDesc: "Protect organizations from digital threats by mastering Network Security, Ethical Hacking, Cryptography, Firewalls, and Penetration Testing. Learn to secure systems, applications, and data against evolving cyber risks.",
     subHeading: "Build a rewarding career as a Cybersecurity Specialist, safeguarding the future of the digital-first economy.",
     mainImage: "/images/courses/Cyber_Security.jpg",
 
     courses: [
+      {
+  "title": "CCN",
+  "desc": "Master the fundamentals of computer networks — learn IP addressing, routing, switching, and real-world troubleshooting to build a strong foundation in networking.",
+  "rating": 5.0,
+  "duration": "1 month",
+  "students": "8,942",
+  "img": "/images/courses/CCN.jpg",
+  "aboutData": {
+    "topic": "Become a Networking Pro — Master Core Networking Concepts from the Ground Up!",
+    "content1": "This CCN course introduces you to the essential concepts of networking. You’ll understand how devices communicate, how data travels across networks, and how to configure routers and switches in real scenarios.",
+    "content2": "You’ll gain practical skills in IP addressing, subnetting, VLANs, and routing protocols. Each module is structured to bridge theory with real-world application — preparing you for both professional work environments and advanced certifications like CCNA."
+  },
+  "courseContentData": [
+    {
+      "id": 1,
+      "title": "Module 1 – Networking Fundamentals",
+      "icon": "bi bi-hdd-network",
+      "defaultOpen": true,
+      "items": [
+        "Introduction to Computer Networks",
+        "Types of Networks: LAN, WAN, MAN, WLAN",
+        "Network Devices: Routers, Switches, Hubs, and Access Points",
+        "Understanding the OSI and TCP/IP Models",
+        "Data Transmission Methods and Topologies"
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Module 2 – IP Addressing and Subnetting",
+      "icon": "bi bi-diagram-2",
+      "items": [
+        "IPv4 and IPv6 Addressing",
+        "Public vs Private IP Addresses",
+        "Subnetting and Supernetting Explained",
+        "Classful and Classless Addressing (CIDR)",
+        "Calculating Network and Broadcast Addresses"
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Module 3 – Switching Concepts",
+      "icon": "bi bi-switch",
+      "items": [
+        "Introduction to Ethernet and Switching",
+        "Understanding MAC Addresses",
+        "Configuring VLANs and Trunking",
+        "Inter-VLAN Communication",
+        "Spanning Tree Protocol (STP) Basics"
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Module 4 – Routing Concepts",
+      "icon": "bi bi-router",
+      "items": [
+        "What is Routing?",
+        "Static vs Dynamic Routing",
+        "Configuring Static Routes",
+        "Understanding Routing Protocols: RIP, OSPF, EIGRP",
+        "Troubleshooting Routing Issues"
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Module 5 – Network Security Fundamentals",
+      "icon": "bi bi-shield-lock",
+      "items": [
+        "Understanding Network Threats and Attacks",
+        "Securing Switches and Routers",
+        "Configuring Passwords and Access Control Lists (ACLs)",
+        "Firewall and VPN Basics",
+        "Best Practices for Network Security"
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Module 6 – Practical Networking & Troubleshooting",
+      "icon": "bi bi-tools",
+      "items": [
+        "Setting up a small office network (SOHO)",
+        "Using Cisco Packet Tracer for Simulations",
+        "Ping, Traceroute, and Other Network Tools",
+        "Troubleshooting Layer 1–3 Issues",
+        "Final Networking Project and Review"
+      ]
+    }
+  ],
+  "whatYouLearnData": [
+    {
+      "title": "Understand How Networks Work",
+      "desc": "Learn the core principles behind how data moves between devices across networks.",
+      "icon": "bi bi-hdd-network"
+    },
+    {
+      "title": "Master IP Addressing",
+      "desc": "Gain confidence in subnetting, IP planning, and addressing schemes for real-world networks.",
+      "icon": "bi bi-diagram-2"
+    },
+    {
+      "title": "Configure Routers and Switches",
+      "desc": "Learn to set up and manage network devices using Cisco standards.",
+      "icon": "bi bi-router"
+    },
+    {
+      "title": "Troubleshoot Network Issues",
+      "desc": "Use diagnostic tools to identify and fix common connectivity problems.",
+      "icon": "bi bi-tools"
+    },
+    {
+      "title": "Secure Network Devices",
+      "desc": "Implement ACLs, passwords, and security practices to protect network infrastructure.",
+      "icon": "bi bi-shield-lock"
+    },
+    {
+      "title": "Prepare for CCNA-Level Skills",
+      "desc": "Build a strong foundation for Cisco certifications and real-world networking jobs.",
+      "icon": "bi bi-award"
+    }
+  ]
+}
+
+      ,
       {
         title: "Cybersecurity",
         desc: "Empower your future with our Cybersecurity Training Program—master ethical hacking, network defense, and risk management.",
@@ -4444,7 +5860,7 @@ const coursesData = {
       ,
     ],
   },
-  "SEO": {
+  "Digital Marketing": {
     mainCategoryDesc: "Become a SEO Expert",
     subDesc: "Master the art of Search Engine Optimization (SEO) and learn how to drive organic traffic to your website. Understand the essential strategies for on-page and off-page SEO, keyword research, link building, and content optimization to rank higher on search engines.",
     subHeading: "Cybersecurity protects digital assets from cyber threats using advanced tools and practices. It ensures data privacy, integrity, and safe online operations.",
@@ -4452,7 +5868,7 @@ const coursesData = {
 
     courses: [
       {
-        title: "Digital Marketing",
+        title: "SEO",
         desc: "Master SEO, Social Media, Google Ads, and Analytics with our hands-on Digital Marketing program. Gain real-time skills to boost careers and drive business growth.",
         rating: 5.0,
         duration: "1 month",
@@ -4583,6 +5999,393 @@ const coursesData = {
           }
         ]
       }
+      ,
+      {
+  title: "Social Media Management",
+  desc: "Master social media marketing and management. Learn to grow brands, engage audiences, and drive results across major platforms like Instagram, Facebook, LinkedIn, and X (Twitter).",
+  rating: 4.8,
+  duration: "1 month",
+  students: "9,842",
+  img: "/images/courses/SMM.jpg",
+  aboutData: {
+    topic: "Become a Social Media Expert — Build, Grow, and Manage Brands That Stand Out Online!",
+    content1:
+      "This course teaches you how to manage social media platforms strategically — from planning content calendars to running paid ad campaigns. Learn how to analyze insights, optimize engagement, and maintain a consistent brand presence.",
+    content2:
+      "The Social Media Management course by Urbancode is designed for aspiring marketers, entrepreneurs, and creators who want to turn content into growth. You’ll master content strategy, platform algorithms, ad tools, and analytics to build effective campaigns that deliver measurable impact."
+  },
+  courseContentData: [
+    {
+      id: 1,
+      title: "Introduction to Social Media Management",
+      icon: "bi bi-info-circle",
+      defaultOpen: true,
+      items: [
+        "Overview of digital marketing and SMM",
+        "Understanding social media ecosystems",
+        "Popular platforms and their audiences",
+        "Organic vs paid social media",
+        "Role of a social media manager"
+      ]
+    },
+    {
+      id: 2,
+      title: "Building a Brand Presence",
+      icon: "bi bi-megaphone",
+      items: [
+        "Setting up business profiles on major platforms",
+        "Defining brand voice and visual identity",
+        "Creating a social media content strategy",
+        "Hashtags, trends, and post optimization",
+        "Community management and engagement"
+      ]
+    },
+    {
+      id: 3,
+      title: "Content Creation & Scheduling",
+      icon: "bi bi-camera-video",
+      items: [
+        "Types of content — images, videos, carousels, reels, and stories",
+        "Content planning and calendar management",
+        "Tools like Canva, Buffer, and Hootsuite",
+        "Storytelling and writing effective captions",
+        "Timing and frequency optimization"
+      ]
+    },
+    {
+      id: 4,
+      title: "Paid Advertising & Campaigns",
+      icon: "bi bi-cash-coin",
+      items: [
+        "Introduction to Meta Ads Manager",
+        "Creating ad sets and targeting audiences",
+        "Budget allocation and bidding strategies",
+        "Analyzing ad performance and ROI",
+        "Cross-platform ad integration"
+      ]
+    },
+    {
+      id: 5,
+      title: "Analytics & Performance Tracking",
+      icon: "bi bi-graph-up",
+      items: [
+        "Understanding reach, engagement, and conversion metrics",
+        "Using platform insights (Meta, LinkedIn, X, Instagram)",
+        "Google Analytics for social tracking",
+        "Monthly report creation and KPIs",
+        "Improving strategy through data-driven insights"
+      ]
+    },
+    {
+      id: 6,
+      title: "Strategy, Trends & Tools",
+      icon: "bi bi-lightbulb",
+      items: [
+        "Staying ahead of algorithm updates",
+        "Influencer collaborations and partnerships",
+        "Crisis management and online reputation handling",
+        "Emerging platforms (Threads, TikTok, YouTube Shorts)",
+        "Automation and AI tools for social media"
+      ]
+    }
+  ],
+  whatYouLearnData: [
+    {
+      title: "Develop Social Media Strategies",
+      desc: "Plan and execute social media strategies that align with brand goals.",
+      icon: "bi bi-bullseye"
+    },
+    {
+      title: "Create Engaging Content",
+      desc: "Design visuals and write posts that capture attention and drive interaction.",
+      icon: "bi bi-pencil-square"
+    },
+    {
+      title: "Run Paid Ad Campaigns",
+      desc: "Use Meta, LinkedIn, and Google Ads to reach targeted audiences effectively.",
+      icon: "bi bi-cash"
+    },
+    {
+      title: "Analyze Performance Metrics",
+      desc: "Track engagement, impressions, and conversions using analytics tools.",
+      icon: "bi bi-graph-up-arrow"
+    },
+    {
+      title: "Manage Online Communities",
+      desc: "Engage followers, handle feedback, and build long-term relationships.",
+      icon: "bi bi-chat-dots"
+    },
+    {
+      title: "Stay Ahead of Trends",
+      desc: "Learn to adapt quickly to new tools, algorithms, and audience behaviors.",
+      icon: "bi bi-lightning-charge"
+    }
+  ]
+      }
+      ,
+
+      {
+  title: "LinkedIn Marketing & Personal Branding",
+  desc: "Master LinkedIn marketing to build your professional brand, grow your network, and generate quality leads. Learn content strategy, analytics, and ad management to boost your visibility.",
+  rating: 4.8,
+  duration: "1 month",
+  students: "8,913",
+  img: "/images/courses/LinkedIn_Marketing.jpg",
+  aboutData: {
+    topic: "Master LinkedIn Marketing — Build Influence, Grow Your Network, and Generate Business Leads!",
+    content1:
+      "This course teaches you how to use LinkedIn strategically — from optimizing your profile to creating impactful content that attracts the right audience. You’ll learn how to build credibility, expand your reach, and generate professional opportunities.",
+    content2:
+      "The LinkedIn Marketing & Personal Branding course by Urbancode helps professionals, entrepreneurs, and marketers master LinkedIn’s tools for business growth. You’ll explore personal branding techniques, content optimization, analytics, and advertising to position yourself or your brand as an industry authority."
+  },
+  courseContentData: [
+    {
+      id: 1,
+      title: "Introduction to LinkedIn Marketing",
+      icon: "bi bi-info-circle",
+      defaultOpen: true,
+      items: [
+        "Understanding LinkedIn as a professional network",
+        "Why LinkedIn matters for personal and business branding",
+        "Types of LinkedIn users and goals",
+        "Overview of organic vs paid reach",
+        "LinkedIn algorithm basics"
+      ]
+    },
+    {
+      id: 2,
+      title: "Profile Optimization",
+      icon: "bi bi-person-badge",
+      items: [
+        "Creating a professional and optimized profile",
+        "Writing effective headlines and summaries",
+        "Profile banners, featured section, and portfolios",
+        "Optimizing for SEO and visibility",
+        "Building credibility through endorsements and recommendations"
+      ]
+    },
+    {
+      id: 3,
+      title: "Content Strategy & Growth",
+      icon: "bi bi-pencil-square",
+      items: [
+        "Content formats: text posts, carousels, videos, and articles",
+        "Crafting engaging hooks and storytelling",
+        "Hashtags, tagging, and timing strategies",
+        "Building consistent posting habits",
+        "Analyzing post engagement and insights"
+      ]
+    },
+    {
+      id: 4,
+      title: "Networking & Lead Generation",
+      icon: "bi bi-people",
+      items: [
+        "Finding and connecting with the right audience",
+        "Relationship building through comments and DMs",
+        "Generating inbound leads through content",
+        "LinkedIn Sales Navigator essentials",
+        "B2B outreach and conversion strategies"
+      ]
+    },
+    {
+      id: 5,
+      title: "Company Page Management",
+      icon: "bi bi-building",
+      items: [
+        "Creating and managing company pages",
+        "Building a brand presence for organizations",
+        "Employee advocacy and engagement",
+        "Cross-posting and consistency across teams",
+        "Analyzing company insights and follower growth"
+      ]
+    },
+    {
+      id: 6,
+      title: "LinkedIn Ads & Analytics",
+      icon: "bi bi-graph-up",
+      items: [
+        "Introduction to LinkedIn Campaign Manager",
+        "Types of ad campaigns and objectives",
+        "Targeting, budgeting, and bidding strategies",
+        "Performance tracking and ROI analysis",
+        "Optimizing campaigns for better engagement"
+      ]
+    }
+  ],
+  whatYouLearnData: [
+    {
+      title: "Optimize Your Profile",
+      desc: "Create a strong, search-optimized LinkedIn profile that attracts recruiters and clients.",
+      icon: "bi bi-person-check"
+    },
+    {
+      title: "Build a Personal Brand",
+      desc: "Position yourself as an expert through authentic and consistent content.",
+      icon: "bi bi-star"
+    },
+    {
+      title: "Grow Your Network",
+      desc: "Connect with professionals, founders, and potential clients in your niche.",
+      icon: "bi bi-people"
+    },
+    {
+      title: "Generate Leads & Opportunities",
+      desc: "Use content and outreach strategies to bring in high-quality business leads.",
+      icon: "bi bi-briefcase"
+    },
+    {
+      title: "Run LinkedIn Ads",
+      desc: "Plan, create, and analyze paid campaigns for brand visibility and conversions.",
+      icon: "bi bi-bullseye"
+    },
+    {
+      title: "Track and Improve Performance",
+      desc: "Use LinkedIn Analytics to measure impact, reach, and engagement.",
+      icon: "bi bi-graph-up-arrow"
+    }
+  ]
+      }
+      ,
+
+      {
+  title: "Meta Campaigns",
+  desc: "Learn how to create, manage, and optimize ad campaigns on Facebook and Instagram using Meta Ads Manager. Drive traffic, leads, and conversions through data-backed advertising strategies.",
+  rating: 4.9,
+  duration: "1 month",
+  students: "10,472",
+  img: "/images/courses/Meta_Campaigns.jpg",
+  aboutData: {
+    topic: "Master Meta Campaigns — Build High-Converting Facebook & Instagram Ads!",
+    content1:
+      "This course teaches you how to plan, launch, and optimize paid ad campaigns using Meta Ads Manager. Learn to reach the right audience, design effective creatives, and analyze campaign data to maximize ROI.",
+    content2:
+      "The Meta Campaigns course by Urbancode is perfect for digital marketers, entrepreneurs, and freelancers looking to scale their online presence. You’ll explore every part of Meta advertising — from strategy to ad creation, audience segmentation, budgeting, analytics, and retargeting."
+  },
+  courseContentData: [
+    {
+      id: 1,
+      title: "Introduction to Meta Advertising",
+      icon: "bi bi-info-circle",
+      defaultOpen: true,
+      items: [
+        "Overview of Facebook and Instagram marketing",
+        "Understanding Meta ecosystem and Ads Manager",
+        "Ad objectives and campaign hierarchy (Campaign → Ad Set → Ad)",
+        "Organic vs Paid strategy",
+        "Compliance and Meta ad policies"
+      ]
+    },
+    {
+      id: 2,
+      title: "Setting Up Meta Business Suite",
+      icon: "bi bi-gear",
+      items: [
+        "Creating and managing a Business Manager account",
+        "Connecting Facebook Page and Instagram account",
+        "Setting up Ad Accounts and Payment Methods",
+        "Facebook Pixel and Meta Conversion API setup",
+        "Access and permissions management"
+      ]
+    },
+    {
+      id: 3,
+      title: "Audience Targeting & Strategy",
+      icon: "bi bi-people",
+      items: [
+        "Understanding Core, Custom, and Lookalike Audiences",
+        "Geo, demographic, and interest-based targeting",
+        "Behavioral and retargeting strategies",
+        "Building audience personas",
+        "Ad placement optimization across Meta platforms"
+      ]
+    },
+    {
+      id: 4,
+      title: "Creating Effective Ad Campaigns",
+      icon: "bi bi-megaphone",
+      items: [
+        "Choosing the right campaign objective (Traffic, Leads, Conversions, Awareness)",
+        "Designing ad creatives and copywriting best practices",
+        "A/B testing creatives and CTAs",
+        "Carousel, Video, and Story ad formats",
+        "Mobile-first and performance-based design principles"
+      ]
+    },
+    {
+      id: 5,
+      title: "Budgeting & Bidding",
+      icon: "bi bi-cash-stack",
+      items: [
+        "Setting daily and lifetime budgets",
+        "Understanding CPM, CPC, and CPA models",
+        "Bid strategies: lowest cost vs cost cap",
+        "Campaign scheduling and pacing",
+        "Budget optimization for scaling"
+      ]
+    },
+    {
+      id: 6,
+      title: "Analytics & Optimization",
+      icon: "bi bi-graph-up",
+      items: [
+        "Tracking performance using Meta Ads Manager",
+        "Key metrics: CTR, CPA, ROAS, and engagement rate",
+        "Custom dashboards and reports",
+        "Retargeting and lookalike campaigns",
+        "Improving ad quality and relevance score"
+      ]
+    },
+    {
+      id: 7,
+      title: "Advanced Campaign Strategies",
+      icon: "bi bi-lightning-charge",
+      items: [
+        "Dynamic product ads and catalog sales",
+        "Lead generation campaigns with instant forms",
+        "Retargeting using Pixel data",
+        "Automated rules and scaling strategies",
+        "Integrating WhatsApp, Messenger, and website conversions"
+      ]
+    }
+  ],
+  whatYouLearnData: [
+    {
+      title: "Understand Meta Ad Ecosystem",
+      desc: "Learn how Facebook and Instagram Ads Manager works and structure campaigns efficiently.",
+      icon: "bi bi-diagram-3"
+    },
+    {
+      title: "Create Winning Ad Campaigns",
+      desc: "Design and run high-converting campaigns that attract the right audience.",
+      icon: "bi bi-megaphone"
+    },
+    {
+      title: "Target the Right Audience",
+      desc: "Use advanced targeting and retargeting strategies to maximize ROI.",
+      icon: "bi bi-bullseye"
+    },
+    {
+      title: "Manage Budgets & Bids",
+      desc: "Plan, allocate, and optimize ad spending for better cost efficiency.",
+      icon: "bi bi-cash"
+    },
+    {
+      title: "Analyze Performance",
+      desc: "Use analytics tools to measure and improve campaign success.",
+      icon: "bi bi-graph-up-arrow"
+    },
+    {
+      title: "Run Advanced Campaigns",
+      desc: "Leverage dynamic ads, automation, and conversion tracking for pro-level campaigns.",
+      icon: "bi bi-lightbulb"
+    }
+  ]
+      }
+
+
+
+
 
       ,
 

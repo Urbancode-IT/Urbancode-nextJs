@@ -10,21 +10,21 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 const categories = [
   "Programming Languages",
-  "Web Development",
+  "Web and App Development",
   "UI UX Designing",
   "Cloud and DevOps",
-  "Data Analytics",
+  // "Data Analytics",
   "Data Science",
   "Database",
   "Data Visualization",
   "Software Testing",
-  "Cyber Security",
-  "SEO",
+  "Net Working",
+  "Digital Marketing",
   "Health Care",
-  "Languages",
-  "English Proficiency",
+  // "Languages",
+  // "English Proficiency",
   "CRM",
-  "App Development",
+  // "App Development",
 ];
 
 const slugify = (name) => name.toLowerCase().replace(/\s+/g, "-");

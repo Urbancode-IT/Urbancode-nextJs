@@ -48,8 +48,8 @@
 }
 
 .nav-links a {
-  font-size: 15px;
-  font-weight: 200;
+  font-size: 16px;
+  font-weight: 400;
   color: #000000;
   text-decoration: none;
   letter-spacing: -0.02em;
@@ -61,8 +61,8 @@
 
 }
 .nav-links button{
-  font-size: 15px;
-  font-weight: 200;
+  font-size: 16px;
+  font-weight: 400;
   color: #000000;
   text-decoration: none;
   letter-spacing: -0.02em;
@@ -117,7 +117,7 @@
   }
 
   .nav-links a {
-    font-size: 14px;
+    font-size: 16px;
   }
 
   .navbar.container {
@@ -197,17 +197,17 @@
   }
 
    .nav-links a {
-    font-size: 18px;     /* increase nav text size */
+    font-size: 16px;     /* increase nav text size */
     line-height: 22px;
-     font-weight: 100;   /* keep vertical spacing balanced */
+     font-weight: 400;   /* keep vertical spacing balanced */
   }
 
   .navbar-brand {
     width: 230px;        /* slightly larger logo if needed */
   }
   .nav-links button{
-        font-size: 18px;
-        font-weight: 10;
+        font-size: 16px;
+        font-weight: 400;
   }
 }
 
@@ -224,7 +224,7 @@
   cursor: pointer;
   font-size: 16px;
   color: inherit;
-  font-weight: 200;
+  font-weight: 400;
   transition: color 0.3s;
 }
 

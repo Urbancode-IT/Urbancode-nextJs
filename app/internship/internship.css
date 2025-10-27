@@ -63,7 +63,7 @@
         }
         .internship-page .internship-subtext {
             font-weight: 400;
-            font-size: 12px;
+            font-size: 16px;
             line-height: 15px;
             letter-spacing: -0.02em;
             color: #000;
@@ -372,7 +372,7 @@
             }
             
             .internship-page .internship-subtext {
-                font-size: 14px;
+                font-size: 16px;
                 max-width: 600px;
             }
             

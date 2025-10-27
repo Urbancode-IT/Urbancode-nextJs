@@ -26,12 +26,12 @@ const Courses = () => {
       link:"/courses/programming-languages"
     },
     {
-      title: 'Data Analytics & Visualization',
+      title: 'Data Science & Visualization',
       description:
         'Turn raw data into powerful insights with our Data Analytics courses. Learn Excel, SQL, Power BI, and Python for real-world applications. Transform complex datasets into impactful visuals with Tableau, Power BI, and Python visualization tools. Learn to design dashboards, graphs, and reports that drive clarity and business intelligence.',
       courses: '4 Courses',
       img: '/images/home/img2.webp',
-      link:"/courses/data-analytics"
+      link:"/courses/data-visualization"
     },
     {
       title: 'Software Testing',
