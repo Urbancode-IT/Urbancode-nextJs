@@ -4,7 +4,7 @@
 }
 
 .read_revire_text {
-  color: var(--color-primary, #28a745);
+  color: var(--color-primary);
 }
 
 .carousel-track {
