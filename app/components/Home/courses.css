@@ -90,22 +90,22 @@
   transition: background-color 0.4s ease;
 }
 
-.custom-card:hover {
+.custom-cardhome:hover {
   background-color: #8b8a8a;
 }
 
-.custom-card:hover .card-img-top {
+.custom-cardhome:hover .card-img-top {
   transform: scale(1.08);
   filter: grayscale(0%);
 }
 
-.custom-card:hover .careerGoalBtn {
+.custom-cardhome:hover .careerGoalBtn {
   background-color: #2aab7d!important;
   opacity: 0.8;
 }
-.custom-card:hover .careerCardTitleText,
-.custom-card:hover .careerCardDescription {
-  color: #fff!important;
+.custom-cardhome:hover .careerCardTitleText,
+.custom-cardhome:hover .careerCardDescription {
+  color: #ffffff!important;
 }
 
 
