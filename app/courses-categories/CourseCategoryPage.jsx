@@ -48,7 +48,7 @@ const courses = [
     title: "Cloud & DevOps",
     desc: "Master the tools and practices that power modern IT infrastructures. Learn cloud platforms, CI/CD pipelines, automation, and containerization.",
     img: cloudImg,
-    link: "/courses/cloud-devops",
+    link: "/courses/cloud-and-devops",
     badge: "3 Courses",
   },
   {
@@ -72,13 +72,13 @@ const courses = [
     link: "/courses/database",
     badge: "4 Courses",
   },
-  {
-    title: "Data Visualization",
-    desc: "Turn complex data into clear, meaningful insights with charts, dashboards, and storytelling techniques.",
-    img: dataVisualImg,
-    link: "/courses/data-visualization",
-    badge: "4 Courses",
-  },
+  // {
+  //   title: "Data Visualization",
+  //   desc: "Turn complex data into clear, meaningful insights with charts, dashboards, and storytelling techniques.",
+  //   img: dataVisualImg,
+  //   link: "/courses/data-visualization",
+  //   badge: "4 Courses",
+  // },
   {
     title: "Software Testing",
     desc: "Gain expertise in Manual and Automation Testing tools and techniques.",
@@ -104,23 +104,23 @@ const courses = [
     title: "Health Care",
     desc: "Step into Healthcare Careers with ICD-10, CPT, and HCPCS coding systems through practical training.",
     img: medicalCodingImg,
-    link: "/courses/medical-coding",
+    link: "/courses/health-care",
     badge: "3 Courses",
   },
-  {
-    title: "Languages",
-    desc: "Learn to speak, read, and write with confidence in global languages like English, Spanish, French & Japanese.",
-    img: languagesImg,
-    link: "/courses/languages",
-    badge: "5 Courses",
-  },
-  {
-    title: "English Proficiency Exams",
-    desc: "Prepare for IELTS, TOEFL, and more with expert guidance and practice sessions.",
-    img: englishImg,
-    link: "/courses/english-proficiency-exams",
-    badge: "6 Courses",
-  },
+  // {
+  //   title: "Languages",
+  //   desc: "Learn to speak, read, and write with confidence in global languages like English, Spanish, French & Japanese.",
+  //   img: languagesImg,
+  //   link: "/courses/languages",
+  //   badge: "5 Courses",
+  // },
+  // {
+  //   title: "English Proficiency Exams",
+  //   desc: "Prepare for IELTS, TOEFL, and more with expert guidance and practice sessions.",
+  //   img: englishImg,
+  //   link: "/courses/english-proficiency-exams",
+  //   badge: "6 Courses",
+  // },
   {
     title: "CRM",
     desc: "Learn to manage customer data, track leads, and automate sales processes with CRM systems.",
@@ -128,13 +128,13 @@ const courses = [
     link: "/courses/crm",
     badge: "4 Courses",
   },
-  {
-    title: "App Development",
-    desc: "Create impactful mobile and desktop apps combining creativity and technology.",
-    img: appDevImg,
-    link: "/courses/app-development",
-    badge: "5 Courses",
-  },
+  // {
+  //   title: "App Development",
+  //   desc: "Create impactful mobile and desktop apps combining creativity and technology.",
+  //   img: appDevImg,
+  //   link: "/courses/app-development",
+  //   badge: "5 Courses",
+  // },
 ];
 
 const CourseCategoryPage = () => {

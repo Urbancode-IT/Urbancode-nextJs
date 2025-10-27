@@ -1931,7 +1931,7 @@ const coursesData = {
     ],
   },
 
-  "Cloud & DevOps": {
+  "Cloud and DevOps": {
     mainCategoryDesc: "Cloud & DevOps Mastery",
     subDesc: "Gain in-depth expertise in Cloud Computing and DevOps practices to streamline development and operations. Learn AWS, Azure, Google Cloud, Docker, Kubernetes, Jenkins, and CI/CD pipelines to design scalable, secure, and automated solutions.",
     subHeading: "Become industry-ready with the skills to drive cloud-native development, deployment automation, and IT infrastructure management.",

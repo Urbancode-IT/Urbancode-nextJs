@@ -12,7 +12,7 @@ const categories = [
   "Programming Languages",
   "Web Development",
   "UI UX Designing",
-  "Cloud & DevOps",
+  "Cloud and DevOps",
   "Data Analytics",
   "Data Science",
   "Database",
