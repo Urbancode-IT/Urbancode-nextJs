@@ -4983,7 +4983,7 @@ const coursesData = {
   rating: 5.0,
   duration: "1 month",
   students: "11,200",
-  img: "/images/courses/Kidz_WebDev.jpg",
+  img: "/images/courses/Kidz_WebDev.webp",
   aboutData: {
     topic: "Build Your First Website — Fun, Creative, and Interactive!",
     content1: "This course helps kids learn how websites are made from scratch. Through hands-on lessons in HTML, CSS, and beginner JavaScript, they’ll design their own webpages, add animations, and bring creative ideas to life.",
@@ -5077,7 +5077,7 @@ const coursesData = {
   rating: 5.0,
   duration: "1 month",
   students: "10,950",
-  img: "/images/courses/Kidz_PythonCore.jpg",
+  img: "/images/courses/Kidz_PythonCore.webp",
   aboutData: {
     topic: "Learn Python the Fun Way — Code, Create, and Explore!",
     content1: "Python Core is designed to help kids start coding with one of the world’s most popular programming languages. Through hands-on activities, they’ll learn how to use Python to draw shapes, solve problems, and build simple apps.",
@@ -5171,7 +5171,7 @@ const coursesData = {
   rating: 5.0,
   duration: "1 month",
   students: "9,860",
-  img: "/images/courses/Kidz_AdvancedPython.jpg",
+  img: "/images/courses/Kidz_AdvancedPython.webp",
   aboutData: {
     topic: "Go Beyond Basics — Build Smarter, Cooler Python Projects!",
     content1: "Advanced Python helps kids who already know the basics to level up their coding power. They’ll explore topics like lists, dictionaries, functions, and file handling — all through interactive games and creative coding challenges.",
@@ -5266,7 +5266,7 @@ const coursesData = {
   rating: 5.0,
   duration: "1 month",
   students: "8,940",
-  img: "/images/courses/Kidz_CProgramming.jpg",
+  img: "/images/courses/Kidz_CProgramming.webp",
   aboutData: {
     topic: "Learn the Language Behind Every Great Program!",
     content1: "C Programming introduces kids to the foundation of coding used in modern technology. Through colorful examples and fun exercises, they’ll understand how computers think, calculate, and make decisions.",
@@ -5361,7 +5361,7 @@ const coursesData = {
   rating: 5.0,
   duration: "1 month",
   students: "8,520",
-  img: "/images/courses/Kidz_CPP.jpg",
+  img: "/images/courses/Kidz_CPP.webp",
   aboutData: {
     topic: "Code Smarter — Build Logic, Games, and Real Programs with C++!",
     content1: "C++ introduces kids to the world of structured and object-oriented programming in a simple, engaging way. They’ll learn how to code step-by-step using variables, loops, and functions while building small projects.",
@@ -5455,7 +5455,7 @@ const coursesData = {
   rating: 5.0,
   duration: "1 month",
   students: "7,780",
-  img: "/images/courses/Kidz_SQL.jpg",
+  img: "/images/courses/Kidz_SQL.webp",
   aboutData: {
     topic: "Learn How Apps and Games Store Their Data!",
     content1: "SQL for Kids introduces the idea of databases in a fun, visual way. Kids learn how to organize and find information — just like apps, websites, and games do behind the scenes.",
@@ -5549,7 +5549,7 @@ const coursesData = {
   rating: 5.0,
   duration: "1 month",
   students: "11,230",
-  img: "/images/courses/Kidz_GraphicDesign.jpg",
+  img: "/images/courses/Kidz_GraphicDesign.webp",
   aboutData: {
     topic: "Design Like a Pro — Create Art That Tells a Story!",
     content1: "This course introduces kids to the colorful world of graphic design. They’ll explore shapes, colors, and typography while learning to express their creativity using digital tools.",
@@ -5643,7 +5643,7 @@ const coursesData = {
   rating: 5.0,
   duration: "1 month",
   students: "10,870",
-  img: "/images/courses/Kidz_AI_ML.jpg",
+  img: "/images/courses/Kidz_AI_ML.webp",
   aboutData: {
     topic: "Meet the World of Smart Machines — Learn How AI Works!",
     content1: "This course introduces kids to the amazing world of Artificial Intelligence and Machine Learning — in the simplest way possible. They’ll understand how computers recognize images, play games, and make predictions.",
