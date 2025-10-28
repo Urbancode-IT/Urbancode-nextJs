@@ -138,65 +138,7 @@ const coursesData = {
         "Transaction management"
       ]
     },
-    {
-      id: 5,
-      title: "Intermediate – Web Development with Servlets & JSP",
-      icon: "bi bi-bar-chart-line",
-      items: [
-        "Introduction to Java EE and web architecture",
-        "Servlet lifecycle and configuration",
-        "Request and response handling",
-        "JSP scripting and directives",
-        "Session management and cookies"
-      ]
-    },
-    {
-      id: 6,
-      title: "Intermediate – Frameworks and ORM",
-      icon: "bi bi-window-stack",
-      items: [
-        "Introduction to Hibernate and JPA",
-        "Object-relational mapping (ORM)",
-        "Annotations and configuration",
-        "CRUD operations using Hibernate",
-        "Integration with Spring Boot"
-      ]
-    },
-    {
-      id: 7,
-      title: "Expert – Spring & Spring Boot Development",
-      icon: "bi bi-diagram-3",
-      items: [
-        "Spring Core and Dependency Injection",
-        "Spring MVC architecture",
-        "Building RESTful APIs",
-        "Spring Boot auto-configuration",
-        "Spring Data JPA and testing"
-      ]
-    },
-    {
-      id: 8,
-      title: "Expert – Microservices and Advanced Topics",
-      icon: "bi bi-robot",
-      items: [
-        "Microservices architecture with Spring Boot",
-        "Service discovery (Eureka, API Gateway)",
-        "Security and authentication with Spring Security",
-        "Docker and containerization",
-        "CI/CD and deployment best practices"
-      ]
-    },
-    {
-      id: 9,
-      title: "Expert – Enterprise Integration & Capstone",
-      icon: "bi bi-cpu",
-      items: [
-        "Integration with third-party APIs",
-        "Performance tuning and optimization",
-        "Testing and debugging enterprise apps",
-        "Final project – Build a full-stack Java application"
-      ]
-    }
+
   ],
   whatYouLearnData: [
     {
@@ -361,62 +303,7 @@ const coursesData = {
               "Unit testing and debugging",
             ],
           },
-          {
-            id: 5,
-            title: "Intermediate – Data Analysis with Python",
-            icon: "bi bi-bar-chart-line",
-            items: [
-              "Introduction to NumPy and Pandas",
-              "Data manipulation and exploration",
-              "Statistical analysis and modeling",
-              "Visualization with Matplotlib and Seaborn",
-              "Machine learning basics",
-            ],
-          },
-          {
-            id: 6,
-            title: "Intermediate – Web Development with Python",
-            icon: "bi bi-window-stack",
-            items: [
-              "Introduction to Flask and Django frameworks",
-              "Building web apps with templates and forms",
-              "Database integration using SQLAlchemy",
-              "API development and deployment",
-            ],
-          },
-          {
-            id: 7,
-            title: "Expert – Advanced Web Development",
-            icon: "bi bi-diagram-3",
-            items: [
-              "Microservices architecture",
-              "Authentication and authorization",
-              "Security best practices",
-              "DevOps and CI/CD implementation",
-            ],
-          },
-          {
-            id: 8,
-            title: "Expert – Advanced Data Science",
-            icon: "bi bi-robot",
-            items: [
-              "Deep learning with TensorFlow and PyTorch",
-              "Natural Language Processing (NLP)",
-              "Computer vision and image processing",
-              "Text analysis and mining",
-            ],
-          },
-          {
-            id: 9,
-            title: "Expert – Advanced System Programming",
-            icon: "bi bi-cpu",
-            items: [
-              "Concurrency and parallelism",
-              "CPython internals and optimization",
-              "Python for embedded systems",
-              "Network programming and sockets",
-            ],
-          },
+
         ],
         whatYouLearnData: [
           {
@@ -514,51 +401,7 @@ const coursesData = {
         "Pointers with arrays and functions"
       ]
     },
-    {
-      id: 5,
-      title: "Advanced – Structures and File Handling",
-      icon: "bi bi-file-earmark-text",
-      items: [
-        "Structures and unions",
-        "Working with files (read, write, append)",
-        "Command-line arguments",
-        "Error handling in C"
-      ]
-    },
-    {
-      id: 6,
-      title: "Advanced – Introduction to C++",
-      icon: "bi bi-code-slash",
-      items: [
-        "Differences between C and C++",
-        "Basic syntax, I/O streams, and namespaces",
-        "Functions and function overloading",
-        "Introduction to classes and objects"
-      ]
-    },
-    {
-      id: 7,
-      title: "Expert – Object-Oriented Programming (OOP)",
-      icon: "bi bi-diagram-3",
-      items: [
-        "Encapsulation, inheritance, and polymorphism",
-        "Constructors and destructors",
-        "Operator and function overloading",
-        "Friend functions and classes",
-        "Virtual functions and abstract classes"
-      ]
-    },
-    {
-      id: 8,
-      title: "Expert – Advanced Concepts and Project",
-      icon: "bi bi-award",
-      items: [
-        "Templates and exception handling",
-        "File handling in C++",
-        "STL (Vectors, Lists, Maps, and Iterators)",
-        "Mini project: Console-based application in C++"
-      ]
-    }
+ 
   ],
   whatYouLearnData: [
     {
@@ -657,61 +500,7 @@ const coursesData = {
         "Collision handling and optimization"
       ]
     },
-    {
-      id: 5,
-      title: "Intermediate – Trees and Binary Search Trees",
-      icon: "bi bi-tree",
-      items: [
-        "Binary trees and traversals (DFS, BFS)",
-        "Binary Search Trees (BST) operations",
-        "Tree recursion and height-balanced trees",
-        "Applications in searching and sorting"
-      ]
-    },
-    {
-      id: 6,
-      title: "Advanced – Heaps and Graphs",
-      icon: "bi bi-diagram-2",
-      items: [
-        "Heap data structure and heap sort",
-        "Priority queue applications",
-        "Graph representations (adjacency list/matrix)",
-        "BFS, DFS, shortest path (Dijkstra, Bellman-Ford)"
-      ]
-    },
-    {
-      id: 7,
-      title: "Advanced – Sorting & Searching Algorithms",
-      icon: "bi bi-search",
-      items: [
-        "Merge sort, quick sort, and heap sort",
-        "Binary search and its variations",
-        "Counting sort and radix sort",
-        "Search optimizations and edge cases"
-      ]
-    },
-    {
-      id: 8,
-      title: "Expert – Dynamic Programming",
-      icon: "bi bi-cpu",
-      items: [
-        "Recursion to DP transition",
-        "Memoization and tabulation techniques",
-        "Classic DP problems (Knapsack, LCS, LIS, etc.)",
-        "Optimization and overlapping subproblems"
-      ]
-    },
-    {
-      id: 9,
-      title: "Expert – Advanced Topics & Interview Prep",
-      icon: "bi bi-award",
-      items: [
-        "Greedy algorithms and backtracking",
-        "Bit manipulation techniques",
-        "Divide and conquer strategies",
-        "Mock interview problems and contests"
-      ]
-    }
+
   ],
   whatYouLearnData: [
     {
@@ -809,50 +598,7 @@ const coursesData = {
         "z-index and stacking context"
       ]
     },
-    {
-      id: 5,
-      title: "Advanced – Layout Design with Flexbox and Grid",
-      icon: "bi bi-layout-text-sidebar-reverse",
-      items: [
-        "Introduction to Flexbox",
-        "Flex container and item properties",
-        "Building responsive layouts with CSS Grid",
-        "Combining Flexbox and Grid for advanced designs"
-      ]
-    },
-    {
-      id: 6,
-      title: "Advanced – Responsive Web Design",
-      icon: "bi bi-phone",
-      items: [
-        "Introduction to responsive design",
-        "Media queries and breakpoints",
-        "Relative units (%, em, rem, vh, vw)",
-        "Building mobile-first layouts"
-      ]
-    },
-    {
-      id: 7,
-      title: "Expert – Advanced Styling Techniques",
-      icon: "bi bi-stars",
-      items: [
-        "CSS transitions and animations",
-        "Pseudo-classes and pseudo-elements",
-        "CSS variables and custom properties",
-        "Working with shadows, gradients, and filters"
-      ]
-    },
-    {
-      id: 8,
-      title: "Expert – Project & Modern Practices",
-      icon: "bi bi-award",
-      items: [
-        "Build a personal portfolio website",
-        "Responsive landing page project",
-        "Cross-browser compatibility",
-        "Modern CSS tools and best practices"
-      ]
-    }
+  
   ],
   whatYouLearnData: [
     {
@@ -968,53 +714,7 @@ const coursesData = {
         "Deploying Java web apps on Tomcat"
       ]
     },
-    {
-      id: 5,
-      title: "Advanced – Spring Framework & Hibernate",
-      icon: "bi bi-diagram-3",
-      items: [
-        "Spring Core and Dependency Injection",
-        "Spring Boot setup and auto-configuration",
-        "Building RESTful APIs with Spring Boot",
-        "ORM with Hibernate and JPA",
-        "Spring Data JPA and query methods"
-      ]
-    },
-    {
-      id: 6,
-      title: "Advanced – Front-End Integration",
-      icon: "bi bi-window-stack",
-      items: [
-        "Advanced JavaScript and ES6 concepts",
-        "Introduction to React.js for front-end UI",
-        "Connecting React with REST APIs",
-        "State management and component-based architecture",
-        "Responsive UI design and deployment"
-      ]
-    },
-    {
-      id: 7,
-      title: "Expert – DevOps & Deployment",
-      icon: "bi bi-cloud-upload",
-      items: [
-        "Build automation using Maven and Gradle",
-        "Introduction to Docker and containerization",
-        "Version control and CI/CD pipelines",
-        "Deploying Java apps on AWS / cloud platforms",
-        "Monitoring and maintaining applications"
-      ]
-    },
-    {
-      id: 8,
-      title: "Expert – Capstone Project",
-      icon: "bi bi-award",
-      items: [
-        "Build a complete full stack project (React + Spring Boot + MySQL)",
-        "Implement authentication and authorization",
-        "Host and deploy your project online",
-        "Final presentation and portfolio building"
-      ]
-    }
+ 
   ],
   whatYouLearnData: [
     {
@@ -1114,54 +814,7 @@ const coursesData = {
         "Route guards and authentication"
       ]
     },
-    {
-      id: 5,
-      title: "Advanced – Forms and Validation",
-      icon: "bi bi-ui-checks-grid",
-      items: [
-        "Template-driven forms",
-        "Reactive forms and form groups",
-        "Custom form validation",
-        "Error handling and dynamic feedback",
-        "Handling form submissions with APIs"
-      ]
-    },
-    {
-      id: 6,
-      title: "Advanced – HTTP and APIs",
-      icon: "bi bi-cloud-arrow-down",
-      items: [
-        "Using HttpClient for API communication",
-        "GET, POST, PUT, DELETE requests",
-        "Handling observables and async data",
-        "Error handling and interceptors",
-        "Integrating RESTful APIs"
-      ]
-    },
-    {
-      id: 7,
-      title: "Expert – Advanced Features",
-      icon: "bi bi-layers",
-      items: [
-        "Lifecycle hooks and change detection",
-        "Custom pipes and directives",
-        "Angular Material and UI components",
-        "State management with RxJS and NgRx",
-        "Optimizing performance in large applications"
-      ]
-    },
-    {
-      id: 8,
-      title: "Expert – Project and Deployment",
-      icon: "bi bi-award",
-      items: [
-        "Building a real-world Angular project",
-        "Integrating backend APIs",
-        "Environment configuration for production",
-        "Deploying Angular apps to Firebase or Netlify",
-        "Final project presentation"
-      ]
-    }
+
   ],
   whatYouLearnData: [
     {
@@ -1262,54 +915,7 @@ const coursesData = {
         "Connecting MongoDB with Node.js"
       ]
     },
-    {
-      id: 5,
-      title: "Advanced – Angular Frontend Development",
-      icon: "bi bi-window-stack",
-      items: [
-        "Creating Angular components and modules",
-        "Data binding and dependency injection",
-        "Working with forms and validations",
-        "Routing and navigation",
-        "Integrating REST APIs with Angular services"
-      ]
-    },
-    {
-      id: 6,
-      title: "Advanced – Integration and Authentication",
-      icon: "bi bi-link-45deg",
-      items: [
-        "Connecting frontend with backend",
-        "User registration and login",
-        "JWT-based authentication and authorization",
-        "Role-based access control",
-        "Error handling between client and server"
-      ]
-    },
-    {
-      id: 7,
-      title: "Expert – Deployment and DevOps Basics",
-      icon: "bi bi-cloud-upload",
-      items: [
-        "Environment variables and configuration",
-        "Preparing production builds",
-        "Hosting backend on Render or AWS",
-        "Deploying Angular frontend on Netlify or Firebase",
-        "Connecting domain and SSL setup"
-      ]
-    },
-    {
-      id: 8,
-      title: "Expert – Capstone Project",
-      icon: "bi bi-award",
-      items: [
-        "Building a complete MEAN stack application",
-        "API integration with user authentication",
-        "Admin dashboard and analytics",
-        "Testing and debugging full-stack workflows",
-        "Final project deployment and presentation"
-      ]
-    }
+
   ],
   whatYouLearnData: [
     {
@@ -1409,54 +1015,7 @@ const coursesData = {
         "Connecting MongoDB to Node.js apps"
       ]
     },
-    {
-      id: 5,
-      title: "Advanced – React.js Frontend Development",
-      icon: "bi bi-window-stack",
-      items: [
-        "Understanding React components and JSX",
-        "State, props, and component lifecycle",
-        "Hooks: useState, useEffect, and custom hooks",
-        "Routing with React Router",
-        "Building reusable and dynamic UI"
-      ]
-    },
-    {
-      id: 6,
-      title: "Advanced – Integration and API Handling",
-      icon: "bi bi-link-45deg",
-      items: [
-        "Connecting React frontend with Express backend",
-        "Fetching data using Axios and Fetch API",
-        "Handling authentication and protected routes",
-        "Managing global state with Context API",
-        "Error handling and data synchronization"
-      ]
-    },
-    {
-      id: 7,
-      title: "Expert – Authentication & Security",
-      icon: "bi bi-shield-lock",
-      items: [
-        "JWT-based authentication flow",
-        "Password hashing with bcrypt",
-        "Securing APIs and frontend routes",
-        "Role-based access control",
-        "Best practices for production security"
-      ]
-    },
-    {
-      id: 8,
-      title: "Expert – Deployment & Capstone Project",
-      icon: "bi bi-cloud-upload",
-      items: [
-        "Preparing environment variables and builds",
-        "Deploying backend to Render or AWS",
-        "Deploying frontend to Netlify or Vercel",
-        "Connecting domain and SSL setup",
-        "Final project: Building a complete MERN app"
-      ]
-    }
+
   ],
   whatYouLearnData: [
     {
@@ -1556,54 +1115,7 @@ const coursesData = {
         "Authentication using JWT tokens"
       ]
     },
-    {
-      id: 5,
-      title: "Advanced – Native Features and Device APIs",
-      icon: "bi bi-phone",
-      items: [
-        "Accessing camera and image gallery",
-        "Working with location and maps",
-        "Push notifications setup",
-        "Handling permissions and native modules",
-        "Integrating third-party libraries"
-      ]
-    },
-    {
-      id: 6,
-      title: "Advanced – UI/UX and Animations",
-      icon: "bi bi-palette",
-      items: [
-        "Building responsive mobile layouts",
-        "Custom themes and design systems",
-        "Using Animated API for transitions",
-        "Gesture handling and interactions",
-        "Optimizing UI for performance"
-      ]
-    },
-    {
-      id: 7,
-      title: "Expert – Testing and Deployment",
-      icon: "bi bi-award",
-      items: [
-        "Debugging and performance profiling",
-        "Unit testing with Jest",
-        "Preparing app for release",
-        "Publishing to Google Play and App Store",
-        "Maintaining app updates"
-      ]
-    },
-    {
-      id: 8,
-      title: "Expert – Capstone Project",
-      icon: "bi bi-star",
-      items: [
-        "Building a complete mobile application",
-        "Integrating API and authentication",
-        "Implementing navigation and state management",
-        "Testing and debugging",
-        "Final deployment and presentation"
-      ]
-    }
+
   ],
   whatYouLearnData: [
     {
@@ -1704,54 +1216,7 @@ const coursesData = {
         "Routing and lazy loading"
       ]
     },
-    {
-      id: 5,
-      title: "Advanced – Connecting Angular with .NET API",
-      icon: "bi bi-link-45deg",
-      items: [
-        "Integrating Angular frontend with .NET backend",
-        "Fetching and displaying API data",
-        "JWT authentication and secure endpoints",
-        "Handling errors and API responses",
-        "Building a role-based user management system"
-      ]
-    },
-    {
-      id: 6,
-      title: "Advanced – Database & Entity Framework",
-      icon: "bi bi-database",
-      items: [
-        "Connecting SQL Server with .NET",
-        "Creating models and migrations",
-        "Database relationships (One-to-Many, Many-to-Many)",
-        "Stored procedures and raw queries",
-        "Optimizing database performance"
-      ]
-    },
-    {
-      id: 7,
-      title: "Expert – Deployment and DevOps Integration",
-      icon: "bi bi-cloud-upload",
-      items: [
-        "Preparing production builds for Angular and .NET",
-        "Hosting backend APIs on Azure or AWS",
-        "Deploying Angular frontend to cloud or IIS",
-        "Using CI/CD pipelines for automation",
-        "Monitoring and maintaining live applications"
-      ]
-    },
-    {
-      id: 8,
-      title: "Expert – Capstone Project",
-      icon: "bi bi-award",
-      items: [
-        "Designing a full-stack .NET + Angular application",
-        "Implementing authentication and CRUD modules",
-        "Testing API endpoints and frontend integration",
-        "Deploying the final project to production",
-        "Final code review and presentation"
-      ]
-    }
+
   ],
   whatYouLearnData: [
     {
@@ -1852,42 +1317,8 @@ const coursesData = {
         "Structuring large-scale React apps"
       ]
     },
-    {
-      id: 5,
-      title: "Advanced – React Router and API Integration",
-      icon: "bi bi-globe",
-      items: [
-        "Routing with React Router",
-        "Dynamic routes and nested navigation",
-        "Fetching data with Fetch and Axios",
-        "Handling API errors and loading states",
-        "Displaying and managing remote data"
-      ]
-    },
-    {
-      id: 6,
-      title: "Advanced – Performance Optimization",
-      icon: "bi bi-speedometer2",
-      items: [
-        "Memoization with React.memo and useMemo",
-        "Optimizing re-renders",
-        "Code splitting and lazy loading",
-        "Error boundaries and fallback UI",
-        "Using React DevTools for debugging"
-      ]
-    },
-    {
-      id: 7,
-      title: "Expert – Project and Deployment",
-      icon: "bi bi-award",
-      items: [
-        "Building a complete React project",
-        "Connecting to APIs and managing routes",
-        "Implementing form validation",
-        "Optimizing and deploying to Vercel/Netlify",
-        "Version control with Git and GitHub"
-      ]
-    }
+   
+
   ],
   whatYouLearnData: [
     {
@@ -1988,18 +1419,7 @@ const coursesData = {
         "Performance optimization and caching"
       ]
     },
-    {
-      id: 5,
-      title: "Project & Deployment",
-      icon: "bi bi-rocket",
-      items: [
-        "Building a complete full stack web app",
-        "Integrating front-end and back-end",
-        "Testing with Postman and unit tests",
-        "Deploying apps to cloud (Render, Heroku, AWS)",
-        "Real-world project: Task Manager or E-commerce App"
-      ]
-    }
+
   ],
   whatYouLearnData: [
     {
@@ -2110,54 +1530,7 @@ const coursesData = {
               "Testing and presenting prototypes"
             ]
           },
-          {
-            id: 5,
-            title: "Intermediate – Collaboration & Handoff",
-            icon: "bi bi-people",
-            items: [
-              "Real-time collaboration and feedback",
-              "Commenting and version control",
-              "Design handoff for developers",
-              "Using Figma Inspect and Dev Mode",
-              "Sharing projects and maintaining versions"
-            ]
-          },
-          {
-            id: 6,
-            title: "Expert – Advanced Design Systems",
-            icon: "bi bi-diagram-2",
-            items: [
-              "Building scalable design systems",
-              "Using tokens and style guides",
-              "Component libraries and team management",
-              "Design consistency and accessibility",
-              "Managing updates and documentation"
-            ]
-          },
-          {
-            id: 7,
-            title: "Expert – Responsive & Interactive Design",
-            icon: "bi bi-phone",
-            items: [
-              "Designing for different devices and screens",
-              "Responsive auto layouts",
-              "Advanced animations and timelines",
-              "Prototyping complex interactions",
-              "Creating mobile-first and adaptive designs"
-            ]
-          },
-          {
-            id: 8,
-            title: "Expert – Portfolio & Real-World Projects",
-            icon: "bi bi-briefcase",
-            items: [
-              "Designing a full web app UI",
-              "Creating a mobile app prototype",
-              "Redesigning existing products",
-              "Presenting your design case study",
-              "Building your design portfolio"
-            ]
-          }
+  
         ],
         whatYouLearnData: [
           {
@@ -2257,42 +1630,7 @@ const coursesData = {
               "Creative surreal art projects",
             ],
           },
-          {
-            id: 5,
-            title: "Intermediate – Digital Painting & Illustration",
-            icon: "bi bi-pencil",
-            items: [
-              "Using brushes and custom brush settings",
-              "Sketching and line art in Photoshop",
-              "Coloring techniques and shading",
-              "Digital painting workflows",
-              "Blending and texture techniques",
-            ],
-          },
-          {
-            id: 6,
-            title: "Expert – Professional Design Techniques",
-            icon: "bi bi-palette-fill",
-            items: [
-              "Mockup creation and product presentation",
-              "UI/UX asset design and export",
-              "Logo design and branding elements",
-              "Batch processing and automation",
-              "Working with Adobe Creative Cloud",
-            ],
-          },
-          {
-            id: 7,
-            title: "Expert – Portfolio & Final Projects",
-            icon: "bi bi-folder2-open",
-            items: [
-              "Building a professional design portfolio",
-              "Real-world design challenges",
-              "Freelancing tips and project management",
-              "Exporting designs for print and web",
-              "Final review and certification",
-            ],
-          },
+ 
         ],
         whatYouLearnData: [
           {
@@ -2390,30 +1728,7 @@ const coursesData = {
               "Usability testing and feedback implementation"
             ]
           },
-          {
-            id: 5,
-            title: "Advanced – Motion Graphics & Digital Art",
-            icon: "bi bi-film",
-            items: [
-              "Introduction to motion graphics and animation",
-              "Creating animated social media posts",
-              "Designing for video and multimedia platforms",
-              "Using Adobe After Effects for basic motion design",
-              "Storyboarding and visual storytelling techniques"
-            ]
-          },
-          {
-            id: 6,
-            title: "Advanced – Portfolio Development",
-            icon: "bi bi-folder-check",
-            items: [
-              "Curating your best design work",
-              "Creating a professional design portfolio",
-              "Preparing case studies and client presentations",
-              "Tips for freelancing and personal branding",
-              "Final project: Design your brand and portfolio website"
-            ]
-          }
+
         ],
         whatYouLearnData: [
           {
@@ -2512,30 +1827,7 @@ const coursesData = {
               "Collaborating and sharing designs with teams"
             ]
           },
-          {
-            id: 5,
-            title: "Expert – Professional Design Projects",
-            icon: "bi bi-stars",
-            items: [
-              "Building complete brand identities",
-              "Designing social media campaigns",
-              "Creating eBooks, infographics, and reports",
-              "Designing for print and digital media",
-              "Customizing Canva templates for clients"
-            ]
-          },
-          {
-            id: 6,
-            title: "Expert – Advanced Tips & Monetization",
-            icon: "bi bi-cash-coin",
-            items: [
-              "Using Canva Pro features effectively",
-              "Batch designing for productivity",
-              "Creating and selling Canva templates",
-              "Freelancing with Canva",
-              "Real-world Canva projects and portfolio building"
-            ]
-          }
+
         ],
         whatYouLearnData: [
           {
@@ -2648,66 +1940,7 @@ const coursesData = {
               "Athena and QuickSight for Data Analytics"
             ]
           },
-          {
-            id: 5,
-            title: "Intermediate – Serverless & Application Services",
-            icon: "bi bi-lightning",
-            items: [
-              "AWS Lambda and Serverless Architecture",
-              "API Gateway and EventBridge",
-              "Simple Queue Service (SQS) and SNS",
-              "Step Functions and CloudWatch Events",
-              "Building and Deploying Serverless Applications"
-            ]
-          },
-          {
-            id: 6,
-            title: "Advanced – Infrastructure as Code & Automation",
-            icon: "bi bi-code-slash",
-            items: [
-              "AWS CloudFormation Templates",
-              "AWS CDK (Cloud Development Kit)",
-              "Terraform Integration with AWS",
-              "Configuration Management with Ansible",
-              "Automated Deployments and CI/CD Pipelines"
-            ]
-          },
-          {
-            id: 7,
-            title: "Advanced – DevOps and Monitoring",
-            icon: "bi bi-gear",
-            items: [
-              "AWS CodeCommit, CodeBuild, CodeDeploy, and CodePipeline",
-              "Continuous Integration/Continuous Delivery (CI/CD)",
-              "Monitoring with CloudWatch and CloudTrail",
-              "Logging and Tracing with AWS X-Ray",
-              "Incident Management and Troubleshooting"
-            ]
-          },
-          {
-            id: 8,
-            title: "Advanced – Cloud Architecture & Best Practices",
-            icon: "bi bi-diagram-3",
-            items: [
-              "Designing High Availability & Fault Tolerance",
-              "Scalability and Load Balancing Strategies",
-              "Disaster Recovery and Backup Plans",
-              "Cost Optimization and AWS Trusted Advisor",
-              "Multi-Account and Multi-Region Architecture"
-            ]
-          },
-          {
-            id: 9,
-            title: "Expert – Machine Learning, Containers & Certification",
-            icon: "bi bi-cpu",
-            items: [
-              "AWS SageMaker for Machine Learning",
-              "Containers with ECS and EKS (Kubernetes)",
-              "Serverless AI & Automation",
-              "AWS Certification Preparation (Solutions Architect, DevOps Engineer)",
-              "Capstone Project: Deploying a Scalable Cloud Application"
-            ]
-          }
+
         ],
         whatYouLearnData: [
           {
@@ -2806,66 +2039,7 @@ const coursesData = {
               "Azure Logic Apps and Event Grid integration"
             ]
           },
-          {
-            id: 5,
-            title: "Intermediate – Databases & Monitoring",
-            icon: "bi bi-database",
-            items: [
-              "Azure SQL Database and Cosmos DB",
-              "Connecting apps to databases",
-              "Backup and restore strategies",
-              "Azure Monitor, Log Analytics, and Application Insights",
-              "Implementing alerts and dashboards"
-            ]
-          },
-          {
-            id: 6,
-            title: "Expert – Azure DevOps & Automation",
-            icon: "bi bi-gear",
-            items: [
-              "Introduction to Azure DevOps Services",
-              "CI/CD pipeline setup and management",
-              "Infrastructure as Code (IaC) using ARM templates and Bicep",
-              "Automating tasks with Azure Automation and PowerShell",
-              "Integrating GitHub Actions with Azure"
-            ]
-          },
-          {
-            id: 7,
-            title: "Expert – Advanced Cloud Architecture",
-            icon: "bi bi-diagram-2",
-            items: [
-              "Designing scalable cloud architectures",
-              "Implementing high availability and disaster recovery",
-              "Hybrid cloud and multi-cloud solutions",
-              "Azure Governance and Cost Optimization",
-              "Cloud migration and modernization best practices"
-            ]
-          },
-          {
-            id: 8,
-            title: "Expert – AI, Data & Security Integration",
-            icon: "bi bi-robot",
-            items: [
-              "Azure Machine Learning and Cognitive Services",
-              "AI model deployment in Azure",
-              "Big data solutions with Synapse Analytics",
-              "Azure Security best practices",
-              "Zero Trust architecture implementation"
-            ]
-          },
-          {
-            id: 9,
-            title: "Expert – Certification & Real-World Projects",
-            icon: "bi bi-award",
-            items: [
-              "Microsoft Certified: Azure Fundamentals (AZ-900) overview",
-              "Microsoft Certified: Azure Administrator (AZ-104) preparation",
-              "Microsoft Certified: Azure Solutions Architect (AZ-305) insights",
-              "Hands-on capstone projects",
-              "Portfolio development and job readiness training"
-            ]
-          }
+
         ],
         whatYouLearnData: [
           {
@@ -2963,54 +2137,7 @@ const coursesData = {
               "Integrating AI and ML APIs with datasets"
             ]
           },
-          {
-            id: 5,
-            title: "Intermediate – DevOps & Automation",
-            icon: "bi bi-gear",
-            items: [
-              "Cloud Build for CI/CD",
-              "Container Registry and Artifact Registry",
-              "Monitoring pipelines with Cloud Logging",
-              "Deployment Manager and automation scripts",
-              "Continuous integration with GitHub Actions"
-            ]
-          },
-          {
-            id: 6,
-            title: "Expert – Cloud Security & Governance",
-            icon: "bi bi-shield-lock",
-            items: [
-              "Security best practices in GCP",
-              "Managing IAM policies and roles",
-              "VPC Service Controls and data protection",
-              "Compliance and governance frameworks",
-              "Auditing and monitoring for security"
-            ]
-          },
-          {
-            id: 7,
-            title: "Expert – AI & Machine Learning on GCP",
-            icon: "bi bi-robot",
-            items: [
-              "AI Platform and Vertex AI overview",
-              "Training ML models on GCP",
-              "Deploying TensorFlow models",
-              "Natural Language API and Vision API",
-              "MLOps and model lifecycle management"
-            ]
-          },
-          {
-            id: 8,
-            title: "Expert – Real-World Projects & Certification Prep",
-            icon: "bi bi-award",
-            items: [
-              "Deploying scalable web applications",
-              "Building serverless apps with Cloud Functions",
-              "Integrating APIs with Firebase and Cloud Run",
-              "Final capstone project (end-to-end deployment)",
-              "GCP Associate and Professional Certification guidance"
-            ]
-          }
+
         ],
         whatYouLearnData: [
           {
@@ -3119,42 +2246,7 @@ const coursesData = {
               "Introduction to statistical procedures"
             ]
           },
-          {
-            id: 5,
-            title: "Intermediate – Business Intelligence with SAS",
-            icon: "bi bi-window-stack",
-            items: [
-              "SAS Enterprise Guide basics",
-              "Creating dashboards and reports",
-              "Exporting results to Excel and PDF",
-              "Integrating SAS with databases",
-              "Automation of recurring analytics tasks"
-            ]
-          },
-          {
-            id: 6,
-            title: "Expert – Predictive Analytics & Advanced Modeling",
-            icon: "bi bi-robot",
-            items: [
-              "Regression analysis and forecasting",
-              "Time series analysis",
-              "Logistic regression and classification",
-              "Predictive modeling using SAS procedures",
-              "Best practices in analytics projects"
-            ]
-          },
-          {
-            id: 7,
-            title: "Expert – SAS for Real-World Projects",
-            icon: "bi bi-diagram-3",
-            items: [
-              "Data cleansing and preparation at scale",
-              "Advanced reporting and visualization",
-              "Implementing business rules and logic",
-              "Project work with real-world datasets",
-              "SAS certification preparation guidance"
-            ]
-          }
+
         ],
         whatYouLearnData: [
           {
@@ -3253,53 +2345,7 @@ const coursesData = {
               "ANOVA and Chi-square tests"
             ]
           },
-          {
-            "id": 5,
-            "title": "Intermediate – Working with Real Data",
-            "icon": "bi bi-folder",
-            "items": [
-              "Exploratory data analysis (EDA)",
-              "Time series analysis",
-              "Data reshaping with tidyr",
-              "Working with large datasets",
-              "Project: Analyzing real-world datasets"
-            ]
-          },
-          {
-            "id": 6,
-            "title": "Expert – Advanced R Programming",
-            "icon": "bi bi-gear",
-            "items": [
-              "Writing custom functions and packages",
-              "Functional programming in R",
-              "Error handling and debugging",
-              "Advanced data structures",
-              "Performance optimization"
-            ]
-          },
-          {
-            "id": 7,
-            "title": "Expert – Machine Learning with R",
-            "icon": "bi bi-robot",
-            "items": [
-              "Introduction to machine learning concepts",
-              "Linear and logistic regression",
-              "Decision trees and random forests",
-              "Clustering and classification",
-              "Integrating R with ML libraries"
-            ]
-          },
-          {
-            "id": 8,
-            "title": "Expert – Reporting and Dashboards",
-            "icon": "bi bi-window-stack",
-            "items": [
-              "Creating reproducible reports with R Markdown",
-              "Interactive dashboards with Shiny",
-              "Data storytelling techniques",
-              "Automating reports and workflows"
-            ]
-          }
+
         ],
         "whatYouLearnData": [
           {
@@ -3407,42 +2453,7 @@ const coursesData = {
               "Cross-validation and hyperparameter tuning"
             ]
           },
-          {
-            id: 5,
-            title: "Intermediate – Advanced Machine Learning",
-            icon: "bi bi-robot",
-            items: [
-              "Support Vector Machines and Ensemble methods",
-              "Gradient Boosting and XGBoost",
-              "Time series analysis and forecasting",
-              "Natural Language Processing basics",
-              "Recommendation systems fundamentals"
-            ]
-          },
-          {
-            id: 6,
-            title: "Expert – Deep Learning & AI",
-            icon: "bi bi-cpu",
-            items: [
-              "Neural networks with TensorFlow and PyTorch",
-              "Convolutional Neural Networks for image data",
-              "Recurrent Neural Networks for sequential data",
-              "AI model deployment and optimization",
-              "Ethics and interpretability in AI"
-            ]
-          },
-          {
-            id: 7,
-            title: "Expert – Real-World Data Science Projects",
-            icon: "bi bi-window-stack",
-            items: [
-              "End-to-end project: Data cleaning to model deployment",
-              "Interactive dashboards with Plotly and Dash",
-              "Working with Big Data tools (Spark, Hadoop basics)",
-              "Collaborative workflows using Git and GitHub",
-              "Portfolio building for career-ready projects"
-            ]
-          }
+
         ],
         whatYouLearnData: [
           {
@@ -3541,30 +2552,7 @@ const coursesData = {
               "Integrating ChatGPT into Python applications"
             ]
           },
-          {
-            id: 5,
-            title: "Intermediate – AI Projects with ChatGPT",
-            icon: "bi bi-lightning-charge",
-            items: [
-              "Chatbots and virtual assistants",
-              "Text-based applications (summarizer, translator)",
-              "Data analysis with AI insights",
-              "Combining Python automation with AI",
-              "Deploying AI-powered applications"
-            ]
-          },
-          {
-            id: 6,
-            title: "Expert – Advanced Python & AI Integration",
-            icon: "bi bi-gear",
-            items: [
-              "Advanced Python concepts (decorators, generators, context managers)",
-              "Handling asynchronous API calls",
-              "Creating intelligent multi-functional apps",
-              "Integrating AI in web applications (Flask/Django)",
-              "Best practices for AI application security and performance"
-            ]
-          }
+ 
         ],
         whatYouLearnData: [
           {
@@ -3664,42 +2652,7 @@ const coursesData = {
               "Introduction to statistical procedures"
             ]
           },
-          {
-            id: 5,
-            title: "Intermediate – Business Intelligence with SAS",
-            icon: "bi bi-window-stack",
-            items: [
-              "SAS Enterprise Guide basics",
-              "Creating dashboards and reports",
-              "Exporting results to Excel and PDF",
-              "Integrating SAS with databases",
-              "Automation of recurring analytics tasks"
-            ]
-          },
-          {
-            id: 6,
-            title: "Expert – Predictive Analytics & Advanced Modeling",
-            icon: "bi bi-robot",
-            items: [
-              "Regression analysis and forecasting",
-              "Time series analysis",
-              "Logistic regression and classification",
-              "Predictive modeling using SAS procedures",
-              "Best practices in analytics projects"
-            ]
-          },
-          {
-            id: 7,
-            title: "Expert – SAS for Real-World Projects",
-            icon: "bi bi-diagram-3",
-            items: [
-              "Data cleansing and preparation at scale",
-              "Advanced reporting and visualization",
-              "Implementing business rules and logic",
-              "Project work with real-world datasets",
-              "SAS certification preparation guidance"
-            ]
-          }
+
         ],
         whatYouLearnData: [
           {
@@ -3798,53 +2751,7 @@ const coursesData = {
               "ANOVA and Chi-square tests"
             ]
           },
-          {
-            "id": 5,
-            "title": "Intermediate – Working with Real Data",
-            "icon": "bi bi-folder",
-            "items": [
-              "Exploratory data analysis (EDA)",
-              "Time series analysis",
-              "Data reshaping with tidyr",
-              "Working with large datasets",
-              "Project: Analyzing real-world datasets"
-            ]
-          },
-          {
-            "id": 6,
-            "title": "Expert – Advanced R Programming",
-            "icon": "bi bi-gear",
-            "items": [
-              "Writing custom functions and packages",
-              "Functional programming in R",
-              "Error handling and debugging",
-              "Advanced data structures",
-              "Performance optimization"
-            ]
-          },
-          {
-            "id": 7,
-            "title": "Expert – Machine Learning with R",
-            "icon": "bi bi-robot",
-            "items": [
-              "Introduction to machine learning concepts",
-              "Linear and logistic regression",
-              "Decision trees and random forests",
-              "Clustering and classification",
-              "Integrating R with ML libraries"
-            ]
-          },
-          {
-            "id": 8,
-            "title": "Expert – Reporting and Dashboards",
-            "icon": "bi bi-window-stack",
-            "items": [
-              "Creating reproducible reports with R Markdown",
-              "Interactive dashboards with Shiny",
-              "Data storytelling techniques",
-              "Automating reports and workflows"
-            ]
-          }
+
         ],
         "whatYouLearnData": [
           {
@@ -3952,42 +2859,7 @@ const coursesData = {
               "Query optimization techniques"
             ]
           },
-          {
-            "id": 5,
-            "title": "Intermediate – Data Management & Security",
-            "icon": "bi bi-shield-lock",
-            "items": [
-              "Replication and high availability",
-              "Sharding for horizontal scaling",
-              "Backups and restores",
-              "User roles and access control",
-              "Security best practices"
-            ]
-          },
-          {
-            "id": 6,
-            "title": "Expert – Advanced MongoDB Features",
-            "icon": "bi bi-diagram-3",
-            "items": [
-              "MongoDB transactions",
-              "Change streams for real-time apps",
-              "Performance monitoring and profiling",
-              "Working with MongoDB Atlas",
-              "Integration with Node.js and Python"
-            ]
-          },
-          {
-            "id": 7,
-            "title": "Expert – Real-Time Projects",
-            "icon": "bi bi-window-stack",
-            "items": [
-              "Building a REST API with MongoDB",
-              "Designing e-commerce database",
-              "Implementing analytics dashboards",
-              "Real-time chat application using MongoDB",
-              "Deploying MongoDB in production environments"
-            ]
-          }
+
         ],
         "whatYouLearnData": [
           {
@@ -4086,30 +2958,7 @@ const coursesData = {
               "Monitoring and performance tuning"
             ]
           },
-          {
-            id: 5,
-            title: "Expert – Data Modeling & Optimization",
-            icon: "bi bi-diagram-3",
-            items: [
-              "Normalization and denormalization",
-              "Indexing strategies and query optimization",
-              "Partitioning and data warehousing",
-              "Analyzing query execution plans",
-              "Advanced performance troubleshooting"
-            ]
-          },
-          {
-            id: 6,
-            title: "Expert – Integration & Reporting",
-            icon: "bi bi-bar-chart-line",
-            items: [
-              "Integrating MSSQL with applications",
-              "Using SSIS for ETL processes",
-              "Creating reports with SSRS",
-              "Automation with jobs and schedules",
-              "Connecting to cloud services and BI tools"
-            ]
-          }
+
         ],
         whatYouLearnData: [
           {
@@ -4195,66 +3044,8 @@ const coursesData = {
               "Views and temporary tables"
             ]
           },
-          {
-            id: 4,
-            title: "Intermediate – Database Design & Normalization",
-            icon: "bi bi-window-stack",
-            items: [
-              "Entity-Relationship (ER) modeling",
-              "Normalization: 1NF, 2NF, 3NF",
-              "Designing relational database schemas",
-              "Indexes and query performance",
-              "Referential integrity and constraints"
-            ]
-          },
-          {
-            id: 5,
-            title: "Intermediate – Stored Procedures & Functions",
-            icon: "bi bi-journal-text",
-            items: [
-              "Creating stored procedures and functions",
-              "Triggers and events",
-              "Cursors and error handling",
-              "Transactions and rollback mechanisms",
-              "Optimizing stored routines for performance"
-            ]
-          },
-          {
-            id: 6,
-            title: "Expert – Database Security & Backup",
-            icon: "bi bi-shield-lock",
-            items: [
-              "User management and privileges",
-              "Authentication and encryption",
-              "Backup and restore strategies",
-              "Replication and high availability",
-              "Securing databases against SQL injection"
-            ]
-          },
-          {
-            id: 7,
-            title: "Expert – Performance Tuning & Optimization",
-            icon: "bi bi-speedometer2",
-            items: [
-              "Query optimization techniques",
-              "Index optimization and query execution plans",
-              "Partitioning and caching strategies",
-              "Monitoring database performance",
-              "Handling large datasets efficiently"
-            ]
-          },
-          {
-            id: 8,
-            title: "Expert – Real-World Projects",
-            icon: "bi bi-window",
-            items: [
-              "Designing a complete database system",
-              "Building a transactional application",
-              "Analytics and reporting with SQL",
-              "Integrating MySQL with web applications",
-              "Final project: End-to-end database application"
-            ]
-          }
+        
+  
         ],
         whatYouLearnData: [
           {
@@ -4353,54 +3144,7 @@ const coursesData = {
               "Data integrity and constraints"
             ]
           },
-          {
-            "id": 5,
-            "title": "Intermediate – Security and Access Control",
-            "icon": "bi bi-shield-lock",
-            "items": [
-              "User roles and privileges",
-              "Authentication and authorization",
-              "Row-level security",
-              "Encrypting data in PostgreSQL",
-              "Backup and restore strategies"
-            ]
-          },
-          {
-            "id": 6,
-            "title": "Expert – Replication and High Availability",
-            "icon": "bi bi-cloud-arrow-up",
-            "items": [
-              "Streaming replication setup",
-              "Logical replication",
-              "Failover and recovery techniques",
-              "Clustering with Patroni or Pgpool-II",
-              "Load balancing and high availability"
-            ]
-          },
-          {
-            "id": 7,
-            "title": "Expert – Advanced Performance Tuning",
-            "icon": "bi bi-speedometer2",
-            "items": [
-              "Query performance monitoring",
-              "VACUUM, ANALYZE, and autovacuum tuning",
-              "Caching and indexing strategies",
-              "Partitioning for large datasets",
-              "Best practices for production databases"
-            ]
-          },
-          {
-            "id": 8,
-            "title": "Expert – PostgreSQL for Developers",
-            "icon": "bi bi-code-slash",
-            "items": [
-              "Using PostgreSQL with Python, Node.js, and Java",
-              "JSON, JSONB, and NoSQL features",
-              "Full-text search implementation",
-              "Advanced data types and extensions",
-              "Integrating PostgreSQL in web applications"
-            ]
-          }
+
         ],
         "whatYouLearnData": [
           {
@@ -4508,42 +3252,7 @@ const coursesData = {
               "Bookmarks, buttons, and navigation"
             ]
           },
-          {
-            id: 5,
-            title: "Intermediate – Power BI Service & Collaboration",
-            icon: "bi bi-cloud",
-            items: [
-              "Publishing reports to Power BI Service",
-              "Creating dashboards in the cloud",
-              "Sharing and collaboration with teams",
-              "Row-level security (RLS)",
-              "Power BI apps and workspaces"
-            ]
-          },
-          {
-            id: 6,
-            title: "Expert – Advanced Analytics & AI",
-            icon: "bi bi-robot",
-            items: [
-              "Using advanced DAX for complex calculations",
-              "Integration with Python and R for analytics",
-              "AI visuals and cognitive services",
-              "Predictive analytics and forecasting",
-              "Custom connectors and API integration"
-            ]
-          },
-          {
-            id: 7,
-            title: "Expert – Real-World Power BI Projects",
-            icon: "bi bi-diagram-3",
-            items: [
-              "Building interactive dashboards from scratch",
-              "End-to-end business reporting solutions",
-              "Optimizing performance for large datasets",
-              "Designing executive-level reports",
-              "Deploying solutions for enterprise environments"
-            ]
-          }
+
         ],
         whatYouLearnData: [
           {
@@ -4642,30 +3351,7 @@ const coursesData = {
               "Conditional formatting and dynamic visuals"
             ]
           },
-          {
-            id: 5,
-            title: "Expert – Dashboard Optimization & Sharing",
-            icon: "bi bi-window-stack",
-            items: [
-              "Dashboard performance optimization",
-              "Publishing dashboards to Tableau Server & Online",
-              "Embedding visualizations into web applications",
-              "User interactivity and action filters",
-              "Security and permissions management"
-            ]
-          },
-          {
-            id: 6,
-            title: "Expert – Real-World Projects",
-            icon: "bi bi-diagram-3",
-            items: [
-              "Sales and marketing analytics dashboard",
-              "Financial reporting and KPIs",
-              "Customer behavior analysis",
-              "Executive-level interactive dashboards",
-              "Capstone project: end-to-end Tableau solution"
-            ]
-          }
+ 
         ],
         whatYouLearnData: [
           {
@@ -4763,30 +3449,7 @@ const coursesData = {
               "Error handling and monitoring flows"
             ]
           },
-          {
-            id: 5,
-            title: "Expert – Advanced App Development",
-            icon: "bi bi-gear",
-            items: [
-              "Advanced formulas and conditional logic",
-              "Custom components and reusable controls",
-              "App performance optimization",
-              "Embedding Power BI visuals in apps",
-              "Packaging and deploying apps in enterprise environments"
-            ]
-          },
-          {
-            id: 6,
-            title: "Expert – Governance & Best Practices",
-            icon: "bi bi-shield-lock",
-            items: [
-              "Managing environments and data policies",
-              "Version control and app lifecycle management",
-              "Compliance and security considerations",
-              "Collaboration with teams",
-              "Tips for building maintainable and scalable apps"
-            ]
-          }
+      
         ],
         whatYouLearnData: [
           {
@@ -4884,18 +3547,7 @@ const coursesData = {
               "Workflow optimization and performance tuning"
             ]
           },
-          {
-            id: 5,
-            title: "Expert – Advanced Analytics & Automation",
-            icon: "bi bi-gear",
-            items: [
-              "Predictive modeling and machine learning workflows",
-              "Spatial and location analytics",
-              "Building and deploying analytic apps",
-              "Scheduling workflows with Alteryx Server",
-              "Advanced macros and automation techniques"
-            ]
-          }
+        
         ],
         whatYouLearnData: [
           {
@@ -5005,30 +3657,7 @@ const coursesData = {
         "Introduction to serialization and deserialization"
       ]
     },
-    {
-      "id": 5,
-      "title": "Advanced – Multithreading & Advanced Concepts",
-      "icon": "bi bi-cpu",
-      "items": [
-        "Understanding threads and concurrency",
-        "Thread lifecycle and synchronization",
-        "Java Memory Management and Garbage Collection",
-        "Working with Lambda expressions and Streams",
-        "Functional programming in Java"
-      ]
-    },
-    {
-      "id": 6,
-      "title": "Expert – Real-World Applications & Framework Integration",
-      "icon": "bi bi-briefcase",
-      "items": [
-        "Building console-based mini projects",
-        "Connecting Java with databases using JDBC",
-        "Working with APIs and JSON data",
-        "Introduction to Maven and version control (Git)",
-        "Final project: end-to-end Java application"
-      ]
-    }
+
   ],
   "whatYouLearnData": [
     {
@@ -5127,30 +3756,7 @@ const coursesData = {
         "Logging and HTML report generation"
       ]
     },
-    {
-      "id": 5,
-      "title": "Advanced – Cross-Browser & Parallel Testing",
-      "icon": "bi bi-diagram-3",
-      "items": [
-        "Using Selenium Grid for distributed testing",
-        "Executing tests on multiple browsers and devices",
-        "Integrating Selenium with CI/CD tools like Jenkins",
-        "Running tests in Docker and cloud environments",
-        "Best practices for scaling automation projects"
-      ]
-    },
-    {
-      "id": 6,
-      "title": "Expert – Real-Time Project Implementation",
-      "icon": "bi bi-robot",
-      "items": [
-        "Building a complete Selenium automation framework",
-        "Automating a real-world web application",
-        "Implementing reports and reusable utilities",
-        "Integrating version control (Git) and CI pipelines",
-        "Final project: end-to-end web automation delivery"
-      ]
-    }
+
   ],
   "whatYouLearnData": [
     {
@@ -5371,30 +3977,7 @@ const coursesData = {
         "Accessibility and UI behavior testing"
       ]
     },
-    {
-      "id": 5,
-      "title": "Advanced – End-to-End Testing with Playwright",
-      "icon": "bi bi-phone",
-      "items": [
-        "Setting up Playwright with TypeScript",
-        "Writing end-to-end test suites",
-        "Cross-browser and mobile testing",
-        "Test fixtures and parallel execution",
-        "Reporting and debugging automation tests"
-      ]
-    },
-    {
-      "id": 6,
-      "title": "Expert – CI/CD, Test Optimization & Real Projects",
-      "icon": "bi bi-gear",
-      "items": [
-        "Integrating tests into CI/CD pipelines (GitHub Actions, Jenkins)",
-        "Optimizing test performance and speed",
-        "Maintaining scalable test suites",
-        "Real-world project: complete test automation for a web app",
-        "Test documentation and reporting best practices"
-      ]
-    }
+
   ],
   "whatYouLearnData": [
     {
@@ -5508,30 +4091,7 @@ const coursesData = {
         "Troubleshooting Routing Issues"
       ]
     },
-    {
-      "id": 5,
-      "title": "Module 5 – Network Security Fundamentals",
-      "icon": "bi bi-shield-lock",
-      "items": [
-        "Understanding Network Threats and Attacks",
-        "Securing Switches and Routers",
-        "Configuring Passwords and Access Control Lists (ACLs)",
-        "Firewall and VPN Basics",
-        "Best Practices for Network Security"
-      ]
-    },
-    {
-      "id": 6,
-      "title": "Module 6 – Practical Networking & Troubleshooting",
-      "icon": "bi bi-tools",
-      "items": [
-        "Setting up a small office network (SOHO)",
-        "Using Cisco Packet Tracer for Simulations",
-        "Ping, Traceroute, and Other Network Tools",
-        "Troubleshooting Layer 1–3 Issues",
-        "Final Networking Project and Review"
-      ]
-    }
+
   ],
   "whatYouLearnData": [
     {
@@ -5630,42 +4190,7 @@ const coursesData = {
               "Web application penetration testing"
             ]
           },
-          {
-            id: 5,
-            title: "Intermediate – Malware Analysis & Digital Forensics",
-            icon: "bi bi-bug",
-            items: [
-              "Introduction to malware types and behaviors",
-              "Static and dynamic malware analysis",
-              "Forensic investigation techniques",
-              "File and memory forensics",
-              "Incident response process"
-            ]
-          },
-          {
-            id: 6,
-            title: "Expert – Advanced Threats & Defense",
-            icon: "bi bi-shield-lock",
-            items: [
-              "Advanced persistent threats (APT)",
-              "Network and endpoint defense strategies",
-              "Threat hunting and intelligence",
-              "Penetration testing automation",
-              "Security monitoring and SIEM tools"
-            ]
-          },
-          {
-            id: 7,
-            title: "Expert – Cybersecurity Governance & Risk Management",
-            icon: "bi bi-file-earmark-lock",
-            items: [
-              "Security policies and compliance standards",
-              "Risk assessment and mitigation strategies",
-              "Business continuity planning",
-              "Disaster recovery planning",
-              "Ethics and legal considerations in cybersecurity"
-            ]
-          }
+
         ],
         whatYouLearnData: [
           {
@@ -5763,66 +4288,7 @@ const coursesData = {
               "Hands-on Windows and Linux exploitation labs"
             ]
           },
-          {
-            "id": 5,
-            "title": "Intermediate – Web Application Hacking",
-            "icon": "bi bi-window-stack",
-            "items": [
-              "Web architecture and attack surface",
-              "Common vulnerabilities: XSS, SQLi, CSRF, SSRF",
-              "Burp Suite workflows and manual testing",
-              "API security testing and JSON/XML attacks",
-              "Secure coding countermeasures and remediation"
-            ]
-          },
-          {
-            "id": 6,
-            "title": "Intermediate – Wireless & Network Attacks",
-            "icon": "bi bi-wifi",
-            "items": [
-              "Wi‑Fi fundamentals and protocols",
-              "Attacking WPA/WPA2–PSK and captive portals",
-              "Bluetooth and IoT device enumeration",
-              "ARP spoofing, MITM, and DNS attacks",
-              "Network segmentation and defensive strategies"
-            ]
-          },
-          {
-            "id": 7,
-            "title": "Expert – Malware, Reverse Engineering & Forensics",
-            "icon": "bi bi-robot",
-            "items": [
-              "Malware types, delivery vectors, and detection evasion",
-              "Static and dynamic analysis basics",
-              "Intro to reverse engineering (IDA/Ghidra concepts)",
-              "Memory forensics and evidence collection",
-              "Anti-forensics and defensive countermeasures"
-            ]
-          },
-          {
-            "id": 8,
-            "title": "Expert – Red Teaming & Advanced Attack Techniques",
-            "icon": "bi bi-person-check",
-            "items": [
-              "Red team vs penetration test methodologies",
-              "Adversary emulation and attack chains",
-              "Command and control (C2) concepts",
-              "Social engineering and phishing simulations",
-              "Operational planning and safe rules of engagement"
-            ]
-          },
-          {
-            "id": 9,
-            "title": "Expert – Reporting, Remediation & Blue Team Collaboration",
-            "icon": "bi bi-file-earmark-text",
-            "items": [
-              "Writing professional penetration test reports",
-              "Risk ranking and actionable remediation steps",
-              "Communicating with developers and security teams",
-              "Hardening systems and patch management",
-              "Preparing for certifications and continuous learning"
-            ]
-          }
+          
         ],
         "whatYouLearnData": [
           {
@@ -5929,42 +4395,7 @@ const coursesData = {
               "Conversion Tracking & Optimization"
             ]
           },
-          {
-            id: 5,
-            title: "Intermediate – Email & Affiliate Marketing",
-            icon: "bi bi-envelope",
-            items: [
-              "Email Campaign Creation",
-              "Segmentation and Personalization",
-              "Automation and Drip Campaigns",
-              "Affiliate Marketing Basics",
-              "Tracking and Optimizing Campaigns"
-            ]
-          },
-          {
-            id: 6,
-            title: "Expert – Analytics & Reporting",
-            icon: "bi bi-bar-chart-line",
-            items: [
-              "Google Analytics Setup and Tracking",
-              "Analyzing Traffic and Conversions",
-              "Reporting KPIs and Insights",
-              "Data-driven Marketing Decisions",
-              "Marketing Attribution Models"
-            ]
-          },
-          {
-            id: 7,
-            title: "Expert – Advanced Growth Strategies",
-            icon: "bi bi-rocket",
-            items: [
-              "Growth Hacking Techniques",
-              "SEO for Competitive Markets",
-              "Advanced Paid Advertising Strategies",
-              "Omnichannel Marketing Integration",
-              "Scaling Campaigns for Maximum ROI"
-            ]
-          }
+          
         ],
         whatYouLearnData: [
           {
@@ -6064,30 +4495,7 @@ const coursesData = {
         "Cross-platform ad integration"
       ]
     },
-    {
-      id: 5,
-      title: "Analytics & Performance Tracking",
-      icon: "bi bi-graph-up",
-      items: [
-        "Understanding reach, engagement, and conversion metrics",
-        "Using platform insights (Meta, LinkedIn, X, Instagram)",
-        "Google Analytics for social tracking",
-        "Monthly report creation and KPIs",
-        "Improving strategy through data-driven insights"
-      ]
-    },
-    {
-      id: 6,
-      title: "Strategy, Trends & Tools",
-      icon: "bi bi-lightbulb",
-      items: [
-        "Staying ahead of algorithm updates",
-        "Influencer collaborations and partnerships",
-        "Crisis management and online reputation handling",
-        "Emerging platforms (Threads, TikTok, YouTube Shorts)",
-        "Automation and AI tools for social media"
-      ]
-    }
+
   ],
   whatYouLearnData: [
     {
@@ -6188,30 +4596,7 @@ const coursesData = {
         "B2B outreach and conversion strategies"
       ]
     },
-    {
-      id: 5,
-      title: "Company Page Management",
-      icon: "bi bi-building",
-      items: [
-        "Creating and managing company pages",
-        "Building a brand presence for organizations",
-        "Employee advocacy and engagement",
-        "Cross-posting and consistency across teams",
-        "Analyzing company insights and follower growth"
-      ]
-    },
-    {
-      id: 6,
-      title: "LinkedIn Ads & Analytics",
-      icon: "bi bi-graph-up",
-      items: [
-        "Introduction to LinkedIn Campaign Manager",
-        "Types of ad campaigns and objectives",
-        "Targeting, budgeting, and bidding strategies",
-        "Performance tracking and ROI analysis",
-        "Optimizing campaigns for better engagement"
-      ]
-    }
+ 
   ],
   whatYouLearnData: [
     {
@@ -6312,42 +4697,7 @@ const coursesData = {
         "Mobile-first and performance-based design principles"
       ]
     },
-    {
-      id: 5,
-      title: "Budgeting & Bidding",
-      icon: "bi bi-cash-stack",
-      items: [
-        "Setting daily and lifetime budgets",
-        "Understanding CPM, CPC, and CPA models",
-        "Bid strategies: lowest cost vs cost cap",
-        "Campaign scheduling and pacing",
-        "Budget optimization for scaling"
-      ]
-    },
-    {
-      id: 6,
-      title: "Analytics & Optimization",
-      icon: "bi bi-graph-up",
-      items: [
-        "Tracking performance using Meta Ads Manager",
-        "Key metrics: CTR, CPA, ROAS, and engagement rate",
-        "Custom dashboards and reports",
-        "Retargeting and lookalike campaigns",
-        "Improving ad quality and relevance score"
-      ]
-    },
-    {
-      id: 7,
-      title: "Advanced Campaign Strategies",
-      icon: "bi bi-lightning-charge",
-      items: [
-        "Dynamic product ads and catalog sales",
-        "Lead generation campaigns with instant forms",
-        "Retargeting using Pixel data",
-        "Automated rules and scaling strategies",
-        "Integrating WhatsApp, Messenger, and website conversions"
-      ]
-    }
+
   ],
   whatYouLearnData: [
     {
@@ -6457,28 +4807,7 @@ const coursesData = {
               "Medical billing process overview"
             ]
           },
-          {
-            id: 5,
-            title: "Expert – Advanced Coding & Compliance",
-            icon: "bi bi-diagram-3",
-            items: [
-              "Coding audits and quality checks",
-              "Advanced coding scenarios and case studies",
-              "HIPAA compliance and regulations",
-              "Preparation for CPC or CCS certification exams"
-            ]
-          },
-          {
-            id: 6,
-            title: "Expert – Practical Billing & Real-World Training",
-            icon: "bi bi-bar-chart-line",
-            items: [
-              "Medical billing and claim submission",
-              "Handling denials and rejections",
-              "Electronic Health Records (EHR) integration",
-              "Simulated projects with real medical data"
-            ]
-          }
+  
         ],
         whatYouLearnData: [
           {
@@ -6572,39 +4901,8 @@ const coursesData = {
               "Practice coding with real cases"
             ]
           },
-          {
-            id: 5,
-            title: "HCPCS Coding",
-            icon: "bi bi-file-earmark-medical",
-            items: [
-              "Understanding HCPCS Level I & II",
-              "Coding medical supplies, equipment, and drugs",
-              "Billing and insurance considerations",
-              "Case studies and coding exercises"
-            ]
-          },
-          {
-            id: 6,
-            title: "Claim Processing & Compliance",
-            icon: "bi bi-file-earmark-text",
-            items: [
-              "Medical billing workflow",
-              "Electronic claims and insurance forms",
-              "HIPAA compliance and regulations",
-              "Error detection and claim denial management"
-            ]
-          },
-          {
-            id: 7,
-            title: "Advanced Coding & Auditing",
-            icon: "bi bi-search",
-            items: [
-              "Auditing medical records for accuracy",
-              "Advanced coding scenarios",
-              "Handling complex cases",
-              "Preparing for certification exams"
-            ]
-          }
+        
+         
         ],
         whatYouLearnData: [
           {
@@ -6737,17 +5035,7 @@ const coursesData = {
         "Fixing small bugs and improvements"
       ]
     },
-    {
-      id: 5,
-      title: "Expert – Showcase Your Web Project",
-      icon: "bi bi-trophy",
-      items: [
-        "Present your project to friends and family",
-        "Learn how to share your website online",
-        "Explore more ideas to keep learning",
-        "Celebrate your web developer journey!"
-      ]
-    }
+    
   ],
   whatYouLearnData: [
     {
@@ -6841,17 +5129,7 @@ const coursesData = {
         "Building a small art project"
       ]
     },
-    {
-      id: 5,
-      title: "Expert – Mini Projects and Games",
-      icon: "bi bi-lightbulb",
-      items: [
-        "Create a quiz or number-guessing game",
-        "Combine logic and visuals for creativity",
-        "Debugging and improving your project",
-        "Showcase your final Python project"
-      ]
-    }
+
   ],
   whatYouLearnData: [
     {
@@ -6945,17 +5223,7 @@ const coursesData = {
         "Exploring random and math modules"
       ]
     },
-    {
-      id: 5,
-      title: "Expert – Smart Projects and Creativity",
-      icon: "bi bi-lightbulb",
-      items: [
-        "Create a story or chatbot generator",
-        "Design your own guessing or math game",
-        "Debug, test, and improve your projects",
-        "Showcase your final advanced Python project"
-      ]
-    }
+  
   ],
   whatYouLearnData: [
     {
@@ -7050,17 +5318,7 @@ const coursesData = {
         "Mini project: Average marks calculator"
       ]
     },
-    {
-      id: 5,
-      title: "Expert – Projects & Debugging",
-      icon: "bi bi-lightbulb",
-      items: [
-        "Debugging errors in your code",
-        "Understanding how memory works",
-        "Building small pattern or math games",
-        "Final project: Create your own logic-based app"
-      ]
-    }
+
   ],
   whatYouLearnData: [
     {
@@ -7155,17 +5413,7 @@ const coursesData = {
         "Mini project: Create a virtual pet or character"
       ]
     },
-    {
-      id: 5,
-      title: "Expert – Creative Projects",
-      icon: "bi bi-lightbulb",
-      items: [
-        "Combining logic, functions, and OOP",
-        "Designing interactive console-based games",
-        "Debugging and optimizing code",
-        "Final project: Build your own mini adventure game"
-      ]
-    }
+
   ],
   whatYouLearnData: [
     {
@@ -7259,17 +5507,7 @@ const coursesData = {
         "Mini project: Student marks manager"
       ]
     },
-    {
-      id: 5,
-      title: "Expert – Connecting Data",
-      icon: "bi bi-diagram-3",
-      items: [
-        "Understanding relationships between tables",
-        "Using JOIN to connect data",
-        "Exploring simple database design",
-        "Final project: Create your own data app"
-      ]
-    }
+   
   ],
   whatYouLearnData: [
     {
@@ -7363,17 +5601,7 @@ const coursesData = {
         "Mini project: Movie or event poster"
       ]
     },
-    {
-      id: 5,
-      title: "Expert – Creative Portfolio",
-      icon: "bi bi-lightbulb",
-      items: [
-        "Combining all skills into final artworks",
-        "Designing a personal brand and logo set",
-        "Showcasing your best designs in a digital portfolio",
-        "Final project: Create your own art gallery presentation"
-      ]
-    }
+    
   ],
   whatYouLearnData: [
     {
@@ -7467,17 +5695,7 @@ const coursesData = {
         "Mini project: Build an AI that recognizes animals or emojis"
       ]
     },
-    {
-      id: 5,
-      title: "Expert – Build Your Own Smart Project",
-      icon: "bi bi-stars",
-      items: [
-        "Combining your AI skills into one big project",
-        "Designing an interactive AI experiment",
-        "Showcasing your final AI creation",
-        "Final project: Create your own smart assistant or quiz bot"
-      ]
-    }
+
   ],
   whatYouLearnData: [
     {
@@ -7582,50 +5800,8 @@ const coursesData = {
               "Sharing and scheduling reports"
             ]
           },
-          {
-            "id": 5,
-            "title": "Intermediate – Security & Access",
-            "icon": "bi bi-shield-lock",
-            "items": [
-              "Setting up profiles and permission sets",
-              "Field-level security and sharing rules",
-              "Organization-wide defaults",
-              "Role hierarchy and record access"
-            ]
-          },
-          {
-            "id": 6,
-            "title": "Advanced – Salesforce Customization",
-            "icon": "bi bi-window-stack",
-            "items": [
-              "Custom objects, fields, and relationships",
-              "Page layouts and Lightning App Builder",
-              "Validation rules and formula fields",
-              "Managing apps and tabs"
-            ]
-          },
-          {
-            "id": 7,
-            "title": "Advanced – Advanced Automation",
-            "icon": "bi bi-diagram-3",
-            "items": [
-              "Complex Flows and Process automation",
-              "Approval processes and automation strategies",
-              "Integration basics with external apps",
-              "Optimizing automation for business efficiency"
-            ]
-          },
-          {
-            "id": 8,
-            "title": "Expert – Preparing for Certification",
-            "icon": "bi bi-award",
-            "items": [
-              "Salesforce Administrator certification overview",
-              "Best practices and exam strategies",
-              "Practice exams and quizzes",
-              "Real-time project scenarios"
-            ]
-          }
+          
+          
         ],
         "whatYouLearnData": [
           {
@@ -7724,42 +5900,7 @@ const coursesData = {
               "Deploying and managing Lightning apps",
             ],
           },
-          {
-            id: 5,
-            title: "Intermediate – Salesforce Integrations",
-            icon: "bi bi-cloud-arrow-up",
-            items: [
-              "Connecting Salesforce with external systems",
-              "REST and SOAP APIs",
-              "Using Salesforce Connect and External Objects",
-              "Working with Platform Events",
-              "Integration best practices",
-            ],
-          },
-          {
-            id: 6,
-            title: "Expert – Advanced Automation & DevOps",
-            icon: "bi bi-diagram-3",
-            items: [
-              "Advanced workflow rules and process builder",
-              "Flow Builder automation",
-              "Triggers vs Flows – when to use what",
-              "CI/CD for Salesforce using DevOps tools",
-              "Debugging and performance optimization",
-            ],
-          },
-          {
-            id: 7,
-            title: "Expert – Real-Time Projects & Certification Prep",
-            icon: "bi bi-rocket",
-            items: [
-              "Hands-on CRM development projects",
-              "End-to-end Salesforce app creation",
-              "Best practices for deployment and version control",
-              "Preparation for Salesforce Platform Developer I & II certifications",
-              "Mock projects and assessments",
-            ],
-          }
+          
         ],
         whatYouLearnData: [
           {
@@ -7857,30 +5998,7 @@ const coursesData = {
               "Interview preparation and mock sessions"
             ]
           },
-          {
-            id: 5,
-            title: "Expert – Conversational Fluency",
-            icon: "bi bi-person-lines-fill",
-            items: [
-              "Debating and discussion skills",
-              "Public speaking practice",
-              "Storytelling and persuasive communication",
-              "Accent and pronunciation refinement",
-              "Confidence building through live conversations"
-            ]
-          },
-          {
-            id: 6,
-            title: "Expert – Cultural & Global Communication",
-            icon: "bi bi-globe",
-            items: [
-              "Cross-cultural communication",
-              "Understanding idioms and slang",
-              "Participating in international discussions",
-              "Building professional relationships globally",
-              "Advanced listening and comprehension practice"
-            ]
-          }
+
         ],
         whatYouLearnData: [
           {
@@ -7987,42 +6105,7 @@ const coursesData = {
               "Theming and responsive design",
             ]
           },
-          {
-            id: 5,
-            title: "Intermediate – Navigation & Performance",
-            icon: "bi bi-speedometer2",
-            items: [
-              "Stack, Tab, and Drawer navigation",
-              "Optimizing app performance",
-              "Lazy loading components",
-              "Profiling and debugging mobile apps",
-              "Handling offline data and caching",
-            ]
-          },
-          {
-            id: 6,
-            title: "Expert – Advanced React Native",
-            icon: "bi bi-gear",
-            items: [
-              "Native modules and bridges",
-              "Integrating third-party libraries",
-              "Push notifications and background tasks",
-              "App security best practices",
-              "CI/CD pipelines for mobile apps",
-            ]
-          },
-          {
-            id: 7,
-            title: "Expert – Testing & Deployment",
-            icon: "bi bi-check2-circle",
-            items: [
-              "Unit and integration testing with Jest",
-              "End-to-end testing with Detox",
-              "Debugging and performance monitoring",
-              "Publishing apps on Play Store and App Store",
-              "Maintaining and updating mobile applications",
-            ]
-          }
+
         ],
         whatYouLearnData: [
           {
