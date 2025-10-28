@@ -102,7 +102,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #198754; /* green text */
+  color: #198754!important; /* green text */
   /* font-weight: 600; */
   font-size: 1.1rem;
 }
