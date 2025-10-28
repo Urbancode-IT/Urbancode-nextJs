@@ -91,7 +91,7 @@
 }
 
 .custom-cardhome:hover {
-  background-color: #8b8a8a;
+  background-color: #8b8a8a!important;
 }
 
 .custom-cardhome:hover .card-img-top {
