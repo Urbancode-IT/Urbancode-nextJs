@@ -3,7 +3,7 @@ const coursesData = {
     mainCategoryDesc: "Build Your Tommorow with Code",
     subDesc: "Discover, learn, and excel in the world’s most popular programming languages including Java, Python, C, C++, and HTML. Gain the ability to design algorithms, develop scalable solutions, and innovate in high-demand fields such as software engineering, data science, cybersecurity, and automation.",
     subHeading: "Transform your coding knowledge into job-ready development expertise that accelerates your career.",
-    mainImage: "/images/courses/Programming_Languages.jpg",
+    mainImage: "/images/courses/Programming_Languages.webp",
 
     courses: [
 
@@ -13,7 +13,7 @@ const coursesData = {
         rating: 4.5,
         duration: "3 months",
         students: "9,556",
-        img: "/images/courses/Core_JAVA.jpg",
+        img: "/images/courses/Core_JAVA.webp",
         aboutData: {
           topic: "Master Core Java to Build Strong Object-Oriented Programming Skills",
           content1: "Develop solid foundations in Java programming with hands-on experience. Learn OOP concepts, exception handling, multithreading, and collection frameworks used in enterprise applications.",
@@ -79,7 +79,7 @@ const coursesData = {
   rating: 4.6,
   duration: "1 month",
   students: "11,842",
-  img: "/images/courses/Advanced_Java.png",
+  img: "/images/courses/Advanced_Java.webp",
   aboutData: {
     topic: "Master Advanced Java — From Core Concepts to Enterprise Development!",
     content1:
