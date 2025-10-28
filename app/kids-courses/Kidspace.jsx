@@ -3,6 +3,7 @@ import './Kidz.css';
 import Image from 'next/image';
 import EnquiryFormModal from '../components/common/EnquiryFormModal';
 import { useState } from 'react';
+
 const Kidz = () => {
   const [selectedCourse, setSelectedCourse] = useState(null);
   const [showEnquiry, setShowEnquiry] = useState(false);
@@ -15,6 +16,7 @@ const Kidz = () => {
       stars: "★★★★★",
       rating: "5.0",
       students: 42,
+      url: "/courses/kidz-space/junior-web-development"
        
     },
    
@@ -26,6 +28,7 @@ const Kidz = () => {
       stars: "★★★★★",
       rating: "5.0",
       students: 58,
+      url: "/courses/kidz-space/python-core"
     },
     {
       title: "Advanced Python",
@@ -35,6 +38,7 @@ const Kidz = () => {
       stars: "★★★★☆",
       rating: "4.0",
       students: 39,
+      url: "/courses/kidz-space/advanced-python"
     },
     {
       title: "C Programming",
@@ -44,15 +48,17 @@ const Kidz = () => {
       stars: "★★★★☆",
       rating: "4.0",
       students: 47,
+      url: "/courses/kidz-space/c-programming"
     },
     {
-      title: "C++",
+      title: "Cpp",
       img: "/images/KidsImages/cplus.png",
       duration: "2 Month",
       desc: "Build high-performance apps with OOP, STL, and problem patterns used in competitive programming and real systems.",
       stars: "★★★★★",
       rating: "5.0",
       students: 34,
+      url: "/courses/kidz-space/cpp-programming"
     },
     {
       title: "SQL",
@@ -62,6 +68,7 @@ const Kidz = () => {
       stars: "★★★★☆",
       rating: "4.0",
       students: 41,
+      url: "/courses/kidz-space/sql-for-kids"
     },
     {
       title: "Graphic Designing",
@@ -71,6 +78,7 @@ const Kidz = () => {
       stars: "★★★★★",
       rating: "5.0",
       students: 37,
+      url: "/courses/kidz-space/graphic-designing"
     },
     {
       title: "AI & ML",
@@ -80,6 +88,7 @@ const Kidz = () => {
       stars: "★★★★★",
       rating: "5.0",
       students: 29,
+      url: "/courses/kidz-space/ai-and-ml"
     },
   ];
   return (
@@ -118,6 +127,7 @@ const Kidz = () => {
           {courses.map((course, index) => (
             <div className="col-md-6 col-lg-3" key={index}>
               <div className="course-card shadow-md">
+                <a href={course.url} style={{textDecoration:"none"}}>
                 <div className="position-relative">
                   <Image
                     src={course.img}
@@ -128,6 +138,7 @@ const Kidz = () => {
                   />
                   <span className="badge-duration">{course.duration}</span>
                 </div>
+
 
                 <div className="course-body">
                   <h5 className="kids-course-title">{course.title}</h5>
@@ -175,7 +186,7 @@ const Kidz = () => {
                     />
                   )}
 
-                </div>
+                </div></a>
               </div>
             </div>
           ))}

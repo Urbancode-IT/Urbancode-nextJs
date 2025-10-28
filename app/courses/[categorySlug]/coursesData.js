@@ -453,7 +453,7 @@ const coursesData = {
       },
 
 {
-  title: "C and C++ Programming",
+  title: "C and Cpp Programming",
   desc: "Learn C and C++ programming from scratch. Master the fundamentals of logic, syntax, object-oriented programming, and efficient problem-solving through practical coding exercises.",
   rating: 4.8,
   duration: "1.5 months",
@@ -597,7 +597,7 @@ const coursesData = {
 ,
 
 {
-  title: "Data Structures & Algorithms (DSA)",
+  title: "Data Structures and Algorithms (DSA)",
   desc: "Master Data Structures and Algorithms with hands-on coding in C++, Java, or Python. Learn problem-solving, optimize your logic, and prepare for top tech interviews.",
   rating: 4.8,
   duration: "1.5 months",
@@ -1641,7 +1641,7 @@ const coursesData = {
 ,
 
 {
-  title: ".NET + Angular",
+  title: ".NET plus Angular",
   desc: "Master full-stack web development using .NET for backend and Angular for frontend. Learn to build secure, scalable, and enterprise-grade web applications with real-world projects.",
   rating: 4.8,
   duration: "2 months",
@@ -7098,7 +7098,7 @@ const coursesData = {
     ,
 
     {
-  title: "C++ Programming",
+  title: "Cpp Programming",
   desc: "Step into the world of C++ — learn how games, apps, and real software are built using fun coding projects and logical challenges.",
   rating: 5.0,
   duration: "1 month",
