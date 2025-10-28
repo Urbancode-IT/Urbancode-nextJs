@@ -15,6 +15,7 @@ const Kidz = () => {
       stars: "★★★★★",
       rating: "5.0",
       students: 42,
+       
     },
    
     {

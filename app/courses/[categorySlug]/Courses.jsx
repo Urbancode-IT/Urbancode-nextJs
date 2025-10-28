@@ -24,7 +24,7 @@ const categories = [
   // "Languages",
   // "English Proficiency",
   "CRM",
-  // "App Development",
+  "Kidz Space",
 ];
 
 const slugify = (name) => name.toLowerCase().replace(/\s+/g, "-");

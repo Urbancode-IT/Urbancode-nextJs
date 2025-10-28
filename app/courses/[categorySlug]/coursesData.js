@@ -6642,6 +6642,8 @@ const coursesData = {
       ,
     ]
   },
+
+  
   // "Languages":{
   //   mainCategoryDesc:"Master New Languages with Ease",
   //   subDesc:"Embark on a journey to fluency. Learn Spanish, French, Mandarin, and more with structured lessons and immersive practice.",
@@ -6669,6 +6671,852 @@ const coursesData = {
 
   //   ]
   // },
+"Kidz Space": {
+  mainCategoryDesc: "Fun and interactive coding for kids.",
+  subDesc: "Let your child explore coding, robotics, and creativity through hands-on projects. Courses designed for kids aged 7–16 to learn programming, logic, and problem-solving.",
+  subHeading: "Learn coding the fun way — with games, robots, and real projects!",
+  mainImage: "/images/courses/Kidz_Space_Main.jpg",
+
+  courses: [
+    
+    {
+  title: "Junior Web Development",
+  desc: "Introduce kids to the digital world by teaching them how to build colorful, interactive web pages using HTML, CSS, and simple JavaScript.",
+  rating: 5.0,
+  duration: "1 month",
+  students: "11,200",
+  img: "/images/courses/Kidz_WebDev.jpg",
+  aboutData: {
+    topic: "Build Your First Website — Fun, Creative, and Interactive!",
+    content1: "This course helps kids learn how websites are made from scratch. Through hands-on lessons in HTML, CSS, and beginner JavaScript, they’ll design their own webpages, add animations, and bring creative ideas to life.",
+    content2: "Every project is designed to spark imagination — from building a personal homepage to creating a mini game. By the end, kids will understand how the web works and gain confidence in coding visually engaging websites."
+  },
+  courseContentData: [
+    {
+      id: 1,
+      title: "Beginner – Getting Started with the Web",
+      icon: "bi bi-globe2",
+      defaultOpen: true,
+      items: [
+        "What is a website and how it works",
+        "Introduction to browsers and HTML",
+        "Creating your first webpage",
+        "Adding titles, paragraphs, and images"
+      ]
+    },
+    {
+      id: 2,
+      title: "Beginner – Styling with CSS",
+      icon: "bi bi-palette",
+      items: [
+        "Understanding colors and fonts",
+        "Decorating pages with borders and backgrounds",
+        "Positioning elements neatly",
+        "Designing a colorful webpage layout"
+      ]
+    },
+    {
+      id: 3,
+      title: "Intermediate – Interactive Pages with JavaScript",
+      icon: "bi bi-lightning",
+      items: [
+        "What is JavaScript and why it’s used",
+        "Adding buttons and click effects",
+        "Making animations and popups",
+        "Simple logic for interactivity"
+      ]
+    },
+    {
+      id: 4,
+      title: "Intermediate – Build a Mini Website",
+      icon: "bi bi-laptop",
+      items: [
+        "Plan and design your first website",
+        "Combine HTML, CSS, and JS together",
+        "Test your website in the browser",
+        "Fixing small bugs and improvements"
+      ]
+    },
+    {
+      id: 5,
+      title: "Expert – Showcase Your Web Project",
+      icon: "bi bi-trophy",
+      items: [
+        "Present your project to friends and family",
+        "Learn how to share your website online",
+        "Explore more ideas to keep learning",
+        "Celebrate your web developer journey!"
+      ]
+    }
+  ],
+  whatYouLearnData: [
+    {
+      title: "Create Web Pages from Scratch",
+      desc: "Learn how to use HTML, CSS, and JavaScript to make your own websites.",
+      icon: "bi bi-code-square"
+    },
+    {
+      title: "Use Colors and Styles",
+      desc: "Decorate pages with beautiful designs and layouts.",
+      icon: "bi bi-palette"
+    },
+    {
+      title: "Add Interactivity",
+      desc: "Make your site come alive with fun animations and effects.",
+      icon: "bi bi-lightning"
+    },
+    {
+      title: "Think Like a Web Designer",
+      desc: "Understand how to plan and design a complete website.",
+      icon: "bi bi-brush"
+    },
+    {
+      title: "Build Confidence in Coding",
+      desc: "Practice hands-on coding in a creative and safe way.",
+      icon: "bi bi-rocket"
+    },
+    {
+      title: "Showcase Your Creations",
+      desc: "Share your finished projects proudly with others.",
+      icon: "bi bi-trophy"
+    }
+  ]
+    }
+    ,
+    {
+  title: "Python Core",
+  desc: "A playful introduction to Python for kids — learn how to think like a programmer, write code, and create fun projects step by step.",
+  rating: 5.0,
+  duration: "1 month",
+  students: "10,950",
+  img: "/images/courses/Kidz_PythonCore.jpg",
+  aboutData: {
+    topic: "Learn Python the Fun Way — Code, Create, and Explore!",
+    content1: "Python Core is designed to help kids start coding with one of the world’s most popular programming languages. Through hands-on activities, they’ll learn how to use Python to draw shapes, solve problems, and build simple apps.",
+    content2: "Each concept is taught through fun challenges and visual examples — no boring theory. Kids will learn loops, conditionals, and variables while developing logical thinking and creativity through interactive coding tasks."
+  },
+  courseContentData: [
+    {
+      id: 1,
+      title: "Beginner – What is Python?",
+      icon: "bi bi-terminal",
+      defaultOpen: true,
+      items: [
+        "Introduction to Python and how it’s used",
+        "Setting up your first Python environment",
+        "Printing messages and playing with text",
+        "Writing your first 'Hello, World!' program"
+      ]
+    },
+    {
+      id: 2,
+      title: "Beginner – Playing with Numbers and Text",
+      icon: "bi bi-123",
+      items: [
+        "Understanding variables and data types",
+        "Doing basic math with Python",
+        "Working with strings and text",
+        "Simple challenges to practice logic"
+      ]
+    },
+    {
+      id: 3,
+      title: "Intermediate – Logic and Loops",
+      icon: "bi bi-repeat",
+      items: [
+        "Making decisions with if-else conditions",
+        "Creating loops to repeat actions",
+        "Using comparison and logical operators",
+        "Fun coding exercises and mini projects"
+      ]
+    },
+    {
+      id: 4,
+      title: "Intermediate – Drawing with Turtle",
+      icon: "bi bi-palette",
+      items: [
+        "Introduction to Python’s Turtle graphics",
+        "Drawing shapes and colorful patterns",
+        "Animating with loops and movements",
+        "Building a small art project"
+      ]
+    },
+    {
+      id: 5,
+      title: "Expert – Mini Projects and Games",
+      icon: "bi bi-lightbulb",
+      items: [
+        "Create a quiz or number-guessing game",
+        "Combine logic and visuals for creativity",
+        "Debugging and improving your project",
+        "Showcase your final Python project"
+      ]
+    }
+  ],
+  whatYouLearnData: [
+    {
+      title: "Understand the Basics of Python",
+      desc: "Learn how to write and run simple Python programs.",
+      icon: "bi bi-code-slash"
+    },
+    {
+      title: "Think Logically",
+      desc: "Use loops, conditions, and problem-solving to create smart code.",
+      icon: "bi bi-brain"
+    },
+    {
+      title: "Play with Turtle Graphics",
+      desc: "Draw shapes and make art using Python’s Turtle module.",
+      icon: "bi bi-brush"
+    },
+    {
+      title: "Build Mini Games",
+      desc: "Turn your coding skills into fun and creative projects.",
+      icon: "bi bi-controller"
+    },
+    {
+      title: "Gain Coding Confidence",
+      desc: "Practice writing clean and organized code.",
+      icon: "bi bi-lightning"
+    },
+    {
+      title: "Show Off Your Work",
+      desc: "Share your games and scripts proudly with family and friends.",
+      icon: "bi bi-trophy"
+    }
+  ]
+    }
+    ,
+    {
+  title: "Advanced Python",
+  desc: "Take your Python skills to the next level! Learn how to build real-world apps, create smart programs, and explore cool Python libraries.",
+  rating: 5.0,
+  duration: "1 month",
+  students: "9,860",
+  img: "/images/courses/Kidz_AdvancedPython.jpg",
+  aboutData: {
+    topic: "Go Beyond Basics — Build Smarter, Cooler Python Projects!",
+    content1: "Advanced Python helps kids who already know the basics to level up their coding power. They’ll explore topics like lists, dictionaries, functions, and file handling — all through interactive games and creative coding challenges.",
+    content2: "The course focuses on turning imagination into real projects — calculators, story generators, and even mini AI-like chat programs. By the end, kids will think like true programmers, ready to create complex ideas with confidence."
+  },
+  courseContentData: [
+    {
+      id: 1,
+      title: "Intermediate – Review & Setup",
+      icon: "bi bi-gear",
+      defaultOpen: true,
+      items: [
+        "Quick recap of Python basics",
+        "Understanding how programs run",
+        "Exploring real-world Python examples",
+        "Setting up a project workspace"
+      ]
+    },
+    {
+      id: 2,
+      title: "Intermediate – Lists, Tuples, and Dictionaries",
+      icon: "bi bi-collection",
+      items: [
+        "Storing and organizing data in lists",
+        "Understanding tuples and their uses",
+        "Working with key-value pairs in dictionaries",
+        "Hands-on mini projects with collections"
+      ]
+    },
+    {
+      id: 3,
+      title: "Advanced – Functions and Logic Building",
+      icon: "bi bi-cpu",
+      items: [
+        "Creating and using your own functions",
+        "Understanding parameters and return values",
+        "Breaking big problems into small parts",
+        "Building a calculator or quiz using functions"
+      ]
+    },
+    {
+      id: 4,
+      title: "Advanced – Working with Files and Modules",
+      icon: "bi bi-folder2-open",
+      items: [
+        "Reading and writing files in Python",
+        "Saving game data or user inputs",
+        "Using Python libraries to extend your code",
+        "Exploring random and math modules"
+      ]
+    },
+    {
+      id: 5,
+      title: "Expert – Smart Projects and Creativity",
+      icon: "bi bi-lightbulb",
+      items: [
+        "Create a story or chatbot generator",
+        "Design your own guessing or math game",
+        "Debug, test, and improve your projects",
+        "Showcase your final advanced Python project"
+      ]
+    }
+  ],
+  whatYouLearnData: [
+    {
+      title: "Master Core Python Concepts",
+      desc: "Understand lists, functions, and files like a real developer.",
+      icon: "bi bi-terminal"
+    },
+    {
+      title: "Build Real-World Projects",
+      desc: "Apply your knowledge to fun coding challenges and apps.",
+      icon: "bi bi-controller"
+    },
+    {
+      title: "Write Smarter Code",
+      desc: "Learn how to organize your programs with functions and logic.",
+      icon: "bi bi-cpu"
+    },
+    {
+      title: "Explore Python Libraries",
+      desc: "Use built-in modules to make your projects more powerful.",
+      icon: "bi bi-puzzle"
+    },
+    {
+      title: "Develop Debugging Skills",
+      desc: "Find and fix errors like a pro while improving your code.",
+      icon: "bi bi-bug"
+    },
+    {
+      title: "Create and Share Projects",
+      desc: "Design cool Python apps and share them proudly with others.",
+      icon: "bi bi-trophy"
+    }
+  ]
+    }
+    ,
+
+    {
+  title: "C Programming",
+  desc: "Learn the basics of C programming through games, problem-solving, and fun logic-building activities designed just for kids.",
+  rating: 5.0,
+  duration: "1 month",
+  students: "8,940",
+  img: "/images/courses/Kidz_CProgramming.jpg",
+  aboutData: {
+    topic: "Learn the Language Behind Every Great Program!",
+    content1: "C Programming introduces kids to the foundation of coding used in modern technology. Through colorful examples and fun exercises, they’ll understand how computers think, calculate, and make decisions.",
+    content2: "The course helps kids build a strong base in logic, variables, loops, and conditions while writing simple programs. By creating mini projects like number games and pattern printers, they’ll learn how real software is made — step by step."
+  },
+  courseContentData: [
+    {
+      id: 1,
+      title: "Beginner – Getting Started with C",
+      icon: "bi bi-cpu",
+      defaultOpen: true,
+      items: [
+        "What is C and why it’s important",
+        "Setting up a C environment (like Code::Blocks or online compilers)",
+        "Writing your first program: Hello World!",
+        "Understanding compilation and output"
+      ]
+    },
+    {
+      id: 2,
+      title: "Beginner – Basics of Coding",
+      icon: "bi bi-terminal",
+      items: [
+        "Variables and data types",
+        "Input and output in C",
+        "Operators and simple calculations",
+        "Mini project: Build a basic calculator"
+      ]
+    },
+    {
+      id: 3,
+      title: "Intermediate – Decisions and Loops",
+      icon: "bi bi-arrow-repeat",
+      items: [
+        "Using if-else and switch statements",
+        "Creating loops with for and while",
+        "Solving logic-based challenges",
+        "Mini project: Number guessing game"
+      ]
+    },
+    {
+      id: 4,
+      title: "Intermediate – Arrays and Functions",
+      icon: "bi bi-grid",
+      items: [
+        "Understanding arrays and indexing",
+        "Storing multiple values efficiently",
+        "Creating and using your own functions",
+        "Mini project: Average marks calculator"
+      ]
+    },
+    {
+      id: 5,
+      title: "Expert – Projects & Debugging",
+      icon: "bi bi-lightbulb",
+      items: [
+        "Debugging errors in your code",
+        "Understanding how memory works",
+        "Building small pattern or math games",
+        "Final project: Create your own logic-based app"
+      ]
+    }
+  ],
+  whatYouLearnData: [
+    {
+      title: "Learn Programming Logic",
+      desc: "Understand how computers think and solve problems step-by-step.",
+      icon: "bi bi-brain"
+    },
+    {
+      title: "Write Real C Programs",
+      desc: "Create your own working programs and simple apps.",
+      icon: "bi bi-code-slash"
+    },
+    {
+      title: "Understand Variables & Loops",
+      desc: "Use loops and conditions to make your programs smarter.",
+      icon: "bi bi-arrow-repeat"
+    },
+    {
+      title: "Debug and Fix Code",
+      desc: "Learn how to find and fix mistakes like a real programmer.",
+      icon: "bi bi-bug"
+    },
+    {
+      title: "Build Mini Projects",
+      desc: "Make small but exciting programs using real C syntax.",
+      icon: "bi bi-controller"
+    },
+    {
+      title: "Gain Confidence in Coding",
+      desc: "Build a solid foundation for learning any programming language.",
+      icon: "bi bi-trophy"
+    }
+  ]
+    }
+    ,
+
+    {
+  title: "C++ Programming",
+  desc: "Step into the world of C++ — learn how games, apps, and real software are built using fun coding projects and logical challenges.",
+  rating: 5.0,
+  duration: "1 month",
+  students: "8,520",
+  img: "/images/courses/Kidz_CPP.jpg",
+  aboutData: {
+    topic: "Code Smarter — Build Logic, Games, and Real Programs with C++!",
+    content1: "C++ introduces kids to the world of structured and object-oriented programming in a simple, engaging way. They’ll learn how to code step-by-step using variables, loops, and functions while building small projects.",
+    content2: "This course helps children develop a deeper understanding of how software works. By the end, they’ll create mini games and projects using objects, functions, and logic — learning real coding skills used by game and app developers worldwide."
+  },
+  courseContentData: [
+    {
+      id: 1,
+      title: "Beginner – Getting Started with C++",
+      icon: "bi bi-cpu",
+      defaultOpen: true,
+      items: [
+        "What is C++ and how it powers games and apps",
+        "Setting up your coding environment",
+        "Writing your first C++ program",
+        "Understanding input and output"
+      ]
+    },
+    {
+      id: 2,
+      title: "Beginner – Variables, Loops & Decisions",
+      icon: "bi bi-arrow-repeat",
+      items: [
+        "Understanding variables and data types",
+        "If-else conditions and decision making",
+        "For and while loops for repetition",
+        "Mini project: Number guessing game"
+      ]
+    },
+    {
+      id: 3,
+      title: "Intermediate – Functions & Arrays",
+      icon: "bi bi-grid",
+      items: [
+        "Writing and using your own functions",
+        "Organizing data with arrays",
+        "Exploring problem-solving techniques",
+        "Mini project: Student marks calculator"
+      ]
+    },
+    {
+      id: 4,
+      title: "Intermediate – Introduction to OOP",
+      icon: "bi bi-diagram-3",
+      items: [
+        "What are classes and objects?",
+        "Understanding how OOP makes coding easier",
+        "Creating your own simple classes",
+        "Mini project: Create a virtual pet or character"
+      ]
+    },
+    {
+      id: 5,
+      title: "Expert – Creative Projects",
+      icon: "bi bi-lightbulb",
+      items: [
+        "Combining logic, functions, and OOP",
+        "Designing interactive console-based games",
+        "Debugging and optimizing code",
+        "Final project: Build your own mini adventure game"
+      ]
+    }
+  ],
+  whatYouLearnData: [
+    {
+      title: "Understand C++ Fundamentals",
+      desc: "Learn how C++ works and why it’s used in real software and games.",
+      icon: "bi bi-terminal"
+    },
+    {
+      title: "Use Loops and Logic",
+      desc: "Create smart programs using if-else, loops, and conditions.",
+      icon: "bi bi-arrow-repeat"
+    },
+    {
+      title: "Build with Functions",
+      desc: "Organize your code using functions for reusability and clarity.",
+      icon: "bi bi-gear"
+    },
+    {
+      title: "Explore Object-Oriented Programming",
+      desc: "Understand classes, objects, and how real-world software is built.",
+      icon: "bi bi-diagram-3"
+    },
+    {
+      title: "Create Exciting Projects",
+      desc: "Design fun mini games and tools that bring your ideas to life.",
+      icon: "bi bi-controller"
+    },
+    {
+      title: "Think Like a Game Developer",
+      desc: "Build logic, planning, and creativity — just like real developers do.",
+      icon: "bi bi-lightbulb"
+    }
+  ]
+    },
+
+    {
+  title: "SQL for Kids",
+  desc: "Discover how data works! Learn how to store, search, and organize information using fun, kid-friendly SQL lessons and projects.",
+  rating: 5.0,
+  duration: "1 month",
+  students: "7,780",
+  img: "/images/courses/Kidz_SQL.jpg",
+  aboutData: {
+    topic: "Learn How Apps and Games Store Their Data!",
+    content1: "SQL for Kids introduces the idea of databases in a fun, visual way. Kids learn how to organize and find information — just like apps, websites, and games do behind the scenes.",
+    content2: "Through hands-on examples, they’ll create simple databases, add and search records, and build mini projects like a student score tracker or favorite movies list. It’s a great way to understand how real-world apps handle data."
+  },
+  courseContentData: [
+    {
+      id: 1,
+      title: "Beginner – Understanding Data",
+      icon: "bi bi-collection",
+      defaultOpen: true,
+      items: [
+        "What is data and why is it important?",
+        "How websites and games use databases",
+        "Introduction to SQL and tables",
+        "Creating your first table"
+      ]
+    },
+    {
+      id: 2,
+      title: "Beginner – Working with Tables",
+      icon: "bi bi-table",
+      items: [
+        "Adding and viewing data using INSERT and SELECT",
+        "Understanding rows and columns",
+        "Exploring simple data types",
+        "Mini project: Create a favorite books list"
+      ]
+    },
+    {
+      id: 3,
+      title: "Intermediate – Searching and Filtering",
+      icon: "bi bi-search",
+      items: [
+        "Using WHERE to filter data",
+        "Sorting data with ORDER BY",
+        "Using LIKE for pattern searches",
+        "Mini project: Movie search database"
+      ]
+    },
+    {
+      id: 4,
+      title: "Intermediate – Updating and Deleting Data",
+      icon: "bi bi-pencil-square",
+      items: [
+        "Changing data with UPDATE",
+        "Removing unwanted data using DELETE",
+        "Maintaining clean and accurate databases",
+        "Mini project: Student marks manager"
+      ]
+    },
+    {
+      id: 5,
+      title: "Expert – Connecting Data",
+      icon: "bi bi-diagram-3",
+      items: [
+        "Understanding relationships between tables",
+        "Using JOIN to connect data",
+        "Exploring simple database design",
+        "Final project: Create your own data app"
+      ]
+    }
+  ],
+  whatYouLearnData: [
+    {
+      title: "Understand How Data Works",
+      desc: "Learn how apps, games, and websites use databases to store info.",
+      icon: "bi bi-brain"
+    },
+    {
+      title: "Write Real SQL Commands",
+      desc: "Use simple SQL queries to create and explore data.",
+      icon: "bi bi-terminal"
+    },
+    {
+      title: "Search and Sort Data",
+      desc: "Find information using filters, conditions, and sorting.",
+      icon: "bi bi-search"
+    },
+    {
+      title: "Manage and Update Records",
+      desc: "Learn how to edit and clean data safely.",
+      icon: "bi bi-pencil-square"
+    },
+    {
+      title: "Design Mini Databases",
+      desc: "Create projects like movie lists or student score systems.",
+      icon: "bi bi-database"
+    },
+    {
+      title: "Think Logically with Data",
+      desc: "Build structured thinking and understand how real systems store info.",
+      icon: "bi bi-lightbulb"
+    }
+  ]
+    },
+
+    {
+  title: "Graphic Designing",
+  desc: "Turn your imagination into art! Learn to design posters, logos, and digital art using simple kid-friendly design tools.",
+  rating: 5.0,
+  duration: "1 month",
+  students: "11,230",
+  img: "/images/courses/Kidz_GraphicDesign.jpg",
+  aboutData: {
+    topic: "Design Like a Pro — Create Art That Tells a Story!",
+    content1: "This course introduces kids to the colorful world of graphic design. They’ll explore shapes, colors, and typography while learning to express their creativity using digital tools.",
+    content2: "With fun, project-based lessons, kids will design posters, logos, and social media graphics — all while understanding real design principles like balance, contrast, and layout. It’s the perfect mix of creativity and tech!"
+  },
+  courseContentData: [
+    {
+      id: 1,
+      title: "Beginner – Getting Started with Design",
+      icon: "bi bi-palette",
+      defaultOpen: true,
+      items: [
+        "What is graphic design?",
+        "Introduction to colors, shapes, and fonts",
+        "Exploring design tools like Canva or Figma",
+        "Create your first digital drawing"
+      ]
+    },
+    {
+      id: 2,
+      title: "Beginner – Playing with Colors & Layouts",
+      icon: "bi bi-brush",
+      items: [
+        "Understanding color theory and harmony",
+        "Working with grids and spacing",
+        "Designing a simple poster or greeting card",
+        "Mini project: Your favorite quote poster"
+      ]
+    },
+    {
+      id: 3,
+      title: "Intermediate – Creating Logos & Icons",
+      icon: "bi bi-bounding-box-circles",
+      items: [
+        "How to design logos using shapes and text",
+        "Understanding visual identity and branding",
+        "Simplifying complex ideas into icons",
+        "Mini project: Design a logo for your own brand"
+      ]
+    },
+    {
+      id: 4,
+      title: "Intermediate – Posters, Flyers & Storyboards",
+      icon: "bi bi-file-image",
+      items: [
+        "Creating visually balanced posters",
+        "Adding images, text, and effects",
+        "Making storyboards for short animations",
+        "Mini project: Movie or event poster"
+      ]
+    },
+    {
+      id: 5,
+      title: "Expert – Creative Portfolio",
+      icon: "bi bi-lightbulb",
+      items: [
+        "Combining all skills into final artworks",
+        "Designing a personal brand and logo set",
+        "Showcasing your best designs in a digital portfolio",
+        "Final project: Create your own art gallery presentation"
+      ]
+    }
+  ],
+  whatYouLearnData: [
+    {
+      title: "Understand Design Basics",
+      desc: "Learn color theory, layout, and balance in a fun way.",
+      icon: "bi bi-palette"
+    },
+    {
+      title: "Use Real Design Tools",
+      desc: "Create digital art using Canva, Figma, or similar software.",
+      icon: "bi bi-brush"
+    },
+    {
+      title: "Create Logos and Posters",
+      desc: "Design real-world projects like logos and event posters.",
+      icon: "bi bi-bounding-box-circles"
+    },
+    {
+      title: "Develop Visual Thinking",
+      desc: "Learn to communicate ideas visually and creatively.",
+      icon: "bi bi-eye"
+    },
+    {
+      title: "Build a Creative Portfolio",
+      desc: "Showcase your best designs and personal style.",
+      icon: "bi bi-collection"
+    },
+    {
+      title: "Boost Confidence Through Art",
+      desc: "Turn imagination into beautiful visual stories and projects.",
+      icon: "bi bi-trophy"
+    }
+  ]
+    },
+
+    {
+  title: "AI and ML",
+  desc: "Discover how computers can think, learn, and make decisions! A fun, beginner-friendly intro to Artificial Intelligence and Machine Learning for kids.",
+  rating: 5.0,
+  duration: "1 month",
+  students: "10,870",
+  img: "/images/courses/Kidz_AI_ML.jpg",
+  aboutData: {
+    topic: "Meet the World of Smart Machines — Learn How AI Works!",
+    content1: "This course introduces kids to the amazing world of Artificial Intelligence and Machine Learning — in the simplest way possible. They’ll understand how computers recognize images, play games, and make predictions.",
+    content2: "Through games, stories, and visual projects, they’ll build their own mini ‘smart’ systems using beginner-friendly tools. It’s the perfect mix of logic, creativity, and technology — no math-heavy coding required!"
+  },
+  courseContentData: [
+    {
+      id: 1,
+      title: "Beginner – What is AI?",
+      icon: "bi bi-robot",
+      defaultOpen: true,
+      items: [
+        "Understanding what Artificial Intelligence means",
+        "Examples of AI in everyday life (Alexa, games, robots)",
+        "How do computers learn from data?",
+        "Activity: Spot the AI around you"
+      ]
+    },
+    {
+      id: 2,
+      title: "Beginner – How Machines Learn",
+      icon: "bi bi-lightning",
+      items: [
+        "What is Machine Learning?",
+        "Difference between AI and ML",
+        "How computers find patterns and make predictions",
+        "Mini project: Teach your computer to recognize shapes"
+      ]
+    },
+    {
+      id: 3,
+      title: "Intermediate – Fun with Data",
+      icon: "bi bi-database",
+      items: [
+        "Collecting and understanding data",
+        "How machines use examples to learn",
+        "Training your first simple model using a drag-and-drop tool",
+        "Mini project: Create a mood detector using pictures"
+      ]
+    },
+    {
+      id: 4,
+      title: "Intermediate – Image and Voice Intelligence",
+      icon: "bi bi-camera-video",
+      items: [
+        "How AI recognizes images and sounds",
+        "Exploring Teachable Machine by Google",
+        "Creating your own image classification model",
+        "Mini project: Build an AI that recognizes animals or emojis"
+      ]
+    },
+    {
+      id: 5,
+      title: "Expert – Build Your Own Smart Project",
+      icon: "bi bi-stars",
+      items: [
+        "Combining your AI skills into one big project",
+        "Designing an interactive AI experiment",
+        "Showcasing your final AI creation",
+        "Final project: Create your own smart assistant or quiz bot"
+      ]
+    }
+  ],
+  whatYouLearnData: [
+    {
+      title: "Understand AI & ML Concepts",
+      desc: "Learn how computers think, learn, and make predictions.",
+      icon: "bi bi-robot"
+    },
+    {
+      title: "Play with Real AI Tools",
+      desc: "Use beginner-friendly tools like Teachable Machine to train models.",
+      icon: "bi bi-tools"
+    },
+    {
+      title: "Learn Through Fun Projects",
+      desc: "Build simple AI projects like image and sound recognizers.",
+      icon: "bi bi-controller"
+    },
+    {
+      title: "Boost Logical Thinking",
+      desc: "Develop problem-solving and structured thinking skills.",
+      icon: "bi bi-cpu"
+    },
+    {
+      title: "Explore Future Tech",
+      desc: "Understand how AI powers apps, robots, and games around us.",
+      icon: "bi bi-lightbulb"
+    },
+    {
+      title: "Create Your Own Smart Ideas",
+      desc: "Apply AI creatively to design your own intelligent mini systems.",
+      icon: "bi bi-stars"
+    }
+  ]
+    }
+
+  ]
+},
+
+
   "CRM": {
     mainCategoryDesc: "Master Customer Relationship Management",
     subDesc: "Unlock the potential of CRM tools and strategies to build stronger customer relationships, streamline processes, and drive business growth.",

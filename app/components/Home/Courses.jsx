@@ -47,7 +47,7 @@ const Courses = () => {
         'In Full Stack Development with in-demand technologies like MERN, MEAN, Java Stack, .Net Angular and React Native. Master end-to-end web and mobile application development — from dynamic frontends to powerful backends.',
       courses: '5 Courses',
       img: '/images/home/img4.webp',
-      link:"/courses/web-development"
+      link:"/courses/web-and-app-development"
     },
   ];
 

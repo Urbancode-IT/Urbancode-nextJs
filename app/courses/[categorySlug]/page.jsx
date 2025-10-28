@@ -16,7 +16,7 @@ export async function generateStaticParams() {
     "Digital Marketing",
     "Health Care",
     "CRM",
-    // "App Development",
+    "Kidz Space",
   ];
 
   const slugify = (name) => name.toLowerCase().replace(/\s+/g, "-");
