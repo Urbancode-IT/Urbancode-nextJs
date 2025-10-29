@@ -323,20 +323,29 @@
             box-shadow: none;
             border-color: #2C3E50;
         }
+.internship-page .submit-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px; /* replaces mt-4 */
+}
 
-        .internship-page .App .submit-btn {
-            background: #595959;
-            border-radius: 9px;
-            font-weight: 500;
-            font-size: 16px;
-            color: #fff;
-            transition: background 0.3s ease;
-        }
+.internship-page .submit-btn {
+  background: #595959;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  border: none;
+  border-radius: 9px;
+  width: 447px;
+  height: 39px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
 
-        .internship-page .App .submit-btn:hover {
-            background: #198754;
-            color: #fff;
-        }
+.internship-page .submit-btn:hover {
+  background: #198754;
+}
+ 
 
         .internship-page form .row.g-3 {
             row-gap: 20px;

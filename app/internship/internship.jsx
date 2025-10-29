@@ -342,11 +342,12 @@ function App() {
                     onChange={handleInputChange}
                   />
                 </div>
-                <div className="col-12 text-center mt-4">
-                  <button type="submit" className="btn submit-btn px-5 py-2">
-                    Submit Application
-                  </button>
-                </div>
+<div class="submit-container">
+  <button type="submit" class="submit-btn">
+    Submit Application
+  </button>
+</div>
+
               </div>
             </form>
           </div>

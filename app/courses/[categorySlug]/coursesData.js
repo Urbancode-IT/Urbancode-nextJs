@@ -340,7 +340,7 @@ const coursesData = {
       },
 
 {
-  title: "C and Cpp Programming",
+  title: "C and CPP Programming",
   desc: "Learn C and C++ programming from scratch. Master the fundamentals of logic, syntax, object-oriented programming, and efficient problem-solving through practical coding exercises.",
   rating: 4.8,
   duration: "1.5 months",
@@ -4030,7 +4030,7 @@ const coursesData = {
 
     courses: [
       {
-  "title": "CCN",
+  "title": "CCNA",
   "desc": "Master the fundamentals of computer networks — learn IP addressing, routing, switching, and real-world troubleshooting to build a strong foundation in networking.",
   "rating": 5.0,
   "duration": "1 month",
@@ -5356,7 +5356,7 @@ const coursesData = {
     ,
 
     {
-  title: "Cpp Programming",
+  title: "CPP Programming",
   desc: "Step into the world of C++ — learn how games, apps, and real software are built using fun coding projects and logical challenges.",
   rating: 5.0,
   duration: "1 month",

@@ -51,7 +51,7 @@ const Kidz = () => {
       url: "/courses/kidz-space/c-programming"
     },
     {
-      title: "Cpp",
+      title: "CPP",
       img: "/images/KidsImages/cplus.png",
       duration: "2 Month",
       desc: "Build high-performance apps with OOP, STL, and problem patterns used in competitive programming and real systems.",
