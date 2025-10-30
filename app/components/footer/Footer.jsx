@@ -39,9 +39,9 @@ function Footer() {
             <h4>Quick Links</h4>
             <ul className="list-unstyled">
               <li><Link href="/">› Home</Link></li>
-              <li><Link href="about-us">› About Us</Link></li>
-              <li><Link href="contact-us">› Contact Us</Link></li>
-              <li><Link href="projects">› Projects</Link></li>
+              <li><Link href="/about-us">› About Us</Link></li>
+              <li><Link href="/contact-us">› Contact Us</Link></li>
+              <li><Link href="/projects">› Projects</Link></li>
               <li>
                 <a
                   href="https://blog-urbancode.blogspot.com/"
@@ -58,13 +58,13 @@ function Footer() {
           <div className="col-lg-3 col-md-6">
             <h4>Demand Software Courses</h4>
             <ul className="list-unstyled">
-              <li><a href="#">› MERN Stack</a></li>
-              <li><a href="#">› MEAN Stack</a></li>
-              <li><a href="#">› Python Stack</a></li>
-              <li><a href="#">› .Net + Angular Full Stack</a></li>
-              <li><a href="#">› Data Analytics</a></li>
-              <li><a href="#">› AWS Cloud Computing</a></li>
-              <li><a href="#">› Software Testing</a></li>
+              <li><Link href="/courses/web-and-app-development/mern-stack">› MERN Stack</Link></li>
+              <li><Link href="/courses/web-and-app-development/mean-stack">› MEAN Stack</Link></li>
+              <li><Link href="/courses/web-and-app-development/python-full-stack">› Python Stack</Link></li>
+              <li><Link href="/courses/web-and-app-development/.net-plus-angular">› .Net + Angular Full Stack</Link></li>
+              <li><Link href="/courses/data-science">› Data Analytics</Link></li>
+              <li><Link href="/courses/cloud-and-devops/aws">› AWS Cloud Computing</Link></li>
+              <li><Link href="/courses/software-testing">› Software Testing</Link></li>
             </ul>
           </div>
 
@@ -72,13 +72,13 @@ function Footer() {
           <div className="col-lg-2 col-md-6">
             <h4>Kids Courses</h4>
             <ul className="list-unstyled">
-              <li><a href="#">› Core Python</a></li>
-              <li><a href="#">› AI & ML For Kids</a></li>
-              <li><a href="#">› Web Development For Kids</a></li>
-              <li><a href="#">› Graphic Designing</a></li>
-              <li><a href="#">› C Programming</a></li>
-              <li><a href="#">› SQL</a></li>
-              <li><a href="#">› C++</a></li>
+              <li><Link href="/courses/kidz-space/python-core">› Core Python</Link></li>
+              <li><Link href="/courses/kidz-space/ai-and-ml">› AI & ML For Kids</Link></li>
+              <li><Link href="/courses/kidz-space/junior-web-development">› Web Development For Kids</Link></li>
+              <li><Link href="/courses/kidz-space/graphic-designing">› Graphic Designing</Link></li>
+              <li><Link href="/courses/kidz-space/c-programming">› C Programming</Link></li>
+              <li><Link href="/courses/kidz-space/sql-for-kids">› SQL</Link></li>
+              <li><Link href="/courses/kidz-space/cpp-programming">› C++</Link></li>
             </ul>
           </div>
 
