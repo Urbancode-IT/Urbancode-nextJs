@@ -39,9 +39,9 @@ function Footer() {
             <h4>Quick Links</h4>
             <ul className="list-unstyled">
               <li><Link href="/">› Home</Link></li>
-              <li><Link href="/about-us">› About Us</Link></li>
-              <li><Link href="/contact-us">› Contact Us</Link></li>
-              <li><Link href="/projects">› Projects</Link></li>
+              <li><Link href="about-us">› About Us</Link></li>
+              <li><Link href="contact-us">› Contact Us</Link></li>
+              <li><Link href="projects">› Projects</Link></li>
               <li>
                 <a
                   href="https://blog-urbancode.blogspot.com/"
@@ -86,8 +86,8 @@ function Footer() {
           <div className="col-lg-2 col-md-6">
             <h4>Career</h4>
             <ul className="list-unstyled">
-              <li><Link href="/be-our-mentor">› Becoma a Mentor</Link></li>
-              <li><Link href="/internship">› Internship Program</Link></li>
+              <li><Link href="be-our-mentor">› Becoma a Mentor</Link></li>
+              <li><Link href="internship">› Internship Program</Link></li>
               <li><a href="#">› Job</a></li>
             </ul>
           </div>
