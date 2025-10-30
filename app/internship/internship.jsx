@@ -342,7 +342,7 @@ function App() {
                     onChange={handleInputChange}
                   />
                 </div>
-<div class="submit-container">
+<div className="submit-container">
   <button type="submit" class="submit-btn">
     Submit Application
   </button>
