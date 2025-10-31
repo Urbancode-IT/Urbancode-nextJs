@@ -107,13 +107,13 @@ const courses = [
     link: "/courses/health-care",
     badge: "3 Courses",
   },
-  // {
-  //   title: "Languages",
-  //   desc: "Learn to speak, read, and write with confidence in global languages like English, Spanish, French & Japanese.",
-  //   img: languagesImg,
-  //   link: "/courses/languages",
-  //   badge: "5 Courses",
-  // },
+  {
+    title: "Languages",
+    desc: "Learn to speak, read, and write with confidence in global languages like English, Spanish, French & Japanese.",
+    img: languagesImg,
+    link: "/courses/languages",
+    badge: "5 Courses",
+  },
   // {
   //   title: "English Proficiency Exams",
   //   desc: "Prepare for IELTS, TOEFL, and more with expert guidance and practice sessions.",

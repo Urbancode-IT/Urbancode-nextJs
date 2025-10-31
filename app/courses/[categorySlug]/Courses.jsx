@@ -21,10 +21,10 @@ const categories = [
   "Net Working",
   "Digital Marketing",
   "Health Care",
-  // "Languages",
+  "Languages",
   // "English Proficiency",
   "CRM",
-  "Kidz Space",
+  // "Kidz Space",
 ];
 
 const slugify = (name) => name.toLowerCase().replace(/\s+/g, "-");

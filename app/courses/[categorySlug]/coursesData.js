@@ -2076,313 +2076,573 @@ const coursesData = {
       }
       ,
       {
-        title: "Google Cloud Platform",
-        desc: "Master Google Cloud Platform with hands-on training in cloud infrastructure, DevOps, and AI services. Build real-world projects and earn career-boosting certifications.",
-        rating: 5.0,
-        duration: "3 months",
-        students: "5,650",
-        img: "/images/courses/Google_Cloud_Platform.jpg",
-        aboutData: {
-          topic: "Master Google Cloud Platform — From Cloud Fundamentals to AI & DevOps Integration!",
-          content1: "Take your cloud computing skills to the next level! Learn to design, deploy, and manage scalable applications using Google Cloud services. This course prepares you for professional certifications like GCP Associate Engineer and Professional Cloud Architect.",
-          content2: "The Google Cloud Platform (GCP) course by Urbancode provides a deep understanding of Google’s cloud ecosystem. You’ll explore core concepts such as compute, storage, networking, IAM, DevOps automation, and machine learning tools. Through hands-on labs and projects, you’ll master cloud deployment, Kubernetes, CI/CD pipelines, and AI integrations using TensorFlow on GCP."
-        },
-        courseContentData: [
-          {
-            id: 1,
-            title: "Beginner – Cloud Fundamentals",
-            icon: "bi bi-cloud",
-            defaultOpen: true,
-            items: [
-              "Introduction to Cloud Computing",
-              "Overview of Google Cloud Platform (GCP)",
-              "GCP Console and Cloud Shell setup",
-              "Understanding projects, billing, and IAM",
-              "Regions, zones, and resources overview"
-            ]
-          },
-          {
-            id: 2,
-            title: "Beginner – Core Services",
-            icon: "bi bi-hdd-network",
-            items: [
-              "Compute Engine basics",
-              "Cloud Storage and Databases (Cloud SQL, Firestore, Bigtable)",
-              "Networking fundamentals – VPC, subnets, and firewalls",
-              "Identity and Access Management (IAM) essentials",
-              "Monitoring and logging with Cloud Operations Suite"
-            ]
-          },
-          {
-            id: 3,
-            title: "Intermediate – Infrastructure & Deployment",
-            icon: "bi bi-diagram-3",
-            items: [
-              "Managing Virtual Machines (VMs)",
-              "Load balancing and autoscaling",
-              "Containerization with Docker",
-              "Kubernetes Engine (GKE) fundamentals",
-              "Infrastructure as Code with Terraform"
-            ]
-          },
-          {
-            id: 4,
-            title: "Intermediate – Data & Analytics",
-            icon: "bi bi-bar-chart-line",
-            items: [
-              "BigQuery for large-scale data analysis",
-              "Dataflow and Dataproc pipelines",
-              "Pub/Sub for real-time messaging",
-              "Building data lakes on GCP",
-              "Integrating AI and ML APIs with datasets"
-            ]
-          },
+  title: "DevOps",
+  desc: "Master the complete DevOps lifecycle — from continuous integration and delivery to automation, containerization, and cloud deployment.",
+  rating: 5.0,
+  duration: "3 months",
+  students: "9,845",
+  img: "/images/courses/DevOps.jpg",
+  aboutData: {
+    topic: "Become a DevOps Engineer — Automate, Integrate, and Deliver at Scale!",
+    content1:
+      "This DevOps course helps you understand how development and operations work together to create faster, more reliable software delivery. Learn tools like Git, Docker, Jenkins, Kubernetes, and Terraform to automate workflows and improve deployment efficiency.",
+    content2:
+      "You’ll gain hands-on experience in version control, CI/CD pipelines, configuration management, and infrastructure as code. The course focuses on practical implementation, preparing you for roles like DevOps Engineer, Site Reliability Engineer, or Cloud Architect."
+  },
+  courseContentData: [
+    {
+      id: 1,
+      title: "Beginner – DevOps Fundamentals",
+      icon: "bi bi-diagram-3",
+      defaultOpen: true,
+      items: [
+        "Introduction to DevOps culture and principles",
+        "Agile and Continuous Delivery concepts",
+        "Software development lifecycle (SDLC)",
+        "Version control with Git and GitHub",
+        "Basics of CI/CD and automation"
+      ]
+    },
+    {
+      id: 2,
+      title: "Intermediate – CI/CD and Automation Tools",
+      icon: "bi bi-lightning",
+      items: [
+        "Setting up CI/CD pipelines with Jenkins",
+        "Build automation using Maven and Gradle",
+        "Integrating testing and deployment automation",
+        "Monitoring and logging fundamentals"
+      ]
+    },
+    {
+      id: 3,
+      title: "Intermediate – Containerization and Orchestration",
+      icon: "bi bi-box",
+      items: [
+        "Introduction to Docker containers",
+        "Container image management and networking",
+        "Kubernetes basics and architecture",
+        "Deploying and scaling applications on Kubernetes"
+      ]
+    },
+    {
+      id: 4,
+      title: "Advanced – Infrastructure as Code (IaC)",
+      icon: "bi bi-code-slash",
+      items: [
+        "Terraform fundamentals and setup",
+        "Writing and applying Terraform configurations",
+        "Managing AWS and cloud resources with IaC",
+        "DevOps project: CI/CD + Docker + Kubernetes + Terraform"
+      ]
+    }
+  ],
+  whatYouLearnData: [
+    {
+      title: "Implement CI/CD Pipelines",
+      desc: "Build and automate software delivery pipelines using Jenkins and GitHub Actions.",
+      icon: "bi bi-lightning"
+    },
+    {
+      title: "Master Containerization",
+      desc: "Work with Docker and Kubernetes to deploy and scale microservices.",
+      icon: "bi bi-box"
+    },
+    {
+      title: "Automate Infrastructure",
+      desc: "Manage cloud infrastructure using Terraform and configuration management tools.",
+      icon: "bi bi-gear"
+    },
+    {
+      title: "Monitor and Optimize Systems",
+      desc: "Use logging, monitoring, and alerting tools to maintain performance and reliability.",
+      icon: "bi bi-bar-chart"
+    },
+    {
+      title: "Prepare for DevOps Certification",
+      desc: "Get ready for certifications like AWS DevOps Engineer or Azure DevOps Expert.",
+      icon: "bi bi-award"
+    }
+  ]
+},
+{
+  title: "Kubernetes",
+  desc: "Learn Kubernetes from scratch — deploy, scale, and manage containerized applications in real-world environments.",
+  rating: 5.0,
+  duration: "2 months",
+  students: "8,620",
+  img: "/images/courses/Kubernetes.jpg",
+  aboutData: {
+    topic: "Master Kubernetes — The Future of Cloud-Native Application Management!",
+    content1:
+      "This Kubernetes course gives you the practical skills to deploy, manage, and scale applications using containers. You’ll understand how Kubernetes automates deployment, networking, scaling, and recovery for cloud workloads.",
+    content2:
+      "You’ll start with Docker containers, move into Kubernetes architecture, and learn hands-on with pods, services, deployments, and clusters. By the end, you’ll be confident in running production-grade containerized systems."
+  },
+  courseContentData: [
+    {
+      id: 1,
+      title: "Beginner – Kubernetes Fundamentals",
+      icon: "bi bi-diagram-3",
+      defaultOpen: true,
+      items: [
+        "Introduction to containers and Docker",
+        "What is Kubernetes and why it’s used",
+        "Kubernetes architecture: Master & Worker nodes",
+        "Setting up Kubernetes cluster locally and on cloud"
+      ]
+    },
+    {
+      id: 2,
+      title: "Intermediate – Core Components",
+      icon: "bi bi-hdd-network",
+      items: [
+        "Understanding Pods, ReplicaSets, and Deployments",
+        "Managing services and networking",
+        "ConfigMaps and Secrets management",
+        "Namespace and resource organization"
+      ]
+    },
+    {
+      id: 3,
+      title: "Advanced – Scaling & Monitoring",
+      icon: "bi bi-bar-chart-line",
+      items: [
+        "Horizontal and vertical scaling",
+        "Rolling updates and rollbacks",
+        "Cluster monitoring with Prometheus and Grafana",
+        "Log management best practices"
+      ]
+    },
+    {
+      id: 4,
+      title: "Advanced – Real-World Projects",
+      icon: "bi bi-briefcase",
+      items: [
+        "Deploying microservices architecture on Kubernetes",
+        "CI/CD integration with Jenkins",
+        "Helm charts for deployment automation",
+        "Kubernetes security and RBAC policies"
+      ]
+    }
+  ],
+  whatYouLearnData: [
+    {
+      title: "Understand Kubernetes Architecture",
+      desc: "Learn how clusters, nodes, and pods interact to manage workloads.",
+      icon: "bi bi-diagram-3"
+    },
+    {
+      title: "Deploy & Scale Applications",
+      desc: "Use deployments, services, and auto-scaling to manage performance.",
+      icon: "bi bi-rocket"
+    },
+    {
+      title: "Monitor & Troubleshoot Clusters",
+      desc: "Use Prometheus and Grafana for metrics and insights.",
+      icon: "bi bi-bar-chart-line"
+    },
+    {
+      title: "Integrate with DevOps Tools",
+      desc: "Combine Kubernetes with Jenkins and Helm for CI/CD workflows.",
+      icon: "bi bi-lightning"
+    },
+    {
+      title: "Build Production-Ready Skills",
+      desc: "Work on real Kubernetes projects with container orchestration.",
+      icon: "bi bi-briefcase"
+    }
+  ]
+},
+{
+  title: "Jenkins",
+  desc: "Learn Continuous Integration and Continuous Delivery with Jenkins — automate builds, tests, and deployments like a pro.",
+  rating: 4.9,
+  duration: "1.5 months",
+  students: "7,980",
+  img: "/images/courses/Jenkins.jpg",
+  aboutData: {
+    topic: "Master Jenkins — Automate Your Build and Deployment Pipeline!",
+    content1:
+      "This Jenkins course teaches you how to set up and manage CI/CD pipelines for modern applications. Learn pipeline scripting, plugin management, and automation for testing and deployment.",
+    content2:
+      "You’ll practice real-world scenarios like integrating Jenkins with GitHub, Docker, and Kubernetes. The course focuses on automation efficiency, continuous testing, and deployment best practices."
+  },
+  courseContentData: [
+    {
+      id: 1,
+      title: "Beginner – Jenkins Basics",
+      icon: "bi bi-gear",
+      defaultOpen: true,
+      items: [
+        "Introduction to DevOps and CI/CD concepts",
+        "Installing and configuring Jenkins",
+        "Understanding Jenkins architecture and plugins",
+        "Setting up your first Jenkins job"
+      ]
+    },
+    {
+      id: 2,
+      title: "Intermediate – Pipeline Automation",
+      icon: "bi bi-lightning-charge",
+      items: [
+        "Declarative vs Scripted Pipelines",
+        "Creating multi-stage pipelines",
+        "Integrating Jenkins with GitHub and Docker",
+        "Automating builds and testing"
+      ]
+    },
+    {
+      id: 3,
+      title: "Advanced – Integration & Deployment",
+      icon: "bi bi-diagram-3",
+      items: [
+        "Connecting Jenkins with Kubernetes and AWS",
+        "Automated deployments with Helm",
+        "Pipeline security and credentials management",
+        "Jenkinsfile best practices"
+      ]
+    },
+    {
+      id: 4,
+      title: "Advanced – Real-World Use Cases",
+      icon: "bi bi-briefcase",
+      items: [
+        "End-to-end CI/CD pipeline setup",
+        "Monitoring Jenkins jobs and performance",
+        "Scaling Jenkins with agents and distributed builds",
+        "DevOps project: Jenkins + Docker + Kubernetes"
+      ]
+    }
+  ],
+  whatYouLearnData: [
+    {
+      title: "Automate Build Pipelines",
+      desc: "Set up CI/CD workflows for any application using Jenkins.",
+      icon: "bi bi-lightning"
+    },
+    {
+      title: "Integrate with DevOps Tools",
+      desc: "Connect Jenkins with Git, Docker, Kubernetes, and AWS.",
+      icon: "bi bi-diagram-3"
+    },
+    {
+      title: "Secure and Scale Pipelines",
+      desc: "Use credentials, agents, and role-based access control.",
+      icon: "bi bi-shield-lock"
+    },
+    {
+      title: "Optimize Performance",
+      desc: "Monitor and troubleshoot Jenkins jobs efficiently.",
+      icon: "bi bi-bar-chart"
+    },
+    {
+      title: "Build Hands-On Projects",
+      desc: "Create complete CI/CD pipelines with real-world tools.",
+      icon: "bi bi-briefcase"
+    }
+  ]
+},
+{
+  title: "Terraform",
+  desc: "Learn Infrastructure as Code (IaC) using Terraform — automate cloud infrastructure deployment across AWS, Azure, and GCP.",
+  rating: 5.0,
+  duration: "2 months",
+  students: "6,540",
+  img: "/images/courses/Terraform.jpg",
+  aboutData: {
+    topic: "Master Terraform — Build and Manage Infrastructure as Code!",
+    content1:
+      "This Terraform course teaches you how to define and manage cloud infrastructure using code. Learn HCL syntax, providers, modules, and workflows for AWS, Azure, and GCP environments.",
+    content2:
+      "You’ll gain hands-on experience in writing Terraform configurations, managing state files, provisioning infrastructure, and integrating Terraform with CI/CD pipelines. Ideal for DevOps and Cloud Engineers."
+  },
+  courseContentData: [
+    {
+      id: 1,
+      title: "Beginner – Terraform Basics",
+      icon: "bi bi-code",
+      defaultOpen: true,
+      items: [
+        "Introduction to Infrastructure as Code (IaC)",
+        "Setting up Terraform and providers",
+        "Understanding Terraform workflow",
+        "Writing your first configuration file"
+      ]
+    },
+    {
+      id: 2,
+      title: "Intermediate – State Management & Variables",
+      icon: "bi bi-database",
+      items: [
+        "Terraform state files and remote backends",
+        "Input and output variables",
+        "Using locals and data sources",
+        "Environment management best practices"
+      ]
+    },
+    {
+      id: 3,
+      title: "Advanced – Modules & Reusability",
+      icon: "bi bi-diagram-3",
+      items: [
+        "Creating and using Terraform modules",
+        "Structuring large infrastructure projects",
+        "Versioning and dependency management",
+        "Integrating with Terraform Registry"
+      ]
+    },
+    {
+      id: 4,
+      title: "Advanced – Real-World Automation",
+      icon: "bi bi-lightning",
+      items: [
+        "Automating infrastructure deployment via CI/CD",
+        "Integrating Terraform with Jenkins and GitHub Actions",
+        "Managing multi-cloud infrastructure",
+        "Project: AWS infrastructure deployment with Terraform"
+      ]
+    }
+  ],
+  whatYouLearnData: [
+    {
+      title: "Build Infrastructure as Code",
+      desc: "Automate cloud resource provisioning using Terraform configurations.",
+      icon: "bi bi-code"
+    },
+    {
+      title: "Manage State & Variables",
+      desc: "Understand and control infrastructure changes using state files.",
+      icon: "bi bi-database"
+    },
+    {
+      title: "Create and Use Modules",
+      desc: "Reuse Terraform components efficiently across environments.",
+      icon: "bi bi-diagram-3"
+    },
+    {
+      title: "Integrate with CI/CD Tools",
+      desc: "Combine Terraform with Jenkins and GitHub for automation pipelines.",
+      icon: "bi bi-lightning"
+    },
+    {
+      title: "Deploy Multi-Cloud Infrastructure",
+      desc: "Manage infrastructure across AWS, Azure, and GCP.",
+      icon: "bi bi-globe"
+    }
+  ]
+}
 
-        ],
-        whatYouLearnData: [
-          {
-            title: "Master GCP Core Services",
-            desc: "Understand Compute, Storage, Networking, and IAM in Google Cloud.",
-            icon: "bi bi-hdd-network"
-          },
-          {
-            title: "Deploy Scalable Cloud Applications",
-            desc: "Use Kubernetes, Docker, and Terraform for automated deployments.",
-            icon: "bi bi-diagram-3"
-          },
-          {
-            title: "Analyze and Process Big Data",
-            desc: "Work with BigQuery, Dataflow, and Pub/Sub for large-scale analytics.",
-            icon: "bi bi-bar-chart-line"
-          },
-          {
-            title: "Implement DevOps & CI/CD Pipelines",
-            desc: "Automate builds and deployments using Cloud Build and GitHub Actions.",
-            icon: "bi bi-gear"
-          },
-          {
-            title: "Integrate AI & ML Services",
-            desc: "Leverage Vertex AI, TensorFlow, and Google APIs for intelligent solutions.",
-            icon: "bi bi-robot"
-          },
-          {
-            title: "Earn GCP Certifications",
-            desc: "Prepare for Associate Cloud Engineer and Professional Cloud Architect certifications.",
-            icon: "bi bi-award"
-          }
-        ]
-      }
-      ,
     ],
   },
 
-  "Data Analytics": {
-    mainCategoryDesc: "Turn Data into Decisions",
-    subDesc: "Master the art of transforming raw data into actionable insights with SQL, Excel, Power BI, and Tableau. Learn to analyze, visualize, and interpret data to support strategic business decisions. ",
-    subHeading: "Build a career as a Data Analyst equipped with skills that empower organizations to grow smarter and faster.",
-    mainImage: "/images/courses/DataAnalytics.jpg",
+  // "Data Analytics": {
+  //   mainCategoryDesc: "Turn Data into Decisions",
+  //   subDesc: "Master the art of transforming raw data into actionable insights with SQL, Excel, Power BI, and Tableau. Learn to analyze, visualize, and interpret data to support strategic business decisions. ",
+  //   subHeading: "Build a career as a Data Analyst equipped with skills that empower organizations to grow smarter and faster.",
+  //   mainImage: "/images/courses/DataAnalytics.jpg",
 
-    courses: [
-      {
-        title: "SAS",
-        desc: "Master SAS with hands-on training designed for real-world data analytics and business intelligence applications. Join our program to gain in-demand skills and boost your career in analytics.",
-        rating: 5.0,
-        duration: "1 month",
-        students: "10,556",
-        img: "/images/courses/SAS.jpg",
-        aboutData: {
-          topic: "Master SAS — From Data Management to Advanced Analytics!",
-          content1: "Learn SAS from scratch and advance to complex data analytics, reporting, and predictive modeling. This course provides hands-on experience with real-world datasets, ensuring you gain practical skills for business and data-driven decision-making.",
-          content2: "The SAS course covers the full spectrum of data analytics, from data manipulation and reporting to advanced analytics techniques like predictive modeling, regression analysis, and business intelligence dashboards. You'll gain expertise in Base SAS, SAS Macros, SQL, and SAS Enterprise Guide, preparing you for analytics roles across industries."
-        },
-        courseContentData: [
-          {
-            id: 1,
-            title: "Beginner – SAS Fundamentals",
-            icon: "bi bi-book",
-            defaultOpen: true,
-            items: [
-              "Introduction to SAS and its applications",
-              "Installing and navigating SAS environment",
-              "Data types, variables, and datasets",
-              "Basic SAS programming syntax",
-              "Reading and writing datasets",
-              "Debugging and error handling"
-            ]
-          },
-          {
-            id: 2,
-            title: "Beginner – Data Management in SAS",
-            icon: "bi bi-database",
-            items: [
-              "Data step basics and data manipulation",
-              "Sorting, merging, and concatenating datasets",
-              "Creating new variables and functions",
-              "Conditional logic and loops in SAS",
-              "Working with dates and character variables"
-            ]
-          },
-          {
-            id: 3,
-            title: "Intermediate – Advanced SAS Programming",
-            icon: "bi bi-gear",
-            items: [
-              "SAS Macros for automation",
-              "SQL in SAS (PROC SQL)",
-              "Arrays, Do loops, and iterative processing",
-              "Advanced data manipulation techniques",
-              "Error handling and debugging best practices"
-            ]
-          },
-          {
-            id: 4,
-            title: "Intermediate – Data Analysis and Reporting",
-            icon: "bi bi-bar-chart-line",
-            items: [
-              "Descriptive statistics and summary reports",
-              "PROC MEANS, PROC FREQ, PROC UNIVARIATE",
-              "Data visualization using PROC SGPLOT & PROC REPORT",
-              "Generating automated reports",
-              "Introduction to statistical procedures"
-            ]
-          },
+  //   courses: [
+  //     {
+  //       title: "SAS",
+  //       desc: "Master SAS with hands-on training designed for real-world data analytics and business intelligence applications. Join our program to gain in-demand skills and boost your career in analytics.",
+  //       rating: 5.0,
+  //       duration: "1 month",
+  //       students: "10,556",
+  //       img: "/images/courses/SAS.jpg",
+  //       aboutData: {
+  //         topic: "Master SAS — From Data Management to Advanced Analytics!",
+  //         content1: "Learn SAS from scratch and advance to complex data analytics, reporting, and predictive modeling. This course provides hands-on experience with real-world datasets, ensuring you gain practical skills for business and data-driven decision-making.",
+  //         content2: "The SAS course covers the full spectrum of data analytics, from data manipulation and reporting to advanced analytics techniques like predictive modeling, regression analysis, and business intelligence dashboards. You'll gain expertise in Base SAS, SAS Macros, SQL, and SAS Enterprise Guide, preparing you for analytics roles across industries."
+  //       },
+  //       courseContentData: [
+  //         {
+  //           id: 1,
+  //           title: "Beginner – SAS Fundamentals",
+  //           icon: "bi bi-book",
+  //           defaultOpen: true,
+  //           items: [
+  //             "Introduction to SAS and its applications",
+  //             "Installing and navigating SAS environment",
+  //             "Data types, variables, and datasets",
+  //             "Basic SAS programming syntax",
+  //             "Reading and writing datasets",
+  //             "Debugging and error handling"
+  //           ]
+  //         },
+  //         {
+  //           id: 2,
+  //           title: "Beginner – Data Management in SAS",
+  //           icon: "bi bi-database",
+  //           items: [
+  //             "Data step basics and data manipulation",
+  //             "Sorting, merging, and concatenating datasets",
+  //             "Creating new variables and functions",
+  //             "Conditional logic and loops in SAS",
+  //             "Working with dates and character variables"
+  //           ]
+  //         },
+  //         {
+  //           id: 3,
+  //           title: "Intermediate – Advanced SAS Programming",
+  //           icon: "bi bi-gear",
+  //           items: [
+  //             "SAS Macros for automation",
+  //             "SQL in SAS (PROC SQL)",
+  //             "Arrays, Do loops, and iterative processing",
+  //             "Advanced data manipulation techniques",
+  //             "Error handling and debugging best practices"
+  //           ]
+  //         },
+  //         {
+  //           id: 4,
+  //           title: "Intermediate – Data Analysis and Reporting",
+  //           icon: "bi bi-bar-chart-line",
+  //           items: [
+  //             "Descriptive statistics and summary reports",
+  //             "PROC MEANS, PROC FREQ, PROC UNIVARIATE",
+  //             "Data visualization using PROC SGPLOT & PROC REPORT",
+  //             "Generating automated reports",
+  //             "Introduction to statistical procedures"
+  //           ]
+  //         },
 
-        ],
-        whatYouLearnData: [
-          {
-            title: "Master SAS Programming",
-            desc: "Learn data step, PROC SQL, SAS macros, and advanced programming concepts.",
-            icon: "bi bi-lightning-charge"
-          },
-          {
-            title: "Data Management & Analytics",
-            desc: "Manipulate, clean, and analyze large datasets efficiently.",
-            icon: "bi bi-database"
-          },
-          {
-            title: "Reporting & Visualization",
-            desc: "Create dashboards, charts, and automated reports for business insights.",
-            icon: "bi bi-bar-chart-line"
-          },
-          {
-            title: "Predictive Modeling & Statistics",
-            desc: "Apply regression, classification, and time series analysis using SAS.",
-            icon: "bi bi-robot"
-          },
-          {
-            title: "Business Intelligence Skills",
-            desc: "Build real-world BI projects using SAS Enterprise Guide.",
-            icon: "bi bi-window-stack"
-          },
-          {
-            title: "Industry-Ready SAS Expertise",
-            desc: "Gain practical skills applicable to analytics, data science, and BI roles.",
-            icon: "bi bi-diagram-3"
-          }
-        ]
-      }
-      ,
-      {
-        "title": "R Programming",
-        "desc": "Master R Programming with hands-on training designed for data analysis, visualization, and statistical modeling. Gain industry-ready skills to excel in analytics, research, and data-driven decision making.",
-        "rating": 5.0,
-        "duration": "1 month",
-        "students": "10,556",
-        "img": "/images/courses/R_Programming.jpg",
-        "aboutData": {
-          "topic": "Master R Programming — From Fundamentals to Advanced Analytics!",
-          "content1": "Learn R Programming from scratch and gain the skills to perform data analysis, statistical modeling, and visualization. This course provides hands-on projects to help you transform raw data into actionable insights.",
-          "content2": "The R Programming course by Urbancode covers everything from basic syntax to advanced data analysis techniques. You’ll start with fundamentals like vectors, lists, and data frames, then move on to visualization with ggplot2, statistical modeling, and machine learning integration. By the end, you’ll be capable of applying R for real-world analytics projects, making you ready for roles in data science, research, and analytics."
-        },
-        "courseContentData": [
-          {
-            "id": 1,
-            "title": "Beginner – R Fundamentals",
-            "icon": "bi bi-book",
-            "defaultOpen": true,
-            "items": [
-              "Introduction to R and RStudio",
-              "R syntax, variables, and data types",
-              "Vectors, lists, and data frames",
-              "Basic operations and functions",
-              "Control structures: if, for, while",
-              "Reading and writing data files"
-            ]
-          },
-          {
-            "id": 2,
-            "title": "Beginner – Data Manipulation",
-            "icon": "bi bi-database",
-            "items": [
-              "Data cleaning and preprocessing",
-              "Using dplyr for data manipulation",
-              "Filtering, sorting, and summarizing data",
-              "Merging and joining datasets",
-              "Handling missing values"
-            ]
-          },
-          {
-            "id": 3,
-            "title": "Intermediate – Data Visualization",
-            "icon": "bi bi-bar-chart-line",
-            "items": [
-              "Introduction to ggplot2",
-              "Creating bar, line, and scatter plots",
-              "Customizing plots with themes and labels",
-              "Interactive visualizations with plotly",
-              "Visualization best practices"
-            ]
-          },
-          {
-            "id": 4,
-            "title": "Intermediate – Statistical Analysis",
-            "icon": "bi bi-calculator",
-            "items": [
-              "Descriptive statistics",
-              "Probability distributions",
-              "Hypothesis testing",
-              "Correlation and regression analysis",
-              "ANOVA and Chi-square tests"
-            ]
-          },
+  //       ],
+  //       whatYouLearnData: [
+  //         {
+  //           title: "Master SAS Programming",
+  //           desc: "Learn data step, PROC SQL, SAS macros, and advanced programming concepts.",
+  //           icon: "bi bi-lightning-charge"
+  //         },
+  //         {
+  //           title: "Data Management & Analytics",
+  //           desc: "Manipulate, clean, and analyze large datasets efficiently.",
+  //           icon: "bi bi-database"
+  //         },
+  //         {
+  //           title: "Reporting & Visualization",
+  //           desc: "Create dashboards, charts, and automated reports for business insights.",
+  //           icon: "bi bi-bar-chart-line"
+  //         },
+  //         {
+  //           title: "Predictive Modeling & Statistics",
+  //           desc: "Apply regression, classification, and time series analysis using SAS.",
+  //           icon: "bi bi-robot"
+  //         },
+  //         {
+  //           title: "Business Intelligence Skills",
+  //           desc: "Build real-world BI projects using SAS Enterprise Guide.",
+  //           icon: "bi bi-window-stack"
+  //         },
+  //         {
+  //           title: "Industry-Ready SAS Expertise",
+  //           desc: "Gain practical skills applicable to analytics, data science, and BI roles.",
+  //           icon: "bi bi-diagram-3"
+  //         }
+  //       ]
+  //     }
+  //     ,
+  //     {
+  //       "title": "R Programming",
+  //       "desc": "Master R Programming with hands-on training designed for data analysis, visualization, and statistical modeling. Gain industry-ready skills to excel in analytics, research, and data-driven decision making.",
+  //       "rating": 5.0,
+  //       "duration": "1 month",
+  //       "students": "10,556",
+  //       "img": "/images/courses/R_Programming.jpg",
+  //       "aboutData": {
+  //         "topic": "Master R Programming — From Fundamentals to Advanced Analytics!",
+  //         "content1": "Learn R Programming from scratch and gain the skills to perform data analysis, statistical modeling, and visualization. This course provides hands-on projects to help you transform raw data into actionable insights.",
+  //         "content2": "The R Programming course by Urbancode covers everything from basic syntax to advanced data analysis techniques. You’ll start with fundamentals like vectors, lists, and data frames, then move on to visualization with ggplot2, statistical modeling, and machine learning integration. By the end, you’ll be capable of applying R for real-world analytics projects, making you ready for roles in data science, research, and analytics."
+  //       },
+  //       "courseContentData": [
+  //         {
+  //           "id": 1,
+  //           "title": "Beginner – R Fundamentals",
+  //           "icon": "bi bi-book",
+  //           "defaultOpen": true,
+  //           "items": [
+  //             "Introduction to R and RStudio",
+  //             "R syntax, variables, and data types",
+  //             "Vectors, lists, and data frames",
+  //             "Basic operations and functions",
+  //             "Control structures: if, for, while",
+  //             "Reading and writing data files"
+  //           ]
+  //         },
+  //         {
+  //           "id": 2,
+  //           "title": "Beginner – Data Manipulation",
+  //           "icon": "bi bi-database",
+  //           "items": [
+  //             "Data cleaning and preprocessing",
+  //             "Using dplyr for data manipulation",
+  //             "Filtering, sorting, and summarizing data",
+  //             "Merging and joining datasets",
+  //             "Handling missing values"
+  //           ]
+  //         },
+  //         {
+  //           "id": 3,
+  //           "title": "Intermediate – Data Visualization",
+  //           "icon": "bi bi-bar-chart-line",
+  //           "items": [
+  //             "Introduction to ggplot2",
+  //             "Creating bar, line, and scatter plots",
+  //             "Customizing plots with themes and labels",
+  //             "Interactive visualizations with plotly",
+  //             "Visualization best practices"
+  //           ]
+  //         },
+  //         {
+  //           "id": 4,
+  //           "title": "Intermediate – Statistical Analysis",
+  //           "icon": "bi bi-calculator",
+  //           "items": [
+  //             "Descriptive statistics",
+  //             "Probability distributions",
+  //             "Hypothesis testing",
+  //             "Correlation and regression analysis",
+  //             "ANOVA and Chi-square tests"
+  //           ]
+  //         },
 
-        ],
-        "whatYouLearnData": [
-          {
-            "title": "Master R Programming Concepts",
-            "desc": "Understand R syntax, data structures, functions, and advanced programming techniques.",
-            "icon": "bi bi-lightning-charge"
-          },
-          {
-            "title": "Perform Data Analysis",
-            "desc": "Use R for statistical analysis, hypothesis testing, and real-world data exploration.",
-            "icon": "bi bi-bar-chart-line"
-          },
-          {
-            "title": "Create Stunning Visualizations",
-            "desc": "Visualize data effectively using ggplot2, plotly, and interactive dashboards.",
-            "icon": "bi bi-window-stack"
-          },
-          {
-            "title": "Implement Machine Learning",
-            "desc": "Build predictive models using regression, classification, and clustering techniques in R.",
-            "icon": "bi bi-robot"
-          },
-          {
-            "title": "Automate Reporting & Dashboards",
-            "desc": "Generate dynamic reports and interactive dashboards with R Markdown and Shiny.",
-            "icon": "bi bi-gear"
-          },
-          {
-            "title": "Handle Real-World Data Projects",
-            "desc": "Apply R programming to practical datasets, clean, analyze, and present actionable insights.",
-            "icon": "bi bi-cpu"
-          }
-        ]
-      }
-      ,
-    ],
-  },
+  //       ],
+  //       "whatYouLearnData": [
+  //         {
+  //           "title": "Master R Programming Concepts",
+  //           "desc": "Understand R syntax, data structures, functions, and advanced programming techniques.",
+  //           "icon": "bi bi-lightning-charge"
+  //         },
+  //         {
+  //           "title": "Perform Data Analysis",
+  //           "desc": "Use R for statistical analysis, hypothesis testing, and real-world data exploration.",
+  //           "icon": "bi bi-bar-chart-line"
+  //         },
+  //         {
+  //           "title": "Create Stunning Visualizations",
+  //           "desc": "Visualize data effectively using ggplot2, plotly, and interactive dashboards.",
+  //           "icon": "bi bi-window-stack"
+  //         },
+  //         {
+  //           "title": "Implement Machine Learning",
+  //           "desc": "Build predictive models using regression, classification, and clustering techniques in R.",
+  //           "icon": "bi bi-robot"
+  //         },
+  //         {
+  //           "title": "Automate Reporting & Dashboards",
+  //           "desc": "Generate dynamic reports and interactive dashboards with R Markdown and Shiny.",
+  //           "icon": "bi bi-gear"
+  //         },
+  //         {
+  //           "title": "Handle Real-World Data Projects",
+  //           "desc": "Apply R programming to practical datasets, clean, analyze, and present actionable insights.",
+  //           "icon": "bi bi-cpu"
+  //         }
+  //       ]
+  //     }
+  //     ,
+  //   ],
+  // },
 
   "Data Science": {
     mainCategoryDesc: "Shape the Future with Data",
@@ -2688,104 +2948,104 @@ const coursesData = {
         ]
       }
       ,
-      {
-        "title": "R Programming",
-        "desc": "Master R Programming with hands-on training designed for data analysis, visualization, and statistical modeling. Gain industry-ready skills to excel in analytics, research, and data-driven decision making.",
-        "rating": 5.0,
-        "duration": "1 month",
-        "students": "10,556",
-        "img": "/images/courses/R_Programming.jpg",
-        "aboutData": {
-          "topic": "Master R Programming — From Fundamentals to Advanced Analytics!",
-          "content1": "Learn R Programming from scratch and gain the skills to perform data analysis, statistical modeling, and visualization. This course provides hands-on projects to help you transform raw data into actionable insights.",
-          "content2": "The R Programming course by Urbancode covers everything from basic syntax to advanced data analysis techniques. You’ll start with fundamentals like vectors, lists, and data frames, then move on to visualization with ggplot2, statistical modeling, and machine learning integration. By the end, you’ll be capable of applying R for real-world analytics projects, making you ready for roles in data science, research, and analytics."
-        },
-        "courseContentData": [
-          {
-            "id": 1,
-            "title": "Beginner – R Fundamentals",
-            "icon": "bi bi-book",
-            "defaultOpen": true,
-            "items": [
-              "Introduction to R and RStudio",
-              "R syntax, variables, and data types",
-              "Vectors, lists, and data frames",
-              "Basic operations and functions",
-              "Control structures: if, for, while",
-              "Reading and writing data files"
-            ]
-          },
-          {
-            "id": 2,
-            "title": "Beginner – Data Manipulation",
-            "icon": "bi bi-database",
-            "items": [
-              "Data cleaning and preprocessing",
-              "Using dplyr for data manipulation",
-              "Filtering, sorting, and summarizing data",
-              "Merging and joining datasets",
-              "Handling missing values"
-            ]
-          },
-          {
-            "id": 3,
-            "title": "Intermediate – Data Visualization",
-            "icon": "bi bi-bar-chart-line",
-            "items": [
-              "Introduction to ggplot2",
-              "Creating bar, line, and scatter plots",
-              "Customizing plots with themes and labels",
-              "Interactive visualizations with plotly",
-              "Visualization best practices"
-            ]
-          },
-          {
-            "id": 4,
-            "title": "Intermediate – Statistical Analysis",
-            "icon": "bi bi-calculator",
-            "items": [
-              "Descriptive statistics",
-              "Probability distributions",
-              "Hypothesis testing",
-              "Correlation and regression analysis",
-              "ANOVA and Chi-square tests"
-            ]
-          },
+      // {
+      //   "title": "R Programming",
+      //   "desc": "Master R Programming with hands-on training designed for data analysis, visualization, and statistical modeling. Gain industry-ready skills to excel in analytics, research, and data-driven decision making.",
+      //   "rating": 5.0,
+      //   "duration": "1 month",
+      //   "students": "10,556",
+      //   "img": "/images/courses/R_Programming.jpg",
+      //   "aboutData": {
+      //     "topic": "Master R Programming — From Fundamentals to Advanced Analytics!",
+      //     "content1": "Learn R Programming from scratch and gain the skills to perform data analysis, statistical modeling, and visualization. This course provides hands-on projects to help you transform raw data into actionable insights.",
+      //     "content2": "The R Programming course by Urbancode covers everything from basic syntax to advanced data analysis techniques. You’ll start with fundamentals like vectors, lists, and data frames, then move on to visualization with ggplot2, statistical modeling, and machine learning integration. By the end, you’ll be capable of applying R for real-world analytics projects, making you ready for roles in data science, research, and analytics."
+      //   },
+      //   "courseContentData": [
+      //     {
+      //       "id": 1,
+      //       "title": "Beginner – R Fundamentals",
+      //       "icon": "bi bi-book",
+      //       "defaultOpen": true,
+      //       "items": [
+      //         "Introduction to R and RStudio",
+      //         "R syntax, variables, and data types",
+      //         "Vectors, lists, and data frames",
+      //         "Basic operations and functions",
+      //         "Control structures: if, for, while",
+      //         "Reading and writing data files"
+      //       ]
+      //     },
+      //     {
+      //       "id": 2,
+      //       "title": "Beginner – Data Manipulation",
+      //       "icon": "bi bi-database",
+      //       "items": [
+      //         "Data cleaning and preprocessing",
+      //         "Using dplyr for data manipulation",
+      //         "Filtering, sorting, and summarizing data",
+      //         "Merging and joining datasets",
+      //         "Handling missing values"
+      //       ]
+      //     },
+      //     {
+      //       "id": 3,
+      //       "title": "Intermediate – Data Visualization",
+      //       "icon": "bi bi-bar-chart-line",
+      //       "items": [
+      //         "Introduction to ggplot2",
+      //         "Creating bar, line, and scatter plots",
+      //         "Customizing plots with themes and labels",
+      //         "Interactive visualizations with plotly",
+      //         "Visualization best practices"
+      //       ]
+      //     },
+      //     {
+      //       "id": 4,
+      //       "title": "Intermediate – Statistical Analysis",
+      //       "icon": "bi bi-calculator",
+      //       "items": [
+      //         "Descriptive statistics",
+      //         "Probability distributions",
+      //         "Hypothesis testing",
+      //         "Correlation and regression analysis",
+      //         "ANOVA and Chi-square tests"
+      //       ]
+      //     },
 
-        ],
-        "whatYouLearnData": [
-          {
-            "title": "Master R Programming Concepts",
-            "desc": "Understand R syntax, data structures, functions, and advanced programming techniques.",
-            "icon": "bi bi-lightning-charge"
-          },
-          {
-            "title": "Perform Data Analysis",
-            "desc": "Use R for statistical analysis, hypothesis testing, and real-world data exploration.",
-            "icon": "bi bi-bar-chart-line"
-          },
-          {
-            "title": "Create Stunning Visualizations",
-            "desc": "Visualize data effectively using ggplot2, plotly, and interactive dashboards.",
-            "icon": "bi bi-window-stack"
-          },
-          {
-            "title": "Implement Machine Learning",
-            "desc": "Build predictive models using regression, classification, and clustering techniques in R.",
-            "icon": "bi bi-robot"
-          },
-          {
-            "title": "Automate Reporting & Dashboards",
-            "desc": "Generate dynamic reports and interactive dashboards with R Markdown and Shiny.",
-            "icon": "bi bi-gear"
-          },
-          {
-            "title": "Handle Real-World Data Projects",
-            "desc": "Apply R programming to practical datasets, clean, analyze, and present actionable insights.",
-            "icon": "bi bi-cpu"
-          }
-        ]
-      }
+      //   ],
+      //   "whatYouLearnData": [
+      //     {
+      //       "title": "Master R Programming Concepts",
+      //       "desc": "Understand R syntax, data structures, functions, and advanced programming techniques.",
+      //       "icon": "bi bi-lightning-charge"
+      //     },
+      //     {
+      //       "title": "Perform Data Analysis",
+      //       "desc": "Use R for statistical analysis, hypothesis testing, and real-world data exploration.",
+      //       "icon": "bi bi-bar-chart-line"
+      //     },
+      //     {
+      //       "title": "Create Stunning Visualizations",
+      //       "desc": "Visualize data effectively using ggplot2, plotly, and interactive dashboards.",
+      //       "icon": "bi bi-window-stack"
+      //     },
+      //     {
+      //       "title": "Implement Machine Learning",
+      //       "desc": "Build predictive models using regression, classification, and clustering techniques in R.",
+      //       "icon": "bi bi-robot"
+      //     },
+      //     {
+      //       "title": "Automate Reporting & Dashboards",
+      //       "desc": "Generate dynamic reports and interactive dashboards with R Markdown and Shiny.",
+      //       "icon": "bi bi-gear"
+      //     },
+      //     {
+      //       "title": "Handle Real-World Data Projects",
+      //       "desc": "Apply R programming to practical datasets, clean, analyze, and present actionable insights.",
+      //       "icon": "bi bi-cpu"
+      //     }
+      //   ]
+      // }
       
     ],
   },
@@ -3485,104 +3745,104 @@ const coursesData = {
         ]
       }
       ,
-      {
-        title: "Alteryx",
-        desc: "Master data preparation, blending, and advanced analytics with our hands-on Alteryx training program. Empower your career by learning automation-driven insights for real-world business success.",
-        rating: 5.0,
-        duration: "1 month",
-        students: "10,556",
-        img: "/images/courses/Alteryx.jpg",
-        aboutData: {
-          topic: "Master Alteryx — From Data Preparation to Advanced Analytics!",
-          content1: "Enhance your data analytics skills with Alteryx! Learn to prepare, blend, and analyze data efficiently. This course provides hands-on experience with real-world datasets and automation-driven insights.",
-          content2: "The Alteryx course covers all essential topics, from basic workflow creation to advanced predictive analytics. You'll learn how to automate processes, integrate with databases and APIs, and generate actionable business insights using Alteryx Designer, Alteryx Server, and Alteryx Intelligence Suite."
-        },
-        courseContentData: [
-          {
-            id: 1,
-            title: "Beginner – Introduction to Alteryx",
-            icon: "bi bi-book",
-            defaultOpen: true,
-            items: [
-              "Overview of Alteryx and its applications",
-              "Installing and navigating Alteryx Designer",
-              "Understanding the interface and workflow basics",
-              "Working with tools and tool categories",
-              "Basic data input and output operations"
-            ]
-          },
-          {
-            id: 2,
-            title: "Beginner – Data Preparation & Blending",
-            icon: "bi bi-database",
-            items: [
-              "Connecting to multiple data sources",
-              "Data cleansing and preparation techniques",
-              "Filtering, sorting, and selecting data",
-              "Joining and unioning datasets",
-              "Introduction to macros for automation"
-            ]
-          },
-          {
-            id: 3,
-            title: "Intermediate – Transforming Data",
-            icon: "bi bi-bar-chart-line",
-            items: [
-              "Using formulas and expressions",
-              "Aggregating and summarizing data",
-              "Working with dates, strings, and numbers",
-              "Spatial data processing",
-              "Error handling and workflow validation"
-            ]
-          },
-          {
-            id: 4,
-            title: "Intermediate – Reporting & Analytics",
-            icon: "bi bi-window-stack",
-            items: [
-              "Generating reports and dashboards",
-              "Visualization techniques",
-              "Introduction to predictive analytics tools",
-              "Using R and Python integration within Alteryx",
-              "Workflow optimization and performance tuning"
-            ]
-          },
+      // {
+      //   title: "Alteryx",
+      //   desc: "Master data preparation, blending, and advanced analytics with our hands-on Alteryx training program. Empower your career by learning automation-driven insights for real-world business success.",
+      //   rating: 5.0,
+      //   duration: "1 month",
+      //   students: "10,556",
+      //   img: "/images/courses/Alteryx.jpg",
+      //   aboutData: {
+      //     topic: "Master Alteryx — From Data Preparation to Advanced Analytics!",
+      //     content1: "Enhance your data analytics skills with Alteryx! Learn to prepare, blend, and analyze data efficiently. This course provides hands-on experience with real-world datasets and automation-driven insights.",
+      //     content2: "The Alteryx course covers all essential topics, from basic workflow creation to advanced predictive analytics. You'll learn how to automate processes, integrate with databases and APIs, and generate actionable business insights using Alteryx Designer, Alteryx Server, and Alteryx Intelligence Suite."
+      //   },
+      //   courseContentData: [
+      //     {
+      //       id: 1,
+      //       title: "Beginner – Introduction to Alteryx",
+      //       icon: "bi bi-book",
+      //       defaultOpen: true,
+      //       items: [
+      //         "Overview of Alteryx and its applications",
+      //         "Installing and navigating Alteryx Designer",
+      //         "Understanding the interface and workflow basics",
+      //         "Working with tools and tool categories",
+      //         "Basic data input and output operations"
+      //       ]
+      //     },
+      //     {
+      //       id: 2,
+      //       title: "Beginner – Data Preparation & Blending",
+      //       icon: "bi bi-database",
+      //       items: [
+      //         "Connecting to multiple data sources",
+      //         "Data cleansing and preparation techniques",
+      //         "Filtering, sorting, and selecting data",
+      //         "Joining and unioning datasets",
+      //         "Introduction to macros for automation"
+      //       ]
+      //     },
+      //     {
+      //       id: 3,
+      //       title: "Intermediate – Transforming Data",
+      //       icon: "bi bi-bar-chart-line",
+      //       items: [
+      //         "Using formulas and expressions",
+      //         "Aggregating and summarizing data",
+      //         "Working with dates, strings, and numbers",
+      //         "Spatial data processing",
+      //         "Error handling and workflow validation"
+      //       ]
+      //     },
+      //     {
+      //       id: 4,
+      //       title: "Intermediate – Reporting & Analytics",
+      //       icon: "bi bi-window-stack",
+      //       items: [
+      //         "Generating reports and dashboards",
+      //         "Visualization techniques",
+      //         "Introduction to predictive analytics tools",
+      //         "Using R and Python integration within Alteryx",
+      //         "Workflow optimization and performance tuning"
+      //       ]
+      //     },
         
-        ],
-        whatYouLearnData: [
-          {
-            title: "Master Data Preparation",
-            desc: "Clean, transform, and blend data from multiple sources efficiently.",
-            icon: "bi bi-lightning-charge"
-          },
-          {
-            title: "Develop Automated Workflows",
-            desc: "Build repeatable workflows to streamline business processes.",
-            icon: "bi bi-gear"
-          },
-          {
-            title: "Perform Advanced Analytics",
-            desc: "Apply predictive and spatial analytics using Alteryx tools.",
-            icon: "bi bi-bar-chart-line"
-          },
-          {
-            title: "Integrate with R & Python",
-            desc: "Enhance analytics capabilities by integrating scripting languages.",
-            icon: "bi bi-window-stack"
-          },
-          {
-            title: "Generate Reports & Dashboards",
-            desc: "Create interactive reports and dashboards for data visualization.",
-            icon: "bi bi-cpu"
-          },
-          {
-            title: "Deploy & Automate Workflows",
-            desc: "Schedule and deploy workflows using Alteryx Server for business automation.",
-            icon: "bi bi-diagram-3"
-          }
-        ]
-      }
-      ,
+      //   ],
+      //   whatYouLearnData: [
+      //     {
+      //       title: "Master Data Preparation",
+      //       desc: "Clean, transform, and blend data from multiple sources efficiently.",
+      //       icon: "bi bi-lightning-charge"
+      //     },
+      //     {
+      //       title: "Develop Automated Workflows",
+      //       desc: "Build repeatable workflows to streamline business processes.",
+      //       icon: "bi bi-gear"
+      //     },
+      //     {
+      //       title: "Perform Advanced Analytics",
+      //       desc: "Apply predictive and spatial analytics using Alteryx tools.",
+      //       icon: "bi bi-bar-chart-line"
+      //     },
+      //     {
+      //       title: "Integrate with R & Python",
+      //       desc: "Enhance analytics capabilities by integrating scripting languages.",
+      //       icon: "bi bi-window-stack"
+      //     },
+      //     {
+      //       title: "Generate Reports & Dashboards",
+      //       desc: "Create interactive reports and dashboards for data visualization.",
+      //       icon: "bi bi-cpu"
+      //     },
+      //     {
+      //       title: "Deploy & Automate Workflows",
+      //       desc: "Schedule and deploy workflows using Alteryx Server for business automation.",
+      //       icon: "bi bi-diagram-3"
+      //     }
+      //   ]
+      // }
+      // ,
 
     ],
   },
@@ -4942,33 +5202,380 @@ const coursesData = {
   },
 
   
-  // "Languages":{
-  //   mainCategoryDesc:"Master New Languages with Ease",
-  //   subDesc:"Embark on a journey to fluency. Learn Spanish, French, Mandarin, and more with structured lessons and immersive practice.",
-  //   subHeading:"Master global languages with ease through expert-designed courses. Build fluency, cultural understanding, and career opportunities worldwide.",
-  //   mainImage:"",
-  //   courses:[
-  //     {title:"Spoken English",desc:"Master fluent English with confidence through interactive sessions and real-life conversations. Build communication skills that open global career opportunities.",rating:5.0,duration:"1 month",students:"10,556",img:""},
-  //     {title:"French",desc:"Master French with our expert-led training program designed for all levels, from beginners to advanced learners. Build fluency, confidence, and cultural understanding to excel globally.",rating:5.0,duration:"1 month",students:"10,556",img:""},
-  //     {title:"German",desc:"Master German from beginner to advanced with expert trainers and interactive sessions. Build fluency, boost career opportunities, and connect globally.",rating:5.0,duration:"1 month",students:"10,556",img:""},
-  //     {title:"Spanish",desc:"Master Spanish from basics to fluency with interactive sessions led by expert trainers.Build confidence in speaking, reading, and writing for global opportunities.",rating:5.0,duration:"1 month",students:"10,556",img:""},
-  //     {title:"Japanese",desc:"Master the Japanese language with expert-led sessions designed for speaking, reading, and writing excellence. Unlock global career and cultural opportunities with our structured training program.",rating:5.0,duration:"1 month",students:"10,556",img:""},
-  //     {title:"Malayalam",desc:"Master Malayalam with our expert-led program designed for beginners and professionals alike. Build fluency in speaking, reading, and writing with practical, culture-rich lessons.",rating:5.0,duration:"1 month",students:"10,556",img:""},
-  //   ]
-  // },
-  // "English Proficiency Exams":{
-  //   mainCategoryDesc:"Ace Your English Proficiency Exams",
-  //   subDesc:"Prepare for TOEFL, IELTS, and other exams with expert guidance. Build confidence in reading, writing, listening, and speaking skills.",
-  //   subHeading:"English proficiency exams like IELTS, TOEFL, and PTE open doors to global education and career opportunities.",
-  //   mainImage:"",
-  //   courses:[
-  //     {title:"TOEFL Course",desc:"Master the TOEFL exam with expert guidance, interactive practice sessions, and personalized feedback. Achieve your dream score and unlock global education opportunities.",rating:5.0,duration:"1 month",students:"10,556",img:""},
-  //     {title:"OET Course",desc:"Master OET with expert-led training focused on real exam strategies and practical communication skills. Prepare confidently for healthcare career success worldwide.",rating:5.0,duration:"1 month",students:"10,556",img:""},
-  //     {title:"PTE Course",desc:"Master the PTE Academic exam with expert-led training, practice tests, and personalized feedback. Achieve your dream score with proven strategies and real exam simulations.",rating:5.0,duration:"1 month",students:"10,556",img:""},
-  //     {title:"IELTS Course",desc:"Master all four IELTS modules – Listening, Reading, Writing, and Speaking – with expert trainers and proven strategies.",rating:5.0,duration:"1 month",students:"10,556",img:""},
+"Languages": {
+  mainCategoryDesc: "Build strong communication skills and master global languages.",
+  subDesc: "Learn Spoken English, Corporate Communication, and foreign languages like French and German to boost your professional and personal growth.",
+  subHeading: "Improve fluency, confidence, and cultural understanding through interactive sessions.",
+  mainImage: "/images/courses/Languages.jpg",
 
-  //   ]
-  // },
+  courses: [
+    {
+      title: "Corporate Communication",
+      desc: "Enhance your professional communication skills with training in writing, presentation, and workplace etiquette.",
+      rating: 4.9,
+      duration: "1 month",
+      students: "12,342",
+      img: "/images/courses/Corporate_Communication.jpg",
+      aboutData: {
+        topic: "Master the Art of Professional Communication!",
+        content1: "Learn how to express ideas clearly and confidently in a corporate environment. This course covers email writing, business presentations, interpersonal skills, and effective communication strategies for meetings and client interactions.",
+        content2: "You’ll gain hands-on experience through roleplays, case studies, and mock meetings. By the end, you’ll communicate with precision and impact in any business setting."
+      },
+      courseContentData: [
+        {
+          id: 1,
+          title: "Introduction to Corporate Communication",
+          icon: "bi bi-chat-dots",
+          defaultOpen: true,
+          items: [
+            "Understanding corporate culture",
+            "Basics of professional communication",
+            "Communication channels and etiquette",
+            "Verbal and non-verbal communication"
+          ]
+        },
+        {
+          id: 2,
+          title: "Business Writing & Email Etiquette",
+          icon: "bi bi-envelope",
+          items: [
+            "Professional email formats",
+            "Writing reports and proposals",
+            "Avoiding common writing errors",
+            "Tone and clarity in communication"
+          ]
+        },
+        {
+          id: 3,
+          title: "Presentation & Public Speaking Skills",
+          icon: "bi bi-mic",
+          items: [
+            "Structuring impactful presentations",
+            "Body language and stage presence",
+            "Handling Q&A sessions confidently",
+            "Using visuals effectively"
+          ]
+        },
+        {
+          id: 4,
+          title: "Team & Client Communication",
+          icon: "bi bi-people",
+          items: [
+            "Conducting meetings and briefings",
+            "Negotiation and persuasion",
+            "Conflict resolution techniques",
+            "Cross-cultural communication"
+          ]
+        }
+      ],
+      whatYouLearnData: [
+        {
+          title: "Communicate Confidently at Work",
+          desc: "Learn to express ideas clearly in meetings, presentations, and emails.",
+          icon: "bi bi-chat-text"
+        },
+        {
+          title: "Master Business Writing",
+          desc: "Write concise and effective professional documents and emails.",
+          icon: "bi bi-pencil-square"
+        },
+        {
+          title: "Present with Impact",
+          desc: "Develop public speaking skills and deliver powerful presentations.",
+          icon: "bi bi-mic"
+        },
+        {
+          title: "Handle Workplace Scenarios",
+          desc: "Manage team communication, client calls, and negotiations effectively.",
+          icon: "bi bi-people"
+        },
+        {
+          title: "Build Leadership Presence",
+          desc: "Enhance confidence and influence through strong communication.",
+          icon: "bi bi-award"
+        }
+      ]
+    },
+
+    {
+      title: "Spoken English",
+      desc: "Improve your English fluency, pronunciation, and confidence through interactive speaking sessions and grammar practice.",
+      rating: 5.0,
+      duration: "1 month",
+      students: "15,480",
+      img: "/images/courses/Spoken_English.jpg",
+      aboutData: {
+        topic: "Speak English Fluently and Confidently!",
+        content1: "This course helps you build real-world English communication skills for everyday and professional use. Learn grammar, vocabulary, pronunciation, and conversational fluency through interactive activities and roleplays.",
+        content2: "From day one, you’ll start speaking confidently. You’ll practice real conversations, improve sentence structure, and build vocabulary for interviews, group discussions, and daily communication."
+      },
+      courseContentData: [
+        {
+          id: 1,
+          title: "Grammar & Sentence Building",
+          icon: "bi bi-book",
+          defaultOpen: true,
+          items: [
+            "Basic grammar fundamentals",
+            "Tenses and sentence formation",
+            "Common errors in English",
+            "Word usage and structure"
+          ]
+        },
+        {
+          id: 2,
+          title: "Vocabulary & Pronunciation",
+          icon: "bi bi-megaphone",
+          items: [
+            "Daily-use vocabulary building",
+            "Pronunciation practice and phonetics",
+            "Accent improvement tips",
+            "Listening and repetition drills"
+          ]
+        },
+        {
+          id: 3,
+          title: "Speaking Practice",
+          icon: "bi bi-person-lines-fill",
+          items: [
+            "Roleplays and conversation practice",
+            "Group discussions and storytelling",
+            "Interview preparation",
+            "Confidence-building exercises"
+          ]
+        },
+        {
+          id: 4,
+          title: "Professional English Skills",
+          icon: "bi bi-briefcase",
+          items: [
+            "Email and phone communication",
+            "Presentation language",
+            "Public speaking practice",
+            "Social and cultural etiquette"
+          ]
+        }
+      ],
+      whatYouLearnData: [
+        {
+          title: "Speak English Confidently",
+          desc: "Practice conversations to sound fluent and natural.",
+          icon: "bi bi-chat-dots"
+        },
+        {
+          title: "Improve Pronunciation",
+          desc: "Learn phonetics and stress patterns for clearer speech.",
+          icon: "bi bi-megaphone"
+        },
+        {
+          title: "Build Vocabulary",
+          desc: "Use practical words and phrases for real-life situations.",
+          icon: "bi bi-book"
+        },
+        {
+          title: "Master Grammar Basics",
+          desc: "Use tenses, prepositions, and sentence structures correctly.",
+          icon: "bi bi-pencil"
+        },
+        {
+          title: "Enhance Presentation Skills",
+          desc: "Speak confidently in interviews, meetings, and discussions.",
+          icon: "bi bi-award"
+        }
+      ]
+    },
+
+    {
+      title: "French Language",
+      desc: "Learn to read, write, and speak French through interactive lessons and real-life practice sessions.",
+      rating: 4.9,
+      duration: "2 months",
+      students: "7,320",
+      img: "/images/courses/French.jpg",
+      aboutData: {
+        topic: "Master French — The Language of Art, Culture, and Business!",
+        content1: "Start your journey to fluency in French with practical lessons in grammar, pronunciation, and conversation. Learn to communicate in everyday situations and understand French culture.",
+        content2: "You’ll gain proficiency in listening, reading, and speaking while learning through videos, dialogues, and real-world scenarios. Perfect for students, travelers, and professionals."
+      },
+      courseContentData: [
+        {
+          id: 1,
+          title: "Introduction to French",
+          icon: "bi bi-flag",
+          defaultOpen: true,
+          items: [
+            "French alphabets and pronunciation",
+            "Basic greetings and introductions",
+            "Numbers, dates, and time",
+            "Everyday expressions"
+          ]
+        },
+        {
+          id: 2,
+          title: "Grammar & Sentence Formation",
+          icon: "bi bi-pencil",
+          items: [
+            "Articles, nouns, and verbs",
+            "Gender and agreement rules",
+            "Common verb conjugations",
+            "Building simple sentences"
+          ]
+        },
+        {
+          id: 3,
+          title: "Conversational French",
+          icon: "bi bi-chat-left-dots",
+          items: [
+            "Asking and answering questions",
+            "Daily conversation practice",
+            "Travel and shopping phrases",
+            "Cultural insights"
+          ]
+        },
+        {
+          id: 4,
+          title: "Listening & Comprehension",
+          icon: "bi bi-headphones",
+          items: [
+            "Audio lessons and comprehension exercises",
+            "Dialogues and storytelling",
+            "Pronunciation correction",
+            "Reading short texts and articles"
+          ]
+        }
+      ],
+      whatYouLearnData: [
+        {
+          title: "Speak Basic to Intermediate French",
+          desc: "Gain confidence in everyday French conversations.",
+          icon: "bi bi-chat"
+        },
+        {
+          title: "Understand French Grammar",
+          desc: "Learn sentence structure and verb conjugations easily.",
+          icon: "bi bi-pencil"
+        },
+        {
+          title: "Improve Listening Skills",
+          desc: "Follow dialogues and understand native pronunciation.",
+          icon: "bi bi-headphones"
+        },
+        {
+          title: "Discover French Culture",
+          desc: "Learn customs, etiquette, and phrases used in real life.",
+          icon: "bi bi-globe"
+        },
+        {
+          title: "Prepare for Exams or Travel",
+          desc: "Get ready for DELF exams or visiting French-speaking countries.",
+          icon: "bi bi-award"
+        }
+      ]
+    },
+
+    {
+      title: "German Language",
+      desc: "Learn to communicate confidently in German with lessons covering grammar, vocabulary, and real-world conversation.",
+      rating: 4.9,
+      duration: "2 months",
+      students: "6,845",
+      img: "/images/courses/German.jpg",
+      aboutData: {
+        topic: "Learn German — From Basics to Confident Conversation!",
+        content1: "Whether for travel, study, or career, this course helps you master German pronunciation, grammar, and practical dialogues. Start from beginner level and build your way to conversational fluency.",
+        content2: "You’ll practice speaking, reading, and listening through interactive lessons, exercises, and real-life contexts. Perfect for beginners or anyone looking to learn a global language with strong career prospects."
+      },
+      courseContentData: [
+        {
+          id: 1,
+          title: "Introduction to German",
+          icon: "bi bi-flag",
+          defaultOpen: true,
+          items: [
+            "German alphabets and pronunciation",
+            "Common greetings and phrases",
+            "Numbers, colors, and days of the week",
+            "Introducing yourself"
+          ]
+        },
+        {
+          id: 2,
+          title: "Grammar & Sentence Structure",
+          icon: "bi bi-pencil-square",
+          items: [
+            "Nouns, articles, and gender",
+            "Verb conjugations and tenses",
+            "Forming simple and compound sentences",
+            "Common prepositions and connectors"
+          ]
+        },
+        {
+          id: 3,
+          title: "Conversational German",
+          icon: "bi bi-chat-left-quote",
+          items: [
+            "Everyday conversations and roleplays",
+            "Shopping, travel, and dining phrases",
+            "Cultural etiquette and expressions",
+            "Listening comprehension practice"
+          ]
+        },
+        {
+          id: 4,
+          title: "Practical Application",
+          icon: "bi bi-briefcase",
+          items: [
+            "Real-life speaking practice",
+            "Pronunciation drills and dialogues",
+            "Reading short texts and emails",
+            "Writing simple messages and paragraphs"
+          ]
+        }
+      ],
+      whatYouLearnData: [
+        {
+          title: "Speak Everyday German",
+          desc: "Engage in common conversations confidently.",
+          icon: "bi bi-chat"
+        },
+        {
+          title: "Understand Grammar Easily",
+          desc: "Master sentence structure and common verb forms.",
+          icon: "bi bi-pencil"
+        },
+        {
+          title: "Develop Listening & Reading Skills",
+          desc: "Improve comprehension through interactive exercises.",
+          icon: "bi bi-headphones"
+        },
+        {
+          title: "Gain Cultural Awareness",
+          desc: "Learn how to communicate respectfully in German-speaking regions.",
+          icon: "bi bi-globe"
+        },
+        {
+          title: "Prepare for Goethe Exams or Work Abroad",
+          desc: "Get ready for recognized language certification and career opportunities.",
+          icon: "bi bi-award"
+        }
+      ]
+    }
+  ]
+},
+
+  "English Proficiency Exams":{
+    mainCategoryDesc:"Ace Your English Proficiency Exams",
+    subDesc:"Prepare for TOEFL, IELTS, and other exams with expert guidance. Build confidence in reading, writing, listening, and speaking skills.",
+    subHeading:"English proficiency exams like IELTS, TOEFL, and PTE open doors to global education and career opportunities.",
+    mainImage:"",
+    courses:[
+      {title:"TOEFL Course",desc:"Master the TOEFL exam with expert guidance, interactive practice sessions, and personalized feedback. Achieve your dream score and unlock global education opportunities.",rating:5.0,duration:"1 month",students:"10,556",img:""},
+      {title:"OET Course",desc:"Master OET with expert-led training focused on real exam strategies and practical communication skills. Prepare confidently for healthcare career success worldwide.",rating:5.0,duration:"1 month",students:"10,556",img:""},
+      {title:"PTE Course",desc:"Master the PTE Academic exam with expert-led training, practice tests, and personalized feedback. Achieve your dream score with proven strategies and real exam simulations.",rating:5.0,duration:"1 month",students:"10,556",img:""},
+      {title:"IELTS Course",desc:"Master all four IELTS modules – Listening, Reading, Writing, and Speaking – with expert trainers and proven strategies.",rating:5.0,duration:"1 month",students:"10,556",img:""},
+
+    ]
+  },
 "Kidz Space": {
   mainCategoryDesc: "Fun and interactive coding for kids.",
   subDesc: "Let your child explore coding, robotics, and creativity through hands-on projects. Courses designed for kids aged 7–16 to learn programming, logic, and problem-solving.",
@@ -5936,103 +6543,103 @@ const coursesData = {
         ]
       }
       ,
-      {
-        title: "Spoken English",
-        desc: "Master fluent English with confidence through interactive sessions and real-life conversations. Build communication skills that open global career opportunities.",
-        rating: 5.0,
-        duration: "1 month",
-        students: "10,556",
-        img: "/images/courses/Salesforce_Administrator.jpg",
-        aboutData: {
-          topic: "Master Spoken English — From Basics to Fluent Conversations!",
-          content1: "Enhance your English speaking skills with practical lessons, interactive sessions, and real-world conversation practice. This course helps you gain confidence, improve pronunciation, expand vocabulary, and speak fluently in professional and social settings.",
-          content2: "The Spoken English course covers everything from foundational grammar to advanced conversational techniques. You’ll learn essential sentence structures, common idioms, and effective communication strategies. Through role-plays, mock interviews, and live speaking sessions, you’ll become fluent, confident, and ready to use English anywhere."
-        },
-        courseContentData: [
-          {
-            id: 1,
-            title: "Beginner – English Fundamentals",
-            icon: "bi bi-book",
-            defaultOpen: true,
-            items: [
-              "Introduction to English language skills",
-              "Basic vocabulary and sentence structure",
-              "Grammar essentials: tenses, articles, and prepositions",
-              "Common phrases and greetings",
-              "Pronunciation and phonetics practice"
-            ]
-          },
-          {
-            id: 2,
-            title: "Beginner – Everyday Conversations",
-            icon: "bi bi-chat-left",
-            items: [
-              "Introducing yourself and others",
-              "Talking about daily routines",
-              "Asking questions and giving answers",
-              "Shopping, travel, and food conversations",
-              "Role-play exercises for confidence building"
-            ]
-          },
-          {
-            id: 3,
-            title: "Intermediate – Advanced Grammar & Vocabulary",
-            icon: "bi bi-journal-text",
-            items: [
-              "Complex sentence structures",
-              "Idioms, phrasal verbs, and expressions",
-              "Synonyms, antonyms, and word usage",
-              "Listening comprehension exercises",
-              "Storytelling and paragraph construction"
-            ]
-          },
-          {
-            id: 4,
-            title: "Intermediate – Business & Professional English",
-            icon: "bi bi-briefcase",
-            items: [
-              "Formal email and report writing",
-              "Telephone and video call etiquette",
-              "Presentation and meeting skills",
-              "Networking and small talk techniques",
-              "Interview preparation and mock sessions"
-            ]
-          },
+      // {
+      //   title: "Spoken English",
+      //   desc: "Master fluent English with confidence through interactive sessions and real-life conversations. Build communication skills that open global career opportunities.",
+      //   rating: 5.0,
+      //   duration: "1 month",
+      //   students: "10,556",
+      //   img: "/images/courses/Salesforce_Administrator.jpg",
+      //   aboutData: {
+      //     topic: "Master Spoken English — From Basics to Fluent Conversations!",
+      //     content1: "Enhance your English speaking skills with practical lessons, interactive sessions, and real-world conversation practice. This course helps you gain confidence, improve pronunciation, expand vocabulary, and speak fluently in professional and social settings.",
+      //     content2: "The Spoken English course covers everything from foundational grammar to advanced conversational techniques. You’ll learn essential sentence structures, common idioms, and effective communication strategies. Through role-plays, mock interviews, and live speaking sessions, you’ll become fluent, confident, and ready to use English anywhere."
+      //   },
+      //   courseContentData: [
+      //     {
+      //       id: 1,
+      //       title: "Beginner – English Fundamentals",
+      //       icon: "bi bi-book",
+      //       defaultOpen: true,
+      //       items: [
+      //         "Introduction to English language skills",
+      //         "Basic vocabulary and sentence structure",
+      //         "Grammar essentials: tenses, articles, and prepositions",
+      //         "Common phrases and greetings",
+      //         "Pronunciation and phonetics practice"
+      //       ]
+      //     },
+      //     {
+      //       id: 2,
+      //       title: "Beginner – Everyday Conversations",
+      //       icon: "bi bi-chat-left",
+      //       items: [
+      //         "Introducing yourself and others",
+      //         "Talking about daily routines",
+      //         "Asking questions and giving answers",
+      //         "Shopping, travel, and food conversations",
+      //         "Role-play exercises for confidence building"
+      //       ]
+      //     },
+      //     {
+      //       id: 3,
+      //       title: "Intermediate – Advanced Grammar & Vocabulary",
+      //       icon: "bi bi-journal-text",
+      //       items: [
+      //         "Complex sentence structures",
+      //         "Idioms, phrasal verbs, and expressions",
+      //         "Synonyms, antonyms, and word usage",
+      //         "Listening comprehension exercises",
+      //         "Storytelling and paragraph construction"
+      //       ]
+      //     },
+      //     {
+      //       id: 4,
+      //       title: "Intermediate – Business & Professional English",
+      //       icon: "bi bi-briefcase",
+      //       items: [
+      //         "Formal email and report writing",
+      //         "Telephone and video call etiquette",
+      //         "Presentation and meeting skills",
+      //         "Networking and small talk techniques",
+      //         "Interview preparation and mock sessions"
+      //       ]
+      //     },
 
-        ],
-        whatYouLearnData: [
-          {
-            title: "Speak English Fluently",
-            desc: "Gain confidence and fluency in daily, social, and professional conversations.",
-            icon: "bi bi-mic"
-          },
-          {
-            title: "Improve Vocabulary & Grammar",
-            desc: "Master essential vocabulary, idioms, phrasal verbs, and grammar structures.",
-            icon: "bi bi-book"
-          },
-          {
-            title: "Communicate Professionally",
-            desc: "Learn business English, presentations, interviews, and email etiquette.",
-            icon: "bi bi-briefcase"
-          },
-          {
-            title: "Enhance Listening & Pronunciation",
-            desc: "Develop listening skills and refine pronunciation for clear communication.",
-            icon: "bi bi-headphones"
-          },
-          {
-            title: "Build Confidence & Public Speaking",
-            desc: "Participate in debates, discussions, and storytelling to boost confidence.",
-            icon: "bi bi-person-lines-fill"
-          },
-          {
-            title: "Master Global Communication",
-            desc: "Understand cultural nuances and communicate effectively with people worldwide.",
-            icon: "bi bi-globe"
-          }
-        ]
-      }
+      //   ],
+      //   whatYouLearnData: [
+      //     {
+      //       title: "Speak English Fluently",
+      //       desc: "Gain confidence and fluency in daily, social, and professional conversations.",
+      //       icon: "bi bi-mic"
+      //     },
+      //     {
+      //       title: "Improve Vocabulary & Grammar",
+      //       desc: "Master essential vocabulary, idioms, phrasal verbs, and grammar structures.",
+      //       icon: "bi bi-book"
+      //     },
+      //     {
+      //       title: "Communicate Professionally",
+      //       desc: "Learn business English, presentations, interviews, and email etiquette.",
+      //       icon: "bi bi-briefcase"
+      //     },
+      //     {
+      //       title: "Enhance Listening & Pronunciation",
+      //       desc: "Develop listening skills and refine pronunciation for clear communication.",
+      //       icon: "bi bi-headphones"
+      //     },
+      //     {
+      //       title: "Build Confidence & Public Speaking",
+      //       desc: "Participate in debates, discussions, and storytelling to boost confidence.",
+      //       icon: "bi bi-person-lines-fill"
+      //     },
+      //     {
+      //       title: "Master Global Communication",
+      //       desc: "Understand cultural nuances and communicate effectively with people worldwide.",
+      //       icon: "bi bi-globe"
+      //     }
+      //   ]
+      // }
       ,
 
     ]
