@@ -2081,7 +2081,7 @@ const coursesData = {
   rating: 5.0,
   duration: "3 months",
   students: "9,845",
-  img: "/images/courses/DevOps.jpg",
+  img: "/images/courses/DevOps.webp",
   aboutData: {
     topic: "Become a DevOps Engineer — Automate, Integrate, and Deliver at Scale!",
     content1:
@@ -2171,7 +2171,7 @@ const coursesData = {
   rating: 5.0,
   duration: "2 months",
   students: "8,620",
-  img: "/images/courses/Kubernetes.jpg",
+  img: "/images/courses/Kubernetes.webp",
   aboutData: {
     topic: "Master Kubernetes — The Future of Cloud-Native Application Management!",
     content1:
@@ -2260,7 +2260,7 @@ const coursesData = {
   rating: 4.9,
   duration: "1.5 months",
   students: "7,980",
-  img: "/images/courses/Jenkins.jpg",
+  img: "/images/courses/Jenkins.webp",
   aboutData: {
     topic: "Master Jenkins — Automate Your Build and Deployment Pipeline!",
     content1:
@@ -2349,7 +2349,7 @@ const coursesData = {
   rating: 5.0,
   duration: "2 months",
   students: "6,540",
-  img: "/images/courses/Terraform.jpg",
+  img: "/images/courses/Terraform.webp",
   aboutData: {
     topic: "Master Terraform — Build and Manage Infrastructure as Code!",
     content1:
@@ -3960,7 +3960,7 @@ const coursesData = {
   "rating": 5.0,
   "duration": "1 month",
   "students": "14,872",
-  "img": "/images/courses/Selenium.jpg",
+  "img": "/images/courses/Selenium.webp",
   "aboutData": {
     "topic": "Master Selenium — The Industry Standard for Web Automation Testing!",
     "content1": "This course is designed to make you a complete Selenium automation tester. You’ll start with the basics of Selenium WebDriver and gradually move toward building full automation frameworks with TestNG, POM, and CI/CD integration.",
@@ -4059,7 +4059,7 @@ const coursesData = {
   "rating": 5.0,
   "duration": "1 month",
   "students": "11,204",
-  "img": "/images/courses/Playwright.jpg",
+  "img": "/images/courses/Playwright.webp",
   "aboutData": {
     "topic": "Master Playwright — Modern End-to-End Automation for Web Applications!",
     "content1": "Learn Playwright from scratch and become an expert in web automation testing using JavaScript or TypeScript. This course teaches you how to automate browsers, handle dynamic elements, perform cross-browser testing, and design scalable test frameworks with ease.",
@@ -4181,7 +4181,7 @@ const coursesData = {
   "rating": 5.0,
   "duration": "1 month",
   "students": "10,556",
-  "img": "/images/courses/TypeScript_Testing.jpg",
+  "img": "/images/courses/TypeScript_Testing.webp",
   "aboutData": {
     "topic": "Master Testing with TypeScript — From Unit Tests to End-to-End Automation!",
     "content1": "Learn to write clean and type-safe tests for modern web applications using TypeScript. This course covers everything from unit and integration testing to end-to-end automation using tools like Jest, Mocha, Chai, and Playwright — all powered by TypeScript.",
@@ -4295,7 +4295,7 @@ const coursesData = {
   "rating": 5.0,
   "duration": "1 month",
   "students": "8,942",
-  "img": "/images/courses/CCN.jpg",
+  "img": "/images/courses/CCN.webp",
   "aboutData": {
     "topic": "Become a Networking Pro — Master Core Networking Concepts from the Ground Up!",
     "content1": "This CCN course introduces you to the essential concepts of networking. You’ll understand how devices communicate, how data travels across networks, and how to configure routers and switches in real scenarios.",
@@ -4697,7 +4697,7 @@ const coursesData = {
   rating: 4.8,
   duration: "1 month",
   students: "9,842",
-  img: "/images/courses/SMM.jpg",
+  img: "/images/courses/SMM.webp",
   aboutData: {
     topic: "Become a Social Media Expert — Build, Grow, and Manage Brands That Stand Out Online!",
     content1:
@@ -4793,12 +4793,12 @@ const coursesData = {
       ,
 
       {
-  title: "LinkedIn Marketing & Personal Branding",
+  title: "LinkedIn Marketing and Personal Branding",
   desc: "Master LinkedIn marketing to build your professional brand, grow your network, and generate quality leads. Learn content strategy, analytics, and ad management to boost your visibility.",
   rating: 4.8,
   duration: "1 month",
   students: "8,913",
-  img: "/images/courses/LinkedIn_Marketing.jpg",
+  img: "/images/courses/LinkedIn_Marketing.webp",
   aboutData: {
     topic: "Master LinkedIn Marketing — Build Influence, Grow Your Network, and Generate Business Leads!",
     content1:
@@ -4899,7 +4899,7 @@ const coursesData = {
   rating: 4.9,
   duration: "1 month",
   students: "10,472",
-  img: "/images/courses/Meta_Campaigns.jpg",
+  img: "/images/courses/Meta_Campaigns.webp",
   aboutData: {
     topic: "Master Meta Campaigns — Build High-Converting Facebook & Instagram Ads!",
     content1:
@@ -5206,7 +5206,7 @@ const coursesData = {
   mainCategoryDesc: "Build strong communication skills and master global languages.",
   subDesc: "Learn Spoken English, Corporate Communication, and foreign languages like French and German to boost your professional and personal growth.",
   subHeading: "Improve fluency, confidence, and cultural understanding through interactive sessions.",
-  mainImage: "/images/courses/Languages.jpg",
+  mainImage: "/images/courses/Languages.webp",
 
   courses: [
     {
@@ -5215,7 +5215,7 @@ const coursesData = {
       rating: 4.9,
       duration: "1 month",
       students: "12,342",
-      img: "/images/courses/Corporate_Communication.jpg",
+      img: "/images/courses/Corporate_Communication.webp",
       aboutData: {
         topic: "Master the Art of Professional Communication!",
         content1: "Learn how to express ideas clearly and confidently in a corporate environment. This course covers email writing, business presentations, interpersonal skills, and effective communication strategies for meetings and client interactions.",
@@ -5303,7 +5303,7 @@ const coursesData = {
       rating: 5.0,
       duration: "1 month",
       students: "15,480",
-      img: "/images/courses/Spoken_English.jpg",
+      img: "/images/courses/Spoken_English.webp",
       aboutData: {
         topic: "Speak English Fluently and Confidently!",
         content1: "This course helps you build real-world English communication skills for everyday and professional use. Learn grammar, vocabulary, pronunciation, and conversational fluency through interactive activities and roleplays.",
@@ -5391,7 +5391,7 @@ const coursesData = {
       rating: 4.9,
       duration: "2 months",
       students: "7,320",
-      img: "/images/courses/French.jpg",
+      img: "/images/courses/French.webp",
       aboutData: {
         topic: "Master French — The Language of Art, Culture, and Business!",
         content1: "Start your journey to fluency in French with practical lessons in grammar, pronunciation, and conversation. Learn to communicate in everyday situations and understand French culture.",
@@ -5479,7 +5479,7 @@ const coursesData = {
       rating: 4.9,
       duration: "2 months",
       students: "6,845",
-      img: "/images/courses/German.jpg",
+      img: "/images/courses/German.webp",
       aboutData: {
         topic: "Learn German — From Basics to Confident Conversation!",
         content1: "Whether for travel, study, or career, this course helps you master German pronunciation, grammar, and practical dialogues. Start from beginner level and build your way to conversational fluency.",
