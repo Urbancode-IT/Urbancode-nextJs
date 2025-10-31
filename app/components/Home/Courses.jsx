@@ -112,7 +112,7 @@ const Courses = () => {
         <div className=" pt-5 pt-lg-5 pt-sm-2 mt-5"> 
           <h5 className="section-title text-center">
           <span className="mx-2">―</span>
-          Student's Lifecycle
+          Students' Lifecycle
           <span className="mx-2">―</span>
         </h5>
 
