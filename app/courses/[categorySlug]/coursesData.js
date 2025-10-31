@@ -5563,19 +5563,19 @@ const coursesData = {
   ]
 },
 
-  "English Proficiency Exams":{
-    mainCategoryDesc:"Ace Your English Proficiency Exams",
-    subDesc:"Prepare for TOEFL, IELTS, and other exams with expert guidance. Build confidence in reading, writing, listening, and speaking skills.",
-    subHeading:"English proficiency exams like IELTS, TOEFL, and PTE open doors to global education and career opportunities.",
-    mainImage:"",
-    courses:[
-      {title:"TOEFL Course",desc:"Master the TOEFL exam with expert guidance, interactive practice sessions, and personalized feedback. Achieve your dream score and unlock global education opportunities.",rating:5.0,duration:"1 month",students:"10,556",img:""},
-      {title:"OET Course",desc:"Master OET with expert-led training focused on real exam strategies and practical communication skills. Prepare confidently for healthcare career success worldwide.",rating:5.0,duration:"1 month",students:"10,556",img:""},
-      {title:"PTE Course",desc:"Master the PTE Academic exam with expert-led training, practice tests, and personalized feedback. Achieve your dream score with proven strategies and real exam simulations.",rating:5.0,duration:"1 month",students:"10,556",img:""},
-      {title:"IELTS Course",desc:"Master all four IELTS modules – Listening, Reading, Writing, and Speaking – with expert trainers and proven strategies.",rating:5.0,duration:"1 month",students:"10,556",img:""},
+  // "English Proficiency Exams":{
+  //   mainCategoryDesc:"Ace Your English Proficiency Exams",
+  //   subDesc:"Prepare for TOEFL, IELTS, and other exams with expert guidance. Build confidence in reading, writing, listening, and speaking skills.",
+  //   subHeading:"English proficiency exams like IELTS, TOEFL, and PTE open doors to global education and career opportunities.",
+  //   mainImage:"",
+  //   courses:[
+  //     {title:"TOEFL Course",desc:"Master the TOEFL exam with expert guidance, interactive practice sessions, and personalized feedback. Achieve your dream score and unlock global education opportunities.",rating:5.0,duration:"1 month",students:"10,556",img:""},
+  //     {title:"OET Course",desc:"Master OET with expert-led training focused on real exam strategies and practical communication skills. Prepare confidently for healthcare career success worldwide.",rating:5.0,duration:"1 month",students:"10,556",img:""},
+  //     {title:"PTE Course",desc:"Master the PTE Academic exam with expert-led training, practice tests, and personalized feedback. Achieve your dream score with proven strategies and real exam simulations.",rating:5.0,duration:"1 month",students:"10,556",img:""},
+  //     {title:"IELTS Course",desc:"Master all four IELTS modules – Listening, Reading, Writing, and Speaking – with expert trainers and proven strategies.",rating:5.0,duration:"1 month",students:"10,556",img:""},
 
-    ]
-  },
+  //   ]
+  // },
 "Kidz Space": {
   mainCategoryDesc: "Fun and interactive coding for kids.",
   subDesc: "Let your child explore coding, robotics, and creativity through hands-on projects. Courses designed for kids aged 7–16 to learn programming, logic, and problem-solving.",
