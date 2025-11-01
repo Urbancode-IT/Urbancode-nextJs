@@ -1,5 +1,5 @@
-import Courses from "./Courses";
-import categoryMetaData from "../categoryMetaData";
+import Courses from "./[categorySlug]/Courses";
+import categoryMetaData from "./categoryMetaData";
 
 export async function generateMetadata({ params }) {
   const slug = params.categorySlug;
