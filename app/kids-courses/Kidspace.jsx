@@ -11,7 +11,7 @@ const Kidz = () => {
     {
       title: "Junior Web Developer",
       img: "/images/KidsImages/junior.png",
-      duration: "3 Month",
+      duration: "3 Months",
       desc: "Kickstart your journey as a developer! Learn HTML, CSS, and JavaScript to design interactive websites and gain real-world project skills.",
       stars: "★★★★★",
       rating: "5.0",
@@ -23,7 +23,7 @@ const Kidz = () => {
     {
       title: "Core Python",
       img: "/images/KidsImages/pythonCore.png",
-      duration: "2 Month",
+      duration: "2 Months",
       desc: "Start from zero and build strong coding fundamentals—variables, loops, functions, OOP—and complete mini-projects with confidence.",
       stars: "★★★★★",
       rating: "5.0",
@@ -33,7 +33,7 @@ const Kidz = () => {
     {
       title: "Advanced Python",
       img: "/images/KidsImages/advancePython.png",
-      duration: "2 Month",
+      duration: "2 Months",
       desc: "Level up with file handling, modules, APIs, testing, and best practices—prepare for automation, data, and AI tracks. Take it to next level",
       stars: "★★★★☆",
       rating: "4.0",
@@ -43,7 +43,7 @@ const Kidz = () => {
     {
       title: "C Programming",
       img: "/images/KidsImages/C.png",
-      duration: "2 Month",
+      duration: "2 Months",
       desc: "Understand how computers really work. Learn memory, pointers, arrays, and problem-solving that shapes logic for any language.",
       stars: "★★★★☆",
       rating: "4.0",
@@ -53,7 +53,7 @@ const Kidz = () => {
     {
       title: "CPP",
       img: "/images/KidsImages/cplus.png",
-      duration: "2 Month",
+      duration: "2 Months",
       desc: "Build high-performance apps with OOP, STL, and problem patterns used in competitive programming and real systems.",
       stars: "★★★★★",
       rating: "5.0",
@@ -73,7 +73,7 @@ const Kidz = () => {
     {
       title: "Graphic Designing",
       img: "/images/KidsImages/new.jpg",
-      duration: "3 Month",
+      duration: "3 Months",
       desc: "Create eye-catching posters, thumbnails, and brand logos. Learn color, typography, and composition with hands-on projects.",
       stars: "★★★★★",
       rating: "5.0",
@@ -83,7 +83,7 @@ const Kidz = () => {
     {
       title: "AI & ML",
       img: "/images/KidsImages/aiml.png",
-      duration: "3 Month",
+      duration: "3 Months",
       desc: "Step into the future. Learn data prep, models, and decision-making. Start applying AI concepts in beginner-friendly projects.",
       stars: "★★★★★",
       rating: "5.0",
