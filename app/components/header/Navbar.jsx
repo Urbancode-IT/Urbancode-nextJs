@@ -42,31 +42,44 @@ export default function Navbar() {
           <Link href="/kids-courses" onClick={handleLinkClick}>Kids Space</Link>
 
           {/* ✅ Career Dropdown (hover for desktop, accordion for mobile) */}
-          <div
-            className="dropdown"
-            onMouseEnter={() => window.innerWidth > 768 && setCareerOpen(true)}
-            // onMouseLeave={() => window.innerWidth > 768 && setCareerOpen(false)}
-          >
-            <button
-              className={`dropdown-toggle ${careerOpen ? 'active' : ''}`}
-              onClick={toggleCareer}
-            >
-              Career
-              <span className="arrow"></span>
-            </button>
+<div
+  className="dropdown"
+  onMouseEnter={() => {
+    if (window.innerWidth > 768) {
+      clearTimeout(window.dropdownTimeout);
+      setCareerOpen(true);
+    }
+  }}
+  onMouseLeave={() => {
+    if (window.innerWidth > 768) {
+      window.dropdownTimeout = setTimeout(() => {
+        setCareerOpen(false);
+      }, 200); // 200ms delay prevents flicker
+    }
+  }}
+>
+  <button
+    className={`dropdown-toggle ${careerOpen ? 'active' : ''}`}
+    onClick={toggleCareer}
+  >
+    Career
+    <span className="arrow"></span>
+  </button>
 
-            <div className={`dropdown-menu ${careerOpen ? 'show' : ''}`  }>
-              <Link href="/be-our-mentor" onClick={handleLinkClick}>
-                Become a Mentor
-              </Link>
-              <Link href="/jobs" onClick={handleLinkClick}>
-                Jobs
-              </Link>
-              <Link href="/internship" onClick={handleLinkClick}>
-                Internship
-              </Link>
-            </div>
-          </div>
+  <div className={`dropdown-menu ${careerOpen ? 'show' : ''}`}>
+    <Link href="/be-our-mentor" onClick={handleLinkClick}>
+      Become a Mentor
+    </Link>
+    <Link href="/jobs" onClick={handleLinkClick}>
+      Jobs
+    </Link>
+    <Link href="/internship" onClick={handleLinkClick}>
+      Internship
+    </Link>
+  </div>
+</div>
+
+
 
           <Link href="/projects" onClick={handleLinkClick}>Projects</Link>
           <Link href="/contact-us" onClick={handleLinkClick}>Contact Us</Link>

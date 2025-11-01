@@ -343,7 +343,7 @@ function App() {
                   />
                 </div>
 <div className="submit-container">
-  <button type="submit" class="submit-btn">
+  <button type="submit" className="submit-btn">
     Submit Application
   </button>
 </div>
