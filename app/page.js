@@ -1,3 +1,5 @@
+//app/page.js
+
 import Head from "next/head";
 import HeroSection from './components/Home/HeroSection';
 
