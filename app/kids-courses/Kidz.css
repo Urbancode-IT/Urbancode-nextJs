@@ -55,7 +55,7 @@
 }
 
 .kidz-page .hero-text {
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'inter', sans-serif;
   font-size: 16px;
   line-height: 25px;
   color: #000;
@@ -103,7 +103,7 @@
   padding:0.8rem 1rem;
 }
 .kidz-page .course-card:hover {
-  background: #bebebe;
+  background: #848282;
   color: #fff;
 }
 .kidz-page .course-img {
@@ -137,6 +137,7 @@
   font-size: 16px;
   font-weight: 600;
   margin-bottom: 10px;
+  color: #212529!important
 }
 
 .kidz-page .course-desc {
@@ -469,8 +470,8 @@
   }
   
   .kidz-page .hero-text {
-    font-size: 20px;
-    line-height: 32px;
+    font-size: 17px;
+    line-height: 30px;
   }
   
   .kidz-page .hero-img {

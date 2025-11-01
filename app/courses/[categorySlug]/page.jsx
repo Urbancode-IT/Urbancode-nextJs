@@ -4,19 +4,20 @@ import Courses from "./Courses";
 export async function generateStaticParams() {
   const categories = [
     "Programming Languages",
-    "Web Development",
+    "Web and App Development",
     "UI UX Designing",
-    "Cloud & DevOps",
-    "Data Analytics",
+    "Cloud and DevOps",
+    // "Data Analytics",
     "Data Science",
     "Database",
     "Data Visualization",
     "Software Testing",
-    "Cyber Security",
-    "SEO",
+    "Net Working",
+    "Digital Marketing",
     "Health Care",
     "CRM",
-    "App Development",
+    "Kidz Space",
+     "Languages",
   ];
 
   const slugify = (name) => name.toLowerCase().replace(/\s+/g, "-");

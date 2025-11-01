@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import './Navbar.css';
@@ -19,6 +19,21 @@ export default function Navbar() {
 
   // 🟢 Toggle dropdown
   const toggleCareer = () => setCareerOpen(!careerOpen);
+
+  // 🟢 Add shadow on scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 10) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <nav className="navbar">
@@ -44,8 +59,19 @@ export default function Navbar() {
           {/* ✅ Career Dropdown (hover for desktop, accordion for mobile) */}
           <div
             className="dropdown"
-            onMouseEnter={() => window.innerWidth > 768 && setCareerOpen(true)}
-            // onMouseLeave={() => window.innerWidth > 768 && setCareerOpen(false)}
+            onMouseEnter={() => {
+              if (window.innerWidth > 768) {
+                clearTimeout(window.dropdownTimeout);
+                setCareerOpen(true);
+              }
+            }}
+            onMouseLeave={() => {
+              if (window.innerWidth > 768) {
+                window.dropdownTimeout = setTimeout(() => {
+                  setCareerOpen(false);
+                }, 200);
+              }
+            }}
           >
             <button
               className={`dropdown-toggle ${careerOpen ? 'active' : ''}`}
@@ -55,7 +81,7 @@ export default function Navbar() {
               <span className="arrow"></span>
             </button>
 
-            <div className={`dropdown-menu ${careerOpen ? 'show' : ''}`  }>
+            <div className={`dropdown-menu ${careerOpen ? 'show' : ''}`}>
               <Link href="/be-our-mentor" onClick={handleLinkClick}>
                 Become a Mentor
               </Link>

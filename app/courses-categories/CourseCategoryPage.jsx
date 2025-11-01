@@ -31,10 +31,10 @@ const courses = [
     badge: "6 Courses",
   },
   {
-    title: "Web Development",
+    title: "Web and App Development",
     desc: "Build modern, responsive, and dynamic websites from scratch. Learn HTML, CSS, JavaScript, and popular frameworks step by step.",
     img: webDevImg,
-    link: "/courses/web-development",
+    link: "/courses/web-and-app-development",
     badge: "7 Courses",
   },
   {
@@ -51,13 +51,13 @@ const courses = [
     link: "/courses/cloud-and-devops",
     badge: "3 Courses",
   },
-  {
-    title: "Data Analytics",
-    desc: "Turn raw data into powerful insights with our Data Analytics courses. Learn Excel, SQL, Power BI, and Python for real-world applications.",
-    img: dataAnalysisImg,
-    link: "/courses/data-analytics",
-    badge: "5 Courses",
-  },
+  // {
+  //   title: "Data Analytics",
+  //   desc: "Turn raw data into powerful insights with our Data Analytics courses. Learn Excel, SQL, Power BI, and Python for real-world applications.",
+  //   img: dataAnalysisImg,
+  //   link: "/courses/data-analytics",
+  //   badge: "5 Courses",
+  // },
   {
     title: "Data Science",
     desc: "Turn raw data into powerful insights with Data Science. Master Python, SQL, and machine learning to solve real problems.",
@@ -72,13 +72,13 @@ const courses = [
     link: "/courses/database",
     badge: "4 Courses",
   },
-  // {
-  //   title: "Data Visualization",
-  //   desc: "Turn complex data into clear, meaningful insights with charts, dashboards, and storytelling techniques.",
-  //   img: dataVisualImg,
-  //   link: "/courses/data-visualization",
-  //   badge: "4 Courses",
-  // },
+  {
+    title: "Data Visualization",
+    desc: "Turn complex data into clear, meaningful insights with charts, dashboards, and storytelling techniques.",
+    img: dataVisualImg,
+    link: "/courses/data-visualization",
+    badge: "4 Courses",
+  },
   {
     title: "Software Testing",
     desc: "Gain expertise in Manual and Automation Testing tools and techniques.",
@@ -87,17 +87,17 @@ const courses = [
     badge: "6 Courses",
   },
   {
-    title: "Cyber Security",
+    title: "Net Working",
     desc: "Gain hands-on skills to protect systems, networks, and data from cyber threats. Learn ethical hacking and security practices.",
     img: cyberSecurityImg,
-    link: "/courses/cyber-security",
+    link: "/courses/net-working",
     badge: "2 Courses",
   },
   {
-    title: "SEO",
+    title: "Digital Marketing",
     desc: "Learn SEO, Social Media, Email, and Ads to grow businesses online. Master tools and strategies with hands-on campaigns.",
     img: seoImg,
-    link: "/courses/seo",
+    link: "/courses/digital-marketing",
     badge: "3 Courses",
   },
   {
@@ -107,13 +107,13 @@ const courses = [
     link: "/courses/health-care",
     badge: "3 Courses",
   },
-  // {
-  //   title: "Languages",
-  //   desc: "Learn to speak, read, and write with confidence in global languages like English, Spanish, French & Japanese.",
-  //   img: languagesImg,
-  //   link: "/courses/languages",
-  //   badge: "5 Courses",
-  // },
+  {
+    title: "Languages",
+    desc: "Learn to speak, read, and write with confidence in global languages like English, Spanish, French & Japanese.",
+    img: languagesImg,
+    link: "/courses/languages",
+    badge: "5 Courses",
+  },
   // {
   //   title: "English Proficiency Exams",
   //   desc: "Prepare for IELTS, TOEFL, and more with expert guidance and practice sessions.",

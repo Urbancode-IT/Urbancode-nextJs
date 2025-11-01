@@ -103,7 +103,7 @@
 .courses-subtitle {
   font-weight: 400;
   font-size: 16px;
-  line-height: 13px;
+  line-height: 23px;
   letter-spacing: -0.02em;
   color: #000;
   margin-top: 8px;
@@ -140,7 +140,7 @@
 }
 
 .courses-wrapper1 .card:hover {
-  background-color: #8b8a8a;
+  background-color: #8b8a8a!important;
   
 }
 
@@ -244,6 +244,7 @@
   .courses-wrapper1  .expert-text h1 {
     font-size: 1.8rem;
   }
+  
 }
 
 

@@ -3,6 +3,7 @@ import './Kidz.css';
 import Image from 'next/image';
 import EnquiryFormModal from '../components/common/EnquiryFormModal';
 import { useState } from 'react';
+
 const Kidz = () => {
   const [selectedCourse, setSelectedCourse] = useState(null);
   const [showEnquiry, setShowEnquiry] = useState(false);
@@ -10,48 +11,54 @@ const Kidz = () => {
     {
       title: "Junior Web Developer",
       img: "/images/KidsImages/junior.png",
-      duration: "3 Month",
+      duration: "3 Months",
       desc: "Kickstart your journey as a developer! Learn HTML, CSS, and JavaScript to design interactive websites and gain real-world project skills.",
       stars: "★★★★★",
       rating: "5.0",
       students: 42,
+      url: "/courses/kidz-space/junior-web-development"
+       
     },
    
     {
-      title: "Python Core",
+      title: "Core Python",
       img: "/images/KidsImages/pythonCore.png",
-      duration: "2 Month",
+      duration: "2 Months",
       desc: "Start from zero and build strong coding fundamentals—variables, loops, functions, OOP—and complete mini-projects with confidence.",
       stars: "★★★★★",
       rating: "5.0",
       students: 58,
+      url: "/courses/kidz-space/python-core"
     },
     {
       title: "Advanced Python",
       img: "/images/KidsImages/advancePython.png",
-      duration: "2 Month",
+      duration: "2 Months",
       desc: "Level up with file handling, modules, APIs, testing, and best practices—prepare for automation, data, and AI tracks. Take it to next level",
       stars: "★★★★☆",
       rating: "4.0",
       students: 39,
+      url: "/courses/kidz-space/advanced-python"
     },
     {
       title: "C Programming",
       img: "/images/KidsImages/C.png",
-      duration: "2 Month",
+      duration: "2 Months",
       desc: "Understand how computers really work. Learn memory, pointers, arrays, and problem-solving that shapes logic for any language.",
       stars: "★★★★☆",
       rating: "4.0",
       students: 47,
+      url: "/courses/kidz-space/c-programming"
     },
     {
-      title: "C++",
+      title: "CPP",
       img: "/images/KidsImages/cplus.png",
-      duration: "2 Month",
+      duration: "2 Months",
       desc: "Build high-performance apps with OOP, STL, and problem patterns used in competitive programming and real systems.",
       stars: "★★★★★",
       rating: "5.0",
       students: 34,
+      url: "/courses/kidz-space/cpp-programming"
     },
     {
       title: "SQL",
@@ -61,24 +68,27 @@ const Kidz = () => {
       stars: "★★★★☆",
       rating: "4.0",
       students: 41,
+      url: "/courses/kidz-space/sql-for-kids"
     },
     {
       title: "Graphic Designing",
       img: "/images/KidsImages/new.jpg",
-      duration: "3 Month",
+      duration: "3 Months",
       desc: "Create eye-catching posters, thumbnails, and brand logos. Learn color, typography, and composition with hands-on projects.",
       stars: "★★★★★",
       rating: "5.0",
       students: 37,
+      url: "/courses/kidz-space/graphic-designing"
     },
     {
       title: "AI & ML",
       img: "/images/KidsImages/aiml.png",
-      duration: "3 Month",
+      duration: "3 Months",
       desc: "Step into the future. Learn data prep, models, and decision-making. Start applying AI concepts in beginner-friendly projects.",
       stars: "★★★★★",
       rating: "5.0",
       students: 29,
+      url: "/courses/kidz-space/ai-and-ml"
     },
   ];
   return (
@@ -117,6 +127,7 @@ const Kidz = () => {
           {courses.map((course, index) => (
             <div className="col-md-6 col-lg-3" key={index}>
               <div className="course-card shadow-md">
+                <a href={course.url} style={{textDecoration:"none"}}>
                 <div className="position-relative">
                   <Image
                     src={course.img}
@@ -127,6 +138,7 @@ const Kidz = () => {
                   />
                   <span className="badge-duration">{course.duration}</span>
                 </div>
+
 
                 <div className="course-body">
                   <h5 className="kids-course-title">{course.title}</h5>
@@ -174,7 +186,7 @@ const Kidz = () => {
                     />
                   )}
 
-                </div>
+                </div></a>
               </div>
             </div>
           ))}

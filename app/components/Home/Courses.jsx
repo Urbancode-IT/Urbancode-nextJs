@@ -26,12 +26,12 @@ const Courses = () => {
       link:"/courses/programming-languages"
     },
     {
-      title: 'Data Analytics & Visualization',
+      title: 'Data Science & Visualization',
       description:
-        'UI/UX design blends aesthetics with usability to create seamless digital experiences. UI focuses on visual elements like layout, colors, and typography to guide user interaction. UX ensures smooth navigation, accessibility, and satisfaction throughout the user journey. Together, they shape products that are intuitive, engaging, and user-centered.',
+        'Turn raw data into powerful insights with our Data Analytics courses. Learn Excel, SQL, Power BI, and Python for real-world applications. Transform complex datasets into impactful visuals with Tableau, Power BI, and Python visualization tools. Learn to design dashboards, graphs, and reports that drive clarity and business intelligence.',
       courses: '4 Courses',
       img: '/images/home/img2.webp',
-      link:"/courses/data-analytics"
+      link:"/courses/data-visualization"
     },
     {
       title: 'Software Testing',
@@ -47,7 +47,7 @@ const Courses = () => {
         'In Full Stack Development with in-demand technologies like MERN, MEAN, Java Stack, .Net Angular and React Native. Master end-to-end web and mobile application development — from dynamic frontends to powerful backends.',
       courses: '5 Courses',
       img: '/images/home/img4.webp',
-      link:"/courses/web-development"
+      link:"/courses/web-and-app-development"
     },
   ];
 
@@ -67,7 +67,7 @@ const Courses = () => {
         <div className="row g-4 mb-5">
           {courses.map((course, index) => (
             <div className="col-12 col-lg-6" key={index}>
-              <div className="card custom-card shadow-lg border-0 d-flex flex-column h-100 rounded-5 p-3 p-lg-5" onClick={() => window.location.href = course.link} style={{cursor: 'pointer'}}>
+              <div className="card custom-cardhome shadow-lg border-0 d-flex flex-column h-100 rounded-5 p-3 p-lg-5" onClick={() => window.location.href = course.link} style={{cursor: 'pointer'}}>
                 <div className="card-img-container overflow-hidden mb-3">
                   <Image
                     src={course.img}
@@ -112,7 +112,7 @@ const Courses = () => {
         <div className=" pt-5 pt-lg-5 pt-sm-2 mt-5"> 
           <h5 className="section-title text-center">
           <span className="mx-2">―</span>
-          Students Lifecycle
+          Students' Lifecycle
           <span className="mx-2">―</span>
         </h5>
 

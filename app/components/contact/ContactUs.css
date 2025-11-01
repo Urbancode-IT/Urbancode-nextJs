@@ -70,10 +70,52 @@
   background: #198754;
   border-radius: 30px;
   margin: 1px auto 20px;
+  position: relative;
+  overflow: hidden;
 }
 
+/* Base line (same as before) */
+.contact-us-page .header-line {
+  width: 65px;
+  height: 3px;
+  background: #198754;
+  border-radius: 30px;
+  margin: 1px auto 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Shiny animation only inside .contact-us-page */
+.contact-us-page .header-line::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.8),
+    transparent
+  );
+  animation: contact-line-shine 2s linear infinite;
+  border-radius: inherit;
+}
+
+@keyframes contact-line-shine {
+  0% {
+    left: -50%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+
+
 .contact-us-page .contact-header p {
-  font-size: 1.1rem;
+  font-size: 16px;
   color: #444;
   line-height: 1.6;
   max-width: 800px;
@@ -399,7 +441,7 @@
   }
 
   .contact-us-page .contact-header p {
-    font-size: 18px;
+    font-size: 17px;
   }
 
   .contact-us-page .contact-content {

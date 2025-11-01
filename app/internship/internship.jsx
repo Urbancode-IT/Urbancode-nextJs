@@ -246,7 +246,7 @@ function App() {
             <form onSubmit={handleSubmit}>
               <div className="row g-3">
                 <div className="col-md-6">
-                  <label htmlFor="firstName">First Name</label>
+                  <label htmlFor="firstName"></label>
                   <input 
                     type="text" 
                     id="firstName" 
@@ -257,7 +257,7 @@ function App() {
                   />
                 </div>
                 <div className="col-md-6">
-                  <label htmlFor="lastName">Last Name</label>
+                  <label htmlFor="lastName"></label>
                   <input 
                     type="text" 
                     id="lastName" 
@@ -268,7 +268,7 @@ function App() {
                   />
                 </div>
                 <div className="col-12">
-                  <label htmlFor="email">Email</label>
+                  <label htmlFor="email"></label>
                   <input 
                     type="email" 
                     id="email" 
@@ -279,7 +279,7 @@ function App() {
                   />
                 </div>
                 <div className="col-12">
-                  <label htmlFor="mobile">Mobile Number</label>
+                  <label htmlFor="mobile"></label>
                   <input 
                     type="tel" 
                     id="mobile" 
@@ -290,7 +290,7 @@ function App() {
                   />
                 </div>
                 <div className="col-12">
-                  <label htmlFor="program">Select Program</label>
+                  <label htmlFor="program"></label>
                   <select 
                     id="program" 
                     className="form-select custom-input"
@@ -306,7 +306,7 @@ function App() {
                   </select>
                 </div>
                 <div className="col-12">
-                  <label htmlFor="experience">Experience</label>
+                  <label htmlFor="experience"></label>
                   <select 
                     id="experience" 
                     className="form-select custom-input"
@@ -321,7 +321,7 @@ function App() {
                   </select>
                 </div>
                 <div className="col-12">
-                  <label htmlFor="interest">Why are you interested in this internship?</label>
+                  <label htmlFor="interest"></label>
                   <textarea 
                     id="interest" 
                     className="form-control custom-input" 
@@ -332,7 +332,7 @@ function App() {
                   ></textarea>
                 </div>
                 <div className="col-12">
-                  <label htmlFor="portfolio">Portfolio/GitHub URL (Optional)</label>
+                  <label htmlFor="portfolio"></label>
                   <input 
                     type="url" 
                     id="portfolio" 
@@ -342,11 +342,12 @@ function App() {
                     onChange={handleInputChange}
                   />
                 </div>
-                <div className="col-12 text-center mt-4">
-                  <button type="submit" className="btn submit-btn px-5 py-2">
-                    Submit Application
-                  </button>
-                </div>
+<div className="submit-container">
+  <button type="submit" className="submit-btn">
+    Submit Application
+  </button>
+</div>
+
               </div>
             </form>
           </div>
