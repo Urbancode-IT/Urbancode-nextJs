@@ -7,6 +7,7 @@ import FaqBootstrap from './components/Home/Faqs';
 import Carousel from './components/Home/Carasoul';
 
 export const metadata = {
+  
   title:
     "Urbancode Edutech | Best IT & Coding Training Institute in Chennai (Velachery & Pallikaranai)",
   description:
@@ -54,7 +55,7 @@ export default function HomePage() {
   return (
     <>
     <Head>
-     
+     <meta name="google-site-verification" content="yGAGClhKmqd-q61BmWlHPO3GsYzBEE2JZbOPhPIbdtY" />
       <script type="application/ld+json">
 {`
 {
