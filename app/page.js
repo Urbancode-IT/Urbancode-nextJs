@@ -14,7 +14,10 @@ export const metadata = {
     "Urbancode Edutech | Best IT & Coding Training Institute in Chennai (Velachery & Pallikaranai)",
   description:
     "Join Urbancode Edutech — Chennai’s top IT training institute offering MERN Stack, Web Development, Python, Data Science, and Software Testing courses. Learn online or offline with internship and placement support.",
-  keywords: [
+  verification: {
+    google: "yGAGClhKmqd-q61BmWlHPO3GsYzBEE2JZbOPhPIbdtY",
+  },
+    keywords: [
     "IT training institute in Chennai",
     "Best coding institute in Velachery",
     "Software training in Pallikaranai",
