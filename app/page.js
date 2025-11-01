@@ -1,9 +1,10 @@
- import HeroSection from './components/Home/HeroSection';
+import Head from "next/head";
+import HeroSection from './components/Home/HeroSection';
+
  import Courses from './components/Home/Courses';
 import TestimonialCarousel from './components/Home/TestimonialCarousel';
 import FaqBootstrap from './components/Home/Faqs';
 import Carousel from './components/Home/Carasoul';
-import Navbar from './components/header/Navbar';
 
 export const metadata = {
   title:
@@ -22,6 +23,8 @@ export const metadata = {
     "Internship for students in Chennai",
     "Online IT courses Chennai",
     "Job oriented courses Chennai",
+    "Placement assistance Chennai",
+    "Job support Chennai"
   ],
   openGraph: {
     title:
@@ -50,8 +53,8 @@ export const metadata = {
 export default function HomePage() {
   return (
     <>
-    
-      <HeroSection />
+    <Head>
+     
       <script type="application/ld+json">
 {`
 {
@@ -61,14 +64,24 @@ export default function HomePage() {
   "url": "https://urbancode.in",
   "logo": "https://urbancode.in/images/logo.png",
   "description": "IT and coding training institute in Chennai offering courses in web development, Python, MERN stack, and data science with internship and placement support.",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Velachery & Pallikaranai",
-    "addressLocality": "Chennai",
-    "addressRegion": "Tamil Nadu",
-    "postalCode": "600100",
-    "addressCountry": "IN"
-  },
+  "address": [
+        {
+          "@type": "PostalAddress",
+          "streetAddress": "Velachery Main Road",
+          "addressLocality": "Velachery",
+          "addressRegion": "Chennai",
+          "postalCode": "600042",
+          "addressCountry": "IN"
+        },
+        {
+          "@type": "PostalAddress",
+          "streetAddress": "Pallikaranai",
+          "addressLocality": "Chennai",
+          "addressRegion": "Tamil Nadu",
+          "postalCode": "600100",
+          "addressCountry": "IN"
+        }
+      ],
   "contactPoint": {
     "@type": "ContactPoint",
     "telephone": "+91-9878798797",
@@ -83,8 +96,8 @@ export default function HomePage() {
   ]
 }
 `}
-</script>
-
+</script></Head>
+      <HeroSection />
       <Courses />
       <TestimonialCarousel />
       <FaqBootstrap />

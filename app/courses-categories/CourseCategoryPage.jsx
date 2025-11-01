@@ -138,6 +138,7 @@ const courses = [
 ];
 
 const CourseCategoryPage = () => {
+  
   return (
     <div className="courses-wrapper1 ">
       {/* Expert-Led Courses Section */}

@@ -27,7 +27,7 @@ export async function generateStaticParams() {
   }));
 }
 
-export default function Page({ params }) {
-  const { categorySlug } = params;
+export default async function Page({ params }) {
+  const { categorySlug } = await params;
   return <Courses categorySlug={categorySlug} />;
 }

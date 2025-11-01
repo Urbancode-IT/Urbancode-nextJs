@@ -22,7 +22,25 @@ export default function SingleCoursepage({ params }) {
   if (!course) return <div>Course not found</div>;
 
   return (
+    
     <div className="single-coursepage bg-gray px-3 px-md-4 px-lg-5 py-4 py-md-5 mt-3 mt-md-5">
+
+<script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{
+    __html: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Course",
+      name: course.title,
+      description: course.description,
+      provider: {
+        "@type": "Organization",
+        name: "Urbancode Edutech",
+        url: "https://www.urbancode.in",
+      },
+    }),
+  }}
+/>
 
       <div className="container py-3 py-md-4 py-lg-5">
         {/* Top Section */}
