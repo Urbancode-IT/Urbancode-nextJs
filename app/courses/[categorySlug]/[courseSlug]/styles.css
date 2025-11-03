@@ -224,5 +224,5 @@
 /* Ensure images are responsive */
 .single-coursepage .img-fluid {
     max-width: 100%;
-    height: auto;
+    height: 350px;
 }

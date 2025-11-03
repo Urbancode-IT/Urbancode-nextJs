@@ -1,16 +1,23 @@
- import HeroSection from './components/Home/HeroSection';
+//app/page.js
+
+import Head from "next/head";
+import HeroSection from './components/Home/HeroSection';
+
  import Courses from './components/Home/Courses';
 import TestimonialCarousel from './components/Home/TestimonialCarousel';
 import FaqBootstrap from './components/Home/Faqs';
 import Carousel from './components/Home/Carasoul';
-import Navbar from './components/header/Navbar';
 
 export const metadata = {
+  
   title:
     "Urbancode Edutech | Best IT & Coding Training Institute in Chennai (Velachery & Pallikaranai)",
   description:
     "Join Urbancode Edutech — Chennai’s top IT training institute offering MERN Stack, Web Development, Python, Data Science, and Software Testing courses. Learn online or offline with internship and placement support.",
-  keywords: [
+  verification: {
+    google: "yGAGClhKmqd-q61BmWlHPO3GsYzBEE2JZbOPhPIbdtY",
+  },
+    keywords: [
     "IT training institute in Chennai",
     "Best coding institute in Velachery",
     "Software training in Pallikaranai",
@@ -22,6 +29,8 @@ export const metadata = {
     "Internship for students in Chennai",
     "Online IT courses Chennai",
     "Job oriented courses Chennai",
+    "Placement assistance Chennai",
+    "Job support Chennai"
   ],
   openGraph: {
     title:
@@ -50,8 +59,8 @@ export const metadata = {
 export default function HomePage() {
   return (
     <>
-    
-      <HeroSection />
+    <Head>
+     <meta name="google-site-verification" content="yGAGClhKmqd-q61BmWlHPO3GsYzBEE2JZbOPhPIbdtY" />
       <script type="application/ld+json">
 {`
 {
@@ -61,14 +70,24 @@ export default function HomePage() {
   "url": "https://urbancode.in",
   "logo": "https://urbancode.in/images/logo.png",
   "description": "IT and coding training institute in Chennai offering courses in web development, Python, MERN stack, and data science with internship and placement support.",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Velachery & Pallikaranai",
-    "addressLocality": "Chennai",
-    "addressRegion": "Tamil Nadu",
-    "postalCode": "600100",
-    "addressCountry": "IN"
-  },
+  "address": [
+        {
+          "@type": "PostalAddress",
+          "streetAddress": "Velachery Main Road",
+          "addressLocality": "Velachery",
+          "addressRegion": "Chennai",
+          "postalCode": "600042",
+          "addressCountry": "IN"
+        },
+        {
+          "@type": "PostalAddress",
+          "streetAddress": "Pallikaranai",
+          "addressLocality": "Chennai",
+          "addressRegion": "Tamil Nadu",
+          "postalCode": "600100",
+          "addressCountry": "IN"
+        }
+      ],
   "contactPoint": {
     "@type": "ContactPoint",
     "telephone": "+91-9878798797",
@@ -83,8 +102,8 @@ export default function HomePage() {
   ]
 }
 `}
-</script>
-
+</script></Head>
+      <HeroSection />
       <Courses />
       <TestimonialCarousel />
       <FaqBootstrap />
