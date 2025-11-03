@@ -506,7 +506,7 @@ const testimonialsData = [
     quote: "From concept to completion, Urbancode’s web development team exceeded our expectations. They created a robust, visually appealing website that aligns perfectly with our industrial brand. The attention to technical detail and responsiveness made the entire experience smooth and efficient."
   },
   {
-    name: "Ryan",
+    name: "Uma",
     position: "Founder of Synergy",
     avatar: "/images/ProjectPageImages/synlogo.png",
     quote: "Urbancode Edutech gave our firm the digital presence it truly deserved. The website they built is sleek, professional, and perfectly aligned with our financial services. Their team understood our goals, delivered on time, and supported us even after launch — truly a reliable tech partner!"
