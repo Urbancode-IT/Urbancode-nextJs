@@ -8,7 +8,7 @@ const coursesData = {
     courses: [
 
       {
-        title: "Core JAVA",
+        title: "Core Java",
         desc: "Master the fundamentals of Core Java with hands-on projects, OOP concepts, and industry-relevant exercises. Build strong programming skills to kickstart your career in software development.",
         rating: 4.5,
         duration: "3 months",
@@ -852,7 +852,7 @@ const coursesData = {
 ,
 
 {
-  title: "Mean Stack",
+  title: "MEAN Stack",
   desc: "Master the MEAN Stack and build powerful, full-stack web applications from scratch. Learn backend APIs with Node.js & Express and create dynamic frontends using Angular.",
   rating: 4.8,
   duration: "2 months",
@@ -952,7 +952,7 @@ const coursesData = {
 }
 ,
 {
-  title: "Mern Stack",
+  title: "MERN Stack",
   desc: "Master the MERN Stack and build modern full-stack web applications. Learn MongoDB, Express, React, and Node.js with real-world projects and API integration.",
   rating: 4.9,
   duration: "2 months",
@@ -1153,7 +1153,7 @@ const coursesData = {
 ,
 
 {
-  title: ".NET plus Angular",
+  title: ".NET Angular",
   desc: "Master full-stack web development using .NET for backend and Angular for frontend. Learn to build secure, scalable, and enterprise-grade web applications with real-world projects.",
   rating: 4.8,
   duration: "2 months",
@@ -1259,7 +1259,7 @@ const coursesData = {
   rating: 5.0,
   duration: "1 month",
   students: "12,642",
-  img: "/images/courses/React.jpg",
+  img: "/images/courses/HTML_and_CSS.jpg",
   aboutData: {
     topic: "Master React.js — Build Dynamic, Modern Web Applications from the Ground Up!",
     content1:
@@ -1361,7 +1361,7 @@ const coursesData = {
   rating: 4.9,
   duration: "2 months",
   students: "11,845",
-  img: "/images/courses/Python_Stack.jpg",
+  img: "/images/courses/HTML_CSS.jpeg",
   aboutData: {
     topic: "Master Python Full Stack Development — Build Complete Web Applications from Scratch!",
     content1:
@@ -2652,7 +2652,7 @@ const coursesData = {
 
     courses: [
       {
-        title: "AI & ML",
+        title: "AI and ML",
         desc: "Master Data Science with hands-on training in Python, Machine Learning, and AI. Gain industry-ready skills to build a rewarding career in analytics.",
         rating: 5.0,
         duration: "1 month",
@@ -3647,104 +3647,104 @@ const coursesData = {
         ]
       }
       ,
-      {
-        title: "Power Apps",
-        desc: "Master Microsoft Power Apps to design custom business apps without coding. Learn hands-on to automate processes, boost productivity, and transform workflows.",
-        rating: 5.0,
-        duration: "1 month",
-        students: "10,556",
-        img: "/images/courses/Power_Apps.jpg",
-        aboutData: {
-          topic: "Master Microsoft Power Apps — Build No-Code Apps for Business Efficiency!",
-          content1: "Learn to create powerful business applications without writing a single line of code! This Power Apps course covers canvas apps, model-driven apps, and integration with Microsoft 365 and Dataverse, enabling you to automate workflows and streamline business operations.",
-          content2: "The Power Apps course by Urbancode guides you from basic app design to advanced app deployment. You'll gain hands-on experience building apps, connecting to data sources, using Power Automate for automation, and implementing best practices for enterprise solutions."
-        },
-        courseContentData: [
-          {
-            id: 1,
-            title: "Beginner – Introduction to Power Apps",
-            icon: "bi bi-book",
-            defaultOpen: true,
-            items: [
-              "Overview of Power Platform and Power Apps",
-              "Understanding canvas vs model-driven apps",
-              "Setting up your Power Apps environment",
-              "Navigating Power Apps Studio",
-              "App templates and examples"
-            ]
-          },
-          {
-            id: 2,
-            title: "Beginner – Building Canvas Apps",
-            icon: "bi bi-window",
-            items: [
-              "Creating a canvas app from scratch",
-              "Working with screens and controls",
-              "Data connections with Excel, SharePoint, and Dataverse",
-              "Using formulas and expressions",
-              "App testing and debugging"
-            ]
-          },
-          {
-            id: 3,
-            title: "Intermediate – Model-Driven Apps",
-            icon: "bi bi-diagram-3",
-            items: [
-              "Introduction to Dataverse and entities",
-              "Creating model-driven apps",
-              "Working with forms, views, and dashboards",
-              "Implementing business rules and workflows",
-              "Security roles and permissions"
-            ]
-          },
-          {
-            id: 4,
-            title: "Intermediate – Power Automate Integration",
-            icon: "bi bi-flow-chart",
-            items: [
-              "Automating processes with Power Automate",
-              "Creating flows triggered from apps",
-              "Integrating approvals and notifications",
-              "Connecting Power Apps to external services",
-              "Error handling and monitoring flows"
-            ]
-          },
+      // {
+      //   title: "Power Apps",
+      //   desc: "Master Microsoft Power Apps to design custom business apps without coding. Learn hands-on to automate processes, boost productivity, and transform workflows.",
+      //   rating: 5.0,
+      //   duration: "1 month",
+      //   students: "10,556",
+      //   img: "/images/courses/Power_Apps.jpg",
+      //   aboutData: {
+      //     topic: "Master Microsoft Power Apps — Build No-Code Apps for Business Efficiency!",
+      //     content1: "Learn to create powerful business applications without writing a single line of code! This Power Apps course covers canvas apps, model-driven apps, and integration with Microsoft 365 and Dataverse, enabling you to automate workflows and streamline business operations.",
+      //     content2: "The Power Apps course by Urbancode guides you from basic app design to advanced app deployment. You'll gain hands-on experience building apps, connecting to data sources, using Power Automate for automation, and implementing best practices for enterprise solutions."
+      //   },
+      //   courseContentData: [
+      //     {
+      //       id: 1,
+      //       title: "Beginner – Introduction to Power Apps",
+      //       icon: "bi bi-book",
+      //       defaultOpen: true,
+      //       items: [
+      //         "Overview of Power Platform and Power Apps",
+      //         "Understanding canvas vs model-driven apps",
+      //         "Setting up your Power Apps environment",
+      //         "Navigating Power Apps Studio",
+      //         "App templates and examples"
+      //       ]
+      //     },
+      //     {
+      //       id: 2,
+      //       title: "Beginner – Building Canvas Apps",
+      //       icon: "bi bi-window",
+      //       items: [
+      //         "Creating a canvas app from scratch",
+      //         "Working with screens and controls",
+      //         "Data connections with Excel, SharePoint, and Dataverse",
+      //         "Using formulas and expressions",
+      //         "App testing and debugging"
+      //       ]
+      //     },
+      //     {
+      //       id: 3,
+      //       title: "Intermediate – Model-Driven Apps",
+      //       icon: "bi bi-diagram-3",
+      //       items: [
+      //         "Introduction to Dataverse and entities",
+      //         "Creating model-driven apps",
+      //         "Working with forms, views, and dashboards",
+      //         "Implementing business rules and workflows",
+      //         "Security roles and permissions"
+      //       ]
+      //     },
+      //     {
+      //       id: 4,
+      //       title: "Intermediate – Power Automate Integration",
+      //       icon: "bi bi-flow-chart",
+      //       items: [
+      //         "Automating processes with Power Automate",
+      //         "Creating flows triggered from apps",
+      //         "Integrating approvals and notifications",
+      //         "Connecting Power Apps to external services",
+      //         "Error handling and monitoring flows"
+      //       ]
+      //     },
       
-        ],
-        whatYouLearnData: [
-          {
-            title: "Build No-Code Business Apps",
-            desc: "Design canvas and model-driven apps without coding using Power Apps Studio.",
-            icon: "bi bi-laptop"
-          },
-          {
-            title: "Automate Workflows",
-            desc: "Use Power Automate to streamline approvals, notifications, and business processes.",
-            icon: "bi bi-flow-chart"
-          },
-          {
-            title: "Connect to Data Sources",
-            desc: "Integrate apps with Dataverse, SharePoint, Excel, and other Microsoft 365 services.",
-            icon: "bi bi-database"
-          },
-          {
-            title: "Create Enterprise-Ready Solutions",
-            desc: "Implement security, compliance, and performance best practices in apps.",
-            icon: "bi bi-shield-lock"
-          },
-          {
-            title: "Analyze and Visualize Data",
-            desc: "Embed Power BI reports into apps for advanced insights and dashboards.",
-            icon: "bi bi-bar-chart-line"
-          },
-          {
-            title: "Collaborate and Scale",
-            desc: "Manage environments, team collaboration, and app lifecycle effectively.",
-            icon: "bi bi-people"
-          }
-        ]
-      }
-      ,
+      //   ],
+      //   whatYouLearnData: [
+      //     {
+      //       title: "Build No-Code Business Apps",
+      //       desc: "Design canvas and model-driven apps without coding using Power Apps Studio.",
+      //       icon: "bi bi-laptop"
+      //     },
+      //     {
+      //       title: "Automate Workflows",
+      //       desc: "Use Power Automate to streamline approvals, notifications, and business processes.",
+      //       icon: "bi bi-flow-chart"
+      //     },
+      //     {
+      //       title: "Connect to Data Sources",
+      //       desc: "Integrate apps with Dataverse, SharePoint, Excel, and other Microsoft 365 services.",
+      //       icon: "bi bi-database"
+      //     },
+      //     {
+      //       title: "Create Enterprise-Ready Solutions",
+      //       desc: "Implement security, compliance, and performance best practices in apps.",
+      //       icon: "bi bi-shield-lock"
+      //     },
+      //     {
+      //       title: "Analyze and Visualize Data",
+      //       desc: "Embed Power BI reports into apps for advanced insights and dashboards.",
+      //       icon: "bi bi-bar-chart-line"
+      //     },
+      //     {
+      //       title: "Collaborate and Scale",
+      //       desc: "Manage environments, team collaboration, and app lifecycle effectively.",
+      //       icon: "bi bi-people"
+      //     }
+      //   ]
+      // }
+      // ,
       // {
       //   title: "Alteryx",
       //   desc: "Master data preparation, blending, and advanced analytics with our hands-on Alteryx training program. Empower your career by learning automation-driven insights for real-world business success.",
