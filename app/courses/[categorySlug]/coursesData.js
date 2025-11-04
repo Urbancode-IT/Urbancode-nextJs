@@ -646,7 +646,7 @@ const coursesData = {
     mainCategoryDesc: "Full Stack Web Development Mastery",
     subDesc: "Master the complete spectrum of frontend and backend development with in-depth training in MERN, MEAN, and Java Full Stack technologies. Develop robust, dynamic, and interactive web applications while gaining practical skills that make you industry-ready.",
     subHeading: "Acquire the expertise to grow as a professional Full Stack Web Developer and build a strong career in today’s digital-first world.",
-    mainImage: "/images/courses/Web_Development.jpg",
+    mainImage: "/images/courses/Web_Development.webp",
 
     courses: [
 
@@ -4286,7 +4286,7 @@ const coursesData = {
     mainCategoryDesc: "Defend the Digital World",
     subDesc: "Protect organizations from digital threats by mastering Network Security, Ethical Hacking, Cryptography, Firewalls, and Penetration Testing. Learn to secure systems, applications, and data against evolving cyber risks.",
     subHeading: "Build a rewarding career as a Cybersecurity Specialist, safeguarding the future of the digital-first economy.",
-    mainImage: "/images/courses/Cyber_Security.jpg",
+    mainImage: "/images/courses/Cyber_Security.webp",
 
     courses: [
       {
@@ -4590,7 +4590,7 @@ const coursesData = {
     mainCategoryDesc: "Become a SEO Expert",
     subDesc: "Master the art of Search Engine Optimization (SEO) and learn how to drive organic traffic to your website. Understand the essential strategies for on-page and off-page SEO, keyword research, link building, and content optimization to rank higher on search engines.",
     subHeading: "Cybersecurity protects digital assets from cyber threats using advanced tools and practices. It ensures data privacy, integrity, and safe online operations.",
-    mainImage: "/images/courses/SEO.jpg",
+    mainImage: "/images/courses/SEO.webp",
 
     courses: [
       {
@@ -5005,7 +5005,7 @@ const coursesData = {
     mainCategoryDesc: "Coding for medical professionals.",
     subDesc: "Training in Python, R, and cybersecurity practices. Get into high demanding feilds like AI, Data Science, Web Development, and more.",
     subHeading: "Learn the world's most in-demand programming languages with real projects.",
-    mainImage: "/images/courses/Medical_Coding.jpg",
+    mainImage: "/images/courses/Medical_Coding.webp",
 
     courses: [
       {
@@ -6346,7 +6346,7 @@ const coursesData = {
     mainCategoryDesc: "Master Customer Relationship Management",
     subDesc: "Unlock the potential of CRM tools and strategies to build stronger customer relationships, streamline processes, and drive business growth.",
     subHeading: "Our CRM streamlines lead management, client interactions, and follow-ups in one platform. Empower your team with smarter tools to boost sales and productivity.",
-    mainImage: "/images/courses/CRM.jpg",
+    mainImage: "/images/courses/CRM.webp",
     courses: [
       {
         "title": "Salesforce Administrator",
