@@ -57,7 +57,7 @@ const EventSection = () => {
   return (
     <section className="event-section">
       <div className="container">
-        <h2>Campus Events We Conducted</h2>
+        <h2>Campus <span className="text-shine">Events We Conducted</span></h2>
         <p className="subtitle">
           Empowering students with skills, opportunities, and industry exposure through engaging campus events.
         </p>
