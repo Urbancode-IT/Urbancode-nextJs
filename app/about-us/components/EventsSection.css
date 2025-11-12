@@ -19,6 +19,10 @@
   margin-bottom: 10px;
   letter-spacing: 0.5px;
 }
+.event-section .campus-word {
+  color: #212529 !important;
+}
+
 
 .event-section .subtitle {
   text-align: center;
