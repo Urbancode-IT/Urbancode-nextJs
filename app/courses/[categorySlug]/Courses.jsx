@@ -1,6 +1,14 @@
 'use client';
 import React, { useState, useEffect } from "react";
-import { Container, Row, Col, Card, Button, Form, ListGroup } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Card,
+  Button,
+  Form,
+  ListGroup
+} from "react-bootstrap";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import "./Courses.css";
@@ -8,12 +16,12 @@ import coursesData from "./coursesData";
 import EnquiryFormModal from "@/app/components/common/EnquiryFormModal.jsx";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+
 const categories = [
   "Programming Languages",
   "Web and App Development",
   "UI UX Designing",
   "Cloud and DevOps",
-  // "Data Analytics",
   "Data Science",
   "Database",
   "Data Visualization",
@@ -22,9 +30,40 @@ const categories = [
   "Digital Marketing",
   "Health Care",
   "Languages",
-  // "English Proficiency",
   "CRM",
-  // "Kidz Space",
+];
+
+const faqData = [
+  {
+    question: "Who can enroll in these courses?",
+    answer:
+      "Anyone interested in upskilling can enroll. No prior experience is required unless mentioned in the course details.",
+  },
+  {
+    question: "Do I get a certificate after completion?",
+    answer:
+      "Yes, you’ll receive a completion certificate after successfully finishing the course.",
+  },
+  {
+    question: "Are the classes online or offline?",
+    answer:
+      "Most of our courses are conducted online through live sessions, but some categories offer hybrid options.",
+  },
+  {
+    question: "Can I access the course materials after completion?",
+    answer:
+      "Yes, lifetime access is provided to all recorded sessions and materials.",
+  },
+  {
+    question: "Is there any refund policy?",
+    answer:
+      "Refunds are available within the first 7 days of enrollment if you are not satisfied with the course.",
+  },
+  {
+    question: "Do you provide placement assistance?",
+    answer:
+      "Yes, selected courses come with career guidance, resume preparation, and placement support from our team.",
+  },
 ];
 
 const slugify = (name) => name.toLowerCase().replace(/\s+/g, "-");
@@ -34,24 +73,24 @@ const deslugify = (slug) =>
 export default function Courses({ categorySlug }) {
   const [selectedCourse, setSelectedCourse] = useState(null);
   const [activeCategory, setActiveCategory] = useState(
-  categorySlug ? categorySlug.replace(/-/g, " ") : categories[0]
-);
-
+    categorySlug ? categorySlug.replace(/-/g, " ") : categories[0]
+  );
   const router = useRouter();
-
-  
   const [search, setSearch] = useState("");
+  const [openIndex, setOpenIndex] = useState(null); // only one card expands
 
   useEffect(() => {
     setActiveCategory(deslugify(categorySlug));
   }, [categorySlug]);
 
   const activeCategoryData = coursesData[activeCategory] || {};
-  const allCourses = Object.values(coursesData).map((cat) => cat.courses).flat();
+  const allCourses = Object.values(coursesData)
+    .map((cat) => cat.courses)
+    .flat();
 
   const filteredCourses =
     search.trim() === ""
-      ? (coursesData[activeCategory]?.courses || [])
+      ? coursesData[activeCategory]?.courses || []
       : allCourses.filter(
           (course) =>
             course.title.toLowerCase().includes(search.toLowerCase()) ||
@@ -138,73 +177,140 @@ export default function Courses({ categorySlug }) {
 
               {/* Courses Grid */}
               <AnimatePresence mode="wait">
-  <motion.div
-    key={activeCategory}
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    exit={{ opacity: 0, y: -20 }}
-    transition={{ duration: 0.3 }}
-  >
-              <Row>
-                {filteredCourses && filteredCourses.length > 0 ? (
-                  filteredCourses.map((course, idx) => {
-                    const courseSlug = course.title.toLowerCase().replace(/\s+/g, "-");
-                    return (
-                      <Col xs={12} sm={6} lg={4} className="mb-4" key={idx}>
-                        <Link key={course.title} href={`/courses/${categorySlug}/${courseSlug}`} style={{ textDecoration: "none" }}>
-                        <Card className="h-100 card rounded-4 p-2 p-sm-3 p-md-4">
-                          <div className="img-holder rounded-3 position-relative" style={{ height: "200px" }}>
-                            <Image
-                              src={course.img}
-                              alt={course.title}
-                              fill
-                              className="rounded-3 card-img object-cover"
-                            />
-                          </div>
-                          <Card.Body className="p-0 pt-3">
-                            <Card.Title className="card-course-title text-center">
-                              {course.title}
-                            </Card.Title>
-                            <Card.Text className="text-muted course-desc text-center text-sm-start">
-                              {course.desc}
-                            </Card.Text>
-                            <div className="d-flex justify-content-between text-muted fs-11">
-                              <span>★★★★★ {course.rating}</span>
-                              <span>👥 {course.students}</span>
-                            </div>
-                            <div className="d-flex justify-content-between align-items-center mt-2 fs-11">
-                              <span className="text-muted small">
-                                ⏳ {course.duration}
-                              </span>
-                              <Button
-                                variant="dark"
-                                size="sm"
-                                className="enroll-btn fs-11"
-                                onClick={() => setSelectedCourse(course)}
-                              >
-                                Enroll now
-                              </Button>
-                              {selectedCourse && (
-                        <EnquiryFormModal
-                          isOpen={!!selectedCourse}
-                          onClose={() => setSelectedCourse(null)}
-                          courseName={selectedCourse.title}
-                        />
-                      )}
-                            </div>
-                          </Card.Body>
-                        </Card>
-                        </Link>
-                      </Col>
-                    );
-                  })
-                ) : (
-                  <p className="text-muted">No courses found.</p>
-                )}
-              </Row>
-              </motion.div>
+                <motion.div
+                  key={activeCategory}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <Row>
+                    {filteredCourses && filteredCourses.length > 0 ? (
+                      filteredCourses.map((course, idx) => {
+                        const courseSlug = course.title
+                          .toLowerCase()
+                          .replace(/\s+/g, "-");
+                        return (
+                          <Col xs={12} sm={6} lg={4} className="mb-4" key={idx}>
+                            <Link
+                              key={course.title}
+                              href={`/courses/${categorySlug}/${courseSlug}`}
+                              style={{ textDecoration: "none" }}
+                            >
+                              <Card className="h-100 card rounded-4 p-2 p-sm-3 p-md-4">
+                                <div
+                                  className="img-holder rounded-3 position-relative"
+                                  style={{ height: "200px" }}
+                                >
+                                  <Image
+                                    src={course.img}
+                                    alt={course.title}
+                                    fill
+                                    className="rounded-3 card-img object-cover"
+                                  />
+                                </div>
+                                <Card.Body className="p-0 pt-3">
+                                  <Card.Title className="card-course-title text-center">
+                                    {course.title}
+                                  </Card.Title>
+                                  <Card.Text className="text-muted course-desc text-center text-sm-start">
+                                    {course.desc}
+                                  </Card.Text>
+                                  <div className="d-flex justify-content-between text-muted fs-11">
+                                    <span>★★★★★ {course.rating}</span>
+                                    <span>👥 {course.students}</span>
+                                  </div>
+                                  <div className="d-flex justify-content-between align-items-center mt-2 fs-11">
+                                    <span className="text-muted small">
+                                      ⏳ {course.duration}
+                                    </span>
+                                    <Button
+                                      variant="dark"
+                                      size="sm"
+                                      className="enroll-btn fs-11"
+                                      onClick={(e) => {
+                                        e.preventDefault();
+                                        setSelectedCourse(course);
+                                      }}
+                                    >
+                                      Enroll now
+                                    </Button>
+                                    {selectedCourse && (
+                                      <EnquiryFormModal
+                                        isOpen={!!selectedCourse}
+                                        onClose={() => setSelectedCourse(null)}
+                                        courseName={selectedCourse.title}
+                                      />
+                                    )}
+                                  </div>
+                                </Card.Body>
+                              </Card>
+                            </Link>
+                          </Col>
+                        );
+                      })
+                    ) : (
+                      <p className="text-muted">No courses found.</p>
+                    )}
+                  </Row>
+                </motion.div>
               </AnimatePresence>
             </Col>
+          </Row>
+        </Container>
+      </div>
+
+      {/* --- FAQ Section (Fixed Dropdowns) --- */}
+      <div className="container-fluid overall-bg px-3 px-md-5 py-5 faq-section">
+        <Container fluid className="p-0">
+          <h2 className="text-center mb-5 fw-bold text-success">
+            Frequently <span className="text-shine">Asked Questions</span>
+          </h2>
+          <Row className="gx-4 gy-4">
+            {faqData.map((faq, index) => (
+              <Col key={index} xs={12} sm={6} lg={4}>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.3, delay: index * 0.1 }}
+                >
+                  <Card
+                    className={`faq-card h-100 border-0 rounded-4 shadow-sm ${
+                      openIndex === index ? "open" : ""
+                    }`}
+                    onClick={() =>
+                      setOpenIndex(openIndex === index ? null : index)
+                    }
+                  >
+                    <Card.Body className="p-4">
+                      <div className="d-flex justify-content-between align-items-center">
+                        <Card.Title className="fw-semibold text-success mb-0">
+                          {faq.question}
+                        </Card.Title>
+                        <span className="dropdown-icon fs-4">
+                          {openIndex === index ? "−" : "+"}
+                        </span>
+                      </div>
+                      <AnimatePresence>
+                        {openIndex === index && (
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: "auto", opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.3 }}
+                          >
+                            <Card.Text className="text-muted mt-3">
+                              {faq.answer}
+                            </Card.Text>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </Card.Body>
+                  </Card>
+                </motion.div>
+              </Col>
+            ))}
           </Row>
         </Container>
       </div>

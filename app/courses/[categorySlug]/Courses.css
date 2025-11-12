@@ -183,3 +183,62 @@ font-weight: 400;
     padding: 0.4rem 0.8rem !important;
   }
 }
+
+.faq-section {
+  /* background-color: #fff; */
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+.faq-section h2 {
+  font-size: 30px;
+  font-weight: 500!important;
+  color: #2B3D4F!important;
+}
+
+.faq-card {
+  background-color: #fdfdfd;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.faq-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.faq-card .dropdown-icon {
+  color: #198754!important;
+  font-weight: 700;
+  transition: transform 0.3s ease;
+}
+
+.faq-card.open .dropdown-icon {
+  transform: rotate(180deg);
+}
+
+.faq-card .card-title {
+  font-size: 18px!important;
+  font-weight: 200px!important;
+  color: #2B3D4F!important;
+}
+
+.faq-card .card-text:hover {
+  font-size: 0.95rem;
+  color: #198754!important;
+}
+
+.faq-card .card-text {
+  font-size: 0.95rem;
+  color: #322f2f!important;
+}
+
+@media (min-width: 992px) {
+  .faq-section h2 {
+    font-size: 2.2rem;
+  }
+  .faq-card .card-title {
+    font-size: 1.15rem;
+    color: #000000;
+  }
+}
