@@ -15,7 +15,7 @@ export const metadata = {
   description:
     "Join Urbancode Edutech — Chennai’s top IT training institute offering MERN Stack, Web Development, Python, Data Science, and Software Testing courses. Learn online or offline with internship and placement support.",
   verification: {
-    google: "yGAGClhKmqd-q61BmWlHPO3GsYzBEE2JZbOPhPIbdtY",
+    google: "WEXErXa5JBg5hZPCEKFY_g1UVf9R3AxHCZYgQWjQspY",
   },
     keywords: [
     "IT training institute in Chennai",
