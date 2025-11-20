@@ -6755,4 +6755,16 @@ const coursesData = {
 
 };
 
+// Ensure every course object has an explicit `locked` boolean flag.
+// By default we mark courses as locked (true) unless a course explicitly sets `locked: false`.
+Object.keys(coursesData).forEach((catKey) => {
+  const cat = coursesData[catKey];
+  if (cat && Array.isArray(cat.courses)) {
+    cat.courses = cat.courses.map((c) => ({
+      ...c,
+      locked: typeof c.locked === 'boolean' ? c.locked : true,
+    }));
+  }
+});
+
 export default coursesData;

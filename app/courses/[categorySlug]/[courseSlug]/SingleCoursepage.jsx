@@ -211,6 +211,19 @@ export default function SingleCoursepage({ params }) {
               </div>
             ))}
           </div>
+          {/* Locked full syllabus CTA (render only when course.locked is true) */}
+          {course.locked === true && (
+            <div className="text-center mt-3">
+              <button
+                className="btn btn-outline-secondary rounded-pill px-3 py-2 lock-cta"
+                onClick={() => setShowEnquiry(true)}
+                title="Request full syllabus"
+              >
+                <i className="bi bi-lock-fill me-2"></i>
+                Full syllabus locked — Get Brochure
+              </button>
+            </div>
+          )}
         </div>
         {/* End of Course Content */}
 
