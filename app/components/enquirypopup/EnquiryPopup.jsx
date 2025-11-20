@@ -50,24 +50,31 @@ export default function EnquiryPopup({
   if (!visible) return null;
 
   return (
-    <div className="ann-overlay">
+    <div className="ann-overlay" role="dialog" aria-modal="true" aria-label="Enquiry popup">
       <div className="ann-popup">
-        <button className="ann-close" onClick={closePopup}>✕</button>
+        <button className="ann-close" onClick={closePopup} aria-label="Close popup">✕</button>
 
         <div className="ann-header">
           <div className="ann-badge">2nd Anniversary</div>
 
           <h2>Anniversary Flash Sale — Offer Ends Soon!</h2>
           <p className="ann-sub">
-            Limited-time discounts across all courses. Enquire now to claim before it’s gone.
+            Limited-time discounts across all courses. Enquire now to claim your offer.
           </p>
         </div>
 
         <form className="ann-form" onSubmit={handleSubmit}>
-          <input name="name" type="text" placeholder="Your Name" required />
-          <input name="email" type="email" placeholder="Email Address" required />
-          <input name="phone" type="tel" placeholder="Phone Number" />
-          <textarea name="message" placeholder="Your Message (optional)"></textarea>
+          <label className="visually-hidden" htmlFor="enq-name">Name</label>
+          <input id="enq-name" name="name" type="text" placeholder="Your Name" required />
+
+          <label className="visually-hidden" htmlFor="enq-email">Email</label>
+          <input id="enq-email" name="email" type="email" placeholder="Email Address" required />
+
+          <label className="visually-hidden" htmlFor="enq-phone">Phone</label>
+          <input id="enq-phone" name="phone" type="tel" placeholder="Phone Number" />
+
+          <label className="visually-hidden" htmlFor="enq-message">Message</label>
+          <textarea id="enq-message" name="message" placeholder="Your Message (optional)"></textarea>
 
           <button type="submit" className="ann-cta">Enquire Now</button>
 
