@@ -38,17 +38,17 @@ function Footer() {
           <div className="col-lg-2 col-md-6">
             <h4>Quick Links</h4>
             <ul className="list-unstyled">
-              <li><Link href="/">› Home</Link></li>
-              <li><Link href="/about-us">› About Us</Link></li>
-              <li><Link href="/contact-us">› Contact Us</Link></li>
-              <li><Link href="/projects">› Projects</Link></li>
+              <li><Link href="/"> Home</Link></li>
+              <li><Link href="/about-us"> About Us</Link></li>
+              <li><Link href="/contact-us"> Contact Us</Link></li>
+              <li><Link href="/projects"> Projects</Link></li>
               <li>
                 <a
                   href="https://blog-urbancode.blogspot.com/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  › Blogs
+                   Blogs
                 </a>
               </li>
             </ul>
@@ -56,15 +56,15 @@ function Footer() {
 
           {/* Demand Software Courses */}
           <div className="col-lg-3 col-md-6">
-            <h4>Demand Software Courses</h4>
+            <h4>Trending Software Courses</h4>
             <ul className="list-unstyled">
-              <li><Link href="/courses/web-and-app-development/mern-stack">› MERN Stack</Link></li>
-              <li><Link href="/courses/web-and-app-development/mean-stack">› MEAN Stack</Link></li>
-              <li><Link href="/courses/web-and-app-development/python-full-stack">› Python Stack</Link></li>
-              <li><Link href="/courses/web-and-app-development/.net-plus-angular">› .Net + Angular Full Stack</Link></li>
-              <li><Link href="/courses/data-science">› Data Analytics</Link></li>
-              <li><Link href="/courses/cloud-and-devops/aws">› AWS Cloud Computing</Link></li>
-              <li><Link href="/courses/software-testing">› Software Testing</Link></li>
+              <li><Link href="/courses/web-and-app-development/mern-stack"> MERN Stack</Link></li>
+              <li><Link href="/courses/web-and-app-development/mean-stack"> MEAN Stack</Link></li>
+              <li><Link href="/courses/web-and-app-development/python-full-stack"> Python Stack</Link></li>
+              <li><Link href="/courses/web-and-app-development/.net-plus-angular"> .Net + Angular Full Stack</Link></li>
+              <li><Link href="/courses/data-science"> Data Analytics</Link></li>
+              <li><Link href="/courses/cloud-and-devops/aws"> AWS Cloud Computing</Link></li>
+              <li><Link href="/courses/software-testing"> Software Testing</Link></li>
             </ul>
           </div>
 
@@ -72,13 +72,13 @@ function Footer() {
           <div className="col-lg-2 col-md-6">
             <h4>Kids Courses</h4>
             <ul className="list-unstyled">
-              <li><Link href="/courses/kidz-space/python-core">› Core Python</Link></li>
-              <li><Link href="/courses/kidz-space/ai-and-ml">› AI & ML For Kids</Link></li>
-              <li><Link href="/courses/kidz-space/junior-web-development">› Web Development For Kids</Link></li>
-              <li><Link href="/courses/kidz-space/graphic-designing">› Graphic Designing</Link></li>
-              <li><Link href="/courses/kidz-space/c-programming">› C Programming</Link></li>
-              <li><Link href="/courses/kidz-space/sql-for-kids">› SQL</Link></li>
-              <li><Link href="/courses/kidz-space/cpp-programming">› C++</Link></li>
+              <li><Link href="/courses/kidz-space/python-core"> Core Python</Link></li>
+              <li><Link href="/courses/kidz-space/ai-and-ml"> AI & ML For Kids</Link></li>
+              <li><Link href="/courses/kidz-space/junior-web-development"> Web Development For Kids</Link></li>
+              <li><Link href="/courses/kidz-space/graphic-designing"> Graphic Designing</Link></li>
+              <li><Link href="/courses/kidz-space/c-programming"> C Programming</Link></li>
+              <li><Link href="/courses/kidz-space/sql-for-kids"> SQL</Link></li>
+              <li><Link href="/courses/kidz-space/cpp-programming"> C++</Link></li>
             </ul>
           </div>
 
