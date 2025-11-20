@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import "./EnquiryPopup.css";
 
 export default function EnquiryPopup({
-  delay = 10000, // shows after 10 seconds
+  delay = 5000, // shows after 10 seconds
   expiryHours = 24, // don't show again for 24 hours
 }) {
   const [visible, setVisible] = useState(false);
