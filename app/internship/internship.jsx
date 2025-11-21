@@ -227,7 +227,7 @@ function App() {
       </section>
 
       {/* Application Section */}
-      <section className="application-section">
+      <section id="application" className="application-section">
         <div className="container">
           <div className="text-center mb-4">
             <h2 className="section-title">Ready to Apply</h2>
