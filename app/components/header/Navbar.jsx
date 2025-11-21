@@ -3,11 +3,13 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import './Navbar.css';
 import ChatbotWidget from '../ChatbotWidget';
 import FloatingWidgets from '../FloatingWidgets';
 
 export default function Navbar() {
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [careerOpen, setCareerOpen] = useState(false);
 
@@ -15,6 +17,30 @@ export default function Navbar() {
   const handleLinkClick = () => {
     setIsOpen(false);
     setCareerOpen(false);
+  };
+
+  // 🟢 Handle Projects link click - navigate to projects with contact scroll
+  const handleProjectsClick = (e) => {
+    e.preventDefault();
+    handleLinkClick();
+    
+    // If already on projects page, scroll to contact section
+    if (window.location.pathname === '/projects') {
+      const contactSection = document.getElementById('contact-us');
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      // Navigate to projects page with hash
+      router.push('/projects');
+      // Scroll after navigation
+      setTimeout(() => {
+        const contactSection = document.getElementById('contact-us');
+        if (contactSection) {
+          contactSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 500);
+    }
   };
 
   // 🟢 Toggle dropdown
@@ -94,7 +120,7 @@ export default function Navbar() {
             </div>
           </div>
 
-          <Link href="/projects" onClick={handleLinkClick}>Projects</Link>
+          <Link href="/projects" onClick={handleProjectsClick}>Projects</Link>
           <Link href="/contact-us" onClick={handleLinkClick}>Contact Us</Link>
         </div>
 
