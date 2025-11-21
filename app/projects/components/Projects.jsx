@@ -259,7 +259,7 @@ const Projects = () => {
       </section>
 
       {/* CONTACT SECTION */}
-      <section id="contact-us" className="projectform-section py-5">
+      <section id="projectform" className="projectform-section py-5">
         <div className="container">
           <div className="text-center mb-5">
             <div className="d-flex justify-content-center align-items-center gap-2 text-success mb-2">
