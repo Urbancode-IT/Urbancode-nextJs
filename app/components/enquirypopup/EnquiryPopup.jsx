@@ -5,7 +5,7 @@ import emailjs from "@emailjs/browser";
 import "./EnquiryPopup.css";
 
 export default function EnquiryPopup({
-  delay = 7000, // shows after 7 seconds
+  delay = 3000, // shows after 3 seconds
 }) {
   const [visible, setVisible] = useState(false);
   const storageKey = "anniversaryOfferSubmitted";
