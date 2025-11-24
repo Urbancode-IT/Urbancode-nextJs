@@ -76,7 +76,7 @@ const ContactUs = () => {
   };
 
   return (
-    <section className="contact-section contact-us-page">
+    <section id="contactform" className="contact-section contact-us-page">
       <div className="contact-header">
         <h2>Contact Us</h2>
         <div className="header-line"></div>
