@@ -4,16 +4,22 @@ import React, { useEffect, useState } from "react";
 import emailjs from "@emailjs/browser";
 import "./EnquiryPopup.css";
 
-export default function EnquiryPopup({
-  delay = 3000, // shows after 3 seconds
-}) {
+export default function EnquiryPopup({ delay = 3000 }) {
   const [visible, setVisible] = useState(false);
   const storageKey = "anniversaryOfferSubmitted";
 
   useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const shouldOpen = params.get("open") === "enquiry";
+
+    if (shouldOpen) {
+      setVisible(true);
+      return;
+    }
+
     try {
       const hasSubmitted = localStorage.getItem(storageKey);
-      if (hasSubmitted) return; // prevent showing again
+      if (hasSubmitted) return;
     } catch {}
 
     const timer = setTimeout(() => setVisible(true), delay);
@@ -36,18 +42,17 @@ export default function EnquiryPopup({
       date: new Date().toLocaleString(),
     };
 
-    // Send via EmailJS
     emailjs
       .send(
-        "service_yr2oo2h",       // ✅ Your Service ID
-        "template_vr68058",     // ✅ Your Template ID
+        "service_yr2oo2h",
+        "template_vr68058",
         payload,
-        "Hc5Ps23TXZCn7mO0B"     // ✅ Your Public Key
+        "Hc5Ps23TXZCn7mO0B"
       )
       .then(() => {
         alert("Your enquiry has been submitted successfully!");
         try {
-          localStorage.setItem(storageKey, "true"); // stop showing popup
+          localStorage.setItem(storageKey, "true");
         } catch {}
         closePopup();
       })
