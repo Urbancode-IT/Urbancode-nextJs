@@ -12,32 +12,46 @@ import img5 from "@/public/images/about/g5.webp";
 import img6 from "@/public/images/about/g6.webp";
 import img7 from "@/public/images/about/g7.webp";
 import img8 from "@/public/images/about/g8.webp";
+import img9 from "@/public/images/about/g9.jpg";
+import img10 from "@/public/images/about/g10.jpg";
+import img11 from "@/public/images/about/g11.jpg";
+
 
 const ImageGallery = () => {
-  const images = [img1, img2, img3, img4, img5, img6, img7, img8];
+  const images = [
+    img1, img2, img3, img4, img5, img6, img7, img8,
+    img9, img10, img11
+  ];
 
-  // Random direction generator for each image
-const directions = [
-  { x: -100, y: 0 },
-  { x: 100, y: 0 },
-  { x: 0, y: -100 },
-  { x: 0, y: 100 },
-];
-// const dir = directions[index % directions.length];
+  const directions = [
+    { x: -100, y: 0 },
+    { x: 100, y: 0 },
+    { x: 0, y: -100 },
+    { x: 0, y: 100 },
+  ];
 
   return (
     <div className="main_gallery_container py-5">
       <div className="container my-5">
-        <h2 className="text-center fw-bold mb-4">Our <span className="text-shine">Gallery</span></h2>
+
+        <h2 className="text-center fw-bold mb-4">
+          Our <span className="text-shine">Gallery</span>
+        </h2>
 
         <div className="masonry-gallery">
           {images.map((src, index) => {
             const direction = directions[index % directions.length];
+
             return (
               <motion.div
                 key={index}
                 className="masonry-item position-relative"
-                initial={{ opacity: "0", x: direction.x, y: direction.y, scale: 0.9 }}
+                initial={{
+                  opacity: 0,
+                  x: direction.x,
+                  y: direction.y,
+                  scale: 0.9
+                }}
                 whileInView={{
                   opacity: 1,
                   x: 0,
@@ -63,6 +77,7 @@ const directions = [
             );
           })}
         </div>
+
       </div>
     </div>
   );

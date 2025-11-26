@@ -6,6 +6,18 @@ import "./EventsSection.css";
 
 const events = [
   {
+    id: 4,
+  id: 4,
+  title: "Emerging Trends in Business AI",
+  date: "September 16, 2025",
+  location: "St Joseph's College Of Engineering, Chennai",
+  badge: "Seminar",
+  attendees: "180+ Attendees",
+  description:
+    "Students explored how AI is reshaping modern business workflows, decision-making, automation, and the future of work across industries.",
+  img: "/images/events/event5.jpg",
+  },
+  {
     id: 1,
     title: "BB GRAND MEET UP 2025",
     date: "April 21, 2025",
@@ -42,13 +54,17 @@ const events = [
 
 const EventSection = () => {
   const [current, setCurrent] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
+    if (isPaused) return;
+
     const slideTimer = setInterval(() => {
       nextSlide();
     }, 3000);
+
     return () => clearInterval(slideTimer);
-  }, [current]);
+  }, [current, isPaused]);
 
   const nextSlide = () => setCurrent((prev) => (prev + 1) % events.length);
   const prevSlide = () => setCurrent((prev) => (prev - 1 + events.length) % events.length);
@@ -57,17 +73,21 @@ const EventSection = () => {
   return (
     <section className="event-section">
       <div className="container">
-<h2 className="event-heading">
-  <span className="campus-word">Campus</span>{" "}
-  <span className="text-shine">Events We Conducted</span>
-</h2>
-
+        
+        <h2 className="event-heading">
+          <span className="campus-word">Campus</span>{" "}
+          <span className="text-shine">Events We Conducted</span>
+        </h2>
 
         <p className="subtitle">
           Empowering students with skills, opportunities, and industry exposure through engaging campus events.
         </p>
 
-        <div className="events-slider">
+        <div
+          className="events-slider"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
           {events.map((event, i) => {
             let position = "";
             if (i === current) position = "active";
@@ -80,11 +100,15 @@ const EventSection = () => {
                   <img src={event.img} alt={event.title} />
                   <div className="event-badge">{event.badge}</div>
                 </div>
+
                 <div className="event-content">
                   <h5>{event.title}</h5>
+
                   <p><i className="fas fa-calendar-alt"></i> {event.date}</p>
                   <p><i className="fas fa-map-marker-alt"></i> {event.location}</p>
+
                   <p className="event-description">{event.description}</p>
+
                   <div className="event-footer">
                     <span><i className="fas fa-users"></i> {event.attendees}</span>
                     <button>Learn More</button>
@@ -99,6 +123,7 @@ const EventSection = () => {
           <button className="slider-btn prev-btn" onClick={prevSlide}>
             <i className="fas fa-chevron-left"></i>
           </button>
+
           <div className="slider-dots">
             {events.map((_, i) => (
               <div
@@ -108,10 +133,12 @@ const EventSection = () => {
               ></div>
             ))}
           </div>
+
           <button className="slider-btn next-btn" onClick={nextSlide}>
             <i className="fas fa-chevron-right"></i>
           </button>
         </div>
+
       </div>
     </section>
   );
