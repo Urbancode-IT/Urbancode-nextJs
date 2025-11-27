@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
       <body>
         <BootstrapClient /> {/* 👈 loads bootstrap.js only on client */}
         <Navbar />
-        <EnquiryPopup />
+        {/* <EnquiryPopup /> */}
         <main>{children}</main>
         <Footer />
       </body>
