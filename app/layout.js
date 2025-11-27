@@ -6,7 +6,7 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import Navbar from './components/header/Navbar';
 import Footer from './components/footer/Footer';
 import BootstrapClient from './components/BootstrapClient'; // 👈 Add this
-import EnquiryPopup from './components/enquirypopup/EnquiryPopup';
+// import EnquiryPopup from './components/enquirypopup/EnquiryPopup';
 
 export const metadata = {
   title: 'Urbancode | Learn with Experts',
