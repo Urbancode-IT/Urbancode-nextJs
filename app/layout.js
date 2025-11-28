@@ -16,6 +16,24 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        {/* Google Tag (gtag.js) */}
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-ZZX212RD85"
+        ></script>
+
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-ZZX212RD85');
+            `,
+          }}
+        />
+      </head>
       <body>
         <BootstrapClient /> {/* 👈 loads bootstrap.js only on client */}
         <Navbar />
