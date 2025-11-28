@@ -13,40 +13,13 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [careerOpen, setCareerOpen] = useState(false);
 
-  // 🟢 Closes navbar & dropdown after navigation
   const handleLinkClick = () => {
     setIsOpen(false);
     setCareerOpen(false);
   };
 
-  // // 🟢 Handle Projects link click - navigate to projects with contact scroll
-  // const handleProjectsClick = (e) => {
-  //   e.preventDefault();
-  //   handleLinkClick();
-    
-  //   // If already on projects page, scroll to contact section
-  //   if (window.location.pathname === '/projects') {
-  //     const contactSection = document.getElementById('contact-us');
-  //     if (contactSection) {
-  //       contactSection.scrollIntoView({ behavior: 'smooth' });
-  //     }
-  //   } else {
-  //     // Navigate to projects page with hash
-  //     router.push('/projects');
-  //     // Scroll after navigation
-  //     setTimeout(() => {
-  //       const contactSection = document.getElementById('contact-us');
-  //       if (contactSection) {
-  //         contactSection.scrollIntoView({ behavior: 'smooth' });
-  //       }
-  //     }, 500);
-  //   }
-  // };
-
-  // 🟢 Toggle dropdown
   const toggleCareer = () => setCareerOpen(!careerOpen);
 
-  // 🟢 Add shadow on scroll
   useEffect(() => {
     const handleScroll = () => {
       const navbar = document.querySelector('.navbar');
@@ -64,6 +37,7 @@ export default function Navbar() {
   return (
     <nav className="navbar">
       <div className="navbar container">
+
         {/* Logo */}
         <Link href="/" className="navbar-brand" onClick={handleLinkClick}>
           <Image
@@ -75,6 +49,11 @@ export default function Navbar() {
           />
         </Link>
 
+        {/* 📞 Mobile Number (added here) */}
+        <div className="navbar-phone">
+          <a href="tel:+919057770577">+91 90577 70577</a>
+        </div>
+
         {/* Navigation Links */}
         <div className={`nav-links ${isOpen ? 'active' : ''}`}>
           <Link href="/" onClick={handleLinkClick}>Home</Link>
@@ -82,7 +61,7 @@ export default function Navbar() {
           <Link href="/about-us" onClick={handleLinkClick}>About Us</Link>
           <Link href="/kids-courses" onClick={handleLinkClick}>Kids Space</Link>
 
-          {/* ✅ Career Dropdown (hover for desktop, accordion for mobile) */}
+          {/* Career Dropdown */}
           <div
             className="dropdown"
             onMouseEnter={() => {
@@ -111,12 +90,8 @@ export default function Navbar() {
               <Link href="/be-our-mentor" onClick={handleLinkClick}>
                 Become a Mentor
               </Link>
-              <Link href="/jobs" onClick={handleLinkClick}>
-                Jobs
-              </Link>
-              <Link href="/internship" onClick={handleLinkClick}>
-                Internship
-              </Link>
+              <Link href="/jobs" onClick={handleLinkClick}>Jobs</Link>
+              <Link href="/internship" onClick={handleLinkClick}>Internship</Link>
             </div>
           </div>
 
