@@ -1,6 +1,6 @@
 const categoryMetaData = {
   "programming-languages": {
-    title: "Programming Languages Courses | Urbancode",
+    title: " Courses | Urbancode",
     description:
       "Master C, C++, Java, Python, and more with Urbancode’s programming language courses. Build a strong foundation in coding for real-world applications.",
     keywords: [

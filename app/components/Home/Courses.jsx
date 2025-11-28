@@ -18,9 +18,9 @@ const Courses = () => {
 
   const courses = [
     {
-      title: 'Programming Languages',
+      title: '',
       description:
-        'Programming languages like Python and JavaScript serve as excellent starting points for beginners and are essential in modern web development. Alongside powerful languages such as C++, Java, HTML, and CSS, they form the foundation for building dynamic, scalable, and interactive digital experiences.',
+        ' like Python and JavaScript serve as excellent starting points for beginners and are essential in modern web development. Alongside powerful languages such as C++, Java, HTML, and CSS, they form the foundation for building dynamic, scalable, and interactive digital experiences.',
       courses: '6 Courses',
       img: '/images/home/img1.webp',
       link:"/courses/programming-languages"
