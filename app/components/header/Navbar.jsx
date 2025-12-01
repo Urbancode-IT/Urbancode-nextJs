@@ -51,7 +51,7 @@ export default function Navbar() {
 
         {/* 📞 Mobile Number (added here) */}
         <div className="navbar-phone">
-          <a href="tel:+919878798797">+91 98787 98797</a>
+          <a href="tel:+919878798797">+91 9878798797</a>
         </div>
 
         {/* Navigation Links */}
