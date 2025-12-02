@@ -3,13 +3,12 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-// import { useRouter } from 'next/navigation';
 import './Navbar.css';
 import ChatbotWidget from '../ChatbotWidget';
 import FloatingWidgets from '../FloatingWidgets';
+import { FiPhoneCall } from 'react-icons/fi';
 
 export default function Navbar() {
-  // const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [careerOpen, setCareerOpen] = useState(false);
 
@@ -23,11 +22,8 @@ export default function Navbar() {
   useEffect(() => {
     const handleScroll = () => {
       const navbar = document.querySelector('.navbar');
-      if (window.scrollY > 10) {
-        navbar.classList.add('scrolled');
-      } else {
-        navbar.classList.remove('scrolled');
-      }
+      if (window.scrollY > 10) navbar.classList.add('scrolled');
+      else navbar.classList.remove('scrolled');
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -49,14 +45,15 @@ export default function Navbar() {
           />
         </Link>
 
-        {/* 📞 Mobile Number (added here) */}
+        {/* Phone with icon */}
         <div className="navbar-phone">
+          <FiPhoneCall className="phone-icon" />
           <a href="tel:+919878798797">+91 9878798797</a>
         </div>
 
         {/* Navigation Links */}
         <div className={`nav-links ${isOpen ? 'active' : ''}`}>
-          <Link href="/" onClick={handleLinkClick}>Home</Link>
+          {/* Home removed */}
           <Link href="/courses-categories" onClick={handleLinkClick}>Courses</Link>
           <Link href="/about-us" onClick={handleLinkClick}>About Us</Link>
           <Link href="/kids-courses" onClick={handleLinkClick}>Kids Space</Link>
@@ -82,14 +79,11 @@ export default function Navbar() {
               className={`dropdown-toggle ${careerOpen ? 'active' : ''}`}
               onClick={toggleCareer}
             >
-              Career
-              <span className="arrow"></span>
+              Career <span className="arrow"></span>
             </button>
 
             <div className={`dropdown-menu ${careerOpen ? 'show' : ''}`}>
-              <Link href="/be-our-mentor" onClick={handleLinkClick}>
-                Become a Mentor
-              </Link>
+              <Link href="/be-our-mentor" onClick={handleLinkClick}>Become a Mentor</Link>
               <Link href="/jobs" onClick={handleLinkClick}>Jobs</Link>
               <Link href="/internship" onClick={handleLinkClick}>Internship</Link>
             </div>
@@ -99,7 +93,7 @@ export default function Navbar() {
           <Link href="/contact-us" onClick={handleLinkClick}>Contact Us</Link>
         </div>
 
-        {/* Hamburger Menu */}
+        {/* Hamburger */}
         <div
           className={`hamburger ${isOpen ? 'active' : ''}`}
           onClick={() => setIsOpen(!isOpen)}
