@@ -77,7 +77,7 @@ export default function Courses({ categorySlug }) {
   );
   const router = useRouter();
   const [search, setSearch] = useState("");
-  const [openIndex, setOpenIndex] = useState(null); // only one card expands
+  const [openIndex, setOpenIndex] = useState(null);
 
   useEffect(() => {
     setActiveCategory(deslugify(categorySlug));
@@ -99,7 +99,7 @@ export default function Courses({ categorySlug }) {
 
   return (
     <div className="wrapper py-5">
-      {/* --- Top Section --- */}
+      {/* Top Section */}
       <div className="container-fluid overall-bg overall-green-bg px-3 px-md-5">
         <Container fluid>
           <Row className="py-5 align-items-center text-center text-md-start">
@@ -122,7 +122,7 @@ export default function Courses({ categorySlug }) {
         </Container>
       </div>
 
-      {/* --- Course Section --- */}
+      {/* Course Section */}
       <div className="container-fluid overall-bg px-3 px-md-5">
         <Container fluid className="min-vh-100 p-3 p-md-4">
           <Row>
@@ -165,11 +165,7 @@ export default function Courses({ categorySlug }) {
                   className="rounded-pill search-bar w-100"
                 />
                 {search && (
-                  <Button
-                    variant="outline-secondary"
-                    onClick={() => setSearch("")}
-                    className="w-100 w-sm-auto"
-                  >
+                  <Button variant="outline-secondary" onClick={() => setSearch("")}>
                     ✕ Cancel search
                   </Button>
                 )}
@@ -190,62 +186,59 @@ export default function Courses({ categorySlug }) {
                         const courseSlug = course.title
                           .toLowerCase()
                           .replace(/\s+/g, "-");
+
                         return (
                           <Col xs={12} sm={6} lg={4} className="mb-4" key={idx}>
-                            <Link
-                              key={course.title}
-                              href={`/courses/${categorySlug}/${courseSlug}`}
-                              style={{ textDecoration: "none" }}
+                            <Card
+                              className="h-100 card rounded-4 p-2 p-sm-3 p-md-4"
+                              style={{ cursor: "pointer" }}
+                              onClick={() =>
+                                router.push(`/courses/${categorySlug}/${courseSlug}`)
+                              }
                             >
-                              <Card className="h-100 card rounded-4 p-2 p-sm-3 p-md-4">
-                                <div
-                                  className="img-holder rounded-3 position-relative"
-                                  style={{ height: "200px" }}
-                                >
-                                  <Image
-                                    src={course.img}
-                                    alt={course.title}
-                                    fill
-                                    className="rounded-3 card-img object-cover"
-                                  />
+                              <div
+                                className="img-holder rounded-3 position-relative"
+                                style={{ height: "200px" }}
+                              >
+                                <Image
+                                  src={course.img}
+                                  alt={course.title}
+                                  fill
+                                  className="rounded-3 card-img object-cover"
+                                />
+                              </div>
+
+                              <Card.Body className="p-0 pt-3">
+                                <Card.Title className="card-course-title text-center">
+                                  {course.title}
+                                </Card.Title>
+                                <Card.Text className="text-muted course-desc text-center text-sm-start">
+                                  {course.desc}
+                                </Card.Text>
+
+                                <div className="d-flex justify-content-between text-muted fs-11">
+                                  <span>★★★★★ {course.rating}</span>
+                                  <span>👥 {course.students}</span>
                                 </div>
-                                <Card.Body className="p-0 pt-3">
-                                  <Card.Title className="card-course-title text-center">
-                                    {course.title}
-                                  </Card.Title>
-                                  <Card.Text className="text-muted course-desc text-center text-sm-start">
-                                    {course.desc}
-                                  </Card.Text>
-                                  <div className="d-flex justify-content-between text-muted fs-11">
-                                    <span>★★★★★ {course.rating}</span>
-                                    <span>👥 {course.students}</span>
-                                  </div>
-                                  <div className="d-flex justify-content-between align-items-center mt-2 fs-11">
-                                    <span className="text-muted small">
-                                      ⏳ {course.duration}
-                                    </span>
-                                    <Button
-                                      variant="dark"
-                                      size="sm"
-                                      className="enroll-btn fs-11"
-                                      onClick={(e) => {
-                                        e.preventDefault();
-                                        setSelectedCourse(course);
-                                      }}
-                                    >
-                                      Enroll now
-                                    </Button>
-                                    {selectedCourse && (
-                                      <EnquiryFormModal
-                                        isOpen={!!selectedCourse}
-                                        onClose={() => setSelectedCourse(null)}
-                                        courseName={selectedCourse.title}
-                                      />
-                                    )}
-                                  </div>
-                                </Card.Body>
-                              </Card>
-                            </Link>
+
+                                <div className="d-flex justify-content-between align-items-center mt-2 fs-11">
+                                  <span className="text-muted small">
+                                    ⏳ {course.duration}
+                                  </span>
+                                  <Button
+                                    variant="dark"
+                                    size="sm"
+                                    className="enroll-btn fs-11"
+                                    onClick={(e) => {
+                                      e.stopPropagation(); 
+                                      setSelectedCourse(course);
+                                    }}
+                                  >
+                                    Enroll now
+                                  </Button>
+                                </div>
+                              </Card.Body>
+                            </Card>
                           </Col>
                         );
                       })
@@ -255,12 +248,21 @@ export default function Courses({ categorySlug }) {
                   </Row>
                 </motion.div>
               </AnimatePresence>
+
+              {/* Modal OUTSIDE the loop */}
+              {selectedCourse && (
+                <EnquiryFormModal
+                  isOpen={!!selectedCourse}
+                  onClose={() => setSelectedCourse(null)}
+                  courseName={selectedCourse.title}
+                />
+              )}
             </Col>
           </Row>
         </Container>
       </div>
 
-      {/* --- FAQ Section (Fixed Dropdowns) --- */}
+      {/* FAQ Section */}
       <div className="container-fluid overall-bg px-3 px-md-5 py-5 faq-section">
         <Container fluid className="p-0">
           <h2 className="text-center mb-5 fw-bold text-success">
