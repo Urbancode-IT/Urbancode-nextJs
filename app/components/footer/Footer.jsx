@@ -42,15 +42,7 @@ function Footer() {
               <li><Link href="/about-us"> About Us</Link></li>
               <li><Link href="/contact-us"> Contact Us</Link></li>
               <li><Link href="/projects"> Projects</Link></li>
-              <li>
-                <a
-                  href="https://blog-urbancode.blogspot.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                   Blogs
-                </a>
-              </li>
+              <li><Link href="/blogs">Blogs</Link></li>
             </ul>
           </div>
 
