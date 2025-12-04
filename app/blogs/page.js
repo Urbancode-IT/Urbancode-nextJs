@@ -17,8 +17,13 @@ export default function BlogsPage() {
         .filter(blog => blog.id !== featuredBlog.id)
         .slice(0, 3);
 
-    // Get 6 popular posts (can be the next 6 blogs)
-    const popularBlogs = blogsData.slice(1, 7);
+    // Get IDs of featured and recent blogs to exclude from popular
+    const usedBlogIds = [featuredBlog.id, ...recentBlogs.map(b => b.id)];
+
+    // Get 6 popular posts (exclude featured and recent blogs for unique cards)
+    const popularBlogs = blogsData
+        .filter(blog => !usedBlogIds.includes(blog.id))
+        .slice(0, 6);
 
     return (
         <div>
@@ -31,7 +36,7 @@ export default function BlogsPage() {
             {/* Recent Blog Cards */}
             <section className="blog-section py-5 fade-soft delay-3">
                 <div className="container">
-                    <div className="row g-4">
+                    <div className="row g-2">
                         {recentBlogs.map((blog, index) => (
                             <div key={blog.id} className="col-md-4">
                                 <BlogCard blog={blog} delay={`delay-${index + 1}`} />
@@ -51,7 +56,7 @@ export default function BlogsPage() {
                         </Link>
                     </div>
 
-                    <div className="row g-4">
+                    <div className="row g-2">
                         {popularBlogs.map((blog, index) => (
                             <div key={blog.id} className="col-md-4">
                                 <BlogCard blog={blog} delay={`delay-${index + 1}`} />
