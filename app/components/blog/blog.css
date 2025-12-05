@@ -190,7 +190,8 @@ section.recent-featured {
 
 .blog-img {
   border-radius: 16px;
-  width: 400px;
+  width: 100%;
+  max-width: 400px;
   height: 360px;
   object-fit: cover;
   flex-shrink: 0;
@@ -300,7 +301,8 @@ section.recent-featured {
 }
 
 .header-image {
-  width: 1232px;
+  width: 100%;
+  max-width: 1232px;
   height: 608px;
   background-size: cover;
   background-position: center;
@@ -432,6 +434,19 @@ section.recent-featured {
 }
 
 /* ---------------- RESPONSIVENESS ---------------- */
+
+/* Laptop (max-width: 1200px) */
+@media (max-width: 1200px) {
+  .header-image {
+    height: 500px;
+  }
+
+  .blog-hero {
+    padding: 100px 0 80px;
+  }
+}
+
+/* Tablet Landscape / Small Laptop (max-width: 992px) */
 @media (max-width: 992px) {
 
   .recent-title,
@@ -461,30 +476,64 @@ section.recent-featured {
   .header-image {
     height: 380px;
   }
+
+  .blog-hero {
+    padding: 80px 0 60px;
+  }
+
+  .blog-hero .hero-title {
+    font-size: 40px;
+  }
+
+  .blog-detail-container {
+    padding: 140px 0 40px;
+  }
+
+  .blog-img {
+    max-width: 100%;
+  }
 }
 
+/* Tablet Portrait (max-width: 768px) */
 @media (max-width: 768px) {
 
   .recent-title,
   .section-title,
   .page-title {
     text-align: center;
+    font-size: 32px;
+  }
+
+  .recent-title {
+    margin-left: 0;
   }
 
   .featured-img {
     height: 260px;
+    padding-left: 15px;
+    padding-right: 15px;
   }
 
   .blog-img {
     height: 260px;
+    width: 100%;
   }
 
   .view-all-btn {
     padding: 10px 20px;
   }
 
+  .blog-hero {
+    padding: 60px 0 40px;
+  }
+
   .blog-hero .hero-title {
     font-size: 34px;
+    padding: 0 15px;
+  }
+
+  .blog-hero .hero-text {
+    padding: 0 15px;
   }
 
   .blog-detail-title {
@@ -492,7 +541,7 @@ section.recent-featured {
   }
 
   .blog-detail-container {
-    padding: 60px 0 40px;
+    padding: 100px 0 40px;
   }
 
   .header-image {
@@ -502,8 +551,46 @@ section.recent-featured {
   .content-text {
     font-size: 18px;
   }
+
+  .featured-title {
+    font-size: 26px;
+    line-height: 36px;
+  }
+
+  .featured-text {
+    max-width: 100%;
+  }
+
+  .blog-title {
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  .blog-meta {
+    margin-top: 20px;
+  }
+
+  .blog-card-small .blog-cat-date {
+    margin-top: 20px;
+  }
+
+  .blog-card-small .blog-small-title {
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  .popular-post-section .d-flex {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+
+  .blog-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
+/* Mobile (max-width: 576px) */
 @media (max-width: 576px) {
 
   .recent-title,
@@ -523,34 +610,41 @@ section.recent-featured {
   }
 
   .featured-img {
-    height: 220px;
+    height: 200px;
   }
 
   .blog-img {
-    height: 220px;
+    height: 200px;
   }
 
-  .popular-post-section .d-flex {
-    flex-direction: column;
-    text-align: center;
-    gap: 15px;
+  .blog-hero {
+    padding: 40px 0 30px;
+  }
+
+  .blog-hero .hero-subtitle {
+    font-size: 14px;
   }
 
   .blog-hero .hero-title {
-    font-size: 28px;
+    font-size: 26px;
+    line-height: 1.2;
+  }
+
+  .blog-hero .hero-text {
+    font-size: 14px;
   }
 
   .blog-detail-title {
-    font-size: 28px;
+    font-size: 24px;
   }
 
   .blog-detail-container {
-    padding: 40px 0 30px;
+    padding: 80px 0 30px;
     width: 95%;
   }
 
   .header-image {
-    height: 240px;
+    height: 200px;
   }
 
   .content-text {
@@ -559,5 +653,66 @@ section.recent-featured {
 
   .blog-grid {
     grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .section-title {
+    font-size: 28px;
+  }
+
+  .featured-title {
+    font-size: 22px;
+    line-height: 30px;
+  }
+
+  .featured-text {
+    font-size: 14px;
+  }
+
+  .blog-title {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .blog-desc {
+    font-size: 14px;
+    line-height: 20px;
+    min-height: 40px;
+  }
+
+  .read-more {
+    font-size: 16px;
+  }
+
+  .blog-meta {
+    margin-top: 15px;
+  }
+
+  .blog-card-small .blog-image {
+    height: 200px;
+  }
+
+  .blog-card-small .blog-cat-date {
+    margin-top: 15px;
+  }
+
+  .blog-card-small .blog-small-title {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .blog-card-small .blog-small-desc {
+    font-size: 14px;
+    line-height: 20px;
+    min-height: 40px;
+  }
+
+  .more-blogs-title {
+    font-size: 22px;
+  }
+
+  .recent-title {
+    font-size: 28px;
+    margin-left: 0;
   }
 }
