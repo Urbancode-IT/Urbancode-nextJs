@@ -18,7 +18,7 @@ const Courses = () => {
 
   const courses = [
     {
-      title: '',
+      title: 'Programing Languages',
       description:
         ' like Python and JavaScript serve as excellent starting points for beginners and are essential in modern web development. Alongside powerful languages such as C++, Java, HTML, and CSS, they form the foundation for building dynamic, scalable, and interactive digital experiences.',
       courses: '6 Courses',
