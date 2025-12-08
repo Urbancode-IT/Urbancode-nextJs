@@ -4,7 +4,7 @@ import './projects.css';
 import { useState } from 'react';
 import { submitProjectEnquiryForm } from '@/lib/api/api';
 const Projects = () => {
-    const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
@@ -105,32 +105,32 @@ const Projects = () => {
       </section>
 
       {/* PROJECTS SECTION */}
-<section id="projects" className="projects-section">
-  <div className="container text-center">
-    <div className="projects-header mb-5">
-      <h2 className="projects-title text-shine">Our Featured <span className='fw-bold'>Projects</span></h2>
-      <p className="projects-desc">Transform businesses and create exceptional digital experiences</p>
-    </div>
+      <section id="projects" className="projects-section">
+        <div className="container text-center">
+          <div className="projects-header mb-5">
+            <h2 className="projects-title text-shine">Our Featured <span className='fw-bold'>Projects</span></h2>
+            <p className="projects-desc">Transform businesses and create exceptional digital experiences</p>
+          </div>
 
-    <div className="row g-4 justify-content-center">
-      {projectsData.map((project, index) => (
-        <div key={index} className="col-md-4">
-          <div className="project-card h-100">
-            <div className="img-wrap">
-              <img src={project.image} alt={project.title} />
-              <div className="overlay"></div>
-              <div className="icons"><a href={project.url}>View Site</a></div>
-            </div>
-            <div className="card-content">
-              <h3>{project.title}</h3>
-              <p>{project.description}</p>
-            </div>
+          <div className="row g-4 justify-content-center">
+            {projectsData.map((project, index) => (
+              <div key={index} className="col-md-4">
+                <div className="project-card h-100">
+                  <div className="img-wrap">
+                    <img src={project.image} alt={project.title} />
+                    <div className="overlay"></div>
+                    <div className="icons"><a href={project.url}>View Site</a></div>
+                  </div>
+                  <div className="card-content">
+                    <h3>{project.title}</h3>
+                    <p>{project.description}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
-      ))}
-    </div>
-  </div>
-</section>
+      </section>
 
 
       {/* ABOUT US SECTION */}
@@ -204,73 +204,20 @@ const Projects = () => {
         </div>
       </section>
 
-      {/* TESTIMONIALS SECTION */}
-      <section id="testimonials" className="py-5">
-        <div className="container">
-          {/* Section Header */}
-          <div className="text-center mb-5">
-            <div className="d-flex justify-content-center align-items-center gap-2 text-success mb-2">
-              <div className="rounded-circle bg-success" style={{width: '8px', height: '8px'}}></div>
-              <small className="fw-bold text-uppercase">Testimonials</small>
-              <div className="rounded-circle bg-success" style={{width: '8px', height: '8px'}}></div>
-            </div>
-            <h2 className="" style={{fontSize: '2.5rem'}}>
-              What Our <span className="text-shine">Clients Say</span>
-            </h2>
-            <p className="text-muted mt-3" style={{maxWidth: '700px', margin: 'auto'}}>
-              Don't just take our word for it. Here's what our satisfied clients have to say about their experience working with us.
-            </p>
-          </div>
-
-          {/* Testimonials Grid */}
-          <div className="row g-4">
-            {testimonialsData.map((testimonial, index) => (
-              <div key={index} className="col-md-6 col-lg-4">
-                <div className="testimonial-card-project card h-100 border-0 shadow-sm position-relative">
-                  <i className="bi bi-quote"></i>
-                  <div className="card-body d-flex flex-column">
-                    <div className="d-flex align-items-center mb-3">
-                      <img src={testimonial.avatar} alt={testimonial.name} className="me-3" />
-                      <div>
-                        <h5 className="mb-0 fw-bold">{testimonial.name}</h5>
-                        <small>{testimonial.position}</small>
-                      </div>
-                    </div>
-                    <div className="mb-2">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <p className="flex-grow-1">{testimonial.quote}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Trust Indicators */}
-          <div className="row text-center mt-5 g-3">
-            {trustData.map((trust, index) => (
-              <div key={index} className="col-6 col-md-3">
-                <div className="trust-card">
-                  <h3 className="fw-bold">{trust.value}</h3>
-                  <small>{trust.label}</small>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* CONTACT SECTION */}
       <section id="projectform" className="projectform-section py-5">
         <div className="container">
           <div className="text-center mb-5">
             <div className="d-flex justify-content-center align-items-center gap-2 text-success mb-2">
-              <div className="rounded-circle bg-success" style={{width: '8px', height: '8px'}}></div>
+              <div className="rounded-circle bg-success" style={{ width: '8px', height: '8px' }}></div>
               <small className="fw-bold text-uppercase">Contact Us</small>
-              <div className="rounded-circle bg-success" style={{width: '8px', height: '8px'}}></div>
+              <div className="rounded-circle bg-success" style={{ width: '8px', height: '8px' }}></div>
             </div>
-            <h2 className="" style={{fontSize: '2.5rem'}}>
+            <h2 className="" style={{ fontSize: '2.5rem' }}>
               Let's Build Something <span className="text-shine" >Amazing</span>
             </h2>
-            <p className="text-muted mt-3" style={{maxWidth: '700px', margin: 'auto'}}>
+            <p className="text-muted mt-3" style={{ maxWidth: '700px', margin: 'auto' }}>
               Ready to transform your digital presence? We'd love to hear from you.
             </p>
           </div>
@@ -302,128 +249,170 @@ const Projects = () => {
             <div className="col-lg-7">
               <div className="p-4 rounded-4 shadow-lg bg-light">
                 <form onSubmit={handleSubmit} noValidate>
-          <div className="row g-3">
-            {/* Name */}
-            <div className="col-md-6">
-              <label htmlFor="name" className="form-label fw-semibold">
-                Name *
-              </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                className={`form-control ${errors.name ? "is-invalid" : ""}`}
-                value={formData.name}
-                onChange={handleChange}
-                placeholder="Your full name"
-              />
-              {errors.name && (
-                <div className="invalid-feedback">{errors.name}</div>
-              )}
-            </div>
+                  <div className="row g-3">
+                    {/* Name */}
+                    <div className="col-md-6">
+                      <label htmlFor="name" className="form-label fw-semibold">
+                        Name *
+                      </label>
+                      <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        className={`form-control ${errors.name ? "is-invalid" : ""}`}
+                        value={formData.name}
+                        onChange={handleChange}
+                        placeholder="Your full name"
+                      />
+                      {errors.name && (
+                        <div className="invalid-feedback">{errors.name}</div>
+                      )}
+                    </div>
 
-            {/* Email */}
-            <div className="col-md-6">
-              <label htmlFor="email" className="form-label fw-semibold">
-                Email *
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                className={`form-control ${errors.email ? "is-invalid" : ""}`}
-                value={formData.email}
-                onChange={handleChange}
-                placeholder="you@example.com"
-              />
-              {errors.email && (
-                <div className="invalid-feedback">{errors.email}</div>
-              )}
-            </div>
+                    {/* Email */}
+                    <div className="col-md-6">
+                      <label htmlFor="email" className="form-label fw-semibold">
+                        Email *
+                      </label>
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        className={`form-control ${errors.email ? "is-invalid" : ""}`}
+                        value={formData.email}
+                        onChange={handleChange}
+                        placeholder="you@example.com"
+                      />
+                      {errors.email && (
+                        <div className="invalid-feedback">{errors.email}</div>
+                      )}
+                    </div>
 
-            {/* Phone */}
-            <div className="col-md-6">
-              <label htmlFor="phone" className="form-label fw-semibold">
-                Phone *
-              </label>
-              <input
-                type="tel"
-                id="phone"
-                name="phone"
-                className={`form-control ${errors.phone ? "is-invalid" : ""}`}
-                value={formData.phone}
-                onChange={handleChange}
-                placeholder="10-digit mobile number"
-              />
-              {errors.phone && (
-                <div className="invalid-feedback">{errors.phone}</div>
-              )}
-            </div>
+                    {/* Phone */}
+                    <div className="col-md-6">
+                      <label htmlFor="phone" className="form-label fw-semibold">
+                        Phone *
+                      </label>
+                      <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        className={`form-control ${errors.phone ? "is-invalid" : ""}`}
+                        value={formData.phone}
+                        onChange={handleChange}
+                        placeholder="10-digit mobile number"
+                      />
+                      {errors.phone && (
+                        <div className="invalid-feedback">{errors.phone}</div>
+                      )}
+                    </div>
 
-            {/* Subject */}
-            <div className="col-md-6">
-              <label htmlFor="subject" className="form-label fw-semibold">
-                Subject *
-              </label>
-              <input
-                type="text"
-                id="subject"
-                name="subject"
-                className={`form-control ${errors.subject ? "is-invalid" : ""}`}
-                value={formData.subject}
-                onChange={handleChange}
-                placeholder="Project inquiry"
-              />
-              {errors.subject && (
-                <div className="invalid-feedback">{errors.subject}</div>
-              )}
-            </div>
+                    {/* Subject */}
+                    <div className="col-md-6">
+                      <label htmlFor="subject" className="form-label fw-semibold">
+                        Subject *
+                      </label>
+                      <input
+                        type="text"
+                        id="subject"
+                        name="subject"
+                        className={`form-control ${errors.subject ? "is-invalid" : ""}`}
+                        value={formData.subject}
+                        onChange={handleChange}
+                        placeholder="Project inquiry"
+                      />
+                      {errors.subject && (
+                        <div className="invalid-feedback">{errors.subject}</div>
+                      )}
+                    </div>
 
-            {/* Message */}
-            <div className="col-12">
-              <label htmlFor="message" className="form-label fw-semibold">
-                Message *
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                rows="5"
-                className={`form-control ${errors.message ? "is-invalid" : ""}`}
-                value={formData.message}
-                onChange={handleChange}
-                placeholder="Tell us about your project..."
-              ></textarea>
-              {errors.message && (
-                <div className="invalid-feedback">{errors.message}</div>
-              )}
-            </div>
+                    {/* Message */}
+                    <div className="col-12">
+                      <label htmlFor="message" className="form-label fw-semibold">
+                        Message *
+                      </label>
+                      <textarea
+                        id="message"
+                        name="message"
+                        rows="5"
+                        className={`form-control ${errors.message ? "is-invalid" : ""}`}
+                        value={formData.message}
+                        onChange={handleChange}
+                        placeholder="Tell us about your project..."
+                      ></textarea>
+                      {errors.message && (
+                        <div className="invalid-feedback">{errors.message}</div>
+                      )}
+                    </div>
 
-            {/* Submit button */}
-            <div className="col-12 text-end">
-              <button
-                type="submit"
-                className="btn btn-success px-5 py-2 fw-semibold"
-                disabled={isSubmitting}
-              >
-                {isSubmitting ? "Sending..." : "Send Message"}{" "}
-                <i className="bi bi-send ms-2"></i>
-              </button>
-            </div>
+                    {/* Submit button */}
+                    <div className="col-12 text-end">
+                      <button
+                        type="submit"
+                        className="btn btn-success px-5 py-2 fw-semibold"
+                        disabled={isSubmitting}
+                      >
+                        {isSubmitting ? "Sending..." : "Send Message"}{" "}
+                        <i className="bi bi-send ms-2"></i>
+                      </button>
+                    </div>
 
-            {/* Status message */}
-            {status.message && (
-              <div
-                className={`mt-3 text-center fw-semibold ${
-                  status.type === "success" ? "text-success" : "text-danger"
-                }`}
-              >
-                {status.message}
+                    {/* Status message */}
+                    {status.message && (
+                      <div
+                        className={`mt-3 text-center fw-semibold ${status.type === "success" ? "text-success" : "text-danger"
+                          }`}
+                      >
+                        {status.message}
+                      </div>
+                    )}
+                  </div>
+                </form>
               </div>
-            )}
+            </div>
           </div>
-        </form>
-              </div>
+        </div>
+      </section>
+
+      {/* TESTIMONIALS - Auto Scrolling */}
+      <section id="testimonials" className="testimonials-section py-5">
+        <div className="container">
+          <div className="text-center mb-4">
+            <div className="d-flex justify-content-center align-items-center gap-2 text-success mb-2">
+              <div className="rounded-circle bg-success" style={{ width: '8px', height: '8px' }}></div>
+              <small className="fw-bold text-uppercase">Testimonials</small>
+              <div className="rounded-circle bg-success" style={{ width: '8px', height: '8px' }}></div>
             </div>
+            <h2 style={{ fontSize: '2.5rem' }}>What Our <span className="text-shine">Clients Say</span></h2>
+          </div>
+        </div>
+
+        <div className="testimonials-marquee-wrapper">
+          <div className="testimonials-marquee">
+            {[...testimonialsData, ...testimonialsData].map((testimonial, index) => (
+              <div key={index} className="testimonial-scroll-card">
+                <div className="testimonial-scroll-content">
+                  <img src={testimonial.avatar} alt={testimonial.name} className="testimonial-avatar" />
+                  <h5 className="mb-1">{testimonial.name}</h5>
+                  <small className="text-muted">{testimonial.position}</small>
+                  <div className="testimonial-stars">★★★★★</div>
+                  <p className="testimonial-quote">"{testimonial.quote}"</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="container mt-4">
+          <div className="row text-center g-3">
+            {trustData.map((trust, index) => (
+              <div key={index} className="col-6 col-md-3">
+                <div className="trust-card">
+                  <h3 className="fw-bold">{trust.value}</h3>
+                  <small>{trust.label}</small>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -503,37 +492,37 @@ const testimonialsData = [
     name: "Govindaraj Murali",
     position: "CEO at Petrokens",
     avatar: "/images/ProjectPageImages/petrologo.png",
-    quote: "From concept to completion, Urbancode’s web development team exceeded our expectations. They created a robust, visually appealing website that aligns perfectly with our industrial brand. The attention to technical detail and responsiveness made the entire experience smooth and efficient."
+    quote: "Robust website that aligns perfectly with our brand."
   },
   {
     name: "Uma",
     position: "Founder of Synergy",
     avatar: "/images/ProjectPageImages/synlogo.png",
-    quote: "Urbancode Edutech gave our firm the digital presence it truly deserved. The website they built is sleek, professional, and perfectly aligned with our financial services. Their team understood our goals, delivered on time, and supported us even after launch — truly a reliable tech partner!"
+    quote: "Sleek, professional digital presence on time."
   },
   {
     name: "Iswarya Balasubramani",
     position: "Founder & Director at TechTrendz",
     avatar: "/images/ProjectPageImages/techilogo.jpg",
-    quote: "The Urbancode team did a phenomenal job building our tech services website. They combined creativity with technical precision to deliver a modern, responsive site that perfectly reflects our brand identity. Communication and delivery timelines were spot on!"
+    quote: "Modern, responsive site with creative precision."
   },
   {
     name: "Anu Revathi E",
     position: "Founder at Bodhi Shikshak",
     avatar: "/images/ProjectPageImages/logo5.png",
-    quote: "Working with Urbancode was a great decision. Their team patiently worked with us through every stage — from content planning to launch. The final website looks elegant, loads fast, and has received wonderful feedback from our learners and educators alike."
+    quote: "Elegant website with wonderful user feedback."
   },
   {
     name: "Ramaa Ayyappan",
     position: "Founder at Craftlogically Me",
     avatar: "/images/ProjectPageImages/logo4.webp",
-    quote: "Collaborating with Urbancode Edutech to build our website was a fantastic experience. They understood the essence of Craftlogically Me — our handmade jewelry, resin art, and home décor — and translated it into a beautiful, user-friendly digital space. The team was professional, creative, and always responsive. Our online presence now truly reflects the passion and craftsmanship behind every piece we create. — Ramaa, Founder, Craftlogically Me"
+    quote: "Beautiful, user-friendly digital space created."
   },
   {
     name: "Krithika Varshini",
     position: "Founder of We Penit",
     avatar: "/images/ProjectPageImages/wepenitlogo.jpg",
-    quote: "Working with Urbancode Edutech has been an incredible experience. They understood our vision for We Pen It and crafted a website that perfectly reflects our creative writing and content services. The team was attentive, professional, and ensured the final product was both visually appealing and highly functional. Our online presence has never looked better"
+    quote: "Website perfectly reflects our creative services."
   }
 ];
 
