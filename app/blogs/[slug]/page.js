@@ -4,6 +4,29 @@ import Link from 'next/link';
 import '../../components/blog/blog.css';
 import blogsData from '../../../lib/data/blogsData.json';
 
+// Generate static params for dynamic routes (required for output: export)
+export async function generateStaticParams() {
+    return blogsData.map((blog) => ({
+        slug: blog.slug,
+    }));
+}
+
+// Generate metadata for SEO
+export async function generateMetadata({ params }) {
+    const blog = blogsData.find((b) => b.slug === params.slug);
+
+    if (!blog) {
+        return {
+            title: 'Blog Not Found',
+        };
+    }
+
+    return {
+        title: `${blog.title} | UrbanCode Blogs`,
+        description: blog.excerpt,
+    };
+}
+
 export default function BlogDetailPage({ params }) {
     // Find the blog by slug
     const blog = blogsData.find(b => b.slug === params.slug);
@@ -73,27 +96,4 @@ export default function BlogDetailPage({ params }) {
             </div>
         </div>
     );
-}
-
-// Generate static params for dynamic routes
-export async function generateStaticParams() {
-    return blogsData.map(blog => ({
-        slug: blog.slug,
-    }));
-}
-
-// Generate metadata for SEO
-export async function generateMetadata({ params }) {
-    const blog = blogsData.find(b => b.slug === params.slug);
-
-    if (!blog) {
-        return {
-            title: 'Blog Not Found',
-        };
-    }
-
-    return {
-        title: `${blog.title} | UrbanCode Blogs`,
-        description: blog.excerpt,
-    };
 }
