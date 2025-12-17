@@ -5,26 +5,28 @@ import "./faqs.css";
 
 const faqs = [
   {
-    question: "What is Urbancode Edutech Solutions and how does it help in career growth?",
+    question: "Why should I choose a Full Stack Development course for my career growth?",
     answer:
-      "Urbancode Edutech Solutions Pvt Ltd is a leading IT training and placement institute in Chennai that empowers students, freshers, and professionals with industry-relevant skills. By offering job-ready courses in Digital Marketing, Data Analytics, Full Stack Development, Cloud Computing, and more, we help learners bridge the gap between academics and corporate needs. Our programs accelerate career growth with practical training, certifications, and placement support.",
+      "A Full Stack Development course gives you complete control over building modern web and mobile applications from start to finish. By learning in-demand technologies like MERN Stack, React Native, and .NET with Angular, you become job-ready with skills companies actively look for. For students searching for a trusted full stack course near me, this training focuses on real-world projects, industry practices, and career-focused learning that leads to long-term growth.",
   },
   {
-    question: "Which courses are offered at Urbancode Edutech Solutions?",
+    question: "What technologies are covered in this Full Stack training program?",
     answer:
-      "We provide a wide range of career-oriented courses including: Digital Marketing (SEO, Social Media, Google Ads, Analytics), Data Analytics (Power BI, Tableau, Python, MSSQL, SAS), Full Stack Development (MERN, MEAN, Java Full Stack, .NET, Angular, Python), Cloud & DevOps (AWS, DevOps, CI/CD, Kubernetes, Docker), and more. Our programs are tailored for both beginners and professionals.",
+      "This Full Stack training program covers MERN Stack (MongoDB, Express.js, React.js, Node.js), React Native for mobile app development, and .NET with Angular for enterprise applications. You gain hands-on experience in frontend and backend development, API integration, database management, authentication, and deployment. These technologies are widely used by top companies, making this a practical choice for anyone looking for a full stack developer course near them.",
   },
   {
-    question: "Does Urbancode Edutech provide placement assistance after training?",
+    question: "Does this Full Stack course provide placement assistance and career support?",
     answer:
-      "Yes, Urbancode Edutech Solutions offers dedicated placement assistance. We have strong tie-ups with top IT companies, startups, and MNCs, ensuring our students get real job opportunities. From resume building, mock interviews, HR guidance to job drives, we prepare learners for success.",
+      "Yes, this Full Stack Development course includes strong placement assistance and career guidance. Learners receive support with resume preparation, interview training, real-time coding practice, and job referrals. For those searching online for a reliable full stack training institute near me, this program is designed to build confidence, technical expertise, and interview readiness.",
   },
   {
-    question: "Can I get certification after completing a course at Urbancode Edutech?",
+    question: "Will I receive certification and real project experience after completing the course?",
     answer:
-      "Absolutely! Every course comes with an industry-recognized certification upon successful completion, which enhances your credibility and employability in the job market.",
+      "Yes, upon successful completion, learners receive an industry-recognized Full Stack Development certification along with hands-on project experience. You work on real-time applications using MERN Stack, React Native, and .NET with Angular, which helps you build a strong portfolio. This combination of certification and practical exposure improves credibility and helps your profile stand out in full stack developer job searches.",
   },
 ];
+
+
 
 const Faqs = () => {
   const [activeIndex, setActiveIndex] = useState(null);

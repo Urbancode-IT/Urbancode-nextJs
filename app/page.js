@@ -2,7 +2,7 @@
 
 import Head from "next/head";
 import HeroSection from './components/Home/HeroSection';
-
+import TrendingCourses from './components/Home/TrendingCourses';
  import Courses from './components/Home/Courses';
 import TestimonialCarousel from './components/Home/TestimonialCarousel';
 import FaqBootstrap from './components/Home/Faqs';
@@ -104,6 +104,7 @@ export default function HomePage() {
 `}
 </script></Head>
       <HeroSection />
+      {/* <TrendingCourses /> */}
       <Courses />
       <TestimonialCarousel />
       <FaqBootstrap />
