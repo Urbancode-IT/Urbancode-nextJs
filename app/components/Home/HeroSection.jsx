@@ -46,7 +46,7 @@ export default function HeroSection() {
     return () => clearInterval(letterInterval);
   }, [currentWordIndex]);
 
-  const images = ["/images/home/UC1.webp", "/images/home/UC2.webp", "/images/home/UC3.webp", "/images/home/UC4.webp"];
+  const images = ["/images/home/hh1.webp", "/images/home/hh2.webp", "/images/home/hh3.webp", "/images/home/hh4.webp"];
   const [imageOrder, setImageOrder] = useState([0, 1, 2, 3]);
 
   useEffect(() => {
@@ -131,18 +131,29 @@ export default function HeroSection() {
 
           {/* Right Section */}
           <div className="col-lg-6 col-md-10 d-flex flex-column flex-md-row gap-3 align-items-center justify-content-center justify-content-lg-end">
-            <div className="motion-grid mb-4">
+            <motion.div 
+              className="motion-grid mb-4"
+              layout
+              transition={{ duration: 0.6, ease: "easeInOut" }}
+            >
               {imageOrder.map((imgIndex) => (
                 <motion.img
-                  key={images[imgIndex]}
+                  key={`image-${imgIndex}`}
+                  layoutId={`image-${imgIndex}`}
                   src={images[imgIndex]}
                   className="motion-grid-img"
-                  layout
-                  transition={{ duration: 0.5 }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ 
+                    duration: 0.6, 
+                    ease: "easeInOut",
+                    layout: { duration: 0.6 }
+                  }}
                   alt="course"
                 />
               ))}
-            </div>
+            </motion.div>
 
             {/* Social Icons */}
             <div className="d-flex gap-3 flex-row flex-md-column">

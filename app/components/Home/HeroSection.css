@@ -22,13 +22,15 @@
 /* Motion Grid */
 .motion-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(196px, 1fr));
+  grid-template-rows: repeat(2, minmax(196px, 1fr));
   width: 400px;
   height: 400px;
   gap: 8px;
   border-radius: 20px;
   overflow: hidden;
+  flex-shrink: 0;
+  contain: layout style paint;
 }
 
 .motion-grid-img {
@@ -36,6 +38,9 @@
   height: 100%;
   object-fit: cover;
   border-radius: 12px;
+  display: block;
+  line-height: 0;
+  font-size: 0;
 }
 
 /* Enroll Button */
