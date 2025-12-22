@@ -22,10 +22,11 @@
 /* Motion Grid */
 .motion-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(196px, 1fr));
-  grid-template-rows: repeat(2, minmax(196px, 1fr));
-  width: 400px;
-  height: 400px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  width: 100%;
+  max-width: 400px;
+  aspect-ratio: 1 / 1;
   gap: 8px;
   border-radius: 20px;
   overflow: hidden;
@@ -47,20 +48,23 @@
 .enroll_btn {
   position: relative;
   overflow: hidden;
-  background: #ccc; /* gray base */
+  background: #ccc;
+  /* gray base */
   color: #000;
   font-weight: 600;
   font-size: 18px;
-  border:  2px solid #ccc; 
+  border: 2px solid #ccc;
   border-radius: 50px;
   cursor: pointer;
   padding: 14px 40px;
   transition: color 0.4s ease;
   z-index: 1;
 }
+
 .enroll_btn:hover {
   color: #000;
-  border-color: #00a86b; /* green */
+  border-color: #00a86b;
+  /* green */
 }
 
 /* triangle shape layer */
@@ -72,12 +76,14 @@
   width: 0;
   height: 0;
   background: transparent;
-  border-right: 40px solid #00a86b; /* green */
+  border-right: 40px solid #00a86b;
+  /* green */
   border-top: 40px solid transparent;
   border-bottom: 40px solid transparent;
   /* border-bottom-right-radius: 40px; */
   transition: all 0.6s ease;
-  z-index: 0; /* sits behind text */
+  z-index: 0;
+  /* sits behind text */
 }
 
 
@@ -86,15 +92,15 @@
   width: 100%;
   height: 100%;
   /* transform:rotate(5deg); */
- 
+
   border: none;
   background: linear-gradient(135deg, #00a86b, #98dec4);
-  
+
 }
 
 .enroll_btn span {
   position: relative;
-  z-index: 1; 
+  z-index: 1;
   transition: transform 0.4s ease;
 }
 
@@ -108,13 +114,22 @@
 .animated-word {
   white-space: nowrap;
   overflow: hidden;
-  height:45px;
+  height: 45px;
   animation: blink 0.7s infinite;
 }
 
 @keyframes blink {
-  0%, 50%, 100% { border-color: #198754; }
-  25%, 75% { border-color: transparent; }
+
+  0%,
+  50%,
+  100% {
+    border-color: #198754;
+  }
+
+  25%,
+  75% {
+    border-color: transparent;
+  }
 }
 
 /* Social Icons */
@@ -125,6 +140,7 @@
   background: #fff;
   transition: all 0.3s ease;
 }
+
 .social-icon:hover {
   color: #00A86B;
   background: #E8F8F2;
@@ -134,9 +150,9 @@
 /* -------- Responsive -------- */
 @media (max-width: 992px) {
   .motion-grid {
-    width: 320px;
-    height: 320px;
+    max-width: 320px;
   }
+
   .fs25rem {
     font-size: 2rem;
   }
@@ -146,24 +162,28 @@
   .home_header_container {
     text-align: center;
   }
+
   .fs25rem {
     font-size: 1.8rem;
   }
+
   .motion-grid {
-    width: 280px;
-    height: 280px;
+    max-width: 280px;
     margin: 0 auto;
   }
+
   .stats_line {
     font-size: 0.9rem;
     display: flex;
     flex-direction: column;
     gap: 4px;
   }
+
   .social-icon {
     width: 36px;
     height: 36px;
   }
+
   .enroll_btn {
     font-size: 16px;
     padding: 12px 28px;
@@ -172,43 +192,52 @@
 
 @media (max-width: 480px) {
   .motion-grid {
-    width: 240px;
-    height: 240px;
+    max-width: 260px;
+    /* Slightly smaller for very small screens */
+    width: 90%;
   }
+
   .fs25rem {
     font-size: 1.8rem;
-    
+
   }
+
   .animated-title {
-    font-weight:900;
+    font-weight: 900;
     line-height: 1.5;
     margin-bottom: 2rem;
   }
-  .animated-title span{
+
+  .animated-title span {
     font-size: 2rem;
-   
+
   }
-  .stats_line{
+
+  .stats_line {
     opacity: 0.7;
   }
+
   .fs1rem {
     font-size: 0.9rem;
   }
+
   .enroll_btn {
     font-size: 14px;
     padding: 20px 24px;
-    width:90%;
-    margin-left:5%;
+    width: 90%;
+    margin-left: 5%;
   }
-  .home-hero-content{
+
+  .home-hero-content {
     line-height: 1.2;
     text-align: justify;
   }
 
 }
-  .students_img{
+
+.students_img {
   width: 35px;
   height: 35px;
   object-fit: cover;
-  margin:-5px;
+  margin: -5px;
 }

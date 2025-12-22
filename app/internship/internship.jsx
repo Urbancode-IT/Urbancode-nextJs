@@ -198,7 +198,13 @@ function App() {
                 <div className="duration">
                   <i className="fa-regular fa-clock"></i> {internship.duration}
                 </div>
-                <a href="#" className="apply-btn">Apply</a>
+                <a
+                  href="#application"
+                  className="apply-btn"
+                  onClick={() => setFormData(prev => ({ ...prev, program: internship.title }))}
+                >
+                  Apply
+                </a>
               </div>
             ))}
           </div>
@@ -232,7 +238,7 @@ function App() {
           <div className="text-center mb-4">
             <h2 className="section-title">Ready to Apply</h2>
             <p className="section-subtitle">
-              Submit your application today and join thousands of successful graduates 
+              Submit your application today and join thousands of successful graduates
               who have transformed their <br></br>careers with us.
             </p>
           </div>
@@ -247,10 +253,10 @@ function App() {
               <div className="row g-3">
                 <div className="col-md-6">
                   <label htmlFor="firstName"></label>
-                  <input 
-                    type="text" 
-                    id="firstName" 
-                    className="form-control custom-input" 
+                  <input
+                    type="text"
+                    id="firstName"
+                    className="form-control custom-input"
                     placeholder="Enter first name"
                     value={formData.firstName}
                     onChange={handleInputChange}
@@ -258,10 +264,10 @@ function App() {
                 </div>
                 <div className="col-md-6">
                   <label htmlFor="lastName"></label>
-                  <input 
-                    type="text" 
-                    id="lastName" 
-                    className="form-control custom-input" 
+                  <input
+                    type="text"
+                    id="lastName"
+                    className="form-control custom-input"
                     placeholder="Enter last name"
                     value={formData.lastName}
                     onChange={handleInputChange}
@@ -269,10 +275,10 @@ function App() {
                 </div>
                 <div className="col-12">
                   <label htmlFor="email"></label>
-                  <input 
-                    type="email" 
-                    id="email" 
-                    className="form-control custom-input" 
+                  <input
+                    type="email"
+                    id="email"
+                    className="form-control custom-input"
                     placeholder="Enter your email"
                     value={formData.email}
                     onChange={handleInputChange}
@@ -280,10 +286,10 @@ function App() {
                 </div>
                 <div className="col-12">
                   <label htmlFor="mobile"></label>
-                  <input 
-                    type="tel" 
-                    id="mobile" 
-                    className="form-control custom-input" 
+                  <input
+                    type="tel"
+                    id="mobile"
+                    className="form-control custom-input"
                     placeholder="Enter your mobile number"
                     value={formData.mobile}
                     onChange={handleInputChange}
@@ -291,8 +297,8 @@ function App() {
                 </div>
                 <div className="col-12">
                   <label htmlFor="program"></label>
-                  <select 
-                    id="program" 
+                  <select
+                    id="program"
                     className="form-select custom-input"
                     value={formData.program}
                     onChange={handleInputChange}
@@ -307,8 +313,8 @@ function App() {
                 </div>
                 <div className="col-12">
                   <label htmlFor="experience"></label>
-                  <select 
-                    id="experience" 
+                  <select
+                    id="experience"
                     className="form-select custom-input"
                     value={formData.experience}
                     onChange={handleInputChange}
@@ -322,10 +328,10 @@ function App() {
                 </div>
                 <div className="col-12">
                   <label htmlFor="interest"></label>
-                  <textarea 
-                    id="interest" 
-                    className="form-control custom-input" 
-                    rows="3" 
+                  <textarea
+                    id="interest"
+                    className="form-control custom-input"
+                    rows="3"
                     placeholder="Tell us about your goals and what you hope to gain"
                     value={formData.interest}
                     onChange={handleInputChange}
@@ -333,20 +339,20 @@ function App() {
                 </div>
                 <div className="col-12">
                   <label htmlFor="portfolio"></label>
-                  <input 
-                    type="url" 
-                    id="portfolio" 
-                    className="form-control custom-input" 
+                  <input
+                    type="url"
+                    id="portfolio"
+                    className="form-control custom-input"
                     placeholder="https://github.com/yourusername"
                     value={formData.portfolio}
                     onChange={handleInputChange}
                   />
                 </div>
-<div className="submit-container">
-  <button type="submit" className="submit-btn">
-    Submit Application
-  </button>
-</div>
+                <div className="submit-container">
+                  <button type="submit" className="submit-btn">
+                    Submit Application
+                  </button>
+                </div>
 
               </div>
             </form>
