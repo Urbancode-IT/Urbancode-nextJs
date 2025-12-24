@@ -1,3 +1,4 @@
+
 .trending-section {
   padding: 70px 20px;
   background: linear-gradient(180deg, #ffffff 0%, #f8fafb 50%, #f3f4f6 100%);
@@ -5,12 +6,12 @@
   position: relative;
 }
 
-.trending-header {
+.trending-section .trending-header {
   text-align: center;
   margin-bottom: 60px;
 }
 
-.trending-title {
+.trending-section .trending-title {
   font-size: 36px;
   font-weight: 700;
   color: #1f2937;
@@ -19,12 +20,12 @@
   line-height: 1.2;
 }
 
-.trending-title .text-success {
+.trending-section .trending-title .text-success {
   color: #0ca678;
   position: relative;
 }
 
-.trending-subtitle {
+.trending-section .trending-subtitle {
   font-size: 15px;
   color: #6b7280;
   max-width: 700px;
@@ -33,13 +34,13 @@
   line-height: 1.6;
 }
 
-.marquee {
+.trending-section .marquee {
   width: 100%;
   overflow: hidden;
   position: relative;
 }
 
-.marquee-track {
+.trending-section .marquee-track {
   display: flex;
   gap: 18px;
   width: max-content;
@@ -47,16 +48,16 @@
   padding: 10px 0;
 }
 
-.marquee:hover .marquee-track {
+.trending-section .marquee:hover .marquee-track {
   animation-play-state: paused;
 }
 
-.course-card-link {
+.trending-section .course-card-link {
   text-decoration: none;
   color: inherit;
 }
 
-.course-card {
+.trending-section .course-card {
   min-width: 280px;
   width: 280px;
   height: 380px;
@@ -72,13 +73,13 @@
   backdrop-filter: blur(10px);
 }
 
-.course-card:hover {
+.trending-section .course-card:hover {
   transform: translateY(-10px);
   box-shadow: 0 12px 32px rgba(12, 166, 120, 0.20), 0 0 0 1px rgba(12, 166, 120, 0.2);
   border: 1px solid rgba(12, 166, 120, 0.3);
 }
 
-.course-image-wrapper {
+.trending-section .course-image-wrapper {
   position: relative;
   width: 100%;
   height: 160px;
@@ -86,19 +87,19 @@
   background: linear-gradient(135deg, #0ca678, #059669);
 }
 
-.course-image {
+.trending-section .course-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.5s cubic-bezier(0.23, 1, 0.320, 1);
 }
 
-.course-card:hover .course-image {
+.trending-section .course-card:hover .course-image {
   transform: scale(1.12) rotate(2deg);
   filter: brightness(1.1);
 }
 
-.course-overlay {
+.trending-section .course-overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -109,11 +110,11 @@
   transition: opacity 0.4s ease;
 }
 
-.course-card:hover .course-overlay {
+.trending-section .course-card:hover .course-overlay {
   opacity: 1;
 }
 
-.impact-badge {
+.trending-section .impact-badge {
   position: absolute;
   bottom: 12px;
   left: 12px;
@@ -134,16 +135,16 @@
   transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
 }
 
-.course-card:hover .impact-badge {
+.trending-section .course-card:hover .impact-badge {
   transform: translateY(0);
   opacity: 1;
 }
 
-.impact-badge i {
+.trending-section .impact-badge i {
   font-size: 14px;
 }
 
-.course-content {
+.trending-section .course-content {
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -152,7 +153,7 @@
   text-align: center;
 }
 
-.course-title {
+.trending-section .course-title {
   font-size: 17px;
   font-weight: 700;
   color: #1f2937;
@@ -161,7 +162,7 @@
   letter-spacing: -0.3px;
 }
 
-.course-outcome {
+.trending-section .course-outcome {
   font-size: 13px;
   color: #4b5563;
   line-height: 1.5;
@@ -173,7 +174,7 @@
   font-weight: 500;
 }
 
-.course-cta {
+.trending-section .course-cta {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -190,17 +191,17 @@
   border: 1px solid rgba(12, 166, 120, 0.2);
 }
 
-.course-card:hover .course-cta {
+.trending-section .course-card:hover .course-cta {
   background: rgba(12, 166, 120, 0.15);
   gap: 10px;
   border-color: #0ca678;
 }
 
-.course-cta i {
+.trending-section .course-cta i {
   transition: transform 0.3s ease;
 }
 
-.course-card:hover .course-cta i {
+.trending-section .course-card:hover .course-cta i {
   transform: translateX(3px);
 }
 
@@ -228,45 +229,45 @@
     padding: 50px 15px;
   }
 
-  .trending-header {
+  .trending-section .trending-header {
     margin-bottom: 40px;
   }
 
-  .trending-title {
+  .trending-section .trending-title {
     font-size: 26px;
     font-weight: 700;
     margin-bottom: 8px;
   }
 
-  .trending-subtitle {
+  .trending-section .trending-subtitle {
     font-size: 13px;
   }
 
-  .course-card {
+  .trending-section .course-card {
     min-width: 250px;
     width: 250px;
     height: 360px;
   }
 
-  .course-image-wrapper {
+  .trending-section .course-image-wrapper {
     height: 140px;
   }
 
-  .course-content {
+  .trending-section .course-content {
     padding: 16px;
   }
 
-  .course-title {
+  .trending-section .course-title {
     font-size: 15px;
     margin-bottom: 8px;
   }
 
-  .course-outcome {
+  .trending-section .course-outcome {
     font-size: 12px;
     margin-bottom: 12px;
   }
 
-  .course-cta {
+  .trending-section .course-cta {
     font-size: 11px;
     padding: 8px;
   }
@@ -277,54 +278,54 @@
     padding: 40px 12px;
   }
 
-  .trending-header {
+  .trending-section .trending-header {
     margin-bottom: 30px;
   }
 
-  .trending-title {
+  .trending-section .trending-title {
     font-size: 22px;
     margin-bottom: 6px;
   }
 
-  .trending-subtitle {
+  .trending-section .trending-subtitle {
     font-size: 12px;
   }
 
-  .marquee-track {
+  .trending-section .marquee-track {
     gap: 12px;
   }
 
-  .course-card {
+  .trending-section .course-card {
     min-width: 220px;
     width: 220px;
     height: 340px;
   }
 
-  .course-image-wrapper {
+  .trending-section .course-image-wrapper {
     height: 120px;
   }
 
-  .course-content {
+  .trending-section .course-content {
     padding: 12px;
   }
 
-  .course-title {
+  .trending-section .course-title {
     font-size: 14px;
     margin-bottom: 6px;
   }
 
-  .course-outcome {
+  .trending-section .course-outcome {
     font-size: 11px;
     margin-bottom: 10px;
   }
 
-  .impact-badge {
+  .trending-section .impact-badge {
     font-size: 11px;
     padding: 6px 10px;
     gap: 6px;
   }
 
-  .course-cta {
+  .trending-section .course-cta {
     font-size: 10px;
     padding: 7px;
   }
