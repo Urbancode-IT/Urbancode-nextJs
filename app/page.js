@@ -1,15 +1,16 @@
 //app/page.js
 
-import Head from "next/head";
+
 import HeroSection from './components/Home/HeroSection';
+import Banner from './components/Home/Banner';
 import TrendingCourses from './components/Home/TrendingCourses';
- import Courses from './components/Home/Courses';
+import Courses from './components/Home/Courses';
 import TestimonialCarousel from './components/Home/TestimonialCarousel';
 import FaqBootstrap from './components/Home/Faqs';
 import Carousel from './components/Home/Carasoul';
 
 export const metadata = {
-  
+
   title:
     "Urbancode Edutech | Best IT & Coding Training Institute in Chennai (Velachery & Pallikaranai)",
   description:
@@ -17,7 +18,7 @@ export const metadata = {
   verification: {
     google: "WEXErXa5JBg5hZPCEKFY_g1UVf9R3AxHCZYgQWjQspY",
   },
-    keywords: [
+  keywords: [
     "IT training institute in Chennai",
     "Best coding institute in Velachery",
     "Software training in Pallikaranai",
@@ -59,10 +60,10 @@ export const metadata = {
 export default function HomePage() {
   return (
     <>
-    <Head>
-     <meta name="google-site-verification" content="yGAGClhKmqd-q61BmWlHPO3GsYzBEE2JZbOPhPIbdtY" />
-      <script type="application/ld+json">
-{`
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: `
 {
   "@context": "https://schema.org",
   "@type": "EducationalOrganization",
@@ -101,14 +102,17 @@ export default function HomePage() {
     "https://www.linkedin.com/company/99156099/admin/dashboard/"
   ]
 }
-`}
-</script></Head>
+`
+        }}
+      />
       <HeroSection />
-      {/* <TrendingCourses /> */}
+      {/* <Banner /> */}
+      <Carousel />
       <Courses />
       <TestimonialCarousel />
       <FaqBootstrap />
-      <Carousel /> 
+      <TrendingCourses />
+      {/* <Carousel /> */}
     </>
   );
 }

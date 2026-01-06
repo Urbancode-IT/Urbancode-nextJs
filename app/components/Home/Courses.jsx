@@ -1,137 +1,211 @@
-'use client';
-
-import { useState, useEffect } from 'react';
-import Image from 'next/image';
-import { FaArrowRight } from 'react-icons/fa';
+"use client";
+import React, { useRef, useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import './courses.css';
 
-const Courses = () => {
-  const [isMobile, setIsMobile] = useState(false);
+const courses = [
+  {
+    id: 1,
+    title: "Fullstack Development",
+    description: "Full Stack Development covers both frontend and backend to build complete, scalable web applications.",
+    image: "/images/home/FullStack.webp",
+    logo: [
+      "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+      "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+      "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg"
+    ],
+    path: "/courses/web-and-app-development/java-full-stack-development"
+  },
+  {
+    id: 2,
+    title: "MERN Stack",
+    description: "MERN Stack is a powerful full-stack JavaScript technology for building modern web applications.",
+    image: "/images/home/MERN.webp",
+    logo: [
+      "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
+      "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
+      "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+      "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
+    ],
+    path: "/courses/web-and-app-development/mern-stack"
+  },
+  {
+    id: 3,
+    title: "AWS",
+    description: "AWS is a cloud platform that provides scalable computing, storage, and services to build and deploy applications.",
+    image: "/images/home/aws1.webp",
+    logo: ["https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg"],
+    path: "/courses/cloud-and-devops/aws"
+  },
+  {
+    id: 4,
+    title: "Data Science",
+    description: "Data Science combines statistics, data analysis, and machine learning to understand and analyze actual phenomena.",
+    image: "/images/home/DataSience.webp",
+    logo: [
+      "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+      "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg"
+    ],
+    path: "/courses/data-science/ai-and-ml"
+  },
+  {
+    id: 5,
+    title: "UI/UX Design",
+    description: "UI/UX Design focuses on creating interfaces that look good and offer a seamless user experience.",
+    image: "/images/home/UI Ux.webp",
+    logo: ["https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg"],
+    path: "/courses/ui-ux-designing/figma"
+  },
+  {
+    id: 6,
+    title: "Python Programming",
+    description: "Learn Python for web development, data analysis, usage in AI and scientific computing.",
+    image: "/images/home/python.webp",
+    logo: ["https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"],
+    path: "/courses/programming-languages/core-python"
+  }
+];
 
-  // ✅ Avoid "window is not defined" during SSR
-  useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
-
-  const courses = [
-    {
-      title: 'Programing Languages',
-      description:
-        ' like Python and JavaScript serve as excellent starting points for beginners and are essential in modern web development. Alongside powerful languages such as C++, Java, HTML, and CSS, they form the foundation for building dynamic, scalable, and interactive digital experiences.',
-      courses: '6 Courses',
-      img: '/images/home/img1.webp',
-      link:"/courses/programming-languages"
-    },
-    {
-      title: 'Data Science & Visualization',
-      description:
-        'Turn raw data into powerful insights with our Data Analytics courses. Learn Excel, SQL, Power BI, and Python for real-world applications. Transform complex datasets into impactful visuals with Tableau, Power BI, and Python visualization tools. Learn to design dashboards, graphs, and reports that drive clarity and business intelligence.',
-      courses: '4 Courses',
-      img: '/images/home/img2.webp',
-      link:"/courses/data-visualization"
-    },
-    {
-      title: 'Software Testing',
-      description:
-        'With the cutting-edge Software Testing tools and frameworks like Selenium and Playwright, learn to automate, validate, and enhance application performance using JavaScript and TypeScript, and gain the skills to ensure seamless, high-quality software delivery.',
-      courses: '3 Courses',
-      img: '/images/home/img3.webp',
-      link:"/courses/software-testing"
-    },
-    {
-      title: 'Full Stack Development',
-      description:
-        'In Full Stack Development with in-demand technologies like MERN, MEAN, Java Stack, .Net Angular and React Native. Master end-to-end web and mobile application development — from dynamic frontends to powerful backends.',
-      courses: '5 Courses',
-      img: '/images/home/img4.webp',
-      link:"/courses/web-and-app-development"
-    },
-  ];
+const CourseDetailPlaceholder = ({ name }) => {
+  const router = useRouter();
 
   return (
-    <div className="it_career_card">
-      <div className="container p-lg-5">
-        <h5 className="section-title text-center">
-          <span className="mx-2">―</span>
-          Explore our courses
-          <span className="mx-2">―</span>
-        </h5>
+    <div style={{ padding: '50px', textAlign: 'center' }}>
+      <h1>{name} Page</h1>
+      <p>This page is currently under development. Specific content will be added soon.</p>
+      <button onClick={() => router.back()}>Go Back</button>
+    </div>
+  );
+};
 
-        <h4 className="text-center text-muted mb-5 fw-semibold">
-          Discover tailored learning paths designed to <br />
-          match every IT career
-        </h4>
-        <div className="row g-4 mb-5">
-          {courses.map((course, index) => (
-            <div className="col-12 col-lg-6" key={index}>
-              <div className="card custom-cardhome shadow-lg border-0 d-flex flex-column h-100 rounded-5 p-3 p-lg-5" onClick={() => window.location.href = course.link} style={{cursor: 'pointer'}}>
-                <div className="card-img-container overflow-hidden mb-3">
-                  <Image
-                    src={course.img}
-                    alt={course.title}
-                    width={600}
-                    height={350}
-                    className="card-img-top w-100 h-auto"
-                  />
-                </div>
-                <div className="card-body flex-grow-1 p-0">
-                  <h5 className="card-title fw-bold careerCardTitleText">
-                    {course.title}
-                  </h5>
-                  <p className="fw-normal m-0 careerCardDescription text-muted">
-                    {course.description}
-                  </p>
-                </div>
-                <div className="card-footer bg-transparent border-0 d-flex justify-content-end p-0 mt-3">
-                  <button className="btn btn-secondary btn-green rounded-pill px-4 py-0 careerGoalBtn">
-                    {course.courses}
-                  </button>
-                </div>
+const CourseCard = ({ course }) => {
+  const router = useRouter();
+
+  return (
+    <div className="course-card" onClick={() => router.push(course.path)}>
+      <div className="card-image-container">
+        <img src={course.image} alt={course.title} className="card-image" />
+
+        <div className="glass-overlay">
+          <div className="card-content-wrapper">
+            <div className="title-container">
+              <h3 className="card-title">{course.title}</h3>
+            </div>
+            <div className="card-footer-row">
+              <div className="card-logo-row">
+                {course.logo.map((logoUrl, index) => (
+                  <div key={index} className="logo-container">
+                    <img src={logoUrl} alt="logo" className="card-logo" />
+                  </div>
+                ))}
+              </div>
+              <div
+                className="card-arrow"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
               </div>
             </div>
-          ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const Courses = () => {
+  const sliderRef = useRef(null);
+  const [isAtStart, setIsAtStart] = useState(true);
+  const [isAtEnd, setIsAtEnd] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
+
+  const checkScrollPosition = () => {
+    if (!sliderRef.current) return;
+    const { scrollLeft, scrollWidth, clientWidth } = sliderRef.current;
+    const atStart = scrollLeft <= 1;
+    const atEnd = Math.ceil(scrollLeft + clientWidth) >= scrollWidth - 1;
+    setIsAtStart(atStart);
+    setIsAtEnd(atEnd);
+  };
+
+  useEffect(() => {
+    checkScrollPosition();
+    window.addEventListener('resize', checkScrollPosition);
+    return () => window.removeEventListener('resize', checkScrollPosition);
+  }, []);
+
+  useEffect(() => {
+    if (isPaused) return;
+    const interval = setInterval(() => {
+      slideNext();
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [isPaused, isAtEnd]);
+
+  const slideNext = () => {
+    if (sliderRef.current) {
+      if (isAtEnd) {
+        sliderRef.current.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        sliderRef.current.scrollBy({ left: 321, behavior: 'smooth' });
+      }
+    }
+  };
+
+  const slidePrev = () => {
+    if (sliderRef.current) {
+      if (isAtStart) {
+        sliderRef.current.scrollTo({ left: sliderRef.current.scrollWidth, behavior: 'smooth' });
+      } else {
+        sliderRef.current.scrollBy({ left: -321, behavior: 'smooth' });
+      }
+    }
+  };
+
+  return (
+    <div className="placement-container-wrapper">
+      <div className="placement-content">
+        <div className="left-text-section">
+          <h2>
+            100% <br />
+            Placement <br />
+            Courses
+          </h2>
         </div>
 
-        {/* Browse All button */}
-        <div className="d-flex justify-content-center align-items-center">
-          <button className="btn enroll_btn rounded-pill px-4 py-2 mt-5" onClick={() => window.location.href = '/courses-categories'}>
-          {/* <button className="gradient-btn d-flex align-items-center justify-content-between px-5 py-2 rounded-pill border-0 text-dark" onClick={() => window.location.href = '/courses-categories'}> */}
-            <span className="me-3 fw-semibold">View all courses</span>
-            <span className="arrow-circle">
-              <FaArrowRight />
-            </span>
-          </button>
-        </div>
+        <div
+          className="courses-slider-wrapper"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
+          <div className="courses-slider-container">
+            <div
+              className="courses-track"
+              ref={sliderRef}
+              onScroll={checkScrollPosition}
+            >
+              {courses.map((course) => (
+                <CourseCard key={course.id} course={course} />
+              ))}
+            </div>
+          </div>
 
-        
+          <div className="navigation-controls">
+            <div className="prev-btn-placeholder">
+              <button className="nav-btn prev-btn" onClick={slidePrev}>
+                &lt;
+              </button>
+            </div>
 
-        {/* Student Lifecycle Image */}
-        <div className=" pt-5 pt-lg-5 pt-sm-2 mt-5"> 
-          <h5 className="section-title text-center">
-          <span className="mx-2">―</span>
-          Students' Lifecycle
-          <span className="mx-2">―</span>
-        </h5>
+            <div className="progress-bar-container">
+              <div className={`progress-line ${isAtStart ? 'active' : ''}`}></div>
+              <div className={`progress-line ${!isAtStart ? 'active' : ''}`}></div>
+            </div>
 
-        <h4 className="text-center text-muted mb-5 fw-semibold">
-          Explore the students lifecycle at Urbancode
-        </h4>
-        <div className="student-lifecycle-container">
-          <Image
-            src={
-              isMobile
-                ? '/images/home/Mobile.webp'
-                : '/images/home/Desktop.webp'
-            }
-            alt="Student lifecycle"
-            width={1200}
-            height={600}
-            className="student-lifecycle-img img-fluid w-100"
-            priority
-          />
+            <button className="nav-btn next-btn" onClick={slideNext}>
+              &gt;
+            </button>
           </div>
         </div>
       </div>

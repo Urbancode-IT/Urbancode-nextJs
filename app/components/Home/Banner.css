@@ -1,0 +1,30 @@
+.new-year-banner-section {
+    padding: 0;
+    width: 100%;
+    overflow: hidden;
+    background-color: transparent;
+}
+
+.banner-image-wrapper {
+    width: 100%;
+    cursor: pointer;
+    overflow: hidden;
+    transition: opacity 0.3s ease;
+}
+
+.banner-image-wrapper:hover {
+    opacity: 0.95;
+}
+
+.banner-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+@media (max-width: 768px) {
+    .new-year-banner-section {
+        padding: 0;
+    }
+}

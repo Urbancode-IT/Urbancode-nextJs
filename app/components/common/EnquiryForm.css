@@ -6,11 +6,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 2000;
+  z-index: 11000;
 }
 
 .enquiry-modal {
- max-width: 600px;
+  max-width: 600px;
   width: 90%;
   background: linear-gradient(180deg, #e3f0eb 0%, #f3f5f3 100%);
   border-radius: 20px;
@@ -75,6 +75,7 @@
 .enquiry-modal .submit-btn:hover {
   background: #2e2e2e;
 }
+
 .status-message {
   text-align: center;
   margin-top: 10px;

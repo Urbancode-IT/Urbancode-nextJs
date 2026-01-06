@@ -11,21 +11,21 @@ export default function HeroSection() {
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [displayedLetters, setDisplayedLetters] = useState("");
   const maxWordLength = Math.max(...words.map((w) => w.length));
-  
+
   const socialLinks = [
-  {
-    icon: FaFacebookF,
-    url: "https://www.facebook.com/profile.php?id=61563183054002#", 
-  },
-  {
-    icon: FaInstagram,
-    url: "https://www.instagram.com/urbancode_edutech/", 
-  },
-  {
-    icon: FaLinkedinIn,
-    url: "https://www.linkedin.com/company/99156099/admin/dashboard/", 
-  },
-];
+    {
+      icon: FaFacebookF,
+      url: "https://www.facebook.com/profile.php?id=61563183054002#",
+    },
+    {
+      icon: FaInstagram,
+      url: "https://www.instagram.com/urbancode_edutech/",
+    },
+    {
+      icon: FaLinkedinIn,
+      url: "https://www.linkedin.com/company/99156099/admin/dashboard/",
+    },
+  ];
 
   useEffect(() => {
     const word = words[currentWordIndex];
@@ -72,15 +72,15 @@ export default function HeroSection() {
   return (
     <div className="home_header_main_container pt-lg-3">
       <div className="container home_header_container">
-        <div className="row align-items-center justify-content-center  text-start mx-2 py-5">
+        <div className="row align-items-center justify-content-center  text-start mx-2 pt-5 pb-5">
           {/* Left Section */}
           <div className="col-lg-6 col-md-10 mb-5 mb-lg-0">
             <h1 className="fw-bold fs25rem animated-title">
-              Transforming Skills into <br/>
+              Transforming Skills into <br />
               <span
                 className="text-success animated-word"
               >
-                {displayedLetters?displayedLetters:"|"}
+                {displayedLetters ? displayedLetters : "|"}
               </span>
             </h1>
 
@@ -109,7 +109,7 @@ export default function HeroSection() {
                     src={`https://randomuser.me/api/portraits/${u}.jpg`}
                     alt="Students learning MERN Stack at Urbancode Chennai"
                     className="rounded-circle border border-white shadow students_img"
-                  
+
                   />
                 ))}
               </div>
@@ -117,21 +117,21 @@ export default function HeroSection() {
             </div>
 
             <button className="btn enroll_btn rounded-pill px-4 py-2 mt-5"
-               onClick={() => setShowEnquiry(true)}>
-        <span>Enroll now →</span>
-      </button>
+              onClick={() => setShowEnquiry(true)}>
+              <span>Enroll now →</span>
+            </button>
 
-      {/* Popup Form */}
-      <EnquiryFormModal
-        isOpen={showEnquiry}
-        onClose={() => setShowEnquiry(false)}
-        courseName="Full Stack Development"
-      />
+            {/* Popup Form */}
+            <EnquiryFormModal
+              isOpen={showEnquiry}
+              onClose={() => setShowEnquiry(false)}
+              courseName="Full Stack Development"
+            />
           </div>
 
           {/* Right Section */}
           <div className="col-lg-6 col-md-10 d-flex flex-column flex-md-row gap-3 align-items-center justify-content-center justify-content-lg-end">
-            <motion.div 
+            <motion.div
               className="motion-grid mb-4"
               layout
               transition={{ duration: 0.6, ease: "easeInOut" }}
@@ -145,8 +145,8 @@ export default function HeroSection() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  transition={{ 
-                    duration: 0.6, 
+                  transition={{
+                    duration: 0.6,
                     ease: "easeInOut",
                     layout: { duration: 0.6 }
                   }}
@@ -157,18 +157,18 @@ export default function HeroSection() {
 
             {/* Social Icons */}
             <div className="d-flex gap-3 flex-row flex-md-column">
-      {socialLinks.map(({ icon: Icon, url }, i) => (
-        <a
-          key={i}
-          href={url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="social-icon d-flex justify-content-center align-items-center border rounded-circle"
-        >
-          <Icon />
-        </a>
-      ))}
-    </div>
+              {socialLinks.map(({ icon: Icon, url }, i) => (
+                <a
+                  key={i}
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="social-icon d-flex justify-content-center align-items-center border rounded-circle"
+                >
+                  <Icon />
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </div>

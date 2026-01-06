@@ -1,120 +1,203 @@
-import "./TrendingCourses.css";
-import Link from "next/link";
+'use client';
+
+import React, { useRef, useState, useEffect } from 'react';
+import './TrendingCourses.css';
+import EnquiryFormModal from "@/app/components/common/EnquiryFormModal.jsx";
+
+const courses = [
+  {
+    id: 1,
+    title: "Advanced React Patterns",
+    instructor: "Sarah Drasner",
+    duration: "12 Weeks",
+    description: "Master advanced React concepts like Render Props, HOCs, and the latest Hooks patterns for scalable applications.",
+    image: "/images/courses/React-1.webp",
+  },
+  {
+    id: 2,
+    title: "Java Programming Masterclass",
+    instructor: "James Gosling",
+    duration: "10 Weeks",
+    description: "Learn Java from scratch to advanced level, including OOPS, Collections, and Multi-threading.",
+    image: "/images/courses/Java-1.webp",
+  },
+  {
+    id: 3,
+    title: "Fullstack MERN Development",
+    instructor: "The Net Ninja",
+    duration: "15 Weeks",
+    description: "Build complete web applications using MongoDB, Express, React, and Node.js.",
+    image: "/images/courses/MERN.webp",
+  },
+  {
+    id: 4,
+    title: "AWS Cloud Architecture",
+    instructor: "Colt Steele",
+    duration: "14 Weeks",
+    description: "Scale your applications globally using AWS, Azure, and modern DevOps practices.",
+    image: "/images/courses/AWSNEW.webp",
+  },
+  {
+    id: 5,
+    title: "Business English Masterclass",
+    instructor: "Rachel Smith",
+    duration: "8 Weeks",
+    description: "Improve your professional communication, presentation, and writing skills for a global career.",
+    image: "/images/courses/EnglishLanguagess.webp",
+  },
+  {
+    id: 6,
+    title: "Data Analytics with Power BI",
+    instructor: "Angela Yu",
+    duration: "6 Weeks",
+    description: "Transform raw data into beautiful, interactive, and insightful web visualizations using Power BI.",
+    image: "/images/courses/PowerBII.webp",
+  },
+  {
+    id: 7,
+    title: "Microsoft SharePoint Master",
+    instructor: "Jeff Teper",
+    duration: "9 Weeks",
+    description: "Master document management, collaboration, and intranet solutions using SharePoint Online.",
+    image: "/images/courses/SharePoint.webp",
+  },
+  {
+    id: 8,
+    title: "Professional Software Testing",
+    instructor: "Angie Jones",
+    duration: "11 Weeks",
+    description: "Learn manual and automated testing, bug tracking, and quality assurance best practices.",
+    image: "/images/courses/SoftwareTestingg.webp",
+  },
+  {
+    id: 9,
+    title: "Enterprise .NET Core",
+    instructor: "Scott Hanselman",
+    duration: "13 Weeks",
+    description: "Build robust, cross-platform enterprise applications using C# and the .NET Core framework.",
+    image: "/images/courses/Net.webp",
+  },
+  {
+    id: 10,
+    title: "React Native Full Stack",
+    instructor: "Maximilian Schwarzmüller",
+    duration: "16 Weeks",
+    description: "Develop high-performance, native-like mobile applications for iOS and Android using React Native and a Node.js backend.",
+    image: "/images/courses/React2.webp",
+  }
+];
 
 const TrendingCourses = () => {
-  const trendingCourses = [
-    {
-      title: "Full Stack Development",
-      outcome: "Become a complete app builder from front to back",
-      slug: "web-and-app-development",
-      image: "/images/courses-images/web.webp",
-      icon: "bi bi-code-slash",
-      impact: "Build production-ready applications"
-    },
-    {
-      title: "Data Science",
-      outcome: "Turn data into million-dollar business insights",
-      slug: "data-science",
-      image: "/images/courses-images/datascience.webp",
-      icon: "bi bi-graph-up",
-      impact: "Make data-driven decisions"
-    },
-    {
-      title: "Software Testing",
-      outcome: "Ensure quality that companies depend on",
-      slug: "software-testing",
-      image: "/images/courses-images/softwaretesting.webp",
-      icon: "bi bi-shield-check",
-      impact: "Guarantee zero-defect releases"
-    },
-    {
-      title: "Cloud & DevOps",
-      outcome: "Master cloud infrastructure that scales globally",
-      slug: "cloud-and-devops",
-      image: "/images/courses-images/Cloud.webp",
-      icon: "bi bi-cloud-check",
-      impact: "Deploy at enterprise scale"
-    },
-    {
-      title: "UI/UX Design",
-      outcome: "Design experiences that users love",
-      slug: "ui-ux-designing",
-      image: "/images/courses-images/UIUX.webp",
-      icon: "bi bi-palette",
-      impact: "Create memorable user journeys"
-    },
-    {
-      title: "Programming Languages",
-      outcome: "Build your coding foundation for any tech role",
-      slug: "programming-languages",
-      image: "/images/courses-images/programming.webp",
-      icon: "bi bi-terminal",
-      impact: "Master fundamental logic"
-    },
-    {
-      title: "Database",
-      outcome: "Architect data systems that never fail",
-      slug: "database",
-      image: "/images/courses-images/database.webp",
-      icon: "bi bi-database",
-      impact: "Manage mission-critical data"
-    },
-    {
-      title: "Digital Marketing",
-      outcome: "Drive growth and build brands online",
-      slug: "digital-marketing",
-      image: "/images/courses-images/SEO.webp",
-      icon: "bi bi-bullseye",
-      impact: "Reach millions of potential customers"
+  const sliderRef = useRef(null);
+  const [isAtStart, setIsAtStart] = useState(true);
+  const [isAtEnd, setIsAtEnd] = useState(false);
+  const [selectedCourse, setSelectedCourse] = useState(null);
+  const [isPaused, setIsPaused] = useState(false);
+  const [showEnquiry, setShowEnquiry] = useState(false);
+
+  const checkScrollPosition = () => {
+    if (!sliderRef.current) return;
+    const { scrollLeft, scrollWidth, clientWidth } = sliderRef.current;
+    const atStart = scrollLeft <= 1;
+    const atEnd = Math.ceil(scrollLeft + clientWidth) >= scrollWidth - 1;
+    setIsAtStart(atStart);
+    setIsAtEnd(atEnd);
+  };
+
+  const slideNext = () => {
+    if (sliderRef.current) {
+      if (isAtEnd) {
+        sliderRef.current.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        sliderRef.current.scrollBy({ left: 290, behavior: 'smooth' }); // 260 + 30
+      }
     }
-  ];
+  };
+
+  const slidePrev = () => {
+    if (sliderRef.current) {
+      sliderRef.current.scrollBy({ left: -290, behavior: 'smooth' });
+    }
+  };
+
+  useEffect(() => {
+    checkScrollPosition();
+    window.addEventListener('resize', checkScrollPosition);
+    return () => window.removeEventListener('resize', checkScrollPosition);
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (!isPaused && !selectedCourse && !showEnquiry) {
+        slideNext();
+      }
+    }, 3000); // 3 seconds interval
+
+    return () => clearInterval(interval);
+  }, [isAtEnd, isPaused, selectedCourse, showEnquiry]);
+
+  const handleEnrollClick = () => {
+    setShowEnquiry(true);
+  };
 
   return (
-    <section className="trending-section">
+    <div className="trending-section-container">
       <div className="trending-header">
-        <h2 className="trending-title">
-          Your Path to a <span className="text-success">Tech Career</span>
-        </h2>
-        <p className="trending-subtitle">
-          Join thousands of students who transformed their careers with real-world skills
-        </p>
+        <h2>Exciting offers</h2>
       </div>
 
-      <div className="marquee">
-        <div className="marquee-track">
-          {[...trendingCourses, ...trendingCourses].map((course, index) => (
-            <Link
-              href={`/courses/${course.slug}`}
-              key={index}
-              className="course-card-link"
-            >
-              <div className="course-card">
-                <div className="course-image-wrapper">
-                  <img
-                    src={course.image}
-                    alt={course.title}
-                    className="course-image"
-                  />
-                  <div className="course-overlay"></div>
-                  <div className="impact-badge">
-                    <i className={course.icon}></i>
-                    <span>{course.impact}</span>
-                  </div>
-                </div>
-                <div className="course-content">
-                  <h3 className="course-title">{course.title}</h3>
-                  <p className="course-outcome">{course.outcome}</p>
-                  <div className="course-cta">
-                    <span className="cta-text">Explore Path</span>
-                    <i className="bi bi-arrow-right"></i>
-                  </div>
+      <div
+        className="trending-slider-wrapper"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+      >
+        <button className={`nav-side-btn prev ${isAtStart ? 'is-disabled' : ''}`} onClick={slidePrev}>&lt;</button>
+
+        <div className="trending-scroll-track" ref={sliderRef} onScroll={checkScrollPosition}>
+          {courses.map((course) => (
+            <div key={course.id} className="trending-course-card" onClick={() => setSelectedCourse(course)}>
+              <div className="trending-image-box">
+                <img src={course.image} alt={course.title} />
+                <div className="card-hover-overlay">
+                  <span>View Details</span>
                 </div>
               </div>
-            </Link>
+            </div>
           ))}
         </div>
+
+        <button className={`nav-side-btn next ${isAtEnd ? 'is-disabled' : ''}`} onClick={slideNext}>&gt;</button>
       </div>
-    </section>
+
+      {selectedCourse && (
+        <div className="trending-modal-backdrop" onClick={() => setSelectedCourse(null)}>
+          <div className="trending-modal-body" onClick={(e) => e.stopPropagation()}>
+            <button className="trending-modal-close" onClick={() => setSelectedCourse(null)}>&times;</button>
+            <div className="trending-modal-content">
+              <div className="trending-modal-media">
+                <img src={selectedCourse.image} alt={selectedCourse.title} />
+              </div>
+              <div className="trending-modal-info">
+                <h3>{selectedCourse.title}</h3>
+                <div className="info-meta">
+                  <span><strong>Instructor:</strong> {selectedCourse.instructor}</span>
+                  <span><strong>Duration:</strong> {selectedCourse.duration}</span>
+                </div>
+                <p>{selectedCourse.description}</p>
+                <button className="trending-enroll-trigger" onClick={handleEnrollClick}>Enroll Now</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Enquiry Form Modal */}
+      <EnquiryFormModal
+        isOpen={showEnquiry}
+        onClose={() => setShowEnquiry(false)}
+        courseName={selectedCourse?.title || "Trending Course"}
+      />
+    </div>
   );
 };
 
