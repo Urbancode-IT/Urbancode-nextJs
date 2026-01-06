@@ -1,13 +1,33 @@
 "use client";
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import "./Chatbot.css"; // move your CSS here
 
 const ChatbotWidget = () => {
+  const [showPopup, setShowPopup] = useState(false);
+  const soundPlayedRef = useRef(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowPopup(true);
+
+      if (!soundPlayedRef.current) {
+        const audio = new Audio("/sounds/notification.mp3");
+        audio.volume = 0.4;
+        audio.play().catch(() => {});
+        soundPlayedRef.current = true;
+      }
+    }, 2000); // 5 sec delay
+
+    return () => clearTimeout(timer);
+  }, []);
+
   useEffect(() => {
     const chatbotTrigger = document.getElementById("chatbot-trigger");
     const chatbotContainer = document.getElementById("chatbot-container");
     const chatbotClose = document.querySelector(".chatbot-close");
+    
+
 
     if (!chatbotTrigger || !chatbotContainer || !chatbotClose) return;
 
@@ -16,7 +36,7 @@ const ChatbotWidget = () => {
 
     chatbotTrigger.addEventListener("click", toggleChat);
     chatbotClose.addEventListener("click", closeChat);
-
+    
     document.addEventListener("click", (event) => {
       if (
         chatbotContainer.classList.contains("active") &&
@@ -47,6 +67,20 @@ const ChatbotWidget = () => {
           />
         </div>
         <span className="chatbot-pulse"></span>
+        {showPopup && (
+          <div
+            className="chatbot-popup chatbot-popup-show"
+            onClick={(e) => {
+              e.stopPropagation();
+              setShowPopup(false);
+            }}
+          >
+            <div className="chatbot-text">
+              🎉 2nd Anniversary Offers are Live! <br/>Enroll a course today
+            </div><br/>
+            
+          </div>
+        )}
       </div>
 
       {/* Chatbot Container */}
