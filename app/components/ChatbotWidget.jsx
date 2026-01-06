@@ -76,7 +76,7 @@ const ChatbotWidget = () => {
             }}
           >
             <div className="chatbot-text">
-              🎉 2nd Anniversary Offers are Live! <br/>Enroll a course today
+              🎉 Festive Offers are Live! <br/>Enroll a course today
             </div><br/>
             
           </div>
