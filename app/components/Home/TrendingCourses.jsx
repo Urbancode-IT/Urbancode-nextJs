@@ -8,7 +8,6 @@ const courses = [
   {
     id: 1,
     title: "Advanced React Patterns",
-    instructor: "Sarah Drasner",
     duration: "12 Weeks",
     description: "Master advanced React concepts like Render Props, HOCs, and the latest Hooks patterns for scalable applications.",
     image: "/images/courses/React-1.webp",
@@ -16,7 +15,6 @@ const courses = [
   {
     id: 2,
     title: "Java Programming Masterclass",
-    instructor: "James Gosling",
     duration: "10 Weeks",
     description: "Learn Java from scratch to advanced level, including OOPS, Collections, and Multi-threading.",
     image: "/images/courses/Java-1.webp",
@@ -24,7 +22,6 @@ const courses = [
   {
     id: 3,
     title: "Fullstack MERN Development",
-    instructor: "The Net Ninja",
     duration: "15 Weeks",
     description: "Build complete web applications using MongoDB, Express, React, and Node.js.",
     image: "/images/courses/MERN.webp",
@@ -32,7 +29,6 @@ const courses = [
   {
     id: 4,
     title: "AWS Cloud Architecture",
-    instructor: "Colt Steele",
     duration: "14 Weeks",
     description: "Scale your applications globally using AWS, Azure, and modern DevOps practices.",
     image: "/images/courses/AWSNEW.webp",
@@ -40,7 +36,6 @@ const courses = [
   {
     id: 5,
     title: "Business English Masterclass",
-    instructor: "Rachel Smith",
     duration: "8 Weeks",
     description: "Improve your professional communication, presentation, and writing skills for a global career.",
     image: "/images/courses/EnglishLanguagess.webp",
@@ -48,7 +43,6 @@ const courses = [
   {
     id: 6,
     title: "Data Analytics with Power BI",
-    instructor: "Angela Yu",
     duration: "6 Weeks",
     description: "Transform raw data into beautiful, interactive, and insightful web visualizations using Power BI.",
     image: "/images/courses/PowerBII.webp",
@@ -56,7 +50,6 @@ const courses = [
   {
     id: 7,
     title: "Microsoft SharePoint Master",
-    instructor: "Jeff Teper",
     duration: "9 Weeks",
     description: "Master document management, collaboration, and intranet solutions using SharePoint Online.",
     image: "/images/courses/SharePoint.webp",
@@ -64,7 +57,6 @@ const courses = [
   {
     id: 8,
     title: "Professional Software Testing",
-    instructor: "Angie Jones",
     duration: "11 Weeks",
     description: "Learn manual and automated testing, bug tracking, and quality assurance best practices.",
     image: "/images/courses/SoftwareTestingg.webp",
@@ -72,7 +64,6 @@ const courses = [
   {
     id: 9,
     title: "Enterprise .NET Core",
-    instructor: "Scott Hanselman",
     duration: "13 Weeks",
     description: "Build robust, cross-platform enterprise applications using C# and the .NET Core framework.",
     image: "/images/courses/Net.webp",
@@ -80,7 +71,6 @@ const courses = [
   {
     id: 10,
     title: "React Native Full Stack",
-    instructor: "Maximilian Schwarzmüller",
     duration: "16 Weeks",
     description: "Develop high-performance, native-like mobile applications for iOS and Android using React Native and a Node.js backend.",
     image: "/images/courses/React2.webp",
@@ -180,7 +170,6 @@ const TrendingCourses = () => {
               <div className="trending-modal-info">
                 <h3>{selectedCourse.title}</h3>
                 <div className="info-meta">
-                  <span><strong>Instructor:</strong> {selectedCourse.instructor}</span>
                   <span><strong>Duration:</strong> {selectedCourse.duration}</span>
                 </div>
                 <p>{selectedCourse.description}</p>
