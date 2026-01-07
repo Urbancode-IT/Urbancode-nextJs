@@ -31,81 +31,82 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className="navbar">
-      <div className="navbar container">
+    <>
+      <nav className="navbar">
+        <div className="navbar container">
 
-        {/* Logo */}
-        <Link href="/" className="navbar-brand" onClick={handleLinkClick}>
-          <Image
-            src="/images/home/logo.png"
-            alt="Urban Code Logo"
-            width={182}
-            height={43}
-            priority
-          />
-        </Link>
+          {/* Logo */}
+          <Link href="/" className="navbar-brand" onClick={handleLinkClick}>
+            <Image
+              src="/images/home/logo.png"
+              alt="Urban Code Logo"
+              width={182}
+              height={43}
+              priority
+            />
+          </Link>
 
-        {/* Phone with icon */}
-        <div className="navbar-phone">
-          <FiPhoneCall className="phone-icon" />
-          <a href="tel:+919878798797">+91 9878798797</a>
-        </div>
-
-        {/* Navigation Links */}
-        <div className={`nav-links ${isOpen ? 'active' : ''}`}>
-          {/* Home removed */}
-          <Link href="/courses-categories" onClick={handleLinkClick}>Courses</Link>
-          <Link href="/about-us" onClick={handleLinkClick}>About Us</Link>
-          <Link href="/kids-courses" onClick={handleLinkClick}>Kids Space</Link>
-
-          {/* Career Dropdown */}
-          <div
-            className="dropdown"
-            onMouseEnter={() => {
-              if (window.innerWidth > 768) {
-                clearTimeout(window.dropdownTimeout);
-                setCareerOpen(true);
-              }
-            }}
-            onMouseLeave={() => {
-              if (window.innerWidth > 768) {
-                window.dropdownTimeout = setTimeout(() => {
-                  setCareerOpen(false);
-                }, 200);
-              }
-            }}
-          >
-            <button
-              className={`dropdown-toggle ${careerOpen ? 'active' : ''}`}
-              onClick={toggleCareer}
-            >
-              Career <span className="arrow"></span>
-            </button>
-
-            <div className={`dropdown-menu ${careerOpen ? 'show' : ''}`}>
-              <Link href="/be-our-mentor" onClick={handleLinkClick}>Become a Mentor</Link>
-              <Link href="/jobs" onClick={handleLinkClick}>Jobs</Link>
-              <Link href="/internship" onClick={handleLinkClick}>Internship</Link>
-            </div>
+          {/* Phone with icon */}
+          <div className="navbar-phone">
+            <FiPhoneCall className="phone-icon" />
+            <a href="tel:+919878798797">+91 9878798797</a>
           </div>
 
-          <Link href="/projects" onClick={handleLinkClick}>Projects</Link>
-          <Link href="/contact-us" onClick={handleLinkClick}>Contact Us</Link>
-        </div>
+          {/* Navigation Links */}
+          <div className={`nav-links ${isOpen ? 'active' : ''}`}>
+            {/* Home removed */}
+            <Link href="/courses-categories" onClick={handleLinkClick}>Courses</Link>
+            <Link href="/about-us" onClick={handleLinkClick}>About Us</Link>
+            <Link href="/kids-courses" onClick={handleLinkClick}>Kids Space</Link>
 
-        {/* Hamburger */}
-        <div
-          className={`hamburger ${isOpen ? 'active' : ''}`}
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </div>
+            {/* Career Dropdown */}
+            <div
+              className="dropdown"
+              onMouseEnter={() => {
+                if (window.innerWidth > 768) {
+                  clearTimeout(window.dropdownTimeout);
+                  setCareerOpen(true);
+                }
+              }}
+              onMouseLeave={() => {
+                if (window.innerWidth > 768) {
+                  window.dropdownTimeout = setTimeout(() => {
+                    setCareerOpen(false);
+                  }, 200);
+                }
+              }}
+            >
+              <button
+                className={`dropdown-toggle ${careerOpen ? 'active' : ''}`}
+                onClick={toggleCareer}
+              >
+                Career <span className="arrow"></span>
+              </button>
 
+              <div className={`dropdown-menu ${careerOpen ? 'show' : ''}`}>
+                <Link href="/be-our-mentor" onClick={handleLinkClick}>Become a Mentor</Link>
+                <Link href="/jobs" onClick={handleLinkClick}>Jobs</Link>
+                <Link href="/internship" onClick={handleLinkClick}>Internship</Link>
+              </div>
+            </div>
+
+            <Link href="/projects" onClick={handleLinkClick}>Projects</Link>
+            <Link href="/contact-us" onClick={handleLinkClick}>Contact Us</Link>
+          </div>
+
+          {/* Hamburger */}
+          <div
+            className={`hamburger ${isOpen ? 'active' : ''}`}
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </nav>
       <FloatingWidgets />
       <ChatbotWidget />
-    </nav>
+    </>
   );
 }

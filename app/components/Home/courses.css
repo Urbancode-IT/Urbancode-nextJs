@@ -4,391 +4,378 @@
 
 .placement-container-wrapper,
 .placement-container-wrapper * {
-  font-family: 'Inter', sans-serif !important;
+    font-family: 'Inter', sans-serif !important;
 }
 
 /* 1) Background container & General Wrapper */
 .placement-container-wrapper {
-  position: relative;
-  width: 100%;
-  min-height: 550px;
-  margin: 0;
-  background: linear-gradient(180deg, #EBEBEB 0%, rgba(215, 235, 226, 0.2) 50%, #EBEBEB 100%),
-    linear-gradient(259.47deg,
-      rgba(102, 102, 102, 0.078) -0.37%,
-      rgba(0, 181, 111, 0.13) 104.31%);
-  overflow: hidden;
-  font-family: 'Inter', sans-serif;
+    position: relative;
+    width: 100%;
+    min-height: 496px;
+    margin: 0;
+    background: linear-gradient(180deg, #EBEBEB 0%, rgba(215, 235, 226, 0.2) 50%, #EBEBEB 100%),
+        linear-gradient(259.47deg,
+            rgba(102, 102, 102, 0.078) -0.37%,
+            rgba(0, 181, 111, 0.13) 104.31%);
+    overflow: hidden;
+    font-family: 'Inter', sans-serif;
 }
 
 /* 2) Left Text Container */
 .left-text-section {
-  position: absolute;
-  left: 40px;
-  /* Base desktop margin */
-  top: 160px;
-  width: 300px;
+    position: absolute;
+    left: 40px;
+    /* Base desktop margin */
+    top: 130px;
+    width: 300px;
 }
 
 .left-text-section h2 {
-  font-weight: 600;
-  font-size: 40px;
-  line-height: 54px;
-  color: #464646;
-  margin: 0;
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 54px;
+    color: #464646;
+    margin: 0;
 }
 
 /* 3) Course Container (The Slider Area) */
 .courses-slider-wrapper {
-  position: absolute;
-  left: 450px;
-  right: 40px;
-  max-width: 978px;
-  /* Default 3 cards */
-  height: auto;
-  top: 80px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    position: absolute;
+    left: 450px;
+    right: 40px;
+    max-width: 978px;
+    /* Default 3 cards */
+    height: auto;
+    top: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* Snap widths to whole cards based on available space in Desktop */
 @media (min-width: 1025px) and (max-width: 1200px) {
-  .courses-slider-wrapper {
-    left: 350px;
-    max-width: 657px;
-    /* 2 cards */
-  }
+    .courses-slider-wrapper {
+        left: 350px;
+        max-width: 657px;
+        /* 2 cards */
+    }
 }
 
 @media (min-width: 1201px) and (max-width: 1450px) {
-  .courses-slider-wrapper {
-    left: 240px;
-    max-width: 978px;
-    /* 3 cards */
-  }
+    .courses-slider-wrapper {
+        left: 240px;
+        max-width: 978px;
+        /* 3 cards */
+    }
 
-  .left-text-section {
-    left: 20px;
-  }
+    .left-text-section {
+        left: 20px;
+    }
 }
 
 @media (min-width: 1451px) and (max-width: 1850px) {
-  .courses-slider-wrapper {
-    left: 450px;
-    max-width: 978px;
-    /* 3 cards */
-  }
+    .courses-slider-wrapper {
+        left: 450px;
+        max-width: 978px;
+        /* 3 cards */
+    }
 
-  .left-text-section {
-    left: 60px;
-  }
+    .left-text-section {
+        left: 60px;
+    }
 }
 
 @media (min-width: 1851px) and (max-width: 2150px) {
-  .courses-slider-wrapper {
-    left: 450px;
-    max-width: 1299px;
-    /* 4 cards */
-  }
+    .courses-slider-wrapper {
+        left: 450px;
+        max-width: 1299px;
+        /* 4 cards */
+    }
 
-  .left-text-section {
-    left: 80px;
-  }
+    .left-text-section {
+        left: 80px;
+    }
 }
 
 @media (min-width: 2151px) {
-  .courses-slider-wrapper {
-    left: 450px;
-    max-width: 1620px;
-    /* 5 cards */
-  }
+    .courses-slider-wrapper {
+        left: 450px;
+        max-width: 1620px;
+        /* 5 cards */
+    }
 
-  .left-text-section {
-    left: 100px;
-  }
+    .left-text-section {
+        left: 100px;
+    }
 }
 
 .courses-slider-container {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  background: linear-gradient(99.41deg, rgba(25, 135, 84, 0.12) 1.17%, rgba(49, 49, 49, 0.12) 100.99%);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
-  border-radius: 37px;
-  border: #ffffff 1px solid;
-  padding: 15px;
-  box-sizing: border-box;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(99.41deg, rgba(25, 135, 84, 0.12) 1.17%, rgba(49, 49, 49, 0.12) 100.99%);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    border-radius: 37px;
+    border: #ffffff 1px solid;
+    padding: 15px;
+    box-sizing: border-box;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 .courses-track {
-  display: flex;
-  gap: 15px;
-  width: 100%;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  padding: 15px 0;
-  scroll-snap-type: x mandatory;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+    display: flex;
+    gap: 15px;
+    width: 100%;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 15px 0;
+    scroll-snap-type: x mandatory;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
 .courses-track::-webkit-scrollbar {
-  display: none;
+    display: none;
 }
 
 /* 4) Course Card */
 .course-card {
-  width: 306px;
-  height: 331px;
-  flex-shrink: 0;
-  position: relative;
-  border-radius: 20px;
-  box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.25);
-  overflow: hidden;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-  scroll-snap-align: start;
+    width: 306px;
+    height: 331px;
+    flex-shrink: 0;
+    position: relative;
+    border-radius: 20px;
+    box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    scroll-snap-align: start;
 }
 
 .course-card:hover {
-  transform: translateY(-5px);
+    transform: translateY(-5px);
 }
 
 .card-image-container {
-  width: 100%;
-  height: 100%;
-  position: relative;
+    width: 100%;
+    height: 100%;
+    position: relative;
 }
 
 .card-image-container::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.4);
-  z-index: 1;
-  pointer-events: none;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+   
+    z-index: 1;
+    pointer-events: none;
 }
 
 .card-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .glass-overlay {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 260px;
-  height: 135px;
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  z-index: 2;
+    position: absolute;
+    bottom: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 260px;
+    height: 100px;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
 }
 
 .card-content-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  align-items: center;
-  margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-items: center;
+    margin-bottom: 15px;
 }
 
 .glass-overlay>* {
-  pointer-events: auto;
+    pointer-events: auto;
 }
 
 .card-footer-row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 15px;
-  margin-top: 10px;
-  width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+    width: 100%;
 }
 
 .card-logo-row {
-  display: flex;
-  gap: 5px;
-  margin: 0;
+    display: flex;
+    gap: 5px;
+    margin: 0;
 }
 
 .logo-container {
-  width: 30px;
-  height: 30px;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.3) 100%);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+    width: 30px;
+    height: 30px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.3) 100%);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
 }
 
 .card-logo {
-  max-width: 20px;
-  max-height: 20px;
-  object-fit: contain;
+    max-width: 20px;
+    max-height: 20px;
+    object-fit: contain;
 }
 
-.title-container {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  padding: 4px 16px;
-  border-radius: 30px;
-  margin-bottom: 2px;
-  width: fit-content;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-}
+
 
 .card-title {
-  font-family: 'Inter', sans-serif;
-  font-style: normal;
-  font-weight: 800;
-  font-size: 16px;
-  line-height: 1.2;
-  text-align: center;
-  letter-spacing: 0.2px;
-  color: #FFFFFF;
-  margin: 0;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.2;
+    text-align: center;
+    letter-spacing: 0.2px;
+    color: #FFFFFF;
+    margin: 0;
 }
 
 .card-arrow {
-  width: 32px;
-  height: 32px;
-  background: #00B56F;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #FFFFFF;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 3px 8px rgba(0, 181, 111, 0.3);
-  flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    background: #00B56F;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 8px rgba(0, 181, 111, 0.3);
+    flex-shrink: 0;
 }
 
 .card-arrow:hover {
-  background: #008f58;
-  transform: scale(1.1);
-  box-shadow: 0 4px 12px rgba(0, 181, 111, 0.4);
+    background: #008f58;
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(0, 181, 111, 0.4);
 }
 
 .card-arrow:active {
-  transform: scale(0.95);
+    transform: scale(0.95);
 }
 
 .card-arrow svg {
-  transition: transform 0.3s ease;
+    transition: transform 0.3s ease;
 }
 
 .card-arrow:hover svg {
-  transform: translateX(2px);
+    transform: translateX(2px);
 }
 
 /* 5) Navigation Section */
 .navigation-controls {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 15px;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 40px;
-  padding: 8px 15px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-  width: fit-content;
-  margin-left: auto;
-  margin-right: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 40px;
+    padding: 8px 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .progress-bar-container {
-  display: flex;
-  gap: 8px;
+    display: flex;
+    gap: 8px;
 }
 
 .progress-line {
-  width: 30px;
-  height: 4px;
-  background: #ccc;
-  border-radius: 2px;
+    width: 30px;
+    height: 4px;
+    background: #ccc;
+    border-radius: 2px;
 }
 
 .progress-line.active {
-  background: #00B56F;
-  width: 50px;
+    background: #00B56F;
+    width: 50px;
 }
 
 .nav-btn {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  background: rgba(255, 255, 255, 0.35);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
-  color: #333;
-  z-index: 10;
-  transition: all 0.3s ease;
-  -webkit-tap-highlight-color: transparent;
-  outline: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: #333;
+    z-index: 10;
+    transition: all 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
 }
 
 .nav-btn:hover {
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-  background: rgba(255, 255, 255, 0.45);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    background: rgba(255, 255, 255, 0.45);
 }
 
 .nav-btn.disabled {
-  opacity: 0.5;
-  cursor: default;
+    opacity: 0.5;
+    cursor: default;
 }
 
 .prev-btn-placeholder {
-  width: 50px;
-  height: 50px;
-  transition: visibility 0.2s;
+    width: 50px;
+    height: 50px;
+    transition: visibility 0.2s;
 }
 
 .prev-btn-placeholder.hidden {
-  visibility: hidden;
+    visibility: hidden;
 }
 
 /* =========================================
@@ -396,100 +383,100 @@
    Purpose: Show exactly 2 Cards horizontal scroll, centered
    ========================================= */
 @media (max-width: 1024px) {
-  .placement-container-wrapper {
-    width: 100%;
-    height: auto;
-    min-height: 600px;
-    flex-direction: column;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 40px 0;
-    margin: 0;
-  }
+    .placement-container-wrapper {
+        width: 100%;
+        height: auto;
+        min-height: 600px;
+        flex-direction: column;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 40px 0;
+        margin: 0;
+    }
 
-  .placement-content {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+    .placement-content {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
-  .left-text-section {
-    position: static;
-    width: 100%;
-    text-align: center;
-    margin-bottom: 30px;
-  }
+    .left-text-section {
+        position: static;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 30px;
+    }
 
-  .courses-slider-wrapper {
-    position: relative;
-    width: 100%;
-    max-width: 657px;
-    /* 2 cards */
-    left: auto;
-    right: auto;
-    top: auto;
-    margin: 0 auto;
-    overflow: visible;
-  }
+    .courses-slider-wrapper {
+        position: relative;
+        width: 100%;
+        max-width: 657px;
+        /* 2 cards */
+        left: auto;
+        right: auto;
+        top: auto;
+        margin: 0 auto;
+        overflow: visible;
+    }
 
-  .courses-slider-container {
-    position: relative;
-    width: 100%;
-    height: auto;
-    padding: 15px;
-    align-items: center;
-  }
+    .courses-slider-container {
+        position: relative;
+        width: 100%;
+        height: auto;
+        padding: 15px;
+        align-items: center;
+    }
 
-  .navigation-controls {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    transform: translateY(-50%);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    pointer-events: none;
-    z-index: 10;
-    gap: 0;
-    margin-top: 0;
-    background: none;
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    border: none;
-    padding: 0;
-    box-shadow: none;
-    max-width: none;
-  }
+    .navigation-controls {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        transform: translateY(-50%);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        pointer-events: none;
+        z-index: 10;
+        gap: 0;
+        margin-top: 0;
+        background: none;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        border: none;
+        padding: 0;
+        box-shadow: none;
+        max-width: none;
+    }
 
-  .progress-bar-container {
-    display: none;
-  }
+    .progress-bar-container {
+        display: none;
+    }
 
-  .nav-btn {
-    pointer-events: auto;
-  }
+    .nav-btn {
+        pointer-events: auto;
+    }
 
-  .prev-btn-placeholder {
-    margin-left: -25px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+    .prev-btn-placeholder {
+        margin-left: -25px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
-  .next-btn {
-    margin-right: -25px;
-  }
+    .next-btn {
+        margin-right: -25px;
+    }
 
-  .courses-track {
-    width: 100%;
-    gap: 15px;
-    overflow-x: auto;
-    justify-content: flex-start;
-  }
+    .courses-track {
+        width: 100%;
+        gap: 15px;
+        overflow-x: auto;
+        justify-content: flex-start;
+    }
 }
 
 /* =========================================
@@ -497,73 +484,73 @@
    Purpose: Show exactly 1 Card horizontal scroll, centered
    ========================================= */
 @media (max-width: 700px) {
-  .placement-container-wrapper {
-    padding: 30px 10px;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+    .placement-container-wrapper {
+        padding: 30px 10px;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
-  .placement-content {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+    .placement-content {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
-  .left-text-section h2 {
-    font-size: 32px;
-    line-height: 40px;
-    margin-bottom: 20px;
-  }
+    .left-text-section h2 {
+        font-size: 32px;
+        line-height: 40px;
+        margin-bottom: 20px;
+    }
 
-  .courses-slider-wrapper {
-    position: relative;
-    width: 100%;
-    max-width: 336px;
-    /* 1 card */
-    left: auto;
-    right: auto;
-    top: auto;
-    margin: 0 auto;
-    overflow: visible;
-  }
+    .courses-slider-wrapper {
+        position: relative;
+        width: 100%;
+        max-width: 336px;
+        /* 1 card */
+        left: auto;
+        right: auto;
+        top: auto;
+        margin: 0 auto;
+        overflow: visible;
+    }
 
-  .courses-slider-container {
-    position: relative;
-    width: 100%;
-    height: auto;
-    padding: 15px;
-    align-items: center;
-  }
+    .courses-slider-container {
+        position: relative;
+        width: 100%;
+        height: auto;
+        padding: 15px;
+        align-items: center;
+    }
 
-  .prev-btn-placeholder {
-    margin-left: -5px;
-  }
+    .prev-btn-placeholder {
+        margin-left: -5px;
+    }
 
-  .next-btn {
-    margin-right: -5px;
-  }
+    .next-btn {
+        margin-right: -5px;
+    }
 
-  .courses-track {
-    flex-direction: row;
-    overflow-x: auto;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 15px;
-  }
+    .courses-track {
+        flex-direction: row;
+        overflow-x: auto;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 15px;
+    }
 
-  .course-card {
-    width: 306px;
-    max-width: 306px;
-    height: 331px;
-    margin: 0;
-    flex-shrink: 0;
-    scroll-snap-align: center;
-  }
+    .course-card {
+        width: 306px;
+        max-width: 306px;
+        height: 331px;
+        margin: 0;
+        flex-shrink: 0;
+        scroll-snap-align: center;
+    }
 
-  .glass-overlay {
-    height: 180px;
-  }
+    .glass-overlay {
+        height: 180px;
+    }
 }

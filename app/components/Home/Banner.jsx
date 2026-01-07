@@ -15,7 +15,7 @@ const Banner = () => {
                 style={{ cursor: 'pointer' }}
             >
                 <Image
-                    src="/images/home/newyearbanner.webp"
+                    src="/images/home/banner.webp"
                     alt="New Year Offer Banner"
                     width={1920}
                     height={600}
