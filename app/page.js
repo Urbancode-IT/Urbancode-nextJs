@@ -106,7 +106,7 @@ export default function HomePage() {
         }}
       />
       <HeroSection />
-       {/* <Banner />  */}
+      <Banner />
       <Carousel />
       <Courses />
       <TestimonialCarousel />

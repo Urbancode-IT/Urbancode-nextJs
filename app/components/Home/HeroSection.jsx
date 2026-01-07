@@ -72,7 +72,7 @@ export default function HeroSection() {
   return (
     <div className="home_header_main_container pt-lg-3">
       <div className="container home_header_container">
-        <div className="row align-items-center justify-content-center  text-start mx-2 pt-5 pb-5">
+        <div className="row align-items-center justify-content-center  text-start mx-2 pt-5 pb-3">
           {/* Left Section */}
           <div className="col-lg-6 col-md-10 mb-5 mb-lg-0">
             <h1 className="fw-bold fs25rem animated-title">

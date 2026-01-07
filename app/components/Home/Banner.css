@@ -3,6 +3,8 @@
     width: 100%;
     overflow: hidden;
     background-color: transparent;
+    margin-top: 10px;
+    margin-bottom: 40px;
 }
 
 .banner-image-wrapper {
@@ -21,10 +23,4 @@
     width: 100%;
     height: auto;
     object-fit: cover;
-}
-
-@media (max-width: 768px) {
-    .new-year-banner-section {
-        padding: 0;
-    }
 }
