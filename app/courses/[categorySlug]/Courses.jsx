@@ -92,13 +92,13 @@ export default function Courses({ categorySlug }) {
     search.trim() === ""
       ? coursesData[activeCategory]?.courses || []
       : allCourses.filter(
-          (course) =>
-            course.title.toLowerCase().includes(search.toLowerCase()) ||
-            course.desc.toLowerCase().includes(search.toLowerCase())
-        );
+        (course) =>
+          course.title.toLowerCase().includes(search.toLowerCase()) ||
+          course.desc.toLowerCase().includes(search.toLowerCase())
+      );
 
   return (
-    <div className="wrapper py-5">
+    <div className="wrapper pb-5" style={{ paddingTop: '71px' }}>
       {/* Top Section */}
       <div className="container-fluid overall-bg overall-green-bg px-3 px-md-5">
         <Container fluid>
@@ -230,7 +230,7 @@ export default function Courses({ categorySlug }) {
                                     size="sm"
                                     className="enroll-btn fs-11"
                                     onClick={(e) => {
-                                      e.stopPropagation(); 
+                                      e.stopPropagation();
                                       setSelectedCourse(course);
                                     }}
                                   >
@@ -278,9 +278,8 @@ export default function Courses({ categorySlug }) {
                   transition={{ duration: 0.3, delay: index * 0.1 }}
                 >
                   <Card
-                    className={`faq-card h-100 border-0 rounded-4 shadow-sm ${
-                      openIndex === index ? "open" : ""
-                    }`}
+                    className={`faq-card h-100 border-0 rounded-4 shadow-sm ${openIndex === index ? "open" : ""
+                      }`}
                     onClick={() =>
                       setOpenIndex(openIndex === index ? null : index)
                     }

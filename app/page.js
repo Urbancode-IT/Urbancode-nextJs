@@ -111,7 +111,7 @@ export default function HomePage() {
       <Courses />
       <TestimonialCarousel />
       <FaqBootstrap />
-      {/* <TrendingCourses /> */}
+      <TrendingCourses />
       {/* <Carousel /> */}
     </>
   );

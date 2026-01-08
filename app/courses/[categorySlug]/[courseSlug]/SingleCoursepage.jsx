@@ -1,6 +1,6 @@
 //app/courses/[categorySlug]/[courseSlug]/SingleCoursepage.jsx
 'use client';
-import coursesData from "../coursesData"; 
+import coursesData from "../coursesData";
 import './styles.css';
 import { useState } from "react";
 import EnquiryFormModal from "@/app/components/common/EnquiryFormModal.jsx";
@@ -22,25 +22,25 @@ export default function SingleCoursepage({ params }) {
   if (!course) return <div>Course not found</div>;
 
   return (
-    
-    <div className="single-coursepage bg-gray px-3 px-md-4 px-lg-5 py-4 py-md-5 mt-3 mt-md-5">
 
-<script
-  type="application/ld+json"
-  dangerouslySetInnerHTML={{
-    __html: JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Course",
-      name: course.title,
-      description: course.description,
-      provider: {
-        "@type": "Organization",
-        name: "Urbancode Edutech",
-        url: "https://www.urbancode.in",
-      },
-    }),
-  }}
-/>
+    <div className="single-coursepage bg-gray px-3 px-md-4 px-lg-5 pb-4 pb-md-5">
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Course",
+            name: course.title,
+            description: course.description,
+            provider: {
+              "@type": "Organization",
+              name: "Urbancode Edutech",
+              url: "https://www.urbancode.in",
+            },
+          }),
+        }}
+      />
 
       <div className="container py-3 py-md-4 py-lg-5">
         {/* Top Section */}
@@ -72,7 +72,7 @@ export default function SingleCoursepage({ params }) {
                   {course.aboutData.content1}
                 </p>
 
-               <a
+                <a
                   href={`https://wa.me/919429694123?text=${encodeURIComponent(
                     `Hi there, I would like to enroll in this course ${course.title} from Urbancode. Please share more details.`
                   )}`}
@@ -101,40 +101,40 @@ export default function SingleCoursepage({ params }) {
                 alt={course.title}
               />
               <div className="card-body d-flex flex-column justify-content-around p-0">
-<ul className="small px-2 px-md-3 text-secondary">
-  <li className="mb-2 mb-md-3 d-flex align-items-start">
-    <i className="bi bi-check-circle-fill text-success me-2"></i>
-    <span>Hours of Instructor-Led Training</span>
-  </li>
-  <li className="mb-2 mb-md-3 d-flex align-items-start">
-    <i className="bi bi-check-circle-fill text-success me-2"></i>
-    <span>Hands-on Projects across Web, Data & AI</span>
-  </li>
-  <li className="mb-2 mb-md-3 d-flex align-items-start">
-    <i className="bi bi-check-circle-fill text-success me-2"></i>
-    <span>Includes Beginner → Expert Level Topics</span>
-  </li>
-  <li className="mb-2 mb-md-3 d-flex align-items-start">
-    <i className="bi bi-check-circle-fill text-success me-2"></i>
-    <span>Mentor Support, Assignments & Code Reviews</span>
-  </li>
-  <li className="mb-2 mb-md-3 d-flex align-items-start">
-    <i className="bi bi-check-circle-fill text-success me-2"></i>
-    <span>Job Assistance & Portfolio Guidance</span>
-  </li>
-  <li className="mb-2 mb-md-3 d-flex align-items-start">
-    <i className="bi bi-check-circle-fill text-success me-2"></i>
-    <span>Urbancode Certificate of Completion</span>
-  </li>
-</ul>
+                <ul className="small px-2 px-md-3 text-secondary">
+                  <li className="mb-2 mb-md-3 d-flex align-items-start">
+                    <i className="bi bi-check-circle-fill text-success me-2"></i>
+                    <span>Hours of Instructor-Led Training</span>
+                  </li>
+                  <li className="mb-2 mb-md-3 d-flex align-items-start">
+                    <i className="bi bi-check-circle-fill text-success me-2"></i>
+                    <span>Hands-on Projects across Web, Data & AI</span>
+                  </li>
+                  <li className="mb-2 mb-md-3 d-flex align-items-start">
+                    <i className="bi bi-check-circle-fill text-success me-2"></i>
+                    <span>Includes Beginner → Expert Level Topics</span>
+                  </li>
+                  <li className="mb-2 mb-md-3 d-flex align-items-start">
+                    <i className="bi bi-check-circle-fill text-success me-2"></i>
+                    <span>Mentor Support, Assignments & Code Reviews</span>
+                  </li>
+                  <li className="mb-2 mb-md-3 d-flex align-items-start">
+                    <i className="bi bi-check-circle-fill text-success me-2"></i>
+                    <span>Job Assistance & Portfolio Guidance</span>
+                  </li>
+                  <li className="mb-2 mb-md-3 d-flex align-items-start">
+                    <i className="bi bi-check-circle-fill text-success me-2"></i>
+                    <span>Urbancode Certificate of Completion</span>
+                  </li>
+                </ul>
 
-                <button 
-                  className="btn btn-dark w-100 dark-shine-btn rounded-4 mt-2"  
+                <button
+                  className="btn btn-dark w-100 dark-shine-btn rounded-4 mt-2"
                   onClick={() => setShowEnquiry(true)}
                 >
                   Get Brochure
                 </button>
-                 {/* Popup Form */}
+                {/* Popup Form */}
                 <EnquiryFormModal
                   isOpen={showEnquiry}
                   onClose={() => setShowEnquiry(false)}

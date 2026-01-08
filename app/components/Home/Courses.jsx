@@ -8,70 +8,70 @@ const coursesData = [
         id: 1,
         title: "Fullstack Development",
         description: "Full Stack Development covers both frontend and backend to build complete, scalable web applications.",
-        image: "/images/home/fullstack.png",
+        image: "/images/home/p1.webp",
         logo: [
             "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
             "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
             "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg"
         ],
-        path: "/courses/web-and-app-development/java-full-stack-development"
+        path: "/courses/web-and-app-development"
     },
     {
         id: 2,
         title: "MERN Stack",
         description: "MERN Stack is a powerful full-stack JavaScript technology for building modern web applications.",
-        image: "/images/home/mern.png",
+        image: "/images/home/p2.webp",
         logo: [
             "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
             "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
             "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
             "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
         ],
-        path: "/courses/web-and-app-development/mern-stack"
+        path: "/courses/web-and-app-development"
     },
     {
         id: 3,
         title: "AWS",
         description: "AWS is a cloud platform that provides scalable computing, storage, and services to build and deploy applications.",
-        image: "/images/home/aws.png",
+        image: "/images/home/p3.webp",
         logo: ["https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg"],
-        path: "/courses/cloud-and-devops/aws"
+        path: "/courses/cloud-and-devops"
     },
     {
         id: 4,
         title: "Data Science",
         description: "Data Science combines statistics, data analysis, and machine learning to understand and analyze actual phenomena.",
-        image: "/images/home/datascience.png",
+        image: "/images/home/p4.webp",
         logo: [
             "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
             "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg"
         ],
-        path: "/courses/data-science/ai-and-ml"
+        path: "/courses/data-science"
     },
     {
         id: 5,
         title: "UI/UX Design",
         description: "UI/UX Design focuses on creating interfaces that look good and offer a seamless user experience.",
-        image: "/images/home/figma.png",
+        image: "/images/home/p5.webp",
         logo: ["https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg"],
-        path: "/courses/ui-ux-designing/figma"
+        path: "/courses/ui-ux-designing"
     },
     {
         id: 6,
         title: "DevOps",
         description: "DevOps focuses on automating development, deployment, and infrastructure to deliver applications faster and more reliably.",
-        image: "/images/home/devops.png",
+        image: "/images/home/p6.webp",
         logo: ["https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"],
 
-        path: "/courses/cloud-and-devops/devops"
+        path: "/courses/cloud-and-devops"
     },
     {
         id: 7,
         title: "Python Programming",
         description: "Learn Python for web development, data analysis, usage in AI and scientific computing.",
-        image: "/images/home/python.png",
+        image: "/images/home/p7.webp",
         logo: ["https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"],
-        path: "/courses/programming-languages/core-python"
+        path: "/courses/programming-languages"
     }
 ];
 
