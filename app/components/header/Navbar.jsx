@@ -84,7 +84,7 @@ export default function Navbar() {
               </button>
 
               <div className={`dropdown-menu ${careerOpen ? 'show' : ''}`}>
-                <Link href="/be-our-mentor" onClick={handleLinkClick}>Become a Mentor</Link>
+                <Link href="/be-our-mentor" onClick={handleLinkClick}>Become Our Mentor</Link>
                 <Link href="/jobs" onClick={handleLinkClick}>Jobs</Link>
                 <Link href="/internship" onClick={handleLinkClick}>Internship</Link>
               </div>
