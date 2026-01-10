@@ -27,7 +27,7 @@ const coursesData = [
             "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
             "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
         ],
-        path: "/courses/web-and-app-development"
+        path: "/courses/web-and-app-development/mern-stack"
     },
     {
         id: 3,
@@ -35,7 +35,7 @@ const coursesData = [
         description: "AWS is a cloud platform that provides scalable computing, storage, and services to build and deploy applications.",
         image: "/images/home/p3.webp",
         logo: ["https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg"],
-        path: "/courses/cloud-and-devops"
+        path: "/courses/cloud-and-devops/aws"
     },
     {
         id: 4,
@@ -62,8 +62,7 @@ const coursesData = [
         description: "DevOps focuses on automating development, deployment, and infrastructure to deliver applications faster and more reliably.",
         image: "/images/home/p6.webp",
         logo: ["https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"],
-
-        path: "/courses/cloud-and-devops"
+        path: "/courses/cloud-and-devops/devops"
     },
     {
         id: 7,
@@ -71,7 +70,7 @@ const coursesData = [
         description: "Learn Python for web development, data analysis, usage in AI and scientific computing.",
         image: "/images/home/p7.webp",
         logo: ["https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"],
-        path: "/courses/programming-languages"
+        path: "/courses/programming-languages/core-python"
     }
 ];
 
@@ -171,11 +170,14 @@ const Courses = () => {
         <div className="placement-container-wrapper">
             <div className="placement-content">
                 <div className="left-text-section">
-                    <h2>
+                    <h2 className="job-guarantee-heading">
                         100% <br />
-                        Placement <br />
-                        Courses
+                        Job Guarantee <br />
+                        <span className="gradient-text">Courses</span>
                     </h2>
+                    <p className="job-guarantee-subtext">
+                        Master the most in-demand tech stacks with our comprehensive, industry-aligned training programs.
+                    </p>
                 </div>
                 <div
                     className="courses-slider-wrapper"

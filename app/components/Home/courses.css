@@ -21,21 +21,94 @@
     font-family: 'Inter', sans-serif;
 }
 
-/* 2) Left Text Container */
+/* 2) Left Text Container - NEW DESIGN WITH SHINE */
 .left-text-section {
     position: absolute;
-    left: 40px;
-    /* Base desktop margin */
+    left: 60px;
     top: 130px;
-    width: 300px;
+    width: 320px;
+    z-index: 5;
 }
 
-.left-text-section h2 {
+.job-guarantee-heading {
     font-weight: 600;
+    /* Reduced weight for more elegance */
     font-size: 40px;
-    line-height: 54px;
+    line-height: 1.1;
     color: #464646;
     margin: 0;
+    letter-spacing: -0.5px;
+}
+
+.job-guarantee-heading .gradient-text {
+    position: relative;
+    background: linear-gradient(to right,
+            #036c2d 20%,
+            #17944d 40%,
+            #17944d 60%,
+            #036c2d 80%);
+    background-size: 200% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+    animation: textShine 3s linear infinite;
+}
+
+/* Animated Underline with Shine */
+.job-guarantee-heading .gradient-text::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 60%;
+    height: 3px;
+    background: linear-gradient(to right,
+            #198754 0%,
+            #12d46c 50%,
+            #198754 100%);
+    background-size: 200% auto;
+    border-radius: 2px;
+    animation: textShine 3s linear infinite;
+    box-shadow: 0 1px 8px rgba(25, 135, 84, 0.2);
+}
+
+@keyframes textShine {
+    to {
+        background-position: 200% center;
+    }
+}
+
+.job-guarantee-subtext {
+    font-size: 15px;
+    line-height: 1.62;
+    color: #555;
+    margin-top: 25px;
+    max-width: 280px;
+    position: relative;
+    overflow: hidden;
+    font-weight: 400;
+}
+
+.job-guarantee-subtext::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to right,
+            transparent,
+            rgba(255, 255, 255, 0.4),
+            transparent);
+    transform: skewX(-25deg);
+    animation: shimmer 4s infinite;
+}
+
+@keyframes shimmer {
+    100% {
+        left: 200%;
+    }
 }
 
 /* 3) Course Container (The Slider Area) */
@@ -143,7 +216,7 @@
     display: none;
 }
 
-/* 4) Course Card */
+/* 4) Course Card - RESTORED ORIGINAL DESIGN */
 .course-card {
     width: 306px;
     height: 331px;
@@ -165,18 +238,6 @@
     width: 100%;
     height: 100%;
     position: relative;
-}
-
-.card-image-container::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-
-    z-index: 1;
-    pointer-events: none;
 }
 
 .card-image {
@@ -253,8 +314,6 @@
     object-fit: contain;
 }
 
-
-
 .card-title {
     font-family: 'Inter', sans-serif;
     font-style: normal;
@@ -285,19 +344,6 @@
 .card-arrow:hover {
     background: #008f58;
     transform: scale(1.1);
-    box-shadow: 0 4px 12px rgba(0, 181, 111, 0.4);
-}
-
-.card-arrow:active {
-    transform: scale(0.95);
-}
-
-.card-arrow svg {
-    transition: transform 0.3s ease;
-}
-
-.card-arrow:hover svg {
-    transform: translateX(2px);
 }
 
 /* 5) Navigation Section */
@@ -354,34 +400,9 @@
     color: #333;
     z-index: 10;
     transition: all 0.3s ease;
-    -webkit-tap-highlight-color: transparent;
-    outline: none;
 }
 
-.nav-btn:hover {
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-    background: rgba(255, 255, 255, 0.45);
-}
-
-.nav-btn.disabled {
-    opacity: 0.5;
-    cursor: default;
-}
-
-.prev-btn-placeholder {
-    width: 50px;
-    height: 50px;
-    transition: visibility 0.2s;
-}
-
-.prev-btn-placeholder.hidden {
-    visibility: hidden;
-}
-
-/* =========================================
-   RESPONSIVE: Tablet (768px – 1024px)
-   Purpose: Show exactly 2 Cards horizontal scroll, centered
-   ========================================= */
+/* RESPONSIVE: Tablet & Mobile - RESTORED ORIGINAL RESPONSIVE */
 @media (max-width: 1024px) {
     .placement-container-wrapper {
         width: 100%;
@@ -479,21 +500,10 @@
     }
 }
 
-/* =========================================
-   RESPONSIVE: Mobile (<768px)
-   Purpose: Show exactly 1 Card horizontal scroll, centered
-   ========================================= */
 @media (max-width: 700px) {
     .placement-container-wrapper {
         padding: 30px 10px;
         min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .placement-content {
-        width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -523,14 +533,6 @@
         height: auto;
         padding: 15px;
         align-items: center;
-    }
-
-    .prev-btn-placeholder {
-        margin-left: -5px;
-    }
-
-    .next-btn {
-        margin-right: -5px;
     }
 
     .courses-track {

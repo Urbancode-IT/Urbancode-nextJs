@@ -1,26 +1,78 @@
 .new-year-banner-section {
-    padding: 0;
     width: 100%;
-    overflow: hidden;
-    background-color: transparent;
-    margin-top: 10px;
-    margin-bottom: 40px;
+    margin: 40px 0;
+    padding: 0;
+    line-height: 0;
+    display: flex;
+    justify-content: center;
+    background: transparent;
 }
 
 .banner-image-wrapper {
-    width: 100%;
+    width: 85%;
+    margin: 0;
+    padding: 0;
     cursor: pointer;
     overflow: hidden;
-    transition: opacity 0.3s ease;
+    line-height: 0;
+    /* Removed border-radius and box-shadow to remove the "border" look */
+    transition: all 0.3s ease;
+    position: relative;
+    background: transparent;
 }
 
+/* Automatic Shine Effect - Faster version */
+.banner-image-wrapper::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0.45) 50%,
+            rgba(255, 255, 255, 0) 100%);
+    transform: skewX(-25deg);
+    animation: automatic-shine 2.5s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes automatic-shine {
+    0% {
+        left: -100%;
+    }
+
+    40% {
+        left: 150%;
+    }
+
+    100% {
+        left: 150%;
+    }
+}
+
+/* Hover Effect */
 .banner-image-wrapper:hover {
-    opacity: 0.95;
+    transform: translateY(-3px);
 }
 
 .banner-img {
     display: block;
     width: 100%;
     height: auto;
-    object-fit: cover;
+    object-fit: contain;
+    /* Changed back to contain as cover might be causing the "white area" if the aspect ratio doesn't match perfectly */
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .banner-image-wrapper {
+        width: 100%;
+        /* Full width on mobile to remove side spacing */
+    }
+
+    .new-year-banner-section {
+        margin: 20px 0;
+    }
 }

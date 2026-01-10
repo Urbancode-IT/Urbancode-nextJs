@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import React, { useState } from 'react';
 import Image from 'next/image';
 import EnquiryFormModal from "@/app/components/common/EnquiryFormModal.jsx";
@@ -12,7 +12,6 @@ const Banner = () => {
             <div
                 className="banner-image-wrapper"
                 onClick={() => setShowEnquiry(true)}
-                style={{ cursor: 'pointer' }}
             >
                 <Image
                     src="/images/home/banner.webp"
@@ -25,7 +24,6 @@ const Banner = () => {
                     priority
                 />
             </div>
-
             <EnquiryFormModal
                 isOpen={showEnquiry}
                 onClose={() => setShowEnquiry(false)}
