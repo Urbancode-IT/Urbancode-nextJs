@@ -48,7 +48,7 @@ function Footer() {
 
           {/* Demand Software Courses */}
           <div className="col-lg-3 col-md-6">
-            <h4>Trending Software Courses</h4>
+            <h4>Trending Software Coursess</h4>
             <ul className="list-unstyled">
               <li><Link href="/courses/web-and-app-development/mern-stack"> MERN Stack</Link></li>
               <li><Link href="/courses/web-and-app-development/mean-stack"> MEAN Stack</Link></li>
