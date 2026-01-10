@@ -7,7 +7,6 @@
     gap: 30px;
     padding: 40px 20px;
     background: linear-gradient(180deg, #EBEBEB, rgba(215, 235, 226, .2) 50%, #EBEBEB), linear-gradient(259.47deg, rgba(102, 102, 102, .078) -.37%, rgba(0, 181, 111, .13) 104.31%);
-
     box-sizing: border-box;
 }
 
@@ -17,11 +16,8 @@
     margin-bottom: 35px;
 }
 
-
-
 .trending-slider-wrapper {
     width: 1130px;
-    /* (260 * 4) + (30 * 3) = 1130px exactly */
     position: relative;
     box-sizing: border-box;
     display: flex;
@@ -34,11 +30,8 @@
     width: 100%;
     overflow-x: auto;
     overflow-y: visible;
-    /* Allow lifting without clipping */
     padding-top: 15px;
-    /* Space for the lift */
     margin-top: -15px;
-    /* Offset the padding */
     scroll-behavior: smooth;
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
@@ -281,26 +274,57 @@
 /* Responsive Adjustments */
 @media (max-width: 1250px) {
     .trending-slider-wrapper {
-        width: 840px;
+        width: 100%;
+        max-width: 840px;
     }
 }
 
 @media (max-width: 950px) {
     .trending-slider-wrapper {
-        width: 550px;
+        width: 100%;
+        max-width: 550px;
+    }
+}
+
+@media (max-width: 768px) {
+    .trending-modal-content {
+        grid-template-columns: 1fr;
+    }
+
+    .trending-modal-media img {
+        max-height: 300px;
+    }
+
+    .trending-modal-info {
+        padding: 20px;
     }
 }
 
 @media (max-width: 650px) {
     .trending-slider-wrapper {
-        width: 260px;
+        width: calc(100% - 40px);
+        max-width: 290px;
     }
 
     .trending-section-container {
-        padding: 20px 10px;
+        padding: 40px 0;
     }
 
     .trending-header h2 {
-        font-size: 32px;
+        font-size: 26px;
+    }
+
+    .nav-side-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+
+    .nav-side-btn.prev {
+        left: -15px;
+    }
+
+    .nav-side-btn.next {
+        right: -15px;
     }
 }

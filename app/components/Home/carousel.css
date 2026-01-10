@@ -69,6 +69,16 @@
 }
 
 @media (max-width: 480px) {
+  .company-carousel .section-main-title {
+    font-size: 24px;
+    padding: 0 10px;
+  }
+
+  .company-carousel p.fs1rem {
+    font-size: 0.85rem;
+    padding: 0 15px;
+  }
+
   .company-slide {
     width: 80px;
     margin: 0 10px;

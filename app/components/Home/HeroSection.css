@@ -202,41 +202,41 @@
   }
 
   .fs25rem {
-    font-size: 1.8rem;
-
+    font-size: 1.65rem;
   }
 
   .animated-title {
     font-weight: 900;
-    line-height: 1.5;
-    margin-bottom: 2rem;
+    line-height: 1.35;
+    margin-bottom: 1rem;
   }
 
   .animated-title span {
-    font-size: 2rem;
-
+    font-size: 1.8rem;
   }
 
   .stats_line {
-    opacity: 0.7;
+    opacity: 0.8;
+    font-size: 0.85rem;
+    line-height: 1.5;
   }
 
   .fs1rem {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
+    line-height: 1.6;
   }
 
   .enroll_btn {
-    font-size: 14px;
-    padding: 20px 24px;
-    width: 90%;
-    margin-left: 5%;
+    font-size: 15px;
+    padding: 12px 24px;
+    width: auto;
+    margin-left: 0;
   }
 
   .home-hero-content {
-    line-height: 1.2;
-    text-align: justify;
+    line-height: 1.5;
+    text-align: left;
   }
-
 }
 
 .students_img {

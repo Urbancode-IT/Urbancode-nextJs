@@ -77,23 +77,23 @@ const coursesData = [
 const CourseCard = ({ course }) => {
     const router = useRouter();
     return (
-        <div className="course-card" onClick={() => router.push(course.path)} style={{ cursor: 'pointer' }}>
-            <div className="card-image-container">
-                <img src={course.image} alt={course.title} className="card-image" />
-                <div className="glass-overlay">
-                    <div className="card-content-wrapper">
-                        <div className="title-container">
-                            <h3 className="card-title">{course.title}</h3>
+        <div className="jg-course-card" onClick={() => router.push(course.path)} style={{ cursor: 'pointer' }}>
+            <div className="jg-card-img-container">
+                <img src={course.image} alt={course.title} className="jg-card-img" />
+                <div className="jg-card-glass-overlay">
+                    <div className="jg-card-content-stack">
+                        <div className="jg-card-title-box">
+                            <h3 className="jg-card-title-text">{course.title}</h3>
                         </div>
-                        <div className="card-footer-row">
-                            <div className="card-logo-row">
+                        <div className="jg-card-footer-row">
+                            <div className="jg-card-logo-group">
                                 {course.logo.map((logoUrl, index) => (
-                                    <div key={index} className="logo-container">
-                                        <img src={logoUrl} alt="logo" className="card-logo" />
+                                    <div key={index} className="jg-card-logo-item">
+                                        <img src={logoUrl} alt="logo" className="jg-card-logo-img" />
                                     </div>
                                 ))}
                             </div>
-                            <div className="card-arrow">
+                            <div className="jg-card-action-arrow">
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
                                 </svg>
@@ -148,45 +148,55 @@ const Courses = () => {
 
     const slideNext = () => {
         if (sliderRef.current) {
+            const firstCard = sliderRef.current.querySelector('.jg-course-card');
+            const cardWidth = firstCard ? firstCard.clientWidth : 300;
+            const gap = 20;
+            const scrollAmount = cardWidth + gap;
+
             if (isAtEnd) {
                 sliderRef.current.scrollTo({ left: 0, behavior: 'smooth' });
             } else {
-                sliderRef.current.scrollBy({ left: 321, behavior: 'smooth' });
+                sliderRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
             }
         }
     };
 
     const slidePrev = () => {
         if (sliderRef.current) {
+            const firstCard = sliderRef.current.querySelector('.jg-course-card');
+            const cardWidth = firstCard ? firstCard.clientWidth : 300;
+            const gap = 20;
+            const scrollAmount = cardWidth + gap;
+
             if (isAtStart) {
                 sliderRef.current.scrollTo({ left: sliderRef.current.scrollWidth, behavior: 'smooth' });
             } else {
-                sliderRef.current.scrollBy({ left: -321, behavior: 'smooth' });
+                sliderRef.current.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
             }
         }
     };
 
     return (
-        <div className="placement-container-wrapper">
-            <div className="placement-content">
-                <div className="left-text-section">
-                    <h2 className="job-guarantee-heading">
+        <div className="jg-courses-section-wrapper">
+            <div className="jg-courses-main-content">
+                <div className="jg-courses-text-container">
+                    <h2 className="jg-courses-title">
                         100% <br />
                         Job Guarantee <br />
-                        <span className="gradient-text">Courses</span>
+                        <span className="jg-gradient-text">Courses</span>
                     </h2>
-                    <p className="job-guarantee-subtext">
+                    <p className="jg-courses-description">
                         Master the most in-demand tech stacks with our comprehensive, industry-aligned training programs.
                     </p>
                 </div>
                 <div
-                    className="courses-slider-wrapper"
+                    className="jg-courses-slider-container"
                     onMouseEnter={() => setIsPaused(true)}
                     onMouseLeave={() => setIsPaused(false)}
                 >
-                    <div className="courses-slider-container">
+                    <div className="jg-courses-glass-track-wrapper">
                         <div
-                            className="courses-track"
+                            className="jg-courses-scroll-track"
                             ref={sliderRef}
                             onScroll={checkScrollPosition}
                         >
@@ -195,18 +205,18 @@ const Courses = () => {
                             ))}
                         </div>
                     </div>
-                    <div className="navigation-controls">
-                        <div className="prev-btn-placeholder">
-                            <button className="nav-btn prev-btn" onClick={slidePrev}>
+                    <div className="jg-courses-nav-controls">
+                        <div className="jg-nav-btn-wrapper">
+                            <button className="jg-nav-pill-btn jg-prev" onClick={slidePrev}>
                                 &lt;
                             </button>
                         </div>
-                        <div className="progress-bar-container">
-                            <div className={`progress-line ${isAtStart ? 'active' : ''}`}></div>
-                            <div className={`progress-line ${!isAtStart ? 'active' : ''}`}></div>
+                        <div className="jg-progress-dots">
+                            <div className={`jg-dot ${isAtStart ? 'active' : ''}`}></div>
+                            <div className={`jg-dot ${!isAtStart ? 'active' : ''}`}></div>
                         </div>
                         <button
-                            className="nav-btn next-btn"
+                            className="jg-nav-pill-btn jg-next"
                             onClick={slideNext}
                         >
                             &gt;
