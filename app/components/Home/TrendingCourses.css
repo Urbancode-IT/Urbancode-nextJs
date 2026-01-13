@@ -118,6 +118,7 @@
     filter: brightness(1.1);
 }
 
+/* Modal and Hover Styles... */
 .card-hover-overlay {
     position: absolute;
     inset: 0;
@@ -142,7 +143,6 @@
     opacity: 1;
 }
 
-/* Modal Styling */
 .trending-modal-backdrop {
     position: fixed;
     inset: 0;
@@ -301,17 +301,46 @@
 }
 
 @media (max-width: 650px) {
-    .trending-slider-wrapper {
-        width: calc(100% - 40px);
-        max-width: 290px;
-    }
-
     .trending-section-container {
         padding: 40px 0;
+        gap: 0px !important;
+        /* Force zero gap between title and slider container */
     }
 
-    .trending-header h2 {
-        font-size: 26px;
+    .trending-header {
+        margin-bottom: 0px !important;
+    }
+
+    .trending-header .section-main-title {
+        padding-bottom: 5px !important;
+        /* Minimize space taken by title line */
+    }
+
+    .trending-slider-wrapper {
+        width: 100%;
+        max-width: 100vw;
+        padding: 0 50px;
+        /* Leave space for buttons */
+        margin: 0 auto;
+    }
+
+    .trending-scroll-track {
+        gap: 0;
+        /* No gap between cards to make them "one at a time" */
+        scroll-snap-type: x mandatory;
+        padding-top: 5px;
+        margin-top: 0;
+    }
+
+    .trending-course-card {
+        width: 100%;
+        /* Take full available wrapper width */
+        min-width: 100%;
+        /* Ensure each card takes full width */
+        height: auto;
+        aspect-ratio: 3/4;
+        scroll-snap-align: center;
+        margin: 0;
     }
 
     .nav-side-btn {
@@ -321,10 +350,10 @@
     }
 
     .nav-side-btn.prev {
-        left: -15px;
+        left: 5px;
     }
 
     .nav-side-btn.next {
-        right: -15px;
+        right: 5px;
     }
 }

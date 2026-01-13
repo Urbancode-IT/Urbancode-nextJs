@@ -1,9 +1,12 @@
+html,
 body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Inter', sans-serif;
   background-color: #ebebeb;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 .text-shine {
@@ -35,16 +38,29 @@ body {
 
 .section-main-title {
   position: relative;
-  display: inline-block;
-  padding-bottom: 12px;
+  display: block;
+  padding-bottom: 20px;
   font-weight: 600;
-  font-size: 32px;
-  white-space: nowrap;
+  font-size: 36px;
   text-align: center;
   line-height: 1.2;
   color: #444;
-  margin: 0;
+  margin: 0 auto;
   letter-spacing: -0.5px;
+  max-width: 100%;
+  word-wrap: break-word;
+}
+
+@media (max-width: 768px) {
+  .section-main-title {
+    font-size: 26px;
+    padding-bottom: 12px;
+    line-height: 1.1;
+  }
+
+  .fs1rem {
+    font-size: 0.85rem !important;
+  }
 }
 
 .section-main-title::after {

@@ -1,0 +1,156 @@
+.idt-in-demand-container {
+    /* background-color: #f0f0f0; */
+    padding: 80px 0;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    overflow: hidden;
+}
+
+/* Standard section title spacing is handled by global styles, but adding margin here to match layout */
+.section-main-title {
+    margin-bottom: 60px !important;
+}
+
+.idt-tools-slider-container {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    position: relative;
+    width: 100%;
+}
+
+.idt-slider-track {
+    display: flex;
+    gap: 40px;
+    width: max-content;
+    /* Ultimate Speed: 18s for a very dynamic feel */
+    animation: scroll-left 18s linear infinite;
+    padding: 20px 0;
+}
+
+.idt-slider-track.idt-row-reverse {
+    animation: scroll-right 18s linear infinite;
+}
+
+.idt-slider-track:hover {
+    animation-play-state: paused;
+}
+
+/* Layer 1: Outer Wrapper (Ellipse 76) */
+.idt-tool-item-wrapper {
+    width: 154px;
+    height: 154px;
+    background: linear-gradient(138.13deg, #FFFFFF -5.48%, #7F7F7F 107.85%);
+    box-shadow: -29px 0px 12px rgba(0, 0, 0, 0.04),
+        -16px 0px 10px rgba(0, 0, 0, 0.13),
+        -7px 0px 7px rgba(0, 0, 0, 0.21),
+        -2px 0px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 154px;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.idt-tool-item-wrapper:hover {
+    transform: scale(1.08) translateY(-5px);
+}
+
+/* Layer 2: White Base for Logo (Ellipse 77) */
+.idt-tool-logo-base {
+    width: 121px;
+    height: 121px;
+    background: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: -33px 32px 19px rgba(0, 0, 0, 0.04),
+        -19px 18px 16px rgba(0, 0, 0, 0.13),
+        -8px 8px 12px rgba(0, 0, 0, 0.21),
+        -2px 2px 6px rgba(0, 0, 0, 0.25);
+    padding: 10px;
+    overflow: hidden;
+}
+
+/* Layer 3: Logo (Rectangle 303) */
+.idt-tool-icon {
+    width: 70%;
+    height: 70%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+/* Infinite Scroll Keyframes */
+@keyframes scroll-left {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(calc(-100% / 3));
+    }
+}
+
+@keyframes scroll-right {
+    0% {
+        transform: translateX(calc(-100% / 3));
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* Edge fading effect */
+.idt-tools-slider-container::before,
+.idt-tools-slider-container::after {
+    content: "";
+    position: absolute;
+    top: -20px;
+    bottom: -20px;
+    width: 250px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.idt-tools-slider-container::before {
+    left: 0;
+    background: linear-gradient(to right, #f0f0f0 20%, transparent);
+}
+
+.idt-tools-slider-container::after {
+    right: 0;
+    background: linear-gradient(to left, #f0f0f0 20%, transparent);
+}
+
+@media (max-width: 768px) {
+    .idt-in-demand-container {
+        padding: 40px 0;
+    }
+
+    .section-main-title {
+        margin-bottom: 30px !important;
+    }
+
+    .idt-tool-item-wrapper {
+        width: 100px;
+        height: 100px;
+        flex: 0 0 100px;
+    }
+
+    .idt-tool-logo-base {
+        width: 80px;
+        height: 80px;
+    }
+
+    .idt-slider-track {
+        gap: 20px;
+    }
+
+    .idt-tools-slider-container::before,
+    .idt-tools-slider-container::after {
+        width: 100px;
+    }
+}

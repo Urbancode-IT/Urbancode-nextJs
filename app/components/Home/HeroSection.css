@@ -181,6 +181,7 @@
     display: flex;
     flex-direction: column;
     gap: 4px;
+    align-items: center;
   }
 
   .social-icon {
@@ -191,51 +192,57 @@
   .enroll_btn {
     font-size: 16px;
     padding: 12px 28px;
+    margin: 0 auto;
+    display: block;
   }
 }
 
 @media (max-width: 480px) {
   .motion-grid {
     max-width: 260px;
-    /* Slightly smaller for very small screens */
     width: 90%;
+    margin: 0 auto;
   }
 
   .fs25rem {
-    font-size: 1.65rem;
+    font-size: 1.5rem;
   }
 
   .animated-title {
     font-weight: 900;
-    line-height: 1.35;
+    line-height: 1.25;
     margin-bottom: 1rem;
+    text-align: center;
   }
 
   .animated-title span {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
   }
 
   .stats_line {
     opacity: 0.8;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     line-height: 1.5;
+    align-items: center;
   }
 
   .fs1rem {
-    font-size: 0.85rem;
-    line-height: 1.6;
+    font-size: 0.8rem;
+    line-height: 1.5;
   }
 
   .enroll_btn {
-    font-size: 15px;
-    padding: 12px 24px;
+    font-size: 14px;
+    padding: 10px 20px;
     width: auto;
-    margin-left: 0;
+    margin: 20px auto 0;
+    display: block;
   }
 
   .home-hero-content {
     line-height: 1.5;
-    text-align: left;
+    text-align: center;
+    margin: 15px auto;
   }
 }
 

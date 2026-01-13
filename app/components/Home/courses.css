@@ -335,10 +335,15 @@
         padding: 0 15px;
     }
 
+    .jg-courses-title {
+        font-size: 32px;
+        margin-bottom: 10px;
+    }
+
     .jg-courses-text-container {
         flex: none;
         width: 100%;
-        margin-bottom: 30px;
+        margin-bottom: 15px;
         display: flex;
         flex-direction: column;
         align-items: center;

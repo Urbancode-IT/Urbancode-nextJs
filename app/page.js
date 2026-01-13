@@ -5,6 +5,8 @@ import HeroSection from './components/Home/HeroSection';
 import Banner from './components/Home/Banner';
 import TrendingCourses from './components/Home/TrendingCourses';
 import Courses from './components/Home/Courses';
+import InDemandTools from './components/Home/InDemandTools';
+import GetCertified from './components/Home/GetCertified';
 import TestimonialCarousel from './components/Home/TestimonialCarousel';
 import FaqBootstrap from './components/Home/Faqs';
 import Carousel from './components/Home/Carasoul';
@@ -109,6 +111,8 @@ export default function HomePage() {
       <Banner />
       <Carousel />
       <Courses />
+      <InDemandTools />
+      {/* <GetCertified /> */}
       <TestimonialCarousel />
       <FaqBootstrap />
       <TrendingCourses />
