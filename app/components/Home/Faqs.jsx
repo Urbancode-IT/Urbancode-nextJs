@@ -35,7 +35,7 @@ const Faqs = () => {
     return (
         <div className="faq-section container py-5">
             <div className="text-center mb-5">
-                <h2 className="section-main-title text-shine">- Let's get you more info -</h2>
+                <h2 className="section-main-title text-shine">Let's get you more info</h2>
             </div>
             <div className="row align-items-start g-4">
                 {/* Left Section */}

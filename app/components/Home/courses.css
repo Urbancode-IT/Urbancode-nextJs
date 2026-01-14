@@ -208,10 +208,10 @@
 }
 
 .jg-card-logo-item {
-    width: 32px;
-    height: 32px;
+    width: 28px;
+    height: 28px;
     background: rgba(255, 255, 255, 0.2);
-    border-radius: 8px;
+    border-radius: 6px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -219,8 +219,8 @@
 }
 
 .jg-card-logo-img {
-    width: 20px;
-    height: 20px;
+    width: 16px;
+    height: 16px;
     object-fit: contain;
 }
 

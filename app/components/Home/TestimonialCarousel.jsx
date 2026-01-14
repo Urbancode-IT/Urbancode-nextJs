@@ -98,10 +98,10 @@ const TestimonialCarousel = () => {
             .toUpperCase();
 
     return (
-        <div className="testimonial_main_container py-5">
+        <div className="testimonial_main_container pt-3 pb-5">
             <div className="container ">
-                <div className="text-center mb-5">
-                    <h2 className="section-main-title text-shine">― The Voice That Matters ―</h2>
+                <div className="text-center">
+                    <h2 className="section-main-title text-shine">The Voice That Matters</h2>
                     <p className="fs1rem text-muted">Celebrating the remarkable success stories and career breakthroughs we've proudly helped achieve.</p>
                 </div>
 

@@ -39,22 +39,27 @@ body {
 .section-main-title {
   position: relative;
   display: block;
-  padding-bottom: 20px;
+  padding-bottom: 15px;
   font-weight: 600;
   font-size: 36px;
   text-align: center;
   line-height: 1.2;
   color: #444;
-  margin: 0 auto;
+  margin: 0 auto 15px auto;
   letter-spacing: -0.5px;
   max-width: 100%;
   word-wrap: break-word;
 }
 
+.section-main-title+p {
+  margin-top: 0 !important;
+}
+
 @media (max-width: 768px) {
   .section-main-title {
     font-size: 26px;
-    padding-bottom: 12px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
     line-height: 1.1;
   }
 
