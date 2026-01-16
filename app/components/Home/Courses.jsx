@@ -6,71 +6,52 @@ import { useRouter } from 'next/navigation';
 const coursesData = [
     {
         id: 1,
-        title: "Fullstack Development",
-        description: "Full Stack Development covers both frontend and backend to build complete, scalable web applications.",
-        image: "/images/home/p1.webp",
-        logo: [
-            "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
-            "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
-            "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg"
-        ],
-        path: "/courses/web-and-app-development"
+        title: "MERN Stack",
+        description: "Master MongoDB, Express.js, React, and Node.js for complete full-stack JavaScript applications.",
+        image: "/images/home/t1.webp",
+        path: "/training/mern-stack"
     },
     {
         id: 2,
-        title: "MERN Stack",
-        description: "MERN Stack is a powerful full-stack JavaScript technology for building modern web applications.",
-        image: "/images/home/p2.webp",
-        logo: [
-            "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
-            "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
-            "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
-            "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
-        ],
-        path: "/courses/web-and-app-development/mern-stack"
+        title: "MEAN Stack",
+        description: "Build robust web applications using MongoDB, Express.js, Angular, and Node.js.",
+        image: "/images/home/t2.webp",
+        path: "/training/mean-stack"
     },
     {
         id: 3,
-        title: "AWS",
-        description: "AWS is a cloud platform that provides scalable computing, storage, and services to build and deploy applications.",
-        image: "/images/home/p3.webp",
-        logo: ["https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg"],
-        path: "/courses/cloud-and-devops/aws"
+        title: ".NET Angular",
+        description: "Enterprise-grade development combining the power of .NET Core with the flexibility of Angular.",
+        image: "/images/home/t3.webp",
+        path: "/training/dotnet-angular"
     },
     {
         id: 4,
-        title: "Data Science",
-        description: "Data Science combines statistics, data analysis, and machine learning to understand and analyze actual phenomena.",
-        image: "/images/home/p4.webp",
-        logo: [
-            "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
-            "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg"
-        ],
-        path: "/courses/data-science"
+        title: "Data Analytics",
+        description: "Transform raw data into meaningful insights using Python, SQL, and modern BI tools.",
+        image: "/images/home/t4.webp",
+        path: "/training/data-analytics"
     },
     {
         id: 5,
-        title: "UI/UX Design",
-        description: "UI/UX Design focuses on creating interfaces that look good and offer a seamless user experience.",
-        image: "/images/home/p5.webp",
-        logo: ["https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg"],
-        path: "/courses/ui-ux-designing"
+        title: "AI/ML",
+        description: "Deep dive into Artificial Intelligence and Machine Learning algorithms and real-world applications.",
+        image: "/images/home/t5.webp",
+        path: "/training/ai-ml"
     },
     {
         id: 6,
-        title: "DevOps",
-        description: "DevOps focuses on automating development, deployment, and infrastructure to deliver applications faster and more reliably.",
-        image: "/images/home/p6.webp",
-        logo: ["https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"],
-        path: "/courses/cloud-and-devops/devops"
+        title: "Automation Testing",
+        description: "Learn to automate software testing processes using Selenium, Java, and modern frameworks.",
+        image: "/images/home/t6.webp",
+        path: "/training/automation-testing"
     },
     {
         id: 7,
-        title: "Python Programming",
-        description: "Learn Python for web development, data analysis, usage in AI and scientific computing.",
-        image: "/images/home/p7.webp",
-        logo: ["https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"],
-        path: "/courses/programming-languages/core-python"
+        title: "AWS DevOps",
+        description: "Master cloud infrastructure and CI/CD pipelines with Amazon Web Services and DevOps tools.",
+        image: "/images/home/t7.webp",
+        path: "/training/aws-devops"
     }
 ];
 
@@ -84,20 +65,6 @@ const CourseCard = ({ course }) => {
                     <div className="jg-card-content-stack">
                         <div className="jg-card-title-box">
                             <h3 className="jg-card-title-text">{course.title}</h3>
-                        </div>
-                        <div className="jg-card-footer-row">
-                            <div className="jg-card-logo-group">
-                                {course.logo.map((logoUrl, index) => (
-                                    <div key={index} className="jg-card-logo-item">
-                                        <img src={logoUrl} alt="logo" className="jg-card-logo-img" />
-                                    </div>
-                                ))}
-                            </div>
-                            <div className="jg-card-action-arrow">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                                </svg>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -113,6 +80,63 @@ const CourseDetailPlaceholder = ({ name }) => {
             <h1>{name} Page</h1>
             <p>This page is currently under development. Specific content will be added soon.</p>
             <button onClick={() => router.back()}>Go Back</button>
+        </div>
+    );
+};
+
+
+const MiniFeatureBox = () => {
+    const features = [
+        {
+            title: "800+ Placements",
+            text: "Successful career transitions into top MNCs like Zoho & Amazon.",
+            icon: "🚀"
+        },
+        {
+            title: "Live Projects",
+            text: "Gain hands-on experience with 10+ real-world industry projects.",
+            icon: "💻"
+        },
+        {
+            title: "Mock Interviews",
+            text: "Dedicated personality development and interview prep sessions.",
+            icon: "🤝"
+        }
+    ];
+
+    const [activeIndex, setActiveIndex] = useState(0);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setActiveIndex((prev) => (prev + 1) % features.length);
+        }, 3000);
+        return () => clearInterval(interval);
+    }, []);
+
+    return (
+        <div className="jg-mini-feature-box">
+            <div className="jg-feature-inner">
+                {features.map((feature, idx) => (
+                    <div
+                        key={idx}
+                        className={`jg-feature-slide ${idx === activeIndex ? 'active' : ''}`}
+                    >
+                        <span className="jg-feature-icon">{feature.icon}</span>
+                        <div className="jg-feature-content">
+                            <h4 className="jg-feature-title">{feature.title}</h4>
+                            <p className="jg-feature-text">{feature.text}</p>
+                        </div>
+                    </div>
+                ))}
+            </div>
+            <div className="jg-feature-indicators">
+                {features.map((_, idx) => (
+                    <div
+                        key={idx}
+                        className={`jg-feature-dot ${idx === activeIndex ? 'active' : ''}`}
+                    />
+                ))}
+            </div>
         </div>
     );
 };
@@ -180,20 +204,20 @@ const Courses = () => {
         <div className="jg-courses-section-wrapper">
             <div className="jg-courses-main-content">
                 <div className="jg-courses-text-container">
-                    <h2 className="jg-courses-title">
+                    <h2 className="jg-courses-title text-shine">
                         100% <br />
                         Job Guarantee <br />
-                        <span className="jg-gradient-text">Courses</span>
+                        Courses
                     </h2>
-                    <p className="jg-courses-description">
-                        Master the most in-demand tech stacks with our comprehensive, industry-aligned training programs.
-                    </p>
+                    <MiniFeatureBox />
                 </div>
                 <div
                     className="jg-courses-slider-container"
                     onMouseEnter={() => setIsPaused(true)}
                     onMouseLeave={() => setIsPaused(false)}
                 >
+                    <button className={`jg-nav-side-btn prev ${isAtStart ? 'is-disabled' : ''}`} onClick={slidePrev}>&lt;</button>
+
                     <div className="jg-courses-glass-track-wrapper">
                         <div
                             className="jg-courses-scroll-track"
@@ -205,23 +229,8 @@ const Courses = () => {
                             ))}
                         </div>
                     </div>
-                    <div className="jg-courses-nav-controls">
-                        <div className="jg-nav-btn-wrapper">
-                            <button className="jg-nav-pill-btn jg-prev" onClick={slidePrev}>
-                                &lt;
-                            </button>
-                        </div>
-                        <div className="jg-progress-dots">
-                            <div className={`jg-dot ${isAtStart ? 'active' : ''}`}></div>
-                            <div className={`jg-dot ${!isAtStart ? 'active' : ''}`}></div>
-                        </div>
-                        <button
-                            className="jg-nav-pill-btn jg-next"
-                            onClick={slideNext}
-                        >
-                            &gt;
-                        </button>
-                    </div>
+
+                    <button className={`jg-nav-side-btn next ${isAtEnd ? 'is-disabled' : ''}`} onClick={slideNext}>&gt;</button>
                 </div>
             </div>
         </div>

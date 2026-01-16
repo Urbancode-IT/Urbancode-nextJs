@@ -45,7 +45,7 @@ const Faqs = () => {
                         <div className="faq-contact-box mt-5 p-4 rounded-4 shadow-sm">
                             <h5 className="fw-semibold">Have a Question?</h5>
                             <p className="text-muted small mb-3">
-                                Can’t find the answer to your question? Send us an email and we’ll get back to you as soon as possible!
+                                Send us an email and we’ll get back to you as soon as possible!
                             </p>
                             <button className="faq-mail-btn px-4 py-2 rounded-3"><a href="mailto:admin@urbancode.in">Send mail</a></button>
                         </div>

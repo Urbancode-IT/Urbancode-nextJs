@@ -14,8 +14,8 @@ function Footer() {
             <div className="footer-logo">
               <img src="/images/home/logo.png" alt="UrbanCode Logo" />
             </div>
-            <h4 className="ms-4">Social Media</h4>
-            <div className="social-icons ms-4">
+            <h4>Social Media</h4>
+            <div className="social-icons">
               <a href="https://www.linkedin.com/company/99156099/admin/dashboard/" target="_blank" rel="noopener noreferrer">
                 <i className="fab fa-linkedin"></i>
               </a>
