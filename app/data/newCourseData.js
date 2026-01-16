@@ -944,10 +944,10 @@ export const newCourseData = {
         ],
         toolsData: [
             { id: 1, name: "Python", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
-            { id: 2, name: "Excel", icon: "https://www.vectorlogo.zone/logos/microsoft_excel/microsoft_excel-icon.svg" },
+            { id: 2, name: "Excel", icon: "/images/home/excel_logo.svg" },
             { id: 3, name: "SQL", icon: "https://www.vectorlogo.zone/logos/mysql/mysql-icon.svg" },
             { id: 4, name: "Power BI", icon: "https://www.vectorlogo.zone/logos/microsoft_powerbi/microsoft_powerbi-icon.svg" },
-            { id: 5, name: "Tableau", icon: "https://www.vectorlogo.zone/logos/tableau/tableau-icon.svg" },
+            { id: 5, name: "Tableau", icon: "/images/home/tableau_logo.svg" },
             { id: 6, name: "Pandas", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" },
             { id: 7, name: "NumPy", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" },
             { id: 8, name: "Matplotlib", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/matplotlib/matplotlib-original.svg" },
