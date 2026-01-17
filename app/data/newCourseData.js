@@ -17,7 +17,7 @@ const commonHighlights = [
     { icon: <FaLanguage />, label: "Language", value: "Tamil/English" },
     { icon: <FaCertificate />, label: "Qualification", value: "Freshers/Experienced" },
     { icon: <FaBriefcase />, label: "Internship", value: "3 - 6 months" },
-    { icon: <FaCheckCircle />, label: "Placement", value: "100% Job Support" },
+    { icon: <FaCheckCircle />, label: "Placement", value: "100% Job Guaranteed" },
 ];
 
 const commonFaq = [

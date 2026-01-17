@@ -2,6 +2,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import './courses.css';
 import { useRouter } from 'next/navigation';
+import { FaRocket, FaLaptopCode, FaHandshake } from 'react-icons/fa';
 
 const coursesData = [
     {
@@ -90,17 +91,17 @@ const MiniFeatureBox = () => {
         {
             title: "800+ Placements",
             text: "Successful career transitions into top MNCs like Zoho & Amazon.",
-            icon: "🚀"
+            icon: <FaRocket />
         },
         {
             title: "Live Projects",
             text: "Gain hands-on experience with 10+ real-world industry projects.",
-            icon: "💻"
+            icon: <FaLaptopCode />
         },
         {
             title: "Mock Interviews",
             text: "Dedicated personality development and interview prep sessions.",
-            icon: "🤝"
+            icon: <FaHandshake />
         }
     ];
 
@@ -143,9 +144,40 @@ const MiniFeatureBox = () => {
 
 const Courses = () => {
     const sliderRef = useRef(null);
+    const [items, setItems] = useState([...coursesData, ...coursesData]); // Clone for infinite loop
     const [isAtStart, setIsAtStart] = useState(true);
     const [isAtEnd, setIsAtEnd] = useState(false);
     const [isPaused, setIsPaused] = useState(false);
+    const requestRef = useRef();
+    const startTimeRef = useRef();
+    const speed = 1.0; // Pixels per frame
+
+    const animate = (time) => {
+        if (!sliderRef.current || isPaused) {
+            requestRef.current = requestAnimationFrame(animate);
+            return;
+        }
+
+        const track = sliderRef.current;
+        const scrollWidth = track.scrollWidth;
+        const clientWidth = track.clientWidth;
+
+        // Move track
+        track.scrollLeft += speed;
+
+        // Reset to middle if reached the end of the cloned set to create infinite effect
+        // The original width is roughly scrollWidth / 2
+        if (track.scrollLeft >= (scrollWidth / 2)) {
+            track.scrollLeft = 0;
+        }
+
+        requestRef.current = requestAnimationFrame(animate);
+    };
+
+    useEffect(() => {
+        requestRef.current = requestAnimationFrame(animate);
+        return () => cancelAnimationFrame(requestRef.current);
+    }, [isPaused]);
 
     const checkScrollPosition = () => {
         if (!sliderRef.current) return;
@@ -157,45 +189,48 @@ const Courses = () => {
     };
 
     useEffect(() => {
-        checkScrollPosition();
         window.addEventListener('resize', checkScrollPosition);
         return () => window.removeEventListener('resize', checkScrollPosition);
     }, []);
 
-    useEffect(() => {
-        if (isPaused) return;
-        const interval = setInterval(() => {
-            slideNext();
-        }, 3000);
-        return () => clearInterval(interval);
-    }, [isPaused, isAtEnd]);
-
     const slideNext = () => {
         if (sliderRef.current) {
-            const firstCard = sliderRef.current.querySelector('.jg-course-card');
-            const cardWidth = firstCard ? firstCard.clientWidth : 300;
-            const gap = 20;
-            const scrollAmount = cardWidth + gap;
+            const track = sliderRef.current;
+            const firstCard = track.querySelector('.jg-course-card');
+            if (firstCard) {
+                const cardWidth = firstCard.getBoundingClientRect().width;
+                const styles = window.getComputedStyle(track);
+                const gap = parseFloat(styles.gap) || 20;
+                const scrollStep = cardWidth + gap;
 
-            if (isAtEnd) {
-                sliderRef.current.scrollTo({ left: 0, behavior: 'smooth' });
-            } else {
-                sliderRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                if (isAtEnd) {
+                    track.scrollTo({ left: 0, behavior: 'smooth' });
+                } else {
+                    const currentScroll = track.scrollLeft;
+                    const nextTarget = Math.round((currentScroll + scrollStep) / scrollStep) * scrollStep;
+                    track.scrollTo({ left: nextTarget, behavior: 'smooth' });
+                }
             }
         }
     };
 
     const slidePrev = () => {
         if (sliderRef.current) {
-            const firstCard = sliderRef.current.querySelector('.jg-course-card');
-            const cardWidth = firstCard ? firstCard.clientWidth : 300;
-            const gap = 20;
-            const scrollAmount = cardWidth + gap;
+            const track = sliderRef.current;
+            const firstCard = track.querySelector('.jg-course-card');
+            if (firstCard) {
+                const cardWidth = firstCard.getBoundingClientRect().width;
+                const styles = window.getComputedStyle(track);
+                const gap = parseFloat(styles.gap) || 20;
+                const scrollStep = cardWidth + gap;
 
-            if (isAtStart) {
-                sliderRef.current.scrollTo({ left: sliderRef.current.scrollWidth, behavior: 'smooth' });
-            } else {
-                sliderRef.current.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+                if (isAtStart) {
+                    track.scrollTo({ left: track.scrollWidth, behavior: 'smooth' });
+                } else {
+                    const currentScroll = track.scrollLeft;
+                    const prevTarget = Math.round((currentScroll - scrollStep) / scrollStep) * scrollStep;
+                    track.scrollTo({ left: prevTarget, behavior: 'smooth' });
+                }
             }
         }
     };
@@ -206,7 +241,7 @@ const Courses = () => {
                 <div className="jg-courses-text-container">
                     <h2 className="jg-courses-title text-shine">
                         100% <br />
-                        Job Guarantee <br />
+                        Job Guaranteed <br />
                         Courses
                     </h2>
                     <MiniFeatureBox />
@@ -223,9 +258,13 @@ const Courses = () => {
                             className="jg-courses-scroll-track"
                             ref={sliderRef}
                             onScroll={checkScrollPosition}
+                            style={{
+                                scrollSnapType: isPaused ? 'x mandatory' : 'none',
+                                scrollBehavior: isPaused ? 'smooth' : 'auto'
+                            }}
                         >
-                            {coursesData.map((course) => (
-                                <CourseCard key={course.id} course={course} />
+                            {items.map((course, index) => (
+                                <CourseCard key={`${course.id}-${index}`} course={course} />
                             ))}
                         </div>
                     </div>

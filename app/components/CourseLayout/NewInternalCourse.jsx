@@ -228,27 +228,13 @@ const NewInternalCourse = ({ data }) => {
                     {/* LEFT COLUMN */}
                     <div className="nict-faq-column left">
                         <div className="nict-faq-left">
-                            <img
-                                src="/images/courses/faqqq.png"
-                                alt="Question mark"
-                                className="nict-faq-image"
-                            />
-
-                            <h2 className="nict-faq-title">
-                                {("Frequently asked\nquestions").split("\n").map((line, i) => (
-                                    <span key={i}>
-                                        {line}
-                                        <br />
-                                    </span>
-                                ))}
-                            </h2>
-
-                            <div className="nict-faq-card">
-                                <h4>Still have any questions</h4>
+                            <h4 className="nict-faq-title-main">Frequently <br /> Asked Questions</h4>
+                            <div className="nict-faq-contact-box">
+                                <h5>Still have any Question?</h5>
                                 <p>
                                     Send us an email and we’ll get back to you as soon as possible!
                                 </p>
-                                <button onClick={() => (window.location.href = "mailto:admin@urbancode.in")}>
+                                <button className="nict-faq-mail-btn" onClick={() => (window.location.href = "mailto:admin@urbancode.in")}>
                                     Send mail
                                 </button>
                             </div>

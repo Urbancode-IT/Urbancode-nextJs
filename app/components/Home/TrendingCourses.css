@@ -350,10 +350,10 @@
     }
 
     .nav-side-btn.prev {
-        left: 5px;
+        left: 30px;
     }
 
     .nav-side-btn.next {
-        right: 5px;
+        right: 30px;
     }
 }

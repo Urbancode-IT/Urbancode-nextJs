@@ -5,6 +5,8 @@
    ========================================================================== */
 .nict-course-page {
     background-color: #F2F2F2;
+    font-family: 'Inter', sans-serif;
+    color: #2C3E50;
 }
 
 .nict-courses-hero {
@@ -257,11 +259,9 @@
 .nict-course-highlights-title {
     font-size: 28px;
     font-weight: 600;
-    letter-spacing: -0.02em;
-    color: #0f172a;
+    color: #2C3E50;
     margin-bottom: 48px;
-    position: relative;
-    display: inline-block;
+    text-align: center;
 }
 
 
@@ -366,7 +366,7 @@
     }
 
     .nict-highlight-value {
-        font-size: 24px;
+        font-size: 20px;
     }
 }
 
@@ -677,11 +677,11 @@
 }
 
 .nict-tools-title {
-    font-size: clamp(24px, 6vw, 32px);
+    font-size: 28px;
     font-weight: 600;
     color: #ffffff;
     margin-top: 0;
-    margin-bottom: 24px;
+    margin-bottom: 32px;
     text-align: center;
 }
 
@@ -815,7 +815,7 @@
     }
 
     .nict-tools-title {
-        font-size: 42px;
+        font-size: 36px;
     }
 }
 
@@ -852,76 +852,68 @@
     align-self: flex-start;
 }
 
-.nict-faq-image {
+.nict-faq-left::before {
+    content: "?";
     position: absolute;
-    width: 200px;
-    height: auto;
-    top: -40px;
-    left: -30px;
-    opacity: 0.7;
-    z-index: 0;
-    pointer-events: none;
-    /* filter: grayscale(1); */
-}
-
-.nict-faq-title {
-    font-size: clamp(28px, 8vw, 36px);
+    font-size: 25rem;
+    color: #a0a1a3;
     font-weight: 700;
-    color: #2c3e50;
-    line-height: 1.2;
-    margin-bottom: 24px;
-    position: relative;
-    z-index: 1;
+    top: -40px;
+    left: 0;
+    z-index: 0;
+    opacity: 0.5;
 }
 
-.nict-faq-card {
-    background: #EBEBEB;
-    padding: 12px 18px;
+.nict-faq-title-main {
+    font-size: 2.5rem;
+    color: #2C3E50;
+    position: relative;
+    z-index: 2;
+    font-weight: 600;
+    line-height: 1.2;
+    margin: 0;
+}
+
+.nict-faq-contact-box {
+    position: relative;
+    opacity: 0.8;
+    background: #fff;
     border-radius: 12px;
-    box-shadow: 0px 0px 7.3px 3px rgba(0, 0, 0, 0.25);
+    z-index: 2 !important;
+    padding: 24px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    margin-top: 40px;
     width: 100%;
     max-width: 320px;
-    position: relative;
-    z-index: 1;
-    text-align: left;
-    margin-top: 10px;
 }
 
-.nict-faq-card h4 {
-    font-size: 16px;
-    font-weight: 700;
-    margin-bottom: 2px;
-    color: #1f2d3d;
-}
-
-.nict-faq-card p {
-    font-size: 14px;
-    color: #6c757d;
+.nict-faq-contact-box h5 {
+    font-weight: 600;
+    font-size: 1.25rem;
     margin-bottom: 8px;
+    color: #1c2534;
+}
+
+.nict-faq-contact-box p {
+    color: #6c757d;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
     line-height: 1.5;
 }
 
-.nict-faq-card button {
-    padding: 8px 16px;
-    font-size: 14px;
-    background: #00B56F;
-    color: #ffffff;
+.nict-faq-mail-btn {
+    background-color: #4a4a4a;
+    color: white;
     border: none;
-    border-radius: 37px;
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-weight: 500;
     cursor: pointer;
-    font-weight: 600;
-    transition: all 0.3s ease;
+    transition: background 0.3s;
 }
 
-.nict-faq-card button:hover {
-    background: #009e60;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 181, 111, 0.4);
-}
-
-.nict-faq-card button:active {
-    transform: scale(0.95);
-    box-shadow: none;
+.nict-faq-mail-btn:hover {
+    background-color: #01af6a;
 }
 
 .nict-faq-column.right {
@@ -987,7 +979,7 @@
 .nict-faq-answer {
     overflow: hidden;
     font-size: 14px;
-    color: #6c757d;
+    color: #5E6D7E;
     line-height: 1.6;
     opacity: 0;
     transition: opacity 0.3s ease;
@@ -1028,14 +1020,7 @@
         align-items: flex-start;
     }
 
-    .nict-faq-image {
-        width: 280px;
-        top: -100px;
-        left: 20px;
-        transform: none;
-    }
-
-    .nict-faq-card {
+    .nict-faq-contact-box {
         max-width: 280px;
     }
 
@@ -1061,5 +1046,23 @@
 @media (min-width: 1600px) {
     .nict-faq-container {
         max-width: 1400px;
+    }
+}
+
+@media (max-width: 899px) {
+    .nict-faq-left::before {
+        display: none;
+    }
+
+    .nict-faq-title-main {
+        font-size: 2rem;
+        text-align: center;
+        width: 100%;
+    }
+
+    .nict-faq-contact-box {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
     }
 }
