@@ -2,7 +2,7 @@
 
 
 import HeroSection from './components/Home/HeroSection';
-import Banner from './components/Home/Banner';
+import RepublicBanner from './components/Home/RepublicBanner';
 import TrendingCourses from './components/Home/TrendingCourses';
 import Courses from './components/Home/Courses';
 import InDemandTools from './components/Home/InDemandTools';
@@ -108,7 +108,7 @@ export default function HomePage() {
         }}
       />
       <HeroSection />
-      <Banner />
+      <RepublicBanner />
       <Carousel />
       <Courses />
       <InDemandTools />

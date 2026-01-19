@@ -1,4 +1,4 @@
-.new-year-banner-section {
+.republic-banner-section {
     width: 100%;
     margin: 40px 0;
     padding: 0;
@@ -15,13 +15,12 @@
     cursor: pointer;
     overflow: hidden;
     line-height: 0;
-    /* Removed border-radius and box-shadow to remove the "border" look */
     transition: all 0.3s ease;
     position: relative;
     background: transparent;
 }
 
-/* Automatic Shine Effect - Faster version */
+/* Automatic Shine Effect */
 .banner-image-wrapper::after {
     content: "";
     position: absolute;
@@ -62,17 +61,15 @@
     width: 100%;
     height: auto;
     object-fit: contain;
-    /* Changed back to contain as cover might be causing the "white area" if the aspect ratio doesn't match perfectly */
 }
 
 /* Mobile adjustments */
 @media (max-width: 768px) {
     .banner-image-wrapper {
         width: 100%;
-        /* Full width on mobile to remove side spacing */
     }
 
-    .new-year-banner-section {
+    .republic-banner-section {
         margin: 20px 0;
     }
 }

@@ -2,20 +2,20 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import EnquiryFormModal from "@/app/components/common/EnquiryFormModal.jsx";
-import './Banner.css';
+import './RepublicBanner.css';
 
-const Banner = () => {
+const RepublicBanner = () => {
     const [showEnquiry, setShowEnquiry] = useState(false);
 
     return (
-        <section className="new-year-banner-section">
+        <section className="republic-banner-section">
             <div
                 className="banner-image-wrapper"
                 onClick={() => setShowEnquiry(true)}
             >
                 <Image
-                    src="/images/home/banner.webp"
-                    alt="New Year Offer Banner"
+                    src="/images/home/Republicbanner.png"
+                    alt="Republic Day Special Offer Banner"
                     width={1920}
                     height={600}
                     sizes="100vw"
@@ -27,10 +27,10 @@ const Banner = () => {
             <EnquiryFormModal
                 isOpen={showEnquiry}
                 onClose={() => setShowEnquiry(false)}
-                courseName="New Year Special Offer"
+                courseName="Republic Day Special Offer"
             />
         </section>
     );
 };
 
-export default Banner;
+export default RepublicBanner;
