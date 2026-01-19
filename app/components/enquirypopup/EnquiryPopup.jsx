@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import emailjs from "@emailjs/browser";
 import "./EnquiryPopup.css";
+import { submitEnquiryForm } from "@/lib/api/api";
 
 export default function EnquiryPopup({ delay = 3000 }) {
   const [visible, setVisible] = useState(false);
@@ -21,7 +21,7 @@ export default function EnquiryPopup({ delay = 3000 }) {
     try {
       const hasSubmitted = localStorage.getItem(storageKey);
       if (hasSubmitted) return;
-    } catch {}
+    } catch { }
 
     const timer = setTimeout(() => setVisible(true), delay);
     return () => clearTimeout(timer);
@@ -51,10 +51,10 @@ export default function EnquiryPopup({ delay = 3000 }) {
 
       particle.style.setProperty("--tx", `${Math.cos(angle * Math.PI / 180) * distance}px`);
       particle.style.setProperty("--ty", `${Math.sin(angle * Math.PI / 180) * distance}px`);
-      
+
       // Green theme colors with variations
       const colors = [
-        "#12d46c", "#0c9246", "#079e4f", "#0b6d2e", 
+        "#12d46c", "#0c9246", "#079e4f", "#0b6d2e",
         "#16f47d", "#0daa54", "#068945", "#095a26"
       ];
       particle.style.background = colors[i % colors.length];
@@ -105,37 +105,37 @@ export default function EnquiryPopup({ delay = 3000 }) {
     setIsSubmitting(true);
     const f = new FormData(e.target);
 
-    const payload = {
+    const formData = {
       name: f.get("name"),
       email: f.get("email"),
       phone: f.get("phone"),
       message: f.get("message") || "No message provided",
-      date: new Date().toLocaleString(),
+      course: "Anniversary Flash Sale",
+      mode: "Not specified"
     };
 
     // Trigger celebration immediately on click
     triggerCelebration();
 
     try {
-      await emailjs.send(
-        "service_yr2oo2h",
-        "template_vr68058",
-        payload,
-        "Hc5Ps23TXZCn7mO0B"
-      );
-      
-      // Small delay to let animation complete
-      setTimeout(() => {
-        alert("Your enquiry has been submitted successfully!");
-        try {
-          localStorage.setItem(storageKey, "true");
-        } catch {}
-        closePopup();
-      }, 800);
-      
+      const result = await submitEnquiryForm(formData);
+
+      if (result.success) {
+        // Small delay to let animation complete
+        setTimeout(() => {
+          alert("Your enquiry has been submitted successfully!");
+          try {
+            localStorage.setItem(storageKey, "true");
+          } catch { }
+          closePopup();
+        }, 800);
+      } else {
+        throw new Error(result.message);
+      }
+
     } catch (err) {
-      console.error("EmailJS Error:", err);
-      alert("Something went wrong while sending your enquiry. Please try again.");
+      console.error("API Error:", err);
+      alert(err.message || "Something went wrong while sending your enquiry. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
@@ -160,34 +160,34 @@ export default function EnquiryPopup({ delay = 3000 }) {
         </p>
 
         <form className="enq-form" onSubmit={handleSubmit}>
-          <input 
-            name="name" 
-            type="text" 
-            placeholder="Your name" 
-            required 
+          <input
+            name="name"
+            type="text"
+            placeholder="Your name"
+            required
             disabled={isSubmitting}
           />
-          <input 
-            name="email" 
-            type="email" 
-            placeholder="Email address" 
-            required 
+          <input
+            name="email"
+            type="email"
+            placeholder="Email address"
+            required
             disabled={isSubmitting}
           />
-          <input 
-            name="phone" 
-            type="tel" 
-            placeholder="Phone number" 
+          <input
+            name="phone"
+            type="tel"
+            placeholder="Phone number"
             disabled={isSubmitting}
           />
-          <textarea 
-            name="message" 
-            placeholder="Your message (optional)" 
+          <textarea
+            name="message"
+            placeholder="Your message (optional)"
             disabled={isSubmitting}
           />
 
-          <button 
-            type="submit" 
+          <button
+            type="submit"
             className="enq-btn"
             disabled={isSubmitting}
           >

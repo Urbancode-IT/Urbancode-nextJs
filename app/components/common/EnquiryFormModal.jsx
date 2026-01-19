@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import "./EnquiryForm.css";
-import emailjs from "@emailjs/browser";
+import { submitEnquiryForm } from "@/lib/api/api";
 
 const EnquiryFormModal = ({ isOpen, onClose, courseName }) => {
   const [formData, setFormData] = useState({
@@ -53,44 +53,38 @@ const EnquiryFormModal = ({ isOpen, onClose, courseName }) => {
     setLoading(true);
     setStatus({ type: "loading", message: "Sending your enquiry..." });
 
-    const payload = {
-      ...formData,
-      date: new Date().toLocaleString(),
-    };
-
     try {
-      await emailjs.send(
-        "service_yr2oo2h",
-        "template_vr68058",
-        payload,
-        "Hc5Ps23TXZCn7mO0B"
-      );
+      const result = await submitEnquiryForm(formData);
 
-      setStatus({
-        type: "success",
-        message: "Enquiry submitted successfully! Our team will get back to you soon."
-      });
+      if (result.success) {
+        setStatus({
+          type: "success",
+          message: "Enquiry submitted successfully! Our team will get back to you soon."
+        });
 
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        pin: "",
-        course: courseName || "",
-        message: "",
-        mode: "",
-      });
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          pin: "",
+          course: courseName || "",
+          message: "",
+          mode: "",
+        });
 
-      setTimeout(() => {
-        setStatus({ type: "", message: "" });
-        onClose();
-      }, 2000);
+        setTimeout(() => {
+          setStatus({ type: "", message: "" });
+          onClose();
+        }, 2000);
+      } else {
+        throw new Error(result.message);
+      }
 
     } catch (error) {
       console.error("Enquiry Form Error:", error);
       setStatus({
         type: "error",
-        message: "Something went wrong. Please try again.",
+        message: error.message || "Something went wrong. Please try again.",
       });
     } finally {
       setLoading(false);
