@@ -14,8 +14,8 @@ const Banner = () => {
                 onClick={() => setShowEnquiry(true)}
             >
                 <Image
-                    src="/images/home/repub.png"
-                    alt="Republic Day Special Offer Banner"
+                    src="/images/home/banner.webp"
+                    alt="New Year Offer Banner"
                     width={1920}
                     height={600}
                     sizes="100vw"
