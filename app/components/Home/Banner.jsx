@@ -14,7 +14,7 @@ const Banner = () => {
                 onClick={() => setShowEnquiry(true)}
             >
                 <Image
-                    src="/images/home/rep.png"
+                    src="/images/home/repub.png"
                     alt="Republic Day Special Offer Banner"
                     width={1920}
                     height={600}
