@@ -15,8 +15,6 @@ const RepublicBanner = () => {
             >
                 <Image
                     src="/images/home/RepublicBanner.png"
-
-
                     alt="Republic Day Special Offer Banner"
                     width={1920}
                     height={600}
