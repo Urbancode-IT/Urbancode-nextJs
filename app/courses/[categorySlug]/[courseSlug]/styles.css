@@ -1,10 +1,9 @@
 .single-coursepage {
     padding-top: 71px;
-    /* Navbar height */
 }
 
 .single-coursepage.bg-gray {
-    background-color: #ebebeb !important;
+    background-color: var(--bg-body) !important;
 }
 
 .single-coursepage .custom-accordion-item {
@@ -17,7 +16,7 @@
 }
 
 .single-coursepage .gray-bg {
-    background-color: #ebebeb;
+    background-color: var(--bg-body);
 }
 
 .single-coursepage .btn-dark {
@@ -57,7 +56,7 @@
 }
 
 .single-coursepage .enroll-btn:hover {
-    background: linear-gradient(135deg, #98dec4, #00a86b) !important;
+    background: linear-gradient(135deg, var(--primary-green-soft), var(--primary-green)) !important;
 }
 
 .single-coursepage .dark-shine-btn {
@@ -112,6 +111,11 @@
 
 /* Mobile-first responsive design */
 @media (max-width: 576px) {
+    .single-coursepage {
+        padding-top: 101px;
+        /* 71px navbar + 30px spacing */
+    }
+
     .single-coursepage .bg-gray {
         padding-left: 1rem !important;
         padding-right: 1rem !important;

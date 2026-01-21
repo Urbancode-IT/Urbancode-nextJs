@@ -6,7 +6,7 @@
     justify-content: center;
     gap: 30px;
     padding: 40px 20px;
-    background: linear-gradient(180deg, #EBEBEB, rgba(215, 235, 226, .2) 50%, #EBEBEB), linear-gradient(259.47deg, rgba(102, 102, 102, .078) -.37%, rgba(0, 181, 111, .13) 104.31%);
+    background: linear-gradient(180deg, var(--bg-light), rgba(215, 235, 226, .2) 50%, var(--bg-light)), linear-gradient(259.47deg, rgba(102, 102, 102, .078) -.37%, rgba(0, 181, 111, .13) 104.31%);
     box-sizing: border-box;
 }
 
@@ -59,7 +59,7 @@
     align-items: center;
     justify-content: center;
     font-size: 20px;
-    color: #333;
+    color: var(--text-regular);
     z-index: 10;
     transition: all 0.3s ease;
     -webkit-tap-highlight-color: transparent;
@@ -214,7 +214,7 @@
 .trending-modal-info h3 {
     font-size: 28px;
     margin: 0 0 15px;
-    background: linear-gradient(to right, #fff, #00B56F);
+    background: linear-gradient(to right, #fff, var(--primary-green));
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -226,11 +226,11 @@
     gap: 8px;
     margin-bottom: 20px;
     font-size: 14px;
-    color: #ccc;
+    color: var(--border-color);
 }
 
 .info-meta strong {
-    color: #00B56F;
+    color: var(--primary-green);
 }
 
 .trending-modal-info p {
@@ -241,7 +241,7 @@
 }
 
 .trending-enroll-trigger {
-    background: #00B56F;
+    background: var(--primary-green);
     color: white;
     border: none;
     padding: 12px 25px;

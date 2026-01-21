@@ -1,73 +1,84 @@
-.faqContainer{
-    background-color: #80DAB74D;
-    
+.faqContainer {
+  background-color: var(--bg-extra-12);
+
 }
-.faq_main_container{
-  background-color: #EBEBEB;
+
+.faq_main_container {
+  background-color: var(--bg-section-light);
   opacity: .9;
 }
+
 .faq-section {
-  background-color: #ebebeb;
+  background-color: var(--bg-section-light);
   position: relative;
   overflow: hidden;
 }
-.faq-section h4{
-  color: #1c2534;
+
+.faq-section h4 {
+  color: var(--text-dark);
   font-weight: 700;
   font-size: 2rem;
 }
-.faq-section button a{
-  color: #fff;
+
+.faq-section button a {
+  color: var(--bg-card);
   text-decoration: none;
 }
-.faq-subtitle{
-  color: #198754;
-  
+
+.faq-subtitle {
+  color: var(--primary-green-dark);
+
 }
+
 /* Left Section */
 .faq-title {
   font-size: 2.5rem;
-  color: #1c2534;
+  color: var(--text-dark);
   position: relative;
   z-index: 2;
 }
-.faq-left{
+
+.faq-left {
   background-color: transparent;
+  position: relative;
 }
+
 .faq-left::before {
   content: "?";
   position: absolute;
   font-size: 25rem;
   color: #a0a1a3;
   font-weight: 700;
-  top: -40px;
+  top: -200px;
   left: 0;
   z-index: 0;
 }
 
 .faq-contact-box {
   position: relative;
-  opacity: 0.8;;
-  background: #fff;
+  opacity: 0.8;
+  ;
+  background: var(--bg-card);
   border-radius: 12px;
-  z-index: 2!important;
+  z-index: 2 !important;
 }
 
 .faq-mail-btn {
-  background-color: #4a4a4a;
+  background-color: var(--bg-extra-13);
   color: white;
   border: none;
   transition: background 0.3s;
 }
+
 .faq-mail-btn:hover {
-  background-color: #01af6a;
+  background-color: var(--bg-primary);
 }
 
 /* Right Section (Accordion) */
 .faq-item {
-  border: 1px solid #bfc3c7;
+  border: 1px solid var(--border-color);
   border-radius: 12px;
-  background: #fff;
+  background: var(--bg-card);
   overflow: hidden;
   transition: all 0.3s ease;
 }
@@ -80,7 +91,7 @@
   text-align: left;
   padding: 18px 22px;
   font-size: 1rem;
-  color: #1c2534;
+  color: var(--text-dark);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -88,11 +99,11 @@
 }
 
 .faq-question:hover {
-  background-color: #f4f7f8;
+  background-color: var(--bg-extra-9);
 }
 
 .faq-answer {
-  background: #f9fafb;
+  background: var(--bg-extra-10);
   overflow: hidden;
   transition: max-height 0.4s ease;
   padding: 0 22px;
@@ -100,7 +111,7 @@
 
 .faq-answer p {
   margin: 15px 0;
-  color: #4b4b4b;
+  color: var(--text-light);
   font-size: 0.95rem;
 }
 
@@ -109,10 +120,12 @@
   .faq-left::before {
     display: none;
   }
+
   .faq-title {
     font-size: 2rem;
     text-align: center;
   }
+
   .faq-contact-box {
     text-align: center;
   }

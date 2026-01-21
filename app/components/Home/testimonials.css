@@ -1,5 +1,5 @@
 .testimonial_main_container {
-  background-color: #ebebeb;
+  background-color: var(--bg-light);
   opacity: 0.95;
 }
 
@@ -14,7 +14,7 @@
 
 /* Uniform testimonial cards */
 .testimonial-card {
-  background: linear-gradient(135deg, #ebebeb, #c3f5eb);
+  background: linear-gradient(135deg, var(--bg-light), #c3f5eb);
   width: 300px;
   flex: 0 0 auto;
   clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);
@@ -61,7 +61,7 @@
 
 .progress-bar-fill {
   height: 100%;
-  background: #28a745;
+  background: var(--primary-green-dark);
   border-radius: 3px;
   transition: width 0.4s ease;
 }
@@ -71,8 +71,8 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background: #28a745;
-  color: #ebebeb;
+  background: var(--primary-green-dark);
+  color: var(--bg-body);
   font-weight: bold;
   font-size: 1rem;
   display: flex;

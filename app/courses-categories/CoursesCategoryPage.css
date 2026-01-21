@@ -1,11 +1,11 @@
 /* Reset defaults */
- .courses-wrapper1 {
+.courses-wrapper1 {
   margin: 0;
   padding: 0;
   width: 100%;
   max-width: 100%;
   overflow-x: hidden;
-  background: #ebebeb;
+  background: var(--bg-section-dark);
   box-sizing: border-box;
   font-family: 'Inter', sans-serif;
 }
@@ -17,12 +17,7 @@
   position: relative;
   width: 100vw;
   min-height: 570px;
-  background: linear-gradient(
-    180deg,
-    rgba(182, 225, 209, 0.8) 0%,
-    rgba(235, 235, 235, 0.9) 60%,
-    #ebebeb 100%
-  );
+  background: var(--bg-extra-21);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -31,6 +26,7 @@
   left: 50%;
   transform: translateX(-50%);
   box-sizing: border-box;
+  margin-top: 70px;
 }
 
 .expert-container {
@@ -56,13 +52,13 @@
 }
 
 .expert-text h1 span {
-  color: #00a86b;
+  color: var(--primary-green);
 }
 
 .expert-text p {
   margin-top: 20px;
   font-size: 16px;
-  color: #333;
+  color: var(--text-regular);
   line-height: 1.6;
   font-weight: 300;
 }
@@ -96,7 +92,7 @@
   font-size: 32px;
   line-height: 39px;
   letter-spacing: -0.02em;
- color:#1a2b3c;
+  color: #1a2b3c;
   margin: 0;
 }
 
@@ -128,7 +124,7 @@
   position: relative;
   width: 100%;
   max-width: 300px;
-  background: #ebebeb;
+  background: var(--bg-body);
   box-shadow: 0 0 7px 3px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
   padding: 20px;
@@ -140,18 +136,19 @@
 }
 
 .courses-wrapper1 .card:hover {
-  background-color: #8b8a8a!important;
-  
+  background-color: var(--bg-extra-22) !important;
+
 }
 
-.courses-wrapper1  .card:hover * {
+.courses-wrapper1 .card:hover * {
   color: #fff;
 }
-.courses-wrapper1  .card:hover .card-text{
-  color: #fff!important;
+
+.courses-wrapper1 .card:hover .card-text {
+  color: #fff !important;
 }
 
-.courses-wrapper1  .card-image-wrapper {
+.courses-wrapper1 .card-image-wrapper {
   width: 100%;
   height: 140px;
   border-radius: 13px;
@@ -159,7 +156,7 @@
   margin-bottom: 15px;
 }
 
-.courses-wrapper1  .card-image {
+.courses-wrapper1 .card-image {
   width: 100%;
   height: 100%;
   background-size: cover;
@@ -169,12 +166,12 @@
   transition: transform 0.3s ease, filter 0.3s ease;
 }
 
-.courses-wrapper1  .card:hover .card-image {
+.courses-wrapper1 .card:hover .card-image {
   transform: scale(1.1);
   filter: grayscale(0%);
 }
 
-.courses-wrapper1  .card-title {
+.courses-wrapper1 .card-title {
   margin: 0 0 5px;
   font-weight: 600;
   font-size: 16px;
@@ -193,7 +190,7 @@
   position: absolute;
   bottom: 15px;
   right: 15px;
-  background: #bbb9b9;
+  background: var(--bg-extra-23);
   border-radius: 39px;
   padding: 2px 10px;
   font-size: 10px;
@@ -203,7 +200,7 @@
 }
 
 .courses-wrapper1 .card:hover .badge {
-  background-color: #68bb7b;
+  background-color: var(--bg-secondary);
   color: #fff;
 }
 
@@ -214,12 +211,12 @@
    Responsive Fixes
 ------------------- */
 @media (max-width: 900px) {
-  .courses-wrapper1  .expert-container {
+  .courses-wrapper1 .expert-container {
     flex-direction: column;
     text-align: center;
   }
 
-  .courses-wrapper1  .expert-text,
+  .courses-wrapper1 .expert-text,
   .courses-wrapper1 .expert-image {
     flex: unset;
     width: 100%;
@@ -228,39 +225,47 @@
   .courses-wrapper1 .expert-text h1 {
     font-size: 2rem;
   }
+
+  .expert-section {
+    padding-top: 101px;
+    /* 71px navbar + 30px spacing */
+  }
 }
 
 @media (max-width: 600px) {
-  .courses-wrapper1  .grid-container {
+  .courses-wrapper1 .grid-container {
     grid-template-columns: 1fr;
     gap: 20px;
     padding: 0 15px 50px;
   }
 
-  .courses-wrapper1  .card {
+  .courses-wrapper1 .card {
     max-width: 100%;
   }
 
-  .courses-wrapper1  .expert-text h1 {
+  .courses-wrapper1 .expert-text h1 {
     font-size: 1.8rem;
   }
-  
+
 }
 
 
 @keyframes shine {
-  0% { background-position: 200% center; }
-  100% { background-position: -200% center; }
+  0% {
+    background-position: 200% center;
+  }
+
+  100% {
+    background-position: -200% center;
+  }
 }
 
 .text-shine {
-  background: linear-gradient(
-    90deg,
-    #002a11 20%,
-    #0b0703 40%,
-    #17944d 60%,
-    #036c2d 80%
-  );
+  background: linear-gradient(90deg,
+      #002a11 20%,
+      #0b0703 40%,
+      #17944d 60%,
+      #036c2d 80%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;

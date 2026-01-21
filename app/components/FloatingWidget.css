@@ -32,11 +32,11 @@
 
 /* Individual colors */
 .whatsapp {
-  background-color: #25d365b1;
+  background-color: var(--bg-extra-70);
 }
 
 .call {
-  background-color: #333334b5;
+  background-color: var(--bg-extra-71);
 }
 
 /* Floating animation */

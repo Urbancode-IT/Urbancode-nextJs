@@ -107,16 +107,18 @@ export default function HomePage() {
 `
         }}
       />
-      <HeroSection />
-      <RepublicBanner />
-      <Carousel />
-      <Courses />
-      <InDemandTools />
-      {/* <GetCertified /> */}
-      <TestimonialCarousel />
-      <FaqBootstrap />
-      <TrendingCourses />
-      {/* <Carousel /> */}
+      <div style={{ backgroundColor: 'var(--bg-light)' }}>
+        <HeroSection />
+        <RepublicBanner />
+        <Carousel />
+        <Courses />
+        <InDemandTools />
+        {/* <GetCertified /> */}
+        <TestimonialCarousel />
+        <FaqBootstrap />
+        <TrendingCourses />
+        {/* <Carousel /> */}
+      </div>
     </>
   );
 }

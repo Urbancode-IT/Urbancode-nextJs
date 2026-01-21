@@ -1,11 +1,10 @@
 .republic-banner-section {
     width: 100%;
-    margin: 40px 0;
-    padding: 0;
+    padding: 40px 0;
     line-height: 0;
     display: flex;
     justify-content: center;
-    background: transparent;
+    background-color: var(--bg-light);
 }
 
 .banner-image-wrapper {

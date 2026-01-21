@@ -33,7 +33,7 @@ export default function Navbar() {
   return (
     <>
       <nav className="navbar">
-        <div className="navbar container">
+        <div className="nav-inner-container container">
 
           {/* Logo */}
           <Link href="/" className="navbar-brand" onClick={handleLinkClick}>

@@ -1,8 +1,7 @@
 .home_header_main_container {
-  background: linear-gradient(180deg, #EBEBEB, #EDFFFB, #EBEBEB);
+  background: var(--bg-extra-7);
   overflow: hidden;
   padding-top: 71px;
-  /* Space for fixed navbar */
 }
 
 .home_header_container {
@@ -50,12 +49,12 @@
 .enroll_btn {
   position: relative;
   overflow: hidden;
-  background: #ccc;
+  background: var(--border-color);
   /* gray base */
   color: #000;
   font-weight: 600;
   font-size: 18px;
-  border: 2px solid #ccc;
+  border: 2px solid var(--border-color);
   border-radius: 50px;
   cursor: pointer;
   padding: 14px 40px;
@@ -65,7 +64,7 @@
 
 .enroll_btn:hover {
   color: #000;
-  border-color: #00a86b;
+  border-color: var(--primary-green);
   /* green */
 }
 
@@ -80,7 +79,7 @@
   width: 0;
   height: 0;
   background: transparent;
-  border-right: 40px solid #00a86b;
+  border-right: 40px solid var(--primary-green);
   /* green */
   border-top: 40px solid transparent;
   border-bottom: 40px solid transparent;
@@ -98,7 +97,7 @@
   /* transform:rotate(5deg); */
 
   border: none;
-  background: linear-gradient(135deg, #00a86b, #98dec4);
+  background: var(--bg-extra-24);
 
 }
 
@@ -127,7 +126,7 @@
   0%,
   50%,
   100% {
-    border-color: #198754;
+    border-color: var(--primary-green-dark);
   }
 
   25%,
@@ -141,13 +140,13 @@
   width: 40px;
   height: 40px;
   color: #333;
-  background: #fff;
+  background: var(--bg-card);
   transition: all 0.3s ease;
 }
 
 .social-icon:hover {
-  color: #00A86B;
-  background: #E8F8F2;
+  color: var(--primary-green);
+  background: var(--bg-extra-25);
   transform: scale(1.1);
 }
 
@@ -165,6 +164,8 @@
 @media (max-width: 768px) {
   .home_header_container {
     text-align: center;
+    padding-top: 30px;
+    margin-top: -20px;
   }
 
   .fs25rem {

@@ -4,14 +4,14 @@
    1. HERO SECTION
    ========================================================================== */
 .nict-course-page {
-    background-color: #F2F2F2;
+    background-color: var(--bg-extra-10);
     font-family: 'Inter', sans-serif;
     color: #2C3E50;
 }
 
 .nict-courses-hero {
     width: 100%;
-    background: linear-gradient(180deg, rgba(25, 135, 84, 0.18) 0%, #F2F2F2 100%);
+    background: var(--bg-hero);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -89,7 +89,7 @@
     align-items: center;
     gap: 8px;
     padding: 6px 18px;
-    background: rgba(25, 135, 84, 0.12);
+    background: var(--bg-extra-3);
     border-radius: 50px;
     margin-top: 28px;
 }
@@ -114,7 +114,7 @@
     gap: 10px;
     margin-top: 36px;
     padding: 14px 36px;
-    background: linear-gradient(90deg, #1B8A5A 0%, #03482E 100%);
+    background: var(--bg-extra-15);
     color: #ffffff;
     font-family: 'Inter', sans-serif;
     font-size: 18px;
@@ -251,7 +251,7 @@
     width: 100%;
     padding: 80px 24px;
     text-align: center;
-    background-color: #F2F2F2;
+    background-color: var(--bg-extra-10);
     position: relative;
     overflow: hidden;
 }
@@ -274,7 +274,7 @@
 }
 
 .nict-highlight-card {
-    background: rgba(255, 255, 255, 0.7);
+    background: var(--bg-extra-8);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.5);
     border-radius: 24px;
@@ -302,7 +302,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #00B56F 0%, #059669 100%);
+    background: var(--bg-gradient-primary);
     color: #ffffff;
     border-radius: 16px;
     font-size: 24px;
@@ -375,7 +375,7 @@
    3. COURSE CURRICULUM
    ========================================================================== */
 .nict-curriculum-section {
-    background-color: #F2F2F2;
+    background-color: var(--bg-extra-10);
     width: 100%;
     padding: 40px 0;
 }
@@ -426,7 +426,7 @@
 }
 
 .nict-curriculum-item {
-    background: #f8f9fa;
+    background: var(--bg-card-alt);
     border-radius: 20px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     overflow: hidden;
@@ -455,7 +455,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #6c757d;
+    background: var(--bg-extra-14);
     color: #ffffff;
     font-size: 12px;
     font-weight: 600;
@@ -495,7 +495,7 @@
     font-size: 13px;
     color: #6c757d;
     line-height: 1.6;
-    background: #ffffff;
+    background: var(--bg-card);
     border-top: 1px solid transparent;
     transition: all 0.4s ease;
 }
@@ -516,16 +516,16 @@
 }
 
 .nict-curriculum-item.active {
-    border-color: #198754;
+    border-color: var(--primary-green-dark);
     box-shadow: 0 8px 16px rgba(25, 135, 84, 0.1);
 }
 
 .nict-curriculum-item.active .nict-index {
-    background: #198754;
+    background: var(--primary-green-dark);
 }
 
 .nict-curriculum-item.active .nict-curriculum-title svg {
-    color: #198754;
+    color: var(--primary-green-dark);
 }
 
 .nict-curriculum-navigation {
@@ -544,7 +544,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #ffffff;
+    background: var(--bg-card);
     border: 2px solid #4b5563;
     border-radius: 50%;
     color: #4b5563 !important;
@@ -661,7 +661,7 @@
    4. TOOLS COVERED
    ========================================================================== */
 .nict-tools-section {
-    background-color: #F2F2F2;
+    background-color: var(--bg-extra-10);
     width: 100%;
     padding: 40px 0;
 }
@@ -671,7 +671,7 @@
     max-width: 1100px;
     margin: 0 auto;
     padding: 32px 24px;
-    background: linear-gradient(180deg, #155e42 0%, #3da878 100%);
+    background: var(--bg-gradient-secondary);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 30px;
 }
@@ -704,7 +704,7 @@
     border-radius: 12px;
     color: #ffffff;
     cursor: pointer;
-    background: rgba(255, 255, 255, 0.12);
+    background: var(--bg-extra-18);
     border: 1px solid rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
@@ -722,10 +722,7 @@
     left: -150%;
     width: 50%;
     height: 100%;
-    background: linear-gradient(90deg,
-            transparent,
-            rgba(255, 255, 255, 0.5),
-            transparent);
+    background: var(--bg-extra-19);
     transform: skewX(-25deg);
     animation: nictToolShine 12s infinite linear;
     animation-delay: calc(var(--index) * 1.2s);
@@ -746,7 +743,7 @@
 }
 
 .nict-tool-pill:hover {
-    background: rgba(255, 255, 255, 0.18);
+    background: var(--bg-extra-20);
     border-color: rgba(255, 255, 255, 0.4);
     transform: translateY(-3px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
@@ -827,7 +824,7 @@
     padding: 40px 20px 80px;
     overflow: hidden;
     width: 100%;
-    background-color: #F2F2F2;
+    background-color: var(--bg-extra-10);
 }
 
 .nict-faq-container {
@@ -877,7 +874,7 @@
 .nict-faq-contact-box {
     position: relative;
     opacity: 0.8;
-    background: #fff;
+    background: var(--bg-card);
     border-radius: 12px;
     z-index: 2 !important;
     padding: 24px;
@@ -902,7 +899,7 @@
 }
 
 .nict-faq-mail-btn {
-    background-color: #4a4a4a;
+    background-color: var(--bg-extra-13);
     color: white;
     border: none;
     padding: 10px 24px;
@@ -913,7 +910,7 @@
 }
 
 .nict-faq-mail-btn:hover {
-    background-color: #01af6a;
+    background-color: var(--bg-extra-16);
 }
 
 .nict-faq-column.right {
@@ -930,7 +927,7 @@
 }
 
 .nict-faq-item {
-    background: linear-gradient(180deg, #E9E9E9 0%, #E7FDF3 131.03%);
+    background: var(--bg-extra-5);
     border-radius: 12px;
     padding: 16px 20px;
     cursor: pointer;
