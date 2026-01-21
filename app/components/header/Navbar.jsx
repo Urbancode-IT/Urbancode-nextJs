@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import './Navbar.css';
@@ -11,6 +11,7 @@ import { FiPhoneCall } from 'react-icons/fi';
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [careerOpen, setCareerOpen] = useState(false);
+const navbarRef = useRef(null);
 
   const handleLinkClick = () => {
     setIsOpen(false);
@@ -19,20 +20,25 @@ export default function Navbar() {
 
   const toggleCareer = () => setCareerOpen(!careerOpen);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const navbar = document.querySelector('.navbar');
-      if (window.scrollY > 10) navbar.classList.add('scrolled');
-      else navbar.classList.remove('scrolled');
-    };
+ useEffect(() => {
+  const navbar = navbarRef.current;
+  if (!navbar) return;
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  const handleScroll = () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 10);
+  };
+
+  window.addEventListener('scroll', handleScroll);
+  handleScroll(); // apply immediately on load
+
+  return () => window.removeEventListener('scroll', handleScroll);
+}, []);
+
 
   return (
     <>
-      <nav className="navbar">
+      <nav className="navbar" ref={navbarRef}>
+
         <div className="nav-inner-container container">
 
           {/* Logo */}

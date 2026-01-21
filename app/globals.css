@@ -207,3 +207,6 @@ body {
     opacity: 0.6;
   }
 }
+body {
+  padding-top: 71px;
+}
