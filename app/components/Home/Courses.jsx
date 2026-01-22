@@ -9,14 +9,14 @@ const coursesData = [
         id: 1,
         title: "MERN Stack",
         description: "Master MongoDB, Express.js, React, and Node.js for complete full-stack JavaScript applications.",
-        image: "/images/home/t1.webp",
+        image: "/images/home/t11.webp",
         path: "/training/mern-stack"
     },
     {
         id: 2,
         title: "MEAN Stack",
         description: "Build robust web applications using MongoDB, Express.js, Angular, and Node.js.",
-        image: "/images/home/t2.webp",
+        image: "/images/home/t22.webp",
         path: "/training/mean-stack"
     },
     {
@@ -30,7 +30,7 @@ const coursesData = [
         id: 4,
         title: "Data Analytics",
         description: "Transform raw data into meaningful insights using Python, SQL, and modern BI tools.",
-        image: "/images/home/t4.webp",
+        image: "/images/home/t44.webp",
         path: "/training/data-analytics"
     },
     {
@@ -44,7 +44,7 @@ const coursesData = [
         id: 6,
         title: "Automation Testing",
         description: "Learn to automate software testing processes using Selenium, Java, and modern frameworks.",
-        image: "/images/home/t6.webp",
+        image: "/images/home/t66.webp",
         path: "/training/automation-testing"
     },
     {
