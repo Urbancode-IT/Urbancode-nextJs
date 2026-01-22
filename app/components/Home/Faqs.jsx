@@ -26,53 +26,53 @@ const faqs = [
     },
 ];
 
+
+
 const Faqs = () => {
     const [activeIndex, setActiveIndex] = useState(null);
     const toggleFAQ = (index) => setActiveIndex(activeIndex === index ? null : index);
 
     return (
-        <div className="faq-section">
-            <div className="container py-5">
-                <div className="text-center mb-5">
-                    <h2 className="section-main-title text-shine">Let's get you more info</h2>
-                </div>
-                <div className="row align-items-start g-4">
-                    {/* Left Section */}
-                    <div className="col-lg-4 col-md-12 order-2 order-lg-1 ">
-                        <div className="faq-left text-center text-lg-start">
-                            <h4 className="faq-title fw-bold d-none d-md-block">Frequently <br /> Asked Questions</h4>
-                            <div className="faq-contact-box mt-5 p-4 rounded-4 shadow-sm">
-                                <h5 className="fw-semibold">Have a Question?</h5>
-                                <p className="text-muted small mb-3">
-                                    Send us an email and we’ll get back to you as soon as possible!
-                                </p>
-                                <button className="faq-mail-btn px-4 py-2 rounded-3"><a href="mailto:admin@urbancode.in">Send mail</a></button>
-                            </div>
+        <div className="faq-section container py-5">
+            <div className="text-center mb-5">
+                <h2 className="section-main-title text-shine">Let's get you more info</h2>
+            </div>
+            <div className="row align-items-start g-4">
+                {/* Left Section */}
+                <div className="col-lg-4 col-md-12 order-2 order-lg-1 ">
+                    <div className="faq-left text-center text-lg-start">
+                        <h4 className="faq-title fw-bold d-none d-md-block">Frequently <br /> Asked Questions</h4>
+                        <div className="faq-contact-box mt-5 p-4 rounded-4 shadow-sm">
+                            <h5 className="fw-semibold">Have a Question?</h5>
+                            <p className="text-muted small mb-3">
+                                Send us an email and we’ll get back to you as soon as possible!
+                            </p>
+                            <button className="faq-mail-btn px-4 py-2 rounded-3"><a href="mailto:admin@urbancode.in">Send mail</a></button>
                         </div>
                     </div>
+                </div>
 
-                    {/* Right Section */}
-                    <div className="col-lg-8 col-md-12 order-1 order-lg-2">
-                        {faqs.map((faq, index) => (
-                            <div key={index} className="faq-item mb-3">
-                                <button
-                                    className={`faq-question ${activeIndex === index ? 'active' : ''}`}
-                                    onClick={() => toggleFAQ(index)}
-                                >
-                                    <span>{faq.question}</span>
-                                    {activeIndex === index ? <FaMinus /> : <FaPlus />}
-                                </button>
-                                <div
-                                    className="faq-answer"
-                                    style={{
-                                        maxHeight: activeIndex === index ? '400px' : '0px',
-                                    }}
-                                >
-                                    <p>{faq.answer}</p>
-                                </div>
+                {/* Right Section */}
+                <div className="col-lg-8 col-md-12 order-1 order-lg-2">
+                    {faqs.map((faq, index) => (
+                        <div key={index} className="faq-item mb-3">
+                            <button
+                                className={`faq-question ${activeIndex === index ? 'active' : ''}`}
+                                onClick={() => toggleFAQ(index)}
+                            >
+                                <span>{faq.question}</span>
+                                {activeIndex === index ? <FaMinus /> : <FaPlus />}
+                            </button>
+                            <div
+                                className="faq-answer"
+                                style={{
+                                    maxHeight: activeIndex === index ? '400px' : '0px',
+                                }}
+                            >
+                                <p>{faq.answer}</p>
                             </div>
-                        ))}
-                    </div>
+                        </div>
+                    ))}
                 </div>
             </div>
         </div>

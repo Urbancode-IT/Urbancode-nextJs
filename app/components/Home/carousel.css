@@ -7,7 +7,6 @@
   padding: 0 0 40px 0;
   position: relative;
   z-index: 2;
-  background-color: var(--bg-light);
 }
 
 .company-carousel {
@@ -95,7 +94,7 @@
   position: relative;
   overflow: hidden;
   color: #222;
-  background-color: var(--bg-extra-73);
+  background-color: #6F6B6B9C;
   /* Default solid background */
   transition: color 0.3s ease;
 }
@@ -104,7 +103,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, var(--primary-green-soft), var(--primary-green));
+  background: linear-gradient(135deg, #98dec4, #00a86b);
   background-size: 200% 200%;
   background-position: left center;
   transition: background-position 0.8s ease, opacity 0.8s ease;
@@ -130,7 +129,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--primary-green-dark) !important;
+  color: #198754 !important;
   /* green text */
   /* font-weight: 600; */
   font-size: 1.1rem;
@@ -144,6 +143,6 @@
   margin: 0 10px;
 } */
 .mnc_carasoul {
-  background-color: var(--bg-light);
+  background-color: #EBEBEB;
   opacity: .9;
 }

@@ -1,11 +1,10 @@
-.main_container {
-  background-color: var(--bg-section-dark);
+.main_container{
+    background-color: #ebebeb;
   opacity: 0.9;
 }
-
 .mission-vision-container img {
   max-width: 100%;
   height: auto;
-  /* Optional: rounded corners */
-  /* Optional: subtle shadow */
+   /* Optional: rounded corners */
+   /* Optional: subtle shadow */
 }

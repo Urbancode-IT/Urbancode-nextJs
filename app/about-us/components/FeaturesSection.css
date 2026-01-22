@@ -1,5 +1,5 @@
 .featureSection_main_container {
-  background-color: var(--bg-section-dark);
+  background-color: #ebebeb;
   opacity: 0.9;
   overflow-x: hidden;
 }
@@ -9,7 +9,7 @@
   display: flex;
   align-items: center;
   justify-content: start;
-  background: var(--bg-extra-65);
+  background: linear-gradient(to right, #e9ecef, #f8f9fa);
   width: 60%;
   padding: 1rem 1.5rem;
   transition: all 0.3s ease;
@@ -25,12 +25,12 @@
 }
 
 .feature-1 {
-  width: calc(60% + 120px);
+  width: calc( 60% + 120px );
   z-index: 1;
 }
 
 .feature-2 {
-  width: calc(60% + 240px);
+  width:calc( 60% + 240px );
   z-index: 2;
 }
 
@@ -38,7 +38,7 @@
 .feature-icon {
   width: 70px;
   height: 70px;
-  background-color: var(--bg-primary);
+  background-color: #20c997;
   color: #fff;
   border: 5px solid #fff;
   border-radius: 50%;

@@ -1,14 +1,16 @@
+
 /* HERO SECTION */
 .mentorpage .mentorpage-hero-section {
-  background: linear-gradient(180deg,
-      rgba(182, 225, 209, 0.8) 0%,
-      rgba(182, 225, 209, 0.4) 50%,
-      #ffffff 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(182, 225, 209, 0.8) 0%,
+    rgba(182, 225, 209, 0.4) 50%,
+    #ffffff 100%
+  );
   min-height: 570px;
   display: flex;
   align-items: center;
-  padding: 101px 20px 40px;
-  /* 71px navbar + 30px spacing */
+  padding: 60px 20px 40px;
 }
 
 .mentorpage .mentorpage-hero-content h1 {
@@ -39,7 +41,7 @@
 
 /* COMMON SECTION STYLE */
 .mentorpage section:not(.mentorpage-hero-section) {
-  background-color: var(--bg-card);
+  background-color: #fff;
   padding: 60px 20px;
 }
 
@@ -51,12 +53,11 @@
   color: #000;
   margin-bottom: 20px;
 }
-
-.mentorpage .mentorpage-transform-title {
-  font-weight: 600;
+.mentorpage .mentorpage-transform-title{
+   font-weight: 600;
   font-size: 24px;
   color: #000;
-
+ 
 }
 
 .mentorpage .mentorpage-section-subtitle,
@@ -193,12 +194,9 @@
 }
 
 .mentorpage .mentorpage-card-list {
-  list-style: none;
-  /* removes default dots */
-  padding-left: 0;
-  /* removes left padding */
-  margin: 0;
-  /* optional: remove top/bottom spacing */
+  list-style: none; /* removes default dots */
+  padding-left: 0;  /* removes left padding */
+  margin: 0;        /* optional: remove top/bottom spacing */
 }
 
 /* EXPERTISE GRID */
@@ -215,7 +213,7 @@
   height: 107px;
   border-radius: 11px;
   overflow: hidden;
-  box-shadow: 0 0 9.3px 5px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 9.3px 5px rgba(0,0,0,0.25);
   border: 2px solid #676767;
   display: flex;
   align-items: center;
@@ -234,7 +232,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 36%, rgba(0, 0, 0, 1) 100%);
+  background: linear-gradient(180deg, rgba(0,0,0,0) 36%, rgba(0,0,0,1) 100%);
   z-index: 0;
 }
 
@@ -245,7 +243,7 @@
 
 .mentorpage .mentorpage-expertise-card:hover {
   transform: scale(1.05);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.4);
 }
 
 /* TRANSFORM SECTION */
@@ -262,9 +260,8 @@
   border-radius: 41px;
   width: 100%;
   max-width: 1024px;
-  /* fixed height */
-  padding: 20px 40px;
-  /* adjust padding to fit content */
+   /* fixed height */
+  padding: 20px 40px; /* adjust padding to fit content */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -297,7 +294,7 @@
   right: -75%;
   width: 50%;
   height: 100%;
-  background: linear-gradient(300deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.6) 50%, rgba(255, 255, 255, 0) 100%);
+  background: linear-gradient(300deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.6) 50%, rgba(255,255,255,0) 100%);
   transform: skewX(-25deg);
 }
 
@@ -306,13 +303,8 @@
 }
 
 @keyframes mentorpage-shine-left {
-  0% {
-    right: -75%;
-  }
-
-  100% {
-    right: 125%;
-  }
+  0% { right: -75%; }
+  100% { right: 125%; }
 }
 
 /* =========================================== */
@@ -322,72 +314,71 @@
 /* Extra Small Devices (Mobile Phones, 320px and up) */
 @media (min-width: 320px) {
   .mentorpage .mentorpage-hero-section {
-    padding: 101px 15px 30px;
-    /* 71px navbar + 30px spacing */
+    padding: 30px 15px;
     min-height: auto;
   }
-
+  
   .mentorpage .mentorpage-hero-content h1 {
     font-size: 28px;
     line-height: 36px;
     text-align: center;
   }
-
+  
   .mentorpage .mentorpage-hero-content p {
     font-size: 14px;
     text-align: center;
   }
-
+  
   .mentorpage .mentorpage-hero-image {
     margin-top: 20px;
   }
-
+  
   .mentorpage .mentorpage-section-title,
   .mentorpage .mentorpage-expertise-title {
     font-size: 24px;
   }
-
+  
   .mentorpage .mentorpage-mentor-grid {
     grid-template-columns: 1fr;
     grid-template-rows: auto;
     gap: 20px;
   }
-
+  
   .mentorpage .mentorpage-mentor-card {
     width: 100%;
     max-width: 266px;
     margin: 0 auto;
   }
-
+  
   .mentorpage .mentorpage-cards-grid {
     gap: 20px;
   }
-
+  
   .mentorpage .mentorpage-card-item {
     width: 100%;
     max-width: 307px;
   }
-
+  
   .mentorpage .mentorpage-expertise-grid {
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   }
-
+  
   .mentorpage .mentorpage-expertise-card {
     width: 150px;
     height: 90px;
     font-size: 13px;
   }
-
+  
   .mentorpage .mentorpage-transform-box {
     height: auto;
     padding: 30px 20px;
     border-radius: 20px;
   }
-
+  
   .mentorpage .mentorpage-transform-title {
     font-size: 24px;
   }
-
+  
   .mentorpage .mentorpage-transform-subtitle {
     font-size: 13px;
   }
@@ -399,20 +390,20 @@
     font-size: 32px;
     line-height: 40px;
   }
-
+  
   .mentorpage .mentorpage-mentor-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 25px;
   }
-
+  
   .mentorpage .mentorpage-cards-grid {
     gap: 30px;
   }
-
+  
   .mentorpage .mentorpage-expertise-grid {
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   }
-
+  
   .mentorpage .mentorpage-expertise-card {
     width: 180px;
     height: 100px;
@@ -424,44 +415,44 @@
   .mentorpage .mentorpage-hero-section {
     padding: 40px 20px;
   }
-
+  
   .mentorpage .mentorpage-hero-content h1 {
     font-size: 36px;
     line-height: 44px;
     text-align: left;
   }
-
+  
   .mentorpage .mentorpage-hero-content p {
     text-align: left;
   }
-
+  
   .mentorpage .mentorpage-section-title,
   .mentorpage .mentorpage-expertise-title {
     font-size: 28px;
   }
-
+  
   .mentorpage .mentorpage-mentor-grid {
     grid-template-columns: repeat(2, 266px);
     gap: 40px;
   }
-
+  
   .mentorpage .mentorpage-cards-grid {
     gap: 40px;
   }
-
+  
   .mentorpage .mentorpage-card-item {
     width: 280px;
   }
-
+  
   .mentorpage .mentorpage-expertise-grid {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   }
-
+  
   .mentorpage .mentorpage-expertise-card {
     width: 200px;
     height: 107px;
   }
-
+  
   .mentorpage .mentorpage-transform-box {
     padding: 30px 40px;
   }
@@ -473,35 +464,35 @@
     padding: 60px 20px 40px;
     min-height: 570px;
   }
-
+  
   .mentorpage .mentorpage-hero-content h1 {
     font-size: 42px;
     line-height: 52px;
   }
-
+  
   .mentorpage .mentorpage-section-title,
   .mentorpage .mentorpage-expertise-title {
     font-size: 32px;
   }
-
+  
   .mentorpage .mentorpage-mentor-grid {
     grid-template-columns: repeat(3, 266px);
     column-gap: 80px;
     row-gap: 50px;
   }
-
+  
   .mentorpage .mentorpage-cards-grid {
     gap: 50px;
   }
-
+  
   .mentorpage .mentorpage-card-item {
     width: 307px;
   }
-
+  
   .mentorpage .mentorpage-expertise-grid {
     grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
   }
-
+  
 }
 
 /* Extra Large Devices (Large Laptops/Desktops, 1200px and up) */
@@ -510,12 +501,12 @@
     font-size: 48px;
     line-height: 58px;
   }
-
+  
   .mentorpage .mentorpage-mentor-grid {
     column-gap: 120px;
     row-gap: 60px;
   }
-
+  
   .mentorpage .mentorpage-transform-box {
     max-width: 1024px;
   }
@@ -526,7 +517,7 @@
   .mentorpage .container {
     max-width: 1320px;
   }
-
+  
   .mentorpage .mentorpage-mentor-grid {
     column-gap: 140px;
   }
@@ -538,13 +529,13 @@
     font-size: 24px;
     line-height: 30px;
   }
-
+  
   .mentorpage .mentorpage-expertise-card {
     width: 130px;
     height: 80px;
     font-size: 12px;
   }
-
+  
   .mentorpage .mentorpage-transform-box {
     padding: 20px 15px;
   }
@@ -556,7 +547,7 @@
     min-height: auto;
     padding: 30px 20px;
   }
-
+  
   .mentorpage .mentorpage-hero-content h1 {
     font-size: 28px;
     line-height: 34px;

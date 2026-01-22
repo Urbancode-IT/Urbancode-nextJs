@@ -1,7 +1,14 @@
+
+
 /* ========== HERO SECTION ========== */
 /* Smooth transition between Hero and Projects section */
 .projects-page .ph-hero-section {
-  background: var(--bg-extra-35);
+  background: linear-gradient(
+    180deg,
+    rgba(182, 225, 209, 1) 0%,
+    rgba(225, 235, 225, 1) 50%,
+    rgba(248, 249, 250, 1) 100%
+  );
   position: relative;
   /* padding: 100px 0; */
   padding-top: 150px;
@@ -10,8 +17,8 @@
   overflow: hidden;
 }
 
-.projects-page h2 {
-  font-size: 2rem !important;
+.projects-page h2{
+  font-size: 2rem!important;
 }
 
 .projects-page .ph-hero-section::after {
@@ -21,7 +28,11 @@
   left: 0;
   width: 100%;
   height: 160px;
-  background: var(--bg-extra-36);
+  background: linear-gradient(
+    to bottom,
+    rgba(248, 249, 250, 0) 0%,
+    #f8f9fa 100%
+  );
   z-index: 2;
 }
 
@@ -74,13 +85,8 @@
   overflow: hidden;
 }
 
-.projects-page .ph-btn-explore {
-  background-color: var(--bg-tertiary);
-}
-
-.projects-page .ph-btn-contact {
-  background-color: var(--bg-extra-26);
-}
+.projects-page .ph-btn-explore { background-color: #198754; }
+.projects-page .ph-btn-contact { background-color: #2C3E50; }
 
 .projects-page .ph-btn-group a::before {
   content: '';
@@ -89,7 +95,7 @@
   left: -100%;
   width: 50%;
   height: 100%;
-  background: var(--bg-extra-37);
+  background: linear-gradient(120deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
   transform: skewX(-25deg);
 }
 
@@ -98,22 +104,12 @@
 }
 
 @keyframes smooth-shine {
-  0% {
-    left: -100%;
-  }
-
-  100% {
-    left: 200%;
-  }
+  0% { left: -100%; }
+  100% { left: 200%; }
 }
 
-.projects-page .ph-btn-explore:hover {
-  background-color: var(--bg-extra-27);
-}
-
-.projects-page .ph-btn-contact:hover {
-  background-color: var(--bg-extra-28);
-}
+.projects-page .ph-btn-explore:hover { background-color: #145c3b; }
+.projects-page .ph-btn-contact:hover { background-color: #1a2733; }
 
 .projects-page .ph-right-image {
   width: 498px;
@@ -125,33 +121,23 @@
 }
 
 @keyframes ph-fadeInLeft {
-  0% {
-    opacity: 0;
-    transform: translateX(-50px);
-  }
-
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
+  0% { opacity: 0; transform: translateX(-50px); }
+  100% { opacity: 1; transform: translateX(0); }
 }
 
 @keyframes shine {
-  0% {
-    background-position: 200% center;
-  }
-
-  100% {
-    background-position: -200% center;
-  }
+  0% { background-position: 200% center; }
+  100% { background-position: -200% center; }
 }
 
 .projects-page .text-shine {
-  background: linear-gradient(90deg,
-      #002a11 20%,
-      #0b0703 40%,
-      #17944d 60%,
-      #036c2d 80%);
+  background: linear-gradient(
+    90deg,
+    #002a11 20%,
+    #0b0703 40%,
+    #17944d 60%,
+    #036c2d 80%
+  );
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -163,7 +149,7 @@
 /* ========== PROJECTS SECTION ========== */
 .projects-page .projects-section {
   padding: 100px 0;
-  background: var(--bg-extra-38);
+  background: linear-gradient(to bottom, #f8f9fa 0%, #f9faf9 50%, #fefefe 100%);
   position: relative;
   z-index: 1;
   margin-top: -2px;
@@ -176,7 +162,7 @@
   left: 0;
   width: 100%;
   height: 140px;
-  background: var(--bg-extra-39);
+  background: linear-gradient(to bottom, rgba(254, 254, 254, 0) 0%, #ffffff 100%);
   z-index: 2;
   pointer-events: none;
 }
@@ -184,7 +170,7 @@
 .projects-page .projects-header .projects-subtitle {
   font-size: 1.3rem;
   font-weight: 700;
-  color: #198754;
+  color:#198754;
   margin-bottom: 10px;
   text-transform: uppercase;
 }
@@ -215,7 +201,7 @@ html {
   background: #fff;
   border-radius: 18px;
   overflow: hidden;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
   transition: transform 0.4s ease, box-shadow 0.4s ease;
   position: relative;
   margin: 0 auto;
@@ -231,22 +217,21 @@ html {
   left: 0;
   width: 100%;
   height: 100%;
-  background: var(--bg-extra-32);
+  background: linear-gradient(135deg, rgba(0,123,255,0.15) 0%, rgba(0, 255, 140,0.15) 100%);
   opacity: 0;
   transition: opacity 0.4s ease;
   z-index: 1;
   pointer-events: none;
 }
 
-.projects-page .project-card:hover::before {
-  opacity: 1;
-  transform: scale(1.02);
-  /* subtle highlight effect */
+.projects-page .project-card:hover::before { 
+  opacity: 1; 
+  transform: scale(1.02); /* subtle highlight effect */
 }
 
 .projects-page .project-card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
 }
 
 /* Image wrapper */
@@ -259,10 +244,8 @@ html {
 
 .projects-page .img-wrap img {
   width: 100%;
-  height: auto;
-  /* auto height keeps full image */
-  max-height: 300px;
-  /* optional: limit very tall images */
+  height: auto;           /* auto height keeps full image */
+  max-height: 300px;      /* optional: limit very tall images */
   object-fit: cover;
   transition: transform 0.6s ease, filter 0.5s ease;
   display: block;
@@ -278,14 +261,14 @@ html {
 .projects-page .overlay {
   position: absolute;
   inset: 0;
-  background: var(--bg-extra-50);
+  background: linear-gradient(to top, rgba(0,0,0,0.5), transparent 50%);
   opacity: 0;
   transition: opacity 0.4s ease;
   border-radius: 18px;
 }
 
-.projects-page .project-card:hover .overlay {
-  opacity: 1;
+.projects-page .project-card:hover .overlay { 
+  opacity: 1; 
 }
 
 /* Icon buttons */
@@ -299,7 +282,7 @@ html {
 .projects-page .icons a {
   display: inline-block;
   color: white;
-  background: var(--bg-extra-51);
+  background: rgba(0,0,0,0.4);
   padding: 8px 15px;
   border-radius: 6px;
   font-weight: 600;
@@ -308,7 +291,7 @@ html {
 }
 
 .projects-page .icons a:hover {
-  background: var(--bg-extra-52);
+  background: rgba(0,0,0,0.7);
   transform: scale(1.1);
 }
 
@@ -317,9 +300,8 @@ html {
   padding: 20px;
   position: relative;
   z-index: 2;
-  min-height: 140px;
-  /* auto-expands for text */
-  overflow: hidden;
+  min-height: 140px;       /* auto-expands for text */
+  overflow: hidden; 
 }
 
 .projects-page .card-content h3 {
@@ -346,7 +328,13 @@ html {
   padding: 100px 20px;
   font-family: 'Inter', sans-serif;
   color: #2C3E50;
-  background: var(--bg-extra-40);
+  background: linear-gradient(
+    to bottom,
+    #ffffff 0%,
+    #f9faf9 40%,
+    #d5ded4 75%,
+    #f8f9f8 100%
+  );
   margin-top: -5px;
   overflow: hidden;
 }
@@ -358,7 +346,7 @@ html {
   left: 0;
   width: 100%;
   height: 120px;
-  background: var(--bg-extra-41);
+  background: linear-gradient(to bottom, rgba(248, 249, 250, 0) 0%, #f9f9f9 100%);
   z-index: 2;
 }
 
@@ -388,7 +376,7 @@ html {
 .projects-page .dot {
   width: 8px;
   height: 8px;
-  background-color: var(--bg-tertiary);
+  background-color: #198754;
   border-radius: 50%;
 }
 
@@ -423,7 +411,7 @@ html {
 .projects-page .about-stat .stat-icon {
   width: 64px;
   height: 64px;
-  background-color: var(--bg-extra-42);
+  background-color: #25ad941A;
   border-radius: 16px;
   margin: 0 auto 12px;
   display: flex;
@@ -433,7 +421,7 @@ html {
 }
 
 .projects-page .about-stat:hover .stat-icon {
-  background-color: var(--bg-extra-43);
+  background-color: #abcfc8;
 }
 
 .projects-page .stat-icon i {
@@ -461,7 +449,7 @@ html {
 }
 
 .projects-page .value-card {
-  background: var(--bg-extra-8);
+  background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(12px);
   border-radius: 24px;
   padding: 32px;
@@ -475,7 +463,7 @@ html {
 .projects-page .value-icon {
   width: 48px;
   height: 48px;
-  background-color: var(--bg-extra-44);
+  background-color: rgba(255, 102, 0, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -485,7 +473,7 @@ html {
 }
 
 .projects-page .value-card:hover .value-icon {
-  background-color: var(--bg-extra-45);
+  background-color: #aad3a5;
 }
 
 .projects-page .value-icon i {
@@ -507,7 +495,7 @@ html {
 
 /* Client Section Styles */
 .projects-page .client-section {
-  background: var(--bg-extra-46);
+  background: linear-gradient(to bottom, #f9f9f9, #ffffff);
   overflow: hidden;
   position: relative;
 }
@@ -565,12 +553,12 @@ html {
   justify-content: center;
   padding: 1rem;
   transition: all 0.3s ease;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
 }
 
 .projects-page .client-logo:hover {
   transform: scale(1.05);
-  box-shadow: 0 10px 25px rgba(25, 182, 156, 0.15);
+  box-shadow: 0 10px 25px rgba(25,182,156,0.15);
 }
 
 .projects-page .client-logo img {
@@ -584,7 +572,6 @@ html {
   0% {
     transform: translateX(0);
   }
-
   100% {
     transform: translateX(-50%);
   }
@@ -594,7 +581,6 @@ html {
   0% {
     transform: translateX(-50%);
   }
-
   100% {
     transform: translateX(0);
   }
@@ -608,7 +594,7 @@ html {
 
 /* Section header */
 .projects-page #testimonials .text-success {
-  background: var(--bg-extra-47);
+  background: linear-gradient(to right, #10b981, #059669);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -617,7 +603,7 @@ html {
 /* Testimonial card */
 .projects-page .testimonial-card-project {
   position: relative;
-  background: var(--bg-extra-48);
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
   border-radius: 1rem;
   overflow: hidden;
@@ -626,7 +612,7 @@ html {
 
 .projects-page .testimonial-card-project:hover {
   transform: translateY(-0.25rem);
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
 }
 
 /* Gradient top bar */
@@ -637,7 +623,7 @@ html {
   left: 0;
   right: 0;
   height: 4px;
-  background: var(--bg-extra-49);
+  background: linear-gradient(to right, #34d399, #10b981);
   opacity: 0.8;
 }
 
@@ -660,7 +646,7 @@ html {
 }
 
 /* Stars */
-.projects-page .testimonial-card-project {
+.projects-page .testimonial-card-project  {
   font-size: 1rem;
   margin-bottom: 0.75rem;
   color: #15815d;
@@ -690,13 +676,13 @@ html {
 }
 
 /* Trust indicators */
-.projects-page #testimonials .row.text-center>div {
+.projects-page #testimonials .row.text-center > div {
   padding: 1rem;
 }
 
 /* White background for each trust card */
 .projects-page #testimonials .trust-card {
-  background: var(--bg-card);
+  background: #ffffff;
   border-radius: 0.75rem;
   border: 1px solid #d1fae5;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
@@ -762,7 +748,7 @@ html {
 .projects-page .contact-form {
   flex: 1;
   min-width: 320px;
-  background: var(--bg-card);
+  background: #ffffff;
   border-radius: 12px;
   padding: 30px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
@@ -806,7 +792,7 @@ html {
 /* Submit button */
 .projects-page .contact-form button {
   width: 100%;
-  background: var(--bg-extra-47);
+  background: linear-gradient(to right, #10b981, #059669);
   color: white;
   border: none;
   padding: 12px 16px;
@@ -817,7 +803,7 @@ html {
 }
 
 .projects-page .contact-form button:hover {
-  background: var(--bg-extra-57);
+  background: linear-gradient(to right, #059669, #047857);
 }
 
 /* =========================================== */
@@ -826,11 +812,9 @@ html {
 
 /* Extra Small Devices (Phones, 320px - 575px) */
 @media (max-width: 575.98px) {
-
   /* Hero Section */
   .projects-page .ph-hero-section {
-    padding: 101px 0 60px;
-    /* 71px navbar + 30px spacing */
+    padding: 60px 0;
   }
 
   .projects-page .ph-hero-container {
@@ -952,11 +936,9 @@ html {
 
 /* Small Devices (Landscape Phones, 576px - 767px) */
 @media (min-width: 576px) and (max-width: 767.98px) {
-
   /* Hero Section */
   .projects-page .ph-hero-section {
-    padding: 101px 0 80px;
-    /* 71px navbar + 30px spacing */
+    padding: 80px 0;
   }
 
   .projects-page .ph-hero-container {
@@ -1020,11 +1002,9 @@ html {
 
 /* Medium Devices (Tablets, 768px - 991px) */
 @media (min-width: 768px) and (max-width: 991.98px) {
-
   /* Hero Section */
   .projects-page .ph-hero-section {
-    padding: 111px 0 90px;
-    /* 71px navbar + 40px spacing */
+    padding: 90px 0;
   }
 
   .projects-page .ph-left-content {
@@ -1071,7 +1051,6 @@ html {
 
 /* Large Devices (Small Laptops, 992px - 1199px) */
 @media (min-width: 992px) and (max-width: 1199.98px) {
-
   /* Hero Section */
   .projects-page .ph-left-content {
     max-width: 48%;
@@ -1103,7 +1082,6 @@ html {
 
 /* Extra Large Devices (Large Laptops & Desktops, 1200px and up) */
 @media (min-width: 1200px) {
-
   /* Hero Section */
   .projects-page .ph-left-content h1 {
     font-size: 2rem;
@@ -1174,8 +1152,7 @@ html {
 }
 
 /* High DPI Screens (Retina Displays) */
-@media (-webkit-min-device-pixel-ratio: 2),
-(min-resolution: 192dpi) {
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
   .projects-page .ph-right-image {
     background-size: cover;
   }
@@ -1207,20 +1184,19 @@ html {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-
+  
   .text-shine {
     animation: none;
   }
-
+  
   .client-marquee-left,
   .client-marquee-right {
     animation: none;
   }
 }
-
 /* ========== AUTO-SCROLLING TESTIMONIALS ========== */
 .projects-page .testimonials-section {
-  background: var(--bg-extra-53);
+  background: linear-gradient(to bottom, #ffffff 0%, #f0fdf4 50%, #ecfdf5 100%);
   overflow: hidden;
 }
 
@@ -1243,12 +1219,12 @@ html {
 
 .projects-page .testimonials-marquee-wrapper::before {
   left: 0;
-  background: var(--bg-extra-54);
+  background: linear-gradient(to right, #f0fdf4, transparent);
 }
 
 .projects-page .testimonials-marquee-wrapper::after {
   right: 0;
-  background: var(--bg-extra-55);
+  background: linear-gradient(to left, #ecfdf5, transparent);
 }
 
 .projects-page .testimonials-marquee {
@@ -1263,19 +1239,14 @@ html {
 }
 
 @keyframes testimonials-scroll {
-  0% {
-    transform: translateX(0);
-  }
-
-  100% {
-    transform: translateX(-50%);
-  }
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 .projects-page .testimonial-scroll-card {
   flex-shrink: 0;
   width: 280px;
-  background: var(--bg-extra-48);
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
   border-radius: 16px;
   padding: 24px;
@@ -1325,7 +1296,6 @@ html {
     width: 260px;
     padding: 20px;
   }
-
   .projects-page .testimonials-marquee-wrapper::before,
   .projects-page .testimonials-marquee-wrapper::after {
     width: 60px;

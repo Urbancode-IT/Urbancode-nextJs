@@ -13,7 +13,7 @@
     width: 100%;
     max-width: 1337px;
     min-height: 487px;
-    background: var(--bg-extra-6);
+    background: linear-gradient(180deg, #EBEBEB 0%, #96A69F 100%);
     border-radius: 44px;
     display: flex;
     flex-direction: row;
@@ -90,7 +90,7 @@
 .gc-card {
     width: 203px;
     height: 185px;
-    background: var(--bg-section-light);
+    background: #EBEBEB;
     border: 1px solid #D0D0D0;
     box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.25);
     border-radius: 17px;

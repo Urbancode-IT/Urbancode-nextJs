@@ -1,5 +1,5 @@
 .footer {
-    background: var(--bg-extra-4);
+    background: #d2d2d2;
     color: #565151;
     padding: 40px 0 10px;
 }
@@ -54,7 +54,7 @@
     padding: 15px 0;
     text-align: center;
     font-size: 13px;
-    background: var(--bg-extra-11);
+    background: #d3d3d3;
     /* same as footer bg */
 }
 
