@@ -11,8 +11,6 @@ const InDemandTools = () => {
         { name: 'Terraform', icon: 'https://www.vectorlogo.zone/logos/terraformio/terraformio-icon.svg' },
         { name: 'DevOps', icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/azuredevops/azuredevops-original.svg' },
         { name: 'Power BI', icon: 'https://cdn.svgporn.com/logos/microsoft-power-bi.svg' },
-        { name: 'Excel', icon: '/images/home/excel_logo.svg' },
-        { name: 'AI and ML', icon: '/images/home/ai_ml_logo.png' },
     ];
 
     const row2Tools = [
@@ -24,48 +22,72 @@ const InDemandTools = () => {
         { name: 'Tableau', icon: '/images/home/tableau_logo.svg' },
         { name: 'SQL', icon: '/images/home/sql_logo.svg' },
         { name: 'Node.js', icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original.svg' },
+    ];
+
+    const row3Tools = [
         { name: 'Express', icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/express/express-original.svg' },
         { name: 'TensorFlow', icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/tensorflow/tensorflow-original.svg' },
         { name: 'PyTorch', icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/pytorch/pytorch-original.svg' },
         { name: 'Java', icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg' },
         { name: 'JavaScript', icon: '/images/home/js_logo.jpg' },
+        { name: 'Excel', icon: '/images/home/excel_logo.svg' },
+        { name: 'AI and ML', icon: '/images/home/ai_ml_logo.png' },
     ];
 
-    // Duplicate tools for seamless loop
     const row1 = [...row1Tools, ...row1Tools, ...row1Tools];
     const row2 = [...row2Tools, ...row2Tools, ...row2Tools];
+    const row3 = [...row3Tools, ...row3Tools, ...row3Tools];
 
     return (
         <section className="idt-in-demand-container">
-            <h2 className="section-main-title text-shine">In Demand Tools</h2>
+            <h2 className="section-main-title text-shine">In demand tools</h2>
 
             <div className="idt-tools-slider-container">
-                {/* Row 1 - Moves Right to Left */}
+                {/* Row 1 */}
                 <div className="idt-slider-track idt-row-reverse">
                     {row1.map((tool, index) => (
                         <div key={`row1-${index}`} className="idt-tool-item-wrapper">
-                            <div className="idt-tool-logo-base" style={tool.name === 'AI and ML' ? { background: '#000', padding: '0' } : {}}>
+                            <div
+                                className="idt-tool-logo-base"
+                                style={tool.name === 'AI and ML' ? { background: '#000' } : {}}
+                            >
                                 <img
                                     src={tool.icon}
                                     alt={tool.name}
                                     className="idt-tool-icon"
-                                    style={tool.name === 'AI and ML' ? { width: '100%', height: '100%', objectFit: 'cover', transform: 'scale(1.4)' } : {}}
                                 />
                             </div>
                         </div>
                     ))}
                 </div>
 
-                {/* Row 2 - Moves Left to Right */}
+                {/* Row 2 */}
                 <div className="idt-slider-track">
                     {row2.map((tool, index) => (
                         <div key={`row2-${index}`} className="idt-tool-item-wrapper">
-                            <div className="idt-tool-logo-base" style={tool.name === 'AI and ML' ? { background: '#000', padding: '0' } : {}}>
+                            <div className="idt-tool-logo-base">
                                 <img
                                     src={tool.icon}
                                     alt={tool.name}
                                     className="idt-tool-icon"
-                                    style={tool.name === 'AI and ML' ? { width: '100%', height: '100%', objectFit: 'cover' } : {}}
+                                />
+                            </div>
+                        </div>
+                    ))}
+                </div>
+
+                {/* Row 3 */}
+                <div className="idt-slider-track idt-row-reverse">
+                    {row3.map((tool, index) => (
+                        <div key={`row3-${index}`} className="idt-tool-item-wrapper">
+                            <div
+                                className="idt-tool-logo-base"
+                                style={tool.name === 'AI and ML' ? { background: '#000' } : {}}
+                            >
+                                <img
+                                    src={tool.icon}
+                                    alt={tool.name}
+                                    className="idt-tool-icon"
                                 />
                             </div>
                         </div>
