@@ -3,8 +3,9 @@
 
 /* Full-width navbar */
 .navbar {
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif!important;
-  position: fixed;   /* navbar fixed at top */
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+  position: fixed;
+  /* navbar fixed at top */
   top: 0;
   left: 0;
   width: 100%;
@@ -12,13 +13,15 @@
   background: #ebebeb;
   display: flex;
   align-items: center;
-  z-index: 1000;     /* stay above content */
+  z-index: 1000;
+  /* stay above content */
 }
 
 /* Bootstrap-like container */
 .navbar.container {
   width: 100%;
-  max-width: 1440px; /* default for screens <= 1511px */
+  max-width: 1440px;
+  /* default for screens <= 1511px */
   margin: 0 auto;
   padding: 0 55px;
   display: flex;
@@ -48,21 +51,23 @@
 }
 
 .nav-links a {
-  font-size: 15px!important;
-  font-weight: 400!important;
+  font-size: 15px !important;
+  font-weight: 400 !important;
   color: #555555;
   text-decoration: none;
   letter-spacing: -0.02em;
   line-height: 18px;
   display: flex;
   align-items: center;
-  position: relative;       /* for pseudo-element */
+  position: relative;
+  /* for pseudo-element */
   transition: color 0.3s ease;
 
 }
-.nav-links button{
+
+.nav-links button {
   font-size: 14px;
-  font-weight: 400!important;
+  font-weight: 400 !important;
   color: #555555;
   text-decoration: none;
   letter-spacing: -0.02em;
@@ -70,7 +75,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;       /* for pseudo-element */
+  position: relative;
+  /* for pseudo-element */
   transition: color 0.3s ease;
 }
 
@@ -80,8 +86,10 @@
   left: 0;
   bottom: 0;
   width: 0%;
-  height: 2px;             /* thickness of underline */
-  background-color: #0ca678; /* green color */
+  height: 2px;
+  /* thickness of underline */
+  background-color: #0ca678;
+  /* green color */
   transition: width 0.3s ease;
 }
 
@@ -111,17 +119,43 @@
 
 /* RESPONSIVE */
 /* Tablets */
-@media (max-width: 992px) {
-  .nav-links {
-    gap: 25px;
-  }
-
-  .nav-links a {
-    font-size: 14px;
-  }
-
+/* Tablets and Compact Laptops */
+@media (max-width: 1200px) {
   .navbar.container {
-    padding: 0 30px;
+    padding: 0 15px;
+    /* Maximize space */
+  }
+
+  .navbar-brand {
+    width: 130px;
+    /* Scale logo */
+    order: 1;
+  }
+
+  .nav-links {
+    gap: 12px;
+    order: 2;
+    /* Move links to center */
+    flex: 1;
+    justify-content: center;
+  }
+
+  .nav-links a,
+  .nav-links button,
+  .dropdown-toggle {
+    font-size: 12px !important;
+    /* Scale text */
+  }
+
+  .navbar-phone {
+    order: 3;
+    margin-left: 5px;
+  }
+
+  .navbar-phone a {
+    font-size: 15px;
+    /* Scale phone */
+    padding: 4px 0;
   }
 }
 
@@ -129,7 +163,8 @@
 @media (max-width: 768px) {
   .nav-links {
     position: absolute;
-    top: 71px; /* below fixed navbar */
+    top: 71px;
+    /* below fixed navbar */
     left: 0;
     width: 100%;
     background: #EBEEEE;
@@ -153,14 +188,16 @@
     padding: 15px 0;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   }
-  .nav-links .dropdown{
+
+  .nav-links .dropdown {
     width: 100%;
     justify-content: center;
     padding: 15px 0;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   }
-  .dropdown-menu{
-    border:none;
+
+  .dropdown-menu {
+    border: none;
   }
 
   .nav-links a:last-child {
@@ -172,42 +209,48 @@
   }
 
   /* Hamburger animation */
-  .hamburger.active span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-  }
-
-  .hamburger.active span:nth-child(2) {
-    opacity: 0;
-  }
-
   .hamburger.active span:nth-child(3) {
     transform: rotate(-45deg) translate(7px, -6px);
+  }
+
+  /* Reset logo order for mobile so it stays on left */
+  .navbar-brand {
+    order: 0;
+    width: 140px;
+    /* Slightly larger than compact tablet view if needed, or keep same */
   }
 }
 
 /* Extra large screens - above 1511px */
 @media (min-width: 1512px) {
   .navbar.container {
-    max-width: 2600px;   /* wider container for large screens */
-    padding: 0 80px;     /* more space on sides */
+    max-width: 2600px;
+    /* wider container for large screens */
+    padding: 0 80px;
+    /* more space on sides */
   }
 
   .nav-links {
-    gap: 80px;           /* more spacing between links */
+    gap: 80px;
+    /* more spacing between links */
   }
 
-   .nav-links a {
-    font-size: 14px;     /* increase nav text size */
+  .nav-links a {
+    font-size: 14px;
+    /* increase nav text size */
     line-height: 22px;
-     font-weight: 400;   /* keep vertical spacing balanced */
+    font-weight: 400;
+    /* keep vertical spacing balanced */
   }
 
   .navbar-brand {
-    width: 230px;        /* slightly larger logo if needed */
+    width: 230px;
+    /* slightly larger logo if needed */
   }
-  .nav-links button{
-        font-size: 16px;
-        font-weight: 400;
+
+  .nav-links button {
+    font-size: 16px;
+    font-weight: 400;
   }
 }
 
@@ -229,7 +272,8 @@
 }
 
 .dropdown-toggle:hover {
-  color: #0dc359; /* green accent */
+  color: #0dc359;
+  /* green accent */
 }
 
 /* Dropdown Menu */
@@ -270,7 +314,7 @@
 .dropdown-menu a:hover {
   background: #0dc35941;
   color: #fff;
-  
+
 }
 
 /* For mobile view */
@@ -300,14 +344,17 @@
     text-align: left;
   }
 }
+
 .navbar-phone {
   margin-left: 20px;
   display: flex;
-  align-items: center; /* keeps it perfectly aligned vertically */
+  align-items: center;
+  /* keeps it perfectly aligned vertically */
 }
 
 .navbar-phone a {
-  text-decoration: none;      /* removes underline */
+  text-decoration: none;
+  /* removes underline */
   display: inline-block;
   padding: 4px 10px;
   /* background: rgba(0, 0, 0, 0.04);  */
@@ -317,9 +364,9 @@
   color: #504e4e;
   white-space: nowrap;
   line-height: 1;
-  font-family: inter, sans-serif!important;
+  font-family: inter, sans-serif !important;
   letter-spacing: -0.1;
-             /* avoids weird bottom spacing */
+  /* avoids weird bottom spacing */
 }
 
 /* .navbar-phone a:hover {
@@ -330,4 +377,25 @@
   .navbar-phone {
     display: none;
   }
+}
+
+/* Scrolled Navbar Style */
+.navbar.scrolled {
+  background: rgba(235, 235, 235, 0.85);
+  /* Semi-transparent background */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  /* Safari support */
+}
+
+.navbar.scrolled .navbar.container {
+  background-color: transparent;
+  backdrop-filter: blur(8px) !important;
+}
+
+/* Disable blur when mobile menu is open */
+.navbar.scrolled.menu-open {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  background: #ebebeb;
 }

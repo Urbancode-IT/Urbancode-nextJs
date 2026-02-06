@@ -32,7 +32,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="navbar">
+      <nav className={`navbar ${isOpen ? 'menu-open' : ''}`}>
         <div className="navbar container">
 
           {/* Logo */}
