@@ -33,7 +33,7 @@ export default function Navbar() {
   return (
     <>
       <nav className={`navbar ${isOpen ? 'menu-open' : ''}`}>
-        <div className="container">
+        <div className="navbar container">
 
           {/* Logo */}
           <Link href="/" className="navbar-brand" onClick={handleLinkClick}>
