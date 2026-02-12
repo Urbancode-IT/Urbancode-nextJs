@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import './Navbar.css';
@@ -8,9 +8,18 @@ import ChatbotWidget from '../ChatbotWidget';
 import FloatingWidgets from '../FloatingWidgets';
 import { FiPhoneCall } from 'react-icons/fi';
 
+const setNavbarHeightVar = () => {
+  const navbar = document.querySelector('.navbar');
+  if (navbar) {
+    const h = navbar.getBoundingClientRect().height;
+    document.documentElement.style.setProperty('--navbar-height', `${h}px`);
+  }
+};
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [careerOpen, setCareerOpen] = useState(false);
+  const navRef = useRef(null);
 
   const handleLinkClick = () => {
     setIsOpen(false);
@@ -18,6 +27,19 @@ export default function Navbar() {
   };
 
   const toggleCareer = () => setCareerOpen(!careerOpen);
+
+  useEffect(() => {
+    const el = navRef.current;
+    setNavbarHeightVar();
+    const ro = new ResizeObserver(setNavbarHeightVar);
+    if (el) ro.observe(el);
+    window.addEventListener('resize', setNavbarHeightVar);
+    return () => {
+      if (el) ro.unobserve(el);
+      ro.disconnect();
+      window.removeEventListener('resize', setNavbarHeightVar);
+    };
+  }, [isOpen]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,7 +54,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className={`navbar ${isOpen ? 'menu-open' : ''}`}>
+      <nav ref={navRef} className={`navbar ${isOpen ? 'menu-open' : ''}`}>
         <div className="navbar container">
 
           {/* Logo */}

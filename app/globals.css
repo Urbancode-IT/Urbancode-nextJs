@@ -1,3 +1,7 @@
+:root {
+  --navbar-height: 71px; /* fallback until Navbar measures on client */
+}
+
 html,
 body {
   margin: 0;
@@ -7,6 +11,10 @@ body {
   background-color: #ebebeb;
   overflow-x: hidden;
   width: 100%;
+}
+
+main {
+  padding-top: var(--navbar-height);
 }
 
 .text-shine {

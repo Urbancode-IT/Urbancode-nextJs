@@ -6,7 +6,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding-top: 71px;
+            /* Spacing for fixed navbar is applied on main via --navbar-height */
             text-align: center;
             background: linear-gradient(
                 180deg,
