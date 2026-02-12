@@ -1,7 +1,8 @@
 .home_header_main_container {
   background: linear-gradient(180deg, #EBEBEB, #EDFFFB, #EBEBEB);
   overflow: hidden;
-  /* Spacing for fixed navbar is applied on main via --navbar-height */
+  padding-top: 71px;
+  /* Space for fixed navbar */
 }
 
 .home_header_container {

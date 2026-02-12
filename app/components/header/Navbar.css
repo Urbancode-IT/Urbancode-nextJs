@@ -163,7 +163,7 @@
 @media (max-width: 768px) {
   .nav-links {
     position: absolute;
-    top: var(--navbar-height, 71px);
+    top: 71px;
     /* below fixed navbar */
     left: 0;
     width: 100%;

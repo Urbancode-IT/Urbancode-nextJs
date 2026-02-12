@@ -1,5 +1,6 @@
 .single-coursepage {
-    /* Spacing for fixed navbar is applied on main via --navbar-height */
+    padding-top: 71px;
+    /* Navbar height */
 }
 
 .single-coursepage.bg-gray {
