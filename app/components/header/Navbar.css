@@ -381,10 +381,11 @@
 
 /* Scrolled Navbar Style */
 .navbar.scrolled {
-  background: rgba(var(--bg-neutral-rgb), 0.85);
+  background: rgba(var(--bg-neutral-rgb), 0.5);
   /* Semi-transparent background */
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+ 
   /* Safari support */
 }
 
