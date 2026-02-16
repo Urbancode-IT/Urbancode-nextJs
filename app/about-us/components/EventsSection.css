@@ -1,6 +1,6 @@
 /* SECTION */
 .event-section {
-  background-color: #ebebeb;
+  background-color: var(--bg-neutral);
   padding: 90px 0;
   overflow: hidden;
   position: relative;
@@ -19,6 +19,7 @@
   margin-bottom: 10px;
   letter-spacing: 0.5px;
 }
+
 .event-section .campus-word {
   color: #212529 !important;
 }

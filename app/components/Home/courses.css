@@ -7,7 +7,7 @@
     width: 100%;
     min-height: 550px;
     margin: 0;
-    background: linear-gradient(180deg, #EBEBEB 0%, rgba(215, 235, 226, 0.2) 50%, #EBEBEB 100%),
+    background: linear-gradient(180deg, var(--bg-neutral) 0%, rgba(215, 235, 226, 0.2) 50%, var(--bg-neutral) 100%),
         linear-gradient(259.47deg,
             rgba(102, 102, 102, 0.078) -0.37%,
             rgba(0, 181, 111, 0.13) 104.31%);

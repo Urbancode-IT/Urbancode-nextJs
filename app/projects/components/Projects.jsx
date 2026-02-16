@@ -137,10 +137,8 @@ const Projects = () => {
       <section id="about-section" className="about-section">
         <div className="about-container">
           <div className="about-header">
-            <div className="about-subtitle">
-              <div className="dot"></div>
-              <span>About Us</span>
-              <div className="dot"></div>
+            <div className="text-center mb-2">
+              <h4 className="styled-subtitle text-uppercase text-shine">About Us</h4>
             </div>
             <h2>Crafting Digital <span className="text-success text-shine">Excellence</span></h2>
             <p>Our team combines creativity with technical expertise to deliver solutions that drive business growth.</p>
@@ -209,10 +207,8 @@ const Projects = () => {
       <section id="projectform" className="projectform-section py-5">
         <div className="container">
           <div className="text-center mb-5">
-            <div className="d-flex justify-content-center align-items-center gap-2 text-success mb-2">
-              <div className="rounded-circle bg-success" style={{ width: '8px', height: '8px' }}></div>
-              <small className="fw-bold text-uppercase">Contact Us</small>
-              <div className="rounded-circle bg-success" style={{ width: '8px', height: '8px' }}></div>
+            <div className="text-center mb-2">
+              <h4 className="styled-subtitle text-uppercase text-shine">Contact Us</h4>
             </div>
             <h2 className="" style={{ fontSize: '2.5rem' }}>
               Let's Build Something <span className="text-shine" >Amazing</span>
@@ -378,10 +374,8 @@ const Projects = () => {
       <section id="testimonials" className="testimonials-section py-5">
         <div className="container">
           <div className="text-center mb-4">
-            <div className="d-flex justify-content-center align-items-center gap-2 text-success mb-2">
-              <div className="rounded-circle bg-success" style={{ width: '8px', height: '8px' }}></div>
-              <small className="fw-bold text-uppercase">Testimonials</small>
-              <div className="rounded-circle bg-success" style={{ width: '8px', height: '8px' }}></div>
+            <div className="text-center mb-2">
+              <h4 className="styled-subtitle text-uppercase text-shine">Testimonials</h4>
             </div>
             <h2 style={{ fontSize: '2.5rem' }}>What Our <span className="text-shine">Clients Say</span></h2>
           </div>

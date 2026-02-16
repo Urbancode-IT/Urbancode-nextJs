@@ -1,5 +1,5 @@
 .footer {
-    background: #d2d2d2;
+    background: #e8e8e8;
     color: #565151;
     padding: 40px 0 10px;
 }
@@ -54,7 +54,7 @@
     padding: 15px 0;
     text-align: center;
     font-size: 13px;
-    background: #d3d3d3;
+    background: #eaeaea;
     /* same as footer bg */
 }
 

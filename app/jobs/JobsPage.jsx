@@ -9,7 +9,7 @@ export default function JobsPage() {
           width: '100%',
           height: '100%',
           padding: 0,
-          margin: 0,
+          marginTop: 160,
           
         }}
       >

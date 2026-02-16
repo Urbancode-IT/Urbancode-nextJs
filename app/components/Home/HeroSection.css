@@ -1,12 +1,12 @@
 .home_header_main_container {
-  background: linear-gradient(180deg, #EBEBEB, #EDFFFB, #EBEBEB);
+  background: linear-gradient(180deg, var(--bg-neutral), #EDFFFB, var(--bg-neutral));
   overflow: hidden;
   padding-top: 71px;
   /* Space for fixed navbar */
 }
 
 .home_header_container {
-  padding: 5% 0 2% 0;
+  padding: 3% 0 2% 0;
 }
 
 .fs25rem {

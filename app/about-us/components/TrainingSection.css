@@ -1,6 +1,5 @@
-
-.training_section_main_container{
-    background-color: #ebebeb;
+.training_section_main_container {
+  background-color: var(--bg-neutral);
   opacity: 0.9;
   padding: 70px 0 70px 0;
 }

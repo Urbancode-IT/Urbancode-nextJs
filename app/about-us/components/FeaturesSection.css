@@ -1,5 +1,5 @@
 .featureSection_main_container {
-  background-color: #ebebeb;
+  background-color: var(--bg-neutral);
   opacity: 0.9;
   overflow-x: hidden;
 }
@@ -25,12 +25,12 @@
 }
 
 .feature-1 {
-  width: calc( 60% + 120px );
+  width: calc(60% + 120px);
   z-index: 1;
 }
 
 .feature-2 {
-  width:calc( 60% + 240px );
+  width: calc(60% + 240px);
   z-index: 2;
 }
 

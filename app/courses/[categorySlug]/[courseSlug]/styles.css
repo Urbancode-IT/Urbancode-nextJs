@@ -4,7 +4,7 @@
 }
 
 .single-coursepage.bg-gray {
-    background-color: #ebebeb !important;
+    background-color: var(--bg-neutral) !important;
 }
 
 .single-coursepage .custom-accordion-item {
@@ -17,7 +17,7 @@
 }
 
 .single-coursepage .gray-bg {
-    background-color: #ebebeb;
+    background-color: var(--bg-neutral);
 }
 
 .single-coursepage .btn-dark {

@@ -6,7 +6,7 @@
     justify-content: center;
     gap: 30px;
     padding: 40px 20px;
-    background: linear-gradient(180deg, #EBEBEB, rgba(215, 235, 226, .2) 50%, #EBEBEB), linear-gradient(259.47deg, rgba(102, 102, 102, .078) -.37%, rgba(0, 181, 111, .13) 104.31%);
+    background: linear-gradient(180deg, var(--bg-neutral), rgba(215, 235, 226, .2) 50%, var(--bg-neutral)), linear-gradient(259.47deg, rgba(102, 102, 102, .078) -.37%, rgba(0, 181, 111, .13) 104.31%);
     box-sizing: border-box;
 }
 

@@ -157,12 +157,12 @@
 
 .idt-tools-slider-container::before {
     left: 0;
-    background: linear-gradient(to right, #f0f0f0 20%, transparent);
+    background: linear-gradient(to right, var(--bg-neutral) 20%, transparent);
 }
 
 .idt-tools-slider-container::after {
     right: 0;
-    background: linear-gradient(to left, #f0f0f0 20%, transparent);
+    background: linear-gradient(to left, var(--bg-neutral) 20%, transparent);
 }
 
 /* Mobile */
