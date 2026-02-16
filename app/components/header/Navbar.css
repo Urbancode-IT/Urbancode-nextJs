@@ -10,7 +10,7 @@
   left: 0;
   width: 100%;
   height: 71px;
-  background: #ebebeb;
+  background: var(--bg-neutral);
   display: flex;
   align-items: center;
   z-index: 1000;
@@ -27,7 +27,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #ebebeb;
+  background-color: #f9f9f9;
 }
 
 /* Logo */
@@ -167,7 +167,7 @@
     /* below fixed navbar */
     left: 0;
     width: 100%;
-    background: #EBEEEE;
+    background: #f9f9f9;
     flex-direction: column;
     align-items: center;
     gap: 0;
@@ -282,7 +282,7 @@
   top: 25px;
   left: 0;
   min-width: 180px;
-  background: #ebebeb;
+  background: var(--bg-neutral);
   border-radius: 10px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   display: none;
@@ -381,7 +381,7 @@
 
 /* Scrolled Navbar Style */
 .navbar.scrolled {
-  background: rgba(235, 235, 235, 0.85);
+  background: rgba(var(--bg-neutral-rgb), 0.85);
   /* Semi-transparent background */
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -397,5 +397,5 @@
 .navbar.scrolled.menu-open {
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
-  background: #ebebeb;
+  background: var(--bg-neutral);
 }
