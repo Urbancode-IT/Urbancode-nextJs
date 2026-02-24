@@ -1977,6 +1977,105 @@ const coursesData = {
       }
       ,
       {
+        title: "Google Cloud",
+        desc: "Master Google Cloud Platform with hands-on training in cloud computing, data analytics, and AI integration. Unlock global career opportunities with industry-recognized GCP certification.",
+        rating: 5.0,
+        duration: "3 months",
+        students: "9,850",
+        img: "/images/courses/gcp.webp",
+        aboutData: {
+          topic: "Master Google Cloud Platform — From Fundamentals to Advanced Cloud Solutions!",
+          content1: "Accelerate your cloud career with comprehensive Google Cloud training. Learn how to design, deploy, and manage scalable cloud applications, build secure infrastructure, and integrate AI capabilities. This course prepares you for GCP certification and real-world enterprise cloud solutions.",
+          content2: "The Google Cloud course by Urbancode covers cloud computing fundamentals through to expert-level solutions. You’ll explore GCP core services, networking, security, and automation while working hands-on with virtual machines, storage, and app services. The program also includes advanced topics like GCP DevOps, AI services, Kubernetes, and hybrid cloud management, ensuring you’re fully industry-ready for cloud engineering and architecture roles."
+        },
+        courseContentData: [
+          {
+            id: 1,
+            title: "Beginner – Cloud Fundamentals",
+            icon: "bi bi-cloud",
+            defaultOpen: true,
+            items: [
+              "Introduction to Cloud Computing and Google Cloud",
+              "Understanding GCP architecture and regions",
+              "Google Cloud Console & CLI basics",
+              "Core GCP services (Compute Engine, Cloud Storage, BigQuery)",
+              "Creating and managing GCP resources",
+              "GCP Free Tier and account setup"
+            ]
+          },
+          {
+            id: 2,
+            title: "Beginner – Identity, Governance & Security",
+            icon: "bi bi-shield-lock",
+            items: [
+              "Google Cloud Identity and Access Management (IAM)",
+              "Resource hierarchy and organization policies",
+              "Network security with VPC Service Controls",
+              "Cloud Security Command Center",
+              "Best practices for GCP security and compliance"
+            ]
+          },
+          {
+            id: 3,
+            title: "Intermediate – GCP Networking & Storage",
+            icon: "bi bi-diagram-3",
+            items: [
+              "Virtual Private Cloud (VPC) and subnets",
+              "Cloud Load Balancing and CDN",
+              "Cloud VPN and Interconnect",
+              "Cloud Storage classes and lifecycle management",
+              "Persistent Disks and Filestore"
+            ]
+          },
+          {
+            id: 4,
+            title: "Intermediate – GCP Compute & Application Services",
+            icon: "bi bi-cpu",
+            items: [
+              "Compute Engine virtual machines",
+              "App Engine for serverless applications",
+              "Kubernetes Engine (GKE) for container orchestration",
+              "Autoscaling and load balancing in GCP",
+              "Cloud Functions and Event-driven architecture"    
+            ]
+          }
+         
+        ],
+        whatYouLearnData: [
+          {
+            title: "Master Google Cloud Platform",
+            desc: "Understand GCP core services, infrastructure, and architecture for real-world applications.",
+            icon: "bi bi-cloud"
+          },
+          {
+            title: "Deploy & Manage Cloud Solutions",
+            desc: "Design, deploy, and scale virtual machines, databases, and cloud applications efficiently.",
+            icon: "bi bi-gear"
+          },
+          {
+            title: "Automate with GCP DevOps Tools",
+            desc: "Build and manage CI/CD pipelines, automate infrastructure, and streamline deployments.",
+            icon: "bi bi-code-slash"
+          },
+          {
+            title: "Integrate AI & Machine Learning",
+            desc: "Leverage GCP AI and ML services for intelligent cloud-based applications.",
+            icon: "bi bi-robot"
+          },
+          {
+            title: "Enhance Cloud Security",
+            desc: "Apply best practices in governance, identity, and threat protection across GCP resources.",
+            icon: "bi bi-shield-lock"
+          },
+          {
+            title: "Prepare for GCP Certification",
+            desc: "Gain knowledge to pass key Google Cloud certification exams (Associate Cloud Engineer, Professional Cloud Architect).",
+            icon: "bi bi-award"
+          }
+        ]
+
+      },
+      {
         title: "Microsoft Azure",
         desc: "Master Microsoft Azure with hands-on training in cloud computing, DevOps, and AI integration. Unlock global career opportunities with industry-recognized Azure certification.",
         rating: 5.0,
