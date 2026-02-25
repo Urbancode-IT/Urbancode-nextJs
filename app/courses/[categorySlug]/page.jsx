@@ -9,6 +9,7 @@ export async function generateStaticParams() {
     "Cloud and DevOps",
     // "Data Analytics",
     "Data Science",
+    "Data Engineering",
     "Database",
     "Data Visualization",
     "Software Testing",

@@ -1056,7 +1056,7 @@ const coursesData = {
   desc: "Master React Native and build real-world mobile apps for Android and iOS. Learn cross-platform development using JavaScript, React, and native APIs.",
   rating: 4.9,
   duration: "1.5 months",
-  students: "10,556",
+  students: "106",
   img: "/images/courses/React_Native.jpg",
   aboutData: {
     topic: "Master React Native — Build High-Performance Cross-Platform Mobile Apps!",
@@ -1470,7 +1470,7 @@ const coursesData = {
         desc: "Learn to design stunning, user-friendly interfaces with Figma. Master collaborative design tools, workflows, and real-world projects. Turn your creativity into professional UI/UX design skills.",
         rating: 5.0,
         duration: "1 month",
-        students: "10,556",
+        students: "106",
         img: "/images/courses/Figma.jpg",
         aboutData: {
           topic: "Master Figma — From Basic Design to Advanced Prototyping!",
@@ -1571,7 +1571,7 @@ const coursesData = {
         desc: "Unleash your creativity with professional Photoshop skills. Learn photo editing, graphic design, and digital art from scratch. Master tools and techniques to bring your ideas to life.",
         rating: 5.0,
         duration: "1 month",
-        students: "10,556",
+        students: "106",
         img: "/images/courses/Photoshop.jpg",
         aboutData: {
           topic: "Master Adobe Photoshop — From Beginner to Professional Graphic Designer!",
@@ -1671,7 +1671,7 @@ const coursesData = {
         desc: "Unleash your creativity with industry-leading design tools. Learn branding, UI/UX, and visual storytelling from experts. Build a stunning portfolio to launch your creative career.",
         rating: 5.0,
         duration: "1 month",
-        students: "10,556",
+        students: "106",
         img: "/images/courses/Graphic_Design.jpg",
         aboutData: {
           topic: "Become a Professional Graphic Designer — From Design Basics to Brand Identity!",
@@ -1769,7 +1769,7 @@ const coursesData = {
         desc: "Master Canva with hands-on training designed for students and professionals. Learn to design stunning graphics, social media posts, and presentations with ease.",
         rating: 5.0,
         duration: "1 month",
-        students: "10,556",
+        students: "106",
         img: "/images/courses/Canva.jpg",
         aboutData: {
           topic: "Master Canva — Design Like a Pro with Ease and Creativity!",
@@ -2547,7 +2547,7 @@ const coursesData = {
   //       desc: "Master SAS with hands-on training designed for real-world data analytics and business intelligence applications. Join our program to gain in-demand skills and boost your career in analytics.",
   //       rating: 5.0,
   //       duration: "1 month",
-  //       students: "10,556",
+  //       students: "106",
   //       img: "/images/courses/SAS.jpg",
   //       aboutData: {
   //         topic: "Master SAS — From Data Management to Advanced Analytics!",
@@ -2646,7 +2646,7 @@ const coursesData = {
   //       "desc": "Master R Programming with hands-on training designed for data analysis, visualization, and statistical modeling. Gain industry-ready skills to excel in analytics, research, and data-driven decision making.",
   //       "rating": 5.0,
   //       "duration": "1 month",
-  //       "students": "10,556",
+  //       "students": "106",
   //       "img": "/images/courses/R_Programming.jpg",
   //       "aboutData": {
   //         "topic": "Master R Programming — From Fundamentals to Advanced Analytics!",
@@ -2755,7 +2755,7 @@ const coursesData = {
         desc: "Master Data Science with hands-on training in Python, Machine Learning, and AI. Gain industry-ready skills to build a rewarding career in analytics.",
         rating: 5.0,
         duration: "1 month",
-        students: "10,556",
+        students: "105",
         img: "/images/courses/Data_Science.jpg",
         aboutData: {
           topic: "Master Data Science — From Python Fundamentals to Machine Learning & AI!",
@@ -2853,7 +2853,7 @@ const coursesData = {
         desc: "Master Python and AI with our Python Plus ChatGPT Training Program — hands-on, industry-ready, and future-focused.",
         rating: 5.0,
         duration: "1 month",
-        students: "10,556",
+        students: "106",
         img: "/images/courses/Python_Plus_ChatGPT.jpg",
         aboutData: {
           topic: "Master Python & ChatGPT — From Core Programming to AI Integration!",
@@ -2953,7 +2953,7 @@ const coursesData = {
         desc: "Master SAS with hands-on training designed for real-world data analytics and business intelligence applications. Join our program to gain in-demand skills and boost your career in analytics.",
         rating: 5.0,
         duration: "1 month",
-        students: "10,556",
+        students: "106",
         img: "/images/courses/SAS.jpg",
         aboutData: {
           topic: "Master SAS — From Data Management to Advanced Analytics!",
@@ -3052,7 +3052,7 @@ const coursesData = {
       //   "desc": "Master R Programming with hands-on training designed for data analysis, visualization, and statistical modeling. Gain industry-ready skills to excel in analytics, research, and data-driven decision making.",
       //   "rating": 5.0,
       //   "duration": "1 month",
-      //   "students": "10,556",
+      //   "students": "106",
       //   "img": "/images/courses/R_Programming.jpg",
       //   "aboutData": {
       //     "topic": "Master R Programming — From Fundamentals to Advanced Analytics!",
@@ -3148,7 +3148,111 @@ const coursesData = {
       
     ],
   },
+"Data Engineering": {
+    mainCategoryDesc: "Build the Data Pipelines of Tomorrow",
+    subDesc: "Master the tools and techniques to design, build, and maintain data pipelines with Google Cloud, Apache Airflow, MySQL, and Python. Learn to handle big data, ensure data quality, and optimize performance for scalable data solutions.",
+    subHeading: "Become a Data Engineer who powers the data infrastructure behind modern applications and analytics.",
+    mainImage: "/images/courses/DataEngineering.jpg",
 
+    courses: [
+      {
+        title: "Data Engineering",
+        desc: "Master Data Engineering with hands-on training in Google Cloud, Apache Airflow, MySQL, and Python. Gain industry-ready skills to design, build, and maintain scalable data pipelines for modern applications.",
+        rating: 5.0,
+        duration: "1 month",
+        students: "106",
+        img: "/images/courses/dataEng.webp",
+        aboutData: {
+          topic: "Master Data Engineering — From Fundamentals to Scalable Data Pipelines!",
+          content1: "Learn Data Engineering from scratch! Understand data pipeline design, big data processing, and cloud-based data solutions. This course equips you with practical skills to build and maintain data infrastructure for modern applications.",
+          content2: "The Data Engineering course by Urbancode covers everything from core concepts to advanced tools like Google Cloud Platform, Apache Airflow, MySQL, and Python. You'll learn to design efficient data pipelines, handle big data with cloud services, ensure data quality, and optimize performance. By the end, you'll have hands-on experience in building scalable data solutions and be ready for industry challenges."
+        },
+        courseContentData: [
+          {
+            id: 1,
+            title: "Data Engineering Fundamentals",
+            icon: "bi bi-book",
+            defaultOpen: true,
+            items: [
+              "Introduction to Data Engineering",
+              "Data pipeline architecture and design patterns",
+              "ETL vs ELT processes",
+              "Data storage solutions (SQL, NoSQL, Data Lakes)",
+              "Data quality and validation techniques"
+            ]
+          },
+          {
+            id: 2,
+            title: "Cloud-Based Data Solutions",
+            icon: "bi bi-cloud",
+            items: [
+              "Google Cloud Platform overview",
+              "BigQuery for data warehousing",
+              "Cloud Storage for data lakes",
+              "Cloud Pub/Sub for real-time data streaming",
+              "Cloud Dataflow for batch and stream processing"
+            ]
+          },
+          {
+            id: 3,
+            title: "Workflow Orchestration with Apache Airflow",
+            icon: "bi bi-gear",
+            items: [
+              "Introduction to Apache Airflow",
+              "DAGs, tasks, and operators",
+              "Scheduling and monitoring workflows",
+              "Integrating Airflow with cloud services",
+              "Best practices for workflow management"
+            ]
+          },
+          {
+            id: 4,
+            title: "Data Engineering with Python & MySQL",
+            icon: "bi bi-database",
+            items: [
+              "Python for data engineering",
+              "MySQL database design and management",
+              "Building data pipelines with Python and MySQL",
+              "Data ingestion and transformation techniques",
+              "Performance optimization for data pipelines"
+            ]
+          },
+
+        ],
+        whatYouLearnData: [
+          {
+            title: "Design Scalable Data Pipelines",
+            desc: "Learn to architect efficient data pipelines using modern tools and best practices.",
+            icon: "bi bi-gear"
+          },
+          {
+            title: "Handle Big Data in the Cloud",
+            desc: "Use Google Cloud services to manage and process large datasets effectively.",
+            icon: "bi bi-cloud" 
+          },
+          {
+            title: "Orchestrate Workflows with Airflow",
+            desc: "Build and manage complex data pipelines using Apache Airflow.",
+          },
+          {
+            title: "Master Python & MySQL for Data Engineering",
+            desc: "Use Python and MySQL to build, manage, and optimize data pipelines.",
+            icon: "bi bi-database"
+          },
+          {
+            title: "Ensure Data Quality & Performance",
+            desc: "Implement data validation, monitoring, and optimization techniques for reliable pipelines.",
+            icon: "bi bi-shield-lock"
+          },
+          {
+            title: "Become Industry-Ready",
+            desc: "Gain hands-on experience with real-world projects and be prepared for data engineering roles.",
+            icon: "bi bi-lightning-charge"
+          }
+        ]
+      }
+    ],        
+          },
   "Database": {
     mainCategoryDesc: "The Power Behind Applications",
     subDesc: "Learn to design, manage, and optimize databases with SQL, MySQL, Oracle, and MongoDB. Gain hands-on expertise in building secure, scalable, and high-performance database solutions.",
@@ -3161,7 +3265,7 @@ const coursesData = {
         "desc": "Master MongoDB from basics to advanced with real-time projects and hands-on labs. Learn data modeling, indexing, aggregation, and secure deployment for modern applications.",
         "rating": 5.0,
         "duration": "1 month",
-        "students": "10,556",
+        "students": "106",
         "img": "/images/courses/MangoDB_Database.jpg",
         "aboutData": {
           "topic": "Master MongoDB — From Fundamentals to Advanced Database Management!",
@@ -3259,7 +3363,7 @@ const coursesData = {
         desc: "Master MSSQL Database with hands-on training in queries, procedures, and optimization. Gain industry-ready skills to manage, secure, and scale enterprise databases.",
         rating: 5.0,
         duration: "1 month",
-        students: "10,556",
+        students: "106",
         img: "/images/courses/MSSQL_Database.jpg",
         aboutData: {
           topic: "Master MSSQL Database — From Fundamentals to Advanced Database Management!",
@@ -3358,7 +3462,7 @@ const coursesData = {
         desc: "Master MySQL Database from fundamentals to advanced queries with real-time projects and hands-on practice. Build strong SQL skills to manage, analyze, and secure data effectively for modern applications.",
         rating: 5.0,
         duration: "1 month",
-        students: "10,556",
+        students: "106",
         img: "/images/courses/MySQL_Database.jpg",
         aboutData: {
           topic: "Master MySQL — From Basics to Advanced Database Management!",
@@ -3445,7 +3549,7 @@ const coursesData = {
         "desc": "Master PostgreSQL from basics to advanced with hands-on projects, queries, and performance tuning. Gain industry-ready database skills to design, manage, and secure powerful applications.",
         "rating": 5.0,
         "duration": "1 month",
-        "students": "10,556",
+        "students": "106",
         "img": "/images/courses/PostgreSQL_Database.jpg",
         "aboutData": {
           "topic": "Master PostgreSQL — From Fundamentals to Advanced Database Management!",
@@ -3554,7 +3658,7 @@ const coursesData = {
         desc: "Master data visualization and business intelligence with our hands-on Power BI training. Learn to create interactive dashboards, analyze data, and drive smarter decisions.",
         rating: 5.0,
         duration: "1 month",
-        students: "10,556",
+        students: "106",
         img: "/images/courses/Power_BI.jpg",
         aboutData: {
           topic: "Master Power BI — Transform Data into Actionable Insights!",
@@ -3653,7 +3757,7 @@ const coursesData = {
         desc: "Master the art of data visualization with Tableau and turn raw data into powerful business insights. Learn hands-on dashboards, reports, and analytics to boost your career in data-driven decision-making.",
         rating: 5.0,
         duration: "1 month",
-        students: "10,556",
+        students: "106",
         img: "/images/courses/Tableau.jpg",
         aboutData: {
           topic: "Master Tableau — From Basic Charts to Advanced Dashboards & Analytics!",
@@ -3751,7 +3855,7 @@ const coursesData = {
       //   desc: "Master Microsoft Power Apps to design custom business apps without coding. Learn hands-on to automate processes, boost productivity, and transform workflows.",
       //   rating: 5.0,
       //   duration: "1 month",
-      //   students: "10,556",
+      //   students: "106",
       //   img: "/images/courses/Power_Apps.jpg",
       //   aboutData: {
       //     topic: "Master Microsoft Power Apps — Build No-Code Apps for Business Efficiency!",
@@ -3849,7 +3953,7 @@ const coursesData = {
       //   desc: "Master data preparation, blending, and advanced analytics with our hands-on Alteryx training program. Empower your career by learning automation-driven insights for real-world business success.",
       //   rating: 5.0,
       //   duration: "1 month",
-      //   students: "10,556",
+      //   students: "106",
       //   img: "/images/courses/Alteryx.jpg",
       //   aboutData: {
       //     topic: "Master Alteryx — From Data Preparation to Advanced Analytics!",
@@ -4279,7 +4383,7 @@ const coursesData = {
   "desc": "Master testing in TypeScript — write reliable, maintainable, and high-quality tests using Jest, Mocha, and Playwright with TypeScript.",
   "rating": 5.0,
   "duration": "1 month",
-  "students": "10,556",
+  "students": "106",
   "img": "/images/courses/TypeScript_Testing.webp",
   "aboutData": {
     "topic": "Master Testing with TypeScript — From Unit Tests to End-to-End Automation!",
@@ -4492,7 +4596,7 @@ const coursesData = {
         desc: "Empower your future with our Cybersecurity Training Program—master ethical hacking, network defense, and risk management.",
         rating: 5.0,
         duration: "1 month",
-        students: "10,556",
+        students: "106",
         img: "/images/courses/Cybersecurity.jpg",
         aboutData: {
           topic: "Master Cybersecurity — From Fundamentals to Ethical Hacking & Network Defense!",
@@ -4590,7 +4694,7 @@ const coursesData = {
         "desc": "Master the art of ethical hacking with hands-on training in cybersecurity tools and real-world simulations.",
         "rating": 5.0,
         "duration": "1 month",
-        "students": "10,556",
+        "students": "106",
         "img": "/images/courses/Ethical_Hacking.jpg",
         "aboutData": {
           "topic": "Become a Certified Ethical Hacker — From Fundamentals to Red Team Operations!",
@@ -4697,7 +4801,7 @@ const coursesData = {
         desc: "Master SEO, Social Media, Google Ads, and Analytics with our hands-on Digital Marketing program. Gain real-time skills to boost careers and drive business growth.",
         rating: 5.0,
         duration: "1 month",
-        students: "10,556",
+        students: "106",
         img: "/images/courses/Digital_Marketing.jpg",
         aboutData: {
           topic: "Master Digital Marketing — From Basics to Advanced Strategies!",
@@ -5112,7 +5216,7 @@ const coursesData = {
         desc: "Master Medical Coding with hands-on training in ICD, CPT, HCPCS coding, and healthcare compliance.",
         rating: 5.0,
         duration: "1 month",
-        students: "10,556",
+        students: "106",
         img: "/images/courses/Medical_Coding1.jpg",
         aboutData: {
           topic: "Become a Certified Medical Coder — From Healthcare Basics to Advanced Coding!",
@@ -5207,7 +5311,7 @@ const coursesData = {
         desc: "Master Medical Coding with hands-on training in ICD-10, CPT, and HCPCS coding. Learn to code accurately and efficiently for healthcare billing and compliance.",
         rating: 5.0,
         duration: "1 month",
-        students: "10,556",
+        students: "106",
         img: "/images/courses/Medical_Coding2.jpg",
         aboutData: {
           topic: "Become a Certified Medical Coding Expert!",
@@ -5668,10 +5772,10 @@ const coursesData = {
   //   subHeading:"English proficiency exams like IELTS, TOEFL, and PTE open doors to global education and career opportunities.",
   //   mainImage:"",
   //   courses:[
-  //     {title:"TOEFL Course",desc:"Master the TOEFL exam with expert guidance, interactive practice sessions, and personalized feedback. Achieve your dream score and unlock global education opportunities.",rating:5.0,duration:"1 month",students:"10,556",img:""},
-  //     {title:"OET Course",desc:"Master OET with expert-led training focused on real exam strategies and practical communication skills. Prepare confidently for healthcare career success worldwide.",rating:5.0,duration:"1 month",students:"10,556",img:""},
-  //     {title:"PTE Course",desc:"Master the PTE Academic exam with expert-led training, practice tests, and personalized feedback. Achieve your dream score with proven strategies and real exam simulations.",rating:5.0,duration:"1 month",students:"10,556",img:""},
-  //     {title:"IELTS Course",desc:"Master all four IELTS modules – Listening, Reading, Writing, and Speaking – with expert trainers and proven strategies.",rating:5.0,duration:"1 month",students:"10,556",img:""},
+  //     {title:"TOEFL Course",desc:"Master the TOEFL exam with expert guidance, interactive practice sessions, and personalized feedback. Achieve your dream score and unlock global education opportunities.",rating:5.0,duration:"1 month",students:"106",img:""},
+  //     {title:"OET Course",desc:"Master OET with expert-led training focused on real exam strategies and practical communication skills. Prepare confidently for healthcare career success worldwide.",rating:5.0,duration:"1 month",students:"106",img:""},
+  //     {title:"PTE Course",desc:"Master the PTE Academic exam with expert-led training, practice tests, and personalized feedback. Achieve your dream score with proven strategies and real exam simulations.",rating:5.0,duration:"1 month",students:"106",img:""},
+  //     {title:"IELTS Course",desc:"Master all four IELTS modules – Listening, Reading, Writing, and Speaking – with expert trainers and proven strategies.",rating:5.0,duration:"1 month",students:"106",img:""},
 
   //   ]
   // },
@@ -6452,7 +6556,7 @@ const coursesData = {
         "desc": "Master Salesforce Administration with hands-on training, real-time projects, and expert guidance. Build skills to manage, customize, and optimize Salesforce for any business.",
         "rating": 5.0,
         "duration": "1 month",
-        "students": "10,556",
+        "students": "106",
         "img": "/images/courses/Salesforce_Administrator.jpg",
         "aboutData": {
           "topic": "Become a Certified Salesforce Administrator — From Basics to Advanced!",
@@ -6543,13 +6647,13 @@ const coursesData = {
         ]
       }
       ,
-      // {title:"Data Analysis",desc:"Master the art of Data Analysis with hands-on training in Excel, SQL, Python, and visualization tools. Gain industry-ready skills to turn raw data into powerful insights and career opportunities.",rating:5.0,duration:"1 month",students:"10,556",img:"/images/courses/Data_Analysis.jpg"},
+      // {title:"Data Analysis",desc:"Master the art of Data Analysis with hands-on training in Excel, SQL, Python, and visualization tools. Gain industry-ready skills to turn raw data into powerful insights and career opportunities.",rating:5.0,duration:"1 month",students:"106",img:"/images/courses/Data_Analysis.jpg"},
       {
         title: "Salesforce Developer",
         desc: "Master Salesforce Development with hands-on training, real-time projects, and expert mentorship. Build in-demand CRM skills to boost your career opportunities.",
         rating: 5.0,
         duration: "1 month",
-        students: "10,556",
+        students: "106",
         img: "/images/courses/Data_Analysis.jpg",
         aboutData: {
           topic: "Master Salesforce Development — From Basics to Advanced CRM Solutions!",
@@ -6647,7 +6751,7 @@ const coursesData = {
       //   desc: "Master fluent English with confidence through interactive sessions and real-life conversations. Build communication skills that open global career opportunities.",
       //   rating: 5.0,
       //   duration: "1 month",
-      //   students: "10,556",
+      //   students: "106",
       //   img: "/images/courses/Salesforce_Administrator.jpg",
       //   aboutData: {
       //     topic: "Master Spoken English — From Basics to Fluent Conversations!",
@@ -6754,7 +6858,7 @@ const coursesData = {
         desc: "Master cross-platform mobile app development with React Native—build, test, and deploy real-world apps from scratch.",
         rating: 5.0,
         duration: "1 month",
-        students: "10,556",
+        students: "106",
         img: "/images/courses/React_Native.jpg",
         aboutData: {
           topic: "Master React Native — Build High-Performance Cross-Platform Mobile Apps!",

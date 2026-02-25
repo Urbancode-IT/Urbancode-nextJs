@@ -66,6 +66,13 @@ const courses = [
     badge: "3 Courses",
   },
   {
+    title: "Data Engineering",
+    desc: "Learn to design and build data pipelines, manage big data, and implement cloud-based data solutions with our Data Engineering courses.",
+    img: dataScienceImg,
+    link: "/courses/data-engineering",
+    badge: "3 Courses",
+  },
+  {
     title: "Database",
     desc: "Learn to design and manage databases with SQL & PostgreSQL. Understand queries, relationships, and transactions through projects.",
     img: databaseImg,

@@ -24,6 +24,7 @@ const categories = [
   "Cloud and DevOps",
   "Data Science",
   "Database",
+  "Data Engineering",
   "Data Visualization",
   "Software Testing",
   "Net Working",
