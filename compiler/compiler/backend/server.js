@@ -27,6 +27,7 @@ const allowedOrigins = [
     'http://localhost:5174',
     'http://localhost:5175',
     'https://www.urbancode.in/',
+    'https://urbancode.in',
     process.env.CLIENT_URL
 ].filter(Boolean);
 
@@ -42,6 +43,7 @@ app.use(cors({
     },
     credentials: true
 }));
+app.options('*', cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(logger); // Request logging
