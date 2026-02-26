@@ -26,7 +26,7 @@ const allowedOrigins = [
     'http://localhost:5173',
     'http://localhost:5174',
     'http://localhost:5175',
-    'https://www.urbancode.in/',
+    'https://www.urbancode.in',
     'https://urbancode.in',
     process.env.CLIENT_URL
 ].filter(Boolean);
