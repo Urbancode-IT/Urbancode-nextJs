@@ -206,13 +206,14 @@ const ProblemsTopics = () => {
                                                 </div>
                                             </div>
                                         )}
+                                        {topic.imageUrl &&
                                         <img
                                             src={topic.imageUrl}
                                             alt={topic.title}
                                             className={loadedImages[topic.id] ? 'is-loaded' : 'is-loading'}
                                             onError={() => handleImageError(topic.id)}
                                             onLoad={() => handleImageLoad(topic.id)}
-                                        />
+                                        />}
                                     </>
                                 )}
                             </div>

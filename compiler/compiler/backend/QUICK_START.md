@@ -37,7 +37,7 @@ npm run dev
 You should see:
 ```
 🚀 Server running on port 5000
-📍 API URL: http://localhost:5000
+📍 API URL: http://localhost:5001
 ✅ MongoDB Connected
 ```
 
@@ -45,7 +45,7 @@ You should see:
 
 Open your browser and go to:
 ```
-http://localhost:5000/
+http://localhost:5001/
 ```
 
 You should see a welcome message!

@@ -59,7 +59,7 @@ backend/
    npm start
    ```
 
-The server will start on `http://localhost:5000`
+The server will start on `http://localhost:5001`
 
 ## 📡 API Endpoints
 
