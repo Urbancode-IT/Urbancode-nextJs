@@ -1,0 +1,248 @@
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { problemsApi } from '../../services/api';
+import './ProblemsTopics.css';
+
+// Import icons (using react-icons for better quality match to screenshot)
+import { FaPython, FaDatabase, FaJs, FaCss3Alt, FaReact, FaHtml5, FaJava, FaAngular, FaPencilAlt } from 'react-icons/fa';
+import { SiCplusplus, SiMysql, SiPostgresql } from 'react-icons/si';
+
+const ProblemsTopics = () => {
+    const navigate = useNavigate();
+    const [topics, setTopics] = React.useState([]);
+    const [loading, setLoading] = React.useState(true);
+    const [failedImages, setFailedImages] = React.useState({});
+    const [loadedImages, setLoadedImages] = React.useState({});
+
+    const handleImageError = (id) => {
+        setFailedImages(prev => ({ ...prev, [id]: true }));
+    };
+
+    const handleImageLoad = (id) => {
+        setLoadedImages(prev => ({ ...prev, [id]: true }));
+    };
+
+    // Animation Variants
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.1
+            }
+        }
+    };
+
+    const cardVariants = {
+        hidden: { opacity: 0, y: 20 },
+        visible: { opacity: 1, y: 0 },
+        hover: {
+            scale: 1.02,
+            transition: { duration: 0.3 }
+        },
+        tap: { scale: 0.98 }
+    };
+
+    // Metadata for topics (icons, titles, and descriptions/images)
+    const topicsMetadata = {
+        python: {
+            icon: <FaPython />,
+            title: 'Python Development',
+            description: 'Master Python basics to advanced concepts. Learn automation, data structures, and backend development.',
+            imageUrl: '',
+            gradient: 'linear-gradient(135deg, #3776AB 0%, #FFD43B 100%)'
+        },
+        sql: {
+            icon: <FaDatabase />,
+            title: 'SQL Databases',
+            description: 'Learn to design, query, and manage relational databases using SQL. Essential for backend and data roles.',
+            imageUrl: '',
+            gradient: 'linear-gradient(135deg, #4479A1 0%, #00758F 100%)'
+        },
+        javascript: {
+            icon: <FaJs />,
+            title: 'JavaScript Mastery',
+            description: 'Build modern, responsive, and dynamic websites from scratch. Learn HTML, CSS, JavaScript, and modern frameworks.',
+            imageUrl: '',
+            gradient: 'linear-gradient(135deg, #F7DF1E 0%, #FFB000 100%)'
+        },
+        css: {
+            icon: <FaCss3Alt />,
+            title: 'CSS & Design',
+            description: 'Master the art of styling web pages. Learn Flexbox, Grid, animations, and responsive design techniques.',
+            imageUrl: '',
+            gradient: 'linear-gradient(135deg, #1572B6 0%, #33A9DC 100%)'
+        },
+        react: {
+            icon: <FaReact />,
+            title: 'React Components',
+            description: 'Build powerful modern web interfaces with React. Learn hooks, state management, and component architecture.',
+            imageUrl: '',
+            gradient: 'linear-gradient(135deg, #61DAFB 0%, #2185D0 100%)'
+        },
+        html: {
+            icon: <FaHtml5 />,
+            title: 'HTML Essentials',
+            description: 'The foundation of the web. Learn semantic HTML, forms, and accessibility best practices.',
+            imageUrl: '',
+            gradient: 'linear-gradient(135deg, #E34F26 0%, #F06529 100%)'
+        },
+        java: {
+            icon: <FaJava />,
+            title: 'Java Programming',
+            description: 'Enterprise-grade programming. Learn OOP, multi-threading, and robust backend system design.',
+            imageUrl: '',
+            gradient: 'linear-gradient(135deg, #007396 0%, #ED8B00 100%)'
+        },
+        'c++': {
+            icon: <SiCplusplus />,
+            title: 'C++ Systems',
+            description: 'High-performance computing. Master memory management, performance optimization, and systems software.',
+            imageUrl: '',
+            gradient: 'linear-gradient(135deg, #00599C 0%, #004482 100%)'
+        },
+        angular: {
+            icon: <FaAngular />,
+            title: 'Angular Framework',
+            description: 'Build enterprise-scale web applications with Angular. Master TypeScript, modules, and reactive programming.',
+            imageUrl: '',
+            gradient: 'linear-gradient(135deg, #DD0031 0%, #C3002F 100%)'
+        },
+    };
+
+    React.useEffect(() => {
+        const fetchTopics = async () => {
+            try {
+                setLoading(true);
+                const response = await problemsApi.getAllTopics();
+                if (response.success) {
+                    // Merge API data with metadata
+                    const mergedTopics = response.data.map(topic => {
+                        const meta = topicsMetadata[topic.id] || {
+                            icon: <FaDatabase />,
+                            title: topic.title,
+                            description: 'Explore coding problems in this topic and improve your logical thinking skills.',
+                            imageUrl: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=800&q=80'
+                        };
+                        return {
+                            ...topic,
+                            ...meta
+                        };
+                    });
+
+                    // Sort to maintain a consistent order
+                    const order = ['python', 'sql', 'javascript', 'css', 'react', 'html', 'java', 'c++', 'angular'];
+                    mergedTopics.sort((a, b) => {
+                        const indexA = order.indexOf(a.id);
+                        const indexB = order.indexOf(b.id);
+                        if (indexA === -1) return 1;
+                        if (indexB === -1) return -1;
+                        return indexA - indexB;
+                    });
+
+                    setTopics(mergedTopics.filter(t => t.id !== 'sqlserver'));
+                }
+            } catch (err) {
+                console.error('Error fetching topics:', err);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchTopics();
+    }, []);
+
+    const handleTopicClick = (topicKey) => {
+        navigate(`/problems/${topicKey}`);
+    };
+
+    if (loading) return <div className="loading">Loading topics...</div>;
+
+    return (
+        <div className="problems-topics-page">
+            <motion.div
+                className="topics-header-section"
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+            >
+                <h1>Coding Problems</h1>
+                <p>Master your skills with topic-specific coding challenges</p>
+            </motion.div>
+
+            <div className="problems-topics-container">
+                <motion.div
+                    className="topics-grid"
+                    variants={containerVariants}
+                    initial="hidden"
+                    animate="visible"
+                >
+                    {topics.map((topic) => (
+                        <motion.div
+                            key={topic.id}
+                            className="problems-topic-card"
+                            onClick={() => handleTopicClick(topic.id)}
+                            variants={cardVariants}
+                            whileHover="hover"
+                            whileTap="tap"
+                        >
+                            <div
+                                className="topic-image-container"
+                                style={{ background: topic.gradient }}
+                            >
+                                {failedImages[topic.id] ? (
+                                    <div className="topic-fallback">
+                                        <div className="fallback-icon">
+                                            {topic.icon}
+                                        </div>
+                                    </div>
+                                ) : (
+                                    <>
+                                        {!loadedImages[topic.id] && (
+                                            <div className="topic-fallback pulse-animation">
+                                                <div className="fallback-icon">
+                                                    {topic.icon}
+                                                </div>
+                                            </div>
+                                        )}
+                                        <img
+                                            src={topic.imageUrl}
+                                            alt={topic.title}
+                                            className={loadedImages[topic.id] ? 'is-loaded' : 'is-loading'}
+                                            onError={() => handleImageError(topic.id)}
+                                            onLoad={() => handleImageLoad(topic.id)}
+                                        />
+                                    </>
+                                )}
+                            </div>
+                            <div className="topic-content">
+                                <h3>{topic.title}</h3>
+                                <p className="topic-description">{topic.description}</p>
+                                <div className="topic-footer">
+                                    <div className="topic-badge">
+                                        {topic.totalProblems} Problems
+                                    </div>
+                                    {['python', 'sql', 'javascript', 'css', 'react', 'html', 'java', 'c++', 'angular'].includes(topic.id) && (
+                                        <button
+                                            className="take-quiz-btn"
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                navigate(`/quiz/${topic.id}/beginner`);
+                                            }}
+                                        >
+                                            <FaPencilAlt /> Quiz
+                                        </button>
+                                    )}
+                                </div>
+                            </div>
+                        </motion.div>
+                    ))}
+                </motion.div>
+            </div>
+        </div>
+    );
+};
+
+export default ProblemsTopics;
+
