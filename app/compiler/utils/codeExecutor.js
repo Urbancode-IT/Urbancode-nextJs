@@ -240,74 +240,114 @@ export const executeSQL = async (query) => {
 
         if (!engine) throw new Error("SQL Engine not initialized (unknown reason)");
 
-        // Handle a few common non-SELECT mock responses if needed, 
-        // but sqlEngine.run handles them for real now.
         const normalizedQuery = query.trim();
         const lowerQuery = normalizedQuery.toLowerCase();
 
+        // Translate MySQL / SQL-Server functions to SQLite equivalents
+        // so standard SQL queries work without syntax errors
+        let processedQuery = normalizedQuery
+            .replace(/\bcurrent_time\s*\(\s*\)/gi, "strftime('%H:%M:%S','now')")
+            .replace(/\bcurrent_date\s*\(\s*\)/gi, "date('now')")
+            .replace(/\bcurrent_timestamp\s*\(\s*\)/gi, "datetime('now')")
+            .replace(/\bnow\s*\(\s*\)/gi, "datetime('now')")
+            .replace(/\bgetdate\s*\(\s*\)/gi, "datetime('now')")
+            .replace(/\bcurdate\s*\(\s*\)/gi, "date('now')")
+            .replace(/\bcurtime\s*\(\s*\)/gi, "strftime('%H:%M:%S','now')")
+            .replace(/\bisnull\s*\(/gi, "IFNULL(")
+            .replace(/\bNVL\s*\(/gi, "IFNULL(")
+            .replace(/\bCONVERT\s*\(\s*(\w+)\s*,\s*([^)]+)\)/gi, "CAST($2 AS $1)")
+            .replace(/\bTOP\s+(\d+)\b/gi, "LIMIT $1")
+            .replace(/\bLEN\s*\(/gi, "LENGTH(");
+
         // Execute query (exec returns an array of results for each statement)
-        const res = engine.exec(normalizedQuery);
+        const res = engine.exec(processedQuery);
+
         if (res.length === 0) {
+            const executionTime = Date.now();
             // Check if it was a non-SELECT statement that affected rows
             if (!lowerQuery.startsWith('select')) {
                 let message = "Command executed successfully";
                 if (lowerQuery.startsWith('insert')) message = "Query OK, 1 row inserted";
                 if (lowerQuery.startsWith('update')) message = "Query OK, rows affected";
                 if (lowerQuery.startsWith('delete')) message = "Query OK, rows deleted";
+                if (lowerQuery.startsWith('create')) message = "Table created successfully";
+                if (lowerQuery.startsWith('drop')) message = "Table dropped successfully";
 
                 // Try to auto-fetch the affected table content
                 try {
-                    const match = normalizedQuery.match(/(?:insert\s+into|update|delete\s+from)\s+["']?([a-zA-Z0-9_]+)["']?/i);
+                    const match = normalizedQuery.match(/(?:insert\s+into|update|delete\s+from|create\s+table)\s+["']?([a-zA-Z0-9_\.]+)["']?/i);
                     if (match && match[1]) {
-                        const tableName = match[1];
-                        const checkRes = engine.exec(`SELECT * FROM "${tableName}" LIMIT 20`);
-                        if (checkRes.length > 0) {
-                            const lastResult = checkRes[0];
-                            const columns = lastResult.columns;
-                            const data = lastResult.values.map(values => {
-                                const obj = {};
-                                columns.forEach((col, i) => {
-                                    obj[col] = values[i];
+                        const tableName = match[1].replace(/['"]/g, '');
+                        // Only auto-fetch if it's not a schema change statement that might have dropped the table
+                        if (!lowerQuery.startsWith('drop')) {
+                            const checkRes = engine.exec(`SELECT * FROM "${tableName}" LIMIT 20`);
+                            if (checkRes.length > 0) {
+                                const resultSet = checkRes[0];
+                                const columns = resultSet.columns || resultSet.lc || [];
+                                const data = (resultSet.values || []).map(values => {
+                                    const obj = {};
+                                    columns.forEach((col, i) => { obj[col] = values[i]; });
+                                    return obj;
                                 });
-                                return obj;
-                            });
-                            return { message, columns, data };
+                                return { message, columns, data, executionTime };
+                            }
                         }
                     }
                 } catch (autoSelectErr) {
                     console.warn("Auto-select failed:", autoSelectErr);
                 }
 
-                return { message };
+                return { message, executionTime };
             }
-            return { columns: [], data: [] };
+            return { columns: [], data: [], executionTime };
         }
 
-        // If multiple statements, return the last result set (typical for scripts ending in SELECT)
-        const lastResult = res[res.length - 1];
-        const columns = lastResult.columns;
-        const data = lastResult.values.map(values => {
+        // Handle multiple statements: 
+        // 1. Find the first statement that actually returned values (data)
+        // 2. If none returned values, return the last statement's column info
+        let lastResult = res.find(r => r.values && r.values.length > 0) || res[res.length - 1];
+
+        if (!lastResult) {
+            return { columns: [], data: [], executionTime: Date.now() };
+        }
+
+        // IMPORTANT: sql.js may use 'lc' instead of 'columns' for column names
+        const columns = lastResult.columns || lastResult.lc || [];
+        const data = (lastResult.values || []).map(rowValues => {
             const obj = {};
             columns.forEach((col, i) => {
-                let val = values[i];
-                // Normalize non-deterministic time columns
+                let val = rowValues[i];
                 let key = col;
-                if (col === 'current_time' || col === 'current_time()') {
+                // Normalize column names from translated functions to clean display names
+                if (col === 'current_time' || col === 'current_time()' || col.startsWith("strftime('%H:%M:%S')")) {
                     key = 'current_time';
-                    val = '12:00:00';
+                } else if (col.startsWith("datetime('now')") || col === 'getdate' || col === 'now()') {
+                    key = 'current_datetime';
+                } else if (col.startsWith("date('now')") || col === 'curdate()') {
+                    key = 'current_date';
                 }
-                if (col === 'getdate' || col === 'now') val = '2025-01-01 12:00:00';
                 obj[key] = val;
             });
             return obj;
         });
 
-        return { columns: columns.map(c => (c === 'current_time()' ? 'current_time' : c)), data };
+        // Normalize column names for display
+        const normalizedColumns = columns.map(c => {
+            if (c === 'current_time()' || c.startsWith("strftime('%H:%M:%S')")) return 'current_time';
+            if (c.startsWith("datetime('now')")) return 'current_datetime';
+            if (c.startsWith("date('now')")) return 'current_date';
+            return c;
+        });
 
+        return {
+            columns: normalizedColumns,
+            data,
+            executionTime: Date.now()
+        };
 
     } catch (error) {
         console.error("Real SQL Error:", error);
-        return { error: error.message };
+        return { error: error.message, executionTime: Date.now() };
     }
 };
 

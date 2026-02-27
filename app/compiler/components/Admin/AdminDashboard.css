@@ -337,12 +337,15 @@
     color: var(--text-white);
     display: flex;
     flex-direction: column;
-    position: fixed;
-    height: 100vh;
-    left: 0;
+    position: sticky;
     top: 0;
+    height: 100vh;
+    align-self: flex-start;
+    flex-shrink: 0;
     z-index: 100;
     transition: var(--transition);
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .sidebar-header {
@@ -427,7 +430,7 @@
 /* Main Content Area */
 .admin-main-content {
     flex: 1;
-    margin-left: var(--sidebar-width);
+    min-width: 0;
     padding: 40px;
     transition: var(--transition);
 }
@@ -916,13 +919,222 @@
     transition: width 0.3s ease;
 }
 
-@media (max-width: 900px) {
-    .admin-dashboard {
-        padding: 20px;
+/* ── Sidebar Scroll Fix (prevents sidebar touching footer) ── */
+.admin-sidebar {
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+}
+
+.admin-sidebar::-webkit-scrollbar {
+    width: 4px;
+}
+
+.admin-sidebar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 99px;
+}
+
+/* Hamburger toggle button - hidden on desktop */
+.sidebar-toggle-btn {
+    display: none;
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    z-index: 200;
+    background: var(--bg-sidebar);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    width: 44px;
+    height: 44px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: background 0.2s;
+}
+
+.sidebar-toggle-btn:hover {
+    background: var(--primary-color);
+}
+
+/* Overlay behind sidebar on mobile */
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 99;
+    backdrop-filter: blur(2px);
+}
+
+.sidebar-overlay.visible {
+    display: block;
+}
+
+/* ── LARGE DESKTOPS (>1400px) ── */
+@media (min-width: 1400px) {
+    .admin-main-content {
+        padding: 48px 60px;
     }
 
-    .admin-header {
-        padding: 0;
+    .stats-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* ── STANDARD DESKTOP (900px–1400px) ── */
+@media (max-width: 1400px) and (min-width: 901px) {
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .admin-main-content {
+        padding: 32px 40px;
+    }
+}
+
+/* ── TABLET LANDSCAPE (769px–900px) ── */
+@media (max-width: 900px) and (min-width: 769px) {
+    :root {
+        --sidebar-width: 240px;
+    }
+
+    .admin-main-content {
+        padding: 24px 28px;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+
+    .admin-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-header h1 {
+        font-size: 1.6rem;
+    }
+}
+
+/* ── TABLET PORTRAIT & MOBILE (≤768px) ── */
+@media (max-width: 768px) {
+
+    /* Show hamburger */
+    .sidebar-toggle-btn {
+        display: flex;
+    }
+
+    /* Sidebar becomes overlay drawer on mobile - must be fixed */
+    .admin-sidebar {
+        position: fixed;
+        left: 0;
+        top: 0;
+        transform: translateX(-100%);
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        width: var(--sidebar-width);
+        z-index: 150;
+        box-shadow: 4px 0 24px rgba(0, 0, 0, 0.3);
+    }
+
+    .admin-sidebar.open {
+        transform: translateX(0);
+    }
+
+    /* Main content takes full width on mobile */
+    .admin-main-content {
+        padding: 72px 16px 24px;
+        width: 100%;
+    }
+
+    .dashboard-header-top {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .dashboard-header h1 {
+        font-size: 1.4rem;
+    }
+
+    .dashboard-header p {
+        font-size: 0.95rem;
+    }
+
+    .header-logout-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        margin-bottom: 24px;
+    }
+
+    .stat-card {
+        padding: 16px;
+        gap: 12px;
+    }
+
+    .stat-icon {
+        width: 44px;
+        height: 44px;
+        font-size: 1.2rem;
+        flex-shrink: 0;
+    }
+
+    .stat-info .value {
+        font-size: 1.4rem;
+    }
+
+    .card {
+        padding: 20px 16px;
+        border-radius: 16px;
+    }
+
+    .card h2 {
+        font-size: 1.2rem;
+    }
+
+    .admin-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .admin-list-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 16px;
+    }
+
+    .item-actions {
+        width: 100%;
+        justify-content: flex-start;
+        gap: 8px;
+    }
+
+    .admin-btn {
+        padding: 12px 20px;
+        font-size: 0.9rem;
+    }
+
+    .admin-btn.primary {
+        width: 100%;
     }
 
     .logout-btn {
@@ -931,20 +1143,53 @@
         display: block;
         width: fit-content;
     }
+}
 
-    .admin-grid {
+/* ── SMALL MOBILE (≤480px) ── */
+@media (max-width: 480px) {
+    .admin-main-content {
+        padding: 68px 12px 20px;
+    }
+
+    .stats-grid {
         grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .stat-card {
+        padding: 14px;
+    }
+
+    .card {
+        padding: 16px 12px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: 10px 12px;
+        font-size: 0.9rem;
     }
 
     .admin-list-item {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 12px;
+        padding: 12px;
     }
 
-    .item-actions {
-        width: 100%;
-        justify-content: flex-start;
-        gap: 12px;
+    .item-info h3 {
+        font-size: 0.95rem;
+    }
+
+    .dashboard-header h1 {
+        font-size: 1.2rem;
+    }
+
+    .bulk-upload-section {
+        margin-top: 24px;
+        padding-top: 20px;
+    }
+
+    .search-box input {
+        font-size: 0.875rem;
+        padding: 10px 12px 10px 38px;
     }
 }

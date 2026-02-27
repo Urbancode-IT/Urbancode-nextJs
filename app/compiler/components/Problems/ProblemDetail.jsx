@@ -437,59 +437,58 @@ const ProblemDetail = () => {
 
     const renderOutputContent = () => {
         if (!output) return (
-            <div className="output-placeholder">
-                <FaTerminal style={{ opacity: 0.5 }} />
-                <span>Waiting for execution...</span>
+            <div style={{ color: '#94a3b8', padding: '12px', fontFamily: 'monospace', fontSize: '14px' }}>
+                Waiting for execution...
             </div>
         );
 
         return (
-            <AnimatePresence mode="wait">
-                <motion.div
-                    key={JSON.stringify(output)}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="output-container"
-                >
-                    {output.error && (
-                        <div className="error-message">
-                            <FaExclamationCircle /> {output.error}
-                        </div>
-                    )}
-                    {output.message && (
-                        <div className="success-message">
-                            <FaCheckCircle /> {output.message}
-                        </div>
-                    )}
-                    {output.html && (
-                        <div className="iframe-output-wrapper">
-                            <iframe
-                                srcDoc={output.html}
-                                title="Output"
-                                sandbox="allow-scripts allow-same-origin"
-                                style={{ width: '100%', height: '100%', border: 'none', background: 'white' }}
-                            />
-                        </div>
-                    )}
-                    {output.columns && output.data && (
-                        <div className="table-output-wrapper">
-                            <table className="result-table">
+            <div style={{ fontFamily: 'monospace', fontSize: '13px' }}>
+                {output.error && (
+                    <div style={{ color: '#fca5a5', background: 'rgba(239,68,68,0.1)', padding: '12px', borderRadius: '6px', borderLeft: '4px solid #ef4444', marginBottom: '8px' }}>
+                        ❌ {output.error}
+                    </div>
+                )}
+                {output.message && (
+                    <div style={{ color: '#86efac', background: 'rgba(34,197,94,0.1)', padding: '12px', borderRadius: '6px', borderLeft: '4px solid #10b981', marginBottom: '8px' }}>
+                        ✅ {output.message}
+                    </div>
+                )}
+                {output.html && (
+                    <div style={{ width: '100%', height: '350px', background: 'white', borderRadius: '8px', overflow: 'hidden', border: '1px solid #333' }}>
+                        <iframe srcDoc={output.html} title="Output" sandbox="allow-scripts allow-same-origin" style={{ width: '100%', height: '100%', border: 'none' }} />
+                    </div>
+                )}
+                {output.columns && output.data && (
+                    <div style={{ overflowX: 'auto', borderRadius: '8px', border: '1px solid #333' }}>
+                        {output.data.length > 0 ? (
+                            <table style={{ width: '100%', borderCollapse: 'collapse' }}>
                                 <thead>
-                                    <tr>{output.columns.map(col => <th key={col}>{col}</th>)}</tr>
+                                    <tr>
+                                        {output.columns.map((col, i) => (
+                                            <th key={i} style={{ textAlign: 'left', color: '#94a3b8', fontSize: '0.75rem', padding: '8px 12px', borderBottom: '1px solid #333', background: '#0f172a' }}>{col}</th>
+                                        ))}
+                                    </tr>
                                 </thead>
                                 <tbody>
                                     {output.data.map((row, idx) => (
-                                        <tr key={idx}>
-                                            {output.columns.map(col => <td key={col}>{row[col]}</td>)}
+                                        <tr key={idx} style={{ background: idx % 2 === 0 ? '#0f172a' : '#1e293b' }}>
+                                            {output.columns.map((col, i) => (
+                                                <td key={i} style={{ color: '#e2e8f0', fontSize: '0.875rem', padding: '8px 12px', borderBottom: '1px solid #1e293b' }}>
+                                                    {row[col] !== null && row[col] !== undefined ? String(row[col]) : 'NULL'}
+                                                </td>
+                                            ))}
                                         </tr>
                                     ))}
                                 </tbody>
                             </table>
-                        </div>
-                    )}
-                    {output.output && <pre>{output.output}</pre>}
-                </motion.div>
-            </AnimatePresence>
+                        ) : (
+                            <div style={{ color: '#64748b', padding: '20px', textAlign: 'center' }}>Query OK. 0 rows returned.</div>
+                        )}
+                    </div>
+                )}
+                {output.output && <pre style={{ color: '#e2e8f0', margin: 0 }}>{output.output}</pre>}
+            </div>
         );
     };
 

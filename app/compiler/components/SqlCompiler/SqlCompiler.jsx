@@ -180,62 +180,48 @@ const SqlCompiler = () => {
                         Console Output
                     </div>
                     <div className="output-content">
-                        <AnimatePresence mode="wait">
-                            {output.error ? (
-                                <motion.div
-                                    key="error"
-                                    initial={{ opacity: 0, x: -10 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    className="error-message"
-                                >
-                                    {output.error}
-                                </motion.div>
-                            ) : output.message ? (
-                                <motion.div
-                                    key="success"
-                                    initial={{ opacity: 0, scale: 0.98 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    className="success-message"
-                                >
-                                    {output.message}
-                                </motion.div>
-                            ) : output.data ? (
-                                <motion.div
-                                    key="data"
-                                    initial={{ opacity: 0 }}
-                                    animate={{ opacity: 1 }}
-                                >
+                        {output.error ? (
+                            <div className="error-message" id="sql-error-msg">
+                                {output.error}
+                            </div>
+                        ) : output.message ? (
+                            <div className="success-message" id="sql-success-msg">
+                                {output.message}
+                            </div>
+                        ) : (output.data && output.columns) ? (
+                            <div className="output-inner" id="sql-output-inner">
+                                {output.data.length > 0 ? (
                                     <table className="result-table">
                                         <thead>
                                             <tr>
-                                                {output.columns.map(col => (
-                                                    <th key={col}>{col}</th>
+                                                {output.columns.map((col, i) => (
+                                                    <th key={`head-${i}`}>{col}</th>
                                                 ))}
                                             </tr>
                                         </thead>
                                         <tbody>
                                             {output.data.map((row, idx) => (
-                                                <tr key={idx}>
-                                                    {output.columns.map(col => (
-                                                        <td key={col}>{row[col]}</td>
+                                                <tr key={`row-${idx}`}>
+                                                    {output.columns.map((col, i) => (
+                                                        <td key={`cell-${idx}-${i}`}>{row[col]}</td>
                                                     ))}
                                                 </tr>
                                             ))}
                                         </tbody>
                                     </table>
-                                </motion.div>
-                            ) : (
-                                <motion.div
-                                    key="nothing"
-                                    initial={{ opacity: 0.5 }}
-                                    animate={{ opacity: 1 }}
-                                    className="no-output"
-                                >
-                                    <FaHistory size={32} />
-                                    <span>Waiting for query execution...</span>
-                                </motion.div>
-                            )}
-                        </AnimatePresence>
+                                ) : (
+                                    <div className="no-output" style={{ padding: '20px' }}>
+                                        <FaInfoCircle size={24} />
+                                        <span>The query executed successfully but returned 0 rows.</span>
+                                    </div>
+                                )}
+                            </div>
+                        ) : (
+                            <div className="no-output">
+                                <FaHistory size={32} />
+                                <span>Waiting for query execution...</span>
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>

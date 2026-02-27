@@ -4,7 +4,7 @@ import { problemsApi } from '../../services/api';
 import toast from 'react-hot-toast';
 import * as XLSX from 'xlsx';
 import ConfirmModal from '../Common/ConfirmModal';
-import { FaSignOutAlt, FaPlus, FaTable, FaFileUpload, FaTrash, FaEye, FaEyeSlash, FaEdit, FaExclamationTriangle, FaList, FaSearch } from 'react-icons/fa';
+import { FaSignOutAlt, FaPlus, FaTable, FaFileUpload, FaTrash, FaEye, FaEyeSlash, FaEdit, FaExclamationTriangle, FaList, FaSearch, FaBars, FaTimes } from 'react-icons/fa';
 import './AdminDashboard.css';
 
 const AdminDashboard = () => {
@@ -20,6 +20,7 @@ const AdminDashboard = () => {
     const [showDeleteModal, setShowDeleteModal] = useState(false);
     const [problemToDelete, setProblemToDelete] = useState(null);
     const [showPassword, setShowPassword] = useState(false);
+    const [sidebarOpen, setSidebarOpen] = useState(false);
 
     // New Problem Form State
     const [newProblem, setNewProblem] = useState({
@@ -302,21 +303,36 @@ const AdminDashboard = () => {
 
     return (
         <div className="admin-dashboard">
+            {/* Mobile hamburger toggle */}
+            <button
+                className="sidebar-toggle-btn"
+                onClick={() => setSidebarOpen(prev => !prev)}
+                aria-label="Toggle sidebar"
+            >
+                {sidebarOpen ? <FaTimes /> : <FaBars />}
+            </button>
+
+            {/* Overlay for mobile */}
+            <div
+                className={`sidebar-overlay ${sidebarOpen ? 'visible' : ''}`}
+                onClick={() => setSidebarOpen(false)}
+            />
+
             {/* Sidebar Navigation */}
-            <aside className="admin-sidebar">
+            <aside className={`admin-sidebar ${sidebarOpen ? 'open' : ''}`}>
                 <div className="sidebar-header">
                     <h2>Urban Code</h2>
                 </div>
                 <nav className="sidebar-nav">
                     <div
                         className={`nav-item ${activeTab === 'problems' ? 'active' : ''}`}
-                        onClick={() => setActiveTab('problems')}
+                        onClick={() => { setActiveTab('problems'); setSidebarOpen(false); }}
                     >
                         <FaList /> <span>Questions</span>
                     </div>
                     <div
                         className={`nav-item ${activeTab === 'sql' ? 'active' : ''}`}
-                        onClick={() => setActiveTab('sql')}
+                        onClick={() => { setActiveTab('sql'); setSidebarOpen(false); }}
                     >
                         <FaTable /> <span>SQL Tables</span>
                     </div>
