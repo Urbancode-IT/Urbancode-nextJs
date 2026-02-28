@@ -80,10 +80,12 @@ export const quizzesApi = {
         backendTopics.forEach(bt => {
             const index = merged.findIndex(lt => lt.id === bt.id);
             if (index !== -1) {
-                // Use backend count if it's more up to date, but only if it's > 0
-                if (bt.questionCount > 0) {
-                    merged[index] = { ...merged[index], ...bt };
-                }
+                // Use the higher count to ensure accuracy, but prioritize local metadata if backend is lacking
+                merged[index] = {
+                    ...merged[index],
+                    ...bt,
+                    questionCount: Math.max(merged[index].questionCount, bt.questionCount || 0)
+                };
             } else {
                 merged.push(bt);
             }
@@ -94,10 +96,10 @@ export const quizzesApi = {
     getQuizByTopicAndLevel: async (topic, level) => {
         try {
             const response = await api.get(`/quizzes/${encodeURIComponent(topic)}/${encodeURIComponent(level)}`);
-            if (response.data && response.data.success && response.data.data?.questions?.length > 0) {
+            if (response.data && response.data.success && response.data.data?.questions?.length >= 5) {
                 return response.data;
             }
-            throw new Error('Empty questions from backend');
+            throw new Error('Insufficient questions from backend (less than 5)');
         } catch (err) {
             console.warn('Backend unavailable, using local quiz question.');
             const localData = getLocalQuiz(topic, level);
