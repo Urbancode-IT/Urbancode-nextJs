@@ -179,10 +179,10 @@
 /* Challenge List Area */
 .problems-table-wrapper {
     background: white;
-    border-radius: 20px;
+    border-radius: 28px;
     border: 1px solid #e2e8f0;
     overflow: hidden;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
 }
 
 .challenge-list {
@@ -206,11 +206,12 @@
 .challenge-item {
     display: grid;
     grid-template-columns: 80px 1fr 150px 60px;
-    padding: 20px 24px;
+    padding: 24px 32px;
     align-items: center;
     border-bottom: 1px solid #f1f5f9;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    background: white;
 }
 
 .challenge-item:last-child {
@@ -218,7 +219,10 @@
 }
 
 .challenge-item:hover {
-    background-color: #f1f5f9;
+    background-color: #f8fafc;
+    transform: scale(1.002) translateX(4px);
+    box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.05);
+    z-index: 2;
 }
 
 .col-status {

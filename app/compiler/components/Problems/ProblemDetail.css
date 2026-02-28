@@ -61,10 +61,10 @@
 
 .problem-description-panel {
     background: white;
-    border-radius: 16px;
+    border-radius: 24px;
     padding: 32px;
     overflow-y: auto;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.04), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
     border: 1px solid #e2e8f0;
 }
 
@@ -225,9 +225,10 @@
     flex-direction: column;
     min-height: 0;
     background: #1e1e1e;
-    border-radius: 16px;
+    border-radius: 24px;
     overflow: hidden;
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    border: 1px solid #333;
 }
 
 .editor-header {
@@ -380,10 +381,29 @@
 
 .output-panel h4::before {
     content: '';
-    width: 6px;
-    height: 6px;
+    width: 10px;
+    height: 10px;
     background: #22c55e;
     border-radius: 50%;
+    box-shadow: 0 0 10px rgba(34, 197, 94, 0.5);
+    animation: terminal-pulse 2s infinite ease-in-out;
+}
+
+@keyframes terminal-pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.3);
+        opacity: 0.6;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
 .output-placeholder {

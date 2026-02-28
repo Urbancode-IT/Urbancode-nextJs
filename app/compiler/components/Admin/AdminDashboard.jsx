@@ -303,55 +303,30 @@ const AdminDashboard = () => {
 
     return (
         <div className="admin-dashboard">
-            {/* Mobile hamburger toggle */}
-            <button
-                className="sidebar-toggle-btn"
-                onClick={() => setSidebarOpen(prev => !prev)}
-                aria-label="Toggle sidebar"
-            >
-                {sidebarOpen ? <FaTimes /> : <FaBars />}
-            </button>
-
-            {/* Overlay for mobile */}
-            <div
-                className={`sidebar-overlay ${sidebarOpen ? 'visible' : ''}`}
-                onClick={() => setSidebarOpen(false)}
-            />
-
-            {/* Sidebar Navigation */}
-            <aside className={`admin-sidebar ${sidebarOpen ? 'open' : ''}`}>
-                <div className="sidebar-header">
-                    <h2>Urban Code</h2>
-                </div>
-                <nav className="sidebar-nav">
-                    <div
-                        className={`nav-item ${activeTab === 'problems' ? 'active' : ''}`}
-                        onClick={() => { setActiveTab('problems'); setSidebarOpen(false); }}
-                    >
-                        <FaList /> <span>Questions</span>
-                    </div>
-                    <div
-                        className={`nav-item ${activeTab === 'sql' ? 'active' : ''}`}
-                        onClick={() => { setActiveTab('sql'); setSidebarOpen(false); }}
-                    >
-                        <FaTable /> <span>SQL Tables</span>
-                    </div>
-                </nav>
-                <div className="sidebar-footer">
-                    <button className="logout-btn" onClick={handleLogout}>
-                        <FaSignOutAlt /> <span>Logout</span>
-                    </button>
-                </div>
-            </aside>
-
             {/* Main Content */}
             <main className="admin-main-content">
                 <header className="dashboard-header">
                     <div className="dashboard-header-top">
-                        <div>
+                        <div className="header-info">
                             <h1>Admin Portal</h1>
                             <p>Welcome back! Here's what's happening with Urban Code today.</p>
                         </div>
+
+                        <div className="header-nav">
+                            <button
+                                className={`nav-tab ${activeTab === 'problems' ? 'active' : ''}`}
+                                onClick={() => setActiveTab('problems')}
+                            >
+                                <FaList /> <span>Questions</span>
+                            </button>
+                            <button
+                                className={`nav-tab ${activeTab === 'sql' ? 'active' : ''}`}
+                                onClick={() => setActiveTab('sql')}
+                            >
+                                <FaTable /> <span>SQL Tables</span>
+                            </button>
+                        </div>
+
                         <button className="header-logout-btn" onClick={handleLogout}>
                             <FaSignOutAlt /> Logout
                         </button>
