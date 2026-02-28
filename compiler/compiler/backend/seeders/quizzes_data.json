@@ -1,19 +1,859 @@
 [
     {
+        "topic": "python",
+        "level": "beginner",
+        "questions": [
+            {
+                "id": 1,
+                "question": "What is the correct way to print 'Hello World' in Python?",
+                "options": [
+                    "echo('Hello World')",
+                    "print('Hello World')",
+                    "console.log('Hello World')",
+                    "printf('Hello World')"
+                ],
+                "correctAnswer": 1,
+                "explanation": "In Python, we use the print() function to display output."
+            },
+            {
+                "id": 2,
+                "question": "Which of the following is a valid variable name in Python?",
+                "options": [
+                    "2variable",
+                    "variable-name",
+                    "variable_name",
+                    "variable name"
+                ],
+                "correctAnswer": 2,
+                "explanation": "Variable names can contain letters, numbers, and underscores, but cannot start with a number."
+            },
+            {
+                "id": 3,
+                "question": "What does the len() function do?",
+                "options": [
+                    "Returns length of an object",
+                    "Converts to lowercase",
+                    "Rounds a number",
+                    "Returns the type"
+                ],
+                "correctAnswer": 0,
+                "explanation": "len() returns the number of items in an object."
+            },
+            {
+                "id": 4,
+                "question": "Which keyword is used for comments in Python?",
+                "options": [
+                    "#",
+                    "//",
+                    "/*",
+                    "--"
+                ],
+                "correctAnswer": 0,
+                "explanation": "Python uses # for single-line comments."
+            },
+            {
+                "id": 5,
+                "question": "What is the correct file extension for Python files?",
+                "options": [
+                    ".python",
+                    ".pyt",
+                    ".py",
+                    ".pyc"
+                ],
+                "correctAnswer": 2,
+                "explanation": ".py is the standard extension for Python scripts."
+            }
+        ]
+    },
+    {
+        "topic": "python",
+        "level": "average",
+        "questions": [
+            {
+                "id": 1,
+                "question": "What is the output of: print(type([]))",
+                "options": [
+                    "<class 'tuple'>",
+                    "<class 'dict'>",
+                    "<class 'list'>",
+                    "<class 'set'>"
+                ],
+                "correctAnswer": 2,
+                "explanation": "[] denotes a list in Python."
+            },
+            {
+                "id": 2,
+                "question": "How do you handle exceptions in Python?",
+                "options": [
+                    "try/catch",
+                    "try/except",
+                    "do/catch",
+                    "try/rescue"
+                ],
+                "correctAnswer": 1,
+                "explanation": "Python uses try/except blocks for error handling."
+            },
+            {
+                "id": 3,
+                "question": "Which keyword is used for defining a function?",
+                "options": [
+                    "func",
+                    "def",
+                    "function",
+                    "define"
+                ],
+                "correctAnswer": 1,
+                "explanation": "The 'def' keyword is used to define functions in Python."
+            },
+            {
+                "id": 4,
+                "question": "How do you create a list in Python?",
+                "options": [
+                    "list = {}",
+                    "list = []",
+                    "list = ()",
+                    "list = ||"
+                ],
+                "correctAnswer": 1,
+                "explanation": "Square brackets [] are used to create lists."
+            },
+            {
+                "id": 5,
+                "question": "What is the difference between list and tuple?",
+                "options": [
+                    "Tuple is mutable, list is not",
+                    "List is mutable, tuple is not",
+                    "Both are mutable",
+                    "Both are immutable"
+                ],
+                "correctAnswer": 1,
+                "explanation": "Lists can be modified after creation, while tuples cannot."
+            }
+        ]
+    },
+    {
+        "topic": "python",
+        "level": "tough",
+        "questions": [
+            {
+                "id": 1,
+                "question": "What is a decorator in Python?",
+                "options": [
+                    "A function that modifies another function",
+                    "A class for styling",
+                    "A variable type",
+                    "A database connector"
+                ],
+                "correctAnswer": 0,
+                "explanation": "Decorators allow you to modify the behavior of a function or class."
+            },
+            {
+                "id": 2,
+                "question": "What is the Global Interpreter Lock (GIL)?",
+                "options": [
+                    "A security feature",
+                    "A mutex that allows only one thread to execute",
+                    "A database lock",
+                    "A memory manager"
+                ],
+                "correctAnswer": 1,
+                "explanation": "The GIL is a mutex that protects access to Python objects, preventing multiple threads from executing Python bytecodes at once."
+            },
+            {
+                "id": 3,
+                "question": "What are *args and **kwargs?",
+                "options": [
+                    "Special data types",
+                    "Variable-length arguments",
+                    "Boolean operators",
+                    "Loop keywords"
+                ],
+                "correctAnswer": 1,
+                "explanation": "*args allows passing many positional arguments, and **kwargs allows many keyword arguments."
+            },
+            {
+                "id": 4,
+                "question": "What is list comprehension?",
+                "options": [
+                    "A way to summarize lists",
+                    "A concise way to create lists",
+                    "A sorting algorithm",
+                    "A debugging tool"
+                ],
+                "correctAnswer": 1,
+                "explanation": "List comprehension provides a concise way to create lists based on existing lists."
+            },
+            {
+                "id": 5,
+                "question": "What is a generator in Python?",
+                "options": [
+                    "A hardware component",
+                    "A function that yields values",
+                    "A random number generator",
+                    "A type of class"
+                ],
+                "correctAnswer": 1,
+                "explanation": "Generators are functions that return an iterator, yielding one item at a time."
+            }
+        ]
+    },
+    {
         "topic": "javascript",
         "level": "beginner",
         "questions": [
             {
-                "id": 101,
-                "question": "What is the output of typeof null?",
+                "id": 1,
+                "question": "How do you declare a variable?",
                 "options": [
-                    "object",
-                    "null",
-                    "undefined",
-                    "number"
+                    "var/let/const",
+                    "int/str",
+                    "dim",
+                    "val"
                 ],
                 "correctAnswer": 0,
-                "explanation": "In JavaScript, typeof null returns 'object', which is a known bug."
+                "explanation": "JavaScript uses var, let, or const keywords."
+            },
+            {
+                "id": 2,
+                "question": "Inside which HTML element do we put the JavaScript?",
+                "options": [
+                    "<js>",
+                    "<scripting>",
+                    "<script>",
+                    "<javascript>"
+                ],
+                "correctAnswer": 2,
+                "explanation": "The <script> tag is used to embed JS."
+            },
+            {
+                "id": 3,
+                "question": "How do you write 'Hello World' in an alert box?",
+                "options": [
+                    "msg('Hello World');",
+                    "alertBox('Hello World');",
+                    "alert('Hello World');",
+                    "msgBox('Hello World');"
+                ],
+                "correctAnswer": 2,
+                "explanation": "The alert() function shows a popup."
+            },
+            {
+                "id": 4,
+                "question": "How do you create a function in JavaScript?",
+                "options": [
+                    "function myFunction()",
+                    "function:myFunction()",
+                    "function = myFunction()",
+                    "None"
+                ],
+                "correctAnswer": 0,
+                "explanation": "Use the 'function' keyword followed by the name."
+            },
+            {
+                "id": 5,
+                "question": "How to write an IF statement in JavaScript?",
+                "options": [
+                    "if i = 5 then",
+                    "if (i == 5)",
+                    "if i == 5 then",
+                    "if i = 5"
+                ],
+                "correctAnswer": 1,
+                "explanation": "Standard JS if syntax uses parentheses."
+            }
+        ]
+    },
+    {
+        "topic": "javascript",
+        "level": "average",
+        "questions": [
+            {
+                "id": 1,
+                "question": "What is a closure?",
+                "options": [
+                    "Function w/ lexical scope",
+                    "Loop",
+                    "Object",
+                    "Error"
+                ],
+                "correctAnswer": 0,
+                "explanation": "A closure gives access to an outer function's scope from an inner function."
+            },
+            {
+                "id": 2,
+                "question": "How do you add an element to the end of an array?",
+                "options": [
+                    "push()",
+                    "pop()",
+                    "shift()",
+                    "unshift()"
+                ],
+                "correctAnswer": 0,
+                "explanation": "push() adds to the end, whereas unshift() adds to the beginning."
+            },
+            {
+                "id": 3,
+                "question": "What is the output of '2' + 2?",
+                "options": [
+                    "4",
+                    "22",
+                    "NaN",
+                    "Error"
+                ],
+                "correctAnswer": 1,
+                "explanation": "JS performs concatenation when one operand is a string."
+            },
+            {
+                "id": 4,
+                "question": "Which operator is used to compare both value and type?",
+                "options": [
+                    "==",
+                    "=",
+                    "===",
+                    "!=="
+                ],
+                "correctAnswer": 2,
+                "explanation": "=== checks for strict equality."
+            },
+            {
+                "id": 5,
+                "question": "What is 'NaN'?",
+                "options": [
+                    "Null and None",
+                    "Not a Number",
+                    "Not a Name",
+                    "None of above"
+                ],
+                "correctAnswer": 1,
+                "explanation": "NaN represents a value that is not a valid number."
+            }
+        ]
+    },
+    {
+        "topic": "java",
+        "level": "beginner",
+        "questions": [
+            {
+                "id": 1,
+                "question": "What is the correct syntax to output 'Hello World' in Java?",
+                "options": [
+                    "print('Hello World');",
+                    "System.out.println('Hello World');",
+                    "Console.Write('Hello World');",
+                    "echo 'Hello World';"
+                ],
+                "correctAnswer": 1,
+                "explanation": "System.out.println() is the standard way to print output in Java."
+            },
+            {
+                "id": 2,
+                "question": "Which keyword is used to create a class?",
+                "options": [
+                    "class",
+                    "Class",
+                    "new",
+                    "create"
+                ],
+                "correctAnswer": 0,
+                "explanation": "The 'class' keyword is used to define a new class."
+            },
+            {
+                "id": 3,
+                "question": "Which data type is used to create a variable that should store text?",
+                "options": [
+                    "String",
+                    "txt",
+                    "String",
+                    "Chars"
+                ],
+                "correctAnswer": 0,
+                "explanation": "String is used for text in Java."
+            },
+            {
+                "id": 4,
+                "question": "How do you create a variable with the numeric value 5?",
+                "options": [
+                    "num x = 5;",
+                    "float x = 5;",
+                    "int x = 5;",
+                    "x = 5;"
+                ],
+                "correctAnswer": 2,
+                "explanation": "int is used for integers."
+            },
+            {
+                "id": 5,
+                "question": "How do you call a method in Java?",
+                "options": [
+                    "methodName[];",
+                    "methodName();",
+                    "(methodName);",
+                    ".methodName;"
+                ],
+                "correctAnswer": 1,
+                "explanation": "Methods are called using parentheses ()."
+            }
+        ]
+    },
+    {
+        "topic": "html",
+        "level": "beginner",
+        "questions": [
+            {
+                "id": 1,
+                "question": "What does HTML stand for?",
+                "options": [
+                    "Hyper Text Markup Language",
+                    "High Tech Modern Language",
+                    "Home Tool Markup Language",
+                    "Hyperlinks and Text Markup Language"
+                ],
+                "correctAnswer": 0,
+                "explanation": "HTML stands for Hyper Text Markup Language."
+            },
+            {
+                "id": 2,
+                "question": "Choose the correct HTML element for the largest heading:",
+                "options": [
+                    "<heading>",
+                    "<h6>",
+                    "<head>",
+                    "<h1>"
+                ],
+                "correctAnswer": 3,
+                "explanation": "<h1> is the standard tag for the most important heading."
+            },
+            {
+                "id": 3,
+                "question": "What is the correct HTML element for inserting a line break?",
+                "options": [
+                    "<lb>",
+                    "<br>",
+                    "<break>",
+                    "<hr>"
+                ],
+                "correctAnswer": 1,
+                "explanation": "<br> inserts a single line break."
+            },
+            {
+                "id": 4,
+                "question": "What is the correct HTML for creating a hyperlink?",
+                "options": [
+                    "<a href='url'>Link</a>",
+                    "<a>url</a>",
+                    "<link href='url'>",
+                    "<a url='url'>"
+                ],
+                "correctAnswer": 0,
+                "explanation": "The <a> tag with href attribute is used for links."
+            },
+            {
+                "id": 5,
+                "question": "Which character is used to indicate an end tag?",
+                "options": [
+                    "/",
+                    "<",
+                    "*",
+                    "^"
+                ],
+                "correctAnswer": 0,
+                "explanation": "Forward slash / is used in closing tags (e.g., </h1>)."
+            }
+        ]
+    },
+    {
+        "topic": "sql",
+        "level": "beginner",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Which command is used to select data?",
+                "options": [
+                    "GET",
+                    "FETCH",
+                    "SELECT",
+                    "EXTRACT"
+                ],
+                "correctAnswer": 2,
+                "explanation": "SELECT retrieves data from a database."
+            },
+            {
+                "id": 2,
+                "question": "What does SQL stand for?",
+                "options": [
+                    "Strong Query Language",
+                    "Structured Query Language",
+                    "Simple Query Language",
+                    "None"
+                ],
+                "correctAnswer": 1,
+                "explanation": "SQL stands for Structured Query Language."
+            },
+            {
+                "id": 3,
+                "question": "Which statement is used to update data?",
+                "options": [
+                    "SAVE",
+                    "MODIFY",
+                    "UPDATE",
+                    "CHANGE"
+                ],
+                "correctAnswer": 2,
+                "explanation": "UPDATE modifies existing records."
+            },
+            {
+                "id": 4,
+                "question": "Which statement is used to delete data?",
+                "options": [
+                    "REMOVE",
+                    "DELETE",
+                    "DROP",
+                    "TRUNCATE"
+                ],
+                "correctAnswer": 1,
+                "explanation": "DELETE removes rows from a table."
+            },
+            {
+                "id": 5,
+                "question": "Which statement is used to insert new data?",
+                "options": [
+                    "ADD",
+                    "INSERT INTO",
+                    "NEW",
+                    "CREATE"
+                ],
+                "correctAnswer": 1,
+                "explanation": "INSERT INTO adds new records."
+            }
+        ]
+    },
+    {
+        "topic": "css",
+        "level": "beginner",
+        "questions": [
+            {
+                "id": 1,
+                "question": "What does CSS stand for?",
+                "options": [
+                    "Cascading Style Sheets",
+                    "Creative Style System",
+                    "Colorful Style Sheets",
+                    "Computer Style Sheets"
+                ],
+                "correctAnswer": 0,
+                "explanation": "CSS stands for Cascading Style Sheets."
+            },
+            {
+                "id": 2,
+                "question": "Where in an HTML document is the correct place to refer to an external style sheet?",
+                "options": [
+                    "In the body section",
+                    "At the end",
+                    "In the head section",
+                    "In the title"
+                ],
+                "correctAnswer": 2,
+                "explanation": "Link tags belong in the head."
+            },
+            {
+                "id": 3,
+                "question": "Which HTML tag is used to define an internal style sheet?",
+                "options": [
+                    "<css>",
+                    "<script>",
+                    "<style>",
+                    "<link>"
+                ],
+                "correctAnswer": 2,
+                "explanation": "Use the <style> tag for internal CSS."
+            },
+            {
+                "id": 4,
+                "question": "Which HTML attribute is used to define inline styles?",
+                "options": [
+                    "class",
+                    "styles",
+                    "style",
+                    "font"
+                ],
+                "correctAnswer": 2,
+                "explanation": "The style attribute is used for inline styles."
+            },
+            {
+                "id": 5,
+                "question": "Which is the correct CSS syntax?",
+                "options": [
+                    "{body:color=black;}",
+                    "body {color: black;}",
+                    "body:color=black;",
+                    "{}body:color=black"
+                ],
+                "correctAnswer": 1,
+                "explanation": "Selector { property: value; } is correct."
+            }
+        ]
+    },
+    {
+        "topic": "react",
+        "level": "beginner",
+        "questions": [
+            {
+                "id": 1,
+                "question": "What is React?",
+                "options": [
+                    "Library",
+                    "Framework",
+                    "Database",
+                    "OS"
+                ],
+                "correctAnswer": 0,
+                "explanation": "React is a JavaScript library for building user interfaces."
+            },
+            {
+                "id": 2,
+                "question": "What is JSX?",
+                "options": [
+                    "A CSS tool",
+                    "JavaScript XML",
+                    "A database language",
+                    "A server type"
+                ],
+                "correctAnswer": 1,
+                "explanation": "JSX allows writing HTML-like code inside JavaScript."
+            },
+            {
+                "id": 3,
+                "question": "How many elements can a React component return?",
+                "options": [
+                    "Only one",
+                    "Infinite",
+                    "Exactly two",
+                    "None"
+                ],
+                "correctAnswer": 0,
+                "explanation": "A component must return a single root element (or Fragment)."
+            },
+            {
+                "id": 4,
+                "question": "What are props?",
+                "options": [
+                    "Proper objects",
+                    "Properties passed to components",
+                    "Prototypal inheritance",
+                    "None"
+                ],
+                "correctAnswer": 1,
+                "explanation": "Props are used to pass data from parent to child components."
+            },
+            {
+                "id": 5,
+                "question": "Which hook is used for state?",
+                "options": [
+                    "useEffect",
+                    "useContext",
+                    "useState",
+                    "useReducer"
+                ],
+                "correctAnswer": 2,
+                "explanation": "useState adds local state to functional components."
+            }
+        ]
+    },
+    {
+        "topic": "angular",
+        "level": "beginner",
+        "questions": [
+            {
+                "id": 1,
+                "question": "What is Angular?",
+                "options": [
+                    "A JS library",
+                    "A TypeScript-based framework",
+                    "A database",
+                    "A server"
+                ],
+                "correctAnswer": 1,
+                "explanation": "Angular is a platform and framework for building single-page client applications."
+            },
+            {
+                "id": 2,
+                "question": "Which language is primarily used in Angular?",
+                "options": [
+                    "Python",
+                    "JavaScript",
+                    "TypeScript",
+                    "Kotlin"
+                ],
+                "correctAnswer": 2,
+                "explanation": "Angular is written in TypeScript."
+            },
+            {
+                "id": 3,
+                "question": "What command creates a new Angular project?",
+                "options": [
+                    "ng new",
+                    "ng create",
+                    "ng start",
+                    "npm install angular"
+                ],
+                "correctAnswer": 0,
+                "explanation": "The CLI command 'ng new' starts a new project."
+            },
+            {
+                "id": 4,
+                "question": "Which decorator is used for components?",
+                "options": [
+                    "@Directive",
+                    "@Injectable",
+                    "@Component",
+                    "@NgModule"
+                ],
+                "correctAnswer": 2,
+                "explanation": "@Component identifies a class as an Angular component."
+            },
+            {
+                "id": 5,
+                "question": "How do you bind to a property?",
+                "options": [
+                    "{{}}",
+                    "()",
+                    "[]",
+                    "[[]]"
+                ],
+                "correctAnswer": 2,
+                "explanation": "Square brackets [] are used for property binding."
+            }
+        ]
+    },
+    {
+        "topic": "angular",
+        "level": "average",
+        "questions": [
+            {
+                "id": 1,
+                "question": "What is an Angular Module?",
+                "options": [
+                    "A file",
+                    "A container for a cohesive block of code",
+                    "A CSS style",
+                    "A database table"
+                ],
+                "correctAnswer": 1,
+                "explanation": "NgModules organize an application into cohesive blocks of functionality."
+            },
+            {
+                "id": 2,
+                "question": "What is the purpose of Services?",
+                "options": [
+                    "To style components",
+                    "To share data and logic across components",
+                    "To handle routing only",
+                    "None"
+                ],
+                "correctAnswer": 1,
+                "explanation": "Services are singleton objects that can be shared across the app."
+            },
+            {
+                "id": 3,
+                "question": "Which hook is called after component initialization?",
+                "options": [
+                    "ngOnChanges",
+                    "ngOnInit",
+                    "ngDoCheck",
+                    "ngOnDestroy"
+                ],
+                "correctAnswer": 1,
+                "explanation": "ngOnInit is called once after the first ngOnChanges."
+            },
+            {
+                "id": 4,
+                "question": "How do you handle events in Angular?",
+                "options": [
+                    "[]",
+                    "()",
+                    "{{}}",
+                    "*ngIf"
+                ],
+                "correctAnswer": 1,
+                "explanation": "Parentheses () are used for event binding."
+            },
+            {
+                "id": 5,
+                "question": "What is data binding?",
+                "options": [
+                    "Connecting UI to data",
+                    "Saving to database",
+                    "Writing CSS",
+                    "None"
+                ],
+                "correctAnswer": 0,
+                "explanation": "Data binding is a core technique that enables communication between a component and the view."
+            }
+        ]
+    },
+    {
+        "topic": "angular",
+        "level": "tough",
+        "questions": [
+            {
+                "id": 1,
+                "question": "What is RxJS used for?",
+                "options": [
+                    "Styling",
+                    "Reactive programming with observables",
+                    "Routing",
+                    "Compiling"
+                ],
+                "correctAnswer": 1,
+                "explanation": "Angular uses RxJS for handling asynchronous operations and events."
+            },
+            {
+                "id": 2,
+                "question": "What is AOT compilation?",
+                "options": [
+                    "Ahead-of-Time compilation",
+                    "Always-On Tuning",
+                    "Angular Output Template",
+                    "None"
+                ],
+                "correctAnswer": 0,
+                "explanation": "AOT compiles your app and libraries during the build process, before the browser downloads it."
+            },
+            {
+                "id": 3,
+                "question": "What is a pure pipe?",
+                "options": [
+                    "A pipe that doesn't use data",
+                    "A pipe that only recalculates when input changes",
+                    "A pipe for cleaning data",
+                    "None"
+                ],
+                "correctAnswer": 1,
+                "explanation": "Pure pipes are only executed when a pure change to the input value is detected."
+            },
+            {
+                "id": 4,
+                "question": "What is Dependency Injection?",
+                "options": [
+                    "A security flaw",
+                    "A pattern where a class requests dependencies from external sources",
+                    "A database tool",
+                    "None"
+                ],
+                "correctAnswer": 1,
+                "explanation": "DI is a coding pattern in which a class asks for dependencies from external sources rather than creating them itself."
+            },
+            {
+                "id": 5,
+                "question": "How do you lazy load a module?",
+                "options": [
+                    "Using standard imports",
+                    "Using loadChildren in routing configuration",
+                    "Using @NgModule",
+                    "None"
+                ],
+                "correctAnswer": 1,
+                "explanation": "loadChildren allows Angular to load modules only when they are needed."
             }
         ]
     }

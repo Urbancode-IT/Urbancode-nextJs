@@ -21,14 +21,28 @@ export const quizData = {
                     question: "Which of the following is a valid variable name in Python?",
                     options: ["2variable", "variable-name", "variable_name", "variable name"],
                     correctAnswer: 2,
-                    explanation: "Variable names can contain letters, numbers, and underscores, but cannot start with a number or contain spaces/hyphens."
+                    explanation: "Variable names can contain letters, numbers, and underscores, but cannot start with a number."
                 },
                 {
                     id: 3,
                     question: "What does the len() function do?",
-                    options: ["Returns the length of an object", "Converts to lowercase", "Rounds a number", "Returns the type of object"],
+                    options: ["Returns length of an object", "Converts to lowercase", "Rounds a number", "Returns the type"],
                     correctAnswer: 0,
-                    explanation: "The len() function returns the number of items in an object."
+                    explanation: "len() returns the number of items in an object."
+                },
+                {
+                    id: 4,
+                    question: "Which keyword is used for comments in Python?",
+                    options: ["#", "//", "/*", "--"],
+                    correctAnswer: 0,
+                    explanation: "Python uses # for single-line comments."
+                },
+                {
+                    id: 5,
+                    question: "What is the correct file extension for Python files?",
+                    options: [".python", ".pyt", ".py", ".pyc"],
+                    correctAnswer: 2,
+                    explanation: ".py is the standard extension for Python scripts."
                 }
             ],
             average: [
@@ -52,6 +66,20 @@ export const quizData = {
                     options: ["func", "def", "function", "define"],
                     correctAnswer: 1,
                     explanation: "The 'def' keyword is used to define functions in Python."
+                },
+                {
+                    id: 4,
+                    question: "How do you create a list in Python?",
+                    options: ["list = {}", "list = []", "list = ()", "list = ||"],
+                    correctAnswer: 1,
+                    explanation: "Square brackets [] are used to create lists."
+                },
+                {
+                    id: 5,
+                    question: "What is the difference between list and tuple?",
+                    options: ["Tuple is mutable, list is not", "List is mutable, tuple is not", "Both are mutable", "Both are immutable"],
+                    correctAnswer: 1,
+                    explanation: "Lists can be modified after creation, while tuples cannot."
                 }
             ],
             tough: [
@@ -68,6 +96,27 @@ export const quizData = {
                     options: ["A security feature", "A mutex that allows only one thread to execute", "A database lock", "A memory manager"],
                     correctAnswer: 1,
                     explanation: "The GIL is a mutex that protects access to Python objects, preventing multiple threads from executing Python bytecodes at once."
+                },
+                {
+                    id: 3,
+                    question: "What are *args and **kwargs?",
+                    options: ["Special data types", "Variable-length arguments", "Boolean operators", "Loop keywords"],
+                    correctAnswer: 1,
+                    explanation: "*args allows passing many positional arguments, and **kwargs allows many keyword arguments."
+                },
+                {
+                    id: 4,
+                    question: "What is list comprehension?",
+                    options: ["A way to summarize lists", "A concise way to create lists", "A sorting algorithm", "A debugging tool"],
+                    correctAnswer: 1,
+                    explanation: "List comprehension provides a concise way to create lists based on existing lists."
+                },
+                {
+                    id: 5,
+                    question: "What is a generator in Python?",
+                    options: ["A hardware component", "A function that yields values", "A random number generator", "A type of class"],
+                    correctAnswer: 1,
+                    explanation: "Generators are functions that return an iterator, yielding one item at a time."
                 }
             ]
         }
@@ -81,16 +130,37 @@ export const quizData = {
                 {
                     id: 1,
                     question: "What is the correct syntax to output 'Hello World' in Java?",
-                    options: ["print('Hello World');", "System.out.println('Hello World');", "Console.WriteLine('Hello World');", "echo 'Hello World';"],
+                    options: ["print('Hello World');", "System.out.println('Hello World');", "Console.Write('Hello World');", "echo 'Hello World';"],
                     correctAnswer: 1,
-                    explanation: "System.out.println() is used to print to the console."
+                    explanation: "System.out.println() is the standard way to print output in Java."
                 },
                 {
                     id: 2,
                     question: "Which keyword is used to create a class?",
                     options: ["class", "Class", "new", "create"],
                     correctAnswer: 0,
-                    explanation: "The 'class' keyword defines a new class."
+                    explanation: "The 'class' keyword is used to define a new class."
+                },
+                {
+                    id: 3,
+                    question: "Which data type is used to create a variable that should store text?",
+                    options: ["String", "txt", "String", "Chars"],
+                    correctAnswer: 0,
+                    explanation: "String is used for text in Java."
+                },
+                {
+                    id: 4,
+                    question: "How do you create a variable with the numeric value 5?",
+                    options: ["num x = 5;", "float x = 5;", "int x = 5;", "x = 5;"],
+                    correctAnswer: 2,
+                    explanation: "int is used for integers."
+                },
+                {
+                    id: 5,
+                    question: "How do you call a method in Java?",
+                    options: ["methodName[];", "methodName();", "(methodName);", ".methodName;"],
+                    correctAnswer: 1,
+                    explanation: "Methods are called using parentheses ()."
                 }
             ],
             average: [
@@ -107,6 +177,27 @@ export const quizData = {
                     options: ["List", "Map", "Set", "Array"],
                     correctAnswer: 2,
                     explanation: "A Set is a collection that contains no duplicate elements."
+                },
+                {
+                    id: 3,
+                    question: "Which keyword is used for inheritance in Java?",
+                    options: ["inherits", "extends", "implements", "super"],
+                    correctAnswer: 1,
+                    explanation: "The 'extends' keyword is used for class inheritance."
+                },
+                {
+                    id: 4,
+                    question: "What is an Interface in Java?",
+                    options: ["A concrete class", "A blueprint for a class", "A method type", "A variable"],
+                    correctAnswer: 1,
+                    explanation: "An interface is a abstract type that is used to specify a behavior that classes must implement."
+                },
+                {
+                    id: 5,
+                    question: "What is the use of the 'final' keyword?",
+                    options: ["To end a loop", "To make a variable/method constant", "To finish a program", "To delete an object"],
+                    correctAnswer: 1,
+                    explanation: "Final prevents a variable from being changed, a method from being overridden, or a class from being inherited."
                 }
             ],
             tough: [
@@ -116,6 +207,34 @@ export const quizData = {
                     options: ["A graphics library", "Examining/modifying runtime behavior", "A memory management technique", "A multi-threading tool"],
                     correctAnswer: 1,
                     explanation: "Reflection allows code to inspect other code in the same system at runtime."
+                },
+                {
+                    id: 2,
+                    question: "What is JVM (Java Virtual Machine)?",
+                    options: ["A compiler", "A runtime environment", "A database", "A web server"],
+                    correctAnswer: 1,
+                    explanation: "JVM executes Java bytecode and provides an environment for Java programs."
+                },
+                {
+                    id: 3,
+                    question: "What is the purpose of 'volatile' keyword?",
+                    options: ["Speed up memory access", "Ensure visibility of changes to variables across threads", "Make a variable immutable", "Prevent garbage collection"],
+                    correctAnswer: 1,
+                    explanation: "Volatile guarantees that changes to a variable are always visible to other threads."
+                },
+                {
+                    id: 4,
+                    question: "What is a 'deadlock' in multi-threading?",
+                    options: ["A finished thread", "A state where threads wait for each other infinitely", "A crashed program", "A memory leak"],
+                    correctAnswer: 1,
+                    explanation: "Deadlock occurs when two or more threads are blocked forever, each waiting for the other to release a resource."
+                },
+                {
+                    id: 5,
+                    question: "What is the Garbage Collector?",
+                    options: ["Deletes unused files", "Reclaims unused memory automatically", "Clears the console", "None"],
+                    correctAnswer: 1,
+                    explanation: "Java's GC automatically handles memory management by removing objects that are no longer reachable."
                 }
             ]
         }
@@ -132,6 +251,34 @@ export const quizData = {
                     options: ["<stdio.h>", "<stdlib.h>", "<iostream>", "<string>"],
                     correctAnswer: 2,
                     explanation: "iostream header is used for input/output operations."
+                },
+                {
+                    id: 2,
+                    question: "How do you insert a comment in C++?",
+                    options: ["# Comment", "// Comment", "/* Comment", "All of above"],
+                    correctAnswer: 1,
+                    explanation: "// is used for single-line comments in C++."
+                },
+                {
+                    id: 3,
+                    question: "Which data type is used to create a variable that should store text?",
+                    options: ["String", "txt", "string", "text"],
+                    correctAnswer: 2,
+                    explanation: "std::string is used for text in C++."
+                },
+                {
+                    id: 4,
+                    question: "How do you create a variable with the numeric value 5?",
+                    options: ["num x = 5;", "double x = 5;", "int x = 5;", "x = 5;"],
+                    correctAnswer: 2,
+                    explanation: "int is used for integers."
+                },
+                {
+                    id: 5,
+                    question: "Which operator is used to add together two values?",
+                    options: ["*", "&", "+", "/"],
+                    correctAnswer: 2,
+                    explanation: "+ is the addition operator."
                 }
             ],
             average: [
@@ -141,6 +288,34 @@ export const quizData = {
                     options: ["A variable that stores memory address", "A loop type", "A class", "None"],
                     correctAnswer: 0,
                     explanation: "Pointers store the memory address of another variable."
+                },
+                {
+                    id: 2,
+                    question: "What is a reference in C++?",
+                    options: ["An alias for a variable", "A copy of a variable", "A pointer", "An object"],
+                    correctAnswer: 0,
+                    explanation: "A reference is another name for an existing variable."
+                },
+                {
+                    id: 3,
+                    question: "What is the use of 'virtual' keyword in C++?",
+                    options: ["Speed up code", "Support polymorphism", "Make a variable private", "None"],
+                    correctAnswer: 1,
+                    explanation: "Virtual functions allow a derived class to override methods from a base class."
+                },
+                {
+                    id: 4,
+                    question: "What is 'this' pointer?",
+                    options: ["A pointer to the current object", "A global variable", "A static pointer", "None"],
+                    correctAnswer: 0,
+                    explanation: "'this' is a constant pointer that holds the memory address of the current object."
+                },
+                {
+                    id: 5,
+                    question: "What is a Destructor?",
+                    options: ["A function that creates an object", "A function that deletes an object", "A function that copies an object", "None"],
+                    correctAnswer: 1,
+                    explanation: "A destructor is called when an object goes out of scope or is deleted."
                 }
             ],
             tough: [
@@ -150,6 +325,34 @@ export const quizData = {
                     options: ["Destructor, Copy Constructor, Copy Assignment", "Public, Private, Protected", "Compile, Link, Run", "None"],
                     correctAnswer: 0,
                     explanation: "If a class needs a destructor, it likely needs a copy constructor and copy assignment operator."
+                },
+                {
+                    id: 2,
+                    question: "What is RAII?",
+                    options: ["Resource Acquisition Is Initialization", "Random Access Input Initialization", "Read All Important Information", "None"],
+                    correctAnswer: 0,
+                    explanation: "RAII is a programming idiom where resource management is tied to object lifetime."
+                },
+                {
+                    id: 3,
+                    question: "What are templates in C++?",
+                    options: ["Pre-designed UIs", "Generic programming tool", "Debugging framework", "None"],
+                    correctAnswer: 1,
+                    explanation: "Templates allow writing code that works with different data types without rewriting it."
+                },
+                {
+                    id: 4,
+                    question: "What is the difference between struct and class in C++?",
+                    options: ["No difference", "Default access modifier (public for struct, private for class)", "Structs cannot have methods", "None"],
+                    correctAnswer: 1,
+                    explanation: "Members of a struct are public by default, while members of a class are private by default."
+                },
+                {
+                    id: 5,
+                    question: "What is std::move?",
+                    options: ["Moves a file", "Enables move semantics", "Copies a variable", "None"],
+                    correctAnswer: 1,
+                    explanation: "std::move is used to indicate that an object can be 'moved' from, avoiding expensive copies."
                 }
             ]
         }
@@ -166,6 +369,34 @@ export const quizData = {
                     options: ["Hyper Text Markup Language", "High Tech Modern Language", "Home Tool Markup Language", "Hyperlinks and Text Markup Language"],
                     correctAnswer: 0,
                     explanation: "HTML stands for Hyper Text Markup Language."
+                },
+                {
+                    id: 2,
+                    question: "Choose the correct HTML element for the largest heading:",
+                    options: ["<heading>", "<h6>", "<head>", "<h1>"],
+                    correctAnswer: 3,
+                    explanation: "<h1> is the standard tag for the most important heading."
+                },
+                {
+                    id: 3,
+                    question: "What is the correct HTML element for inserting a line break?",
+                    options: ["<lb>", "<br>", "<break>", "<hr>"],
+                    correctAnswer: 1,
+                    explanation: "<br> inserts a single line break."
+                },
+                {
+                    id: 4,
+                    question: "What is the correct HTML for creating a hyperlink?",
+                    options: ["<a href='url'>Link</a>", "<a>url</a>", "<link href='url'>", "<a url='url'>"],
+                    correctAnswer: 0,
+                    explanation: "The <a> tag with href attribute is used for links."
+                },
+                {
+                    id: 5,
+                    question: "Which character is used to indicate an end tag?",
+                    options: ["/", "<", "*", "^"],
+                    correctAnswer: 0,
+                    explanation: "Forward slash / is used in closing tags (e.g., </h1>)."
                 }
             ],
             average: [
@@ -174,7 +405,35 @@ export const quizData = {
                     question: "Which attribute is used to provide an alternate text for an image?",
                     options: ["title", "alt", "src", "href"],
                     correctAnswer: 1,
-                    explanation: "The alt attribute specifies an alternate text for an image."
+                    explanation: "The alt attribute specifies an alternate text for an image if it cannot be displayed."
+                },
+                {
+                    id: 2,
+                    question: "Which HTML element is used to define important text?",
+                    options: ["<important>", "<strong>", "<i>", "<mark>"],
+                    correctAnswer: 1,
+                    explanation: "<strong> is used to define text with strong importance."
+                },
+                {
+                    id: 3,
+                    question: "How can you make a numbered list?",
+                    options: ["<ul>", "<list>", "<ol>", "<dl>"],
+                    correctAnswer: 2,
+                    explanation: "<ol> stands for Ordered List, which displays numbers."
+                },
+                {
+                    id: 4,
+                    question: "What is the correct HTML for making a checkbox?",
+                    options: ["<checkbox>", "<input type='checkbox'>", "<check>", "<input type='check'>"],
+                    correctAnswer: 1,
+                    explanation: "<input type='checkbox'> creates a checkbox."
+                },
+                {
+                    id: 5,
+                    question: "Which HTML element is used to specify a footer for a document or section?",
+                    options: ["<bottom>", "<footer>", "<section>", "<aside>"],
+                    correctAnswer: 1,
+                    explanation: "The <footer> tag defines a footer for a document/section."
                 }
             ],
             tough: [
@@ -184,7 +443,119 @@ export const quizData = {
                     options: ["To display database records", "To draw graphics via scripting", "To play video", "To format text"],
                     correctAnswer: 1,
                     explanation: "<canvas> is used to draw graphics, on the fly, via scripting (usually JavaScript)."
+                },
+                {
+                    id: 2,
+                    question: "What does semantic HTML mean?",
+                    options: ["HTML with a lot of CSS", "HTML that reflects the meaning of its content", "HTML that uses divs for everything", "HTML that is optimized for speed"],
+                    correctAnswer: 1,
+                    explanation: "Semantic HTML uses tags that explain the meaning of the content (like <article>, <nav>, <main>)."
+                },
+                {
+                    id: 3,
+                    question: "Which tag is used for an SVG image?",
+                    options: ["<img>", "<svg>", "<vector>", "<graphics>"],
+                    correctAnswer: 1,
+                    explanation: "The <svg> tag is used to embed Scalable Vector Graphics."
+                },
+                {
+                    id: 4,
+                    question: "What is the difference between <div> and <span>?",
+                    options: ["Div is block, span is inline", "Span is block, div is inline", "Both are block", "Both are inline"],
+                    correctAnswer: 0,
+                    explanation: "<div> is a block-level container, whereas <span> is an inline container."
+                },
+                {
+                    id: 5,
+                    question: "What is a 'void element' in HTML?",
+                    options: ["An element with no content or closing tag", "An empty string", "A hidden element", "An element that causes an error"],
+                    correctAnswer: 0,
+                    explanation: "Void elements (like <img>, <br>, <hr>) do not have closing tags and cannot contain content."
                 }
+            ]
+        }
+    },
+    javascript: {
+        title: "JavaScript Basics",
+        icon: "javascript",
+        color: "#f6e05e",
+        levels: {
+            beginner: [
+                { id: 1, question: "How do you declare a variable?", options: ["var/let/const", "int/str", "dim", "val"], correctAnswer: 0, explanation: "JavaScript uses var, let, or const keywords." },
+                { id: 2, question: "Inside which HTML element do we put the JavaScript?", options: ["<js>", "<scripting>", "<script>", "<javascript>"], correctAnswer: 2, explanation: "The <script> tag is used to embed JS." },
+                { id: 3, question: "How do you write 'Hello World' in an alert box?", options: ["msg('Hello World');", "alertBox('Hello World');", "alert('Hello World');", "msgBox('Hello World');"], correctAnswer: 2, explanation: "The alert() function shows a popup." },
+                { id: 4, question: "How do you create a function in JavaScript?", options: ["function myFunction()", "function:myFunction()", "function = myFunction()", "None"], correctAnswer: 0, explanation: "Use the 'function' keyword followed by the name." },
+                { id: 5, question: "How to write an IF statement in JavaScript?", options: ["if i = 5 then", "if (i == 5)", "if i == 5 then", "if i = 5"], correctAnswer: 1, explanation: "Standard JS if syntax uses parentheses." }
+            ],
+            average: [
+                { id: 1, question: "What is a closure?", options: ["Function w/ lexical scope", "Loop", "Object", "Error"], correctAnswer: 0, explanation: "A closure gives access to an outer function's scope from an inner function." },
+                { id: 2, question: "How do you add an element to the end of an array?", options: ["push()", "pop()", "shift()", "unshift()"], correctAnswer: 0, explanation: "push() adds to the end, whereas unshift() adds to the beginning." },
+                { id: 3, question: "What is the output of '2' + 2?", options: ["4", "22", "NaN", "Error"], correctAnswer: 1, explanation: "JS performs concatenation when one operand is a string." },
+                { id: 4, question: "Which operator is used to compare both value and type?", options: ["==", "=", "===", "!=="], correctAnswer: 2, explanation: "=== checks for strict equality." },
+                { id: 5, question: "What is 'NaN'?", options: ["Null and None", "Not a Number", "Not a Name", "None of above"], correctAnswer: 1, explanation: "NaN represents a value that is not a valid number." }
+            ],
+            tough: [
+                { id: 1, question: "What is the Event Loop?", options: ["Handles async", "Draws UI", "Compiles code", "None"], correctAnswer: 0, explanation: "The event loop coordinates the execution of code, collecting and processing events." },
+                { id: 2, question: "What is 'hoisting'?", options: ["Lifting weights", "Moving declarations to the top", "Deleting variables", "None"], correctAnswer: 1, explanation: "Variable and function declarations are moved to the top of their scope during compilation." },
+                { id: 3, question: "What is a Promise?", options: ["A guarantee", "An object representing future completion of async task", "A function", "None"], correctAnswer: 1, explanation: "Promises represent values that may be available now, later, or never." },
+                { id: 4, question: "What is the difference between 'call' and 'apply'?", options: ["No difference", "Apply takes arguments as array, Call takes them individually", "Call is faster", "None"], correctAnswer: 1, explanation: "Both change 'this', but they differ in how they handle additional arguments." },
+                { id: 5, question: "What are 'Generators' in JS?", options: ["Functions that can be paused and resumed", "Random number functions", "Class creators", "None"], correctAnswer: 0, explanation: "Defined with function*, they return an iterator and can yield multiple values." }
+            ]
+        }
+    },
+    css: {
+        title: "CSS Styles",
+        icon: "css",
+        color: "#30a9dc",
+        levels: {
+            beginner: [
+                { id: 1, question: "What does CSS stand for?", options: ["Cascading Style Sheets", "Creative Style System", "Colorful Style Sheets", "Computer Style Sheets"], correctAnswer: 0, explanation: "CSS stands for Cascading Style Sheets." },
+                { id: 2, question: "Where in an HTML document is the correct place to refer to an external style sheet?", options: ["In the <body> section", "At the end of the document", "In the <head> section", "In the <title> section"], correctAnswer: 2, explanation: "Link tags belong in the <head>." },
+                { id: 3, question: "Which HTML tag is used to define an internal style sheet?", options: ["<css>", "<script>", "<style>", "<link>"], correctAnswer: 2, explanation: "Use the <style> tag for internal CSS." },
+                { id: 4, question: "Which HTML attribute is used to define inline styles?", options: ["class", "styles", "style", "font"], correctAnswer: 2, explanation: "The style attribute is used for inline styles." },
+                { id: 5, question: "Which is the correct CSS syntax?", options: ["{body:color=black;}", "body {color: black;}", "body:color=black;", "{}body:color=black"], correctAnswer: 1, explanation: "Selector { property: value; } is the correct syntax." }
+            ],
+            average: [
+                { id: 1, question: "How do you select an element with id 'demo'?", options: ["#demo", ".demo", "demo", "*demo"], correctAnswer: 0, explanation: "# is for ID, . is for class." },
+                { id: 2, question: "How do you select elements with class name 'test'?", options: ["#test", ".test", "test", "*test"], correctAnswer: 1, explanation: "Use a dot . for class selectors." },
+                { id: 3, question: "What is the default value of the position property?", options: ["relative", "fixed", "absolute", "static"], correctAnswer: 3, explanation: "static is the default position value." },
+                { id: 4, question: "Which property is used to change the background color?", options: ["color", "bgcolor", "background-color", "style"], correctAnswer: 2, explanation: "background-color changes the element's background." },
+                { id: 5, question: "How do you make the text bold?", options: ["font:bold;", "style:bold;", "font-weight:bold;", "text-decoration:bold;"], correctAnswer: 2, explanation: "font-weight: bold makes text thicker." }
+            ],
+            tough: [
+                { id: 1, question: "What is the CSS Box Model?", options: ["A layout model with margin, border, padding, and content", "A tool for fixing bugs", "A database system", "None"], correctAnswer: 0, explanation: "It describes the rectangular boxes generated for elements in the document tree." },
+                { id: 2, question: "What is Flexbox?", options: ["A muscle exercise", "A layout module for 1D designs", "A flex-only library", "None"], correctAnswer: 1, explanation: "Flexbox provides an efficient way to layout, align and distribute space among items." },
+                { id: 3, question: "What is CSS Grid?", options: ["A 2D layout system", "A 1D layout system", "A table system", "None"], correctAnswer: 0, explanation: "Grid is a powerful 2D layout system for the web." },
+                { id: 4, question: "What does 'z-index' do?", options: ["Scales objects", "Changes stacking order of elements", "Rotates objects", "None"], correctAnswer: 1, explanation: "Z-index controls the vertical stacking of elements that overlap." },
+                { id: 5, question: "What is 'specificity' in CSS?", options: ["Speed of loading", "The priority given to CSS rules", "The length of CSS file", "None"], correctAnswer: 1, explanation: "Specificity determines which CSS rules are applied when multiple rules match." }
+            ]
+        }
+    },
+    react: {
+        title: "React Framework",
+        icon: "react",
+        color: "#61dafb",
+        levels: {
+            beginner: [
+                { id: 1, question: "What is React?", options: ["Library", "Framework", "Database", "OS"], correctAnswer: 0, explanation: "React is a JavaScript library for building user interfaces." },
+                { id: 2, question: "What is JSX?", options: ["A CSS tool", "JavaScript XML", "A database language", "A server type"], correctAnswer: 1, explanation: "JSX allows writing HTML-like code inside JavaScript." },
+                { id: 3, question: "How many elements can a React component return?", options: ["Only one", "Infinite", "Exactly two", "None"], correctAnswer: 0, explanation: "A component must return a single root element (or Fragment)." },
+                { id: 4, question: "What are 'props'?", options: ["Proper objects", "Properties passed to components", "Prototypal inheritance", "None"], correctAnswer: 1, explanation: "Props are used to pass data from parent to child components." },
+                { id: 5, question: "Which hook is used for state?", options: ["useEffect", "useContext", "useState", "useReducer"], correctAnswer: 2, explanation: "useState adds local state to functional components." }
+            ],
+            average: [
+                { id: 1, question: "useEffect usage?", options: ["State management", "Side effects", "Routing", "Styling"], correctAnswer: 1, explanation: "useEffect handles side effects like fetching data or subscriptions." },
+                { id: 2, question: "What is the 'key' prop used for?", options: ["Security", "Identifying items in a list", "Styling", "None"], correctAnswer: 1, explanation: "Keys help React identify which items have changed, been added or removed." },
+                { id: 3, question: "What is 'lifting state up'?", options: ["Moving state to a higher ancestor", "Deleting state", "Using global state only", "None"], correctAnswer: 0, explanation: "Moving state to the closest common ancestor to share it between components." },
+                { id: 4, question: "What is React Fragment?", options: ["A broken component", "A way to group multiple children without adding extra nodes to DOM", "A styling tool", "None"], correctAnswer: 1, explanation: "Fragments allow returning multiple elements without adding a <div>." },
+                { id: 5, question: "What is the Virtual DOM?", options: ["A direct copy of DOM", "A lightweight representation of actual DOM", "A database", "None"], correctAnswer: 1, explanation: "React uses a Virtual DOM to optimize updates to the real DOM." }
+            ],
+            tough: [
+                { id: 1, question: "Custom Hook prefix?", options: ["get", "set", "use", "make"], correctAnswer: 2, explanation: "Custom hooks must start with 'use' to follow React rules." },
+                { id: 2, question: "What is React.memo?", options: ["A way to store data", "A HOC to optimize performance of functional components", "A memory manager", "None"], correctAnswer: 1, explanation: "It prevents unnecessary re-renders when props haven't changed." },
+                { id: 3, question: "What is 'useCallback'?", options: ["A way to call functions", "Returns a memoized version of a callback", "A networking hook", "None"], correctAnswer: 1, explanation: "It returns a memoized callback function that only changes if dependencies change." },
+                { id: 4, question: "What is the purpose of 'useContext'?", options: ["To share state globally without props drilling", "To use external libraries", "To style components", "None"], correctAnswer: 0, explanation: "Context provides a way to pass data through the component tree without prop drilling." },
+                { id: 5, question: "What is Reconciliation?", options: ["The process of merging files", "The algorithm React uses to diff OMT trees", "A database sync", "None"], correctAnswer: 1, explanation: "Reconciliation is the process React uses to update the DOM based on Virtual DOM changes." }
             ]
         }
     },
@@ -193,29 +564,55 @@ export const quizData = {
         icon: "sql",
         color: "#4a5568",
         levels: {
-            beginner: [{ id: 1, question: "Select command?", options: ["GET", "FETCH", "SELECT", "RETRIEVE"], correctAnswer: 2, explanation: "SELECT retrieves data." }],
-            average: [{ id: 1, question: "JOIN type?", options: ["INNER", "OUTER", "LEFT", "All"], correctAnswer: 3, explanation: "SQL supports multiple join types." }],
-            tough: [{ id: 1, question: "ACID property?", options: ["Atomicity", "Consistency", "Isolation", "All of above"], correctAnswer: 3, explanation: "ACID properties ensure database transaction reliability." }]
+            beginner: [
+                { id: 1, question: "Which command is used to select data?", options: ["GET", "FETCH", "SELECT", "EXTRACT"], correctAnswer: 2, explanation: "SELECT retrieves data from a database." },
+                { id: 2, question: "What does SQL stand for?", options: ["Strong Query Language", "Structured Query Language", "Simple Query Language", "None"], correctAnswer: 1, explanation: "SQL stands for Structured Query Language." },
+                { id: 3, question: "Which statement is used to update data?", options: ["SAVE", "MODIFY", "UPDATE", "CHANGE"], correctAnswer: 2, explanation: "UPDATE modifies existing records." },
+                { id: 4, question: "Which statement is used to delete data?", options: ["REMOVE", "DELETE", "DROP", "TRUNCATE"], correctAnswer: 1, explanation: "DELETE removes rows from a table." },
+                { id: 5, question: "Which statement is used to insert new data?", options: ["ADD", "INSERT INTO", "NEW", "CREATE"], correctAnswer: 1, explanation: "INSERT INTO adds new records." }
+            ],
+            average: [
+                { id: 1, question: "Which JOIN returns all records when there is a match in either table?", options: ["INNER JOIN", "LEFT JOIN", "RIGHT JOIN", "FULL JOIN"], correctAnswer: 3, explanation: "FULL JOIN returns all records from both tables." },
+                { id: 2, question: "Which operator is used to search for a specified pattern?", options: ["SEARCH", "LIKE", "MATCH", "FIND"], correctAnswer: 1, explanation: "LIKE is used in a WHERE clause for pattern matching." },
+                { id: 3, question: "Which statement is used to sort the result-set?", options: ["SORT BY", "ORDER BY", "ALIGN BY", "GROUP BY"], correctAnswer: 1, explanation: "ORDER BY sorts the results ascending or descending." },
+                { id: 4, question: "What is a PRIMARY KEY?", options: ["A secret code", "A unique identifier for a record", "A password", "None"], correctAnswer: 1, explanation: "Primary key uniquely identifies each record in a table." },
+                { id: 5, question: "What does the GROUP BY statement do?", options: ["Sorts data", "Groups rows that have the same values into summary rows", "Deletes duplicates", "None"], correctAnswer: 1, explanation: "GROUP BY is often used with aggregate functions." }
+            ],
+            tough: [
+                { id: 1, question: "ACID property stands for?", options: ["Atomicity, Consistency, Isolation, Durability", "Access, Control, Internal, Data", "Auto, Class, Import, Delete", "None"], correctAnswer: 0, explanation: "ACID ensures reliable database transactions." },
+                { id: 2, question: "What is a 'transaction' in SQL?", options: ["A payment", "A single unit of work containing multiple steps", "A data transfer", "None"], correctAnswer: 1, explanation: "Transactions ensure all or nothing execution of a group of commands." },
+                { id: 3, question: "What is a FOREIGN KEY?", options: ["A key from another country", "A field that refers to Primary Key in another table", "A backup key", "None"], correctAnswer: 1, explanation: "Foreign keys link two tables together." },
+                { id: 4, question: "Difference between DELETE and TRUNCATE?", options: ["No difference", "Truncate is faster and removes all rows without logging individual deletions", "Delete is faster", "None"], correctAnswer: 1, explanation: "TRUNCATE is a DDL operation and is generally much faster than DELETE." },
+                { id: 5, question: "What is an Index in SQL?", options: ["A page number", "A way to speed up data retrieval", "A table header", "None"], correctAnswer: 1, explanation: "Indexes are used to quickly find data without searching every row." }
+            ]
         }
     },
-    react: {
-        title: "React Framework",
-        icon: "react",
-        color: "#61dafb",
+    angular: {
+        title: "Angular Framework",
+        icon: "angular",
+        color: "#dd0031",
         levels: {
-            beginner: [{ id: 1, question: "What is React?", options: ["Library", "Framework", "Database", "OS"], correctAnswer: 0, explanation: "React is a JS library." }],
-            average: [{ id: 1, question: "useEffect usage?", options: ["State", "Side effects", "Routing", "Styling"], correctAnswer: 1, explanation: "useEffect handles side effects." }],
-            tough: [{ id: 1, question: "Custom Hook prefix?", options: ["get", "set", "use", "make"], correctAnswer: 2, explanation: "Custom hooks must start with 'use'." }]
-        }
-    },
-    javascript: {
-        title: "JavaScript Basics",
-        icon: "javascript",
-        color: "#f6e05e",
-        levels: {
-            beginner: [{ id: 1, question: "Declare var?", options: ["var/let/const", "int/str", "dim", "val"], correctAnswer: 0, explanation: "Use var, let, or const." }],
-            average: [{ id: 1, question: "Closure?", options: ["Function w/ lexical scope", "Loop", "Object", "Error"], correctAnswer: 0, explanation: "A closure gives access to an outer function's scope." }],
-            tough: [{ id: 1, question: "Event Loop?", options: ["Handles async", "Draws UI", "Compiles code", "None"], correctAnswer: 0, explanation: "Event loop handles asynchronous callbacks." }]
+            beginner: [
+                { id: 1, question: "What is Angular?", options: ["A JS library", "A TypeScript-based framework", "A database", "A server"], correctAnswer: 1, explanation: "Angular is a platform and framework for building single-page client applications." },
+                { id: 2, question: "Which language is primarily used in Angular?", options: ["Python", "JavaScript", "TypeScript", "Kotlin"], correctAnswer: 2, explanation: "Angular is written in TypeScript." },
+                { id: 3, question: "What command creates a new Angular project?", options: ["ng new", "ng create", "ng start", "npm install angular"], correctAnswer: 0, explanation: "The CLI command 'ng new' starts a new project." },
+                { id: 4, question: "Which decorator is used for components?", options: ["@Directive", "@Injectable", "@Component", "@NgModule"], correctAnswer: 2, explanation: "@Component identifies a class as an Angular component." },
+                { id: 5, question: "How do you bind to a property?", options: ["{{}}", "()", "[]", "[[]]"], correctAnswer: 2, explanation: "Square brackets [] are used for property binding." }
+            ],
+            average: [
+                { id: 1, question: "What is an Angular Module?", options: ["A file", "A container for a cohesive block of code", "A CSS style", "A database table"], correctAnswer: 1, explanation: "NgModules organize an application into cohesive blocks of functionality." },
+                { id: 2, question: "What is the purpose of Services?", options: ["To style components", "To share data and logic across components", "To handle routing only", "None"], correctAnswer: 1, explanation: "Services are singleton objects that can be shared across the app." },
+                { id: 3, question: "Which hook is called after component initialization?", options: ["ngOnChanges", "ngOnInit", "ngDoCheck", "ngOnDestroy"], correctAnswer: 1, explanation: "ngOnInit is called once after the first ngOnChanges." },
+                { id: 4, question: "How do you handle events in Angular?", options: ["[]", "()", "{{}}", "*ngIf"], correctAnswer: 1, explanation: "Parentheses () are used for event binding." },
+                { id: 5, question: "What is data binding?", options: ["Connecting UI to data", "Saving to database", "Writing CSS", "None"], correctAnswer: 0, explanation: "Data binding is a core technique that enables communication between a component and the view." }
+            ],
+            tough: [
+                { id: 1, question: "What is RxJS used for?", options: ["Styling", "Reactive programming with observables", "Routing", "Compiling"], correctAnswer: 1, explanation: "Angular uses RxJS for handling asynchronous operations and events." },
+                { id: 2, question: "What is AOT compilation?", options: ["Ahead-of-Time compilation", "Always-On Tuning", "Angular Output Template", "None"], correctAnswer: 0, explanation: "AOT compiles your app and libraries during the build process, before the browser downloads it." },
+                { id: 3, question: "What is a pure pipe?", options: ["A pipe that doesn't use data", "A pipe that only recalculates when input changes", "A pipe for cleaning data", "None"], correctAnswer: 1, explanation: "Pure pipes are only executed when a pure change to the input value is detected." },
+                { id: 4, question: "What is Dependency Injection?", options: ["A security flaw", "A pattern where a class requests dependencies from external sources", "A database tool", "None"], correctAnswer: 1, explanation: "DI is a coding pattern in which a class asks for dependencies from external sources rather than creating them itself." },
+                { id: 5, question: "How do you lazy load a module?", options: ["Using standard imports", "Using loadChildren in routing configuration", "Using @NgModule", "None"], correctAnswer: 1, explanation: "loadChildren allows Angular to load modules only when they are needed." }
+            ]
         }
     }
 };

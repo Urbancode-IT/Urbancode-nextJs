@@ -4,7 +4,7 @@ import { quizzesApi } from '../../services/api';
 import './QuizTopics.css';
 
 // Import icons (using react-icons for consistency with Problems page)
-import { FaPython, FaDatabase, FaJs, FaReact, FaHtml5, FaJava, FaCss3Alt } from 'react-icons/fa';
+import { FaPython, FaDatabase, FaJs, FaReact, FaHtml5, FaJava, FaCss3Alt, FaAngular } from 'react-icons/fa';
 
 const QuizTopics = () => {
     const navigate = useNavigate();
@@ -23,6 +23,7 @@ const QuizTopics = () => {
         javascript: { icon: <FaJs />, color: '#F7DF1E', title: 'Javascript Programming' },
         js: { icon: <FaJs />, color: '#F7DF1E', title: 'Javascript Programming' },
         css: { icon: <FaCss3Alt />, color: '#1572B6', title: 'CSS Design' },
+        angular: { icon: <FaAngular />, color: '#DD0031', title: 'Angular Framework' },
     };
 
     useEffect(() => {

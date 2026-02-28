@@ -1,4 +1,6 @@
 import axios from 'axios';
+import { quizData, getAllTopics as getLocalTopics, getQuizByTopicAndLevel as getLocalQuiz } from '../data/quizData';
+
 
 const API_BASE_URL = (typeof process !== 'undefined' && process.env.NEXT_PUBLIC_API_URL) || 'https://urbancode-nextjs.onrender.com/api' || 'http://localhost:5001/api';
 
@@ -62,17 +64,48 @@ export const problemsApi = {
 // Quizzes API
 export const quizzesApi = {
     getAllTopics: async () => {
+        let backendTopics = [];
         try {
             const response = await api.get('/quizzes/topics');
-            return response.data;
+            if (response.data && response.data.success) {
+                backendTopics = response.data.data;
+            }
         } catch (err) {
-            console.warn('Backend unavailable, quiz topics not loaded.');
-            return { success: true, data: [] };
+            console.warn('Backend unavailable or error fetching topics, using local data.');
         }
+
+        const localTopics = getLocalTopics();
+        const merged = [...localTopics];
+
+        backendTopics.forEach(bt => {
+            const index = merged.findIndex(lt => lt.id === bt.id);
+            if (index !== -1) {
+                // Use backend count if it's more up to date, but only if it's > 0
+                if (bt.questionCount > 0) {
+                    merged[index] = { ...merged[index], ...bt };
+                }
+            } else {
+                merged.push(bt);
+            }
+        });
+
+        return { success: true, data: merged };
     },
     getQuizByTopicAndLevel: async (topic, level) => {
-        const response = await api.get(`/quizzes/${encodeURIComponent(topic)}/${encodeURIComponent(level)}`);
-        return response.data;
+        try {
+            const response = await api.get(`/quizzes/${encodeURIComponent(topic)}/${encodeURIComponent(level)}`);
+            if (response.data && response.data.success && response.data.data?.questions?.length > 0) {
+                return response.data;
+            }
+            throw new Error('Empty questions from backend');
+        } catch (err) {
+            console.warn('Backend unavailable, using local quiz question.');
+            const localData = getLocalQuiz(topic, level);
+            return {
+                success: true,
+                data: localData || { topic, level, questions: [], title: topic, icon: '❓' }
+            };
+        }
     }
 };
 
