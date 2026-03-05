@@ -1,8 +1,8 @@
 'use client';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { MdCheckCircle, MdError, MdLanguage, MdCall } from 'react-icons/md';
-import { FaInstagram, FaLinkedin, FaYoutube, FaFacebook, FaWhatsapp } from 'react-icons/fa';
+import { MdCheckCircle, MdError, MdLanguage } from 'react-icons/md';
+import { FaInstagram, FaLinkedin, FaYoutube, FaFacebook } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 import './FeedbackForm.css';
 
@@ -72,6 +72,12 @@ const FeedbackForm = () => {
         fetchActiveTrainers();
     }, []);
 
+    useEffect(() => {
+        if (!loading) {
+            window.scrollTo({ top: 0, behavior: 'instant' });
+        }
+    }, [loading]);
+
     const fetchActiveTrainers = async () => {
         try {
             const res = await axios.get(`${API_BASE_URL}/api/trainers/active`);
@@ -129,26 +135,27 @@ const FeedbackForm = () => {
         e.preventDefault();
         setError('');
 
-        const findVal = (keywords) => {
-            const q = questions.find(q =>
-                keywords.some(k => q.questionText.toLowerCase().includes(k.toLowerCase()))
-            );
-            return q ? answers[q._id] : '';
+        const applyHighlight = (id) => {
+            const el = document.getElementById(id);
+            if (el) {
+                el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                el.classList.add('missing-pulse');
+                setTimeout(() => el.classList.remove('missing-pulse'), 5000);
+            }
         };
 
         const emailQ = questions.find(q => q.questionText.toLowerCase().includes('email'));
-        const emailVal = emailQ ? answers[emailQ._id] : '';
+        const emailVal = emailQ ? (answers[emailQ._id] || '').trim() : '';
 
+        // 1. Email Check
         if (!emailVal) {
             Swal.fire({
                 icon: 'warning',
-                title: 'Required Field',
-                text: 'Email Address is required to identify your feedback.',
-                confirmButtonColor: '#ff7e5f'
+                title: 'Email Required',
+                text: 'Please provide your email address to submit feedback.',
+                confirmButtonColor: '#17944d'
             }).then(() => {
-                if (emailQ) {
-                    document.getElementById(`q-${emailQ._id}`)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }
+                if (emailQ) applyHighlight(`q-${emailQ._id}`);
             });
             return;
         }
@@ -158,57 +165,36 @@ const FeedbackForm = () => {
             Swal.fire({
                 icon: 'error',
                 title: 'Invalid Email',
-                text: 'Please enter a valid email address.',
-                confirmButtonColor: '#ff7e5f'
+                text: 'Please enter a valid email format (e.g., user@example.com).',
+                confirmButtonColor: '#17944d'
             }).then(() => {
-                if (emailQ) {
-                    document.getElementById(`q-${emailQ._id}`)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }
+                if (emailQ) applyHighlight(`q-${emailQ._id}`);
             });
             return;
         }
 
-        const participantInfo = {
-            email: emailVal,
-            name: findVal(['name', 'participant']),
-            courseName: findVal(['course', 'program']),
-            batch: findVal(['batch', 'duration', 'time']),
-            trainerName: trainerEvaluations[0]?.trainerName || findVal(['trainer name'])
-        };
-
+        // 2. Dynamic Required Questions Check
         const missingRequired = questions.filter(q => {
-            if (!q.required) return false;
-            if (q.isTrainerEval) return false;
+            if (!q.required || q.isTrainerEval) return false;
             const txt = q.questionText.toLowerCase();
-            if (txt.includes('trainer evaluation')) return false;
-            if (txt.includes('trainer name')) return false;
-            if (txt.includes('select trainer')) return false;
+            if (txt.includes('trainer name') || txt.includes('select trainer')) return false;
             return !isQuestionAnswered(q);
         });
 
         if (missingRequired.length > 0) {
-            const firstMissing = missingRequired[0];
-            let errorMsg = `Please answer: ${firstMissing.questionText}`;
-            if (firstMissing.type === 'matrix') {
-                errorMsg = `Please complete all rows in the table: ${firstMissing.questionText}`;
-            }
-
+            const first = missingRequired[0];
             Swal.fire({
                 icon: 'warning',
-                title: 'Incomplete Section',
-                text: errorMsg,
-                confirmButtonColor: '#ff7e5f'
+                title: 'Field Required',
+                text: `Please answer: ${first.questionText}`,
+                confirmButtonColor: '#17944d'
             }).then(() => {
-                const el = document.getElementById(`q-${firstMissing._id}`);
-                if (el) {
-                    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    el.classList.add('missing-pulse');
-                    setTimeout(() => el.classList.remove('missing-pulse'), 3000);
-                }
+                applyHighlight(`q-${first._id}`);
             });
             return;
         }
 
+        // 3. Trainer Evaluations Check
         if (trainerEvaluations.length === 0) {
             setError('Please add at least one trainer evaluation.');
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -217,43 +203,52 @@ const FeedbackForm = () => {
 
         for (let i = 0; i < trainerEvaluations.length; i++) {
             const t = trainerEvaluations[i];
+            const blockId = `trainer-block-${i}`;
+
             if (!t.trainerId) {
                 Swal.fire({
                     icon: 'warning',
                     title: 'Select Trainer',
                     text: `Please select a trainer for evaluation #${i + 1}`,
-                    confirmButtonColor: '#ff7e5f'
-                }).then(() => {
-                    document.getElementById(`trainer-block-${i}`)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                });
+                    confirmButtonColor: '#17944d'
+                }).then(() => applyHighlight(blockId));
                 return;
             }
-        }
 
-        const trainerEvalMatrixQ = questions.find(q =>
-            (q.isTrainerEval || q.questionText.toLowerCase().includes('trainer evaluation')) &&
-            q.type === 'matrix' &&
-            q.section.toLowerCase().includes('trainer')
-        ) || questions.find(q => q.isTrainerEval && q.type === 'matrix');
+            const trainerEvalMatrixQ = questions.find(q =>
+                (q.isTrainerEval || q.questionText.toLowerCase().includes('trainer evaluation')) &&
+                q.type === 'matrix'
+            );
 
-        if (trainerEvalMatrixQ && trainerEvalMatrixQ.required) {
-            for (let i = 0; i < trainerEvaluations.length; i++) {
-                const trainer = trainerEvaluations[i];
-                const answeredRows = Object.keys(trainer.ratings || {}).length;
+            if (trainerEvalMatrixQ && trainerEvalMatrixQ.required) {
+                const answeredRows = Object.keys(t.ratings || {}).length;
                 const totalRows = (trainerEvalMatrixQ.rows || []).length;
                 if (answeredRows < totalRows) {
                     Swal.fire({
                         icon: 'warning',
-                        title: 'Incomplete Rating',
-                        text: `Please complete all ratings for: ${trainer.trainerName || '#' + (i + 1)}`,
-                        confirmButtonColor: '#ff7e5f'
-                    }).then(() => {
-                        document.getElementById(`trainer-block-${i}`)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    });
+                        title: 'Incomplete Ratings',
+                        text: `Please complete all rating criteria for ${t.trainerName || 'Trainer ' + (i + 1)}`,
+                        confirmButtonColor: '#17944d'
+                    }).then(() => applyHighlight(blockId));
                     return;
                 }
             }
         }
+
+        const findVal = (keywords) => {
+            const q = questions.find(q =>
+                keywords.some(k => q.questionText.toLowerCase().includes(k.toLowerCase()))
+            );
+            return q ? (answers[q._id] || '') : '';
+        };
+
+        const participantInfo = {
+            email: emailVal,
+            name: findVal(['name', 'participant']),
+            courseName: findVal(['course', 'program']),
+            batch: findVal(['batch', 'duration', 'time']),
+            trainerName: trainerEvaluations[0]?.trainerName || findVal(['trainer name'])
+        };
 
         setSubmitting(true);
         try {
@@ -300,14 +295,45 @@ const FeedbackForm = () => {
     };
 
     if (loading) return (
-        <div className="loading-container">
-            <div className="uc-loader-container">
+        <div className="loading-container" style={{ display: 'flex', alignItems: 'center', justifySelf: 'center', height: '100vh', width: '100%' }}>
+            <div className="uc-loader-container" style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                 <style jsx>{`
-                    .uc-logo-anim { font-size: 2rem; font-weight: bold; color: #17944d; }
-                    .uc-loading-text { margin-top: 10px; color: #666; }
+                    @keyframes bounce-stagger {
+                        0%, 100% { transform: translateY(0) scale(1); }
+                        50% { transform: translateY(-15px) scale(1.1); }
+                    }
+
+                    @keyframes pulse-soft {
+                        0%, 100% { opacity: 0.5; transform: scale(0.98); }
+                        50% { opacity: 1; transform: scale(1); }
+                    }
+
+                    .uc-logo-anim { 
+                        font-size: 2.5rem; 
+                        font-weight: 900; 
+                        color: #17944d; 
+                        margin-bottom: 20px; 
+                        letter-spacing: 0.1em;
+                    }
+
+                    .uc-logo-anim span {
+                        display: inline-block;
+                        animation: bounce-stagger 1.2s infinite ease-in-out;
+                    }
+
+                    .uc-logo-anim span:nth-child(2) {
+                        animation-delay: 0.15s;
+                    }
+
+                    .uc-loading-text { 
+                        color: #64748b; 
+                        font-weight: 600; 
+                        animation: pulse-soft 2s infinite ease-in-out;
+                        letter-spacing: 0.05em;
+                    }
                 `}</style>
                 <div className="uc-logo-anim"><span>U</span><span>C</span></div>
-                <div className="uc-loading-text">Loading...</div>
+                <div className="uc-loading-text">Loading Feedback Form...</div>
             </div>
         </div>
     );
@@ -411,9 +437,6 @@ const FeedbackForm = () => {
                         <a href="https://www.urbancode.in/" target="_blank" rel="noopener noreferrer" className="contact-link-item">
                             <MdLanguage size={16} /> <span>www.urbancode.in</span>
                         </a>
-                        <a href="tel:+919878798797" className="contact-link-item">
-                            <MdCall size={16} /> <span>+91 98787 98797</span>
-                        </a>
                         <div className="social-links-row">
                             <a href="https://www.instagram.com/urbancode_edutech/" target="_blank" rel="noopener noreferrer" title="Instagram">
                                 <FaInstagram size={18} />
@@ -426,9 +449,6 @@ const FeedbackForm = () => {
                             </a>
                             <a href="https://www.youtube.com/channel/UC7ngZ5r2ov-qoXJRjaXJGKA" target="_blank" rel="noopener noreferrer" title="YouTube">
                                 <FaYoutube size={20} />
-                            </a>
-                            <a href="https://api.whatsapp.com/send/?phone=919429694123&text=Hello+Team+Urbancode&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" title="WhatsApp">
-                                <FaWhatsapp size={20} />
                             </a>
                         </div>
                     </div>

@@ -1,29 +1,4 @@
-.admin-layout {
-    display: flex;
-    background: #f8fafc;
-    min-height: 100vh;
-}
-
-.admin-content {
-    flex: 1;
-    margin-left: 280px;
-    /* sidebar width */
-    padding: 2.5rem 3.5rem;
-    max-width: 1600px;
-}
-
-@media (max-width: 1024px) {
-    .admin-content {
-        margin-left: 80px;
-    }
-}
-
-@media (max-width: 768px) {
-    .admin-content {
-        margin-left: 0;
-        padding: 5rem 1.5rem 2rem;
-    }
-}
+/* Dashboard specific styles below. Core layout managed in Sidebar.css */
 
 .page-header {
     display: flex;

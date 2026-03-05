@@ -200,7 +200,7 @@ const TrainerManager = () => {
                                     <tr>
                                         <td colSpan="4">
                                             <div className="uc-loader-container" style={{ minHeight: '150px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                                                <div className="uc-logo-anim" style={{ fontSize: '2rem', fontWeight: 'bold', color: '#17944d' }}><span>U</span><span>C</span></div>
+                                                <div className="uc-logo-anim" style={{ fontSize: '2.5rem', fontWeight: '900', color: '#17944d', marginBottom: '20px', letterSpacing: '0.1em' }}><span>U</span><span>C</span></div>
                                                 <div className="uc-loading-text">Loading Trainers...</div>
                                             </div>
                                         </td>
@@ -243,17 +243,17 @@ const TrainerManager = () => {
 
             {showModal && (
                 <div className="modal-overlay">
-                    <div className="modal-content admin-modal">
-                        <div className="modal-header">
-                            <h2>{editingTrainer ? 'Edit Trainer' : 'Add New Trainer'}</h2>
-                            <button className="close-btn" onClick={handleCloseModal}>&times;</button>
-                        </div>
+                    <div className="modal-content premium-editor-modal">
                         <form onSubmit={handleSubmit}>
+                            <div className="modal-header-premium">
+                                <h2>{editingTrainer ? 'Edit Trainer' : 'Add New Trainer'}</h2>
+                                <button type="button" className="btn-close-round" onClick={handleCloseModal}>&times;</button>
+                            </div>
                             <div className="modal-body-alt">
-                                <div className="form-group">
-                                    <label style={{ display: 'block', marginBottom: '8px', fontWeight: '600' }}>Full Name*</label>
+                                <div className="form-group-premium">
+                                    <label className="label-premium">FULL NAME*</label>
                                     <input
-                                        style={{ width: '100%', padding: '10px', borderRadius: '10px', border: '1px solid #e2e8f0', outline: 'none' }}
+                                        className="input-premium"
                                         type="text"
                                         required
                                         value={formData.name}
@@ -261,30 +261,34 @@ const TrainerManager = () => {
                                         placeholder="Enter trainer's full name"
                                     />
                                 </div>
-                                <div className="form-group" style={{ marginTop: '15px' }}>
-                                    <label style={{ display: 'block', marginBottom: '8px', fontWeight: '600' }}>Specialization</label>
+                                <div className="form-group-premium" style={{ marginTop: '25px' }}>
+                                    <label className="label-premium">SPECIALIZATION (OPTIONAL)</label>
                                     <input
-                                        style={{ width: '100%', padding: '10px', borderRadius: '10px', border: '1px solid #e2e8f0', outline: 'none' }}
+                                        className="input-premium"
                                         type="text"
                                         value={formData.specialization}
                                         onChange={(e) => setFormData({ ...formData, specialization: e.target.value })}
                                         placeholder="e.g. MERN Stack, Python"
                                     />
                                 </div>
-                                <div className="form-group" style={{ marginTop: '15px' }}>
-                                    <label style={{ display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer' }}>
-                                        <input
-                                            type="checkbox"
-                                            checked={formData.active}
-                                            onChange={(e) => setFormData({ ...formData, active: e.target.checked })}
-                                        />
-                                        <span style={{ fontWeight: '600' }}>Active Trainer Status</span>
+                                <div className="form-section-premium" style={{ marginTop: '25px' }}>
+                                    <label className="label-premium">AVAILABILITY</label>
+                                    <label className="toggle-wrapper-premium clickable">
+                                        <span>ACTIVE TRAINER STATUS</span>
+                                        <div className="switch">
+                                            <input
+                                                type="checkbox"
+                                                checked={formData.active}
+                                                onChange={(e) => setFormData({ ...formData, active: e.target.checked })}
+                                            />
+                                            <span className="slider round"></span>
+                                        </div>
                                     </label>
                                 </div>
                             </div>
                             <div className="modal-footer-alt">
-                                <button type="button" className="btn-ghost" onClick={handleCloseModal} style={{ padding: '10px 20px', borderRadius: '10px', border: '1px solid #e2e8f0', background: 'white', cursor: 'pointer' }}>Cancel</button>
-                                <button type="submit" className="btn-save-main" style={{ background: '#17944d', color: 'white', border: 'none', padding: '10px 20px', borderRadius: '10px', cursor: 'pointer' }}>
+                                <button type="button" className="btn-cancel-link" onClick={handleCloseModal}>Cancel</button>
+                                <button type="submit" className="btn-save-premium">
                                     {editingTrainer ? 'Save Changes' : 'Create Trainer'}
                                 </button>
                             </div>
@@ -293,12 +297,70 @@ const TrainerManager = () => {
                 </div>
             )}
             <style jsx>{`
-                .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; z-index: 3000; }
-                .modal-content { background: white; width: 90%; max-width: 500px; border-radius: 20px; overflow: hidden; }
-                .modal-header { padding: 20px; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; }
-                .modal-body-alt { padding: 20px; }
-                .modal-footer-alt { padding: 20px; border-top: 1px solid #e2e8f0; display: flex; justify-content: flex-end; gap: 10px; }
-                .close-btn { background: none; border: none; font-size: 2rem; cursor: pointer; }
+                .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(15, 23, 42, 0.4); backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; z-index: 4000; }
+                .premium-editor-modal { background: white; width: 95%; max-width: 750px; border-radius: 32px; overflow: hidden; box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.3); border: 1px solid #f1f5f9; }
+                
+                .modal-header-premium { padding: 30px 40px; border-bottom: 1px solid #f1f5f9; display: flex; justify-content: space-between; align-items: center; }
+                .modal-header-premium h2 { font-size: 1.3rem; font-weight: 800; color: #1e293b; margin: 0; }
+                .btn-close-round { background: #f1f5f9; border: none; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #64748b; font-size: 1.1rem; transition: all 0.2s; }
+                .btn-close-round:hover { background: #e2e8f0; color: #1e293b; }
+
+                .modal-body-alt { padding: 40px; }
+                .form-group-premium { display: flex; flex-direction: column; gap: 12px; }
+                .label-premium { font-size: 0.75rem; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em; }
+                
+                .input-premium { width: 100%; padding: 15px 20px; border: 1px solid transparent; border-radius: 16px; font-size: 0.95rem; color: #1e293b; outline: none; transition: all 0.2s; background: #f8fafc; font-weight: 600; }
+                .input-premium:focus { background: #fff; border-color: #17944d; box-shadow: 0 0 0 4px rgba(23, 148, 77, 0.1); }
+
+                /* Custom Switch Toggles */
+                .toggle-wrapper-premium { display: flex; justify-content: space-between; align-items: center; background: #f8fafc; padding: 15px 20px; border-radius: 16px; color: #475569; font-weight: 700; font-size: 0.85rem; transition: all 0.2s; }
+                .toggle-wrapper-premium.clickable { cursor: pointer; border: 1px solid transparent; }
+                .toggle-wrapper-premium.clickable:hover { background: #f1f5f9; border-color: #e2e8f0; }
+                
+                .switch { position: relative; display: inline-block; width: 44px; height: 24px; }
+                .switch input { opacity: 0; width: 0; height: 0; }
+                .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #cbd5e1; transition: .4s; }
+                .slider:before { position: absolute; content: ""; height: 18px; width: 18px; left: 3px; bottom: 3px; background-color: white; transition: .4s; }
+                input:checked + .slider { background-color: #17944d; }
+                input:checked + .slider:before { transform: translateX(20px); }
+                .slider.round { border-radius: 34px; }
+                .slider.round:before { border-radius: 50%; }
+
+                .modal-footer-alt { padding: 30px 40px; border-top: 1px solid #f1f5f9; display: flex; justify-content: flex-end; align-items: center; gap: 30px; }
+                .btn-cancel-link { background: transparent; border: none; color: #64748b; font-weight: 700; cursor: pointer; font-size: 0.95rem; }
+                .btn-save-premium { background: #17944d; color: white; border: none; padding: 15px 40px; border-radius: 16px; font-weight: 700; cursor: pointer; transition: all 0.2s; font-size: 0.95rem; }
+                .btn-save-premium:hover { transform: scale(1.02); background: #15803d; }
+
+                /* Loading Animations */
+                .uc-loader-container { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; min-height: 200px; width: 100%; }
+                
+                @keyframes bounce-stagger {
+                    0%, 100% { transform: translateY(0) scale(1); }
+                    50% { transform: translateY(-15px) scale(1.1); }
+                }
+
+                @keyframes pulse-soft {
+                    0%, 100% { opacity: 0.5; transform: scale(0.98); }
+                    50% { opacity: 1; transform: scale(1); }
+                }
+
+                .uc-logo-anim span {
+                    display: inline-block;
+                    animation: bounce-stagger 1.2s infinite ease-in-out;
+                }
+
+                .uc-logo-anim span:nth-child(2) {
+                    animation-delay: 0.15s;
+                }
+
+                .uc-loading-text {
+                    animation: pulse-soft 2s infinite ease-in-out;
+                    margin-top: 15px;
+                    font-size: 0.9rem;
+                    font-weight: 600;
+                    letter-spacing: 0.05em;
+                    color: #64748b;
+                }
             `}</style>
         </div>
     );

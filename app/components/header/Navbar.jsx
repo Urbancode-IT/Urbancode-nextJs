@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import './Navbar.css';
 import ChatbotWidget from '../ChatbotWidget';
 import FloatingWidgets from '../FloatingWidgets';
@@ -11,6 +12,7 @@ import { FiPhoneCall } from 'react-icons/fi';
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [careerOpen, setCareerOpen] = useState(false);
+  const pathname = usePathname();
 
   const handleLinkClick = () => {
     setIsOpen(false);
@@ -30,6 +32,8 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const isFeedbackPage = pathname.startsWith('/feedback');
+
   return (
     <>
       <nav className={`navbar ${isOpen ? 'menu-open' : ''}`}>
@@ -46,11 +50,13 @@ export default function Navbar() {
             />
           </Link>
 
-          {/* Phone with icon */}
-          <div className="navbar-phone">
-            <FiPhoneCall className="phone-icon" />
-            <a href="tel:+919878798797">+91 9878798797</a>
-          </div>
+          {/* Phone with icon - only show if not feedback page */}
+          {!isFeedbackPage && (
+            <div className="navbar-phone">
+              <FiPhoneCall className="phone-icon" />
+              <a href="tel:+919878798797">+91 9878798797</a>
+            </div>
+          )}
 
           {/* Navigation Links */}
           <div className={`nav-links ${isOpen ? 'active' : ''}`}>
@@ -76,8 +82,12 @@ export default function Navbar() {
           </div>
         </div>
       </nav>
-      <FloatingWidgets />
-      <ChatbotWidget />
+      {!isFeedbackPage && (
+        <>
+          <FloatingWidgets />
+          <ChatbotWidget />
+        </>
+      )}
     </>
   );
 }
