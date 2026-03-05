@@ -118,6 +118,33 @@
   color: #444;
   line-height: 1.6;
   max-width: 800px;
+  margin-bottom: 20px;
+}
+
+.contact-us-page .feedback-form-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #17944d;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(23, 148, 77, 0.3);
+  margin-top: 10px;
+}
+
+.contact-us-page .feedback-form-btn:hover {
+  background: #0d5a2f;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(23, 148, 77, 0.4);
+  color: white;
+}
+
+.contact-us-page .feedback-form-btn i {
+  font-size: 1.1rem;
 }
 
 /* Content Layout */

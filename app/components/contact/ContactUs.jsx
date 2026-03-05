@@ -1,5 +1,6 @@
 'use client';
 import React, { useRef, useState, useEffect } from "react";
+import Link from "next/link";
 import { sendContactMessage } from "@/lib/api/api";
 import "./ContactUs.css";
 
@@ -48,7 +49,7 @@ const ContactUs = () => {
   };
 
   // form submit
- const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const error = validateForm();
     if (error) {
@@ -85,6 +86,9 @@ const ContactUs = () => {
           services, need support, or just want to say hello—our team is always
           ready to help.
         </p>
+        <Link href="/feedback" className="feedback-form-btn">
+          Share Your Feedback <i className="fas fa-comment-dots"></i>
+        </Link>
       </div>
 
       <div className="contact-content">
@@ -157,24 +161,24 @@ const ContactUs = () => {
         {/* Right: Info + Maps */}
         <div className="contact-info">
           <div className="map-box">
-  <div className={`map-slider ${activeMap === 1 ? "shift" : ""}`}>
-    <iframe
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.6988594264685!2d80.21742727608103!3d12.991102787326096!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a52675e83808383%3A0x34ba42591d2df4f1!2sUrbancode%20Training%20and%20Solutions!5e0!3m2!1sen!2sin!4v1759989388834!5m2!1sen!2sin"
-      allowFullScreen=""
-      loading="lazy"
-      referrerPolicy="no-referrer-when-downgrade"
-      title="Urbancode Pallikaranai"
-    ></iframe>
+            <div className={`map-slider ${activeMap === 1 ? "shift" : ""}`}>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.6988594264685!2d80.21742727608103!3d12.991102787326096!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a52675e83808383%3A0x34ba42591d2df4f1!2sUrbancode%20Training%20and%20Solutions!5e0!3m2!1sen!2sin!4v1759989388834!5m2!1sen!2sin"
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Urbancode Pallikaranai"
+              ></iframe>
 
-    <iframe
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.46718187897!2d80.20756157608038!3d12.941929887370714!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4459863a4cda389d%3A0x886df1337be63502!2sUrbancode%20Training%20and%20Solutions!5e0!3m2!1sen!2sin!4v1759989548085!5m2!1sen!2sin"
-      allowFullScreen=""
-      loading="lazy"
-      referrerPolicy="no-referrer-when-downgrade"
-      title="Urbancode Velachery"
-    ></iframe>
-  </div>
-</div>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.46718187897!2d80.20756157608038!3d12.941929887370714!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4459863a4cda389d%3A0x886df1337be63502!2sUrbancode%20Training%20and%20Solutions!5e0!3m2!1sen!2sin!4v1759989548085!5m2!1sen!2sin"
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Urbancode Velachery"
+              ></iframe>
+            </div>
+          </div>
 
           <div className="contact-grid">
             <div className="contact-item">

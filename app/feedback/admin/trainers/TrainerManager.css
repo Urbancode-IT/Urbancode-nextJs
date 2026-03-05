@@ -1,0 +1,51 @@
+/* TrainerManager.css */
+.trainer-manager-container {
+    animation: fadeIn 0.5s ease-out;
+}
+
+.flex-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2.5rem;
+    background: white;
+    padding: 1.5rem 2rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    border: 1px solid #f1f5f9;
+}
+
+.stat-icon.total {
+    background: #eff6ff;
+    color: #2563eb;
+}
+
+.stat-icon.active {
+    background: #ecfdf5;
+    color: #059669;
+}
+
+.stat-icon.inactive {
+    background: #fff1f2;
+    color: #e11d48;
+}
+
+.spec-badge {
+    background: #f1f5f9;
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
