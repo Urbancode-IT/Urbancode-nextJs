@@ -59,7 +59,7 @@ export default function Navbar() {
             <Link href="/about-us" onClick={handleLinkClick}>About Us</Link>
             <Link href="/kids-courses" onClick={handleLinkClick}>Kids Space</Link>
 
-            <Link href="/compiler" onClick={handleLinkClick}>Compiler</Link>
+            <Link href="/compiler" onClick={handleLinkClick}>Practice</Link>
 
             <Link href="/projects" onClick={handleLinkClick}>Projects</Link>
             <Link href="/contact-us" onClick={handleLinkClick}>Contact Us</Link>
