@@ -4,7 +4,15 @@ import Link from "next/link";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "./Footer.css";
 
+import { usePathname } from "next/navigation";
+
 function Footer() {
+  const pathname = usePathname();
+
+  // Hide Footer for Admin pages
+  if (pathname.startsWith('/feedback/admin')) {
+    return null;
+  }
   return (
     <footer className="footer">
       <div className="container">

@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import Swal from 'sweetalert2';
-import Sidebar from '@/app/components/feedback-admin/Sidebar';
 import { MdAdd, MdEdit, MdDelete, MdArrowUpward, MdArrowDownward } from 'react-icons/md';
 import './QuestionManager.css';
 
@@ -213,124 +212,119 @@ const QuestionManager = () => {
     const uniqueSections = [...new Set(questions.map(q => q.section))];
 
     return (
-        <div className="admin-layout">
-            <Sidebar />
-            <main className="admin-content">
-                <div className="question-manager-container">
-                    <header className="page-header flex-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                        <div>
-                            <h1>Question Manager</h1>
-                            <p>Customize your backend-driven feedback form</p>
-                        </div>
-                        <button onClick={() => openAdd()} className="btn-primary" style={{ background: '#17944d', color: 'white', border: 'none', padding: '12px 24px', borderRadius: '12px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px', fontWeight: 'bold' }}>
-                            <MdAdd size={24} />
-                            Add New Question
-                        </button>
-                    </header>
+        <div className="question-manager-container">
+            <header className="page-header flex-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div>
+                    <h1>Question Manager</h1>
+                    <p>Customize your backend-driven feedback form</p>
+                </div>
+                <button onClick={() => openAdd()} className="btn-primary-admin">
+                    <MdAdd size={24} />
+                    Add New Question
+                </button>
+            </header>
 
-                    {loading ? (
-                        <div className="uc-loader-container" style={{ height: '60vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                            <div className="uc-logo-anim" style={{ fontSize: '2rem', fontWeight: 'bold', color: '#17944d' }}><span>U</span><span>C</span></div>
-                            <div className="uc-loading-text">Loading Questions...</div>
-                        </div>
-                    ) : (
-                        <div className="sections-container">
-                            {sortedSectionKeys.map(section => (
-                                <div key={section} className="section-group" style={{ marginBottom: '40px' }}>
-                                    <div className="section-group-header" style={{ borderBottom: '2px solid #e2e8f0', paddingBottom: '15px', marginBottom: '25px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                        <h2 style={{ fontSize: '1.4rem', color: '#0f172a' }}>{cleanSectionTitle(section)}</h2>
-                                        <button onClick={() => openAdd(section)} className="add-in-section" style={{ background: '#f1f5f9', border: 'none', padding: '8px 16px', borderRadius: '8px', cursor: 'pointer', color: '#17944d', display: 'flex', alignItems: 'center', gap: '5px', fontWeight: '600' }}>
-                                            <MdAdd size={20} /> Add Question
-                                        </button>
-                                    </div>
-                                    <div className="questions-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))', gap: '20px' }}>
-                                        {groupedBySection[section].sort((a, b) => a.order - b.order).map((q, idx, arr) => (
-                                            <div key={q._id} className="question-item-card" style={{ background: 'white', padding: '20px', borderRadius: '20px', boxShadow: '0 4px 15px rgba(0,0,0,0.03)', border: '1px solid #f1f5f9' }}>
-                                                <div className="q-card-top" style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '15px' }}>
-                                                    <span style={{ fontSize: '0.8rem', background: '#f1f5f9', padding: '4px 10px', borderRadius: '100px', fontWeight: '700', color: '#64748b' }}>{q.type}</span>
-                                                    <div style={{ display: 'flex', gap: '10px' }}>
-                                                        <button onClick={() => moveOrder(q._id, -1)} disabled={idx === 0} style={{ background: 'none', border: 'none', cursor: 'pointer' }}><MdArrowUpward /></button>
-                                                        <button onClick={() => moveOrder(q._id, 1)} disabled={idx === arr.length - 1} style={{ background: 'none', border: 'none', cursor: 'pointer' }}><MdArrowDownward /></button>
-                                                    </div>
-                                                </div>
-                                                <h4 style={{ fontSize: '1rem', color: '#1e293b', marginBottom: '20px', fontWeight: '600' }}>{q.questionText}</h4>
-                                                <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '10px' }}>
-                                                    <button onClick={() => openEdit(q)} style={{ padding: '8px', borderRadius: '8px', border: 'none', background: '#f1f5f9', cursor: 'pointer' }}><MdEdit size={18} /></button>
-                                                    <button onClick={() => handleDeleteClick(q._id)} style={{ padding: '8px', borderRadius: '8px', border: 'none', background: '#fee2e2', color: '#ef4444', cursor: 'pointer' }}><MdDelete size={18} /></button>
-                                                </div>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    )}
-
-                    {showModal && (
-                        <div className="modal-overlay">
-                            <div className="modal-content admin-modal">
-                                <form onSubmit={handleSave}>
-                                    <div className="modal-header">
-                                        <h2>{isEditing ? 'Edit Question' : 'Create Question'}</h2>
-                                        <button type="button" onClick={() => setShowModal(false)} className="close-btn">&times;</button>
-                                    </div>
-                                    <div className="modal-body-alt">
-                                        <div className="form-group">
-                                            <label>Question Text</label>
-                                            <textarea
-                                                className="preview-input"
-                                                value={currentQuestion.questionText}
-                                                onChange={(e) => setCurrentQuestion({ ...currentQuestion, questionText: e.target.value })}
-                                                required
-                                                rows="3"
-                                            ></textarea>
-                                        </div>
-                                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginTop: '15px' }}>
-                                            <div className="form-group">
-                                                <label>Section</label>
-                                                <input
-                                                    className="preview-input"
-                                                    value={currentQuestion.section}
-                                                    onChange={(e) => setCurrentQuestion({ ...currentQuestion, section: e.target.value })}
-                                                    required
-                                                />
-                                            </div>
-                                            <div className="form-group">
-                                                <label>Type</label>
-                                                <select
-                                                    className="preview-input"
-                                                    value={currentQuestion.type}
-                                                    onChange={(e) => setCurrentQuestion({ ...currentQuestion, type: e.target.value })}
-                                                >
-                                                    <option value="text">Text</option>
-                                                    <option value="textarea">Textarea</option>
-                                                    <option value="radio">Radio</option>
-                                                    <option value="checkbox">Checkbox</option>
-                                                    <option value="matrix">Matrix</option>
-                                                    <option value="trainer-select">Trainer Select</option>
-                                                </select>
+            {loading ? (
+                <div className="uc-loader-container">
+                    <div className="uc-logo-anim"><span>U</span><span>C</span></div>
+                    <div className="uc-loading-text">Loading Questions...</div>
+                </div>
+            ) : (
+                <div className="sections-container">
+                    {sortedSectionKeys.map(section => (
+                        <div key={section} className="section-group" style={{ marginBottom: '40px' }}>
+                            <div className="section-group-header" style={{ borderBottom: '2px solid #e2e8f0', paddingBottom: '15px', marginBottom: '25px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                <h2 style={{ fontSize: '1.4rem', color: '#0f172a' }}>{cleanSectionTitle(section)}</h2>
+                                <button onClick={() => openAdd(section)} className="add-in-section" style={{ background: '#f1f5f9', border: 'none', padding: '8px 16px', borderRadius: '8px', cursor: 'pointer', color: '#17944d', display: 'flex', alignItems: 'center', gap: '5px', fontWeight: '600' }}>
+                                    <MdAdd size={20} /> Add Question
+                                </button>
+                            </div>
+                            <div className="questions-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))', gap: '20px' }}>
+                                {groupedBySection[section].sort((a, b) => a.order - b.order).map((q, idx, arr) => (
+                                    <div key={q._id} className="question-item-card" style={{ background: 'white', padding: '20px', borderRadius: '20px', boxShadow: '0 4px 15px rgba(0,0,0,0.03)', border: '1px solid #f1f5f9' }}>
+                                        <div className="q-card-top" style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '15px' }}>
+                                            <span style={{ fontSize: '0.8rem', background: '#f1f5f9', padding: '4px 10px', borderRadius: '100px', fontWeight: '700', color: '#64748b' }}>{q.type}</span>
+                                            <div style={{ display: 'flex', gap: '10px' }}>
+                                                <button onClick={() => moveOrder(q._id, -1)} disabled={idx === 0} style={{ background: 'none', border: 'none', cursor: 'pointer' }}><MdArrowUpward /></button>
+                                                <button onClick={() => moveOrder(q._id, 1)} disabled={idx === arr.length - 1} style={{ background: 'none', border: 'none', cursor: 'pointer' }}><MdArrowDownward /></button>
                                             </div>
                                         </div>
+                                        <h4 style={{ fontSize: '1rem', color: '#1e293b', marginBottom: '20px', fontWeight: '600' }}>{q.questionText}</h4>
+                                        <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '10px' }}>
+                                            <button onClick={() => openEdit(q)} style={{ padding: '8px', borderRadius: '8px', border: 'none', background: '#f1f5f9', cursor: 'pointer' }}><MdEdit size={18} /></button>
+                                            <button onClick={() => handleDeleteClick(q._id)} style={{ padding: '8px', borderRadius: '8px', border: 'none', background: '#fee2e2', color: '#ef4444', cursor: 'pointer' }}><MdDelete size={18} /></button>
+                                        </div>
                                     </div>
-                                    <div className="modal-footer-alt">
-                                        <button type="button" onClick={() => setShowModal(false)} className="btn-ghost">Cancel</button>
-                                        <button type="submit" className="btn-save-main" style={{ background: '#17944d', color: 'white', border: 'none', padding: '10px 20px', borderRadius: '10px', cursor: 'pointer' }}>Save Question</button>
-                                    </div>
-                                </form>
+                                ))}
                             </div>
                         </div>
-                    )}
+                    ))}
                 </div>
-                <style jsx>{`
-                    .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; z-index: 3000; }
-                    .modal-content { background: white; width: 90%; max-width: 600px; border-radius: 20px; overflow: hidden; }
-                    .modal-header { padding: 20px; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; }
-                    .modal-body-alt { padding: 20px; }
-                    .modal-footer-alt { padding: 20px; border-top: 1px solid #e2e8f0; display: flex; justify-content: flex-end; gap: 10px; }
-                    .preview-input { width: 100%; padding: 10px; border: 1px solid #e2e8f0; border-radius: 10px; outline: none; }
-                    .close-btn { background: none; border: none; font-size: 2rem; cursor: pointer; }
-                `}</style>
-            </main>
+            )}
+
+            {showModal && (
+                <div className="modal-overlay">
+                    <div className="modal-content admin-modal">
+                        <form onSubmit={handleSave}>
+                            <div className="modal-header">
+                                <h2>{isEditing ? 'Edit Question' : 'Create Question'}</h2>
+                                <button type="button" onClick={() => setShowModal(false)} className="close-btn">&times;</button>
+                            </div>
+                            <div className="modal-body-alt">
+                                <div className="form-group">
+                                    <label>Question Text</label>
+                                    <textarea
+                                        className="preview-input"
+                                        value={currentQuestion.questionText}
+                                        onChange={(e) => setCurrentQuestion({ ...currentQuestion, questionText: e.target.value })}
+                                        required
+                                        rows="3"
+                                    ></textarea>
+                                </div>
+                                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginTop: '15px' }}>
+                                    <div className="form-group">
+                                        <label>Section</label>
+                                        <input
+                                            className="preview-input"
+                                            value={currentQuestion.section}
+                                            onChange={(e) => setCurrentQuestion({ ...currentQuestion, section: e.target.value })}
+                                            required
+                                        />
+                                    </div>
+                                    <div className="form-group">
+                                        <label>Type</label>
+                                        <select
+                                            className="preview-input"
+                                            value={currentQuestion.type}
+                                            onChange={(e) => setCurrentQuestion({ ...currentQuestion, type: e.target.value })}
+                                        >
+                                            <option value="text">Text</option>
+                                            <option value="textarea">Textarea</option>
+                                            <option value="radio">Radio</option>
+                                            <option value="checkbox">Checkbox</option>
+                                            <option value="matrix">Matrix</option>
+                                            <option value="trainer-select">Trainer Select</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="modal-footer-alt">
+                                <button type="button" onClick={() => setShowModal(false)} className="btn-secondary-admin">Cancel</button>
+                                <button type="submit" className="btn-primary-admin">Save Question</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            )}
+            <style jsx>{`
+                .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; z-index: 3000; }
+                .modal-content { background: white; width: 90%; max-width: 600px; border-radius: 20px; overflow: hidden; }
+                .modal-header { padding: 20px; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; }
+                .modal-body-alt { padding: 20px; }
+                .modal-footer-alt { padding: 20px; border-top: 1px solid #e2e8f0; display: flex; justify-content: flex-end; gap: 10px; }
+                .preview-input { width: 100%; padding: 10px; border: 1px solid #e2e8f0; border-radius: 10px; outline: none; }
+                .close-btn { background: none; border: none; font-size: 2rem; cursor: pointer; }
+            `}</style>
         </div>
     );
 };

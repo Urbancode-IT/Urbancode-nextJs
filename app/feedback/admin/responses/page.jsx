@@ -2,7 +2,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
-import Sidebar from '@/app/components/feedback-admin/Sidebar';
 import { MdSearch, MdFilterList, MdVisibility, MdDelete, MdDownload, MdCheckCircle, MdCancel } from 'react-icons/md';
 import Swal from 'sweetalert2';
 import './Responses.css';
@@ -205,211 +204,206 @@ const Responses = () => {
     };
 
     return (
-        <div className="admin-layout">
-            <Sidebar />
-            <main className="admin-content">
-                <div className="responses-manager-container">
-                    <header className="page-header flex-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                        <div>
-                            <h1>Responses</h1>
-                            <p>Manage and view all participants feedback</p>
-                        </div>
-                        <button onClick={downloadCSV} className="btn-secondary" style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '10px 20px', borderRadius: '10px', border: '1px solid #e2e8f0', background: 'white', fontWeight: '600', cursor: 'pointer' }}>
-                            <MdDownload size={20} />
-                            <span>Export CSV</span>
-                        </button>
-                    </header>
+        <div className="responses-manager-container">
+            <header className="page-header flex-header">
+                <div>
+                    <h1>Responses</h1>
+                    <p>Manage and view all participants feedback</p>
+                </div>
+                <button onClick={downloadCSV} className="btn-secondary-admin">
+                    <MdDownload size={20} />
+                    <span>Export CSV</span>
+                </button>
+            </header>
 
-                    <div className="stats-grid">
-                        <div className="stat-card">
-                            <div className="stat-icon total"><MdVisibility size={28} /></div>
-                            <div className="stat-info">
-                                <h3>Total Responses</h3>
-                                <p>{responses.length}</p>
-                            </div>
-                        </div>
-                        <div className="stat-card">
-                            <div className="stat-icon excellent" style={{ color: '#16a34a' }}><MdCheckCircle size={28} /></div>
-                            <div className="stat-info">
-                                <h3>Positive Feedback</h3>
-                                <p>{responses.filter(r => ['Excellent', 'Good'].includes(getOverallRating(r))).length}</p>
-                            </div>
-                        </div>
-                        <div className="stat-card">
-                            <div className="stat-icon poor" style={{ color: '#ef4444' }}><MdCancel size={28} /></div>
-                            <div className="stat-info">
-                                <h3>Critical Feedback</h3>
-                                <p>{responses.filter(r => ['Bad', 'Very Bad'].includes(getOverallRating(r))).length}</p>
-                            </div>
-                        </div>
+            <div className="stats-grid">
+                <div className="stat-card">
+                    <div className="stat-icon total"><MdVisibility size={28} /></div>
+                    <div className="stat-info">
+                        <h3>Total Responses</h3>
+                        <p>{responses.length}</p>
                     </div>
-
-                    <div className="table-controls">
-                        <div className="search-container">
-                            <MdSearch size={22} />
-                            <input
-                                type="text"
-                                placeholder="Search by trainer name..."
-                                value={searchTerm}
-                                onChange={(e) => setSearchTerm(e.target.value)}
-                            />
-                        </div>
-                        <div className="filter-box">
-                            <MdFilterList size={20} />
-                            <select onChange={(e) => setFilterTrainer(e.target.value)} value={filterTrainer}>
-                                <option value="">All Trainers</option>
-                                {trainers.map(t => (
-                                    <option key={t._id} value={t.name}>{t.name}</option>
-                                ))}
-                            </select>
-                        </div>
+                </div>
+                <div className="stat-card">
+                    <div className="stat-icon excellent" style={{ color: '#16a34a' }}><MdCheckCircle size={28} /></div>
+                    <div className="stat-info">
+                        <h3>Positive Feedback</h3>
+                        <p>{responses.filter(r => ['Excellent', 'Good'].includes(getOverallRating(r))).length}</p>
                     </div>
+                </div>
+                <div className="stat-card">
+                    <div className="stat-icon poor" style={{ color: '#ef4444' }}><MdCancel size={28} /></div>
+                    <div className="stat-info">
+                        <h3>Critical Feedback</h3>
+                        <p>{responses.filter(r => ['Bad', 'Very Bad'].includes(getOverallRating(r))).length}</p>
+                    </div>
+                </div>
+            </div>
 
-                    <div className="table-wrapper">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Date</th>
-                                    <th>Trainer</th>
-                                    <th>Course</th>
-                                    <th>Rating</th>
-                                    <th className="text-right">Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {loading ? (
-                                    <tr>
-                                        <td colSpan="5">
-                                            <div className="uc-loader-container" style={{ minHeight: '150px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                                                <div className="uc-logo-anim" style={{ fontSize: '2rem', fontWeight: 'bold', color: '#17944d' }}><span>U</span><span>C</span></div>
-                                                <div className="uc-loading-text" style={{ color: '#64748b' }}>Loading Responses...</div>
+            <div className="table-controls">
+                <div className="search-container">
+                    <MdSearch size={22} />
+                    <input
+                        type="text"
+                        placeholder="Search by trainer name..."
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                    />
+                </div>
+                <div className="filter-box">
+                    <MdFilterList size={20} />
+                    <select onChange={(e) => setFilterTrainer(e.target.value)} value={filterTrainer}>
+                        <option value="">All Trainers</option>
+                        {trainers.map(t => (
+                            <option key={t._id} value={t.name}>{t.name}</option>
+                        ))}
+                    </select>
+                </div>
+            </div>
+
+            <div className="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Trainer</th>
+                            <th>Course</th>
+                            <th>Rating</th>
+                            <th className="text-right">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {loading ? (
+                            <tr>
+                                <td colSpan="5">
+                                    <div className="uc-loader-container">
+                                        <div className="uc-logo-anim"><span>U</span><span>C</span></div>
+                                        <div className="uc-loading-text">Loading Responses...</div>
+                                    </div>
+                                </td>
+                            </tr>
+                        ) : filteredResponses.length === 0 ? (
+                            <tr><td colSpan="5" className="text-center">No responses found.</td></tr>
+                        ) : (
+                            filteredResponses.map(res => {
+                                const rating = getOverallRating(res);
+                                return (
+                                    <tr key={res._id}>
+                                        <td className="date-cell">{new Date(res.createdAt).toLocaleDateString()}</td>
+                                        <td>
+                                            <div className="trainer-cell-info">
+                                                {res.trainerEvaluations && res.trainerEvaluations.length > 0 ? (
+                                                    res.trainerEvaluations.map((t, i) => (
+                                                        <div key={i} className="trainer-item">
+                                                            <span className="trainer-name-bold" style={{ fontWeight: '700' }}>{t.trainerName}</span>
+                                                            <span className="trainer-type-small" style={{ fontSize: '0.75rem', color: '#64748b', marginLeft: '5px' }}>({t.trainerType || 'Course Training'})</span>
+                                                        </div>
+                                                    ))
+                                                ) : (
+                                                    <span className="trainer-name-bold" style={{ fontWeight: '700' }}>{res.participantDetails?.trainerName || 'N/A'}</span>
+                                                )}
+                                            </div>
+                                        </td>
+                                        <td className="course-cell">{res.participantDetails?.courseName || 'N/A'}</td>
+                                        <td>
+                                            <span className={`badge rating-${(rating || 'N/A').toString().toLowerCase().replace(/\s+/g, '-')}`}>
+                                                {rating}
+                                            </span>
+                                        </td>
+                                        <td className="text-right">
+                                            <div className="action-group">
+                                                <button className="btn-icon view" onClick={() => setSelectedResponse(res)}>
+                                                    <MdVisibility size={18} />
+                                                </button>
+                                                <button className="btn-icon delete" onClick={() => handleDelete(res._id)}>
+                                                    <MdDelete size={18} />
+                                                </button>
                                             </div>
                                         </td>
                                     </tr>
-                                ) : filteredResponses.length === 0 ? (
-                                    <tr><td colSpan="5" className="text-center">No responses found.</td></tr>
-                                ) : (
-                                    filteredResponses.map(res => {
-                                        const rating = getOverallRating(res);
-                                        return (
-                                            <tr key={res._id}>
-                                                <td className="date-cell">{new Date(res.createdAt).toLocaleDateString()}</td>
-                                                <td>
-                                                    <div className="trainer-cell-info">
-                                                        {res.trainerEvaluations && res.trainerEvaluations.length > 0 ? (
-                                                            res.trainerEvaluations.map((t, i) => (
-                                                                <div key={i} className="trainer-item">
-                                                                    <span className="trainer-name-bold" style={{ fontWeight: '700' }}>{t.trainerName}</span>
-                                                                    <span className="trainer-type-small" style={{ fontSize: '0.75rem', color: '#64748b', marginLeft: '5px' }}>({t.trainerType || 'Course Training'})</span>
-                                                                </div>
-                                                            ))
-                                                        ) : (
-                                                            <span className="trainer-name-bold" style={{ fontWeight: '700' }}>{res.participantDetails?.trainerName || 'N/A'}</span>
-                                                        )}
-                                                    </div>
-                                                </td>
-                                                <td className="course-cell">{res.participantDetails?.courseName || 'N/A'}</td>
-                                                <td>
-                                                    <span className={`badge rating-${(rating || 'N/A').toString().toLowerCase().replace(/\s+/g, '-')}`}>
-                                                        {rating}
-                                                    </span>
-                                                </td>
-                                                <td className="text-right">
-                                                    <div className="action-group" style={{ display: 'flex', gap: '8px', justifyContent: 'flex-end' }}>
-                                                        <button className="btn-icon view" onClick={() => setSelectedResponse(res)} style={{ background: '#f1f5f9', border: 'none', padding: '8px', borderRadius: '8px', cursor: 'pointer' }}>
-                                                            <MdVisibility size={18} />
-                                                        </button>
-                                                        <button className="btn-icon delete" onClick={() => handleDelete(res._id)} style={{ background: '#fee2e2', color: '#ef4444', border: 'none', padding: '8px', borderRadius: '8px', cursor: 'pointer' }}>
-                                                            <MdDelete size={18} />
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        );
-                                    })
-                                )}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+                                );
+                            })
+                        )}
+                    </tbody>
+                </table>
+            </div>
 
-                {selectedResponse && (
-                    <div className="modal-overlay">
-                        <div className="modal-content admin-modal">
-                            <div className="modal-header">
-                                <h2>Feedback Detail</h2>
-                                <button onClick={() => setSelectedResponse(null)} className="close-btn">&times;</button>
-                            </div>
-                            <div className="modal-body-alt">
-                                <section className="response-section">
-                                    <h3>General Info</h3>
-                                    <div className="info-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
-                                        <div className="info-item"><strong>Course:</strong> <span>{selectedResponse.participantDetails?.courseName || 'N/A'}</span></div>
-                                        <div className="info-item"><strong>Batch:</strong> <span>{selectedResponse.participantDetails?.batch || 'N/A'}</span></div>
-                                    </div>
-                                </section>
+            {selectedResponse && (
+                <div className="modal-overlay">
+                    <div className="modal-content admin-modal">
+                        <div className="modal-header">
+                            <h2>Feedback Detail</h2>
+                            <button onClick={() => setSelectedResponse(null)} className="close-btn">&times;</button>
+                        </div>
+                        <div className="modal-body-alt">
+                            <section className="response-section">
+                                <h3>General Info</h3>
+                                <div className="info-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+                                    <div className="info-item"><strong>Course:</strong> <span>{selectedResponse.participantDetails?.courseName || 'N/A'}</span></div>
+                                    <div className="info-item"><strong>Batch:</strong> <span>{selectedResponse.participantDetails?.batch || 'N/A'}</span></div>
+                                </div>
+                            </section>
 
-                                <section className="response-section">
-                                    <h3>Report</h3>
-                                    <div className="sections-display">
-                                        {selectedResponse.trainerEvaluations?.map((evalItem, idx) => (
-                                            <div key={idx} className="response-group-block">
-                                                <h4 className="response-section-title">{evalItem.trainerName} ({evalItem.trainerType})</h4>
-                                                <div className="matrix-display" style={{ background: '#f8fafc', padding: '15px', borderRadius: '12px' }}>
-                                                    {evalItem.ratings && Object.entries(evalItem.ratings).map(([criteria, rating]) => (
-                                                        <div key={criteria} style={{ marginBottom: '8px' }}>
-                                                            <strong>{criteria}:</strong> {rating}
-                                                        </div>
-                                                    ))}
-                                                </div>
+                            <section className="response-section">
+                                <h3>Report</h3>
+                                <div className="sections-display">
+                                    {selectedResponse.trainerEvaluations?.map((evalItem, idx) => (
+                                        <div key={idx} className="response-group-block">
+                                            <h4 className="response-section-title">{evalItem.trainerName} ({evalItem.trainerType})</h4>
+                                            <div className="matrix-display" style={{ background: '#f8fafc', padding: '15px', borderRadius: '12px' }}>
+                                                {evalItem.ratings && Object.entries(evalItem.ratings).map(([criteria, rating]) => (
+                                                    <div key={criteria} style={{ marginBottom: '8px' }}>
+                                                        <strong>{criteria}:</strong> {rating}
+                                                    </div>
+                                                ))}
                                             </div>
-                                        ))}
+                                        </div>
+                                    ))}
 
-                                        {(() => {
-                                            const grouped = (selectedResponse.dynamicAnswers || []).reduce((acc, ans) => {
-                                                const currentQ = questions.find(q => q._id === ans.questionId);
-                                                const section = currentQ ? currentQ.section : (ans.section || 'Other');
-                                                if (!acc[section]) acc[section] = [];
-                                                acc[section].push({ ...ans, section, questionText: currentQ?.questionText || ans.questionText });
-                                                return acc;
-                                            }, {});
+                                    {(() => {
+                                        const grouped = (selectedResponse.dynamicAnswers || []).reduce((acc, ans) => {
+                                            const currentQ = questions.find(q => q._id === ans.questionId);
+                                            const section = currentQ ? currentQ.section : (ans.section || 'Other');
+                                            if (!acc[section]) acc[section] = [];
+                                            acc[section].push({ ...ans, section, questionText: currentQ?.questionText || ans.questionText });
+                                            return acc;
+                                        }, {});
 
-                                            return Object.keys(grouped).map(section => (
-                                                <div key={section} className="response-group-block" style={{ marginTop: '20px' }}>
-                                                    <h4 className="response-section-title" style={{ borderBottom: '2px solid #17944d', paddingBottom: '5px', marginBottom: '15px' }}>{cleanSectionTitle(section)}</h4>
-                                                    {grouped[section].map((ans, idx) => (
-                                                        <div key={idx} style={{ marginBottom: '15px' }}>
-                                                            <label style={{ fontWeight: '600', display: 'block' }}>{ans.questionText}</label>
-                                                            <div style={{ color: '#475569' }}>{renderAnswer(ans)}</div>
-                                                        </div>
-                                                    ))}
-                                                </div>
-                                            ));
-                                        })()}
-                                    </div>
-                                </section>
-                            </div>
-                            <div className="modal-footer-alt" style={{ display: 'flex', justifyContent: 'flex-end', gap: '15px', padding: '20px' }}>
-                                <button onClick={() => setSelectedResponse(null)} style={{ padding: '10px 20px', borderRadius: '10px', border: '1px solid #e2e8f0', background: 'white' }}>Close</button>
-                                <button onClick={() => window.print()} style={{ padding: '10px 20px', borderRadius: '10px', border: 'none', background: '#17944d', color: 'white', display: 'flex', alignItems: 'center', gap: '5px' }}><MdDownload /> Print PDF</button>
-                            </div>
+                                        return Object.keys(grouped).map(section => (
+                                            <div key={section} className="response-group-block" style={{ marginTop: '20px' }}>
+                                                <h4 className="response-section-title" style={{ borderBottom: '2px solid #17944d', paddingBottom: '5px', marginBottom: '15px' }}>{cleanSectionTitle(section)}</h4>
+                                                {grouped[section].map((ans, idx) => (
+                                                    <div key={idx} style={{ marginBottom: '15px' }}>
+                                                        <label style={{ fontWeight: '600', display: 'block' }}>{ans.questionText}</label>
+                                                        <div style={{ color: '#475569' }}>{renderAnswer(ans)}</div>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        ));
+                                    })()}
+                                </div>
+                            </section>
+                        </div>
+                        <div className="modal-footer-alt" style={{ display: 'flex', justifyContent: 'flex-end', gap: '15px', padding: '20px' }}>
+                            <button onClick={() => setSelectedResponse(null)} className="btn-secondary-admin">Close</button>
+                            <button onClick={() => window.print()} className="btn-primary-admin"><MdDownload /> Print PDF</button>
                         </div>
                     </div>
-                )}
-                <style jsx>{`
-                    .badge { padding: 4px 12px; border-radius: 100px; font-size: 0.85rem; font-weight: 600; }
-                    .rating-excellent { background: #dcfce7; color: #166534; }
-                    .rating-good { background: #f0fdf4; color: #15803d; }
-                    .rating-average { background: #fefce8; color: #854d0e; }
-                    .rating-bad { background: #fff1f2; color: #9f1239; }
-                    .rating-very-bad { background: #fee2e2; color: #b91c1c; }
-                    .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; z-index: 3000; }
-                    .modal-content { background: white; width: 90%; max-width: 800px; max-height: 90vh; overflow-y: auto; border-radius: 20px; }
-                    .modal-header { padding: 20px; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; }
-                    .close-btn { background: none; border: none; font-size: 2rem; cursor: pointer; }
-                    .modal-body-alt { padding: 20px; }
-                `}</style>
-            </main>
+                </div>
+            )}
+            <style jsx>{`
+                .badge { padding: 4px 12px; border-radius: 100px; font-size: 0.85rem; font-weight: 600; }
+                .rating-excellent { background: #dcfce7; color: #166534; }
+                .rating-good { background: #f0fdf4; color: #15803d; }
+                .rating-average { background: #fefce8; color: #854d0e; }
+                .rating-bad { background: #fff1f2; color: #9f1239; }
+                .rating-very-bad { background: #fee2e2; color: #b91c1c; }
+                .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; z-index: 3000; }
+                .modal-content { background: white; width: 90%; max-width: 800px; max-height: 90vh; overflow-y: auto; border-radius: 20px; }
+                .modal-header { padding: 20px; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; }
+                .close-btn { background: none; border: none; font-size: 2rem; cursor: pointer; }
+                .modal-body-alt { padding: 20px; }
+            `}</style>
         </div>
     );
 };

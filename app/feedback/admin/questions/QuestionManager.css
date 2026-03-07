@@ -17,21 +17,6 @@
     font-weight: 800;
 }
 
-.btn-primary {
-    background: #17944d;
-    color: white;
-    border: none;
-    padding: 12px 24px;
-    border-radius: 12px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s;
-}
-
-.btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(23, 148, 77, 0.3);
-}
 
 .question-item-card {
     background: #f8fafc;
