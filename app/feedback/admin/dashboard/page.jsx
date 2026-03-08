@@ -17,28 +17,44 @@ const Dashboard = () => {
     const router = useRouter();
 
     useEffect(() => {
+        let isMounted = true;
         const token = localStorage.getItem('token');
         if (!token) {
             router.push('/feedback/admin');
             return;
         }
-        fetchAnalytics(token);
+
+        const runFetch = async () => {
+            // Small delay to ensure hydration is finished before network requests start
+            await new Promise(resolve => setTimeout(resolve, 100));
+            if (isMounted) fetchAnalytics(token, isMounted);
+        };
+
+        runFetch();
+
+        return () => { isMounted = false; };
     }, [router]);
 
-    const fetchAnalytics = async (token) => {
+    const fetchAnalytics = async (token, isMounted = true) => {
+        setLoading(true);
         try {
             const res = await axios.get(`${API_BASE_URL}/api/responses/analytics`, {
-                headers: { Authorization: `Bearer ${token}` }
+                headers: { Authorization: `Bearer ${token}` },
+                timeout: 30000 // Extended timeout for free Render tiers
             });
-            setStats(res.data);
+            if (isMounted) setStats(res.data);
         } catch (err) {
+            if (axios.isCancel(err) || err.code === 'ECONNABORTED' || err.message?.includes('aborted')) {
+                console.log('Analytics fetch aborted or interrupted.');
+                return;
+            }
             console.error(err);
             if (err.response?.status === 401) {
                 localStorage.removeItem('token');
                 router.push('/feedback/admin');
             }
         } finally {
-            setLoading(false);
+            if (isMounted) setLoading(false);
         }
     };
 

@@ -1,13 +1,20 @@
 "use client";
 import React, { useState } from "react";
 import { FaWhatsapp, FaPhoneAlt } from "react-icons/fa";
+import { usePathname } from "next/navigation";
 import "./FloatingWidget.css";
 
 const FloatingWidgets = () => {
   const [hovered, setHovered] = useState(null);
+  const pathname = usePathname();
+
+  // Hide on feedback and its admin pages
+  if (pathname.startsWith('/feedback')) {
+    return null;
+  }
 
   const handleWhatsAppClick = () => {
-    window.open("https://wa.me/919429694123", "_blank"); 
+    window.open("https://wa.me/919429694123", "_blank");
   };
 
   const handleCallClick = () => {

@@ -1,10 +1,9 @@
 'use client';
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "./Footer.css";
-
-import { usePathname } from "next/navigation";
 
 function Footer() {
   const pathname = usePathname();
@@ -13,6 +12,9 @@ function Footer() {
   if (pathname.startsWith('/feedback/admin')) {
     return null;
   }
+
+  const isFeedbackPage = pathname.startsWith('/feedback');
+
   return (
     <footer className="footer">
       <div className="container">
@@ -36,9 +38,11 @@ function Footer() {
               <a href="https://www.youtube.com/channel/UC7ngZ5r2ov-qoXJRjaXJGKA" target="_blank" rel="noopener noreferrer">
                 <i className="fab fa-youtube"></i>
               </a>
-              <a href="https://wa.me/919429694123?text=Hello%20Team%20Urbancode" target="_blank" rel="noopener noreferrer">
-                <i className="fab fa-whatsapp"></i>
-              </a>
+              {!isFeedbackPage && (
+                <a href="https://wa.me/919429694123?text=Hello%20Team%20Urbancode" target="_blank" rel="noopener noreferrer">
+                  <i className="fab fa-whatsapp"></i>
+                </a>
+              )}
             </div>
           </div>
 
