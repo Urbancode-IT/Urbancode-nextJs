@@ -1,11 +1,11 @@
 import { NextResponse } from 'next/server';
-import dbConnect from '../../../lib/dbConnect';
-import Question from '../../../lib/models/Question';
+import dbConnect from '@/lib/dbConnect';
+import Question from '@/lib/models/Question';
 
 // GET all questions
 export async function GET() {
-    await dbConnect();
     try {
+        await dbConnect();
         const questions = await Question.find().sort({ order: 1 });
         return NextResponse.json(questions);
     } catch (err) {
@@ -15,8 +15,8 @@ export async function GET() {
 
 // CREATE new question (requires auth in original - we'll implement a simple head check)
 export async function POST(req) {
-    await dbConnect();
     try {
+        await dbConnect();
         // Simple Auth Simulation (mirroring existing logic)
         const authHeader = req.headers.get('Authorization');
         if (!authHeader || !authHeader.startsWith('Bearer ')) {

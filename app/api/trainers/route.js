@@ -1,10 +1,10 @@
 import { NextResponse } from 'next/server';
-import dbConnect from '../../../lib/dbConnect';
-import Trainer from '../../../lib/models/Trainer';
+import dbConnect from '@/lib/dbConnect';
+import Trainer from '@/lib/models/Trainer';
 
 export async function GET() {
-    await dbConnect();
     try {
+        await dbConnect();
         const trainers = await Trainer.find().sort({ name: 1 });
         return NextResponse.json(trainers);
     } catch (err) {
@@ -13,8 +13,8 @@ export async function GET() {
 }
 
 export async function POST(req) {
-    await dbConnect();
     try {
+        await dbConnect();
         const body = await req.json();
         const trainer = await Trainer.create(body);
         return NextResponse.json(trainer, { status: 201 });

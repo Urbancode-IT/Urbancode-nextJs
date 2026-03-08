@@ -28,7 +28,7 @@ const Responses = () => {
         }
 
         const initFetch = async () => {
-            // Tiny delay to ensure hydration is stable and avoid Turbopack/Next.js hydration aborts
+            // Tiny delay to ensure hydration is stable
             await new Promise(resolve => setTimeout(resolve, 100));
             if (isMounted) fetchData(token, isMounted);
         };
@@ -42,11 +42,9 @@ const Responses = () => {
         setLoading(true);
         try {
             const config = {
-                headers: { Authorization: `Bearer ${token}` },
-                timeout: 30000 // 30 second timeout for waking up free-tier backend
+                headers: { Authorization: `Bearer ${token}` }
             };
 
-            // Sequential fetch instead of Promise.all to prevent "Request aborted" on slow Render free tier
             const respRes = await axios.get(`${API_BASE_URL}/api/responses`, config);
             if (!isMounted) return;
 
@@ -61,10 +59,6 @@ const Responses = () => {
             setTrainers(trainRes.data);
             setQuestions(questRes.data);
         } catch (err) {
-            if (axios.isCancel(err) || err.code === 'ECONNABORTED' || err.message?.includes('aborted')) {
-                console.log('Fetch aborted or timed out, retrying if mounted...');
-                return;
-            }
             console.error(err);
             if (err.response?.status === 401) {
                 localStorage.removeItem('token');
@@ -106,7 +100,7 @@ const Responses = () => {
 
         const ans = res.dynamicAnswers?.find(a => {
             const txt = a.questionText?.toLowerCase();
-            return txt?.includes('overall') || txt?.includes('experience') || txt?.includes('rating') || a.section?.includes('SECTION 2');
+            return txt?.includes('overall') || txt?.includes('experience') || txt?.includes('rating');
         });
         return ans?.value || 'N/A';
     };
@@ -253,14 +247,14 @@ const Responses = () => {
                     <div className="stat-icon excellent" style={{ color: '#16a34a' }}><MdCheckCircle size={28} /></div>
                     <div className="stat-info">
                         <h3>Positive Feedback</h3>
-                        <p>{responses.filter(r => ['Excellent', 'Good'].includes(getOverallRating(r))).length}</p>
+                        <p>{responses.filter(r => ['Excellent', 'Good', 'Exceptional'].includes(getOverallRating(r))).length}</p>
                     </div>
                 </div>
                 <div className="stat-card">
                     <div className="stat-icon poor" style={{ color: '#ef4444' }}><MdCancel size={28} /></div>
                     <div className="stat-info">
                         <h3>Critical Feedback</h3>
-                        <p>{responses.filter(r => ['Bad', 'Very Bad'].includes(getOverallRating(r))).length}</p>
+                        <p>{responses.filter(r => ['Bad', 'Very Bad', 'Poor'].includes(getOverallRating(r))).length}</p>
                     </div>
                 </div>
             </div>
@@ -270,7 +264,7 @@ const Responses = () => {
                     <MdSearch size={22} />
                     <input
                         type="text"
-                        placeholder="Search by trainer name..."
+                        placeholder="Search by trainer or batch..."
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
                     />
@@ -353,12 +347,11 @@ const Responses = () => {
                 </table>
             </div>
 
-
             {selectedResponse && (
                 <div className="modal-overlay">
                     <div className="modal-content admin-modal premium-modal">
                         <div className="modal-header">
-                            <h2 className="modal-title">Anonymous Feedback Detail</h2>
+                            <h2 className="modal-title">Feedback Detail</h2>
                             <button onClick={() => setSelectedResponse(null)} className="close-btn-round">&times;</button>
                         </div>
                         <div className="modal-body-premium">
@@ -378,11 +371,10 @@ const Responses = () => {
 
                             <section className="response-section-premium">
                                 <h3 className="section-label">Performance Report</h3>
-
                                 <div className="feedback-sub-card">
                                     <div className="card-accent-header">
                                         <span className="accent-bar"></span>
-                                        <h4>: Trainer Feedback</h4>
+                                        <h4>Trainer Feedback</h4>
                                     </div>
                                     {selectedResponse.trainerEvaluations?.map((evalItem, idx) => (
                                         <div key={idx} className="trainer-eval-block">
@@ -406,17 +398,15 @@ const Responses = () => {
                                     const seenQuestions = new Set();
                                     const grouped = (selectedResponse.dynamicAnswers || [])
                                         .filter(ans => {
-                                            const currentQ = questions.find(q => q._id === ans.questionId);
-                                            const sectionName = (currentQ ? currentQ.section : (ans.section || '')).toLowerCase();
                                             const qText = (ans.questionText || '').toLowerCase();
-                                            if (sectionName.includes('trainer') || qText.includes('trainer')) return false;
+                                            if (qText.includes('trainer name')) return false;
                                             if (seenQuestions.has(qText)) return false;
                                             seenQuestions.add(qText);
                                             return true;
                                         })
                                         .reduce((acc, ans) => {
                                             const currentQ = questions.find(q => q._id === ans.questionId);
-                                            const section = currentQ ? currentQ.section : (ans.section || 'Other');
+                                            const section = currentQ ? currentQ.section : (ans.section || 'General');
                                             if (!acc[section]) acc[section] = [];
                                             acc[section].push({ ...ans, section, questionText: currentQ?.questionText || ans.questionText });
                                             return acc;
@@ -426,7 +416,7 @@ const Responses = () => {
                                         <div key={section} className="feedback-sub-card dynamic-sub-card">
                                             <div className="card-accent-header">
                                                 <span className="accent-bar"></span>
-                                                <h4>: {cleanSectionTitle(section)}</h4>
+                                                <h4>{cleanSectionTitle(section)}</h4>
                                             </div>
                                             <div className="dynamic-content-grid">
                                                 {grouped[section].map((ans, idx) => (
@@ -452,368 +442,32 @@ const Responses = () => {
                 </div>
             )}
             <style jsx>{`
-                .badge { padding: 4px 12px; border-radius: 100px; font-size: 0.85rem; font-weight: 600; }
-                .rating-excellent { background: #dcfce7; color: #166534; }
-                .rating-good { background: #f0fdf4; color: #15803d; }
-                .rating-average { background: #fefce8; color: #854d0e; }
-                .rating-bad { background: #fff1f2; color: #9f1239; }
-                .rating-very-bad { background: #fee2e2; color: #b91c1c; }
                 .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(15, 23, 42, 0.5); backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; z-index: 3000; }
                 .premium-modal { background: #fff; width: 95%; max-width: 1000px; max-height: 90vh; border-radius: 30px; display: flex; flex-direction: column; box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.25); border: 1px solid #e2e8f0; overflow: hidden; }
                 .modal-header { padding: 30px 40px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #f8fafc; }
-                .modal-title { font-size: 1.35rem; font-weight: 800; color: #1e293b; margin: 0; }
-                .close-btn-round { background: #f1f5f9; border: none; width: 36px; height: 36px; border-radius: 50%; font-size: 1.2rem; color: #64748b; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
-                .close-btn-round:hover { background: #e2e8f0; color: #334155; transform: rotate(90deg); }
-                .modal-body-premium { padding: 30px 40px; overflow-y: auto; flex: 1; display: flex; flex-direction: column; gap: 30px; background: #fff; }
-                .section-label { font-size: 1.15rem; font-weight: 800; color: #1e293b; margin: 0 0 15px 0; }
+                .close-btn-round { background: #f1f5f9; border: none; width: 36px; height: 36px; border-radius: 50%; font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+                .modal-body-premium { padding: 30px 40px; overflow-y: auto; flex: 1; display: flex; flex-direction: column; gap: 30px; }
                 .info-card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; background: #fff; border: 1px solid #f1f5f9; padding: 30px 40px; border-radius: 20px; }
                 .info-pill { display: flex; flex-direction: column; gap: 8px; }
                 .pill-label { font-size: 0.72rem; font-weight: 800; color: #94a3b8; letter-spacing: 0.08em; }
                 .pill-value { font-size: 1.15rem; font-weight: 700; color: #1e293b; }
-                .feedback-sub-card { background: #fff; border: 1px solid #f1f5f9; border-radius: 20px; padding: 30px; margin-bottom: 20px; }
-                .card-accent-header { display: flex; align-items: center; gap: 14px; margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px solid #f8fafc; }
-                .accent-bar { width: 5px; height: 22px; background: #22c55e; border-radius: 10px; }
-                .card-accent-header h4 { font-size: 1.1rem; font-weight: 800; color: #1e293b; margin: 0; }
-                .trainer-eval-block { margin-bottom: 30px; }
-                .trainer-info-row { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
-                .trainer-name-label { font-size: 1.15rem; font-weight: 800; color: #1e293b; }
-                .trainer-type-tag { font-size: 0.75rem; color: #94a3b8; background: #f1f5f9; padding: 4px 12px; border-radius: 8px; font-weight: 600; }
-                .ratings-grid-premium { display: flex; flex-wrap: wrap; gap: 15px; }
-                .rating-item-box { background: #f4f7fa; padding: 14px 22px; border-radius: 12px; display: flex; align-items: center; gap: 8px; font-size: 0.95rem; border: 1px solid #eef2f6; }
-                .rating-criteria { font-weight: 800; color: #1e293b; }
-                .rating-val { color: #475569; font-weight: 500; }
-                .dynamic-qa-item { margin-bottom: 25px; width: 100%; border-bottom: 1px solid #f8fafc; padding-bottom: 15px; }
-                .dynamic-qa-item:last-child { border-bottom: none; }
-                .qa-label-caps { font-size: 0.72rem; font-weight: 800; color: #94a3b8; letter-spacing: 0.08em; display: block; margin-bottom: 12px; }
-                .qa-value-clean { color: #1e293b; font-size: 1.05rem; font-weight: 600; line-height: 1.6; }
-                .qa-value-bold { font-weight: 700; color: #1e293b; }
-                .modal-footer-premium { padding: 25px 40px 35px; display: flex; justify-content: flex-end; align-items: center; gap: 30px; border-top: 1px solid #f8fafc; background: #fff; }
-                .btn-close-text { background: transparent; border: none; color: #64748b; font-weight: 700; cursor: pointer; font-size: 1rem; }
-                .btn-print-premium { background: #17944d; color: white; border: none; padding: 14px 32px; border-radius: 14px; font-weight: 800; display: flex; align-items: center; gap: 10px; cursor: pointer; box-shadow: 0 4px 12px rgba(23, 148, 77, 0.2); }
-                @media (max-width: 768px) {
-                    .info-card-grid { grid-template-columns: 1fr; }
-                    .modal-header, .modal-body-premium, .modal-footer-premium { padding: 20px; }
-                    .premium-modal { width: 98%; border-radius: 20px; }
-                }
-            `}</style>
-        </div>
-    );
-};
-
-export default Responses;
-
-                        </div >
-                        <div className="modal-body-alt">
-                            <section className="response-section">
-                                <h3>General Info</h3>
-                                <div className="info-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
-                                    <div className="info-item"><strong>Course:</strong> <span>{selectedResponse.participantDetails?.courseName || 'N/A'}</span></div>
-                                    <div className="info-item"><strong>Batch:</strong> <span>{selectedResponse.participantDetails?.batch || 'N/A'}</span></div>
-                                </div>
-                            </section>
-
-                            <section className="response-section">
-                                <h3>Report</h3>
-                                <div className="sections-display">
-                                    {selectedResponse.trainerEvaluations?.map((evalItem, idx) => (
-                                        <div key={idx} className="response-group-block">
-                                            <h4 className="response-section-title">{evalItem.trainerName} ({evalItem.trainerType})</h4>
-                                            <div className="matrix-display" style={{ background: '#f8fafc', padding: '15px', borderRadius: '12px' }}>
-                                                {evalItem.ratings && Object.entries(evalItem.ratings).map(([criteria, rating]) => (
-                                                    <div key={criteria} style={{ marginBottom: '8px' }}>
-                                                        <strong>{criteria}:</strong> {rating}
-                                                    </div>
-                                                ))}
-                                            </div>
-                                        </div>
-                                    ))}
-
-                                    {(() => {
-                                        const grouped = (selectedResponse.dynamicAnswers || []).reduce((acc, ans) => {
-                                            const currentQ = questions.find(q => q._id === ans.questionId);
-                                            const section = currentQ ? currentQ.section : (ans.section || 'Other');
-                                            if (!acc[section]) acc[section] = [];
-                                            acc[section].push({ ...ans, section, questionText: currentQ?.questionText || ans.questionText });
-                                            return acc;
-                                        }, {});
-
-                                        return Object.keys(grouped).map(section => (
-                                            <div key={section} className="response-group-block" style={{ marginTop: '20px' }}>
-                                                <h4 className="response-section-title" style={{ borderBottom: '2px solid #17944d', paddingBottom: '5px', marginBottom: '15px' }}>{cleanSectionTitle(section)}</h4>
-                                                {grouped[section].map((ans, idx) => (
-                                                    <div key={idx} style={{ marginBottom: '15px' }}>
-                                                        <label style={{ fontWeight: '600', display: 'block' }}>{ans.questionText}</label>
-                                                        <div style={{ color: '#475569' }}>{renderAnswer(ans)}</div>
-                                                    </div>
-                                                ))}
-                                            </div>
-                                        ));
-                                    })()}
-                                </div>
-                            </section>
-                        </div>
-                        <div className="modal-footer-alt" style={{ display: 'flex', justifyContent: 'flex-end', gap: '15px', padding: '20px' }}>
-                            <button onClick={() => setSelectedResponse(null)} className="btn-secondary-admin">Close</button>
-                            <button onClick={() => window.print()} className="btn-primary-admin"><MdDownload /> Print PDF</button>
-                        </div>
-                    </div >
-                </div >
-            )}
-<style jsx>{`
-                .badge { padding: 4px 12px; border-radius: 100px; font-size: 0.85rem; font-weight: 600; }
-                .rating-excellent { background: #dcfce7; color: #166534; }
+                .btn-print-premium { background: #17944d; color: white; border: none; padding: 14px 32px; border-radius: 14px; font-weight: 800; display: flex; align-items: center; gap: 10px; cursor: pointer; }
+                .rating-excellent, .rating-exceptional { background: #dcfce7; color: #166534; }
                 .rating-good { background: #f0fdf4; color: #15803d; }
                 .rating-average { background: #fefce8; color: #854d0e; }
-                .rating-bad { background: #fff1f2; color: #9f1239; }
-                .rating-very-bad { background: #fee2e2; color: #b91c1c; }
-                .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; z-index: 3000; }
-                .modal-content { background: white; width: 90%; max-width: 800px; max-height: 90vh; overflow-y: auto; border-radius: 20px; }
-                .modal-header { padding: 20px; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; }
-                .close-btn { background: none; border: none; font-size: 2rem; cursor: pointer; }
-                .modal-body-alt { padding: 20px; }
-
-                {selectedResponse && (
-                    <div className="modal-overlay">
-                        <div className="modal-content admin-modal premium-modal">
-                            <div className="modal-header">
-                                <h2 className="modal-title">Anonymous Feedback Detail</h2>
-                                <button onClick={() => setSelectedResponse(null)} className="close-btn-round">&times;</button>
-                            </div>
-                            <div className="modal-body-premium">
-                                {/* General Info Section */}
-                                <section className="response-section-premium">
-                                    <h3 className="section-label">General Info</h3>
-                                    <div className="info-card-grid">
-                                        <div className="info-pill">
-                                            <span className="pill-label">COURSE</span>
-                                            <span className="pill-value">{selectedResponse.participantDetails?.courseName || 'N/A'}</span>
-                                        </div>
-                                        <div className="info-pill">
-                                            <span className="pill-label">BATCH</span>
-                                            <span className="pill-value">{selectedResponse.participantDetails?.batch || 'N/A'}</span>
-                                        </div>
-                                    </div>
-                                </section>
-
-                                {/* Performance Report Section */}
-                                <section className="response-section-premium">
-                                    <h3 className="section-label">Performance Report</h3>
-
-                                    {/* Trainer Feedback Sub-block */}
-                                    <div className="feedback-sub-card">
-                                        <div className="card-accent-header">
-                                            <span className="accent-bar"></span>
-                                            <h4>: Trainer Feedback</h4>
-                                        </div>
-
-                                        {selectedResponse.trainerEvaluations?.map((evalItem, idx) => (
-                                            <div key={idx} className="trainer-eval-block">
-                                                <div className="trainer-info-row">
-                                                    <span className="trainer-name-label">{evalItem.trainerName}</span>
-                                                    <span className="trainer-type-tag">{evalItem.trainerType}</span>
-                                                </div>
-                                                <div className="ratings-grid-premium">
-                                                    {evalItem.ratings && Object.entries(evalItem.ratings).map(([criteria, rating]) => (
-                                                        <div key={criteria} className="rating-item-box">
-                                                            <span className="rating-criteria">{criteria}:</span>
-                                                            <span className="rating-val">{rating}</span>
-                                                        </div>
-                                                    ))}
-                                                </div>
-                                            </div>
-                                        ))}
-                                    </div>
-
-                                    {(() => {
-                                        // Improved strict deduplication and trainer-filtering logic
-                                        const seenQuestions = new Set();
-                                        const grouped = (selectedResponse.dynamicAnswers || [])
-                                            .filter(ans => {
-                                                const currentQ = questions.find(q => q._id === ans.questionId);
-                                                const sectionName = (currentQ ? currentQ.section : (ans.section || '')).toLowerCase();
-                                                const qText = (ans.questionText || '').toLowerCase();
-
-                                                // Strictly exclude trainer-related and duplicates
-                                                if (sectionName.includes('trainer') || qText.includes('trainer')) return false;
-
-                                                // Filter out questions already in the source (like overall)
-                                                if (seenQuestions.has(qText)) return false;
-                                                seenQuestions.add(qText);
-                                                return true;
-                                            })
-                                            .reduce((acc, ans) => {
-                                                const currentQ = questions.find(q => q._id === ans.questionId);
-                                                const section = currentQ ? currentQ.section : (ans.section || 'Other');
-                                                if (!acc[section]) acc[section] = [];
-                                                acc[section].push({ ...ans, section, questionText: currentQ?.questionText || ans.questionText });
-                                                return acc;
-                                            }, {});
-
-                                        return Object.keys(grouped).map(section => (
-                                            <div key={section} className="feedback-sub-card dynamic-sub-card">
-                                                <div className="card-accent-header">
-                                                    <span className="accent-bar"></span>
-                                                    <h4>: {cleanSectionTitle(section)}</h4>
-                                                </div>
-                                                <div className="dynamic-content-grid">
-                                                    {grouped[section].map((ans, idx) => (
-                                                        <div key={idx} className="dynamic-qa-item">
-                                                            <label className="qa-label-caps">{ans.questionText?.toUpperCase()}</label>
-                                                            <div className="qa-value-clean">{renderAnswer(ans)}</div>
-                                                        </div>
-                                                    ))}
-                                                </div>
-                                            </div>
-                                        ));
-                                    })()}
-                                </section>
-                            </div>
-                            <div className="modal-footer-premium">
-                                <button onClick={() => setSelectedResponse(null)} className="btn-close-text">Close</button>
-                                <button onClick={() => window.print()} className="btn-print-premium">
-                                    <MdDownload size={18} />
-                                    <span>Print PDF</span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                )}
-                <style jsx>{`
-    .badge {padding: 4px 12px; border-radius: 100px; font-size: 0.85rem; font-weight: 600; }
-    .rating-excellent {background: #dcfce7; color: #166534; }
-    .rating-good {background: #f0fdf4; color: #15803d; }
-    .rating-average {background: #fefce8; color: #854d0e; }
-    .rating-bad {background: #fff1f2; color: #9f1239; }
-    .rating-very-bad {background: #fee2e2; color: #b91c1c; }
-
-    .modal-overlay {position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(15, 23, 42, 0.5); backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; z-index: 3000; }
-    .premium-modal {
-        background: #fff;
-    width: 95%;
-    max-width: 1000px;
-    max-height: 90vh;
-    border-radius: 30px;
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.25);
-    border: 1px solid #e2e8f0;
-    overflow: hidden;
-                    }
-
-    .modal-header {padding: 30px 40px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #f8fafc; }
-    .modal-title {font - size: 1.35rem; font-weight: 800; color: #1e293b; margin: 0; }
-    .close-btn-round {background: #f1f5f9; border: none; width: 36px; height: 36px; border-radius: 50%; font-size: 1.2rem; color: #64748b; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
-    .close-btn-round:hover {background: #e2e8f0; color: #334155; transform: rotate(90deg); }
-
-    .modal-body-premium {padding: 30px 40px; overflow-y: auto; flex: 1; display: flex; flex-direction: column; gap: 30px; background: #fff; }
-    .section-label {font - size: 1.15rem; font-weight: 800; color: #1e293b; margin: 0 0 15px 0; }
-
-    .info-card-grid {
-        display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    background: #fff;
-    border: 1px solid #f1f5f9;
-    padding: 30px 40px;
-    border-radius: 20px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.01);
-                    }
-    .info-pill {display: flex; flex-direction: column; gap: 8px; }
-    .pill-label {font - size: 0.72rem; font-weight: 800; color: #94a3b8; letter-spacing: 0.08em; }
-    .pill-value {font - size: 1.15rem; font-weight: 700; color: #1e293b; }
-
-    .feedback-sub-card {
-        background: #fff;
-    border: 1px solid #f1f5f9;
-    border-radius: 20px;
-    padding: 30px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.01);
-                    }
-    .card-accent-header {display: flex; align-items: center; gap: 14px; margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px solid #f8fafc; }
-    .accent-bar {width: 5px; height: 22px; background: #22c55e; border-radius: 10px; }
-    .card-accent-header h4 {font - size: 1.1rem; font-weight: 800; color: #1e293b; margin: 0; }
-
-    .trainer-eval-block {margin - bottom: 30px; }
-    .trainer-info-row {display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
-    .trainer-name-label {font - size: 1.15rem; font-weight: 800; color: #1e293b; }
-    .trainer-type-tag {font - size: 0.75rem; color: #94a3b8; background: #f1f5f9; padding: 4px 12px; border-radius: 8px; font-weight: 600; }
-
-    .ratings-grid-premium {display: flex; flex-wrap: wrap; gap: 15px; }
-    .rating-item-box {background: #f4f7fa; padding: 14px 22px; border-radius: 12px; display: flex; align-items: center; gap: 8px; font-size: 0.95rem; border: 1px solid #eef2f6; }
-    .rating-criteria {font - weight: 800; color: #1e293b; }
-    .rating-val {color: #475569; font-weight: 500; }
-
-    .dynamic-qa-item {margin - bottom: 25px; width: 100%; border-bottom: 1px solid #f8fafc; padding-bottom: 15px; }
-    .dynamic-qa-item:last-child {border - bottom: none; }
-    .qa-label-caps {font - size: 0.72rem; font-weight: 800; color: #94a3b8; letter-spacing: 0.08em; display: block; margin-bottom: 12px; }
-    .qa-value-clean {color: #1e293b; font-size: 1.05rem; font-weight: 600; line-height: 1.6; }
-    .qa-value-bold {font - weight: 700; color: #1e293b; }
-
-    .modal-footer-premium {padding: 25px 40px 35px; display: flex; justify-content: flex-end; align-items: center; gap: 30px; border-top: 1px solid #f8fafc; background: #fff; }
-    .btn-close-text {background: transparent; border: none; color: #64748b; font-weight: 700; cursor: pointer; font-size: 1rem; transition: color 0.2s; }
-    .btn-close-text:hover {color: #1e293b; }
-    .btn-print-premium {background: #17944d; color: white; border: none; padding: 14px 32px; border-radius: 14px; font-weight: 800; display: flex; align-items: center; gap: 10px; cursor: pointer; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); box-shadow: 0 4px 12px rgba(23, 148, 77, 0.2); }
-    .btn-print-premium:hover {transform: translateY(-2px); background: #15803d; box-shadow: 0 8px 15px rgba(23, 148, 77, 0.3); }
-
-    @media print {
-        @page {
-        margin: 1cm;
-    size: auto;
-                        }
-
-    /* Hide EVERYTHING except the modal */
-    body * {visibility: hidden !important; }
-    .modal-overlay, .modal-overlay * {visibility: visible !important; }
-
-    .modal-overlay {
-        position: absolute !important;
-    left: 0 !important;
-    top: 0 !important;
-    width: 100% !important;
-    background: white !important;
-    display: block !important;
-    overflow: visible !important;
-    z-index: 9999;
-                        }
-
-    .premium-modal {
-        position: static !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    box-shadow: none !important;
-    border: none !important;
-    display: block !important;
-    overflow: visible !important;
-                        }
-
-    .modal-header, .modal-footer-premium, .close-btn-round {display: none !important; }
-    .modal-body-premium {
-        padding: 0 !important;
-    overflow: visible !important;
-                        }
-
-    .info-card-grid, .feedback-sub-card {
-        border: 1px solid #eee !important;
-    page-break-inside: avoid;
-    background: white !important;
-    margin-bottom: 25px !important;
-    padding: 20px !important;
-                        }
-
-    .accent-bar {background: #17944d !important; -webkit-print-color-adjust: exact; }
-    .qa-label-caps {color: #888 !important; }
-    .rating-item-box {background: #f4f7fa !important; border: 1px solid #eee !important; -webkit-print-color-adjust: exact; }
-                    }
-
-    @media (max-width: 768px) {
-                        .info - card - grid {grid - template - columns: 1fr; }
-    .modal-header, .modal-body-premium, .modal-footer-premium {padding: 20px; }
-    .premium-modal {width: 98%; border-radius: 20px; }
-                    }
-                `}</style>
-        </main >
->>>>>>> 529151a8ee33227e032f751428e246f87f5ab3fd
-        </div >
+                .rating-bad, .rating-poor, .rating-very-bad { background: #fee2e2; color: #b91c1c; }
+                .badge { padding: 4px 12px; border-radius: 100px; font-size: 0.85rem; font-weight: 600; }
+                .stat-card { background: white; border-radius: 20px; padding: 20px; border: 1px solid #f1f5f9; display: flex; align-items: center; gap: 15px; }
+                .stat-icon { width: 50px; height: 50px; border-radius: 15px; display: flex; align-items: center; justify-content: center; }
+                .stat-icon.total { background: #eff6ff; color: #2563eb; }
+                .table-controls { display: flex; gap: 20px; margin: 30px 0; }
+                .search-container { flex: 1; background: white; border: 1px solid #e2e8f0; border-radius: 15px; display: flex; align-items: center; padding: 0 15px; }
+                .search-container input { border: none; padding: 12px; width: 100%; outline: none; }
+                .filter-box { background: white; border: 1px solid #e2e8f0; border-radius: 15px; display: flex; align-items: center; padding: 0 15px; }
+                .filter-box select { border: none; padding: 12px; outline: none; background: transparent; }
+                @media print { .modal-header, .modal-footer-premium, .close-btn-round { display: none !important; } .modal-overlay { position: static; background: none; } .premium-modal { box-shadow: none; border: none; width: 100%; height: auto; display: block; overflow: visible; } }
+            `}</style>
+        </div>
     );
 };
 

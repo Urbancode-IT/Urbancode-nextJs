@@ -1,11 +1,11 @@
 import { NextResponse } from 'next/server';
-import dbConnect from '../../../../lib/dbConnect';
-import Trainer from '../../../../lib/models/Trainer';
+import dbConnect from '@/lib/dbConnect';
+import Trainer from '@/lib/models/Trainer';
 
 export async function PUT(req, { params }) {
-    await dbConnect();
-    const { id } = await params;
     try {
+        await dbConnect();
+        const { id } = await params;
         const body = await req.json();
         const trainer = await Trainer.findByIdAndUpdate(id, body, { new: true });
         return NextResponse.json(trainer);
@@ -15,9 +15,9 @@ export async function PUT(req, { params }) {
 }
 
 export async function DELETE(req, { params }) {
-    await dbConnect();
-    const { id } = await params;
     try {
+        await dbConnect();
+        const { id } = await params;
         await Trainer.findByIdAndDelete(id);
         return NextResponse.json({ message: 'Trainer deleted' });
     } catch (err) {

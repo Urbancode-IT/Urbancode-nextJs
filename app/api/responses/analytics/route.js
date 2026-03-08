@@ -1,11 +1,11 @@
 import { NextResponse } from 'next/server';
-import dbConnect from '../../../../lib/dbConnect';
-import ResponseModel from '../../../../lib/models/Response';
-import Question from '../../../../lib/models/Question';
+import dbConnect from '@/lib/dbConnect';
+import ResponseModel from '@/lib/models/Response';
+import Question from '@/lib/models/Question';
 
 export async function GET() {
-    await dbConnect();
     try {
+        await dbConnect();
         const responses = await ResponseModel.find().sort({ createdAt: -1 });
         const total = responses.length;
 
