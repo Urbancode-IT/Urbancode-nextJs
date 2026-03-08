@@ -9,13 +9,10 @@ import ChatbotWidget from '../ChatbotWidget';
 import FloatingWidgets from '../FloatingWidgets';
 import { FiPhoneCall } from 'react-icons/fi';
 
-import { usePathname } from 'next/navigation';
-
 export default function Navbar() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [careerOpen, setCareerOpen] = useState(false);
-  const pathname = usePathname();
 
   // Hide Navbar for Admin pages
   if (pathname.startsWith('/feedback/admin')) {
