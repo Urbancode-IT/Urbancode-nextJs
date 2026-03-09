@@ -3,11 +3,10 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import Swal from 'sweetalert2';
-import Sidebar from '@/app/components/feedback-admin/Sidebar';
 import { MdAdd, MdEdit, MdDelete, MdPerson, MdCheckCircle, MdCancel, MdSearch } from 'react-icons/md';
 import './TrainerManager.css';
 
-const API_BASE_URL = 'https://feedback-uc-urbancode.onrender.com';
+const API_BASE_URL = '';
 
 const TrainerManager = () => {
     const [trainers, setTrainers] = useState([]);
@@ -134,113 +133,109 @@ const TrainerManager = () => {
     );
 
     return (
-        <div className="admin-layout">
-            <Sidebar />
-            <main className="admin-content">
-                <div className="trainer-manager-container">
-                    <header className="page-header flex-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                        <div className="header-titles">
-                            <h1>Trainer Management</h1>
-                            <p>Manage courses trainers and placement coordinators</p>
-                        </div>
-                        <button className="btn-primary" onClick={handleOpenAdd} style={{ background: '#17944d', color: 'white', border: 'none', padding: '12px 24px', borderRadius: '12px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px', fontWeight: 'bold' }}>
-                            <MdAdd size={24} />
-                            <span>Add New Trainer</span>
-                        </button>
-                    </header>
+        <div className="trainer-manager-container">
+            <header className="page-header flex-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div className="header-titles">
+                    <h1>Trainer Management</h1>
+                    <p>Manage courses trainers and placement coordinators</p>
+                </div>
+                <button className="btn-primary-admin" onClick={handleOpenAdd}>
+                    <MdAdd size={24} />
+                    <span>Add New Trainer</span>
+                </button>
+            </header>
 
-                    <div className="stats-grid">
-                        <div className="stat-card">
-                            <div className="stat-icon total"><MdPerson size={28} /></div>
-                            <div className="stat-info">
-                                <h3>Total Trainers</h3>
-                                <p>{trainers.length}</p>
-                            </div>
-                        </div>
-                        <div className="stat-card">
-                            <div className="stat-icon active" style={{ color: '#16a34a' }}><MdCheckCircle size={28} /></div>
-                            <div className="stat-info">
-                                <h3>Active</h3>
-                                <p>{trainers.filter(t => t.active).length}</p>
-                            </div>
-                        </div>
-                        <div className="stat-card">
-                            <div className="stat-icon inactive" style={{ color: '#ef4444' }}><MdCancel size={28} /></div>
-                            <div className="stat-info">
-                                <h3>Inactive</h3>
-                                <p>{trainers.filter(t => !t.active).length}</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="trainer-controls" style={{ marginBottom: '20px', display: 'flex', gap: '15px' }}>
-                        <div className="search-container" style={{ flex: 1, display: 'flex', alignItems: 'center', background: 'white', padding: '10px 15px', borderRadius: '12px', border: '1px solid #e2e8f0' }}>
-                            <MdSearch size={22} color="#64748b" />
-                            <input
-                                type="text"
-                                style={{ border: 'none', outline: 'none', marginLeft: '10px', width: '100%' }}
-                                placeholder="Search trainers..."
-                                value={searchTerm}
-                                onChange={(e) => setSearchTerm(e.target.value)}
-                            />
-                        </div>
-                    </div>
-
-                    <div className="table-wrapper">
-                        <table className="trainer-table" style={{ width: '100%', background: 'white', borderRadius: '20px', overflow: 'hidden', boxShadow: '0 4px 15px rgba(0,0,0,0.03)' }}>
-                            <thead style={{ background: '#f8fafc' }}>
-                                <tr>
-                                    <th style={{ padding: '15px', textAlign: 'left' }}>Trainer Name</th>
-                                    <th style={{ padding: '15px', textAlign: 'left' }}>Specialization</th>
-                                    <th style={{ padding: '15px', textAlign: 'left' }}>Status</th>
-                                    <th style={{ padding: '15px', textAlign: 'right' }}>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {loading ? (
-                                    <tr>
-                                        <td colSpan="4">
-                                            <div className="uc-loader-container" style={{ minHeight: '150px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                                                <div className="uc-logo-anim" style={{ fontSize: '2.5rem', fontWeight: '900', color: '#17944d', marginBottom: '20px', letterSpacing: '0.1em' }}><span>U</span><span>C</span></div>
-                                                <div className="uc-loading-text">Loading Trainers...</div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                ) : filteredTrainers.length === 0 ? (
-                                    <tr><td colSpan="4" style={{ padding: '20px', textAlign: 'center' }}>No trainers found.</td></tr>
-                                ) : (
-                                    filteredTrainers.map(trainer => (
-                                        <tr key={trainer._id} style={{ borderBottom: '1px solid #f1f5f9' }}>
-                                            <td style={{ padding: '15px' }}>
-                                                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                                                    <div style={{ width: '40px', height: '40px', background: '#f1f5f9', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold', color: '#17944d' }}>{trainer.name.charAt(0)}</div>
-                                                    <span style={{ fontWeight: '600' }}>{trainer.name}</span>
-                                                </div>
-                                            </td>
-                                            <td style={{ padding: '15px' }}>{trainer.specialization || 'General'}</td>
-                                            <td style={{ padding: '15px' }}>
-                                                <button
-                                                    onClick={() => toggleStatus(trainer)}
-                                                    style={{ border: 'none', background: trainer.active ? '#dcfce7' : '#fee2e2', color: trainer.active ? '#166534' : '#9f1239', padding: '6px 12px', borderRadius: '100px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '5px', fontSize: '0.85rem', fontWeight: '600' }}
-                                                >
-                                                    {trainer.active ? <MdCheckCircle /> : <MdCancel />}
-                                                    {trainer.active ? 'Active' : 'Inactive'}
-                                                </button>
-                                            </td>
-                                            <td style={{ padding: '15px', textAlign: 'right' }}>
-                                                <div style={{ display: 'flex', gap: '8px', justifyContent: 'flex-end' }}>
-                                                    <button onClick={() => handleOpenEdit(trainer)} style={{ background: '#f1f5f9', border: 'none', padding: '8px', borderRadius: '8px', cursor: 'pointer' }}><MdEdit size={18} /></button>
-                                                    <button onClick={() => handleDelete(trainer._id)} style={{ background: '#fee2e2', color: '#ef4444', border: 'none', padding: '8px', borderRadius: '8px', cursor: 'pointer' }}><MdDelete size={18} /></button>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    ))
-                                )}
-                            </tbody>
-                        </table>
+            <div className="stats-grid">
+                <div className="stat-card">
+                    <div className="stat-icon total"><MdPerson size={28} /></div>
+                    <div className="stat-info">
+                        <h3>Total Trainers</h3>
+                        <p>{trainers.length}</p>
                     </div>
                 </div>
-            </main>
+                <div className="stat-card">
+                    <div className="stat-icon active" style={{ color: '#16a34a' }}><MdCheckCircle size={28} /></div>
+                    <div className="stat-info">
+                        <h3>Active</h3>
+                        <p>{trainers.filter(t => t.active).length}</p>
+                    </div>
+                </div>
+                <div className="stat-card">
+                    <div className="stat-icon inactive" style={{ color: '#ef4444' }}><MdCancel size={28} /></div>
+                    <div className="stat-info">
+                        <h3>Inactive</h3>
+                        <p>{trainers.filter(t => !t.active).length}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div className="trainer-controls" style={{ marginBottom: '20px', display: 'flex', gap: '15px' }}>
+                <div className="search-container" style={{ flex: 1, display: 'flex', alignItems: 'center', background: 'white', padding: '10px 15px', borderRadius: '12px', border: '1px solid #e2e8f0' }}>
+                    <MdSearch size={22} color="#64748b" />
+                    <input
+                        type="text"
+                        style={{ border: 'none', outline: 'none', marginLeft: '10px', width: '100%' }}
+                        placeholder="Search trainers..."
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                    />
+                </div>
+            </div>
+
+            <div className="table-wrapper">
+                <table className="trainer-table" style={{ width: '100%', background: 'white', borderRadius: '20px', overflow: 'hidden', boxShadow: '0 4px 15px rgba(0,0,0,0.03)' }}>
+                    <thead style={{ background: '#f8fafc' }}>
+                        <tr>
+                            <th style={{ padding: '15px', textAlign: 'left' }}>Trainer Name</th>
+                            <th style={{ padding: '15px', textAlign: 'left' }}>Specialization</th>
+                            <th style={{ padding: '15px', textAlign: 'left' }}>Status</th>
+                            <th style={{ padding: '15px', textAlign: 'right' }}>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {loading ? (
+                            <tr>
+                                <td colSpan="4">
+                                    <div className="uc-loader-container" style={{ minHeight: '150px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                                        <div className="uc-logo-anim" style={{ fontSize: '2.5rem', fontWeight: '900', color: '#17944d', marginBottom: '20px', letterSpacing: '0.1em' }}><span>U</span><span>C</span></div>
+                                        <div className="uc-loading-text">Loading Trainers...</div>
+                                    </div>
+                                </td>
+                            </tr>
+                        ) : filteredTrainers.length === 0 ? (
+                            <tr><td colSpan="4" style={{ padding: '20px', textAlign: 'center' }}>No trainers found.</td></tr>
+                        ) : (
+                            filteredTrainers.map(trainer => (
+                                <tr key={trainer._id} style={{ borderBottom: '1px solid #f1f5f9' }}>
+                                    <td style={{ padding: '15px' }}>
+                                        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                                            <div style={{ width: '40px', height: '40px', background: '#f1f5f9', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold', color: '#17944d' }}>{trainer.name.charAt(0)}</div>
+                                            <span style={{ fontWeight: '600' }}>{trainer.name}</span>
+                                        </div>
+                                    </td>
+                                    <td style={{ padding: '15px' }}>{trainer.specialization || 'General'}</td>
+                                    <td style={{ padding: '15px' }}>
+                                        <button
+                                            onClick={() => toggleStatus(trainer)}
+                                            style={{ border: 'none', background: trainer.active ? '#dcfce7' : '#fee2e2', color: trainer.active ? '#166534' : '#9f1239', padding: '6px 12px', borderRadius: '100px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '5px', fontSize: '0.85rem', fontWeight: '600' }}
+                                        >
+                                            {trainer.active ? <MdCheckCircle /> : <MdCancel />}
+                                            {trainer.active ? 'Active' : 'Inactive'}
+                                        </button>
+                                    </td>
+                                    <td style={{ padding: '15px', textAlign: 'right' }}>
+                                        <div style={{ display: 'flex', gap: '8px', justifyContent: 'flex-end' }}>
+                                            <button onClick={() => handleOpenEdit(trainer)} style={{ background: '#f1f5f9', border: 'none', padding: '8px', borderRadius: '8px', cursor: 'pointer' }}><MdEdit size={18} /></button>
+                                            <button onClick={() => handleDelete(trainer._id)} style={{ background: '#fee2e2', color: '#ef4444', border: 'none', padding: '8px', borderRadius: '8px', cursor: 'pointer' }}><MdDelete size={18} /></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            ))
+                        )}
+                    </tbody>
+                </table>
+            </div>
+
 
             {showModal && (
                 <div className="modal-overlay">

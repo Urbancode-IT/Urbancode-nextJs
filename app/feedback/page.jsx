@@ -9,7 +9,7 @@ import './FeedbackForm.css';
 // API Configuration
 // Using the production backend by default to ensure the form loads.
 // If you want to use a local backend (port 5000), change this URL.
-const API_BASE_URL = 'https://feedback-uc-urbancode.onrender.com';
+const API_BASE_URL = '';
 
 const FeedbackForm = () => {
     const [questions, setQuestions] = useState([]);
