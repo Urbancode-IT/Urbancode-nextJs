@@ -3,6 +3,17 @@
     animation: fadeIn 0.5s ease-out;
 }
 
+.flex-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2.5rem;
+    background: white;
+    padding: 1.5rem 2rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    border: 1px solid #f1f5f9;
+}
 
 .stat-icon.total {
     background: #eff6ff;

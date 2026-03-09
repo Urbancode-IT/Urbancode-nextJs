@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // output: 'export', // Removed to enable dynamic API routes
+  output: 'export', // 👈 this replaces `next export`
   images: {
     unoptimized: true, // needed if you use next/image
   },

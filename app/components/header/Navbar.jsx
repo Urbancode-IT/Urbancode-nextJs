@@ -10,14 +10,9 @@ import FloatingWidgets from '../FloatingWidgets';
 import { FiPhoneCall } from 'react-icons/fi';
 
 export default function Navbar() {
-  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [careerOpen, setCareerOpen] = useState(false);
-
-  // Hide Navbar for Admin pages
-  if (pathname.startsWith('/feedback/admin')) {
-    return null;
-  }
+  const pathname = usePathname();
 
   const handleLinkClick = () => {
     setIsOpen(false);

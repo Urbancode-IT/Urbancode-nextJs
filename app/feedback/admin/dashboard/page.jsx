@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
+import Sidebar from '@/app/components/feedback-admin/Sidebar';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import { MdPeople, MdStar, MdThumbUp } from 'react-icons/md';
@@ -9,7 +10,7 @@ import './Dashboard.css';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement);
 
-const API_BASE_URL = '';
+const API_BASE_URL = 'https://feedback-uc-urbancode.onrender.com';
 
 const Dashboard = () => {
     const [stats, setStats] = useState(null);
@@ -59,9 +60,57 @@ const Dashboard = () => {
     };
 
     if (loading) return (
-        <div className="uc-loader-container">
-            <div className="uc-logo-anim"><span>U</span><span>C</span></div>
-            <div className="uc-loading-text">Loading Dashboard...</div>
+        <div className="admin-layout">
+            <Sidebar />
+            <main className="admin-content">
+                <div className="uc-loader-container">
+                    <style jsx>{`
+                        .uc-loader-container { 
+                            display: flex; 
+                            flex-direction: column; 
+                            align-items: center; 
+                            justify-content: center; 
+                            height: 60vh; 
+                        }
+                        
+                        @keyframes bounce-stagger {
+                            0%, 100% { transform: translateY(0) scale(1); }
+                            50% { transform: translateY(-15px) scale(1.1); }
+                        }
+
+                        @keyframes pulse-soft {
+                            0%, 100% { opacity: 0.5; transform: scale(0.98); }
+                            50% { opacity: 1; transform: scale(1); }
+                        }
+
+                        .uc-logo-anim { 
+                            font-size: 2.5rem; 
+                            font-weight: 900; 
+                            color: #17944d; 
+                            margin-bottom: 20px; 
+                            letter-spacing: 0.1em;
+                        }
+
+                        .uc-logo-anim span {
+                            display: inline-block;
+                            animation: bounce-stagger 1.2s infinite ease-in-out;
+                        }
+
+                        .uc-logo-anim span:nth-child(2) {
+                            animation-delay: 0.15s;
+                        }
+
+                        .uc-loading-text { 
+                            color: #64748b; 
+                            font-weight: 600; 
+                            animation: pulse-soft 2s infinite ease-in-out;
+                            letter-spacing: 0.05em;
+                        }
+                    `}</style>
+                    <div className="uc-logo-anim"><span>U</span><span>C</span></div>
+                    <div className="uc-loading-text">Loading Dashboard...</div>
+                </div>
+            </main>
         </div>
     );
 
@@ -77,90 +126,93 @@ const Dashboard = () => {
     };
 
     return (
-        <>
-            <header className="page-header">
-                <div>
-                    <h1>Dashboard</h1>
-                    <p>Training feedback overview & analytics</p>
-                </div>
-            </header>
+        <div className="admin-layout">
+            <Sidebar />
+            <main className="admin-content">
+                <header className="page-header">
+                    <div>
+                        <h1>Dashboard</h1>
+                        <p>Training feedback overview & analytics</p>
+                    </div>
+                </header>
 
-            <div className="stats-grid">
-                <div className="stat-card">
-                    <div className="stat-icon"><MdPeople /></div>
-                    <div className="stat-info">
-                        <h3>Total Responses</h3>
-                        <p>{stats?.totalResponses}</p>
+                <div className="stats-grid">
+                    <div className="stat-card">
+                        <div className="stat-icon"><MdPeople /></div>
+                        <div className="stat-info">
+                            <h3>Total Responses</h3>
+                            <p>{stats?.totalResponses}</p>
+                        </div>
+                    </div>
+                    <div className="stat-card">
+                        <div className="stat-icon"><MdStar /></div>
+                        <div className="stat-info">
+                            <h3>Average Rating</h3>
+                            <p>{stats?.averageRating}</p>
+                        </div>
+                    </div>
+                    <div className="stat-card">
+                        <div className="stat-icon"><MdThumbUp /></div>
+                        <div className="stat-info">
+                            <h3>Recommendation</h3>
+                            <p>{stats?.recommendationPercentage}%</p>
+                        </div>
                     </div>
                 </div>
-                <div className="stat-card">
-                    <div className="stat-icon"><MdStar /></div>
-                    <div className="stat-info">
-                        <h3>Average Rating</h3>
-                        <p>{stats?.averageRating}</p>
-                    </div>
-                </div>
-                <div className="stat-card">
-                    <div className="stat-icon"><MdThumbUp /></div>
-                    <div className="stat-info">
-                        <h3>Recommendation</h3>
-                        <p>{stats?.recommendationPercentage}%</p>
-                    </div>
-                </div>
-            </div>
 
-            <div className="dashboard-ranks">
-                <div className="rank-card">
-                    <div className="rank-title">🏆 Top Trainer</div>
-                    <div className="rank-name">{stats?.rankings?.topTrainer}</div>
-                    <span className="rank-badge gold">Most Recommended</span>
+                <div className="dashboard-ranks">
+                    <div className="rank-card">
+                        <div className="rank-title">🏆 Top Trainer</div>
+                        <div className="rank-name">{stats?.rankings?.topTrainer}</div>
+                        <span className="rank-badge gold">Most Recommended</span>
+                    </div>
+                    <div className="rank-card">
+                        <div className="rank-title">⭐ Highest Rated</div>
+                        <div className="rank-name">{stats?.rankings?.highestRatedTrainer}</div>
+                        <span className="rank-badge green">Best Average Rating</span>
+                    </div>
+                    <div className="rank-card">
+                        <div className="rank-title">📉 Needs Improvement</div>
+                        <div className="rank-name">{stats?.rankings?.leastFavTrainer}</div>
+                        <span className="rank-badge red">Lowest Average</span>
+                    </div>
+                    <div className="rank-card">
+                        <div className="rank-title">📊 Most Feedback</div>
+                        <div className="rank-name">{stats?.rankings?.mostRatedTrainer}</div>
+                        <span className="rank-badge blue">Most Responses</span>
+                    </div>
                 </div>
-                <div className="rank-card">
-                    <div className="rank-title">⭐ Highest Rated</div>
-                    <div className="rank-name">{stats?.rankings?.highestRatedTrainer}</div>
-                    <span className="rank-badge green">Best Average Rating</span>
-                </div>
-                <div className="rank-card">
-                    <div className="rank-title">📉 Needs Improvement</div>
-                    <div className="rank-name">{stats?.rankings?.leastFavTrainer}</div>
-                    <span className="rank-badge red">Lowest Average</span>
-                </div>
-                <div className="rank-card">
-                    <div className="rank-title">📊 Most Feedback</div>
-                    <div className="rank-name">{stats?.rankings?.mostRatedTrainer}</div>
-                    <span className="rank-badge blue">Most Responses</span>
-                </div>
-            </div>
 
-            <div className="charts-grid">
-                <div className="chart-container">
-                    <h3>Trainer Ratings Overview</h3>
-                    <div className="chart-box">
-                        <Bar
-                            data={trainerData}
-                            options={{
-                                responsive: true,
-                                maintainAspectRatio: false,
-                                plugins: { legend: { display: false } },
-                                scales: { y: { beginAtZero: true, max: 5 } }
-                            }}
-                        />
+                <div className="charts-grid">
+                    <div className="chart-container">
+                        <h3>Trainer Ratings Overview</h3>
+                        <div className="chart-box">
+                            <Bar
+                                data={trainerData}
+                                options={{
+                                    responsive: true,
+                                    maintainAspectRatio: false,
+                                    plugins: { legend: { display: false } },
+                                    scales: { y: { beginAtZero: true, max: 5 } }
+                                }}
+                            />
+                        </div>
+                    </div>
+                    <div className="chart-container">
+                        <h3>Key Improvement Areas</h3>
+                        <div className="insights-list">
+                            {stats?.improvements?.length > 0 ? (
+                                stats.improvements.map((imp, i) => (
+                                    <div key={i} className="insight-item">{imp}</div>
+                                ))
+                            ) : (
+                                <div className="insight-item">No feedback improvements recorded yet.</div>
+                            )}
+                        </div>
                     </div>
                 </div>
-                <div className="chart-container">
-                    <h3>Key Improvement Areas</h3>
-                    <div className="insights-list">
-                        {stats?.improvements?.length > 0 ? (
-                            stats.improvements.map((imp, i) => (
-                                <div key={i} className="insight-item">{imp}</div>
-                            ))
-                        ) : (
-                            <div className="insight-item">No feedback improvements recorded yet.</div>
-                        )}
-                    </div>
-                </div>
-            </div>
-        </>
+            </main>
+        </div>
     );
 };
 

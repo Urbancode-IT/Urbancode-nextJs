@@ -7,12 +7,6 @@ import "./Footer.css";
 
 function Footer() {
   const pathname = usePathname();
-
-  // Hide Footer for Admin pages
-  if (pathname.startsWith('/feedback/admin')) {
-    return null;
-  }
-
   const isFeedbackPage = pathname.startsWith('/feedback');
 
   return (
