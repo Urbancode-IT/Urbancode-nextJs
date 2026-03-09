@@ -80,7 +80,9 @@ const FeedbackForm = () => {
 
     const fetchActiveTrainers = async () => {
         try {
-            const res = await axios.get(`${API_BASE_URL}/api/trainers/active`);
+            const res = await axios.get(`${API_BASE_URL}/api/trainers/active`, {
+                timeout: 30000 // 30 seconds for cold start
+            });
             setTrainers(res.data);
         } catch (err) {
             console.error("Error fetching trainers:", err);
@@ -89,9 +91,12 @@ const FeedbackForm = () => {
 
     const fetchQuestions = async () => {
         try {
-            const res = await axios.get(`${API_BASE_URL}/api/questions`);
+            const res = await axios.get(`${API_BASE_URL}/api/questions`, {
+                timeout: 30000 // 30 seconds for cold start
+            });
             setQuestions(res.data);
         } catch (err) {
+            console.error("Fetch error:", err);
             setError('Failed to load form questions. Please try again later.');
         } finally {
             setLoading(false);

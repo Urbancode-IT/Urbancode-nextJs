@@ -31,7 +31,9 @@ const AdminLogin = () => {
         setLoading(true);
         setError('');
         try {
-            const res = await axios.post(`${API_BASE_URL}/api/auth/login`, credentials);
+            const res = await axios.post(`${API_BASE_URL}/api/auth/login`, credentials, {
+                timeout: 30000
+            });
             localStorage.setItem('token', res.data.token);
             router.push('/feedback/admin/dashboard');
         } catch (err) {

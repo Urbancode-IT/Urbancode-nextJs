@@ -40,7 +40,8 @@ const QuestionManager = () => {
     const fetchQuestions = async (token) => {
         try {
             const res = await axios.get(`${API_BASE_URL}/api/questions`, {
-                headers: { Authorization: `Bearer ${token}` }
+                headers: { Authorization: `Bearer ${token}` },
+                timeout: 30000
             });
             setQuestions(res.data);
         } catch (err) {
@@ -62,11 +63,13 @@ const QuestionManager = () => {
 
             if (isEditing) {
                 await axios.put(`${API_BASE_URL}/api/questions/${currentQuestion._id}`, questionData, {
-                    headers: { Authorization: `Bearer ${token}` }
+                    headers: { Authorization: `Bearer ${token}` },
+                    timeout: 30000
                 });
             } else {
                 await axios.post(`${API_BASE_URL}/api/questions`, questionData, {
-                    headers: { Authorization: `Bearer ${token}` }
+                    headers: { Authorization: `Bearer ${token}` },
+                    timeout: 30000
                 });
             }
             setShowModal(false);

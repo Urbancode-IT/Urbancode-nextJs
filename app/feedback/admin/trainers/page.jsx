@@ -25,7 +25,8 @@ const TrainerManager = () => {
     const fetchTrainers = async (token) => {
         try {
             const res = await axios.get(`${API_BASE_URL}/api/trainers`, {
-                headers: { Authorization: `Bearer ${token}` }
+                headers: { Authorization: `Bearer ${token}` },
+                timeout: 30000
             });
             setTrainers(res.data);
         } catch (err) {
