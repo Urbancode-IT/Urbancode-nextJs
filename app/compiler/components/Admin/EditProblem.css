@@ -8,7 +8,9 @@
     margin: 0 auto;
     padding: 40px;
     background: #f8fafc;
+    background: #f8fafc;
     min-height: 100vh;
+    font-family: 'Inter', sans-serif;
 }
 
 .edit-problem-header {
@@ -21,8 +23,8 @@
 .edit-problem-header h1 {
     margin: 0;
     color: #0f172a;
-    font-size: 2.25rem;
-    font-weight: 800;
+    font-weight: 600;
+    color: #444;
 }
 
 .btn-back {
