@@ -127,7 +127,8 @@ const ProblemsTopics = () => {
                         };
                         return {
                             ...topic,
-                            ...meta
+                            ...meta,
+                            solvedCount: 0 // Default
                         };
                     });
 
@@ -141,7 +142,22 @@ const ProblemsTopics = () => {
                         return indexA - indexB;
                     });
 
-                    setTopics(mergedTopics.filter(t => t.id !== 'sqlserver'));
+                    const filtered = mergedTopics.filter(t => t.id !== 'sqlserver');
+                    setTopics(filtered);
+
+                    // Fetch solved counts in background
+                    const topicsWithProgress = await Promise.all(filtered.map(async (topic) => {
+                        try {
+                            const progressRes = await problemsApi.getSolvedCount('default-user', topic.id);
+                            return {
+                                ...topic,
+                                solvedCount: progressRes.success ? progressRes.solvedCount : 0
+                            };
+                        } catch (err) {
+                            return topic;
+                        }
+                    }));
+                    setTopics(topicsWithProgress);
                 }
             } catch (err) {
                 console.error('Error fetching topics:', err);
@@ -178,67 +194,74 @@ const ProblemsTopics = () => {
                     initial="hidden"
                     animate="visible"
                 >
-                    {topics.map((topic) => (
-                        <motion.div
-                            key={topic.id}
-                            className="problems-topic-card"
-                            onClick={() => handleTopicClick(topic.id)}
-                            variants={cardVariants}
-                            whileHover="hover"
-                            whileTap="tap"
-                        >
-                            <div
-                                className="topic-image-container"
-                                style={{ background: topic.gradient }}
+                    {topics.map((topic) => {
+                        const progress = topic.totalProblems > 0
+                            ? Math.round((topic.solvedCount / topic.totalProblems) * 100)
+                            : 0;
+
+                        return (
+                            <motion.div
+                                key={topic.id}
+                                className="problems-topic-card"
+                                onClick={() => handleTopicClick(topic.id)}
+                                variants={cardVariants}
+                                whileHover="hover"
+                                whileTap="tap"
                             >
-                                {failedImages[topic.id] ? (
-                                    <div className="topic-fallback">
-                                        <div className="fallback-icon">
-                                            {topic.icon}
-                                        </div>
-                                    </div>
-                                ) : (
-                                    <>
-                                        {!loadedImages[topic.id] && (
-                                            <div className="topic-fallback pulse-animation">
-                                                <div className="fallback-icon">
-                                                    {topic.icon}
-                                                </div>
+                                <div
+                                    className="topic-image-container"
+                                    style={{ background: topic.gradient }}
+                                >
+                                    {failedImages[topic.id] ? (
+                                        <div className="topic-fallback">
+                                            <div className="fallback-icon">
+                                                {topic.icon}
                                             </div>
-                                        )}
-                                        {topic.imageUrl &&
-                                        <img
-                                            src={topic.imageUrl}
-                                            alt={topic.title}
-                                            className={loadedImages[topic.id] ? 'is-loaded' : 'is-loading'}
-                                            onError={() => handleImageError(topic.id)}
-                                            onLoad={() => handleImageLoad(topic.id)}
-                                        />}
-                                    </>
-                                )}
-                            </div>
-                            <div className="topic-content">
-                                <h3>{topic.title}</h3>
-                                <p className="topic-description">{topic.description}</p>
-                                <div className="topic-footer">
-                                    <div className="topic-badge">
-                                        {topic.totalProblems} Problems
-                                    </div>
-                                    {['python', 'sql', 'javascript', 'css', 'react', 'html', 'java', 'c++', 'angular'].includes(topic.id) && (
-                                        <button
-                                            className="take-quiz-btn"
-                                            onClick={(e) => {
-                                                e.stopPropagation();
-                                                navigate(`/quiz/${topic.id}/beginner`);
-                                            }}
-                                        >
-                                            <FaPencilAlt /> Quiz
-                                        </button>
+                                        </div>
+                                    ) : (
+                                        <>
+                                            {!loadedImages[topic.id] && (
+                                                <div className="topic-fallback pulse-animation">
+                                                    <div className="fallback-icon">
+                                                        {topic.icon}
+                                                    </div>
+                                                </div>
+                                            )}
+                                            {topic.imageUrl &&
+                                                <img
+                                                    src={topic.imageUrl}
+                                                    alt={topic.title}
+                                                    className={loadedImages[topic.id] ? 'is-loaded' : 'is-loading'}
+                                                    onError={() => handleImageError(topic.id)}
+                                                    onLoad={() => handleImageLoad(topic.id)}
+                                                />}
+                                        </>
                                     )}
                                 </div>
-                            </div>
-                        </motion.div>
-                    ))}
+                                <div className="topic-content">
+                                    <h3>{topic.title}</h3>
+                                    <p className="topic-description">{topic.description}</p>
+
+                                    <div className="topic-footer">
+                                        <div className="topic-badge">
+                                            {topic.solvedCount} / {topic.totalProblems} Solved
+                                        </div>
+                                        {['python', 'sql', 'javascript', 'css', 'react', 'html', 'java', 'c++', 'angular'].includes(topic.id) && (
+                                            <button
+                                                className="take-quiz-btn"
+                                                onClick={(e) => {
+                                                    e.stopPropagation();
+                                                    navigate(`/quiz/${topic.id}/beginner`);
+                                                }}
+                                            >
+                                                <FaPencilAlt /> Quiz
+                                            </button>
+                                        )}
+                                    </div>
+                                </div>
+                            </motion.div>
+                        );
+                    })}
                 </motion.div>
             </div>
         </div>

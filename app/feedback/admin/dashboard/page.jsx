@@ -64,49 +64,7 @@ const Dashboard = () => {
             <Sidebar />
             <main className="admin-content">
                 <div className="uc-loader-container">
-                    <style jsx>{`
-                        .uc-loader-container { 
-                            display: flex; 
-                            flex-direction: column; 
-                            align-items: center; 
-                            justify-content: center; 
-                            height: 60vh; 
-                        }
-                        
-                        @keyframes bounce-stagger {
-                            0%, 100% { transform: translateY(0) scale(1); }
-                            50% { transform: translateY(-15px) scale(1.1); }
-                        }
 
-                        @keyframes pulse-soft {
-                            0%, 100% { opacity: 0.5; transform: scale(0.98); }
-                            50% { opacity: 1; transform: scale(1); }
-                        }
-
-                        .uc-logo-anim { 
-                            font-size: 2.5rem; 
-                            font-weight: 900; 
-                            color: #17944d; 
-                            margin-bottom: 20px; 
-                            letter-spacing: 0.1em;
-                        }
-
-                        .uc-logo-anim span {
-                            display: inline-block;
-                            animation: bounce-stagger 1.2s infinite ease-in-out;
-                        }
-
-                        .uc-logo-anim span:nth-child(2) {
-                            animation-delay: 0.15s;
-                        }
-
-                        .uc-loading-text { 
-                            color: #64748b; 
-                            font-weight: 600; 
-                            animation: pulse-soft 2s infinite ease-in-out;
-                            letter-spacing: 0.05em;
-                        }
-                    `}</style>
                     <div className="uc-logo-anim"><span>U</span><span>C</span></div>
                     <div className="uc-loading-text">Loading Dashboard...</div>
                 </div>

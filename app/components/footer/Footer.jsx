@@ -9,6 +9,8 @@ function Footer() {
   const pathname = usePathname();
   const isFeedbackPage = pathname.startsWith('/feedback');
 
+  if (isFeedbackPage) return null;
+
   return (
     <footer className="footer">
       <div className="container">

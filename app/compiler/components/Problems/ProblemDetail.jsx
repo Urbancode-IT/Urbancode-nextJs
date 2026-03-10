@@ -12,7 +12,11 @@ import {
     FaCode,
     FaCheckCircle,
     FaInfoCircle,
-    FaExclamationCircle
+    FaExclamationCircle,
+    FaClock,
+    FaLayerGroup,
+    FaLink,
+    FaChevronRight
 } from 'react-icons/fa';
 import { problemsApi, progressApi } from '../../services/api';
 import { executeCode, sqlDatabase, getPyodide } from '../../utils/codeExecutor';
@@ -34,6 +38,8 @@ const ProblemDetail = () => {
     const [sqlDialect, setSqlDialect] = useState('sql');
     const [isAuthenticated, setIsAuthenticated] = useState(sessionStorage.getItem('adminAuth') === 'true');
     const [showInputModal, setShowInputModal] = useState(false);
+    const [activeTab, setActiveTab] = useState('description');
+    const [relatedProblems, setRelatedProblems] = useState([]);
 
     useEffect(() => {
         if (topic === 'python') {
@@ -63,6 +69,12 @@ const ProblemDetail = () => {
                     } else {
                         setCode(response.data.starterCode);
                     }
+                }
+
+                // Fetch related problems in the same topic
+                const relResponse = await problemsApi.getProblemsByTopic(topic);
+                if (relResponse.success && relResponse.data) {
+                    setRelatedProblems(relResponse.data.filter(p => (p._id || p.id).toString() !== problemId).slice(0, 4));
                 }
             } catch (err) {
                 console.error('Error fetching problem:', err);
@@ -567,35 +579,153 @@ const ProblemDetail = () => {
                         </div>
                     </div>
 
-                    <div className="problem-description">
-                        <h3><FaInfoCircle /> Description</h3>
-                        <div className="description-text">
-                            {problem.description.split('\n').map((line, i) => <p key={i}>{line}</p>)}
-                        </div>
+                    <div className="problem-tabs-nav">
+                        <button
+                            className={`tab-btn ${activeTab === 'description' ? 'active' : ''}`}
+                            onClick={() => setActiveTab('description')}
+                        >
+                            Description
+                        </button>
+                        <button
+                            className={`tab-btn ${activeTab === 'theory' ? 'active' : ''}`}
+                            onClick={() => setActiveTab('theory')}
+                        >
+                            Theory & Logic
+                        </button>
+                        <button
+                            className={`tab-btn ${activeTab === 'verification' ? 'active' : ''}`}
+                            onClick={() => setActiveTab('verification')}
+                        >
+                            Verification
+                        </button>
                     </div>
 
-                    {relevantTables.length > 0 && (
-                        <div className="question-tables-section">
-                            <h3><FaTerminal /> Required Tables</h3>
-                            {relevantTables.map((table, idx) => (
-                                <div key={idx} className="question-table-wrapper">
-                                    <h4>{table.name}</h4>
-                                    <div className="table-scroll-container">
-                                        <table className="question-table">
-                                            <thead>
-                                                <tr>{table.columns.map(col => <th key={col}>{col}</th>)}</tr>
-                                            </thead>
-                                            <tbody>
-                                                {table.data.map((row, i) => (
-                                                    <tr key={i}>
-                                                        {table.columns.map(col => <td key={col}>{row[col]}</td>)}
-                                                    </tr>
-                                                ))}
-                                            </tbody>
-                                        </table>
-                                    </div>
+                    <div className="tab-content-area">
+                        {activeTab === 'description' && (
+                            <motion.div
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                className="problem-description"
+                            >
+                                <h3><FaInfoCircle /> Description</h3>
+                                <div className="description-text">
+                                    {problem.description.split('\n').map((line, i) => <p key={i}>{line}</p>)}
                                 </div>
-                            ))}
+
+                                {relevantTables.length > 0 && (
+                                    <div className="question-tables-section">
+                                        <h3><FaTerminal /> Required Tables</h3>
+                                        {relevantTables.map((table, idx) => (
+                                            <div key={idx} className="question-table-wrapper">
+                                                <h4>{table.name}</h4>
+                                                <div className="table-scroll-container">
+                                                    <table className="question-table">
+                                                        <thead>
+                                                            <tr>{table.columns.map(col => <th key={col}>{col}</th>)}</tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            {table.data.map((row, i) => (
+                                                                <tr key={i}>
+                                                                    {table.columns.map(col => <td key={col}>{row[col]}</td>)}
+                                                                </tr>
+                                                            ))}
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                )}
+                            </motion.div>
+                        )}
+
+                        {activeTab === 'theory' && (
+                            <motion.div
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                className="problem-theory"
+                            >
+                                <h3><FaCode /> Theory & Logic</h3>
+                                <div className="theory-text">
+                                    {problem.theory ? (
+                                        problem.theory.split('\n').map((line, i) => <p key={i}>{line}</p>)
+                                    ) : (
+                                        <p className="no-theory">No theory documentation available for this problem yet. Logic implementation is straightforward based on the description.</p>
+                                    )}
+                                </div>
+
+                                {(problem.timeComplexity || problem.spaceComplexity) && (
+                                    <div className="complexity-container">
+                                        {problem.timeComplexity && (
+                                            <div className="complexity-card">
+                                                <FaClock className="complexity-icon" />
+                                                <div className="complexity-info">
+                                                    <h4>Time Complexity</h4>
+                                                    <div className="complexity-value">{problem.timeComplexity}</div>
+                                                </div>
+                                            </div>
+                                        )}
+                                        {problem.spaceComplexity && (
+                                            <div className="complexity-card">
+                                                <FaLayerGroup className="complexity-icon" />
+                                                <div className="complexity-info">
+                                                    <h4>Space Complexity</h4>
+                                                    <div className="complexity-value">{problem.spaceComplexity}</div>
+                                                </div>
+                                            </div>
+                                        )}
+                                    </div>
+                                )}
+                            </motion.div>
+                        )}
+
+                        {activeTab === 'verification' && (
+                            <motion.div
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                className="problem-verification"
+                            >
+                                <h3><FaCheck /> Verification Steps</h3>
+                                <div className="verification-text">
+                                    <p>Your solution will be verified against the following criteria:</p>
+                                    <ul>
+                                        <li>Correct output for the provided problem statement.</li>
+                                        <li>Handling of edge cases and null values (if applicable).</li>
+                                        <li>Optimal logic and syntax correctness.</li>
+                                    </ul>
+                                    {problem.testCases && problem.testCases.length > 0 && (
+                                        <div className="test-cases-preview">
+                                            <h4>Sample Test Scenarios:</h4>
+                                            {problem.testCases.map((tc, i) => (
+                                                <div key={i} className="test-preview-item">
+                                                    <span className="case-label">Case {i + 1}:</span>
+                                                    <span className="case-input">Input: {tc.input || 'Default'}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    )}
+                                </div>
+                            </motion.div>
+                        )}
+                    </div>
+
+                    {relatedProblems.length > 0 && (
+                        <div className="related-problems-section">
+                            <h4><FaLink /> You might also like</h4>
+                            <div className="related-list">
+                                {relatedProblems.map(p => (
+                                    <div
+                                        key={p._id || p.id}
+                                        className="related-item"
+                                        onClick={() => navigate(`/problems/${topic}/${p._id || p.id}`)}
+                                    >
+                                        <span className="related-title">{p.title}</span>
+                                        <span className={`related-diff diff-${p.difficulty}`}>
+                                            {p.difficulty === 1 ? 'Easy' : p.difficulty === 2 ? 'Average' : 'Tough'}
+                                        </span>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                     )}
                 </motion.div>

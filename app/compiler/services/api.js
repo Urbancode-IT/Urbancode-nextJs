@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { quizData, getAllTopics as getLocalTopics, getQuizByTopicAndLevel as getLocalQuiz } from '../data/quizData';
+import { problemsData as getLocalProblemsData } from '../data/problemsData';
 
 
 const API_BASE_URL = (typeof process !== 'undefined' && process.env.NEXT_PUBLIC_API_URL) || 'https://urbancode-nextjs.onrender.com/api' || 'http://localhost:5001/api';
@@ -36,12 +37,53 @@ export const problemsApi = {
         }
     },
     getProblemsByTopic: async (topic) => {
-        const response = await api.get(`/problems/topic/${encodeURIComponent(topic)}`);
-        return response.data;
+        try {
+            const response = await api.get(`/problems/topic/${encodeURIComponent(topic)}`);
+            if (response.data && response.data.success && response.data.data?.length > 0) {
+                return response.data;
+            }
+            throw new Error('No data from backend');
+        } catch (err) {
+            console.warn(`Backend unavailable for topic ${topic}, using local data.`);
+            const localTopicData = getLocalProblemsData[topic.toLowerCase()];
+            return {
+                success: true,
+                data: localTopicData ? localTopicData.problems : []
+            };
+        }
     },
     getProblemById: async (id) => {
-        const response = await api.get(`/problems/${id}`);
-        return response.data;
+        try {
+            const response = await api.get(`/problems/${id}`);
+            if (response.data && response.data.success) {
+                // If backend problem doesn't have theory, try to find it in local data by ID or TITLE
+                if (!response.data.data.theory) {
+                    const backendTitle = response.data.data.title;
+                    for (const topic in getLocalProblemsData) {
+                        const localProb = getLocalProblemsData[topic].problems.find(p =>
+                            p.id.toString() === id.toString() ||
+                            p._id === id ||
+                            (backendTitle && p.title.toLowerCase() === backendTitle.toLowerCase())
+                        );
+                        if (localProb && localProb.theory) {
+                            response.data.data.theory = localProb.theory;
+                            break;
+                        }
+                    }
+                }
+                return response.data;
+            }
+            throw new Error('Failed to get problem from backend');
+        } catch (err) {
+            console.warn(`Backend unavailable for problem ${id}, searching in local data fallback.`);
+            for (const topic in getLocalProblemsData) {
+                const localProb = getLocalProblemsData[topic].problems.find(p => p.id.toString() === id.toString() || p._id === id);
+                if (localProb) {
+                    return { success: true, data: localProb };
+                }
+            }
+            return { success: false, message: 'Problem not found' };
+        }
     },
     createProblem: async (problemData) => {
         const response = await api.post('/problems', problemData);

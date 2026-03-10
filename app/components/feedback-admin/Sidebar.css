@@ -2,13 +2,9 @@
 .admin-layout {
     display: flex;
     position: relative;
-    margin-top: 71px;
-    /* Space for the fixed global navbar */
-    height: calc(100vh - 71px);
-    /* Fixed height to match viewport minus navbar */
+    height: 100vh;
     background: #f8fafc;
     overflow: hidden;
-    /* Prevent the page itself from scrolling */
 }
 
 .admin-content {
@@ -33,12 +29,8 @@
 @media (max-width: 768px) {
     .admin-layout {
         margin-top: 0;
-        padding-top: 71px;
-        /* Maintain space for navbar on mobile */
         height: auto;
-        /* Allow flexibility on mobile */
         overflow: visible;
-        /* Let the page scroll on mobile */
     }
 
     .admin-content {
@@ -47,14 +39,22 @@
         overflow: visible;
     }
 
-    .sidebar {
+    .sidebar-toggle {
         position: fixed;
-        /* Revert to fixed for overlay on smaller screens */
-        top: 0;
-        height: 100vh;
-        z-index: 2000;
-        transform: translateX(-100%);
-        width: 280px;
+        top: 15px;
+        right: 1.25rem;
+        z-index: 2100;
+        background: #0f172a;
+        width: 44px;
+        height: 44px;
+        border: none;
+        border-radius: 12px;
+        color: white;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        display: flex;
     }
 }
 
@@ -68,19 +68,14 @@
     background: #0f172a;
     color: white;
     position: sticky;
-    /* Changed from fixed to sticky */
-    top: 71px;
-    /* Align with bottom of fixed navbar */
-    height: calc(100vh - 71px);
-    /* Fits exactly between navbar and bottom/footer */
+    top: 0;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     z-index: 900;
-    /* Lower than the global navbar (1000) */
     box-shadow: 4px 0 20px rgba(0, 0, 0, 0.2);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     overflow-y: auto;
-    /* Internal scrolling if content overflows */
 }
 
 /* Custom scrollbar for sidebar */

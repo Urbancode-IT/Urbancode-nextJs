@@ -19,6 +19,7 @@ const EditProblem = () => {
         starterCode: '',
         solution: '',
         hints: '',
+        theory: '',
         testCases: []
     });
 
@@ -42,6 +43,9 @@ const EditProblem = () => {
                         starterCode: data.starterCode || '',
                         solution: data.solution || '',
                         hints: Array.isArray(data.hints) ? data.hints.join('\n') : '',
+                        theory: data.theory || '',
+                        timeComplexity: data.timeComplexity || '',
+                        spaceComplexity: data.spaceComplexity || '',
                         testCases: data.testCases || []
                     });
                 } else {
@@ -246,7 +250,6 @@ const EditProblem = () => {
                         placeholder="Complete solution code"
                     />
                 </div>
-
                 <div className="form-group">
                     <label>Hints (one per line)</label>
                     <textarea
@@ -255,6 +258,37 @@ const EditProblem = () => {
                         onChange={(e) => setProblem({ ...problem, hints: e.target.value })}
                         placeholder="Hint 1&#10;Hint 2&#10;Hint 3"
                     />
+                </div>
+
+                <div className="form-group">
+                    <label>Theory & Logic (Documentation)</label>
+                    <textarea
+                        rows="6"
+                        value={problem.theory}
+                        onChange={(e) => setProblem({ ...problem, theory: e.target.value })}
+                        placeholder="Explain the underlying logic and steps to solve the problem..."
+                    />
+                </div>
+
+                <div className="form-row complexity-fields" style={{ display: 'flex', gap: '20px' }}>
+                    <div className="form-group" style={{ flex: 1 }}>
+                        <label>Time Complexity (e.g. O(n))</label>
+                        <input
+                            type="text"
+                            value={problem.timeComplexity}
+                            onChange={(e) => setProblem({ ...problem, timeComplexity: e.target.value })}
+                            placeholder="O(n)"
+                        />
+                    </div>
+                    <div className="form-group" style={{ flex: 1 }}>
+                        <label>Space Complexity (e.g. O(1))</label>
+                        <input
+                            type="text"
+                            value={problem.spaceComplexity}
+                            onChange={(e) => setProblem({ ...problem, spaceComplexity: e.target.value })}
+                            placeholder="O(1)"
+                        />
+                    </div>
                 </div>
 
                 {/* Test Cases Section */}
@@ -320,8 +354,8 @@ const EditProblem = () => {
                         <FaSave /> Save Changes
                     </button>
                 </div>
-            </form>
-        </div>
+            </form >
+        </div >
     );
 };
 

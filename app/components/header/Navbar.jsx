@@ -34,6 +34,8 @@ export default function Navbar() {
 
   const isFeedbackPage = pathname.startsWith('/feedback');
 
+  if (isFeedbackPage) return null;
+
   return (
     <>
       <nav className={`navbar ${isOpen ? 'menu-open' : ''}`}>

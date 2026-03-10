@@ -33,7 +33,8 @@ SELECT * FROM pets`,
                     }
                 ],
                 solution: `SELECT * FROM pets WHERE pet_type = 'Dog' AND age > 3;`,
-                hints: ["Use WHERE clause to filter", "Combine conditions with AND"]
+                hints: ["Use WHERE clause to filter", "Combine conditions with AND"],
+                theory: "To solve this problem, you need to filter rows based on two criteria:\n1. The pet type must be 'Dog'.\n2. The age must be greater than 3.\n\nIn SQL, the WHERE clause is used to filter records. You can combine multiple conditions using the AND operator. Ensure you use single quotes for string literals like 'Dog'."
             },
             {
                 id: 2,
@@ -44,7 +45,8 @@ SELECT * FROM pets`,
                 starterCode: `-- Write your SQL query here
 SELECT * FROM customers`,
                 solution: `SELECT * FROM customers WHERE total_purchases > 1000;`,
-                hints: ["Use WHERE clause"]
+                hints: ["Use WHERE clause"],
+                theory: "This problem focuses on simple numerical comparison in SQL.\n\nLogic:\n1. Use the 'WHERE' clause to evaluate each row.\n2. Compare the 'total_purchases' column against the value 1000 using the greater-than (>) operator.\n3. The database engine will scan the table and return only those rows where the condition evaluates to TRUE."
             },
             {
                 id: 3,
@@ -63,7 +65,8 @@ Write a query to select all employees from the 'IT' department ordered by salary
                 starterCode: `-- Write your SQL query here
 SELECT * FROM employees`,
                 solution: `SELECT * FROM employees WHERE department = 'IT' ORDER BY salary DESC;`,
-                hints: ["Filter by department", "Use ORDER BY for sorting"]
+                hints: ["Filter by department", "Use ORDER BY for sorting"],
+                theory: "Managing lists often requires both filtering and sorting.\n\nLogic:\n1. **Filtering**: Use `WHERE department = 'IT'` to isolate specific employees.\n2. **Sorting**: Use `ORDER BY salary DESC` to display the highest earners first.\n3. Note: In SQL, 'DESC' stands for Descending (highest to lowest), while 'ASC' is Ascending (lowest to highest)."
             },
             {
                 id: 4,
@@ -112,7 +115,8 @@ Write a query to find all students in grade 10 or above with a GPA greater than 
                 starterCode: `-- Write your SQL query here
 SELECT * FROM students`,
                 solution: `SELECT * FROM students WHERE grade_level >= 10 AND gpa > 3.5;`,
-                hints: ["Use >= for grade level", "Combine conditions with AND"]
+                hints: ["Use >= for grade level", "Combine conditions with AND"],
+                theory: "This problem involves filtering based on a range and a specific threshold.\n\nLogic:\n1. Use `grade_level >= 10` to include grade 10, 11, and 12.\n2. Use `gpa > 3.5` for academic excellence.\n3. Combine these with `AND` to ensure only students meeting both criteria are returned."
             },
             {
                 id: 6,
@@ -131,7 +135,8 @@ Write a query to select all 'VIP' members from 'Mumbai' who have made purchases 
                 starterCode: `-- Write your SQL query here
 SELECT * FROM customers`,
                 solution: `SELECT * FROM customers WHERE membership_type = 'VIP' AND city = 'Mumbai' AND total_purchases > 50000;`,
-                hints: ["Filter by three conditions", "Use AND to combine"]
+                hints: ["Filter by three conditions", "Use AND to combine"],
+                theory: "Multi-condition filtering is a common business requirement.\n\nLogic:\n1. Use `membership_type = 'VIP'` for high-value status.\n2. Use `city = 'Mumbai'` for regional targeting.\n3. Use `total_purchases > 50000` for sales volume.\n4. Join all three with `AND` to find the exact subset of customers meeting every requirement."
             },
             {
                 id: 7,
@@ -150,7 +155,8 @@ Write a query to count the total number of orders placed.`,
                 starterCode: `-- Write your SQL query here
 SELECT COUNT(*) FROM orders`,
                 solution: `SELECT COUNT(*) as total_orders FROM orders;`,
-                hints: ["Use COUNT(*) function", "Give it an alias"]
+                hints: ["Use COUNT(*) function", "Give it an alias"],
+                theory: "Counting records is the most fundamental aggregate operation.\n\nLogic:\n1. The `COUNT(*)` function counts every row that matches your criteria.\n2. In this case, since there is no `WHERE` clause, it counts all rows in the 'orders' table.\n3. Using `as total_orders` (aliasing) is best practice for returning a meaningful column name to the application."
             },
             {
                 id: 8,
@@ -169,7 +175,8 @@ Write a query to find the average salary of employees in the 'Sales' department.
                 starterCode: `-- Write your SQL query here
 SELECT AVG(salary) FROM employees`,
                 solution: `SELECT AVG(salary) as average_salary FROM employees WHERE department = 'Sales';`,
-                hints: ["Use AVG() function", "Filter by department"]
+                hints: ["Use AVG() function", "Filter by department"],
+                theory: "Aggregate functions compute a single result from multiple rows.\n\nLogic:\n1. The `AVG()` function sums the values in the 'salary' column and divides by the count of rows.\n2. The `WHERE` clause ensures only 'Sales' department employees are included in the calculation.\n3. Aliasing (`as average_salary`) makes the output easier to read."
             },
             {
                 id: 9,
@@ -188,7 +195,8 @@ Write a query to select all products from 'Samsung' brand with a warranty of at 
                 starterCode: `-- Write your SQL query here
 SELECT * FROM ElectronicsProducts`,
                 solution: `SELECT * FROM ElectronicsProducts WHERE brand = 'Samsung' AND warranty_years >= 2 ORDER BY price;`,
-                hints: ["Filter by brand and warranty", "Use ORDER BY"]
+                hints: ["Filter by brand and warranty", "Use ORDER BY"],
+                theory: "This query combines filtering across different data types (string and number) with sorting.\n\nLogic:\n1. Use `brand = 'Samsung'` for exact string matching.\n2. Use `warranty_years >= 2` for a range/threshold check.\n3. Finally, apply `ORDER BY price` to present the results in an organized way (ascending by default)."
             },
             {
                 id: 10,
@@ -336,7 +344,10 @@ print(two_sum([2, 7, 11, 15], 9))`,
             return [seen[complement], i]
         seen[num] = i
     return []`,
-                hints: ["Use a dictionary to store seen numbers", "Check if complement exists"]
+                hints: ["Use a dictionary to store seen numbers", "Check if complement exists"],
+                theory: "The Two Sum problem can be solved efficiently using a Hash Map (dictionary in Python).\n\nLogic:\n1. Iterate through the numbers while keeping track of the values you've already seen and their indices.\n2. For each number, calculate its 'complement' (target - current_number).\n3. If the complement exists in your map, you've found the pair!\n4. This approach reduces the time complexity from O(n²) to O(n).",
+                timeComplexity: "O(n)",
+                spaceComplexity: "O(n)"
             },
             {
                 id: 2,
@@ -356,7 +367,10 @@ Output: "olleh"`,
 print(reverse_string("hello"))`,
                 solution: `def reverse_string(s):
     return s[::-1]`,
-                hints: ["Use string slicing", "[::-1] reverses a string"]
+                hints: ["Use string slicing", "[::-1] reverses a string"],
+                theory: "String reversal is a fundamental exercise in understanding data sequences.\n\nPythonic Logic:\nPython strings can be sliced using the syntax `[start:stop:step]`. By setting the step to -1, Python iterates through the string backwards from the end to the beginning, effectively reversing it in a single line of code.\n\nAlgorithmic Logic:\nAlternatively, you could use a loop to build a new string by taking characters from the end of the original string one by one.",
+                timeComplexity: "O(n)",
+                spaceComplexity: "O(n)"
             },
             {
                 id: 3,
@@ -380,7 +394,8 @@ print(is_palindrome("racecar"))
 print(is_palindrome("hello"))`,
                 solution: `def is_palindrome(s):
     return s == s[::-1]`,
-                hints: ["Compare string with its reverse", "Use slicing"]
+                hints: ["Compare string with its reverse", "Use slicing"],
+                theory: "A palindrome is a sequence that reads the same forwards and backwards.\n\nLogic:\n1. Generate the reverse of the input string.\n2. Compare the original string with the reversed one using the equality operator (==).\n3. If they are identical, the string is a palindrome.\n\nTip: For more complex palindromes (like sentences), you would first need to remove spaces and convert all characters to lowercase."
             },
             {
                 id: 4,
@@ -407,7 +422,10 @@ fizzbuzz(15)`,
             print("Buzz")
         else:
             print(i)`,
-                hints: ["Check divisibility by 15 first", "Use modulo operator %"]
+                hints: ["Check divisibility by 15 first", "Use modulo operator %"],
+                theory: "FizzBuzz is a classic logic test used to check basic control flow and conditional understanding.\n\nLogic:\n1. Loop from 1 to N.\n2. The most critical step is the order of checks: Check divisibility by 15 (both 3 and 5) first. If you check 3 or 5 first, you will miss the FizzBuzz cases!\n3. Use the modulo operator (%) to check remainders. If `i % X == 0`, it means `i` is perfectly divisible by `X`.",
+                timeComplexity: "O(n)",
+                spaceComplexity: "O(1)"
             },
             {
                 id: 5,
@@ -427,7 +445,8 @@ Output: 9`,
 print(find_max([3, 7, 2, 9, 1]))`,
                 solution: `def find_max(arr):
     return max(arr)`,
-                hints: ["Use built-in max() function", "Or iterate through array"]
+                hints: ["Use built-in max() function", "Or iterate through array"],
+                theory: "Finding the maximum value is a linear operation O(n).\n\nLogic:\n1. Initialize a variable (e.g., `max_val`) with the first element of the array.\n2. Iterate through each subsequent element.\n3. If the current element is greater than `max_val`, update `max_val` to the current element.\n4. Python's built-in `max()` function performs this optimized iteration internally."
             },
             {
                 id: 6,
@@ -448,7 +467,8 @@ print(count_vowels("hello world"))`,
                 solution: `def count_vowels(s):
     vowels = "aeiouAEIOU"
     return sum(1 for char in s if char in vowels)`,
-                hints: ["Create a vowels string", "Use list comprehension"]
+                hints: ["Create a vowels string", "Use list comprehension"],
+                theory: "Counting specific characters involves matching against a set of targets.\n\nLogic:\n1. Define your target set (a, e, i, o, u).\n2. Iterate through each character in the input string.\n3. Check if the lowercase version of the character exists in your target set.\n4. Increment a counter for every match found."
             },
             {
                 id: 7,
@@ -478,7 +498,8 @@ print(fibonacci(7))`,
     for i in range(2, n):
         fib.append(fib[i-1] + fib[i-2])
     return fib`,
-                hints: ["Start with [0, 1]", "Each number is sum of previous two"]
+                hints: ["Start with [0, 1]", "Each number is sum of previous two"],
+                theory: "The Fibonacci sequence is defined such that each number is the sum of the two preceding ones, starting from 0 and 1.\n\nMathematical Logic:\nF(n) = F(n-1) + F(n-2)\n\nImplementation:\n1. Handle base cases (n=0, 1, 2).\n2. Use a loop to iteratively calculate the next number in the sequence and append it to your list.\n3. This iterative approach is more memory-efficient than naive recursion for large values of n."
             },
             {
                 id: 8,
@@ -507,7 +528,8 @@ print(is_prime(10))`,
         if n % i == 0:
             return False
     return True`,
-                hints: ["Check divisibility up to square root", "Handle edge cases"]
+                hints: ["Check divisibility up to square root", "Handle edge cases"],
+                theory: "A prime number is only divisible by 1 and itself.\n\nOptimized Logic:\n1. Handle numbers < 2 immediately (not prime).\n2. Instead of checking every number up to N, you only need to check up to the square root of N. If a number has a factor larger than its square root, it must also have a factor smaller than its square root!\n3. This optimization changes the complexity from O(n) to O(√n)."
             }
         ]
     },
@@ -527,7 +549,8 @@ print(is_prime(10))`,
                 starterCode: `// Write your code here
 System.out.println("Hello, World!");`,
                 solution: `System.out.println("Hello, World!");`,
-                hints: ["Use System.out.println()"]
+                hints: ["Use System.out.println()"],
+                theory: "This is the most basic program in any language.\n\nLogic:\n1. In Java, `System.out` refers to the standard output stream (usually the console).\n2. `println` is a method that prints the value followed by a new line.\n3. The double quotes denote a String literal."
             },
             {
                 id: 2,
@@ -548,7 +571,8 @@ int b = 10;
 int b = 10;
 int sum = a + b;
 System.out.println(sum);`,
-                hints: ["Create a sum variable", "Use + operator"]
+                hints: ["Create a sum variable", "Use + operator"],
+                theory: "Arithmetic in Java is performed using standard operators.\n\nLogic:\n1. Declare two integer variables (`int a` and `int b`).\n2. Use the addition operator (+) to calculate the result.\n3. Store the result in a new variable `sum` before printing.\n4. This demonstrates the basic process of Data Input -> Processing -> Output."
             },
             {
                 id: 3,
@@ -569,7 +593,8 @@ if (num % 2 == 0) {
 } else {
     System.out.println("Odd");
 }`,
-                hints: ["Use modulo operator %", "Use if-else"]
+                hints: ["Use modulo operator %", "Use if-else"],
+                theory: "Determining parity is a classic programming task.\n\nLogic:\n1. A number is even if it is perfectly divisible by 2.\n2. The modulo operator (%) returns the remainder of a division.\n3. If `num % 2` equals 0, the number is even. Otherwise, it is odd.\n4. This simple check is fundamental for branching logic."
             },
             {
                 id: 4,
@@ -591,7 +616,8 @@ for (int i = 1; i <= n; i++) {
     factorial *= i;
 }
 System.out.println(factorial);`,
-                hints: ["Use a for loop", "Multiply each number"]
+                hints: ["Use a for loop", "Multiply each number"],
+                theory: "The factorial of N (N!) is the product of all positive integers up to N.\n\nLogic:\n1. Start with a result variable set to 1 (since multiplying by 0 would break the logic).\n2. Loop from 1 up to N.\n3. In each iteration, multiply the current result by the loop counter (`factorial *= i`).\n4. This is an O(n) iterative solution."
             },
             {
                 id: 5,
@@ -631,7 +657,8 @@ Output: "olleh"`,
                 solution: `String str = "hello";
 String reversed = new StringBuilder(str).reverse().toString();
 System.out.println(reversed);`,
-                hints: ["Use StringBuilder", "Call reverse() method"]
+                hints: ["Use StringBuilder", "Call reverse() method"],
+                theory: "Java Strings are immutable, meaning they cannot be changed once created.\n\nLogic:\n1. To reverse efficiently, we use `StringBuilder`, which is a mutable sequence of characters.\n2. The `reverse()` method of StringBuilder is highly optimized.\n3. We then convert the StringBuilder back to a standard String with `toString()` for the final output."
             },
             {
                 id: 7,
@@ -734,7 +761,8 @@ console.log(evens);`,
                 solution: `const numbers = [1, 2, 3, 4, 5, 6];
 const evens = numbers.filter(num => num % 2 === 0);
 console.log(evens);`,
-                hints: ["Use arrow function", "Check if num % 2 === 0"]
+                hints: ["Use arrow function", "Check if num % 2 === 0"],
+                theory: "Filtering is a functional programming paradigm for data transformation.\n\nLogic:\n1. The `filter()` method creates a new array filled with elements that pass a test provided by a function.\n2. The arrow function `num => num % 2 === 0` is the predicate (the test).\n3. It returns `true` for even numbers and `false` for odd ones. Only the `true` elements are kept in the new array."
             },
             {
                 id: 2,
@@ -881,6 +909,26 @@ console.log(calculate(10, 5, '*'));`,
 console.log(calculate(10, 5, '+'));
 console.log(calculate(10, 5, '*'));`,
                 hints: ["Use switch statement", "Handle each operator"]
+            },
+            {
+                id: 9,
+                title: "String Repeat",
+                description: `Write a function that repeats the given string 's' exactly 'n' times.
+
+Example:
+repeatString("abc", 3) → "abcabcabc"`,
+                difficulty: 1,
+                tags: ["javascript", "strings", "easy"],
+                starterCode: `function repeatString(s, n) {
+    // Your code here
+}
+
+console.log(repeatString("abc", 3));`,
+                solution: `function repeatString(s, n) {
+    return s.repeat(n);
+}`,
+                hints: ["Use modern JS .repeat() method", "Or use a for loop"],
+                theory: "Repeating a string is a common task for generating patterns or UI elements.\n\nModern Logic:\nIn modern JavaScript (ES6+), the `.repeat(n)` method is the most efficient way to achieve this. It creates a new string by concatenating the original string `n` times.\n\nLooping Logic:\nIf you were to implement this manually, you would create an empty result string and use a `for` loop that runs `n` times, adding the target string to the result in each iteration."
             }
         ]
     },
@@ -1291,7 +1339,8 @@ console.log("Form component initialized");
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 </style>`,
-                hints: ["Use transition: all 0.3s", "Use :hover selector"]
+                hints: ["Use transition: all 0.3s", "Use :hover selector"],
+                theory: "Interactive elements like buttons should feel responsive to user input.\n\nLogic:\n1. Use the `transition` property to define the duration and easing of the state change.\n2. Use the `:hover` pseudo-selector to apply new styles (like color or shadow) when the mouse is over the button.\n3. Using `translateY` creates a subtle 'lifting' effect that provides tactile feedback."
             }
         ]
     },
@@ -1382,7 +1431,8 @@ const Counter = () => {
 
 const root = createRoot(document.getElementById('root'));
 root.render(<Counter />);`,
-                hints: ["Use useState(0)", "Update state with setCount"]
+                hints: ["Use useState(0)", "Update state with setCount"],
+                theory: "React manages UI updates through 'State'.\n\nLogic:\n1. The `useState` hook returns an array with the current value and a function to update it.\n2. Calling the setter function (e.g., `setCount`) triggers a re-render of the component.\n3. This ensures the DOM always reflects the latest state of the data."
             },
             {
                 id: 2,
