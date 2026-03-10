@@ -6,10 +6,15 @@ import { FaInstagram, FaLinkedin, FaYoutube, FaFacebook } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 import './FeedbackForm.css';
 
-// API Configuration
-// Using the production backend by default to ensure the form loads.
-// If you want to use a local backend (port 5000), change this URL.
-const API_BASE_URL = 'https://feedback-uc-urbancode.onrender.com';
+// API Configuration: use proxy (same-origin) when deployed with server to avoid CORS.
+// Set NEXT_PUBLIC_FEEDBACK_API_URL='' in Vercel/host env to use /api/feedback proxy.
+const API_BASE = typeof window !== 'undefined'
+    ? (process.env.NEXT_PUBLIC_FEEDBACK_API_URL ?? 'https://feedback-uc-urbancode.onrender.com')
+    : 'https://feedback-uc-urbancode.onrender.com';
+const USE_PROXY = API_BASE === '' || API_BASE.startsWith('/');
+const API = USE_PROXY
+    ? { questions: '/api/feedback/questions', trainers: '/api/feedback/trainers/active', responses: '/api/feedback/responses' }
+    : { questions: `${API_BASE}/api/questions`, trainers: `${API_BASE}/api/trainers/active`, responses: `${API_BASE}/api/responses` };
 
 const FeedbackForm = () => {
     const [questions, setQuestions] = useState([]);
@@ -80,7 +85,7 @@ const FeedbackForm = () => {
 
     const fetchActiveTrainers = async () => {
         try {
-            const res = await axios.get(`${API_BASE_URL}/api/trainers/active`, {
+            const res = await axios.get(API.trainers, {
                 timeout: 30000 // 30 seconds for cold start
             });
             setTrainers(res.data);
@@ -91,7 +96,7 @@ const FeedbackForm = () => {
 
     const fetchQuestions = async () => {
         try {
-            const res = await axios.get(`${API_BASE_URL}/api/questions`, {
+            const res = await axios.get(API.questions, {
                 timeout: 30000 // 30 seconds for cold start
             });
             setQuestions(res.data);
@@ -271,7 +276,7 @@ const FeedbackForm = () => {
                     value: answers[q._id]
                 }));
 
-            await axios.post(`${API_BASE_URL}/api/responses`, {
+            await axios.post(API.responses, {
                 participantDetails: participantInfo,
                 dynamicAnswers,
                 trainerEvaluations
