@@ -7,7 +7,7 @@ import { MdSearch, MdFilterList, MdVisibility, MdDelete, MdDownload, MdCheckCirc
 import Swal from 'sweetalert2';
 import './Responses.css';
 
-const API_BASE_URL = 'https://feedback-uc-urbancode.onrender.com';
+const API_BASE_URL = process.env.NEXT_PUBLIC_FEEDBACK_API_URL || 'https://urbancode-nextjs.onrender.com';
 
 const Responses = () => {
     const [responses, setResponses] = useState([]);

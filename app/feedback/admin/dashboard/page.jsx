@@ -10,7 +10,7 @@ import './Dashboard.css';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement);
 
-const API_BASE_URL = 'https://feedback-uc-urbancode.onrender.com';
+const API_BASE_URL = process.env.NEXT_PUBLIC_FEEDBACK_API_URL || 'https://urbancode-nextjs.onrender.com';
 
 const Dashboard = () => {
     const [stats, setStats] = useState(null);
