@@ -5,11 +5,15 @@ const BACKEND_URL = process.env.FEEDBACK_API_URL || 'https://feedback-uc-urbanco
 export async function POST(request) {
     try {
         const body = await request.json();
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 60000);
         const res = await fetch(`${BACKEND_URL}/api/responses`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(body)
+            body: JSON.stringify(body),
+            signal: controller.signal
         });
+        clearTimeout(timeoutId);
         const data = await res.json().catch(() => ({}));
         if (!res.ok) {
             return NextResponse.json(

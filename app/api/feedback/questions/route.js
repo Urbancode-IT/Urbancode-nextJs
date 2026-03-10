@@ -4,10 +4,14 @@ const BACKEND_URL = process.env.FEEDBACK_API_URL || 'https://feedback-uc-urbanco
 
 export async function GET() {
     try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 60000);
         const res = await fetch(`${BACKEND_URL}/api/questions`, {
             headers: { 'Content-Type': 'application/json' },
-            next: { revalidate: 60 }
+            next: { revalidate: 60 },
+            signal: controller.signal
         });
+        clearTimeout(timeoutId);
         const data = await res.json().catch(() => ({}));
         if (!res.ok) {
             return NextResponse.json(

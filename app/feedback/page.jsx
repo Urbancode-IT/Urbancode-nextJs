@@ -6,11 +6,16 @@ import { FaInstagram, FaLinkedin, FaYoutube, FaFacebook } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 import './FeedbackForm.css';
 
-// API Configuration: use proxy (same-origin) when deployed with server to avoid CORS.
-// Set NEXT_PUBLIC_FEEDBACK_API_URL='' in Vercel/host env to use /api/feedback proxy.
-const API_BASE = typeof window !== 'undefined'
-    ? (process.env.NEXT_PUBLIC_FEEDBACK_API_URL ?? 'https://feedback-uc-urbancode.onrender.com')
-    : 'https://feedback-uc-urbancode.onrender.com';
+// API Configuration: use proxy on production (same-origin) to avoid CORS; use direct URL on localhost so local works.
+const FEEDBACK_BACKEND = 'https://feedback-uc-urbancode.onrender.com';
+const getApiBase = () => {
+    if (typeof window === 'undefined') return '';
+    if (process.env.NEXT_PUBLIC_FEEDBACK_API_URL !== undefined && process.env.NEXT_PUBLIC_FEEDBACK_API_URL !== '')
+        return process.env.NEXT_PUBLIC_FEEDBACK_API_URL;
+    const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+    return isLocal ? FEEDBACK_BACKEND : '';
+};
+const API_BASE = getApiBase();
 const USE_PROXY = API_BASE === '' || API_BASE.startsWith('/');
 const API = USE_PROXY
     ? { questions: '/api/feedback/questions', trainers: '/api/feedback/trainers/active', responses: '/api/feedback/responses' }
