@@ -4,7 +4,7 @@
     padding: 24px;
     display: flex;
     flex-direction: column;
-    font-family: 'Inter', -apple-system, sans-serif;
+    font-family: 'Inter', sans-serif;
 }
 
 .problem-detail-header {
@@ -71,8 +71,8 @@
 .problem-header-info h1 {
     font-size: 1.75rem;
     color: #0f172a;
-    font-weight: 800;
-    margin-bottom: 12px;
+    font-weight: 600;
+    color: #444;
     letter-spacing: -0.025em;
 }
 

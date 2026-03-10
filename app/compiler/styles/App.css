@@ -176,7 +176,7 @@
   background-color: #f8fafc;
   color: #0f172a;
   box-sizing: border-box;
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 .compiler-header {

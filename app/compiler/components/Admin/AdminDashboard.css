@@ -327,7 +327,7 @@
     display: flex;
     min-height: 100vh;
     background-color: var(--bg-dashboard);
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: 'Inter', sans-serif;
 }
 
 /* Sidebar Styling */
@@ -489,8 +489,8 @@
 
 .dashboard-header h1 {
     font-size: 2rem;
-    font-weight: 800;
-    color: #0f172a;
+    font-weight: 600;
+    color: #444;
     margin-bottom: 8px;
 }
 

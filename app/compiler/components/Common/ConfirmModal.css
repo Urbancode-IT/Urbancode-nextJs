@@ -28,7 +28,8 @@
     margin: 0 0 15px 0;
     color: #1a1a1a;
     font-size: 1.25rem;
-    font-weight: 700;
+    font-weight: 600;
+    color: #444;
 }
 
 .confirm-modal-body p {
