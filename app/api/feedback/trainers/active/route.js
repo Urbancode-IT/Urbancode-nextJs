@@ -1,17 +1,13 @@
 import { NextResponse } from 'next/server';
 
-const BACKEND_URL = process.env.FEEDBACK_API_URL || 'https://feedback-uc-urbancode.onrender.com';
+const BACKEND_URL = process.env.FEEDBACK_API_URL || 'https://urbancode-nextjs.onrender.com';
 
 export async function GET() {
     try {
-        const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 60000);
         const res = await fetch(`${BACKEND_URL}/api/trainers/active`, {
             headers: { 'Content-Type': 'application/json' },
-            next: { revalidate: 60 },
-            signal: controller.signal
+            next: { revalidate: 60 }
         });
-        clearTimeout(timeoutId);
         const data = await res.json().catch(() => ({}));
         if (!res.ok) {
             return NextResponse.json(

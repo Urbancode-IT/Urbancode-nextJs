@@ -13,6 +13,7 @@ const problemRoutes = require('./routes/problemRoutes');
 const userProgressRoutes = require('./routes/userProgressRoutes');
 const studentRoutes = require('./routes/studentRoutes');
 const quizRoutes = require('./routes/quizRoutes');
+const feedbackRoutes = require('./routes/feedbackRoutes');
 
 // Initialize Express app
 const app = express();
@@ -59,7 +60,8 @@ app.get('/', (req, res) => {
         version: '1.0.0',
         endpoints: {
             problems: '/api/problems',
-            progress: '/api/progress'
+            progress: '/api/progress',
+            feedback: { questions: '/api/questions', trainers: '/api/trainers/active', responses: 'POST /api/responses' }
         }
     });
 });
@@ -69,6 +71,7 @@ app.use('/api/problems', problemRoutes);
 app.use('/api/progress', userProgressRoutes);
 app.use('/api/students', studentRoutes);
 app.use('/api/quizzes', quizRoutes);
+app.use('/api', feedbackRoutes); // GET /api/questions, GET /api/trainers/active, POST /api/responses
 
 // 404 Handler
 app.use((req, res) => {
