@@ -9,7 +9,7 @@ import './FeedbackForm.css';
 // API Configuration: feedback API runs on same backend as compiler (urbancode-nextjs.onrender.com).
 // Set NEXT_PUBLIC_FEEDBACK_API_URL='' to use /api/feedback proxy (same-origin).
 const API_BASE = typeof window !== 'undefined'
-    ? (process.env.NEXT_PUBLIC_FEEDBACK_API_URL ?? 'https://urbancode-nextjs.onrender.com')
+    ? (process.env.NEXT_PUBLIC_FEEDBACK_API_URL || '')
     : 'https://urbancode-nextjs.onrender.com';
 const USE_PROXY = API_BASE === '' || API_BASE.startsWith('/');
 const API = USE_PROXY
@@ -187,7 +187,8 @@ const FeedbackForm = () => {
         const missingRequired = questions.filter(q => {
             if (!q.required || q.isTrainerEval) return false;
             const txt = q.questionText.toLowerCase();
-            if (txt.includes('trainer name') || txt.includes('select trainer')) return false;
+            // Skip fields handled by the dedicated Trainer Evaluation logic
+            if (txt.includes('trainer name') || txt.includes('select trainer') || txt.includes('trainer evaluation')) return false;
             return !isQuestionAnswered(q);
         });
 
@@ -432,6 +433,13 @@ const FeedbackForm = () => {
                             </tbody>
                         </table>
                     </div>
+                );
+            case 'trainer-select':
+                return (
+                    <select value={val || ''} onChange={(e) => handleAnswerChange(q._id, e.target.value)} className="dynamic-select">
+                        <option value="">-- Select Trainer --</option>
+                        {trainers.map(t => <option key={t._id} value={t.name}>{t.name}</option>)}
+                    </select>
                 );
             default: return null;
         }

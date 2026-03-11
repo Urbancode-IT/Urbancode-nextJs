@@ -1,0 +1,128 @@
+[
+  {
+    "_id": "6995df6ff9513c47b0f0c558",
+    "name": "savitha",
+    "specialization": "MERN",
+    "active": true,
+    "createdAt": "2026-02-18T15:49:03.750Z",
+    "updatedAt": "2026-03-03T11:11:42.400Z",
+    "__v": 0
+  },
+  {
+    "_id": "6995e56ef9513c47b0f0d606",
+    "name": "sankara pandi",
+    "specialization": "MERN",
+    "active": true,
+    "createdAt": "2026-02-18T16:14:38.719Z",
+    "updatedAt": "2026-03-03T11:11:58.588Z",
+    "__v": 0
+  },
+  {
+    "_id": "69a6c03899f78b1241b591e7",
+    "name": "Ajith Kumar",
+    "specialization": "Power BI",
+    "active": true,
+    "createdAt": "2026-03-03T11:04:24.374Z",
+    "updatedAt": "2026-03-03T11:04:24.374Z",
+    "__v": 0
+  },
+  {
+    "_id": "69a6c05799f78b1241b591ea",
+    "name": "Akshaya",
+    "specialization": "MERN , React JS",
+    "active": true,
+    "createdAt": "2026-03-03T11:04:55.196Z",
+    "updatedAt": "2026-03-03T11:12:20.532Z",
+    "__v": 0
+  },
+  {
+    "_id": "69a6c07999f78b1241b591ed",
+    "name": "Raghul",
+    "specialization": "Python , AIML",
+    "active": true,
+    "createdAt": "2026-03-03T11:05:29.175Z",
+    "updatedAt": "2026-03-03T11:05:29.175Z",
+    "__v": 0
+  },
+  {
+    "_id": "69a6c09299f78b1241b591f0",
+    "name": "Manohar",
+    "specialization": "CCNA",
+    "active": true,
+    "createdAt": "2026-03-03T11:05:54.287Z",
+    "updatedAt": "2026-03-03T11:05:54.287Z",
+    "__v": 0
+  },
+  {
+    "_id": "69a6c0a899f78b1241b591f3",
+    "name": "Mukesh Kumar",
+    "specialization": "Software Testing",
+    "active": true,
+    "createdAt": "2026-03-03T11:06:16.594Z",
+    "updatedAt": "2026-03-03T11:06:16.594Z",
+    "__v": 0
+  },
+  {
+    "_id": "69a6c0cc99f78b1241b591f6",
+    "name": "Prahadeash",
+    "specialization": "Java , Data Analytics",
+    "active": true,
+    "createdAt": "2026-03-03T11:06:52.610Z",
+    "updatedAt": "2026-03-03T11:06:52.610Z",
+    "__v": 0
+  },
+  {
+    "_id": "69a6c0f899f78b1241b591f9",
+    "name": "Pushparaj",
+    "specialization": "MERN , MS SQL, Python",
+    "active": true,
+    "createdAt": "2026-03-03T11:07:36.674Z",
+    "updatedAt": "2026-03-03T11:12:10.236Z",
+    "__v": 0
+  },
+  {
+    "_id": "69a6c14a99f78b1241b59210",
+    "name": "Selvin",
+    "specialization": "Software Testing",
+    "active": true,
+    "createdAt": "2026-03-03T11:08:58.035Z",
+    "updatedAt": "2026-03-03T11:08:58.035Z",
+    "__v": 0
+  },
+  {
+    "_id": "69a6c15f99f78b1241b59213",
+    "name": "Sanjay Prabhu",
+    "specialization": "playwright",
+    "active": true,
+    "createdAt": "2026-03-03T11:09:19.906Z",
+    "updatedAt": "2026-03-03T11:09:19.906Z",
+    "__v": 0
+  },
+  {
+    "_id": "69a6c17b99f78b1241b59216",
+    "name": "Senthil",
+    "specialization": "Power BI",
+    "active": true,
+    "createdAt": "2026-03-03T11:09:47.686Z",
+    "updatedAt": "2026-03-03T11:09:47.686Z",
+    "__v": 0
+  },
+  {
+    "_id": "69a6c18999f78b1241b59219",
+    "name": "Shalini",
+    "specialization": "Software Testing",
+    "active": true,
+    "createdAt": "2026-03-03T11:10:01.631Z",
+    "updatedAt": "2026-03-03T11:10:01.631Z",
+    "__v": 0
+  },
+  {
+    "_id": "69a6c1a599f78b1241b5921c",
+    "name": "Sruthi",
+    "specialization": "Communication",
+    "active": true,
+    "createdAt": "2026-03-03T11:10:29.886Z",
+    "updatedAt": "2026-03-03T11:11:00.133Z",
+    "__v": 0
+  }
+]

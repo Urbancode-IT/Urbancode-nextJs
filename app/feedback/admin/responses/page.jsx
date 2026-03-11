@@ -7,7 +7,8 @@ import { MdSearch, MdFilterList, MdVisibility, MdDelete, MdDownload, MdCheckCirc
 import Swal from 'sweetalert2';
 import './Responses.css';
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_FEEDBACK_API_URL || 'https://urbancode-nextjs.onrender.com';
+const API_BASE_URL = process.env.NEXT_PUBLIC_FEEDBACK_API_URL || '';
+const API_PATH = API_BASE_URL === '' ? '/api/feedback' : `${API_BASE_URL}/api`;
 
 const Responses = () => {
     const [responses, setResponses] = useState([]);
@@ -48,13 +49,13 @@ const Responses = () => {
             };
 
             // Sequential fetch instead of Promise.all to prevent "Request aborted" on slow Render free tier
-            const respRes = await axios.get(`${API_BASE_URL}/api/responses`, config);
+            const respRes = await axios.get(`${API_PATH}/responses`, config);
             if (!isMounted) return;
 
-            const trainRes = await axios.get(`${API_BASE_URL}/api/trainers`, config);
+            const trainRes = await axios.get(`${API_PATH}/trainers`, config);
             if (!isMounted) return;
 
-            const questRes = await axios.get(`${API_BASE_URL}/api/questions`, config);
+            const questRes = await axios.get(`${API_PATH}/questions`, config);
             if (!isMounted) return;
 
             setResponses(respRes.data);
@@ -125,7 +126,7 @@ const Responses = () => {
         if (result.isConfirmed) {
             try {
                 const token = localStorage.getItem('token');
-                await axios.delete(`${API_BASE_URL}/api/responses/${id}`, {
+                await axios.delete(`${API_PATH}/responses/${id}`, {
                     headers: { Authorization: `Bearer ${token}` }
                 });
                 setResponses(responses.filter(r => r._id !== id));

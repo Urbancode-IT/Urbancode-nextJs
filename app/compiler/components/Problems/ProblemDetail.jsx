@@ -40,6 +40,7 @@ const ProblemDetail = () => {
     const [showInputModal, setShowInputModal] = useState(false);
     const [activeTab, setActiveTab] = useState('description');
     const [relatedProblems, setRelatedProblems] = useState([]);
+    const [allTopicProblems, setAllTopicProblems] = useState([]);
 
     useEffect(() => {
         if (topic === 'python') {
@@ -74,6 +75,7 @@ const ProblemDetail = () => {
                 // Fetch related problems in the same topic
                 const relResponse = await problemsApi.getProblemsByTopic(topic);
                 if (relResponse.success && relResponse.data) {
+                    setAllTopicProblems(relResponse.data);
                     setRelatedProblems(relResponse.data.filter(p => (p._id || p.id).toString() !== problemId).slice(0, 4));
                 }
             } catch (err) {
@@ -336,6 +338,21 @@ const ProblemDetail = () => {
         await executeWithInputs([]);
     };
 
+    const handleNextProblem = () => {
+        if (allTopicProblems.length === 0) return;
+        const currentIndex = allTopicProblems.findIndex(p => (p._id || p.id).toString() === problemId);
+        if (currentIndex !== -1 && currentIndex < allTopicProblems.length - 1) {
+            const nextProblem = allTopicProblems[currentIndex + 1];
+            const nextId = nextProblem._id || nextProblem.id;
+            toast.loading('Moving to next problem...', { duration: 1500 });
+            setTimeout(() => {
+                navigate(`/problems/${topic}/${nextId}`);
+            }, 2000);
+        } else {
+            toast.info('Topic Completed! You have finished all problems here.');
+        }
+    };
+
     const executeWithInputs = async (inputs = []) => {
         setIsExecuting(true);
         setOutput(null);
@@ -392,6 +409,7 @@ const ProblemDetail = () => {
                     await progressApi.markProblemSolved({ userId: 'default-user', topic, problemId });
                     setIsSolved(true);
                     toast.success('Success! All test cases passed.');
+                    handleNextProblem();
                 } else {
                     toast.error('Check failed. Please review your logic.');
                 }
@@ -417,6 +435,7 @@ const ProblemDetail = () => {
                 setTestResults([{ pass: true, message: "Correct!" }]);
                 setOutput(userResult);
                 toast.success('Problem solved successfully!');
+                handleNextProblem();
             } else {
                 setTestResults([{ pass: false, error: "Output Mismatch" }]);
                 setOutput(userResult);

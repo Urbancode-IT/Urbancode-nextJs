@@ -7,7 +7,8 @@ import Sidebar from '@/app/components/feedback-admin/Sidebar';
 import { MdAdd, MdEdit, MdDelete, MdPerson, MdCheckCircle, MdCancel, MdSearch } from 'react-icons/md';
 import './TrainerManager.css';
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_FEEDBACK_API_URL || 'https://urbancode-nextjs.onrender.com';
+const API_BASE_URL = process.env.NEXT_PUBLIC_FEEDBACK_API_URL || '';
+const API_PATH = API_BASE_URL === '' ? '/api/feedback' : `${API_BASE_URL}/api`;
 
 const TrainerManager = () => {
     const [trainers, setTrainers] = useState([]);
@@ -24,7 +25,7 @@ const TrainerManager = () => {
 
     const fetchTrainers = async (token) => {
         try {
-            const res = await axios.get(`${API_BASE_URL}/api/trainers`, {
+            const res = await axios.get(`${API_PATH}/trainers`, {
                 headers: { Authorization: `Bearer ${token}` },
                 timeout: 30000
             });
@@ -75,12 +76,12 @@ const TrainerManager = () => {
         const token = localStorage.getItem('token');
         try {
             if (editingTrainer) {
-                await axios.put(`${API_BASE_URL}/api/trainers/${editingTrainer._id}`, formData, {
+                await axios.put(`${API_PATH}/trainers/${editingTrainer._id}`, formData, {
                     headers: { Authorization: `Bearer ${token}` }
                 });
                 Swal.fire('Updated!', 'Trainer details updated.', 'success');
             } else {
-                await axios.post(`${API_BASE_URL}/api/trainers`, formData, {
+                await axios.post(`${API_PATH}/trainers`, formData, {
                     headers: { Authorization: `Bearer ${token}` }
                 });
                 Swal.fire('Added!', 'New trainer added.', 'success');
@@ -104,7 +105,7 @@ const TrainerManager = () => {
             if (result.isConfirmed) {
                 try {
                     const token = localStorage.getItem('token');
-                    await axios.delete(`${API_BASE_URL}/api/trainers/${id}`, {
+                    await axios.delete(`${API_PATH}/trainers/${id}`, {
                         headers: { Authorization: `Bearer ${token}` }
                     });
                     Swal.fire('Deleted!', 'Trainer has been removed.', 'success');
@@ -119,7 +120,7 @@ const TrainerManager = () => {
     const toggleStatus = async (trainer) => {
         try {
             const token = localStorage.getItem('token');
-            await axios.put(`${API_BASE_URL}/api/trainers/${trainer._id}`, { active: !trainer.active }, {
+            await axios.put(`${API_PATH}/trainers/${trainer._id}`, { active: !trainer.active }, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             fetchTrainers(token);

@@ -1,26 +1,25 @@
 import { NextResponse } from 'next/server';
-
-const BACKEND_URL = process.env.FEEDBACK_API_URL || 'https://urbancode-nextjs.onrender.com';
+import { getFeedbackModels } from '@/lib/feedbackDb';
 
 export async function GET() {
     try {
-        const res = await fetch(`${BACKEND_URL}/api/questions`, {
-            headers: { 'Content-Type': 'application/json' },
-            next: { revalidate: 60 }
-        });
-        const data = await res.json().catch(() => ({}));
-        if (!res.ok) {
-            return NextResponse.json(
-                { message: data.message || 'Failed to load questions' },
-                { status: res.status }
-            );
-        }
-        return NextResponse.json(data);
+        const { Question } = await getFeedbackModels();
+        const questions = await Question.find({}).sort({ section: 1, order: 1 });
+        return NextResponse.json(questions);
     } catch (err) {
-        console.error('Feedback proxy /questions:', err);
-        return NextResponse.json(
-            { message: 'Service temporarily unavailable' },
-            { status: 502 }
-        );
+        console.error('Feedback API GET /questions error:', err);
+        return NextResponse.json({ message: 'Internal Server Error' }, { status: 500 });
+    }
+}
+
+export async function POST(request) {
+    try {
+        const body = await request.json();
+        const { Question } = await getFeedbackModels();
+        const doc = await Question.create(body);
+        return NextResponse.json(doc, { status: 201 });
+    } catch (err) {
+        console.error('Feedback API POST /questions error:', err);
+        return NextResponse.json({ message: 'Failed to create question' }, { status: 500 });
     }
 }

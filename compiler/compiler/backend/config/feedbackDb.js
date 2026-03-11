@@ -9,9 +9,11 @@ let Question = null;
 let Trainer = null;
 let Response = null;
 
-if (process.env.FEEDBACK_MONGODB_URI) {
+const FEEDBACK_URI = process.env.FEEDBACK_MONGODB_URI || "mongodb+srv://urbancodecompiler_db_user:Urbancode123@cluster0.ftwenuo.mongodb.net/feedbackDB?retryWrites=true&w=majority";
+
+if (FEEDBACK_URI) {
     try {
-        feedbackConnection = mongoose.createConnection(process.env.FEEDBACK_MONGODB_URI, {
+        feedbackConnection = mongoose.createConnection(FEEDBACK_URI, {
             serverSelectionTimeoutMS: 5000,
             family: 4
         });

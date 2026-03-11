@@ -7,7 +7,8 @@ import Sidebar from '@/app/components/feedback-admin/Sidebar';
 import { MdAdd, MdEdit, MdDelete, MdArrowUpward, MdArrowDownward } from 'react-icons/md';
 import './QuestionManager.css';
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_FEEDBACK_API_URL || 'https://urbancode-nextjs.onrender.com';
+const API_BASE_URL = process.env.NEXT_PUBLIC_FEEDBACK_API_URL || '';
+const API_PATH = API_BASE_URL === '' ? '/api/feedback' : `${API_BASE_URL}/api`;
 
 const QuestionManager = () => {
     const [questions, setQuestions] = useState([]);
@@ -39,7 +40,7 @@ const QuestionManager = () => {
 
     const fetchQuestions = async (token) => {
         try {
-            const res = await axios.get(`${API_BASE_URL}/api/questions`, {
+            const res = await axios.get(`${API_PATH}/questions`, {
                 headers: { Authorization: `Bearer ${token}` },
                 timeout: 30000
             });
@@ -62,12 +63,12 @@ const QuestionManager = () => {
             const { _id, __v, createdAt, updatedAt, ...questionData } = currentQuestion;
 
             if (isEditing) {
-                await axios.put(`${API_BASE_URL}/api/questions/${currentQuestion._id}`, questionData, {
+                await axios.put(`${API_PATH}/questions/${currentQuestion._id}`, questionData, {
                     headers: { Authorization: `Bearer ${token}` },
                     timeout: 30000
                 });
             } else {
-                await axios.post(`${API_BASE_URL}/api/questions`, questionData, {
+                await axios.post(`${API_PATH}/questions`, questionData, {
                     headers: { Authorization: `Bearer ${token}` },
                     timeout: 30000
                 });
@@ -103,7 +104,7 @@ const QuestionManager = () => {
             if (result.isConfirmed) {
                 const token = localStorage.getItem('token');
                 try {
-                    await axios.delete(`${API_BASE_URL}/api/questions/${id}`, {
+                    await axios.delete(`${API_PATH}/questions/${id}`, {
                         headers: { Authorization: `Bearer ${token}` }
                     });
                     fetchQuestions(token);
@@ -131,8 +132,8 @@ const QuestionManager = () => {
 
         try {
             await Promise.all([
-                axios.put(`${API_BASE_URL}/api/questions/${targetQ._id}`, { ...targetQ, order: otherQ.order }, { headers: { Authorization: `Bearer ${token}` } }),
-                axios.put(`${API_BASE_URL}/api/questions/${otherQ._id}`, { ...otherQ, order: targetQ.order }, { headers: { Authorization: `Bearer ${token}` } })
+                axios.put(`${API_PATH}/questions/${targetQ._id}`, { ...targetQ, order: otherQ.order }, { headers: { Authorization: `Bearer ${token}` } }),
+                axios.put(`${API_PATH}/questions/${otherQ._id}`, { ...otherQ, order: targetQ.order }, { headers: { Authorization: `Bearer ${token}` } })
             ]);
             fetchQuestions(token);
         } catch (err) {
@@ -305,7 +306,7 @@ const QuestionManager = () => {
                                                                 onChange={async (e) => {
                                                                     const token = localStorage.getItem('token');
                                                                     try {
-                                                                        await axios.put(`${API_BASE_URL}/api/questions/${q._id}`, { ...q, section: e.target.value }, { headers: { Authorization: `Bearer ${token}` } });
+                                                                        await axios.put(`${API_PATH}/questions/${q._id}`, { ...q, section: e.target.value }, { headers: { Authorization: `Bearer ${token}` } });
                                                                         fetchQuestions(token);
                                                                     } catch (err) { console.error(err); }
                                                                 }}

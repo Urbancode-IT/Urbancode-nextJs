@@ -82,6 +82,22 @@ const problemSchema = new mongoose.Schema({
     attemptCount: {
         type: Number,
         default: 0
+    },
+
+    // Educational content
+    theory: {
+        type: String,
+        default: ''
+    },
+
+    timeComplexity: {
+        type: String,
+        default: ''
+    },
+
+    spaceComplexity: {
+        type: String,
+        default: ''
     }
 
 }, {

@@ -31,7 +31,8 @@ const AdminDashboard = () => {
         tags: '',
         starterCode: '',
         solution: '',
-        hints: ''
+        hints: '',
+        theory: ''
     });
 
     // New Table Form State (for SQL)
@@ -102,7 +103,8 @@ const AdminDashboard = () => {
                     tags: '',
                     starterCode: '',
                     solution: '',
-                    hints: ''
+                    hints: '',
+                    theory: ''
                 });
                 fetchProblems();
             }
@@ -202,6 +204,7 @@ const AdminDashboard = () => {
                             hints: row.hints ? String(row.hints).split('\n').map(h => h.trim()).filter(h => h) : [],
                             starterCode: String(row.starterCode || ''),
                             solution: String(row.solution || ''),
+                            theory: String(row.theory || ''),
                             testCases: []
                         };
 
@@ -438,6 +441,24 @@ const AdminDashboard = () => {
                                                 className="code-textarea"
                                                 value={newProblem.solution}
                                                 onChange={(e) => setNewProblem({ ...newProblem, solution: e.target.value })}
+                                            />
+                                        </div>
+                                        <div className="form-group">
+                                            <label>Hints (one per line)</label>
+                                            <textarea
+                                                rows="3"
+                                                value={newProblem.hints}
+                                                onChange={(e) => setNewProblem({ ...newProblem, hints: e.target.value })}
+                                                placeholder="Hint 1&#10;Hint 2&#10;Hint 3"
+                                            />
+                                        </div>
+                                        <div className="form-group">
+                                            <label>Theory &amp; Logic (Documentation)</label>
+                                            <textarea
+                                                rows="6"
+                                                value={newProblem.theory}
+                                                onChange={(e) => setNewProblem({ ...newProblem, theory: e.target.value })}
+                                                placeholder={`Explain the underlying concept and solution logic.\n\nLogic:\n1. Step one...\n2. Step two...\n3. Step three...`}
                                             />
                                         </div>
                                         <button type="submit" className="admin-btn primary">Create Question</button>

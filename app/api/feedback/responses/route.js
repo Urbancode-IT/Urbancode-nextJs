@@ -1,28 +1,25 @@
 import { NextResponse } from 'next/server';
+import { getFeedbackModels } from '@/lib/feedbackDb';
 
-const BACKEND_URL = process.env.FEEDBACK_API_URL || 'https://urbancode-nextjs.onrender.com';
+export async function GET(request) {
+    try {
+        const { Response } = await getFeedbackModels();
+        const responses = await Response.find().sort({ createdAt: -1 });
+        return NextResponse.json(responses);
+    } catch (err) {
+        console.error('Feedback API GET /responses error:', err);
+        return NextResponse.json({ message: 'Internal Server Error' }, { status: 500 });
+    }
+}
 
 export async function POST(request) {
     try {
         const body = await request.json();
-        const res = await fetch(`${BACKEND_URL}/api/responses`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(body)
-        });
-        const data = await res.json().catch(() => ({}));
-        if (!res.ok) {
-            return NextResponse.json(
-                { message: data.message || 'Failed to submit feedback' },
-                { status: res.status }
-            );
-        }
-        return NextResponse.json(data);
+        const { Response } = await getFeedbackModels();
+        const newResponse = await Response.create(body);
+        return NextResponse.json({ success: true, id: newResponse._id }, { status: 201 });
     } catch (err) {
-        console.error('Feedback proxy /responses:', err);
-        return NextResponse.json(
-            { message: 'Service temporarily unavailable' },
-            { status: 502 }
-        );
+        console.error('Feedback API POST /responses error:', err);
+        return NextResponse.json({ message: 'Failed to submit feedback' }, { status: 500 });
     }
 }

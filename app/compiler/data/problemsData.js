@@ -34,7 +34,7 @@ SELECT * FROM pets`,
                 ],
                 solution: `SELECT * FROM pets WHERE pet_type = 'Dog' AND age > 3;`,
                 hints: ["Use WHERE clause to filter", "Combine conditions with AND"],
-                theory: "To solve this problem, you need to filter rows based on two criteria:\n1. The pet type must be 'Dog'.\n2. The age must be greater than 3.\n\nIn SQL, the WHERE clause is used to filter records. You can combine multiple conditions using the AND operator. Ensure you use single quotes for string literals like 'Dog'."
+                theory: "To solve this problem, you need to filter rows based on two criteria:\n1. The pet type must be 'Dog'.\n2. The age must be greater than 3.\n\nLogic:\n1. Use the 'WHERE' clause to filter records in SQL.\n2. Combine multiple conditions using the 'AND' operator.\n3. Ensure you use single quotes for string literals like 'Dog' and numerical comparison for age."
             },
             {
                 id: 2,
@@ -96,7 +96,8 @@ JOIN sales s ON p.product_id = s.product_id`,
 FROM ElectronicsProducts p
 JOIN sales s ON p.product_id = s.product_id
 GROUP BY p.product_name;`,
-                hints: ["Use JOIN to combine tables", "Use SUM and GROUP BY"]
+                hints: ["Use JOIN to combine tables", "Use SUM and GROUP BY"],
+                theory: "Joining tables and aggregating data is essential for relational database analysis.\n\nLogic:\n1. **Joining**: Use `JOIN` (specifically `INNER JOIN` by default) to combine the 'ElectronicsProducts' and 'sales' tables based on their shared `product_id` column.\n2. **Summarizing**: Use the `SUM(quantity_sold)` aggregate function to calculate the total units sold.\n3. **Grouping**: The `GROUP BY p.product_name` clause is mandatory when using aggregate functions with non-aggregated columns. It tells the DB to calculate the sum for each unique product name independently."
             },
             {
                 id: 5,
@@ -215,7 +216,8 @@ Write a query to find the maximum order amount from all completed orders (status
                 starterCode: `-- Write your SQL query here
 SELECT MAX(order_amount) FROM orders`,
                 solution: `SELECT MAX(order_amount) as max_order FROM orders WHERE order_status = 'Completed';`,
-                hints: ["Use MAX() function", "Filter by status"]
+                hints: ["Use MAX() function", "Filter by status"],
+                theory: "Identifying extremes (like the highest price or latest date) is a frequent SQL operation.\n\nLogic:\n1. The `MAX(order_amount)` function scans values and keeps track of the highest one encountered.\n2. By using `WHERE order_status = 'Completed'`, we restrict the search space to only finalized orders, excluding cancelled or pending ones.\n3. Using an alias (`as max_order`) ensures the returned data is easily identifiable by the application."
             }
         ]
     },
@@ -224,7 +226,7 @@ SELECT MAX(order_amount) FROM orders`,
         title: "MySQL Problems",
         icon: "mysql",
         color: "#00758F",
-        totalProblems: 2,
+        totalProblems: 4,
         problems: [
             {
                 id: 1,
@@ -235,7 +237,8 @@ SELECT MAX(order_amount) FROM orders`,
                 starterCode: `-- Write your MySQL query here
 SELECT DISTINCT country FROM CustomersArchive`,
                 solution: `SELECT DISTINCT country FROM CustomersArchive;`,
-                hints: ["Use DISTINCT keyword"]
+                hints: ["Use DISTINCT keyword"],
+                theory: "Databases often contain redundant data entries. For analytical purposes, we frequently need to see unique values only.\n\nLogic:\n1. The `DISTINCT` keyword follows the `SELECT` statement and instructs the database engine to remove duplicate rows from the resulting set.\n2. In this case, even if you have 1,000 customers from the same country, `DISTINCT country` will return that country name only once."
             },
             {
                 id: 2,
@@ -246,7 +249,32 @@ SELECT DISTINCT country FROM CustomersArchive`,
                 starterCode: `-- Write your MySQL query here
 SELECT * FROM CustomersArchive`,
                 solution: `SELECT * FROM CustomersArchive WHERE age < 25;`,
-                hints: ["Use WHERE age < 25"]
+                hints: ["Use WHERE age < 25"],
+                theory: "Conditional filtering is the primary way to extract specific segments of a dataset.\n\nLogic:\n1. The `WHERE` clause acts as a gatekeeper for each row.\n2. The `<` (less than) operator performs a mathematical comparison between the value in the 'age' column and the integer 25.\n3. Only rows where the 'age' column value is numerically 24 or less will satisfy the condition and be returned."
+            },
+            {
+                id: 3,
+                title: "Update Customer Status",
+                description: `Write a MySQL query to update the status of customer with ID 5 to 'Active'.`,
+                difficulty: 2,
+                tags: ["mysql", "dm"],
+                starterCode: `-- Write your SQL update here
+UPDATE CustomersArchive SET status = 'Active'`,
+                solution: `UPDATE CustomersArchive SET status = 'Active' WHERE id = 5;`,
+                hints: ["Use WHERE to target ID 5"],
+                theory: "Data modification (DML) allows you to keep records up to date as business states change.\n\nLogic:\n1. The \`UPDATE\` command specifies the target table.\n2. The \`SET status = 'Active'\` clause defines the change to be applied.\n3. Crucially, the \`WHERE id = 5\` clause prevents the update from affecting every single row in the database, which is a common and dangerous beginner mistake!"
+            },
+            {
+                id: 4,
+                title: "Delete Inactive Orders",
+                description: `Remove all orders from OrdersArchive that have a 'Cancelled' status.`,
+                difficulty: 2,
+                tags: ["mysql", "dm"],
+                starterCode: `-- Write your SQL delete here
+DELETE FROM OrdersArchive`,
+                solution: `DELETE FROM OrdersArchive WHERE status = 'Cancelled';`,
+                hints: ["Filter by status"],
+                theory: "Purging old or irrelevant data is necessary for maintaining database performance and relevance.\n\nLogic:\n1. The \`DELETE FROM\` statement identifies the source table.\n2. The \`WHERE\` clause acts as a filter to select only those records that should be permanently removed.\n3. Always verify your filter with a SELECT query before running a DELETE in a real production environment."
             }
         ]
     },
@@ -255,7 +283,7 @@ SELECT * FROM CustomersArchive`,
         title: "PostgreSQL Problems",
         icon: "postgresql",
         color: "#336791",
-        totalProblems: 2,
+        totalProblems: 4,
         problems: [
             {
                 id: 1,
@@ -266,7 +294,8 @@ SELECT * FROM CustomersArchive`,
                 starterCode: `-- Write your PostgreSQL query here
 SELECT * FROM OrdersArchive`,
                 solution: `SELECT * FROM OrdersArchive WHERE item = 'Keyboard';`,
-                hints: ["Filter by item name"]
+                hints: ["Filter by item name"],
+                theory: "Searching for specific text patterns is a cornerstone of database querying.\n\nLogic:\n1. Use the `=` operator for an exact string match.\n2. String literals in SQL must be enclosed in single quotes (e.g., 'Keyboard').\n3. This query uses the `WHERE` clause to filter out every order except those where the item column matches the search term exactly."
             },
             {
                 id: 2,
@@ -277,7 +306,32 @@ SELECT * FROM OrdersArchive`,
                 starterCode: `-- Write your PostgreSQL query here
 SELECT * FROM OrdersArchive`,
                 solution: `SELECT * FROM OrdersArchive WHERE amount > 500;`,
-                hints: ["Use WHERE amount > 500"]
+                hints: ["Use WHERE amount > 500"],
+                theory: "Numerical filtering allows you to identify high-value or low-value transactions.\n\nLogic:\n1. The `>` (greater than) operator is used within a `WHERE` clause.\n2. It evaluates the 'amount' column for every record.\n3. In PostgreSQL, this type of filtering is highly efficient when the 'amount' column is indexed."
+            },
+            {
+                id: 3,
+                title: "Count Items per User",
+                description: `Find the total number of orders placed by each customer. Display customer_id and order_count.`,
+                difficulty: 2,
+                tags: ["postgresql", "aggregation"],
+                starterCode: `-- Write your SQL query here
+SELECT customer_id, COUNT(*) FROM OrdersArchive`,
+                solution: `SELECT customer_id, COUNT(*) as order_count FROM OrdersArchive GROUP BY customer_id;`,
+                hints: ["Use GROUP BY keyword"],
+                theory: "Aggregation allows you to condense large datasets into summarized statistics.\n\nLogic:\n1. The \`COUNT(*)\` function calculates the number of rows.\n2. The \`GROUP BY customer_id\` clause tells PostgreSQL to perform this count separately for each unique value found in the customer_id column.\n3. This is essential for generating user activity reports."
+            },
+            {
+                id: 4,
+                title: "Range Search",
+                description: `Find all orders where the amount is between 100 and 1000 inclusive.`,
+                difficulty: 1,
+                tags: ["postgresql", "basics"],
+                starterCode: `-- Write your SQL query here
+SELECT * FROM OrdersArchive`,
+                solution: `SELECT * FROM OrdersArchive WHERE amount BETWEEN 100 AND 1000;`,
+                hints: ["Use BETWEEN operator"],
+                theory: "The BETWEEN operator provides a clean syntax for inclusive range filtering.\n\nLogic:\n1. Instead of writing \`amount >= 100 AND amount <= 1000\`, you can use the more readable \`BETWEEN\` keyword.\n2. It works with numbers, text, and dates.\n3. PostgreSQL internals optimize range queries, especially on indexed columns."
             }
         ]
     },
@@ -286,7 +340,7 @@ SELECT * FROM OrdersArchive`,
         title: "SQL Server Problems",
         icon: "sqlserver",
         color: "#CC2927",
-        totalProblems: 2,
+        totalProblems: 4,
         problems: [
             {
                 id: 1,
@@ -297,7 +351,8 @@ SELECT * FROM OrdersArchive`,
                 starterCode: `-- Write your SQL Server query here
 SELECT * FROM ShippingsArchive`,
                 solution: `SELECT * FROM ShippingsArchive WHERE status = 'Pending';`,
-                hints: ["Filter by status"]
+                hints: ["Filter by status"],
+                theory: "Monitoring operational status is critical for logistical applications.\n\nLogic:\n1. The \`WHERE status = 'Pending'\` clause isolates unresolved shipments for immediate action.\n2. SQL Server handles string comparisons efficiently, but remember that comparisons are generally case-insensitive or case-sensitive depending on the database collation settings (usually case-insensitive by default in many T-SQL environments)."
             },
             {
                 id: 2,
@@ -308,7 +363,32 @@ SELECT * FROM ShippingsArchive`,
                 starterCode: `-- Write your SQL Server query here
 SELECT AVG(amount) FROM OrdersArchive`,
                 solution: `SELECT AVG(amount) as average_amount FROM OrdersArchive;`,
-                hints: ["Use AVG() function"]
+                hints: ["Use AVG() function"],
+                theory: "Averages provide a 'big picture' view of a dataset, such as typical spending habits.\n\nLogic:\n1. \`AVG(amount)\` is an aggregate function that sums all values in the column and divides by the total number of non-null records.\n2. The result is a single value reflecting the mean order amount.\n3. Using an alias (\`as average_amount\`) makes the result set easier to interpret by the calling code."
+            },
+            {
+                id: 3,
+                title: "Top Order Amount",
+                description: `Find the single highest order amount in the system.`,
+                difficulty: 2,
+                tags: ["sqlserver", "basics"],
+                starterCode: `-- Write your SQL Server query here
+SELECT TOP 1 amount FROM OrdersArchive`,
+                solution: `SELECT TOP 1 amount FROM OrdersArchive ORDER BY amount DESC;`,
+                hints: ["Use TOP 1 and ORDER BY DESC"],
+                theory: "SQL Server uses the TOP keyword to limit the number of rows returned in a result set.\n\nLogic:\n1. The \`SELECT TOP 1\` part tells the engine to stop after finding the first match.\n2. To find the 'highest', we must sort the data in descending order (\`ORDER BY amount DESC\`) first.\n3. The combination ensures you get the absolute maximum value."
+            },
+            {
+                id: 4,
+                title: "Pattern Matching Names",
+                description: `Find all customers whose names start with the letter 'A'.`,
+                difficulty: 1,
+                tags: ["sqlserver", "basics"],
+                starterCode: `-- Write your SQL Server query here
+SELECT * FROM CustomersArchive`,
+                solution: `SELECT * FROM CustomersArchive WHERE name LIKE 'A%';`,
+                hints: ["Use LIKE 'A%'"],
+                theory: "The LIKE operator is used for searching for a specified pattern in a column.\n\nLogic:\n1. The \`%\` wildcard represents zero, one, or multiple characters.\n2. \`'A%'\` matches any string that starts with 'A' followed by anything else.\n3. This is essential for search features where users might only remember the beginning of a name."
             }
         ]
     },
@@ -639,7 +719,8 @@ for (int num : arr) {
     sum += num;
 }
 System.out.println(sum);`,
-                hints: ["Use enhanced for loop", "Add each element to sum"]
+                hints: ["Use enhanced for loop", "Add each element to sum"],
+                theory: "Iterating through a collection to accumulate a result is a pattern found in nearly every application.\n\nLogic:\n1. Initialize a 'running total' variable (sum) to 0.\n2. Use Java's enhanced 'for-each' loop (`for (int num : arr)`) to cleanly visit every item in the array without needing an index counter.\n3. In each step, add the current number to the running total. By the end of the loop, the variable contains the sum of all elements."
             },
             {
                 id: 6,
@@ -681,7 +762,8 @@ for (int num : numbers) {
     }
 }
 System.out.println(max);`,
-                hints: ["Start with first element", "Compare each element"]
+                hints: ["Start with first element", "Compare each element"],
+                theory: "Finding the maximum value in a sequence requires a linear scan (O(n)).\n\nLogic:\n1. Assume the first element (`numbers[0]`) is the largest initially.\n2. Compare this 'current max' with every other element in the array.\n3. If you find an element larger than your current max, update your tracker.\n4. By the time the loop finished, the tracker is guaranteed to hold the highest value."
             },
             {
                 id: 8,
@@ -704,7 +786,8 @@ for (char c : text.toCharArray()) {
     }
 }
 System.out.println(count);`,
-                hints: ["Convert to char array", "Skip spaces"]
+                hints: ["Convert to char array", "Skip spaces"],
+                theory: "Conditional counting is used to quantify specific subsets of data within a sequence.\n\nLogic:\n1. Convert the String to a character array using `toCharArray()` to facilitate iteration.\n2. Use a counter variable initialized to zero.\n3. Inside a loop, evaluate each character: if it is NOT a space (`' '`), increment the counter.\n4. Spaces are ignored, giving you the net count of visible/actual characters."
             }
         ]
     },
@@ -723,7 +806,8 @@ System.out.println(count);`,
                 tags: ["c++", "basics", "easy"],
                 starterCode: `#include <iostream>\nusing namespace std;\n\nint main() {\n    // Print Hello, C++!\n    return 0;\n}`,
                 solution: `#include <iostream>\nusing namespace std;\n\nint main() {\n    cout << "Hello, C++!" << endl;\n    return 0;\n}`,
-                hints: ["Use #include <iostream>", "Use cout for printing"]
+                hints: ["Use #include <iostream>", "Use cout for printing"],
+                theory: "In C++, input and output are handled via 'streams'.\n\nLogic:\n1. `#include <iostream>` provides access to standard I/O streams like `cout`.\n2. `using namespace std;` allows us to use `cout` instead of the fully qualified `std::cout`.\n3. The `<<` operator sends the string 'Hello, C++!' to the output stream. `endl` inserts a newline character and flushes the buffer."
             },
             {
                 id: 2,
@@ -733,7 +817,40 @@ System.out.println(count);`,
                 tags: ["c++", "arithmetic", "easy"],
                 starterCode: `#include <iostream>\nusing namespace std;\n\nint main() {\n    int a = 10, b = 25;\n    // Calculate sum\n    return 0;\n}`,
                 solution: `#include <iostream>\nusing namespace std;\n\nint main() {\n    int a = 10, b = 25;\n    cout << a + b << endl;\n    return 0;\n}`,
-                hints: ["Use + operator"]
+                hints: ["Use + operator"],
+                theory: "C++ provides standard arithmetic operators for performing calculations.\n\nLogic:\n1. Declare and initialize integer variables.\n2. The `cout` stream (from `iostream`) is used to output the result to the console.\n3. The `+` operator calculates the sum of the variables directly within the output statement for efficiency."
+            },
+            {
+                id: 3,
+                title: "Find Maximum",
+                description: `Write a function that takes two integers and returns the larger one.`,
+                difficulty: 1,
+                tags: ["c++", "conditionals", "easy"],
+                starterCode: `#include <iostream>
+using namespace std;
+
+int getMax(int a, int b) {
+    // Write your code here
+}
+
+int main() {
+    cout << getMax(10, 20) << endl;
+    return 0;
+}`,
+                solution: `#include <iostream>
+using namespace std;
+
+int getMax(int a, int b) {
+    if (a > b) return a;
+    return b;
+}
+
+int main() {
+    cout << getMax(10, 20) << endl;
+    return 0;
+}`,
+                hints: ["Use an if statement", "Compare a and b"],
+                theory: "Conditional logic is used to make decisions in a program.\n\nLogic:\n1. Use an `if` statement to compare the two values.\n2. If `a` is greater than `b`, return `a`.\n3. Otherwise, return `b`."
             }
         ]
     },
@@ -742,7 +859,7 @@ System.out.println(count);`,
         title: "JavaScript Problems",
         icon: "javascript",
         color: "#f6e05e",
-        totalProblems: 8,
+        totalProblems: 9,
         problems: [
             {
                 id: 1,
@@ -787,7 +904,8 @@ console.log(person.greet());`,
 };
 
 console.log(person.greet());`,
-                hints: ["Use template literals", "Use 'this' keyword"]
+                hints: ["Use template literals", "Use 'this' keyword"],
+                theory: "JavaScript objects allow you to group related data and functionality (state and behavior) together.\n\nLogic:\n1. **Properties**: `name` and `age` store the data about the person.\n2. **Methods**: `greet` is a function attached to the object.\n3. **Context**: Inside the method, we use `this.name` and `this.age`. The `this` keyword refers to the current object instance, allowing the function to access its own properties.\n4. **Template Literals**: Using backticks (``) allows for clean string interpolation using `${variable}` syntax."
             },
             {
                 id: 3,
@@ -800,7 +918,8 @@ Note: This assumes an HTML element exists: <p id="demo">Original text</p>`,
                 starterCode: `// Change text of element with id "demo"
 `,
                 solution: `document.getElementById("demo").textContent = "Hello, JavaScript!";`,
-                hints: ["Use getElementById()", "Set textContent property"]
+                hints: ["Use getElementById()", "Set textContent property"],
+                theory: "The Document Object Model (DOM) is an interface that allows JavaScript to interact with and modify the structure, style, and content of a webpage.\n\nLogic:\n1. **Selection**: `document.getElementById('demo')` searches the entire webpage for an element with the unique ID 'demo'.\n2. **Modification**: Once the element is found, we access its `textContent` property.\n3. **Updating**: Assigning a new string to `textContent` immediately updates the text visible to the user on the page."
             },
             {
                 id: 4,
@@ -815,7 +934,8 @@ Note: Assumes a button element exists: <button id="myButton">Click me</button>`,
                 solution: `document.getElementById("myButton").addEventListener("click", function() {
     console.log("Button clicked!");
 });`,
-                hints: ["Use addEventListener()", "First parameter is 'click'"]
+                hints: ["Use addEventListener()", "First parameter is 'click'"],
+                theory: "Webpages become interactive by 'listening' for user actions called events.\n\nLogic:\n1. **Targeting**: First, find the button element using its ID.\n2. **Attachment**: Use the `addEventListener` method to register an interest in a specific event type (in this case, 'click').\n3. **Callback**: The second argument is a function (callback) that JavaScript will execute automatically whenever that button is clicked."
             },
             {
                 id: 5,
@@ -836,7 +956,8 @@ fetchData().then(data => console.log(data));`,
 }
 
 fetchData().then(data => console.log(data));`,
-                hints: ["Use Promise with setTimeout", "Return the data"]
+                hints: ["Use Promise with setTimeout", "Return the data"],
+                theory: "Asynchronous programming allows JavaScript to perform long-running tasks without blocking the main thread (freezing the UI).\n\nLogic:\n1. **Async Keyword**: Marking a function as `async` ensures it always returns a Promise.\n2. **Await Keyword**: The `await` keyword pauses the execution of the function until the following Promise resolves.\n3. **Simulation**: By wrapping a `setTimeout` in a Promise, we create a controllable delay. The function waits for the second to pass before returning the final string."
             },
             {
                 id: 6,
@@ -854,7 +975,8 @@ console.log(doubled);`,
                 solution: `const numbers = [1, 2, 3, 4, 5];
 const doubled = numbers.map(num => num * 2);
 console.log(doubled);`,
-                hints: ["Use arrow function", "Multiply by 2"]
+                hints: ["Use arrow function", "Multiply by 2"],
+                theory: "The `map()` method is a core functional programming tool used to transform every item in a list according to a specific rule.\n\nLogic:\n1. It iterates through the entire input array.\n2. For each element, it runs the provided function (`num => num * 2`).\n3. The result of that function for each element is collected into a **brand new array**.\n4. Crucially, the original array remains unchanged (immutability)."
             },
             {
                 id: 7,
@@ -878,7 +1000,8 @@ console.log(capitalizeWords("hello world"));`,
 }
 
 console.log(capitalizeWords("hello world"));`,
-                hints: ["Split by space", "Use charAt() and toUpperCase()"]
+                hints: ["Split by space", "Use charAt() and toUpperCase()"],
+                theory: "Processing strings often requires breaking them down into smaller pieces (tokens).\n\nLogic:\n1. **Tokenize**: Use `split(' ')` to turn the sentence into an array of individual words.\n2. **Transform**: Use `map()` to process each word. Take the first character (`charAt(0)`), uppercase it, and then append the rest of the word (`slice(1)`).\n3. **Reconstruct**: Use `join(' ')` to glue the modified words back together into a single sentence with spaces."
             },
             {
                 id: 8,
@@ -908,7 +1031,8 @@ console.log(calculate(10, 5, '*'));`,
 
 console.log(calculate(10, 5, '+'));
 console.log(calculate(10, 5, '*'));`,
-                hints: ["Use switch statement", "Handle each operator"]
+                hints: ["Use switch statement", "Handle each operator"],
+                theory: "Functions encapsulate logic that can be reused with different inputs.\n\nLogic:\n1. A `switch` statement is cleaner than multiple `if-else` blocks when checking one variable against many possible values.\n2. Each `case` handles a specific operator and returns the mathematical result immediately.\n3. The `default` case handles unexpected inputs, ensuring the function doesn't fail silently."
             },
             {
                 id: 9,
@@ -998,7 +1122,8 @@ function showAlert() {
 .card h3, .card p { padding: 10px 20px; }
 .card button { width: 100%; padding: 10px; border: none; background: #007bff; color: white; cursor: pointer; }
 </style>`,
-                hints: ["Use div for container", "Add img, h3, p, and button"]
+                hints: ["Use div for container", "Add img, h3, p, and button"],
+                theory: "Modern web components rely on a combination of semantic HTML for structure and CSS for visual hierarchy.\n\nLogic:\n1. **Semantic Structure**: Use focused elements like `<h3>` for headings and `<p>` for body text to help screen readers and SEO.\n2. **Visual Box Model**: Setting `border-radius: 8px` softens the edges, while `overflow: hidden` ensures the image doesn't bleed over the rounded corners of the container.\n3. **Depth**: `box-shadow` adds a layer of depth (perception of elevation), which is a core principle of Material and Fluent design systems.\n4. **Interaction**: Adding a CSS `transition` and `transform: translateY` on hover provides the user with clear visual feedback that the element is interactive."
             },
             {
                 id: 2,
@@ -1034,7 +1159,8 @@ function showAlert() {
     .nav-menu { flex-direction: column; align-items: center; }
 }
 </style>`,
-                hints: ["Use flexbox for layout", "Add media queries"]
+                hints: ["Use flexbox for layout", "Add media queries"],
+                theory: "Navigation bars must work across all devices, from desktops to mobile phones.\n\nLogic:\n1. **Flexbox Layout**: By setting the navbar to `display: flex` and using `justify-content: space-between`, the logo and menu are automatically pushed to opposite sides of the viewport.\n2. **Responsive Flow**: Using a `@media` query allows us to change the 'direction' of the flex container. When the screen width is small, we switch to `flex-direction: column`, which stacks the logo and menu vertically.\n3. **Affordance**: Hover effects on links (like changing color) provide an 'affordance'—a hint to the user that the text can be clicked."
             },
             {
                 id: 3,
@@ -1062,7 +1188,8 @@ function showAlert() {
     .container { flex-direction: column; }
 }
 </style>`,
-                hints: ["Use display: flex", "Use flex: 1 for equal width"]
+                hints: ["Use display: flex", "Use flex: 1 for equal width"],
+                theory: "The Flexbox `flex: 1` property is a shorthand for growing, shrinking, and setting an initial size.\n\nLogic:\n1. **Equal Sizing**: When multiple sibling elements all have `flex: 1`, they each take up an exactly equal portion of the available space in their container.\n2. **Spacing**: The `gap` property on the container is the modern way to provide gutter space between items without needing manually calculated margins.\n3. **Modern Design**: This pattern is the foundation for creating rows of feature cards, pricing tables, or multi-column text layouts."
             },
             {
                 id: 4,
@@ -1098,7 +1225,8 @@ function showAlert() {
 @media (max-width: 600px) { .gallery { grid-template-columns: 1fr; } }
 .gallery img { width: 100%; border-radius: 8px; }
 </style>`,
-                hints: ["Use display: grid", "Use grid-template-columns"]
+                hints: ["Use display: grid", "Use grid-template-columns"],
+                theory: "CSS Grid is the most powerful tool for two-dimensional layouts (rows and columns).\n\nLogic:\n1. **Fractional Units**: The `1fr` unit represents a 'fraction' of the available space. `repeat(3, 1fr)` creates three columns of equal width.\n2. **Breakpoint Strategy**: By progressively lowering the number of columns in media queries (3 -> 2 -> 1), you ensure that the gallery remains readable even as physical screen space decreases.\n3. **Image Control**: Setting `width: 100%` on images is crucial; it forces the image to fill the grid cell rather than spilling out at its original full resolution."
             },
             {
                 id: 5,
@@ -1144,7 +1272,8 @@ console.log("Form component initialized");
 .contact-form input:focus, .contact-form textarea:focus { border-color: #007bff; outline: none; }
 .contact-form button { padding: 10px; border: none; background: #007bff; color: white; border-radius: 4px; cursor: pointer; }
 </style>`,
-                hints: ["Use input and textarea", "Add placeholder text"]
+                hints: ["Use input and textarea", "Add placeholder text"],
+                theory: "Forms are the primary way users send data to a website. Accessibility and focus states are critical for a good user experience.\n\nLogic:\n1. **Interactive States**: Using the `:focus` selector allows you to highlight the input the user is currently typing in (e.g., by changing the border color). This provides a clear 'visual anchor'.\n2. **Styling Defaults**: Browsers have ugly default styles for forms. By setting `border: 1px solid #ccc` and `border-radius: 4px`, you overwrite these for a consistent, professional brand look.\n3. **Layout**: `flex-direction: column` and `gap` ensure that labels and inputs stack neatly with consistent spacing."
             },
             {
                 id: 6,
@@ -1177,7 +1306,8 @@ console.log("Form component initialized");
     box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
 </style>`,
-                hints: ["Use transition property", "Use transform: scale()"]
+                hints: ["Use transition property", "Use transform: scale()"],
+                theory: "Animations bring life to a UI and help it feel 'fluid' and high-quality.\n\nLogic:\n1. **Transition**: The `transition: all 0.3s ease` property tells the browser to 'tween' or interpolate between states instead of jumping instantly from one to the other.\n2. **Scaling**: `transform: scale(1.1)` makes the button physically larger, which simulates it popping 'out' toward the user.\n3. **Shadow Dynamics**: Increasing the `box-shadow` on hover simulates the button getting closer to a light source as it 'risess', reinforcing the 3D perception."
             }
         ]
     },
@@ -1186,68 +1316,42 @@ console.log("Form component initialized");
         title: "CSS Problems",
         icon: "css",
         color: "#38b2ac",
-        totalProblems: 3,
+        totalProblems: 5,
         problems: [
             {
                 id: 1,
-                title: "Center Div",
-                description: `Center the inner div both horizontally and vertically inside the container using Flexbox.`,
+                title: "Text Styling",
+                description: `Apply the following styles to the h1 element:
+- Color: deepskyblue
+- Font size: 32px
+- Text alignment: center
+- Font family: Arial`,
                 difficulty: 1,
-                tags: ["css", "flexbox", "easy"],
-                starterCode: `<div class="container">
-    <div class="box">Center Me</div>
-</div>
+                tags: ["css", "basics", "easy"],
+                starterCode: `<h1>Styled Heading</h1>
 
 <style>
-.container {
-    height: 300px;
-    border: 2px dashed #ccc;
-    display: flex;
-    /* Add properties below */
-    
-}
-
-.box {
-    width: 100px;
-    height: 100px;
-    background-color: #667eea;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 8px;
+h1 {
+    /* Add styles here */
 }
 </style>`,
-                solution: `<div class="container">
-    <div class="box">Center Me</div>
-</div>
+                solution: `<h1>Styled Heading</h1>
 
 <style>
-.container {
-    height: 300px;
-    border: 2px dashed #ccc;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.box {
-    width: 100px;
-    height: 100px;
-    background-color: #667eea;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 8px;
+h1 {
+    color: deepskyblue;
+    font-size: 32px;
+    text-align: center;
+    font-family: Arial, sans-serif;
 }
 </style>`,
-                hints: ["Use justify-content: center", "Use align-items: center"]
+                hints: ["Use color and font-size", "Use text-align"],
+                theory: "CSS (Cascading Style Sheets) is used to control the visual presentation of HTML elements.\n\nLogic:\n1. **Selectors**: The `h1` selector targets all first-level headings on the page.\n2. **Declarations**: Each line inside the braces is a declaration (property: value).\n3. **Hierarchy**: CSS flows from top to bottom, with more specific rules overriding general ones."
             },
             {
                 id: 2,
                 title: "Grid Layout",
-                description: `Create a 3-column grid layout where each item has spacing between them.`,
+                description: `Create a 3-column grid layout with a 15px gap.`,
                 difficulty: 2,
                 tags: ["css", "grid", "average"],
                 starterCode: `<div class="grid-container">
@@ -1261,8 +1365,7 @@ console.log("Form component initialized");
 
 <style>
 .grid-container {
-    display: grid;
-    /* Add grid columns and gap here */
+    /* Add grid styles here */
 }
 
 .item {
@@ -1297,7 +1400,8 @@ console.log("Form component initialized");
     border-radius: 4px;
 }
 </style>`,
-                hints: ["Use grid-template-columns", "Use gap for spacing"]
+                hints: ["Use grid-template-columns", "Use gap for spacing"],
+                theory: "CSS Grid excels at dividing space into a predictable matrix.\n\nLogic:\n1. **Defining Structure**: `grid-template-columns` defines the width of each column. `repeat(3, 1fr)` is a clean way to say 'three columns of equal width'.\n2. **The Gutter**: The `gap` property provides a uniform space between grid cells without affecting the spacing at the edges of the container.\n3. **Implicit Rows**: Because we have 6 items but only 3 columns, the grid 'implicitly' creates a second row for the remaining 3 items automatically."
             },
             {
                 id: 3,
@@ -1341,6 +1445,75 @@ console.log("Form component initialized");
 </style>`,
                 hints: ["Use transition: all 0.3s", "Use :hover selector"],
                 theory: "Interactive elements like buttons should feel responsive to user input.\n\nLogic:\n1. Use the `transition` property to define the duration and easing of the state change.\n2. Use the `:hover` pseudo-selector to apply new styles (like color or shadow) when the mouse is over the button.\n3. Using `translateY` creates a subtle 'lifting' effect that provides tactile feedback."
+            },
+            {
+                id: 4,
+                title: "Circular Image",
+                description: `Style an image to be a perfect circle with a width and height of 200px.`,
+                difficulty: 1,
+                tags: ["css", "basics"],
+                starterCode: `<img src="https://via.placeholder.com/200" class="profile-pic">
+
+<style>
+.profile-pic {
+    /* Add styles here */
+}
+</style>`,
+                solution: `<img src="https://via.placeholder.com/200" class="profile-pic">
+
+<style>
+.profile-pic {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+</style>`,
+                hints: ["Use border-radius: 50%"],
+                theory: "Creating circular elements is a staple of modern web design, often used for profile pictures and icons.\n\nLogic:\n1. **Prerequisite**: The element must be a perfect square (`width` must equal `height`).\n2. **The Trick**: Setting `border-radius` to 50% pulls the corners in exactly to the center point of each side, forming a circle.\n3. **Containment**: Use `object-fit: cover` to ensure the image fills the circle without being stretched or squished.",
+            },
+            {
+                id: 5,
+                title: "Flexbox Centering",
+                description: `Center a small box perfectly in the middle of a large container.`,
+                difficulty: 2,
+                tags: ["css", "flexbox"],
+                starterCode: `<div class="container">
+    <div class="box">Center Me</div>
+</div>
+
+<style>
+.container {
+    width: 100%;
+    height: 300px;
+    background: #eee;
+    /* Add flex styles here */
+}
+.box {
+    padding: 20px;
+    background: coral;
+}
+</style>`,
+                solution: `<div class="container">
+    <div class="box">Center Me</div>
+</div>
+
+<style>
+.container {
+    width: 100%;
+    height: 300px;
+    background: #eee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.box {
+    padding: 20px;
+    background: coral;
+}
+</style>`,
+                hints: ["Use display: flex", "Use justify-content and align-items"],
+                theory: "Flexbox is designed for one-dimensional layouts, providing high control over alignment and distribution of space.\n\nLogic:\n1. **Activation**: `display: flex` turns the container into a flex context.\n2. **X-Axis**: `justify-content: center` aligns items along the main axis (horizontal by default).\n3. **Y-Axis**: `align-items: center` aligns items along the cross axis (vertical by default). Together, they result in perfect centering.",
             }
         ]
     },
@@ -1349,7 +1522,7 @@ console.log("Form component initialized");
         title: "Angular Problems",
         icon: "angular",
         color: "#dd0031",
-        totalProblems: 2,
+        totalProblems: 4,
         problems: [
             {
                 id: 1,
@@ -1358,20 +1531,21 @@ console.log("Form component initialized");
                 difficulty: 1,
                 tags: ["angular", "basics"],
                 starterCode: `@Component({
-  selector: 'app-root',
-  template: '<h1>{{ <!-- displayed here --> }}</h1>'
-})
+        selector: 'app-root',
+        template: '<h1>{{ <!-- displayed here --> }}</h1>'
+    })
 class AppComponent {
-  name = 'Angular User';
-}`,
+    name = 'Angular User';
+} `,
                 solution: `@Component({
-  selector: 'app-root',
-  template: '<h1>{{ name }}</h1>'
+    selector: 'app-root',
+    template: '<h1>{{ name }}</h1>'
 })
 class AppComponent {
-  name = 'Angular User';
-}`,
-                hints: ["Use double curly braces"]
+    name = 'Angular User';
+} `,
+                hints: ["Use double curly braces"],
+                theory: "Interpolation is the most common way to display data from an Angular component to its template.\n\nLogic:\n1. **The Binding**: Putting a variable name inside double curly braces `{ { name } } ` tells Angular to replace that placeholder with the actual value of the variable.\n2. **Dynamic Updates**: If the value of `name` changes in your TypeScript file, Angular's change detection system will automatically update the text in the browser instantly without a page refresh."
             },
             {
                 id: 2,
@@ -1379,9 +1553,36 @@ class AppComponent {
                 description: `Bind a click event to a button to call a method.`,
                 difficulty: 2,
                 tags: ["angular", "events"],
-                starterCode: `<button (<!-- event -->)="doSomething()">Click</button>`,
+                starterCode: `<button (click)="<!-- method here -->">Click</button>`,
                 solution: `<button (click)="doSomething()">Click</button>`,
-                hints: ["Use (click) parenthesis"]
+                hints: ["Use (click) parenthesis"],
+                theory: "Event binding in Angular uses parentheses to signify an event moving from the View (HTML) to the Component (TS).\n\nLogic:\n1. **Syntax**: `(event_name)=\"function_to_call()\"`.\n2. **Action**: When the user performs the 'click' action on the button, Angular catches the browser event and executes the `doSomething()` method defined on your class.\n3. This is the foundation of user interaction in the Angular framework."
+            },
+            {
+                id: 3,
+                title: "Conditional Content with *ngIf",
+                description: `Display a success message only if the 'isSubmitted' property is true.`,
+                difficulty: 2,
+                tags: ["angular", "directives"],
+                starterCode: `<div <!-- directive -->="isSubmitted">Form submitted successfully!</div>`,
+                solution: `<div *ngIf="isSubmitted">Form submitted successfully!</div>`,
+                hints: ["Use *ngIf structural directive"],
+                theory: "Structural directives are responsible for HTML layout. They shape or reshape the DOM's structure, typically by adding, removing, or manipulating elements.\n\nLogic:\n1. The asterisk (*) prefix is a shorthand for Angular's template syntax.\n2. When expression evaluates to true, Angular adds the element to the DOM; when false, it removes the element entirely (not just hiding it with CSS).",
+            },
+            {
+                id: 4,
+                title: "Looping with *ngFor",
+                description: `Display a list of user names from an array called 'users'.`,
+                difficulty: 2,
+                tags: ["angular", "directives"],
+                starterCode: `<ul>
+  <li <!-- directive -->="let user of users">{{ user }}</li>
+</ul>`,
+                solution: `<ul>
+  <li *ngFor="let user of users">{{ user }}</li>
+</ul>`,
+                hints: ["Use *ngFor structural directive"],
+                theory: "The ngFor directive acts as a repeater, allowing you to build complex lists or tables from arrays of data.\n\nLogic:\n1. `let user` defines a local variable representing the current item in the iteration.\n2. `of users` specifies the source array to loop through.\n3. Angular automatically manages the creation and tracking of these DOM elements as the underlying array changes.",
             }
         ]
     },
@@ -1493,7 +1694,8 @@ const TodoList = () => {
 
 const root = createRoot(document.getElementById('root'));
 root.render(<TodoList />);`,
-                hints: ["Use array spread operator", "Use filter to delete"]
+                hints: ["Use array spread operator", "Use filter to delete"],
+                theory: "Managing lists is a fundamental pattern in web development, often involving adding and removing items from a state array.\n\nLogic:\n1. **Immutability**: React state should never be modified directly. Instead of `todos.push()`, we use `setTodos([...todos, newItem])`. The spread operator (`...`) creates a copy of the existing items and adds the new one at the end.\n2. **Deletion**: To delete an item, we use `.filter()`. This creates a new array containing every item EXCEPT the one that matches our target index.\n3. **Controlled Inputs**: By setting the input's `value` to a state variable and updating it via `onChange`, we ensure React is the 'single source of truth' for what the user is typing."
             },
             {
                 id: 3,
@@ -1566,7 +1768,8 @@ const FormValidation = () => {
 
 const root = createRoot(document.getElementById('root'));
 root.render(<FormValidation />);`,
-                hints: ["Validate on submit", "Store errors in state"]
+                hints: ["Validate on submit", "Store errors in state"],
+                theory: "Validation ensures data integrity and provides a better user experience by catching mistakes early.\n\nLogic:\n1. **Capture**: Store form values in React state as the user types.\n2. **Evaluate**: On submission (or on change), run a function to check if values meet your business rules (e.g., character length or presence of '@').\n3. **Feedback**: If rules are broken, store descriptive error messages in a separate 'errors' state object.\n4. **Display**: Use conditional rendering `{errors.field && <p>{errors.field}</p>}` to show these messages to the user."
             },
             {
                 id: 4,
@@ -1624,7 +1827,8 @@ const DataFetcher = () => {
 
 const root = createRoot(document.getElementById('root'));
 root.render(<DataFetcher />);`,
-                hints: ["Use useEffect with empty dependency array", "Handle loading and error states"]
+                hints: ["Use useEffect with empty dependency array", "Handle loading and error states"],
+                theory: "Real-world apps fetch data from external servers. Managing the lifecycle of these requests is a critical skill.\n\nLogic:\n1. **The Hook**: Use `useEffect` to trigger the fetch. The empty dependency array `[]` ensures it only runs once when the component first appears ('mounts').\n2. **The states**: You need three distinct states: `data` (the results), `loading` (a boolean to show a spinner), and `error` (a place to store failure messages).\n3. **Conditional Rendering**: In the return statement, use `if` blocks to handle the loading and error states separately, keeping the main 'success' UI clean and focused on data display."
             },
             {
                 id: 5,
@@ -1637,7 +1841,7 @@ root.render(<DataFetcher />);`,
 - Buttons to update each`,
                 difficulty: 2,
                 tags: ["react", "state", "average"],
-                starterCode: `import React, { useState } from "react";
+                starterCode: `import React, { useState } => "react";
 import { createRoot } from "react-dom/client";
 
 const StateManagement = () => {
@@ -1674,7 +1878,8 @@ const StateManagement = () => {
 
 const root = createRoot(document.getElementById('root'));
 root.render(<StateManagement />);`,
-                hints: ["Use multiple useState hooks", "Update each independently"]
+                hints: ["Use multiple useState hooks", "Update each independently"],
+                theory: "Components often need to track multiple unrelated pieces of information. React allows you to use `useState` as many times as needed.\n\nLogic:\n1. **Independence**: Updating one state variable (like `age`) does not affect the others (like `name`). React efficiently only updates the specific parts of the DOM that changed.\n2. **Type Flexibility**: Each state variable can hold any data type—strings, numbers, booleans, or even complex objects.\n3. **Event Drivers**: Use different user actions (typing, clicking) to drive different state updates, creating a rich interactive experience."
             },
             {
                 id: 6,
@@ -1736,7 +1941,8 @@ const App = () => {
 
 const root = createRoot(document.getElementById('root'));
 root.render(<App />);`,
-                hints: ["Destructure props", "Reuse component with different props"]
+                hints: ["Destructure props", "Reuse component with different props"],
+                theory: "Props (Properties) are the mechanism for passing data from a parent component down to its children.\n\nLogic:\n1. **Reusability**: Props allow you to write one component once and display it many times with different content.\n2. **One-way Flow**: Data in React moves downwards. The parent defines what the data is, and the child simply renders it.\n3. **Destructuring**: Using `{ title, description }` in the component arguments is a clean JS shortcut to access features directly instead of saying `props.title` everywhere."
             }
         ]
     }

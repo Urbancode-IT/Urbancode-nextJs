@@ -10,7 +10,8 @@ import './Dashboard.css';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement);
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_FEEDBACK_API_URL || 'https://urbancode-nextjs.onrender.com';
+const API_BASE_URL = process.env.NEXT_PUBLIC_FEEDBACK_API_URL || '';
+const API_PATH = API_BASE_URL === '' ? '/api/feedback' : `${API_BASE_URL}/api`;
 
 const Dashboard = () => {
     const [stats, setStats] = useState(null);
@@ -39,7 +40,7 @@ const Dashboard = () => {
     const fetchAnalytics = async (token, isMounted = true) => {
         setLoading(true);
         try {
-            const res = await axios.get(`${API_BASE_URL}/api/responses/analytics`, {
+            const res = await axios.get(`${API_PATH}/responses/analytics`, {
                 headers: { Authorization: `Bearer ${token}` },
                 timeout: 30000 // Extended timeout for free Render tiers
             });
