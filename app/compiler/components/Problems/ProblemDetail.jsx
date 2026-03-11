@@ -75,8 +75,12 @@ const ProblemDetail = () => {
                 // Fetch related problems in the same topic
                 const relResponse = await problemsApi.getProblemsByTopic(topic);
                 if (relResponse.success && relResponse.data) {
-                    setAllTopicProblems(relResponse.data);
-                    setRelatedProblems(relResponse.data.filter(p => (p._id || p.id).toString() !== problemId).slice(0, 4));
+                    const sortedProblems = [...relResponse.data].sort((a, b) => {
+                        if (a.difficulty !== b.difficulty) return a.difficulty - b.difficulty;
+                        return a.title.localeCompare(b.title);
+                    });
+                    setAllTopicProblems(sortedProblems);
+                    setRelatedProblems(sortedProblems.filter(p => (p._id || p.id).toString() !== problemId).slice(0, 4));
                 }
             } catch (err) {
                 console.error('Error fetching problem:', err);
@@ -339,8 +343,19 @@ const ProblemDetail = () => {
     };
 
     const handleNextProblem = () => {
-        if (allTopicProblems.length === 0) return;
-        const currentIndex = allTopicProblems.findIndex(p => (p._id || p.id).toString() === problemId);
+        if (allTopicProblems.length === 0) {
+            console.warn('No topic problems loaded yet');
+            return;
+        }
+
+        // 1. Try to find by ID
+        let currentIndex = allTopicProblems.findIndex(p => (p._id || p.id).toString() === problemId);
+
+        // 2. Fallback: Try to find by title if ID mismatch (handle duplicate migration edge cases)
+        if (currentIndex === -1 && problem) {
+            currentIndex = allTopicProblems.findIndex(p => p.title === problem.title);
+        }
+
         if (currentIndex !== -1 && currentIndex < allTopicProblems.length - 1) {
             const nextProblem = allTopicProblems[currentIndex + 1];
             const nextId = nextProblem._id || nextProblem.id;
@@ -348,8 +363,12 @@ const ProblemDetail = () => {
             setTimeout(() => {
                 navigate(`/problems/${topic}/${nextId}`);
             }, 2000);
-        } else {
+        } else if (currentIndex !== -1) {
             toast.info('Topic Completed! You have finished all problems here.');
+        } else {
+            console.log('Current problem not found in list, navigating to list.');
+            toast.info('Moving back to topic list.');
+            setTimeout(() => navigate(`/problems/${topic}`), 1000);
         }
     };
 

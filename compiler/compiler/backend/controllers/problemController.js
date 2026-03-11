@@ -40,7 +40,7 @@ const getProblemsByTopic = async (req, res) => {
             query = { topic: { $in: ['c++', 'cpp'] } };
         }
 
-        const problems = await Problem.find(query);
+        const problems = await Problem.find(query).sort({ difficulty: 1, title: 1 });
 
         if (!problems || problems.length === 0) {
             return res.status(404).json({
