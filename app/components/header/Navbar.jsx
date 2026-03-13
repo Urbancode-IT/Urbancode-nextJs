@@ -24,6 +24,7 @@ export default function Navbar() {
   useEffect(() => {
     const handleScroll = () => {
       const navbar = document.querySelector('.navbar');
+      if (!navbar) return;
       if (window.scrollY > 10) navbar.classList.add('scrolled');
       else navbar.classList.remove('scrolled');
     };

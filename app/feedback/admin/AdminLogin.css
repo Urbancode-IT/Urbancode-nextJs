@@ -61,7 +61,6 @@
 }
 
 @keyframes float {
-
     0%,
     100% {
         transform: translateY(0) rotate(0deg) scale(1);
@@ -194,9 +193,14 @@
     box-shadow: none !important;
 }
 
-.input-with-icon input:-webkit-autofill {
+/* Fix for browser autofill */
+.input-with-icon input:-webkit-autofill,
+.input-with-icon input:-webkit-autofill:hover,
+.input-with-icon input:-webkit-autofill:focus,
+.input-with-icon input:-webkit-autofill:active {
     -webkit-box-shadow: 0 0 0 1000px rgba(255, 255, 255, 0.1) inset !important;
     -webkit-text-fill-color: white !important;
+    transition: background-color 5000s ease-in-out 0s;
 }
 
 .input-with-icon input::placeholder {
@@ -291,7 +295,6 @@
 }
 
 @keyframes shake {
-
     10%,
     90% {
         transform: translate3d(-1px, 0, 0);

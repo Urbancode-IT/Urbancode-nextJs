@@ -1,0 +1,154 @@
+/* Admin Header Styles - Top Navigation */
+:root {
+  --admin-header-height: 80px;
+}
+
+.admin-header-main {
+  width: 100%;
+  height: var(--admin-header-height);
+  background: #0f172a;
+  color: white;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 2500;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+}
+
+.admin-nav-container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.admin-logo a {
+  text-decoration: none;
+  color: white;
+}
+
+.admin-logo h2 {
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.admin-logo h2 span {
+  color: #17944d;
+}
+
+.admin-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.admin-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: 12px;
+  color: #94a3b8;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+}
+
+.admin-nav-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+}
+
+.admin-nav-item.active {
+  background: #17944d;
+  color: white;
+  box-shadow: 0 10px 15px -3px rgba(23, 148, 77, 0.3);
+}
+
+.admin-logout-btn-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.25rem;
+  background: rgba(239, 68, 68, 0.1);
+  color: #f87171;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.2s;
+  border: none;
+  cursor: pointer;
+  margin-left: 1rem;
+}
+
+.admin-logout-btn-header:hover {
+  background: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+}
+
+.mobile-toggle-btn {
+  display: none;
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+@media (max-width: 1024px) {
+  .admin-nav-container {
+    padding: 0 1.5rem;
+  }
+  
+  .admin-nav-item span {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .mobile-toggle-btn {
+    display: block;
+  }
+
+  .admin-nav-links {
+    position: fixed;
+    top: var(--admin-header-height);
+    left: 0;
+    right: 0;
+    background: #0f172a;
+    flex-direction: column;
+    padding: 2rem;
+    gap: 1.5rem;
+    transform: translateY(-150%);
+    transition: transform 0.4s ease-in-out;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .admin-nav-links.show {
+    transform: translateY(0);
+  }
+
+  .admin-nav-item span {
+    display: block !important;
+  }
+
+  .admin-nav-item {
+    width: 100%;
+    justify-content: center;
+    font-size: 1.1rem;
+  }
+
+  .admin-logout-btn-header {
+    width: 100%;
+    justify-content: center;
+    margin-left: 0;
+    margin-top: 1rem;
+    padding: 1rem;
+  }
+}

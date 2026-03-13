@@ -60,7 +60,7 @@ const AdminLogin = () => {
                         <span className="logo-text">urbancode<span className="logo-bracket">{'>'}</span></span>
                         <p className="logo-sub">training and solutions</p>
                     </div>
-                    <h2 className="zen-title">Feedback Admin</h2>
+                    <h2 className="zen-title">UC-feedback form login</h2>
                 </div>
 
                 <form onSubmit={handleSubmit} className="login-form">

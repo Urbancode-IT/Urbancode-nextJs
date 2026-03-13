@@ -1,18 +1,23 @@
 import { NextResponse } from 'next/server';
+import jwt from 'jsonwebtoken';
+
+const JWT_SECRET = process.env.FEEDBACK_JWT_SECRET || 'uc_secret_2024_feedback_token_key_uc';
+const ADMIN_USERNAME = process.env.FEEDBACK_ADMIN_USERNAME || 'urbancodeit';
+const ADMIN_PASSWORD = process.env.FEEDBACK_ADMIN_PASSWORD || 'UCfeedbackadmin@2204';
 
 export async function POST(req) {
     try {
         const { username, password } = await req.json();
 
-        // Hardcoded admin credentials for the feedback panel
-        if (username === 'admin' && password === 'admin123') {
+        // Match standalone credentials
+        if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
+            // Create a real JWT token like standalone
+            const token = jwt.sign({ username }, JWT_SECRET, { expiresIn: '24h' });
+            
             return NextResponse.json({
                 success: true,
-                token: 'UC-SESSION-TOKEN-ADMIN-ACCESS',
-                user: {
-                    username: 'admin',
-                    role: 'superuser'
-                }
+                token: token,
+                username: username
             });
         }
 

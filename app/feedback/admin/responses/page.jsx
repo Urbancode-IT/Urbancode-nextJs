@@ -2,13 +2,13 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
-import Sidebar from '@/app/components/feedback-admin/Sidebar';
+import AdminHeader from '@/app/components/feedback-admin/AdminHeader';
 import { MdSearch, MdFilterList, MdVisibility, MdDelete, MdDownload, MdCheckCircle, MdCancel } from 'react-icons/md';
 import Swal from 'sweetalert2';
 import './Responses.css';
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_FEEDBACK_API_URL || '';
-const API_PATH = API_BASE_URL === '' ? '/api/feedback' : `${API_BASE_URL}/api`;
+const API_PATH = API_BASE_URL === '' ? '/api/feedback' : `${API_BASE_URL}/api/feedback`;
 
 const Responses = () => {
     const [responses, setResponses] = useState([]);
@@ -22,58 +22,36 @@ const Responses = () => {
     const router = useRouter();
 
     useEffect(() => {
-        let isMounted = true;
         const token = localStorage.getItem('token');
         if (!token) {
             router.push('/feedback/admin');
             return;
         }
-
-        const initFetch = async () => {
-            // Tiny delay to ensure hydration is stable and avoid Turbopack/Next.js hydration aborts
-            await new Promise(resolve => setTimeout(resolve, 100));
-            if (isMounted) fetchData(token, isMounted);
-        };
-
-        initFetch();
-
-        return () => { isMounted = false; };
+        fetchData(token);
     }, [router]);
 
-    const fetchData = async (token, isMounted = true) => {
+    const fetchData = async (token) => {
         setLoading(true);
         try {
-            const config = {
-                headers: { Authorization: `Bearer ${token}` },
-                timeout: 30000 // 30 second timeout for waking up free-tier backend
-            };
-
-            // Sequential fetch instead of Promise.all to prevent "Request aborted" on slow Render free tier
-            const respRes = await axios.get(`${API_PATH}/responses`, config);
-            if (!isMounted) return;
-
-            const trainRes = await axios.get(`${API_PATH}/trainers`, config);
-            if (!isMounted) return;
-
-            const questRes = await axios.get(`${API_PATH}/questions`, config);
-            if (!isMounted) return;
+            const config = { headers: { Authorization: `Bearer ${token}` } };
+            const [respRes, trainRes, questRes] = await Promise.all([
+                axios.get(`${API_PATH}/responses`, config),
+                axios.get(`${API_PATH}/trainers`, config),
+                axios.get(`${API_PATH}/questions`, config)
+            ]);
 
             setResponses(respRes.data);
             setFilteredResponses(respRes.data);
             setTrainers(trainRes.data);
             setQuestions(questRes.data);
         } catch (err) {
-            if (axios.isCancel(err) || err.code === 'ECONNABORTED' || err.message?.includes('aborted')) {
-                console.log('Fetch aborted or timed out, retrying if mounted...');
-                return;
-            }
             console.error(err);
             if (err.response?.status === 401) {
                 localStorage.removeItem('token');
                 router.push('/feedback/admin');
             }
         } finally {
-            if (isMounted) setLoading(false);
+            setLoading(false);
         }
     };
 
@@ -207,23 +185,22 @@ const Responses = () => {
         const type = ans.type;
         if (type === 'matrix') {
             if (!ans.value || typeof ans.value !== 'object' || Array.isArray(ans.value)) {
-                return <span className="qa-value-bold">{ans.value?.toString() || 'N/A'}</span>;
+                return <span>{ans.value?.toString() || 'N/A'}</span>;
             }
             return (
-                <div className="ratings-grid-premium">
+                <div className="matrix-display">
                     {Object.entries(ans.value).map(([row, col]) => (
-                        <div key={row} className="rating-item-box">
-                            <span className="rating-criteria">{row}:</span>
-                            <span className="rating-val">{col}</span>
+                        <div key={row} className="matrix-row-val">
+                            <strong>{row}:</strong> {col}
                         </div>
                     ))}
                 </div>
             );
         }
         if (Array.isArray(ans.value)) {
-            return <span className="qa-value-bold">{ans.value.join(', ')}</span>;
+            return <span>{ans.value.join(', ')}</span>;
         }
-        return <span className="qa-value-bold">{ans.value}</span>;
+        return <span>{ans.value}</span>;
     };
 
     const cleanSectionTitle = (title) => {
@@ -232,15 +209,15 @@ const Responses = () => {
 
     return (
         <div className="admin-layout">
-            <Sidebar />
+            <AdminHeader />
             <main className="admin-content">
                 <div className="responses-manager-container">
-                    <header className="page-header flex-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <header className="page-header flex-header">
                         <div>
                             <h1>Responses</h1>
                             <p>Manage and view all participants feedback</p>
                         </div>
-                        <button onClick={downloadCSV} className="btn-secondary" style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '10px 20px', borderRadius: '10px', border: '1px solid #e2e8f0', background: 'white', fontWeight: '600', cursor: 'pointer' }}>
+                        <button onClick={downloadCSV} className="btn-secondary">
                             <MdDownload size={20} />
                             <span>Export CSV</span>
                         </button>
@@ -255,14 +232,14 @@ const Responses = () => {
                             </div>
                         </div>
                         <div className="stat-card">
-                            <div className="stat-icon excellent" style={{ color: '#16a34a' }}><MdCheckCircle size={28} /></div>
+                            <div className="stat-icon excellent"><MdCheckCircle size={28} /></div>
                             <div className="stat-info">
                                 <h3>Positive Feedback</h3>
                                 <p>{responses.filter(r => ['Excellent', 'Good'].includes(getOverallRating(r))).length}</p>
                             </div>
                         </div>
                         <div className="stat-card">
-                            <div className="stat-icon poor" style={{ color: '#ef4444' }}><MdCancel size={28} /></div>
+                            <div className="stat-icon poor"><MdCancel size={28} /></div>
                             <div className="stat-info">
                                 <h3>Critical Feedback</h3>
                                 <p>{responses.filter(r => ['Bad', 'Very Bad'].includes(getOverallRating(r))).length}</p>
@@ -306,9 +283,9 @@ const Responses = () => {
                                 {loading ? (
                                     <tr>
                                         <td colSpan="5">
-                                            <div className="uc-loader-container" style={{ minHeight: '150px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                                                <div className="uc-logo-anim" style={{ fontSize: '2rem', fontWeight: 'bold', color: '#17944d' }}><span>U</span><span>C</span></div>
-                                                <div className="uc-loading-text" style={{ color: '#64748b' }}>Loading Responses...</div>
+                                            <div className="uc-loader-container" style={{ minHeight: '150px' }}>
+                                                <div className="uc-logo-anim" style={{ fontSize: '2.5rem' }}><span>U</span><span>C</span></div>
+                                                <div className="uc-loading-text">Loading Responses...</div>
                                             </div>
                                         </td>
                                     </tr>
@@ -325,12 +302,12 @@ const Responses = () => {
                                                         {res.trainerEvaluations && res.trainerEvaluations.length > 0 ? (
                                                             res.trainerEvaluations.map((t, i) => (
                                                                 <div key={i} className="trainer-item">
-                                                                    <span className="trainer-name-bold" style={{ fontWeight: '700' }}>{t.trainerName}</span>
-                                                                    <span className="trainer-type-small" style={{ fontSize: '0.75rem', color: '#64748b', marginLeft: '5px' }}>({t.trainerType || 'Course Training'})</span>
+                                                                    <span className="trainer-name-bold">{t.trainerName}</span>
+                                                                    <span className="trainer-type-small">({t.trainerType || 'Course Training'})</span>
                                                                 </div>
                                                             ))
                                                         ) : (
-                                                            <span className="trainer-name-bold" style={{ fontWeight: '700' }}>{res.participantDetails?.trainerName || 'N/A'}</span>
+                                                            <span className="trainer-name-bold">{res.participantDetails?.trainerName || 'N/A'}</span>
                                                         )}
                                                     </div>
                                                 </td>
@@ -342,10 +319,10 @@ const Responses = () => {
                                                 </td>
                                                 <td className="text-right">
                                                     <div className="action-group" style={{ display: 'flex', gap: '8px', justifyContent: 'flex-end' }}>
-                                                        <button className="btn-icon view" onClick={() => setSelectedResponse(res)} style={{ background: '#f1f5f9', border: 'none', padding: '8px', borderRadius: '8px', cursor: 'pointer' }}>
+                                                        <button className="btn-icon view" onClick={() => setSelectedResponse(res)} title="View">
                                                             <MdVisibility size={18} />
                                                         </button>
-                                                        <button className="btn-icon delete" onClick={() => handleDelete(res._id)} style={{ background: '#fee2e2', color: '#ef4444', border: 'none', padding: '8px', borderRadius: '8px', cursor: 'pointer' }}>
+                                                        <button className="btn-icon delete" onClick={() => handleDelete(res._id)} title="Delete">
                                                             <MdDelete size={18} />
                                                         </button>
                                                     </div>
@@ -360,112 +337,95 @@ const Responses = () => {
                 </div>
 
                 {selectedResponse && (
-                    <div className="modal-overlay">
-                        <div className="modal-content admin-modal premium-modal">
-                            <div className="modal-header">
-                                <h2 className="modal-title">Anonymous Feedback Detail</h2>
-                                <button onClick={() => setSelectedResponse(null)} className="close-btn-round">&times;</button>
+                    <div className="modal-overlay" style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', background: 'rgba(0,0,0,0.5)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 9999 }}>
+                        <div className="modal-content admin-modal" style={{ background: 'white', width: '90%', maxWidth: '800px', borderRadius: '12px', overflow: 'hidden', maxHeight: '90vh', display: 'flex', flexDirection: 'column' }}>
+                            <div className="modal-header" style={{ padding: '1.5rem', borderBottom: '1px solid #eee', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                <div className="print-header-logo">
+                                    <h2 style={{ color: '#17944d', margin: 0 }}>Feedback <span style={{ color: '#0f172a' }}>UC</span></h2>
+                                </div>
+                                <h2 className="modal-title-text">Anonymous Feedback Detail</h2>
+                                <button onClick={() => setSelectedResponse(null)} className="close-btn" style={{ background: 'none', border: 'none', fontSize: '1.5rem', cursor: 'pointer' }}>&times;</button>
                             </div>
-                            <div className="modal-body-premium">
-                                {/* General Info Section */}
-                                <section className="response-section-premium">
-                                    <h3 className="section-label">General Info</h3>
-                                    <div className="info-card-grid">
-                                        <div className="info-pill">
-                                            <span className="pill-label">COURSE</span>
-                                            <span className="pill-value">{selectedResponse.participantDetails?.courseName || 'N/A'}</span>
-                                        </div>
-                                        <div className="info-pill">
-                                            <span className="pill-label">BATCH</span>
-                                            <span className="pill-value">{selectedResponse.participantDetails?.batch || 'N/A'}</span>
-                                        </div>
+                            <div className="modal-body-alt" style={{ padding: '2rem', overflowY: 'auto' }}>
+                                <section className="response-section" style={{ marginBottom: '2rem' }}>
+                                    <h3>General Info</h3>
+                                    <div className="info-grid">
+                                        <div className="info-item"><span>Course</span><span>{selectedResponse.participantDetails?.courseName || 'N/A'}</span></div>
+                                        <div className="info-item"><span>Batch</span><span>{selectedResponse.participantDetails?.batch || 'N/A'}</span></div>
                                     </div>
                                 </section>
 
-                                {/* Performance Report Section */}
-                                <section className="response-section-premium">
-                                    <h3 className="section-label">Performance Report</h3>
-
-                                    {/* Trainer Feedback Sub-block */}
-                                    <div className="feedback-sub-card">
-                                        <div className="card-accent-header">
-                                            <span className="accent-bar"></span>
-                                            <h4>: Trainer Feedback</h4>
-                                        </div>
-
-                                        {selectedResponse.trainerEvaluations?.map((evalItem, idx) => (
-                                            <div key={idx} className="trainer-eval-block">
-                                                <div className="trainer-info-row">
-                                                    <span className="trainer-name-label">{evalItem.trainerName}</span>
-                                                    <span className="trainer-type-tag">{evalItem.trainerType}</span>
-                                                </div>
-                                                <div className="ratings-grid-premium">
-                                                    {evalItem.ratings && Object.entries(evalItem.ratings).map(([criteria, rating]) => (
-                                                        <div key={criteria} className="rating-item-box">
-                                                            <span className="rating-criteria">{criteria}:</span>
-                                                            <span className="rating-val">{rating}</span>
+                                <section className="response-section">
+                                    <h3>Performance Report</h3>
+                                    <div className="sections-display">
+                                        {selectedResponse.trainerEvaluations && selectedResponse.trainerEvaluations.length > 0 && (
+                                            <div className="response-group-block">
+                                                <h4 className="response-section-title">Trainer Feedback</h4>
+                                                <div className="answers-list">
+                                                    {selectedResponse.trainerEvaluations.map((evalItem, idx) => (
+                                                        <div key={idx} className="trainer-response-block">
+                                                            <div className="trainer-label-display">
+                                                                {evalItem.trainerName}
+                                                                <span className="trainer-type-suffix">{evalItem.trainerType}</span>
+                                                            </div>
+                                                            <div className="matrix-display">
+                                                                {evalItem.ratings && Object.entries(evalItem.ratings).map(([criteria, rating]) => (
+                                                                    <div key={criteria} className="matrix-row-val">
+                                                                        <strong>{criteria}:</strong> {rating}
+                                                                    </div>
+                                                                ))}
+                                                            </div>
                                                         </div>
                                                     ))}
                                                 </div>
                                             </div>
-                                        ))}
-                                    </div>
+                                        )}
 
-                                    {(() => {
-                                        // Improved strict deduplication and trainer-filtering logic
-                                        const seenQuestions = new Set();
-                                        const grouped = (selectedResponse.dynamicAnswers || [])
-                                            .filter(ans => {
+                                        {(() => {
+                                            const grouped = (selectedResponse.dynamicAnswers || []).reduce((acc, ans) => {
                                                 const currentQ = questions.find(q => q._id === ans.questionId);
-                                                const sectionName = (currentQ ? currentQ.section : (ans.section || '')).toLowerCase();
-                                                const qText = (ans.questionText || '').toLowerCase();
 
-                                                // Strictly exclude trainer-related and duplicates
-                                                if (sectionName.includes('trainer') || qText.includes('trainer')) return false;
+                                                // FILTER REPEATS: If the question text matches something already in Participant Info, skip it
+                                                const txt = (currentQ?.questionText || ans.questionText || '').toLowerCase();
+                                                const keywordsToFilter = ['name', 'email', 'course', 'batch', 'participant'];
+                                                if (keywordsToFilter.some(k => txt.includes(k)) && txt.length < 30) {
+                                                    return acc;
+                                                }
 
-                                                // Filter out questions already in the source (like overall)
-                                                if (seenQuestions.has(qText)) return false;
-                                                seenQuestions.add(qText);
-                                                return true;
-                                            })
-                                            .reduce((acc, ans) => {
-                                                const currentQ = questions.find(q => q._id === ans.questionId);
                                                 const section = currentQ ? currentQ.section : (ans.section || 'Other');
+                                                const text = currentQ ? currentQ.questionText : (ans.questionText || 'Deleted Question');
+
                                                 if (!acc[section]) acc[section] = [];
-                                                acc[section].push({ ...ans, section, questionText: currentQ?.questionText || ans.questionText });
+                                                acc[section].push({ ...ans, section, questionText: text });
                                                 return acc;
                                             }, {});
 
-                                        return Object.keys(grouped).map(section => (
-                                            <div key={section} className="feedback-sub-card dynamic-sub-card">
-                                                <div className="card-accent-header">
-                                                    <span className="accent-bar"></span>
-                                                    <h4>: {cleanSectionTitle(section)}</h4>
+                                            return Object.keys(grouped).map(section => (
+                                                <div key={section} className="response-group-block">
+                                                    <h4 className="response-section-title">{cleanSectionTitle(section)}</h4>
+                                                    <div className="answers-list">
+                                                        {grouped[section].map((ans, idx) => (
+                                                            <div key={idx} className="answer-item">
+                                                                <label>{ans.questionText}</label>
+                                                                <div className="answer-content">
+                                                                    {renderAnswer(ans)}
+                                                                </div>
+                                                            </div>
+                                                        ))}
+                                                    </div>
                                                 </div>
-                                                <div className="dynamic-content-grid">
-                                                    {grouped[section].map((ans, idx) => (
-                                                        <div key={idx} className="dynamic-qa-item">
-                                                            <label className="qa-label-caps">{ans.questionText?.toUpperCase()}</label>
-                                                            <div className="qa-value-clean">{renderAnswer(ans)}</div>
-                                                        </div>
-                                                    ))}
-                                                </div>
-                                            </div>
-                                        ));
-                                    })()}
+                                            ));
+                                        })()}
+                                    </div>
                                 </section>
                             </div>
-                            <div className="modal-footer-premium">
-                                <button onClick={() => setSelectedResponse(null)} className="btn-close-text">Close</button>
-                                <button onClick={() => window.print()} className="btn-print-premium">
-                                    <MdDownload size={18} />
-                                    <span>Print PDF</span>
-                                </button>
+                            <div className="modal-footer-alt" style={{ padding: '1.5rem', borderTop: '1px solid #eee', display: 'flex', justifyContent: 'flex-end', gap: '1rem' }}>
+                                <button onClick={() => setSelectedResponse(null)} className="btn-ghost" style={{ background: 'none', border: 'none', color: '#64748b', fontWeight: 'bold', cursor: 'pointer' }}>Close</button>
+                                <button onClick={() => window.print()} className="btn-submit-main" style={{ background: '#17944d', color: 'white', border: 'none', padding: '0.8rem 1.5rem', borderRadius: '8px', fontWeight: 'bold', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px' }}><MdDownload /> Print PDF</button>
                             </div>
                         </div>
                     </div>
                 )}
-
             </main>
         </div>
     );

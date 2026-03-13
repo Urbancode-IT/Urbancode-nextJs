@@ -18,12 +18,7 @@ const Sidebar = () => {
     const toggleSidebar = () => setIsOpen(!isOpen);
     const closeSidebar = () => setIsOpen(false);
 
-    const navItems = [
-        { path: '/feedback/admin/dashboard', icon: <MdDashboard size={22} />, label: 'Dashboard' },
-        { path: '/feedback/admin/responses', icon: <MdViewList size={22} />, label: 'Responses' },
-        { path: '/feedback/admin/questions', icon: <MdQuestionAnswer size={22} />, label: 'Questions' },
-        { path: '/feedback/admin/trainers', icon: <MdPeople size={22} />, label: 'Trainers' },
-    ];
+    const isActive = (path) => pathname === path;
 
     return (
         <>
@@ -33,20 +28,41 @@ const Sidebar = () => {
 
             <aside className={`sidebar ${isOpen ? 'open' : ''}`}>
                 <div className="sidebar-header">
-                    <h2>Feedback UC</h2>
+                    <h2>Feedback <span>UC</span></h2>
                 </div>
                 <nav className="sidebar-nav">
-                    {navItems.map((item) => (
-                        <Link
-                            key={item.path}
-                            href={item.path}
-                            className={`nav-item ${pathname === item.path ? 'active' : ''}`}
-                            onClick={closeSidebar}
-                        >
-                            {item.icon}
-                            <span>{item.label}</span>
-                        </Link>
-                    ))}
+                    <Link 
+                        href="/feedback/admin/dashboard" 
+                        className={`nav-item ${isActive('/feedback/admin/dashboard') ? 'active' : ''}`}
+                        onClick={closeSidebar}
+                    >
+                        <MdDashboard size={22} />
+                        <span>Dashboard</span>
+                    </Link>
+                    <Link 
+                        href="/feedback/admin/responses" 
+                        className={`nav-item ${isActive('/feedback/admin/responses') ? 'active' : ''}`}
+                        onClick={closeSidebar}
+                    >
+                        <MdViewList size={22} />
+                        <span>Responses</span>
+                    </Link>
+                    <Link 
+                        href="/feedback/admin/questions" 
+                        className={`nav-item ${isActive('/feedback/admin/questions') ? 'active' : ''}`}
+                        onClick={closeSidebar}
+                    >
+                        <MdQuestionAnswer size={22} />
+                        <span>Questions</span>
+                    </Link>
+                    <Link 
+                        href="/feedback/admin/trainers" 
+                        className={`nav-item ${isActive('/feedback/admin/trainers') ? 'active' : ''}`}
+                        onClick={closeSidebar}
+                    >
+                        <MdPeople size={22} />
+                        <span>Trainers</span>
+                    </Link>
                 </nav>
                 <div className="sidebar-footer">
                     <button onClick={handleLogout} className="logout-btn">

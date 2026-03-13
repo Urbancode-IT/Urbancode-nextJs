@@ -3,7 +3,7 @@ import { getFeedbackModels } from '@/lib/feedbackDb';
 
 export async function DELETE(request, { params }) {
     try {
-        const { id } = params;
+        const { id } = await params;
         const { Response } = await getFeedbackModels();
         const doc = await Response.findByIdAndDelete(id);
         if (!doc) return NextResponse.json({ message: 'Response not found' }, { status: 404 });

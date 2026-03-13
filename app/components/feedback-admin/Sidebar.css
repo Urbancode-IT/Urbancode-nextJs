@@ -1,95 +1,54 @@
-/* Global Layout for Admin Pages */
+:root {
+    --sidebar-width: 280px;
+    --primary: #17944d;
+}
+
 .admin-layout {
     display: flex;
-    position: relative;
-    height: 100vh;
-    background: #f8fafc;
-    overflow: hidden;
+    min-height: 100vh;
+    width: 100%;
 }
 
 .admin-content {
     flex: 1;
-    height: 100%;
-    /* Fill the fixed-height layout */
-    overflow-y: auto;
-    /* Independent scrolling for only the right side */
     padding: 2.5rem 3.5rem;
-    max-width: 1600px;
-    background: #f8fafc;
-    /* Removed margin-left because we're using flex layout now */
-    scroll-behavior: smooth;
+    margin-left: var(--sidebar-width);
+    transition: all 0.3s ease;
+    width: calc(100% - var(--sidebar-width));
+    min-width: 0;
 }
 
 @media (max-width: 1024px) {
     .admin-content {
-        padding: 2rem;
+        margin-left: 80px;
+        width: calc(100% - 80px);
     }
 }
 
 @media (max-width: 768px) {
     .admin-layout {
-        margin-top: 0;
-        height: auto;
-        overflow: visible;
+        display: block;
     }
-
     .admin-content {
-        padding: 1.5rem;
-        height: auto;
-        overflow: visible;
+        margin-left: 0;
+        width: 100%;
+        padding: 5rem 1.5rem 1.5rem;
     }
-
-    .sidebar-toggle {
-        position: fixed;
-        top: 15px;
-        right: 1.25rem;
-        z-index: 2100;
-        background: #0f172a;
-        width: 44px;
-        height: 44px;
-        border: none;
-        border-radius: 12px;
-        color: white;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        display: flex;
-    }
-}
-
-:root {
-    --sidebar-width: 280px;
-    --primary: #6366f1;
 }
 
 .sidebar {
-    width: var(--sidebar-width);
+    width: 280px;
     background: #0f172a;
     color: white;
-    position: sticky;
-    top: 0;
     height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
     display: flex;
     flex-direction: column;
-    z-index: 900;
+    z-index: 2000;
     box-shadow: 4px 0 20px rgba(0, 0, 0, 0.2);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    overflow-y: auto;
-}
-
-/* Custom scrollbar for sidebar */
-.sidebar::-webkit-scrollbar {
-    width: 4px;
-}
-
-.sidebar::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-.sidebar::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
 }
 
 .sidebar-header {
@@ -105,7 +64,12 @@
     background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
     -webkit-background-clip: text;
     background-clip: text;
-    color: transparent;
+    -webkit-text-fill-color: transparent;
+}
+
+.sidebar-header h2 span {
+    color: #17944d;
+    -webkit-text-fill-color: #17944d;
 }
 
 .sidebar-nav {
@@ -133,13 +97,12 @@
     background: rgba(255, 255, 255, 0.03);
     color: white;
     transform: translateX(4px);
-    text-decoration: none;
 }
 
 .nav-item.active {
-    background: var(--primary);
+    background: #17944d;
     color: white;
-    box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.3);
+    box-shadow: 0 10px 15px -3px rgba(23, 148, 77, 0.3);
 }
 
 .sidebar-footer {
@@ -156,16 +119,35 @@
     background: transparent;
     color: #f87171;
     border: none;
+    cursor: pointer;
     border-radius: 12px;
     font-weight: 600;
     font-size: 0.95rem;
     transition: all 0.2s;
-    cursor: pointer;
 }
 
 .logout-btn:hover {
     background: rgba(239, 68, 68, 0.1);
     color: #ef4444;
+}
+
+/* Toggle Button */
+.sidebar-toggle {
+    display: none;
+    position: fixed;
+    top: 1.25rem;
+    right: 1.25rem;
+    z-index: 2100;
+    background: white;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    color: #0f172a;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    align-items: center;
+    justify-content: center;
 }
 
 @media (max-width: 1024px) {
@@ -188,11 +170,6 @@
 
 @media (max-width: 768px) {
     .sidebar {
-        position: fixed;
-        /* Revert to fixed for overlay on smaller screens */
-        top: 0;
-        height: 100vh;
-        z-index: 2000;
         transform: translateX(-100%);
         width: 280px;
     }
@@ -210,29 +187,7 @@
     .nav-item {
         justify-content: flex-start !important;
     }
-}
-
-/* Toggle Button - Refined for mobile placement below navbar */
-.sidebar-toggle {
-    display: none;
-    position: fixed;
-    top: calc(71px + 10px);
-    /* Just below the global navbar */
-    right: 1.25rem;
-    z-index: 2100;
-    background: #0f172a;
-    width: 44px;
-    height: 44px;
-    border: none;
-    border-radius: 12px;
-    color: white;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-}
-
-@media (max-width: 768px) {
+    
     .sidebar-toggle {
         display: flex;
     }
@@ -251,11 +206,6 @@
 }
 
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
+    from { opacity: 0; }
+    to { opacity: 1; }
 }

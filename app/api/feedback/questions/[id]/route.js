@@ -3,7 +3,7 @@ import { getFeedbackModels } from '@/lib/feedbackDb';
 
 export async function PUT(request, { params }) {
     try {
-        const { id } = params;
+        const { id } = await params;
         const body = await request.json();
         const { Question } = await getFeedbackModels();
         const doc = await Question.findByIdAndUpdate(id, body, { new: true });
@@ -17,7 +17,7 @@ export async function PUT(request, { params }) {
 
 export async function DELETE(request, { params }) {
     try {
-        const { id } = params;
+        const { id } = await params;
         const { Question } = await getFeedbackModels();
         const doc = await Question.findByIdAndDelete(id);
         if (!doc) return NextResponse.json({ message: 'Question not found' }, { status: 404 });

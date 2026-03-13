@@ -3,12 +3,12 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import Swal from 'sweetalert2';
-import Sidebar from '@/app/components/feedback-admin/Sidebar';
+import AdminHeader from '@/app/components/feedback-admin/AdminHeader';
 import { MdAdd, MdEdit, MdDelete, MdArrowUpward, MdArrowDownward } from 'react-icons/md';
 import './QuestionManager.css';
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_FEEDBACK_API_URL || '';
-const API_PATH = API_BASE_URL === '' ? '/api/feedback' : `${API_BASE_URL}/api`;
+const API_PATH = API_BASE_URL === '' ? '/api/feedback' : `${API_BASE_URL}/api/feedback`;
 
 const QuestionManager = () => {
     const [questions, setQuestions] = useState([]);
@@ -41,8 +41,7 @@ const QuestionManager = () => {
     const fetchQuestions = async (token) => {
         try {
             const res = await axios.get(`${API_PATH}/questions`, {
-                headers: { Authorization: `Bearer ${token}` },
-                timeout: 30000
+                headers: { Authorization: `Bearer ${token}` }
             });
             setQuestions(res.data);
         } catch (err) {
@@ -64,13 +63,11 @@ const QuestionManager = () => {
 
             if (isEditing) {
                 await axios.put(`${API_PATH}/questions/${currentQuestion._id}`, questionData, {
-                    headers: { Authorization: `Bearer ${token}` },
-                    timeout: 30000
+                    headers: { Authorization: `Bearer ${token}` }
                 });
             } else {
                 await axios.post(`${API_PATH}/questions`, questionData, {
-                    headers: { Authorization: `Bearer ${token}` },
-                    timeout: 30000
+                    headers: { Authorization: `Bearer ${token}` }
                 });
             }
             setShowModal(false);
@@ -93,12 +90,15 @@ const QuestionManager = () => {
     };
 
     const handleDeleteClick = (id) => {
+        const qToDelete = questions.find(q => q._id === id);
+        if (!qToDelete) return;
+
         Swal.fire({
             title: 'Delete Question?',
-            text: "This question will be permanently removed from the form.",
+            text: "This question will be permanently removed from the form and remaining questions will be reordered.",
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonColor: '#ef4444',
+            confirmButtonColor: '#ff7e5f',
             confirmButtonText: 'Yes, delete it!'
         }).then(async (result) => {
             if (result.isConfirmed) {
@@ -107,10 +107,29 @@ const QuestionManager = () => {
                     await axios.delete(`${API_PATH}/questions/${id}`, {
                         headers: { Authorization: `Bearer ${token}` }
                     });
+                    
+                    // Auto-reorder logic for the remaining questions in the same section
+                    const sectionQuestions = questions
+                        .filter(q => q.section === qToDelete.section && q._id !== id)
+                        .sort((a, b) => a.order - b.order);
+
+                    const updates = sectionQuestions
+                        .filter(q => q.order > qToDelete.order)
+                        .map(q => ({ ...q, order: q.order - 1 }));
+
+                    if (updates.length > 0) {
+                        const config = { headers: { Authorization: `Bearer ${token}` } };
+                        await Promise.all(updates.map(q => {
+                            const { _id, __v, createdAt, updatedAt, ...cleanData } = q;
+                            return axios.put(`${API_PATH}/questions/${_id}`, cleanData, config);
+                        }));
+                    }
+
                     fetchQuestions(token);
-                    Swal.fire('Deleted!', 'Question removed.', 'success');
+                    Swal.fire('Deleted!', 'Question removed and orders adjusted.', 'success');
                 } catch (err) {
-                    Swal.fire('Error!', 'Error deleting question.', 'error');
+                    console.error('Delete/Reorder Error:', err);
+                    Swal.fire('Error!', 'Failed to delete question or reorder.', 'error');
                 }
             }
         });
@@ -131,13 +150,52 @@ const QuestionManager = () => {
         const token = localStorage.getItem('token');
 
         try {
+            const config = { headers: { Authorization: `Bearer ${token}` } };
             await Promise.all([
-                axios.put(`${API_PATH}/questions/${targetQ._id}`, { ...targetQ, order: otherQ.order }, { headers: { Authorization: `Bearer ${token}` } }),
-                axios.put(`${API_PATH}/questions/${otherQ._id}`, { ...otherQ, order: targetQ.order }, { headers: { Authorization: `Bearer ${token}` } })
+                axios.put(`${API_PATH}/questions/${targetQ._id}`, { ...targetQ, order: otherQ.order }, config),
+                axios.put(`${API_PATH}/questions/${otherQ._id}`, { ...otherQ, order: targetQ.order }, config)
             ]);
             fetchQuestions(token);
         } catch (err) {
             console.error('Failed to update order');
+        }
+    };
+
+    const moveToSection = async (id, newSection) => {
+        const token = localStorage.getItem('token');
+        const q = questions.find(item => item._id === id);
+        if (!q || q.section === newSection) return;
+
+        let sectionToUse = newSection;
+
+        if (newSection === 'New Section') {
+            const { value: sectionName } = await Swal.fire({
+                title: 'New Section Name',
+                input: 'text',
+                inputPlaceholder: 'Enter section name (e.g., Infrastructure)',
+                showCancelButton: true,
+                inputValidator: (value) => {
+                    if (!value) return 'You need to write something!';
+                }
+            });
+            if (!sectionName) return;
+            sectionToUse = sectionName;
+        }
+
+        try {
+            await axios.put(`${API_PATH}/questions/${id}`, { ...q, section: sectionToUse }, {
+                headers: { Authorization: `Bearer ${token}` }
+            });
+            fetchQuestions(token);
+            Swal.fire({
+                icon: 'success',
+                title: 'Moved!',
+                text: `Question moved to ${cleanSectionTitle(sectionToUse)}`,
+                timer: 1500,
+                showConfirmButton: false
+            });
+        } catch (err) {
+            Swal.fire('Error', 'Failed to move question', 'error');
         }
     };
 
@@ -160,7 +218,18 @@ const QuestionManager = () => {
         let targetSection = section || 'General';
 
         if (calculatedOrder === null) {
-            calculatedOrder = questions.length > 0 ? Math.max(...questions.map(q => q.order || 0)) + 1 : 0;
+            if (section) {
+                const sectionQs = questions.filter(q => q.section === section);
+                if (sectionQs.length > 0) {
+                    calculatedOrder = Math.max(...sectionQs.map(q => q.order || 0)) + 1;
+                } else {
+                    calculatedOrder = questions.length > 0 ? Math.max(...questions.map(q => q.order || 0)) + 1 : 0;
+                }
+            } else {
+                calculatedOrder = questions.length > 0
+                    ? Math.max(...questions.map(q => q.order || 0)) + 1
+                    : 0;
+            }
         }
 
         setCurrentQuestion({
@@ -183,6 +252,28 @@ const QuestionManager = () => {
         setCurrentQuestion({ ...currentQuestion, [field]: [...currentQuestion[field], ''] });
     };
 
+    const handleTypeChange = (newType) => {
+        if (newType === 'trainer-eval-matrix') {
+            setCurrentQuestion({
+                ...currentQuestion,
+                type: 'matrix',
+                questionText: 'Trainer Evaluation',
+                isTrainerEval: true,
+                rows: [
+                    'Subject Knowledge',
+                    'Communication Skills',
+                    'Clarity of Explanation',
+                    'Practical Examples',
+                    'Doubt Clarification',
+                    'Engagement & Interaction'
+                ],
+                columns: ['VERY POOR', 'POOR', 'AVERAGE', 'GOOD', 'EXCELLENT']
+            });
+            return;
+        }
+        setCurrentQuestion({ ...currentQuestion, type: newType });
+    };
+
     const handleListOptionChange = (field, index, value) => {
         const newList = [...currentQuestion[field]];
         newList[index] = value;
@@ -191,43 +282,6 @@ const QuestionManager = () => {
 
     const removeListOption = (field, index) => {
         setCurrentQuestion({ ...currentQuestion, [field]: currentQuestion[field].filter((_, i) => i !== index) });
-    };
-
-    const handleToggleTrainerEval = (checked) => {
-        if (checked) {
-            setCurrentQuestion({
-                ...currentQuestion,
-                isTrainerEval: true,
-                isOverallRating: false, // Mutual exclusivity for logic clarity
-                type: 'matrix',
-                questionText: 'Trainer Evaluation',
-                rows: [
-                    "How do you rate the domain Knowledge of the Trainer?",
-                    "Level of delivery?",
-                    "Response to queries & overall coaching skills?",
-                    "Interaction with participants & Punctuality?",
-                    "Are you happy with the training and overall uc service?"
-                ],
-                columns: ["Very Poor", "Poor", "Average", "Good", "Excellent"]
-            });
-        } else {
-            setCurrentQuestion({ ...currentQuestion, isTrainerEval: false });
-        }
-    };
-
-    const handleToggleOverallRating = (checked) => {
-        if (checked) {
-            setCurrentQuestion({
-                ...currentQuestion,
-                isOverallRating: true,
-                isTrainerEval: false,
-                type: 'radio',
-                questionText: 'How would you rate your overall experience with Urbancode?',
-                options: ["Exceptional", "Good", "Average", "Below Average", "Poor"]
-            });
-        } else {
-            setCurrentQuestion({ ...currentQuestion, isOverallRating: false });
-        }
     };
 
     const cleanSectionTitle = (title) => {
@@ -241,145 +295,158 @@ const QuestionManager = () => {
     }, {});
 
     const sortedSectionKeys = Object.keys(groupedBySection).sort((a, b) => {
-        const isFinalA = a.toLowerCase().includes('final');
-        const isFinalB = b.toLowerCase().includes('final');
-        if (isFinalA && !isFinalB) return 1;
-        if (!isFinalA && isFinalB) return -1;
-        const numA = parseInt(a.match(/\d+/)?.[0] || 999);
-        const numB = parseInt(b.match(/\d+/)?.[0] || 999);
-        if (numA !== numB) return numA - numB;
-        return a.localeCompare(b);
+        const minA = Math.min(...groupedBySection[a].map(q => q.order || 0));
+        const minB = Math.min(...groupedBySection[b].map(q => q.order || 0));
+        return minA - minB;
     });
 
     const uniqueSections = [...new Set(questions.map(q => q.section))];
 
     return (
         <div className="admin-layout">
-            <Sidebar />
+            <AdminHeader />
             <main className="admin-content">
                 <div className="question-manager-container">
-                    <header className="page-header flex-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <header className="page-header flex-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
                         <div>
                             <h1>Question Manager</h1>
                             <p>Customize your backend-driven feedback form</p>
                         </div>
-                        <button onClick={() => openAdd()} className="btn-primary" style={{ background: '#17944d', color: 'white', border: 'none', padding: '12px 24px', borderRadius: '12px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px', fontWeight: 'bold' }}>
+                        <button onClick={() => openAdd()} className="btn-primary" style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '10px 20px', borderRadius: '12px', background: '#17944d', color: 'white', border: 'none', fontWeight: '700', cursor: 'pointer' }}>
                             <MdAdd size={24} />
                             Add New Question
                         </button>
                     </header>
 
                     {loading ? (
-                        <div className="uc-loader-container" style={{ height: '60vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                            <div className="uc-logo-anim" style={{ fontSize: '2.5rem', fontWeight: '900', color: '#17944d', marginBottom: '20px', letterSpacing: '0.1em' }}><span>U</span><span>C</span></div>
-                            <div className="uc-loading-text">Loading Questions...</div>
+                        <div className="uc-loader-container">
+                            <div className="uc-logo-anim" style={{ fontSize: '2.5rem', fontWeight: '900', color: '#17944d', textAlign: 'center' }}><span>U</span><span>C</span></div>
+                            <div className="uc-loading-text" style={{ textAlign: 'center', color: '#64748b' }}>Loading Questions...</div>
                         </div>
                     ) : (
                         <div className="sections-container">
                             {sortedSectionKeys.map(section => (
                                 <div key={section} className="section-group">
-                                    <div className="section-group-header-premium">
-                                        <div className="section-title-wrapper">
-                                            <span className="section-accent"></span>
-                                            <h2>{cleanSectionTitle(section)}</h2>
-                                        </div>
-                                        <button onClick={() => openAdd(section)} className="add-question-btn-premium">
+                                    <div className="section-group-header">
+                                        <h2>{cleanSectionTitle(section)}</h2>
+                                        <button onClick={() => openAdd(section)} className="add-in-section">
                                             <MdAdd size={20} />
-                                            <span>Add Question</span>
+                                            Add Question
                                         </button>
                                     </div>
-                                    <div className="questions-list">
+                                    <div className="questions-grid">
                                         {groupedBySection[section].sort((a, b) => a.order - b.order).map((q, idx, arr) => (
-                                            <div key={q._id} className="question-card-premium">
-                                                <div className="q-card-header-premium">
-                                                    <div className="header-left-badges">
-                                                        <span className="badge-premium badge-type">{q.type}</span>
-                                                        {q.required && <span className="badge-premium badge-required">REQUIRED</span>}
-                                                        {q.type === 'matrix' && <span className="badge-premium badge-matrix">MATRIX</span>}
-                                                    </div>
-                                                    <div className="header-right-controls">
-                                                        <div className="move-to-wrapper">
+                                            <React.Fragment key={q._id}>
+                                                <div className="question-item-card">
+                                                    <div className="q-card-top">
+                                                        <div className="badges">
+                                                            <span className="type-badge-alt clickable" onClick={() => openEdit(q)} title="Click to edit type">{q.type}</span>
+                                                            {q.required && <span className="req-badge clickable" onClick={() => openEdit(q)} title="Click to edit requirement">Required</span>}
+                                                        </div>
+
+                                                        <div className="section-mover">
                                                             <span>Move to:</span>
                                                             <select
-                                                                className="move-to-select"
                                                                 value={q.section}
-                                                                onChange={async (e) => {
-                                                                    const token = localStorage.getItem('token');
-                                                                    try {
-                                                                        await axios.put(`${API_PATH}/questions/${q._id}`, { ...q, section: e.target.value }, { headers: { Authorization: `Bearer ${token}` } });
-                                                                        fetchQuestions(token);
-                                                                    } catch (err) { console.error(err); }
-                                                                }}
+                                                                onChange={(e) => moveToSection(q._id, e.target.value)}
                                                             >
-                                                                {uniqueSections.map(s => <option key={s} value={s}>{cleanSectionTitle(s)}</option>)}
+                                                                {sortedSectionKeys.map(s => (
+                                                                    <option key={s} value={s}>{cleanSectionTitle(s)}</option>
+                                                                ))}
+                                                                <option value="New Section">+ New Section...</option>
                                                             </select>
                                                         </div>
-                                                        <span className="q-index-pill">#{idx + 1}</span>
-                                                        <div className="order-arrows">
-                                                            <button className="arrow-btn" onClick={() => moveOrder(q._id, -1)} disabled={idx === 0}><MdArrowUpward size={18} /></button>
-                                                            <button className="arrow-btn" onClick={() => moveOrder(q._id, 1)} disabled={idx === arr.length - 1}><MdArrowDownward size={18} /></button>
+
+                                                        <div className="order-controls">
+                                                            <span className="order-badge">#{q.order}</span>
+                                                            <button
+                                                                onClick={() => moveOrder(q._id, -1)}
+                                                                disabled={idx === 0}
+                                                                title="Move Up"
+                                                            >
+                                                                <MdArrowUpward size={18} />
+                                                            </button>
+                                                            <button
+                                                                onClick={() => moveOrder(q._id, 1)}
+                                                                disabled={idx === arr.length - 1}
+                                                                title="Move Down"
+                                                            >
+                                                                <MdArrowDownward size={18} />
+                                                            </button>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                    <div className="q-card-text" onClick={() => openEdit(q)} title="Click to edit question">
+                                                        {q.questionText}
+                                                    </div>
 
-                                                <div className="q-card-body-premium">
-                                                    <h4 className="question-text-main">{q.questionText}</h4>
-
-                                                    {/* Matrix Preview */}
-                                                    {q.type === 'matrix' && q.rows?.length > 0 && (
-                                                        <div className="matrix-preview-container">
-                                                            <table className="matrix-table-premium">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th></th>
-                                                                        {q.columns?.map((col, i) => <th key={i}>{col}</th>) || (
-                                                                            <>
-                                                                                <th>VERY POOR</th>
-                                                                                <th>POOR</th>
-                                                                                <th>AVERAGE</th>
-                                                                                <th>GOOD</th>
-                                                                                <th>EXCELLENT</th>
-                                                                            </>
-                                                                        )}
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                    {q.rows.map((row, i) => (
-                                                                        <tr key={i}>
-                                                                            <td className="criteria-cell">{row}</td>
-                                                                            {(q.columns || [1, 2, 3, 4, 5]).map((_, j) => (
-                                                                                <td key={j}><div className="radio-circle"></div></td>
-                                                                            ))}
+                                                    <div className="q-preview-area">
+                                                        {q.type === 'text' && <input type="text" disabled placeholder="Short Text" className="preview-input" />}
+                                                        {q.type === 'textarea' && <textarea disabled placeholder="Paragraph Text" className="preview-input textarea"></textarea>}
+                                                        {q.type === 'radio' && (
+                                                            <div className="preview-options">
+                                                                {q.options.map((opt, i) => (
+                                                                    <div key={i} className="preview-opt"><div className="radio-circle"></div> {opt}</div>
+                                                                ))}
+                                                            </div>
+                                                        )}
+                                                        {q.type === 'checkbox' && (
+                                                            <div className="preview-options">
+                                                                {q.options.map((opt, i) => (
+                                                                    <div key={i} className="preview-opt"><div className="check-box"></div> {opt}</div>
+                                                                ))}
+                                                            </div>
+                                                        )}
+                                                        {q.type === 'trainer-select' && (
+                                                            <select disabled className="preview-input">
+                                                                <option>-- Select Trainer (Auto-populated) --</option>
+                                                            </select>
+                                                        )}
+                                                        {q.type === 'matrix' && (
+                                                            <div className="mini-matrix-wrapper">
+                                                                <table className="mini-matrix">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th></th>
+                                                                            {q.columns?.map(c => <th key={c}>{c}</th>)}
                                                                         </tr>
-                                                                    ))}
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                    )}
-
-                                                    {/* Radio & Checkbox Preview */}
-                                                    {(q.type === 'radio' || q.type === 'checkbox') && q.options?.length > 0 && (
-                                                        <div className="options-preview-container">
-                                                            {q.options.map((opt, i) => (
-                                                                <div key={i} className="preview-option-item">
-                                                                    <div className={q.type === 'radio' ? "radio-circle" : "checkbox-square"}></div>
-                                                                    <span>{opt}</span>
-                                                                </div>
-                                                            ))}
-                                                        </div>
-                                                    )}
-                                                </div>
-
-                                                <div className="q-card-footer-premium">
-                                                    <div className="footer-stats">
-                                                        {q.type === 'matrix' ? `${q.rows?.length || 0} CRITERIA` : (q.type === 'radio' || q.type === 'checkbox') ? `${q.options?.length || 0} OPTIONS` : `${q.type.toUpperCase()} TYPE`}
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        {q.rows?.map(r => (
+                                                                            <tr key={r}>
+                                                                                <td>{r}</td>
+                                                                                {q.columns?.map(c => <td key={c}><div className="radio-circle"></div></td>)}
+                                                                            </tr>
+                                                                        ))}
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        )}
                                                     </div>
-                                                    <div className="footer-actions">
-                                                        <button onClick={() => openEdit(q)} className="action-btn-square btn-edit"><MdEdit size={18} /></button>
-                                                        <button onClick={() => handleDeleteClick(q._id)} className="action-btn-square btn-delete"><MdDelete size={18} /></button>
+
+                                                    <div className="q-card-actions">
+                                                        <div className="stats-info">
+                                                            {q.type === 'matrix' ? `${q.rows?.length || 0} Criteria` : (q.options?.length ? `${q.options.length} Options` : 'Free Text')}
+                                                        </div>
+                                                        <div className="btns">
+                                                            <button onClick={() => openEdit(q)} className="btn-icon-alt edit" title="Edit"><MdEdit size={18} /></button>
+                                                            <button onClick={() => handleDeleteClick(q._id)} className="btn-icon-alt delete" title="Delete"><MdDelete size={18} /></button>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
+
+                                                {idx < arr.length - 1 && (
+                                                    <div className="insert-divider">
+                                                        <div className="insert-line"></div>
+                                                        <button
+                                                            className="insert-btn"
+                                                            onClick={() => openAdd(section, q.order + 1)}
+                                                            title="Insert Question Here"
+                                                        >
+                                                            <MdAdd size={20} />
+                                                        </button>
+                                                    </div>
+                                                )}
+                                            </React.Fragment>
                                         ))}
                                     </div>
                                 </div>
@@ -388,165 +455,178 @@ const QuestionManager = () => {
                     )}
 
                     {showModal && (
-                        <div className="modal-overlay">
-                            <div className="modal-content premium-editor-modal">
+                        <div className="modal-overlay" style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', background: 'rgba(15, 23, 42, 0.4)', backdropFilter: 'blur(8px)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 4000 }}>
+                            <div className="modal-content admin-modal" style={{ background: 'white', width: '95%', maxWidth: '850px', borderRadius: '32px', overflow: 'hidden', boxShadow: '0 40px 100px -20px rgba(0, 0, 0, 0.3)' }}>
                                 <form onSubmit={handleSave}>
-                                    <div className="modal-header-premium">
-                                        <h2>{isEditing ? 'Edit Question Details' : 'Design New Question'}</h2>
-                                        <button type="button" onClick={() => setShowModal(false)} className="btn-close-round">&times;</button>
+                                    <div className="modal-header" style={{ padding: '20px 30px', borderBottom: '1px solid #f1f5f9', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                        <h2 style={{ fontSize: '1.3rem', fontWeight: 800, color: '#1e293b' }}>{isEditing ? 'Edit Question' : 'Create Question'}</h2>
+                                        <button type="button" onClick={() => setShowModal(false)} className="close-btn" style={{ background: 'none', border: 'none', fontSize: '1.5rem', cursor: 'pointer' }}>&times;</button>
                                     </div>
                                     <div className="modal-body-alt">
-                                        <div className="form-row-premium">
-                                            <div className="form-group-premium" style={{ flex: '2' }}>
-                                                <label className="label-premium">Question Text</label>
+                                        <div className="form-grid">
+                                            <div className="form-group-alt full-col">
+                                                <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 800, color: '#64748b', textTransform: 'uppercase', marginBottom: '8px' }}>Question Text</label>
                                                 <textarea
-                                                    className="input-premium"
+                                                    style={{ width: '100%', padding: '15px', borderRadius: '12px', border: '1px solid #e2e8f0', background: '#f8fafc', fontWeight: '600', outline: 'none' }}
                                                     value={currentQuestion.questionText}
                                                     onChange={(e) => setCurrentQuestion({ ...currentQuestion, questionText: e.target.value })}
                                                     required
+                                                    placeholder="Example: How would you rate the training infrastructure?"
                                                     rows="3"
                                                 ></textarea>
                                             </div>
-                                            <div className="form-group-premium" style={{ flex: '1' }}>
-                                                <label className="label-premium">Section Name</label>
+
+                                            <div className="form-group-alt">
+                                                <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 800, color: '#64748b', textTransform: 'uppercase', marginBottom: '8px' }}>Section Name</label>
                                                 <input
-                                                    className="input-premium"
+                                                    style={{ width: '100%', padding: '10px 15px', borderRadius: '12px', border: '1px solid #e2e8f0', background: '#f8fafc', fontWeight: '600', outline: 'none' }}
+                                                    list="sections-list"
                                                     value={currentQuestion.section}
                                                     onChange={(e) => setCurrentQuestion({ ...currentQuestion, section: e.target.value })}
                                                     required
+                                                    placeholder="e.g. Infrastructure"
                                                 />
+                                                <datalist id="sections-list">
+                                                    {uniqueSections.map(s => <option key={s} value={s} />)}
+                                                </datalist>
                                             </div>
-                                        </div>
 
-                                        <div className="form-row-premium grid-3">
-                                            <div className="form-group-premium">
-                                                <label className="label-premium">Display Order</label>
+                                            <div className="form-group-alt">
+                                                <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 800, color: '#64748b', textTransform: 'uppercase', marginBottom: '8px' }}>Display Order</label>
                                                 <input
+                                                    style={{ width: '100%', padding: '10px 15px', borderRadius: '12px', border: '1px solid #e2e8f0', background: '#f8fafc', fontWeight: '600', outline: 'none' }}
                                                     type="number"
-                                                    className="input-premium"
-                                                    value={currentQuestion.order}
-                                                    onChange={(e) => setCurrentQuestion({ ...currentQuestion, order: parseInt(e.target.value) })}
+                                                    value={currentQuestion.order || ''}
+                                                    onChange={(e) => {
+                                                        const val = parseInt(e.target.value);
+                                                        setCurrentQuestion({ ...currentQuestion, order: isNaN(val) ? 0 : val });
+                                                    }}
+                                                    required
                                                 />
                                             </div>
-                                            <div className="form-group-premium">
-                                                <label className="label-premium">Component Type</label>
+
+                                            <div className="form-group-alt">
+                                                <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 800, color: '#64748b', textTransform: 'uppercase', marginBottom: '8px' }}>Component Type</label>
                                                 <select
-                                                    className="input-premium"
-                                                    value={currentQuestion.type}
-                                                    onChange={(e) => setCurrentQuestion({ ...currentQuestion, type: e.target.value })}
+                                                    style={{ width: '100%', padding: '10px 15px', borderRadius: '12px', border: '1px solid #e2e8f0', background: '#f8fafc', fontWeight: '600', outline: 'none' }}
+                                                    value={currentQuestion.isTrainerEval && currentQuestion.type === 'matrix' ? 'trainer-eval-matrix' : currentQuestion.type}
+                                                    onChange={(e) => handleTypeChange(e.target.value)}
                                                 >
                                                     <option value="text">Input Box (Short)</option>
-                                                    <option value="textarea">Description Box (Long)</option>
-                                                    <option value="radio">Single Choice (Radio)</option>
-                                                    <option value="checkbox">Multiple Choice (Checkbox)</option>
-                                                    <option value="matrix">Matrix / Grid</option>
-                                                    <option value="trainer-select">Trainer List Selection</option>
+                                                    <option value="textarea">Paragraph Box (Long)</option>
+                                                    <option value="radio">Selection (Radio)</option>
+                                                    <option value="checkbox">Multi-Select (Checkbox)</option>
+                                                    <option value="matrix">Matrix Grid (Criteria)</option>
+                                                    <option value="trainer-eval-matrix">Trainer Evaluation Matrix (Standard)</option>
+                                                    <option value="trainer-select">Trainer Dropdown (Auto-populated)</option>
                                                 </select>
                                             </div>
-                                            <div className="form-group-premium">
-                                                <label className="label-premium">Required Field</label>
-                                                <label className="toggle-wrapper-premium clickable">
-                                                    <span>MANDATORY</span>
-                                                    <div className="switch">
-                                                        <input
-                                                            type="checkbox"
-                                                            checked={currentQuestion.required}
-                                                            onChange={(e) => setCurrentQuestion({ ...currentQuestion, required: e.target.checked })}
-                                                        />
-                                                        <span className="slider round"></span>
-                                                    </div>
-                                                </label>
-                                            </div>
-                                        </div>
 
-                                        <div className="form-section-premium" style={{ marginTop: '25px' }}>
-                                            <label className="label-premium">Form Bridge Tags</label>
-                                            <div className="bridge-tags-grid">
-                                                <label className="toggle-wrapper-premium fill clickable">
-                                                    <span>Trainer Eval Block</span>
-                                                    <div className="switch">
+                                            <div className="form-group-alt">
+                                                <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 800, color: '#64748b', textTransform: 'uppercase', marginBottom: '8px' }}>Required Field</label>
+                                                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', background: '#f8fafc', padding: '10px 15px', borderRadius: '12px' }}>
+                                                    <span style={{ fontWeight: 700, fontSize: '0.85rem', color: '#475569' }}>Mandatory</span>
+                                                    <input
+                                                        type="checkbox"
+                                                        checked={currentQuestion.required}
+                                                        onChange={(e) => setCurrentQuestion({ ...currentQuestion, required: e.target.checked })}
+                                                    />
+                                                </div>
+                                            </div>
+
+                                            <div className="form-group-alt">
+                                                <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 800, color: '#64748b', textTransform: 'uppercase', marginBottom: '8px' }}>Form Bridge Tags</label>
+                                                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                                                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px', background: '#f8fafc', padding: '10px 15px', borderRadius: '12px' }}>
+                                                        <span style={{ fontWeight: 700, fontSize: '0.85rem', color: '#475569' }}>Trainer Eval Block</span>
                                                         <input
                                                             type="checkbox"
                                                             checked={currentQuestion.isTrainerEval}
-                                                            onChange={(e) => handleToggleTrainerEval(e.target.checked)}
+                                                            onChange={(e) => setCurrentQuestion({ ...currentQuestion, isTrainerEval: e.target.checked })}
                                                         />
-                                                        <span className="slider round"></span>
                                                     </div>
-                                                </label>
-                                                <label className="toggle-wrapper-premium fill clickable">
-                                                    <span>Overall Performance Rating</span>
-                                                    <div className="switch">
+                                                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px', background: '#f8fafc', padding: '10px 15px', borderRadius: '12px' }}>
+                                                        <span style={{ fontWeight: 700, fontSize: '0.85rem', color: '#475569' }}>Overall Performance Rating</span>
                                                         <input
                                                             type="checkbox"
                                                             checked={currentQuestion.isOverallRating}
-                                                            onChange={(e) => handleToggleOverallRating(e.target.checked)}
+                                                            onChange={(e) => setCurrentQuestion({ ...currentQuestion, isOverallRating: e.target.checked })}
                                                         />
-                                                        <span className="slider round"></span>
                                                     </div>
-                                                </label>
+                                                </div>
                                             </div>
                                         </div>
 
-                                        {/* Choices Manager for list-types */}
                                         {(currentQuestion.type === 'radio' || currentQuestion.type === 'checkbox') && (
-                                            <div className="options-manager-premium">
-                                                <div className="manager-header">
-                                                    <label className="label-premium">Available Options</label>
-                                                    <button type="button" onClick={() => addListOption('options')} className="btn-add-mini"><MdAdd /> ADD OPTION</button>
-                                                </div>
-                                                <div className="options-list-editor">
-                                                    {currentQuestion.options.map((opt, idx) => (
-                                                        <div key={idx} className="option-edit-row">
-                                                            <input className="input-premium mini" value={opt} onChange={(e) => handleListOptionChange('options', idx, e.target.value)} placeholder={`Option ${idx + 1}`} />
-                                                            <button type="button" onClick={() => removeListOption('options', idx)} className="btn-del-mini"><MdDelete /></button>
-                                                        </div>
-                                                    ))}
-                                                </div>
+                                            <div className="builder-area">
+                                                <div className="builder-header"><span>Selection Options</span></div>
+                                                {(currentQuestion.options || []).map((opt, i) => (
+                                                    <div key={i} className="dynamic-row" style={{ display: 'flex', gap: '10px', marginBottom: '10px' }}>
+                                                        <input
+                                                            style={{ flex: 1, padding: '10px 15px', borderRadius: '12px', border: '1px solid #e2e8f0', background: 'white', fontWeight: '600', outline: 'none' }}
+                                                            type="text"
+                                                            value={opt}
+                                                            onChange={(e) => handleListOptionChange('options', i, e.target.value)}
+                                                            placeholder={`Option ${i + 1}`}
+                                                            required
+                                                        />
+                                                        <button type="button" onClick={() => removeListOption('options', i)} className="btn-remove-row" style={{ background: '#fff1f2', color: '#ef4444', border: 'none', padding: '10px', borderRadius: '12px', cursor: 'pointer' }}><MdDelete size={20} /></button>
+                                                    </div>
+                                                ))}
+                                                <button type="button" onClick={() => addListOption('options')} className="btn-add-item" style={{ background: 'none', border: 'none', color: '#17944d', fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '5px' }}><MdAdd /> Add Option</button>
                                             </div>
                                         )}
 
                                         {currentQuestion.type === 'matrix' && (
-                                            <div className="matrix-manager-premium">
-                                                <div className="manager-header">
-                                                    <label className="label-premium">Matrix Config</label>
-                                                    <div style={{ display: 'flex', gap: '10px' }}>
-                                                        <button type="button" onClick={() => addListOption('rows')} className="btn-add-mini"><MdAdd /> ADD ROW</button>
-                                                        <button type="button" onClick={() => addListOption('columns')} className="btn-add-mini"><MdAdd /> ADD COL</button>
-                                                    </div>
+                                            <div className="matrix-builder-container" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+                                                <div className="builder-area">
+                                                    <div className="builder-header"><span>Row Questions</span></div>
+                                                    {(currentQuestion.rows || []).map((row, i) => (
+                                                        <div key={i} className="dynamic-row" style={{ display: 'flex', gap: '10px', marginBottom: '10px' }}>
+                                                            <input
+                                                                style={{ flex: 1, padding: '10px 15px', borderRadius: '12px', border: '1px solid #e2e8f0', background: 'white', fontWeight: '600', outline: 'none' }}
+                                                                type="text"
+                                                                value={row}
+                                                                onChange={(e) => handleListOptionChange('rows', i, e.target.value)}
+                                                                placeholder="Rating criteria..."
+                                                                required
+                                                            />
+                                                            <button type="button" onClick={() => removeListOption('rows', i)} className="btn-remove-row" style={{ background: '#fff1f2', color: '#ef4444', border: 'none', padding: '10px', borderRadius: '12px', cursor: 'pointer' }}><MdDelete size={20} /></button>
+                                                        </div>
+                                                    ))}
+                                                    <button type="button" onClick={() => addListOption('rows')} className="btn-add-item" style={{ background: 'none', border: 'none', color: '#17944d', fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '5px' }}><MdAdd /> Add Row</button>
                                                 </div>
-                                                <div className="matrix-edit-grid">
-                                                    <div className="matrix-edit-col">
-                                                        <span className="label-premium mini">Rows (Criteria)</span>
-                                                        {currentQuestion.rows.map((row, idx) => (
-                                                            <div key={idx} className="option-edit-row">
-                                                                <input className="input-premium mini" value={row} onChange={(e) => handleListOptionChange('rows', idx, e.target.value)} />
-                                                                <button type="button" onClick={() => removeListOption('rows', idx)} className="btn-del-mini"><MdDelete /></button>
-                                                            </div>
-                                                        ))}
-                                                    </div>
-                                                    <div className="matrix-edit-col">
-                                                        <span className="label-premium mini">Columns (Ratings)</span>
-                                                        {currentQuestion.columns.map((col, idx) => (
-                                                            <div key={idx} className="option-edit-row">
-                                                                <input className="input-premium mini" value={col} onChange={(e) => handleListOptionChange('columns', idx, e.target.value)} />
-                                                                <button type="button" onClick={() => removeListOption('columns', idx)} className="btn-del-mini"><MdDelete /></button>
-                                                            </div>
-                                                        ))}
-                                                    </div>
+                                                <div className="builder-area">
+                                                    <div className="builder-header"><span>Column Values</span></div>
+                                                    {(currentQuestion.columns || []).map((col, i) => (
+                                                        <div key={i} className="dynamic-row" style={{ display: 'flex', gap: '10px', marginBottom: '10px' }}>
+                                                            <input
+                                                                style={{ flex: 1, padding: '10px 15px', borderRadius: '12px', border: '1px solid #e2e8f0', background: 'white', fontWeight: '600', outline: 'none' }}
+                                                                type="text"
+                                                                value={col}
+                                                                onChange={(e) => handleListOptionChange('columns', i, e.target.value)}
+                                                                placeholder="Rating scale..."
+                                                                required
+                                                            />
+                                                            <button type="button" onClick={() => removeListOption('columns', i)} className="btn-remove-row" style={{ background: '#fff1f2', color: '#ef4444', border: 'none', padding: '10px', borderRadius: '12px', cursor: 'pointer' }}><MdDelete size={20} /></button>
+                                                        </div>
+                                                    ))}
+                                                    <button type="button" onClick={() => addListOption('columns')} className="btn-add-item" style={{ background: 'none', border: 'none', color: '#17944d', fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '5px' }}><MdAdd /> Add Column</button>
                                                 </div>
                                             </div>
                                         )}
                                     </div>
-                                    <div className="modal-footer-alt">
-                                        <button type="button" onClick={() => setShowModal(false)} className="btn-cancel-link">Cancel</button>
-                                        <button type="submit" className="btn-save-premium">Save Changes</button>
+                                    <div className="modal-footer-alt" style={{ padding: '20px 30px', borderTop: '1px solid #f1f5f9', display: 'flex', justifyContent: 'flex-end', gap: '15px' }}>
+                                        <button type="button" onClick={() => setShowModal(false)} className="btn-ghost" style={{ background: 'none', border: 'none', fontWeight: 700, color: '#64748b', cursor: 'pointer' }}>Cancel</button>
+                                        <button type="submit" className="btn-save-main" style={{ background: '#17944d', color: 'white', border: 'none', padding: '12px 30px', borderRadius: '12px', fontWeight: 700, cursor: 'pointer' }}>
+                                            {isEditing ? 'Save Changes' : 'Create Question'}
+                                        </button>
                                     </div>
                                 </form>
                             </div>
                         </div>
                     )}
                 </div>
-
             </main>
         </div>
     );

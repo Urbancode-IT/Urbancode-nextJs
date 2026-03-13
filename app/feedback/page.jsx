@@ -1,8 +1,8 @@
 'use client';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { MdCheckCircle, MdError, MdLanguage } from 'react-icons/md';
-import { FaInstagram, FaLinkedin, FaYoutube, FaFacebook } from 'react-icons/fa';
+import { MdCheckCircle, MdError, MdLanguage, MdCall } from 'react-icons/md';
+import { FaInstagram, FaLinkedin, FaYoutube, FaFacebook, FaWhatsapp } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 import './FeedbackForm.css';
 
@@ -11,8 +11,7 @@ import './FeedbackForm.css';
 const API_BASE = typeof window !== 'undefined'
     ? (process.env.NEXT_PUBLIC_FEEDBACK_API_URL || '')
     : 'https://urbancode-nextjs.onrender.com';
-const USE_PROXY = API_BASE === '' || API_BASE.startsWith('/');
-const API = USE_PROXY
+const API = API_BASE === '' || API_BASE.startsWith('/')
     ? { questions: '/api/feedback/questions', trainers: '/api/feedback/trainers/active', responses: '/api/feedback/responses' }
     : { questions: `${API_BASE}/api/questions`, trainers: `${API_BASE}/api/trainers/active`, responses: `${API_BASE}/api/responses` };
 
@@ -54,9 +53,21 @@ const FeedbackForm = () => {
     };
 
     const updateTrainerSelection = (index, trainerId) => {
+        if (trainerId === 'other') {
+            setTrainerEvaluations(prev => prev.map((item, i) =>
+                i === index ? { ...item, trainerId: 'other', trainerName: '' } : item
+            ));
+            return;
+        }
         const selectedTrainer = trainers.find(t => t._id === trainerId);
         setTrainerEvaluations(prev => prev.map((item, i) =>
             i === index ? { ...item, trainerId, trainerName: selectedTrainer ? selectedTrainer.name : '' } : item
+        ));
+    };
+
+    const updateManualTrainerName = (index, name) => {
+        setTrainerEvaluations(prev => prev.map((item, i) =>
+            i === index ? { ...item, trainerName: name } : item
         ));
     };
 
@@ -306,45 +317,10 @@ const FeedbackForm = () => {
     };
 
     if (loading) return (
-        <div className="loading-container" style={{ display: 'flex', alignItems: 'center', justifySelf: 'center', height: '100vh', width: '100%' }}>
-            <div className="uc-loader-container" style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                <style jsx>{`
-                    @keyframes bounce-stagger {
-                        0%, 100% { transform: translateY(0) scale(1); }
-                        50% { transform: translateY(-15px) scale(1.1); }
-                    }
-
-                    @keyframes pulse-soft {
-                        0%, 100% { opacity: 0.5; transform: scale(0.98); }
-                        50% { opacity: 1; transform: scale(1); }
-                    }
-
-                    .uc-logo-anim { 
-                        font-size: 2.5rem; 
-                        font-weight: 900; 
-                        color: #17944d; 
-                        margin-bottom: 20px; 
-                        letter-spacing: 0.1em;
-                    }
-
-                    .uc-logo-anim span {
-                        display: inline-block;
-                        animation: bounce-stagger 1.2s infinite ease-in-out;
-                    }
-
-                    .uc-logo-anim span:nth-child(2) {
-                        animation-delay: 0.15s;
-                    }
-
-                    .uc-loading-text { 
-                        color: #64748b; 
-                        font-weight: 600; 
-                        animation: pulse-soft 2s infinite ease-in-out;
-                        letter-spacing: 0.05em;
-                    }
-                `}</style>
+        <div className="loading-container">
+            <div className="uc-loader-container">
                 <div className="uc-logo-anim"><span>U</span><span>C</span></div>
-                <div className="uc-loading-text">Loading Feedback Form...</div>
+                <div className="uc-loading-text">Loading...</div>
             </div>
         </div>
     );
@@ -434,13 +410,6 @@ const FeedbackForm = () => {
                         </table>
                     </div>
                 );
-            case 'trainer-select':
-                return (
-                    <select value={val || ''} onChange={(e) => handleAnswerChange(q._id, e.target.value)} className="dynamic-select">
-                        <option value="">-- Select Trainer --</option>
-                        {trainers.map(t => <option key={t._id} value={t.name}>{t.name}</option>)}
-                    </select>
-                );
             default: return null;
         }
     };
@@ -455,6 +424,9 @@ const FeedbackForm = () => {
                         <a href="https://www.urbancode.in/" target="_blank" rel="noopener noreferrer" className="contact-link-item">
                             <MdLanguage size={16} /> <span>www.urbancode.in</span>
                         </a>
+                        <a href="tel:+919878798797" className="contact-link-item">
+                            <MdCall size={16} /> <span>+91 98787 98797</span>
+                        </a>
                         <div className="social-links-row">
                             <a href="https://www.instagram.com/urbancode_edutech/" target="_blank" rel="noopener noreferrer" title="Instagram">
                                 <FaInstagram size={18} />
@@ -467,6 +439,9 @@ const FeedbackForm = () => {
                             </a>
                             <a href="https://www.youtube.com/channel/UC7ngZ5r2ov-qoXJRjaXJGKA" target="_blank" rel="noopener noreferrer" title="YouTube">
                                 <FaYoutube size={20} />
+                            </a>
+                            <a href="https://api.whatsapp.com/send/?phone=919429694123&text=Hello+Team+Urbancode&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" title="WhatsApp">
+                                <FaWhatsapp size={20} />
                             </a>
                         </div>
                     </div>
@@ -484,12 +459,15 @@ const FeedbackForm = () => {
 
                 {sortedSections.map(section => {
                     const sectionQuestions = (groupedQuestions[section] || []).sort((a, b) => (a.order || 0) - (b.order || 0));
-                    const trainerEvalQuestions = sectionQuestions.filter(q =>
-                        q.isTrainerEval || q.questionText.toLowerCase().includes('trainer evaluation') || q.questionText.toLowerCase().includes('select trainer')
-                    );
-                    const otherQuestions = sectionQuestions.filter(q => !trainerEvalQuestions.includes(q));
-                    const isTrainerSection = trainerEvalQuestions.length > 0;
+                    
+                    const isTrainerEvalQ = (q) => 
+                        q.isTrainerEval || 
+                        q.questionText.toLowerCase().includes('trainer evaluation') || 
+                        q.questionText.toLowerCase().includes('select trainer');
+
+                    const trainerEvalQuestions = sectionQuestions.filter(isTrainerEvalQ);
                     const matrixQ = trainerEvalQuestions.find(q => q.type === 'matrix');
+                    let trainerBlockRendered = false;
 
                     return (
                         <div key={section} className="section-group">
@@ -497,78 +475,108 @@ const FeedbackForm = () => {
                                 <h2 className="section-title">{getSectionTitle(section)}</h2>
                             </div>
 
-                            {isTrainerSection && (
-                                <div className="trainer-evaluation-wrapper">
-                                    {trainerEvaluations.map((trainer, tIndex) => (
-                                        <div key={tIndex} id={`trainer-block-${tIndex}`} className="trainer-block-card card-style">
-                                            <div className="trainer-header">
-                                                <div className="trainer-label">
-                                                    <span className="trainer-count">{tIndex + 1}</span>
-                                                    <span>Trainer Evaluation</span>
-                                                </div>
-                                                {trainerEvaluations.length > 1 && (
-                                                    <button type="button" className="t-remove-btn" onClick={() => removeTrainer(tIndex)}>Remove</button>
-                                                )}
-                                            </div>
+                            {sectionQuestions.map((q) => {
+                                if (isTrainerEvalQ(q)) {
+                                    if (trainerBlockRendered) return null;
+                                    trainerBlockRendered = true;
+                                    return (
+                                        <div key="trainer-block-wrapper" className="trainer-evaluation-wrapper">
+                                            {trainerEvaluations.map((trainer, tIndex) => (
+                                                <div key={tIndex} id={`trainer-block-${tIndex}`} className="trainer-block-card card-style">
+                                                    <div className="trainer-header">
+                                                        <div className="trainer-label">
+                                                            <span className="trainer-count">{tIndex + 1}</span>
+                                                            <span>{trainerEvalQuestions[0]?.questionText || 'Trainer Evaluation'}</span>
+                                                        </div>
+                                                        {trainerEvaluations.length > 1 && (
+                                                            <button type="button" className="t-remove-btn" onClick={() => removeTrainer(tIndex)}>Remove</button>
+                                                        )}
+                                                    </div>
 
-                                            <div className="form-group dynamic-question">
-                                                <label>Select Trainer Type <span className="required">*</span></label>
-                                                <div className="radio-group-horizontal">
-                                                    {['Course Training', 'Placement'].map(type => (
-                                                        <label key={type} className={`radio-pill ${trainer.trainerType === type ? 'active' : ''}`} onClick={() => updateTrainerType(tIndex, type)}>
-                                                            <input type="radio" checked={trainer.trainerType === type} onChange={() => { }} />
-                                                            {type}
-                                                        </label>
+                                                    <div className="form-group dynamic-question">
+                                                        <label>Select Trainer Type <span className="required">*</span></label>
+                                                        <div className="radio-group-horizontal">
+                                                            {['Course Training', 'Placement'].map(type => (
+                                                                <label key={type} className={`radio-pill ${trainer.trainerType === type ? 'active' : ''}`} onClick={() => updateTrainerType(tIndex, type)}>
+                                                                    <input type="radio" checked={trainer.trainerType === type} onChange={() => { }} />
+                                                                    {type}
+                                                                </label>
+                                                            ))}
+                                                        </div>
+                                                    </div>
+
+                                                    <div className="form-group dynamic-question">
+                                                        <label>Select Trainer <span className="required">*</span></label>
+                                                        <select value={trainer.trainerId} onChange={(e) => updateTrainerSelection(tIndex, e.target.value)} required className="dynamic-select">
+                                                            <option value="">-- Choose a Trainer --</option>
+                                                            {trainers.map(t => <option key={t._id} value={t._id}>{t.name} {t.specialization ? `(${t.specialization})` : ''}</option>)}
+                                                            <option value="other">Other (Enter Manually)</option>
+                                                        </select>
+                                                    </div>
+
+                                                    {trainer.trainerId === 'other' && (
+                                                        <div className="form-group dynamic-question animated-fade">
+                                                            <label>Enter Trainer Name <span className="required">*</span></label>
+                                                            <input 
+                                                                type="text" 
+                                                                placeholder="Type trainer name here..." 
+                                                                value={trainer.trainerName}
+                                                                onChange={(e) => updateManualTrainerName(tIndex, e.target.value)}
+                                                                required
+                                                                className="dynamic-input"
+                                                                style={{ width: '100%', padding: '12px', borderRadius: '10px', border: '1px solid #e2e8f0' }}
+                                                            />
+                                                        </div>
+                                                    )}
+
+                                                    {/* Render all trainer eval questions for this trainer */}
+                                                    {trainerEvalQuestions.map(teq => (
+                                                        <div key={teq._id} className="form-group dynamic-question">
+                                                            {teq.questionText.trim() !== '.' && <label>{teq.questionText} {teq.required && <span className="required">*</span>}</label>}
+                                                            {teq.type === 'matrix' ? (
+                                                                <div className="matrix-table-container">
+                                                                    <table className="matrix-table">
+                                                                        <thead><tr><th>CRITERIA</th>{teq.columns.map(col => <th key={col}>{col}</th>)}</tr></thead>
+                                                                        <tbody>
+                                                                            {teq.rows.map(row => (
+                                                                                <tr key={row}>
+                                                                                    <td className="criteria-label">{row}</td>
+                                                                                    {teq.columns.map(col => (
+                                                                                        <td key={col} className="radio-cell">
+                                                                                            <input type="radio" checked={trainer.ratings[row] === col} onChange={() => updateTrainerRating(tIndex, row, col)} />
+                                                                                        </td>
+                                                                                    ))}
+                                                                                </tr>
+                                                                            ))}
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            ) : (
+                                                                <div className="question-content">{renderQuestion(teq)}</div>
+                                                            )}
+                                                        </div>
                                                     ))}
                                                 </div>
+                                            ))}
+                                            <div className="add-trainer-section">
+                                                <button type="button" className="add-trainer-btn" onClick={addTrainer}>+ Add Another Trainer</button>
                                             </div>
-
-                                            <div className="form-group dynamic-question">
-                                                <label>Select Trainer <span className="required">*</span></label>
-                                                <select value={trainer.trainerId} onChange={(e) => updateTrainerSelection(tIndex, e.target.value)} required className="dynamic-select">
-                                                    <option value="">-- Choose a Trainer --</option>
-                                                    {trainers.map(t => <option key={t._id} value={t._id}>{t.name} {t.specialization ? `(${t.specialization})` : ''}</option>)}
-                                                </select>
-                                            </div>
-
-                                            {matrixQ && (
-                                                <div className="form-group dynamic-question">
-                                                    {matrixQ.questionText.trim() !== '.' && <label>{matrixQ.questionText} <span className="required">*</span></label>}
-                                                    <div className="matrix-table-container">
-                                                        <table className="matrix-table">
-                                                            <thead><tr><th>CRITERIA</th>{matrixQ.columns.map(col => <th key={col}>{col}</th>)}</tr></thead>
-                                                            <tbody>
-                                                                {matrixQ.rows.map(row => (
-                                                                    <tr key={row}>
-                                                                        <td className="criteria-label">{row}</td>
-                                                                        {matrixQ.columns.map(col => (
-                                                                            <td key={col} className="radio-cell">
-                                                                                <input type="radio" checked={trainer.ratings[row] === col} onChange={() => updateTrainerRating(tIndex, row, col)} />
-                                                                            </td>
-                                                                        ))}
-                                                                    </tr>
-                                                                ))}
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                </div>
-                                            )}
                                         </div>
-                                    ))}
-                                    <div className="add-trainer-section">
-                                        <button type="button" className="add-trainer-btn" onClick={addTrainer}>+ Add Another Trainer</button>
-                                    </div>
-                                </div>
-                            )}
+                                    );
+                                }
 
-                            {otherQuestions.filter(q => !q.questionText.toLowerCase().includes('trainer name')).map(q => (
-                                <div key={q._id} id={`q-${q._id}`} className="question-card card-style">
-                                    <div className="form-group dynamic-question">
-                                        <label>{q.questionText} {q.required && <span className="required">*</span>}</label>
-                                        <div className="question-content">{renderQuestion(q)}</div>
+                                // Render other questions
+                                if (q.questionText.toLowerCase().includes('trainer name')) return null;
+
+                                return (
+                                    <div key={q._id} id={`q-${q._id}`} className="question-card card-style">
+                                        <div className="form-group dynamic-question">
+                                            <label>{q.questionText} {q.required && <span className="required">*</span>}</label>
+                                            <div className="question-content">{renderQuestion(q)}</div>
+                                        </div>
                                     </div>
-                                </div>
-                            ))}
+                                );
+                            })}
                         </div>
                     );
                 })}
