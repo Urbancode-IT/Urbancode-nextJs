@@ -363,7 +363,9 @@ tr:last-child td {
     .page-header,
     .modal-header .close-btn,
     .modal-footer-alt,
-    .responses-manager-container > header {
+    .responses-manager-container > header,
+    .no-print,
+    .student-cell-info {
         display: none !important;
     }
 

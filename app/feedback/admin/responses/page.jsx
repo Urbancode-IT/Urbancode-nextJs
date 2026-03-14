@@ -133,7 +133,22 @@ const Responses = () => {
             });
         });
 
-        const allQuestionHeaders = [...currentQuestionTexts, ...Array.from(legacyTexts)];
+        const forbiddenKeys = ['name', 'email', 'participant'];
+        const allQuestionHeaders = [...currentQuestionTexts, ...Array.from(legacyTexts)]
+            .filter(text => {
+                const lower = text.toLowerCase();
+                return !(forbiddenKeys.some(key => lower.includes(key)) && text.length < 40);
+            })
+            .sort((a, b) => {
+                const aLow = a.toLowerCase();
+                const bLow = b.toLowerCase();
+                const aIsComment = aLow.includes('comment') || aLow.includes('suggestion');
+                const bIsComment = bLow.includes('comment') || bLow.includes('suggestion');
+                if (aIsComment && !bIsComment) return 1;
+                if (!aIsComment && bIsComment) return -1;
+                return 0;
+            });
+
         const baseHeaders = ['Date', 'Main Trainer', 'Course', 'Batch', 'All Trainer Evaluations'];
         const headers = [...baseHeaders, ...allQuestionHeaders];
 
@@ -273,6 +288,7 @@ const Responses = () => {
                             <thead>
                                 <tr>
                                     <th>Date</th>
+                                    <th>Student</th>
                                     <th>Trainer</th>
                                     <th>Course</th>
                                     <th>Rating</th>
@@ -282,7 +298,7 @@ const Responses = () => {
                             <tbody>
                                 {loading ? (
                                     <tr>
-                                        <td colSpan="5">
+                                        <td colSpan="6">
                                             <div className="uc-loader-container" style={{ minHeight: '150px' }}>
                                                 <div className="uc-logo-anim" style={{ fontSize: '2.5rem' }}><span>U</span><span>C</span></div>
                                                 <div className="uc-loading-text">Loading Responses...</div>
@@ -290,13 +306,19 @@ const Responses = () => {
                                         </td>
                                     </tr>
                                 ) : filteredResponses.length === 0 ? (
-                                    <tr><td colSpan="5" className="text-center">No responses found.</td></tr>
+                                    <tr><td colSpan="6" className="text-center">No responses found.</td></tr>
                                 ) : (
                                     filteredResponses.map(res => {
                                         const rating = getOverallRating(res);
                                         return (
                                             <tr key={res._id}>
                                                 <td className="date-cell">{new Date(res.createdAt).toLocaleDateString()}</td>
+                                                <td>
+                                                    <div className="student-cell-info">
+                                                        <div className="trainer-name-bold">{res.participantDetails?.name || 'N/A'}</div>
+                                                        <div className="trainer-type-small">{res.participantDetails?.email || 'N/A'}</div>
+                                                    </div>
+                                                </td>
                                                 <td>
                                                     <div className="trainer-cell-info">
                                                         {res.trainerEvaluations && res.trainerEvaluations.length > 0 ? (
@@ -343,13 +365,15 @@ const Responses = () => {
                                 <div className="print-header-logo">
                                     <h2 style={{ color: '#17944d', margin: 0 }}>Feedback <span style={{ color: '#0f172a' }}>UC</span></h2>
                                 </div>
-                                <h2 className="modal-title-text">Anonymous Feedback Detail</h2>
+                                <h2 className="modal-title-text">Feedback Detail</h2>
                                 <button onClick={() => setSelectedResponse(null)} className="close-btn" style={{ background: 'none', border: 'none', fontSize: '1.5rem', cursor: 'pointer' }}>&times;</button>
                             </div>
                             <div className="modal-body-alt" style={{ padding: '2rem', overflowY: 'auto' }}>
                                 <section className="response-section" style={{ marginBottom: '2rem' }}>
-                                    <h3>General Info</h3>
+                                    <h3>Student Info</h3>
                                     <div className="info-grid">
+                                        <div className="info-item no-print"><span>Full Name</span><span>{selectedResponse.participantDetails?.name || 'N/A'}</span></div>
+                                        <div className="info-item no-print"><span>Email Address</span><span>{selectedResponse.participantDetails?.email || 'N/A'}</span></div>
                                         <div className="info-item"><span>Course</span><span>{selectedResponse.participantDetails?.courseName || 'N/A'}</span></div>
                                         <div className="info-item"><span>Batch</span><span>{selectedResponse.participantDetails?.batch || 'N/A'}</span></div>
                                     </div>
@@ -396,15 +420,28 @@ const Responses = () => {
                                                 const text = currentQ ? currentQ.questionText : (ans.questionText || 'Deleted Question');
 
                                                 if (!acc[section]) acc[section] = [];
-                                                acc[section].push({ ...ans, section, questionText: text });
+                                                acc[section].push({ ...ans, section, questionText: text, order: currentQ?.order || 999 });
                                                 return acc;
                                             }, {});
 
-                                            return Object.keys(grouped).map(section => (
+                                            const sortedSectionKeys = Object.keys(grouped).sort((a, b) => {
+                                                const aL = a.toLowerCase();
+                                                const bL = b.toLowerCase();
+                                                const aIsC = aL.includes('comment') || aL.includes('suggestion');
+                                                const bIsC = bL.includes('comment') || bL.includes('suggestion');
+                                                if (aIsC && !bIsC) return 1;
+                                                if (!aIsC && bIsC) return -1;
+
+                                                const minA = Math.min(...grouped[a].map(q => q.order));
+                                                const minB = Math.min(...grouped[b].map(q => q.order));
+                                                return minA - minB;
+                                            });
+
+                                            return sortedSectionKeys.map(section => (
                                                 <div key={section} className="response-group-block">
                                                     <h4 className="response-section-title">{cleanSectionTitle(section)}</h4>
                                                     <div className="answers-list">
-                                                        {grouped[section].map((ans, idx) => (
+                                                        {grouped[section].sort((a,b) => (a.order || 999) - (b.order || 999)).map((ans, idx) => (
                                                             <div key={idx} className="answer-item">
                                                                 <label>{ans.questionText}</label>
                                                                 <div className="answer-content">
