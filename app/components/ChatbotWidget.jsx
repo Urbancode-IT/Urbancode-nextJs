@@ -76,7 +76,7 @@ const ChatbotWidget = () => {
             }}
           >
             <div className="chatbot-text">
-              🎉Women's Day Offers are Live! <br/>Enroll a course today
+              🎉Exciting Offers are Live! <br/>Enroll a course today
             </div><br/>
             
           </div>

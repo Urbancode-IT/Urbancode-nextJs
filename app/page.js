@@ -108,7 +108,7 @@ export default function HomePage() {
         }}
       />
       <HeroSection />
-      {<RepublicBanner /> }
+      {/*<RepublicBanner /> */}
       <Carousel />
       <Courses />
       <InDemandTools />
