@@ -1,5 +1,6 @@
 [
-    {
+    
+{
         "id": 1,
         "slug": "role-soft-skills-remote-work-culture",
         "title": "The Role of Soft Skills in Remote Work Culture: Beyond Technical Excellence",
@@ -7,7 +8,7 @@
         "date": "01 Jan 2026",
         "image": "/images/blogs/remotework.webp",
         "excerpt": "Discover why mastering remote work soft skills is essential for modern professionals to thrive in global distributed teams and build sustainable careers.",
-        "featured": true,
+        "featured": false,
         "content": [
             "The global workforce has seen a permanent shift toward distributed models, where the ability to collaborate across time zones and digital interfaces is paramount. While technical proficiency remains the foundation of a tech career, the intangible attributes known as soft skills have emerged as the true differentiators in remote environments. Success in this new era requires more than just coding; it demands a refined approach to how we interact, problem-solve, and manage our personal productivity without the physical presence of a traditional office. At Urbancode Edutech, we believe that professional growth is incomplete without a balanced focus on these essential human-centric capabilities.",
             "Why Remote Work Soft Skills are the Secret to Long-Term Career Success: In a physical office, much of our communication and culture is absorbed through proximity and body language. In a remote setting, every interaction must be intentional, clear, and empathetic. Professionals who lack these skills often find themselves isolated or misunderstood, regardless of their technical output. As we move into 2026, companies are increasingly filtering for candidates who demonstrate high emotional intelligence, proactive communication habits, and the resilience to work autonomously. Developing these traits ensures that you remain an indispensable asset to any global team, regardless of where your desk is located.",
@@ -211,6 +212,31 @@
             "How You Can Be Our Next Success Story at Urbancode: If you have been thinking about a career in tech or want to take your current skills to the next level, there has never been a better time to start. At Urbancode Edutech, we provide the tools, the knowledge, and the support you need to turn your aspirations into reality. Join our community of motivated learners and start building your own success story today. Whether you are a complete beginner or a seasoned professional, we have a path for you that leads to authentic career growth and long-term success. Your future starts here, and we cannot wait to see what you will achieve next with us by your side.",
             "Final Thoughts on a Year of Extraordinary Growth: As we close the chapter on 2025, we are filled with gratitude for our students, our mentors, and our partners who make Urbancode what it is. It has been a year of extraordinary growth, learning, and achievement for everyone involved. We are more dedicated than ever to our mission of providing world-class tech education that transforms lives and shapes the future of the industry. Thank you for being a part of our journey, and here's to even more success stories in the years to come. Together, we are building a more skilled, more confident, and more innovative world, one learner at a time."
         ]
-    }
+    },
+    {
+  "id": 11,
+  "slug": "augmented-reality-skills-future-experiences",
+  "title": "Augmented Reality: Developing Skills for New Digital Experiences",
+  "category": "TECHNOLOGY",
+  "date": "17 mar 2026",
+  "image": "/images/blogs/ar.webp",
+  "excerpt": "Discover how Augmented Reality (AR) is transforming industries and learn the essential skills needed to build immersive, interactive digital experiences for the future.",
+  "featured": true,
+  "content": [
+    "Technology is evolving at an extraordinary pace, and one innovation that is rapidly transforming digital interaction is Augmented Reality (AR). By blending digital content with the real-world environment, AR is enabling organizations to create immersive, interactive, and context-aware experiences across industries. This shift is redefining how users interact with information, making digital systems more intuitive, engaging, and impactful in everyday life.",
+    "From education and healthcare to retail, gaming, and industrial training, Augmented Reality is revolutionizing how people learn, work, and engage with technology. As businesses accelerate their digital transformation journeys, AR is becoming a key driver of innovation. This growing adoption is creating a strong demand for professionals who can design and develop immersive AR applications that solve real-world challenges.",
+    "Why Augmented Reality Matters: AR enhances the physical environment by overlaying digital elements such as 3D models, real-time data, animations, and spatial information. Unlike fully immersive virtual environments, AR integrates seamlessly into real-world surroundings, offering a more natural and accessible user experience. This capability makes AR a powerful tool for improving learning outcomes, operational efficiency, and user engagement.",
+    "Modern AR systems are powered by advanced technologies such as computer vision, spatial computing, real-time rendering, and object recognition. These technologies allow digital objects to interact intelligently with the physical environment, enabling dynamic and responsive applications. This technological foundation is what makes AR applications highly scalable and adaptable across multiple industries.",
+    "The Growing Industry Demand: Organizations across sectors are rapidly adopting AR solutions to improve productivity and enhance user experiences. In education, AR enables interactive simulations that improve knowledge retention. In healthcare, it supports surgical training and medical visualization. Retail and e-commerce leverage AR for virtual product trials, while manufacturing uses it for maintenance guidance and workforce training. In entertainment and gaming, AR creates immersive, location-based experiences that redefine engagement.",
+    "As industries continue to explore immersive technologies, Augmented Reality is becoming a critical part of the broader Extended Reality (XR) ecosystem. Companies are investing heavily in AR innovation, making it one of the most promising and future-focused technology domains for aspiring professionals.",
+    "Skills Required to Build AR Applications: Developing AR applications requires a multidisciplinary approach that combines programming, 3D design, and spatial computing. Professionals should focus on programming languages such as C#, C++, and JavaScript, along with development platforms like Unity, ARCore, and ARKit. Knowledge of 3D asset creation using tools like Blender and Autodesk Maya is also essential for building realistic and engaging experiences.",
+    "In addition to technical skills, a strong understanding of computer vision, object tracking, and spatial mapping is crucial for creating intelligent AR systems. UI/UX design principles also play a significant role in ensuring that immersive experiences are user-friendly and effective. By mastering these skills, developers can create powerful AR solutions that deliver real-world impact.",
+    "Career Opportunities in Augmented Reality: The rapid growth of immersive technologies has opened up exciting career opportunities in the tech industry. Roles such as Augmented Reality Developer, XR Software Engineer, Spatial Computing Specialist, 3D Application Developer, Computer Vision Engineer, and Immersive Experience Designer are in high demand. These roles offer professionals the chance to work on cutting-edge technologies and shape the future of digital interaction.",
+    "The Future of Digital Interaction: Augmented Reality represents more than just a technological advancement—it is a fundamental shift in how humans interact with digital information. By merging physical and digital environments, AR enables new levels of creativity, innovation, and problem-solving. It is transforming industries and redefining the way people experience technology in their daily lives.",
+    "For professionals looking to stay ahead in the evolving tech landscape, developing skills in AR, immersive technologies, and spatial computing can provide a strong competitive advantage. As the demand for AR expertise continues to grow, it presents a valuable opportunity to build a future-proof career in one of the most exciting domains in technology.",
+    "At Urbancode Edutech Solutions Pvt Ltd, we are committed to equipping learners with future-ready skills that enable them to build next-generation applications. Our focus is on empowering individuals with the knowledge and practical experience needed to succeed in emerging technology fields like Augmented Reality and Extended Reality.",
+    "The future of technology is not just digital—it is immersive, interactive, and experiential. By embracing Augmented Reality today, learners and professionals can position themselves at the forefront of innovation and be part of shaping the next era of digital transformation."
+  ]
+}
     
 ]

@@ -13,7 +13,8 @@ export async function generateStaticParams() {
 
 // Generate metadata for SEO
 export async function generateMetadata({ params }) {
-    const blog = blogsData.find((b) => b.slug === params.slug);
+    const { slug } = await params;
+    const blog = blogsData.find((b) => b.slug === slug);
 
     if (!blog) {
         return {
@@ -27,9 +28,10 @@ export async function generateMetadata({ params }) {
     };
 }
 
-export default function BlogDetailPage({ params }) {
+export default async function BlogDetailPage({ params }) {
+    const { slug } = await params;
     // Find the blog by slug
-    const blog = blogsData.find(b => b.slug === params.slug);
+    const blog = blogsData.find(b => b.slug === slug);
 
     // If blog not found, show 404
     if (!blog) {

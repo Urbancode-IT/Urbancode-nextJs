@@ -2,7 +2,8 @@ import Courses from "./[categorySlug]/Courses";
 import categoryMetaData from "./categoryMetaData";
 
 export async function generateMetadata({ params }) {
-  const slug = params.categorySlug;
+  const { categorySlug } = await params;
+  const slug = categorySlug;
   const data = categoryMetaData[slug];
 
   if (!data) {
