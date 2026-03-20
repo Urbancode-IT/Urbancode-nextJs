@@ -3157,6 +3157,7 @@ const coursesData = {
     courses: [
       {
         title: "Data Engineering",
+        curriculumUrls: ["/curriculum/dataengineeringcurriculum .pdf"],
         desc: "Master Data Engineering with hands-on training in Google Cloud, Apache Airflow, MySQL, and Python. Gain industry-ready skills to design, build, and maintain scalable data pipelines for modern applications.",
         rating: 5.0,
         duration: "1 month",

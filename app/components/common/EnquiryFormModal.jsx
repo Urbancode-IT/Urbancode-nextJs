@@ -1,10 +1,11 @@
 'use client';
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Swal from 'sweetalert2';
 import "./EnquiryForm.css";
 import { submitEnquiryForm } from "@/lib/api/api";
 
-const EnquiryFormModal = ({ isOpen, onClose, courseName }) => {
+const EnquiryFormModal = ({ isOpen, onClose, courseName, onSuccess, downloadUrls }) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -62,6 +63,27 @@ const EnquiryFormModal = ({ isOpen, onClose, courseName }) => {
           message: "Enquiry submitted successfully! Our team will get back to you soon."
         });
 
+        // Trigger downloads if available
+        if (downloadUrls && Array.isArray(downloadUrls)) {
+            downloadUrls.forEach((url, index) => {
+                setTimeout(() => {
+                    const link = document.createElement('a');
+                    link.href = url;
+                    link.download = url.split('/').pop();
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                }, index * 500); // Stagger downloads to avoid browser blocks
+            });
+            Swal.fire({
+                title: 'Thank You!',
+                text: 'Your curriculum documents are being downloaded.',
+                icon: 'success',
+                confirmButtonColor: '#12d46c',
+                confirmButtonText: 'Got it!'
+            });
+        }
+
         setFormData({
           name: "",
           email: "",
@@ -74,8 +96,9 @@ const EnquiryFormModal = ({ isOpen, onClose, courseName }) => {
 
         setTimeout(() => {
           setStatus({ type: "", message: "" });
+          if (onSuccess) onSuccess();
           onClose();
-        }, 2000);
+        }, 3000);
       } else {
         throw new Error(result.message);
       }

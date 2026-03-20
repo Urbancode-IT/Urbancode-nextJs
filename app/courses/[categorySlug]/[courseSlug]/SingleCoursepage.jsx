@@ -139,6 +139,7 @@ export default function SingleCoursepage({ params }) {
                   isOpen={showEnquiry}
                   onClose={() => setShowEnquiry(false)}
                   courseName={course.title}
+                  downloadUrls={course.curriculumUrls}
                 />
               </div>
             </div>

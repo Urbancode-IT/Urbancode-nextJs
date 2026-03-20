@@ -1,22 +1,17 @@
 //app/page.js
 
-
 import HeroSection from './components/Home/HeroSection';
-import RepublicBanner from './components/Home/RepublicBanner';
 import TrendingCourses from './components/Home/TrendingCourses';
 import Courses from './components/Home/Courses';
 import InDemandTools from './components/Home/InDemandTools';
-import GetCertified from './components/Home/GetCertified';
-import TestimonialCarousel from './components/Home/TestimonialCarousel';
 import FaqBootstrap from './components/Home/Faqs';
 import Carousel from './components/Home/Carasoul';
+import VideoTestimonials from './components/Home/VideoTestimonials';
+import BannerSlider from './components/common/BannerSlider';
 
 export const metadata = {
-
-  title:
-    "Urbancode Edutech | Best IT & Coding Training Institute in Chennai (Velachery & Pallikaranai)",
-  description:
-    "Join Urbancode Edutech — Chennai’s top IT training institute offering MERN Stack, Web Development, Python, Data Science, and Software Testing courses. Learn online or offline with internship and placement support.",
+  title: "Urbancode Edutech | Best IT & Coding Training Institute in Chennai (Velachery & Pallikaranai)",
+  description: "Join Urbancode Edutech — Chennai’s top IT training institute offering MERN Stack, Web Development, Python, Data Science, and Software Testing courses. Learn online or offline with internship and placement support.",
   verification: {
     google: "WEXErXa5JBg5hZPCEKFY_g1UVf9R3AxHCZYgQWjQspY",
   },
@@ -36,10 +31,8 @@ export const metadata = {
     "Job support Chennai"
   ],
   openGraph: {
-    title:
-      "Urbancode Edutech | Best IT Training & Coding Institute in Chennai",
-    description:
-      "Upskill with Urbancode — industry-focused courses in MERN Stack, Data Analytics, Python, Cloud Computing, and Software Testing with placement & internship programs.",
+    title: "Urbancode Edutech | Best IT Training & Coding Institute in Chennai",
+    description: "Upskill with Urbancode — industry-focused courses in MERN Stack, Data Analytics, Python, Cloud Computing, and Software Testing with placement & internship programs.",
     url: "https://urbancode.in/",
     siteName: "Urbancode Edutech",
     images: [
@@ -58,8 +51,29 @@ export const metadata = {
   },
 };
 
-
 export default function HomePage() {
+  const homeBanners = [
+    {
+      src: "/images/home/ramadanbanner.webp",
+      alt: "Ramadan Special Offer",
+      type: "form",
+      courseName: "Ramadan Special Offer"
+    },
+    {
+      src: "/images/home/kidssummercamp.webp",
+      alt: "Kids Summer Camp",
+      type: "form-download",
+      courseName: "Kids Summer Camp",
+      downloadUrls: ["/curriculum/pythonforkids.pdf", "/curriculum/webdevelopmentKids.pdf"]
+    },
+    {
+      src: "/images/home/dataengineering.webp",
+      alt: "New Course: Data Engineering",
+      type: "link",
+      link: "/courses/data-engineering/data-engineering"
+    }
+  ];
+
   return (
     <>
       <script
@@ -108,15 +122,13 @@ export default function HomePage() {
         }}
       />
       <HeroSection />
-      {/*<RepublicBanner /> */}
+      <BannerSlider banners={homeBanners} />
       <Carousel />
       <Courses />
       <InDemandTools />
-      {/* <GetCertified /> */}
-      <TestimonialCarousel />
+      <VideoTestimonials />
       <FaqBootstrap />
       <TrendingCourses />
-      {/* <Carousel /> */}
     </>
   );
 }

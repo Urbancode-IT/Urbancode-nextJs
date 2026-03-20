@@ -7,6 +7,8 @@ import { useState } from 'react';
 const Kidz = () => {
   const [selectedCourse, setSelectedCourse] = useState(null);
   const [showEnquiry, setShowEnquiry] = useState(false);
+
+
   const courses = [
     {
       title: "Junior Web Developer",
@@ -19,7 +21,6 @@ const Kidz = () => {
       url: "/courses/kidz-space/junior-web-development"
        
     },
-   
     {
       title: "Core Python",
       img: "/images/KidsImages/pythonCore.png",
@@ -116,6 +117,7 @@ const Kidz = () => {
           </div>
         </div>
       </section>
+
 
       <div className="container py-5">
         <h2 className="section-title">Our Kids <span className='text-success text-shine'>&nbsp;Courses</span></h2>

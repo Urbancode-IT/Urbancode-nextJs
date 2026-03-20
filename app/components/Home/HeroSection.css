@@ -239,10 +239,14 @@
     display: block;
   }
 
+  .home_header_container {
+    padding: 1rem 0; /* Reduced mobile gap */
+  }
+
   .home-hero-content {
     line-height: 1.5;
     text-align: center;
-    margin: 15px auto;
+    margin: 5px auto;
   }
 }
 

@@ -1,0 +1,256 @@
+.video-testimonials-section {
+    background-color: transparent; /* Seamlessly match the home page background */
+    overflow: hidden;
+    position: relative;
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+.video-carousel-wrapper {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 700px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.video-cards-container {
+    position: relative;
+    width: 100%; /* Better for responsiveness */
+    height: 100%;
+}
+
+.video-card {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 280px; /* Consistent base width */
+    background: #000;
+    border-radius: 20px;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.center-card {
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    z-index: 10;
+    width: 350px; 
+    height: 600px; 
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+}
+
+.left-card, 
+.right-card {
+    z-index: 5;
+    opacity: 0.4;
+    height: 480px;
+}
+
+.left-card {
+    left: 12%; /* Further out to create gap */
+    transform: translate(-50%, -50%) scale(0.85);
+}
+
+.right-card {
+    left: 88%; /* Further out to create gap */
+    transform: translate(-50%, -50%) scale(0.85);
+}
+
+.hidden-card {
+    opacity: 0;
+    z-index: 0;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.1);
+}
+
+.testimonial-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    background: #fff;
+    border-radius: 20px;
+    display: block;
+}
+
+/* Tap Overlay for pause control */
+.video-click-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80%; /* Leave space for native bottom controls */
+    z-index: 10;
+    background: transparent;
+    cursor: pointer;
+}
+
+/* Ensure full video is visible in Fullscreen mode (no cropping) */
+.testimonial-video:fullscreen,
+.testimonial-video:-webkit-full-screen,
+.testimonial-video:-moz-full-screen,
+.testimonial-video:-ms-fullscreen {
+    object-fit: contain !important;
+    background: #000; /* Standard black backdrop for theater mode */
+}
+
+.nav-btn {
+    position: absolute;
+    background: #fff; /* Match screenshot */
+    color: #444;
+    border: none; /* No border per screenshot */
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    z-index: 20;
+    top: 50%;
+    transform: translateY(-50%);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.prev-btn {
+    left: 0.5%; /* Positioned on the extreme edge as per screenshot */
+}
+
+.next-btn {
+    right: 0.5%; /* Positioned on the extreme edge as per screenshot */
+}
+
+.carousel-controls {
+    text-align: center;
+}
+
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.carousel-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background: #ccc;
+    cursor: pointer;
+}
+
+.carousel-dot.active {
+    width: 30px;
+    background: #1abc9c;
+}
+
+.view-all-btn {
+    background: linear-gradient(135deg, #12d46c, #198754);
+    color: #fff !important;
+    border: none !important;
+    padding: 14px 45px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    box-shadow: 0 10px 25px rgba(25, 135, 84, 0.25);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 1.5rem;
+}
+
+.view-all-btn:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 15px 35px rgba(25, 135, 84, 0.4);
+    background: linear-gradient(135deg, #198754, #12d46c);
+}
+
+.view-all-btn i {
+    transition: transform 0.4s ease;
+}
+
+.view-all-btn:hover i {
+    transform: translateX(8px);
+}
+
+.view-all-btn::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+}
+
+.view-all-btn:hover::before {
+    animation: button-shine 0.8s forwards;
+}
+
+@keyframes button-shine {
+    100% { left: 100%; }
+}
+
+/* --- RESPONSIVE SCALING --- */
+@media (max-width: 1440px) {
+    .video-carousel-wrapper { height: 650px; }
+    .center-card { width: 340px; height: 550px; }
+    .left-card { left: 18%; }
+    .right-card { left: 82%; }
+}
+
+@media (max-width: 1024px) {
+    .video-carousel-wrapper { height: 550px; }
+    .center-card { width: 300px; height: 480px; }
+    .left-card, .right-card { width: 240px; height: 380px; opacity: 0.3; }
+    .left-card { left: 15%; }
+    .right-card { left: 85%; }
+    .nav-btn { width: 40px; height: 40px; }
+    .prev-btn { left: 0.5%; }
+    .next-btn { right: 0.5%; }
+}
+
+@media (max-width: 768px) {
+    .video-carousel-wrapper { height: 500px; }
+    .center-card { width: 75%; height: 450px; } /* Wider center focus for tablets */
+    .left-card, .right-card { 
+        display: flex; /* Keep them visible on tablets */
+        width: 180px; 
+        height: 300px;
+        opacity: 0.2; /* Faint for focus */
+    }
+    .left-card { left: -5%; transform: translate(-50%, -50%) scale(0.6); }
+    .right-card { left: 105%; transform: translate(-50%, -50%) scale(0.6); }
+    .prev-btn { left: 2%; }
+    .next-btn { right: 2%; }
+}
+
+@media (max-width: 480px) {
+    .left-card, .right-card { display: none; } /* Hide only on small phones */
+    .video-carousel-wrapper { height: 550px; } /* Taller for mobile only */
+    .center-card { width: 90%; height: 500px; } /* Tall center card on mobile */
+    
+    .nav-btn { 
+        display: flex; /* Restored for user */
+        width: 35px;
+        height: 35px;
+        font-size: 0.9rem;
+        background: rgba(255, 255, 255, 0.9);
+        border: none;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    
+    .prev-btn { left: 10px; }
+    .next-btn { right: 10px; }
+}
