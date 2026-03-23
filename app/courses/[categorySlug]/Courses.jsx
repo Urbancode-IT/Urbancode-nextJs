@@ -19,7 +19,7 @@ import Link from "next/link";
 
 const categories = [
   "Programming Languages",
-  "Web and App Development",
+  "Full Stack Development",
   "UI UX Designing",
   "Cloud and DevOps",
   "Data Science",
@@ -65,6 +65,16 @@ const faqData = [
     answer:
       "Yes, selected courses come with career guidance, resume preparation, and placement support from our team.",
   },
+  {
+    question: "What technologies are covered in the MERN Stack course?",
+    answer:
+      "Our MERN Stack training covers MongoDB, Express.js, React.js, and Node.js with real-time projects and industry-standard practices.",
+  },
+  {
+    question: "Do you offer .NET with Angular training?",
+    answer:
+      "Yes, we provide comprehensive training in .NET with Angular for students looking to build enterprise-scale applications.",
+  },
 ];
 
 const slugify = (name) => name.toLowerCase().replace(/\s+/g, "-");
@@ -79,6 +89,12 @@ export default function Courses({ categorySlug }) {
   const router = useRouter();
   const [search, setSearch] = useState("");
   const [openIndex, setOpenIndex] = useState(null);
+
+  const isHighlightedByKeyword = (faq) => {
+    const keywords = [".net", "angular", "mern stack"];
+    const content = (faq.question + " " + faq.answer).toLowerCase();
+    return keywords.some(keyword => content.includes(keyword));
+  };
 
   useEffect(() => {
     setActiveCategory(deslugify(categorySlug));
@@ -280,7 +296,7 @@ export default function Courses({ categorySlug }) {
                 >
                   <Card
                     className={`faq-card h-100 border-0 rounded-4 shadow-sm ${openIndex === index ? "open" : ""
-                      }`}
+                      } ${isHighlightedByKeyword(faq) ? 'highlighted-faq' : ''}`}
                     onClick={() =>
                       setOpenIndex(openIndex === index ? null : index)
                     }

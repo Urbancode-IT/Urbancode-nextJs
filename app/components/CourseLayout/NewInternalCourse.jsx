@@ -70,6 +70,12 @@ const NewInternalCourse = ({ data }) => {
         setShowEnquiry(true);
     };
 
+    const isHighlighted = (item) => {
+        const keywords = [".net", "angular", "mern stack"];
+        const content = (item.q + " " + item.a).toLowerCase();
+        return keywords.some(keyword => content.includes(keyword));
+    };
+
 
     // ===========================================================================
     // RENDER
@@ -247,7 +253,7 @@ const NewInternalCourse = ({ data }) => {
                             {faqData.map((item, index) => (
                                 <div
                                     key={index}
-                                    className={`nict-faq-item ${faqActiveIndex === index ? "nict-active" : ""}`}
+                                    className={`nict-faq-item ${faqActiveIndex === index ? "nict-active" : ""} ${isHighlighted(item) ? 'nict-highlighted' : ''}`}
                                     onClick={() => toggleFAQ(index)}
                                 >
                                     <div className="nict-faq-question">

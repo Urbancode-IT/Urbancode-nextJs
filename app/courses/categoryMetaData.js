@@ -13,8 +13,8 @@ const categoryMetaData = {
     ],
     image: "/images/courses-images/programming.webp",
   },
-  "web-and-app-development": {
-    title: "Web and App Development Courses | Urbancode",
+  "full-stack-development": {
+    title: "Full Stack Development Courses | Urbancode",
     description:
       "Learn to build modern websites and apps using HTML, CSS, JavaScript, React, Node.js, and Express. Step into fullstack development with Urbancode.",
     keywords: [

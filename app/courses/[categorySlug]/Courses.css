@@ -241,6 +241,11 @@
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
 }
 
+.faq-card.highlighted-faq {
+  background: #f0fff4 !important; /* light green background */
+  border: 1.5px solid #4ade80 !important; /* solid green border */
+}
+
 .faq-card .dropdown-icon {
   color: #198754 !important;
   font-weight: 700;

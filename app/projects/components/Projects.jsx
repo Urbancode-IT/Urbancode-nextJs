@@ -90,7 +90,7 @@ const Projects = () => {
         <div className="container ph-hero-container">
           <div className="ph-left-content">
             <h2>
-              <span className="large-text">Premium <span className="text-shine">Web Development</span></span><br />
+              <span className="large-text">Premium <span className="text-shine">Web and App Development</span></span><br />
               Building digital excellence<br />
               with innovation
             </h2>

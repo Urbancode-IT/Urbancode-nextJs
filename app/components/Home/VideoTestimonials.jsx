@@ -8,43 +8,47 @@ const VideoTestimonials = () => {
     const [activeIndex, setActiveIndex] = useState(1); // Start with second video in center
     const videoRefs = useRef([]);
 
-    const handleNext = () => {
-        setActiveIndex((prev) => (prev + 1) % videoData.length);
-    };
-
-    const handlePrev = () => {
-        setActiveIndex((prev) => (prev - 1 + videoData.length) % videoData.length);
-    };
-
-    const handleDotClick = (index) => {
-        setActiveIndex(index);
-    };
+    const shouldPlay = useRef(false);
 
     // Handle Autoplay and Performance optimization
     useEffect(() => {
         videoRefs.current.forEach((video, idx) => {
             if (video) {
                 if (idx === activeIndex) {
-                    // Start video from the beginning for every fresh play
-                    video.currentTime = 0; 
-                    video.play().catch(err => {
-                        console.log("Unmuted autoplay restricted by browser:", err);
-                    });
+                    if (shouldPlay.current) {
+                        video.currentTime = 0; 
+                        video.play().catch(err => {
+                            console.log("Playback restricted:", err);
+                        });
+                        shouldPlay.current = false; // Reset after playing
+                    }
                 } else {
-                    // Pause background videos to save bandwidth/CPU
                     video.pause();
                 }
             }
         });
     }, [activeIndex]);
 
+    const handleNext = () => {
+        shouldPlay.current = true;
+        setActiveIndex((prev) => (prev + 1) % videoData.length);
+    };
+
+    const handlePrev = () => {
+        shouldPlay.current = true;
+        setActiveIndex((prev) => (prev - 1 + videoData.length) % videoData.length);
+    };
+
+    const handleDotClick = (index) => {
+        shouldPlay.current = true;
+        setActiveIndex(index);
+    };
+
     const handleCardClick = (index, e) => {
         if (index !== activeIndex) {
-            // ONLY switch if clicking a side video
+            shouldPlay.current = true;
             setActiveIndex(index);
         }
-        // Center card click is handled by the video tag's native 'controls'
-        // This avoids the "double-toggle" bug where it pauses and starts again in 1sec
     };
 
     return (
@@ -88,7 +92,7 @@ const VideoTestimonials = () => {
                                         ref={el => videoRefs.current[index] = el}
                                         src={video.src + "#t=0.5"}
                                         controls
-                                        autoPlay={isActive}
+                                        autoPlay={false}
                                         playsInline
                                         preload="auto"
                                         onEnded={handleNext} 

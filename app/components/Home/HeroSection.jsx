@@ -7,7 +7,7 @@ import "./HeroSection.css";
 
 export default function HeroSection() {
   const [showEnquiry, setShowEnquiry] = useState(false);
-  const words = ["Opportunities", "Possibilities", "Success"];
+  const words = ["Full Stack Development", "IT Career", "Success"];
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [displayedLetters, setDisplayedLetters] = useState("");
   const maxWordLength = Math.max(...words.map((w) => w.length));
@@ -85,9 +85,8 @@ export default function HeroSection() {
             </h1>
 
             <p className="mt-3 fs1rem text-muted home-hero-content">
-              To become a trusted global training partner recognized for
-              excellence, innovation, and commitment to shaping skilled
-              professionals who can thrive in today’s competitive world.
+              Urbancode Edutech is Chennai's top institute for Full Stack Development and IT training. 
+              We are committed to shaping skilled professionals who can thrive in today’s competitive world.
             </p>
 
             <div className="mt-3 stats_line">

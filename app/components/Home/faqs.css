@@ -82,6 +82,11 @@
   transition: all 0.3s ease;
 }
 
+.faq-item.highlighted-faq {
+  background: #f0fff4; /* subtle green background */
+  border: 1px solid #4ade80; /* vibrant green border */
+}
+
 .faq-question {
   width: 100%;
   background: transparent;
@@ -113,6 +118,62 @@
   color: #4b4b4b;
   font-size: 0.95rem;
 }
+
+/* Pagination Styles */
+.faq-pagination {
+  margin-top: 2rem;
+}
+
+.faq-nav-btn {
+  background: #198754;
+  border: none;
+  color: white;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px; /* modern rounded corners instead of circles */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(25, 135, 84, 0.2);
+}
+
+.faq-nav-btn:hover {
+  background: #146c43;
+  box-shadow: 0 6px 18px rgba(25, 135, 84, 0.3);
+  transform: translateY(-3px) scale(1.05);
+}
+
+.faq-dots {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.faq-dot {
+  width: 12px;
+  height: 6px; /* pill shape for dots */
+  border-radius: 3px;
+  background: #dfe2e5;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.faq-dot:hover {
+  background: #b5bcc2;
+}
+
+.faq-dot.active {
+  background: #198754;
+  width: 24px; /* active pill is wider */
+  box-shadow: 0 0 8px rgba(25, 135, 84, 0.2);
+}
+
+.faq-accordion-wrapper {
+  min-height: 100px; /* Reduced significantly to avoid large gaps */
+}
+
 
 /* Responsive */
 @media (max-width: 768px) {

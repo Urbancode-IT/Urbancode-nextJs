@@ -10,8 +10,8 @@ import VideoTestimonials from './components/Home/VideoTestimonials';
 import BannerSlider from './components/common/BannerSlider';
 
 export const metadata = {
-  title: "Urbancode Edutech | Best IT & Coding Training Institute in Chennai (Velachery & Pallikaranai)",
-  description: "Join Urbancode Edutech — Chennai’s top IT training institute offering MERN Stack, Web Development, Python, Data Science, and Software Testing courses. Learn online or offline with internship and placement support.",
+  title: "Urbancode Edutech | Best Full Stack Development & Coding Training Institute in Chennai",
+  description: "Join Urbancode Edutech — Chennai’s top IT training institute offering Full Stack Development, MERN Stack, Python, Data Science, and Software Testing courses. Learn online or offline with internship and placement support.",
   verification: {
     google: "WEXErXa5JBg5hZPCEKFY_g1UVf9R3AxHCZYgQWjQspY",
   },
@@ -31,8 +31,8 @@ export const metadata = {
     "Job support Chennai"
   ],
   openGraph: {
-    title: "Urbancode Edutech | Best IT Training & Coding Institute in Chennai",
-    description: "Upskill with Urbancode — industry-focused courses in MERN Stack, Data Analytics, Python, Cloud Computing, and Software Testing with placement & internship programs.",
+    title: "Urbancode Edutech | Best Full Stack Development & IT Training Institute in Chennai",
+    description: "Upskill with Urbancode — industry-focused courses in Full Stack Development, MERN Stack, Data Analytics, Python, Cloud Computing, and Software Testing with placement & internship programs.",
     url: "https://urbancode.in/",
     siteName: "Urbancode Edutech",
     images: [
@@ -86,7 +86,7 @@ export default function HomePage() {
   "name": "Urbancode Edutech",
   "url": "https://urbancode.in",
   "logo": "https://urbancode.in/images/logo.png",
-  "description": "IT and coding training institute in Chennai offering courses in web development, Python, MERN stack, and data science with internship and placement support.",
+  "description": "IT and coding training institute in Chennai offering courses in Full Stack Development, Python, MERN stack, and data science with internship and placement support.",
   "address": [
         {
           "@type": "PostalAddress",

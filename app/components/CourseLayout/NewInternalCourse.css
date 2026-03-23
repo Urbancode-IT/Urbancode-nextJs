@@ -902,18 +902,20 @@
 }
 
 .nict-faq-mail-btn {
-    background-color: #4a4a4a;
+    background-color: #198754;
     color: white;
     border: none;
     padding: 10px 24px;
     border-radius: 8px;
     font-weight: 500;
     cursor: pointer;
-    transition: background 0.3s;
+    transition: all 0.3s;
 }
 
 .nict-faq-mail-btn:hover {
-    background-color: #01af6a;
+    background-color: #146c43;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(25, 135, 84, 0.2);
 }
 
 .nict-faq-column.right {
@@ -944,6 +946,15 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     /* border-color: #nict-198754; */
     border-color: #198754;
+}
+
+.nict-faq-item.nict-active {
+    border-color: #2E8B57;
+}
+
+.nict-faq-item.nict-highlighted {
+    background: #f0fff4 !important; /* light green background */
+    border: 1px solid #4ade80 !important; /* solid green border */
 }
 
 .nict-faq-question {
