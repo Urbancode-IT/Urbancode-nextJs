@@ -8,6 +8,7 @@ import FaqBootstrap from './components/Home/Faqs';
 import Carousel from './components/Home/Carasoul';
 import VideoTestimonials from './components/Home/VideoTestimonials';
 import BannerSlider from './components/common/BannerSlider';
+import GetCertified from './components/Home/GetCertified';
 
 export const metadata = {
   title: "Urbancode Edutech | Best Full Stack Development & Coding Training Institute in Chennai",
@@ -126,6 +127,7 @@ export default function HomePage() {
       <Carousel />
       <Courses />
       <InDemandTools />
+      <GetCertified />
       <VideoTestimonials />
       <FaqBootstrap />
       <TrendingCourses />

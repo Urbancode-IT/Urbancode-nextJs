@@ -400,3 +400,21 @@
   -webkit-backdrop-filter: none;
   background: var(--bg-neutral);
 }
+
+/* Study Abroad Plane Icon */
+.study-abroad-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.plane-icon {
+  font-size: 14px;
+  color: #0ca678;
+  transform: rotate(-45deg); /* Match the lean in the image */
+  transition: transform 0.3s ease;
+}
+
+.study-abroad-link:hover .plane-icon {
+  transform: rotate(-10deg) translateX(3px) translateY(-3px);
+}
