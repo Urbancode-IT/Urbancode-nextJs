@@ -5,63 +5,51 @@ import './TrendingCourses.css';
 import EnquiryFormModal from "@/app/components/common/EnquiryFormModal.jsx";
 
 const courses = [
-    {
-        id: 1,
-        title: "Advanced React Patterns",
-        duration: "12 Weeks",
-        description: "Master advanced React concepts like Render Props, HOCs, and the latest Hooks patterns for scalable applications.",
-        image: "/images/courses/poster1.webp",
-    },
-    {
-        id: 2,
-        title: "Java Programming Masterclass",
-        duration: "10 Weeks",
-        description: "Learn Java from scratch to advanced level, including OOPS, Collections, and Multi-threading.",
-        image: "/images/courses/poster2.webp",
-    },
-    {
-        id: 3,
-        title: "Fullstack MERN Development",
-        duration: "15 Weeks",
-        description: "Build complete web applications using MongoDB, Express, React, and Node.js.",
-        image: "/images/courses/poster3.webp",
-    },
-    {
-        id: 4,
-        title: "AWS Cloud Architecture",
-        duration: "14 Weeks",
-        description: "Scale your applications globally using AWS, Azure, and modern DevOps practices.",
-        image: "/images/courses/poster4.webp",
-    },
-    {
-        id: 6,
-        title: "Data Analytics with Power BI",
-        duration: "6 Weeks",
-        description: "Transform raw data into beautiful, interactive, and insightful web visualizations using Power BI.",
-        image: "/images/courses/poster5.webp",
-    },
-    {
-        id: 7,
-        title: "Microsoft SharePoint Master",
-        duration: "9 Weeks",
-        description: "Master document management, collaboration, and intranet solutions using SharePoint Online.",
-        image: "/images/courses/poster6.webp",
-    },
-    {
-        id: 8,
-        title: "Professional Software Testing",
-        duration: "11 Weeks",
-        description: "Learn manual and automated testing, bug tracking, and quality assurance best practices.",
-        image: "/images/courses/poster7.webp",
-    },
-    {
-        id: 9,
-        title: "Enterprise .NET Core",
-        duration: "13 Weeks",
-        description: "Build robust, cross-platform enterprise applications using C# and the .NET Core framework.",
-        image: "/images/courses/poster8.webp",
-    }
+  {
+    id: 1,
+    title: "Mobile App Development (Android & iOS)",
+    duration: "3 Months",
+    description: "Build cross-platform mobile apps using React Native. Create real-world applications with a single JavaScript codebase.",
+    image: "/images/courses/poster1.webp",
+  },
+  {
+    id: 2,
+    title: "React JS + Next.js Development",
+    duration: "3 Months",
+    description: "Develop high-performance web applications using React and Next.js with modern UI, API integration, and best practices.",
+    image: "/images/courses/poster2.webp",
+  },
+  {
+    id: 3,
+    title: "MERN Stack Development",
+    duration: "3 Months",
+    description: "Master MongoDB, Express.js, React, and Node.js to build full-stack applications with real-time project experience.",
+    image: "/images/courses/poster3.webp",
+  },
+  {
+    id: 4,
+    title: "Cloud Data Engineering",
+    duration: "3 Months",
+    description: "Learn Google Cloud, Airflow, MySQL, and Python to build scalable data pipelines and handle real-time data processing.",
+    image: "/images/courses/poster4.webp",
+  },
+  {
+    id: 5,
+    title: "Data Analyst",
+    duration: "3 Months",
+    description: "Analyze and visualize data using Excel, SQL, Power BI, and Python. Work on real-time datasets and business insights.",
+    image: "/images/courses/poster5.webp",
+  },
+  {
+    id: 6,
+    title: ".NET + Angular Development",
+    duration: "3 Months",
+    description: "Combine C# .NET backend with Angular frontend to build scalable enterprise-level web applications.",
+    image: "/images/courses/poster6.webp",
+  }
 ];
+
+import { motion } from 'framer-motion';
 
 const TrendingCourses = () => {
     const sliderRef = useRef(null);
@@ -85,14 +73,14 @@ const TrendingCourses = () => {
             if (isAtEnd) {
                 sliderRef.current.scrollTo({ left: 0, behavior: 'smooth' });
             } else {
-                sliderRef.current.scrollBy({ left: 290, behavior: 'smooth' });
+                sliderRef.current.scrollBy({ left: 310, behavior: 'smooth' });
             }
         }
     };
 
     const slidePrev = () => {
         if (sliderRef.current) {
-            sliderRef.current.scrollBy({ left: -290, behavior: 'smooth' });
+            sliderRef.current.scrollBy({ left: -310, behavior: 'smooth' });
         }
     };
 
@@ -117,15 +105,25 @@ const TrendingCourses = () => {
     };
 
     return (
-        <div className="trending-section-container">
+        <motion.div 
+            className="trending-section-container"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+        >
             <div className="trending-header text-center mb-5">
-                <h2 className="section-main-title text-shine">Exciting offers</h2>
+                <h2 className="section-main-title text-shine">Courses We Offer</h2>
             </div>
 
-            <div
+            <motion.div
                 className="trending-slider-wrapper"
                 onMouseEnter={() => setIsPaused(true)}
                 onMouseLeave={() => setIsPaused(false)}
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2 }}
             >
                 <button className={`nav-side-btn prev ${isAtStart ? 'is-disabled' : ''}`} onClick={slidePrev}>&lt;</button>
 
@@ -143,7 +141,7 @@ const TrendingCourses = () => {
                 </div>
 
                 <button className={`nav-side-btn next ${isAtEnd ? 'is-disabled' : ''}`} onClick={slideNext}>&gt;</button>
-            </div>
+            </motion.div>
 
             {selectedCourse && (
                 <div className="trending-modal-backdrop" onClick={() => setSelectedCourse(null)}>
@@ -171,7 +169,7 @@ const TrendingCourses = () => {
                 onClose={() => setShowEnquiry(false)}
                 courseName={selectedCourse?.title || "Trending Course"}
             />
-        </div>
+        </motion.div>
     );
 };
 

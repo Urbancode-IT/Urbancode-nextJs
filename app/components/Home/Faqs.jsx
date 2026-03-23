@@ -19,8 +19,8 @@ const faqs = [
         answer: "Full Stack Developers can grow into roles like Senior Developer, Technical Architect, or CTO. With experience in both frontend and backend, you have a wider range of high-paying career opportunities."
     },
     {
-        question: "Does Urbancode offer any scholarship or early-bird discounts?",
-        answer: "Yes, we frequently offer seasonal discounts and merit-based incentives. Please contact our admissions team to find out about current offers for our upcoming batches."
+        question: "How does Urbancode’s 100% placement assistance work?",
+        answer: "Our placement cell provides personalized resume building, unlimited mock interviews, and direct referrals to our 100+ hiring partners in Chennai and across India until you secure your first IT job."
     },
     // Slide 2
     {
@@ -53,8 +53,8 @@ const faqs = [
         answer: "Once enrolled, you will receive login credentials for our student portal, where you can access recorded sessions, assignments, and exclusive learning resources."
     },
     {
-        question: "What is the validity of the course certification provided?",
-        answer: "The certification provided by Urbancode Edutech has lifetime validity, allowing you to showcase your verified skills to employers at any stage of your career."
+        question: "Do you provide training for professional certifications like AWS?",
+        answer: "Yes! Our cloud and DevOps courses are specifically mapped to industry-standard certifications. We provide mock exams and guidance to help you clear global certifications like AWS, Azure, and Google Cloud."
     }
 ];
 
@@ -96,7 +96,13 @@ const Faqs = () => {
     }, [activeIndex, currentPage, totalPages]);
 
     return (
-        <div className="faq-section container py-5">
+        <motion.div 
+            className="faq-section container py-5"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+        >
             <div className="text-center mb-5">
                 <h2 className="section-main-title text-shine">Let's get you more info</h2>
             </div>
@@ -173,7 +179,7 @@ const Faqs = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 };
 

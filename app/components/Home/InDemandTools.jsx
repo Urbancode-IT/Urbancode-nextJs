@@ -1,4 +1,6 @@
+'use client';
 import React from 'react';
+import { motion } from 'framer-motion';
 import './InDemandTools.css';
 
 const InDemandTools = () => {
@@ -39,7 +41,13 @@ const InDemandTools = () => {
     const row3 = [...row3Tools, ...row3Tools, ...row3Tools];
 
     return (
-        <section className="idt-in-demand-container">
+        <motion.section 
+            className="idt-in-demand-container"
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+        >
             <h2 className="section-main-title text-shine">In demand tools</h2>
 
             <div className="idt-tools-slider-container">
@@ -94,7 +102,7 @@ const InDemandTools = () => {
                     ))}
                 </div>
             </div>
-        </section>
+        </motion.section>
     );
 };
 

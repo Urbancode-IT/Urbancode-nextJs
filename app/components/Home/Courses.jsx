@@ -142,6 +142,8 @@ const MiniFeatureBox = () => {
     );
 };
 
+import { motion } from "framer-motion";
+
 const Courses = () => {
     const sliderRef = useRef(null);
     const [items, setItems] = useState([...coursesData, ...coursesData]); // Clone for infinite loop
@@ -236,20 +238,36 @@ const Courses = () => {
     };
 
     return (
-        <div className="jg-courses-section-wrapper">
+        <motion.div 
+            className="jg-courses-section-wrapper"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+        >
             <div className="jg-courses-main-content">
-                <div className="jg-courses-text-container">
+                <motion.div 
+                    className="jg-courses-text-container"
+                    initial={{ opacity: 0, x: -30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                >
                     <h2 className="jg-courses-title text-shine">
                         100% <br />
                         Job Guaranteed <br />
                         Courses
                     </h2>
                     <MiniFeatureBox />
-                </div>
-                <div
+                </motion.div>
+                <motion.div
                     className="jg-courses-slider-container"
                     onMouseEnter={() => setIsPaused(true)}
                     onMouseLeave={() => setIsPaused(false)}
+                    initial={{ opacity: 0, x: 30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: 0.4 }}
                 >
                     <button className={`jg-nav-side-btn prev ${isAtStart ? 'is-disabled' : ''}`} onClick={slidePrev}>&lt;</button>
 
@@ -270,9 +288,9 @@ const Courses = () => {
                     </div>
 
                     <button className={`jg-nav-side-btn next ${isAtEnd ? 'is-disabled' : ''}`} onClick={slideNext}>&gt;</button>
-                </div>
+                </motion.div>
             </div>
-        </div>
+        </motion.div>
     );
 };
 

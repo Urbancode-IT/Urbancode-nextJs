@@ -65,6 +65,7 @@ export default function Navbar() {
           <div className={`nav-links ${isOpen ? 'active' : ''}`}>
             {/* Home removed */}
             <Link href="/courses-categories" onClick={handleLinkClick}>Courses</Link>
+            <Link href="/study-abroad" onClick={handleLinkClick}>Study Abroad</Link>
             <Link href="/about-us" onClick={handleLinkClick}>About Us</Link>
             <Link href="/kids-courses" onClick={handleLinkClick}>Kids Space</Link>
 
