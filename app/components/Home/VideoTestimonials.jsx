@@ -51,8 +51,8 @@ const VideoTestimonials = () => {
         <section className="video-testimonials-section py-5">
             <div className="container">
                 <div className="text-center mb-5">
-                    <h2 className="section-main-title text-shine">Honest feedback from <br />our students</h2>
-                    <p className="fs1rem text-muted">Celebrating the remarkable success stories and career breakthroughs we've proudly helped achieve.</p>
+                    <h2 className="section-main-title text-shine">The voice that matters</h2>
+                    {/* <p className="fs1rem text-muted">Celebrating the remarkable success stories and career breakthroughs we've proudly helped achieve.</p> */}
                 </div>
 
                 <div className="video-carousel-wrapper">

@@ -28,13 +28,13 @@ const TestimonialsPage = () => {
         <div className="testimonials-grid-page">
             {/* Page Header */}
             <div className="pt-5 pb-5 text-center">
-                <h1 className="section-main-title text-shine">Student Success Stories</h1>
+                <h1 className="section-main-title text-shine">The voice that matters</h1>
             </div>
 
             {/* Grid Section (MATCHING USER'S REQUESTED LAYOUT: 4 videos per row) */}
             <section className="testimonials-grid-section py-5 px-3">
                 <div className="container-fluid max-width-1400">
-                    <div className="row g-4 row-cols-1 row-cols-md-2 row-cols-lg-4">
+                    <div className={`row g-4 row-cols-1 row-cols-md-2 ${videoData.length === 3 ? 'row-cols-lg-3' : 'row-cols-lg-4'}`}>
                         {videoData.map((video) => (
                             <div key={video.id} className="col">
                                 <div className="testimonial-card-v3">
@@ -55,13 +55,13 @@ const TestimonialsPage = () => {
                                         <p className="small-feedback mb-3">
                                             "{video.feedback.substring(0, 120)}..."
                                         </p>
-                                        <div className="d-flex align-items-center gap-2">
+                                        {/* <div className="d-flex align-items-center gap-2">
                                             <div className="logo-v3 bg-black text-white px-2 py-1 rounded small fw-bold">W</div>
                                             <div className="alumnus-info-v3">
                                                 <h6 className="mb-0 fw-bold small">{video.company}</h6>
                                                 <span className="text-muted smallest-text">{video.alumnusName}</span>
                                             </div>
-                                        </div>
+                                        </div> */}
                                     </div>
 
                                 </div>

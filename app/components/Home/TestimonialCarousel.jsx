@@ -100,10 +100,10 @@ const TestimonialCarousel = () => {
     return (
         <div className="testimonial_main_container pt-3 pb-5">
             <div className="container ">
-                <div className="text-center">
+                {/* <div className="text-center">
                     <h2 className="section-main-title text-shine">The voice that matters</h2>
                     <p className="fs1rem text-muted">Celebrating the remarkable success stories and career breakthroughs we've proudly helped achieve.</p>
-                </div>
+                </div> */}
 
                 <div className="row g-4 align-items-stretch mt-5">
                     <div className="col-lg-3 col-md-4 col-12">
