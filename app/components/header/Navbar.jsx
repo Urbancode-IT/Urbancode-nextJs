@@ -54,29 +54,29 @@ export default function Navbar() {
             />
           </Link>
 
-          {/* Phone with icon - only show if not feedback page */}
-          {!isFeedbackPage && (
-            <div className="navbar-phone">
-              <FiPhoneCall className="phone-icon" />
-              <a href="tel:+919878798797">+91 9878798797</a>
+          <div className="navbar-right">
+            {/* Phone with icon - only show if not feedback page */}
+            {!isFeedbackPage && (
+              <div className="navbar-phone">
+                <FiPhoneCall className="phone-icon" />
+                <a href="tel:+919878798797">+91 9878798797</a>
+              </div>
+            )}
+
+            {/* Navigation Links */}
+            <div className={`nav-links ${isOpen ? 'active' : ''}`}>
+              {/* Home removed */}
+              <Link href="/courses-categories" onClick={handleLinkClick}>Courses</Link>
+              <Link href="/study-abroad" onClick={handleLinkClick} className="study-abroad-link">
+                Study Abroad
+                <FaPlane className="plane-icon" />
+              </Link>
+              <Link href="/about-us" onClick={handleLinkClick}>About Us</Link>
+              <Link href="/kids-courses" onClick={handleLinkClick}>Kids Space</Link>
+              <Link href="/compiler" onClick={handleLinkClick}>CodeMatrix</Link>
+              <Link href="/projects" onClick={handleLinkClick}>Projects</Link>
+              <Link href="/contact-us" onClick={handleLinkClick}>Contact Us</Link>
             </div>
-          )}
-
-          {/* Navigation Links */}
-          <div className={`nav-links ${isOpen ? 'active' : ''}`}>
-            {/* Home removed */}
-            <Link href="/courses-categories" onClick={handleLinkClick}>Courses</Link>
-            <Link href="/study-abroad" onClick={handleLinkClick} className="study-abroad-link">
-              Study Abroad
-              <FaPlane className="plane-icon" />
-            </Link>
-            <Link href="/about-us" onClick={handleLinkClick}>About Us</Link>
-            <Link href="/kids-courses" onClick={handleLinkClick}>Kids Space</Link>
-
-            <Link href="/compiler" onClick={handleLinkClick}>CodeMatrix</Link>
-
-            <Link href="/projects" onClick={handleLinkClick}>Projects</Link>
-            <Link href="/contact-us" onClick={handleLinkClick}>Contact Us</Link>
           </div>
 
           {/* Hamburger */}
