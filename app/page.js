@@ -55,12 +55,6 @@ export const metadata = {
 export default function HomePage() {
   const homeBanners = [
     {
-      src: "/images/home/ramadanbanner.webp",
-      alt: "Ramadan Special Offer",
-      type: "form",
-      courseName: "Ramadan Special Offer"
-    },
-    {
       src: "/images/home/kidssummercamp.webp",
       alt: "Kids Summer Camp",
       type: "form-download",

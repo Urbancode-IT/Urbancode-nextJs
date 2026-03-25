@@ -145,8 +145,8 @@ const StudyAbroadPage = () => {
                                 transition={{ duration: 0.8 }}
                             >
                                 <h1 className="hero-title-main fw-bold">
-                                    Design Your <span className="highlight-box text-shine">International</span> Academic <br className="d-none d-md-block" /> 
-                                    Future Today
+                                    Design Your <span className="highlight-box text-shine">International</span><br className="d-none d-sm-block" /> 
+                                    Academic Future Today
                                 </h1>
                                 <p className="hero-subtitle-new mt-3">
                                     Launch your career on the global stage. Urbancode offers strategic guidance for admissions into leading universities in the US, UK, Canada, and beyond with complete scholarship support.

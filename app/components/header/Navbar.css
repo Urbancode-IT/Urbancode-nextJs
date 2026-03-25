@@ -58,8 +58,8 @@
 }
 
 .nav-links a {
-  font-size: 12px !important;
-  font-weight: 400 !important;
+  font-size: 15px !important;
+  font-weight: 600 !important;
   color: #555555;
   text-decoration: none;
   letter-spacing: -0.02em;
@@ -136,7 +136,6 @@
   .navbar-brand {
     width: 130px;
     /* Scale logo */
-    order: 1;
   }
 
   .navbar-right {
@@ -357,6 +356,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  margin-right: 30px; /* Pushes the phone number leftward */
   /* keeps it perfectly aligned vertically */
 }
 
@@ -416,18 +416,29 @@
 
 /* Study Abroad Plane Icon */
 .study-abroad-link {
-  display: flex;
+  display: flex !important;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
+  padding: 6px 12px !important;
+  border-radius: 20px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+.study-abroad-link:hover {
+  background: rgba(12, 166, 120, 0.1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(12, 166, 120, 0.2);
+  color: #0ca678 !important;
 }
 
 .plane-icon {
   font-size: 14px;
   color: #0ca678;
-  transform: rotate(-45deg); /* Match the lean in the image */
-  transition: transform 0.3s ease;
+  transform: rotate(-45deg); 
+  transition: all 0.4s ease;
 }
 
 .study-abroad-link:hover .plane-icon {
-  transform: rotate(-10deg) translateX(3px) translateY(-3px);
+  transform: rotate(-15deg) translateX(5px) translateY(-5px) scale(1.2);
+  filter: drop-shadow(0 0 5px rgba(12, 166, 120, 0.5));
 }

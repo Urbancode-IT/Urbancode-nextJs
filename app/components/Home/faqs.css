@@ -40,17 +40,22 @@
 
 .faq-left {
   background-color: transparent;
+  position: relative;
 }
 
-.faq-left::before {
-  content: "?";
-  position: absolute;
-  font-size: 25rem;
-  color: #a0a1a3;
-  font-weight: 700;
-  top: -40px;
-  left: 0;
-  z-index: 0;
+/* Background '?' only for desktop */
+@media (min-width: 1025px) {
+  .faq-left::before {
+    content: "?";
+    position: absolute;
+    font-size: 25rem;
+    color: #a0a1a3;
+    font-weight: 700;
+    top: -180px;
+    left: 0;
+    z-index: 0;
+    opacity: 0.4;
+  }
 }
 
 .faq-contact-box {
@@ -176,11 +181,7 @@
 
 
 /* Responsive */
-@media (max-width: 768px) {
-  .faq-left::before {
-    display: none;
-  }
-
+@media (max-width: 1024px) {
   .faq-title {
     font-size: 2rem;
     text-align: center;

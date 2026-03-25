@@ -242,7 +242,7 @@ const Courses = () => {
             className="jg-courses-section-wrapper"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             transition={{ duration: 0.8 }}
         >
             <div className="jg-courses-main-content">
@@ -250,7 +250,7 @@ const Courses = () => {
                     className="jg-courses-text-container"
                     initial={{ opacity: 0, x: -30 }}
                     whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
+                    viewport={{ once: false }}
                     transition={{ duration: 0.6, delay: 0.2 }}
                 >
                     <h2 className="jg-courses-title text-shine">
@@ -266,7 +266,7 @@ const Courses = () => {
                     onMouseLeave={() => setIsPaused(false)}
                     initial={{ opacity: 0, x: 30 }}
                     whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
+                    viewport={{ once: false }}
                     transition={{ duration: 0.6, delay: 0.4 }}
                 >
                     <button className={`jg-nav-side-btn prev ${isAtStart ? 'is-disabled' : ''}`} onClick={slidePrev}>&lt;</button>

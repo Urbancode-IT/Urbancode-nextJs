@@ -17,7 +17,7 @@
 }
 
 .trending-slider-wrapper {
-    width: 1210px;
+    width: 1210px; /* 4 cards * 280 + 3 gaps * 30 = 1120 + 90 = 1210 */
     position: relative;
     box-sizing: border-box;
     display: flex;
@@ -274,15 +274,15 @@
 /* Responsive Adjustments */
 @media (max-width: 1250px) {
     .trending-slider-wrapper {
-        width: 100%;
-        max-width: 840px;
+        width: 900px; /* 3 cards * 280 + 2 gaps * 30 = 840 + 60 = 900 */
+        margin: 0 auto;
     }
 }
 
 @media (max-width: 950px) {
     .trending-slider-wrapper {
-        width: 100%;
-        max-width: 550px;
+        width: 590px; /* 2 cards * 280 + 1 gap * 30 = 560 + 30 = 590 */
+        margin: 0 auto;
     }
 }
 

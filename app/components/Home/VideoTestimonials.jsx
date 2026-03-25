@@ -1,5 +1,6 @@
 'use client';
 import { useState, useRef, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { videoData } from '../../data/videoTestimonialsData';
 import './VideoTestimonials.css';
@@ -52,7 +53,13 @@ const VideoTestimonials = () => {
     };
 
     return (
-        <section className="video-testimonials-section py-5">
+        <motion.section 
+            className="video-testimonials-section py-5"
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: false }}
+            transition={{ duration: 0.8 }}
+        >
             <div className="container">
                 <div className="text-center mb-5">
                     <h2 className="section-main-title text-shine">The voice that matters</h2>
@@ -126,7 +133,7 @@ const VideoTestimonials = () => {
                     </Link>
                 </div>
             </div>
-        </section>
+        </motion.section>
     );
 };
 

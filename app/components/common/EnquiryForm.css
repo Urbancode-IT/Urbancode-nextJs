@@ -104,3 +104,65 @@
   font-size: 13px;
   color: #d9534f;
 }
+
+/* Success View Styles */
+.enquiry-success-view {
+  text-align: center;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.success-icon-wrapper {
+  margin-bottom: 25px;
+}
+
+.success-icon-circle {
+  width: 90px;
+  height: 90px;
+  background: rgba(0, 168, 107, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.checkmark-svg {
+  width: 50px;
+  height: 50px;
+}
+
+.success-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 12px;
+}
+
+.success-message {
+  font-size: 16px;
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 30px;
+  max-width: 320px;
+}
+
+.success-btn {
+  background: linear-gradient(135deg, #00a86b 0%, #008f58 100%);
+  color: white;
+  border: none;
+  padding: 12px 40px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 168, 107, 0.3);
+  transition: all 0.3s;
+}
+
+.success-btn:hover {
+  box-shadow: 0 6px 20px rgba(0, 168, 107, 0.4);
+  transform: translateY(-2px);
+}

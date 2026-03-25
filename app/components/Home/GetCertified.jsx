@@ -6,58 +6,18 @@ import { motion, useInView } from 'framer-motion';
 import { ChevronRight, Star, Clock, BookOpen, ArrowRight } from 'lucide-react';
 import './GetCertified.css';
 
+import { certifications } from '@/app/data/certificationData';
+
 const GetCertified = () => {
     const scrollRef = useRef(null);
     const containerRef = useRef(null);
-    const isInView = useInView(containerRef, { once: true, amount: 0.2 });
+    const isInView = useInView(containerRef, { once: false, amount: 0.2 });
     const [showNext, setShowNext] = useState(true);
     const [showPrev, setShowPrev] = useState(false);
 
-    const mainCertification = {
-        brandLogo: '/images/home/amazon.png',
-        title: 'AWS Certified Cloud Practitioner',
-        description: 'Master the fundamentals of AWS Cloud. Build your high-paying career starting with this foundation.',
-        rating: '4.8',
-        ratingsCount: '1,245 ratings',
-        totalHours: '12 total hours',
-        courseCount: '8 modules',
-        slug: 'aws-certified-cloud-practitioner'
-    };
-
-    const modules = [
-        {
-            id: 1,
-            title: 'Cisco Certified Network Associate (CCNA)',
-            image: '/images/home/cisco.png',
-            step: 'Step 1 of 6',
-            duration: '45 mins',
-            slug: 'cisco-ccna'
-        },
-        {
-            id: 2,
-            title: 'Microsoft Power BI Data Analyst',
-            image: '/images/home/microsoft.png',
-            step: 'Step 2 of 5',
-            duration: '52 mins',
-            slug: 'microsoft-power-bi'
-        },
-        {
-            id: 3,
-            title: 'Google Cloud Digital Leader',
-            image: '/images/home/ai_ml_logo.png',
-            step: 'Step 3 of 4',
-            duration: '38 mins',
-            slug: 'google-cloud-digital-leader'
-        },
-        {
-            id: 4,
-            title: 'CompTIA Security+ SY0-701',
-            image: '/images/home/fullstack.png',
-            step: 'Step 4 of 8',
-            duration: '1.5 hours',
-            slug: 'aws-certified-cloud-practitioner' // Dummy reuse
-        }
-    ];
+    // Get main certification and modules dynamically
+    const mainCertification = Object.values(certifications).find(c => c.featured) || Object.values(certifications)[0];
+    const modules = Object.values(certifications).filter(c => !c.featured);
 
     const scroll = (direction) => {
         if (scrollRef.current) {
@@ -75,6 +35,24 @@ const GetCertified = () => {
         }
     };
 
+    // Auto scroll logic
+    useEffect(() => {
+        const interval = setInterval(() => {
+            if (scrollRef.current) {
+                const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+                const isAtEnd = scrollLeft + clientWidth >= scrollWidth - 20;
+
+                if (isAtEnd) {
+                    scrollRef.current.scrollTo({ left: 0, behavior: 'smooth' });
+                } else {
+                    scroll('right');
+                }
+            }
+        }, 4000); // Scroll every 4 seconds
+
+        return () => clearInterval(interval);
+    }, []);
+
     return (
         <section className="gc-section" ref={containerRef}>
             <div className="container px-4">
@@ -85,7 +63,7 @@ const GetCertified = () => {
                     transition={{ duration: 0.6 }}
                 >
                     <h2 className="section-main-title text-shine">Get Certified & Get Ahead</h2>
-                    <p className="gc-section-subtitle">Skip the generic courses. Follow a proven certification path designed by industry experts to boost your career trajectory.</p>
+                    <p className="gc-section-subtitle">Earn globally recognized credentials. Explore independent certification tracks designed by industry leaders to accelerate your career.</p>
                 </motion.div>
                 
                 <div className="gc-container">
@@ -124,8 +102,8 @@ const GetCertified = () => {
                             className="gc-modules-wrapper" 
                             ref={scrollRef} 
                             onScroll={checkScroll}
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                            initial={{ opacity: 0, x: 20 }}
+                            animate={isInView ? { opacity: 1, x: 0 } : {}}
                             transition={{ duration: 0.7, delay: 0.4 }}
                         >
                             {modules.map((module, i) => (
@@ -144,7 +122,9 @@ const GetCertified = () => {
                                         <div className="gc-module-info">
                                             <h4 className="gc-module-title">{module.title}</h4>
                                             <div className="gc-module-footer">
-                                                <div className="gc-step-badge">{module.step}</div>
+                                                <div className="gc-step-badge">
+                                                    {module.brand} Track
+                                                </div>
                                                 <div className="gc-duration">
                                                     <Clock size={10} />
                                                     {module.duration}

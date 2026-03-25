@@ -3,21 +3,47 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import './Navbar.css';
 import ChatbotWidget from '../ChatbotWidget';
 import FloatingWidgets from '../FloatingWidgets';
 import { FiPhoneCall } from 'react-icons/fi';
 import { FaPlane } from 'react-icons/fa';
+import FlightTransition from '../animations/FlightTransition';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [careerOpen, setCareerOpen] = useState(false);
+  const [isFlying, setIsFlying] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
 
   const handleLinkClick = () => {
     setIsOpen(false);
     setCareerOpen(false);
+  };
+
+  const handleStudyAbroadClick = (e) => {
+    e.preventDefault();
+    console.log("✈ Pilot Initiating 3-Second Snappy Travel Flight...");
+    setIsFlying(true);
+    
+    // Snappy delay for the 3-second journey
+    setTimeout(() => {
+      console.log("✈ Destination reached!");
+      router.push('/study-abroad');
+      
+      // Safety: In case of router delay, ensure state resets or navigate via location after wait
+      setTimeout(() => {
+        if (window.location.pathname !== '/study-abroad') {
+          console.warn("✈ Router push failed or delayed, using direct navigation.");
+          window.location.href = '/study-abroad';
+        }
+        setIsFlying(false);
+      }, 3000);
+
+      setIsOpen(false);
+    }, 3000); 
   };
 
   const toggleCareer = () => setCareerOpen(!careerOpen);
@@ -31,8 +57,14 @@ export default function Navbar() {
     };
 
     window.addEventListener('scroll', handleScroll);
+    
+    // Reset flight state when we reach the page
+    if (pathname === '/study-abroad') {
+      setIsFlying(false);
+    }
+
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [pathname]);
 
   const isFeedbackPage = pathname.startsWith('/feedback');
 
@@ -67,7 +99,11 @@ export default function Navbar() {
             <div className={`nav-links ${isOpen ? 'active' : ''}`}>
               {/* Home removed */}
               <Link href="/courses-categories" onClick={handleLinkClick}>Courses</Link>
-              <Link href="/study-abroad" onClick={handleLinkClick} className="study-abroad-link">
+              <Link 
+                href="/study-abroad" 
+                onClick={handleStudyAbroadClick} 
+                className="study-abroad-link"
+              >
                 Study Abroad
                 <FaPlane className="plane-icon" />
               </Link>
@@ -96,6 +132,7 @@ export default function Navbar() {
           <ChatbotWidget />
         </>
       )}
+      <FlightTransition isAnimating={isFlying} />
     </>
   );
 }

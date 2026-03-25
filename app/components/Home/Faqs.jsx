@@ -100,7 +100,7 @@ const Faqs = () => {
             className="faq-section container py-5"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             transition={{ duration: 0.8 }}
         >
             <div className="text-center mb-5">
