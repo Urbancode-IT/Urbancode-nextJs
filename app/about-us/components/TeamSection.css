@@ -1,0 +1,346 @@
+/* ================================================================
+   TeamSection.css  —  Editorial portrait style
+   Matches reference: clean image + name + role, no card box
+   Design tokens: --bg-neutral #fcfcfc · #198754 green · Inter
+   ================================================================ */
+
+/* ── Section ──────────────────────────────────────────────────── */
+.team-section {
+  background-color: var(--bg-neutral);
+  padding: 90px 0 100px;
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.team-section.team-section--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Header ───────────────────────────────────────────────────── */
+.team-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Filter Pills Styling */
+.team-filter-pill-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 25px;
+  background: rgba(25, 135, 84, 0.03);
+  padding: 8px;
+  border-radius: 100px;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid rgba(25, 135, 84, 0.08);
+}
+
+.team-filter-btn {
+  position: relative;
+  background: transparent;
+  border: none;
+  padding: 8px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #198754;
+  cursor: pointer;
+  border-radius: 100px;
+  transition: all 0.3s ease;
+  z-index: 1;
+  white-space: nowrap;
+}
+
+.team-filter-btn:hover {
+  background: rgba(25, 135, 84, 0.05);
+  transform: translateY(-2px);
+}
+
+.team-filter-btn.active {
+  color: #ffffff;
+}
+
+.active-pill-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #198754;
+  border-radius: 100px;
+  z-index: -1;
+  box-shadow: 0 4px 15px rgba(25, 135, 84, 0.25);
+}
+
+@media (max-width: 768px) {
+  .team-filter-pill-container {
+    padding: 6px;
+    gap: 5px;
+    border-radius: 20px;
+    background: transparent;
+    border: none;
+  }
+  .team-filter-btn {
+    padding: 6px 16px;
+    font-size: 13px;
+  }
+}
+
+/* ── Scroller shell ───────────────────────────────────────────── */
+.team-scroller-shell {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  margin-top: 50px;
+}
+
+/* ── Track ────────────────────────────────────────────────────── */
+.team-track {
+  --team-cols: 4;
+  --team-gap: 32px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start; /* Start at the beginning for reliable scrolling */
+  gap: var(--team-gap);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding: 8px 0 16px;
+  width: 100%;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+/* Centering class for small teams */
+.team-track.centered {
+  justify-content: center;
+}
+.team-track::-webkit-scrollbar { display: none; }
+
+/* ── Card wrapper — whole-number sizing via --team-cols ───────── */
+.team-card-wrapper {
+  flex: 0 0 calc(
+    (100% - var(--team-gap) * (var(--team-cols) - 1)) / var(--team-cols)
+  );
+  min-width: 0;
+  scroll-snap-align: start;
+}
+
+/* ================================================================
+   PORTRAIT IMAGE  (reference style)
+   ================================================================ */
+.team-portrait {
+  position: relative;
+  width: 100%;
+  /* 4:5 portrait ratio — tall like the reference photo */
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: #e8e8e8;     /* placeholder bg while image loads */
+  border-radius: 4px;
+}
+
+.team-portrait-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  transition: transform 0.55s ease;
+  /* Subtle desaturation like the reference: slightly muted */
+  filter: grayscale(8%);
+}
+
+/* Zoom the photo very slightly on card hover */
+.team-card-wrapper:hover .team-portrait-img {
+  transform: scale(1.04);
+}
+
+/* ── Hover overlay with social icons ──────────────────────────── */
+.team-portrait-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(10, 61, 34, 0.78) 0%,
+    rgba(25, 135, 84, 0.30) 55%,
+    transparent 100%
+  );
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 22px;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+.team-card-wrapper:hover .team-portrait-overlay {
+  opacity: 1;
+}
+
+/* ── Social icons inside overlay ──────────────────────────────── */
+.team-social-row {
+  display: flex;
+  gap: 10px;
+}
+.team-social-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+  color: #fff;
+  text-decoration: none;
+  transform: translateY(8px);
+  transition: background 0.25s ease, transform 0.35s ease, border-color 0.25s ease;
+}
+.team-card-wrapper:hover .team-social-btn {
+  transform: translateY(0);
+}
+/* stagger the icons */
+.team-card-wrapper:hover .team-social-btn:nth-child(1) { transition-delay: 0.1s; transform: translateY(0) scale(1.1); }
+.team-card-wrapper:hover .team-social-btn:nth-child(2) { transition-delay: 0.18s; transform: translateY(0) scale(1.1); }
+.team-card-wrapper:hover .team-social-btn:nth-child(3) { transition-delay: 0.26s; transform: translateY(0) scale(1.1); }
+
+.team-social-btn:hover {
+  background: rgba(255, 255, 255, 0.32);
+  border-color: rgba(255, 255, 255, 0.75);
+  color: #fff;
+}
+
+/* ================================================================
+   TEXT BELOW IMAGE  (reference style)
+   ================================================================ */
+.team-info {
+  padding: 14px 2px 0;
+}
+
+.team-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 3px;
+  letter-spacing: -0.2px;
+  line-height: 1.3;
+}
+
+.team-role {
+  font-size: 0.82rem;
+  font-weight: 400;
+  color: #777;
+  margin: 0;
+  letter-spacing: 0.1px;
+}
+
+/* ================================================================
+   ARROW ROW (below cards)
+   ================================================================ */
+.team-arrow-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: 36px;
+}
+
+.team-arrow {
+  height: 48px;
+  min-width: 48px;
+  border-radius: 48px;
+  border: 1.5px solid #198754;
+  background: transparent;
+  color: #198754;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0 12px;
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.team-arrow-text {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  max-width: 0;
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  white-space: nowrap;
+}
+
+.team-arrow:hover {
+  background: #198754;
+  color: #fff;
+  padding: 0 22px;
+  box-shadow: 0 8px 24px rgba(25, 135, 84, 0.28);
+  transform: translateY(-2px);
+  border-color: #198754;
+}
+
+.team-arrow:hover .team-arrow-text {
+  max-width: 60px;
+  opacity: 1;
+}
+
+.team-arrow-prev:hover .team-arrow-text {
+  padding-left: 6px;
+}
+.team-arrow-next:hover .team-arrow-text {
+  padding-right: 6px;
+}
+
+/* ================================================================
+   RESPONSIVE  —  only --team-cols changes; everything else scales
+   ================================================================ */
+
+/* 992px–1199px → 3 whole cards */
+@media (max-width: 1199px) {
+  .team-track { 
+    --team-cols: 3; 
+    justify-content: flex-start !important; 
+  }
+}
+
+/* 768px–991px (Tablets) → 2 whole cards */
+@media (max-width: 991px) {
+  .team-section { padding: 70px 0 80px; }
+  .team-track {
+    --team-cols: 2;
+    --team-gap: 20px;
+    justify-content: flex-start !important;
+  }
+}
+
+/* 500px–767px (Small Tablets/Large Phones) → 2 whole cards to prevent 'giant image' syndrome */
+@media (max-width: 767px) {
+  .team-section { padding: 55px 0 65px; }
+  .team-track {
+    --team-cols: 2;
+    --team-gap: 16px;
+    justify-content: flex-start !important;
+  }
+}
+
+/* Below 500px (Mobile) → 2 whole cards to prevent 'giant image' syndrome */
+@media (max-width: 499px) {
+  .team-section { padding: 50px 0 60px; }
+  .team-track {
+    --team-cols: 2;
+    --team-gap: 12px;
+    justify-content: flex-start !important;
+  }
+  .team-card-wrapper {
+    flex: 0 0 calc((100% - 12px) / 2); /* Precisely 2 cards */
+  }
+  .team-arrow { height: 38px; min-width: 38px; width: auto; }
+}

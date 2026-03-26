@@ -7,6 +7,7 @@ import InDemandTools from './components/Home/InDemandTools';
 import FaqBootstrap from './components/Home/Faqs';
 import Carousel from './components/Home/Carasoul';
 import VideoTestimonials from './components/Home/VideoTestimonials';
+import TestimonialCarousel from './components/Home/TestimonialCarousel';
 import BannerSlider from './components/common/BannerSlider';
 import GetCertified from './components/Home/GetCertified';
 
@@ -54,6 +55,12 @@ export const metadata = {
 
 export default function HomePage() {
   const homeBanners = [
+    {
+      src: "/images/home/studyabroad.webp",
+      alt: "Study Abroad",
+      type: "link",
+      link: "/study-abroad"
+    },
     {
       src: "/images/home/kidssummercamp.webp",
       alt: "Kids Summer Camp",
@@ -123,6 +130,7 @@ export default function HomePage() {
       <InDemandTools />
       {/* <GetCertified /> */}
       <VideoTestimonials />
+      <TestimonialCarousel />
       <FaqBootstrap />
       <TrendingCourses />
     </>

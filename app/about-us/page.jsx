@@ -7,6 +7,7 @@ import TrainingSection from "./components/TrainingSection";
 import FeaturesSection from "./components/FeaturesSection";
 import ImageGallery from "./components/ImageGallery";
 import EventsSection from "./components/EventsSection";
+import TeamSection from "./components/TeamSection";
 
 const About = () => {
   return (
@@ -53,6 +54,7 @@ const About = () => {
 
       <div>
         <Herosection />
+        {/* <TeamSection /> */}
         <OurMileStone />
         <MissionVision />
         <TrainingSection />

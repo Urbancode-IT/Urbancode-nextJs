@@ -89,12 +89,14 @@ const Projects = () => {
       <section className="ph-hero-section ">
         <div className="container ph-hero-container">
           <div className="ph-left-content">
-            <h2>
-              <span className="large-text">Premium <span className="text-shine">Web and App Development</span></span><br />
-              Building digital excellence<br />
-              with innovation
+            <span className="ph-hero-badge">Premium</span>
+            <h1 className="ph-main-title">
+              Web and App <span className="text-shine">Development</span>
+            </h1>
+            <h2 className="ph-sub-heading">
+              Building digital excellence with innovation
             </h2>
-            <p>Crafting cutting-edge web solutions for modern businesses</p>
+            <p className="ph-hero-desc">Crafting cutting-edge web solutions for modern businesses</p>
             <div className="ph-btn-group">
               <a href="#projects" className="ph-btn-explore">Explore Our Work</a>
               <a href="#contact" className="ph-btn-contact">Get in Touch</a>

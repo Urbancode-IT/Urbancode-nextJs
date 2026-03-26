@@ -125,12 +125,6 @@ const VideoTestimonials = () => {
                             />
                         ))}
                     </div>
-                    <Link href="/testimonials" className="text-decoration-none">
-                        <button className="view-all-btn mt-4">
-                            <span>View All</span>
-                            <i className="fas fa-arrow-right ms-2 mt-1"></i>
-                        </button>
-                    </Link>
                 </div>
             </div>
         </motion.section>

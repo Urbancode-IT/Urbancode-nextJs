@@ -1,6 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
 :root {
   --bg-neutral: #fcfcfc;
   --bg-neutral-rgb: 249, 249, 249;
+  
+  /* Override Bootstrap font variables */
+  --bs-body-font-family: 'Inter', sans-serif !important;
+  --bs-font-sans-serif: 'Inter', sans-serif !important;
+}
+
+/* Safely apply to common text elements without overriding icon fonts like FontAwesome */
+html,
+body,
+h1, h2, h3, h4, h5, h6, 
+p, span, a, label, button, input, textarea, select, div {
+  font-family: 'Inter', sans-serif;
 }
 
 html,
@@ -8,7 +22,6 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Inter', sans-serif;
   background-color: var(--bg-neutral);
   overflow-x: hidden;
   width: 100%;
@@ -49,7 +62,7 @@ body {
   font-size: 36px;
   text-align: center;
   line-height: 1.2;
-  color: #444;
+  color: #198754;
   margin: 0 auto 15px auto;
   letter-spacing: -0.5px;
   max-width: 100%;

@@ -25,7 +25,7 @@
 
 .gc-container {
     max-width: 1240px;
-    width: 95%;
+    width: fit-content;
     margin: 0 auto;
     background: linear-gradient(99.41deg, rgba(25, 135, 84, 0.08) 1.17%, rgba(49, 49, 49, 0.05) 100.99%);
     backdrop-filter: blur(14px);
@@ -36,6 +36,7 @@
     display: flex;
     flex-direction: row;
     align-items: stretch;
+    justify-content: center;
     gap: 30px;
     position: relative;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.04);
@@ -58,7 +59,7 @@
     background: #ffffff;
     border-radius: 24px;
     padding: 25px;
-    width: 280px;
+    width: 320px;
     flex-shrink: 0;
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.06);
     display: flex;
@@ -149,7 +150,7 @@
 
 /* Modules Container */
 .gc-modules-container {
-    flex: 1;
+    flex: 0 1 auto;
     position: relative;
     max-width: calc(100% - 310px);
     display: flex;
@@ -165,7 +166,6 @@
     -ms-overflow-style: none;
     width: 100%;
     align-items: stretch;
-    scroll-snap-type: x mandatory;
 }
 
 .gc-modules-wrapper::-webkit-scrollbar {
@@ -182,19 +182,19 @@
 
 @media (min-width: 768px) {
     .gc-module-link {
-        width: calc((100% - 30px) / 2); /* Shows 2 cards */
+        width: 260px; /* Standardize card width */
     }
 }
 
 @media (min-width: 1100px) {
     .gc-module-link {
-        width: calc((100% - 60px) / 3); /* Shows 3 cards */
+        width: 280px;
     }
 }
 
 @media (min-width: 1400px) {
     .gc-module-link {
-        width: calc((100% - 90px) / 4); /* Shows 4 cards */
+        width: 300px;
     }
 }
 
@@ -279,13 +279,10 @@
     font-weight: 700;
     color: #1a1a1a;
     margin: 0;
-    line-height: 1.3;
-    min-height: 40px; 
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+    line-height: 1.4;
+    min-height: auto; 
+    display: block;
+    overflow: visible;
 }
 
 .gc-module-footer {
@@ -364,39 +361,66 @@
 }
 
 /* Responsive */
-@media (max-width: 1200px) {
+@media (max-width: 1210px) {
     .gc-container {
         flex-direction: column;
-        padding: 40px;
+        padding: 40px 20px;
+        width: 95%;
+        max-width: 900px;
+        align-items: center;
+        height: auto;
+        justify-content: flex-start;
     }
     .gc-featured-card {
         width: 100%;
+        max-width: 500px;
         padding: 30px;
+        text-align: center;
+        align-items: center;
+    }
+    .gc-brand-logo {
+        align-self: center;
+    }
+    .gc-featured-badge {
+        align-self: center;
+    }
+    .gc-meta-group {
+        justify-content: center;
     }
     .gc-modules-container {
         max-width: 100%;
-        margin-top: 20px;
+        margin-top: 40px;
+        width: 100%;
+        display: block;
+    }
+    .gc-modules-wrapper {
+        justify-content: center;
+        flex-wrap: wrap; /* Wrap instead of scroll on tablet */
+        overflow-x: visible;
+        gap: 20px;
+    }
+    .gc-module-link {
+        width: 280px;
+        flex-shrink: 1;
     }
     .gc-nav-controls {
-        top: auto;
-        bottom: -20px;
-        right: 50%;
-        transform: translateX(50%);
+        display: none; /* No need for scroller when wrapped */
     }
 }
 
 @media (max-width: 768px) {
     .gc-section {
-        padding: 60px 0;
+        padding: 40px 0;
     }
     .gc-container {
         border-radius: 25px;
-        padding: 25px;
+        padding: 25px 15px;
     }
     .gc-featured-title {
         font-size: 24px;
     }
-    .gc-module-card {
-        width: 240px;
+    .gc-module-link {
+        width: 100%;
+        max-width: 320px;
     }
 }

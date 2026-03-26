@@ -1,7 +1,7 @@
 .study-abroad-container {
     padding: 0;
     margin: 0;
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Inter', sans-serif;
     background-color: #fcfcfc;
 }
 
@@ -44,7 +44,7 @@ section {
 
 .hero-title-main {
     font-size: 3.5rem;
-    font-weight: 800;
+    font-weight: 600;
     line-height: 1.1;
     color: #2D2D2D;
     letter-spacing: -1px;
@@ -104,7 +104,7 @@ section {
     border: none;
     padding: 16px 45px;
     border-radius: 50px;
-    font-weight: 800;
+    font-weight: 700;
     font-size: 1.15rem;
     position: relative;
     overflow: hidden;
@@ -230,7 +230,7 @@ section {
 
 .badge-val {
     font-size: 1.25rem;
-    font-weight: 800;
+    font-weight: 700;
     color: #1a1a1a;
     line-height: 1;
 }
@@ -294,7 +294,7 @@ section {
 }
 
 .trust-val {
-    font-weight: 800;
+    font-weight: 700;
     font-size: 1.25rem;
     color: #1a1a1a;
 }
@@ -344,7 +344,7 @@ section {
 
 .destination-info h3 {
     font-size: 1.5rem;
-    font-weight: 700;
+    font-weight: 600;
     margin-bottom: 10px;
     color: #333;
 }
@@ -411,7 +411,7 @@ section {
 
 .service-box h4 {
     font-size: 1.25rem;
-    font-weight: 700;
+    font-weight: 600;
     margin-bottom: 12px;
 }
 
@@ -429,7 +429,7 @@ section {
 
 .consultation-card h3 {
     font-size: 2rem;
-    font-weight: 800;
+    font-weight: 600;
     margin-bottom: 30px;
     text-align: center;
 }
@@ -496,7 +496,7 @@ section {
 }
 
 .test-user h5 {
-    font-weight: 700;
+    font-weight: 600;
     margin: 0;
 }
 

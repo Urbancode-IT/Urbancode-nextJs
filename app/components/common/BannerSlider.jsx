@@ -2,6 +2,7 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import Image from 'next/image';
 import EnquiryFormModal from './EnquiryFormModal';
+import { useRouter } from 'next/navigation';
 import './BannerSlider.css';
 
 const BannerSlider = ({ banners = [] }) => {
@@ -9,6 +10,7 @@ const BannerSlider = ({ banners = [] }) => {
     const [showEnquiry, setShowEnquiry] = useState(false);
     const [selectedBanner, setSelectedBanner] = useState(null);
     const timerRef = useRef(null);
+    const router = useRouter();
 
     const startTimer = useCallback(() => {
         if (banners.length <= 1) return;
@@ -46,7 +48,7 @@ const BannerSlider = ({ banners = [] }) => {
 
     const handleBannerClick = (banner) => {
         if (banner.type === 'link' && banner.link) {
-            window.location.href = banner.link;
+            router.push(banner.link);
             return;
         }
         setSelectedBanner(banner);

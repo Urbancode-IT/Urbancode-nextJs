@@ -51,12 +51,12 @@
 }
 
 .left-card {
-    left: 12%; /* Further out to create gap */
+    left: 22%; /* Reduced gap from 12% */
     transform: translate(-50%, -50%) scale(0.85);
 }
 
 .right-card {
-    left: 88%; /* Further out to create gap */
+    left: 78%; /* Reduced gap from 88% */
     transform: translate(-50%, -50%) scale(0.85);
 }
 
@@ -206,16 +206,16 @@
 @media (max-width: 1440px) {
     .video-carousel-wrapper { height: 650px; }
     .center-card { width: 340px; height: 550px; }
-    .left-card { left: 18%; }
-    .right-card { left: 82%; }
+    .left-card { left: 25%; }
+    .right-card { left: 75%; }
 }
 
 @media (max-width: 1024px) {
     .video-carousel-wrapper { height: 550px; }
     .center-card { width: 300px; height: 480px; }
     .left-card, .right-card { width: 240px; height: 380px; opacity: 0.3; }
-    .left-card { left: 15%; }
-    .right-card { left: 85%; }
+    .left-card { left: 28%; }
+    .right-card { left: 72%; }
     .nav-btn { width: 40px; height: 40px; }
     .prev-btn { left: 0.5%; }
     .next-btn { right: 0.5%; }
@@ -230,8 +230,8 @@
         height: 300px;
         opacity: 0.2; /* Faint for focus */
     }
-    .left-card { left: -5%; transform: translate(-50%, -50%) scale(0.6); }
-    .right-card { left: 105%; transform: translate(-50%, -50%) scale(0.6); }
+    .left-card { left: 10%; transform: translate(-50%, -50%) scale(0.6); }
+    .right-card { left: 90%; transform: translate(-50%, -50%) scale(0.6); }
     .prev-btn { left: 2%; }
     .next-btn { right: 2%; }
 }
