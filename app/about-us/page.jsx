@@ -54,7 +54,7 @@ const About = () => {
 
       <div>
         <Herosection />
-        {/* <TeamSection /> */}
+        {/* {<TeamSection /> } */}
         <OurMileStone />
         <MissionVision />
         <TrainingSection />

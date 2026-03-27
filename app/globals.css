@@ -86,7 +86,7 @@ body {
   }
 }
 
-.section-main-title::after {
+/* .section-main-title::after {
   content: "";
   position: absolute;
   bottom: 0;
@@ -98,7 +98,7 @@ body {
   background-size: 200% 100%;
   border-radius: 2px;
   animation: underline-shine 3s ease-in-out infinite;
-}
+} */
 
 @keyframes underline-shine {
   0% {

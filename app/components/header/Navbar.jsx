@@ -104,14 +104,14 @@ export default function Navbar() {
                 onClick={handleStudyAbroadClick} 
                 className="study-abroad-link"
               >
-                Study Abroad
+                Study abroad
                 <FaPlane className="plane-icon" />
               </Link>
-              <Link href="/about-us" onClick={handleLinkClick}>About Us</Link>
-              <Link href="/kids-courses" onClick={handleLinkClick}>Kids Space</Link>
-              <Link href="/compiler" onClick={handleLinkClick}>CodeMatrix</Link>
+              {/* <Link href="/about-us" onClick={handleLinkClick}>About </Link> */}
+              <Link href="/kids-courses" onClick={handleLinkClick}>Kids space</Link>
+              <Link href="/compiler" onClick={handleLinkClick}>Online-compiler</Link>
               <Link href="/projects" onClick={handleLinkClick}>Projects</Link>
-              <Link href="/contact-us" onClick={handleLinkClick}>Contact Us</Link>
+              <Link href="/contact-us" onClick={handleLinkClick}>Contact us</Link>
             </div>
           </div>
 

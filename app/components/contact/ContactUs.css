@@ -64,7 +64,7 @@
   color: #1d2b3a;
 }
 
-.contact-us-page .header-line {
+/* .contact-us-page .header-line {
   width: 65px;
   height: 3px;
   background: #198754;
@@ -72,10 +72,10 @@
   margin: 1px auto 20px;
   position: relative;
   overflow: hidden;
-}
+} */
 
 /* Base line (same as before) */
-.contact-us-page .header-line {
+/* .contact-us-page .header-line {
   width: 65px;
   height: 3px;
   background: #198754;
@@ -83,7 +83,7 @@
   margin: 1px auto 20px;
   position: relative;
   overflow: hidden;
-}
+} */
 
 /* Shiny animation only inside .contact-us-page */
 .contact-us-page .header-line::before {

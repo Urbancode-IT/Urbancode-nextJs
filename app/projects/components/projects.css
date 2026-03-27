@@ -66,7 +66,7 @@
 }
 
 .projects-page .ph-main-title {
-  font-size: 3rem; /* Reduced from 3.8rem */
+  font-size: 2.5rem; /* Reduced from 3.8rem */
   font-weight: 700; /* Reduced from 800 */
   line-height: 1.2;
   color: #1A2733;
@@ -884,7 +884,7 @@ html {
   /* text-shine handles color */
 }
 
-.projects-page .styled-subtitle::after {
+/* .projects-page .styled-subtitle::after {
   content: "";
   position: absolute;
   bottom: 0;
@@ -896,7 +896,7 @@ html {
   background-size: 200% 100%;
   border-radius: 2px;
   animation: underline-shine 3s ease-in-out infinite;
-}
+} */
 
 
 
@@ -1106,7 +1106,7 @@ html {
   }
 
   .projects-page .ph-main-title {
-    font-size: 3rem;
+    font-size: 2.5rem;
   }
 
   .projects-page .ph-right-image {
@@ -1177,7 +1177,7 @@ html {
 
   /* Hero Section */
   .projects-page .ph-main-title {
-    font-size: 3.8rem;
+    font-size: 3rem;
   }
 
   .projects-page .ph-right-image {

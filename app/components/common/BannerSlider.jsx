@@ -5,7 +5,7 @@ import EnquiryFormModal from './EnquiryFormModal';
 import { useRouter } from 'next/navigation';
 import './BannerSlider.css';
 
-const BannerSlider = ({ banners = [] }) => {
+const BannerSlider = ({ banners = [], forceEnquiry = false }) => {
     const [current, setCurrent] = useState(0);
     const [showEnquiry, setShowEnquiry] = useState(false);
     const [selectedBanner, setSelectedBanner] = useState(null);
@@ -47,7 +47,7 @@ const BannerSlider = ({ banners = [] }) => {
     };
 
     const handleBannerClick = (banner) => {
-        if (banner.type === 'link' && banner.link) {
+        if (!forceEnquiry && banner.type === 'link' && banner.link) {
             router.push(banner.link);
             return;
         }

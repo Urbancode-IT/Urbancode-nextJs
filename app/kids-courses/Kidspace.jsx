@@ -4,10 +4,34 @@ import Image from 'next/image';
 import EnquiryFormModal from '../components/common/EnquiryFormModal';
 import { useState } from 'react';
 
+import BannerSlider from '../components/common/BannerSlider';
+
 const Kidz = () => {
   const [selectedCourse, setSelectedCourse] = useState(null);
   const [showEnquiry, setShowEnquiry] = useState(false);
 
+  const kidsBanners = [
+    {
+      src: "/images/home/kidssummercamp.webp",
+      alt: "Kids Summer Camp",
+      type: "form-download",
+      courseName: "Kids Summer Camp"
+    },
+    {
+      src: "/images/home/studyabroad.webp",
+      alt: "Python for Kids",
+      type: "form-download",
+      courseName: "Python for Kids",
+      downloadUrls: ["/curriculum/pythonforkids.pdf"]
+    },
+    {
+      src: "/images/home/dataengineering.webp",
+      alt: "Web Development for Kids",
+      type: "form-download",
+      courseName: "Web Development for Kids",
+      downloadUrls: ["/curriculum/webdevelopmentKids.pdf"]
+    }
+  ];
 
   const courses = [
     {
@@ -117,6 +141,8 @@ const Kidz = () => {
           </div>
         </div>
       </section>
+
+      {/* <BannerSlider banners={kidsBanners} forceEnquiry={true} /> */}
 
 
       <div className="container py-5">

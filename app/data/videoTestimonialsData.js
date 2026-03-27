@@ -27,5 +27,7 @@ export const videoData = [
         company: "Innovate Partners",
         feedback: "The quality of instruction at Urbancode is unmatched. Each session was insightful and the real-world scenarios we handled prepared me for actual industry challenges. Highly recommend for any aspiring developer!"
     },
+   
+    
     
 ];
