@@ -29,7 +29,7 @@ const Kidz = () => {
       courseName: "Kids Summer Camp"
     },
     {
-      src: "/images/home/kidssm.webp",
+      src: "/images/home/kidssc.webp",
       alt: "Python for Kids",
       type: "form-download",
       courseName: "Kids Summer Camp",
