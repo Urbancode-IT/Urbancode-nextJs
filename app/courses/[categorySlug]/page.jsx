@@ -3,22 +3,20 @@ import Courses from "./Courses";
 // Generate static paths for export
 export async function generateStaticParams() {
   const categories = [
-    "Programming Languages",
-    "Web and App Development",
-    "UI UX Designing",
+    "Fullstack Development",
+    "Software Testing",
+    "Data Analytics",
     "Cloud and DevOps",
-    // "Data Analytics",
+    "Programming Languages",
+    "UI UX Designing",
     "Data Science",
     "Data Engineering",
     "Database",
     "Data Visualization",
-    "Software Testing",
     "Net Working",
     "Digital Marketing",
-    "Health Care",
     "CRM",
     "Kidz Space",
-     "Languages",
   ];
 
   const slugify = (name) => name.toLowerCase().replace(/\s+/g, "-");

@@ -24,24 +24,24 @@ import appDevImg from "@/public/images/courses-images/app.webp";
 
 const courses = [
   {
-    title: "Programming Languages",
-    desc: "Programming languages are tools that let us communicate with computers to build software and applications.",
-    img: programmingImg,
-    link: "/courses/programming-languages",
-    badge: "6 Courses",
-  },
-  {
-    title: "Web and App Development",
+    title: "Fullstack Development",
     desc: "Build modern, responsive, and dynamic websites from scratch. Learn HTML, CSS, JavaScript, and popular frameworks step by step.",
     img: webDevImg,
-    link: "/courses/web-and-app-development",
+    link: "/courses/fullstack-development",
     badge: "7 Courses",
   },
   {
-    title: "UI/UX Designing",
-    desc: "UI/UX design blends aesthetics with usability to create seamless digital experiences.",
-    img: uiuxImg,
-    link: "/courses/ui-ux-designing",
+    title: "Software Testing",
+    desc: "Gain expertise in Manual and Automation Testing tools and techniques.",
+    img: softwareTestingImg,
+    link: "/courses/software-testing",
+    badge: "6 Courses",
+  },
+  {
+    title: "Data Analytics",
+    desc: "Turn raw data into powerful insights with our Data Analytics courses. Learn Excel, SQL, Power BI, and Python for real-world applications.",
+    img: dataAnalysisImg,
+    link: "/courses/data-analytics",
     badge: "5 Courses",
   },
   {
@@ -51,13 +51,20 @@ const courses = [
     link: "/courses/cloud-and-devops",
     badge: "3 Courses",
   },
-  // {
-  //   title: "Data Analytics",
-  //   desc: "Turn raw data into powerful insights with our Data Analytics courses. Learn Excel, SQL, Power BI, and Python for real-world applications.",
-  //   img: dataAnalysisImg,
-  //   link: "/courses/data-analytics",
-  //   badge: "5 Courses",
-  // },
+  {
+    title: "Programming Languages",
+    desc: "Programming languages are tools that let us communicate with computers to build software and applications.",
+    img: programmingImg,
+    link: "/courses/programming-languages",
+    badge: "6 Courses",
+  },
+  {
+    title: "UI/UX Designing",
+    desc: "UI/UX design blends aesthetics with usability to create seamless digital experiences.",
+    img: uiuxImg,
+    link: "/courses/ui-ux-designing",
+    badge: "5 Courses",
+  },
   {
     title: "Data Science",
     desc: "Turn raw data into powerful insights with Data Science. Master Python, SQL, and machine learning to solve real problems.",
@@ -87,13 +94,6 @@ const courses = [
     badge: "4 Courses",
   },
   {
-    title: "Software Testing",
-    desc: "Gain expertise in Manual and Automation Testing tools and techniques.",
-    img: softwareTestingImg,
-    link: "/courses/software-testing",
-    badge: "6 Courses",
-  },
-  {
     title: "Net Working",
     desc: "Gain hands-on skills to protect systems, networks, and data from cyber threats. Learn ethical hacking and security practices.",
     img: cyberSecurityImg,
@@ -108,40 +108,12 @@ const courses = [
     badge: "3 Courses",
   },
   {
-    title: "Health Care",
-    desc: "Step into Healthcare Careers with ICD-10, CPT, and HCPCS coding systems through practical training.",
-    img: medicalCodingImg,
-    link: "/courses/health-care",
-    badge: "3 Courses",
-  },
-  {
-    title: "Languages",
-    desc: "Learn to speak, read, and write with confidence in global languages like English, Spanish, French & Japanese.",
-    img: languagesImg,
-    link: "/courses/languages",
-    badge: "5 Courses",
-  },
-  // {
-  //   title: "English Proficiency Exams",
-  //   desc: "Prepare for IELTS, TOEFL, and more with expert guidance and practice sessions.",
-  //   img: englishImg,
-  //   link: "/courses/english-proficiency-exams",
-  //   badge: "6 Courses",
-  // },
-  {
     title: "CRM",
     desc: "Learn to manage customer data, track leads, and automate sales processes with CRM systems.",
     img: crmImg,
     link: "/courses/crm",
     badge: "4 Courses",
   },
-  // {
-  //   title: "App Development",
-  //   desc: "Create impactful mobile and desktop apps combining creativity and technology.",
-  //   img: appDevImg,
-  //   link: "/courses/app-development",
-  //   badge: "5 Courses",
-  // },
 ];
 
 const CourseCategoryPage = () => {

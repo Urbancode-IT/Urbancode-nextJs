@@ -100,6 +100,9 @@ const BannerSlider = ({ banners = [], forceEnquiry = false }) => {
                     onClose={() => setShowEnquiry(false)}
                     courseName={selectedBanner.courseName || "Banner Promotion"}
                     downloadUrls={selectedBanner.downloadUrls}
+                    dynamicDownloads={selectedBanner.dynamicDownloads}
+                    extraOptions={selectedBanner.extraOptions}
+                    isSelectMode={selectedBanner.isSelectMode}
                 />
             )}
         </section>

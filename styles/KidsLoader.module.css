@@ -1,0 +1,362 @@
+.loaderContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Professional Gradient Background - Inspired by Study Abroad */
+.gradientBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #0ca678 0%, #08916a 35%, #1a4d3e 70%, #0a2f1f 100%);
+  z-index: 0;
+}
+
+/* Glowing Particles */
+.glowingParticle {
+  border-radius: 50%;
+  box-shadow: 0 0 8px currentColor;
+}
+
+/* Floating Icons Background */
+.floatingIcon {
+  color: rgba(255, 255, 255, 0.08);
+  font-size: 3rem;
+  z-index: 1;
+}
+
+/* Center Content */
+.centerContent {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  text-align: center;
+  padding: 0 20px;
+}
+
+/* Mascots Wrapper */
+.mascotsWrapper {
+  position: relative;
+  width: 320px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  z-index: 5;
+}
+
+.mascotPosition1 {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 3;
+}
+
+.mascotPosition2 {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 3;
+}
+
+.mascot {
+  width: 120px;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mascotImage {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.2));
+}
+
+.mascotImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Rocket Container */
+.rocketContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 120px;
+  margin: 0 auto;
+}
+
+.rocketContainer svg {
+  color: #ffffff;
+  filter: drop-shadow(0 10px 30px rgba(12, 166, 120, 0.4));
+  z-index: 2;
+}
+
+/* Glow Ring */
+.glowRing {
+  position: absolute;
+  inset: -20px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  z-index: 1;
+}
+
+/* Charge Glow - Rocket charging effect */
+.chargeGlow {
+  position: absolute;
+  inset: -40px;
+  border: 3px solid rgba(255, 215, 0, 0.8);
+  border-radius: 50%;
+  z-index: 0;
+  box-shadow: 0 0 40px rgba(255, 215, 0, 0.6), inset 0 0 40px rgba(255, 215, 0, 0.3);
+}
+
+/* Loading Text */
+.loadingTextContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+}
+
+.mainText {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: -0.5px;
+  white-space: nowrap;
+}
+
+.mainText span {
+  display: inline-block;
+}
+
+.subText {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+}
+
+/* Tags Container */
+.tagsContainer {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  z-index: 10;
+}
+
+.tag {
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  color: #ffffff;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  white-space: nowrap;
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.tag:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: scale(1.05);
+}
+
+/* Progress Container */
+.progressContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-top: 10px;
+}
+
+/* Progress Bar */
+.progressBar {
+  width: 200px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    #FFD700 0%,
+    #FFA500 50%,
+    #FFD700 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+}
+
+@keyframes shimmer {
+  0%, 100% {
+    background-position: 200% 0;
+  }
+  50% {
+    background-position: -200% 0;
+  }
+}
+
+.badge {
+  padding: 8px 14px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  color: rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.badge svg {
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .mainText {
+    font-size: 1.5rem;
+  }
+
+  .subText {
+    font-size: 0.9rem;
+  }
+
+  .progressBar {
+    width: 160px;
+  }
+
+  .rocketContainer {
+    width: 100px;
+    height: 100px;
+  }
+
+  .rocketContainer svg {
+    font-size: 60px;
+  }
+
+  .mascotsWrapper {
+    width: 220px;
+    height: 140px;
+  }
+
+  .mascot {
+    width: 80px;
+    height: 100px;
+  }
+
+  .tag {
+    font-size: 0.8rem;
+    padding: 6px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .centerContent {
+    gap: 25px;
+  }
+
+  .mainText {
+    font-size: 1.3rem;
+  }
+
+  .subText {
+    font-size: 0.85rem;
+  }
+
+  .progressBar {
+    width: 140px;
+    height: 4px;
+  }
+
+  .rocketContainer {
+    width: 80px;
+    height: 80px;
+  }
+
+  .rocketContainer svg {
+    font-size: 48px;
+  }
+
+  .bouncingDots {
+    height: 16px;
+    gap: 5px;
+  }
+
+  .dot {
+    width: 6px;
+    height: 6px;
+  }
+
+  .mascotsWrapper {
+    width: 160px;
+    height: 110px;
+  }
+
+  .mascot {
+    width: 70px;
+    height: 90px;
+  }
+
+  .tag {
+    font-size: 0.75rem;
+    padding: 5px 10px;
+  }
+
+  .tagsContainer {
+    gap: 8px;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .rocketContainer,
+  .glowRing,
+  .dot,
+  .progressFill,
+  .floatingIcon {
+    animation: none !important;
+  }
+}

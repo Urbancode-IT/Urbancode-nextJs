@@ -86,58 +86,38 @@ const CourseDetailPlaceholder = ({ name }) => {
 };
 
 
-const MiniFeatureBox = () => {
+const FeatureSubtitles = () => {
     const features = [
         {
-            title: "800+ Placements",
-            text: "Successful career transitions into top MNCs like Zoho & Amazon.",
-            icon: <FaRocket />
+            title: "100+ Placements",
+            icon: <FaRocket />,
+            detail: "Top MNCs"
         },
         {
             title: "Live Projects",
-            text: "Gain hands-on experience with 10+ real-world industry projects.",
-            icon: <FaLaptopCode />
+            icon: <FaLaptopCode />,
+            detail: "Industry Grade"
         },
         {
             title: "Mock Interviews",
-            text: "Dedicated personality development and interview prep sessions.",
-            icon: <FaHandshake />
+            icon: <FaHandshake />,
+            detail: "Career Ready"
         }
     ];
 
-    const [activeIndex, setActiveIndex] = useState(0);
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setActiveIndex((prev) => (prev + 1) % features.length);
-        }, 3000);
-        return () => clearInterval(interval);
-    }, []);
-
     return (
-        <div className="jg-mini-feature-box">
-            <div className="jg-feature-inner">
-                {features.map((feature, idx) => (
-                    <div
-                        key={idx}
-                        className={`jg-feature-slide ${idx === activeIndex ? 'active' : ''}`}
-                    >
-                        <span className="jg-feature-icon">{feature.icon}</span>
-                        <div className="jg-feature-content">
-                            <h4 className="jg-feature-title">{feature.title}</h4>
-                            <p className="jg-feature-text">{feature.text}</p>
-                        </div>
+        <div className="jg-features-subtitles">
+            {features.map((feature, idx) => (
+                <div key={idx} className="jg-feature-subtitle-item">
+                    <div className="jg-feature-subtitle-icon-wrapper">
+                        {feature.icon}
                     </div>
-                ))}
-            </div>
-            <div className="jg-feature-indicators">
-                {features.map((_, idx) => (
-                    <div
-                        key={idx}
-                        className={`jg-feature-dot ${idx === activeIndex ? 'active' : ''}`}
-                    />
-                ))}
-            </div>
+                    <div className="jg-feature-subtitle-text">
+                        <span className="jg-feature-subtitle-title">{feature.title}</span>
+                        <span className="jg-feature-subtitle-detail">{feature.detail}</span>
+                    </div>
+                </div>
+            ))}
         </div>
     );
 };
@@ -247,18 +227,16 @@ const Courses = () => {
         >
             <div className="jg-courses-main-content">
                 <motion.div 
-                    className="jg-courses-text-container"
-                    initial={{ opacity: 0, x: -30 }}
-                    whileInView={{ opacity: 1, x: 0 }}
+                    className="jg-courses-header-container"
+                    initial={{ opacity: 0, y: -20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: false }}
-                    transition={{ duration: 0.6, delay: 0.2 }}
+                    transition={{ duration: 0.6 }}
                 >
                     <h2 className="jg-courses-title text-shine">
-                        100% <br />
-                        Job Guaranteed <br />
-                        Courses
+                        100% Job Guaranteed Courses
                     </h2>
-                    <MiniFeatureBox />
+                    <FeatureSubtitles />
                 </motion.div>
                 <motion.div
                     className="jg-courses-slider-container"

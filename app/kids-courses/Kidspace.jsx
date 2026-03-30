@@ -2,13 +2,24 @@
 import './Kidz.css';
 import Image from 'next/image';
 import EnquiryFormModal from '../components/common/EnquiryFormModal';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import KidsLoader from './KidsLoader';
 
 import BannerSlider from '../components/common/BannerSlider';
 
 const Kidz = () => {
   const [selectedCourse, setSelectedCourse] = useState(null);
   const [showEnquiry, setShowEnquiry] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Show loader for 8 seconds when page loads (multi-stage animation)
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 8000);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const kidsBanners = [
     {
@@ -18,18 +29,16 @@ const Kidz = () => {
       courseName: "Kids Summer Camp"
     },
     {
-      src: "/images/home/studyabroad.webp",
+      src: "/images/home/kidssummercamp1.webp",
       alt: "Python for Kids",
       type: "form-download",
-      courseName: "Python for Kids",
-      downloadUrls: ["/curriculum/pythonforkids.pdf"]
-    },
-    {
-      src: "/images/home/dataengineering.webp",
-      alt: "Web Development for Kids",
-      type: "form-download",
-      courseName: "Web Development for Kids",
-      downloadUrls: ["/curriculum/webdevelopmentKids.pdf"]
+      courseName: "Kids Summer Camp",
+      dynamicDownloads: {
+        "webdevelopment": "/curriculum/webdevelopmentKids.pdf",
+        "python with ai": "/curriculum/pythonforkids.pdf"
+      },
+      extraOptions: ["webdevelopment", "python with ai"],
+      isSelectMode: true
     }
   ];
 
@@ -118,6 +127,7 @@ const Kidz = () => {
   ];
   return (
     <div className="kidz-page color-bg">
+      <KidsLoader isLoading={isLoading} />
 
       {/* Hero Section */}
       <section className="hero-section">
@@ -141,8 +151,7 @@ const Kidz = () => {
           </div>
         </div>
       </section>
-
-      {/* <BannerSlider banners={kidsBanners} forceEnquiry={true} /> */}
+{ <BannerSlider banners={kidsBanners} forceEnquiry={true} /> }
 
 
       <div className="container py-5">

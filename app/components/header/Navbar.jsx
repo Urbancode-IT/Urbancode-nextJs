@@ -8,7 +8,7 @@ import './Navbar.css';
 import ChatbotWidget from '../ChatbotWidget';
 import FloatingWidgets from '../FloatingWidgets';
 import { FiPhoneCall } from 'react-icons/fi';
-import { FaPlane } from 'react-icons/fa';
+import { FaPlane, FaStar } from 'react-icons/fa';
 import FlightTransition from '../animations/FlightTransition';
 
 export default function Navbar() {
@@ -44,6 +44,12 @@ export default function Navbar() {
 
       setIsOpen(false);
     }, 3000); 
+  };
+
+  const handleKidsSpaceClick = (e) => {
+    e.preventDefault();
+    handleLinkClick();
+    router.push('/kids-courses');
   };
 
   const toggleCareer = () => setCareerOpen(!careerOpen);
@@ -108,8 +114,11 @@ export default function Navbar() {
                 <FaPlane className="plane-icon" />
               </Link>
               {/* <Link href="/about-us" onClick={handleLinkClick}>About </Link> */}
-              <Link href="/kids-courses" onClick={handleLinkClick}>Kids space</Link>
-              <Link href="/compiler" onClick={handleLinkClick}>Online-compiler</Link>
+              <Link href="/kids-courses" onClick={handleKidsSpaceClick}>Kids space</Link>
+              <Link href="/compiler" onClick={handleLinkClick} className="compiler-link">
+                Online-compiler
+                <FaStar className="star-icon" />
+              </Link>
               <Link href="/projects" onClick={handleLinkClick}>Projects</Link>
               <Link href="/contact-us" onClick={handleLinkClick}>Contact us</Link>
             </div>

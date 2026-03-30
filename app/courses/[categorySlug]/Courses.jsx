@@ -18,20 +18,20 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 
 const categories = [
-  "Programming Languages",
-  "Full Stack Development",
-  "UI UX Designing",
+  "Fullstack Development",
+  "Software Testing",
+  "Data Analytics",
   "Cloud and DevOps",
+  "Programming Languages",
+  "UI UX Designing",
   "Data Science",
   "Database",
   "Data Engineering",
   "Data Visualization",
-  "Software Testing",
   "Net Working",
   "Digital Marketing",
-  "Health Care",
-  "Languages",
   "CRM",
+  "Kidz Space",
 ];
 
 const faqData = [

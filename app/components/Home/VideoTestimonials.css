@@ -20,6 +20,7 @@
     position: relative;
     width: 100%; /* Better for responsiveness */
     height: 100%;
+    margin-top:-80px;
 }
 
 .video-card {

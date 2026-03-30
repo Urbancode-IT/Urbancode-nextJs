@@ -6,7 +6,7 @@ import confetti from 'canvas-confetti';
 import "./EnquiryForm.css";
 import { submitEnquiryForm } from "@/lib/api/api";
 
-const EnquiryFormModal = ({ isOpen, onClose, courseName, onSuccess, downloadUrls }) => {
+const EnquiryFormModal = ({ isOpen, onClose, courseName, onSuccess, downloadUrls, dynamicDownloads, extraOptions = [], isSelectMode = false }) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -19,6 +19,17 @@ const EnquiryFormModal = ({ isOpen, onClose, courseName, onSuccess, downloadUrls
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState({ type: "", message: "" });
+
+  const triggerDownload = (url, index = 0) => {
+    setTimeout(() => {
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = url.split('/').pop();
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }, index * 500);
+  };
 
   // Update course when prop changes
   React.useEffect(() => {
@@ -64,17 +75,17 @@ const EnquiryFormModal = ({ isOpen, onClose, courseName, onSuccess, downloadUrls
           message: "Enquiry submitted successfully! Our team will get back to you soon."
         });
 
+        const allDownloadUrls = [...(downloadUrls || [])];
+        
+        // Handle dynamic downloads based on selection
+        if (dynamicDownloads && dynamicDownloads[formData.course]) {
+          allDownloadUrls.push(dynamicDownloads[formData.course]);
+        }
+
         // Trigger downloads if available
-        if (downloadUrls && Array.isArray(downloadUrls)) {
-            downloadUrls.forEach((url, index) => {
-                setTimeout(() => {
-                    const link = document.createElement('a');
-                    link.href = url;
-                    link.download = url.split('/').pop();
-                    document.body.appendChild(link);
-                    link.click();
-                    document.body.removeChild(link);
-                }, index * 500); // Stagger downloads to avoid browser blocks
+        if (allDownloadUrls.length > 0) {
+            allDownloadUrls.forEach((url, index) => {
+                triggerDownload(url, index);
             });
             confetti({
                 particleCount: 150,
@@ -238,24 +249,43 @@ const EnquiryFormModal = ({ isOpen, onClose, courseName, onSuccess, downloadUrls
                     </div>
 
                     <div className="col-md-6">
-                      <input
-                        list="courses"
-                        className="form-control"
-                        name="course"
-                        value={formData.course}
-                        onChange={handleChange}
-                        placeholder="Select or type your course"
-                      />
-                      <datalist id="courses">
-                        <option value="Full Stack Development" />
-                        <option value="Data Science" />
-                        <option value="UI/UX Design" />
-                        <option value="Digital Marketing" />
-                        <option value="Cybersecurity" />
-                        <option value="Cloud Computing" />
-                        <option value="Help me choose my course" />
-                        <option value="Other" />
-                      </datalist>
+                      {isSelectMode && extraOptions.length > 0 ? (
+                        <select
+                          className="form-select"
+                          name="course"
+                          value={formData.course}
+                          onChange={handleChange}
+                        >
+                          <option value="">Choose Course</option>
+                          {extraOptions.map((opt, i) => (
+                            <option key={i} value={opt}>{opt}</option>
+                          ))}
+                        </select>
+                      ) : (
+                        <>
+                          <input
+                            list="courses"
+                            className="form-control"
+                            name="course"
+                            value={formData.course}
+                            onChange={handleChange}
+                            placeholder="Select or type your course"
+                          />
+                          <datalist id="courses">
+                            {extraOptions.map((opt, i) => <option key={i} value={opt} />)}
+                            <option value="Python with AI" />
+                            <option value="webdevelopment" />
+                            <option value="Full Stack Development" />
+                            <option value="Data Science" />
+                            <option value="UI/UX Design" />
+                            <option value="Digital Marketing" />
+                            <option value="Cybersecurity" />
+                            <option value="Cloud Computing" />
+                            <option value="Help me choose my course" />
+                            <option value="Other" />
+                          </datalist>
+                        </>
+                      )}
                       {errors.course && <small className="text-danger">{errors.course}</small>}
                     </div>
 

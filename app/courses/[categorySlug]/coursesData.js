@@ -642,7 +642,7 @@ const coursesData = {
     ],
   },
 
-  "Full Stack Development": {
+  "Fullstack Development": {
     mainCategoryDesc: "Full Stack Web Development Mastery",
     subDesc: "Master the complete spectrum of frontend and backend development with in-depth training in MERN, MEAN, and Java Full Stack technologies. Develop robust, dynamic, and interactive web applications while gaining practical skills that make you industry-ready.",
     subHeading: "Acquire the expertise to grow as a professional Full Stack Web Developer and build a strong career in today’s digital-first world.",
