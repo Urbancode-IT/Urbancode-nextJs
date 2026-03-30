@@ -41,6 +41,8 @@ const ProblemDetail = () => {
     const [activeTab, setActiveTab] = useState('description');
     const [relatedProblems, setRelatedProblems] = useState([]);
     const [allTopicProblems, setAllTopicProblems] = useState([]);
+    const [showStartingOverlay, setShowStartingOverlay] = useState(false);
+    const [shouldShowStartingOverlay, setShouldShowStartingOverlay] = useState(false);
 
     useEffect(() => {
         if (topic === 'python') {
@@ -91,6 +93,31 @@ const ProblemDetail = () => {
         };
         fetchProblem();
     }, [topic, problemId]);
+
+    useEffect(() => {
+        // Trigger overlay only when ProblemsTopics set the localStorage flag.
+        try {
+            setShouldShowStartingOverlay(localStorage.getItem('uc_start_coding') === 'true');
+        } catch {
+            setShouldShowStartingOverlay(false);
+        }
+    }, []);
+
+    useEffect(() => {
+        if (!shouldShowStartingOverlay) return;
+        if (loading) return;
+        if (!problem) return;
+
+        setShowStartingOverlay(true);
+        const t = setTimeout(() => {
+            setShowStartingOverlay(false);
+            try {
+                localStorage.removeItem('uc_start_coding');
+            } catch { }
+        }, 900);
+
+        return () => clearTimeout(t);
+    }, [shouldShowStartingOverlay, loading, problem]);
 
     const handleCodeChange = (newCode) => {
         setCode(newCode);
@@ -581,7 +608,17 @@ const ProblemDetail = () => {
     );
 
     return (
-        <div className="problem-detail-container">
+        <>
+            {showStartingOverlay && (
+                <div className="starting-coding-overlay" aria-live="polite">
+                    <div className="starting-coding-card">
+                        <div className="starting-coding-loader" />
+                        <h3>Starting coding...</h3>
+                        <p>Preparing your workspace.</p>
+                    </div>
+                </div>
+            )}
+            <div className="problem-detail-container">
             <header className="problem-detail-header">
                 <button onClick={() => navigate(`/problems/${topic}`)} className="btn-back">
                     <FaArrowLeft /> Back to List
@@ -855,7 +892,8 @@ const ProblemDetail = () => {
                 onSubmit={handleInputSubmit}
                 onCancel={() => setShowInputModal(false)}
             />
-        </div>
+            </div>
+        </>
     );
 };
 

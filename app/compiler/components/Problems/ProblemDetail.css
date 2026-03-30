@@ -342,6 +342,7 @@
     border: 1px solid #333;
 }
 
+
 .editor-header {
     display: flex;
     justify-content: space-between;
@@ -387,6 +388,72 @@
     background: #ef4444;
     color: white;
     border-color: #ef4444;
+}
+
+/* Starting coding overlay (triggered via localStorage flag) */
+.starting-coding-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100000;
+    padding: 20px;
+}
+
+.starting-coding-card {
+    width: 100%;
+    max-width: 520px;
+    background: #ffffff;
+    border-radius: 18px;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.25);
+    padding: 26px 24px;
+    text-align: center;
+    animation: startingCardIn 0.35s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+.starting-coding-card h3 {
+    margin: 14px 0 6px;
+    font-size: 1.35rem;
+    font-weight: 900;
+    color: #0f172a;
+}
+
+.starting-coding-card p {
+    margin: 0;
+    color: #64748b;
+    font-weight: 600;
+}
+
+.starting-coding-loader {
+    width: 58px;
+    height: 58px;
+    margin: 0 auto;
+    border-radius: 50%;
+    border: 4px solid rgba(16, 185, 129, 0.18);
+    border-top-color: #10b981;
+    animation: startingSpin 0.9s linear infinite;
+}
+
+@keyframes startingSpin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes startingCardIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
 }
 
 .code-editor-wrapper {

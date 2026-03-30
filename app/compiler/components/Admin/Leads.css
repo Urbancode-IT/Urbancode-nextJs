@@ -1,0 +1,136 @@
+.leads-wrap {
+  width: 100%;
+  padding: 16px 0;
+}
+
+.leads-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.leads-header h2 {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+
+.leads-header p {
+  margin: 6px 0 0;
+  color: #64748b;
+}
+
+.leads-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.leads-clear-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid #fee2e2;
+  background: #fff;
+  cursor: pointer;
+  font-weight: 700;
+  color: #b91c1c;
+}
+
+.leads-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #f8fafc;
+  padding: 12px 12px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  margin-bottom: 14px;
+}
+
+.leads-search input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 0.95rem;
+}
+
+.leads-table-wrap {
+  overflow-x: auto;
+}
+
+.leads-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 760px;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.leads-table th,
+.leads-table td {
+  padding: 12px 12px;
+  border-bottom: 1px solid #e2e8f0;
+  font-size: 0.95rem;
+}
+
+.leads-table th {
+  text-align: left;
+  background: #f8fafc;
+  color: #334155;
+  font-weight: 800;
+}
+
+.leads-col-actions {
+  text-align: right;
+}
+
+.leads-row-delete {
+  background: #fff;
+  border: 1px solid #fee2e2;
+  color: #b91c1c;
+  font-weight: 800;
+  padding: 8px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.leads-badge {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-weight: 800;
+  font-size: 0.85rem;
+  border: 1px solid transparent;
+}
+
+.leads-badge.is-success {
+  background: rgba(16, 185, 129, 0.12);
+  border-color: rgba(16, 185, 129, 0.25);
+  color: #0f766e;
+}
+
+.leads-badge.is-error {
+  background: rgba(239, 68, 68, 0.10);
+  border-color: rgba(239, 68, 68, 0.22);
+  color: #b91c1c;
+}
+
+.leads-empty {
+  padding: 26px 12px;
+  text-align: center;
+  color: #64748b;
+  background: #fff;
+  border: 1px dashed #e2e8f0;
+  border-radius: 12px;
+}
+
+.uc-loader-text {
+  font-weight: 800;
+}
+

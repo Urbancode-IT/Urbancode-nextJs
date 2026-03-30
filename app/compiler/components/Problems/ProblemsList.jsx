@@ -28,6 +28,8 @@ const ProblemsList = () => {
         starterCode: ''
     });
 
+    // Lead capture removed for this page.
+
     const fetchData = async () => {
         try {
             setLoading(true);
@@ -118,8 +120,11 @@ const ProblemsList = () => {
         return matchesSearch && matchesStatus && matchesDifficulty;
     });
 
-    const handleProblemClick = (problemId) => {
-        navigate(`/problems/${topic}/${problemId}`);
+    const handleProblemClick = (problem) => {
+        // Navigate immediately on problem card click.
+        const id = problem?._id;
+        if (!id) return;
+        navigate(`/problems/${topic}/${id}`);
     };
 
     const containerVariants = {
@@ -207,7 +212,7 @@ const ProblemsList = () => {
                                 initial={{ opacity: 0, y: 8 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.2, delay: index * 0.02 }}
-                                onClick={() => handleProblemClick(problem._id)}
+                                onClick={() => handleProblemClick(problem)}
                                 className={`challenge-item ${solved ? 'is-solved' : ''}`}
                             >
                                 <div className="col-status">
@@ -253,6 +258,7 @@ const ProblemsList = () => {
                     )}
                 </AnimatePresence>
             </div>
+
         </div>
     );
 };

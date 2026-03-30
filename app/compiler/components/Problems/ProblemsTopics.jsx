@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { problemsApi } from '../../services/api';
+import LeadCaptureModal from '../Common/LeadCaptureModal';
 import './ProblemsTopics.css';
 
 // Import icons (using react-icons for better quality match to screenshot)
@@ -14,6 +15,9 @@ const ProblemsTopics = () => {
     const [loading, setLoading] = React.useState(true);
     const [failedImages, setFailedImages] = React.useState({});
     const [loadedImages, setLoadedImages] = React.useState({});
+    const [leadModalOpen, setLeadModalOpen] = React.useState(false);
+    const [pendingTopicId, setPendingTopicId] = React.useState(null);
+    const [pendingTopicTitle, setPendingTopicTitle] = React.useState('');
 
     const handleImageError = (id) => {
         setFailedImages(prev => ({ ...prev, [id]: true }));
@@ -170,7 +174,25 @@ const ProblemsTopics = () => {
     }, []);
 
     const handleTopicClick = (topicKey) => {
-        navigate(`/problems/${topicKey}`);
+        const t = topics.find((x) => x.id === topicKey);
+        setPendingTopicId(topicKey);
+        setPendingTopicTitle(t?.title || '');
+        setLeadModalOpen(true);
+    };
+
+    const handleLeadSuccess = () => {
+        const targetId = pendingTopicId;
+        setLeadModalOpen(false);
+        setPendingTopicId(null);
+        setPendingTopicTitle('');
+
+        if (targetId) {
+            // Tell ProblemDetail page to show "Starting coding..." after editor loads.
+            try {
+                localStorage.setItem('uc_start_coding', 'true');
+            } catch { }
+            navigate(`/problems/${targetId}`);
+        }
     };
 
     if (loading) return <div className="loading">Loading topics...</div>;
@@ -264,6 +286,21 @@ const ProblemsTopics = () => {
                     })}
                 </motion.div>
             </div>
+
+            <LeadCaptureModal
+                isOpen={leadModalOpen}
+                onClose={() => {
+                    setLeadModalOpen(false);
+                    setPendingTopicId(null);
+                    setPendingTopicTitle('');
+                }}
+                context={{
+                    courseName: pendingTopicTitle ? `Compiler - ${pendingTopicTitle}` : 'Compiler - Coding Challenges',
+                    message: pendingTopicTitle ? `Interested in: ${pendingTopicTitle}` : 'No message provided',
+                    mode: 'lets decide later',
+                }}
+                onSuccess={handleLeadSuccess}
+            />
         </div>
     );
 };

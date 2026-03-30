@@ -6,6 +6,7 @@ import * as XLSX from 'xlsx';
 import ConfirmModal from '../Common/ConfirmModal';
 import { FaSignOutAlt, FaPlus, FaTable, FaFileUpload, FaTrash, FaEye, FaEyeSlash, FaEdit, FaExclamationTriangle, FaList, FaSearch, FaBars, FaTimes } from 'react-icons/fa';
 import './AdminDashboard.css';
+import Leads from './Leads';
 
 const AdminDashboard = () => {
     const navigate = useNavigate();
@@ -328,6 +329,12 @@ const AdminDashboard = () => {
                             >
                                 <FaTable /> <span>SQL Tables</span>
                             </button>
+                            <button
+                                className={`nav-tab ${activeTab === 'leads' ? 'active' : ''}`}
+                                onClick={() => setActiveTab('leads')}
+                            >
+                                <FaSearch /> <span>Leads</span>
+                            </button>
                         </div>
 
                         <button className="header-logout-btn" onClick={handleLogout}>
@@ -574,6 +581,12 @@ const AdminDashboard = () => {
                                     </ul>
                                 </div>
                             </div>
+                        </div>
+                    )}
+
+                    {activeTab === 'leads' && (
+                        <div className="tab-pane">
+                            <Leads />
                         </div>
                     )}
                 </div>
