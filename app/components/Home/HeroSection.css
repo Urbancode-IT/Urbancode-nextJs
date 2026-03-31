@@ -1,7 +1,7 @@
 .home_header_main_container {
   background: linear-gradient(180deg, var(--bg-neutral), #EDFFFB, var(--bg-neutral));
   overflow: hidden;
-  padding-top: 71px;
+  padding-top: var(--site-header-height, 72px);
   /* Space for fixed navbar */
 }
 

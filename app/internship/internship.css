@@ -5,7 +5,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 71px;
+    padding-top: var(--site-header-height, 72px);
     text-align: center;
     background: linear-gradient(180deg,
             rgba(182, 225, 209, 0.8) 0%,

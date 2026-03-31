@@ -3,10 +3,18 @@
 :root {
   --bg-neutral: #fcfcfc;
   --bg-neutral-rgb: 249, 249, 249;
-  
+  /* Main site header: logo row + nav strip (see Navbar.css) */
+  --site-header-height: 72px;
+
   /* Override Bootstrap font variables */
   --bs-body-font-family: 'Inter', sans-serif !important;
   --bs-font-sans-serif: 'Inter', sans-serif !important;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --site-header-height: 64px;
+  }
 }
 
 /* Safely apply to common text elements without overriding icon fonts like FontAwesome */

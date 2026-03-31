@@ -79,59 +79,66 @@ export default function Navbar() {
   return (
     <>
       <nav className={`navbar ${isOpen ? 'menu-open' : ''}`}>
-        <div className="navbar container">
+        <div className="navbar-stack">
+          <div className="navbar-main-row">
+            <div className="navbar container navbar-main-inner">
+              <Link href="/" className="navbar-brand" onClick={handleLinkClick}>
+                <Image
+                  src="/images/home/logo.png"
+                  alt="Urban Code Logo"
+                  width={182}
+                  height={43}
+                  priority
+                />
+              </Link>
 
-          {/* Logo */}
-          <Link href="/" className="navbar-brand" onClick={handleLinkClick}>
-            <Image
-              src="/images/home/logo.png"
-              alt="Urban Code Logo"
-              width={182}
-              height={43}
-              priority
-            />
-          </Link>
-
-          <div className="navbar-right">
-            {/* Phone with icon - only show if not feedback page */}
-            {!isFeedbackPage && (
-              <div className="navbar-phone">
-                <FiPhoneCall className="phone-icon" />
-                <a href="tel:+919878798797">+91 9878798797</a>
+              <div className="navbar-center-block">
+                {!isFeedbackPage && (
+                  <div className="navbar-phone">
+                    <FiPhoneCall className="phone-icon" />
+                    <a href="tel:+919878798797">+91 9878798797</a>
+                  </div>
+                )}
+                <div className={`nav-links ${isOpen ? 'active' : ''}`}>
+                  <Link href="/courses-categories" onClick={handleLinkClick}>Courses</Link>
+                  <Link
+                    href="/study-abroad"
+                    onClick={handleStudyAbroadClick}
+                    className="study-abroad-link"
+                  >
+                    Study abroad
+                    <FaPlane className="plane-icon" />
+                  </Link>
+                  <Link href="/kids-courses" onClick={handleKidsSpaceClick}>Kids space</Link>
+                  <Link href="/compiler" onClick={handleLinkClick} className="compiler-link">
+                    Online-compiler
+                    <FaStar className="star-icon" />
+                  </Link>
+                  <Link href="/projects" onClick={handleLinkClick}>Projects</Link>
+                  <Link href="/contact-us" onClick={handleLinkClick}>Contact us</Link>
+                </div>
               </div>
-            )}
 
-            {/* Navigation Links */}
-            <div className={`nav-links ${isOpen ? 'active' : ''}`}>
-              {/* Home removed */}
-              <Link href="/courses-categories" onClick={handleLinkClick}>Courses</Link>
-              <Link 
-                href="/study-abroad" 
-                onClick={handleStudyAbroadClick} 
-                className="study-abroad-link"
-              >
-                Study abroad
-                <FaPlane className="plane-icon" />
-              </Link>
-              {/* <Link href="/about-us" onClick={handleLinkClick}>About </Link> */}
-              <Link href="/kids-courses" onClick={handleKidsSpaceClick}>Kids space</Link>
-              <Link href="/compiler" onClick={handleLinkClick} className="compiler-link">
-                Online-compiler
-                <FaStar className="star-icon" />
-              </Link>
-              <Link href="/projects" onClick={handleLinkClick}>Projects</Link>
-              <Link href="/contact-us" onClick={handleLinkClick}>Contact us</Link>
+              <div className="navbar-end-slot">
+                <div
+                  className={`hamburger hamburger--mobile ${isOpen ? 'active' : ''}`}
+                  onClick={() => setIsOpen(!isOpen)}
+                  role="button"
+                  tabIndex={0}
+                  aria-label="Toggle menu"
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      setIsOpen(!isOpen);
+                    }
+                  }}
+                >
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+              </div>
             </div>
-          </div>
-
-          {/* Hamburger */}
-          <div
-            className={`hamburger ${isOpen ? 'active' : ''}`}
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            <span></span>
-            <span></span>
-            <span></span>
           </div>
         </div>
       </nav>

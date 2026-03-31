@@ -115,7 +115,7 @@ export default function Courses({ categorySlug }) {
       );
 
   return (
-    <div className="wrapper pb-5" style={{ paddingTop: '71px' }}>
+    <div className="wrapper pb-5" style={{ paddingTop: 'var(--site-header-height, 72px)' }}>
       {/* Top Section */}
       <div className="container-fluid overall-bg overall-green-bg px-3 px-md-5">
         <Container fluid>
