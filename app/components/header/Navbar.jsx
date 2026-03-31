@@ -8,7 +8,7 @@ import './Navbar.css';
 import ChatbotWidget from '../ChatbotWidget';
 import FloatingWidgets from '../FloatingWidgets';
 import { FiPhoneCall } from 'react-icons/fi';
-import { FaPlane, FaStar } from 'react-icons/fa';
+import { FaPlane } from 'react-icons/fa';
 import FlightTransition from '../animations/FlightTransition';
 
 export default function Navbar() {
@@ -79,66 +79,71 @@ export default function Navbar() {
   return (
     <>
       <nav className={`navbar ${isOpen ? 'menu-open' : ''}`}>
-        <div className="navbar-stack">
-          <div className="navbar-main-row">
-            <div className="navbar container navbar-main-inner">
-              <Link href="/" className="navbar-brand" onClick={handleLinkClick}>
-                <Image
-                  src="/images/home/logo.png"
-                  alt="Urban Code Logo"
-                  width={182}
-                  height={43}
-                  priority
-                />
+        <div className="navbar container">
+
+          {/* Logo */}
+          <Link href="/" className="navbar-brand" onClick={handleLinkClick}>
+            <Image
+              src="/images/home/logo.png"
+              alt="Urban Code Logo"
+              width={182}
+              height={43}
+              priority
+            />
+          </Link>
+
+          <div className="navbar-right">
+            {/* Phone with icon - only show if not feedback page */}
+            {!isFeedbackPage && (
+              <div className="navbar-phone">
+                <FiPhoneCall className="phone-icon" />
+                <a href="tel:+919878798797">+91 9878798797</a>
+              </div>
+            )}
+
+            {/* Navigation Links */}
+            <div className={`nav-links ${isOpen ? 'active' : ''}`}>
+              {/* Home removed */}
+              <Link href="/courses-categories" onClick={handleLinkClick}>Courses</Link>
+              <Link 
+                href="/study-abroad" 
+                onClick={handleStudyAbroadClick} 
+                className="study-abroad-link"
+              >
+                Study abroad
+                <FaPlane className="plane-icon" />
               </Link>
-
-              <div className="navbar-center-block">
-                {!isFeedbackPage && (
-                  <div className="navbar-phone">
-                    <FiPhoneCall className="phone-icon" />
-                    <a href="tel:+919878798797">+91 9878798797</a>
-                  </div>
-                )}
-                <div className={`nav-links ${isOpen ? 'active' : ''}`}>
-                  <Link href="/courses-categories" onClick={handleLinkClick}>Courses</Link>
-                  <Link
-                    href="/study-abroad"
-                    onClick={handleStudyAbroadClick}
-                    className="study-abroad-link"
-                  >
-                    Study abroad
-                    <FaPlane className="plane-icon" />
-                  </Link>
-                  <Link href="/kids-courses" onClick={handleKidsSpaceClick}>Kids space</Link>
-                  <Link href="/compiler" onClick={handleLinkClick} className="compiler-link">
-                    Online-compiler
-                    <FaStar className="star-icon" />
-                  </Link>
-                  <Link href="/projects" onClick={handleLinkClick}>Projects</Link>
-                  <Link href="/contact-us" onClick={handleLinkClick}>Contact us</Link>
-                </div>
-              </div>
-
-              <div className="navbar-end-slot">
-                <div
-                  className={`hamburger hamburger--mobile ${isOpen ? 'active' : ''}`}
-                  onClick={() => setIsOpen(!isOpen)}
-                  role="button"
-                  tabIndex={0}
-                  aria-label="Toggle menu"
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                      e.preventDefault();
-                      setIsOpen(!isOpen);
-                    }
-                  }}
+              {/* <Link href="/about-us" onClick={handleLinkClick}>About </Link> */}
+              <Link href="/kids-courses" onClick={handleKidsSpaceClick}>Kids space</Link>
+              <Link href="/compiler" onClick={handleLinkClick} className="compiler-link">
+                Online-compiler
+                <svg
+                  className="sparkle-icon"
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </div>
-              </div>
+                  <path
+                    d="M12 0C12 7 15 12 24 12C15 12 12 17 12 24C12 17 9 12 0 12C9 12 12 7 12 0Z"
+                    fill="#fab005"
+                  />
+                </svg>
+              </Link>
+              <Link href="/projects" onClick={handleLinkClick}>Projects</Link>
+              <Link href="/contact-us" onClick={handleLinkClick}>Contact us</Link>
             </div>
+          </div>
+
+          {/* Hamburger */}
+          <div
+            className={`hamburger ${isOpen ? 'active' : ''}`}
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            <span></span>
+            <span></span>
+            <span></span>
           </div>
         </div>
       </nav>

@@ -1454,8 +1454,133 @@ const coursesData = {
     }
   ]
 }
-,
-  ],
+,      {
+        title: "Next.js Development",
+        desc: "Build Fast. Build Scalable. Build Modern Web Apps. Master Next.js for production-ready, SEO-friendly web applications.",
+        rating: 4.8,
+        duration: "2 months",
+        students: "7,842",
+        img: "/images/courses/nextjs.jpg",
+        aboutData: {
+          topic: "Master Next.js — The Leading React Framework for Production!",
+          content1:
+            "Learn Next.js, the powerful React framework for building fast, SEO-friendly, and production-ready web applications. This course focuses entirely on mastering Next.js from fundamentals to advanced concepts.",
+          content2:
+            "From file-based routing and diverse rendering methods (SSR, SSG, ISR) to API routes and authentication, this course prepares you to build enterprise-grade applications. You'll gain hands-on experience with Middleware, Server Actions, and performance optimization techniques like next/image."
+        },
+        courseContentData: [
+          {
+            id: 1,
+            title: "Next.js Fundamentals",
+            icon: "bi bi-lightning-charge",
+            defaultOpen: true,
+            items: [
+              "Introduction to Next.js",
+              "Why Next.js over React",
+              "Project setup & folder structure",
+              "Pages Router vs App Router"
+            ]
+          },
+          {
+            id: 2,
+            title: "Routing & Rendering",
+            icon: "bi bi-signpost-split",
+            items: [
+              "File-based routing & nested routes",
+              "Dynamic routing & navigation",
+              "Server-Side Rendering (SSR) & Static Site Generation (SSG)",
+              "Incremental Static Regeneration (ISR)"
+            ]
+          },
+          {
+            id: 3,
+            title: "Components & Styling",
+            icon: "bi bi-layout-text-window-reverse",
+            items: [
+              "Server Components vs Client Components",
+              "Next.js Layout system",
+              "CSS Modules, Global CSS, and Tailwind CSS",
+              "Responsive UI design"
+            ]
+          },
+          {
+            id: 4,
+            title: "Data Fetching & APIs",
+            icon: "bi bi-cloud-arrow-down",
+            items: [
+              "Fetch API usage in Server & Client Components",
+              "Creating API Routes (GET, POST, PUT, DELETE)",
+              "Handling backend logic inside Next.js",
+              "API integration best practices"
+            ]
+          },
+          {
+            id: 5,
+            title: "Security & Authentication",
+            icon: "bi bi-shield-lock",
+            items: [
+              "Basic and JWT authentication",
+              "NextAuth.js patterns",
+              "Protected routes and middleware"
+            ]
+          },
+          {
+            id: 6,
+            title: "Optimization & Deployment",
+            icon: "bi bi-speedometer2",
+            items: [
+              "Image optimization (next/image)",
+              "Lazy loading and code splitting",
+              "SEO best practices in Next.js",
+              "Deploying applications on Vercel"
+            ]
+          },
+          {
+            id: 7,
+            title: "Modern Next.js & Projects",
+            icon: "bi bi-award",
+            items: [
+              "Server Actions and Middleware",
+              "Portfolio Website",
+              "Blog Application with Markdown",
+              "Full CRUD & Authentication App"
+            ]
+          }
+        ],
+        whatYouLearnData: [
+          {
+            title: "Build High-Performance Apps",
+            desc: "Leverage SSR and SSG for ultra-fast load times and SEO.",
+            icon: "bi bi-lightning-charge"
+          },
+          {
+            title: "Modern Rendering Patterns",
+            desc: "Master Server Components and Client Components logic.",
+            icon: "bi bi-boxes"
+          },
+          {
+            title: "Full-Stack Capabilities",
+            desc: "Create full-stack apps with API Routes and Server Actions.",
+            icon: "bi bi-stack"
+          },
+          {
+            title: "Vercel Deployment",
+            desc: "Instantly deploy and scale your Next.js apps globally.",
+            icon: "bi bi-cloud-arrow-up"
+          },
+          {
+            title: "Tailwind CSS Design",
+            desc: "Design beautiful, modern UIs using Tailwind CSS integration.",
+            icon: "bi bi-paint-bucket"
+          },
+          {
+            title: "Next-Level SEO",
+            desc: "Boost your search engine visibility with built-in Next.js features.",
+            icon: "bi bi-search"
+          }
+        ]
+      }
+    ],
   },
 
   "UI UX Designing": {
