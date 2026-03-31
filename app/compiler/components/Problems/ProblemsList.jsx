@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import toast from 'react-hot-toast';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { progressApi, problemsApi } from '../../services/api';
+import { progressApi, problemsApi, debugCompilerApi } from '../../services/api';
 import { FaClipboardList, FaPencilAlt, FaList, FaSearch, FaFilter, FaCheckCircle, FaChevronRight } from 'react-icons/fa';
 import './ProblemsList.css';
 
@@ -45,24 +45,40 @@ const ProblemsList = () => {
                         'js': 'JavaScript Mastery',
                         'javascript': 'JavaScript Mastery'
                     };
-                    return titles[t] || (t.charAt(0).toUpperCase() + t.slice(1) + " Challenges");
+                    const slug = (t != null && String(t).trim() !== '')
+                        ? String(t).toLowerCase()
+                        : '';
+                    if (!slug) return 'Problems';
+                    return titles[slug] || (slug.charAt(0).toUpperCase() + slug.slice(1) + ' Challenges');
                 };
 
+                const topicSlug = response.topic ?? topic;
+                const problems = Array.isArray(response.data) ? response.data : [];
+                const total =
+                    typeof response.count === 'number'
+                        ? response.count
+                        : problems.length;
+
                 setTopicData({
-                    topic: response.topic,
-                    title: getFormattedTitle(response.topic),
-                    icon: response.data[0]?.icon || <FaList />,
-                    problems: response.data,
-                    totalProblems: response.count
+                    topic: topicSlug,
+                    title: getFormattedTitle(topicSlug),
+                    icon: problems[0]?.icon || <FaList />,
+                    problems,
+                    totalProblems: total
                 });
             }
 
-            const progressResponse = await progressApi.getSolvedCount('default-user', topic);
-            if (progressResponse.success) {
-                setSolvedCount(progressResponse.solvedCount);
-                // Convert ObjectIds to strings for reliable comparison
-                const ids = (progressResponse.solvedProblemIds || []).map(id => String(id));
-                setSolvedIds(ids);
+            try {
+                const progressResponse = await progressApi.getSolvedCount('default-user', topic);
+                if (progressResponse.success) {
+                    setSolvedCount(progressResponse.solvedCount);
+                    const ids = (progressResponse.solvedProblemIds || []).map(id => String(id));
+                    setSolvedIds(ids);
+                }
+            } catch (progressErr) {
+                if (debugCompilerApi()) console.warn('Progress unavailable.', progressErr);
+                setSolvedCount(0);
+                setSolvedIds([]);
             }
         } catch (err) {
             console.error('Error fetching data:', err);
@@ -108,12 +124,15 @@ const ProblemsList = () => {
 
     const isProblemSolved = (id) => solvedIds.includes(String(id));
 
+    const getProblemId = (problem) => problem?._id ?? problem?.id;
+
     const filteredProblems = (topicData?.problems || []).filter(problem => {
         if (!problem) return false;
+        const pid = getProblemId(problem);
         const matchesSearch = (problem.title || '').toLowerCase().includes((searchTerm || '').toLowerCase());
         const matchesStatus = statusFilter === 'all' ||
-            (statusFilter === 'solved' && isProblemSolved(problem._id)) ||
-            (statusFilter === 'unsolved' && !isProblemSolved(problem._id));
+            (statusFilter === 'solved' && isProblemSolved(pid)) ||
+            (statusFilter === 'unsolved' && !isProblemSolved(pid));
         const matchesDifficulty = difficultyFilter === 'all' ||
             Number(problem.difficulty) === Number(difficultyFilter);
 
@@ -121,9 +140,8 @@ const ProblemsList = () => {
     });
 
     const handleProblemClick = (problem) => {
-        // Navigate immediately on problem card click.
-        const id = problem?._id;
-        if (!id) return;
+        const id = getProblemId(problem);
+        if (id == null || id === '') return;
         navigate(`/problems/${topic}/${id}`);
     };
 
@@ -205,10 +223,11 @@ const ProblemsList = () => {
                         <div className="col-action"></div>
                     </div>
                     {filteredProblems.map((problem, index) => {
-                        const solved = isProblemSolved(problem._id);
+                        const rowId = getProblemId(problem);
+                        const solved = isProblemSolved(rowId);
                         return (
                             <motion.div
-                                key={problem._id}
+                                key={rowId != null ? String(rowId) : `problem-row-${index}`}
                                 initial={{ opacity: 0, y: 8 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.2, delay: index * 0.02 }}
@@ -222,7 +241,7 @@ const ProblemsList = () => {
                                     <span className="problem-title">{problem.title}</span>
                                     <div className="problem-tags-minimal">
                                         {Array.isArray(problem.tags) && problem.tags.slice(0, 3).map((tag, i) => (
-                                            <span key={i} className="mini-tag">
+                                            <span key={`${rowId ?? 'tag'}-${String(tag)}-${i}`} className="mini-tag">
                                                 {tag === 'medium' ? 'average' : tag === 'hard' ? 'tough' : tag}
                                             </span>
                                         ))}

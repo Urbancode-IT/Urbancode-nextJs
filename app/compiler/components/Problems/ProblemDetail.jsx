@@ -57,32 +57,42 @@ const ProblemDetail = () => {
         const fetchProblem = async () => {
             try {
                 setLoading(true);
-                const response = await problemsApi.getProblemById(problemId);
-                if (response.success) {
-                    setProblem(response.data);
-                    const progressResponse = await progressApi.getUserProgress('default-user', topic);
-                    if (progressResponse.success) {
-                        const userProgress = progressResponse.data.find(p => (p.problemId?._id || p.problemId) === problemId);
-                        if (userProgress) {
-                            setCode(userProgress.savedCode || response.data.starterCode);
-                            setIsSolved(userProgress.isSolved);
-                        } else {
-                            setCode(response.data.starterCode);
-                        }
-                    } else {
-                        setCode(response.data.starterCode);
-                    }
+                setError(null);
+                const response = await problemsApi.getProblemById(problemId, topic);
+                if (!response.success || !response.data) {
+                    setError(response.message || 'Problem not found');
+                    return;
                 }
 
-                // Fetch related problems in the same topic
+                const data = response.data;
+                setProblem(data);
+
+                let nextCode = data.starterCode || '';
+                setIsSolved(false);
+                const progressResponse = await progressApi.getUserProgress('default-user', topic);
+                if (progressResponse.success && Array.isArray(progressResponse.data)) {
+                    const pid = String(problemId);
+                    const userProgress = progressResponse.data.find((p) => {
+                        const raw = p.problemId?._id ?? p.problemId;
+                        return String(raw) === pid;
+                    });
+                    if (userProgress) {
+                        nextCode = userProgress.savedCode || nextCode;
+                        setIsSolved(!!userProgress.isSolved);
+                    }
+                }
+                setCode(nextCode);
+
                 const relResponse = await problemsApi.getProblemsByTopic(topic);
                 if (relResponse.success && relResponse.data) {
                     const sortedProblems = [...relResponse.data].sort((a, b) => {
                         if (a.difficulty !== b.difficulty) return a.difficulty - b.difficulty;
-                        return a.title.localeCompare(b.title);
+                        return (a.title || '').localeCompare(b.title || '');
                     });
                     setAllTopicProblems(sortedProblems);
-                    setRelatedProblems(sortedProblems.filter(p => (p._id || p.id).toString() !== problemId).slice(0, 4));
+                    setRelatedProblems(
+                        sortedProblems.filter((p) => String(p._id ?? p.id) !== String(problemId)).slice(0, 4)
+                    );
                 }
             } catch (err) {
                 console.error('Error fetching problem:', err);
@@ -91,7 +101,9 @@ const ProblemDetail = () => {
                 setLoading(false);
             }
         };
-        fetchProblem();
+        if (problemId != null && topic) {
+            fetchProblem();
+        }
     }, [topic, problemId]);
 
     useEffect(() => {
@@ -649,7 +661,9 @@ const ProblemDetail = () => {
                                 {getDifficultyText(problem.difficulty)}
                             </span>
                             <div className="problem-tags-list">
-                                {problem.tags.map((tag, i) => <span key={i} className="tag">{tag}</span>)}
+                                {(Array.isArray(problem.tags) ? problem.tags : []).map((tag, i) => (
+                                    <span key={i} className="tag">{tag}</span>
+                                ))}
                             </div>
                         </div>
                     </div>
