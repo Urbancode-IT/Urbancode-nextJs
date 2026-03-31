@@ -627,7 +627,7 @@
                 "options": [
                     "String",
                     "txt",
-                    "String",
+                    "char[]",
                     "Chars"
                 ],
                 "correctAnswer": 0,

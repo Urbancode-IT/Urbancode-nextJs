@@ -144,7 +144,7 @@ export const quizData = {
                 {
                     id: 3,
                     question: "Which data type is used to create a variable that should store text?",
-                    options: ["String", "txt", "String", "Chars"],
+                    options: ["String", "txt", "char[]", "Chars"],
                     correctAnswer: 0,
                     explanation: "String is used for text in Java."
                 },

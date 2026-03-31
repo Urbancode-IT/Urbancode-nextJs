@@ -173,7 +173,28 @@ const ProblemsTopics = () => {
         fetchTopics();
     }, []);
 
+    const hasCompletedCompilerLead = () => {
+        try {
+            if (localStorage.getItem('uc_compiler_lead_submitted') === 'true') {
+                return true;
+            }
+            const leads = JSON.parse(localStorage.getItem('uc_local_leads') || '[]');
+            return Array.isArray(leads) && leads.some((lead) =>
+                String(lead?.courseName || '').toLowerCase().includes('compiler')
+            );
+        } catch {
+            return false;
+        }
+    };
+
     const handleTopicClick = (topicKey) => {
+        if (hasCompletedCompilerLead()) {
+            try {
+                localStorage.setItem('uc_start_coding', 'true');
+            } catch { }
+            navigate(`/problems/${topicKey}`);
+            return;
+        }
         const t = topics.find((x) => x.id === topicKey);
         setPendingTopicId(topicKey);
         setPendingTopicTitle(t?.title || '');
@@ -185,6 +206,9 @@ const ProblemsTopics = () => {
         setLeadModalOpen(false);
         setPendingTopicId(null);
         setPendingTopicTitle('');
+        try {
+            localStorage.setItem('uc_compiler_lead_submitted', 'true');
+        } catch { }
 
         if (targetId) {
             // Tell ProblemDetail page to show "Starting coding..." after editor loads.
