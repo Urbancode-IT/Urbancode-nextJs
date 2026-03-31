@@ -129,24 +129,26 @@ const Kidz = () => {
     <div className="kidz-page color-bg">
       <KidsLoader isLoading={isLoading} />
 
-      {/* Kids Hero Section */}
-      <section className="kids-hero-section">
-        <div className="kids-hero-content">
-          <h1 className="kids-hero-heading">From Screen Time to Skill Time</h1>
-          <p className="kids-hero-subheading">Turn your child's curiosity into creativity</p>
-          <button className="kids-hero-cta" onClick={() => setShowEnquiry(true)}>
-            <span>Enroll today</span>
-            <div className="cta-icon-badge">
-              <img src="/images/home/pythonpush.png" alt="icon" className="cta-icon" />
+      {/* Hero Section */}
+      <section className="hero-section">
+        <div className="container">
+          <div className="hero-content">
+            {/* Left Text */}
+            <div className="hero-text-area col-md-6 col-lg-6">
+              <h1 className="hero-title">Next-Gen <span className="text-success text-shine">Learning</span></h1>
+              <p className="hero-text text-muted">
+                At Urbancode Edutech, we nurture young minds through structured coding,
+                cognitive learning and problem-solving activities. Our programs combine
+                hands-on projects, logical reasoning, and digital creativity to strengthen
+                critical thinking and prepare kids to become the innovators and tech leaders of tomorrow.
+              </p>
             </div>
-          </button>
-        </div>
-        <div className="kids-hero-image-wrapper">
-          <img 
-            src="/images/home/kidshero.png" 
-            alt="Kids learning and creating" 
-            className="kids-hero-image"
-          />
+
+            {/* Right Image */}
+            <div className="hero-img-area col-md-6 col-lg-6 ">
+              <img src="/images/KidsImages/hero.png" alt="Kids learning" className="hero-img m-lg-5" />
+            </div>
+          </div>
         </div>
       </section>
 { <BannerSlider banners={kidsBanners} forceEnquiry={true} /> }
