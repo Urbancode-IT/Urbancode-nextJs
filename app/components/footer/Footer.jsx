@@ -97,7 +97,7 @@ function Footer() {
       {/* Footer bottom bar */}
       <div className="container-fluid footer-bottom text-center mt-4">
         <p className="m-0 py-3">
-          Copyright © 2025 Urbancode Edutech Solutions Private Limited. All rights reserved.
+          Copyright © 2026 Urbancode Edutech Solutions Private Limited. All rights reserved.
         </p>
       </div>
     </footer>

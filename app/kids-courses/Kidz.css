@@ -1,15 +1,226 @@
 /* ...existing code... */
 
 /* Smooth background transition from hero to main content */
-.kidz-page .hero-section {
-  background: linear-gradient(180deg,
-      rgba(216, 234, 227, 0.8) 0%,
-      rgba(225, 235, 231, 0.9) 30%,
-      rgba(var(--bg-neutral-rgb), 0.95) 70%,
-      rgba(245, 245, 245, 0.98) 90%,
-      var(--bg-neutral) 100%);
-  padding: 80px 0px 20px 0px;
+/* Kids Hero Section */
+/* Kids Hero Section */
+.kids-hero-section {
+  background-color: #ecfaf8;
+  height: calc(100vh - 80px); /* Fill remaining viewport (assuming 80px navbar) */
+  margin-top: 80px; /* Offset for fixed navbar */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centered layout for tighter spacing */
+  align-items: center;
+  text-align: center;
+  padding: 20px 0 0 0;
+  gap: 2rem; /* Controlled gap between text block and image */
+  overflow: hidden;
+  box-sizing: border-box;
 }
+
+.kids-hero-content {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+  max-width: 900px;
+  width: 100%;
+  gap: 0.75rem; /* Tight gap between heading, subheading, and button */
+; /* Removed extra margin */
+}
+
+.kids-hero-heading {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 3.5rem;
+  line-height: 1.1;
+  color: #111827;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.kids-hero-subheading {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 1.25rem;
+  color: #4b5563;
+  margin: 0;
+}
+
+.kids-hero-cta {
+  background-color: #333333;
+  color: #ffffff;
+  padding: 12px 34px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1.05rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.kids-hero-cta:hover {
+  background-color: #000000;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+.kids-hero-image-wrapper {
+  flex: 0 1 auto; /* Don't force growth */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin-top: -90px; /* Removed extra margin */
+}
+
+.kids-hero-image {
+  width: 100%; /* Spans entire page width */
+  max-width: 100%;
+  max-height: 100vh; /* Desktop constraint */
+  height: auto;
+  object-fit: cover; /* Use cover to fill width better if Aspect Ratio differs */
+  display: block;
+  margin-top:-200px
+}
+
+/* Tablet Scaling (769px - 1024px) */
+@media (max-width: 1024px) {
+  .kids-hero-section {
+    height: calc(100vh - 80px); /* Adjust based on tablet navbar */
+    margin-top: 80px;
+    padding: 60px 0 0 0; 
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Controlled start-based layout */
+    align-items: center;
+    gap: 4rem; /* Manual push for the image block */
+    overflow: hidden;
+  }
+  .kids-hero-content {
+    flex: 0 0 auto;
+    gap: 1.5rem;
+    max-width: 850px;
+    padding: 0 40px;
+  }
+  .kids-hero-heading {
+    font-size: 3.4rem;
+    line-height: 1.1;
+    margin: 0;
+  }
+  .kids-hero-subheading {
+    font-size: 1.5rem;
+    margin: 0;
+  }
+  .kids-hero-image-wrapper {
+    flex: 1 1 auto; /* Allow growth */
+    width: 100vw; /* Force edge to edge */
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    height: 135vh; /* Proportional height matching the design */
+    margin-top: -100px; /* Adjusted for better visual balance */
+  }
+  .kids-hero-image {
+    width: 100% !important;
+    max-width: 100% !important;
+    max-height: 65vh; /* Increased height for better prominence */
+    object-fit: cover;
+    object-position: top center;
+  }
+}
+
+/* Mobile Scaling (up to 768px) */
+@media (max-width: 768px) {
+  .kids-hero-section {
+    height: calc(100vh - 60px); /* Fill screen minus mobile nav */
+    margin-top: 60px;
+    padding: 60px 20px 0 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Pushes image to bottom, text to top */
+    align-items: center;
+    gap: 0;
+  }
+  .kids-hero-heading {
+    font-size: 2.25rem;
+    line-height: 1.1;
+    color: #111827;
+    margin-bottom: 12px;
+    padding: 0;
+  }
+  .kids-hero-subheading {
+    font-size: 1rem;
+    color: #6b7280;
+    margin-bottom: 25px;
+    padding: 0;
+  }
+  .kids-hero-cta {
+    padding: 12px 36px;
+    font-size: 1rem;
+    background-color: #262626; /* Darker black as in screenshot */
+  }
+  .kids-hero-content {
+    gap: 0;
+    flex: 0 0 auto;
+  }
+  .kids-hero-image-wrapper {
+    flex: 0 0 auto;
+    width: 100vw;
+    margin: 0 -20px; /* Offset section padding to go edge-to-edge */
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+  }
+  .kids-hero-image {
+    width: 100%;
+    max-height: 48vh;
+    object-fit: cover;
+    object-position: top center; /* Focus on kids' faces */
+  }
+}
+
+/* Specific fix for height constrained devices (Nest Hub, landscape tablets, small laptops) */
+@media (max-height: 700px) {
+  .kids-hero-section {
+    height: auto !important; /* Allow scroll to show the image */
+    min-height: 100vh;
+    gap: 1.5rem !important; /* Tighten significantly for small heights */
+    padding-top: 40px !important;
+    padding-bottom: 0px;
+    overflow: visible;
+    margin-top: 40px !important;
+  }
+  .kids-hero-heading {
+    font-size: 2.5rem !important; /* Smaller text */
+    font-weight: 600 !important; /* Reduced weight */
+    margin-bottom: 5px !important;
+  }
+  .kids-hero-subheading {
+    font-size: 1.1rem !important;
+    margin-bottom: 10px !important;
+  }
+  .kids-hero-image-wrapper {
+    width: 100vw !important;
+    margin: 0 -20px; /* Force edge to edge */
+  }
+  .kids-hero-image {
+    width: 100% ;
+    max-width: 100% ;
+    max-height: 650vh ;
+    object-fit: cover !important; /* Full width bleed */
+    object-position: top center;
+    margin-top: -450px !important; /* Pull up to show more of the image */
+  }
+  .kids-hero-content {
+    gap: 0.1rem !important; /* Very tight gap for small heights */
+  }
+}
+
 
 .kidz-page .color-bg {
   background-color: var(--bg-neutral);

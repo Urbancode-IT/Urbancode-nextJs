@@ -1,0 +1,184 @@
+/* KidsHero.css */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap');
+
+:root {
+  --kids-bg: #e9fdfa; /* Light mint background from design */
+  --kids-text: #1a1a1a;
+  --kids-accent: #333333;
+  --kids-subtext: #666666;
+  --animation-speed: 0.8s;
+  --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.kids-hero-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: #e9fdf9; /* Exact mint background from design */
+  overflow: hidden;
+  position: relative;
+  font-family: 'Outfit', sans-serif;
+  text-align: center;
+}
+
+.kids-hero-content {
+  margin-top: clamp(60px, 10vh, 120px); /* Restored natural top padding */
+  padding: 0 24px;
+  z-index: 5;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: slideUpFade var(--animation-speed) var(--ease-out-expo) forwards;
+}
+
+.kids-hero-heading {
+  font-size: clamp(24px, 3.8vw, 42px); /* Further reduced heading */
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: clamp(8px, 1.25vh, 15px);
+  color: #1a1a1a;
+  letter-spacing: -0.01em;
+  opacity: 0;
+  animation: slideUpFade 0.8s var(--ease-out-expo) 0.1s forwards;
+  margin-top: 10px; /* Remove extra top margin for better balance */
+}
+
+.kids-hero-subheading {
+  font-size: clamp(13px, 1.4vw, 15px); /* Further reduced subheading */
+  font-weight: 400;
+  color: #666666;
+  margin-bottom: clamp(18px, 2.5vh, 35px);
+  max-width: clamp(280px, 42vw, 600px);
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 0;
+  animation: slideUpFade 0.8s var(--ease-out-expo) 0.2s forwards;
+}
+
+.kids-hero-button {
+  background-color: #333333;
+  color: white;
+  border: none;
+  padding: 10px 32px; /* Even more compact button */
+  border-radius: 100px;
+  font-size: 14px; /* Further reduced button font size */
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.4s var(--ease-out-expo);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  display: inline-block;
+  opacity: 0;
+  animation: slideUpFade 0.8s var(--ease-out-expo) 0.3s forwards;
+}
+
+.kids-hero-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  background-color: #000;
+}
+
+.kids-hero-image-wrapper {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  line-height: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 135vh; /* Proportional height matching the design */
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.kids-hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center; /* Show the top part and crop the bottom */
+  display: block;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: slideUpFade var(--animation-speed) var(--ease-out-expo) 0.2s forwards;
+}
+
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive adjustments */
+
+@media (min-width: 1025px) {
+  .kids-hero-content {
+      margin-top: 12vh;
+      gap: 0.5rem !important; /* Slightly tighter gap for large screens */
+  }
+  .kids-hero-image-wrapper {
+      height: 170vh;
+            margin-left:20px
+
+  }
+}
+@media (min-width: 1025px) {
+  .kids-hero-image {
+    object-position: center 50%; /* move image upward */
+  }
+  .kids-hero-heading {
+    margin-top: 0px; /* Remove extra top margin for better balance */
+    font-size: 50px;
+  }
+  .kids-hero-button {
+    padding: 12px 40px; /* Slightly larger button on desktop */
+    font-size: 18px;
+  }
+}
+@media (max-width: 1024px) {
+  .kids-hero-content {
+      margin-top: 10vh;
+  }
+  .kids-hero-image-wrapper {
+      height: 135vh;
+      margin-left:20px
+  }
+}
+
+@media (max-width: 768px) {
+  .kids-hero-content {
+      margin-top: 20vh;
+  }
+  
+  .kids-hero-image-wrapper {
+      height: 75vh;
+  }
+
+  .kids-hero-image {
+      width: 150%; /* "Crop" by scaling up and centering on mobile */
+      max-width: none;
+      object-fit: cover;
+  }
+}
+
+@media (max-width: 480px) {
+  .kids-hero-image-wrapper {
+      height: 50vh;
+      margin-left:10px;
+  }
+  
+  .kids-hero-image {
+      width: 200%; /* More aggressive crop for mobile to keep faces large */
+  }
+
+  .kids-hero-heading {
+      white-space: normal;
+  }
+}

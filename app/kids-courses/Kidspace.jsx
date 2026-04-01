@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react';
 import KidsLoader from './KidsLoader';
 
 import BannerSlider from '../components/common/BannerSlider';
+import KidsHero from './KidsHero';
 
 const Kidz = () => {
   const [selectedCourse, setSelectedCourse] = useState(null);
@@ -129,28 +130,7 @@ const Kidz = () => {
     <div className="kidz-page color-bg">
       <KidsLoader isLoading={isLoading} />
 
-      {/* Hero Section */}
-      <section className="hero-section">
-        <div className="container">
-          <div className="hero-content">
-            {/* Left Text */}
-            <div className="hero-text-area col-md-6 col-lg-6">
-              <h1 className="hero-title">Next-Gen <span className="text-success text-shine">Learning</span></h1>
-              <p className="hero-text text-muted">
-                At Urbancode Edutech, we nurture young minds through structured coding,
-                cognitive learning and problem-solving activities. Our programs combine
-                hands-on projects, logical reasoning, and digital creativity to strengthen
-                critical thinking and prepare kids to become the innovators and tech leaders of tomorrow.
-              </p>
-            </div>
-
-            {/* Right Image */}
-            <div className="hero-img-area col-md-6 col-lg-6 ">
-              <img src="/images/KidsImages/hero.png" alt="Kids learning" className="hero-img m-lg-5" />
-            </div>
-          </div>
-        </div>
-      </section>
+      <KidsHero />
 { <BannerSlider banners={kidsBanners} forceEnquiry={true} /> }
 
 
