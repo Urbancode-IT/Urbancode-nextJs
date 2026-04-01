@@ -2660,213 +2660,330 @@ const coursesData = {
     ],
   },
 
-  // "Data Analytics": {
-  //   mainCategoryDesc: "Turn Data into Decisions",
-  //   subDesc: "Master the art of transforming raw data into actionable insights with SQL, Excel, Power BI, and Tableau. Learn to analyze, visualize, and interpret data to support strategic business decisions. ",
-  //   subHeading: "Build a career as a Data Analyst equipped with skills that empower organizations to grow smarter and faster.",
-  //   mainImage: "/images/courses/DataAnalytics.jpg",
+  "Data Analytics": {
+    mainCategoryDesc: "Turn Data into Decisions",
+    subDesc: "Master the art of transforming raw data into actionable insights with SQL, Excel, Power BI, and Tableau. Learn to analyze, visualize, and interpret data to support strategic business decisions. ",
+    subHeading: "Build a career as a Data Analyst equipped with skills that empower organizations to grow smarter and faster.",
+    mainImage: "/images/courses/DataAnalytics.jpg",
 
-  //   courses: [
-  //     {
-  //       title: "SAS",
-  //       desc: "Master SAS with hands-on training designed for real-world data analytics and business intelligence applications. Join our program to gain in-demand skills and boost your career in analytics.",
-  //       rating: 5.0,
-  //       duration: "1 month",
-  //       students: "106",
-  //       img: "/images/courses/SAS.jpg",
-  //       aboutData: {
-  //         topic: "Master SAS — From Data Management to Advanced Analytics!",
-  //         content1: "Learn SAS from scratch and advance to complex data analytics, reporting, and predictive modeling. This course provides hands-on experience with real-world datasets, ensuring you gain practical skills for business and data-driven decision-making.",
-  //         content2: "The SAS course covers the full spectrum of data analytics, from data manipulation and reporting to advanced analytics techniques like predictive modeling, regression analysis, and business intelligence dashboards. You'll gain expertise in Base SAS, SAS Macros, SQL, and SAS Enterprise Guide, preparing you for analytics roles across industries."
-  //       },
-  //       courseContentData: [
-  //         {
-  //           id: 1,
-  //           title: "Beginner – SAS Fundamentals",
-  //           icon: "bi bi-book",
-  //           defaultOpen: true,
-  //           items: [
-  //             "Introduction to SAS and its applications",
-  //             "Installing and navigating SAS environment",
-  //             "Data types, variables, and datasets",
-  //             "Basic SAS programming syntax",
-  //             "Reading and writing datasets",
-  //             "Debugging and error handling"
-  //           ]
-  //         },
-  //         {
-  //           id: 2,
-  //           title: "Beginner – Data Management in SAS",
-  //           icon: "bi bi-database",
-  //           items: [
-  //             "Data step basics and data manipulation",
-  //             "Sorting, merging, and concatenating datasets",
-  //             "Creating new variables and functions",
-  //             "Conditional logic and loops in SAS",
-  //             "Working with dates and character variables"
-  //           ]
-  //         },
-  //         {
-  //           id: 3,
-  //           title: "Intermediate – Advanced SAS Programming",
-  //           icon: "bi bi-gear",
-  //           items: [
-  //             "SAS Macros for automation",
-  //             "SQL in SAS (PROC SQL)",
-  //             "Arrays, Do loops, and iterative processing",
-  //             "Advanced data manipulation techniques",
-  //             "Error handling and debugging best practices"
-  //           ]
-  //         },
-  //         {
-  //           id: 4,
-  //           title: "Intermediate – Data Analysis and Reporting",
-  //           icon: "bi bi-bar-chart-line",
-  //           items: [
-  //             "Descriptive statistics and summary reports",
-  //             "PROC MEANS, PROC FREQ, PROC UNIVARIATE",
-  //             "Data visualization using PROC SGPLOT & PROC REPORT",
-  //             "Generating automated reports",
-  //             "Introduction to statistical procedures"
-  //           ]
-  //         },
+    courses: [
+      {
+        title: "Data Analytics",
+        desc: "Learn to visualize and analyze data using Python, Excel, SQL, and Power BI. From data mining to insights.",
+        rating: 4.8,
+        duration: "3 months",
+        students: "500+",
+        img: "/images/courses/z4.webp",
+        aboutData: {
+          topic: "Master Data Analytics — From Data Mining to Actionable Business Insights!",
+          content1: "This comprehensive Data Analytics course takes you through the entire data lifecycle — from data cleaning and preparation to advanced visualization and predictive modeling. You'll master the most in-demand tools including Excel, SQL, Python, Power BI, and Tableau.",
+          content2: "Through real-world projects and hands-on case studies, you'll learn how to derive meaningful conclusions from complex datasets and communicate them effectively to stakeholders. Whether you're a beginner or looking to upskill, this program prepares you for a successful career in one of the fastest-growing fields of the modern economy."
+        },
+        courseContentData: [
+          {
+            id: 1,
+            title: "Advanced Excel for Data Analytics",
+            icon: "bi bi-file-earmark-excel",
+            items: [
+              "Mastering Formulas: VLOOKUP, HLOOKUP, XLOOKUP, and Index-Match",
+              "Data Cleaning: Text functions, removing duplicates, and data validation",
+              "Pivot Tables & Dashboards: Creating dynamic summaries and interactive slicers",
+              "Power Query: Automating data import and transformation",
+              "Statistical Analysis: Using Analysis ToolPak for regression and forecasting"
+            ]
+          },
+          {
+            id: 2,
+            title: "SQL Mastery (Structured Query Language)",
+            icon: "bi bi-database",
+            items: [
+              "Database Basics: DDL, DML, and DQL commands",
+              "Advanced Querying: Joins (Inner, Left, Right, Full), Unions, and Subqueries",
+              "Window Functions: ROW_NUMBER, RANK, and LEAD/LAG",
+              "Data Definition: Creating and Managing Tables, Views, and Indexes",
+              "Optimization: Writing efficient queries for large datasets"
+            ]
+          },
+          {
+            id: 3,
+            title: "Python for Data Science",
+            icon: "bi bi-code-slash",
+            items: [
+              "Python Fundamentals: Syntax, Data structures, and Flow control",
+              "NumPy: Numerical computing and array manipulation",
+              "Pandas: DataFrames, Series, and advanced data cleaning",
+              "Matplotlib & Seaborn: Visualizing trends and distributions",
+              "Intro to Scikit-Learn: Basic predictive modeling and regression"
+            ]
+          },
+          {
+            id: 4,
+            title: "Power BI Visualization",
+            icon: "bi bi-bar-chart",
+            items: [
+              "Power BI Desktop: Connecting to diverse data sources",
+              "DAX (Data Analysis Expressions): Writing complex measures and calculated columns",
+              "Data Modeling: Creating relationships and star schemas",
+              "Interactive Reports: Designing executive-level dashboards",
+              "Power BI Service: Publishing, sharing, and scheduled refreshes"
+            ]
+          },
+          {
+            id: 5,
+            title: "Tableau Visual Analytics",
+            icon: "bi bi-brush",
+            items: [
+              "Tableau Architecture: Sheets, Dashboards, and Stories",
+              "Calculated Fields: Using LOD (Level of Detail) expressions",
+              "Mapping: Creating geographic and dual-axis maps",
+              "Level of Detail (LOD) Expressions for granular analysis",
+              "Publishing & Collaboration on Tableau Server/Public"
+            ]
+          },
+          {
+            id: 6,
+            title: "Big Data with Azure Databricks",
+            icon: "bi bi-cloud",
+            items: [
+              "Introduction to Spark: Distributed computing fundamentals",
+              "Databricks Workspace: Notebook management and collaboration",
+              "PySpark: Processing large-scale datasets with Python and Spark",
+              "Data Lake Integration: Reading from and writing to Delta Lake",
+              "ETL Pipelines: Building automated data workflows at scale"
+            ]
+          }
+        ],
+        whatYouLearnData: [
+          {
+            title: "Master Data Analysis Tools",
+            desc: "Expertise in Excel, SQL, Python, Power BI, and Tableau.",
+            icon: "bi bi-tools"
+          },
+          {
+            title: "Build Executive Dashboards",
+            desc: "Design interactive and visual stories that drive business strategy.",
+            icon: "bi bi-window-stack"
+          },
+          {
+            title: "Work with Big Data",
+            desc: "Process large-scale datasets using Spark and Azure Databricks.",
+            icon: "bi bi-cloud-arrow-down"
+          },
+          {
+            title: "Clean and Manage Data",
+            desc: "Learn advanced techniques for data wrangling and transformation.",
+            icon: "bi bi-stars"
+          },
+          {
+            title: "Derive Business Insights",
+            desc: "Translate complex numbers into actionable stories for stakeholders.",
+            icon: "bi bi-graph-up-arrow"
+          },
+          {
+            title: "Complete Capstone Projects",
+            desc: "Apply your skills to real-world datasets and industry scenarios.",
+            icon: "bi bi-briefcase"
+          }
+        ]
+      },
+      {
+        title: "SAS",
+        desc: "Master SAS with hands-on training designed for real-world data analytics and business intelligence applications. Join our program to gain in-demand skills and boost your career in analytics.",
+        rating: 5.0,
+        duration: "1 month",
+        students: "106",
+        img: "/images/courses/SAS.jpg",
+        aboutData: {
+          topic: "Master SAS — From Data Management to Advanced Analytics!",
+          content1: "Learn SAS from scratch and advance to complex data analytics, reporting, and predictive modeling. This course provides hands-on experience with real-world datasets, ensuring you gain practical skills for business and data-driven decision-making.",
+          content2: "The SAS course covers the full spectrum of data analytics, from data manipulation and reporting to advanced analytics techniques like predictive modeling, regression analysis, and business intelligence dashboards. You'll gain expertise in Base SAS, SAS Macros, SQL, and SAS Enterprise Guide, preparing you for analytics roles across industries."
+        },
+        courseContentData: [
+          {
+            id: 1,
+            title: "Beginner – SAS Fundamentals",
+            icon: "bi bi-book",
+            defaultOpen: true,
+            items: [
+              "Introduction to SAS and its applications",
+              "Installing and navigating SAS environment",
+              "Data types, variables, and datasets",
+              "Basic SAS programming syntax",
+              "Reading and writing datasets",
+              "Debugging and error handling"
+            ]
+          },
+          {
+            id: 2,
+            title: "Beginner – Data Management in SAS",
+            icon: "bi bi-database",
+            items: [
+              "Data step basics and data manipulation",
+              "Sorting, merging, and concatenating datasets",
+              "Creating new variables and functions",
+              "Conditional logic and loops in SAS",
+              "Working with dates and character variables"
+            ]
+          },
+          {
+            id: 3,
+            title: "Intermediate – Advanced SAS Programming",
+            icon: "bi bi-gear",
+            items: [
+              "SAS Macros for automation",
+              "SQL in SAS (PROC SQL)",
+              "Arrays, Do loops, and iterative processing",
+              "Advanced data manipulation techniques",
+              "Error handling and debugging best practices"
+            ]
+          },
+          {
+            id: 4,
+            title: "Intermediate – Data Analysis and Reporting",
+            icon: "bi bi-bar-chart-line",
+            items: [
+              "Descriptive statistics and summary reports",
+              "PROC MEANS, PROC FREQ, PROC UNIVARIATE",
+              "Data visualization using PROC SGPLOT & PROC REPORT",
+              "Generating automated reports",
+              "Introduction to statistical procedures"
+            ]
+          },
 
-  //       ],
-  //       whatYouLearnData: [
-  //         {
-  //           title: "Master SAS Programming",
-  //           desc: "Learn data step, PROC SQL, SAS macros, and advanced programming concepts.",
-  //           icon: "bi bi-lightning-charge"
-  //         },
-  //         {
-  //           title: "Data Management & Analytics",
-  //           desc: "Manipulate, clean, and analyze large datasets efficiently.",
-  //           icon: "bi bi-database"
-  //         },
-  //         {
-  //           title: "Reporting & Visualization",
-  //           desc: "Create dashboards, charts, and automated reports for business insights.",
-  //           icon: "bi bi-bar-chart-line"
-  //         },
-  //         {
-  //           title: "Predictive Modeling & Statistics",
-  //           desc: "Apply regression, classification, and time series analysis using SAS.",
-  //           icon: "bi bi-robot"
-  //         },
-  //         {
-  //           title: "Business Intelligence Skills",
-  //           desc: "Build real-world BI projects using SAS Enterprise Guide.",
-  //           icon: "bi bi-window-stack"
-  //         },
-  //         {
-  //           title: "Industry-Ready SAS Expertise",
-  //           desc: "Gain practical skills applicable to analytics, data science, and BI roles.",
-  //           icon: "bi bi-diagram-3"
-  //         }
-  //       ]
-  //     }
-  //     ,
-  //     {
-  //       "title": "R Programming",
-  //       "desc": "Master R Programming with hands-on training designed for data analysis, visualization, and statistical modeling. Gain industry-ready skills to excel in analytics, research, and data-driven decision making.",
-  //       "rating": 5.0,
-  //       "duration": "1 month",
-  //       "students": "106",
-  //       "img": "/images/courses/R_Programming.jpg",
-  //       "aboutData": {
-  //         "topic": "Master R Programming — From Fundamentals to Advanced Analytics!",
-  //         "content1": "Learn R Programming from scratch and gain the skills to perform data analysis, statistical modeling, and visualization. This course provides hands-on projects to help you transform raw data into actionable insights.",
-  //         "content2": "The R Programming course by Urbancode covers everything from basic syntax to advanced data analysis techniques. You’ll start with fundamentals like vectors, lists, and data frames, then move on to visualization with ggplot2, statistical modeling, and machine learning integration. By the end, you’ll be capable of applying R for real-world analytics projects, making you ready for roles in data science, research, and analytics."
-  //       },
-  //       "courseContentData": [
-  //         {
-  //           "id": 1,
-  //           "title": "Beginner – R Fundamentals",
-  //           "icon": "bi bi-book",
-  //           "defaultOpen": true,
-  //           "items": [
-  //             "Introduction to R and RStudio",
-  //             "R syntax, variables, and data types",
-  //             "Vectors, lists, and data frames",
-  //             "Basic operations and functions",
-  //             "Control structures: if, for, while",
-  //             "Reading and writing data files"
-  //           ]
-  //         },
-  //         {
-  //           "id": 2,
-  //           "title": "Beginner – Data Manipulation",
-  //           "icon": "bi bi-database",
-  //           "items": [
-  //             "Data cleaning and preprocessing",
-  //             "Using dplyr for data manipulation",
-  //             "Filtering, sorting, and summarizing data",
-  //             "Merging and joining datasets",
-  //             "Handling missing values"
-  //           ]
-  //         },
-  //         {
-  //           "id": 3,
-  //           "title": "Intermediate – Data Visualization",
-  //           "icon": "bi bi-bar-chart-line",
-  //           "items": [
-  //             "Introduction to ggplot2",
-  //             "Creating bar, line, and scatter plots",
-  //             "Customizing plots with themes and labels",
-  //             "Interactive visualizations with plotly",
-  //             "Visualization best practices"
-  //           ]
-  //         },
-  //         {
-  //           "id": 4,
-  //           "title": "Intermediate – Statistical Analysis",
-  //           "icon": "bi bi-calculator",
-  //           "items": [
-  //             "Descriptive statistics",
-  //             "Probability distributions",
-  //             "Hypothesis testing",
-  //             "Correlation and regression analysis",
-  //             "ANOVA and Chi-square tests"
-  //           ]
-  //         },
+        ],
+        whatYouLearnData: [
+          {
+            title: "Master SAS Programming",
+            desc: "Learn data step, PROC SQL, SAS macros, and advanced programming concepts.",
+            icon: "bi bi-lightning-charge"
+          },
+          {
+            title: "Data Management & Analytics",
+            desc: "Manipulate, clean, and analyze large datasets efficiently.",
+            icon: "bi bi-database"
+          },
+          {
+            title: "Reporting & Visualization",
+            desc: "Create dashboards, charts, and automated reports for business insights.",
+            icon: "bi bi-bar-chart-line"
+          },
+          {
+            title: "Predictive Modeling & Statistics",
+            desc: "Apply regression, classification, and time series analysis using SAS.",
+            icon: "bi bi-robot"
+          },
+          {
+            title: "Business Intelligence Skills",
+            desc: "Build real-world BI projects using SAS Enterprise Guide.",
+            icon: "bi bi-window-stack"
+          },
+          {
+            title: "Industry-Ready SAS Expertise",
+            desc: "Gain practical skills applicable to analytics, data science, and BI roles.",
+            icon: "bi bi-diagram-3"
+          }
+        ]
+      },
+      {
+        title: "R Programming",
+        desc: "Master R Programming with hands-on training designed for data analysis, visualization, and statistical modeling. Gain industry-ready skills to excel in analytics, research, and data-driven decision making.",
+        rating: 5.0,
+        duration: "1 month",
+        students: "106",
+        img: "/images/courses/R_Programming.jpg",
+        aboutData: {
+          topic: "Master R Programming — From Fundamentals to Advanced Analytics!",
+          content1: "Learn R Programming from scratch and gain the skills to perform data analysis, statistical modeling, and visualization. This course provides hands-on projects to help you transform raw data into actionable insights.",
+          content2: "The R Programming course by Urbancode covers everything from basic syntax to advanced data analysis techniques. You’ll start with fundamentals like vectors, lists, and data frames, then move on to visualization with ggplot2, statistical modeling, and machine learning integration. By the end, you’ll be capable of applying R for real-world analytics projects, making you ready for roles in data science, research, and analytics."
+        },
+        courseContentData: [
+          {
+            id: 1,
+            title: "Beginner – R Fundamentals",
+            icon: "bi bi-book",
+            defaultOpen: true,
+            items: [
+              "Introduction to R and RStudio",
+              "R syntax, variables, and data types",
+              "Vectors, lists, and data frames",
+              "Basic operations and functions",
+              "Control structures: if, for, while",
+              "Reading and writing data files"
+            ]
+          },
+          {
+            id: 2,
+            title: "Beginner – Data Manipulation",
+            icon: "bi bi-database",
+            items: [
+              "Data cleaning and preprocessing",
+              "Using dplyr for data manipulation",
+              "Filtering, sorting, and summarizing data",
+              "Merging and joining datasets",
+              "Handling missing values"
+            ]
+          },
+          {
+            id: 3,
+            title: "Intermediate – Data Visualization",
+            icon: "bi bi-bar-chart-line",
+            items: [
+              "Introduction to ggplot2",
+              "Creating bar, line, and scatter plots",
+              "Customizing plots with themes and labels",
+              "Interactive visualizations with plotly",
+              "Visualization best practices"
+            ]
+          },
+          {
+            id: 4,
+            title: "Intermediate – Statistical Analysis",
+            icon: "bi bi-calculator",
+            items: [
+              "Descriptive statistics",
+              "Probability distributions",
+              "Hypothesis testing",
+              "Correlation and regression analysis",
+              "ANOVA and Chi-square tests"
+            ]
+          },
 
-  //       ],
-  //       "whatYouLearnData": [
-  //         {
-  //           "title": "Master R Programming Concepts",
-  //           "desc": "Understand R syntax, data structures, functions, and advanced programming techniques.",
-  //           "icon": "bi bi-lightning-charge"
-  //         },
-  //         {
-  //           "title": "Perform Data Analysis",
-  //           "desc": "Use R for statistical analysis, hypothesis testing, and real-world data exploration.",
-  //           "icon": "bi bi-bar-chart-line"
-  //         },
-  //         {
-  //           "title": "Create Stunning Visualizations",
-  //           "desc": "Visualize data effectively using ggplot2, plotly, and interactive dashboards.",
-  //           "icon": "bi bi-window-stack"
-  //         },
-  //         {
-  //           "title": "Implement Machine Learning",
-  //           "desc": "Build predictive models using regression, classification, and clustering techniques in R.",
-  //           "icon": "bi bi-robot"
-  //         },
-  //         {
-  //           "title": "Automate Reporting & Dashboards",
-  //           "desc": "Generate dynamic reports and interactive dashboards with R Markdown and Shiny.",
-  //           "icon": "bi bi-gear"
-  //         },
-  //         {
-  //           "title": "Handle Real-World Data Projects",
-  //           "desc": "Apply R programming to practical datasets, clean, analyze, and present actionable insights.",
-  //           "icon": "bi bi-cpu"
-  //         }
-  //       ]
-  //     }
-  //     ,
-  //   ],
-  // },
+        ],
+        whatYouLearnData: [
+          {
+            title: "Master R Programming Concepts",
+            desc: "Understand R syntax, data structures, functions, and advanced programming techniques.",
+            icon: "bi bi-lightning-charge"
+          },
+          {
+            title: "Perform Data Analysis",
+            desc: "Use R for statistical analysis, hypothesis testing, and real-world data exploration.",
+            icon: "bi bi-bar-chart-line"
+          },
+          {
+            title: "Create Stunning Visualizations",
+            desc: "Visualize data effectively using ggplot2, plotly, and interactive dashboards.",
+            icon: "bi bi-window-stack"
+          },
+          {
+            title: "Implement Machine Learning",
+            desc: "Build predictive models using regression, classification, and clustering techniques in R.",
+            icon: "bi bi-robot"
+          },
+          {
+            title: "Automate Reporting & Dashboards",
+            desc: "Generate dynamic reports and interactive dashboards with R Markdown and Shiny.",
+            icon: "bi bi-gear"
+          },
+          {
+            title: "Handle Real-World Data Projects",
+            desc: "Apply R programming to practical datasets, clean, analyze, and present actionable insights.",
+            icon: "bi bi-cpu"
+          }
+        ]
+      }
+    ],
+  },
 
   "Data Science": {
     mainCategoryDesc: "Shape the Future with Data",

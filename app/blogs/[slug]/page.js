@@ -43,6 +43,44 @@ export default async function BlogDetailPage({ params }) {
         .filter(b => b.id !== blog.id)
         .slice(0, 3);
 
+    // Helper function to render text with clickable keyword links
+    const renderParagraphWithLinks = (text) => {
+        if (!text) return null;
+
+        const keywordMap = [
+            { name: "React Native", link: "/courses/fullstack-development/react-native" },
+            { name: "Flutter", link: "/courses" },
+            { name: "Fullstack Development", link: "/courses/fullstack-development" },
+            { name: "MERN Stack", link: "/courses/fullstack-development/mern-stack" },
+            { name: "MEAN Stack", link: "/courses/fullstack-development/mean-stack" },
+            { name: "Next.js", link: "/courses/fullstack-development/next.js-development" },
+            { name: "Nextjs", link: "/courses/fullstack-development/next.js-development" },
+            { name: "Data Analytics", link: "/courses/data-analytics" },
+            { name: "Data Science", link: "/courses/data-science" },
+            { name: "UI/UX design", link: "/courses/ui-ux-designing" },
+            { name: "Software Testing", link: "/courses/software-testing" },
+            { name: "Cloud and DevOps", link: "/courses/cloud-and-devops" }
+        ];
+
+        // Sort keywords from longest to shortest to avoid partial matches
+        const sortedKeywords = [...keywordMap].sort((a, b) => b.name.length - a.name.length);
+        const pattern = new RegExp(`(${sortedKeywords.map(kw => kw.name.replace(/[.*+?^${}()|[\]\\]/g, '\\\\$&')).join('|')})`, 'gi');
+
+        const parts = text.split(pattern);
+
+        return parts.map((part, i) => {
+            const match = keywordMap.find(kw => kw.name.toLowerCase() === part.toLowerCase());
+            if (match) {
+                return (
+                    <Link key={i} href={match.link} className="keyword-link">
+                        {part}
+                    </Link>
+                );
+            }
+            return part;
+        });
+    };
+
     return (
         <div className="blog-detail-container">
             {/* Category + Date */}
@@ -63,7 +101,7 @@ export default async function BlogDetailPage({ params }) {
             {/* Blog Content */}
             {blog.content && blog.content.map((paragraph, index) => (
                 <p key={index} className="content-text">
-                    {paragraph}
+                    {renderParagraphWithLinks(paragraph)}
                 </p>
             ))}
 

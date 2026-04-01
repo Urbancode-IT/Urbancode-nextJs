@@ -58,11 +58,11 @@ function Footer() {
           <div className="col-lg-3 col-md-6">
             <h4>Trending Software Courses</h4>
             <ul className="list-unstyled">
-              <li><Link href="/courses/web-and-app-development/mern-stack"> MERN Stack</Link></li>
-              <li><Link href="/courses/web-and-app-development/mean-stack"> MEAN Stack</Link></li>
-              <li><Link href="/courses/web-and-app-development/python-full-stack"> Python Stack</Link></li>
-              <li><Link href="/courses/web-and-app-development/.net-plus-angular"> .Net + Angular Full Stack</Link></li>
-              <li><Link href="/courses/data-science"> Data Analytics</Link></li>
+              <li><Link href="/courses/fullstack-development/mern-stack"> MERN Stack</Link></li>
+              <li><Link href="/courses/fullstack-development/next.js-development"> Next.js</Link></li>
+              <li><Link href="/courses/fullstack-development/python-full-stack"> Python Stack</Link></li>
+              <li><Link href="/courses/fullstack-development/.net-plus-angular"> .Net + Angular Full Stack</Link></li>
+              <li><Link href="/courses/data-analytics"> Data Analytics</Link></li>
               <li><Link href="/courses/cloud-and-devops/aws"> AWS Cloud Computing</Link></li>
               <li><Link href="/courses/software-testing"> Software Testing</Link></li>
             </ul>

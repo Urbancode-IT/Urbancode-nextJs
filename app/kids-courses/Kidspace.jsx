@@ -131,84 +131,6 @@ const Kidz = () => {
       <KidsLoader isLoading={isLoading} />
 
       <KidsHero />
-{ <BannerSlider banners={kidsBanners} forceEnquiry={true} /> }
-
-
-      <div className="container py-5">
-        <h2 className="section-title">Our Kids <span className='text-success text-shine'>&nbsp;Courses</span></h2>
-        <p className="section-subtitle text-muted">
-          Explore expertly designed courses tailored for young learners. Each program blends engaging, interactive activities with structured learning outcomes to build strong foundational skills and future-ready knowledge.
-        </p>
-
-        <div className="row g-5">
-          {courses.map((course, index) => (
-            <div className="col-md-6 col-lg-3" key={index}>
-              <div className="course-card shadow-md">
-                <a href={course.url} style={{textDecoration:"none"}}>
-                <div className="position-relative">
-                  <Image
-                    src={course.img}
-                    width={400}
-                    height={250}
-                    alt={course.title}
-                    className="w-100 course-img"
-                  />
-                  <span className="badge-duration">{course.duration}</span>
-                </div>
-
-
-                <div className="course-body">
-                  <h5 className="kids-course-title">{course.title}</h5>
-                  <p className="course-desc">{course.desc}</p>
-
-                  <div className="rating d-flex justify-content-between">
-                    <span>
-                      <span className="rating-stars">{course.stars}</span> {course.rating}
-                    </span>
-                    <span className="d-flex align-items-center gap-1">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
-                        className="bi bi-people-fill"
-                        viewBox="0 0 16 16"
-                      >
-                        <path d="M7 14s-1 0-1-1 1-4 5-4 
-                      5 3 5 4-1 1-1 1zm4-6a3 3 
-                      0 1 0 0-6 3 3 0 0 0 0 
-                      6m-5.784 6A2.24 2.24 0 0 
-                      1 5 13c0-1.355.68-2.75 
-                      1.936-3.72A6.3 6.3 0 0 
-                      0 5 9c-4 0-5 3-5 4s1 1 
-                      1 1zM4.5 8a2.5 2.5 0 1 
-                      0 0-5 2.5 2.5 0 0 0 0 5" />
-                      </svg>
-                      {course.students}
-                    </span>
-                  </div>
-
-                  <button
-                    className=" btn btn-enroll fs-11"
-                    onClick={() => setSelectedCourse(course)}
-                  >
-                    Enroll now
-                  </button>
-
-                  {selectedCourse && (
-                    <EnquiryFormModal
-                      isOpen={!!selectedCourse}
-                      onClose={() => setSelectedCourse(null)}
-                      courseName={selectedCourse.title}
-                    />
-                  )}
-
-                </div></a>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
 
       {/* Why Choose Urbancode for Kids Section */}
       <section className="why-choose-kids py-5">
@@ -296,6 +218,87 @@ const Kidz = () => {
           </div>
         </div>
       </section>
+
+{ <BannerSlider banners={kidsBanners} forceEnquiry={true} /> }
+
+
+      <div className="container py-5">
+        <h2 className="section-title">Our Kids <span className='text-success text-shine'>&nbsp;Courses</span></h2>
+        <p className="section-subtitle text-muted">
+          Explore expertly designed courses tailored for young learners. Each program blends engaging, interactive activities with structured learning outcomes to build strong foundational skills and future-ready knowledge.
+        </p>
+
+        <div className="row g-5">
+          {courses.map((course, index) => (
+            <div className="col-md-6 col-lg-3" key={index}>
+              <div className="course-card shadow-md">
+                <a href={course.url} style={{textDecoration:"none"}}>
+                <div className="position-relative">
+                  <Image
+                    src={course.img}
+                    width={400}
+                    height={250}
+                    alt={course.title}
+                    className="w-100 course-img"
+                  />
+                  <span className="badge-duration">{course.duration}</span>
+                </div>
+
+
+                <div className="course-body">
+                  <h5 className="kids-course-title">{course.title}</h5>
+                  <p className="course-desc">{course.desc}</p>
+
+                  <div className="rating d-flex justify-content-between">
+                    <span>
+                      <span className="rating-stars">{course.stars}</span> {course.rating}
+                    </span>
+                    <span className="d-flex align-items-center gap-1">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        className="bi bi-people-fill"
+                        viewBox="0 0 16 16"
+                      >
+                        <path d="M7 14s-1 0-1-1 1-4 5-4 
+                      5 3 5 4-1 1-1 1zm4-6a3 3 
+                      0 1 0 0-6 3 3 0 0 0 0 
+                      6m-5.784 6A2.24 2.24 0 0 
+                      1 5 13c0-1.355.68-2.75 
+                      1.936-3.72A6.3 6.3 0 0 
+                      0 5 9c-4 0-5 3-5 4s1 1 
+                      1 1zM4.5 8a2.5 2.5 0 1 
+                      0 0-5 2.5 2.5 0 0 0 0 5" />
+                      </svg>
+                      {course.students}
+                    </span>
+                  </div>
+
+                  <button
+                    className=" btn btn-enroll fs-11"
+                    onClick={() => setSelectedCourse(course)}
+                  >
+                    Enroll now
+                  </button>
+
+                  {selectedCourse && (
+                    <EnquiryFormModal
+                      isOpen={!!selectedCourse}
+                      onClose={() => setSelectedCourse(null)}
+                      courseName={selectedCourse.title}
+                    />
+                  )}
+
+                </div></a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+
 
       {/* Tech Journey Section */}
       <section className="tech-journey my-5">

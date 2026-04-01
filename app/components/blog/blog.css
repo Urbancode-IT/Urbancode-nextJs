@@ -320,6 +320,18 @@ section.recent-featured {
   margin-bottom: 40px;
 }
 
+.keyword-link {
+  color: #00B56F;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.keyword-link:hover {
+  text-decoration: underline;
+  color: #008f59;
+}
+
 .divider {
   width: 100%;
   height: 2px;
