@@ -5,56 +5,76 @@ import { motion, AnimatePresence } from "framer-motion";
 import "./faqs.css";
 
 const faqs = [
-    // Slide 1
+    // Slide 1: Automation Testing
     {
-        question: "What makes the Next.js course ideal for aspiring developers?",
-        answer: "The Next.js course is perfect for building high-performance, SEO-friendly web applications. You’ll master building modern frontend and robust backend systems with complete placement assistance and hands-on projects."
+        question: "What is Automation Testing and why is it important?",
+        answer: "Automation Testing uses scripts and tools to execute tests automatically, ensuring faster execution, higher accuracy, and better coverage. It's essential for modern CI/CD pipelines in Agile and DevOps environments."
     },
     {
-        question: "Does the .NET training course prepare me for enterprise-level roles?",
-        answer: "Yes! Our .NET architecture training focuses on building scalable, enterprise-grade applications using Microsoft’s powerful backend framework for a professional career."
+        question: "Which tools are commonly used in Automation Testing?",
+        answer: "Popular tools include Selenium for web automation, Playwright for modern cross-browser testing, and frameworks built with TypeScript or Java. For API testing, Postman and Rest Assured are industry standards."
     },
     {
-        question: "What is the typical career path for a Full Stack Developer?",
-        answer: "Full Stack Developers can grow into roles like Senior Developer, Technical Architect, or CTO. With experience in both frontend and backend, you have a wider range of high-paying career opportunities."
+        question: "What skills are required to become an Automation Tester?",
+        answer: "Key skills include programming (Java, Python, or TypeScript), understanding testing concepts, experience with tools like Selenium or Playwright, API testing, version control (Git), and CI/CD tools like Jenkins."
     },
     {
-        question: "How does Urbancode’s 100% placement assistance work?",
-        answer: "Our placement cell provides personalized resume building, unlimited mock interviews, and direct referrals to our 100+ hiring partners in Chennai and across India until you secure your first IT job."
+        question: "Is Automation Testing a good career in 2026?",
+        answer: "Yes, it is in high demand due to rapid digital transformation and DevOps adoption. Professionals skilled in Playwright and API automation are highly sought after in the tech industry."
     },
-    // Slide 2
+
+    // Slide 2: Playwright & API
     {
-        question: "Will I get hands-on experience with real-world Next.js projects?",
-        answer: "Absolutely. Our Next.js courses are built around real-world projects, including e-commerce platforms and dashboard systems, allowing you to build a portfolio that stands out to top IT companies."
-    },
-    {
-        question: "Do I get an industry-recognized certificate for the .NET program?",
-        answer: "Yes, once you complete the projects and assessments in the .NET training, you will receive a certification from Urbancode Edutech, which is highly valued by IT recruiters."
+        question: "Can Playwright be used for API testing?",
+        answer: "Yes, Playwright has built-in support for API testing through its APIRequestContext, allowing you to send HTTP requests directly without external tools for a complete testing solution."
     },
     {
-        question: "What is the typical batch size for your IT courses?",
-        answer: "We maintain small batch sizes of 10 to 15 students to ensure personalized attention and better interaction between the instructor and the learners."
+        question: "What are the advantages of using Playwright for API + UI testing?",
+        answer: "Using Playwright for both ensures faster execution and better coverage. You can validate backend responses, seed test data via APIs, and verify UI behavior in a single automated workflow."
     },
     {
-        question: "Are there weekend batches available for working professionals?",
-        answer: "Yes, we provide special weekend batches for those who are currently working but wish to upskill without disturbing their weekday work schedule."
-    },
-    // Slide 3
-    {
-        question: "How often are the Next.js course materials updated?",
-        answer: "We update our Next.js curriculum every 6 months to ensure we are teaching the latest versions of React, Next.js, and other libraries used in modern industry."
+        question: "What programming languages are best for modern Automation?",
+        answer: "While Java and Python are standard, TypeScript is increasingly popular due to its static typing and seamless integration with modern frameworks like Playwright."
     },
     {
-        question: "Is there any age limit to enroll in the .NET development training?",
-        answer: "There is no age limit! We believe anyone with a passion for coding can learn .NET. We have taught students ranging from college freshers to experienced professionals looking to upskill."
+        question: "How does Automation Testing fit into DevOps?",
+        answer: "It's a core component of DevOps, enabling continuous testing within CI/CD pipelines to ensure faster releases and higher software reliability."
+    },
+
+    // Slide 3: CCNA & Networking
+    {
+        question: "What is CCNA and who should pursue it?",
+        answer: "CCNA is a foundational networking certification from Cisco. It's ideal for beginners and IT support engineers looking to build a strong career in networking and infrastructure management."
     },
     {
-        question: "How can I access the Urbancode student portal and study materials?",
-        answer: "Once enrolled, you will receive login credentials for our student portal, where you can access recorded sessions, assignments, and exclusive learning resources."
+        question: "What are the career opportunities after CCNA?",
+        answer: "After earning your CCNA, you can pursue high-growth roles such as Network Engineer, Network Administrator, System Administrator, and IT Support Engineer."
     },
     {
-        question: "Do you provide training for professional certifications like AWS?",
-        answer: "Yes! Our cloud and DevOps courses are specifically mapped to industry-standard certifications. We provide mock exams and guidance to help you clear global certifications like AWS, Azure, and Google Cloud."
+        question: "Is CCNA difficult for beginners?",
+        answer: "While concepts like subnetting can be challenging, our structured training and hands-on lab practice with Cisco Packet Tracer make it achievable for anyone."
+    },
+    {
+        question: "Is CCNA still valuable in 2026?",
+        answer: "Absolutely. Demand for networking professionals remains critical due to the expansion of cloud computing, cybersecurity, and global enterprise infrastructure."
+    },
+
+    // Slide 4: React Native & Mobile
+    {
+        question: "What is React Native and why use it?",
+        answer: "React Native is an open-source framework by Meta for building cross-platform mobile apps using a single JavaScript codebase for both Android and iOS."
+    },
+    {
+        question: "How is React Native different from native app development?",
+        answer: "It uses a shared codebase, significantly reducing development time and cost while still providing near-native performance and look-and-feel."
+    },
+    {
+        question: "Can React Native apps achieve native performance?",
+        answer: "Yes, it delivers near-native performance using native components and bridges, and can be further optimized with native modules for complex tasks."
+    },
+    {
+        question: "Is React Native a good career choice in 2026?",
+        answer: "Yes, its popularity and cost-effectiveness for startups and enterprises ensure strong demand for developers skilled in cross-platform mobile solutions."
     }
 ];
 

@@ -43,6 +43,206 @@ const commonFaq = [
     },
 ];
 
+const automationFaq = [
+    {
+        q: "What is Automation Testing and why is it important?",
+        a: "Automation Testing is a software testing approach where test cases are executed using scripts and tools instead of manual intervention. It is crucial for ensuring faster test execution, higher accuracy, improved test coverage, and seamless integration within CI/CD pipelines, especially in Agile and DevOps environments.",
+    },
+    {
+        q: "Which tools are commonly used in Automation Testing?",
+        a: "Popular tools include Selenium for web automation, Playwright for modern cross-browser testing, and frameworks built using TypeScript or Java. For API testing, tools like Postman and Rest Assured are widely used.",
+    },
+    {
+        q: "What is the difference between Selenium and Playwright?",
+        a: "Selenium is a widely adopted open-source tool supporting multiple languages and browsers, while Playwright offers faster execution, built-in auto-waiting, and better support for modern web applications, including multi-tab and network interception capabilities.",
+    },
+    {
+        q: "What programming languages are used in Automation Testing?",
+        a: "Automation Testing supports multiple languages such as Java, Python, JavaScript, and TypeScript. TypeScript is increasingly popular due to its static typing, scalability, and seamless integration with modern frameworks like Playwright.",
+    },
+    {
+        q: "What is API Testing in Automation?",
+        a: "API Testing focuses on validating backend services by testing endpoints for functionality, reliability, performance, and security. Tools like Postman and frameworks like Rest Assured help automate API test cases, ensuring seamless communication between microservices.",
+    },
+    {
+        q: "What are the benefits of using Automation Testing?",
+        a: "Automation Testing reduces human errors, accelerates regression testing, supports continuous integration, and improves software quality. It enables parallel execution, reusable test scripts, and faster feedback cycles, making it essential for scalable software development.",
+    },
+    {
+        q: "What is a Test Automation Framework?",
+        a: "A Test Automation Framework is a structured set of guidelines, coding standards, and tools used to design and execute automated tests. Common frameworks include Data-Driven, Keyword-Driven, Hybrid, and Page Object Model (POM), enhancing maintainability and scalability.",
+    },
+    {
+        q: "What skills are required to become an Automation Tester?",
+        a: "Key skills include programming knowledge (Java, Python, or TypeScript), understanding of testing concepts, experience with tools like Selenium or Playwright, API testing, version control (Git), and CI/CD tools like Jenkins.",
+    },
+    {
+        q: "How does Automation Testing fit into DevOps?",
+        a: "Automation Testing is a core component of DevOps, enabling continuous testing within CI/CD pipelines. Automated test scripts run during build and deployment stages, ensuring faster releases and higher software reliability.",
+    },
+    {
+        q: "Is Automation Testing a good career in 2026?",
+        a: "Yes, Automation Testing is in high demand due to rapid digital transformation, Agile adoption, and DevOps practices. Professionals skilled in tools like Selenium, Playwright, and API automation are highly sought after in the tech industry.",
+    },
+];
+
+const playwrightFaq = [
+    {
+        q: "Can Playwright be used for API testing?",
+        a: "Yes, Playwright provides built-in support for API testing through its APIRequestContext. It allows testers to send HTTP requests (GET, POST, PUT, DELETE) directly without relying on external tools, making it a powerful all-in-one solution for both UI and API automation.",
+    },
+    {
+        q: "What is APIRequestContext in Playwright?",
+        a: "APIRequestContext is a core feature in Playwright that enables direct interaction with REST APIs. It helps create isolated API sessions, manage headers, authentication tokens, and perform request chaining for end-to-end test scenarios.",
+    },
+    {
+        q: "How does Playwright API testing differ from tools like Postman?",
+        a: "While Postman is mainly used for manual and exploratory API testing, Playwright integrates API testing into automated test suites. This allows seamless end-to-end testing by combining backend API validation with frontend UI workflows in a single framework.",
+    },
+    {
+        q: "Can Playwright handle authentication for API testing?",
+        a: "Yes, Playwright supports various authentication mechanisms such as API keys, Bearer tokens, OAuth, and session cookies. You can configure headers globally or per request, making it suitable for testing secure and enterprise-grade APIs.",
+    },
+    {
+        q: "What are the advantages of using Playwright for API + UI testing?",
+        a: "Using Playwright for both API and UI testing ensures faster execution, reduced tool dependency, and better test coverage. It enables testers to validate backend responses, seed test data via APIs, and verify UI behavior in a single automated workflow, improving overall testing efficiency.",
+    },
+];
+
+const ccnaFaq = [
+    {
+        q: "What is CCNA?",
+        a: "CCNA is an entry-level networking certification offered by Cisco Systems. It validates foundational knowledge in networking concepts, IP connectivity, security fundamentals, automation, and network access.",
+    },
+    {
+        q: "Who should pursue CCNA certification?",
+        a: "CCNA is ideal for beginners, non-IT professionals transitioning into networking, and IT support engineers who want to build a strong foundation in networking and infrastructure management.",
+    },
+    {
+        q: "What topics are covered in the CCNA syllabus?",
+        a: "The CCNA curriculum includes IP addressing, subnetting, routing and switching, VLANs, NAT, network security, wireless networking, and basic automation concepts.",
+    },
+    {
+        q: "What is the exam format for CCNA?",
+        a: "The CCNA exam (200-301) consists of multiple-choice questions, drag-and-drop, simulations, and scenario-based questions designed to test practical networking skills.",
+    },
+    {
+        q: "How long does it take to prepare for CCNA?",
+        a: "Typically, it takes 3 to 6 months of consistent study, depending on your background. Hands-on practice with networking labs is crucial for success.",
+    },
+    {
+        q: "What are the career opportunities after CCNA?",
+        a: "After earning CCNA, you can pursue roles like Network Engineer, Network Administrator, System Administrator, and IT Support Engineer.",
+    },
+    {
+        q: "Is CCNA difficult for beginners?",
+        a: "CCNA can be challenging for beginners due to concepts like subnetting and routing protocols, but with proper guidance, lab practice, and structured training, it is achievable.",
+    },
+    {
+        q: "What tools are used to practice CCNA concepts?",
+        a: "Common tools include Cisco Packet Tracer and GNS3 for simulating real-world networking scenarios, helping learners gain hands-on experience.",
+    },
+    {
+        q: "What is the validity of CCNA certification?",
+        a: "The CCNA certification is valid for three years, after which you need to recertify to stay updated with current networking technologies.",
+    },
+    {
+        q: "Is CCNA worth it in 2026?",
+        a: "Yes, CCNA remains highly valuable due to the increasing demand for networking professionals in cloud computing, cybersecurity, and enterprise IT infrastructure.",
+    },
+    {
+        q: "Do I need a technical background to learn CCNA?",
+        a: "No, you don’t need a prior IT background to start CCNA. Basic computer knowledge and a willingness to learn networking concepts are enough to begin.",
+    },
+    {
+        q: "Is CCNA suitable for beginners? (v2)",
+        a: "Yes, CCNA is designed as an entry-level certification, making it ideal for beginners who want to start a career in networking.",
+    },
+    {
+        q: "How difficult is the CCNA exam? (v2)",
+        a: "The exam can be moderately challenging, especially topics like subnetting and routing. However, with consistent practice and hands-on labs, most students can clear it successfully.",
+    },
+    {
+        q: "How much time should I study daily for CCNA?",
+        a: "Students typically study 2–3 hours per day for about 3–6 months to prepare effectively for CCNA.",
+    },
+    {
+        q: "Do I need coding knowledge for CCNA?",
+        a: "No, coding is not required for CCNA. However, basic knowledge of networking automation concepts can be an added advantage.",
+    },
+    {
+        q: "Which tools should I use to practice CCNA?",
+        a: "Students commonly use Cisco Packet Tracer and GNS3 to simulate real-world networking scenarios and gain practical experience.",
+    },
+    {
+        q: "What job roles can I get after CCNA?",
+        a: "After completing CCNA, students can apply for roles such as Network Engineer, Network Administrator, IT Support Engineer, and System Administrator.",
+    },
+    {
+        q: "Is CCNA enough to get a job?",
+        a: "CCNA provides a strong foundation, but combining it with hands-on labs, internships, and basic troubleshooting skills significantly increases your chances of getting hired.",
+    },
+    {
+        q: "What is the cost of the CCNA exam?",
+        a: "The CCNA exam (200-301) typically costs around $300 (may vary by region and currency).",
+    },
+    {
+        q: "Is CCNA still valuable in 2026? (v2)",
+        a: "Yes, CCNA remains highly relevant due to increasing demand in networking, cloud computing, and cybersecurity domains.",
+    },
+    {
+        q: "Can I learn CCNA online?",
+        a: "Absolutely. Many students prepare for CCNA through online courses, virtual labs, and instructor-led training programs.",
+    },
+    {
+        q: "What should I do after CCNA?",
+        a: "After CCNA, students can advance to certifications like CCNP, or specialize in Cloud, Cybersecurity, or DevOps for better career growth.",
+    },
+];
+
+const reactNativeFaq = [
+    {
+        q: "What is React Native?",
+        a: "React Native is an open-source framework developed by Meta that allows developers to build cross-platform mobile applications using JavaScript and React, enabling a single codebase for both Android and iOS.",
+    },
+    {
+        q: "How is React Native different from native app development?",
+        a: "Unlike native development (Java/Kotlin for Android, Swift for iOS), React Native uses a shared codebase, reducing development time and cost while still providing near-native performance.",
+    },
+    {
+        q: "What programming language is used in React Native?",
+        a: "React Native primarily uses JavaScript and can also be enhanced with TypeScript for better scalability, type safety, and maintainability.",
+    },
+    {
+        q: "Can React Native apps achieve native performance?",
+        a: "Yes, React Native delivers near-native performance using native components and bridges, and can be further optimized with native modules when required.",
+    },
+    {
+        q: "What are the advantages of using React Native?",
+        a: "Key benefits include faster development, code reusability, strong community support, hot reloading, and cost-effective cross-platform deployment.",
+    },
+    {
+        q: "What tools are commonly used with React Native?",
+        a: "Developers often use tools like Visual Studio Code, Android Studio, Xcode, and debugging tools like React DevTools and Flipper.",
+    },
+    {
+        q: "Is React Native suitable for beginners?",
+        a: "Yes, React Native is beginner-friendly, especially for those with basic JavaScript or React knowledge, making it a popular choice for new developers.",
+    },
+    {
+        q: "What types of apps can be built using React Native?",
+        a: "You can build e-commerce apps, social media apps, fintech applications, healthcare apps, and enterprise mobile solutions using React Native.",
+    },
+    {
+        q: "How does React Native handle API integration?",
+        a: "React Native supports seamless API integration using fetch, Axios, or other libraries to connect with RESTful or GraphQL APIs for dynamic data handling.",
+    },
+    {
+        q: "Is React Native a good career choice in 2026?",
+        a: "Yes, React Native remains in high demand due to the growing need for cross-platform mobile applications, offering strong career opportunities in startups and enterprise companies.",
+    },
+];
+
 export const newCourseData = {
     "mern-stack": {
         heroData: {
@@ -1209,7 +1409,7 @@ export const newCourseData = {
             { id: 9, name: "TypeScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
             { id: 10, name: "Cucumber", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cucumber/cucumber-plain.svg" },
         ],
-        faqData: commonFaq,
+        faqData: [...automationFaq, ...playwrightFaq],
     },
     "aws-devops": {
         heroData: {

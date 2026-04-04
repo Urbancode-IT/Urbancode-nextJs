@@ -46,7 +46,14 @@ const courses = [
     duration: "3 Months",
     description: "Combine C# .NET backend with Angular frontend to build scalable enterprise-level web applications.",
     image: "/images/courses/poster6.webp",
-  }
+  },
+   {
+  id: 7,
+  title: "Generative AI Development",
+  duration: "3 Months",
+  description: "Learn to build intelligent AI applications using Generative AI, LLMs, and modern tools like OpenAI, LangChain, and Python. Create chatbots, AI assistants, and real-world AI solutions.",
+  image: "/images/courses/gen-ai-poster.webp",
+}
 ];
 
 import { motion } from 'framer-motion';
