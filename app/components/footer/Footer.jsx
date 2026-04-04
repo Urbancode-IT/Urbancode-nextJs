@@ -16,7 +16,7 @@ function Footer() {
       <div className="container">
         <div className="row gy-4">
           {/* Logo + Social */}
-          <div className="col-lg-3 col-md-6">
+          <div className="col-lg-2 col-md-6">
             <div className="footer-logo">
               <img src="/images/home/logo.png" alt="UrbanCode Logo" />
             </div>
@@ -55,16 +55,15 @@ function Footer() {
           </div>
 
           {/* Demand Software Courses */}
-          <div className="col-lg-3 col-md-6">
-            <h4>Trending Software Courses</h4>
+          <div className="col-lg-2 col-md-6">
+            <h4>Trending Courses</h4>
             <ul className="list-unstyled">
               <li><Link href="/courses/fullstack-development/mern-stack"> MERN Stack</Link></li>
               <li><Link href="/courses/fullstack-development/next.js-development"> Next.js</Link></li>
-              <li><Link href="/courses/fullstack-development/python-full-stack"> Python Stack</Link></li>
-              <li><Link href="/courses/fullstack-development/.net-plus-angular"> .Net + Angular Full Stack</Link></li>
+              <li><Link href="/courses/fullstack-development/python-full-stack"> Python</Link></li>
               <li><Link href="/courses/data-analytics"> Data Analytics</Link></li>
-              <li><Link href="/courses/cloud-and-devops/aws"> AWS Cloud Computing</Link></li>
-              <li><Link href="/courses/software-testing"> Software Testing</Link></li>
+              <li><Link href="/courses/cloud-and-devops/aws"> AWS Cloud</Link></li>
+              <li><Link href="/courses/software-testing"> Testing</Link></li>
             </ul>
           </div>
 
@@ -73,22 +72,32 @@ function Footer() {
             <h4>Kids Courses</h4>
             <ul className="list-unstyled">
               <li><Link href="/courses/kidz-space/python-core"> Core Python</Link></li>
-              <li><Link href="/courses/kidz-space/ai-and-ml"> AI & ML For Kids</Link></li>
-              <li><Link href="/courses/kidz-space/junior-web-development"> Web Development For Kids</Link></li>
-              <li><Link href="/courses/kidz-space/graphic-designing"> Graphic Designing</Link></li>
-              <li><Link href="/courses/kidz-space/c-programming"> C Programming</Link></li>
-              <li><Link href="/courses/kidz-space/sql-for-kids"> SQL</Link></li>
-              <li><Link href="/courses/kidz-space/cpp-programming"> C++</Link></li>
+              <li><Link href="/courses/kidz-space/ai-and-ml"> AI & ML</Link></li>
+              <li><Link href="/courses/kidz-space/junior-web-development"> Web Dev</Link></li>
+              <li><Link href="/courses/kidz-space/graphic-designing"> Graphics</Link></li>
+              <li><Link href="/courses/kidz-space/c-programming"> C Prog</Link></li>
             </ul>
           </div>
 
-          {/* Internships */}
+          {/* Career */}
           <div className="col-lg-2 col-md-6">
             <h4>Career</h4>
             <ul className="list-unstyled">
-              <li><Link href="be-our-mentor"> Mentor</Link></li>
-              <li><Link href="internship"> Internship</Link></li>
+              <li><Link href="/be-our-mentor"> Mentor</Link></li>
+              <li><Link href="/internship"> Internship</Link></li>
               <li><a href="#"> Job Portal</a></li>
+            </ul>
+          </div>
+
+          {/* Policies */}
+          <div className="col-lg-2 col-md-6">
+            <h4>Policies</h4>
+            <ul className="list-unstyled">
+              <li><Link href="/terms-and-conditions"> Terms & Conditions</Link></li>
+              <li><Link href="/privacy-policy"> Privacy Policy</Link></li>
+              <li><Link href="/policies"> Institute Policies</Link></li>
+              <li><Link href="/disclaimer"> Disclaimer</Link></li>
+              <li><Link href="/cookie-policy"> Cookie Policy</Link></li>
             </ul>
           </div>
         </div>
