@@ -89,7 +89,7 @@ const Projects = () => {
       <section className="ph-hero-section ">
         <div className="container ph-hero-container">
           <div className="ph-left-content">
-            <span className="ph-hero-badge">Premium</span>
+            <span className="ph-hero-badge section-eyebrow">Premium</span>
             <h1 className="ph-main-title">
               Web and App <span className="text-shine">Development</span>
             </h1>
@@ -110,8 +110,9 @@ const Projects = () => {
       <section id="projects" className="projects-section">
         <div className="container text-center">
           <div className="projects-header mb-5">
-            <h2 className="projects-title text-shine">Our Featured <span className='fw-bold'>Projects</span></h2>
-            <p className="projects-desc">Transform businesses and create exceptional digital experiences</p>
+            <p className="section-eyebrow">Our Work</p>
+            <h2 className="section-main-title">Our Featured <span className="text-shine">Projects</span></h2>
+            <p className="section-subtitle">Transform businesses and create exceptional digital experiences</p>
           </div>
 
           <div className="row g-4 justify-content-center">
@@ -139,11 +140,9 @@ const Projects = () => {
       <section id="about-section" className="about-section">
         <div className="about-container">
           <div className="about-header">
-            <div className="text-center mb-2">
-              <h4 className="styled-subtitle text-uppercase text-shine">About Us</h4>
-            </div>
-            <h2>Crafting Digital <span className="text-success text-shine">Excellence</span></h2>
-            <p>Our team combines creativity with technical expertise to deliver solutions that drive business growth.</p>
+            <p className="section-eyebrow">About Us</p>
+            <h2 className="section-main-title">Crafting Digital <span className="text-shine">Excellence</span></h2>
+            <p className="section-subtitle">Our team combines creativity with technical expertise to deliver solutions that drive business growth.</p>
           </div>
 
           <div className="about-stats">
@@ -175,10 +174,11 @@ const Projects = () => {
       {/* CLIENT SECTION */}
       <section className="client-section py-5">
         <div className="text-center">
-          <h2 className="client-heading">
-            Trusted by <span className="text-success text-shine">Leading Companies</span>
+          <p className="section-eyebrow">Our Clients</p>
+          <h2 className="section-main-title">
+            Trusted by <span className="text-shine">Leading Companies</span>
           </h2>
-          <p className="client-subheading mb-5">
+          <p className="section-subtitle mb-5">
             We've had the privilege of working with amazing companies across various industries.
           </p>
 
@@ -209,13 +209,11 @@ const Projects = () => {
       <section id="projectform" className="projectform-section py-5">
         <div className="container">
           <div className="text-center mb-5">
-            <div className="text-center mb-2">
-              <h4 className="styled-subtitle text-uppercase text-shine">Contact Us</h4>
-            </div>
-            <h2 className="" style={{ fontSize: '2.5rem' }}>
-              Let's Build Something <span className="text-shine" >Amazing</span>
+            <p className="section-eyebrow">Contact Us</p>
+            <h2 className="section-main-title">
+              Let's Build Something <span className="text-shine">Amazing</span>
             </h2>
-            <p className="text-muted mt-3" style={{ maxWidth: '700px', margin: 'auto' }}>
+            <p className="section-subtitle mt-3">
               Ready to transform your digital presence? We'd love to hear from you.
             </p>
           </div>
@@ -376,10 +374,8 @@ const Projects = () => {
       <section id="testimonials" className="testimonials-section py-5">
         <div className="container">
           <div className="text-center mb-4">
-            <div className="text-center mb-2">
-              <h4 className="styled-subtitle text-uppercase text-shine">Testimonials</h4>
-            </div>
-            <h2 style={{ fontSize: '2.5rem' }}>What Our <span className="text-shine">Clients Say</span></h2>
+            <p className="section-eyebrow">Testimonials</p>
+            <h2 className="section-main-title">What Our <span className="text-shine">Clients Say</span></h2>
           </div>
         </div>
 

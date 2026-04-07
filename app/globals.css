@@ -1,14 +1,46 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-
+/* ================================================================
+   FONT — loaded via next/font/google in layout.js
+   CSS variable: --font-inter is injected on <html>
+   ================================================================ */
 :root {
-  --bg-neutral: #fcfcfc;
-  --bg-neutral-rgb: 249, 249, 249;
-  /* Main site header: logo row + nav strip (see Navbar.css) */
+  /* Font stack */
+  --font-sans: var(--font-inter, 'Inter', system-ui, -apple-system, sans-serif);
+
+  /* ── Colour tokens ────────────────────────────────────────────── */
+  --bg-neutral:      #fcfcfc;
+  --bg-neutral-rgb:  249, 249, 249;
+  --color-brand:     #198754;
+  --color-brand-dark:#036c2d;
+  --color-text:      #1a1a1a;
+  --color-muted:     #6c757d;
+
+  /* ── Spacing / layout ─────────────────────────────────────────── */
   --site-header-height: 72px;
 
-  /* Override Bootstrap font variables */
-  --bs-body-font-family: 'Inter', sans-serif !important;
-  --bs-font-sans-serif: 'Inter', sans-serif !important;
+  /* ── Bootstrap overrides ─────────────────────────────────────── */
+  --bs-body-font-family:  var(--font-sans) !important;
+  --bs-font-sans-serif:   var(--font-sans) !important;
+
+  /* ── Typography scale (fluid with clamp) ────────────────────── */
+  --fs-xl:   clamp(2.25rem, 5vw, 3.5rem);   /* heading-xl  ~56px → 36px */
+  --fs-lg:   clamp(1.75rem, 3.5vw, 2.5rem); /* heading-lg  ~40px → 28px */
+  --fs-md:   clamp(1.25rem, 2.5vw, 1.75rem);/* heading-md  ~28px → 20px */
+  --fs-body-lg: clamp(1.0625rem, 1.5vw, 1.125rem); /* text-lg  ~18px */
+  --fs-body-md: 1rem;                        /* text-md     16px */
+  --fs-body-sm: 0.875rem;                    /* text-sm     14px */
+
+  /* ── Line heights ────────────────────────────────────────────── */
+  --lh-heading: 1.15;
+  --lh-body:    1.65;
+
+  /* ── Letter spacing ─────────────────────────────────────────── */
+  --ls-tight:  -0.5px;
+  --ls-normal:  0px;
+  --ls-wide:    0.4px;
+
+  /* ── Transitions ────────────────────────────────────────────── */
+  --transition-base: all 0.3s ease;
+  --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @media (max-width: 768px) {
@@ -17,34 +49,209 @@
   }
 }
 
-/* Safely apply to common text elements without overriding icon fonts like FontAwesome */
-html,
-body,
-h1, h2, h3, h4, h5, h6, 
-p, span, a, label, button, input, textarea, select, div {
-  font-family: 'Inter', sans-serif;
+/* ================================================================
+   RESET & BASE
+   ================================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
 }
 
 html,
 body {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
   background-color: var(--bg-neutral);
   overflow-x: hidden;
   width: 100%;
+  /* Font rendering */
+  -webkit-font-smoothing:  antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
+/* Apply Inter everywhere EXCEPT icon font elements */
+html,
+body,
+h1, h2, h3, h4, h5, h6,
+p, span, a, label, button,
+input, textarea, select, div {
+  font-family: var(--font-sans);
+}
+
+/* ================================================================
+   HEADING NORMALISATION (h1–h6)
+   ================================================================ */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-sans);
+  line-height: var(--lh-heading);
+  letter-spacing: var(--ls-tight);
+  font-weight: 700;
+  color: var(--color-text);
+  margin-top: 0;
+  transition: var(--transition-base);
+}
+
+/* ================================================================
+   TYPOGRAPHY UTILITY CLASSES
+   ================================================================ */
+
+/* ── Heading scale ───────────────────────────────────────────── */
+.heading-xl {
+  font-size: var(--fs-xl);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -1px;
+}
+
+.heading-lg {
+  font-size: var(--fs-lg);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: var(--ls-tight);
+}
+
+.heading-md {
+  font-size: var(--fs-md);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: var(--ls-tight);
+}
+
+/* ── Body text scale ─────────────────────────────────────────── */
+.text-lg {
+  font-size: var(--fs-body-lg);
+  font-weight: 400;
+  line-height: var(--lh-body);
+  letter-spacing: var(--ls-normal);
+}
+
+.text-md {
+  font-size: var(--fs-body-md);
+  font-weight: 400;
+  line-height: var(--lh-body);
+}
+
+.text-sm {
+  font-size: var(--fs-body-sm);
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--color-muted);
+}
+
+/* ── Font weight helpers ─────────────────────────────────────── */
+.fw-light    { font-weight: 300 !important; }
+.fw-regular  { font-weight: 400 !important; }
+.fw-medium   { font-weight: 500 !important; }
+.fw-semibold { font-weight: 600 !important; }
+.fw-bold     { font-weight: 700 !important; }
+.fw-extrabold{ font-weight: 800 !important; }
+
+/* ── Colour helpers ──────────────────────────────────────────── */
+.text-brand  { color: var(--color-brand)  !important; }
+.text-muted  { color: var(--color-muted)  !important; }
+.text-dark   { color: var(--color-text)   !important; }
+
+/* ================================================================
+   SHARED SECTION HEADING (used across all pages)
+   ================================================================ */
+.section-main-title {
+  display: block;
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: 700;
+  line-height: var(--lh-heading);
+  letter-spacing: var(--ls-tight);
+  text-align: center;
+  color: var(--color-brand);
+  margin: 0 auto 15px;
+  padding-bottom: 15px;
+  max-width: 100%;
+  word-wrap: break-word;
+  transition: var(--transition-base);
+}
+
+.section-main-title + p {
+  margin-top: 0 !important;
+}
+
+/* ── Eyebrow label — small uppercase tag above section titles ─── */
+.section-eyebrow {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color-brand);
+  margin-bottom: 10px;
+  opacity: 0.85;
+}
+
+/* ── Section subtitle — descriptive paragraph below h2 ────────── */
+.section-subtitle {
+  font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+  color: var(--color-muted);
+  line-height: var(--lh-body);
+  max-width: 680px;
+  margin: 8px auto 0;
+}
+
+/* ================================================================
+   INTERACTIONS & MICRO-ANIMATIONS
+   ================================================================ */
+
+/* Headings — subtle lift on hover */
+h1:hover, h2:hover, h3:hover {
+  transform: translateY(-1px);
+  color: var(--color-brand);
+}
+
+/* Links — underline sweep animation */
+a {
+  color: inherit;
+  text-decoration: none;
+  position: relative;
+  transition: color 0.3s ease;
+}
+a:not(.btn):not([class*="nav"]):not([class*="icon"])::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 1.5px;
+  background: var(--color-brand);
+  transition: width 0.3s ease;
+}
+a:not(.btn):not([class*="nav"]):not([class*="icon"]):hover::after {
+  width: 100%;
+}
+a:not(.btn):not([class*="nav"]):not([class*="icon"]):hover {
+  color: var(--color-brand);
+}
+
+/* Generic interactive card */
+.interactive-card {
+  transition: var(--transition-smooth);
+}
+.interactive-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(25, 135, 84, 0.12);
+}
+
+/* ================================================================
+   BRAND GRADIENT TEXT  (.text-shine)
+   ================================================================ */
 .text-shine {
   position: relative;
   display: inline-block;
-  background: linear-gradient(90deg,
-      #036c2d,
-      #17944d,
-      #002a11,
-      #0b0703,
-      #17944d,
-      #036c2d);
+  background: linear-gradient(
+    90deg,
+    #036c2d,
+    #17944d,
+    #002a11,
+    #0b0703,
+    #17944d,
+    #036c2d
+  );
   background-size: 300%;
   -webkit-background-clip: text;
   background-clip: text;
@@ -53,77 +260,28 @@ body {
 }
 
 @keyframes shine {
-  0% {
-    background-position: -100%;
-  }
-
-  100% {
-    background-position: 200%;
-  }
+  0%   { background-position: -100%; }
+  100% { background-position:  200%; }
 }
 
-.section-main-title {
-  position: relative;
-  display: block;
-  padding-bottom: 15px;
-  font-weight: 600;
-  font-size: 36px;
-  text-align: center;
-  line-height: 1.2;
-  color: #198754;
-  margin: 0 auto 15px auto;
-  letter-spacing: -0.5px;
-  max-width: 100%;
-  word-wrap: break-word;
-}
-
-.section-main-title+p {
-  margin-top: 0 !important;
-}
+/* ================================================================
+   MISC GLOBAL UTILITIES
+   ================================================================ */
+.fs1rem { font-size: 1rem !important; }
 
 @media (max-width: 768px) {
   .section-main-title {
-    font-size: 26px;
     padding-bottom: 10px;
     margin-bottom: 10px;
-    line-height: 1.1;
   }
-
-  .fs1rem {
-    font-size: 0.85rem !important;
-  }
+  .fs1rem { font-size: 0.85rem !important; }
 }
 
-/* .section-main-title::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 3px;
-  background: linear-gradient(90deg, transparent, #198754, #12d46c, #198754, transparent);
-  background-size: 200% 100%;
-  border-radius: 2px;
-  animation: underline-shine 3s ease-in-out infinite;
-} */
-
+/* ================================================================
+   UNDERLINE SHINE ANIMATION (shared keyframe)
+   ================================================================ */
 @keyframes underline-shine {
-  0% {
-    background-position: 100% 0;
-    width: 60px;
-    opacity: 0.6;
-  }
-
-  50% {
-    background-position: 0% 0;
-    width: 100px;
-    opacity: 1;
-  }
-
-  100% {
-    background-position: -100% 0;
-    width: 60px;
-    opacity: 0.6;
-  }
-}
+  0%   { background-position: 100% 0; width: 60px;  opacity: 0.6; }
+  50%  { background-position:   0% 0; width: 100px; opacity: 1;   }
+  100% { background-position:-100% 0; width: 60px;  opacity: 0.6; }
+}

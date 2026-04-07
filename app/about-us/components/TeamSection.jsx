@@ -66,26 +66,7 @@ const ChevronRight = () => (
 /* ── Component ──────────────────────────────────────────────────── */
 export default function TeamSection() {
   const sectionRef = useRef(null);
-  const trackRef   = useRef(null);
-  const [activeCategory, setActiveCategory] = useState('All');
-  const [visibleCols, setVisibleCols] = useState(4);
-
-  // Update visibleCols based on same breakpoints as CSS
-  useEffect(() => {
-    const updateCols = () => {
-      const w = window.innerWidth;
-      if (w <= 991) setVisibleCols(2);
-      else if (w <= 1199) setVisibleCols(3);
-      else setVisibleCols(4);
-    };
-    updateCols();
-    window.addEventListener('resize', updateCols);
-    return () => window.removeEventListener('resize', updateCols);
-  }, []);
-
-  const filteredMembers = teamMembers.filter(m => 
-    activeCategory === 'All' ? true : m.category === activeCategory
-  );
+  const [activeCategory, setActiveCategory] = useState(null);
 
   /* Scroll-reveal */
   useEffect(() => {
@@ -99,12 +80,21 @@ export default function TeamSection() {
     return () => observer.disconnect();
   }, []);
 
-  /* Arrow scroll — one full page of visible cards */
-  const scroll = useCallback((dir) => {
-    const track = trackRef.current;
-    if (!track) return;
-    track.scrollBy({ left: dir === 'left' ? -track.clientWidth : track.clientWidth, behavior: 'smooth' });
-  }, []);
+  /* Handle Card Click and Scroll */
+  const handleCategoryClick = (category) => {
+    setActiveCategory(category);
+    
+    // Smooth scroll to top of section on mobile/tablets
+    if (window.innerWidth <= 991 && sectionRef.current) {
+      setTimeout(() => {
+        const offsetPosition = sectionRef.current.getBoundingClientRect().top + window.scrollY - 80;
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }, 50);
+    }
+  };
 
   return (
     <section
@@ -113,98 +103,85 @@ export default function TeamSection() {
       aria-labelledby="team-section-title"
     >
       <div className="container">
-        {/* Header */}
         <div className="team-header">
           <h2 id="team-section-title" className="section-main-title">
             Meet Our <span className="text-shine">Expert Team</span>
           </h2>
-          
-          {/* Innovated Filter Pills */}
-          <div className="team-filter-pill-container">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                className={`team-filter-btn ${activeCategory === cat ? 'active' : ''}`}
-                onClick={() => {
-                  setActiveCategory(cat);
-                  // Reset scroll on category change
-                  if (trackRef.current) trackRef.current.scrollTo({ left: 0, behavior: 'smooth' });
-                }}
-              >
-                {cat}
-                {activeCategory === cat && (
-                  <motion.div 
-                    layoutId="active-pill"
-                    className="active-pill-bg"
-                    transition={{ type: "spring", bounce: 0.25, duration: 0.5 }}
-                  />
-                )}
-              </button>
-            ))}
-          </div>
         </div>
 
-        {/* Scroller shell */}
-        <div className="team-scroller-shell">
-          {/* Track — only center if items fit in the current view */}
-          <div className={`team-track ${filteredMembers.length <= visibleCols ? 'centered' : ''}`} ref={trackRef}>
-            <AnimatePresence mode="popLayout" initial={false}>
-              {filteredMembers.map((member, index) => (
-                <motion.div 
-                  key={`${activeCategory}-${member.id}`} 
-                  layout
-                  initial={{ opacity: 0, scale: 0.9, y: 20 }}
-                  animate={{ 
-                    opacity: 1, 
-                    scale: 1, 
-                    y: 0,
-                    transition: { delay: index * 0.1 } 
-                  }}
-                  exit={{ opacity: 0, scale: 0.9, y: 10, transition: { duration: 0.2 } }}
-                  className="team-card-wrapper"
-                >
-                  <div className="team-portrait">
-                    <img
-                      src={member.image}
-                      alt={member.name}
-                      className="team-portrait-img"
-                      loading="lazy"
-                    />
-                    <div className="team-portrait-overlay" aria-hidden="true">
-                      <div className="team-social-row">
-                        <a href={member.linkedin} className="team-social-btn" target="_blank" rel="noopener noreferrer">
-                          <LinkedInIcon />
-                        </a>
-                        <a href={member.twitter} className="team-social-btn" target="_blank" rel="noopener noreferrer">
-                          <TwitterIcon />
-                        </a>
-                        <a href={member.github} className="team-social-btn" target="_blank" rel="noopener noreferrer">
-                          <GithubIcon />
-                        </a>
-                      </div>
+        {/* Drill-down Layout */}
+        <div className="team-drilldown-container">
+          {!activeCategory ? (
+            /* ── Categories Overview View ── */
+            <div className="team-categories-grid">
+              {categories.filter(cat => cat !== 'All').map((category) => {
+                const members = teamMembers.filter(m => m.category === category);
+                const coverImage = members[0]?.image; // First member's image as cover
+                
+                return (
+                  <div 
+                    key={category} 
+                    className="team-category-card"
+                    onClick={() => handleCategoryClick(category)}
+                  >
+                    <img src={coverImage} alt={`${category} Team`} className="team-category-img" />
+                    <div className="team-category-overlay">
+                      <h3>{category}</h3>
                     </div>
                   </div>
-  
-                  <div className="team-info">
-                    <h3 className="team-name">{member.name}</h3>
-                    <p className="team-role">{member.role}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </AnimatePresence>
-          </div>
+                );
+              })}
+            </div>
+          ) : (
+            /* ── Active Team Members View ── */
+            <div className="team-members-view">
+              <div className="team-expanded-header">
+                <h3>{activeCategory} Team</h3>
+                <button 
+                  className="team-back-btn" 
+                  onClick={() => setActiveCategory(null)}
+                  aria-label="Back to Teams"
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{marginRight: '8px'}}>
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                  </svg>
+                  Back
+                </button>
+              </div>
 
-          {/* Arrow row — hide if items fit the current screen size */}
-          {filteredMembers.length > visibleCols && (
-            <div className="team-arrow-row">
-              <button className="team-arrow team-arrow-prev" onClick={() => scroll('left')} aria-label="Scroll left">
-                <ChevronLeft />
-                <span className="team-arrow-text">PREV</span>
-              </button>
-              <button className="team-arrow team-arrow-next" onClick={() => scroll('right')} aria-label="Scroll right">
-                <span className="team-arrow-text">NEXT</span>
-                <ChevronRight />
-              </button>
+              <div className="team-grid">
+                {teamMembers.filter(m => m.category === activeCategory).map((member) => (
+                  <div key={member.id} className="team-card-wrapper">
+                    <div className="team-portrait">
+                      <img
+                        src={member.image}
+                        alt={member.name}
+                        className="team-portrait-img"
+                        loading="lazy"
+                      />
+                      <div className="team-portrait-overlay" aria-hidden="true">
+                        <div className="team-social-row">
+                          <a href={member.linkedin} className="team-social-btn" target="_blank" rel="noopener noreferrer">
+                            <LinkedInIcon />
+                          </a>
+                          <a href={member.twitter} className="team-social-btn" target="_blank" rel="noopener noreferrer">
+                            <TwitterIcon />
+                          </a>
+                          <a href={member.github} className="team-social-btn" target="_blank" rel="noopener noreferrer">
+                            <GithubIcon />
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+    
+                    <div className="team-info">
+                      <h3 className="team-name">{member.name}</h3>
+                      <p className="team-role">{member.role}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           )}
         </div>

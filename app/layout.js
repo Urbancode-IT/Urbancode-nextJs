@@ -2,6 +2,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './globals.css';
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
+import { Inter } from 'next/font/google';
+
+const inter = Inter({
+  subsets: ['latin'],
+  weights: ['300', '400', '500', '600', '700', '800'],
+  display: 'swap',
+  variable: '--font-inter',
+});
 
 import Navbar from './components/header/Navbar';
 import Footer from './components/footer/Footer';
@@ -15,7 +23,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className={inter.variable}>
       <head>
         {/* Google Tag (gtag.js) */}
         <script
