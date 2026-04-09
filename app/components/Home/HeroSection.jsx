@@ -46,7 +46,7 @@ export default function HeroSection() {
     return () => clearInterval(letterInterval);
   }, [currentWordIndex]);
 
-  const images = ["/images/home/hh1.webp", "/images/home/hh2.webp", "/images/home/hh3.webp", "/images/home/hh4.webp"];
+  const images = ["/images/home/s1.webp", "/images/home/s2.webp", "/images/home/s3.webp", "/images/home/s4.webp"];
   const [imageOrder, setImageOrder] = useState([0, 1, 2, 3]);
 
   useEffect(() => {

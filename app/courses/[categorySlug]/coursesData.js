@@ -345,7 +345,7 @@ const coursesData = {
   rating: 4.8,
   duration: "1.5 months",
   students: "15,278",
-  img: "/images/courses/C_CPP.jpeg",
+  img: "/images/courses/cc.png",
   aboutData: {
     topic: "Master C and C++ — Build Strong Programming Foundations!",
     content1:
@@ -542,7 +542,7 @@ const coursesData = {
   rating: 4.6,
   duration: "1 month",
   students: "12,432",
-  img: "/images/courses/HTML_CSS.jpeg",
+  img: "/images/courses/htmlcss.png",
   aboutData: {
     topic: "Master HTML and CSS — Build and Design Modern, Responsive Websites!",
     content1:
@@ -656,7 +656,7 @@ const coursesData = {
   rating: 4.8,
   duration: "3 months",
   students: "17,652",
-  img: "/images/courses/Java_Full_Stack.jpeg",
+  img: "/images/courses/java2.png",
   aboutData: {
     topic: "Master Java Full Stack Development — Build Scalable Web Applications from Front-End to Back-End!",
     content1:
@@ -957,7 +957,7 @@ const coursesData = {
   rating: 4.9,
   duration: "2 months",
   students: "14,325",
-  img: "/images/courses/MERN_Stack.jpg",
+  img: "/images/courses/mern.png",
   aboutData: {
     topic: "Master the MERN Stack — Build Powerful Full-Stack Web Applications with React and Node.js!",
     content1:
@@ -1057,7 +1057,7 @@ const coursesData = {
   rating: 4.9,
   duration: "1.5 months",
   students: "106",
-  img: "/images/courses/React_Native.jpg",
+  img: "/images/courses/React2.png",
   aboutData: {
     topic: "Master React Native — Build High-Performance Cross-Platform Mobile Apps!",
     content1:
@@ -1259,7 +1259,7 @@ const coursesData = {
   rating: 5.0,
   duration: "1 month",
   students: "12,642",
-  img: "/images/courses/HTML_and_CSS.jpg",
+  img: "/images/courses/react3.png",
   aboutData: {
     topic: "Master React.js — Build Dynamic, Modern Web Applications from the Ground Up!",
     content1:
@@ -1361,7 +1361,7 @@ const coursesData = {
   rating: 4.9,
   duration: "2 months",
   students: "11,845",
-  img: "/images/courses/HTML_CSS.jpeg",
+  img: "/images/courses/pythonnew.png",
   aboutData: {
     topic: "Master Python Full Stack Development — Build Complete Web Applications from Scratch!",
     content1:
@@ -1460,7 +1460,7 @@ const coursesData = {
         rating: 4.8,
         duration: "2 months",
         students: "7,842",
-        img: "/images/courses/nextjs.jpg",
+        img: "/images/courses/nextjs.png",
         aboutData: {
           topic: "Master Next.js — The Leading React Framework for Production!",
           content1:
@@ -2004,7 +2004,7 @@ const coursesData = {
         rating: 5.0,
         duration: "3 months",
         students: "10,126",
-        img: "/images/courses/AWS.jpg",
+        img: "/images/courses/aws1.png",
         aboutData: {
           topic: "Master AWS — From Cloud Fundamentals to Advanced Architecture & DevOps!",
           content1:
@@ -2206,7 +2206,7 @@ const coursesData = {
         rating: 5.0,
         duration: "3 months",
         students: "9,650",
-        img: "/images/courses/Microsoft_Azure.jpg",
+        img: "/images/courses/azure.png",
         aboutData: {
           topic: "Become a Certified Microsoft Azure Cloud Expert — From Fundamentals to Advanced Cloud Solutions!",
           content1: "Accelerate your cloud career with comprehensive Microsoft Azure training. Learn how to design, deploy, and manage scalable cloud applications, build secure infrastructure, and integrate DevOps and AI capabilities. This course prepares you for Azure certification and real-world enterprise cloud solutions.",
@@ -2673,7 +2673,7 @@ const coursesData = {
         rating: 4.8,
         duration: "3 months",
         students: "500+",
-        img: "/images/courses/z4.webp",
+        img: "/images/courses/dataanalytics.jpg",
         aboutData: {
           topic: "Master Data Analytics — From Data Mining to Actionable Business Insights!",
           content1: "This comprehensive Data Analytics course takes you through the entire data lifecycle — from data cleaning and preparation to advanced visualization and predictive modeling. You'll master the most in-demand tools including Excel, SQL, Python, Power BI, and Tableau.",
@@ -4406,7 +4406,7 @@ const coursesData = {
   "rating": 5.0,
   "duration": "1 month",
   "students": "14,872",
-  "img": "/images/courses/Selenium.webp",
+  "img": "/images/courses/Selenium.png",
   "aboutData": {
     "topic": "Master Selenium — The Industry Standard for Web Automation Testing!",
     "content1": "This course is designed to make you a complete Selenium automation tester. You’ll start with the basics of Selenium WebDriver and gradually move toward building full automation frameworks with TestNG, POM, and CI/CD integration.",
@@ -4505,7 +4505,7 @@ const coursesData = {
   "rating": 5.0,
   "duration": "1 month",
   "students": "11,204",
-  "img": "/images/courses/Playwright.webp",
+  "img": "/images/courses/Playwright.png",
   "aboutData": {
     "topic": "Master Playwright — Modern End-to-End Automation for Web Applications!",
     "content1": "Learn Playwright from scratch and become an expert in web automation testing using JavaScript or TypeScript. This course teaches you how to automate browsers, handle dynamic elements, perform cross-browser testing, and design scalable test frameworks with ease.",
@@ -4627,7 +4627,7 @@ const coursesData = {
   "rating": 5.0,
   "duration": "1 month",
   "students": "106",
-  "img": "/images/courses/TypeScript_Testing.webp",
+  "img": "/images/courses/typescript.png",
   "aboutData": {
     "topic": "Master Testing with TypeScript — From Unit Tests to End-to-End Automation!",
     "content1": "Learn to write clean and type-safe tests for modern web applications using TypeScript. This course covers everything from unit and integration testing to end-to-end automation using tools like Jest, Mocha, Chai, and Playwright — all powered by TypeScript.",

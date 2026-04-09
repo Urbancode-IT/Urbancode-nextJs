@@ -75,7 +75,7 @@ function Footer() {
               <li><Link href="/courses/kidz-space/ai-and-ml"> AI & ML</Link></li>
               <li><Link href="/courses/kidz-space/junior-web-development"> Web Dev</Link></li>
               <li><Link href="/courses/kidz-space/graphic-designing"> Graphics</Link></li>
-              <li><Link href="/courses/kidz-space/c-programming"> C Prog</Link></li>
+              <li><Link href="/courses/kidz-space/c-programming"> C Programming</Link></li>
             </ul>
           </div>
 
