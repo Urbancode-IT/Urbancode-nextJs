@@ -1,5 +1,230 @@
+/* TrainingSection.css */
 .training_section_main_container {
-  background-color: var(--bg-neutral);
-  opacity: 0.9;
-  padding: 70px 0 70px 0;
+  padding: 80px 0;
+  background-color: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background Tech Grid Decorative */
+.training_section_main_container::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(circle at 2px 2px, rgba(25, 135, 84, 0.04) 1px, transparent 0);
+  background-size: 50px 50px;
+  z-index: 0;
+}
+
+.section-main-title {
+  position: relative;
+  z-index: 10;
+}
+
+.training-intro-block {
+  max-width: 850px;
+  margin: 0 auto 100px auto;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+}
+
+.training-intro-block p {
+  color: var(--color-muted);
+  font-size: var(--fs-body-lg);
+  line-height: var(--lh-body);
+  margin-bottom: 15px;
+}
+
+/* The Hub System */
+.skills-activation-system {
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+  height: 650px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.core-hub {
+  position: relative;
+  width: 280px;
+  height: 280px;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hub-center-plate {
+  width: 200px;
+  height: 200px;
+  background: white;
+  border-radius: 50%;
+  border: 4px solid #f8fbf9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow: 0 15px 45px rgba(25, 135, 84, 0.12), 0 0 30px rgba(25, 135, 84, 0.05);
+  z-index: 5;
+}
+
+.hub-center-plate h3 {
+  font-size: var(--fs-md);
+  font-weight: 800;
+  color: var(--color-text);
+  line-height: var(--lh-heading);
+  margin: 0;
+}
+
+.hub-outer-ring {
+  position: absolute;
+  inset: -10px;
+  border: 2px dashed rgba(25, 135, 84, 0.4);
+  border-radius: 50%;
+  animation: rotate-hub 40s linear infinite;
+}
+
+.hub-pulse-ring {
+  position: absolute;
+  inset: -60px;
+  border: 1px solid rgba(25, 135, 84, 0.1);
+  border-radius: 50%;
+  animation: pulse-hub 4s ease-out infinite;
+}
+
+@keyframes rotate-hub {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse-hub {
+  0% { transform: scale(0.9); opacity: 0.8; }
+  100% { transform: scale(1.1); opacity: 0; }
+}
+
+/* HIGHLY VISIBLE CONNECTION STREAMS */
+.data-stream-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.stream-path {
+  fill: none;
+  stroke: rgba(25, 135, 84, 0.15); /* Base static line */
+  stroke-width: 2;
+}
+
+.stream-flow-line {
+  fill: none;
+  stroke: var(--color-brand);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-dasharray: 60, 400; /* Create a moving "laser" streak */
+  filter: drop-shadow(0 0 5px rgba(25, 135, 84, 0.6)); /* Add a glow */
+  animation: stream-flow-dash 3s linear infinite;
+}
+
+@keyframes stream-flow-dash {
+  0% { stroke-dashoffset: 460; }
+  100% { stroke-dashoffset: 0; }
+}
+
+/* Nodes Styling */
+.skill-node {
+  position: absolute;
+  width: 300px;
+  z-index: 15;
+}
+
+.node-top-left { top: 0; left: 0; }
+.node-top-right { top: 0; right: 0; }
+.node-bottom-left { bottom: 0; left: 0; }
+.node-bottom-right { bottom: 0; right: 0; }
+
+.skill-card-modern {
+  background: white;
+  padding: 30px;
+  border-radius: 24px;
+  border: 1px solid rgba(0,0,0,0.05);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.04);
+  transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-node:hover .skill-card-modern {
+  transform: translateY(-15px) scale(1.05);
+  box-shadow: 0 30px 60px rgba(25, 135, 84, 0.12);
+  border-color: var(--color-brand);
+}
+
+.node-icon-highlight {
+  width: 55px;
+  height: 55px;
+  background: rgba(25, 135, 84, 0.08);
+  color: var(--color-brand);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  margin-bottom: 20px;
+  transition: all 0.4s ease;
+}
+
+.skill-node:hover .node-icon-highlight {
+  background: var(--color-brand);
+  color: white;
+  transform: rotateY(180deg);
+}
+
+.skill-card-modern h5 {
+  font-size: var(--fs-body-lg);
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 12px;
+}
+
+.skill-card-modern p {
+  font-size: var(--fs-body-md);
+  color: var(--color-muted);
+  line-height: var(--lh-body);
+  margin: 0;
+}
+
+@media (max-width: 992px) {
+  .training_section_main_container {
+    padding: 60px 0;
+  }
+  .training-intro-block {
+    margin-bottom: 50px;
+  }
+  .skills-activation-system {
+    height: auto;
+    flex-direction: column;
+    padding: 20px;
+    gap: 40px;
+  }
+  .skill-node {
+    position: static;
+    width: 100%;
+  }
+  .data-stream-svg {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .training_section_main_container {
+    padding: 40px 0;
+  }
 }

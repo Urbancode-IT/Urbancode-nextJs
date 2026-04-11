@@ -1,0 +1,68 @@
+Core Java | Build a rock-solid programming foundation with our Core Java training. Master Object-Oriented Programming (OOP) concepts, syntax, and multithreading to crack enterprise software developer interviews.
+Advanced Java | Accelerate your backend career with Advanced Java certification. Master Spring Boot, Microservices, JDBC, and REST APIs to build enterprise-grade web applications and secure lucrative tech roles.
+Core Python | Kickstart your tech career with our comprehensive Core Python programming course. Master fundamental logic, data handling, and OOP concepts to unlock high-demand opportunities in AI and Data Science.
+Advanced Python | Become an elite Python Developer. Master Advanced Python training covering APIs, extensive data analysis, web frameworks, and automation scripts to secure top-tier backend engineering positions.
+C and CPP Programming | Master high-performance development with our C & C++ certification. Learn logic building, memory management, and competitive programming skills essential for top-tier product company placements.
+Data Structures and Algorithms (DSA) | Crack technical interviews at top FAANG and product-based companies. Master Data Structures and Algorithms (DSA) with extensive problem-solving, pattern recognition, and optimized logic building.
+HTML and CSS | Start your front-end web development journey with expert HTML5 and CSS3 training. Learn to design stunning, responsive, and mobile-friendly websites from scratch for high-demand UI roles.
+Java Full Stack Development | Accelerate your tech career with our Java Full Stack Development certification. Master Spring Boot, front-end technologies, and MySQL to build scalable web apps with 100% placement support.
+Angular | Elevate your front-end web development skills with our complete Angular training. Master TypeScript, components, and real-world project deployment to secure top-tier UI developer roles.
+MEAN Stack | Dominate full-stack web development with our intensive MEAN Stack courses. Build powerful enterprise applications using MongoDB, Express.js, Angular, and Node.js with live hands-on projects.
+MERN Stack | Launch your career with comprehensive MERN Stack training. Master MongoDB, Express.js, React, and Node.js through live coding exercises and guarantee your software engineering placement.
+React Native | Build high-performance cross-platform mobile apps with expert React Native training. Master JavaScript components and Native APIs for both iOS & Android app development careers.
+.NET Angular | Become an elite enterprise web developer. Master full-stack architectures combining Microsoft ASP.NET backend robustness with dynamic Angular frontends for high-paying corporate tech roles.
+React.js | Master React.js from scratch. Build dynamic, high-performance web applications using modern hooks, Redux, and Context API to secure top frontend developer roles.
+Python Full Stack | Become a Python Full Stack Developer. Master Django, Flask, HTML, CSS, and database integration to build complete web applications with 100% placement assistance.
+Next.js Development | Build blazing-fast, SEO-friendly web apps with Next.js. Master Server-Side Rendering (SSR), API routes, and modern React patterns to become an elite web developer.
+Figma | Launch your UI/UX career by mastering Figma. Learn wireframing, prototyping, and modern interface design for web and mobile apps to land high-paying design roles.
+Photoshop | Unleash your creativity with our Adobe Photoshop masterclass. Learn professional photo editing, graphic design, and digital art to build an impressive visual portfolio.
+Graphic Design | Become an expert Graphic Designer. Master Photoshop, Illustrator, and visual storytelling to craft stunning brand identities and land creative industry jobs.
+Canva | Master Canva design to create stunning social media graphics, presentations, and marketing materials instantly. Perfect for freelancers, marketers, and entrepreneurs.
+AWS | Launch your cloud computing career with comprehensive AWS training. Master architecture, EC2, S3, and DevOps integration to secure high-paying Cloud Engineer roles.
+Google Cloud | Master Google Cloud Platform (GCP). Learn to design scalable cloud infrastructure, data pipelines, and AI integrations to pass GCP certification exams.
+Microsoft Azure | Become an Azure Cloud expert. Master cloud administration, infrastructure deployment, and DevOps practices to accelerate your career in enterprise IT.
+DevOps | Master the complete DevOps lifecycle. Automate deployments and streamline CI/CD pipelines using Git, Docker, Kubernetes, and Jenkins for elite engineering roles.
+Kubernetes | Dominate container orchestration with expert Kubernetes training. Learn deployment, scaling, and cluster management for modern cloud-native applications.
+Jenkins | Master Jenkins for robust CI/CD automation. Streamline software delivery, automate testing, and secure agile development pipelines for top enterprise roles.
+Terraform | Become an Infrastructure as Code (IaC) expert. Master Terraform to automate massive cloud deployments across AWS, Azure, and GCP seamlessly.
+Data Analytics | Transform raw data into strategic decisions. Master Excel, SQL, Python, Power BI, and Tableau to secure lucrative roles as a professional Data Analyst.
+SAS | Propel your analytics career with expert SAS training. Master data management, predictive modeling, and business intelligence to lead data-driven corporate strategies.
+R Programming | Master R Programming for data science and statistical analysis. Learn advanced algorithms, data visualization, and predictive modeling for top analytics roles.
+AI and ML | Lead the data revolution. Master Python, Artificial Intelligence, and Machine Learning algorithms to build predictive models and secure top Data Scientist roles.
+Python Plus ChatGPT | Future-proof your career. Master Python programming and integrate OpenAI APIs to build intelligent, automated, and cutting-edge software solutions.
+SAS | Propel your analytics career with expert SAS training. Master data management, predictive modeling, and business intelligence to lead data-driven corporate strategies.
+Data Engineering | Master Data Engineering with hands-on training in Google Cloud, Apache Airflow, MySQL, and Python. Gain industry-ready skills to design, build, and maintain scalable data pipelines for modern applications.
+MongoDB Database | Master MongoDB from basics to advanced with real-time projects and hands-on labs. Learn data modeling, indexing, aggregation, and secure deployment for modern applications.
+MSSQL Database | Master MSSQL Database with hands-on training in queries, procedures, and optimization. Gain industry-ready skills to manage, secure, and scale enterprise databases.
+MySQL Database | Master MySQL Database from fundamentals to advanced queries with real-time projects and hands-on practice. Build strong SQL skills to manage, analyze, and secure data effectively for modern applications.
+PostgreSQL Database | Master PostgreSQL from basics to advanced with hands-on projects, queries, and performance tuning. Gain industry-ready database skills to design, manage, and secure powerful applications.
+Power BI | Master data visualization and business intelligence with our hands-on Power BI training. Learn to create interactive dashboards, analyze data, and drive smarter decisions.
+Tableau | Master the art of data visualization with Tableau and turn raw data into powerful business insights. Learn hands-on dashboards, reports, and analytics to boost your career in data-driven decision-making.
+Java | Learn Core Java from scratch — covering programming fundamentals, OOP, collections, exception handling, and file operations with practical examples.
+Selenium | Master Selenium for web automation testing — learn setup, locators, waits, frameworks, and real-time project implementation from scratch.
+Playwright | Master Playwright end-to-end testing — automate modern web apps with JavaScript/TypeScript, from basics to advanced frameworks.
+TypeScript | Master testing in TypeScript — write reliable, maintainable, and high-quality tests using Jest, Mocha, and Playwright with TypeScript.
+CCNA | Master the fundamentals of computer networks — learn IP addressing, routing, switching, and real-world troubleshooting to build a strong foundation in networking.
+Cybersecurity | Empower your future with our Cybersecurity Training Program—master ethical hacking, network defense, and risk management.
+Ethical Hacking | Master the art of ethical hacking with hands-on training in cybersecurity tools and real-world simulations.
+SEO | Master SEO, Social Media, Google Ads, and Analytics with our hands-on Digital Marketing program. Gain real-time skills to boost careers and drive business growth.
+Social Media Management | Master social media marketing and management. Learn to grow brands, engage audiences, and drive results across major platforms like Instagram, Facebook, LinkedIn, and X (Twitter).
+LinkedIn Marketing and Personal Branding | Master LinkedIn marketing to build your professional brand, grow your network, and generate quality leads. Learn content strategy, analytics, and ad management to boost your visibility.
+Meta Campaigns | Learn how to create, manage, and optimize ad campaigns on Facebook and Instagram using Meta Ads Manager. Drive traffic, leads, and conversions through data-backed advertising strategies.
+Medical Coding | Master Medical Coding with hands-on training in ICD, CPT, HCPCS coding, and healthcare compliance.
+Medical Billing | Master Medical Coding with hands-on training in ICD-10, CPT, and HCPCS coding. Learn to code accurately and efficiently for healthcare billing and compliance.
+Corporate Communication | Enhance your professional communication skills with training in writing, presentation, and workplace etiquette.
+Spoken English | Improve your English fluency, pronunciation, and confidence through interactive speaking sessions and grammar practice.
+French Language | Learn to read, write, and speak French through interactive lessons and real-life practice sessions.
+German Language | Learn to communicate confidently in German with lessons covering grammar, vocabulary, and real-world conversation.
+Junior Web Development | Introduce kids to the digital world by teaching them how to build colorful, interactive web pages using HTML, CSS, and simple JavaScript.
+Python Core | A playful introduction to Python for kids — learn how to think like a programmer, write code, and create fun projects step by step.
+Advanced Python | Take your Python skills to the next level! Learn how to build real-world apps, create smart programs, and explore cool Python libraries.
+C Programming | Learn the basics of C programming through games, problem-solving, and fun logic-building activities designed just for kids.
+CPP Programming | Step into the world of C++ — learn how games, apps, and real software are built using fun coding projects and logical challenges.
+SQL for Kids | Discover how data works! Learn how to store, search, and organize information using fun, kid-friendly SQL lessons and projects.
+Graphic Designing | Turn your imagination into art! Learn to design posters, logos, and digital art using simple kid-friendly design tools.
+AI and ML | Lead the data revolution. Master Python, Artificial Intelligence, and Machine Learning algorithms to build predictive models and secure top Data Scientist roles.
+Salesforce Administrator | Master Salesforce Administration with hands-on training, real-time projects, and expert guidance. Build skills to manage, customize, and optimize Salesforce for any business.
+Salesforce Developer | Master Salesforce Development with hands-on training, real-time projects, and expert mentorship. Build in-demand CRM skills to boost your career opportunities.
+React Native | Master cross-platform mobile app development with React Native—build, test, and deploy real-world apps from scratch.

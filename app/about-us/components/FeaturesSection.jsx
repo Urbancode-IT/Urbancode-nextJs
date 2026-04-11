@@ -57,11 +57,11 @@ const FeaturesSection = () => {
               className="d-flex justify-content-end feature-row"
               variants={cardVariants}
             >
-              <div className={`feature-card feature-${index} rounded-start-pill shadow-sm p-4`}>
-                <div className="feature-icon text-success mb-3">{item.icon}</div>
+              <div className={`feature-card feature-${index}`}>
+                <div className="feature-icon">{item.icon}</div>
                 <div className="feature-content">
-                  <h5 className="fw-bold">{item.title}</h5>
-                  <p className="mb-0 text-muted">{item.text}</p>
+                  <h5>{item.title}</h5>
+                  <p>{item.text}</p>
                 </div>
               </div>
             </motion.div>

@@ -74,12 +74,12 @@ const EventSection = () => {
     <section className="event-section">
       <div className="container">
         
-        <h2 className="event-heading">
-          <span className="campus-word">Campus</span>{" "}
+        <h2 className="section-main-title">
+          <span style={{ color: 'var(--color-text)' }}>Campus</span>{" "}
           <span className="text-shine">Events We Conducted</span>
         </h2>
 
-        <p className="subtitle">
+        <p className="section-subtitle">
           Empowering students with skills, opportunities, and industry exposure through engaging campus events.
         </p>
 

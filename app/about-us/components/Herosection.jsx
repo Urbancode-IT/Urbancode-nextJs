@@ -6,8 +6,10 @@ const Herosection = () => {
       <div className="container d-flex flex-column flex-lg-row align-items-center">
         {/* Left Content */}
         <div className="col-lg-6 mb-4 mb-lg-0">
-          <h1 className="fw-bold"><span className="text-success text-shine">About Us</span></h1>
-          <p className="text-muted">
+          <h1 className="section-main-title" style={{ textAlign: 'left', margin: '0 0 20px 0', padding: 0 }}>
+            <span className="text-shine">About Us</span>
+          </h1>
+          <p className="text-lg">
             Urbancode Edutech Solutions Pvt. Ltd. is a premier skill development
             and technology training provider, dedicated to shaping future-ready
             professionals. We specialize in Full Stack Development, Cloud Computing,
@@ -27,5 +29,4 @@ const Herosection = () => {
   );
 };
 
-export default Herosection;
-"text-success text-shine"
+export default Herosection;

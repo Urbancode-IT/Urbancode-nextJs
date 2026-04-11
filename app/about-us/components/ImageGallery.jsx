@@ -31,10 +31,10 @@ const ImageGallery = () => {
   ];
 
   return (
-    <div className="main_gallery_container py-5">
-      <div className="container my-5">
+    <div className="main_gallery_container">
+      <div className="container">
 
-        <h2 className="text-center fw-bold mb-4">
+        <h2 className="section-main-title">
           Our <span className="text-shine">Gallery</span>
         </h2>
 

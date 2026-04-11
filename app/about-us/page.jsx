@@ -3,6 +3,8 @@ import Head from "next/head";
 import Herosection from "./components/Herosection";
 import OurMileStone from "./components/OurMileStone";
 import MissionVision from "./components/MissionVision";
+import OurMileStoneNew from "./components/OurMileStoneNew";
+import MissionVisionNew from "./components/MissionVisionNew";
 import TrainingSection from "./components/TrainingSection";
 import FeaturesSection from "./components/FeaturesSection";
 import ImageGallery from "./components/ImageGallery";
@@ -55,8 +57,10 @@ const About = () => {
       <div>
         <Herosection />
         { <TeamSection /> }  
-        <OurMileStone />
-        <MissionVision />
+        {/* <OurMileStone /> */}
+        {/* <MissionVision /> */}
+        <OurMileStoneNew />
+        <MissionVisionNew />
         <TrainingSection />
         <FeaturesSection />
         <ImageGallery />

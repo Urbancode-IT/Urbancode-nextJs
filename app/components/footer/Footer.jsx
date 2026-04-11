@@ -16,7 +16,7 @@ function Footer() {
       <div className="container">
         <div className="row gy-4 justify-content-lg-between">
           {/* Logo + Social */}
-          <div className="col-xl-3 col-lg-3 col-md-6">
+          <div className="col-12 col-md-6 col-lg-3 col-xl-3">
             <div className="footer-logo">
               <img src="/images/home/logo.png" alt="UrbanCode Logo" />
             </div>
@@ -43,7 +43,7 @@ function Footer() {
           </div>
 
           {/* Navigation */}
-          <div className="col-xl-auto col-lg-auto col-md-6">
+          <div className="col-6 col-md-6 col-lg-auto col-xl-auto">
             <h4>Quick Links</h4>
             <ul className="list-unstyled">
               <li><Link href="/"> Home</Link></li>
@@ -55,7 +55,7 @@ function Footer() {
           </div>
 
           {/* Demand Software Courses */}
-          <div className="col-xl-auto col-lg-auto col-md-6">
+          <div className="col-6 col-md-6 col-lg-auto col-xl-auto">
             <h4>Trending Courses</h4>
             <ul className="list-unstyled">
               <li><Link href="/courses/fullstack-development/mern-stack"> MERN Stack</Link></li>
@@ -68,7 +68,7 @@ function Footer() {
           </div>
 
           {/* Kids Courses */}
-          <div className="col-xl-auto col-lg-auto col-md-6">
+          <div className="col-6 col-md-6 col-lg-auto col-xl-auto">
             <h4>Kids Courses</h4>
             <ul className="list-unstyled">
               <li><Link href="/courses/kidz-space/python-core"> Core Python</Link></li>
@@ -80,7 +80,7 @@ function Footer() {
           </div>
 
           {/* Career */}
-          <div className="col-xl-auto col-lg-auto col-md-6">
+          <div className="col-6 col-md-6 col-lg-auto col-xl-auto">
             <h4>Career</h4>
             <ul className="list-unstyled">
               <li><Link href="/be-our-mentor"> Mentor</Link></li>
@@ -90,7 +90,7 @@ function Footer() {
           </div>
 
           {/* Policies */}
-          <div className="col-xl-auto col-lg-auto col-md-6">
+          <div className="col-6 col-md-6 col-lg-auto col-xl-auto">
             <h4>Policies</h4>
             <ul className="list-unstyled">
               <li><Link href="/terms-and-conditions"> Terms & Conditions</Link></li>
@@ -100,6 +100,7 @@ function Footer() {
               <li><Link href="/cookie-policy"> Cookie Policy</Link></li>
             </ul>
           </div>
+
         </div>
       </div>
 

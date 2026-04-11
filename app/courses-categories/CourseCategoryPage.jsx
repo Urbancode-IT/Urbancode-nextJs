@@ -25,91 +25,91 @@ import appDevImg from "@/public/images/courses-images/app.webp";
 const courses = [
   {
     title: "Fullstack Development",
-    desc: "Build modern, responsive, and dynamic websites from scratch. Learn HTML, CSS, JavaScript, and popular frameworks step by step.",
+    desc: "Master Web Development with our full stack training. Learn HTML, CSS, JavaScript, React, and Node.js through hands-on projects and guaranteed placement support.",
     img: webDevImg,
     link: "/courses/fullstack-development",
     badge: "7 Courses",
   },
   {
     title: "Software Testing",
-    desc: "Gain expertise in Manual and Automation Testing tools and techniques.",
+    desc: "Launch your QA career with top software testing courses. Master manual testing, Selenium automation, and CI/CD tools to deliver bug-free applications globally.",
     img: softwareTestingImg,
     link: "/courses/software-testing",
     badge: "6 Courses",
   },
   {
     title: "Data Analytics",
-    desc: "Turn raw data into powerful insights with our Data Analytics courses. Learn Excel, SQL, Power BI, and Python for real-world applications.",
+    desc: "Become a proficient data analyst. Master end-to-end Data Analytics using Python, SQL, Excel, and Power BI to drive business decisions and secure high-paying jobs.",
     img: dataAnalysisImg,
     link: "/courses/data-analytics",
     badge: "5 Courses",
   },
   {
     title: "Cloud & DevOps",
-    desc: "Master the tools and practices that power modern IT infrastructures. Learn cloud platforms, CI/CD pipelines, automation, and containerization.",
+    desc: "Accelerate your career with our Cloud Computing & DevOps certification. Master AWS, Docker, Kubernetes, and CI/CD pipelines for scalable modern IT infrastructure.",
     img: cloudImg,
     link: "/courses/cloud-and-devops",
     badge: "3 Courses",
   },
   {
     title: "Programming Languages",
-    desc: "Programming languages are tools that let us communicate with computers to build software and applications.",
+    desc: "Build a strong coding foundation with our core programming language courses. Master C, C++, Java, and Python through hands-on logic building and software development.",
     img: programmingImg,
     link: "/courses/programming-languages",
     badge: "6 Courses",
   },
   {
     title: "UI/UX Designing",
-    desc: "UI/UX design blends aesthetics with usability to create seamless digital experiences.",
+    desc: "Design seamless digital experiences with our professional UI/UX Design training. Master Figma, wireframing, user research, and prototyping to build user-centric applications.",
     img: uiuxImg,
     link: "/courses/ui-ux-designing",
     badge: "5 Courses",
   },
   {
     title: "Data Science",
-    desc: "Turn raw data into powerful insights with Data Science. Master Python, SQL, and machine learning to solve real problems.",
+    desc: "Unlock lucrative career opportunities with our Data Science certification. Master machine learning, deep learning, NLP, and Python to build AI-driven predictive models.",
     img: dataScienceImg,
     link: "/courses/data-science",
     badge: "3 Courses",
   },
   {
     title: "Data Engineering",
-    desc: "Learn to design and build data pipelines, manage big data, and implement cloud-based data solutions with our Data Engineering courses.",
-    img: dataScienceImg,
+    desc: "Learn to architect scalable data pipelines. Our Data Engineering courses cover big data frameworks, Hadoop, Spark, and cloud solutions for modern data ecosystems.",
+    img: dataScienceImg, /* Note: might want to change this img mapping later if a specific one exists */
     link: "/courses/data-engineering",
     badge: "3 Courses",
   },
   {
     title: "Database",
-    desc: "Learn to design and manage databases with SQL & PostgreSQL. Understand queries, relationships, and transactions through projects.",
+    desc: "Master database management systems. Learn SQL, PostgreSQL, and NoSQL architecture to efficiently design, query, and manage complex enterprise data structures.",
     img: databaseImg,
     link: "/courses/database",
     badge: "4 Courses",
   },
   {
     title: "Data Visualization",
-    desc: "Turn complex data into clear, meaningful insights with charts, dashboards, and storytelling techniques.",
+    desc: "Transform complex data into actionable insights. Master Data Visualization tools like Tableau, Power BI, and D3.js to create compelling business intelligence dashboards.",
     img: dataVisualImg,
     link: "/courses/data-visualization",
     badge: "4 Courses",
   },
   {
-    title: "Net Working",
-    desc: "Gain hands-on skills to protect systems, networks, and data from cyber threats. Learn ethical hacking and security practices.",
+    title: "Cybersecurity & Networking",
+    desc: "Protect digital assets with our Cybersecurity & Networking training. Learn ethical hacking, network protocols, and security practices to defend against cyber threats.",
     img: cyberSecurityImg,
     link: "/courses/net-working",
     badge: "2 Courses",
   },
   {
     title: "Digital Marketing",
-    desc: "Learn SEO, Social Media, Email, and Ads to grow businesses online. Master tools and strategies with hands-on campaigns.",
+    desc: "Dominate the digital space with our comprehensive Digital Marketing courses. Master SEO, SEM, social media management, and analytics to drive exponential business growth.",
     img: seoImg,
     link: "/courses/digital-marketing",
     badge: "3 Courses",
   },
   {
     title: "CRM",
-    desc: "Learn to manage customer data, track leads, and automate sales processes with CRM systems.",
+    desc: "Optimize client relationships with professional CRM training. Learn Salesforce and other top platforms to automate sales workflows and manage customer data effectively.",
     img: crmImg,
     link: "/courses/crm",
     badge: "4 Courses",
@@ -129,7 +129,7 @@ const CourseCategoryPage = () => {
               <span className="text-success text-shine">Expert-Led Courses</span>
             </h1>
             <p>
-              Discover a diverse range of career-focused programs designed to help you master in-demand skills in programming, cloud computing, DevOps, data analytics, cybersecurity, software testing, and more. Whether you’re a beginner or a professional seeking to upgrade your expertise, our expert trainers and practical, hands-on learning approach ensure you gain the knowledge and confidence needed to excel in the real world.
+              Elevate your tech career with Chennai's leading IT training institute. We offer industry-aligned certification courses in Full Stack Web Development, Python, AWS Cloud, Data Science, and Software Testing. Designed for beginners and working professionals, our expert-led programs feature hands-on coding, real-time projects, and 100% guaranteed placement assistance to help you secure top software jobs globally.
             </p>
           </div>
           <div className="expert-image">
@@ -150,7 +150,7 @@ const CourseCategoryPage = () => {
       <div className="courses-header text-center">
         <h2 className="courses-title">Course <span className="text-shine">Categories</span></h2>
         <p className="courses-subtitle">
-          Master the skills that drive today’s digital world. Start your learning journey today with Urbancode.
+          Explore our comprehensive IT training courses. Master the industry-relevant software skills that drive today's digital world and securely launch your tech career with Urbancode.
         </p>
       </div>
 

@@ -1053,7 +1053,7 @@ const coursesData = {
 ,
 {
   title: "React Native",
-  desc: "Build high-performance cross-platform mobile apps with expert React Native training. Master JavaScript components and Native APIs for highly lucrative iOS & Android development careers.",
+  desc: "Build high-performance cross-platform mobile apps with expert React Native training. Master JavaScript components and Native APIs for both iOS & Android app development careers.",
   rating: 4.9,
   duration: "1.5 months",
   students: "106",
@@ -3603,7 +3603,7 @@ const coursesData = {
       ,
       {
         title: "MSSQL Database",
-        desc: "Become a certified MSSQL Database Administrator. Master complex querying, performance tuning, and enterprise security for lucrative IT roles.",
+        desc: "Master MSSQL Database with hands-on training in queries, procedures, and optimization. Gain industry-ready skills to manage, secure, and scale enterprise databases.",
         rating: 5.0,
         duration: "1 month",
         students: "106",
@@ -3702,7 +3702,7 @@ const coursesData = {
       ,
       {
         title: "MySQL Database",
-        desc: "Master MySQL architecture and advanced querying. Build highly optimized Relational Database systems and fast-track your backend developer career.",
+        desc: "Master MySQL Database from fundamentals to advanced queries with real-time projects and hands-on practice. Build strong SQL skills to manage, analyze, and secure data effectively for modern applications.",
         rating: 5.0,
         duration: "1 month",
         students: "106",
@@ -3898,7 +3898,7 @@ const coursesData = {
     courses: [
       {
         title: "Power BI",
-        desc: "Transform business data into actionable strategies. Master Power BI dashboard creation and DAX functions to secure lucrative Business Intelligence roles.",
+        desc: "Master data visualization and business intelligence with our hands-on Power BI training. Learn to create interactive dashboards, analyze data, and drive smarter decisions.",
         rating: 5.0,
         duration: "1 month",
         students: "106",
@@ -3997,7 +3997,7 @@ const coursesData = {
 
       {
         title: "Tableau",
-        desc: "Become a sought-after Data Storyteller. Master Tableau's visual analytics to drive data-driven corporate decisions and command high-paying analytics jobs.",
+        desc: "Master the art of data visualization with Tableau and turn raw data into powerful business insights. Learn hands-on dashboards, reports, and analytics to boost your career in data-driven decision-making.",
         rating: 5.0,
         duration: "1 month",
         students: "106",
@@ -4836,7 +4836,7 @@ const coursesData = {
       ,
       {
         title: "Cybersecurity",
-        desc: "Become a Cybersecurity Analyst. Master network defense, threat hunting, and modern risk management to protect enterprise data and secure elite IT security roles.",
+        desc: "Empower your future with our Cybersecurity Training Program—master ethical hacking, network defense, and risk management.",
         rating: 5.0,
         duration: "1 month",
         students: "106",
@@ -5041,7 +5041,7 @@ const coursesData = {
     courses: [
       {
         title: "SEO",
-        desc: "Dominate search engine rankings. Master SEO, advanced keyword strategy, and technical optimization to drive explosive organic traffic and secure top growth marketing roles.",
+        desc: "Master SEO, Social Media, Google Ads, and Analytics with our hands-on Digital Marketing program. Gain real-time skills to boost careers and drive business growth.",
         rating: 5.0,
         duration: "1 month",
         students: "106",
@@ -5139,7 +5139,7 @@ const coursesData = {
       ,
       {
   title: "Social Media Management",
-  desc: "Become a Social Media expert. Master algorithm-driven content strategies across Instagram, LinkedIn, and Facebook to generate massive brand growth and secure digital marketing careers.",
+  desc: "Master social media marketing and management. Learn to grow brands, engage audiences, and drive results across major platforms like Instagram, Facebook, LinkedIn, and X (Twitter).",
   rating: 4.8,
   duration: "1 month",
   students: "9,842",
@@ -5240,7 +5240,7 @@ const coursesData = {
 
       {
   title: "LinkedIn Marketing and Personal Branding",
-  desc: "Accelerate your professional growth. Master LinkedIn algorithms, B2B lead generation, and elite personal branding to attract high-paying clients and career opportunities.",
+  desc: "Master LinkedIn marketing to build your professional brand, grow your network, and generate quality leads. Learn content strategy, analytics, and ad management to boost your visibility.",
   rating: 4.8,
   duration: "1 month",
   students: "8,913",
@@ -5341,7 +5341,7 @@ const coursesData = {
 
       {
   title: "Meta Campaigns",
-  desc: "Master Facebook and Instagram advertising. Learn algorithm-busting Meta Ads strategies to drive massive ROI and secure top-tier performance marketing roles.",
+  desc: "Learn how to create, manage, and optimize ad campaigns on Facebook and Instagram using Meta Ads Manager. Drive traffic, leads, and conversions through data-backed advertising strategies.",
   rating: 4.9,
   duration: "1 month",
   students: "10,472",
@@ -5456,7 +5456,7 @@ const coursesData = {
     courses: [
       {
         title: "Medical Coding",
-        desc: "Launch a high-demand healthcare career. Master ICD, CPT, and HCPCS coding standardizations to secure lucrative roles in international medical billing and compliance.",
+        desc: "Master Medical Coding with hands-on training in ICD, CPT, HCPCS coding, and healthcare compliance.",
         rating: 5.0,
         duration: "1 month",
         students: "106",
@@ -5551,7 +5551,7 @@ const coursesData = {
       ,
       {
         title: "Medical Billing",
-        desc: "Become a certified Medical Billing expert. Master healthcare finance processing, accurate coding, and insurance compliance for secure, high-paying career opportunities.",
+        desc: "Master Medical Coding with hands-on training in ICD-10, CPT, and HCPCS coding. Learn to code accurately and efficiently for healthcare billing and compliance.",
         rating: 5.0,
         duration: "1 month",
         students: "106",
@@ -5657,7 +5657,7 @@ const coursesData = {
   courses: [
     {
       title: "Corporate Communication",
-      desc: "Elevate your professional presence. Master corporate writing, high-impact presentations, and executive etiquette to accelerate your corporate career trajectory.",
+      desc: "Enhance your professional communication skills with training in writing, presentation, and workplace etiquette.",
       rating: 4.9,
       duration: "1 month",
       students: "12,342",
@@ -5745,7 +5745,7 @@ const coursesData = {
 
     {
       title: "Spoken English",
-      desc: "Speak English with supreme confidence. Master advanced pronunciation, engaging fluency, and professional grammar to unlock global career opportunities.",
+      desc: "Improve your English fluency, pronunciation, and confidence through interactive speaking sessions and grammar practice.",
       rating: 5.0,
       duration: "1 month",
       students: "15,480",
@@ -5833,7 +5833,7 @@ const coursesData = {
 
     {
       title: "French Language",
-      desc: "Unlock global opportunities by mastering French. Develop reading, writing, and conversational fluency for lucrative international career pathways.",
+      desc: "Learn to read, write, and speak French through interactive lessons and real-life practice sessions.",
       rating: 4.9,
       duration: "2 months",
       students: "7,320",
@@ -5921,7 +5921,7 @@ const coursesData = {
 
     {
       title: "German Language",
-      desc: "Fast-track your global career by mastering German. Achieve conversational excellence and grammatical precision to secure high-paying jobs in European markets.",
+      desc: "Learn to communicate confidently in German with lessons covering grammar, vocabulary, and real-world conversation.",
       rating: 4.9,
       duration: "2 months",
       students: "6,845",
@@ -6893,7 +6893,7 @@ const coursesData = {
       // {title:"Data Analysis",desc:"Master the art of Data Analysis with hands-on training in Excel, SQL, Python, and visualization tools. Gain industry-ready skills to turn raw data into powerful insights and career opportunities.",rating:5.0,duration:"1 month",students:"106",img:"/images/courses/Data_Analysis.jpg"},
       {
         title: "Salesforce Developer",
-        desc: "Launch your high-paying CRM career. Master Salesforce Development, Apex coding, and Lightning components to build elite enterprise applications.",
+        desc: "Master Salesforce Development with hands-on training, real-time projects, and expert mentorship. Build in-demand CRM skills to boost your career opportunities.",
         rating: 5.0,
         duration: "1 month",
         students: "106",
@@ -7098,7 +7098,7 @@ const coursesData = {
     courses: [
       {
         title: "React Native",
-        desc: "Build high-performance cross-platform mobile apps with expert React Native training. Master JavaScript components and Native APIs for highly lucrative iOS & Android development careers.",
+        desc: "Master cross-platform mobile app development with React Native—build, test, and deploy real-world apps from scratch.",
         rating: 5.0,
         duration: "1 month",
         students: "106",
@@ -7213,4 +7213,4 @@ Object.keys(coursesData).forEach((catKey) => {
   }
 });
 
-export default coursesData;
+module.exports = coursesData;

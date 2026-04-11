@@ -1,81 +1,125 @@
-'use client';// replace with your image path
+'use client';
+
+import React from 'react';
+import { motion } from 'framer-motion';
+import { FaChalkboardTeacher, FaUserGraduate, FaCode, FaBriefcase } from 'react-icons/fa';
 import "./TrainingSection.css";
+
 const TrainingSection = () => {
-  return (
-    <div className="training_section_main_container">
-      <div className="container">
-      <div className="row d-flex align-items-stretch"> {/* stretch both columns */}
-        {/* Left Content */}
-        <div className="col-md-7 d-flex flex-column justify-content-center">
-          <h2 className="fw-bold mb-3">Expert Training and Instruction</h2>
-          <p className="mb-2">
-            At Urbancode, we specialize in providing top-notch training and
-            instructional services. Our programs are designed to empower
-            professionals and teams with the skills and knowledge they need to
-            excel in their respective fields.
-          </p>
-          <p className="mb-3">
-            Urbancode Edutech offers personalized IT training designed to match
-            individual career goals with real-world industry skills and
-            guaranteed placement assistance.
-          </p>
+    const specializations = [
+        {
+            icon: <FaChalkboardTeacher />,
+            title: "Personalized Consultation",
+            desc: "Urbancode Edutech trains future-ready professionals in Full Stack, Cloud, AI, ML, Cybersecurity, and more.",
+            posClass: "node-top-left"
+        },
+        {
+            icon: <FaUserGraduate />,
+            title: "Expert Career Guidance",
+            desc: "We empower learners with cutting-edge skills, placement assistance, and career pathways for long-term success.",
+            posClass: "node-top-right"
+        },
+        {
+            icon: <FaCode />,
+            title: "Flexible Training Modules",
+            desc: "Our expert programs equip professionals and teams with practical knowledge to excel in their respective fields.",
+            posClass: "node-bottom-left"
+        },
+        {
+            icon: <FaBriefcase />,
+            title: "Global IT Opportunities",
+            desc: "Through placements and industry tie-ups, Urbancode unlocks global career opportunities for every learner.",
+            posClass: "node-bottom-right"
+        }
+    ];
 
-          <h3 className="fw-bold mt-4 mb-3">We are Specialized In</h3>
+    return (
+        <section className="training_section_main_container">
+            <div className="container">
+                {/* Clean Narrative Header */}
+                <motion.div
+                    className="training-intro-block"
+                    initial={{ opacity: 0, scale: 0.98 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                >
+                    <h2 className="section-main-title">
+                        <span className="text-shine">Expert Training and Instruction</span>
+                    </h2>
+                    <p className="text-lg">
+                        At Urbancode, we specialize in providing top-notch training and instructional services. 
+                        Our programs are designed to empower professionals and teams with the skills to excel.
+                    </p>
+                    <p className="text-lg">
+                        Offering personalized IT training designed to match individual career goals with 
+                        real-world industry skills and guaranteed placement assistance.
+                    </p>
+                </motion.div>
 
-          {/* Features Grid */}
-          <div className="row g-2 mt-2">
-            <div className="col-md-6">
-              <div className="p-2 rounded  py-3 h-100" style={{ minHeight: 'auto' }}>
-                <h6 className="fw-bold mb-1">Personalized Consultation</h6>
-                <p className="mb-0" style={{ fontSize: '0.9rem' }}>
-                  Urbancode Edutech trains future-ready professionals in Full Stack, Cloud, AI, ML, Cybersecurity, and more.
-                </p>
-              </div>
+                {/* The Data Hub System */}
+                <div className="skills-activation-system">
+                    {/* HIGH VISIBILITY DATA STREAMS (SVG) */}
+                    <svg className="data-stream-svg" viewBox="0 0 1100 650" preserveAspectRatio="xMidYMid slice">
+                        {/* Define the paths once for both static and flowing lines */}
+                        <defs>
+                            <path id="path-TL" d="M 550 325 Q 400 325, 200 150" />
+                            <path id="path-TR" d="M 550 325 Q 700 325, 900 150" />
+                            <path id="path-BL" d="M 550 325 Q 400 325, 200 500" />
+                            <path id="path-BR" d="M 550 325 Q 700 325, 900 500" />
+                        </defs>
+
+                        {/* Static Base Lines (for shape) */}
+                        <use href="#path-TL" className="stream-path" />
+                        <use href="#path-TR" className="stream-path" />
+                        <use href="#path-BL" className="stream-path" />
+                        <use href="#path-BR" className="stream-path" />
+
+                        {/* HIGHLY VISIBLE GLOWING FLOW SREAMS */}
+                        <use href="#path-TL" className="stream-flow-line" />
+                        <use href="#path-TR" className="stream-flow-line" />
+                        <use href="#path-BL" className="stream-flow-line" />
+                        <use href="#path-BR" className="stream-flow-line" />
+                    </svg>
+
+                    {/* Central Hub */}
+                    <motion.div 
+                        className="core-hub"
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8 }}
+                    >
+                        <div className="hub-pulse-ring"></div>
+                        <div className="hub-outer-ring"></div>
+                        <div className="hub-center-plate">
+                            <h3>We are<br/>Specialized<br/>In</h3>
+                        </div>
+                    </motion.div>
+
+                    {/* Expertise Nodes */}
+                    {specializations.map((item, index) => (
+                        <motion.div
+                            key={index}
+                            className={`skill-node ${item.posClass}`}
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8, delay: 0.3 + (index * 0.1) }}
+                        >
+                            <div className="skill-card-modern">
+                                <div className="node-icon-highlight">
+                                    {item.icon}
+                                </div>
+                                <h5>{item.title}</h5>
+                                <p>{item.desc}</p>
+                            </div>
+                        </motion.div>
+                    ))}
+                </div>
             </div>
-
-            <div className="col-md-6">
-              <div className="p-2 rounded py-3 h-100" style={{ minHeight: 'auto' }}>
-                <h6 className="fw-bold mb-1">Career Guidance for IT & Non-IT Courses</h6>
-                <p className="mb-0" style={{ fontSize: '0.9rem' }}>
-                  We empower learners with cutting-edge skills, placement assistance, and career guidance to succeed in the digital world.
-                </p>
-              </div>
-            </div>
-
-            <div className="col-md-6">
-              <div className="p-2 py-3 h-100" style={{ minHeight: 'auto' }}>
-                <h6 className="fw-bold mb-1">Flexible Training & Comprehensive Modules</h6>
-                <p className="mb-0" style={{ fontSize: '0.9rem' }}>
-                  Our expert programs equip professionals and teams with practical knowledge and skills to excel in their fields.
-                </p>
-              </div>
-            </div>
-
-            <div className="col-md-6">
-              <div className="p-2 py-3 h-100" style={{ minHeight: 'auto' }}>
-                <h6 className="fw-bold mb-1">Placement assistance & Global Opportunities</h6>
-                <p className="mb-0" style={{ fontSize: '0.9rem' }}>
-                  Through placements, interview prep, and industry tie-ups, Urbancode unlocks global IT career opportunities for learners.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Right Image */}
-        <div className="col-md-5 d-flex justify-content-center align-items-center">
-          <img
-            src="/images/about/g1.jpg" // replace with your image path
-            alt="Training"
-            className="img-fluid rounded shadow"
-            style={{ height: '100%', objectFit:'cover', objectPosition:'left' }} // full height and cover
-          />
-        </div>
-      </div>
-    </div>
-    </div>
-    
-  );
+        </section>
+    );
 };
 
 export default TrainingSection;
