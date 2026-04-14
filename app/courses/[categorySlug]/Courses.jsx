@@ -181,26 +181,32 @@ export default function Courses({ categorySlug }) {
           course.desc.toLowerCase().includes(search.toLowerCase())
       );
 
-  return (
-    <div className="wrapper pb-5" style={{ paddingTop: 'var(--site-header-height, 72px)' }}>
-      {/* Top Section */}
-      <div className="container-fluid overall-bg overall-green-bg px-3 px-md-5 course-hero-wrapper">
-        {/* Stars Background */}
-        <div className="cosmic-stars">
-          {[...Array(40)].map((_, i) => (
-            <div 
-              key={i} 
-              className="star" 
-              style={{ 
-                '--left': `${Math.random() * 100}%`,
-                '--top': `${Math.random() * 100}%`,
-                '--size': `${1 + Math.random() * 2}px`,
-                '--delay': `${Math.random() * 5}s`,
-                '--duration': `${2 + Math.random() * 3}s`
-              }}
-            ></div>
-          ))}
-        </div>
+    const [isClient, setIsClient] = useState(false);
+
+    useEffect(() => {
+        setIsClient(true);
+    }, []);
+
+    return (
+        <div className="wrapper pb-5" style={{ paddingTop: 'var(--site-header-height, 72px)' }}>
+            {/* Top Section */}
+            <div className="container-fluid overall-bg overall-green-bg px-3 px-md-5 course-hero-wrapper">
+                {/* Stars Background */}
+                <div className="cosmic-stars">
+                    {isClient && [...Array(40)].map((_, i) => (
+                        <div
+                            key={i}
+                            className="star"
+                            style={{
+                                '--left': `${Math.random() * 100}%`,
+                                '--top': `${Math.random() * 100}%`,
+                                '--size': `${1 + Math.random() * 2}px`,
+                                '--delay': `${Math.random() * 5}s`,
+                                '--duration': `${2 + Math.random() * 3}s`
+                            }}
+                        ></div>
+                    ))}
+                </div>
 
         <Container fluid>
           <Row className="py-5 align-items-center text-center text-md-start">

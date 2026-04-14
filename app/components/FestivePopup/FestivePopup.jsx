@@ -13,12 +13,17 @@ const FestivePopup = () => {
   const [isEnquiryOpen, setIsEnquiryOpen] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsOpen(true);
-      triggerConfetti();
-    }, 800);
+    const hasShown = sessionStorage.getItem('festive_popup_shown');
+    
+    if (!hasShown) {
+      const timer = setTimeout(() => {
+        setIsOpen(true);
+        triggerConfetti();
+        sessionStorage.setItem('festive_popup_shown', 'true');
+      }, 800);
 
-    return () => clearTimeout(timer);
+      return () => clearTimeout(timer);
+    }
   }, []);
 
   const triggerConfetti = () => {
