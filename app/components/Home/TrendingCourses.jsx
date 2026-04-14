@@ -8,7 +8,7 @@ const courses = [
       {
   id: 1,
   title: "Tamil New Year Special",
-  duration: "3 Months",
+//   duration: "3 Months",
   description: "Wish you a very Happy Tamil New Year! Celebrate the spirit of new beginnings with our special course offerings. Embrace the joy of learning and growth this Tamil New Year with us!",
   image: "/images/courses/tamilnewyear.jpg",
 },
@@ -170,9 +170,11 @@ const TrendingCourses = () => {
                             </div>
                             <div className="trending-modal-info">
                                 <h3>{selectedCourse.title}</h3>
-                                <div className="info-meta">
-                                    <span><strong>Duration:</strong> {selectedCourse.duration}</span>
-                                </div>
+                                {selectedCourse.duration && (
+                                  <div className="info-meta">
+                                      <span><strong>Duration:</strong> {selectedCourse.duration}</span>
+                                  </div>
+                                )}
                                 <p>{selectedCourse.description}</p>
                                 <button className="trending-enroll-trigger" onClick={handleEnrollClick}>Enroll Now</button>
                             </div>
