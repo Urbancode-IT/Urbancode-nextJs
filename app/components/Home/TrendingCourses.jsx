@@ -5,13 +5,14 @@ import './TrendingCourses.css';
 import EnquiryFormModal from "@/app/components/common/EnquiryFormModal.jsx";
 
 const courses = [
-  {
-    id: 1,
-    title: "Mobile App Development (Android & iOS)",
-    duration: "3 Months",
-    description: "Build cross-platform mobile apps using React Native. Create real-world applications with a single JavaScript codebase.",
-    image: "/images/courses/poster1.webp",
-  },
+      {
+  id: 1,
+  title: "Tamil New Year Special",
+  duration: "3 Months",
+  description: "Wish you a very Happy Tamil New Year! Celebrate the spirit of new beginnings with our special course offerings. Embrace the joy of learning and growth this Tamil New Year with us!",
+  image: "/images/courses/tamilnewyear.jpg",
+},
+  
   {
     id: 2,
     title: "React JS + Next.js Development",
@@ -53,7 +54,16 @@ const courses = [
   duration: "3 Months",
   description: "Learn to build intelligent AI applications using Generative AI, LLMs, and modern tools like OpenAI, LangChain, and Python. Create chatbots, AI assistants, and real-world AI solutions.",
   image: "/images/courses/gen-ai-poster.webp",
-}
+},
+{
+    id: 8,
+    title: "Mobile App Development (Android & iOS)",
+    duration: "3 Months",
+    description: "Build cross-platform mobile apps using React Native. Create real-world applications with a single JavaScript codebase.",
+    image: "/images/courses/poster1.webp",
+  }
+ 
+
 ];
 
 import { motion } from 'framer-motion';
@@ -138,7 +148,7 @@ const TrendingCourses = () => {
                     {courses.map((course) => (
                         <div key={course.id} className="trending-course-card" onClick={() => setSelectedCourse(course)}>
                             <div className="trending-image-box">
-                                <img src={course.image} alt={course.title} />
+                                <img src={course.image} alt={course.title} className="trending-image-fg" />
                                 <div className="card-hover-overlay">
                                     <span>View Details</span>
                                 </div>

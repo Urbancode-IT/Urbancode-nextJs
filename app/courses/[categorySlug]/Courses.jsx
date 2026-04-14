@@ -17,6 +17,73 @@ import EnquiryFormModal from "@/app/components/common/EnquiryFormModal.jsx";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 
+const categoryTools = {
+  "Fullstack Development": [
+    'https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg',
+    'https://raw.githubusercontent.com/devicons/devicon/master/icons/angularjs/angularjs-original.svg',
+    'https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original.svg',
+    'https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original.svg',
+    'https://raw.githubusercontent.com/devicons/devicon/master/icons/express/express-original.svg',
+    'https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg',
+    'https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original.svg',
+    'https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg'
+  ],
+  "Software Testing": [
+    'https://raw.githubusercontent.com/devicons/devicon/master/icons/selenium/selenium-original.svg',
+    'https://raw.githubusercontent.com/devicons/devicon/master/icons/jenkins/jenkins-original.svg',
+    'https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original.svg',
+    'https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg',
+    'https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg',
+    'https://raw.githubusercontent.com/devicons/devicon/master/icons/github/github-original.svg'
+  ],
+  "Data Analytics": [
+    'https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg',
+    'https://cdn.svgporn.com/logos/microsoft-power-bi.svg',
+    'https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original.svg',
+    '/images/home/tableau_logo.svg',
+    '/images/home/excel_logo.svg'
+  ],
+  "Cloud and DevOps": [
+    'https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-original-wordmark.svg',
+    'https://raw.githubusercontent.com/devicons/devicon/master/icons/azure/azure-original.svg',
+    'https://raw.githubusercontent.com/devicons/devicon/master/icons/kubernetes/kubernetes-plain.svg',
+    'https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original.svg',
+    'https://raw.githubusercontent.com/devicons/devicon/master/icons/jenkins/jenkins-original.svg',
+    'https://www.vectorlogo.zone/logos/terraformio/terraformio-icon.svg'
+  ],
+  "Programming Languages": [
+    'https://raw.githubusercontent.com/devicons/devicon/master/icons/c/c-original.svg',
+    'https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg',
+    'https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg',
+    'https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg',
+    'https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg'
+  ],
+  "Data Science": [
+    'https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg',
+    'https://raw.githubusercontent.com/devicons/devicon/master/icons/tensorflow/tensorflow-original.svg',
+    'https://raw.githubusercontent.com/devicons/devicon/master/icons/pytorch/pytorch-original.svg',
+    'https://raw.githubusercontent.com/devicons/devicon/master/icons/pandas/pandas-original.svg',
+    'https://raw.githubusercontent.com/devicons/devicon/master/icons/numpy/numpy-original.svg'
+  ],
+  "UI UX Designing": [
+    'https://cdn.svgporn.com/logos/figma.svg',
+    'https://cdn.svgporn.com/logos/adobe-xd.svg',
+    'https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg',
+    'https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg'
+  ],
+  "Data Engineering": [
+    'https://raw.githubusercontent.com/devicons/devicon/master/icons/apachespark/apachespark-original.svg',
+    'https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-original.svg',
+    'https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original.svg',
+    'https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg'
+  ]
+};
+const defaultTools = [
+  'https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg',
+  'https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original.svg',
+  'https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg'
+];
+
 const categories = [
   "Fullstack Development",
   "Software Testing",
@@ -117,7 +184,24 @@ export default function Courses({ categorySlug }) {
   return (
     <div className="wrapper pb-5" style={{ paddingTop: 'var(--site-header-height, 72px)' }}>
       {/* Top Section */}
-      <div className="container-fluid overall-bg overall-green-bg px-3 px-md-5">
+      <div className="container-fluid overall-bg overall-green-bg px-3 px-md-5 course-hero-wrapper">
+        {/* Stars Background */}
+        <div className="cosmic-stars">
+          {[...Array(40)].map((_, i) => (
+            <div 
+              key={i} 
+              className="star" 
+              style={{ 
+                '--left': `${Math.random() * 100}%`,
+                '--top': `${Math.random() * 100}%`,
+                '--size': `${1 + Math.random() * 2}px`,
+                '--delay': `${Math.random() * 5}s`,
+                '--duration': `${2 + Math.random() * 3}s`
+              }}
+            ></div>
+          ))}
+        </div>
+
         <Container fluid>
           <Row className="py-5 align-items-center text-center text-md-start">
             <Col md={7} className="my-auto p-3 p-md-5">
@@ -125,15 +209,23 @@ export default function Courses({ categorySlug }) {
               <p>{activeCategoryData.subDesc}</p>
             </Col>
             <Col md={5} className="p-3">
-              {activeCategoryData.mainImage && (
-                <Image
-                  src={activeCategoryData.mainImage}
-                  alt={activeCategory}
-                  width={400}
-                  height={250}
-                  className="rounded-4 w-100 h-auto"
-                />
-              )}
+              <div className="course-interactive-scene">
+                 <div className="saturn-scene">
+                    <div className="saturn-planet">
+                       <div className="planet-surface">UC</div>
+                       <div className="planet-glow"></div>
+                    </div>
+                    <div className="rings-container">
+                       <div className="saturn-ring ring-1">
+                          {(categoryTools[activeCategory] || defaultTools).slice(0, 8).map((logo, i, arr) => (
+                            <div key={i} className="ring-item" style={{ '--index': i, '--total': arr.length }}>
+                               <img src={logo} alt="tool" />
+                            </div>
+                          ))}
+                       </div>
+                    </div>
+                 </div>
+              </div>
             </Col>
           </Row>
         </Container>

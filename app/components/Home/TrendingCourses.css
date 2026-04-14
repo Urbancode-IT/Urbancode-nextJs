@@ -105,17 +105,33 @@
     width: 100%;
     height: 100%;
     position: relative;
+    overflow: hidden;
+    /* Premium Studio Ambient Lighting Backing */
+    background-color: #0b1115;
+    background-image: 
+        radial-gradient(circle at top right, rgba(0, 181, 111, 0.15), transparent 50%),
+        radial-gradient(circle at bottom left, rgba(0, 181, 111, 0.05), transparent 50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.trending-image-box img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: filter 0.3s;
+.trending-image-fg {
+    height: 90%; 
+    width: auto;
+    max-width: 90%;
+    object-fit: contain;
+    border-radius: 12px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.05); /* 3D Floating Effect */
+    transition: filter 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+    position: relative;
+    z-index: 1;
 }
 
-.trending-course-card:hover img {
+.trending-course-card:hover .trending-image-fg {
     filter: brightness(1.1);
+    transform: scale(1.04) translateY(-4px);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(0, 181, 111, 0.4);
 }
 
 /* Modal and Hover Styles... */
@@ -128,6 +144,7 @@
     justify-content: center;
     opacity: 0;
     transition: opacity 0.3s;
+    z-index: 2;
 }
 
 .card-hover-overlay span {

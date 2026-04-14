@@ -3,6 +3,7 @@ import React, { useRef, useState, useEffect } from "react";
 import Link from "next/link";
 import { sendContactMessage } from "@/lib/api/api";
 import "./ContactUs.css";
+import CinematicLoader from "./CinematicLoader";
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({
@@ -16,6 +17,7 @@ const ContactUs = () => {
   const [submittedName, setSubmittedName] = useState("");
   const [showPopup, setShowPopup] = useState(false);
   const [activeMap, setActiveMap] = useState(0);
+  const [showLoader, setShowLoader] = useState(true);
 
   // alternate maps every 2 sec
   useEffect(() => {
@@ -77,7 +79,16 @@ const ContactUs = () => {
   };
 
   return (
-    <section id="contactform" className="contact-section contact-us-page">
+    <>
+      {/* ── Cinematic Video Loader ── */}
+      {showLoader && (
+        <CinematicLoader onComplete={() => setShowLoader(false)} />
+      )}
+
+      <section
+        id="contactform"
+        className={`contact-section contact-us-page${showLoader ? ' contact-hidden' : ' contact-revealed'}`}
+      >
       <div className="contact-header">
         <h2>Contact Us</h2>
         <div className="header-line"></div>
@@ -242,7 +253,8 @@ const ContactUs = () => {
           </div>
         </div>
       )}
-    </section>
+      </section>
+    </>
   );
 };
 

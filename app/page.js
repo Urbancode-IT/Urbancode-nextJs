@@ -10,6 +10,7 @@ import VideoTestimonials from './components/Home/VideoTestimonials';
 import TestimonialCarousel from './components/Home/TestimonialCarousel';
 import BannerSlider from './components/common/BannerSlider';
 import GetCertified from './components/Home/GetCertified';
+import FestivePopup from './components/FestivePopup/FestivePopup';
 
 export const metadata = {
   title: "Urbancode Edutech | Best Full Stack Development & Coding Training Institute in Chennai",
@@ -78,6 +79,7 @@ export default function HomePage() {
 
   return (
     <>
+      <FestivePopup />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

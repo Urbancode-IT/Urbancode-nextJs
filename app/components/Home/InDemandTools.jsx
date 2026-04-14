@@ -24,6 +24,7 @@ const InDemandTools = () => {
         { name: 'Tableau', icon: '/images/home/tableau_logo.svg' },
         { name: 'SQL', icon: '/images/home/sql_logo.svg' },
         { name: 'Node.js', icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original.svg' },
+        { name: 'Data Engineering', icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/apachespark/apachespark-original.svg' },
     ];
 
     const row3Tools = [
@@ -33,7 +34,8 @@ const InDemandTools = () => {
         { name: 'Java', icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg' },
         { name: 'JavaScript', icon: '/images/home/js_logo.jpg' },
         { name: 'Excel', icon: '/images/home/excel_logo.svg' },
-        { name: 'AI and ML', icon: '/images/home/ai_ml_logo.png' },
+        { name: 'AI and ML', icon: '/images/home/aiml_new.svg' },
+        { name: 'Gen AI', icon: 'https://cdn.svgporn.com/logos/openai-icon.svg' },
     ];
 
     const row1 = [...row1Tools, ...row1Tools, ...row1Tools];
@@ -55,10 +57,7 @@ const InDemandTools = () => {
                 <div className="idt-slider-track idt-row-reverse">
                     {row1.map((tool, index) => (
                         <div key={`row1-${index}`} className="idt-tool-item-wrapper">
-                            <div
-                                className="idt-tool-logo-base"
-                                style={tool.name === 'AI and ML' ? { background: '#000' } : {}}
-                            >
+                            <div className="idt-tool-logo-base">
                                 <img
                                     src={tool.icon}
                                     alt={tool.name}
@@ -88,10 +87,7 @@ const InDemandTools = () => {
                 <div className="idt-slider-track idt-row-reverse">
                     {row3.map((tool, index) => (
                         <div key={`row3-${index}`} className="idt-tool-item-wrapper">
-                            <div
-                                className="idt-tool-logo-base"
-                                style={tool.name === 'AI and ML' ? { background: '#000' } : {}}
-                            >
+                            <div className="idt-tool-logo-base">
                                 <img
                                     src={tool.icon}
                                     alt={tool.name}

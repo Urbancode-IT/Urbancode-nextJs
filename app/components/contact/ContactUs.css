@@ -1,5 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
+/* ── Cinematic Loader: page reveal states ─────────────────────── */
+.contact-section.contact-hidden {
+  opacity: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+.contact-section.contact-revealed {
+  opacity: 1;
+  animation: contactRevealFade 0.9s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+@keyframes contactRevealFade {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
 
 
 .contact-us-page .map-box {

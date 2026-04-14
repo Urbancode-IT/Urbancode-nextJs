@@ -1,0 +1,307 @@
+/* ═══════════════════════════════════════════════════════════════
+   CINEMATIC LOADER — Full-Screen Video Intro for Contact Page
+   Urbancode Edutech · Premium Office Walkthrough Experience
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Root container ─────────────────────────────────────────── */
+.cinematic-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  overflow: hidden;
+  background: #000;
+
+  /* Enter state: starts invisible */
+  opacity: 0;
+  transform: scale(1.04);
+  transition:
+    opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cinematic-loader.playing {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.cinematic-loader.exiting {
+  opacity: 0;
+  transform: scale(0.97);
+  transition:
+    opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Video wrapper ───────────────────────────────────────────── */
+.cl-video-wrap {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cl-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Cinematic CSS filter stack:
+     - contrast boost for punchy shadows
+     - saturation pull for muted cinematic look
+     - slight sepia for warm amber tones
+     - brightness nudge for interior warmth  */
+  filter:
+    contrast(1.18)
+    saturate(0.78)
+    sepia(0.22)
+    brightness(1.06)
+    hue-rotate(-6deg);
+}
+
+/* ── Warm amber color grade ──────────────────────────────────── */
+.cl-grade-amber {
+  position: absolute;
+  inset: 0;
+  /* Warm amber-orange gradient — mimics a cinematic LUT warm grade */
+  background: radial-gradient(
+    ellipse 140% 90% at 50% 110%,
+    rgba(255, 165, 60, 0.14) 0%,
+    rgba(255, 120, 20, 0.06) 50%,
+    transparent 75%
+  );
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+/* ── Deep cinematic vignette ─────────────────────────────────── */
+.cl-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 100% 100% at 50% 50%,
+    transparent 38%,
+    rgba(0, 0, 0, 0.45) 68%,
+    rgba(0, 0, 0, 0.82) 100%
+  );
+  pointer-events: none;
+}
+
+/* ── Volumetric light rays (top center) ──────────────────────── */
+.cl-light-rays {
+  position: absolute;
+  top: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120%;
+  height: 80%;
+  background: conic-gradient(
+    from 265deg at 50% 0%,
+    transparent 0deg,
+    rgba(255, 220, 140, 0.06) 10deg,
+    transparent 20deg,
+    rgba(255, 210, 120, 0.04) 32deg,
+    transparent 42deg,
+    rgba(255, 230, 160, 0.05) 55deg,
+    transparent 65deg,
+    rgba(255, 200, 100, 0.04) 78deg,
+    transparent 90deg
+  );
+  pointer-events: none;
+  animation: raysPulse 6s ease-in-out infinite alternate;
+}
+
+@keyframes raysPulse {
+  0%   { opacity: 0.6; }
+  100% { opacity: 1; }
+}
+
+/* ── Film grain (canvas overlay) ────────────────────────────── */
+.cl-grain {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+  opacity: 0.55;
+}
+
+/* ── Lens flare ──────────────────────────────────────────────── */
+.cl-lens-flare {
+  position: absolute;
+  top: 14%;
+  right: 22%;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 240, 200, 0.28) 0%,
+    rgba(255, 200, 100, 0.10) 40%,
+    transparent 70%
+  );
+  pointer-events: none;
+  animation: flarePulse 4s ease-in-out infinite alternate;
+  filter: blur(8px);
+}
+
+@keyframes flarePulse {
+  0%   { opacity: 0.4; transform: scale(1);    }
+  100% { opacity: 0.9; transform: scale(1.18); }
+}
+
+/* ── Letterbox bars ──────────────────────────────────────────── */
+.cl-letterbox-top,
+.cl-letterbox-bottom {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: clamp(36px, 7vh, 72px);
+  background: #000;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.cl-letterbox-top    { top: 0;    }
+.cl-letterbox-bottom { bottom: 0; }
+
+/* ── Brand overlay ───────────────────────────────────────────── */
+.cl-brand-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: clamp(48px, 9vh, 96px) clamp(32px, 5vw, 80px);
+  z-index: 3;
+  pointer-events: none;
+}
+
+.cl-brand-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  animation: brandFadeUp 1s 0.8s both cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes brandFadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+.cl-logo-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.cl-logo-text {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: clamp(1.6rem, 4vw, 3rem);
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  color: #fff;
+  text-shadow:
+    0 0 40px rgba(255, 200, 100, 0.5),
+    0 2px 20px rgba(0, 0, 0, 0.6);
+  line-height: 1;
+}
+
+.cl-logo-sub {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: clamp(0.65rem, 1.2vw, 0.85rem);
+  font-weight: 400;
+  letter-spacing: 0.45em;
+  color: rgba(255, 220, 160, 0.82);
+  text-transform: uppercase;
+}
+
+.cl-tagline {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: clamp(0.75rem, 1.4vw, 0.95rem);
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.55);
+  margin-top: 6px;
+  font-style: italic;
+}
+
+/* ── Progress bar ────────────────────────────────────────────── */
+.cl-progress-wrap {
+  position: absolute;
+  bottom: clamp(36px, 7vh, 72px);   /* sits just above letterbox */
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.10);
+  z-index: 4;
+  pointer-events: none;
+}
+
+.cl-progress-bar {
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 200, 80, 0.6),
+    rgba(255, 255, 255, 0.9)
+  );
+  transition: width 0.3s linear;
+  box-shadow: 0 0 8px rgba(255, 220, 120, 0.7);
+}
+
+/* ── Skip button ─────────────────────────────────────────────── */
+.cl-skip-btn {
+  position: absolute;
+  top: clamp(36px, 7vh, 72px);    /* sits just below top letterbox */
+  right: clamp(24px, 3vw, 48px);
+  margin-top: 14px;
+  z-index: 5;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: rgba(255, 255, 255, 0.78);
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 7px 18px;
+  border-radius: 40px;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition: all 0.25s ease;
+  animation: brandFadeUp 1s 1.2s both cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cl-skip-btn:hover {
+  background: rgba(255, 200, 80, 0.15);
+  border-color: rgba(255, 200, 80, 0.55);
+  color: #fff;
+}
+
+.cl-skip-arrow {
+  display: inline-block;
+  transition: transform 0.2s ease;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.cl-skip-btn:hover .cl-skip-arrow {
+  transform: translateX(3px);
+}
+
+/* ── Micro breathing animation on the video (subtle dolly feel) ── */
+@keyframes subtlePush {
+  0%   { transform: scale(1.00); }
+  50%  { transform: scale(1.012); }
+  100% { transform: scale(1.00); }
+}
+
+.cl-video-wrap {
+  animation: subtlePush 8s ease-in-out infinite;
+}
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .cl-lens-flare { display: none; }
+  .cl-light-rays { opacity: 0.5; }
+}

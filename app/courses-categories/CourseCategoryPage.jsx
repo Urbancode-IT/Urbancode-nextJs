@@ -3,24 +3,47 @@
 import Image from "next/image";
 import "./CoursesCategoryPage.css";
 
-import expertImg from "@/public/images/courses-images/hero-image-compressed.webp";
+import expertImg from "@/public/images/courses-images/courses-hero.jpg";
 
-import programmingImg from "@/public/images/courses-images/programming.webp";
-import webDevImg from "@/public/images/courses-images/web.webp";
-import uiuxImg from "@/public/images/courses-images/UIUX.webp";
-import cloudImg from "@/public/images/courses-images/Cloud.webp";
-import dataAnalysisImg from "@/public/images/courses-images/DataAnalysis.webp";
+import programmingImg from "@/public/images/courses-images/programming-languages-course.jpg";
+import webDevImg from "@/public/images/courses-images/web-dev-course.jpg";
+import uiuxImg from "@/public/images/courses-images/ui-ux-course.webp";
+import cloudImg from "@/public/images/courses-images/devops-course.webp";
+import dataAnalysisImg from "@/public/images/courses-images/data-analytics-course.jpg";
 import dataScienceImg from "@/public/images/courses-images/datascience.webp";
-import databaseImg from "@/public/images/courses-images/database.webp";
-import dataVisualImg from "@/public/images/courses-images/dataVisual.webp";
-import softwareTestingImg from "@/public/images/courses-images/softwaretesting.webp";
-import cyberSecurityImg from "@/public/images/courses-images/cybersecurity.webp";
-import seoImg from "@/public/images/courses-images/SEO.webp";
+import databaseImg from "@/public/images/courses-images/db-course.jpg";
+import dataengineeringImg from "@/public/images/courses-images/data-engineering-course.webp";
+
+import dataVisualImg from "@/public/images/courses-images/data-visualization-course.webp";
+import softwareTestingImg from "@/public/images/courses-images/software-testing-course.webp";
+import cyberSecurityImg from "@/public/images/courses-images/cyber-course.webp";
+import seoImg from "@/public/images/courses-images/cc1.jpg";
 import medicalCodingImg from "@/public/images/courses-images/medical.webp";
 import languagesImg from "@/public/images/courses-images/languages.webp";
 import englishImg from "@/public/images/courses-images/english.webp";
-import crmImg from "@/public/images/courses-images/CRM.webp";
+import crmImg from "@/public/images/courses-images/crm-course.webp";
 import appDevImg from "@/public/images/courses-images/app.webp";
+
+const toolLogos = [
+  'https://raw.githubusercontent.com/devicons/devicon/master/icons/angularjs/angularjs-original.svg',
+  'https://raw.githubusercontent.com/devicons/devicon/master/icons/github/github-original.svg',
+  'https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg',
+  'https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg',
+  'https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original.svg',
+  'https://www.vectorlogo.zone/logos/terraformio/terraformio-icon.svg',
+  'https://raw.githubusercontent.com/devicons/devicon/master/icons/kubernetes/kubernetes-plain.svg',
+  'https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-original-wordmark.svg',
+  'https://raw.githubusercontent.com/devicons/devicon/master/icons/azure/azure-original.svg',
+  'https://raw.githubusercontent.com/devicons/devicon/master/icons/jenkins/jenkins-original.svg',
+  'https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original.svg',
+  'https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original.svg',
+  'https://raw.githubusercontent.com/devicons/devicon/master/icons/tensorflow/tensorflow-original.svg',
+  'https://raw.githubusercontent.com/devicons/devicon/master/icons/pytorch/pytorch-original.svg',
+  'https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg',
+  'https://cdn.svgporn.com/logos/openai-icon.svg',
+  'https://cdn.svgporn.com/logos/microsoft-power-bi.svg',
+  'https://raw.githubusercontent.com/devicons/devicon/master/icons/apachespark/apachespark-original.svg'
+];
 
 const courses = [
   {
@@ -75,7 +98,7 @@ const courses = [
   {
     title: "Data Engineering",
     desc: "Learn to architect scalable data pipelines. Our Data Engineering courses cover big data frameworks, Hadoop, Spark, and cloud solutions for modern data ecosystems.",
-    img: dataScienceImg, /* Note: might want to change this img mapping later if a specific one exists */
+    img: dataengineeringImg, /* Note: might want to change this img mapping later if a specific one exists */
     link: "/courses/data-engineering",
     badge: "3 Courses",
   },
@@ -132,16 +155,52 @@ const CourseCategoryPage = () => {
               Elevate your tech career with Chennai's leading IT training institute. We offer industry-aligned certification courses in Full Stack Web Development, Python, AWS Cloud, Data Science, and Software Testing. Designed for beginners and working professionals, our expert-led programs feature hands-on coding, real-time projects, and 100% guaranteed placement assistance to help you secure top software jobs globally.
             </p>
           </div>
-          <div className="expert-image">
-            <Image
-              src={expertImg}
-              alt="Student learning online"
-              className="rounded-4"
-              width={500}
-              height={350}
-              placeholder="blur"
-              priority
-            />
+          <div className="expert-interactive">
+             <div className="saturn-scene">
+                {/* Central Planet Core */}
+                <div className="saturn-planet">
+                   <div className="planet-surface">UC</div>
+                   <div className="planet-glow"></div>
+                </div>
+                
+                {/* Orbital Rings */}
+                <div className="rings-container">
+                   {/* Ring 1 - Inner */}
+                   <div className="saturn-ring ring-1">
+                      {toolLogos.slice(0, 8).map((logo, i) => (
+                        <div key={i} className="ring-item" style={{ '--index': i, '--total': 8 }}>
+                           <img src={logo} alt="tool" />
+                        </div>
+                      ))}
+                   </div>
+                   
+                   {/* Ring 2 - Outer */}
+                   <div className="saturn-ring ring-2">
+                      {toolLogos.slice(8, 18).map((logo, i) => (
+                        <div key={i} className="ring-item" style={{ '--index': i, '--total': 10 }}>
+                           <img src={logo} alt="tool" />
+                        </div>
+                      ))}
+                   </div>
+                </div>
+
+                {/* Stars/Dust particles */}
+                <div className="cosmic-stars">
+                  {[...Array(60)].map((_, i) => (
+                    <div 
+                      key={i} 
+                      className="star" 
+                      style={{ 
+                        '--left': `${Math.random() * 100}%`,
+                        '--top': `${Math.random() * 100}%`,
+                        '--size': `${Math.random() * 3}px`,
+                        '--delay': `${Math.random() * 5}s`,
+                        '--duration': `${3 + Math.random() * 4}s`
+                      }}
+                    ></div>
+                  ))}
+                </div>
+             </div>
           </div>
         </div>
       </section>

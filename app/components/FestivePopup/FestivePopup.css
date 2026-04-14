@@ -1,0 +1,146 @@
+.festive-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.festive-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(10px);
+}
+
+.festive-content-wrapper {
+  position: relative;
+  z-index: 10000;
+  max-width: 450px;
+  width: 100%;
+}
+
+.festive-poster-card {
+  position: relative;
+  background: transparent;
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.close-btn {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  background: #ff0000;
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10002;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.close-btn:hover {
+  transform: scale(1.1) rotate(90deg);
+  background: #da0000;
+}
+
+.festive-image-container {
+  position: relative;
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  line-height: 0;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.festive-image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.festive-image-container.clickable::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, transparent 60%, rgba(0,0,0,0.6));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.festive-image-container.clickable:hover::after {
+  opacity: 1;
+}
+
+.click-indicator {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: white;
+  font-weight: 600;
+  font-size: 0.9rem;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  z-index: 5;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+.festive-image-container.clickable:hover .click-indicator {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.festive-shimmer {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.25),
+    transparent
+  );
+  transform: skewX(-25deg);
+  animation: posterShimmer 4s infinite;
+}
+
+@keyframes posterShimmer {
+  0% { left: -100%; }
+  30% { left: 150%; }
+  100% { left: 150%; }
+}
+
+@media (max-width: 480px) {
+  .festive-content-wrapper {
+    max-width: 85%;
+  }
+  .close-btn {
+    top: -10px;
+    right: -10px;
+  }
+}
