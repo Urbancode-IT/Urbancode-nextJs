@@ -5,13 +5,13 @@ import './TrendingCourses.css';
 import EnquiryFormModal from "@/app/components/common/EnquiryFormModal.jsx";
 
 const courses = [
-      {
-  id: 1,
-  title: "Tamil New Year Special",
-//   duration: "3 Months",
-  description: "Wish you a very Happy Tamil New Year! Celebrate the spirit of new beginnings with our special course offerings. Embrace the joy of learning and growth this Tamil New Year with us!",
-  image: "/images/courses/tamilnewyear.jpg",
-},
+//       {
+//   id: 1,
+//   title: "Tamil New Year Special",
+// //   duration: "3 Months",
+//   description: "Wish you a very Happy Tamil New Year! Celebrate the spirit of new beginnings with our special course offerings. Embrace the joy of learning and growth this Tamil New Year with us!",
+//   image: "/images/courses/tamilnewyear.jpg",
+// },
   
   {
     id: 2,
@@ -130,7 +130,7 @@ const TrendingCourses = () => {
             transition={{ duration: 0.8 }}
         >
             <div className="trending-header text-center mb-5">
-                <h2 className="section-main-title text-shine">Courses We Offer</h2>
+                <h2 className="section-main-title text-shine">Featured Courses</h2>
             </div>
 
             <motion.div

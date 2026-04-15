@@ -65,8 +65,8 @@ const ChatbotWidget = () => {
             alt="Chat with us"
             className="rounded-circle"
           />
+          <span className="chatbot-pulse"></span>
         </div>
-        <span className="chatbot-pulse"></span>
         {showPopup && (
           <div
             className="chatbot-popup chatbot-popup-show"
@@ -76,7 +76,7 @@ const ChatbotWidget = () => {
             }}
           >
             <div className="chatbot-text">
-              🎉Tamil New Year Offers are Live! <br/>Enroll a course today
+              🎉Exciting Offers are Live! <br/>Enroll a course today
             </div><br/>
             
           </div>

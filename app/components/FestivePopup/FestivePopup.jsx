@@ -20,7 +20,7 @@ const FestivePopup = () => {
         setIsOpen(true);
         triggerConfetti();
         sessionStorage.setItem('festive_popup_shown', 'true');
-      }, 800);
+      }, 2000);
 
       return () => clearTimeout(timer);
     }

@@ -222,7 +222,7 @@ const Kidz = () => {
 { <BannerSlider banners={kidsBanners} forceEnquiry={true} /> }
 
 
-      <div className="container py-5">
+      <div id="kids-courses-section" className="container py-5">
         <h2 className="section-title">Our Kids <span className='text-success text-shine'>&nbsp;Courses</span></h2>
         <p className="section-subtitle text-muted">
           Explore expertly designed courses tailored for young learners. Each program blends engaging, interactive activities with structured learning outcomes to build strong foundational skills and future-ready knowledge.

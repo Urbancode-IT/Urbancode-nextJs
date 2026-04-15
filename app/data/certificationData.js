@@ -16,6 +16,7 @@ export const certifications = {
         fullDescription: 'This track focuses on the design of cost-efficient, fault-tolerant, and scalable distributed systems on AWS. It covers all key areas of the SAA-C03 exam including compute, storage, database, networking, and security.',
         slug: 'aws-solution-architect',
         featured: true,
+        certificateSample: '/images/certifications/aws-sample.png',
         learningPoints: [
             'Designing resilient architectures on AWS',
             'Designing high-performing architectures',
@@ -44,6 +45,7 @@ export const certifications = {
         duration: '20 Hours',
         totalHours: '20 total hours',
         modules: '8 Modules',
+        certificateSample: '/images/certifications/aws-sample.png',
         description: 'Validate your understanding of AI, machine learning (ML) concepts, and use cases on AWS using SageMaker and Bedrock.',
         fullDescription: 'The AWS Certified AI Practitioner validates your overall understanding of AI and ML concepts, covering basic AI/ML terminology, AWS AI/ML services, and security/compliance for AI/ML on AWS.',
         slug: 'aws-certified-ai-practitioner',
@@ -74,24 +76,272 @@ export const certifications = {
         duration: '45 Hours',
         totalHours: '45 total hours',
         modules: '15 Modules',
+        certificateSample: '/images/certifications/cncf-sample.png',
         description: 'Master Kubernetes administration and application development. Industry-standard certifications for Cloud Engineers.',
-        fullDescription: 'This comprehensive track covers everything from Kubernetes core concepts to advanced networking, storage, and security. Designed to prepare you for both CKA and CKAD exams through extensive hands-on labs.',
         slug: 'cka-ckad-kubernetes',
+        featuredByBrand: true,
         learningPoints: [
-            'Kubernetes architecture and core components',
-            'Cluster installation, configuration, and validation',
-            'Application lifecycle management and pod design',
-            'Services, networking, and ingress controllers',
-            'Storage management and persistence',
-            'Troubleshooting and security best practices'
+            'Kubernetes Cluster Architecture, Installation & Configuration',
+            'Workloads & Scheduling',
+            'Services & Networking',
+            'Storage & Troubleshooting',
+            'Kubernetes API Primitives',
+            'Multi-container Pods & Pod Design'
         ],
         curriculum: [
-            { title: 'Core Concepts & Architecture', duration: '5h' },
-            { title: 'Installation & Configuration', duration: '8h' },
-            { title: 'Workloads & Scheduling', duration: '10h' },
-            { title: 'Services & Networking', duration: '8h' },
-            { title: 'Storage & Persistence', duration: '6h' },
-            { title: 'Troubleshooting & Security', duration: '8h' }
+            { title: 'Cluster Setup & Configuration', duration: '10h' },
+            { title: 'Kubernetes Networking', duration: '8h' },
+            { title: 'Storage & Persistence', duration: '7h' },
+            { title: 'Application Deployment & Lifecycle', duration: '10h' },
+            { title: 'Logging & Monitoring', duration: '5h' },
+            { title: 'Security & Access Control', duration: '5h' }
+        ]
+    },
+    'aws-certified-data-analytics': {
+        id: 4,
+        title: 'AWS Certified Data Analytics - Specialty',
+        brand: 'AWS',
+        brandLogo: '/images/home/amazon.png',
+        image: '/images/home/amazon.png',
+        rating: '4.8',
+        ratingsCount: '950 ratings',
+        students: '2,800+',
+        duration: '20 Hours',
+        totalHours: '20 total hours',
+        modules: '10 Modules',
+        certificateSample: '/images/certifications/aws-sample.png',
+        slug: 'aws-certified-data-analytics',
+        description: 'Design and maintain analytic solutions on AWS. Learn to collect, store, process, and visualize data.',
+        learningPoints: [
+            'Data Collection strategies and tools',
+            'Storage and Data Management (S3, Glue)',
+            'Data Processing with EMR and Kinesis',
+            'Data Analysis (Redshift, Athena)',
+            'Visualization and Security',
+            'Designing scalable analytical systems'
+        ],
+        curriculum: [
+            { title: 'Collection & Ingestion', duration: '4h' },
+            { title: 'Storage & Lakehouse Design', duration: '4h' },
+            { title: 'Processing & Transformation', duration: '4h' },
+            { title: 'Analysis & Security', duration: '4h' },
+            { title: 'Visualization & Real-world Use Cases', duration: '4h' }
+        ]
+    },
+    'aws-certified-developer': {
+        id: 5,
+        title: 'AWS Certified Developer - Associate',
+        brand: 'AWS',
+        brandLogo: '/images/home/amazon.png',
+        image: '/images/home/amazon.png',
+        rating: '4.9',
+        ratingsCount: '3,100 ratings',
+        students: '12,000+',
+        duration: '45 Hours',
+        totalHours: '45 total hours',
+        modules: '12 Modules',
+        certificateSample: '/images/certifications/aws-sample.png',
+        slug: 'aws-certified-developer',
+        description: 'Master core AWS services and development best practices. Learn to build, package, and deploy serverless apps.',
+        learningPoints: [
+            'Developing with AWS services',
+            'Deployment & Security on AWS',
+            'Monitoring & Troubleshooting',
+            'Refactoring existing applications',
+            'Lambda & Serverless Architecture',
+            'DynamoDB Deep Dive'
+        ],
+        curriculum: [
+            { title: 'Deployment & CI/CD', duration: '10h' },
+            { title: 'Security & Authentication', duration: '8h' },
+            { title: 'Development with AWS Services', duration: '12h' },
+            { title: 'Refactoring & Performance', duration: '8h' },
+            { title: 'Monitoring & Troubleshooting', duration: '7h' }
+        ]
+    },
+    'microsoft-azure-solutions-architect': {
+        id: 6,
+        title: 'Azure Solutions Architect Expert (AZ-305)',
+        brand: 'Microsoft',
+        brandLogo: '/images/home/microsoft.png',
+        image: '/images/home/microsoft.png',
+        rating: '4.8',
+        ratingsCount: '1,450 ratings',
+        students: '7,500+',
+        duration: '40 Hours',
+        totalHours: '40 total hours',
+        modules: '12 Modules',
+        certificateSample: '/images/certifications/microsoft-sample.png',
+        slug: 'microsoft-azure-solutions-architect',
+        description: 'Design cloud and hybrid solutions that run on Microsoft Azure. Covers compute, network, storage, and security.',
+        featuredByBrand: true,
+        learningPoints: [
+            'Design identity, governance, and monitoring solutions',
+            'Design data storage solutions',
+            'Design business continuity solutions',
+            'Design infrastructure solutions',
+            'Migration strategies for Azure',
+            'Networking and Security design'
+        ],
+        curriculum: [
+            { title: 'Design Identity & Governance', duration: '8h' },
+            { title: 'Design Infrastructure', duration: '12h' },
+            { title: 'Design Data Storage', duration: '8h' },
+            { title: 'Design Business Continuity', duration: '6h' },
+            { title: 'Azure Migration Framework', duration: '6h' }
+        ]
+    },
+    'microsoft-azure-administrator': {
+        id: 7,
+        title: 'Azure Administrator Associate (AZ-104)',
+        brand: 'Microsoft',
+        brandLogo: '/images/home/microsoft.png',
+        image: '/images/home/microsoft.png',
+        rating: '4.9',
+        ratingsCount: '2,800 ratings',
+        students: '15,000+',
+        duration: '32 Hours',
+        totalHours: '32 total hours',
+        modules: '10 Modules',
+        certificateSample: '/images/certifications/microsoft-sample.png',
+        slug: 'microsoft-azure-administrator',
+        description: 'Implement, manage, and monitor identity, governance, storage, and virtual networks in Azure.',
+        learningPoints: [
+            'Manage Azure identities and governance',
+            'Implement and manage storage',
+            'Deploy and manage Azure compute resources',
+            'Configure and manage virtual networking',
+            'Monitor and maintain Azure resources'
+        ],
+        curriculum: [
+            { title: 'Azure Virtual Networks', duration: '8h' },
+            { title: 'Manage Azure Identities', duration: '6h' },
+            { title: 'Azure Storage Implementation', duration: '6h' },
+            { title: 'Azure Compute Resources', duration: '6h' },
+            { title: 'Monitoring & Backup', duration: '6h' }
+        ]
+    },
+    'microsoft-azure-developer': {
+        id: 8,
+        title: 'Azure Developer Associate (AZ-204)',
+        brand: 'Microsoft',
+        brandLogo: '/images/home/microsoft.png',
+        image: '/images/home/microsoft.png',
+        rating: '4.7',
+        ratingsCount: '1,100 ratings',
+        students: '5,000+',
+        duration: '28 Hours',
+        totalHours: '28 total hours',
+        modules: '9 Modules',
+        certificateSample: '/images/certifications/microsoft-sample.png',
+        slug: 'microsoft-azure-developer',
+        description: 'Design, build, test, and maintain cloud applications and services on Microsoft Azure.',
+        learningPoints: [
+            'Develop Azure compute solutions',
+            'Develop for Azure storage',
+            'Implement Azure security',
+            'Monitor, troubleshoot, and optimize Azure solutions',
+            'Connect to and consume Azure services'
+        ],
+        curriculum: [
+            { title: 'Azure App Service', duration: '6h' },
+            { title: 'Azure Functions', duration: '5h' },
+            { title: 'Cosmos DB & Data Storage', duration: '7h' },
+            { title: 'Authentication & API Management', duration: '5h' },
+            { title: 'Event-based Solutions', duration: '5h' }
+        ]
+    },
+    'aws-certified-security-specialty': {
+        id: 9,
+        title: 'AWS Certified Security - Specialty',
+        brand: 'AWS',
+        brandLogo: '/images/home/amazon.png',
+        image: '/images/home/amazon.png',
+        rating: '4.9',
+        ratingsCount: '800 ratings',
+        students: '2,000+',
+        duration: '30 Hours',
+        totalHours: '30 total hours',
+        modules: '10 Modules',
+        certificateSample: '/images/certifications/aws-sample.png',
+        slug: 'aws-certified-security-specialty',
+        description: 'Validate your expertise in securing data and workloads in the AWS Cloud.',
+        learningPoints: [
+            'Incident Response procedures',
+            'Logging and Monitoring configurations',
+            'Infrastructure Security',
+            'Identity and Access Management',
+            'Data Protection and Encryption',
+            'Compliance and Governance'
+        ],
+        curriculum: [
+            { title: 'Incident Response & Governance', duration: '6h' },
+            { title: 'Logging & Monitoring', duration: '6h' },
+            { title: 'Infrastructure Security', duration: '6h' },
+            { title: 'Identity & Access Management', duration: '6h' },
+            { title: 'Data Protection', duration: '6h' }
+        ]
+    },
+    'cnc-prometheus-certified': {
+        id: 10,
+        title: 'PCA (Prometheus Certified Associate)',
+        brand: 'CNCF',
+        brandLogo: '/images/home/fullstack.png',
+        image: '/images/home/fullstack.png',
+        rating: '4.6',
+        ratingsCount: '450 ratings',
+        students: '900+',
+        duration: '15 Hours',
+        totalHours: '15 total hours',
+        modules: '6 Modules',
+        certificateSample: '/images/certifications/cncf-sample.png',
+        slug: 'cnc-prometheus-certified',
+        description: 'Validate your observability and monitoring skills using Prometheus.',
+        learningPoints: [
+            'Observability Concepts',
+            'Prometheus Data Model & PromQL',
+            'Instrumentation & Exporters',
+            'Alerting & Alertmanager',
+            'Prometheus Architecture',
+            'Dashboards & Visualization'
+        ],
+        curriculum: [
+            { title: 'Prometheus Fundamentals', duration: '3h' },
+            { title: 'PromQL Deep Dive', duration: '3h' },
+            { title: 'Instrumentation Strategies', duration: '3h' },
+            { title: 'Alerting & Visualization', duration: '3h' },
+            { title: 'Architecture & Operations', duration: '3h' }
+        ]
+    },
+    'cnc-kubernetes-security': {
+        id: 11,
+        title: 'CKS (Certified Kubernetes Security Specialist)',
+        brand: 'CNCF',
+        brandLogo: '/images/home/fullstack.png',
+        image: '/images/home/fullstack.png',
+        rating: '4.9',
+        ratingsCount: '600 ratings',
+        students: '1,200+',
+        duration: '25 Hours',
+        totalHours: '25 total hours',
+        modules: '8 Modules',
+        certificateSample: '/images/certifications/cncf-sample.png',
+        slug: 'cnc-kubernetes-security',
+        description: 'Advanced certification for securing container-based applications and Kubernetes platforms.',
+        learningPoints: [
+            'Cluster Setup Security',
+            'Cluster Hardening',
+            'System Hardening',
+            'Minimize Microservices Vulnerabilities',
+            'Supply Chain Security',
+            'Monitoring, Logging, and Runtime Security'
+        ],
+        curriculum: [
+            { title: 'Cluster Setup & Hardening', duration: '5h' },
+            { title: 'System Security', duration: '4h' },
+            { title: 'Securing Microservices', duration: '5h' },
+            { title: 'Supply Chain Security', duration: '5h' },
+            { title: 'Runtime Security & Analysis', duration: '6h' }
         ]
     }
 };

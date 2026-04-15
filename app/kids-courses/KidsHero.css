@@ -1,184 +1,439 @@
 /* KidsHero.css */
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
 
 :root {
-  --kids-bg: #e9fdfa; /* Light mint background from design */
-  --kids-text: #1a1a1a;
-  --kids-accent: #333333;
-  --kids-subtext: #666666;
-  --animation-speed: 0.8s;
-  --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+  --kids-hero-bg: #FAF8F4;
+  --kids-hero-text: #3A3A38;
+  --kids-hero-subtext: #A9A8A4;
+  --kids-hero-green: #00B56F;
+  --kids-hero-teal: #317B74;
+  --kids-hero-card-bg: #C5C5C5;
+}
+
+.kids-hero-section {
+  background-color: var(--kids-hero-bg);
+  width: 100%;
+  height: 100vh;
+  min-height: 600px;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 
 .kids-hero-container {
+  max-width: 1440px;
   width: 100%;
-  height: 100vh;
+  height: 100%;
+  position: relative;
+  display: flex;
+  padding: 0 60px;
+}
+
+/* Left Content */
+.kids-hero-content-left {
+  flex: 1.4;
+  padding-top: clamp(40px, 10vh, 120px);
+  z-index: 10;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  background-color: #e9fdf9; /* Exact mint background from design */
-  overflow: hidden;
   position: relative;
-  font-family: 'Outfit', sans-serif;
-  text-align: center;
 }
 
-.kids-hero-content {
-  margin-top: clamp(60px, 10vh, 120px); /* Restored natural top padding */
-  padding: 0 24px;
-  z-index: 5;
-  opacity: 0;
-  transform: translateY(30px);
-  animation: slideUpFade var(--animation-speed) var(--ease-out-expo) forwards;
-}
-
-.kids-hero-heading {
-  font-size: clamp(24px, 3.8vw, 42px); /* Further reduced heading */
+.kids-hero-main-title {
+  font-size: clamp(40px, 5.8vw, 84px);
+  line-height: 1.1;
   font-weight: 700;
-  line-height: 1;
-  margin-bottom: clamp(8px, 1.25vh, 15px);
-  color: #1a1a1a;
-  letter-spacing: -0.01em;
-  opacity: 0;
-  animation: slideUpFade 0.8s var(--ease-out-expo) 0.1s forwards;
-  margin-top: 10px; /* Remove extra top margin for better balance */
+  color: var(--kids-hero-text);
+  letter-spacing: -0.02em;
+  margin: 0;
 }
 
-.kids-hero-subheading {
-  font-size: clamp(13px, 1.4vw, 15px); /* Further reduced subheading */
-  font-weight: 400;
-  color: #666666;
-  margin-bottom: clamp(18px, 2.5vh, 35px);
-  max-width: clamp(280px, 42vw, 600px);
-  margin-left: auto;
-  margin-right: auto;
-  opacity: 0;
-  animation: slideUpFade 0.8s var(--ease-out-expo) 0.2s forwards;
+.highlight-text {
+  position: relative;
+  display: inline-block;
 }
 
-.kids-hero-button {
-  background-color: #333333;
+.underline-svg {
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: clamp(12px, 1.5vw, 20px);
+}
+
+.kids-hero-description {
+  font-size: clamp(14px, 1.2vw, 17px);
+  line-height: 1.4;
+  color: var(--kids-hero-subtext);
+  max-width: 411px;
+  margin-top: 25px;
+  margin-bottom: 35px;
+}
+
+.kids-hero-action {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.kids-enroll-btn {
+  background: var(--kids-hero-teal);
   color: white;
   border: none;
-  padding: 10px 32px; /* Even more compact button */
-  border-radius: 100px;
-  font-size: 14px; /* Further reduced button font size */
-  font-weight: 600;
+  padding: 16px 45px;
+  border-radius: 61px;
+  font-size: clamp(16px, 1.4vw, 21px);
+  font-weight: 500;
   cursor: pointer;
-  transition: all 0.4s var(--ease-out-expo);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  text-decoration: none;
-  display: inline-block;
-  opacity: 0;
-  animation: slideUpFade 0.8s var(--ease-out-expo) 0.3s forwards;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease;
 }
 
-.kids-hero-button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-  background-color: #000;
+.kids-enroll-btn:hover {
+  transform: translateY(-2px);
 }
 
-.kids-hero-image-wrapper {
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  line-height: 0;
+.kids-arrow-img {
+  width: clamp(35px, 4vw, 55px);
+  height: auto;
+  transform: rotate(10deg);
+}
+
+/* Stats Grid */
+.kids-hero-stats-grid {
   display: flex;
+  gap: clamp(15px, 2vw, 30px);
+  margin-top: auto;
+  padding-bottom: 20px;
+}
+
+.stat-card-gray {
+  background: #eaeaea;
+  border-radius: 40px;
+  padding: clamp(20px, 2.5vw, 35px);
+  position: relative;
+  flex-shrink: 0;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.03);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.stat-card-gray:hover {
+  transform: translateY(-5px);
+}
+
+.stat-mentors {
+  width: clamp(240px, 22vw, 360px);
+  height: clamp(160px, 20vh, 230px);
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: flex-end;
-  height: 135vh; /* Proportional height matching the design */
-  pointer-events: none;
+}
+
+.stat-number {
+  font-size: clamp(34px, 4vw, 54px);
+  font-weight: 700;
+  color: var(--kids-hero-text);
+  margin-bottom: 8px;
+}
+
+.stat-label {
+  font-size: clamp(16px, 1.8vw, 24px);
+  line-height: 1.2;
+  font-weight: 700;
+  color: var(--kids-hero-text);
+  max-width: 270px;
+}
+
+.stat-transform {
+  width: clamp(230px, 20vw, 320px);
+  height: clamp(200px, 25vh, 280px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 20px !important;
+}
+
+.stat-image-placeholder {
+  width: 100%;
+  height: 52%;
+  background: #C5C5C5;
+  border-radius: 20px;
+  margin-bottom: 15px;
   overflow: hidden;
 }
 
-.kids-hero-image {
+.stat-image-placeholder img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: top center; /* Show the top part and crop the bottom */
-  display: block;
-  opacity: 0;
-  transform: translateY(40px);
-  animation: slideUpFade var(--animation-speed) var(--ease-out-expo) 0.2s forwards;
 }
 
-@keyframes slideUpFade {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
+.stat-title {
+  font-size: clamp(14px, 1.5vw, 19px);
+  line-height: 1.25;
+  font-weight: 700;
+  color: var(--kids-hero-text);
+  margin: 0;
+}
+
+.stat-icon-arrow {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: #6B6B6B;
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stat-icon-arrow svg {
+  width: 18px;
+  height: 18px;
+}
+
+.kids-scribble-img {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  width: clamp(25px, 3vw, 35px);
+  height: auto;
+}
+
+/* Right Image */
+.kids-hero-image-right {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: flex-end; /* Keep anchored to bottom */
+  justify-content: flex-end;
+  height: 100%;
+  cursor: pointer;
+  padding-bottom: 20px; /* Add some lift from the bottom */
+}
+
+.main-hero-img {
+  width: auto;
+  height: auto;
+  max-height: 85%; /* Reduced to prevent top cut-off */
+  max-width: 100%;
+  object-fit: contain;
+  z-index: 5;
+  position: relative;
+  margin-right: -20px;
+}
+
+.image-bg-blob {
+  position: absolute;
+  width: clamp(280px, 28vw, 380px);
+  height: clamp(380px, 50vh, 520px);
+  background: var(--kids-hero-teal);
+  border-radius: 65px;
+  right: 0px;
+  bottom: 8vh;
+}
+
+.decoration-lines {
+  position: absolute;
+  left: -80px;
+  top: 35%;
+  z-index: 6;
+}
+
+.line {
+  width: 45px;
+  height: 6px;
+  background: #FF9900;
+  border-radius: 12px;
+  margin-bottom: 15px;
+}
+
+.line-1 { transform: rotate(-30deg); }
+.line-2 { transform: rotate(10deg); margin-left: -18px;}
+.line-3 { transform: rotate(45deg); }
+
+.pear-decoration {
+  position: absolute;
+  left: 0;
+  bottom: 25%;
+  z-index: 6;
+}
+
+/* Tablet Optimizations (Landscape/Portrait) */
+@media (max-width: 1100px) {
+  .kids-hero-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 0 40px;
+    text-align: center;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  .kids-hero-content-left {
+    padding-top: 100px;
+    align-items: center;
+    flex: none;
+    width: 100%;
+  }
+  .kids-hero-main-title {
+    font-size: clamp(52px, 8vw, 72px);
+  }
+  .kids-hero-description {
+    font-size: clamp(16px, 2vw, 19px);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .kids-hero-action {
+    justify-content: center;
+  }
+  .image-bg-blob {
+    right: 50%;
+    transform: translateX(50%);
+    width: 320px;
+    height: 420px;
+    bottom: 20px;
+  }
+  .kids-hero-image-right {
+    height: 40%;
+    width: 100%;
+    justify-content: center;
+    margin-top: auto;
+  }
+  .main-hero-img {
+    margin-right: 0;
+    max-height: 100%;
+  }
+  .kids-hero-stats-grid {
+    display: none; /* Keep hero clean for centered tablet layout */
+  }
+  .decoration-lines, .pear-decoration {
+    display: none;
   }
 }
 
-/* Responsive adjustments */
-
-@media (min-width: 1025px) {
-  .kids-hero-content {
-      margin-top: 12vh;
-      gap: 0.5rem !important; /* Slightly tighter gap for large screens */
+/* Mobile View - Specific fix for Navbar overlap */
+@media (max-width: 1024px) and (max-height: 650px) {
+  .kids-hero-container {
+    flex-direction: row !important;
+    text-align: left !important;
+    align-items: center !important; /* Center row vertically for better balance */
+    height: 100% !important;
   }
-  .kids-hero-image-wrapper {
-      height: 100vh;
-            margin-left:20px
-
+  .kids-hero-content-left {
+    padding-top: 0 !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+    flex: 1.4 !important;
+    width: auto !important;
+    justify-content: center !important;
+    display: flex !important;
+    flex-direction: column !important;
   }
-}
-@media (min-width: 1025px) {
-  .kids-hero-image {
-    object-position: center 50%; /* move image upward */
+  .kids-hero-main-title {
+    font-size: 44px !important;
+    line-height: 1.1;
+    margin-top: 40px !important;
+    margin-bottom: 10px !important;
   }
-  .kids-hero-heading {
-    margin-top: 0px; /* Remove extra top margin for better balance */
-    font-size: 50px;
+  .kids-hero-description {
+    font-size: 14px !important;
+    margin-top: 0 !important;
+    margin-bottom: 20px !important;
+    max-width: 420px !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
   }
-  .kids-hero-button {
-    padding: 12px 40px; /* Slightly larger button on desktop */
-    font-size: 18px;
+  .kids-hero-action {
+    justify-content: flex-start !important;
+    margin-bottom: 20px !important;
   }
-}
-@media (max-width: 1024px) {
-  .kids-hero-content {
-      margin-top: 10vh;
+  .kids-hero-stats-grid {
+    display: flex !important;
+    gap: 15px !important;
+    margin-top: 10px !important;
   }
-  .kids-hero-image-wrapper {
-      height: 120vh;
-      margin-left:20px
+  .stat-card-gray {
+    background: #EAEAEA !important;
+    padding: 15px !important;
+    border-radius: 20px !important;
+    min-width: 140px !important;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05) !important;
+  }
+  .stat-mentors {
+    flex: none !important;
+    width: 140px !important;
+  }
+  .stat-transform {
+    flex: none !important;
+    width: 180px !important;
+  }
+  .stat-number {
+    font-size: 26px !important;
+    margin-bottom: 4px !important;
+  }
+  .stat-label {
+    font-size: 11px !important;
+    font-weight: 500 !important;
+  }
+  .stat-image-placeholder {
+    height: 60px !important;
+    margin-bottom: 8px !important;
+  }
+  .stat-title {
+    font-size: 12px !important;
+    line-height: 1.3 !important;
+  }
+  .kids-hero-image-right {
+    display: flex !important;
+    flex: 1 !important;
+    height: 100% !important;
+    align-items: flex-end !important;
+    justify-content: flex-end !important;
+    padding-bottom: 20px !important;
+  }
+  .image-bg-blob {
+    width: 180px !important;
+    height: 300px !important;
+    bottom: 30px !important;
   }
 }
 
 @media (max-width: 768px) {
-  .kids-hero-content {
-      margin-top: 20vh;
+  .kids-hero-section {
+    height: 100dvh;
+    min-height: auto;
   }
-  
-  .kids-hero-image-wrapper {
-      height: 75vh;
+  .kids-hero-content-left {
+    padding-top: 110px; /* Boosted padding to clear mobile navbar */
+    flex: none;
   }
-
-  .kids-hero-image {
-      width: 150%; /* "Crop" by scaling up and centering on mobile */
-      max-width: none;
-      object-fit: cover;
+  .kids-hero-main-title {
+    font-size: clamp(34px, 10vw, 44px);
+    line-height: 1.1;
+  }
+  .kids-hero-description {
+    font-size: 14px;
+    margin-top: 15px;
+    margin-bottom: 25px;
+    padding: 0 10px;
+  }
+  .kids-hero-action {
+    margin-bottom: 10px;
+  }
+  .kids-hero-image-right {
+    height: 40%;
+  }
+  .image-bg-blob {
+    width: 220px;
+    height: 85%;
   }
 }
 
-@media (max-width: 480px) {
-  .kids-hero-image-wrapper {
-      height: 50vh;
-      margin-left:10px;
-  }
-  
-  .kids-hero-image {
-      width: 200%; /* More aggressive crop for mobile to keep faces large */
-  }
-
-  .kids-hero-heading {
-      white-space: normal;
-  }
-}

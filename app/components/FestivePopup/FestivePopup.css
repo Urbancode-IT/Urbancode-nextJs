@@ -25,15 +25,22 @@
   position: relative;
   z-index: 10000;
   max-width: 450px;
-  width: 100%;
+  width: 90%;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .festive-poster-card {
   position: relative;
   background: transparent;
   width: 100%;
+  max-height: 100%;
   border-radius: 12px;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
 }
 
 .close-btn {
@@ -60,16 +67,20 @@
 .festive-image-container {
   position: relative;
   width: 100%;
+  max-height: calc(90vh - 20px);
   border-radius: 12px;
   overflow: hidden;
   line-height: 0;
   cursor: pointer;
   border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: center;
 }
 
 .festive-image {
   width: 100%;
   height: auto;
+  max-height: 90vh;
   object-fit: contain;
 }
 
@@ -134,10 +145,15 @@
 
 @media (max-width: 480px) {
   .festive-content-wrapper {
-    max-width: 85%;
+    max-width: 95%;
+    width: 95%;
   }
   .close-btn {
-    top: -10px;
-    right: -10px;
+    top: 10px;
+    right: 15px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    padding: 5px;
+    color: #333;
   }
 }

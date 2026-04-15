@@ -1,5 +1,5 @@
 'use client';
-
+import React, { useState } from 'react';
 import Image from "next/image";
 import "./CoursesCategoryPage.css";
 
@@ -25,24 +25,24 @@ import crmImg from "@/public/images/courses-images/crm-course.webp";
 import appDevImg from "@/public/images/courses-images/app.webp";
 
 const toolLogos = [
-  'https://raw.githubusercontent.com/devicons/devicon/master/icons/angularjs/angularjs-original.svg',
-  'https://raw.githubusercontent.com/devicons/devicon/master/icons/github/github-original.svg',
-  'https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg',
-  'https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg',
-  'https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original.svg',
-  'https://www.vectorlogo.zone/logos/terraformio/terraformio-icon.svg',
-  'https://raw.githubusercontent.com/devicons/devicon/master/icons/kubernetes/kubernetes-plain.svg',
-  'https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-original-wordmark.svg',
-  'https://raw.githubusercontent.com/devicons/devicon/master/icons/azure/azure-original.svg',
-  'https://raw.githubusercontent.com/devicons/devicon/master/icons/jenkins/jenkins-original.svg',
-  'https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original.svg',
-  'https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original.svg',
-  'https://raw.githubusercontent.com/devicons/devicon/master/icons/tensorflow/tensorflow-original.svg',
-  'https://raw.githubusercontent.com/devicons/devicon/master/icons/pytorch/pytorch-original.svg',
-  'https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg',
-  'https://cdn.svgporn.com/logos/openai-icon.svg',
-  'https://cdn.svgporn.com/logos/microsoft-power-bi.svg',
-  'https://raw.githubusercontent.com/devicons/devicon/master/icons/apachespark/apachespark-original.svg'
+  { name: 'Angular', logo: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/angularjs/angularjs-original.svg', desc: 'Master Angular to build industry-ready single-page applications. Our curriculum focuses on TypeScript, RxJS, and high-performance front-end architecture.', link: '/courses/fullstack-development' },
+  { name: 'GitHub', logo: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/github/github-original.svg', desc: 'Global standard for version control. Learn Git workflows, pull requests, and CI/CD integration to succeed in modern collaborative coding environments.', link: '/courses/software-testing' },
+  { name: 'React', logo: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg', desc: 'React is the most popular library for modern web interfaces. Learn hooks, state management, and component-driven design in our expert-led modules.', link: '/courses/fullstack-development' },
+  { name: 'Python', logo: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg', desc: 'The preferred language for Data Science and AI. Learn Python fundamentals to advanced automation and machine learning at Chennai\'s top IT institute.', link: '/courses/programming-languages' },
+  { name: 'MongoDB', logo: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original.svg', desc: 'Master NoSQL with MongoDB. Gain expertise in document-based databases, indexing, and aggregation for scalable, data-intensive modern applications.', link: '/courses/database' },
+  { name: 'Terraform', logo: 'https://www.vectorlogo.zone/logos/terraformio/terraformio-icon.svg', desc: 'Infrastructure as Code (IaC) with Terraform. Learn to automate cloud infrastructure across AWS and Azure for faster and safer deployments.', link: '/courses/cloud-and-devops' },
+  { name: 'Kubernetes', logo: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/kubernetes/kubernetes-plain.svg', desc: 'Orchestrate containers like a pro. Master Kubernetes (K8s) for scaling, managing, and automating containerized applications in production.', link: '/courses/cloud-and-devops' },
+  { name: 'AWS', logo: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-original-wordmark.svg', desc: 'Get certified in AWS Cloud. Learn EC2, S3, Lambda, and cloud security from industry experts to lead cloud transformation projects.', link: '/courses/cloud-and-devops' },
+  { name: 'Azure', logo: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/azure/azure-original.svg', desc: 'Scale with Microsoft Azure. Our training covers cloud solutions architecture, virtual machines, and cloud-native application development.', link: '/courses/cloud-and-devops' },
+  { name: 'Jenkins', logo: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/jenkins/jenkins-original.svg', desc: 'Automate your life with Jenkins. Master CI/CD pipelines, build automation, and DevOps integration to speed up software delivery cycles.', link: '/courses/cloud-and-devops' },
+  { name: 'Docker', logo: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original.svg', desc: 'Containerization simplified with Docker. Learn to package, ship, and run any application as a portable container for consistent development.', link: '/courses/cloud-and-devops' },
+  { name: 'Node.js', logo: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original.svg', desc: 'High-speed backend development with Node.js. Master asynchronous programming, Express, and REST APIs for scalable real-time web applications.', link: '/courses/fullstack-development' },
+  { name: 'TensorFlow', logo: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/tensorflow/tensorflow-original.svg', desc: 'Build brain-like models with TensorFlow. Dive into Deep Learning, Neural Networks, and AI-driven automation using powerful frameworks.', link: '/courses/data-science' },
+  { name: 'PyTorch', logo: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/pytorch/pytorch-original.svg', desc: 'Flexible Deep Learning with PyTorch. Master computer vision, natural language processing (NLP), and sophisticated AI model development.', link: '/courses/data-science' },
+  { name: 'Java', logo: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg', desc: 'Robust enterprise development starts here. Master Java Collections, Multi-threading, and Spring Boot to build large-scale secure software systems.', link: '/courses/programming-languages' },
+  { name: 'Gen AI', logo: 'https://cdn.svgporn.com/logos/openai-icon.svg', desc: 'Join the AI revolution. Learn Generative AI, Large Language Models (LLMs), and Prompt Engineering to stay ahead in the age of Automation.', link: '/courses/data-science' },
+  { name: 'Power BI', logo: 'https://cdn.svgporn.com/logos/microsoft-power-bi.svg', desc: 'Visualize data effectively with Power BI. Learn to create professional business intelligence reports and interactive dashboards for data-driven decisions.', link: '/courses/data-analytics' },
+  { name: 'Spark', logo: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/apachespark/apachespark-original.svg', desc: 'Process Big Data at lightning speed. Master Spark for large-scale data processing, streaming, and SQL analytics in modern data environments.', link: '/courses/data-engineering' }
 ];
 
 const courses = [
@@ -140,7 +140,8 @@ const courses = [
 ];
 
 const CourseCategoryPage = () => {
-  
+  const [selectedTool, setSelectedTool] = React.useState(null);
+
   return (
     <div className="courses-wrapper1 ">
       {/* Expert-Led Courses Section */}
@@ -151,14 +152,27 @@ const CourseCategoryPage = () => {
               Empower Your Future with <br />
               <span className="text-success text-shine">Expert-Led Courses</span>
             </h1>
-            <p>
-              Elevate your tech career with Chennai's leading IT training institute. We offer industry-aligned certification courses in Full Stack Web Development, Python, AWS Cloud, Data Science, and Software Testing. Designed for beginners and working professionals, our expert-led programs feature hands-on coding, real-time projects, and 100% guaranteed placement assistance to help you secure top software jobs globally.
-            </p>
+            
+            {/* Conditional Info Display */}
+            {selectedTool ? (
+              <div className="tool-info-card shadow-sm">
+                <h3 className="text-success mb-2 d-flex align-items-center gap-2">
+                  <img src={selectedTool.logo} alt={selectedTool.name} width="24" height="24" />
+                  {selectedTool.name}
+                </h3>
+                <p className="tool-seo-desc">{selectedTool.desc}</p>
+                <button className="btn btn-sm btn-outline-success mt-1" onClick={() => window.location.href = selectedTool.link}>View Course</button>
+              </div>
+            ) : (
+              <p>
+                Elevate your tech career with Chennai's leading IT training institute. We offer industry-aligned certification courses in Full Stack Web Development, Python, AWS Cloud, Data Science, and Software Testing. Designed for beginners and working professionals, our expert-led programs feature hands-on coding, real-time projects, and 100% guaranteed placement assistance to help you secure top software jobs globally.
+              </p>
+            )}
           </div>
           <div className="expert-interactive">
              <div className="saturn-scene">
                 {/* Central Planet Core */}
-                <div className="saturn-planet">
+                <div className="saturn-planet" onClick={() => setSelectedTool(null)}>
                    <div className="planet-surface">UC</div>
                    <div className="planet-glow"></div>
                 </div>
@@ -167,18 +181,18 @@ const CourseCategoryPage = () => {
                 <div className="rings-container">
                    {/* Ring 1 - Inner */}
                    <div className="saturn-ring ring-1">
-                      {toolLogos.slice(0, 8).map((logo, i) => (
-                        <div key={i} className="ring-item" style={{ '--index': i, '--total': 8 }}>
-                           <img src={logo} alt="tool" />
+                      {toolLogos.slice(0, 8).map((tool, i) => (
+                        <div key={i} className={`ring-item ${selectedTool?.name === tool.name ? 'active' : ''}`} style={{ '--index': i, '--total': 8 }} onClick={() => setSelectedTool(tool)}>
+                           <img src={tool.logo} alt={tool.name} title={tool.name} />
                         </div>
                       ))}
                    </div>
                    
                    {/* Ring 2 - Outer */}
                    <div className="saturn-ring ring-2">
-                      {toolLogos.slice(8, 18).map((logo, i) => (
-                        <div key={i} className="ring-item" style={{ '--index': i, '--total': 10 }}>
-                           <img src={logo} alt="tool" />
+                      {toolLogos.slice(8, 18).map((tool, i) => (
+                        <div key={i} className={`ring-item ${selectedTool?.name === tool.name ? 'active' : ''}`} style={{ '--index': i, '--total': 10 }} onClick={() => setSelectedTool(tool)}>
+                           <img src={tool.logo} alt={tool.name} title={tool.name} />
                         </div>
                       ))}
                    </div>

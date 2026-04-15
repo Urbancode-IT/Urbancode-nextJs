@@ -131,23 +131,44 @@
   position: absolute;
   top: 14%;
   right: 22%;
-  width: 180px;
-  height: 180px;
+  width: clamp(120px, 20vw, 220px);
+  height: clamp(120px, 20vw, 220px);
   border-radius: 50%;
   background: radial-gradient(
     circle,
-    rgba(255, 240, 200, 0.28) 0%,
-    rgba(255, 200, 100, 0.10) 40%,
+    rgba(255, 240, 200, 0.32) 0%,
+    rgba(255, 200, 100, 0.12) 40%,
     transparent 70%
   );
   pointer-events: none;
   animation: flarePulse 4s ease-in-out infinite alternate;
-  filter: blur(8px);
+  filter: blur(12px);
 }
 
 @keyframes flarePulse {
   0%   { opacity: 0.4; transform: scale(1);    }
   100% { opacity: 0.9; transform: scale(1.18); }
+}
+
+/* ── Light leak effect ───────────────────────────────────────── */
+.cl-light-leak {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(125deg, 
+    rgba(255, 0, 100, 0.05) 0%, 
+    rgba(0, 150, 255, 0.05) 50%, 
+    rgba(255, 200, 0, 0.05) 100%
+  );
+  background-size: 200% 200%;
+  mix-blend-mode: screen;
+  pointer-events: none;
+  animation: lightLeakDrift 12s ease-in-out infinite alternate;
+  filter: blur(40px);
+}
+
+@keyframes lightLeakDrift {
+  0%   { background-position: 0% 0%;   }
+  100% { background-position: 100% 100%; }
 }
 
 /* ── Letterbox bars ──────────────────────────────────────────── */
@@ -172,9 +193,10 @@
   display: flex;
   align-items: flex-end;
   justify-content: flex-start;
-  padding: clamp(48px, 9vh, 96px) clamp(32px, 5vw, 80px);
-  z-index: 3;
+  padding: clamp(40px, 8vh, 96px) clamp(24px, 5vw, 80px);
+  z-index: 10;
   pointer-events: none;
+  background: linear-gradient(to top, rgba(0,0,0,0.4) 0%, transparent 40%);
 }
 
 .cl-brand-inner {
@@ -197,14 +219,16 @@
 
 .cl-logo-text {
   font-family: 'Inter', system-ui, sans-serif;
-  font-size: clamp(1.6rem, 4vw, 3rem);
-  font-weight: 800;
-  letter-spacing: 0.22em;
+  font-size: clamp(2rem, 6vw, 4rem);
+  font-weight: 900;
+  letter-spacing: 0.25em;
   color: #fff;
   text-shadow:
-    0 0 40px rgba(255, 200, 100, 0.5),
-    0 2px 20px rgba(0, 0, 0, 0.6);
+    0 0 20px rgba(0, 181, 111, 0.4),
+    0 0 40px rgba(0, 181, 111, 0.2),
+    0 2px 20px rgba(0, 0, 0, 0.8);
   line-height: 1;
+  text-transform: uppercase;
 }
 
 .cl-logo-sub {
@@ -242,11 +266,11 @@
   height: 100%;
   background: linear-gradient(
     90deg,
-    rgba(255, 200, 80, 0.6),
-    rgba(255, 255, 255, 0.9)
+    #00a86b,
+    #00ff9d
   );
   transition: width 0.3s linear;
-  box-shadow: 0 0 8px rgba(255, 220, 120, 0.7);
+  box-shadow: 0 0 15px rgba(0, 255, 157, 0.5);
 }
 
 /* ── Skip button ─────────────────────────────────────────────── */
@@ -301,7 +325,44 @@
 }
 
 /* ── Responsive ─────────────────────────────────────────────── */
-@media (max-width: 600px) {
-  .cl-lens-flare { display: none; }
-  .cl-light-rays { opacity: 0.5; }
+@media (max-width: 768px) {
+  .cl-brand-overlay {
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
+    background: radial-gradient(circle at center, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.7) 100%);
+  }
+  .cl-brand-inner {
+    align-items: center;
+    gap: 12px;
+  }
+  .cl-logo-text {
+    font-size: 2.2rem;
+    letter-spacing: 0.15em;
+  }
+  .cl-tagline {
+    font-size: 0.85rem;
+    max-width: 250px;
+  }
+  .cl-skip-btn {
+    top: auto;
+    bottom: 40px;
+    right: 50%;
+    transform: translateX(50%);
+    animation: none;
+    opacity: 1;
+  }
+  .cl-progress-wrap {
+    bottom: 0;
+  }
+  .cl-letterbox-top, .cl-letterbox-bottom {
+    height: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+    .cl-logo-text {
+        font-size: 1.8rem;
+    }
 }

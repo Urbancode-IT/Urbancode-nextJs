@@ -30,10 +30,27 @@
     font-size: 0.8rem;
     font-weight: 400;
     transition: color 0.3s;
+    position: relative;
+    display: inline-block;
 }
 
-.footer a:hover {
-    color: #000;
+.footer li a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0%;
+    height: 2px;
+    background-color: #0ca678;
+    transition: width 0.3s ease;
+}
+
+.footer li a:hover {
+    color: #0ca678;
+}
+
+.footer li a:hover::after {
+    width: 100%;
 }
 
 .social-icons a {

@@ -14,7 +14,7 @@ const FloatingWidgets = () => {
   }
 
   const handleWhatsAppClick = () => {
-    window.open("https://wa.me/919429694123", "_blank");
+    window.open("https://wa.me/9878798797", "_blank");
   };
 
   const handleCallClick = () => {

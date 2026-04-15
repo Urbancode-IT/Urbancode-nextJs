@@ -2,150 +2,301 @@
 
 import React, { useRef, useState, useEffect } from 'react';
 import Link from 'next/link';
-import { motion, useInView } from 'framer-motion';
-import { ChevronRight, Star, Clock, BookOpen, ArrowRight } from 'lucide-react';
+import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { ChevronRight, ChevronLeft, Star, Clock, Cloud, Server, Database, ArrowRight, X, Sparkles } from 'lucide-react';
 import './GetCertified.css';
 
 import { certifications } from '@/app/data/certificationData';
 
+// Custom Tilt Card Component for 3D effect
+const TiltCard = ({ children, className, onClick }) => {
+    const x = useMotionValue(0);
+    const y = useMotionValue(0);
+
+    const mouseXSpring = useSpring(x);
+    const mouseYSpring = useSpring(y);
+
+    const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["10deg", "-10deg"]);
+    const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-10deg", "10deg"]);
+
+    const handleMouseMove = (e) => {
+        const rect = e.currentTarget.getBoundingClientRect();
+        const width = rect.width;
+        const height = rect.height;
+        const mouseX = e.clientX - rect.left;
+        const mouseY = e.clientY - rect.top;
+        const xPct = mouseX / width - 0.5;
+        const yPct = mouseY / height - 0.5;
+        x.set(xPct);
+        y.set(yPct);
+
+        // Set CSS variables for glass glow effect
+        e.currentTarget.style.setProperty('--mouse-x', `${(mouseX / width) * 100}%`);
+        e.currentTarget.style.setProperty('--mouse-y', `${(mouseY / height) * 100}%`);
+    };
+
+    const handleMouseLeave = () => {
+        x.set(0);
+        y.set(0);
+    };
+
+    return (
+        <motion.div
+            style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+            onClick={onClick}
+            className={className}
+        >
+            <div style={{ transform: "translateZ(50px)", transformStyle: "preserve-3d" }}>
+                {children}
+            </div>
+        </motion.div>
+    );
+};
+
 const GetCertified = () => {
     const scrollRef = useRef(null);
-    const containerRef = useRef(null);
-    const isInView = useInView(containerRef, { once: false, amount: 0.2 });
+    const [expandedBrand, setExpandedBrand] = useState(null);
     const [showNext, setShowNext] = useState(true);
     const [showPrev, setShowPrev] = useState(false);
 
-    // Get main certification and modules dynamically
-    const mainCertification = Object.values(certifications).find(c => c.featured) || Object.values(certifications)[0];
-    const modules = Object.values(certifications).filter(c => !c.featured);
+    const allCerts = Object.values(certifications);
+    
+    const brands = [
+        { name: 'AWS', icon: <Cloud size={16} />, logo: '/images/home/amazon.png', color: '#FF9900' },
+        { name: 'CNCF', icon: <Server size={16} />, logo: '/images/home/fullstack.png', color: '#326CE5' },
+        { name: 'Microsoft', icon: <Database size={16} />, logo: '/images/home/microsoft.png', color: '#00A4EF' },
+    ];
+
+    const getBrandMainCert = (brandName) => {
+        return allCerts.find(c => c.brand === brandName && c.featuredByBrand) || 
+               allCerts.find(c => c.brand === brandName) || 
+               allCerts?.[0];
+    };
 
     const scroll = (direction) => {
         if (scrollRef.current) {
-            const { scrollLeft, clientWidth } = scrollRef.current;
-            const scrollTo = direction === 'left' ? scrollLeft - 300 : scrollLeft + 300;
-            scrollRef.current.scrollTo({ left: scrollTo, behavior: 'smooth' });
+            const track = scrollRef.current;
+            const firstItem = track.querySelector('.gc-track-item');
+            if (firstItem) {
+                const styles = window.getComputedStyle(track);
+                const gap = parseFloat(styles.gap) || 30;
+                const itemWidth = firstItem.offsetWidth;
+                const scrollAmount = itemWidth + gap;
+                const scrollTo = direction === 'left' ? track.scrollLeft - scrollAmount : track.scrollLeft + scrollAmount;
+                track.scrollTo({ left: scrollTo, behavior: 'smooth' });
+            }
         }
     };
 
     const checkScroll = () => {
         if (scrollRef.current) {
             const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
-            setShowPrev(scrollLeft > 10);
-            setShowNext(scrollLeft + clientWidth < scrollWidth - 10);
+            setShowPrev(scrollLeft > 20);
+            setShowNext(scrollLeft + clientWidth < scrollWidth - 20);
         }
     };
 
-    // Auto scroll logic
     useEffect(() => {
-        const interval = setInterval(() => {
-            if (scrollRef.current) {
-                const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
-                const isAtEnd = scrollLeft + clientWidth >= scrollWidth - 20;
+        checkScroll();
+        window.addEventListener('resize', checkScroll);
+        return () => window.removeEventListener('resize', checkScroll);
+    }, [expandedBrand]);
 
-                if (isAtEnd) {
-                    scrollRef.current.scrollTo({ left: 0, behavior: 'smooth' });
-                } else {
-                    scroll('right');
-                }
-            }
-        }, 4000); // Scroll every 4 seconds
-
-        return () => clearInterval(interval);
-    }, []);
+    const filteredModules = expandedBrand 
+        ? allCerts.filter(c => c.brand === expandedBrand && c.id !== getBrandMainCert(expandedBrand).id)
+        : [];
 
     return (
-        <section className="gc-section" ref={containerRef}>
-            <div className="container px-4">
-                <motion.div 
-                    className="gc-header-box"
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.6 }}
-                >
-                    <h2 className="section-main-title text-shine">Get Certified & Get Ahead</h2>
-                    <p className="gc-section-subtitle">Earn globally recognized credentials. Explore independent certification tracks designed by industry leaders to accelerate your career.</p>
-                </motion.div>
-                
-                <div className="gc-container">
-                    {/* Left Featured Card */}
-                    <motion.div 
-                        className="gc-featured-card"
-                        initial={{ opacity: 0, x: -30 }}
-                        animate={isInView ? { opacity: 1, x: 0 } : {}}
-                        transition={{ duration: 0.7, delay: 0.2 }}
+        <section className="gc-section">
+            <div className="gc-container">
+                <div className="gc-header-box">
+                    <motion.h2 
+                        className="section-main-title text-shine"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
                     >
-                        <div className="gc-featured-badge">Featured Track</div>
-                        <img src={mainCertification.brandLogo} alt="Brand" className="gc-brand-logo" />
-                        <h3 className="gc-featured-title">{mainCertification.title}</h3>
-                        <p className="gc-featured-desc">{mainCertification.description}</p>
-                        
-                        <div className="gc-meta-group">
-                            <div className="gc-meta-item">
-                                <Star size={14} className="text-yellow-400 fill-yellow-400" />
-                                <span>{mainCertification.rating} ({mainCertification.ratingsCount})</span>
-                            </div>
-                            <div className="gc-meta-item">
-                                <Clock size={14} />
-                                <span>{mainCertification.totalHours}</span>
-                            </div>
-                        </div>
-                        
-                        <Link href={`/certifications/${mainCertification.slug}`} className="gc-main-cta">
-                            Start Learning Path
-                            <ArrowRight size={18} />
-                        </Link>
-                    </motion.div>
+                        Choose Your Career Path
+                    </motion.h2>
+                </div>
 
-                    {/* Right Scrollable Modules */}
-                    <div className="gc-modules-container">
-                        <motion.div 
-                            className="gc-modules-wrapper" 
-                            ref={scrollRef} 
-                            onScroll={checkScroll}
-                            initial={{ opacity: 0, x: 20 }}
-                            animate={isInView ? { opacity: 1, x: 0 } : {}}
-                            transition={{ duration: 0.7, delay: 0.4 }}
-                        >
-                            {modules.map((module, i) => (
-                                <Link 
-                                    key={module.id} 
-                                    href={`/certifications/${module.slug}`}
-                                    className="gc-module-link"
-                                >
-                                    <div className="gc-module-card">
-                                        <div className="gc-module-img-box">
-                                            <img src={module.image} alt={module.title} className="gc-module-img" />
-                                            <div className="gc-module-overlay">
-                                                <span>View Details</span>
+                <div className="gc-main-outer">
+                    <AnimatePresence mode="wait">
+                        {!expandedBrand ? (
+                            <motion.div 
+                                key="initial"
+                                className="gc-initial-view"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0, scale: 0.98, filter: 'blur(8px)' }}
+                                transition={{ duration: 0.4 }}
+                            >
+                                <div className="gc-brands-grid">
+                                    {brands.map((brand, idx) => {
+                                        const cert = getBrandMainCert(brand.name);
+                                        return (
+                                            <motion.div 
+                                                key={brand.name}
+                                                initial={{ opacity: 0, y: 30 }}
+                                                whileInView={{ opacity: 1, y: 0 }}
+                                                viewport={{ once: true }}
+                                                transition={{ delay: 0.1 * idx, duration: 0.6 }}
+                                            >
+                                                <TiltCard 
+                                                    className="gc-brand-box-wrapper"
+                                                    onClick={() => setExpandedBrand(brand.name)}
+                                                >
+                                                    <div className="gc-initial-card">
+                                                        <div className="gc-card-glass-glow"></div>
+                                                        <span className="gc-featured-tag" style={{ '--accent': brand.color }}>
+                                                            {brand.name} ECOSYSTEM
+                                                        </span>
+                                                        <div className="gc-brand-wrap">
+                                                            <img src={brand.logo} alt={brand.name} />
+                                                        </div>
+                                                        <h3 className="gc-featured-title">{cert.title}</h3>
+                                                        <p className="gc-featured-desc">{cert.description}</p>
+                                                        
+                                                        <div className="gc-featured-meta">
+                                                            <div className="gc-meta-item">
+                                                                <Star size={16} fill="#f59e0b" color="#f59e0b" />
+                                                                <span>{cert.rating}</span>
+                                                            </div>
+                                                            <div className="gc-meta-item">
+                                                                <Clock size={16} className="clock-icon" />
+                                                                <span>{cert.duration}</span>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        <div className="gc-expand-hint">
+                                                            Explore Roadmap <ArrowRight size={18} />
+                                                        </div>
+                                                    </div>
+                                                </TiltCard>
+                                            </motion.div>
+                                        );
+                                    })}
+                                </div>
+                            </motion.div>
+                        ) : (
+                            <motion.div 
+                                key="expanded"
+                                className="gc-inner-layout"
+                                initial={{ opacity: 0, scale: 0.98, filter: 'blur(8px)' }}
+                                animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
+                                exit={{ opacity: 0, scale: 1.02, filter: 'blur(8px)' }}
+                                transition={{ duration: 0.5 }}
+                            >
+                                <div className="gc-featured-side">
+                                    <motion.div 
+                                        className="gc-featured-card"
+                                        initial={{ x: -20, opacity: 0 }}
+                                        animate={{ x: 0, opacity: 1 }}
+                                        transition={{ delay: 0.2 }}
+                                    >
+                                        <button className="gc-close-btn" onClick={() => setExpandedBrand(null)} aria-label="Go back">
+                                            <X size={20} />
+                                        </button>
+
+                                        <div className="gc-featured-content">
+                                            <span className="gc-featured-tag" style={{ '--accent': brands.find(b => b.name === expandedBrand)?.color }}>
+                                                {expandedBrand} MASTERCLASS
+                                            </span>
+                                            <div className="gc-brand-wrap">
+                                                <img src={brands.find(b => b.name === expandedBrand)?.logo} alt={expandedBrand} />
                                             </div>
-                                        </div>
-                                        <div className="gc-module-info">
-                                            <h4 className="gc-module-title">{module.title}</h4>
-                                            <div className="gc-module-footer">
-                                                <div className="gc-step-badge">
-                                                    {module.brand} Track
+                                            <h3 className="gc-featured-title">{getBrandMainCert(expandedBrand).title}</h3>
+                                            <p className="gc-featured-desc">{getBrandMainCert(expandedBrand).description}</p>
+                                            
+                                            <div className="gc-featured-meta">
+                                                <div className="gc-meta-item">
+                                                    <Star size={16} fill="#f59e0b" color="#f59e0b" />
+                                                    <span>{getBrandMainCert(expandedBrand).rating}</span>
                                                 </div>
-                                                <div className="gc-duration">
-                                                    <Clock size={10} />
-                                                    {module.duration}
+                                                <div className="gc-meta-item">
+                                                    <Clock size={16} />
+                                                    <span>{getBrandMainCert(expandedBrand).totalHours} hours</span>
                                                 </div>
                                             </div>
+                                            
+                                            <Link href={`/certifications/${getBrandMainCert(expandedBrand).slug}`} className="gc-start-btn">
+                                                Start Path <ArrowRight size={18} />
+                                            </Link>
                                         </div>
+                                    </motion.div>
+                                </div>
+
+                                <div className="gc-tracks-side">
+                                    <motion.div 
+                                        className="gc-tracks-header"
+                                        initial={{ y: -10, opacity: 0 }}
+                                        animate={{ y: 0, opacity: 1 }}
+                                        transition={{ delay: 0.3 }}
+                                    >
+                                        <h2 className="gc-tracks-title">{expandedBrand} <span>Curriculum</span></h2>
+                                    </motion.div>
+
+                                    <div className="gc-carousel-wrap">
+                                        <div className="gc-modules-scroller" ref={scrollRef} onScroll={checkScroll}>
+                                            {filteredModules.map((module, i) => (
+                                                <motion.div
+                                                    key={module.id}
+                                                    initial={{ opacity: 0, x: 20 }}
+                                                    animate={{ opacity: 1, x: 0 }}
+                                                    transition={{ delay: 0.1 + i * 0.05 }}
+                                                    className="gc-track-item"
+                                                >
+                                                    <Link href={`/certifications/${module.slug}`} className="gc-track-card">
+                                                        <div className="gc-card-shine"></div>
+                                                        <div className="gc-track-logo">
+                                                            <img src={module.brandLogo} alt={module.brand} />
+                                                        </div>
+                                                        <div className="gc-track-body">
+                                                            <h4 className="gc-track-title">{module.title}</h4>
+                                                            <div className="gc-track-footer">
+                                                                <span className="gc-track-tag">{module.brand}</span>
+                                                                <div className="gc-track-meta-mini">
+                                                                    <Clock size={12} />
+                                                                    <span>{module.duration}</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </Link>
+                                                </motion.div>
+                                            ))}
+                                        </div>
+
+                                        <AnimatePresence>
+                                            {showPrev && (
+                                                <motion.button 
+                                                    initial={{ opacity: 0, x: -10 }}
+                                                    animate={{ opacity: 1, x: 0 }}
+                                                    exit={{ opacity: 0, x: -10 }}
+                                                    className="gc-side-nav prev" 
+                                                    onClick={() => scroll('left')}
+                                                >
+                                                    <ChevronLeft size={24} />
+                                                </motion.button>
+                                            )}
+                                            {showNext && (
+                                                <motion.button 
+                                                    initial={{ opacity: 0, x: 10 }}
+                                                    animate={{ opacity: 1, x: 0 }}
+                                                    exit={{ opacity: 0, x: 10 }}
+                                                    className="gc-side-nav next" 
+                                                    onClick={() => scroll('right')}
+                                                >
+                                                    <ChevronRight size={24} />
+                                                </motion.button>
+                                            )}
+                                        </AnimatePresence>
                                     </div>
-                                </Link>
-                            ))}
-                        </motion.div>
-
-                        {/* Nav Buttons */}
-                        <div className="gc-nav-controls">
-                            <button className={`gc-nav-btn prev ${!showPrev ? 'hidden' : ''}`} onClick={() => scroll('left')}>
-                                <ChevronRight className="rotate-180" />
-                            </button>
-                            <button className={`gc-nav-btn next ${!showNext ? 'hidden' : ''}`} onClick={() => scroll('right')}>
-                                <ChevronRight />
-                            </button>
-                        </div>
-                    </div>
+                                </div>
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
                 </div>
             </div>
         </section>
@@ -153,3 +304,5 @@ const GetCertified = () => {
 };
 
 export default GetCertified;
+
+

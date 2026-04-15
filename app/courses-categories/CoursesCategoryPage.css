@@ -92,8 +92,8 @@
 /* Central Planet Core */
 .saturn-planet {
   position: relative;
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   transform-style: preserve-3d;
   z-index: 2;
 }
@@ -134,7 +134,8 @@
   width: 100%;
   height: 100%;
   transform-style: preserve-3d;
-  transform: rotateX(65deg) rotateY(-10deg); /* Saturn Tilt */
+  transform: rotateX(45deg) rotateY(-5deg); /* Reduced tilt for better visibility */
+  z-index: 5;
 }
 
 .saturn-ring {
@@ -148,14 +149,14 @@
 }
 
 .ring-1 {
-  width: 320px;
-  height: 320px;
+  width: 360px;
+  height: 360px;
   animation: ring-rotate 25s linear infinite;
 }
 
 .ring-2 {
-  width: 480px;
-  height: 480px;
+  width: 520px;
+  height: 520px;
   animation: ring-rotate 35s linear reverse infinite;
 }
 
@@ -168,14 +169,45 @@
   margin-top: -22.5px;
   margin-left: -22.5px;
   transform-style: preserve-3d;
+  cursor: pointer;
+  z-index: 10;
   /* Positions items along circle */
   transform: rotate(calc(var(--index) * (360deg / var(--total)))) 
              translateX(calc(50% + (inherit-width / 2))) /* Logic moved to child */
 }
 
+.ring-item.active img {
+  border: 2px solid #198754;
+  box-shadow: 0 0 20px rgba(25, 135, 84, 0.6);
+  transform: scale(1.2) rotateX(-45deg);
+  transition: all 0.3s ease;
+}
+
+.tool-info-card {
+  margin-top: 25px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  border-left: 4px solid #198754;
+  border-radius: 12px;
+  animation: slideInLeft 0.5s ease-out;
+  backdrop-filter: blur(10px);
+}
+
+.tool-seo-desc {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #444;
+  margin-bottom: 10px;
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
 /* Position child relative to ring size */
-.ring-1 .ring-item { transform: rotate(calc(var(--index) * (360deg / var(--total)))) translateY(-160px); }
-.ring-2 .ring-item { transform: rotate(calc(var(--index) * (360deg / var(--total)))) translateY(-240px); }
+.ring-1 .ring-item { transform: rotate(calc(var(--index) * (360deg / var(--total)))) translateY(-180px); }
+.ring-2 .ring-item { transform: rotate(calc(var(--index) * (360deg / var(--total)))) translateY(-260px); }
 
 .ring-item img {
   width: 100%;
@@ -185,8 +217,14 @@
   padding: 8px;
   border-radius: 50%;
   box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+  transition: all 0.3s ease;
   /* Counter-rotate to stay vertical despite ring tilt and rotation */
   animation: counter-orbital 25s linear infinite;
+}
+
+.ring-item:hover img {
+    transform: scale(1.1) rotateX(-45deg);
+    box-shadow: 0 8px 25px rgba(25, 135, 84, 0.3);
 }
 
 .ring-2 .ring-item img {
@@ -228,13 +266,13 @@
 }
 
 @keyframes counter-orbital {
-  from { transform: rotate(0deg) rotateX(-65deg); }
-  to { transform: rotate(-360deg) rotateX(-65deg); }
+  from { transform: rotate(0deg) rotateX(-45deg); }
+  to { transform: rotate(-360deg) rotateX(-45deg); }
 }
 
 @keyframes counter-orbital-reverse {
-  from { transform: rotate(0deg) rotateX(-65deg); }
-  to { transform: rotate(360deg) rotateX(-65deg); }
+  from { transform: rotate(0deg) rotateX(-45deg); }
+  to { transform: rotate(360deg) rotateX(-45deg); }
 }
 
 @keyframes planet-float {

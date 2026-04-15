@@ -79,7 +79,7 @@ export default function HomePage() {
 
   return (
     <>
-      <FestivePopup />
+      {/* <FestivePopup /> */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -130,7 +130,7 @@ export default function HomePage() {
       <Carousel />
       <Courses />
       <InDemandTools />
-      {/* { <GetCertified />  } */}
+      {/* <GetCertified />  */}
       <VideoTestimonials />
       <TestimonialCarousel />
       <FaqBootstrap />

@@ -170,40 +170,78 @@
 }
 
 .sidebar-card {
-    background: #fff;
-    border-radius: 30px;
-    padding: 40px;
-    box-shadow: 0 10px 40px rgba(0, 48, 54, 0.08);
-    border: 1px solid #e2e8f0;
+    background: #ffffff;
+    border-radius: 32px;
+    padding: 35px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
     text-align: center;
+    border: 1px solid #f1f5f9;
 }
 
 .sidebar-icon {
-    margin-bottom: 20px;
-    color: #00a86b;
+    color: #10b981;
+    margin-bottom: 25px;
 }
 
 .sidebar-card h4 {
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 700;
-    margin-bottom: 10px;
+    color: #0f172a;
+    margin-bottom: 12px;
 }
 
 .sidebar-desc {
+    font-size: 15px;
     color: #64748b;
     margin-bottom: 30px;
-    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Certificate Sample */
+.cert-sample-preview {
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+.sample-label {
+    font-size: 13px;
+    font-weight: 700;
+    color: #1e293b;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+    padding-left: 2px;
+}
+
+.sample-img-container {
+    background: #f8fafc;
+    border-radius: 16px;
+    padding: 10px;
+    border: 1px solid #e2e8f0;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.sample-img-container:hover {
+    transform: translateY(-5px) rotate(1deg);
+}
+
+.sample-img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 .enquiry-trigger-btn {
     width: 100%;
-    background: #00a86b;
-    color: #fff;
+    background: #10b981;
+    color: #ffffff;
     border: none;
-    padding: 16px;
-    border-radius: 12px;
-    font-weight: 700;
+    padding: 18px;
+    border-radius: 16px;
     font-size: 16px;
+    font-weight: 700;
     cursor: pointer;
     transition: all 0.3s;
     box-shadow: 0 10px 20px rgba(0, 168, 107, 0.2);

@@ -88,7 +88,10 @@ const CinematicLoader = ({ onComplete }) => {
         {/* 5. Lens flare dot */}
         <div className="cl-lens-flare" aria-hidden="true" />
 
-        {/* 6. Letterbox bars (cinematic 2.35:1 crop feel) */}
+        {/* 6. Cinematic light leak (animated color drift) */}
+        <div className="cl-light-leak" aria-hidden="true" />
+
+        {/* 7. Letterbox bars (cinematic 2.35:1 crop feel) */}
         <div className="cl-letterbox-top" aria-hidden="true" />
         <div className="cl-letterbox-bottom" aria-hidden="true" />
       </div>
