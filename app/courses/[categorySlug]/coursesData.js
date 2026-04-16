@@ -6948,7 +6948,7 @@ const coursesData = {
         rating: 4.9,
         duration: "1.5 months",
         students: "8,245",
-        img: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=800",
+        img: "/images/courses/rpa-cc.jpg",
         aboutData: {
           topic: "Master Power Automate — Transform Business Processes with Intelligent Automation!",
           content1: "Learn to build powerful workflows using Microsoft Power Automate. From SharePoint integration to AI-driven document processing, this course covers everything you need to become an automation expert.",
