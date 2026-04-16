@@ -49,8 +49,8 @@ const KidsHero = () => {
 
           <div className="kids-hero-stats-grid">
             <div className="stat-card-gray stat-mentors">
-              <h2 className="stat-number">210+</h2>
-              <p className="stat-label">Best certified mentors worldwide</p>
+              <h2 className="stat-number">50+</h2>
+              <p className="stat-label">Best certified mentors </p>
             </div>
             <div 
               className="stat-card-gray stat-transform"
@@ -59,7 +59,7 @@ const KidsHero = () => {
               <div className="stat-image-placeholder">
                  <img src="/images/KidsImages/junior.png" alt="Transforming" />
               </div>
-              <h3 className="stat-title">Transforming schools and substitute teachers</h3>
+              <h3 className="stat-title">Transforming skills</h3>
               <div className="stat-icon-arrow">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M7 17L17 7M17 7H7M17 7V17" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>

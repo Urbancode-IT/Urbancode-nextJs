@@ -41,11 +41,11 @@ const categoryMetaData = {
     keywords: ["DevOps", "Cloud computing", "AWS", "Docker", "Kubernetes"],
     image: "/images/courses-images/Cloud.webp",
   },
-  "data-science": {
-    title: "Data Science Courses | Urbancode",
+  "ai-and-data-science": {
+    title: "AI and Data Science Courses | Urbancode",
     description:
-      "Turn raw data into insights with Data Science. Learn Python, SQL, and Machine Learning with practical case studies.",
-    keywords: ["Data Science", "Python", "Machine Learning", "AI"],
+      "Master AI, Generative AI, machine learning, and data analytics with Urbancode. Dive deep into Python, LLMs, and big data to build intelligent solutions.",
+    keywords: ["AI", "Data Science", "Generative AI", "Machine Learning", "Python", "LLMs", "RAG"],
     image: "/images/courses-images/datascience.webp",
   },
   "database": {
@@ -54,13 +54,6 @@ const categoryMetaData = {
       "Learn SQL, PostgreSQL, and database design. Understand queries, relationships, and transactions through hands-on projects.",
     keywords: ["SQL", "PostgreSQL", "Database", "Urbancode"],
     image: "/images/courses-images/database.webp",
-  },
-  "data-visualization": {
-    title: "Data Visualization Courses | Urbancode",
-    description:
-      "Visualize and communicate data effectively using Power BI, Tableau, and storytelling techniques.",
-    keywords: ["Power BI", "Tableau", "Data Visualization"],
-    image: "/images/courses-images/dataVisual.webp",
   },
   "software-testing": {
     title: "Software Testing Courses | Urbancode",
@@ -103,6 +96,13 @@ const categoryMetaData = {
       "Learn to manage customer data and automate sales processes using CRM tools like Salesforce and HubSpot.",
     keywords: ["CRM", "Salesforce", "HubSpot", "Customer Relationship"],
     image: "/images/courses-images/CRM.webp",
+  },
+  rpa: {
+    title: "RPA Courses | Urbancode",
+    description:
+      "Master Robotic Process Automation with Urbancode. Learn to build intelligent bots and streamline business workflows using top RPA tools like Power Automate.",
+    keywords: ["RPA", "Robotic Process Automation", "Power Automate", "Workflow Automation"],
+    image: "/images/courses-images/rpa.png",
   },
 };
 

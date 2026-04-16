@@ -234,23 +234,36 @@
     color: #0f172a;
 }
 
+/* Carousel wrapper clips the overflow so only whole cards show */
+.gc-carousel-wrap {
+    position: relative;
+    width: 100%;
+    overflow: hidden; /* ← This is the key: clips partial cards */
+}
+
+/* The scroller's width is forced to match the clip container */
 .gc-modules-scroller {
     display: flex;
-    gap: 30px;
+    gap: var(--gc-gap, 24px);
     overflow-x: auto;
-    padding: 10px 2px 40px;
+    padding: 10px 2px 20px;
     scrollbar-width: none;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
+    /* force the scrollable area width to match visible container */
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .gc-modules-scroller::-webkit-scrollbar { display: none; }
 
+/* Desktop: show exactly 3 whole cards */
 .gc-track-item {
-    flex-shrink: 0;
-    width: calc((100% - 60px) / 3);
-    min-width: 320px;
+    --gc-cols: 3;
+    --gc-gap: 24px;
+    flex: 0 0 calc(( 100% - (var(--gc-cols) - 1) * var(--gc-gap) ) / var(--gc-cols));
     scroll-snap-align: start;
+    scroll-snap-stop: always;
 }
 
 .gc-track-card {
@@ -318,8 +331,9 @@
 .gc-side-nav {
     position: absolute;
     top: 50%;
-    width: 50px;
-    height: 50px;
+    transform: translateY(-50%);
+    width: 46px;
+    height: 46px;
     border-radius: 50%;
     background: #ffffff;
     border: 1px solid #e2e8f0;
@@ -327,7 +341,7 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.10);
     z-index: 50;
     color: #475569;
     transition: all 0.3s;
@@ -336,10 +350,13 @@
 .gc-side-nav:hover {
     background: #0f172a;
     color: #ffffff;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    transform: translateY(-50%) scale(1.08);
 }
 
-.gc-side-nav.prev { left: -25px; }
-.gc-side-nav.next { right: -25px; }
+/* Inside the bounded carousel-wrap (overflow:hidden clips negatives) */
+.gc-side-nav.prev { left: 10px; }
+.gc-side-nav.next { right: 10px; }
 
 /* ── RESPONSIVE ────────────────────────────────────────────── */
 
@@ -350,7 +367,11 @@
 
 @media (max-width: 1024px) {
     .gc-brands-grid { grid-template-columns: repeat(2, 1fr); }
-    .gc-track-item { width: calc((100% - 30px) / 2); }
+    /* Tablet: show exactly 2 whole cards */
+    .gc-track-item {
+        --gc-cols: 2;
+        flex: 0 0 calc(( 100% - (var(--gc-cols) - 1) * var(--gc-gap) ) / var(--gc-cols));
+    }
 }
 
 @media (max-width: 768px) {
@@ -361,5 +382,11 @@
     .gc-initial-card { padding: 35px 25px; }
     .gc-main-outer { padding: 40px 20px; }
     .gc-header-box { margin-bottom: 30px; }
-    .gc-track-item { width: 100%; }
+    /* Mobile: show exactly 1 whole card at a time */
+    .gc-track-item {
+        --gc-cols: 1;
+        --gc-gap: 16px;
+        flex: 0 0 calc( 100% - 2px );
+    }
+    .gc-modules-scroller { gap: 16px; }
 }

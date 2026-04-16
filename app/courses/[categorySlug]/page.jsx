@@ -5,18 +5,17 @@ export async function generateStaticParams() {
   const categories = [
     "Fullstack Development",
     "Software Testing",
-    "Data Analytics",
+    "AI and Data Science",
     "Cloud and DevOps",
     "Programming Languages",
     "UI UX Designing",
-    "Data Science",
     "Data Engineering",
     "Database",
-    "Data Visualization",
     "Net Working",
     "Digital Marketing",
     "CRM",
     "Kidz Space",
+    "RPA",
   ];
 
   const slugify = (name) => name.toLowerCase().replace(/\s+/g, "-");

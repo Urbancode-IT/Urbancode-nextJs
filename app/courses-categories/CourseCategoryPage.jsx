@@ -23,6 +23,7 @@ import languagesImg from "@/public/images/courses-images/languages.webp";
 import englishImg from "@/public/images/courses-images/english.webp";
 import crmImg from "@/public/images/courses-images/crm-course.webp";
 import appDevImg from "@/public/images/courses-images/app.webp";
+import rpaImg from "@/public/images/courses-images/rpa.png";
 
 const toolLogos = [
   { name: 'Angular', logo: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/angularjs/angularjs-original.svg', desc: 'Master Angular to build industry-ready single-page applications. Our curriculum focuses on TypeScript, RxJS, and high-performance front-end architecture.', link: '/courses/fullstack-development' },
@@ -37,12 +38,16 @@ const toolLogos = [
   { name: 'Jenkins', logo: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/jenkins/jenkins-original.svg', desc: 'Automate your life with Jenkins. Master CI/CD pipelines, build automation, and DevOps integration to speed up software delivery cycles.', link: '/courses/cloud-and-devops' },
   { name: 'Docker', logo: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original.svg', desc: 'Containerization simplified with Docker. Learn to package, ship, and run any application as a portable container for consistent development.', link: '/courses/cloud-and-devops' },
   { name: 'Node.js', logo: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original.svg', desc: 'High-speed backend development with Node.js. Master asynchronous programming, Express, and REST APIs for scalable real-time web applications.', link: '/courses/fullstack-development' },
-  { name: 'TensorFlow', logo: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/tensorflow/tensorflow-original.svg', desc: 'Build brain-like models with TensorFlow. Dive into Deep Learning, Neural Networks, and AI-driven automation using powerful frameworks.', link: '/courses/data-science' },
-  { name: 'PyTorch', logo: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/pytorch/pytorch-original.svg', desc: 'Flexible Deep Learning with PyTorch. Master computer vision, natural language processing (NLP), and sophisticated AI model development.', link: '/courses/data-science' },
+  { name: 'TensorFlow', logo: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/tensorflow/tensorflow-original.svg', desc: 'Build brain-like models with TensorFlow. Dive into Deep Learning, Neural Networks, and AI-driven automation using powerful frameworks.', link: '/courses/ai-and-data-science' },
+  { name: 'PyTorch', logo: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/pytorch/pytorch-original.svg', desc: 'Flexible Deep Learning with PyTorch. Master computer vision, natural language processing (NLP), and sophisticated AI model development.', link: '/courses/ai-and-data-science' },
   { name: 'Java', logo: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg', desc: 'Robust enterprise development starts here. Master Java Collections, Multi-threading, and Spring Boot to build large-scale secure software systems.', link: '/courses/programming-languages' },
-  { name: 'Gen AI', logo: 'https://cdn.svgporn.com/logos/openai-icon.svg', desc: 'Join the AI revolution. Learn Generative AI, Large Language Models (LLMs), and Prompt Engineering to stay ahead in the age of Automation.', link: '/courses/data-science' },
-  { name: 'Power BI', logo: 'https://cdn.svgporn.com/logos/microsoft-power-bi.svg', desc: 'Visualize data effectively with Power BI. Learn to create professional business intelligence reports and interactive dashboards for data-driven decisions.', link: '/courses/data-analytics' },
-  { name: 'Spark', logo: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/apachespark/apachespark-original.svg', desc: 'Process Big Data at lightning speed. Master Spark for large-scale data processing, streaming, and SQL analytics in modern data environments.', link: '/courses/data-engineering' }
+  { name: 'Gen AI', logo: 'https://cdn.svgporn.com/logos/openai-icon.svg', desc: 'Join the AI revolution. Learn Generative AI, Large Language Models (LLMs), and Prompt Engineering to stay ahead in the age of Automation.', link: '/courses/ai-and-data-science' },
+  { name: 'Power BI', logo: 'https://cdn.svgporn.com/logos/microsoft-power-bi.svg', desc: 'Visualize data effectively with Power BI. Learn to create professional business intelligence reports and interactive dashboards for data-driven decisions.', link: '/courses/ai-and-data-science' },
+  { name: 'Spark', logo: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/apachespark/apachespark-original.svg', desc: 'Process Big Data at lightning speed. Master Spark for large-scale data processing, streaming, and SQL analytics in modern data environments.', link: '/courses/data-engineering' },
+  { name: 'Power Automate', logo: 'https://cdn.simpleicons.org/microsoftpowerautomate/42AD31', desc: 'Transform business processes with intelligent automation. Master Microsoft Power Automate to build scalable workflows and integrate AI efficiently.', link: '/courses/rpa' },
+  { name: 'SharePoint', logo: 'https://cdn.simpleicons.org/microsoftsharepoint/0078D4', desc: 'Master SharePoint for advanced document management and collaboration. Learn to build modern intranets and integrate with Power Platform.', link: '/courses/rpa' },
+  { name: 'Teams', logo: 'https://cdn.simpleicons.org/microsoftteams/6264A7', desc: 'Collaborate like a pro. Learn to integrate Microsoft Teams with Power Automate and SharePoint for seamless business workflows.', link: '/courses/rpa' },
+  { name: 'Power Platform', logo: 'https://cdn.simpleicons.org/microsoft/00A4EF', desc: 'Master the entire Power Platform suite including Power Apps, Power BI, and Power Automate to build end-to-end business solutions.', link: '/courses/rpa' }
 ];
 
 const courses = [
@@ -51,7 +56,7 @@ const courses = [
     desc: "Master Web Development with our full stack training. Learn HTML, CSS, JavaScript, React, and Node.js through hands-on projects and guaranteed placement support.",
     img: webDevImg,
     link: "/courses/fullstack-development",
-    badge: "7 Courses",
+    badge: "8 Courses",
   },
   {
     title: "Software Testing",
@@ -59,13 +64,6 @@ const courses = [
     img: softwareTestingImg,
     link: "/courses/software-testing",
     badge: "6 Courses",
-  },
-  {
-    title: "Data Analytics",
-    desc: "Become a proficient data analyst. Master end-to-end Data Analytics using Python, SQL, Excel, and Power BI to drive business decisions and secure high-paying jobs.",
-    img: dataAnalysisImg,
-    link: "/courses/data-analytics",
-    badge: "5 Courses",
   },
   {
     title: "Cloud & DevOps",
@@ -89,11 +87,11 @@ const courses = [
     badge: "5 Courses",
   },
   {
-    title: "Data Science",
-    desc: "Unlock lucrative career opportunities with our Data Science certification. Master machine learning, deep learning, NLP, and Python to build AI-driven predictive models.",
+    title: "AI and Data Science",
+    desc: "Unlock lucrative career opportunities with our AI and Data Science certification. Master Generative AI, machine learning, deep learning, NLP, and Python to build predictive models.",
     img: dataScienceImg,
-    link: "/courses/data-science",
-    badge: "3 Courses",
+    link: "/courses/ai-and-data-science",
+    badge: "8 Courses",
   },
   {
     title: "Data Engineering",
@@ -107,13 +105,6 @@ const courses = [
     desc: "Master database management systems. Learn SQL, PostgreSQL, and NoSQL architecture to efficiently design, query, and manage complex enterprise data structures.",
     img: databaseImg,
     link: "/courses/database",
-    badge: "4 Courses",
-  },
-  {
-    title: "Data Visualization",
-    desc: "Transform complex data into actionable insights. Master Data Visualization tools like Tableau, Power BI, and D3.js to create compelling business intelligence dashboards.",
-    img: dataVisualImg,
-    link: "/courses/data-visualization",
     badge: "4 Courses",
   },
   {
@@ -136,6 +127,13 @@ const courses = [
     img: crmImg,
     link: "/courses/crm",
     badge: "4 Courses",
+  },
+  {
+    title: "RPA",
+    desc: "Master Robotic Process Automation with Urbancode. Learn to build intelligent bots and streamline business workflows using top RPA tools like Power Automate.",
+    img: rpaImg,
+    link: "/courses/rpa",
+    badge: "1 Course",
   },
 ];
 

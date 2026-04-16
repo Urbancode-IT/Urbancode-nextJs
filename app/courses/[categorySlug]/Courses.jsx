@@ -26,7 +26,8 @@ const categoryTools = {
     'https://raw.githubusercontent.com/devicons/devicon/master/icons/express/express-original.svg',
     'https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg',
     'https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original.svg',
-    'https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg'
+    'https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg',
+    'https://upload.wikimedia.org/wikipedia/commons/e/e1/Microsoft_SharePoint.svg'
   ],
   "Software Testing": [
     'https://raw.githubusercontent.com/devicons/devicon/master/icons/selenium/selenium-original.svg',
@@ -35,13 +36,6 @@ const categoryTools = {
     'https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg',
     'https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg',
     'https://raw.githubusercontent.com/devicons/devicon/master/icons/github/github-original.svg'
-  ],
-  "Data Analytics": [
-    'https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg',
-    'https://cdn.svgporn.com/logos/microsoft-power-bi.svg',
-    'https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original.svg',
-    '/images/home/tableau_logo.svg',
-    '/images/home/excel_logo.svg'
   ],
   "Cloud and DevOps": [
     'https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-original-wordmark.svg',
@@ -58,12 +52,14 @@ const categoryTools = {
     'https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg',
     'https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg'
   ],
-  "Data Science": [
+  "AI and Data Science": [
     'https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg',
     'https://raw.githubusercontent.com/devicons/devicon/master/icons/tensorflow/tensorflow-original.svg',
     'https://raw.githubusercontent.com/devicons/devicon/master/icons/pytorch/pytorch-original.svg',
     'https://raw.githubusercontent.com/devicons/devicon/master/icons/pandas/pandas-original.svg',
-    'https://raw.githubusercontent.com/devicons/devicon/master/icons/numpy/numpy-original.svg'
+    'https://raw.githubusercontent.com/devicons/devicon/master/icons/numpy/numpy-original.svg',
+    'https://cdn.svgporn.com/logos/microsoft-power-bi.svg',
+    '/images/home/tableau_logo.svg',
   ],
   "UI UX Designing": [
     'https://cdn.svgporn.com/logos/figma.svg',
@@ -76,7 +72,23 @@ const categoryTools = {
     'https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-original.svg',
     'https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original.svg',
     'https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg'
-  ]
+  ],
+"RPA": [
+     'https://upload.wikimedia.org/wikipedia/commons/4/4d/Microsoft_Power_Automate.svg',
+
+  // JSON (no official → use JS)
+  'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',
+
+  // HTML
+  'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg',
+
+
+
+  // Microsoft (general / Copilot fallback)
+  'https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg',
+
+
+]
 };
 const defaultTools = [
   'https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg',
@@ -87,18 +99,17 @@ const defaultTools = [
 const categories = [
   "Fullstack Development",
   "Software Testing",
-  "Data Analytics",
+  "AI and Data Science",
   "Cloud and DevOps",
   "Programming Languages",
   "UI UX Designing",
-  "Data Science",
   "Database",
   "Data Engineering",
-  "Data Visualization",
   "Net Working",
   "Digital Marketing",
   "CRM",
   "Kidz Space",
+  "RPA",
 ];
 
 const faqData = [

@@ -50,6 +50,7 @@
   color: var(--kids-hero-text);
   letter-spacing: -0.02em;
   margin: 0;
+  margin-top:20px
 }
 
 .highlight-text {
@@ -111,6 +112,7 @@
   gap: clamp(15px, 2vw, 30px);
   margin-top: auto;
   padding-bottom: 20px;
+  margin-bottom:30px !important;
 }
 
 .stat-card-gray {

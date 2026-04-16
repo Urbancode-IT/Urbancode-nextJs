@@ -72,16 +72,12 @@ export default function SingleCoursepage({ params }) {
                   {course.aboutData.content1}
                 </p>
 
-                <a
-                  href={`https://wa.me/919429694123?text=${encodeURIComponent(
-                    `Hi there, I would like to enroll in this course ${course.title} from Urbancode. Please share more details.`
-                  )}`}
-                  style={{ textDecoration: "none" }}
+                <button 
+                  className="btn btn-dark rounded-pill mt-3 px-4 py-2 enroll-btn w-sm-100 w-md-auto"
+                  onClick={() => setShowEnquiry(true)}
                 >
-                  <button className="btn btn-dark rounded-pill mt-3 px-4 py-2 enroll-btn w-sm-100 w-md-auto">
-                    Enroll Today
-                  </button>
-                </a>
+                  Enroll Today
+                </button>
               </div>
               <div className="mt-4 mt-md-5">
                 <h2 className="fw-semibold mb-3 text-center text-lg-start">About This Course</h2>

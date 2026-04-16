@@ -1052,6 +1052,103 @@ const coursesData = {
 }
 ,
 {
+  title: "Microsoft SharePoint",
+  desc: "Master enterprise content management with Microsoft SharePoint. Learn to build modern sites, manage metadata, develop custom SPFx web parts, and automate workflows with Power Automate.",
+  rating: 4.8,
+  duration: "1.5 months",
+  students: "7,842",
+  img: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=800",
+  aboutData: {
+    topic: "Master Microsoft SharePoint — Build and Manage Modern Collaborative Workspaces!",
+    content1: "Learn to design, configure, and develop on the SharePoint Online platform. From site architecture and permissions to custom SPFx development with React, this course prepares you for enterprise-level collaboration roles.",
+    content2: "Our SharePoint curriculum blends administrative mastery with developer expertise. You'll master lists, libraries, and metadata management, then dive into SPFx development using Node.js, Yeoman, and Gulp. The course also covers advanced automation using Power Automate triggers specifically for SharePoint, making you a versatile SharePoint professional."
+  },
+  courseContentData: [
+    {
+      id: 1,
+      title: "Week 1: SharePoint Fundamentals & Setup",
+      icon: "bi bi-gear-wide-connected",
+      defaultOpen: true,
+      items: [
+        "SharePoint Online & Architecture (Tenant, Site Collections)",
+        "Overview of Sites, Lists, and Libraries",
+        "Navigating the SharePoint Interface",
+        "SharePoint Admin Center & Microsoft 365 Setup",
+        "Practice: Creating and configuring Team Sites"
+      ]
+    },
+    {
+      id: 2,
+      title: "Week 2: Lists, Libraries & Metadata",
+      icon: "bi bi-table",
+      items: [
+        "Create and customize Lists & Columns (Lookup, Person, etc.)",
+        "Document Libraries: Versioning, Check-in/out",
+        "Site Columns & Content Types",
+        "Metadata Management (Taxonomy basics)",
+        "Mini Task: Building a Leave/Asset tracker list"
+      ]
+    },
+    {
+      id: 3,
+      title: "Week 3: Pages, Branding & User Experience",
+      icon: "bi bi-layout-text-window",
+      items: [
+        "Creating Modern Pages & Web Parts",
+        "Site Branding: Themes, Navigation, Layouts",
+        "Custom Content Types for Libraries",
+        "UI/UX best practices for portals",
+        "Mini Project: Building a Departmental HR/IT Portal"
+      ]
+    },
+    {
+      id: 4,
+      title: "Week 4: Permissions, Governance & Advanced UI",
+      icon: "bi bi-shield-lock",
+      items: [
+        "Permission Levels, Roles & Inheritance",
+        "Secure access management (Internal & External)",
+        "Advanced Views & JSON Formatting",
+        "Sharing governance and best practices",
+        "Mini Project: Secure Document Approval Library design"
+      ]
+    },
+    {
+      id: 5,
+      title: "Week 5: SPFx Development & Advanced Concepts",
+      icon: "bi bi-code-slash",
+      items: [
+        "SPFx Environment setup: Node.js, Yeoman, Gulp",
+        "Creating custom SPFx Web Parts using React",
+        "SharePoint REST API & Property Pane Controls",
+        "Deploying to App Catalog & Hub Site architecture",
+        "Mini Project: Building a Custom SPFx Dashboard"
+      ]
+    },
+    {
+      id: 6,
+      title: "Week 6: Power Automate Basics for SharePoint",
+      icon: "bi bi-lightning-charge",
+      items: [
+        "Types of Flows: Automated, Instant, Scheduled",
+        "SharePoint Triggers: Created, Modified, etc.",
+        "Conditions, Expressions & Approval Flows",
+        "Dynamic content & Error handling",
+        "Mini Project: Leave Request Approval Workflow"
+      ]
+    }
+  ],
+  whatYouLearnData: [
+    { title: "Manage Site Architecture", desc: "Design and manage site collections, subsites, and hub sites.", icon: "bi bi-diagram-3" },
+    { title: "Master Metadata & Lists", desc: "Build structured data solutions with content types and taxonomies.", icon: "bi bi-tags" },
+    { title: "Develop with SPFx", desc: "Build custom web parts using React for the modern SharePoint experience.", icon: "bi bi-braces" },
+    { title: "Secure Data Governance", desc: "Implement robust permission models and sharing policies.", icon: "bi bi-shield-check" },
+    { title: "Automate Workflows", desc: "Connect SharePoint with Power Automate for business process automation.", icon: "bi bi-cpu" },
+    { title: "Modern UI Branding", desc: "Transform standard sites into beautiful, branded internal portals.", icon: "bi bi-palette" }
+  ],
+  locked: false
+},
+{
   title: "React Native",
   desc: "Build high-performance cross-platform mobile apps with expert React Native training. Master JavaScript components and Native APIs for highly lucrative iOS & Android development careers.",
   rating: 4.9,
@@ -2660,11 +2757,12 @@ const coursesData = {
     ],
   },
 
-  "Data Analytics": {
-    mainCategoryDesc: "Turn Data into Decisions",
-    subDesc: "Master the art of transforming raw data into actionable insights with SQL, Excel, Power BI, and Tableau. Learn to analyze, visualize, and interpret data to support strategic business decisions. ",
-    subHeading: "Build a career as a Data Analyst equipped with skills that empower organizations to grow smarter and faster.",
-    mainImage: "/images/courses/DataAnalytics.jpg",
+
+  "AI and Data Science": {
+    mainCategoryDesc: "Shape the Future with AI & Data Science",
+    subDesc: "Dive deep into Python, Machine Learning, Generative AI, and Business Intelligence. Master the tools to analyze data, build predictive models, and create intelligent solutions that drive innovation.",
+    subHeading: "Transform your knowledge into career-ready expertise as a Data Scientist, unlocking opportunities in AI, automation, research, and innovation.",
+    mainImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1200",
 
     courses: [
       {
@@ -2673,7 +2771,7 @@ const coursesData = {
         rating: 4.8,
         duration: "3 months",
         students: "500+",
-        img: "/images/courses/dataanalytics.jpg",
+        img: "https://images.unsplash.com/photo-1543286386-713bdd548da4?auto=format&fit=crop&q=80&w=800",
         aboutData: {
           topic: "Master Data Analytics — From Data Mining to Actionable Business Insights!",
           content1: "This comprehensive Data Analytics course takes you through the entire data lifecycle — from data cleaning and preparation to advanced visualization and predictive modeling. You'll master the most in-demand tools including Excel, SQL, Python, Power BI, and Tableau.",
@@ -2787,212 +2885,6 @@ const coursesData = {
         ]
       },
       {
-        title: "SAS",
-        desc: "Propel your analytics career with expert SAS training. Master data management, predictive modeling, and business intelligence to lead data-driven corporate strategies.",
-        rating: 5.0,
-        duration: "1 month",
-        students: "106",
-        img: "/images/courses/SAS.jpg",
-        aboutData: {
-          topic: "Master SAS — From Data Management to Advanced Analytics!",
-          content1: "Learn SAS from scratch and advance to complex data analytics, reporting, and predictive modeling. This course provides hands-on experience with real-world datasets, ensuring you gain practical skills for business and data-driven decision-making.",
-          content2: "The SAS course covers the full spectrum of data analytics, from data manipulation and reporting to advanced analytics techniques like predictive modeling, regression analysis, and business intelligence dashboards. You'll gain expertise in Base SAS, SAS Macros, SQL, and SAS Enterprise Guide, preparing you for analytics roles across industries."
-        },
-        courseContentData: [
-          {
-            id: 1,
-            title: "Beginner – SAS Fundamentals",
-            icon: "bi bi-book",
-            defaultOpen: true,
-            items: [
-              "Introduction to SAS and its applications",
-              "Installing and navigating SAS environment",
-              "Data types, variables, and datasets",
-              "Basic SAS programming syntax",
-              "Reading and writing datasets",
-              "Debugging and error handling"
-            ]
-          },
-          {
-            id: 2,
-            title: "Beginner – Data Management in SAS",
-            icon: "bi bi-database",
-            items: [
-              "Data step basics and data manipulation",
-              "Sorting, merging, and concatenating datasets",
-              "Creating new variables and functions",
-              "Conditional logic and loops in SAS",
-              "Working with dates and character variables"
-            ]
-          },
-          {
-            id: 3,
-            title: "Intermediate – Advanced SAS Programming",
-            icon: "bi bi-gear",
-            items: [
-              "SAS Macros for automation",
-              "SQL in SAS (PROC SQL)",
-              "Arrays, Do loops, and iterative processing",
-              "Advanced data manipulation techniques",
-              "Error handling and debugging best practices"
-            ]
-          },
-          {
-            id: 4,
-            title: "Intermediate – Data Analysis and Reporting",
-            icon: "bi bi-bar-chart-line",
-            items: [
-              "Descriptive statistics and summary reports",
-              "PROC MEANS, PROC FREQ, PROC UNIVARIATE",
-              "Data visualization using PROC SGPLOT & PROC REPORT",
-              "Generating automated reports",
-              "Introduction to statistical procedures"
-            ]
-          },
-
-        ],
-        whatYouLearnData: [
-          {
-            title: "Master SAS Programming",
-            desc: "Learn data step, PROC SQL, SAS macros, and advanced programming concepts.",
-            icon: "bi bi-lightning-charge"
-          },
-          {
-            title: "Data Management & Analytics",
-            desc: "Manipulate, clean, and analyze large datasets efficiently.",
-            icon: "bi bi-database"
-          },
-          {
-            title: "Reporting & Visualization",
-            desc: "Create dashboards, charts, and automated reports for business insights.",
-            icon: "bi bi-bar-chart-line"
-          },
-          {
-            title: "Predictive Modeling & Statistics",
-            desc: "Apply regression, classification, and time series analysis using SAS.",
-            icon: "bi bi-robot"
-          },
-          {
-            title: "Business Intelligence Skills",
-            desc: "Build real-world BI projects using SAS Enterprise Guide.",
-            icon: "bi bi-window-stack"
-          },
-          {
-            title: "Industry-Ready SAS Expertise",
-            desc: "Gain practical skills applicable to analytics, data science, and BI roles.",
-            icon: "bi bi-diagram-3"
-          }
-        ]
-      },
-      {
-        title: "R Programming",
-        desc: "Master R Programming for data science and statistical analysis. Learn advanced algorithms, data visualization, and predictive modeling for top analytics roles.",
-        rating: 5.0,
-        duration: "1 month",
-        students: "106",
-        img: "/images/courses/R_Programming.jpg",
-        aboutData: {
-          topic: "Master R Programming — From Fundamentals to Advanced Analytics!",
-          content1: "Learn R Programming from scratch and gain the skills to perform data analysis, statistical modeling, and visualization. This course provides hands-on projects to help you transform raw data into actionable insights.",
-          content2: "The R Programming course by Urbancode covers everything from basic syntax to advanced data analysis techniques. You’ll start with fundamentals like vectors, lists, and data frames, then move on to visualization with ggplot2, statistical modeling, and machine learning integration. By the end, you’ll be capable of applying R for real-world analytics projects, making you ready for roles in data science, research, and analytics."
-        },
-        courseContentData: [
-          {
-            id: 1,
-            title: "Beginner – R Fundamentals",
-            icon: "bi bi-book",
-            defaultOpen: true,
-            items: [
-              "Introduction to R and RStudio",
-              "R syntax, variables, and data types",
-              "Vectors, lists, and data frames",
-              "Basic operations and functions",
-              "Control structures: if, for, while",
-              "Reading and writing data files"
-            ]
-          },
-          {
-            id: 2,
-            title: "Beginner – Data Manipulation",
-            icon: "bi bi-database",
-            items: [
-              "Data cleaning and preprocessing",
-              "Using dplyr for data manipulation",
-              "Filtering, sorting, and summarizing data",
-              "Merging and joining datasets",
-              "Handling missing values"
-            ]
-          },
-          {
-            id: 3,
-            title: "Intermediate – Data Visualization",
-            icon: "bi bi-bar-chart-line",
-            items: [
-              "Introduction to ggplot2",
-              "Creating bar, line, and scatter plots",
-              "Customizing plots with themes and labels",
-              "Interactive visualizations with plotly",
-              "Visualization best practices"
-            ]
-          },
-          {
-            id: 4,
-            title: "Intermediate – Statistical Analysis",
-            icon: "bi bi-calculator",
-            items: [
-              "Descriptive statistics",
-              "Probability distributions",
-              "Hypothesis testing",
-              "Correlation and regression analysis",
-              "ANOVA and Chi-square tests"
-            ]
-          },
-
-        ],
-        whatYouLearnData: [
-          {
-            title: "Master R Programming Concepts",
-            desc: "Understand R syntax, data structures, functions, and advanced programming techniques.",
-            icon: "bi bi-lightning-charge"
-          },
-          {
-            title: "Perform Data Analysis",
-            desc: "Use R for statistical analysis, hypothesis testing, and real-world data exploration.",
-            icon: "bi bi-bar-chart-line"
-          },
-          {
-            title: "Create Stunning Visualizations",
-            desc: "Visualize data effectively using ggplot2, plotly, and interactive dashboards.",
-            icon: "bi bi-window-stack"
-          },
-          {
-            title: "Implement Machine Learning",
-            desc: "Build predictive models using regression, classification, and clustering techniques in R.",
-            icon: "bi bi-robot"
-          },
-          {
-            title: "Automate Reporting & Dashboards",
-            desc: "Generate dynamic reports and interactive dashboards with R Markdown and Shiny.",
-            icon: "bi bi-gear"
-          },
-          {
-            title: "Handle Real-World Data Projects",
-            desc: "Apply R programming to practical datasets, clean, analyze, and present actionable insights.",
-            icon: "bi bi-cpu"
-          }
-        ]
-      }
-    ],
-  },
-
-  "Data Science": {
-    mainCategoryDesc: "Shape the Future with Data",
-    subDesc: "Dive deep into Python, R, Machine Learning, AI, and Big Data to master the core of Data Science. Learn to clean, analyze, and model data to solve real-world challenges.",
-    subHeading: "Transform your knowledge into career-ready expertise as a Data Scientist, unlocking opportunities in AI, automation, research, and innovation.",
-    mainImage: "/images/courses/DataScience.jpg",
-
-    courses: [
-      {
         title: "AI and ML",
         desc: "Lead the data revolution. Master Python, Artificial Intelligence, and Machine Learning algorithms to build predictive models and secure top Data Scientist roles.",
         rating: 5.0,
@@ -3088,8 +2980,78 @@ const coursesData = {
             icon: "bi bi-gear"
           }
         ]
-      }
-      ,
+      },
+      {
+        title: "Gen AI",
+        desc: "Master the future of AI with Generative AI. Learn Python, LLMs, RAG, Vector Stores, and Prompt Engineering to build intelligent chatbots and agents.",
+        rating: 4.9,
+        duration: "3 months",
+        students: "12,500+",
+        "img": "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800",
+        aboutData: {
+          topic: "Master Generative AI — From LLMs to Autonomous Agents!",
+          content1: "Dive into the cutting-edge world of Generative AI. Learn to build and deploy applications using Large Language Models (LLMs), LangChain, and Vector Databases. Master RAG (Retrieval-Augmented Generation) and Prompt Engineering to create intelligent systems.",
+          content2: "This comprehensive course covers Python foundations, LLM ecosystems (OpenAI, Gemini, Hugging Face), and advanced frameworks like LangChain and CrewAI. You'll gain hands-on experience building chatbots, multi-agent systems, and production-ready AI applications with guardrails and PII masking."
+        },
+        courseContentData: [
+          {
+            id: 1,
+            title: "Python & Environment Setup",
+            icon: "bi bi-terminal",
+            defaultOpen: true,
+            items: [
+              "Python and VS Code complete setup",
+              "Virtual environment and jupyter notebook",
+              "Github and Repo Intro",
+              "Github copilot and other extensions",
+              "Basic Python (Loops, If-Else, Class, Functions)",
+              "Package building"
+            ]
+          },
+          {
+            id: 2,
+            title: "Generative AI Basics & LLMs",
+            icon: "bi bi-cpu",
+            items: [
+              "Generative AI – Basic theory, companies and LLMs",
+              "Get LLM credentials (API key) from Gemini, OpenAI, HF, Azure Openai",
+              "Basic LLM calls with temperature, top p, top k and max tokens",
+              "Understanding tokens and costs",
+              "Prompt Engineering techniques"
+            ]
+          },
+          {
+            id: 3,
+            title: "LangChain & RAG",
+            icon: "bi bi-link",
+            items: [
+              "LangChain – Basics and Chains",
+              "RAG (Retrieval-Augmented Generation) Architecture",
+              "Embedding models and Vector Stores",
+              "Llama Index introduction",
+              "Semantic search and document retrieval"
+            ]
+          },
+          {
+            id: 4,
+            title: "Advanced AI Agents & Deployment",
+            icon: "bi bi-robot",
+            items: [
+              "Crew AI – Multi-agent systems",
+              "Guardrails and Masking PII",
+              "Building production-ready Chatbots",
+              "Deployment strategies for AI apps",
+              "Monitoring and maintaining LLM apps"
+            ]
+          }
+        ],
+        whatYouLearnData: [
+          { title: "Master LLM Integration", desc: "Connect with OpenAI, Gemini, and Hugging Face models.", icon: "bi bi-lightning-charge" },
+          { title: "Build RAG Applications", desc: "Create AI systems that talk to your own documents.", icon: "bi bi-database-check" },
+          { title: "Develop AI Agents", desc: "Automate complex workflows with multi-agent frameworks like CrewAI.", icon: "bi bi-diagram-3" },
+          { title: "Implement AI Guardrails", desc: "Ensure safety and privacy with PII masking and output validation.", icon: "bi bi-shield-check" }
+        ]
+      },
       {
         title: "Python Plus ChatGPT",
         desc: "Future-proof your career. Master Python programming and integrate OpenAI APIs to build intelligent, automated, and cutting-edge software solutions.",
@@ -3188,16 +3150,209 @@ const coursesData = {
           },
           
         ]
-      }
-      ,
+      },
       {
-        title: "SAS",
-        desc: "Propel your analytics career with expert SAS training. Master data management, predictive modeling, and business intelligence to lead data-driven corporate strategies.",
+        title: "Power BI",
+        desc: "Transform business data into actionable strategies. Master Power BI dashboard creation and DAX functions to secure lucrative Business Intelligence roles.",
         rating: 5.0,
         duration: "1 month",
         students: "106",
-        img: "/images/courses/SAS.jpg",
+        img: "/images/courses/Power_BI.jpg",
         aboutData: {
+          topic: "Master Power BI — Transform Data into Actionable Insights!",
+          content1: "Learn how to turn raw data into meaningful insights with Power BI. This course takes you from beginner to expert in data visualization, dashboard creation, and business intelligence, using hands-on exercises and real-world datasets.",
+          content2: "The Power BI course by Urbancode covers everything from basic Power BI concepts to advanced analytics. Start with Power Query, data modeling, and DAX functions, then move to interactive dashboards, custom visuals, and reporting. Gain industry-ready skills in Power BI Service, Power BI Desktop, and Power BI Mobile, enabling you to drive smarter business decisions."
+        },
+        courseContentData: [
+          {
+            id: 1,
+            title: "Beginner – Introduction to Power BI",
+            icon: "bi bi-book",
+            defaultOpen: true,
+            items: [
+              "Overview of Power BI and its ecosystem",
+              "Installing and setting up Power BI Desktop",
+              "Understanding data sources and connectors",
+              "Power BI Service and Power BI Mobile overview",
+              "Navigating the interface and basic features"
+            ]
+          },
+          {
+            id: 2,
+            title: "Beginner – Data Loading & Transformation",
+            icon: "bi bi-database",
+            items: [
+              "Connecting to Excel, CSV, SQL, and cloud data sources",
+              "Introduction to Power Query Editor",
+              "Data cleaning and transformation techniques",
+              "Merging, appending, and shaping data",
+              "Handling errors and missing data"
+            ]
+          },
+          {
+            id: 3,
+            title: "Intermediate – Data Modeling & DAX",
+            icon: "bi bi-gear",
+            items: [
+              "Introduction to data modeling concepts",
+              "Creating relationships between tables",
+              "Understanding DAX (Data Analysis Expressions)",
+              "Calculated columns, measures, and tables",
+              "Time intelligence functions"
+            ]
+          },
+          {
+            id: 4,
+            title: "Intermediate – Visualizations & Reports",
+            icon: "bi bi-bar-chart-line",
+            items: [
+              "Creating charts, tables, and maps",
+              "Using slicers and filters for interactive dashboards",
+              "Custom visuals and themes",
+              "Report formatting and best practices",
+              "Bookmarks, buttons, and navigation"
+            ]
+          },
+
+        ],
+        whatYouLearnData: [
+          {
+            title: "Master Power BI Fundamentals",
+            desc: "Learn to connect, transform, and model data efficiently.",
+            icon: "bi bi-lightning-charge"
+          },
+          {
+            title: "Create Interactive Dashboards",
+            desc: "Build reports with charts, tables, maps, slicers, and custom visuals.",
+            icon: "bi bi-gear"
+          },
+          {
+            title: "Perform Advanced Analytics",
+            desc: "Use DAX, AI visuals, forecasting, and predictive analytics.",
+            icon: "bi bi-bar-chart-line"
+          },
+          {
+            title: "Collaborate & Share Insights",
+            desc: "Publish dashboards, set up workspaces, and manage access in Power BI Service.",
+            icon: "bi bi-window-stack"
+          },
+          {
+            title: "Work with Real-World Projects",
+            desc: "Create end-to-end reporting solutions and optimize performance for enterprise datasets.",
+            icon: "bi bi-cpu"
+          },
+          {
+            title: "Gain Business Intelligence Skills",
+            desc: "Turn data into actionable insights to drive smarter business decisions.",
+            icon: "bi bi-diagram-3"
+          }
+        ]
+      },
+      {
+        title: "Tableau",
+        desc: "Become a sought-after Data Storyteller. Master Tableau's visual analytics to drive data-driven corporate decisions and command high-paying analytics jobs.",
+        rating: 5.0,
+        duration: "1 month",
+        students: "106",
+        img: "/images/courses/Tableau.jpg",
+        aboutData: {
+          topic: "Master Tableau — From Basic Charts to Advanced Dashboards & Analytics!",
+          content1: "Transform your data into meaningful insights! Learn Tableau from scratch with hands-on exercises, interactive dashboards, and real-world data projects. This course helps you become a Tableau expert, capable of delivering actionable business intelligence.",
+          content2: "The Tableau course covers everything from fundamental data visualization principles to complex dashboards and advanced analytics. You’ll learn to connect to multiple data sources, create calculated fields, design interactive dashboards, and use advanced features like Level of Detail (LOD) expressions and Tableau Prep for data cleaning. By the end, you'll be ready to make data-driven decisions and impress stakeholders."
+        },
+        courseContentData: [
+          {
+            id: 1,
+            title: "Beginner – Tableau Basics",
+            icon: "bi bi-book",
+            defaultOpen: true,
+            items: [
+              "Introduction to Tableau and its interface",
+              "Connecting Tableau to different data sources",
+              "Understanding dimensions, measures, and data types",
+              "Creating basic charts: bar, line, pie, scatter",
+              "Sorting, filtering, and grouping data"
+            ]
+          },
+          {
+            id: 2,
+            title: "Beginner – Data Handling & Calculations",
+            icon: "bi bi-database",
+            items: [
+              "Working with calculated fields",
+              "Using basic functions and aggregations",
+              "Understanding date and string calculations",
+              "Data blending and joins",
+              "Introduction to Tableau Prep"
+            ]
+          },
+          {
+            id: 3,
+            title: "Intermediate – Visual Analytics",
+            icon: "bi bi-bar-chart-line",
+            items: [
+              "Building interactive dashboards",
+              "Using parameters for dynamic visualizations",
+              "Advanced chart types: heat maps, bullet charts, treemaps",
+              "Storytelling with Tableau",
+              "Design best practices for dashboards"
+            ]
+          },
+          {
+            id: 4,
+            title: "Intermediate – Advanced Analytics",
+            icon: "bi bi-gear",
+            items: [
+              "Level of Detail (LOD) expressions",
+              "Table calculations",
+              "Trend lines, forecasting, and clustering",
+              "Advanced filtering and sets",
+              "Conditional formatting and dynamic visuals"
+            ]
+          },
+
+        ],
+        whatYouLearnData: [
+          {
+            title: "Master Tableau Basics",
+            desc: "Learn to navigate Tableau, connect data sources, and create foundational charts.",
+            icon: "bi bi-lightning-charge"
+          },
+          {
+            title: "Handle Data Efficiently",
+            desc: "Use calculations, joins, data blending, and Tableau Prep for clean analysis.",
+            icon: "bi bi-database"
+          },
+          {
+            title: "Build Interactive Dashboards",
+            desc: "Design professional dashboards with filters, actions, and dynamic elements.",
+            icon: "bi bi-window-stack"
+          },
+          {
+            title: "Perform Advanced Analytics",
+            desc: "Apply LOD expressions, table calculations, forecasting, and clustering techniques.",
+            icon: "bi bi-gear"
+          },
+          {
+            title: "Optimize & Share Dashboards",
+            desc: "Publish, embed, and manage dashboards with performance and security best practices.",
+            icon: "bi bi-diagram-3"
+          },
+          {
+            title: "Deliver Real-World Insights",
+            desc: "Work on projects across sales, marketing, finance, and executive reporting.",
+            icon: "bi bi-bar-chart-line"
+          }
+        ]
+      },
+      {
+        "title": "SAS",
+        "desc": "Propel your analytics career with expert SAS training. Master data management, predictive modeling, and business intelligence to lead data-driven corporate strategies.",
+        "rating": 5.0,
+        "duration": "1 month",
+        "students": "106",
+        "img": "/images/courses/SAS.jpg",
+        "aboutData": {
           topic: "Master SAS — From Data Management to Advanced Analytics!",
           content1: "Learn SAS from scratch and advance to complex data analytics, reporting, and predictive modeling. This course provides hands-on experience with real-world datasets, ensuring you gain practical skills for business and data-driven decision-making.",
           content2: "The SAS course covers the full spectrum of data analytics, from data manipulation and reporting to advanced analytics techniques like predictive modeling, regression analysis, and business intelligence dashboards. You'll gain expertise in Base SAS, SAS Macros, SQL, and SAS Enterprise Guide, preparing you for analytics roles across industries."
@@ -3272,122 +3427,110 @@ const coursesData = {
             icon: "bi bi-bar-chart-line"
           },
           {
-            title: "Predictive Modeling & Statistics",
-            desc: "Apply regression, classification, and time series analysis using SAS.",
-            icon: "bi bi-robot"
+            "title": "Predictive Modeling & Statistics",
+            "desc": "Apply regression, classification, and time series analysis using SAS.",
+            "icon": "bi bi-robot"
+          }
+        ]
+      },
+      {
+        "title": "R Programming",
+        "desc": "Master R Programming for data science and statistical analysis. Learn advanced algorithms, data visualization, and predictive modeling for top analytics roles.",
+        "rating": 5.0,
+        "duration": "1 month",
+        "students": "106",
+        "img": "/images/courses/R_Programming.jpg",
+        "aboutData": {
+          "topic": "Master R Programming — From Fundamentals to Advanced Analytics!",
+          "content1": "Learn R Programming from scratch and gain the skills to perform data analysis, statistical modeling, and visualization. This course provides hands-on projects to help you transform raw data into actionable insights.",
+          "content2": "The R Programming course by Urbancode covers everything from basic syntax to advanced data analysis techniques. You’ll start with fundamentals like vectors, lists, and data frames, then move on to visualization with ggplot2, statistical modeling, and machine learning integration. By the end, you’ll be capable of applying R for real-world analytics projects, making you ready for roles in data science, research, and analytics."
+        },
+        "courseContentData": [
+          {
+            id: 1,
+            title: "Beginner – R Fundamentals",
+            icon: "bi bi-book",
+            defaultOpen: true,
+            items: [
+              "Introduction to R and RStudio",
+              "R syntax, variables, and data types",
+              "Vectors, lists, and data frames",
+              "Basic operations and functions",
+              "Control structures: if, for, while",
+              "Reading and writing data files"
+            ]
           },
           {
-            title: "Business Intelligence Skills",
-            desc: "Build real-world BI projects using SAS Enterprise Guide.",
+            id: 2,
+            title: "Beginner – Data Manipulation",
+            icon: "bi bi-database",
+            items: [
+              "Data cleaning and preprocessing",
+              "Using dplyr for data manipulation",
+              "Filtering, sorting, and summarizing data",
+              "Merging and joining datasets",
+              "Handling missing values"
+            ]
+          },
+          {
+            id: 3,
+            title: "Intermediate – Data Visualization",
+            icon: "bi bi-bar-chart-line",
+            items: [
+              "Introduction to ggplot2",
+              "Creating bar, line, and scatter plots",
+              "Customizing plots with themes and labels",
+              "Interactive visualizations with plotly",
+              "Visualization best practices"
+            ]
+          },
+          {
+            id: 4,
+            title: "Intermediate – Statistical Analysis",
+            icon: "bi bi-calculator",
+            items: [
+              "Descriptive statistics",
+              "Probability distributions",
+              "Hypothesis testing",
+              "Correlation and regression analysis",
+              "ANOVA and Chi-square tests"
+            ]
+          },
+
+        ],
+        whatYouLearnData: [
+          {
+            title: "Master R Programming Concepts",
+            desc: "Understand R syntax, data structures, functions, and advanced programming techniques.",
+            icon: "bi bi-lightning-charge"
+          },
+          {
+            title: "Perform Data Analysis",
+            desc: "Use R for statistical analysis, hypothesis testing, and real-world data exploration.",
+            icon: "bi bi-bar-chart-line"
+          },
+          {
+            title: "Create Stunning Visualizations",
+            desc: "Visualize data effectively using ggplot2, plotly, and interactive dashboards.",
             icon: "bi bi-window-stack"
           },
           {
-            title: "Industry-Ready SAS Expertise",
-            desc: "Gain practical skills applicable to analytics, data science, and BI roles.",
-            icon: "bi bi-diagram-3"
+            title: "Implement Machine Learning",
+            desc: "Build predictive models using regression, classification, and clustering techniques in R.",
+            icon: "bi bi-robot"
+          },
+          {
+            title: "Automate Reporting & Dashboards",
+            desc: "Generate dynamic reports and interactive dashboards with R Markdown and Shiny.",
+            icon: "bi bi-gear"
+          },
+          {
+            title: "Handle Real-World Data Projects",
+            desc: "Apply R programming to practical datasets, clean, analyze, and present actionable insights.",
+            icon: "bi bi-cpu"
           }
         ]
       }
-      ,
-      // {
-      //   "title": "R Programming",
-      //   "desc": "Master R Programming with hands-on training designed for data analysis, visualization, and statistical modeling. Gain industry-ready skills to excel in analytics, research, and data-driven decision making.",
-      //   "rating": 5.0,
-      //   "duration": "1 month",
-      //   "students": "106",
-      //   "img": "/images/courses/R_Programming.jpg",
-      //   "aboutData": {
-      //     "topic": "Master R Programming — From Fundamentals to Advanced Analytics!",
-      //     "content1": "Learn R Programming from scratch and gain the skills to perform data analysis, statistical modeling, and visualization. This course provides hands-on projects to help you transform raw data into actionable insights.",
-      //     "content2": "The R Programming course by Urbancode covers everything from basic syntax to advanced data analysis techniques. You’ll start with fundamentals like vectors, lists, and data frames, then move on to visualization with ggplot2, statistical modeling, and machine learning integration. By the end, you’ll be capable of applying R for real-world analytics projects, making you ready for roles in data science, research, and analytics."
-      //   },
-      //   "courseContentData": [
-      //     {
-      //       "id": 1,
-      //       "title": "Beginner – R Fundamentals",
-      //       "icon": "bi bi-book",
-      //       "defaultOpen": true,
-      //       "items": [
-      //         "Introduction to R and RStudio",
-      //         "R syntax, variables, and data types",
-      //         "Vectors, lists, and data frames",
-      //         "Basic operations and functions",
-      //         "Control structures: if, for, while",
-      //         "Reading and writing data files"
-      //       ]
-      //     },
-      //     {
-      //       "id": 2,
-      //       "title": "Beginner – Data Manipulation",
-      //       "icon": "bi bi-database",
-      //       "items": [
-      //         "Data cleaning and preprocessing",
-      //         "Using dplyr for data manipulation",
-      //         "Filtering, sorting, and summarizing data",
-      //         "Merging and joining datasets",
-      //         "Handling missing values"
-      //       ]
-      //     },
-      //     {
-      //       "id": 3,
-      //       "title": "Intermediate – Data Visualization",
-      //       "icon": "bi bi-bar-chart-line",
-      //       "items": [
-      //         "Introduction to ggplot2",
-      //         "Creating bar, line, and scatter plots",
-      //         "Customizing plots with themes and labels",
-      //         "Interactive visualizations with plotly",
-      //         "Visualization best practices"
-      //       ]
-      //     },
-      //     {
-      //       "id": 4,
-      //       "title": "Intermediate – Statistical Analysis",
-      //       "icon": "bi bi-calculator",
-      //       "items": [
-      //         "Descriptive statistics",
-      //         "Probability distributions",
-      //         "Hypothesis testing",
-      //         "Correlation and regression analysis",
-      //         "ANOVA and Chi-square tests"
-      //       ]
-      //     },
-
-      //   ],
-      //   "whatYouLearnData": [
-      //     {
-      //       "title": "Master R Programming Concepts",
-      //       "desc": "Understand R syntax, data structures, functions, and advanced programming techniques.",
-      //       "icon": "bi bi-lightning-charge"
-      //     },
-      //     {
-      //       "title": "Perform Data Analysis",
-      //       "desc": "Use R for statistical analysis, hypothesis testing, and real-world data exploration.",
-      //       "icon": "bi bi-bar-chart-line"
-      //     },
-      //     {
-      //       "title": "Create Stunning Visualizations",
-      //       "desc": "Visualize data effectively using ggplot2, plotly, and interactive dashboards.",
-      //       "icon": "bi bi-window-stack"
-      //     },
-      //     {
-      //       "title": "Implement Machine Learning",
-      //       "desc": "Build predictive models using regression, classification, and clustering techniques in R.",
-      //       "icon": "bi bi-robot"
-      //     },
-      //     {
-      //       "title": "Automate Reporting & Dashboards",
-      //       "desc": "Generate dynamic reports and interactive dashboards with R Markdown and Shiny.",
-      //       "icon": "bi bi-gear"
-      //     },
-      //     {
-      //       "title": "Handle Real-World Data Projects",
-      //       "desc": "Apply R programming to practical datasets, clean, analyze, and present actionable insights.",
-      //       "icon": "bi bi-cpu"
-      //     }
-      //   ]
-      // }
-      
     ],
   },
 "Data Engineering": {
@@ -3885,411 +4028,6 @@ const coursesData = {
           }
         ]
       }
-      ,
-    ],
-  },
-
-  "Data Visualization": {
-    mainCategoryDesc: "Data Visualization Expertise",
-    subDesc: "Transform complex datasets into impactful visuals with Tableau, Power BI, and Python visualization tools. Learn to design dashboards, graphs, and reports that drive clarity and business intelligence.",
-    subHeading: "Build a career in Data Visualization by combining analytical skills with storytelling that inspires action.",
-    mainImage: "/images/courses/Data_Visualization.jpg",
-
-    courses: [
-      {
-        title: "Power BI",
-        desc: "Transform business data into actionable strategies. Master Power BI dashboard creation and DAX functions to secure lucrative Business Intelligence roles.",
-        rating: 5.0,
-        duration: "1 month",
-        students: "106",
-        img: "/images/courses/Power_BI.jpg",
-        aboutData: {
-          topic: "Master Power BI — Transform Data into Actionable Insights!",
-          content1: "Learn how to turn raw data into meaningful insights with Power BI. This course takes you from beginner to expert in data visualization, dashboard creation, and business intelligence, using hands-on exercises and real-world datasets.",
-          content2: "The Power BI course by Urbancode covers everything from basic Power BI concepts to advanced analytics. Start with Power Query, data modeling, and DAX functions, then move to interactive dashboards, custom visuals, and reporting. Gain industry-ready skills in Power BI Service, Power BI Desktop, and Power BI Mobile, enabling you to drive smarter business decisions."
-        },
-        courseContentData: [
-          {
-            id: 1,
-            title: "Beginner – Introduction to Power BI",
-            icon: "bi bi-book",
-            defaultOpen: true,
-            items: [
-              "Overview of Power BI and its ecosystem",
-              "Installing and setting up Power BI Desktop",
-              "Understanding data sources and connectors",
-              "Power BI Service and Power BI Mobile overview",
-              "Navigating the interface and basic features"
-            ]
-          },
-          {
-            id: 2,
-            title: "Beginner – Data Loading & Transformation",
-            icon: "bi bi-database",
-            items: [
-              "Connecting to Excel, CSV, SQL, and cloud data sources",
-              "Introduction to Power Query Editor",
-              "Data cleaning and transformation techniques",
-              "Merging, appending, and shaping data",
-              "Handling errors and missing data"
-            ]
-          },
-          {
-            id: 3,
-            title: "Intermediate – Data Modeling & DAX",
-            icon: "bi bi-gear",
-            items: [
-              "Introduction to data modeling concepts",
-              "Creating relationships between tables",
-              "Understanding DAX (Data Analysis Expressions)",
-              "Calculated columns, measures, and tables",
-              "Time intelligence functions"
-            ]
-          },
-          {
-            id: 4,
-            title: "Intermediate – Visualizations & Reports",
-            icon: "bi bi-bar-chart-line",
-            items: [
-              "Creating charts, tables, and maps",
-              "Using slicers and filters for interactive dashboards",
-              "Custom visuals and themes",
-              "Report formatting and best practices",
-              "Bookmarks, buttons, and navigation"
-            ]
-          },
-
-        ],
-        whatYouLearnData: [
-          {
-            title: "Master Power BI Fundamentals",
-            desc: "Learn to connect, transform, and model data efficiently.",
-            icon: "bi bi-lightning-charge"
-          },
-          {
-            title: "Create Interactive Dashboards",
-            desc: "Build reports with charts, tables, maps, slicers, and custom visuals.",
-            icon: "bi bi-gear"
-          },
-          {
-            title: "Perform Advanced Analytics",
-            desc: "Use DAX, AI visuals, forecasting, and predictive analytics.",
-            icon: "bi bi-bar-chart-line"
-          },
-          {
-            title: "Collaborate & Share Insights",
-            desc: "Publish dashboards, set up workspaces, and manage access in Power BI Service.",
-            icon: "bi bi-window-stack"
-          },
-          {
-            title: "Work with Real-World Projects",
-            desc: "Create end-to-end reporting solutions and optimize performance for enterprise datasets.",
-            icon: "bi bi-cpu"
-          },
-          {
-            title: "Gain Business Intelligence Skills",
-            desc: "Turn data into actionable insights to drive smarter business decisions.",
-            icon: "bi bi-diagram-3"
-          }
-        ]
-      }
-      ,
-
-      {
-        title: "Tableau",
-        desc: "Become a sought-after Data Storyteller. Master Tableau's visual analytics to drive data-driven corporate decisions and command high-paying analytics jobs.",
-        rating: 5.0,
-        duration: "1 month",
-        students: "106",
-        img: "/images/courses/Tableau.jpg",
-        aboutData: {
-          topic: "Master Tableau — From Basic Charts to Advanced Dashboards & Analytics!",
-          content1: "Transform your data into meaningful insights! Learn Tableau from scratch with hands-on exercises, interactive dashboards, and real-world data projects. This course helps you become a Tableau expert, capable of delivering actionable business intelligence.",
-          content2: "The Tableau course covers everything from fundamental data visualization principles to complex dashboards and advanced analytics. You’ll learn to connect to multiple data sources, create calculated fields, design interactive dashboards, and use advanced features like Level of Detail (LOD) expressions and Tableau Prep for data cleaning. By the end, you'll be ready to make data-driven decisions and impress stakeholders."
-        },
-        courseContentData: [
-          {
-            id: 1,
-            title: "Beginner – Tableau Basics",
-            icon: "bi bi-book",
-            defaultOpen: true,
-            items: [
-              "Introduction to Tableau and its interface",
-              "Connecting Tableau to different data sources",
-              "Understanding dimensions, measures, and data types",
-              "Creating basic charts: bar, line, pie, scatter",
-              "Sorting, filtering, and grouping data"
-            ]
-          },
-          {
-            id: 2,
-            title: "Beginner – Data Handling & Calculations",
-            icon: "bi bi-database",
-            items: [
-              "Working with calculated fields",
-              "Using basic functions and aggregations",
-              "Understanding date and string calculations",
-              "Data blending and joins",
-              "Introduction to Tableau Prep"
-            ]
-          },
-          {
-            id: 3,
-            title: "Intermediate – Visual Analytics",
-            icon: "bi bi-bar-chart-line",
-            items: [
-              "Building interactive dashboards",
-              "Using parameters for dynamic visualizations",
-              "Advanced chart types: heat maps, bullet charts, treemaps",
-              "Storytelling with Tableau",
-              "Design best practices for dashboards"
-            ]
-          },
-          {
-            id: 4,
-            title: "Intermediate – Advanced Analytics",
-            icon: "bi bi-gear",
-            items: [
-              "Level of Detail (LOD) expressions",
-              "Table calculations",
-              "Trend lines, forecasting, and clustering",
-              "Advanced filtering and sets",
-              "Conditional formatting and dynamic visuals"
-            ]
-          },
- 
-        ],
-        whatYouLearnData: [
-          {
-            title: "Master Tableau Basics",
-            desc: "Learn to navigate Tableau, connect data sources, and create foundational charts.",
-            icon: "bi bi-lightning-charge"
-          },
-          {
-            title: "Handle Data Efficiently",
-            desc: "Use calculations, joins, data blending, and Tableau Prep for clean analysis.",
-            icon: "bi bi-database"
-          },
-          {
-            title: "Build Interactive Dashboards",
-            desc: "Design professional dashboards with filters, actions, and dynamic elements.",
-            icon: "bi bi-window-stack"
-          },
-          {
-            title: "Perform Advanced Analytics",
-            desc: "Apply LOD expressions, table calculations, forecasting, and clustering techniques.",
-            icon: "bi bi-gear"
-          },
-          {
-            title: "Optimize & Share Dashboards",
-            desc: "Publish, embed, and manage dashboards with performance and security best practices.",
-            icon: "bi bi-diagram-3"
-          },
-          {
-            title: "Deliver Real-World Insights",
-            desc: "Work on projects across sales, marketing, finance, and executive reporting.",
-            icon: "bi bi-bar-chart-line"
-          }
-        ]
-      }
-      ,
-      // {
-      //   title: "Power Apps",
-      //   desc: "Master Microsoft Power Apps to design custom business apps without coding. Learn hands-on to automate processes, boost productivity, and transform workflows.",
-      //   rating: 5.0,
-      //   duration: "1 month",
-      //   students: "106",
-      //   img: "/images/courses/Power_Apps.jpg",
-      //   aboutData: {
-      //     topic: "Master Microsoft Power Apps — Build No-Code Apps for Business Efficiency!",
-      //     content1: "Learn to create powerful business applications without writing a single line of code! This Power Apps course covers canvas apps, model-driven apps, and integration with Microsoft 365 and Dataverse, enabling you to automate workflows and streamline business operations.",
-      //     content2: "The Power Apps course by Urbancode guides you from basic app design to advanced app deployment. You'll gain hands-on experience building apps, connecting to data sources, using Power Automate for automation, and implementing best practices for enterprise solutions."
-      //   },
-      //   courseContentData: [
-      //     {
-      //       id: 1,
-      //       title: "Beginner – Introduction to Power Apps",
-      //       icon: "bi bi-book",
-      //       defaultOpen: true,
-      //       items: [
-      //         "Overview of Power Platform and Power Apps",
-      //         "Understanding canvas vs model-driven apps",
-      //         "Setting up your Power Apps environment",
-      //         "Navigating Power Apps Studio",
-      //         "App templates and examples"
-      //       ]
-      //     },
-      //     {
-      //       id: 2,
-      //       title: "Beginner – Building Canvas Apps",
-      //       icon: "bi bi-window",
-      //       items: [
-      //         "Creating a canvas app from scratch",
-      //         "Working with screens and controls",
-      //         "Data connections with Excel, SharePoint, and Dataverse",
-      //         "Using formulas and expressions",
-      //         "App testing and debugging"
-      //       ]
-      //     },
-      //     {
-      //       id: 3,
-      //       title: "Intermediate – Model-Driven Apps",
-      //       icon: "bi bi-diagram-3",
-      //       items: [
-      //         "Introduction to Dataverse and entities",
-      //         "Creating model-driven apps",
-      //         "Working with forms, views, and dashboards",
-      //         "Implementing business rules and workflows",
-      //         "Security roles and permissions"
-      //       ]
-      //     },
-      //     {
-      //       id: 4,
-      //       title: "Intermediate – Power Automate Integration",
-      //       icon: "bi bi-flow-chart",
-      //       items: [
-      //         "Automating processes with Power Automate",
-      //         "Creating flows triggered from apps",
-      //         "Integrating approvals and notifications",
-      //         "Connecting Power Apps to external services",
-      //         "Error handling and monitoring flows"
-      //       ]
-      //     },
-      
-      //   ],
-      //   whatYouLearnData: [
-      //     {
-      //       title: "Build No-Code Business Apps",
-      //       desc: "Design canvas and model-driven apps without coding using Power Apps Studio.",
-      //       icon: "bi bi-laptop"
-      //     },
-      //     {
-      //       title: "Automate Workflows",
-      //       desc: "Use Power Automate to streamline approvals, notifications, and business processes.",
-      //       icon: "bi bi-flow-chart"
-      //     },
-      //     {
-      //       title: "Connect to Data Sources",
-      //       desc: "Integrate apps with Dataverse, SharePoint, Excel, and other Microsoft 365 services.",
-      //       icon: "bi bi-database"
-      //     },
-      //     {
-      //       title: "Create Enterprise-Ready Solutions",
-      //       desc: "Implement security, compliance, and performance best practices in apps.",
-      //       icon: "bi bi-shield-lock"
-      //     },
-      //     {
-      //       title: "Analyze and Visualize Data",
-      //       desc: "Embed Power BI reports into apps for advanced insights and dashboards.",
-      //       icon: "bi bi-bar-chart-line"
-      //     },
-      //     {
-      //       title: "Collaborate and Scale",
-      //       desc: "Manage environments, team collaboration, and app lifecycle effectively.",
-      //       icon: "bi bi-people"
-      //     }
-      //   ]
-      // }
-      // ,
-      // {
-      //   title: "Alteryx",
-      //   desc: "Master data preparation, blending, and advanced analytics with our hands-on Alteryx training program. Empower your career by learning automation-driven insights for real-world business success.",
-      //   rating: 5.0,
-      //   duration: "1 month",
-      //   students: "106",
-      //   img: "/images/courses/Alteryx.jpg",
-      //   aboutData: {
-      //     topic: "Master Alteryx — From Data Preparation to Advanced Analytics!",
-      //     content1: "Enhance your data analytics skills with Alteryx! Learn to prepare, blend, and analyze data efficiently. This course provides hands-on experience with real-world datasets and automation-driven insights.",
-      //     content2: "The Alteryx course covers all essential topics, from basic workflow creation to advanced predictive analytics. You'll learn how to automate processes, integrate with databases and APIs, and generate actionable business insights using Alteryx Designer, Alteryx Server, and Alteryx Intelligence Suite."
-      //   },
-      //   courseContentData: [
-      //     {
-      //       id: 1,
-      //       title: "Beginner – Introduction to Alteryx",
-      //       icon: "bi bi-book",
-      //       defaultOpen: true,
-      //       items: [
-      //         "Overview of Alteryx and its applications",
-      //         "Installing and navigating Alteryx Designer",
-      //         "Understanding the interface and workflow basics",
-      //         "Working with tools and tool categories",
-      //         "Basic data input and output operations"
-      //       ]
-      //     },
-      //     {
-      //       id: 2,
-      //       title: "Beginner – Data Preparation & Blending",
-      //       icon: "bi bi-database",
-      //       items: [
-      //         "Connecting to multiple data sources",
-      //         "Data cleansing and preparation techniques",
-      //         "Filtering, sorting, and selecting data",
-      //         "Joining and unioning datasets",
-      //         "Introduction to macros for automation"
-      //       ]
-      //     },
-      //     {
-      //       id: 3,
-      //       title: "Intermediate – Transforming Data",
-      //       icon: "bi bi-bar-chart-line",
-      //       items: [
-      //         "Using formulas and expressions",
-      //         "Aggregating and summarizing data",
-      //         "Working with dates, strings, and numbers",
-      //         "Spatial data processing",
-      //         "Error handling and workflow validation"
-      //       ]
-      //     },
-      //     {
-      //       id: 4,
-      //       title: "Intermediate – Reporting & Analytics",
-      //       icon: "bi bi-window-stack",
-      //       items: [
-      //         "Generating reports and dashboards",
-      //         "Visualization techniques",
-      //         "Introduction to predictive analytics tools",
-      //         "Using R and Python integration within Alteryx",
-      //         "Workflow optimization and performance tuning"
-      //       ]
-      //     },
-        
-      //   ],
-      //   whatYouLearnData: [
-      //     {
-      //       title: "Master Data Preparation",
-      //       desc: "Clean, transform, and blend data from multiple sources efficiently.",
-      //       icon: "bi bi-lightning-charge"
-      //     },
-      //     {
-      //       title: "Develop Automated Workflows",
-      //       desc: "Build repeatable workflows to streamline business processes.",
-      //       icon: "bi bi-gear"
-      //     },
-      //     {
-      //       title: "Perform Advanced Analytics",
-      //       desc: "Apply predictive and spatial analytics using Alteryx tools.",
-      //       icon: "bi bi-bar-chart-line"
-      //     },
-      //     {
-      //       title: "Integrate with R & Python",
-      //       desc: "Enhance analytics capabilities by integrating scripting languages.",
-      //       icon: "bi bi-window-stack"
-      //     },
-      //     {
-      //       title: "Generate Reports & Dashboards",
-      //       desc: "Create interactive reports and dashboards for data visualization.",
-      //       icon: "bi bi-cpu"
-      //     },
-      //     {
-      //       title: "Deploy & Automate Workflows",
-      //       desc: "Schedule and deploy workflows using Alteryx Server for business automation.",
-      //       icon: "bi bi-diagram-3"
-      //     }
-      //   ]
-      // }
-      // ,
-
     ],
   },
 
@@ -7197,8 +6935,101 @@ const coursesData = {
 
     ]
   },
+  RPA: {
+    mainCategoryDesc: "Intelligent Automation for the Modern Enterprise",
+    subDesc: "Master Robotic Process Automation (RPA) and transform how business works. Learn to build intelligent bots, automate repetitive tasks, and streamline complex business processes using Microsoft Power Automate and other industry-leading tools.",
+    subHeading: "Become an Automation Expert and lead the future of digital transformation in your organization.",
+    mainImage: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=1200",
 
-
+    courses: [
+      {
+        title: "Power Automate",
+        desc: "Master enterprise automation with Microsoft Power Automate. Learn to build automated, instant, and scheduled flows, integrate AI Builder, and manage professional ALM processes.",
+        rating: 4.9,
+        duration: "1.5 months",
+        students: "8,245",
+        img: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=800",
+        aboutData: {
+          topic: "Master Power Automate — Transform Business Processes with Intelligent Automation!",
+          content1: "Learn to build powerful workflows using Microsoft Power Automate. From SharePoint integration to AI-driven document processing, this course covers everything you need to become an automation expert.",
+          content2: "Our curriculum takes you from basics to advanced ALM (Application Lifecycle Management). You'll master Workflow Definition Language (WDL), data operations, error handling (Try-Catch), and environment variables, ensuring your automations are professional, scalable, and secure."
+        },
+        courseContentData: [
+          {
+            id: 1,
+            title: "Week 1: Foundations & Basics",
+            icon: "bi bi-layers",
+            defaultOpen: true,
+            items: [
+              "SharePoint as a Data Source: Lists vs. Libraries",
+              "Understanding Column Types & Data Structures",
+              "Introduction to Power Platform Ecosystem",
+              "Automated, Instant, and Scheduled Flows",
+              "Microsoft Copilot & Templates usage",
+              "Practice: Document upload notification system"
+            ]
+          },
+          {
+            id: 2,
+            title: "Week 2: Logic, Loops, and Approvals",
+            icon: "bi bi-diagram-2",
+            items: [
+              "Conditional Logic (Condition & Switch actions)",
+              "The Approvals Connector: Basic vs. Custom",
+              "Working with Lists & Loops (Apply to Each)",
+              "Updating multiple SharePoint items",
+              "Practice: Leave Request system with Manager Approval"
+            ]
+          },
+          {
+            id: 3,
+            title: "Week 3: Data Manipulation & Expressions",
+            icon: "bi bi-braces",
+            items: [
+              "Introduction to WDL (Workflow Definition Language)",
+              "Expressions: utcNow(), formatDateTime(), variables",
+              "Data Operations: Compose, Select, and Filter Array",
+              "JSON Mastery & Parse JSON action",
+              "Practice: Weekly Digest flow with HTML table formatting"
+            ]
+          },
+          {
+            id: 4,
+            title: "Week 4: Professionalism, Error Handling, and AI",
+            icon: "bi bi-shield-check",
+            items: [
+              "Error Handling (Try-Catch) & Configure Run After",
+              "Advanced SharePoint Integration",
+              "AI Builder: Extracting data from PDF/Invoices",
+              "Solutions & Governance naming conventions",
+              "Practice: Travel Expense Claim flow with AI receipt reading"
+            ]
+          },
+          {
+            id: 5,
+            title: "Week 5: The Professional Handoff (ALM)",
+            icon: "bi bi-box-arrow-in-right",
+            items: [
+              "The Container Concept: Solutions vs. My Flows",
+              "Connection References & Environment Variables",
+              "Managed vs. Unmanaged Solutions",
+              "ALM: Moving flows between Dev, Test, and Prod",
+              "Practice: Multi-environment export/import with dynamic URLs"
+            ]
+          }
+        ],
+        whatYouLearnData: [
+          { title: "Build Scalable Flows", desc: "Design automated, instant, and scheduled workflows for business tasks.", icon: "bi bi-lightning-charge" },
+          { title: "Master Logic & Approvals", desc: "Implement complex business logic and multi-stage approval processes.", icon: "bi bi-check2-circle" },
+          { title: "Clean Data without Loops", desc: "Use advanced data operations like Compose and Filter Array for efficiency.", icon: "bi bi-funnel" },
+          { title: "Implement AI Builder", desc: "Leverage AI to process documents, invoices, and unstructured data automatically.", icon: "bi bi-cpu" },
+          { title: "Professional ALM", desc: "Manage software lifecycle using Solutions and Environment Variables.", icon: "bi bi-box" },
+          { title: "Error Proof Automations", desc: "Build resilient flows with Try-Catch logic and error notifications.", icon: "bi bi-bug" }
+        ],
+        locked: false
+      }
+    ],
+  },
 };
 
 // Ensure every course object has an explicit `locked` boolean flag.
