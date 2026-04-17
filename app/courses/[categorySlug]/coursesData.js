@@ -90,7 +90,7 @@ const coursesData = {
   courseContentData: [
     {
       id: 1,
-      title: "Beginner – Core Java Refresher",
+      title: "Core Java Refresher",
       icon: "bi bi-book",
       defaultOpen: true,
       items: [
@@ -104,7 +104,7 @@ const coursesData = {
     },
     {
       id: 2,
-      title: "Beginner – Working with Collections",
+      title: "Working with Collections",
       icon: "bi bi-database",
       items: [
         "Arrays and ArrayList",
@@ -116,7 +116,7 @@ const coursesData = {
     },
     {
       id: 3,
-      title: "Beginner – Input/Output and Threads",
+      title: "Input/Output and Threads",
       icon: "bi bi-window",
       items: [
         "File handling with Java I/O and NIO",
@@ -128,7 +128,7 @@ const coursesData = {
     },
     {
       id: 4,
-      title: "Intermediate – Database Connectivity (JDBC)",
+      title: "Database Connectivity (JDBC)",
       icon: "bi bi-gear",
       items: [
         "Introduction to JDBC",
@@ -255,7 +255,7 @@ const coursesData = {
         courseContentData: [
           {
             id: 1,
-            title: "Beginner – Python Fundamentals",
+            title: "Python Fundamentals",
             icon: "bi bi-book",
             defaultOpen: true,
             items: [
@@ -269,7 +269,7 @@ const coursesData = {
           },
           {
             id: 2,
-            title: "Beginner – Working with Data",
+            title: "Working with Data",
             icon: "bi bi-database",
             items: [
               "Lists, tuples, and dictionaries",
@@ -281,7 +281,7 @@ const coursesData = {
           },
           {
             id: 3,
-            title: "Beginner – Building Applications",
+            title: "Building Applications",
             icon: "bi bi-window",
             items: [
               "User input and output",
@@ -293,7 +293,7 @@ const coursesData = {
           },
           {
             id: 4,
-            title: "Intermediate – Advanced Python Topics",
+            title: "Advanced Python Topics",
             icon: "bi bi-gear",
             items: [
               "Decorators and closures",
@@ -356,7 +356,7 @@ const coursesData = {
   courseContentData: [
     {
       id: 1,
-      title: "Beginner – Getting Started with C",
+      title: "Getting Started with C",
       icon: "bi bi-terminal",
       defaultOpen: true,
       items: [
@@ -369,7 +369,7 @@ const coursesData = {
     },
     {
       id: 2,
-      title: "Beginner – Control Flow and Loops",
+      title: "Control Flow and Loops",
       icon: "bi bi-arrow-repeat",
       items: [
         "Conditional statements (if, else, switch)",
@@ -380,7 +380,7 @@ const coursesData = {
     },
     {
       id: 3,
-      title: "Intermediate – Functions and Arrays",
+      title: "Functions and Arrays",
       icon: "bi bi-braces",
       items: [
         "Defining and calling functions",
@@ -392,7 +392,7 @@ const coursesData = {
     },
     {
       id: 4,
-      title: "Intermediate – Pointers and Memory Management",
+      title: "Pointers and Memory Management",
       icon: "bi bi-memory",
       items: [
         "Introduction to pointers and addresses",
@@ -456,7 +456,7 @@ const coursesData = {
   courseContentData: [
     {
       id: 1,
-      title: "Beginner – Programming Foundations",
+      title: "Programming Foundations",
       icon: "bi bi-book",
       defaultOpen: true,
       items: [
@@ -469,7 +469,7 @@ const coursesData = {
     },
     {
       id: 2,
-      title: "Beginner – Arrays and Strings",
+      title: "Arrays and Strings",
       icon: "bi bi-database",
       items: [
         "1D and 2D arrays",
@@ -480,7 +480,7 @@ const coursesData = {
     },
     {
       id: 3,
-      title: "Intermediate – Linked Lists & Stacks",
+      title: "Linked Lists & Stacks",
       icon: "bi bi-diagram-3",
       items: [
         "Singly and doubly linked lists",
@@ -491,7 +491,7 @@ const coursesData = {
     },
     {
       id: 4,
-      title: "Intermediate – Queues & Hashing",
+      title: "Queues & Hashing",
       icon: "bi bi-gear",
       items: [
         "Queue and circular queue implementation",
@@ -553,7 +553,7 @@ const coursesData = {
   courseContentData: [
     {
       id: 1,
-      title: "Beginner – Introduction to HTML",
+      title: "Introduction to HTML",
       icon: "bi bi-book",
       defaultOpen: true,
       items: [
@@ -566,7 +566,7 @@ const coursesData = {
     },
     {
       id: 2,
-      title: "Beginner – Page Layout and Structure",
+      title: "Page Layout and Structure",
       icon: "bi bi-columns-gap",
       items: [
         "Divs, spans, and containers",
@@ -577,7 +577,7 @@ const coursesData = {
     },
     {
       id: 3,
-      title: "Intermediate – Introduction to CSS",
+      title: "Introduction to CSS",
       icon: "bi bi-palette",
       items: [
         "What is CSS and how it works with HTML",
@@ -589,7 +589,7 @@ const coursesData = {
     },
     {
       id: 4,
-      title: "Intermediate – Box Model and Positioning",
+      title: "Box Model and Positioning",
       icon: "bi bi-bounding-box",
       items: [
         "Understanding the CSS box model",
@@ -667,7 +667,7 @@ const coursesData = {
   courseContentData: [
     {
       id: 1,
-      title: "Beginner – Web Foundations",
+      title: "Web Foundations",
       icon: "bi bi-code-slash",
       defaultOpen: true,
       items: [
@@ -680,7 +680,7 @@ const coursesData = {
     },
     {
       id: 2,
-      title: "Beginner – Programming with Java",
+      title: "Programming with Java",
       icon: "bi bi-cup-hot",
       items: [
         "Core Java syntax and OOP principles",
@@ -692,7 +692,7 @@ const coursesData = {
     },
     {
       id: 3,
-      title: "Intermediate – Database Management",
+      title: "Database Management",
       icon: "bi bi-database",
       items: [
         "Introduction to SQL and relational databases",
@@ -704,7 +704,7 @@ const coursesData = {
     },
     {
       id: 4,
-      title: "Intermediate – Back-End Development",
+      title: "Back-End Development",
       icon: "bi bi-gear",
       items: [
         "Introduction to Java EE and Servlets",
@@ -767,7 +767,7 @@ const coursesData = {
   courseContentData: [
     {
       id: 1,
-      title: "Beginner – Getting Started with Angular",
+      title: "Getting Started with Angular",
       icon: "bi bi-lightbulb",
       defaultOpen: true,
       items: [
@@ -780,7 +780,7 @@ const coursesData = {
     },
     {
       id: 2,
-      title: "Beginner – Core Concepts",
+      title: "Core Concepts",
       icon: "bi bi-box",
       items: [
         "Components and templates",
@@ -792,7 +792,7 @@ const coursesData = {
     },
     {
       id: 3,
-      title: "Intermediate – Services and Dependency Injection",
+      title: "Services and Dependency Injection",
       icon: "bi bi-gear",
       items: [
         "Creating and using services",
@@ -804,7 +804,7 @@ const coursesData = {
     },
     {
       id: 4,
-      title: "Intermediate – Routing and Navigation",
+      title: "Routing and Navigation",
       icon: "bi bi-map",
       items: [
         "Routing setup and configuration",
@@ -868,7 +868,7 @@ const coursesData = {
   courseContentData: [
     {
       id: 1,
-      title: "Beginner – Introduction to MEAN Stack",
+      title: "Introduction to MEAN Stack",
       icon: "bi bi-lightbulb",
       defaultOpen: true,
       items: [
@@ -881,7 +881,7 @@ const coursesData = {
     },
     {
       id: 2,
-      title: "Beginner – JavaScript & TypeScript Essentials",
+      title: "JavaScript & TypeScript Essentials",
       icon: "bi bi-code",
       items: [
         "JavaScript fundamentals and ES6 features",
@@ -893,7 +893,7 @@ const coursesData = {
     },
     {
       id: 3,
-      title: "Intermediate – Node.js and Express.js",
+      title: "Node.js and Express.js",
       icon: "bi bi-server",
       items: [
         "Creating servers with Node.js",
@@ -905,7 +905,7 @@ const coursesData = {
     },
     {
       id: 4,
-      title: "Intermediate – MongoDB and Mongoose",
+      title: "MongoDB and Mongoose",
       icon: "bi bi-database",
       items: [
         "Introduction to NoSQL databases",
@@ -968,7 +968,7 @@ const coursesData = {
   courseContentData: [
     {
       id: 1,
-      title: "Beginner – Introduction to MERN Stack",
+      title: "Introduction to MERN Stack",
       icon: "bi bi-lightbulb",
       defaultOpen: true,
       items: [
@@ -981,7 +981,7 @@ const coursesData = {
     },
     {
       id: 2,
-      title: "Beginner – JavaScript & ES6 Essentials",
+      title: "JavaScript & ES6 Essentials",
       icon: "bi bi-code",
       items: [
         "JavaScript fundamentals and modern syntax",
@@ -993,7 +993,7 @@ const coursesData = {
     },
     {
       id: 3,
-      title: "Intermediate – Node.js and Express.js",
+      title: "Node.js and Express.js",
       icon: "bi bi-server",
       items: [
         "Building a backend with Express.js",
@@ -1005,7 +1005,7 @@ const coursesData = {
     },
     {
       id: 4,
-      title: "Intermediate – MongoDB and Mongoose",
+      title: "MongoDB and Mongoose",
       icon: "bi bi-database",
       items: [
         "Introduction to MongoDB and NoSQL databases",
@@ -1066,7 +1066,7 @@ const coursesData = {
   courseContentData: [
     {
       id: 1,
-      title: "Week 1: SharePoint Fundamentals & Setup",
+      title: "SharePoint Fundamentals & Setup",
       icon: "bi bi-gear-wide-connected",
       defaultOpen: true,
       items: [
@@ -1079,7 +1079,7 @@ const coursesData = {
     },
     {
       id: 2,
-      title: "Week 2: Lists, Libraries & Metadata",
+      title: "Lists, Libraries & Metadata",
       icon: "bi bi-table",
       items: [
         "Create and customize Lists & Columns (Lookup, Person, etc.)",
@@ -1091,7 +1091,7 @@ const coursesData = {
     },
     {
       id: 3,
-      title: "Week 3: Pages, Branding & User Experience",
+      title: "Pages, Branding & User Experience",
       icon: "bi bi-layout-text-window",
       items: [
         "Creating Modern Pages & Web Parts",
@@ -1103,7 +1103,7 @@ const coursesData = {
     },
     {
       id: 4,
-      title: "Week 4: Permissions, Governance & Advanced UI",
+      title: "Permissions, Governance & Advanced UI",
       icon: "bi bi-shield-lock",
       items: [
         "Permission Levels, Roles & Inheritance",
@@ -1115,7 +1115,7 @@ const coursesData = {
     },
     {
       id: 5,
-      title: "Week 5: SPFx Development & Advanced Concepts",
+      title: "SPFx Development & Advanced Concepts",
       icon: "bi bi-code-slash",
       items: [
         "SPFx Environment setup: Node.js, Yeoman, Gulp",
@@ -1127,7 +1127,7 @@ const coursesData = {
     },
     {
       id: 6,
-      title: "Week 6: Power Automate Basics for SharePoint",
+      title: "Power Automate Basics for SharePoint",
       icon: "bi bi-lightning-charge",
       items: [
         "Types of Flows: Automated, Instant, Scheduled",
@@ -1165,7 +1165,7 @@ const coursesData = {
   courseContentData: [
     {
       id: 1,
-      title: "Beginner – Introduction to React Native",
+      title: "Introduction to React Native",
       icon: "bi bi-lightbulb",
       defaultOpen: true,
       items: [
@@ -1178,7 +1178,7 @@ const coursesData = {
     },
     {
       id: 2,
-      title: "Beginner – Core Concepts",
+      title: "Core Concepts",
       icon: "bi bi-box",
       items: [
         "JSX and component structure",
@@ -1190,7 +1190,7 @@ const coursesData = {
     },
     {
       id: 3,
-      title: "Intermediate – Navigation and State Management",
+      title: "Navigation and State Management",
       icon: "bi bi-compass",
       items: [
         "Using React Navigation (Stack, Tab, Drawer)",
@@ -1202,7 +1202,7 @@ const coursesData = {
     },
     {
       id: 4,
-      title: "Intermediate – Working with APIs",
+      title: "Working with APIs",
       icon: "bi bi-cloud-arrow-down",
       items: [
         "Fetching data from REST APIs",
@@ -1266,7 +1266,7 @@ const coursesData = {
   courseContentData: [
     {
       id: 1,
-      title: "Beginner – Introduction to Full-Stack Development",
+      title: "Introduction to Full-Stack Development",
       icon: "bi bi-lightbulb",
       defaultOpen: true,
       items: [
@@ -1279,7 +1279,7 @@ const coursesData = {
     },
     {
       id: 2,
-      title: "Beginner – C# and ASP.NET Core Basics",
+      title: "C# and ASP.NET Core Basics",
       icon: "bi bi-code",
       items: [
         "C# fundamentals and syntax",
@@ -1291,7 +1291,7 @@ const coursesData = {
     },
     {
       id: 3,
-      title: "Intermediate – Building RESTful APIs with .NET",
+      title: "Building RESTful APIs with .NET",
       icon: "bi bi-server",
       items: [
         "Setting up RESTful services with ASP.NET Core",
@@ -1303,7 +1303,7 @@ const coursesData = {
     },
     {
       id: 4,
-      title: "Intermediate – Frontend Development with Angular",
+      title: "Frontend Development with Angular",
       icon: "bi bi-window-stack",
       items: [
         "Angular architecture and TypeScript basics",
@@ -1367,7 +1367,7 @@ const coursesData = {
   courseContentData: [
     {
       id: 1,
-      title: "Beginner – Getting Started with React",
+      title: "Getting Started with React",
       icon: "bi bi-lightbulb",
       defaultOpen: true,
       items: [
@@ -1380,7 +1380,7 @@ const coursesData = {
     },
     {
       id: 2,
-      title: "Beginner – Components and State",
+      title: "Components and State",
       icon: "bi bi-puzzle",
       items: [
         "Functional vs Class components",
@@ -1392,7 +1392,7 @@ const coursesData = {
     },
     {
       id: 3,
-      title: "Intermediate – React Hooks",
+      title: "React Hooks",
       icon: "bi bi-diagram-3",
       items: [
         "Introduction to Hooks",
@@ -1404,7 +1404,7 @@ const coursesData = {
     },
     {
       id: 4,
-      title: "Intermediate – State Management and Context API",
+      title: "State Management and Context API",
       icon: "bi bi-diagram-2",
       items: [
         "Prop drilling problem and solutions",
@@ -1704,7 +1704,7 @@ const coursesData = {
         courseContentData: [
           {
             id: 1,
-            title: "Beginner – Getting Started with Figma",
+            title: "Getting Started with Figma",
             icon: "bi bi-cursor",
             defaultOpen: true,
             items: [
@@ -1718,7 +1718,7 @@ const coursesData = {
           },
           {
             id: 2,
-            title: "Beginner – Design Fundamentals",
+            title: "Design Fundamentals",
             icon: "bi bi-brush",
             items: [
               "Basics of UI/UX design principles",
@@ -1730,7 +1730,7 @@ const coursesData = {
           },
           {
             id: 3,
-            title: "Beginner – Components & Assets",
+            title: "Components & Assets",
             icon: "bi bi-puzzle",
             items: [
               "Creating and reusing components",
@@ -1742,7 +1742,7 @@ const coursesData = {
           },
           {
             id: 4,
-            title: "Intermediate – Prototyping & Interaction Design",
+            title: "Prototyping & Interaction Design",
             icon: "bi bi-diagram-3",
             items: [
               "Creating interactive prototypes",
@@ -1805,7 +1805,7 @@ const coursesData = {
         courseContentData: [
           {
             id: 1,
-            title: "Beginner – Getting Started with Photoshop",
+            title: "Getting Started with Photoshop",
             icon: "bi bi-palette",
             defaultOpen: true,
             items: [
@@ -1818,7 +1818,7 @@ const coursesData = {
           },
           {
             id: 2,
-            title: "Beginner – Photo Editing Essentials",
+            title: "Photo Editing Essentials",
             icon: "bi bi-image",
             items: [
               "Cropping, resizing, and straightening images",
@@ -1830,7 +1830,7 @@ const coursesData = {
           },
           {
             id: 3,
-            title: "Intermediate – Creative Graphic Design",
+            title: "Creative Graphic Design",
             icon: "bi bi-brush",
             items: [
               "Working with text and typography",
@@ -1842,7 +1842,7 @@ const coursesData = {
           },
           {
             id: 4,
-            title: "Intermediate – Advanced Photo Manipulation",
+            title: "Advanced Photo Manipulation",
             icon: "bi bi-layers",
             items: [
               "Compositing multiple images",
@@ -1903,7 +1903,7 @@ const coursesData = {
         courseContentData: [
           {
             id: 1,
-            title: "Beginner – Design Fundamentals",
+            title: "Design Fundamentals",
             icon: "bi bi-brush",
             defaultOpen: true,
             items: [
@@ -1916,7 +1916,7 @@ const coursesData = {
           },
           {
             id: 2,
-            title: "Beginner – Working with Design Tools",
+            title: "Working with Design Tools",
             icon: "bi bi-tools",
             items: [
               "Getting started with Adobe Photoshop",
@@ -1928,7 +1928,7 @@ const coursesData = {
           },
           {
             id: 3,
-            title: "Intermediate – Branding & Identity Design",
+            title: "Branding & Identity Design",
             icon: "bi bi-palette",
             items: [
               "Understanding brand strategy and identity systems",
@@ -1940,7 +1940,7 @@ const coursesData = {
           },
           {
             id: 4,
-            title: "Intermediate – UI/UX Design Essentials",
+            title: "UI/UX Design Essentials",
             icon: "bi bi-phone",
             items: [
               "Introduction to user experience and interface design",
@@ -2001,7 +2001,7 @@ const coursesData = {
         courseContentData: [
           {
             id: 1,
-            title: "Beginner – Getting Started with Canva",
+            title: "Getting Started with Canva",
             icon: "bi bi-brush",
             defaultOpen: true,
             items: [
@@ -2015,7 +2015,7 @@ const coursesData = {
           },
           {
             id: 2,
-            title: "Beginner – Designing Basic Projects",
+            title: "Designing Basic Projects",
             icon: "bi bi-image",
             items: [
               "Designing social media posts (Instagram, Facebook, LinkedIn)",
@@ -2027,7 +2027,7 @@ const coursesData = {
           },
           {
             id: 3,
-            title: "Intermediate – Advanced Design Techniques",
+            title: "Advanced Design Techniques",
             icon: "bi bi-palette",
             items: [
               "Design composition and layout balance",
@@ -2039,7 +2039,7 @@ const coursesData = {
           },
           {
             id: 4,
-            title: "Intermediate – Branding & Marketing Design",
+            title: "Branding & Marketing Design",
             icon: "bi bi-megaphone",
             items: [
               "Creating a brand kit (logo, color palette, typography)",
@@ -2112,7 +2112,7 @@ const coursesData = {
         courseContentData: [
           {
             id: 1,
-            title: "Beginner – Cloud Fundamentals",
+            title: "Cloud Fundamentals",
             icon: "bi bi-cloud",
             defaultOpen: true,
             items: [
@@ -2126,7 +2126,7 @@ const coursesData = {
           },
           {
             id: 2,
-            title: "Beginner – Compute, Storage & Networking",
+            title: "Compute, Storage & Networking",
             icon: "bi bi-hdd-network",
             items: [
               "Elastic Compute Cloud (EC2) and AMIs",
@@ -2139,7 +2139,7 @@ const coursesData = {
           },
           {
             id: 3,
-            title: "Intermediate – AWS Security & Identity",
+            title: "AWS Security & Identity",
             icon: "bi bi-shield-lock",
             items: [
               "Identity and Access Management (IAM)",
@@ -2152,7 +2152,7 @@ const coursesData = {
           },
           {
             id: 4,
-            title: "Intermediate – Databases & Analytics",
+            title: "Databases & Analytics",
             icon: "bi bi-database",
             items: [
               "Amazon RDS and Aurora",
@@ -2213,7 +2213,7 @@ const coursesData = {
         courseContentData: [
           {
             id: 1,
-            title: "Beginner – Cloud Fundamentals",
+            title: "Cloud Fundamentals",
             icon: "bi bi-cloud",
             defaultOpen: true,
             items: [
@@ -2227,7 +2227,7 @@ const coursesData = {
           },
           {
             id: 2,
-            title: "Beginner – Identity, Governance & Security",
+            title: "Identity, Governance & Security",
             icon: "bi bi-shield-lock",
             items: [
               "Google Cloud Identity and Access Management (IAM)",
@@ -2239,7 +2239,7 @@ const coursesData = {
           },
           {
             id: 3,
-            title: "Intermediate – GCP Networking & Storage",
+            title: "GCP Networking & Storage",
             icon: "bi bi-diagram-3",
             items: [
               "Virtual Private Cloud (VPC) and subnets",
@@ -2251,7 +2251,7 @@ const coursesData = {
           },
           {
             id: 4,
-            title: "Intermediate – GCP Compute & Application Services",
+            title: "GCP Compute & Application Services",
             icon: "bi bi-cpu",
             items: [
               "Compute Engine virtual machines",
@@ -2312,7 +2312,7 @@ const coursesData = {
         courseContentData: [
           {
             id: 1,
-            title: "Beginner – Azure Fundamentals",
+            title: "Azure Fundamentals",
             icon: "bi bi-cloud",
             defaultOpen: true,
             items: [
@@ -2326,7 +2326,7 @@ const coursesData = {
           },
           {
             id: 2,
-            title: "Beginner – Identity, Governance & Security",
+            title: "Identity, Governance & Security",
             icon: "bi bi-shield-lock",
             items: [
               "Azure Active Directory (AAD) fundamentals",
@@ -2338,7 +2338,7 @@ const coursesData = {
           },
           {
             id: 3,
-            title: "Intermediate – Azure Networking & Storage",
+            title: "Azure Networking & Storage",
             icon: "bi bi-diagram-3",
             items: [
               "Virtual Networks (VNets) and subnets",
@@ -2350,7 +2350,7 @@ const coursesData = {
           },
           {
             id: 4,
-            title: "Intermediate – Azure Compute & Application Services",
+            title: "Azure Compute & Application Services",
             icon: "bi bi-cpu",
             items: [
               "Deploying and managing Virtual Machines (VMs)",
@@ -2413,7 +2413,7 @@ const coursesData = {
   courseContentData: [
     {
       id: 1,
-      title: "Beginner – DevOps Fundamentals",
+      title: "DevOps Fundamentals",
       icon: "bi bi-diagram-3",
       defaultOpen: true,
       items: [
@@ -2426,7 +2426,7 @@ const coursesData = {
     },
     {
       id: 2,
-      title: "Intermediate – CI/CD and Automation Tools",
+      title: "CI/CD and Automation Tools",
       icon: "bi bi-lightning",
       items: [
         "Setting up CI/CD pipelines with Jenkins",
@@ -2437,7 +2437,7 @@ const coursesData = {
     },
     {
       id: 3,
-      title: "Intermediate – Containerization and Orchestration",
+      title: "Containerization and Orchestration",
       icon: "bi bi-box",
       items: [
         "Introduction to Docker containers",
@@ -2448,7 +2448,7 @@ const coursesData = {
     },
     {
       id: 4,
-      title: "Advanced – Infrastructure as Code (IaC)",
+      title: "Infrastructure as Code (IaC)",
       icon: "bi bi-code-slash",
       items: [
         "Terraform fundamentals and setup",
@@ -2503,7 +2503,7 @@ const coursesData = {
   courseContentData: [
     {
       id: 1,
-      title: "Beginner – Kubernetes Fundamentals",
+      title: "Kubernetes Fundamentals",
       icon: "bi bi-diagram-3",
       defaultOpen: true,
       items: [
@@ -2515,7 +2515,7 @@ const coursesData = {
     },
     {
       id: 2,
-      title: "Intermediate – Core Components",
+      title: "Core Components",
       icon: "bi bi-hdd-network",
       items: [
         "Understanding Pods, ReplicaSets, and Deployments",
@@ -2526,7 +2526,7 @@ const coursesData = {
     },
     {
       id: 3,
-      title: "Advanced – Scaling & Monitoring",
+      title: "Scaling & Monitoring",
       icon: "bi bi-bar-chart-line",
       items: [
         "Horizontal and vertical scaling",
@@ -2537,7 +2537,7 @@ const coursesData = {
     },
     {
       id: 4,
-      title: "Advanced – Real-World Projects",
+      title: "Real-World Projects",
       icon: "bi bi-briefcase",
       items: [
         "Deploying microservices architecture on Kubernetes",
@@ -2592,7 +2592,7 @@ const coursesData = {
   courseContentData: [
     {
       id: 1,
-      title: "Beginner – Jenkins Basics",
+      title: "Jenkins Basics",
       icon: "bi bi-gear",
       defaultOpen: true,
       items: [
@@ -2604,7 +2604,7 @@ const coursesData = {
     },
     {
       id: 2,
-      title: "Intermediate – Pipeline Automation",
+      title: "Pipeline Automation",
       icon: "bi bi-lightning-charge",
       items: [
         "Declarative vs Scripted Pipelines",
@@ -2615,7 +2615,7 @@ const coursesData = {
     },
     {
       id: 3,
-      title: "Advanced – Integration & Deployment",
+      title: "Integration & Deployment",
       icon: "bi bi-diagram-3",
       items: [
         "Connecting Jenkins with Kubernetes and AWS",
@@ -2626,7 +2626,7 @@ const coursesData = {
     },
     {
       id: 4,
-      title: "Advanced – Real-World Use Cases",
+      title: "Real-World Use Cases",
       icon: "bi bi-briefcase",
       items: [
         "End-to-end CI/CD pipeline setup",
@@ -2681,7 +2681,7 @@ const coursesData = {
   courseContentData: [
     {
       id: 1,
-      title: "Beginner – Terraform Basics",
+      title: "Terraform Basics",
       icon: "bi bi-code",
       defaultOpen: true,
       items: [
@@ -2693,7 +2693,7 @@ const coursesData = {
     },
     {
       id: 2,
-      title: "Intermediate – State Management & Variables",
+      title: "State Management & Variables",
       icon: "bi bi-database",
       items: [
         "Terraform state files and remote backends",
@@ -2704,7 +2704,7 @@ const coursesData = {
     },
     {
       id: 3,
-      title: "Advanced – Modules & Reusability",
+      title: "Modules & Reusability",
       icon: "bi bi-diagram-3",
       items: [
         "Creating and using Terraform modules",
@@ -2715,7 +2715,7 @@ const coursesData = {
     },
     {
       id: 4,
-      title: "Advanced – Real-World Automation",
+      title: "Real-World Automation",
       icon: "bi bi-lightning",
       items: [
         "Automating infrastructure deployment via CI/CD",
@@ -2899,7 +2899,7 @@ const coursesData = {
         courseContentData: [
           {
             id: 1,
-            title: "Beginner – Python for Data Science",
+            title: "Python for Data Science",
             icon: "bi bi-book",
             defaultOpen: true,
             items: [
@@ -2912,7 +2912,7 @@ const coursesData = {
           },
           {
             id: 2,
-            title: "Beginner – Data Handling & Visualization",
+            title: "Data Handling & Visualization",
             icon: "bi bi-database",
             items: [
               "Working with CSV, Excel, and JSON files",
@@ -2924,7 +2924,7 @@ const coursesData = {
           },
           {
             id: 3,
-            title: "Intermediate – Statistical Analysis",
+            title: "Statistical Analysis",
             icon: "bi bi-bar-chart-line",
             items: [
               "Probability concepts and distributions",
@@ -2936,7 +2936,7 @@ const coursesData = {
           },
           {
             id: 4,
-            title: "Intermediate – Machine Learning Basics",
+            title: "Machine Learning Basics",
             icon: "bi bi-gear",
             items: [
               "Supervised learning: Linear and Logistic Regression",
@@ -3067,7 +3067,7 @@ const coursesData = {
         courseContentData: [
           {
             id: 1,
-            title: "Beginner – Python Fundamentals",
+            title: "Python Fundamentals",
             icon: "bi bi-book",
             defaultOpen: true,
             items: [
@@ -3081,7 +3081,7 @@ const coursesData = {
           },
           {
             id: 2,
-            title: "Beginner – Data Handling in Python",
+            title: "Data Handling in Python",
             icon: "bi bi-database",
             items: [
               "Lists, tuples, dictionaries, and sets",
@@ -3093,7 +3093,7 @@ const coursesData = {
           },
           {
             id: 3,
-            title: "Intermediate – APIs & Automation",
+            title: "APIs & Automation",
             icon: "bi bi-window",
             items: [
               "Working with REST APIs in Python",
@@ -3105,7 +3105,7 @@ const coursesData = {
           },
           {
             id: 4,
-            title: "Intermediate – ChatGPT & OpenAI API",
+            title: "ChatGPT & OpenAI API",
             icon: "bi bi-robot",
             items: [
               "Introduction to ChatGPT and GPT models",
@@ -3166,7 +3166,7 @@ const coursesData = {
         courseContentData: [
           {
             id: 1,
-            title: "Beginner – Introduction to Power BI",
+            title: "Introduction to Power BI",
             icon: "bi bi-book",
             defaultOpen: true,
             items: [
@@ -3179,7 +3179,7 @@ const coursesData = {
           },
           {
             id: 2,
-            title: "Beginner – Data Loading & Transformation",
+            title: "Data Loading & Transformation",
             icon: "bi bi-database",
             items: [
               "Connecting to Excel, CSV, SQL, and cloud data sources",
@@ -3191,7 +3191,7 @@ const coursesData = {
           },
           {
             id: 3,
-            title: "Intermediate – Data Modeling & DAX",
+            title: "Data Modeling & DAX",
             icon: "bi bi-gear",
             items: [
               "Introduction to data modeling concepts",
@@ -3203,7 +3203,7 @@ const coursesData = {
           },
           {
             id: 4,
-            title: "Intermediate – Visualizations & Reports",
+            title: "Visualizations & Reports",
             icon: "bi bi-bar-chart-line",
             items: [
               "Creating charts, tables, and maps",
@@ -3263,7 +3263,7 @@ const coursesData = {
         courseContentData: [
           {
             id: 1,
-            title: "Beginner – Tableau Basics",
+            title: "Tableau Basics",
             icon: "bi bi-book",
             defaultOpen: true,
             items: [
@@ -3276,7 +3276,7 @@ const coursesData = {
           },
           {
             id: 2,
-            title: "Beginner – Data Handling & Calculations",
+            title: "Data Handling & Calculations",
             icon: "bi bi-database",
             items: [
               "Working with calculated fields",
@@ -3288,7 +3288,7 @@ const coursesData = {
           },
           {
             id: 3,
-            title: "Intermediate – Visual Analytics",
+            title: "Visual Analytics",
             icon: "bi bi-bar-chart-line",
             items: [
               "Building interactive dashboards",
@@ -3300,7 +3300,7 @@ const coursesData = {
           },
           {
             id: 4,
-            title: "Intermediate – Advanced Analytics",
+            title: "Advanced Analytics",
             icon: "bi bi-gear",
             items: [
               "Level of Detail (LOD) expressions",
@@ -3360,7 +3360,7 @@ const coursesData = {
         courseContentData: [
           {
             id: 1,
-            title: "Beginner – SAS Fundamentals",
+            title: "SAS Fundamentals",
             icon: "bi bi-book",
             defaultOpen: true,
             items: [
@@ -3374,7 +3374,7 @@ const coursesData = {
           },
           {
             id: 2,
-            title: "Beginner – Data Management in SAS",
+            title: "Data Management in SAS",
             icon: "bi bi-database",
             items: [
               "Data step basics and data manipulation",
@@ -3386,7 +3386,7 @@ const coursesData = {
           },
           {
             id: 3,
-            title: "Intermediate – Advanced SAS Programming",
+            title: "Advanced SAS Programming",
             icon: "bi bi-gear",
             items: [
               "SAS Macros for automation",
@@ -3398,7 +3398,7 @@ const coursesData = {
           },
           {
             id: 4,
-            title: "Intermediate – Data Analysis and Reporting",
+            title: "Data Analysis and Reporting",
             icon: "bi bi-bar-chart-line",
             items: [
               "Descriptive statistics and summary reports",
@@ -3448,7 +3448,7 @@ const coursesData = {
         "courseContentData": [
           {
             id: 1,
-            title: "Beginner – R Fundamentals",
+            title: "R Fundamentals",
             icon: "bi bi-book",
             defaultOpen: true,
             items: [
@@ -3462,7 +3462,7 @@ const coursesData = {
           },
           {
             id: 2,
-            title: "Beginner – Data Manipulation",
+            title: "Data Manipulation",
             icon: "bi bi-database",
             items: [
               "Data cleaning and preprocessing",
@@ -3474,7 +3474,7 @@ const coursesData = {
           },
           {
             id: 3,
-            title: "Intermediate – Data Visualization",
+            title: "Data Visualization",
             icon: "bi bi-bar-chart-line",
             items: [
               "Introduction to ggplot2",
@@ -3486,7 +3486,7 @@ const coursesData = {
           },
           {
             id: 4,
-            title: "Intermediate – Statistical Analysis",
+            title: "Statistical Analysis",
             icon: "bi bi-calculator",
             items: [
               "Descriptive statistics",
@@ -3759,7 +3759,7 @@ const coursesData = {
         courseContentData: [
           {
             id: 1,
-            title: "Beginner – MSSQL Fundamentals",
+            title: "MSSQL Fundamentals",
             icon: "bi bi-book",
             defaultOpen: true,
             items: [
@@ -3773,7 +3773,7 @@ const coursesData = {
           },
           {
             id: 2,
-            title: "Beginner – Querying Data",
+            title: "Querying Data",
             icon: "bi bi-database",
             items: [
               "Filtering and sorting data",
@@ -3785,7 +3785,7 @@ const coursesData = {
           },
           {
             id: 3,
-            title: "Intermediate – Advanced Queries & Functions",
+            title: "Advanced Queries & Functions",
             icon: "bi bi-gear",
             items: [
               "Stored procedures and functions",
@@ -3797,7 +3797,7 @@ const coursesData = {
           },
           {
             id: 4,
-            title: "Intermediate – Database Management",
+            title: "Database Management",
             icon: "bi bi-window-stack",
             items: [
               "User management and roles",
@@ -3858,7 +3858,7 @@ const coursesData = {
         courseContentData: [
           {
             id: 1,
-            title: "Beginner – Database Fundamentals",
+            title: "Database Fundamentals",
             icon: "bi bi-book",
             defaultOpen: true,
             items: [
@@ -3871,7 +3871,7 @@ const coursesData = {
           },
           {
             id: 2,
-            title: "Beginner – SQL Basics",
+            title: "SQL Basics",
             icon: "bi bi-database",
             items: [
               "SELECT statements and filtering data",
@@ -3883,7 +3883,7 @@ const coursesData = {
           },
           {
             id: 3,
-            title: "Intermediate – Advanced SQL Queries",
+            title: "Advanced SQL Queries",
             icon: "bi bi-gear",
             items: [
               "Advanced joins and subqueries",
@@ -4587,7 +4587,7 @@ const coursesData = {
         courseContentData: [
           {
             id: 1,
-            title: "Beginner – Cybersecurity Fundamentals",
+            title: "Cybersecurity Fundamentals",
             icon: "bi bi-shield",
             defaultOpen: true,
             items: [
@@ -4600,7 +4600,7 @@ const coursesData = {
           },
           {
             id: 2,
-            title: "Beginner – Network Security",
+            title: "Network Security",
             icon: "bi bi-wifi",
             items: [
               "Understanding firewalls and VPNs",
@@ -4612,7 +4612,7 @@ const coursesData = {
           },
           {
             id: 3,
-            title: "Intermediate – Ethical Hacking & Penetration Testing",
+            title: "Ethical Hacking & Penetration Testing",
             icon: "bi bi-hammer",
             items: [
               "Reconnaissance and footprinting",
@@ -4624,7 +4624,7 @@ const coursesData = {
           },
           {
             id: 4,
-            title: "Intermediate – Web Application Security",
+            title: "Web Application Security",
             icon: "bi bi-window",
             items: [
               "OWASP Top 10 vulnerabilities",
@@ -4792,7 +4792,7 @@ const coursesData = {
         courseContentData: [
           {
             id: 1,
-            title: "Beginner – Digital Marketing Fundamentals",
+            title: "Digital Marketing Fundamentals",
             icon: "bi bi-book",
             defaultOpen: true,
             items: [
@@ -4805,7 +4805,7 @@ const coursesData = {
           },
           {
             id: 2,
-            title: "Beginner – SEO & Content Strategy",
+            title: "SEO & Content Strategy",
             icon: "bi bi-search",
             items: [
               "On-page and Off-page SEO",
@@ -4817,7 +4817,7 @@ const coursesData = {
           },
           {
             id: 3,
-            title: "Intermediate – Social Media Marketing",
+            title: "Social Media Marketing",
             icon: "bi bi-share",
             items: [
               "Social Media Platforms Overview",
@@ -4829,7 +4829,7 @@ const coursesData = {
           },
           {
             id: 4,
-            title: "Intermediate – Paid Advertising",
+            title: "Paid Advertising",
             icon: "bi bi-cash-stack",
             items: [
               "Google Ads Fundamentals",
@@ -5207,7 +5207,7 @@ const coursesData = {
         courseContentData: [
           {
             id: 1,
-            title: "Beginner – Healthcare & Medical Terminology",
+            title: "Healthcare & Medical Terminology",
             icon: "bi bi-book",
             defaultOpen: true,
             items: [
@@ -5220,7 +5220,7 @@ const coursesData = {
           },
           {
             id: 2,
-            title: "Beginner – Introduction to Medical Coding",
+            title: "Introduction to Medical Coding",
             icon: "bi bi-database",
             items: [
               "Overview of ICD-10, CPT, and HCPCS coding systems",
@@ -5231,7 +5231,7 @@ const coursesData = {
           },
           {
             id: 3,
-            title: "Intermediate – ICD-10 Coding",
+            title: "ICD-10 Coding",
             icon: "bi bi-gear",
             items: [
               "ICD-10-CM structure and chapters",
@@ -5242,7 +5242,7 @@ const coursesData = {
           },
           {
             id: 4,
-            title: "Intermediate – CPT & HCPCS Coding",
+            title: "CPT & HCPCS Coding",
             icon: "bi bi-window-stack",
             items: [
               "CPT coding structure and categories",
@@ -5783,7 +5783,7 @@ const coursesData = {
   courseContentData: [
     {
       id: 1,
-      title: "Beginner – Getting Started with the Web",
+      title: "Getting Started with the Web",
       icon: "bi bi-globe2",
       defaultOpen: true,
       items: [
@@ -5795,7 +5795,7 @@ const coursesData = {
     },
     {
       id: 2,
-      title: "Beginner – Styling with CSS",
+      title: "Styling with CSS",
       icon: "bi bi-palette",
       items: [
         "Understanding colors and fonts",
@@ -5806,7 +5806,7 @@ const coursesData = {
     },
     {
       id: 3,
-      title: "Intermediate – Interactive Pages with JavaScript",
+      title: "Interactive Pages with JavaScript",
       icon: "bi bi-lightning",
       items: [
         "What is JavaScript and why it’s used",
@@ -5817,7 +5817,7 @@ const coursesData = {
     },
     {
       id: 4,
-      title: "Intermediate – Build a Mini Website",
+      title: "Build a Mini Website",
       icon: "bi bi-laptop",
       items: [
         "Plan and design your first website",
@@ -5877,7 +5877,7 @@ const coursesData = {
   courseContentData: [
     {
       id: 1,
-      title: "Beginner – What is Python?",
+      title: "What is Python?",
       icon: "bi bi-terminal",
       defaultOpen: true,
       items: [
@@ -5889,7 +5889,7 @@ const coursesData = {
     },
     {
       id: 2,
-      title: "Beginner – Playing with Numbers and Text",
+      title: "Playing with Numbers and Text",
       icon: "bi bi-123",
       items: [
         "Understanding variables and data types",
@@ -5900,7 +5900,7 @@ const coursesData = {
     },
     {
       id: 3,
-      title: "Intermediate – Logic and Loops",
+      title: "Logic and Loops",
       icon: "bi bi-repeat",
       items: [
         "Making decisions with if-else conditions",
@@ -5911,7 +5911,7 @@ const coursesData = {
     },
     {
       id: 4,
-      title: "Intermediate – Drawing with Turtle",
+      title: "Drawing with Turtle",
       icon: "bi bi-palette",
       items: [
         "Introduction to Python’s Turtle graphics",
@@ -5971,7 +5971,7 @@ const coursesData = {
   courseContentData: [
     {
       id: 1,
-      title: "Intermediate – Review & Setup",
+      title: "Review & Setup",
       icon: "bi bi-gear",
       defaultOpen: true,
       items: [
@@ -5983,7 +5983,7 @@ const coursesData = {
     },
     {
       id: 2,
-      title: "Intermediate – Lists, Tuples, and Dictionaries",
+      title: "Lists, Tuples, and Dictionaries",
       icon: "bi bi-collection",
       items: [
         "Storing and organizing data in lists",
@@ -5994,7 +5994,7 @@ const coursesData = {
     },
     {
       id: 3,
-      title: "Advanced – Functions and Logic Building",
+      title: "Functions and Logic Building",
       icon: "bi bi-cpu",
       items: [
         "Creating and using your own functions",
@@ -6005,7 +6005,7 @@ const coursesData = {
     },
     {
       id: 4,
-      title: "Advanced – Working with Files and Modules",
+      title: "Working with Files and Modules",
       icon: "bi bi-folder2-open",
       items: [
         "Reading and writing files in Python",
@@ -6066,7 +6066,7 @@ const coursesData = {
   courseContentData: [
     {
       id: 1,
-      title: "Beginner – Getting Started with C",
+      title: "Getting Started with C",
       icon: "bi bi-cpu",
       defaultOpen: true,
       items: [
@@ -6078,7 +6078,7 @@ const coursesData = {
     },
     {
       id: 2,
-      title: "Beginner – Basics of Coding",
+      title: "Basics of Coding",
       icon: "bi bi-terminal",
       items: [
         "Variables and data types",
@@ -6089,7 +6089,7 @@ const coursesData = {
     },
     {
       id: 3,
-      title: "Intermediate – Decisions and Loops",
+      title: "Decisions and Loops",
       icon: "bi bi-arrow-repeat",
       items: [
         "Using if-else and switch statements",
@@ -6100,7 +6100,7 @@ const coursesData = {
     },
     {
       id: 4,
-      title: "Intermediate – Arrays and Functions",
+      title: "Arrays and Functions",
       icon: "bi bi-grid",
       items: [
         "Understanding arrays and indexing",
@@ -6161,7 +6161,7 @@ const coursesData = {
   courseContentData: [
     {
       id: 1,
-      title: "Beginner – Getting Started with C++",
+      title: "Getting Started with C++",
       icon: "bi bi-cpu",
       defaultOpen: true,
       items: [
@@ -6173,7 +6173,7 @@ const coursesData = {
     },
     {
       id: 2,
-      title: "Beginner – Variables, Loops & Decisions",
+      title: "Variables, Loops & Decisions",
       icon: "bi bi-arrow-repeat",
       items: [
         "Understanding variables and data types",
@@ -6184,7 +6184,7 @@ const coursesData = {
     },
     {
       id: 3,
-      title: "Intermediate – Functions & Arrays",
+      title: "Functions & Arrays",
       icon: "bi bi-grid",
       items: [
         "Writing and using your own functions",
@@ -6195,7 +6195,7 @@ const coursesData = {
     },
     {
       id: 4,
-      title: "Intermediate – Introduction to OOP",
+      title: "Introduction to OOP",
       icon: "bi bi-diagram-3",
       items: [
         "What are classes and objects?",
@@ -6255,7 +6255,7 @@ const coursesData = {
   courseContentData: [
     {
       id: 1,
-      title: "Beginner – Understanding Data",
+      title: "Understanding Data",
       icon: "bi bi-collection",
       defaultOpen: true,
       items: [
@@ -6267,7 +6267,7 @@ const coursesData = {
     },
     {
       id: 2,
-      title: "Beginner – Working with Tables",
+      title: "Working with Tables",
       icon: "bi bi-table",
       items: [
         "Adding and viewing data using INSERT and SELECT",
@@ -6278,7 +6278,7 @@ const coursesData = {
     },
     {
       id: 3,
-      title: "Intermediate – Searching and Filtering",
+      title: "Searching and Filtering",
       icon: "bi bi-search",
       items: [
         "Using WHERE to filter data",
@@ -6289,7 +6289,7 @@ const coursesData = {
     },
     {
       id: 4,
-      title: "Intermediate – Updating and Deleting Data",
+      title: "Updating and Deleting Data",
       icon: "bi bi-pencil-square",
       items: [
         "Changing data with UPDATE",
@@ -6349,7 +6349,7 @@ const coursesData = {
   courseContentData: [
     {
       id: 1,
-      title: "Beginner – Getting Started with Design",
+      title: "Getting Started with Design",
       icon: "bi bi-palette",
       defaultOpen: true,
       items: [
@@ -6361,7 +6361,7 @@ const coursesData = {
     },
     {
       id: 2,
-      title: "Beginner – Playing with Colors & Layouts",
+      title: "Playing with Colors & Layouts",
       icon: "bi bi-brush",
       items: [
         "Understanding color theory and harmony",
@@ -6372,7 +6372,7 @@ const coursesData = {
     },
     {
       id: 3,
-      title: "Intermediate – Creating Logos & Icons",
+      title: "Creating Logos & Icons",
       icon: "bi bi-bounding-box-circles",
       items: [
         "How to design logos using shapes and text",
@@ -6383,7 +6383,7 @@ const coursesData = {
     },
     {
       id: 4,
-      title: "Intermediate – Posters, Flyers & Storyboards",
+      title: "Posters, Flyers & Storyboards",
       icon: "bi bi-file-image",
       items: [
         "Creating visually balanced posters",
@@ -6443,7 +6443,7 @@ const coursesData = {
   courseContentData: [
     {
       id: 1,
-      title: "Beginner – What is AI?",
+      title: "What is AI?",
       icon: "bi bi-robot",
       defaultOpen: true,
       items: [
@@ -6455,7 +6455,7 @@ const coursesData = {
     },
     {
       id: 2,
-      title: "Beginner – How Machines Learn",
+      title: "How Machines Learn",
       icon: "bi bi-lightning",
       items: [
         "What is Machine Learning?",
@@ -6466,7 +6466,7 @@ const coursesData = {
     },
     {
       id: 3,
-      title: "Intermediate – Fun with Data",
+      title: "Fun with Data",
       icon: "bi bi-database",
       items: [
         "Collecting and understanding data",
@@ -6477,7 +6477,7 @@ const coursesData = {
     },
     {
       id: 4,
-      title: "Intermediate – Image and Voice Intelligence",
+      title: "Image and Voice Intelligence",
       icon: "bi bi-camera-video",
       items: [
         "How AI recognizes images and sounds",
@@ -6644,7 +6644,7 @@ const coursesData = {
         courseContentData: [
           {
             id: 1,
-            title: "Beginner – Salesforce Fundamentals",
+            title: "Salesforce Fundamentals",
             icon: "bi bi-book",
             defaultOpen: true,
             items: [
@@ -6657,7 +6657,7 @@ const coursesData = {
           },
           {
             id: 2,
-            title: "Beginner – Salesforce Administration Basics",
+            title: "Salesforce Administration Basics",
             icon: "bi bi-gear",
             items: [
               "User management and profiles",
@@ -6669,7 +6669,7 @@ const coursesData = {
           },
           {
             id: 3,
-            title: "Intermediate – Apex Programming",
+            title: "Apex Programming",
             icon: "bi bi-code-slash",
             items: [
               "Apex classes and triggers",
@@ -6681,7 +6681,7 @@ const coursesData = {
           },
           {
             id: 4,
-            title: "Intermediate – Visualforce & Lightning",
+            title: "Visualforce & Lightning",
             icon: "bi bi-window",
             items: [
               "Building Visualforce pages",
@@ -6742,7 +6742,7 @@ const coursesData = {
       //   courseContentData: [
       //     {
       //       id: 1,
-      //       title: "Beginner – English Fundamentals",
+      //       title: "English Fundamentals",
       //       icon: "bi bi-book",
       //       defaultOpen: true,
       //       items: [
@@ -6755,7 +6755,7 @@ const coursesData = {
       //     },
       //     {
       //       id: 2,
-      //       title: "Beginner – Everyday Conversations",
+      //       title: "Everyday Conversations",
       //       icon: "bi bi-chat-left",
       //       items: [
       //         "Introducing yourself and others",
@@ -6767,7 +6767,7 @@ const coursesData = {
       //     },
       //     {
       //       id: 3,
-      //       title: "Intermediate – Advanced Grammar & Vocabulary",
+      //       title: "Advanced Grammar & Vocabulary",
       //       icon: "bi bi-journal-text",
       //       items: [
       //         "Complex sentence structures",
@@ -6779,7 +6779,7 @@ const coursesData = {
       //     },
       //     {
       //       id: 4,
-      //       title: "Intermediate – Business & Professional English",
+      //       title: "Business & Professional English",
       //       icon: "bi bi-briefcase",
       //       items: [
       //         "Formal email and report writing",
@@ -6849,7 +6849,7 @@ const coursesData = {
         courseContentData: [
           {
             id: 1,
-            title: "Beginner – React & JavaScript Fundamentals",
+            title: "React & JavaScript Fundamentals",
             icon: "bi bi-book",
             defaultOpen: true,
             items: [
@@ -6862,7 +6862,7 @@ const coursesData = {
           },
           {
             id: 2,
-            title: "Beginner – React Native Core Concepts",
+            title: "React Native Core Concepts",
             icon: "bi bi-phone",
             items: [
               "Core components: View, Text, Image, ScrollView",
@@ -6874,7 +6874,7 @@ const coursesData = {
           },
           {
             id: 3,
-            title: "Intermediate – State Management & APIs",
+            title: "State Management & APIs",
             icon: "bi bi-database",
             items: [
               "Managing state with useState and useReducer",
@@ -6886,7 +6886,7 @@ const coursesData = {
           },
           {
             id: 4,
-            title: "Intermediate – Styling & Animations",
+            title: "Styling & Animations",
             icon: "bi bi-paint-bucket",
             items: [
               "Styling with StyleSheet and inline styles",
