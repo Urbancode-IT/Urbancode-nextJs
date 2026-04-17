@@ -6957,7 +6957,7 @@ const coursesData = {
         courseContentData: [
           {
             id: 1,
-            title: "Week 1: Foundations & Basics",
+            title: "Foundations & Basics",
             icon: "bi bi-layers",
             defaultOpen: true,
             items: [
@@ -6971,7 +6971,7 @@ const coursesData = {
           },
           {
             id: 2,
-            title: "Week 2: Logic, Loops, and Approvals",
+            title: "Logic, Loops, and Approvals",
             icon: "bi bi-diagram-2",
             items: [
               "Conditional Logic (Condition & Switch actions)",
@@ -6983,7 +6983,7 @@ const coursesData = {
           },
           {
             id: 3,
-            title: "Week 3: Data Manipulation & Expressions",
+            title: "Data Manipulation & Expressions",
             icon: "bi bi-braces",
             items: [
               "Introduction to WDL (Workflow Definition Language)",
@@ -6995,7 +6995,7 @@ const coursesData = {
           },
           {
             id: 4,
-            title: "Week 4: Professionalism, Error Handling, and AI",
+            title: "Professionalism, Error Handling, and AI",
             icon: "bi bi-shield-check",
             items: [
               "Error Handling (Try-Catch) & Configure Run After",
@@ -7007,7 +7007,7 @@ const coursesData = {
           },
           {
             id: 5,
-            title: "Week 5: The Professional Handoff (ALM)",
+            title: "The Professional Handoff (ALM)",
             icon: "bi bi-box-arrow-in-right",
             items: [
               "The Container Concept: Solutions vs. My Flows",
