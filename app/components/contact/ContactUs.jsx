@@ -17,7 +17,7 @@ const ContactUs = () => {
   const [submittedName, setSubmittedName] = useState("");
   const [showPopup, setShowPopup] = useState(false);
   const [activeMap, setActiveMap] = useState(0);
-  const [showLoader, setShowLoader] = useState(true);
+  const [showLoader, setShowLoader] = useState(false);
 
   // alternate maps every 2 sec
   useEffect(() => {

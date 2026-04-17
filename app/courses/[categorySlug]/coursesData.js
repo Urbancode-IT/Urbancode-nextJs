@@ -6430,10 +6430,10 @@ const coursesData = {
 
     {
   title: "AI and ML",
-  desc: "Lead the data revolution. Master Python, Artificial Intelligence, and Machine Learning algorithms to build predictive models and secure top Data Scientist roles.",
+  desc: "Discover the amazing world of Artificial Intelligence! Learn how computers recognize images, play games, and think like a human through fun, interactive projects.",
   rating: 5.0,
   duration: "1 month",
-  students: "10,870",
+  students: "850",
   img: "/images/courses/Kidz_AI_ML.webp",
   aboutData: {
     topic: "Meet the World of Smart Machines — Learn How AI Works!",

@@ -30,7 +30,7 @@ export default function SingleCoursepage({ params }) {
 
   // Check if this course should use the new layout
   const newCourseKey = newCourseMapping[courseSlug];
-  if (newCourseKey && newCourseData[newCourseKey]) {
+  if (newCourseKey && categorySlug !== "kidz-space" && newCourseData[newCourseKey]) {
     return <NewInternalCourse data={newCourseData[newCourseKey]} />;
   }
 
