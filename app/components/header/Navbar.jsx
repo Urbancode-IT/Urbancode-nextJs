@@ -10,6 +10,7 @@ import FloatingWidgets from '../FloatingWidgets';
 import { FiPhoneCall } from 'react-icons/fi';
 import { FaPlane } from 'react-icons/fa';
 import FlightTransition from '../animations/FlightTransition';
+import BookDemoWidget from '../BookDemoWidget';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -151,6 +152,7 @@ export default function Navbar() {
         <>
           <FloatingWidgets />
           <ChatbotWidget />
+          <BookDemoWidget />
         </>
       )}
       <FlightTransition isAnimating={isFlying} />

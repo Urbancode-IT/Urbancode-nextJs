@@ -20,7 +20,7 @@ export const videoData = [
     },
     { 
         id: 3, 
-        src: "/videos/testimonial4.mp4", 
+        src: "/videos/testimonial1.mp4", 
         poster: "https://images.unsplash.com/photo-1507537297325-592f620c3211?q=80&w=1000&auto=format&fit=crop",
         title: "Future Tech Leader",
         alumnusName: "Emily Chen",

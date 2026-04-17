@@ -73,7 +73,7 @@ const categoryTools = {
     'https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original.svg',
     'https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg'
   ],
-"RPA": [
+"Automation": [
      'https://upload.wikimedia.org/wikipedia/commons/4/4d/Microsoft_Power_Automate.svg',
 
   // JSON (no official → use JS)
@@ -109,7 +109,7 @@ const categories = [
   "Digital Marketing",
   "CRM",
   "Kidz Space",
-  "RPA",
+  "Automation",
 ];
 
 const faqData = [

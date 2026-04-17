@@ -257,23 +257,47 @@
     font-size: 15px;
 }
 
+.trending-modal-btns {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
 .trending-enroll-trigger {
     background: #00B56F;
     color: white;
-    border: none;
+    border: 1px solid #00B56F;
     padding: 12px 25px;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 600;
     border-radius: 10px;
     cursor: pointer;
     transition: all 0.3s;
-    align-self: flex-start;
+    white-space: nowrap;
 }
 
 .trending-enroll-trigger:hover {
     background: #008f58;
     transform: translateY(-2px);
     box-shadow: 0 8px 15px rgba(0, 181, 111, 0.3);
+}
+
+.trending-brochure-trigger {
+    background: transparent;
+    color: #00B56F;
+    border: 1px solid #00B56F;
+    padding: 12px 25px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+    white-space: nowrap;
+}
+
+.trending-brochure-trigger:hover {
+    background: rgba(0, 181, 111, 0.1);
+    transform: translateY(-2px);
 }
 
 @keyframes trendingSlideUp {

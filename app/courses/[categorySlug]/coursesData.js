@@ -12,7 +12,7 @@ const coursesData = {
         desc: "Build a rock-solid programming foundation with our Core Java training. Master Object-Oriented Programming (OOP) concepts, syntax, and multithreading to crack enterprise software developer interviews.",
         rating: 4.5,
         duration: "3 months",
-        students: "9,556",
+        students: "956",
         img: "/images/courses/Core_JAVA.webp",
         aboutData: {
           topic: "Master Core Java to Build Strong Object-Oriented Programming Skills",
@@ -78,7 +78,7 @@ const coursesData = {
   desc: "Accelerate your backend career with Advanced Java certification. Master Spring Boot, Microservices, JDBC, and REST APIs to build enterprise-grade web applications and secure lucrative tech roles.",
   rating: 4.6,
   duration: "1 month",
-  students: "11,842",
+  students: "784",
   img: "/images/courses/Advanced_Java.webp",
   aboutData: {
     topic: "Master Advanced Java — From Core Concepts to Enterprise Development!",
@@ -180,7 +180,7 @@ const coursesData = {
         desc: "Kickstart your tech career with our comprehensive Core Python programming course. Master fundamental logic, data handling, and OOP concepts to unlock high-demand opportunities in AI and Data Science.",
         rating: 4.5,
         duration: "3 months",
-        students: "9,556",
+        students: "956",
         img: "/images/courses/Core_Python.jpg",
         aboutData: {
           topic: "Build Strong Python Foundations from Scratch",
@@ -244,7 +244,7 @@ const coursesData = {
         desc: "Become an elite Python Developer. Master Advanced Python training covering APIs, extensive data analysis, web frameworks, and automation scripts to secure top-tier backend engineering positions.",
         rating: 4.5,
         duration: "1 month",
-        students: "12,556",
+        students: "755",
         img: "/images/courses/Advanced_Python.jpg",
         aboutData:
         {
@@ -344,7 +344,7 @@ const coursesData = {
   desc: "Master high-performance development with our C & C++ certification. Learn logic building, memory management, and competitive programming skills essential for top-tier product company placements.",
   rating: 4.8,
   duration: "1.5 months",
-  students: "15,278",
+  students: "527",
   img: "/images/courses/cc.png",
   aboutData: {
     topic: "Master C and C++ — Build Strong Programming Foundations!",
@@ -444,7 +444,7 @@ const coursesData = {
   desc: "Crack technical interviews at top FAANG and product-based companies. Master Data Structures and Algorithms (DSA) with extensive problem-solving, pattern recognition, and optimized logic building.",
   rating: 4.8,
   duration: "1.5 months",
-  students: "15,204",
+  students: "520",
   img: "/images/courses/DSA.png",
   aboutData: {
     topic: "Master Data Structures & Algorithms — Build Strong Foundations for Coding and Interviews!",
@@ -541,7 +541,7 @@ const coursesData = {
   desc: "Start your front-end web development journey with expert HTML5 and CSS3 training. Learn to design stunning, responsive, and mobile-friendly websites from scratch for high-demand UI roles.",
   rating: 4.6,
   duration: "1 month",
-  students: "12,432",
+  students: "643",
   img: "/images/courses/htmlcss.png",
   aboutData: {
     topic: "Master HTML and CSS — Build and Design Modern, Responsive Websites!",
@@ -655,7 +655,7 @@ const coursesData = {
   desc: "Accelerate your tech career with our Java Full Stack Development certification. Master Spring Boot, front-end technologies, and MySQL to build scalable web apps with 100% placement support.",
   rating: 4.8,
   duration: "3 months",
-  students: "17,652",
+  students: "765",
   img: "/images/courses/java_cc.png",
   aboutData: {
     topic: "Master Java Full Stack Development — Build Scalable Web Applications from Front-End to Back-End!",
@@ -755,7 +755,7 @@ const coursesData = {
   desc: "Elevate your front-end web development skills with our complete Angular training. Master TypeScript, components, and real-world project deployment to secure top-tier UI developer roles.",
   rating: 4.8,
   duration: "1.5 months",
-  students: "11,238",
+  students: "823",
   img: "/images/courses/angular-cc.png",
   aboutData: {
     topic: "Master Angular — Build Modern, Scalable Front-End Applications with TypeScript!",
@@ -856,7 +856,7 @@ const coursesData = {
   desc: "Dominate full-stack web development with our intensive MEAN Stack courses. Build powerful enterprise applications using MongoDB, Express.js, Angular, and Node.js with live hands-on projects.",
   rating: 4.8,
   duration: "2 months",
-  students: "10,982",
+  students: "998",
   img: "/images/courses/mean-cc.png",
   aboutData: {
     topic: "Master the MEAN Stack — Build Full-Stack Web Apps with MongoDB, Express, Angular, and Node.js!",
@@ -956,7 +956,7 @@ const coursesData = {
   desc: "Launch your career with comprehensive MERN Stack training. Master MongoDB, Express.js, React, and Node.js through live coding exercises and guarantee your software engineering placement.",
   rating: 4.9,
   duration: "2 months",
-  students: "14,325",
+  students: "432",
   img: "/images/courses/mern-cc.png",
   aboutData: {
     topic: "Master the MERN Stack — Build Powerful Full-Stack Web Applications with React and Node.js!",
@@ -1056,8 +1056,8 @@ const coursesData = {
   desc: "Master enterprise content management with Microsoft SharePoint. Learn to build modern sites, manage metadata, develop custom SPFx web parts, and automate workflows with Power Automate.",
   rating: 4.8,
   duration: "1.5 months",
-  students: "7,842",
-  img: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=800",
+  students: "784",
+  img:  "/images/courses/sharepoint.webp",
   aboutData: {
     topic: "Master Microsoft SharePoint — Build and Manage Modern Collaborative Workspaces!",
     content1: "Learn to design, configure, and develop on the SharePoint Online platform. From site architecture and permissions to custom SPFx development with React, this course prepares you for enterprise-level collaboration roles.",
@@ -1254,7 +1254,7 @@ const coursesData = {
   desc: "Become an elite enterprise web developer. Master full-stack architectures combining Microsoft ASP.NET backend robustness with dynamic Angular frontends for high-paying corporate tech roles.",
   rating: 4.8,
   duration: "2 months",
-  students: "9,874",
+  students: "987",
   img: "/images/courses/netangular-cc.png",
   aboutData: {
     topic: "Master .NET + Angular — Build Scalable Enterprise Web Applications End-to-End!",
@@ -1355,7 +1355,7 @@ const coursesData = {
   desc: "Master React.js from scratch. Build dynamic, high-performance web applications using modern hooks, Redux, and Context API to secure top frontend developer roles.",
   rating: 5.0,
   duration: "1 month",
-  students: "12,642",
+  students: "564",
   img: "/images/courses/reactjs-cc.png",
   aboutData: {
     topic: "Master React.js — Build Dynamic, Modern Web Applications from the Ground Up!",
@@ -1457,7 +1457,7 @@ const coursesData = {
   desc: "Become a Python Full Stack Developer. Master Django, Flask, HTML, CSS, and database integration to build complete web applications with 100% placement assistance.",
   rating: 4.9,
   duration: "2 months",
-  students: "11,845",
+  students: "584",
   img: "/images/courses/python-cc.png",
   aboutData: {
     topic: "Master Python Full Stack Development — Build Complete Web Applications from Scratch!",
@@ -1556,7 +1556,7 @@ const coursesData = {
         desc: "Build blazing-fast, SEO-friendly web apps with Next.js. Master Server-Side Rendering (SSR), API routes, and modern React patterns to become an elite web developer.",
         rating: 4.8,
         duration: "2 months",
-        students: "7,842",
+        students: "784",
         img: "/images/courses/nextjs-cc.png",
         aboutData: {
           topic: "Master Next.js — The Leading React Framework for Production!",
@@ -2100,7 +2100,7 @@ const coursesData = {
         desc: "Launch your cloud computing career with comprehensive AWS training. Master architecture, EC2, S3, and DevOps integration to secure high-paying Cloud Engineer roles.",
         rating: 5.0,
         duration: "3 months",
-        students: "10,126",
+        students: "1,012",
         img: "/images/courses/aws1.png",
         aboutData: {
           topic: "Master AWS — From Cloud Fundamentals to Advanced Architecture & DevOps!",
@@ -2203,7 +2203,7 @@ const coursesData = {
         desc: "Master Google Cloud Platform (GCP). Learn to design scalable cloud infrastructure, data pipelines, and AI integrations to pass GCP certification exams.",
         rating: 5.0,
         duration: "3 months",
-        students: "9,850",
+        students: "985",
         img: "/images/courses/gcp.webp",
         aboutData: {
           topic: "Master Google Cloud Platform — From Fundamentals to Advanced Cloud Solutions!",
@@ -2302,7 +2302,7 @@ const coursesData = {
         desc: "Become an Azure Cloud expert. Master cloud administration, infrastructure deployment, and DevOps practices to accelerate your career in enterprise IT.",
         rating: 5.0,
         duration: "3 months",
-        students: "9,650",
+        students: "965",
         img: "/images/courses/azure.png",
         aboutData: {
           topic: "Become a Certified Microsoft Azure Cloud Expert — From Fundamentals to Advanced Cloud Solutions!",
@@ -2401,7 +2401,7 @@ const coursesData = {
   desc: "Master the complete DevOps lifecycle. Automate deployments and streamline CI/CD pipelines using Git, Docker, Kubernetes, and Jenkins for elite engineering roles.",
   rating: 5.0,
   duration: "3 months",
-  students: "9,845",
+  students: "984",
   img: "/images/courses/DevOps.webp",
   aboutData: {
     topic: "Become a DevOps Engineer — Automate, Integrate, and Deliver at Scale!",
@@ -2491,7 +2491,7 @@ const coursesData = {
   desc: "Dominate container orchestration with expert Kubernetes training. Learn deployment, scaling, and cluster management for modern cloud-native applications.",
   rating: 5.0,
   duration: "2 months",
-  students: "8,620",
+  students: "862",
   img: "/images/courses/Kubernetes.webp",
   aboutData: {
     topic: "Master Kubernetes — The Future of Cloud-Native Application Management!",
@@ -2580,7 +2580,7 @@ const coursesData = {
   desc: "Master Jenkins for robust CI/CD automation. Streamline software delivery, automate testing, and secure agile development pipelines for top enterprise roles.",
   rating: 4.9,
   duration: "1.5 months",
-  students: "7,980",
+  students: "798",
   img: "/images/courses/Jenkins.webp",
   aboutData: {
     topic: "Master Jenkins — Automate Your Build and Deployment Pipeline!",
@@ -2669,7 +2669,7 @@ const coursesData = {
   desc: "Become an Infrastructure as Code (IaC) expert. Master Terraform to automate massive cloud deployments across AWS, Azure, and GCP seamlessly.",
   rating: 5.0,
   duration: "2 months",
-  students: "6,540",
+  students: "654",
   img: "/images/courses/Terraform.webp",
   aboutData: {
     topic: "Master Terraform — Build and Manage Infrastructure as Code!",
@@ -2986,7 +2986,7 @@ const coursesData = {
         desc: "Master the future of AI with Generative AI. Learn Python, LLMs, RAG, Vector Stores, and Prompt Engineering to build intelligent chatbots and agents.",
         rating: 4.9,
         duration: "3 months",
-        students: "12,500+",
+        students: "750+",
         "img": "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800",
         aboutData: {
           topic: "Master Generative AI — From LLMs to Autonomous Agents!",
@@ -3057,7 +3057,7 @@ const coursesData = {
         desc: "Future-proof your career. Master Python programming and integrate OpenAI APIs to build intelligent, automated, and cutting-edge software solutions.",
         rating: 5.0,
         duration: "1 month",
-        students: "106",
+        students: "228",
         img: "/images/courses/Python_Plus_ChatGPT.jpg",
         aboutData: {
           topic: "Master Python & ChatGPT — From Core Programming to AI Integration!",
@@ -3156,7 +3156,7 @@ const coursesData = {
         desc: "Transform business data into actionable strategies. Master Power BI dashboard creation and DAX functions to secure lucrative Business Intelligence roles.",
         rating: 5.0,
         duration: "1 month",
-        students: "106",
+        students: "337",
         img: "/images/courses/Power_BI.jpg",
         aboutData: {
           topic: "Master Power BI — Transform Data into Actionable Insights!",
@@ -3253,7 +3253,7 @@ const coursesData = {
         desc: "Become a sought-after Data Storyteller. Master Tableau's visual analytics to drive data-driven corporate decisions and command high-paying analytics jobs.",
         rating: 5.0,
         duration: "1 month",
-        students: "106",
+        students: "386",
         img: "/images/courses/Tableau.jpg",
         aboutData: {
           topic: "Master Tableau — From Basic Charts to Advanced Dashboards & Analytics!",
@@ -3350,7 +3350,7 @@ const coursesData = {
         "desc": "Propel your analytics career with expert SAS training. Master data management, predictive modeling, and business intelligence to lead data-driven corporate strategies.",
         "rating": 5.0,
         "duration": "1 month",
-        "students": "106",
+        "students": "986",
         "img": "/images/courses/SAS.jpg",
         "aboutData": {
           topic: "Master SAS — From Data Management to Advanced Analytics!",
@@ -3438,7 +3438,7 @@ const coursesData = {
         "desc": "Master R Programming for data science and statistical analysis. Learn advanced algorithms, data visualization, and predictive modeling for top analytics roles.",
         "rating": 5.0,
         "duration": "1 month",
-        "students": "106",
+        "students": "676",
         "img": "/images/courses/R_Programming.jpg",
         "aboutData": {
           "topic": "Master R Programming — From Fundamentals to Advanced Analytics!",
@@ -3546,7 +3546,7 @@ const coursesData = {
         desc: "Master Data Engineering with hands-on training in Google Cloud, Apache Airflow, MySQL, and Python. Gain industry-ready skills to design, build, and maintain scalable data pipelines for modern applications.",
         rating: 5.0,
         duration: "1 month",
-        students: "106",
+        students: "556",
         img: "/images/courses/dataEng.webp",
         aboutData: {
           topic: "Master Data Engineering — From Fundamentals to Scalable Data Pipelines!",
@@ -3651,7 +3651,7 @@ const coursesData = {
         "desc": "Master MongoDB from basics to advanced with real-time projects and hands-on labs. Learn data modeling, indexing, aggregation, and secure deployment for modern applications.",
         "rating": 5.0,
         "duration": "1 month",
-        "students": "106",
+        "students": "766",
         "img": "/images/courses/MangoDB_Database.jpg",
         "aboutData": {
           "topic": "Master MongoDB — From Fundamentals to Advanced Database Management!",
@@ -3749,7 +3749,7 @@ const coursesData = {
         desc: "Become a certified MSSQL Database Administrator. Master complex querying, performance tuning, and enterprise security for lucrative IT roles.",
         rating: 5.0,
         duration: "1 month",
-        students: "106",
+        students: "506",
         img: "/images/courses/MSSQL_Database.jpg",
         aboutData: {
           topic: "Master MSSQL Database — From Fundamentals to Advanced Database Management!",
@@ -3848,7 +3848,7 @@ const coursesData = {
         desc: "Master MySQL architecture and advanced querying. Build highly optimized Relational Database systems and fast-track your backend developer career.",
         rating: 5.0,
         duration: "1 month",
-        students: "106",
+        students: "406",
         img: "/images/courses/MySQL_Database.jpg",
         aboutData: {
           topic: "Master MySQL — From Basics to Advanced Database Management!",
@@ -4044,7 +4044,7 @@ const coursesData = {
   "desc": "Learn Core Java from scratch — covering programming fundamentals, OOP, collections, exception handling, and file operations with practical examples.",
   "rating": 5.0,
   "duration": "1 month",
-  "students": "12,364",
+  "students": "1,264",
   "img": "/images/courses/java_cc.png",
   "aboutData": {
     "topic": "Master Core Java — The Foundation of Every Developer & Tester!",
@@ -4143,7 +4143,7 @@ const coursesData = {
   "desc": "Master Selenium for web automation testing — learn setup, locators, waits, frameworks, and real-time project implementation from scratch.",
   "rating": 5.0,
   "duration": "1 month",
-  "students": "14,872",
+  "students": "872",
   "img": "/images/courses/selenium-cc.png",
   "aboutData": {
     "topic": "Master Selenium — The Industry Standard for Web Automation Testing!",
@@ -4880,7 +4880,7 @@ const coursesData = {
   desc: "Become a Social Media expert. Master algorithm-driven content strategies across Instagram, LinkedIn, and Facebook to generate massive brand growth and secure digital marketing careers.",
   rating: 4.8,
   duration: "1 month",
-  students: "9,842",
+  students: "984",
   img: "/images/courses/SMM.webp",
   aboutData: {
     topic: "Become a Social Media Expert — Build, Grow, and Manage Brands That Stand Out Online!",
@@ -4981,7 +4981,7 @@ const coursesData = {
   desc: "Accelerate your professional growth. Master LinkedIn algorithms, B2B lead generation, and elite personal branding to attract high-paying clients and career opportunities.",
   rating: 4.8,
   duration: "1 month",
-  students: "8,913",
+  students: "891",
   img: "/images/courses/LinkedIn_Marketing.webp",
   aboutData: {
     topic: "Master LinkedIn Marketing — Build Influence, Grow Your Network, and Generate Business Leads!",
@@ -5082,7 +5082,7 @@ const coursesData = {
   desc: "Master Facebook and Instagram advertising. Learn algorithm-busting Meta Ads strategies to drive massive ROI and secure top-tier performance marketing roles.",
   rating: 4.9,
   duration: "1 month",
-  students: "10,472",
+  students: "1,047",
   img: "/images/courses/Meta_Campaigns.webp",
   aboutData: {
     topic: "Master Meta Campaigns — Build High-Converting Facebook & Instagram Ads!",
@@ -5398,7 +5398,7 @@ const coursesData = {
       desc: "Elevate your professional presence. Master corporate writing, high-impact presentations, and executive etiquette to accelerate your corporate career trajectory.",
       rating: 4.9,
       duration: "1 month",
-      students: "12,342",
+      students: "1,234",
       img: "/images/courses/Corporate_Communication.webp",
       aboutData: {
         topic: "Master the Art of Professional Communication!",
@@ -5486,7 +5486,7 @@ const coursesData = {
       desc: "Speak English with supreme confidence. Master advanced pronunciation, engaging fluency, and professional grammar to unlock global career opportunities.",
       rating: 5.0,
       duration: "1 month",
-      students: "15,480",
+      students: "1,548",
       img: "/images/courses/Spoken_English.webp",
       aboutData: {
         topic: "Speak English Fluently and Confidently!",
@@ -5574,7 +5574,7 @@ const coursesData = {
       desc: "Unlock global opportunities by mastering French. Develop reading, writing, and conversational fluency for lucrative international career pathways.",
       rating: 4.9,
       duration: "2 months",
-      students: "7,320",
+      students: "732",
       img: "/images/courses/French.webp",
       aboutData: {
         topic: "Master French — The Language of Art, Culture, and Business!",
@@ -5662,7 +5662,7 @@ const coursesData = {
       desc: "Fast-track your global career by mastering German. Achieve conversational excellence and grammatical precision to secure high-paying jobs in European markets.",
       rating: 4.9,
       duration: "2 months",
-      students: "6,845",
+      students: "684",
       img: "/images/courses/German.webp",
       aboutData: {
         topic: "Learn German — From Basics to Confident Conversation!",
@@ -5773,7 +5773,7 @@ const coursesData = {
   desc: "Introduce kids to the digital world by teaching them how to build colorful, interactive web pages using HTML, CSS, and simple JavaScript.",
   rating: 5.0,
   duration: "1 month",
-  students: "11,200",
+  students: "820",
   img: "/images/courses/Kidz_WebDev.webp",
   aboutData: {
     topic: "Build Your First Website — Fun, Creative, and Interactive!",
@@ -5867,7 +5867,7 @@ const coursesData = {
   desc: "A playful introduction to Python for kids — learn how to think like a programmer, write code, and create fun projects step by step.",
   rating: 5.0,
   duration: "1 month",
-  students: "10,950",
+  students: "995",
   img: "/images/courses/Kidz_PythonCore.webp",
   aboutData: {
     topic: "Learn Python the Fun Way — Code, Create, and Explore!",
@@ -5961,7 +5961,7 @@ const coursesData = {
   desc: "Take your Python skills to the next level! Learn how to build real-world apps, create smart programs, and explore cool Python libraries.",
   rating: 5.0,
   duration: "1 month",
-  students: "9,860",
+  students: "860",
   img: "/images/courses/Kidz_AdvancedPython.webp",
   aboutData: {
     topic: "Go Beyond Basics — Build Smarter, Cooler Python Projects!",
@@ -6056,7 +6056,7 @@ const coursesData = {
   desc: "Learn the basics of C programming through games, problem-solving, and fun logic-building activities designed just for kids.",
   rating: 5.0,
   duration: "1 month",
-  students: "8,940",
+  students: "940",
   img: "/images/courses/Kidz_CProgramming.webp",
   aboutData: {
     topic: "Learn the Language Behind Every Great Program!",
@@ -6151,7 +6151,7 @@ const coursesData = {
   desc: "Step into the world of C++ — learn how games, apps, and real software are built using fun coding projects and logical challenges.",
   rating: 5.0,
   duration: "1 month",
-  students: "8,520",
+  students: "520",
   img: "/images/courses/Kidz_CPP.webp",
   aboutData: {
     topic: "Code Smarter — Build Logic, Games, and Real Programs with C++!",
@@ -6245,7 +6245,7 @@ const coursesData = {
   desc: "Discover how data works! Learn how to store, search, and organize information using fun, kid-friendly SQL lessons and projects.",
   rating: 5.0,
   duration: "1 month",
-  students: "7,780",
+  students: "780",
   img: "/images/courses/Kidz_SQL.webp",
   aboutData: {
     topic: "Learn How Apps and Games Store Their Data!",
@@ -6339,7 +6339,7 @@ const coursesData = {
   desc: "Turn your imagination into art! Learn to design posters, logos, and digital art using simple kid-friendly design tools.",
   rating: 5.0,
   duration: "1 month",
-  students: "11,230",
+  students: "430",
   img: "/images/courses/Kidz_GraphicDesign.webp",
   aboutData: {
     topic: "Design Like a Pro — Create Art That Tells a Story!",
@@ -6537,7 +6537,7 @@ const coursesData = {
         "desc": "Master Salesforce Administration with hands-on training, real-time projects, and expert guidance. Build skills to manage, customize, and optimize Salesforce for any business.",
         "rating": 5.0,
         "duration": "1 month",
-        "students": "106",
+        "students": "876",
         "img": "/images/courses/Salesforce_Administrator.jpg",
         "aboutData": {
           "topic": "Become a Certified Salesforce Administrator — From Basics to Advanced!",
@@ -6634,7 +6634,7 @@ const coursesData = {
         desc: "Launch your high-paying CRM career. Master Salesforce Development, Apex coding, and Lightning components to build elite enterprise applications.",
         rating: 5.0,
         duration: "1 month",
-        students: "106",
+        students: "876",
         img: "/images/courses/Data_Analysis.jpg",
         aboutData: {
           topic: "Master Salesforce Development — From Basics to Advanced CRM Solutions!",
@@ -6839,7 +6839,7 @@ const coursesData = {
         desc: "Build high-performance cross-platform mobile apps with expert React Native training. Master JavaScript components and Native APIs for highly lucrative iOS & Android development careers.",
         rating: 5.0,
         duration: "1 month",
-        students: "106",
+        students: "546",
         img: "/images/courses/React_Native.jpg",
         aboutData: {
           topic: "Master React Native — Build High-Performance Cross-Platform Mobile Apps!",
@@ -6935,20 +6935,20 @@ const coursesData = {
 
     ]
   },
-  RPA: {
+  Automation: {
     mainCategoryDesc: "Intelligent Automation for the Modern Enterprise",
-    subDesc: "Master Robotic Process Automation (RPA) and transform how business works. Learn to build intelligent bots, automate repetitive tasks, and streamline complex business processes using Microsoft Power Automate and other industry-leading tools.",
+    subDesc: "Master Automation and transform how business works. Learn to build intelligent bots, automate repetitive tasks, and streamline complex business processes using Microsoft Power Automate and other industry-leading tools.",
     subHeading: "Become an Automation Expert and lead the future of digital transformation in your organization.",
     mainImage: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=1200",
 
     courses: [
       {
-        title: "Power Automate",
+        title: "Microsoft Power Automate",
         desc: "Master enterprise automation with Microsoft Power Automate. Learn to build automated, instant, and scheduled flows, integrate AI Builder, and manage professional ALM processes.",
         rating: 4.9,
         duration: "1.5 months",
-        students: "8,245",
-        img: "/images/courses/rpa-cc.jpg",
+        students: "745",
+        img: "/images/courses/power-automate.webp",
         aboutData: {
           topic: "Master Power Automate — Transform Business Processes with Intelligent Automation!",
           content1: "Learn to build powerful workflows using Microsoft Power Automate. From SharePoint integration to AI-driven document processing, this course covers everything you need to become an automation expert.",

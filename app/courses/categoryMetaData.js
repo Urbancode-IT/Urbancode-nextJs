@@ -97,12 +97,12 @@ const categoryMetaData = {
     keywords: ["CRM", "Salesforce", "HubSpot", "Customer Relationship"],
     image: "/images/courses-images/CRM.webp",
   },
-  rpa: {
-    title: "RPA Courses | Urbancode",
+  automation: {
+    title: "Automation Courses | Urbancode",
     description:
-      "Master Robotic Process Automation with Urbancode. Learn to build intelligent bots and streamline business workflows using top RPA tools like Power Automate.",
-    keywords: ["RPA", "Robotic Process Automation", "Power Automate", "Workflow Automation"],
-    image: "/images/courses-images/rpa.png",
+      "Master Automation with Urbancode. Learn to build intelligent bots and streamline business workflows using top Automation tools like Power Automate.",
+    keywords: ["Automation", "Business Automation", "Power Automate", "Workflow Automation"],
+    image: "/images/courses-images/automation.png",
   },
 };
 

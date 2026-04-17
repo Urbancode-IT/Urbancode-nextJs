@@ -6,7 +6,7 @@ import confetti from 'canvas-confetti';
 import "./EnquiryForm.css";
 import { submitEnquiryForm } from "@/lib/api/api";
 
-const EnquiryFormModal = ({ isOpen, onClose, courseName, onSuccess, downloadUrls, dynamicDownloads, extraOptions = [], isSelectMode = false }) => {
+const EnquiryFormModal = ({ isOpen, onClose, courseName, onSuccess, downloadUrls, dynamicDownloads, extraOptions = [], isSelectMode = false, isDemoMode = false, isBrochureMode = false }) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -15,6 +15,8 @@ const EnquiryFormModal = ({ isOpen, onClose, courseName, onSuccess, downloadUrls
     course: courseName || "",
     message: "",
     mode: "",
+    preferredDate: "",
+    preferredTime: "",
   });
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
@@ -54,6 +56,10 @@ const EnquiryFormModal = ({ isOpen, onClose, courseName, onSuccess, downloadUrls
       newErrors.phone = "Phone must be 10 digits.";
     if (!formData.course) newErrors.course = "Please select a course.";
     if (!formData.mode) newErrors.mode = "Please select a mode.";
+    if (isDemoMode) {
+      if (!formData.preferredDate) newErrors.preferredDate = "Date is required.";
+      if (!formData.preferredTime) newErrors.preferredTime = "Time is required.";
+    }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -103,6 +109,8 @@ const EnquiryFormModal = ({ isOpen, onClose, courseName, onSuccess, downloadUrls
           course: courseName || "",
           message: "",
           mode: "",
+          preferredDate: "",
+          preferredTime: "",
         });
 
         setTimeout(() => {
@@ -139,7 +147,12 @@ const EnquiryFormModal = ({ isOpen, onClose, courseName, onSuccess, downloadUrls
             exit={{ scale: 0.8, opacity: 0 }}
           >
             <div className="enquiry-header">
-              <h3>Enquire Today</h3>
+              <h3>
+                {isBrochureMode 
+                  ? "Get Course Brochure" 
+                  : (isDemoMode ? "Book a Demo Session" : "Enquire Today")
+                }
+              </h3>
               <button className="close-btn" onClick={onClose}>×</button>
             </div>
 
@@ -303,6 +316,38 @@ const EnquiryFormModal = ({ isOpen, onClose, courseName, onSuccess, downloadUrls
                       </select>
                       {errors.mode && <small className="text-danger">{errors.mode}</small>}
                     </div>
+
+                    {isDemoMode && (
+                      <>
+                        <div className="col-md-6">
+                          <label className="form-label small text-muted mb-1">Preferred Date</label>
+                          <input
+                            type="date"
+                            className="form-control"
+                            name="preferredDate"
+                            min={new Date().toISOString().split('T')[0]}
+                            value={formData.preferredDate}
+                            onChange={handleChange}
+                          />
+                          {errors.preferredDate && <small className="text-danger">{errors.preferredDate}</small>}
+                        </div>
+                        <div className="col-md-6">
+                        <label className="form-label small text-muted mb-1">Preferred Time</label>
+                          <select
+                            className="form-select"
+                            name="preferredTime"
+                            value={formData.preferredTime}
+                            onChange={handleChange}
+                          >
+                            <option value="">Choose Time Slot</option>
+                            <option value="Morning (10 AM - 1 PM)">Morning (10 AM - 1 PM)</option>
+                            <option value="Afternoon (2 PM - 5 PM)">Afternoon (2 PM - 5 PM)</option>
+                            <option value="Evening (6 PM - 9 PM)">Evening (6 PM - 9 PM)</option>
+                          </select>
+                          {errors.preferredTime && <small className="text-danger">{errors.preferredTime}</small>}
+                        </div>
+                      </>
+                    )}
 
                     <div className="col-12">
                       <textarea

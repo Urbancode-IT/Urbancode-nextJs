@@ -29,7 +29,8 @@ const NewInternalCourse = ({ data }) => {
     const [faqActiveIndex, setFaqActiveIndex] = useState(null);
 
     // --- Enquiry Modal State ---
-    const [showEnquiry, setShowEnquiry] = useState(false);
+    const [isEnquiryOpen, setIsEnquiryOpen] = useState(false);
+    const [isBrochureOpen, setIsBrochureOpen] = useState(false);
 
 
     // ===========================================================================
@@ -67,7 +68,7 @@ const NewInternalCourse = ({ data }) => {
     };
 
     const handleEnrollClick = () => {
-        setShowEnquiry(true);
+        setIsEnquiryOpen(true);
     };
 
     const isHighlighted = (item) => {
@@ -106,9 +107,14 @@ const NewInternalCourse = ({ data }) => {
                             </span>
                         </div>
 
-                        <button className="nict-hero-btn" onClick={handleEnrollClick}>
-                            Enroll now <FaArrowRight className="nict-btn-icon" />
-                        </button>
+                        <div className="nict-hero-btns-group">
+                            <button className="nict-hero-btn" onClick={handleEnrollClick}>
+                                Enroll now <FaArrowRight className="nict-btn-icon" />
+                            </button>
+                            <button className="nict-hero-btn secondary" onClick={() => setIsBrochureOpen(true)}>
+                                <FiDownload className="nict-btn-icon" /> Download Brochure
+                            </button>
+                        </div>
                     </div>
 
                     {/* RIGHT IMAGE */}
@@ -161,12 +167,10 @@ const NewInternalCourse = ({ data }) => {
                 <section className="nict-course-curriculum">
                     <div className="nict-curriculum-header">
                         <h2>Course Curriculum</h2>
-                        {/* <a href="/brochure.jpg" download="brochure.jpg" className="nict-brochure-link">
-                            <button className="nict-brochure-btn">
-                                <FiDownload />
-                                Download Brochure
-                            </button>
-                        </a> */}
+                        <button className="nict-brochure-btn" onClick={() => setIsBrochureOpen(true)}>
+                            <FiDownload />
+                            Download Brochure
+                        </button>
                     </div>
 
                     <div className="nict-curriculum-list">
@@ -273,9 +277,17 @@ const NewInternalCourse = ({ data }) => {
 
             {/* 6. ENQUIRY FORM MODAL */}
             <EnquiryFormModal
-                isOpen={showEnquiry}
-                onClose={() => setShowEnquiry(false)}
+                isOpen={isEnquiryOpen}
+                onClose={() => setIsEnquiryOpen(false)}
                 courseName={heroData.highlightText || "Course"}
+            />
+
+            <EnquiryFormModal
+                isOpen={isBrochureOpen}
+                onClose={() => setIsBrochureOpen(false)}
+                courseName={heroData.highlightText || "Course"}
+                isBrochureMode={true}
+                downloadUrls={[heroData.brochure || "/brochure.jpg"]}
             />
         </div>
     );

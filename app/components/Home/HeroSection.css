@@ -46,6 +46,13 @@
   font-size: 0;
 }
 
+.hero_btn_group {
+  display: flex;
+  gap: 16px;
+  margin-top: 3rem;
+  flex-wrap: wrap;
+}
+
 /* Enroll Button */
 .enroll_btn {
   position: relative;
@@ -59,7 +66,7 @@
   border-radius: 50px;
   cursor: pointer;
   padding: 14px 40px;
-  transition: color 0.4s ease;
+  transition: all 0.4s ease;
   z-index: 1;
 }
 
@@ -67,6 +74,29 @@
   color: #000;
   border-color: #00a86b;
   /* green */
+}
+
+/* Brochure Button */
+.brochure_btn {
+  background: transparent;
+  color: #333;
+  font-weight: 600;
+  font-size: 18px;
+  border: 2px solid #ccc;
+  border-radius: 50px;
+  padding: 14px 40px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brochure_btn:hover {
+  border-color: #00a86b;
+  color: #00a86b !important;
+  transform: translateY(-2px);
+  background: rgba(0, 168, 107, 0.05);
 }
 
 
@@ -192,8 +222,16 @@
   .enroll_btn {
     font-size: 16px;
     padding: 12px 28px;
-    margin: 0 auto;
-    display: block;
+  }
+
+  .brochure_btn {
+    font-size: 16px;
+    padding: 12px 28px;
+  }
+
+  .hero_btn_group {
+    justify-content: center;
+    margin-top: 2rem;
   }
 }
 
@@ -231,12 +269,19 @@
     line-height: 1.5;
   }
 
+  .hero_btn_group {
+    margin-top: 1.5rem;
+    gap: 10px;
+  }
+
   .enroll_btn {
     font-size: 14px;
     padding: 10px 20px;
-    width: auto;
-    margin: 20px auto 0;
-    display: block;
+  }
+
+  .brochure_btn {
+    font-size: 14px;
+    padding: 10px 20px;
   }
 
   .home_header_container {

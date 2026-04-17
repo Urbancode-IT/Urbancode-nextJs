@@ -176,7 +176,9 @@ const TrendingCourses = () => {
                                   </div>
                                 )}
                                 <p>{selectedCourse.description}</p>
-                                <button className="trending-enroll-trigger" onClick={handleEnrollClick}>Enroll Now</button>
+                                <div className="trending-modal-btns">
+                                    <button className="trending-enroll-trigger" onClick={handleEnrollClick}>Enroll Now</button>
+                                </div>
                             </div>
                         </div>
                     </div>

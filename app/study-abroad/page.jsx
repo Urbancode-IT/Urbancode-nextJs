@@ -159,7 +159,7 @@ const StudyAbroadPage = () => {
                                         <img src="https://randomuser.me/api/portraits/men/85.jpg" alt="student3" className="mini-avatar ms-n2" />
                                     </div>
                                     <div className="trusted-plus ms-3">+2k</div>
-                                    <span className="trusted-text ms-2">Joined by 2,000+ aspiring global leaders</span>
+                                    <span className="trusted-text ms-2">Joined by 1,000+ aspiring global leaders</span>
                                 </div>
                                 
                                 <div className="mt-4">
@@ -178,15 +178,15 @@ const StudyAbroadPage = () => {
 
                                 <div className="hero-trust-row mt-4">
                                     <div className="trust-item">
-                                        <span className="trust-val">500+</span> 
+                                        <span className="trust-val">200+</span> 
                                         <span className="trust-txt">University Tie-ups</span>
                                     </div>
                                     <div className="trust-item">
-                                        <span className="trust-val">20,000+</span> 
+                                        <span className="trust-val">5000+</span> 
                                         <span className="trust-txt">Success Stories</span>
                                     </div>
                                     <div className="trust-item">
-                                        <span className="trust-val">250+</span> 
+                                        <span className="trust-val">50+</span> 
                                         <span className="trust-txt">Study Abroad Experts</span>
                                     </div>
                                 </div>
