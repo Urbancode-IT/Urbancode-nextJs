@@ -1057,7 +1057,7 @@ const coursesData = {
   rating: 4.8,
   duration: "1.5 months",
   students: "784",
-  img:  "/images/courses/sharepoint.webp",
+  img:  "/images/courses/share.webp",
   aboutData: {
     topic: "Master Microsoft SharePoint — Build and Manage Modern Collaborative Workspaces!",
     content1: "Learn to design, configure, and develop on the SharePoint Online platform. From site architecture and permissions to custom SPFx development with React, this course prepares you for enterprise-level collaboration roles.",
