@@ -409,6 +409,51 @@
     color: #6c757d !important;
 }
 
+.nict-nested-item {
+    list-style: none;
+}
+
+.nict-nested-toggle {
+    border: 1px solid rgba(108, 117, 125, 0.15);
+    background: #ffffff;
+    color: #2c3e50;
+    width: 100%;
+    text-align: left;
+    transition: all 0.2s ease;
+}
+
+.nict-nested-toggle:hover {
+    background: #f8f9fa;
+    border-color: rgba(25, 135, 84, 0.3);
+}
+
+.nict-nested-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 999px;
+    background: rgba(25, 135, 84, 0.08);
+    color: #198754;
+}
+
+.nict-nested-list {
+    list-style: disc;
+    margin: 0;
+    padding-left: 20px;
+}
+
+.nict-nested-list li {
+    margin-bottom: 6px;
+    color: #5a6268;
+}
+
+.nict-practice-item {
+    list-style: none;
+    padding-left: 0;
+}
+
 .nict-curriculum-item.active .nict-curriculum-content {
     padding: 20px;
     border-top-color: #eee;
