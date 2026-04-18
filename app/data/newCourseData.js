@@ -1170,96 +1170,278 @@ export const newCourseData = {
         curriculumData: [
             {
                 id: 1,
-                title: "Module 1: Statistical Analysis & Probability",
+                title: "Module 1:Introduction to Data Science",
                 content: (
                     <ul>
-                        <li>Introduction to Probability Theory and its role in Machine Learning.</li>
-                        <li>Data Analysis: Mastering Measures of Central Tendency & Dispersion.</li>
-                        <li>Probability Distributions: Normal, Poisson, and Binomial distributions.</li>
-                        <li>Hypothesis Testing: Understanding Null & Alternate Hypotheses with p-values.</li>
+                        <li>What is Data Science?</li>
+                        <li>What is Machine Learning?</li>
+                        <li>What is Deep Learning?</li>
+                        <li>What is Al?</li>
+                        <li>Data Analytics & it's types</li>
                     </ul>
                 )
             },
             {
                 id: 2,
-                title: "Module 2: Linear Regression Mastery",
+                title: "Module 2:Introduction to Python",
                 content: (
                     <ul>
-                        <li>Basics of OLS (Ordinary Least Squares) Regression.</li>
-                        <li>Core Assumptions & Features of high-performance Linear Regression.</li>
-                        <li>Gradient Descent: Understanding loss functions and optimization.</li>
-                        <li>Advanced Regularization: Ridge & Lasso Regression for overfitting control.</li>
+                        <li>What is Python?</li>
+                        <li>Why Python?</li>
+                        <li>Installing Python</li>
+                        <li>Python IDEs</li>
+                        <li>Jupyter Notebook Overview</li>
                     </ul>
                 )
             },
             {
                 id: 3,
-                title: "Module 3: Classification Algorithms",
+                title: "Module 3:Python Basics",
                 content: (
                     <ul>
-                        <li>Logistic Regression: Binary and Multi-class classification.</li>
-                        <li>Naive Bayes & Conditional Probability fundamentals.</li>
-                        <li>K-Nearest Neighbors (KNN) for pattern recognition.</li>
-                        <li>Ensemble Methods: Decision Trees, Random Forest, and XGBoost (Bagging & Boosting).</li>
+                        <li>Python Basic Data types</li>
+                        <li>Lists</li>
+                        <li>Slicing</li>
+                        <li>IF statements</li>
+                        <li>Loops</li>
+                        <li>Dictionaries</li>
+                        <li>Tuples</li>
+                        <li>Functions</li>
+                        <li>Array</li>
+                        <li>Selection by position & Labels</li>
                     </ul>
                 )
             },
             {
                 id: 4,
-                title: "Module 4: Unsupervised Learning",
+                title: "Module 4: Python Packages",
                 content: (
                     <ul>
-                        <li>Introduction to Clustering and Hidden Pattern discovery.</li>
-                        <li>K-Means Clustering and Hierarchical Clustering techniques.</li>
-                        <li>DBScan (Density-Based Spatial Clustering) for noise-heavy data.</li>
-                        <li>Dimensionality Reduction: Principles of finding essential features.</li>
+                        <li>Pandas</li>
+                        <li>Numpy</li>
+                        <li>Sci-kit Learn</li>
+                        <li>Mat-plot library</li>
+                        
                     </ul>
                 )
             },
             {
                 id: 5,
-                title: "Module 5: Text Mining & NLP",
+                title: "Module 5:Importing Data",
                 content: (
                     <ul>
-                        <li>Text Mining & Information Retrieval: Extracting value from unstructured data.</li>
-                        <li>NLP Fundamentals: Parts of Speech (POS) Tagging and tokenization.</li>
-                        <li>Sentiment Analysis: Building models to detect emotional tone.</li>
-                        <li>Recommender Systems: Collaborative and Content-based filtering.</li>
+                        <li>Reading CSV files</li>
+                        <li>Saving in Python dat</li>
+                        <li>Loading Python data objects</li>
+                        <li>Writing data to csv file</li>
                     </ul>
                 )
             },
             {
                 id: 6,
-                title: "Module 6: Advanced AI & Neural Networks",
+                title: "Module 6:Manipulating Data",
                 content: (
                     <ul>
-                        <li>Deep Learning Intro: Neurons, Layers, and Activation Functions.</li>
-                        <li>Computer Vision: Convoluted Neural Networks (CNN) for image processing.</li>
-                        <li>Sequential Data: Recurrent Neural Networks (RNN) for time-series and speech.</li>
-                        <li>Reinforcement Learning: Learning through rewards and agents.</li>
+                        <li>Selecting rows/observations</li>
+                        <li>Rounding Number</li>
+                        <li>Selecting columns/fields</li>
+                        <li>Merging data</li>
+                        <li>Data aggregation</li>
+                        <li>Data munging techniques</li>
+                    
                     </ul>
                 )
             },
             {
                 id: 7,
-                title: "Module 7: Deep Learning with PyTorch",
+                title: "Module 7: Statistics Basics",
                 content: (
                     <ul>
-                        <li>PyTorch Basics: Tensors, Autograd, and dynamic computational graphs.</li>
-                        <li>Building Models: Using nn.Module and optimizers in PyTorch.</li>
-                        <li>Data Handling: Loading datasets and custom transformations.</li>
-                        <li>Training Loops: Implementing efficient training and evaluation pipelines.</li>
+                        <li className="font-semibold mb-2 mt-2">Central Tendency
+                            <ul className="list-disc pl-5 font-normal mt-1">
+                                <li>Mean</li>
+                                <li>Median</li>
+                                <li>Mode</li>
+                                <li>Skewness</li>
+                                <li>Normal Distribution</li>
+                            </ul>
+                        </li>
+                        <li className="font-semibold mb-2 mt-2">Probability Basics
+                            <ul className="list-disc pl-5 font-normal mt-1">
+                                <li>What does mean by probability?</li>
+                                <li>Types of Probability</li>
+                                <li>Mode</li>
+                            </ul>
+                        </li>
+                        <li className="font-semibold mb-2 mt-2">Standard Deviation
+                            <ul className="list-disc pl-5 font-normal mt-1">
+                                <li>Data deviation & distribution</li>
+                                <li>Variance</li>
+                            </ul>
+                        </li>
+                        <li className="font-semibold mb-2 mt-2">Bias variance Trade off
+                            <ul className="list-disc pl-5 font-normal mt-1">
+                                <li>Underfitting</li>
+                                <li>Overfitting</li>
+                            </ul>
+                        </li>
+                        <li className="font-semibold mb-2 mt-2">Distance metrics
+                            <ul className="list-disc pl-5 font-normal mt-1">
+                                <li>Euclidean Distance</li>
+                                <li>Manhattan Distance</li>
+                            </ul>
+                        </li>
+                        <li className="font-semibold mb-2 mt-2">Outlier analysis
+                            <ul className="list-disc pl-5 font-normal mt-1">
+                                <li>What is an Outlier?</li>
+                                <li>Inter Quartile</li>
+                                <li>Range</li>
+                                <li>Box & whisker plot</li>
+                                <li>Upper Whisker</li>
+                                <li>Lower Whisker</li>
+                                <li>Scatter plot</li>
+                                <li>Cook's Distance</li>
+                            </ul>
+                        </li>
+                        <li className="font-semibold mb-2 mt-2">Missing Value treatment
+                            <ul className="list-disc pl-5 font-normal mt-1">
+                                <li>What is a NA?</li>
+                                <li>Central Imputation</li>
+                                <li>KNN imputation</li>
+                            </ul>
+                        </li>
+                        <li className="font-semibold mb-2 mt-2">Data Transformation
+                            <ul className="list-disc pl-5 font-normal mt-1">
+                                <li>Dummification</li>
+                            </ul>
+                        </li>
+                        <li className="font-semibold mb-2 mt-2">Correlation
+                            <ul className="list-disc pl-5 font-normal mt-1">
+                                <li>Pearson correlation</li>
+                                <li>Positive & Negative correlation</li>
+                            </ul>
+                        </li>
                     </ul>
                 )
             },
             {
                 id: 8,
-                title: "Module 8: Generative AI Basics & Projects",
+                title: "Module 8: Error Metrics",
                 content: (
                     <ul>
-                        <li>Introduction to Gen AI: Understanding GANs and Transformers.</li>
-                        <li>Capstone Projects: Real-time Object Detection and Text Generator.</li>
-                        <li>Interactive Learning: Solving real-world datasets with PyTorch.</li>
+                        <li className="font-semibold mb-2 mt-2">Classification
+                            <ul className="list-disc pl-5 font-normal mt-1">
+                                <li>Confusion Matrix</li>
+                                <li>Precision</li>
+                                <li>Recall</li>
+                                <li>Dummification</li>
+                                <li>Specificity</li>
+                                <li>F1 Score</li>
+                            </ul>
+                        </li>
+                        <li className="font-semibold mb-2 mt-2">Regression
+                            <ul className="list-disc pl-5 font-normal mt-1">
+                                <li>MSE</li>
+                                <li>RMSE</li>
+                                <li>MAPE</li>
+                            </ul>
+                        </li>
+                    </ul>
+                )
+            },
+            {
+                id: 9,
+                title: "Module 9: Machine Learning",
+                content: (
+                    <ul>
+                        <li className="font-semibold mb-2 mt-2">Supervised Learning
+                            <ul className="list-disc pl-5 font-normal mt-1">
+                                <li className="font-medium mt-1">Linear Regression
+                                    <ul className="list-disc pl-5 font-normal mt-1 mb-2">
+                                        <li>Linear Equation</li>
+                                        <li>Slope</li>
+                                        <li>Intercept</li>
+                                        <li>R square value</li>
+                                    </ul>
+                                </li>
+                                <li className="font-medium">Logistic regression
+                                    <ul className="list-disc pl-5 font-normal mt-1">
+                                        <li>ODDS ratio</li>
+                                        <li>Probability of success</li>
+                                        <li>Probability of failure</li>
+                                        <li>Bias Variance Tradeoff</li>
+                                        <li>ROC curve</li>
+                                        <li>Bias Variance Tradeoff curve</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li className="font-semibold mb-2 mt-2">Unsupervised Learning
+                            <ul className="list-disc pl-5 font-normal mt-1">
+                                <li>K-Means</li>
+                                <li>K-Means ++</li>
+                                <li>Hierarchical Clustering</li>
+                            </ul>
+                        </li>
+                        <li className="font-semibold mb-2 mt-2">SVM
+                            <ul className="list-disc pl-5 font-normal mt-1">
+                                <li>Support Vectors</li>
+                                <li>Hyperplanes</li>
+                                <li>2-D Case</li>
+                                <li>Linear Hyperplane</li>
+                                <li>SVM Kernel</li>
+                                <li>Linear</li>
+                                <li>Polynomial</li>
+                            </ul>
+                        </li>
+                        <li className="font-semibold mb-2 mt-2">Other Machine Learning algorithms
+                            <ul className="list-disc pl-5 font-normal mt-1">
+                                <li>K - Nearest Neighbour</li>
+                                <li>Naïve Bayes Classifier</li>
+                                <li>Decision Tree — CART</li>
+                                <li>Decision Tree - C50</li>
+                                <li>Random Forest</li>
+                            </ul>
+                        </li>
+                    </ul>
+                )
+            },
+            {
+                id: 10,
+                title: "Module 10: Artificial Intelligence Introduction",
+                content: (
+                    <ul className="list-disc pl-5">
+                        <li className="mt-1">Perceptron</li>
+                        <li className="mt-1">Multi-Layer perceptron</li>
+                        <li className="mt-1">Markov Decision Process</li>
+                        <li className="mt-1">Logical Agent & First Order Logic</li>
+                        <li className="mt-1">AI Applications</li>
+                    </ul>
+                )
+            },
+            {
+                id: 11,
+                title: "Module 11: Deep Learning Algorithms",
+                content: (
+                    <ul className="list-disc pl-5">
+                        <li className="mt-1">CNN - Convolutional Neural Network</li>
+                        <li className="mt-1">RNN - Recurrent Neural Network</li>
+                        <li className="mt-1">ANN - Artificial Neural Network</li>
+                        <li className="mt-1">Introduction to NLP</li>
+                        <li className="mt-1">Text Pre-processing o Noise Removal</li>
+                        <li className="mt-1">Lexicon Normalization o Lemmatization</li>
+                        <li className="mt-1">Stemming o Object Standardization</li>
+                        <li className="mt-1">Text to Features (Feature Engineering)</li>
+                        <li className="mt-1">Syntactical Parsing o Dependency Grammar</li>
+                        <li className="mt-1">Part of Speech Tagging o Entity Parsing</li>
+                        <li className="mt-1">Named Entity Recognition o Topic Modelling</li>
+                        <li className="mt-1">N-Grams</li>
+                        <li className="mt-1">TF-IDF</li>
+                        <li className="mt-1">Frequency / Density Features</li>
+                        <li className="mt-1">Word Embedding's o Tasks of NLP</li>
+                        <li className="mt-1">Text Classification o Text Matching</li>
+                        <li className="mt-1">Levenshtein Distance o Phonetic Matching</li>
+                        <li className="mt-1">Flexible String Matching</li>
                     </ul>
                 )
             }

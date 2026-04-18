@@ -90,55 +90,143 @@ const coursesData = {
   courseContentData: [
     {
       id: 1,
-      title: "Core Java Refresher",
-      icon: "bi bi-book",
+      title: "Module 1: Wrapper Class",
+      icon: "bi bi-box",
       defaultOpen: true,
       items: [
-        "Introduction to Java and JVM architecture",
-        "Setting up the Java environment (JDK, IDEs)",
-        "Data types, operators, and control structures",
-        "Classes, objects, and methods",
-        "Constructors, inheritance, and polymorphism",
-        "Exception handling and debugging"
+        "Understanding wrapper classes for primitive data types",
+        "Auto boxing and unboxing"
       ]
     },
     {
       id: 2,
-      title: "Working with Collections",
-      icon: "bi bi-database",
+      title: "Module 2: Encapsulation",
+      icon: "bi bi-shield-lock",
       items: [
-        "Arrays and ArrayList",
-        "Collections Framework (List, Set, Map)",
-        "Generics and Wrapper classes",
-        "Comparable vs Comparator",
-        "Iterators and enhanced for-loops"
+        "Encapsulation principles and benefits",
+        "Implementing encapsulation in Java classes"
       ]
     },
     {
       id: 3,
-      title: "Input/Output and Threads",
-      icon: "bi bi-window",
+      title: "Module 3: Singleton Class",
+      icon: "bi bi-person-badge",
       items: [
-        "File handling with Java I/O and NIO",
-        "Serialization and deserialization",
-        "Multithreading and synchronization",
-        "Thread lifecycle and concurrency",
-        "Lambda expressions and functional interfaces"
+        "Designing and implementing singleton classes",
+        "Singleton patterns and best practices"
       ]
     },
     {
       id: 4,
-      title: "Database Connectivity (JDBC)",
-      icon: "bi bi-gear",
+      title: "Module 4: SQL",
+      icon: "bi bi-database",
       items: [
-        "Introduction to JDBC",
-        "Connecting Java with MySQL / PostgreSQL",
-        "Executing SQL queries from Java",
-        "PreparedStatement and ResultSet",
-        "Transaction management"
+        "Introduction to SQL (Structured Query Language)",
+        "Connecting Java applications to databases",
+        "Executing SQL queries using JDBC"
       ]
     },
-
+    {
+      id: 5,
+      title: "Module 5: Multithreading",
+      icon: "bi bi-cpu",
+      items: [
+        "Basics of multithreading in Java",
+        "Synchronization and thread safety",
+        "Thread pools and concurrency utilities"
+      ]
+    },
+    {
+      id: 6,
+      title: "Module 6: XML, JSON, CSV",
+      icon: "bi bi-filetype-json",
+      items: [
+        "Parsing and generating XML using DOM and SAX parsers",
+        "Working with JSON data in Java",
+        "Reading and writing CSV files"
+      ]
+    },
+    {
+      id: 7,
+      title: "Module 7: JDBC Connection",
+      icon: "bi bi-plug",
+      items: [
+        "Establishing database connections using JDBC",
+        "CRUD operations (Create, Read, Update, Delete) using JDBC"
+      ]
+    },
+    {
+      id: 8,
+      title: "Module 8: Serialization",
+      icon: "bi bi-layers",
+      items: [
+        "Serializing and de-serializing objects in Java",
+        "Implementing Serializable and Externalizable interfaces"
+      ]
+    },
+    {
+      id: 9,
+      title: "Module 9: Java Regex",
+      icon: "bi bi-regex",
+      items: [
+        "Understanding regular expressions in Java",
+        "Pattern matching and text manipulation using regex"
+      ]
+    },
+    {
+      id: 10,
+      title: "Module 10: Date and Time",
+      icon: "bi bi-calendar-event",
+      items: [
+        "Handling date and time in Java",
+        "Working with Local Date, Local Date Time, and other date/time classes"
+      ]
+    },
+    {
+      id: 11,
+      title: "Module 11: Coding Standards",
+      icon: "bi bi-journal-check",
+      items: [
+        "Introduction to coding standards and best practices",
+        "Naming conventions, code formatting, and documentation"
+      ]
+    },
+    {
+      id: 12,
+      title: "Module 12: Factory Design Pattern",
+      icon: "bi bi-vector-pen",
+      items: [
+        "Understanding the Factory design pattern",
+        "Implementing factory methods and factory classes"
+      ]
+    },
+    {
+      id: 13,
+      title: "Module 13: Generics",
+      icon: "bi bi-code-square",
+      items: [
+        "Introduction to generics in Java",
+        "Writing generic classes, methods, and interfaces"
+      ]
+    },
+    {
+      id: 14,
+      title: "Module 14: Debugging",
+      icon: "bi bi-bug",
+      items: [
+        "Techniques for debugging Java applications",
+        "Using debugging tools and IDE features effectively"
+      ]
+    },
+    {
+      id: 15,
+      title: "Module 15: J2EE (Java 2 Platform, Enterprise Edition) Overview",
+      icon: "bi bi-building",
+      items: [
+        "Introduction to J2EE architecture and components",
+        "Understanding servlets, JSP (Java Server Pages), and EJB (Enterprise JavaBeans)"
+      ]
+    }
   ],
   whatYouLearnData: [
     {
@@ -1805,51 +1893,46 @@ const coursesData = {
         courseContentData: [
           {
             id: 1,
-            title: "Getting Started with Photoshop",
+            title: "Introduction to Photoshop",
             icon: "bi bi-palette",
             defaultOpen: true,
             items: [
-              "Introduction to Adobe Photoshop",
-              "Understanding the workspace and tools",
-              "Working with layers and selections",
-              "Using brushes, gradients, and shapes",
-              "Saving and exporting projects",
+              "Module Overview and Interface Introduction",
+              "Basic Tools and Navigation",
+              "Understanding Layers",
+              "Basic Photo Editing",
             ],
           },
           {
             id: 2,
-            title: "Photo Editing Essentials",
+            title: "Intermediate Photoshop Techniques",
             icon: "bi bi-image",
             items: [
-              "Cropping, resizing, and straightening images",
-              "Adjusting brightness, contrast, and color",
-              "Removing backgrounds and unwanted objects",
-              "Basic retouching and healing tools",
-              "Using adjustment layers and masks",
+              "Selections and Masks",
+              "Advanced Photo Editing",
+              "Text and Typography",
             ],
           },
           {
             id: 3,
-            title: "Creative Graphic Design",
+            title: "Advanced Photoshop Skills",
             icon: "bi bi-brush",
             items: [
-              "Working with text and typography",
-              "Creating posters, banners, and social media ads",
-              "Layer styles, blending modes, and smart objects",
-              "Using filters and effects creatively",
-              "Designing with grids and alignment tools",
+              "Filters and Eects",
+              "Working with Smart Objects and Smart Filters",
+              "Composite Imaging and Creative Projects",
             ],
           },
           {
             id: 4,
-            title: "Advanced Photo Manipulation",
+            title: " Projects and Review",
             icon: "bi bi-layers",
             items: [
-              "Compositing multiple images",
-              "Lighting and shadow manipulation",
-              "Color grading and mood creation",
-              "Using Camera Raw for detailed edits",
-              "Creative surreal art projects",
+              "Project 1: Photo Manipulation",
+              "Project 2: Graphic Design",
+              "Portfolio Review",
+              "Q&A and Further Learning",
+
             ],
           },
  
@@ -3067,55 +3150,136 @@ const coursesData = {
         courseContentData: [
           {
             id: 1,
-            title: "Python Fundamentals",
+            title: "Module 1: Introduction to Python",
             icon: "bi bi-book",
             defaultOpen: true,
             items: [
-              "Introduction to Python and applications",
-              "Setting up Python and IDEs",
-              "Variables, data types, expressions",
-              "Conditional statements and loops",
-              "Functions and modules",
-              "Error handling and debugging"
+              "Overview of Python: Applications and features",
+              "Installing Python and setting up environment",
+              "Understanding the Python interpreter"
             ]
           },
           {
             id: 2,
-            title: "Data Handling in Python",
-            icon: "bi bi-database",
+            title: "Module 2: Basic Python Syntax and Data Types",
+            icon: "bi bi-code",
             items: [
-              "Lists, tuples, dictionaries, and sets",
-              "String formatting and manipulation",
-              "Working with files (txt, CSV, JSON)",
-              "Introduction to Python libraries (NumPy, Pandas)",
-              "Basic data structures and algorithms"
+              "Python Syntax: Indentation and structure",
+              "Variables and Data Types (Int, Float, String)",
+              "Basic Operators in Python"
             ]
           },
           {
             id: 3,
-            title: "APIs & Automation",
-            icon: "bi bi-window",
+            title: "Module 3: Control Structures",
+            icon: "bi bi-shuffle",
             items: [
-              "Working with REST APIs in Python",
-              "Automating tasks with Python scripts",
-              "Web scraping with BeautifulSoup",
-              "Version control using Git",
-              "Building command-line tools"
+              "Decision making: if, else, and elif statements",
+              "Loops: for loops and while loops",
+              "Loop control statements: break, continue"
             ]
           },
           {
             id: 4,
-            title: "ChatGPT & OpenAI API",
+            title: "Module 4: Functions and Modules",
+            icon: "bi bi-box",
+            items: [
+              "Creating functions, parameters, and return statements",
+              "Built-in vs. User-defined functions",
+              "Importing and using standard/custom modules"
+            ]
+          },
+          {
+            id: 5,
+            title: "Module 5: Data Structures",
+            icon: "bi bi-collection",
+            items: [
+              "Lists: Creation, slicing, and manipulation",
+              "Tuples: Properties and usage",
+              "Dictionaries: Key-value pairs and operations"
+            ]
+          },
+          {
+            id: 6,
+            title: "Module 6: File Handling",
+            icon: "bi bi-file-earmark-text",
+            items: [
+              "Reading and writing text files",
+              "Working with different file formats",
+              "File operations and management"
+            ]
+          },
+          {
+            id: 7,
+            title: "Module 7: Error Handling and Exception",
+            icon: "bi bi-exclamation-triangle",
+            items: [
+              "Introduction to exceptions in Python",
+              "Using try, except, and finally blocks",
+              "Best practices for error handling"
+            ]
+          },
+          {
+            id: 8,
+            title: "Module 8: Introduction to OOP",
+            icon: "bi bi-cpu",
+            items: [
+              "OOP Concepts: Classes and Objects",
+              "Understanding Inheritance and Polymorphism",
+              "Building real-world classes in Python"
+            ]
+          },
+          {
+            id: 9,
+            title: "Module 9: Introduction to Libraries",
+            icon: "bi bi-bar-chart",
+            items: [
+              "Overview of NumPy for numerical computing",
+              "Pandas for data analysis and manipulation",
+              "Matplotlib for data visualization"
+            ]
+          },
+          {
+            id: 10,
+            title: "Module 10: Statistics Basics",
+            icon: "bi bi-calculator",
+            items: [
+              "Standard Deviation & Variance",
+              "Data deviation & distribution",
+              "Bias-Variance Trade-off (Underfitting & Overfitting)"
+            ]
+          },
+          {
+            id: 11,
+            title: "Module 11: Advanced Statistics & Distance Metrics",
+            icon: "bi bi-diagram-3",
+            items: [
+              "Distance Metrics: Euclidean & Manhattan Distance",
+              "Outlier Analysis: What is an Outlier?",
+              "Inter Quartile Range (IQR) & Box plots"
+            ]
+          },
+          {
+            id: 12,
+            title: "Module 12: Data Pre-processing & Analysis",
+            icon: "bi bi-stars",
+            items: [
+              "Missing Value Treatment: Central & KNN imputation",
+              "Data Transformation: Dummification",
+              "Correlation Analysis: Pearson correlation"
+            ]
+          },
+          {
+            id: 13,
+            title: "Module 13: ChatGPT & OpenAI API",
             icon: "bi bi-robot",
             items: [
               "Introduction to ChatGPT and GPT models",
               "Setting up OpenAI API in Python",
               "Generating text, summaries, and responses",
-              "Fine-tuning prompts for better output",
               "Integrating ChatGPT into Python applications"
             ]
-          },
- 
+          }
         ],
         whatYouLearnData: [
           {
@@ -3166,54 +3330,204 @@ const coursesData = {
         courseContentData: [
           {
             id: 1,
-            title: "Introduction to Power BI",
+            title: "Module 1: Data warehouse Concepts",
             icon: "bi bi-book",
             defaultOpen: true,
             items: [
-              "Overview of Power BI and its ecosystem",
-              "Installing and setting up Power BI Desktop",
-              "Understanding data sources and connectors",
-              "Power BI Service and Power BI Mobile overview",
-              "Navigating the interface and basic features"
+              "Introduction about DWC (Data warehousing Concepts)",
+              "Dimensions, Measures, Keys",
+              "Types of Dimensions",
+              "Types of Keys",
+              "Identifying Keys",
+              "Types of Joins",
+              "How to identify Fact and dimension tables",
+              "Schema introduction",
+              "Types of schemas",
+              "Task"
             ]
           },
           {
             id: 2,
-            title: "Data Loading & Transformation",
-            icon: "bi bi-database",
+            title: "Module 2: Business Intelligence",
+            icon: "bi bi-bar-chart",
             items: [
-              "Connecting to Excel, CSV, SQL, and cloud data sources",
-              "Introduction to Power Query Editor",
-              "Data cleaning and transformation techniques",
-              "Merging, appending, and shaping data",
-              "Handling errors and missing data"
+              "Introduction about Business Intelligence",
+              "Evolution of BI",
+              "Categories of BI",
+              "BI tools Comparisons",
+              "OLAP and OLTP concepts"
             ]
           },
           {
             id: 3,
-            title: "Data Modeling & DAX",
-            icon: "bi bi-gear",
+            title: "Module 3: POWER BI",
+            icon: "bi bi-display",
             items: [
-              "Introduction to data modeling concepts",
-              "Creating relationships between tables",
-              "Understanding DAX (Data Analysis Expressions)",
-              "Calculated columns, measures, and tables",
-              "Time intelligence functions"
+              "Power BI Introduction",
+              "Components of Power BI",
+              "Architecture of Power BI"
             ]
           },
           {
             id: 4,
-            title: "Visualizations & Reports",
-            icon: "bi bi-bar-chart-line",
+            title: "Module 4: Data connectivity",
+            icon: "bi bi-diagram-3",
             items: [
-              "Creating charts, tables, and maps",
-              "Using slicers and filters for interactive dashboards",
-              "Custom visuals and themes",
-              "Report formatting and best practices",
-              "Bookmarks, buttons, and navigation"
+              "Importing data to Power BI",
+              "Types of connectivity",
+              "Creating relationships",
+              "Manage relationships",
+              "Cardinality",
+              "Cross filter direction",
+              "Task"
             ]
           },
-
+          {
+            id: 5,
+            title: "Module 5: Power Query Editor",
+            icon: "bi bi-sliders",
+            items: [
+              "Power Query Editor Introduction",
+              "Manage Columns",
+              "Reduce rows",
+              "Data transformation techniques",
+              "Manage Queries",
+              "Table and column conversions",
+              "Split and formatting columns",
+              "Data Conversions",
+              "Creating manual column and tables",
+              "Conditional and custom functions",
+              "Options in View menu",
+              "Sorting and filtering data",
+              "Task"
+            ]
+          },
+          {
+            id: 6,
+            title: "Module 6: DAX",
+            icon: "bi bi-code-slash",
+            items: [
+              "DAX Introduction",
+              "Calculated Measure, Calculated Column, Quick Measure and Calculated tables using DAX Functions",
+              "Time Intelligence Functions",
+              "Aggregation Functions",
+              "Logical Functions",
+              "Filter Functions",
+              "Text Functions",
+              "Table manipulation Functions",
+              "Bin and Grouping",
+              "Task"
+            ]
+          },
+          {
+            id: 7,
+            title: "Module 7: Filter",
+            icon: "bi bi-funnel",
+            items: [
+              "Filter Introduction",
+              "Types of Filters",
+              "Dimension Filter",
+              "Measure Filter",
+              "Date Filter",
+              "Drill through Filter",
+              "Top and Bottom filter",
+              "Basic Filter",
+              "Task"
+            ]
+          },
+          {
+            id: 8,
+            title: "Module 8: Insert Menu",
+            icon: "bi bi-plus-circle",
+            items: [
+              "Visuals",
+              "AI Visuals",
+              "Elements",
+              "Adding buttons",
+              "Task"
+            ]
+          },
+          {
+            id: 9,
+            title: "Module 9: View menu",
+            icon: "bi bi-eye",
+            items: [
+              "Themes and Customization",
+              "Page formatting options",
+              "Layouts",
+              "Page options in Power BI",
+              "Using Panes for Bookmark and selections",
+              "Performance Analysis",
+              "Sync Slicer",
+              "Report Optimisation",
+              "Apply All Slicers",
+              "Task"
+            ]
+          },
+          {
+            id: 10,
+            title: "Module 10: Format and Data Drill",
+            icon: "bi bi-hammer",
+            items: [
+              "Edit Interactions",
+              "Arrange Charts",
+              "Table view",
+              "Task"
+            ]
+          },
+          {
+            id: 11,
+            title: "Module 11: Charts",
+            icon: "bi bi-graph-up",
+            items: [
+              "Stacked and Column Charts",
+              "Trend Charts",
+              "Table and Matrix",
+              "Cards and Gauge",
+              "Slicer",
+              "Play Axis of Scatter chart",
+              "Funnel and geographical maps",
+              "Market Place",
+              "Task"
+            ]
+          },
+          {
+            id: 12,
+            title: "Module 12: Modelling",
+            icon: "bi bi-diagram-2",
+            items: [
+              "Parameter Introduction",
+              "What If for Projection",
+              "Parameter for measure selection",
+              "RLS",
+              "Q&A",
+              "Task"
+            ]
+          },
+          {
+            id: 13,
+            title: "Module 13: Power BI Services",
+            icon: "bi bi-cloud",
+            items: [
+              "Report Deployment",
+              "Manage Security",
+              "Manage Permissions",
+              "Gateway and Types",
+              "Installation of Gateways",
+              "Automate reports",
+              "Report share",
+              "Subscribe",
+              "Quick Insights",
+              "Various refresh options",
+              "Layout change",
+              "Dashboard",
+              "Configure Dashboard",
+              "Report editing in Power Bi services",
+              "Various Export options",
+              "Content packs",
+              "Task"
+            ]
+          }
         ],
         whatYouLearnData: [
           {
@@ -3263,54 +3577,242 @@ const coursesData = {
         courseContentData: [
           {
             id: 1,
-            title: "Tableau Basics",
+            title: "Module 1: Data warehouse Concepts",
             icon: "bi bi-book",
             defaultOpen: true,
             items: [
-              "Introduction to Tableau and its interface",
-              "Connecting Tableau to different data sources",
-              "Understanding dimensions, measures, and data types",
-              "Creating basic charts: bar, line, pie, scatter",
-              "Sorting, filtering, and grouping data"
+              "Introduction about DWC (Data warehousing Concepts)",
+              "Dimensions, Measures, Keys",
+              "Types of Dimensions",
+              "Types of Keys",
+              "Identifying Keys",
+              "Types of Joins",
+              "How to identify Fact and dimension tables",
+              "Schema introduction",
+              "Types of Schema",
+              "Task"
             ]
           },
           {
             id: 2,
-            title: "Data Handling & Calculations",
-            icon: "bi bi-database",
+            title: "Module 2: Business Intelligence",
+            icon: "bi bi-bar-chart",
             items: [
-              "Working with calculated fields",
-              "Using basic functions and aggregations",
-              "Understanding date and string calculations",
-              "Data blending and joins",
-              "Introduction to Tableau Prep"
+              "Introduction about Business Intelligence",
+              "Evolution of BI",
+              "Categories of BI",
+              "BI tools Comparisons",
+              "OLAP and OLTP concepts"
             ]
           },
           {
             id: 3,
-            title: "Visual Analytics",
-            icon: "bi bi-bar-chart-line",
+            title: "Module 3: Tableau Introduction",
+            icon: "bi bi-display",
             items: [
-              "Building interactive dashboards",
-              "Using parameters for dynamic visualizations",
-              "Advanced chart types: heat maps, bullet charts, treemaps",
-              "Storytelling with Tableau",
-              "Design best practices for dashboards"
+              "Tableau Introduction",
+              "Products of Tableau",
+              "Features of Tableau",
+              "Architecture of Tableau"
             ]
           },
           {
             id: 4,
-            title: "Advanced Analytics",
-            icon: "bi bi-gear",
+            title: "Module 4: Data connectivity",
+            icon: "bi bi-diagram-3",
             items: [
-              "Level of Detail (LOD) expressions",
-              "Table calculations",
-              "Trend lines, forecasting, and clustering",
-              "Advanced filtering and sets",
-              "Conditional formatting and dynamic visuals"
+              "Importing data to Tableau",
+              "Creating relationships",
+              "Manage relationships",
+              "Types of Joins",
+              "Star and Snowflake connectivity",
+              "Join using Composite Primary Key",
+              "Union",
+              "Data Interpreter",
+              "Task"
             ]
           },
-
+          {
+            id: 5,
+            title: "Module 5: Data Source",
+            icon: "bi bi-database",
+            items: [
+              "Data source tab Introduction",
+              "Handling multiple source",
+              "Types of connectivity",
+              "Settings in Data Source",
+              "Identify Dimension and Measure using colour.",
+              "Renaming fields",
+              "Pivot",
+              "Task"
+            ]
+          },
+          {
+            id: 6,
+            title: "Module 6: Sheet",
+            icon: "bi bi-file-earmark-spreadsheet",
+            items: [
+              "Sheet Introduction",
+              "Data tab overview",
+              "Create a calculated field for Dimension and Measure.",
+              "Understanding fields",
+              "Aggregation Functions",
+              "Date functions",
+              "String functions",
+              "Bin and Grouping",
+              "Effective usage of columns and rows",
+              "Task"
+            ]
+          },
+          {
+            id: 7,
+            title: "Module 7: Filter",
+            icon: "bi bi-funnel",
+            items: [
+              "Filter Introduction",
+              "Types of Filters",
+              "Data Source and Extract Filter",
+              "Conditional Filter",
+              "Dimension Filter",
+              "Measure Filter",
+              "Date Filter",
+              "Relative Date Filter",
+              "Relevant Value Filter",
+              "Context Filter",
+              "User Filter and Quick Filter",
+              "Top and Bottom filter",
+              "Global Filter",
+              "Set Filter and its types",
+              "Task"
+            ]
+          },
+          {
+            id: 8,
+            title: "Module 8: Parameter",
+            icon: "bi bi-sliders",
+            items: [
+              "Parameter Introduction",
+              "Steps to create parameter.",
+              "Use parameter for Dimension",
+              "Use parameter for Measure",
+              "Use parameter for Date",
+              "Use parameter for Sorting",
+              "Use parameter for filter Selection",
+              "Task"
+            ]
+          },
+          {
+            id: 9,
+            title: "Module 9: Data Blending and Marks",
+            icon: "bi bi-pie-chart",
+            items: [
+              "Data Blending Introduction",
+              "Join vs. Blend with practical example",
+              "Blending using multiple data source",
+              "Marks Introduction",
+              "Marks types",
+              "Effective usage of marks with practical scenarios",
+              "Task"
+            ]
+          },
+          {
+            id: 10,
+            title: "Module 10: Data and Worksheet menu",
+            icon: "bi bi-grid-3x3",
+            items: [
+              "Refresh Data Source",
+              "Data Source replacement",
+              "Edit Data source filters",
+              "Various options in Worksheet",
+              "Task"
+            ]
+          },
+          {
+            id: 11,
+            title: "Module 11: Charts – Show me",
+            icon: "bi bi-graph-up",
+            items: [
+              "Stacked and Column Charts",
+              "Trend Charts",
+              "Table and Matrix",
+              "Text and Highlight tables",
+              "Circle views and Area Charts",
+              "Treemaps of Scatter chart",
+              "geographical maps and its properties",
+              "Histogram and bubble Charts",
+              "Create custom visual charts using tricks",
+              "Task"
+            ]
+          },
+          {
+            id: 12,
+            title: "Module 12: LOD – Level of Details",
+            icon: "bi bi-layers",
+            items: [
+              "LOD Introduction",
+              "Types of LOD",
+              "Syntax",
+              "Coherent Analysis using LOD",
+              "Scenario questions and discussion related to LOD",
+              "Task"
+            ]
+          },
+          {
+            id: 13,
+            title: "Module 13: Analytics vs. Analysis",
+            icon: "bi bi-bar-chart-steps",
+            items: [
+              "Analytics – Summarise",
+              "Analytics – Model",
+              "Analytics – Forecasting",
+              "Custom Analytics",
+              "Various options in Analysis tab",
+              "Adding Totals, Grand totals, Row and Column totals",
+              "Control layout and table properties",
+              "Task"
+            ]
+          },
+          {
+            id: 14,
+            title: "Module 14: Dashboard",
+            icon: "bi bi-window-stack",
+            items: [
+              "Dashboard introduction",
+              "Objects",
+              "Dashboards for different devices",
+              "Size Adjustment",
+              "Dashboard layout",
+              "Formatting dashboard",
+              "Task"
+            ]
+          },
+          {
+            id: 15,
+            title: "Module 15: Story and Actions",
+            icon: "bi bi-journal-text",
+            items: [
+              "Story introduction",
+              "Creating Storyboard",
+              "Properties of Storyboard",
+              "Actions introductions",
+              "Types of Actions",
+              "Creating actions with practical scenarios",
+              "Discussion on effective usage of action in dashboard"
+            ]
+          },
+          {
+            id: 16,
+            title: "Module 16: Format menu and Annotate",
+            icon: "bi bi-pen",
+            items: [
+              "Various options in Format menu",
+              "Annotate values in charts",
+              "Types of Annotate",
+              "Performance tuning techniques",
+              "Order of Execution in Tableau",
+              "Various Export Options in Tableau"
+            ]
+          }
         ],
         whatYouLearnData: [
           {
@@ -3360,55 +3862,125 @@ const coursesData = {
         courseContentData: [
           {
             id: 1,
-            title: "SAS Fundamentals",
+            title: "SAS Base Course Curriculum",
             icon: "bi bi-book",
             defaultOpen: true,
             items: [
-              "Introduction to SAS and its applications",
-              "Installing and navigating SAS environment",
-              "Data types, variables, and datasets",
-              "Basic SAS programming syntax",
-              "Reading and writing datasets",
-              "Debugging and error handling"
+              <div key="base-1" className="mb-4">
+                <h6 className="fw-semibold text-dark mb-2">Module 1: Introduction to SAS</h6>
+                <p className="fw-medium mb-1">Introduction to SAS</p>
+                <ul className="list-disc pl-4">
+                  <li>Overview of SAS software and its applications.</li>
+                  <li>Understanding the SAS programming environment and interface.</li>
+                </ul>
+              </div>,
+              <div key="base-2" className="mb-4">
+                <h6 className="fw-semibold text-dark mb-2">Module 2: SAS Fundamentals</h6>
+                <p className="fw-medium mb-1">Data Step Programming</p>
+                <ul className="list-disc pl-4 mb-2">
+                  <li>Data step concepts: Reading and writing data.</li>
+                  <li>Understanding variables, data types, and arrays.</li>
+                </ul>
+                <p className="fw-medium mb-1">Data Manipulation</p>
+                <ul className="list-disc pl-4">
+                  <li>Data manipulation techniques: combining datasets, conditional processing.</li>
+                  <li>Using functions and informats to clean and transform data.</li>
+                </ul>
+              </div>,
+              <div key="base-3" className="mb-4">
+                <h6 className="fw-semibold text-dark mb-2">Module 3: Procedures in SAS</h6>
+                <p className="fw-medium mb-1">Working with Procedures</p>
+                <ul className="list-disc pl-4">
+                  <li>Utilizing PROC PRINT, PROC SORT, PROC FREQ for basic data analysis.</li>
+                  <li>Summary statistics and frequency distributions with PROC MEANS and PROC FREQ.</li>
+                </ul>
+              </div>,
+              <div key="base-4" className="mb-4">
+                <h6 className="fw-semibold text-dark mb-2">Module 4: SAS Programming Techniques</h6>
+                <p className="fw-medium mb-1">Reading and Writing External Files</p>
+                <ul className="list-disc pl-4 mb-2">
+                  <li>Importing and exporting data in different formats (CSV, Excel, etc.).</li>
+                  <li>Utilizing SAS data steps for file processing.</li>
+                </ul>
+                <p className="fw-medium mb-1">SAS Functions</p>
+                <ul className="list-disc pl-4">
+                  <li>Working with SAS functions for data manipulation and transformation.</li>
+                  <li>Understanding common functions and their applications.</li>
+                </ul>
+              </div>,
+              <div key="base-5" className="mb-4">
+                <h6 className="fw-semibold text-dark mb-2">Module 5: Advanced SAS Concepts</h6>
+                <p className="fw-medium mb-1">SAS Formats and Informats</p>
+                <ul className="list-disc pl-4 mb-2">
+                  <li>Utilizing SAS formats and informats for data conversion and reporting.</li>
+                  <li>Custom formats and informats creation.</li>
+                </ul>
+                <p className="fw-medium mb-1">Introduction to Macros</p>
+                <ul className="list-disc pl-4">
+                  <li>Basics of SAS macros, creating and using macros for automation.</li>
+                  <li>Understanding macro variables and macro programming.</li>
+                </ul>
+              </div>
             ]
           },
           {
             id: 2,
-            title: "Data Management in SAS",
-            icon: "bi bi-database",
-            items: [
-              "Data step basics and data manipulation",
-              "Sorting, merging, and concatenating datasets",
-              "Creating new variables and functions",
-              "Conditional logic and loops in SAS",
-              "Working with dates and character variables"
-            ]
-          },
-          {
-            id: 3,
-            title: "Advanced SAS Programming",
+            title: "SAS Advanced Course Curriculum",
             icon: "bi bi-gear",
             items: [
-              "SAS Macros for automation",
-              "SQL in SAS (PROC SQL)",
-              "Arrays, Do loops, and iterative processing",
-              "Advanced data manipulation techniques",
-              "Error handling and debugging best practices"
+              <div key="adv-1" className="mb-4">
+                <h6 className="fw-semibold text-dark mb-2">Module 1: Advanced SAS Programming Concepts</h6>
+                <p className="fw-medium mb-1">Review of Base SAS Concepts</p>
+                <ul className="list-disc pl-4 mb-2">
+                  <li>Brief recap of fundamental SAS programming techniques covered in the Base SAS certification course.</li>
+                </ul>
+                <p className="fw-medium mb-1">Advanced Data Manipulation Techniques</p>
+                <ul className="list-disc pl-4">
+                  <li>Complex data merging and manipulation using advanced DATA step programming.</li>
+                  <li>Using SQL in SAS for advanced data querying and manipulation.</li>
+                </ul>
+              </div>,
+              <div key="adv-2" className="mb-4">
+                <h6 className="fw-semibold text-dark mb-2">Module 2: Advanced Data Step Processing</h6>
+                <p className="fw-medium mb-1">Advanced Data Step Programming</p>
+                <ul className="list-disc pl-4">
+                  <li>Use of advanced array processing techniques for data manipulation.</li>
+                  <li>Leveraging hash objects and techniques for efficient data handling.</li>
+                </ul>
+              </div>,
+              <div key="adv-3" className="mb-4">
+                <h6 className="fw-semibold text-dark mb-2">Module 3: Advanced PROC SQL</h6>
+                <ul className="list-disc pl-4">
+                  <li>Complex SQL querying, subqueries, joins, and optimization techniques.</li>
+                  <li>Utilizing advanced PROC SQL features for data aggregation and transformation.</li>
+                </ul>
+              </div>,
+              <div key="adv-4" className="mb-4">
+                <h6 className="fw-semibold text-dark mb-2">Module 4: SAS Macro Language</h6>
+                <p className="fw-medium mb-1">Advanced Macro Programming</p>
+                <ul className="list-disc pl-4">
+                  <li>In-depth understanding of macro language features and applications.</li>
+                  <li>Macro debugging, stored compiled macros, and advanced macro programming.</li>
+                </ul>
+              </div>,
+              <div key="adv-5" className="mb-4">
+                <h6 className="fw-semibold text-dark mb-2">Module 5: Efficiency and Optimization</h6>
+                <p className="fw-medium mb-1">Performance Tuning and Optimization</p>
+                <ul className="list-disc pl-4">
+                  <li>Techniques for optimizing SAS code and improving performance.</li>
+                  <li>Efficient programming methods and resource management.</li>
+                </ul>
+              </div>,
+              <div key="adv-6" className="mb-4">
+                <h6 className="fw-semibold text-dark mb-2">Module 6: Integration and Automation</h6>
+                <p className="fw-medium mb-1">Integration with External Applications</p>
+                <ul className="list-disc pl-4">
+                  <li>Integrating SAS with other applications and languages.</li>
+                  <li>Automation and scheduling using SAS in batch processes.</li>
+                </ul>
+              </div>
             ]
-          },
-          {
-            id: 4,
-            title: "Data Analysis and Reporting",
-            icon: "bi bi-bar-chart-line",
-            items: [
-              "Descriptive statistics and summary reports",
-              "PROC MEANS, PROC FREQ, PROC UNIVARIATE",
-              "Data visualization using PROC SGPLOT & PROC REPORT",
-              "Generating automated reports",
-              "Introduction to statistical procedures"
-            ]
-          },
-
+          }
         ],
         whatYouLearnData: [
           {
@@ -3556,54 +4128,131 @@ const coursesData = {
         courseContentData: [
           {
             id: 1,
-            title: "Data Engineering Fundamentals",
+            title: "Module 1: Modern Data Engineering Foundations & Data Warehousing",
             icon: "bi bi-book",
             defaultOpen: true,
             items: [
-              "Introduction to Data Engineering",
-              "Data pipeline architecture and design patterns",
-              "ETL vs ELT processes",
-              "Data storage solutions (SQL, NoSQL, Data Lakes)",
-              "Data quality and validation techniques"
+              "Role And Responsibilities Of A Modern Data Engineer",
+              "Data Lifecycle: Ingestion, Processing, Storage, Analytics",
+              "Common Data Architecture Patterns (Lambda, Kappa)",
+              "Batch Vs Streaming Processing Systems",
+              "OLTP Vs OLAP Systems And Use Cases",
+              "Google Cloud Platform Overview",
+              "GCP Project Setup And Billing Basics",
+              "IAM Fundamentals And Service Accounts",
+              "Cloud Storage Buckets And Lifecycle Management"
             ]
           },
           {
             id: 2,
-            title: "Cloud-Based Data Solutions",
-            icon: "bi bi-cloud",
+            title: "Module 2: Python for Data Engineering",
+            icon: "bi bi-code",
             items: [
-              "Google Cloud Platform overview",
-              "BigQuery for data warehousing",
-              "Cloud Storage for data lakes",
-              "Cloud Pub/Sub for real-time data streaming",
-              "Cloud Dataflow for batch and stream processing"
+              "Python Fundamentals And Control Structures",
+              "Functions And Modular Programming",
+              "Object-Oriented Programming For Pipelines",
+              "Handling CSV, JSON, And Parquet Files",
+              "Local And Cloud Storage Integration",
+              "Logging Standards And Error Handling",
+              "Building Reusable Ingestion Frameworks"
             ]
           },
           {
             id: 3,
-            title: "Workflow Orchestration with Apache Airflow",
+            title: "Module 3: ETL Development & API Integration",
             icon: "bi bi-gear",
             items: [
-              "Introduction to Apache Airflow",
-              "DAGs, tasks, and operators",
-              "Scheduling and monitoring workflows",
-              "Integrating Airflow with cloud services",
-              "Best practices for workflow management"
+              "ETL Vs ELT Architectures",
+              "Schema Validation And Data Quality Checks",
+              "Handling Missing, Late, And Corrupt Data",
+              "Working With REST APIs And Authentication",
+              "Transformations Using Pandas",
+              "Introduction To PySpark",
+              "Automated ETL Workflows"
             ]
           },
           {
             id: 4,
-            title: "Data Engineering with Python & MySQL",
+            title: "Module 4: SQL for Data Engineering",
             icon: "bi bi-database",
             items: [
-              "Python for data engineering",
-              "MySQL database design and management",
-              "Building data pipelines with Python and MySQL",
-              "Data ingestion and transformation techniques",
-              "Performance optimization for data pipelines"
+              "Relational Database Fundamentals",
+              "Joins, Subqueries, And CTEs",
+              "Aggregations And Grouping Techniques",
+              "Query Performance Optimization Basics",
+              "Hands-On Analytical SQL Use Cases"
             ]
           },
-
+          {
+            id: 5,
+            title: "Module 5: Advanced SQL & Data Warehousing",
+            icon: "bi bi-layers",
+            items: [
+              "Window Functions And Analytical Queries",
+              "Star And Snowflake Schema Modeling",
+              "Fact And Dimension Table Design",
+              "Slowly Changing Dimensions (SCD)",
+              "Implementing SCD Type 2",
+              "Enterprise Data Warehouse Best Practices"
+            ]
+          },
+          {
+            id: 6,
+            title: "Module 6: BigQuery Deep Dive",
+            icon: "bi bi-search",
+            items: [
+              "BigQuery Architecture And Internals",
+              "Loading Data From Cloud Storage",
+              "Partitioning And Clustering Strategies",
+              "Query Execution Plan Analysis",
+              "Cost Optimization Techniques",
+              "Monitoring And Performance Tuning"
+            ]
+          },
+          {
+            id: 7,
+            title: "Module 7: Streaming with Pub/Sub & Dataflow",
+            icon: "bi bi-broadcast",
+            items: [
+              "Streaming Data Fundamentals",
+              "Pub/Sub Topics And Subscriptions",
+              "Message Ordering And Delivery Semantics",
+              "Apache Beam Programming Model",
+              "Windowing, Triggers, And Watermarks",
+              "Dataflow Pipeline Design",
+              "Streaming Data Ingestion Into BigQuery"
+            ]
+          },
+          {
+            id: 8,
+            title: "Module 8: Orchestration & Production Best Practices",
+            icon: "bi bi-cpu-fill",
+            items: [
+              "Workflow Orchestration Concepts",
+              "Apache Airflow Fundamentals",
+              "Cloud Composer Architecture",
+              "Building And Scheduling DAGs",
+              "Monitoring, Logging, And Alerting",
+              "Security And IAM Best Practices",
+              "CI/CD For Data Pipelines"
+            ]
+          },
+          {
+            id: 9,
+            title: "Module 9: Real-Time Project & Certification Preparation",
+            icon: "bi bi-award",
+            items: [
+              "Understanding Real-World Data Engineering Scenarios",
+              "Designing End-To-End Data Pipeline Architecture",
+              "Ingesting Data From APIs And File",
+              "Processing Data Using Python And Dataflow",
+              "Loading Curated Data Into BigQuery",
+              "Orchestrating Workflows Using Airflow",
+              "Performance And Cost Optimization",
+              "Documentation And Architecture Diagrams",
+              "Interview And Certification Discussion"
+            ]
+          }
         ],
         whatYouLearnData: [
           {
