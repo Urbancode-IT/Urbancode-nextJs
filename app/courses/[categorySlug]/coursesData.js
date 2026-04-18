@@ -1,3 +1,5 @@
+import React from 'react';
+
 const coursesData = {
   "Programming Languages": {
     mainCategoryDesc: "Build Your Tommorow with Code",
@@ -22,47 +24,234 @@ const coursesData = {
         courseContentData: [
           {
             id: 1,
-            title: "Java Fundamentals",
+            title: "Introduction to Java",
             icon: "bi bi-braces",
             defaultOpen: true,
             items: [
-              "Java environment setup",
-              "Syntax and data types",
-              "Control statements and operators",
-              "Arrays and strings"
+              <style>{`
+                details.curriculum-details[open] .plus-icon { display: none; }
+                details.curriculum-details[open] .minus-icon { display: inline; }
+                details.curriculum-details:not([open]) .plus-icon { display: inline; }
+                details.curriculum-details:not([open]) .minus-icon { display: none; }
+              `}</style>,
+              "Overview of Java",
+              "History of Java",
+              "Features of Java",
+              "Installing Java Development Kit (JDK)"
             ]
           },
           {
             id: 2,
-            title: "Object-Oriented Programming",
+            title: "Java Basics",
             icon: "bi bi-diagram-3",
             items: [
-              "Classes, objects, and methods",
-              "Constructors and overloading",
-              "Inheritance, polymorphism, abstraction, and encapsulation",
-              "Interfaces and packages"
+              "Writing your first Java program",
+              "Data types and variables"
             ]
           },
           {
             id: 3,
-            title: "Exception Handling & File I/O",
-            icon: "bi bi-file-earmark-text",
+            title: "Object-Oriented Programming (OOP)",
+            icon: "bi bi-layers",
             items: [
-              "Try, catch, and finally blocks",
-              "Custom exceptions",
-              "Working with files and buffers",
-              "Serialization basics"
+              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
+                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
+                  <span style={{ fontWeight: '600', color: '#333', fontSize: '0.95rem' }}>Classes and Objects</span>
+                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
+                    <span className="plus-icon">+</span>
+                    <span className="minus-icon">-</span>
+                  </div>
+                </summary>
+                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
+                  <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>Understand the fundamental building blocks of Java: state (fields) and behavior (methods) in objects.</p>
+                </div>
+              </details>,
+              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
+                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
+                  <span style={{ fontWeight: '600', color: '#333', fontSize: '0.95rem' }}>Inheritance</span>
+                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
+                    <span className="plus-icon">+</span>
+                    <span className="minus-icon">-</span>
+                  </div>
+                </summary>
+                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
+                  <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>Master code reusability and establishing relationships between parent and child classes.</p>
+                </div>
+              </details>,
+              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
+                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
+                  <span style={{ fontWeight: '600', color: '#333', fontSize: '0.95rem' }}>Polymorphism</span>
+                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
+                    <span className="plus-icon">+</span>
+                    <span className="minus-icon">-</span>
+                  </div>
+                </summary>
+                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
+                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
+                    <p style={{ margin: '0 0 8px 0' }}>1) Method-Overloading (Compile-time)</p>
+                    <p style={{ margin: 0 }}>2) Method-Overriding (Runtime)</p>
+                  </div>
+                </div>
+              </details>,
+              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
+                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
+                  <span style={{ fontWeight: '600', color: '#333', fontSize: '0.95rem' }}>Encapsulation</span>
+                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
+                    <span className="plus-icon">+</span>
+                    <span className="minus-icon">-</span>
+                  </div>
+                </summary>
+                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
+                  <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>Learn data hiding and protecting internal object state using access modifiers and getters/setters.</p>
+                </div>
+              </details>,
+              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
+                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
+                  <span style={{ fontWeight: '600', color: '#333', fontSize: '0.95rem' }}>Abstraction</span>
+                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
+                    <span className="plus-icon">+</span>
+                    <span className="minus-icon">-</span>
+                  </div>
+                </summary>
+                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
+                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
+                    <p style={{ margin: '0 0 8px 0' }}>1) Abstract classes (Partial abstraction)</p>
+                    <p style={{ margin: 0 }}>2) Interfaces (Full abstraction/Contracts)</p>
+                  </div>
+                </div>
+              </details>
             ]
           },
           {
             id: 4,
-            title: "Advanced Core Concepts",
-            icon: "bi bi-gear",
+            title: "Control, Selection, and Jumping Statements",
+            icon: "bi bi-arrow-repeat",
             items: [
-              "Multithreading and concurrency",
-              "Java Collection Framework",
-              "JDBC database connectivity",
-              "Introduction to JVM memory model"
+              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
+                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
+                  <span style={{ fontWeight: '600', color: '#333', fontSize: '0.95rem' }}>Control Statements (Loops)</span>
+                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
+                    <span className="plus-icon">+</span>
+                    <span className="minus-icon">-</span>
+                  </div>
+                </summary>
+                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
+                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
+                    <p style={{ margin: '0 0 8px 0' }}>- While Loop</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Do....While Loop</p>
+                    <p style={{ margin: 0 }}>- For and Nested For Loops</p>
+                  </div>
+                </div>
+              </details>,
+              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
+                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
+                  <span style={{ fontWeight: '600', color: '#333', fontSize: '0.95rem' }}>Selection Statements</span>
+                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
+                    <span className="plus-icon">+</span>
+                    <span className="minus-icon">-</span>
+                  </div>
+                </summary>
+                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
+                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
+                    <p style={{ margin: '0 0 8px 0' }}>- If Statement</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- If....else Statement</p>
+                    <p style={{ margin: 0 }}>- Else....if Ladder</p>
+                  </div>
+                </div>
+              </details>,
+              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
+                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
+                  <span style={{ fontWeight: '600', color: '#333', fontSize: '0.95rem' }}>Jumping Statements</span>
+                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
+                    <span className="plus-icon">+</span>
+                    <span className="minus-icon">-</span>
+                  </div>
+                </summary>
+                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
+                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
+                    <p style={{ margin: '0 0 8px 0' }}>- Break Statement</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Continue Statement</p>
+                    <p style={{ margin: 0 }}>- Switch Statement</p>
+                  </div>
+                </div>
+              </details>
+            ]
+          },
+          {
+            id: 5,
+            title: "Intermediate Concepts",
+            icon: "bi bi-mortarboard",
+            items: [
+              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
+                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
+                  <span style={{ fontWeight: '600', color: '#333', fontSize: '0.95rem' }}>Scanner and User Input</span>
+                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
+                    <span className="plus-icon">+</span>
+                    <span className="minus-icon">-</span>
+                  </div>
+                </summary>
+                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
+                  <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>Mastering the Scanner class to read different types of user inputs from the console.</p>
+                </div>
+              </details>,
+              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
+                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
+                  <span style={{ fontWeight: '600', color: '#333', fontSize: '0.95rem' }}>Typecasting</span>
+                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
+                    <span className="plus-icon">+</span>
+                    <span className="minus-icon">-</span>
+                  </div>
+                </summary>
+                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
+                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
+                    <p style={{ margin: '0 0 8px 0' }}>- Upcasting and Downcasting (Reference types)</p>
+                    <p style={{ margin: 0 }}>- Narrowing and Widening (Primitive types)</p>
+                  </div>
+                </div>
+              </details>,
+              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
+                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
+                  <span style={{ fontWeight: '600', color: '#333', fontSize: '0.95rem' }}>Arrays and Strings</span>
+                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
+                    <span className="plus-icon">+</span>
+                    <span className="minus-icon">-</span>
+                  </div>
+                </summary>
+                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
+                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
+                    <p style={{ margin: '0 0 8px 0' }}>- Array fundamentals and operations</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- String types (Immutable vs Mutable)</p>
+                    <p style={{ margin: 0 }}>- Essential String methods and manipulations</p>
+                  </div>
+                </div>
+              </details>,
+              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
+                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
+                  <span style={{ fontWeight: '600', color: '#333', fontSize: '0.95rem' }}>Collections and Keywords</span>
+                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
+                    <span className="plus-icon">+</span>
+                    <span className="minus-icon">-</span>
+                  </div>
+                </summary>
+                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
+                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
+                    <p style={{ margin: '0 0 8px 0' }}>- List, Set, and Map frameworks</p>
+                    <p style={{ margin: 0 }}>- Reserved Keywords and their specific uses in Java</p>
+                  </div>
+                </div>
+              </details>,
+              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
+                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
+                  <span style={{ fontWeight: '600', color: '#333', fontSize: '0.95rem' }}>Exception Handling</span>
+                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
+                    <span className="plus-icon">+</span>
+                    <span className="minus-icon">-</span>
+                  </div>
+                </summary>
+                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
+                  <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>Mastering try-catch blocks and error management to build robust applications.</p>
+                </div>
+              </details>
             ]
           }
         ],
@@ -672,10 +861,108 @@ const coursesData = {
       defaultOpen: true,
       items: [
         "Introduction to web development and full stack architecture",
-        "HTML5: structure and semantic elements",
-        "CSS3: styling, layout, and responsive design",
-        "JavaScript basics and DOM manipulation",
-        "Version control with Git and GitHub"
+        <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
+          <style>{`
+            details.curriculum-details[open] .plus-icon { display: none; }
+            details.curriculum-details[open] .minus-icon { display: inline; }
+            details.curriculum-details:not([open]) .plus-icon { display: inline; }
+            details.curriculum-details:not([open]) .minus-icon { display: none; }
+          `}</style>
+          <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
+            <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>HTML5: structure and semantic elements</span>
+            <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
+              <span className="plus-icon">+</span>
+              <span className="minus-icon">-</span>
+            </div>
+          </summary>
+          <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
+            <ul style={{ listStyleType: 'disc', paddingLeft: '20px', margin: 0, color: '#555', fontSize: '0.9rem' }}>
+              <li style={{ marginBottom: '8px' }}>Doctype, headings, paragraphs, text formatting</li>
+              <li style={{ marginBottom: '8px' }}>Links & images</li>
+              <li style={{ marginBottom: '8px' }}>Lists (ordered, unordered, definition)</li>
+              <li style={{ marginBottom: '8px' }}>Tables (with colspan/rowspan)</li>
+              <li style={{ marginBottom: '8px' }}>Forms & inputs (basic + HTML5 types like email, number, date)</li>
+              <li style={{ marginBottom: '8px' }}>Semantic elements (header, nav, section, article, footer, aside)</li>
+              <li style={{ marginBottom: '8px' }}>Multimedia (video, audio, iframe)</li>
+              <li style={{ marginBottom: '0' }}><strong>Practice:</strong> Build a multi-page portfolio structure with HTML only.</li>
+            </ul>
+          </div>
+        </details>,
+        <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
+          <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
+            <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>CSS (Styling & Layouts)</span>
+            <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
+              <span className="plus-icon">+</span>
+              <span className="minus-icon">-</span>
+            </div>
+          </summary>
+          <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
+            <ul style={{ listStyleType: 'disc', paddingLeft: '20px', margin: 0, color: '#555', fontSize: '0.9rem' }}>
+              <li style={{ marginBottom: '8px' }}>CSS Selectors, Colors, Backgrounds</li>
+              <li style={{ marginBottom: '8px' }}>Box Model: Margin, Border, Padding, Content</li>
+              <li style={{ marginBottom: '8px' }}>Display & Position: Block, Inline, Flex, Grid</li>
+              <li style={{ marginBottom: '8px' }}>Responsive Design: Media Queries</li>
+              <li style={{ marginBottom: '8px' }}>CSS Animations & Transitions</li>
+              <li style={{ marginBottom: '0' }}><strong>Practice:</strong> Create a responsive landing page layout.</li>
+            </ul>
+          </div>
+        </details>,
+        <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
+          <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
+            <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Bootstrap (Rapid UI Framework)</span>
+            <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
+              <span className="plus-icon">+</span>
+              <span className="minus-icon">-</span>
+            </div>
+          </summary>
+          <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
+            <ul style={{ listStyleType: 'disc', paddingLeft: '20px', margin: 0, color: '#555', fontSize: '0.9rem' }}>
+              <li style={{ marginBottom: '8px' }}>Bootstrap Grid System & Breakpoints</li>
+              <li style={{ marginBottom: '8px' }}>Layout Components: Container, Row, Col</li>
+              <li style={{ marginBottom: '8px' }}>Content Components: Cards, Modals, Navbars</li>
+              <li style={{ marginBottom: '8px' }}>Utilities: Spacing, Typography, Colors</li>
+              <li style={{ marginBottom: '0' }}><strong>Practice:</strong> Build a modern dashboard UI using Bootstrap.</li>
+            </ul>
+          </div>
+        </details>,
+        <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
+          <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
+            <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>JavaScript (ES6 & DOM)</span>
+            <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
+              <span className="plus-icon">+</span>
+              <span className="minus-icon">-</span>
+            </div>
+          </summary>
+          <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
+            <ul style={{ listStyleType: 'disc', paddingLeft: '20px', margin: 0, color: '#555', fontSize: '0.9rem' }}>
+              <li style={{ marginBottom: '8px' }}>Variables (let, const), Data Types, Operators</li>
+              <li style={{ marginBottom: '8px' }}>Functions, Scope, Closures</li>
+              <li style={{ marginBottom: '8px' }}>DOM Manipulation & Event Handling</li>
+              <li style={{ marginBottom: '8px' }}>ES6 Features: Arrow functions, Destructuring, Spread/Rest</li>
+              <li style={{ marginBottom: '8px' }}>Async/Await & Fetch API</li>
+              <li style={{ marginBottom: '0' }}><strong>Practice:</strong> Develop a dynamic To-Do List app.</li>
+            </ul>
+          </div>
+        </details>,
+        <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
+          <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
+            <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Angular (Frontend Framework)</span>
+            <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
+              <span className="plus-icon">+</span>
+              <span className="minus-icon">-</span>
+            </div>
+          </summary>
+          <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
+            <ul style={{ listStyleType: 'disc', paddingLeft: '20px', margin: 0, color: '#555', fontSize: '0.9rem' }}>
+              <li style={{ marginBottom: '8px' }}>Introduction to Angular Architecture</li>
+              <li style={{ marginBottom: '8px' }}>Components, Directives, Pipes</li>
+              <li style={{ marginBottom: '8px' }}>Services & Dependency Injection</li>
+              <li style={{ marginBottom: '8px' }}>Routing & Navigation</li>
+              <li style={{ marginBottom: '8px' }}>Observables & RxJS</li>
+              <li style={{ marginBottom: '0' }}><strong>Practice:</strong> Build a simple CRUD application with Angular.</li>
+            </ul>
+          </div>
+        </details>
       ]
     },
     {
@@ -4587,54 +4874,196 @@ const coursesData = {
         courseContentData: [
           {
             id: 1,
-            title: "Cybersecurity Fundamentals",
-            icon: "bi bi-shield",
+            title: "Basic Reconnaissance",
+            icon: "bi bi-search",
             defaultOpen: true,
             items: [
-              "Introduction to Cybersecurity and its importance",
-              "Types of cyber threats and attacks",
-              "Basic networking concepts",
-              "Security terminology and principles",
-              "Setting up a secure lab environment"
+              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
+                <style>{`
+                  .nict-curriculum-content ul { list-style-type: none !important; padding-left: 0 !important; }
+                  details.curriculum-details[open] .plus-icon { display: none; }
+                  details.curriculum-details[open] .minus-icon { display: inline; }
+                  details.curriculum-details:not([open]) .plus-icon { display: inline; }
+                  details.curriculum-details:not([open]) .minus-icon { display: none; }
+                `}</style>
+                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
+                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: Gathering information about potential targets without illegal intrusion.</span>
+                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
+                    <span className="plus-icon">+</span>
+                    <span className="minus-icon">-</span>
+                  </div>
+                </summary>
+                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
+                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
+                    <div style={{ marginBottom: '12px' }}>
+                      <p style={{ margin: '0 0 4px 0' }}><strong>Topic 1:</strong> What is Reconnaissance?</p>
+                      <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>Explain the concept of gathering information about potential targets without illegal intrusion.</p>
+                    </div>
+                    <div style={{ marginBottom: '0' }}>
+                      <p style={{ margin: '0 0 4px 0' }}><strong>Topic 2:</strong> Google Searching Skills.</p>
+                      <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>Teach how to use search engines to find information responsibly.</p>
+                    </div>
+                  </div>
+                </div>
+              </details>
             ]
           },
           {
             id: 2,
-            title: "Network Security",
-            icon: "bi bi-wifi",
+            title: "Phishing Awareness",
+            icon: "bi bi-envelope-exclamation",
             items: [
-              "Understanding firewalls and VPNs",
-              "Network protocols and services",
-              "Intrusion detection and prevention systems (IDS/IPS)",
-              "Packet sniffing and analysis",
-              "Securing routers and switches"
+              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
+                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
+                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: Understanding and recognizing phishing attempts.</span>
+                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
+                    <span className="plus-icon">+</span>
+                    <span className="minus-icon">-</span>
+                  </div>
+                </summary>
+                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
+                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
+                    <div style={{ marginBottom: '12px' }}>
+                      <p style={{ margin: '0 0 4px 0' }}><strong>Topic 1:</strong> Understanding Phishing.</p>
+                      <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>Explain what phishing is and how it works.</p>
+                    </div>
+                    <div style={{ marginBottom: '12px' }}>
+                      <p style={{ margin: '0 0 4px 0' }}><strong>Topic 2:</strong> Recognizing Phishing Attempts.</p>
+                      <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>Show examples of common phishing emails and websites.</p>
+                    </div>
+                    <div style={{ marginBottom: '0' }}>
+                      <p style={{ margin: '0 0 4px 0' }}><strong>Practice:</strong></p>
+                      <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>Hands-on Activity: Create a mock quiz to identify phishing emails or webpages.</p>
+                    </div>
+                  </div>
+                </div>
+              </details>
             ]
           },
           {
             id: 3,
-            title: "Ethical Hacking & Penetration Testing",
-            icon: "bi bi-hammer",
+            title: "Social Engineering and Phishing Attacks",
+            icon: "bi bi-people",
             items: [
-              "Reconnaissance and footprinting",
-              "Scanning and enumeration",
-              "Vulnerability assessment tools",
-              "Exploitation techniques",
-              "Reporting and documentation"
+              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
+                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
+                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: Defense tools and basic security settings.</span>
+                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
+                    <span className="plus-icon">+</span>
+                    <span className="minus-icon">-</span>
+                  </div>
+                </summary>
+                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
+                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
+                    <div style={{ marginBottom: '12px' }}>
+                      <p style={{ margin: '0 0 4px 0' }}><strong>Topic 1:</strong> Antivirus Software.</p>
+                      <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>Explain what antivirus software is and why it is important.</p>
+                    </div>
+                    <div style={{ marginBottom: '12px' }}>
+                      <p style={{ margin: '0 0 4px 0' }}><strong>Topic 2:</strong> Firewalls.</p>
+                      <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>Describe what firewalls do and basic settings.</p>
+                    </div>
+                    <div style={{ marginBottom: '0' }}>
+                      <p style={{ margin: '0 0 4px 0' }}><strong>Practice:</strong></p>
+                      <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>Hands-on Activity: Demonstrate the use of basic security tools on personal devices.</p>
+                    </div>
+                  </div>
+                </div>
+              </details>
             ]
           },
           {
             id: 4,
-            title: "Web Application Security",
-            icon: "bi bi-window",
+            title: "Introduction to Social Engineering",
+            icon: "bi bi-person-bounding-box",
             items: [
-              "OWASP Top 10 vulnerabilities",
-              "SQL injection and XSS attacks",
-              "Cross-Site Request Forgery (CSRF)",
-              "Secure coding practices",
-              "Web application penetration testing"
+              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
+                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
+                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: Protecting oneself from social engineering.</span>
+                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
+                    <span className="plus-icon">+</span>
+                    <span className="minus-icon">-</span>
+                  </div>
+                </summary>
+                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
+                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
+                    <div style={{ marginBottom: '12px' }}>
+                      <p style={{ margin: '0 0 4px 0' }}><strong>Topic 1:</strong> What is Social Engineering?</p>
+                      <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>Explain the concept and how it can be used both ethically and unethically.</p>
+                    </div>
+                    <div style={{ marginBottom: '12px' }}>
+                      <p style={{ margin: '0 0 4px 0' }}><strong>Topic 2:</strong> Protecting Against Social Engineering.</p>
+                      <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>Discuss basic strategies to protect oneself from social engineering attacks.</p>
+                    </div>
+                    <div style={{ marginBottom: '0' }}>
+                      <p style={{ margin: '0 0 4px 0' }}><strong>Practice:</strong></p>
+                      <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>Role-Playing Exercise: Simulate a simple social engineering scenario in a controlled environment.</p>
+                    </div>
+                  </div>
+                </div>
+              </details>
             ]
           },
-
+          {
+            id: 5,
+            title: "Introduction to Cryptography",
+            icon: "bi bi-lock",
+            items: [
+              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
+                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
+                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: Encrypting and decrypting messages.</span>
+                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
+                    <span className="plus-icon">+</span>
+                    <span className="minus-icon">-</span>
+                  </div>
+                </summary>
+                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
+                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
+                    <div style={{ marginBottom: '12px' }}>
+                      <p style={{ margin: '0 0 4px 0' }}><strong>Topic 1:</strong> Basics of Cryptography.</p>
+                      <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>Introduce simple cryptographic methods like Caesar cipher.</p>
+                    </div>
+                    <div style={{ marginBottom: '12px' }}>
+                      <p style={{ margin: '0 0 4px 0' }}><strong>Topic 2:</strong> Encrypting and Decrypting Messages.</p>
+                      <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>Teach basic encryption techniques and their applications.</p>
+                    </div>
+                    <div style={{ marginBottom: '0' }}>
+                      <p style={{ margin: '0 0 4px 0' }}><strong>Practice:</strong></p>
+                      <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>Hands-on Activity: Encrypt and decrypt simple messages using online tools or Python scripts.</p>
+                    </div>
+                  </div>
+                </div>
+              </details>
+            ]
+          },
+          {
+            id: 6,
+            title: "Cybersecurity Poster Campaign",
+            icon: "bi bi-megaphone",
+            items: [
+              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
+                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
+                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: Awareness through posters and presentations.</span>
+                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
+                    <span className="plus-icon">+</span>
+                    <span className="minus-icon">-</span>
+                  </div>
+                </summary>
+                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
+                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
+                    <div style={{ marginBottom: '12px' }}>
+                      <p style={{ margin: '0 0 4px 0' }}><strong>Topic 1:</strong> Project Overview.</p>
+                      <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>Students create informational posters on a specific cybersecurity topic (like password security or phishing) to teach their peers about staying safe online.</p>
+                    </div>
+                    <div style={{ marginBottom: '0' }}>
+                      <p style={{ margin: '0 0 4px 0' }}><strong>Practice:</strong></p>
+                      <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>Presentation: Allow students to present their posters in class or a school-wide cybersecurity awareness event.</p>
+                    </div>
+                  </div>
+                </div>
+              </details>
+            ]
+          }
         ],
         whatYouLearnData: [
           {
@@ -4685,51 +5114,43 @@ const coursesData = {
         "courseContentData": [
           {
             "id": 1,
-            "title": "Beginner – Cybersecurity Fundamentals",
+            "title": "Introduction to Cybersecurity",
             "icon": "bi bi-shield-lock",
             "defaultOpen": true,
             "items": [
-              "Introduction to ethical hacking and threat landscape",
-              "Legal, compliance, and ethical considerations",
-              "Security concepts: CIA triad, risk, vulnerabilities",
-              "Setting up a lab (Kali Linux, virtual machines)",
-              "Basic Linux commands and scripting for pentesters"
+              "Overview: What is cybersecurity and why is it important?",
+              "Ethical Hacking: Explain the role of ethical hackers in protecting systems and networks.",
+              "Cyber Ethics: Discuss the ethical boundaries and legal aspects of hacking.",
             ]
           },
           {
             "id": 2,
-            "title": "Beginner – Reconnaissance & Information Gathering",
+            "title": "Understanding Computers and Networks",
             "icon": "bi bi-people",
             "items": [
-              "Passive vs active reconnaissance",
-              "OSINT techniques and tools",
-              "Domain, subdomain, and infrastructure discovery",
-              "Email harvesting and footprinting",
-              "Mapping attack surface"
+              "Basic Concepts: Introduce basic computer and network concepts, including how the internet works.",
+              "Types of Networks: Differentiate between LAN, WAN, and the Internet.",
+              "Safety Practices: Teach safe internet usage practices to protect against common risks.",
             ]
           },
           {
             "id": 3,
-            "title": "Beginner – Scanning & Enumeration",
+            "title": "Creating a Safe Lab Environment",
             "icon": "bi bi-search",
             "items": [
-              "Port scanning with Nmap",
-              "Service and version detection",
-              "Vulnerability scanning basics",
-              "Banner grabbing and fingerprinting",
-              "Enumerating hosts, users, and shares"
+              "Virtual Machines: Introduction to virtual environments using tools like VirtualBox.",
+              "Setting Up a Safe Practice Area: Guide students on setting up a simple lab using safe and legal resources.",
             ]
           },
           {
             "id": 4,
-            "title": "Intermediate – Network & System Exploitation",
+            "title": "Password Security",
             "icon": "bi bi-diagram-3",
             "items": [
-              "Exploitation fundamentals and exploit development overview",
-              "Using Metasploit for exploits and payloads",
-              "Privilege escalation techniques",
-              "Post-exploitation: persistence and cleanup",
-              "Hands-on Windows and Linux exploitation labs"
+              "Importance of Strong Passwords: Discuss how passwords protect information and the consequences of weak passwords.",
+              "Creating Strong Passwords: Teach methods to create strong,memorable passwords.",
+              "Hands-on Activity: Use online tools to test the strength of different passwords (in a controlled setting).",
+              
             ]
           },
           
@@ -6547,52 +6968,536 @@ const coursesData = {
         "courseContentData": [
           {
             "id": 1,
-            "title": "Beginner – Salesforce Basics",
+            "title": "Introduction to Salesforce",
             "icon": "bi bi-book",
             "defaultOpen": true,
             "items": [
-              "Introduction to Salesforce and CRM concepts",
-              "Salesforce interface navigation",
-              "Understanding standard objects and fields",
-              "Creating and managing users",
-              "Setting up roles, profiles, and permissions"
+              "What is Cloud Computing?",
+              "Types of Cloud Computing Services with examples",
+              "Cloud Computing Architecture",
+              "What is Salesforce?",
+              "Services provided by Salesforce",
+              "What is CRM Process?",
+              "Kinds of Apps developed by Salesforce",
+              "Advantages of Salesforce",
+              "Employment opportunities with Salesforce"
             ]
           },
           {
             "id": 2,
-            "title": "Beginner – Data Management",
+            "title": "Production and Sandbox Environments",
             "icon": "bi bi-database",
             "items": [
-              "Managing data import and export",
-              "Data validation rules",
-              "Duplicate management",
-              "Understanding record types and page layouts"
+              "Production Environment",
+              "Types of Sandbox Environments",
+              "Registering with Developer Organization",
+              "Salesforce Terminology"
             ]
           },
           {
             "id": 3,
-            "title": "Intermediate – Automation & Workflow",
+            "title": "Creating a new Application",
             "icon": "bi bi-gear",
             "items": [
-              "Creating workflow rules and process builder",
-              "Automating approvals and tasks",
-              "Introduction to Flow Builder",
-              "Email alerts and notifications"
+              "Steps to create the Application",
+              "Different options involved while creating the object"
             ]
           },
           {
             "id": 4,
-            "title": "Intermediate – Reports & Dashboards",
+            "title": "Creating a Tab",
             "icon": "bi bi-bar-chart-line",
             "items": [
-              "Creating custom reports",
-              "Building dashboards for insights",
-              "Using filters, formulas, and summary reports",
-              "Sharing and scheduling reports"
+              "Steps to create the tab",
+              "Different options involved with the tab"
             ]
           },
-          
-          
+          {
+            "id": 5,
+            "title": "Creating Custom Fields",
+            "icon": "bi bi-plus-square",
+            "items": [
+              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
+                <style>{`
+                  .nict-curriculum-content ul { list-style-type: none !important; padding-left: 0 !important; }
+                  details.curriculum-details[open] .plus-icon { display: none; }
+                  details.curriculum-details[open] .minus-icon { display: inline; }
+                  details.curriculum-details:not([open]) .plus-icon { display: inline; }
+                  details.curriculum-details:not([open]) .minus-icon { display: none; }
+                `}</style>
+                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
+                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: Master custom field creation and dependencies.</span>
+                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
+                    <span className="plus-icon">+</span>
+                    <span className="minus-icon">-</span>
+                  </div>
+                </summary>
+                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
+                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
+                    <p style={{ margin: '0 0 8px 0' }}>- Different Data Types involved while creating custom fields</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Different options involved with custom fields</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Changing the Default Currency Type</p>
+                    <p style={{ margin: '0' }}>- Field Dependencies</p>
+                  </div>
+                </div>
+              </details>
+            ]
+          },
+          {
+            "id": 6,
+            "title": "Custom Validation Rules",
+            "icon": "bi bi-check-all",
+            "items": [
+              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
+                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
+                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: Configuring custom validations and formulas.</span>
+                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
+                    <span className="plus-icon">+</span>
+                    <span className="minus-icon">-</span>
+                  </div>
+                </summary>
+                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
+                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
+                    <p style={{ margin: '0 0 8px 0' }}>- Steps to configure custom validations</p>
+                    <p style={{ margin: '0' }}>- Different formula functions involved with custom validations</p>
+                  </div>
+                </div>
+              </details>
+            ]
+          },
+          {
+            "id": 7,
+            "title": "Search Layouts, Inline Editing, Enhanced List Views and Record Ids",
+            "icon": "bi bi-search",
+            "items": [
+              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
+                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
+                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: UI customization and record management.</span>
+                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
+                    <span className="plus-icon">+</span>
+                    <span className="minus-icon">-</span>
+                  </div>
+                </summary>
+                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
+                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
+                    <p style={{ margin: '0 0 8px 0' }}>- Enable more columns at tab level, search results level and look up dialog Level</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Working with inline editing</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Working with enhanced list views</p>
+                    <p style={{ margin: '0' }}>- Analyzing Record Ids of the components</p>
+                  </div>
+                </div>
+              </details>
+            ]
+          },
+          {
+            "id": 8,
+            "title": "Creating Relationships",
+            "icon": "bi bi-diagram-2",
+            "items": [
+              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
+                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
+                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: Understand data relationships and limits.</span>
+                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
+                    <span className="plus-icon">+</span>
+                    <span className="minus-icon">-</span>
+                  </div>
+                </summary>
+                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
+                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
+                    <p style={{ margin: '0 0 8px 0' }}>- Different Types of Relationships</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Creating a junction object</p>
+                    <p style={{ margin: '0' }}>- Governor Limits in Salesforce</p>
+                  </div>
+                </div>
+              </details>
+            ]
+          },
+          {
+            "id": 9,
+            "title": "Page Layouts and Mini Page Layouts",
+            "icon": "bi bi-layout-text-window",
+            "items": [
+              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
+                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
+                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: Customizing record page views.</span>
+                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
+                    <span className="plus-icon">+</span>
+                    <span className="minus-icon">-</span>
+                  </div>
+                </summary>
+                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
+                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
+                    <p style={{ margin: '0 0 8px 0' }}>- Different options available in page layout</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Steps to configure mini page layout</p>
+                    <p style={{ margin: '0' }}>- Adding Related Lists to Layout</p>
+                  </div>
+                </div>
+              </details>
+            ]
+          },
+          {
+            "id": 10,
+            "title": "Record Types",
+            "icon": "bi bi-tags",
+            "items": [
+              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
+                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
+                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: Managing multiple business processes.</span>
+                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
+                    <span className="plus-icon">+</span>
+                    <span className="minus-icon">-</span>
+                  </div>
+                </summary>
+                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
+                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
+                    <p style={{ margin: '0 0 8px 0' }}>- Steps to configure Record Types</p>
+                    <p style={{ margin: '0' }}>- Creating Record Types for standard objects</p>
+                  </div>
+                </div>
+              </details>
+            ]
+          },
+          {
+            "id": 11,
+            "title": "Field History Tracking and Activities",
+            "icon": "bi bi-clock-history",
+            "items": [
+              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
+                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
+                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: Auditing and task management.</span>
+                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
+                    <span className="plus-icon">+</span>
+                    <span className="minus-icon">-</span>
+                  </div>
+                </summary>
+                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
+                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
+                    <p style={{ margin: '0 0 8px 0' }}>- Steps to configure Field History Tracking</p>
+                    <p style={{ margin: '0' }}>- Steps to enable and creating activates</p>
+                  </div>
+                </div>
+              </details>
+            ]
+          },
+          {
+            "id": 12,
+            "title": "Security in Salesforce",
+            "icon": "bi bi-shield-lock",
+            "items": [
+              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
+                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
+                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: Master the Salesforce security model.</span>
+                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
+                    <span className="plus-icon">+</span>
+                    <span className="minus-icon">-</span>
+                  </div>
+                </summary>
+                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
+                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
+                    <p style={{ margin: '0 0 8px 0' }}>- Users in Salesforce and enabling Grant Login Access</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Profiles and Permission Sets</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Role Hierarchy</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- OWD (Organization Wide Defaults)</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Manual Sharing and Sharing Rules</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Purpose of Grant Access using Hierarchies</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Purpose of View All, Modify All, View All Data and Modify All Data</p>
+                    <p style={{ margin: '0' }}>- Apex Managed Sharing</p>
+                  </div>
+                </div>
+              </details>
+            ]
+          },
+          {
+            "id": 13,
+            "title": "Import Wizard and Data Loader",
+            "icon": "bi bi-cloud-arrow-up",
+            "items": [
+              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
+                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
+                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: Data migration and management tools.</span>
+                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
+                    <span className="plus-icon">+</span>
+                    <span className="minus-icon">-</span>
+                  </div>
+                </summary>
+                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
+                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
+                    <p style={{ margin: '0 0 8px 0' }}>- Difference between Import Wizard and Data Loader</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Generating Security Token and Maintaining IP range using Trusted IP</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Data Loader Settings</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Data Loader Operations</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Purpose of External Id</p>
+                    <p style={{ margin: '0' }}>- Purpose of Data Export</p>
+                  </div>
+                </div>
+              </details>
+            ]
+          },
+          {
+            "id": 14,
+            "title": "Workflow Rules",
+            "icon": "bi bi-lightning",
+            "items": [
+              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
+                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
+                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: Automating business tasks.</span>
+                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
+                    <span className="plus-icon">+</span>
+                    <span className="minus-icon">-</span>
+                  </div>
+                </summary>
+                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
+                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
+                    <p style={{ margin: '0 0 8px 0' }}>- Difference between evaluation criteria</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Difference between rule criteria</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Types of workflow actions</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Re-evaluation Criteria for Field Update</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Types of Email Templates</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Setting to enable Task Action</p>
+                    <p style={{ margin: '0' }}>- Different scenarios with Workflow Rules</p>
+                  </div>
+                </div>
+              </details>
+            ]
+          },
+          {
+            "id": 15,
+            "title": "Approval Process",
+            "icon": "bi bi-person-check",
+            "items": [
+              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
+                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
+                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: Multi-stage record approvals.</span>
+                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
+                    <span className="plus-icon">+</span>
+                    <span className="minus-icon">-</span>
+                  </div>
+                </summary>
+                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
+                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
+                    <p style={{ margin: '0 0 8px 0' }}>- Configuring Approval Process</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Different options available with Approval Process</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Creating custom hierarchy field</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Adding multiple steps to the approval process</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Purpose of Queues and steps to configure the Queue</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Difference between Queue and Public Group</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Working with the Queues</p>
+                    <p style={{ margin: '0' }}>- Approving the records from Email</p>
+                  </div>
+                </div>
+              </details>
+            ]
+          },
+          {
+            "id": 16,
+            "title": "Lightning Process Builder",
+            "icon": "bi bi-cpu",
+            "items": [
+              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
+                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
+                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: Modern visual automation.</span>
+                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
+                    <span className="plus-icon">+</span>
+                    <span className="minus-icon">-</span>
+                  </div>
+                </summary>
+                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
+                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
+                    <p style={{ margin: '0 0 8px 0' }}>- Options involved with Process Builder</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Advantages over Workflow Rules</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Disadvantages over Workflow Rules</p>
+                    <p style={{ margin: '0' }}>- Submitting the records for approval automatically</p>
+                  </div>
+                </div>
+              </details>
+            ]
+          },
+          {
+            "id": 17,
+            "title": "Reports and Dashboards",
+            "icon": "bi bi-graph-up",
+            "items": [
+              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
+                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
+                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: Data visualization and analytics.</span>
+                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
+                    <span className="plus-icon">+</span>
+                    <span className="minus-icon">-</span>
+                  </div>
+                </summary>
+                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
+                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
+                    <p style={{ margin: '0 0 8px 0' }}>- Different types of Reports</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Scheduling the Reports</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Creating the Dashboard</p>
+                    <p style={{ margin: '0' }}>- Different Components involved in Dashboard</p>
+                  </div>
+                </div>
+              </details>
+            ]
+          },
+          {
+            "id": 18,
+            "title": "Lead Generation",
+            "icon": "bi bi-people",
+            "items": [
+              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
+                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
+                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: Capturing leads and cases from web.</span>
+                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
+                    <span className="plus-icon">+</span>
+                    <span className="minus-icon">-</span>
+                  </div>
+                </summary>
+                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
+                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
+                    <p style={{ margin: '0 0 8px 0' }}>- Generating Web to Lead</p>
+                    <p style={{ margin: '0' }}>- Generating Web to Case</p>
+                  </div>
+                </div>
+              </details>
+            ]
+          },
+          {
+            "id": 19,
+            "title": "Rules on Leads and Cases",
+            "icon": "bi bi-list-check",
+            "items": [
+              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
+                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
+                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: Assignment and escalation rules.</span>
+                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
+                    <span className="plus-icon">+</span>
+                    <span className="minus-icon">-</span>
+                  </div>
+                </summary>
+                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
+                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
+                    <p style={{ margin: '0 0 8px 0' }}>- Assignment Rules</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Auto Responsive Rules</p>
+                    <p style={{ margin: '0' }}>- Escalation Rules</p>
+                  </div>
+                </div>
+              </details>
+            ]
+          },
+          {
+            "id": 20,
+            "title": "Logs",
+            "icon": "bi bi-file-text",
+            "items": [
+              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
+                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
+                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: Debugging and email logs.</span>
+                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
+                    <span className="plus-icon">+</span>
+                    <span className="minus-icon">-</span>
+                  </div>
+                </summary>
+                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
+                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
+                    <p style={{ margin: '0 0 8px 0' }}>- Debug Logs</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Debug Level</p>
+                    <p style={{ margin: '0' }}>- Email Log Files</p>
+                  </div>
+                </div>
+              </details>
+            ]
+          },
+          {
+            "id": 21,
+            "title": "Jobs",
+            "icon": "bi bi-briefcase",
+            "items": [
+              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
+                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
+                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: Monitoring background processes.</span>
+                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
+                    <span className="plus-icon">+</span>
+                    <span className="minus-icon">-</span>
+                  </div>
+                </summary>
+                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
+                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
+                    <p style={{ margin: '0 0 8px 0' }}>- Bulk Data Load Jobs</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Scheduled Jobs</p>
+                    <p style={{ margin: '0' }}>- Apex Jobs</p>
+                  </div>
+                </div>
+              </details>
+            ]
+          },
+          {
+            "id": 22,
+            "title": "Monitor",
+            "icon": "bi bi-display",
+            "items": [
+              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
+                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
+                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: System health and API monitoring.</span>
+                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
+                    <span className="plus-icon">+</span>
+                    <span className="minus-icon">-</span>
+                  </div>
+                </summary>
+                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
+                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
+                    <p style={{ margin: '0 0 8px 0' }}>- System Overview</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Time-Based Workflow</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- API Usage Notifications</p>
+                    <p style={{ margin: '0' }}>- Case Escalations</p>
+                  </div>
+                </div>
+              </details>
+            ]
+          },
+          {
+            "id": 23,
+            "title": "Email Administration",
+            "icon": "bi bi-envelope",
+            "items": [
+              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
+                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
+                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: Configuring organizational email settings.</span>
+                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
+                    <span className="plus-icon">+</span>
+                    <span className="minus-icon">-</span>
+                  </div>
+                </summary>
+                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
+                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
+                    <p style={{ margin: '0 0 8px 0' }}>- Deliverability</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Organization-Wide Addresses</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Compliance BCC Email</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Test Deliverability</p>
+                    <p style={{ margin: '0' }}>- Apex Exception Email</p>
+                  </div>
+                </div>
+              </details>
+            ]
+          },
+          {
+            "id": 24,
+            "title": "Domain Management",
+            "icon": "bi bi-globe",
+            "items": [
+              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
+                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
+                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: Setting up custom domains.</span>
+                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
+                    <span className="plus-icon">+</span>
+                    <span className="minus-icon">-</span>
+                  </div>
+                </summary>
+                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
+                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
+                    <p style={{ margin: '0 0 8px 0' }}>- My Domain</p>
+                    <p style={{ margin: '0' }}>- Domain</p>
+                  </div>
+                </div>
+              </details>
+            ]
+          }
         ],
         "whatYouLearnData": [
           {
@@ -6644,54 +7549,232 @@ const coursesData = {
         courseContentData: [
           {
             id: 1,
-            title: "Salesforce Fundamentals",
+            title: "Basics of Programming",
             icon: "bi bi-book",
             defaultOpen: true,
             items: [
-              "Introduction to Salesforce and CRM concepts",
-              "Salesforce platform overview",
-              "Objects, fields, and relationships",
-              "Salesforce data model and security",
-              "Introduction to Salesforce Lightning Experience",
+              "Comparing Natural and Formal Languages",
+              "Different types of Tokens",
+              "Types of statements to write a program",
+              "Data Types involved in Apex Language",
+              "Arithmetic and Logical Operators",
+              "Conditional Statements",
+              "Controlling / Looping Statements"
             ],
           },
           {
             id: 2,
-            title: "Salesforce Administration Basics",
+            title: "Introduction to Oops Concepts",
             icon: "bi bi-gear",
             items: [
-              "User management and profiles",
-              "Roles, permissions, and sharing rules",
-              "Reports and dashboards",
-              "Data import/export and validation rules",
-              "Workflow rules and process automation basics",
+              "Encapsulation",
+              "Abstraction",
+              "Polymorphism",
+              "Inheritance"
             ],
           },
           {
             id: 3,
-            title: "Apex Programming",
+            title: "Exception Handling",
             icon: "bi bi-code-slash",
             items: [
-              "Apex classes and triggers",
-              "SOQL and SOSL queries",
-              "Exception handling and testing",
-              "Asynchronous Apex (Future, Queueable, Batch Apex)",
-              "Best practices for Apex development",
+              "Caught Exceptions",
+              "Uncaught Exceptions"
             ],
           },
           {
             id: 4,
-            title: "Visualforce & Lightning",
+            title: "Working with Eclipse",
             icon: "bi bi-window",
             items: [
-              "Building Visualforce pages",
-              "Introduction to Lightning Components",
-              "Lightning App Builder and UI customization",
-              "Custom Lightning components with Apex controllers",
-              "Deploying and managing Lightning apps",
+              "Creating Projects and capturing components from the Server"
             ],
           },
-          
+          {
+            id: 5,
+            title: "Collections",
+            icon: "bi bi-collection",
+            items: [
+              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
+                <style>{`
+                  .nict-curriculum-content ul { list-style-type: none !important; padding-left: 0 !important; }
+                  details.curriculum-details[open] .plus-icon { display: none; }
+                  details.curriculum-details[open] .minus-icon { display: inline; }
+                  details.curriculum-details:not([open]) .plus-icon { display: inline; }
+                  details.curriculum-details:not([open]) .minus-icon { display: none; }
+                `}</style>
+                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
+                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: Master Apex collection types and debugging.</span>
+                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
+                    <span className="plus-icon">+</span>
+                    <span className="minus-icon">-</span>
+                  </div>
+                </summary>
+                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
+                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
+                    <p style={{ margin: '0 0 8px 0' }}>- List</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Set</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Map</p>
+                    <p style={{ margin: '0' }}>- Working with Debug Logs</p>
+                  </div>
+                </div>
+              </details>
+            ],
+          },
+          {
+            id: 6,
+            title: "SOQL and SOSL Queries",
+            icon: "bi bi-search",
+            items: [
+              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
+                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
+                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: Advanced data retrieval and queries.</span>
+                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
+                    <span className="plus-icon">+</span>
+                    <span className="minus-icon">-</span>
+                  </div>
+                </summary>
+                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
+                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
+                    <p style={{ margin: '0 0 8px 0' }}>- Different Tools used</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Writing simple SOQL queries</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Using Order by, Group by and Aggregate functions</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Difference between Limit and Offset</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Fetching Parent Object Information from the Child Object</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Fetching Child Object records from the Parent Object</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Writing SOSL Queries</p>
+                    <p style={{ margin: '0' }}>- Governor Limits for the queries</p>
+                  </div>
+                </div>
+              </details>
+            ],
+          },
+          {
+            id: 7,
+            title: "DML Statements",
+            icon: "bi bi-database-up",
+            items: [
+              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
+                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
+                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: Master data manipulation and error handling.</span>
+                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
+                    <span className="plus-icon">+</span>
+                    <span className="minus-icon">-</span>
+                  </div>
+                </summary>
+                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
+                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
+                    <p style={{ margin: '0 0 8px 0' }}>- Insert, Update, Delete and Undelete</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Difference between Insert and Database.insert</p>
+                    <p style={{ margin: '0' }}>- Difference between Update and Database.update</p>
+                  </div>
+                </div>
+              </details>
+            ],
+          },
+          {
+            id: 8,
+            title: "Apex Triggers",
+            icon: "bi bi-lightning-charge",
+            items: [
+              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
+                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
+                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: Automated database logic and best practices.</span>
+                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
+                    <span className="plus-icon">+</span>
+                    <span className="minus-icon">-</span>
+                  </div>
+                </summary>
+                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
+                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
+                    <p style={{ margin: '0 0 8px 0' }}>- Difference between Workflow Rules and Apex Triggers</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Difference between Before mode and After mode</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Trigger Events</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Trigger Context Variables</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Trigger Collections and availability for the different events</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Trigger Best Practices</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Developing Triggers by taking different scenarios</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Avoiding Recursive Triggers</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Avoiding Mixed DML Operation Error</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Purpose of Future method in Apex</p>
+                    <p style={{ margin: '0' }}>- Order of execution in Salesforce</p>
+                  </div>
+                </div>
+              </details>
+            ],
+          },
+          {
+            id: 9,
+            title: "Batch Apex Classes",
+            icon: "bi bi-stack",
+            items: [
+              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
+                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
+                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: Large-scale data processing.</span>
+                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
+                    <span className="plus-icon">+</span>
+                    <span className="minus-icon">-</span>
+                  </div>
+                </summary>
+                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
+                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
+                    <p style={{ margin: '0 0 8px 0' }}>- Developing Batch Classes</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Purpose of Database.stateful</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Scheduling the Batch Class through user interface</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Scheduling the Batch Class Programmatically</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Monitoring Batch Jobs</p>
+                    <p style={{ margin: '0' }}>- Monitoring Schedulable Jobs</p>
+                  </div>
+                </div>
+              </details>
+            ],
+          },
+          {
+            id: 10,
+            title: "Visualforce Pages",
+            icon: "bi bi-window-stack",
+            items: [
+              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
+                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
+                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: Custom UI development and performance.</span>
+                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
+                    <span className="plus-icon">+</span>
+                    <span className="minus-icon">-</span>
+                  </div>
+                </summary>
+                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
+                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
+                    <p style={{ margin: '0 0 8px 0' }}>- Types of Controllers</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Creating Login App by using Standard Controller and Custom Controller</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Static Resources</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Displaying Error Messages on VF Page</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- StandardController - Displaying multiple records using RecordSetVar</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- CustomController - Displaying multiple records by fetching from the database</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Types of Tables available in Visualforce</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Pagination using StandardSetController</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Pagination using Limit and Offset</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Getting the governor limits dynamically using Limits Class</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Usage of the Custom Labels in Salesforce</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Displaying List of records with Wrapper Class</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Custom Settings in Salesforce</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Rendered, Rerender, RenderAs and contentType usage</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Ajax Functions with different examples</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Overriding the Standard and Custom Buttons with Visualforce Pages</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Inline Visualforce Pages</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Usage of immediate keyword</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Passing the parameters between the Visualforce pages</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Using retURL and saveURL</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- View State of VF Page and improving the performance of the view state</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Difference between System Mode and User Mode</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Difference between with sharing and without sharing</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Visualforce Components</p>
+                    <p style={{ margin: '0 0 8px 0' }}>- Visualforce and the order of execution</p>
+                    <p style={{ margin: '0' }}>- Providing Security for Apex Classes and Visualforce Pages</p>
+                  </div>
+                </div>
+              </details>
+            ],
+          }
         ],
         whatYouLearnData: [
           {
@@ -6961,12 +8044,37 @@ const coursesData = {
             icon: "bi bi-layers",
             defaultOpen: true,
             items: [
-              "SharePoint as a Data Source: Lists vs. Libraries",
-              "Understanding Column Types & Data Structures",
-              "Introduction to Power Platform Ecosystem",
-              "Automated, Instant, and Scheduled Flows",
-              "Microsoft Copilot & Templates usage",
-              "Practice: Document upload notification system"
+              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
+                <style>{`
+                  details.curriculum-details[open] .plus-icon { display: none; }
+                  details.curriculum-details[open] .minus-icon { display: inline; }
+                  details.curriculum-details:not([open]) .plus-icon { display: inline; }
+                  details.curriculum-details:not([open]) .minus-icon { display: none; }
+                `}</style>
+                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
+                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: Understand the interface, triggers, and building simple A-to-B flows.</span>
+                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
+                    <span className="plus-icon">+</span>
+                    <span className="minus-icon">-</span>
+                  </div>
+                </summary>
+                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
+                  <ul style={{ listStyleType: 'disc', paddingLeft: '20px', margin: 0, color: '#555', fontSize: '0.9rem' }}>
+                    <li style={{ marginBottom: '8px' }}><strong>Topic 1:</strong> SharePoint as a Data Source.</li>
+                    <li style={{ marginBottom: '8px', color: '#666', fontSize: '0.85rem' }}>Lists vs. Libraries: When to use each (Structured data vs. Document management).</li>
+                    <li style={{ marginBottom: '8px', color: '#666', fontSize: '0.85rem' }}>Column Types: Understanding Choice, Date, Person, and Lookup columns (and why "Multiple lines of text" can be tricky in flows).</li>
+                    <li style={{ marginBottom: '8px', marginTop: '12px' }}><strong>Topic 2:</strong> The Big Picture.</li>
+                    <li style={{ marginBottom: '8px', color: '#666', fontSize: '0.85rem' }}>Introduction to the Power Platform ecosystem. Explain the difference between Automated, Instant, and Scheduled flows.</li>
+                    <li style={{ marginBottom: '8px', marginTop: '12px' }}><strong>Topic 3:</strong> Copilot & Templates.</li>
+                    <li style={{ marginBottom: '8px', color: '#666', fontSize: '0.85rem' }}>Teaching how to use Microsoft Copilot to describe a flow in natural language.</li>
+                    <li style={{ marginBottom: '8px', marginTop: '12px' }}><strong>Topic 4:</strong> SharePoint Integration (The Basics).</li>
+                    <li style={{ marginBottom: '8px', color: '#666', fontSize: '0.85rem' }}>Triggers like When an item is created and actions like "Send an email (V2)."</li>
+                    <li style={{ marginBottom: '8px', marginTop: '12px' }}><strong>Practice:</strong></li>
+                    <li style={{ marginBottom: '0', color: '#666', fontSize: '0.85rem' }}>Build a flow that notifies a Teams channel whenever a new document is uploaded to a specific SharePoint folder.</li>
+                  </ul>
+                </div>
+              </details>,
+              
             ]
           },
           {
@@ -6974,11 +8082,35 @@ const coursesData = {
             title: "Logic, Loops, and Approvals",
             icon: "bi bi-diagram-2",
             items: [
-              "Conditional Logic (Condition & Switch actions)",
-              "The Approvals Connector: Basic vs. Custom",
-              "Working with Lists & Loops (Apply to Each)",
-              "Updating multiple SharePoint items",
-              "Practice: Leave Request system with Manager Approval"
+              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
+                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
+                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: Adding intelligence to flows using conditions and standard business processes.</span>
+                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
+                    <span className="plus-icon">+</span>
+                    <span className="minus-icon">-</span>
+                  </div>
+                </summary>
+                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
+                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
+                    <div style={{ marginBottom: '12px' }}>
+                      <p style={{ margin: '0 0 4px 0' }}><strong>Topic 1:</strong> Conditional Logic.</p>
+                      <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>Using the Condition (If/Yes/No) and Switch actions to handle different data values.</p>
+                    </div>
+                    <div style={{ marginBottom: '12px' }}>
+                      <p style={{ margin: '0 0 4px 0' }}><strong>Topic 2:</strong> The Approvals Connector.</p>
+                      <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>Mastering "Start and wait for an approval." Discussing the difference between Basic and Custom approvals.</p>
+                    </div>
+                    <div style={{ marginBottom: '12px' }}>
+                      <p style={{ margin: '0 0 4px 0' }}><strong>Topic 3:</strong> Working with Lists (Loops).</p>
+                      <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>Introduction to the Apply to Each loop and how to update multiple SharePoint items at once.</p>
+                    </div>
+                    <div style={{ marginBottom: '0' }}>
+                      <p style={{ margin: '0 0 4px 0' }}><strong>Practice:</strong></p>
+                      <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>Create a "Leave Request" system: User submits a SharePoint list item -&gt; Manager gets a Teams Approval -&gt; List status updates to "Approved" or "Rejected."</p>
+                    </div>
+                  </div>
+                </div>
+              </details>,
             ]
           },
           {
@@ -6986,11 +8118,35 @@ const coursesData = {
             title: "Data Manipulation & Expressions",
             icon: "bi bi-braces",
             items: [
-              "Introduction to WDL (Workflow Definition Language)",
-              "Expressions: utcNow(), formatDateTime(), variables",
-              "Data Operations: Compose, Select, and Filter Array",
-              "JSON Mastery & Parse JSON action",
-              "Practice: Weekly Digest flow with HTML table formatting"
+              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
+                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
+                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: Move beyond the Dynamic Content picker and start using formulas.</span>
+                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
+                    <span className="plus-icon">+</span>
+                    <span className="minus-icon">-</span>
+                  </div>
+                </summary>
+                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
+                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
+                    <div style={{ marginBottom: '12px' }}>
+                      <p style={{ margin: '0 0 4px 0' }}><strong>Topic 1:</strong> Introduction to WDL (Workflow Definition Language).</p>
+                      <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>Using basic expressions like utcNow(), formatDateTime(), and variables.</p>
+                    </div>
+                    <div style={{ marginBottom: '12px' }}>
+                      <p style={{ margin: '0 0 4px 0' }}><strong>Topic 2:</strong> Data Operations.</p>
+                      <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>Using Compose, Select, and Filter Array to clean data without using heavy loops.</p>
+                    </div>
+                    <div style={{ marginBottom: '12px' }}>
+                      <p style={{ margin: '0 0 4px 0' }}><strong>Topic 3:</strong> Input/Output Mastery.</p>
+                      <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>Handling JSON data and using the Parse JSON action to make external data usable.</p>
+                    </div>
+                    <div style={{ marginBottom: '0' }}>
+                      <p style={{ margin: '0 0 4px 0' }}><strong>Practice:</strong></p>
+                      <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>Build a "Weekly Digest" flow that finds all SharePoint items created in the last 7 days, filters for "High Priority" only, and emails a formatted HTML table to a supervisor.</p>
+                    </div>
+                  </div>
+                </div>
+              </details>,
             ]
           },
           {
@@ -6998,11 +8154,35 @@ const coursesData = {
             title: "Professionalism, Error Handling, and AI",
             icon: "bi bi-shield-check",
             items: [
-              "Error Handling (Try-Catch) & Configure Run After",
-              "Advanced SharePoint Integration",
-              "AI Builder: Extracting data from PDF/Invoices",
-              "Solutions & Governance naming conventions",
-              "Practice: Travel Expense Claim flow with AI receipt reading"
+              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
+                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
+                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: Building flows that don't break and following organization best practices.</span>
+                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
+                    <span className="plus-icon">+</span>
+                    <span className="minus-icon">-</span>
+                  </div>
+                </summary>
+                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
+                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
+                    <div style={{ marginBottom: '12px' }}>
+                      <p style={{ margin: '0 0 4px 0' }}><strong>Topic 1:</strong> Error Handling (Try-Catch).</p>
+                      <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>Using Configure Run After to send a notification if a flow fails.</p>
+                    </div>
+                    <div style={{ marginBottom: '12px' }}>
+                      <p style={{ margin: '0 0 4px 0' }}><strong>Topic 2:</strong> Advanced SharePoint & AI.</p>
+                      <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>Using AI Builder to extract data from an invoice (PDF) and save it to SharePoint.</p>
+                    </div>
+                    <div style={{ marginBottom: '12px' }}>
+                      <p style={{ margin: '0 0 4px 0' }}><strong>Topic 3:</strong> Solutions & Governance.</p>
+                      <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>Why we build inside Solutions and naming conventions (e.g., [Dept] - [Trigger] - [Action]).</p>
+                    </div>
+                    <div style={{ marginBottom: '0' }}>
+                      <p style={{ margin: '0 0 4px 0' }}><strong>Practice:</strong></p>
+                      <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>A "Travel Expense Claim" flow that uses AI to read a receipt, asks for approval if the amount is &gt;$100, and logs the final result in a SharePoint Archive.</p>
+                    </div>
+                  </div>
+                </div>
+              </details>,
             ]
           },
           {
@@ -7010,11 +8190,35 @@ const coursesData = {
             title: "The Professional Handoff (ALM)",
             icon: "bi bi-box-arrow-in-right",
             items: [
-              "The Container Concept: Solutions vs. My Flows",
-              "Connection References & Environment Variables",
-              "Managed vs. Unmanaged Solutions",
-              "ALM: Moving flows between Dev, Test, and Prod",
-              "Practice: Multi-environment export/import with dynamic URLs"
+              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
+                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
+                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: Learn how to move automations between environments (Dev → Test → Prod) and manage dependencies.</span>
+                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
+                    <span className="plus-icon">+</span>
+                    <span className="minus-icon">-</span>
+                  </div>
+                </summary>
+                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
+                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
+                    <div style={{ marginBottom: '12px' }}>
+                      <p style={{ margin: '0 0 4px 0' }}><strong>Topic 1:</strong> The Container Concept (Solutions).</p>
+                      <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>Why we don't use "My Flows." Creating a Solution and adding existing flows, SharePoint connection references, and environment variables.</p>
+                    </div>
+                    <div style={{ marginBottom: '12px' }}>
+                      <p style={{ margin: '0 0 4px 0' }}><strong>Topic 2:</strong> Exporting & Packaging.</p>
+                      <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>The difference between Managed (read only for Prod) and Unmanaged (editable for Dev) solutions. Checking for "Missing Dependencies" before exporting.</p>
+                    </div>
+                    <div style={{ marginBottom: '12px' }}>
+                      <p style={{ margin: '0 0 4px 0' }}><strong>Topic 3:</strong> Importing & Connection References.</p>
+                      <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>The Import process: Mapping connections to the new environment. Using Environment Variables so SharePoint Site URLs change automatically when moving from Dev to Prod.</p>
+                    </div>
+                    <div style={{ marginBottom: '0' }}>
+                      <p style={{ margin: '0 0 4px 0' }}><strong>Practice:</strong></p>
+                      <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>Export the "Travel Expense" flow from the Developer environment and successfully import it into a "Test" environment, ensuring all SharePoint links update correctly without manual editing.</p>
+                    </div>
+                  </div>
+                </div>
+              </details>,
             ]
           }
         ],

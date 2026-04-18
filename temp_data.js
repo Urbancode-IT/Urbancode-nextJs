@@ -4947,7 +4947,7 @@ const coursesData = {
         "courseContentData": [
           {
             "id": 1,
-            "title": "Beginner – Cybersecurity Fundamentals",
+            "title": "Introduction to Cybersecurity",
             "icon": "bi bi-shield-lock",
             "defaultOpen": true,
             "items": [
