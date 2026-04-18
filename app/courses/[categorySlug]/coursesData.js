@@ -4103,7 +4103,7 @@ const coursesData = {
             icon: "bi bi-display",
             items: [
               "Power BI Introduction",
-              "Components of Power BI",
+              "Component of Power BI",
               "Architecture of Power BI"
             ]
           },
