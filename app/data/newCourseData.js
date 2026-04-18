@@ -508,6 +508,41 @@ export const newCourseData = {
                     </p>
                 )
             },
+            {
+                id: 18,
+                title: "AI TOOLS FOR MODERN DEVELOPERS",
+                content: (
+                    <p>
+                        In addition to MERN stack development, students will learn to use powerful AI tools that improve productivity, design, and coding efficiency.
+                    </p>
+                )
+            },
+            {
+                id: 19,
+                title: "AI TOOLS COVERED:",
+                content: (
+                    <ul>
+                        <li><strong>Claude</strong> - AI assistant for coding help, debugging, and documentation writing.</li>
+                        <li><strong>Vercel</strong> - AI-powered deployment platform for hosting and scaling full-stack applications.</li>
+                        <li><strong>Antigravity</strong> - AI development tool for faster coding workflows and automation.</li>
+                        <li><strong>Figma</strong> - AI-assisted UI/UX design tool to create modern website and app designs.</li>
+                        <li><strong>Miro</strong> - AI collaboration and brainstorming tool for planning projects, system design, and workflows.</li>
+                    </ul>
+                )
+            },
+            {
+                id: 20,
+                title: "WHAT STUDENTS WILL LEARN:",
+                content: (
+                    <ul>
+                        <li>Using AI for code generation and debugging</li>
+                        <li>Designing UI prototypes before development</li>
+                        <li>Deploying MERN applications using modern cloud tools</li>
+                        <li>Project planning and collaboration with AI tools</li>
+                        <li>Increasing developer productivity using AI workflows</li>
+                    </ul>
+                )
+            },
         ],
         toolsData: [
             { id: 1, name: "HTML", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" },
@@ -905,10 +940,10 @@ export const newCourseData = {
                 title: "Module-1: HTML, CSS, and Bootstrap",
                 content: (
                     <ul>
-                        <li>HTML Fundamentals: Structure, Semantic HTML5, Forms, Tables, and Multimedia.</li>
-                        <li>CSS Basics: Selectors, Box Model, Flexbox, Grid Layout, Animations, and Transitions.</li>
-                        <li>Bootstrap: Grid System, Breakpoints, Components (Navbar, Cards, Buttons, Forms).</li>
-                        <li>Responsive Design: Media Queries and Mobile-First Design Principles.</li>
+                        <li>HTML Fundamentals: Structure of an HTML Document,Semantic HTML5, Forms, Tables, and Multimedia</li>
+                        <li>CSS Basics: Selectors, Box Model, Flexbox, Grid Layout,Styling Forms, Animations, and Transitions</li>
+                        <li>Bootstrap: Grid System and Breakpoints, Components(Navbar, Cards, Buttons, Forms), Customizing Themes</li>
+                        <li>Bootstrap: Grid System and Breakpoints, Components(Navbar, Cards, Buttons, Forms), Customizing Themes</li>
                     </ul>
                 )
             },
@@ -917,11 +952,11 @@ export const newCourseData = {
                 title: "Module-2: Angular Framework",
                 content: (
                     <ul>
-                        <li>Introduction to Angular: SPA Overview, Project Setup, and Architecture.</li>
-                        <li>Forms in Angular: Template-Driven and Reactive Forms, Validation and Error Handling.</li>
-                        <li>Angular Material: Material Design Components, Dialogs, Tables, and Theme Customization.</li>
-                        <li>Routing and Navigation: Routes, Lazy Loading, and Router Guards.</li>
-                        <li>CRUD Operations: Consuming REST APIs and building a CRUD Application.</li>
+                        <li>Introduction to Angular: SPA (Single Page Application)Overview, Setting up an Angular Project, Angular Architecture (Modules, Components, Templates)</li>
+                        <li>Forms in Angular: Template-Driven and Reactive Forms,Validation and Error Handling</li>
+                        <li>Angular Material: Material Design Components, Navigation,Dialogs, Tables, and Theme Customization</li>
+                        <li>Routing and Navigation: Setting up Routes and Lazy Loading,Router Guards</li>
+                        <li>CRUD Operations: Consuming REST APIs, Creating a CRUD Application with Angular and APIs</li>
                     </ul>
                 )
             },
@@ -930,9 +965,9 @@ export const newCourseData = {
                 title: "Module-3: C# Programming",
                 content: (
                     <ul>
-                        <li>Basics: Variables, Data Types, Control Structures (If, Switch, Loops), and Methods.</li>
-                        <li>OOP: Classes, Objects, Inheritance, Polymorphism, Abstraction, and Interfaces.</li>
-                        <li>Advanced C#: Delegates, Events, Lambda Expressions, Exception Handling, and LINQ.</li>
+                        <li>Basics: Variables, Data Types, Control Structures (If, Switch, Loops), Methods and Functions.</li>
+                        <li>Object-Oriented Programming: Classes, Objects, and Constructors, Inheritance, Polymorphism, Abstraction,Interfaces</li>
+                        <li>Advanced C#: Delegates, Events, and Lambda Expressions,Exception Handling, LINQ (Language Integrated Query)</li>
                     </ul>
                 )
             },
@@ -941,10 +976,11 @@ export const newCourseData = {
                 title: "Module-4: .NET Core 8",
                 content: (
                     <ul>
-                        <li>Introduction to .NET Core: Overview of .NET Core 8.</li>
-                        <li>Web API Projects: Setting up a Web API Project in .NET Core.</li>
-                        <li>RESTful APIs: Controllers, Routing, and HTTP Methods (GET, POST, PUT, DELETE).</li>
-                        <li>Dependency Injection and Middleware in .NET Core.</li>
+                        <li>Introduction to .NET Core: Overview of .NET Core 8, Setting up a Web API Project in .NET Core</li>
+                        <li>RESTful APIs: Creating Controllers and Routes, Handling HTTPMethods (GET, POST, PUT, DELETE), Dependency Injection in .NET Core</li>
+                        <li>Middleware in .NET Core: Custom Middleware, Authentication and Authorization (JWT)</li>
+                        <li>Working with Configuration and Services</li>
+                        <li>Error Handling and Logging</li>
                     </ul>
                 )
             },
@@ -953,10 +989,10 @@ export const newCourseData = {
                 title: "Module-5: Entity Framework Core",
                 content: (
                     <ul>
-                        <li>EF Core Fundamentals: Code-First and Database-First Approaches, Setting up DbContext.</li>
-                        <li>Entity Relationships: One-to-One, One-to-Many, and Many-to-Many.</li>
-                        <li>Migrations: Creating and Applying Migrations, Updating Database Schema.</li>
-                        <li>CRUD with EF Core: Data Manipulation and Retrieval.</li>
+                        <li>Introduction to Entity Framework Core: Code-First and Database-First Approaches, Setting up DbContext</li>
+                        <li>Entity Relationships: One-to-One, One-to-Many, and Many-to-Many, Navigational Properties</li>
+                        <li>Migrations: Creating and Applying Migrations, Updating the Database Schema</li>
+                        <li>CRUD Operations with Entity Framework Core: Adding, Updating, Deleting, and Retrieving Data</li>
                     </ul>
                 )
             },
@@ -965,11 +1001,10 @@ export const newCourseData = {
                 title: "Module-6: SQL Server",
                 content: (
                     <ul>
-                        <li>Intro to SQL Server: Installation, Configuration, and SSMS usage.</li>
-                        <li>SQL Basics: DDL, DML, and DQL Statements (SELECT, INSERT, UPDATE, DELETE).</li>
-                        <li>Advanced SQL: Joins (INNER, OUTER, LEFT, RIGHT), Subqueries, and CTEs.</li>
-                        <li>Database Design: Normalization, Relational Design, and Key Constraints.</li>
-                        <li>Stored Procedures, Functions, Triggers, and Indexing.</li>
+                        <li>Introduction to SQL Server: Installing and Configuring SQL Server, SQL Server Management Studio (SSMS)</li>
+                        <li>SQL Basics: DDL, DML, and DQL Statements, Creating and Managing Tables, Writing Queries (SELECT, INSERT, UPDATE, DELETE)</li>
+                        <li>Advanced SQL: Joins (INNER, OUTER, LEFT, RIGHT), Subqueries and Common Table Expressions (CTEs), Stored Procedures and Functions, Triggers and Indexing</li>
+                        <li>Database Design: Normalization and Denormalization, Designing Relational Databases, Creating Relationships with Primary and Foreign Keys</li>
                     </ul>
                 )
             },
@@ -978,10 +1013,10 @@ export const newCourseData = {
                 title: "Module-7: Full-Stack Integration",
                 content: (
                     <ul>
-                        <li>Full-Stack Application: Building a Complete System (E-Commerce or Task Management).</li>
-                        <li>Integration: Consuming .NET Core APIs via Angular with SQL Server persistence.</li>
-                        <li>Security: JWT-Based Authentication in .NET Core and Protected Routes in Angular.</li>
-                        <li>Real-Time Updates: SignalR Integration (optional).</li>
+                        <li>Building a Complete Full-Stack Application: Example (E-Commerce or Task Management System)</li>
+                        <li>Integration: Using Angular to Consume .NET Core APIs, Persisting Data in SQL Server via Entity Framework</li>
+                        <li>Authentication and Authorization: JWT-Based Authentication in .NET Core, Protecting Routes in Angular</li>
+                        <li>Real-Time Updates: SignalR Integration (optional)</li>
                     </ul>
                 )
             },
@@ -990,9 +1025,8 @@ export const newCourseData = {
                 title: "Module-8: Deployment",
                 content: (
                     <ul>
-                        <li>Hosting: Deploying Angular on Firebase/Netlify.</li>
-                        <li>Backend Hosting: Deploying .NET Core APIs on Azure or IIS.</li>
-                        <li>Database Management: Backing up and Restoring Databases in SQL Server.</li>
+                        <li>Deploying the Application: Hosting Angular on Firebase/Netlify, Hosting .NET Core APIs on Azure or IIS</li>
+                        <li>Database Management: Backing up and Restoring Databases in SQL Server</li>
                     </ul>
                 )
             },
@@ -1001,18 +1035,22 @@ export const newCourseData = {
                 title: "Module-9: Capstone Project",
                 content: (
                     <ul>
-                        <li>Final Project: Online Store / Employee Management / LMS.</li>
-                        <li>Integrating all technologies: Angular, .NET Core, EF, and SQL Server.</li>
+                        <li>Develop a Full-Stack Application integrating Angular,.NET Core, Entity Framework, and SQL Server.</li>
+                        <li>Example Projects: Online Store, Employee Management System, Learning Management System</li>
                     </ul>
                 )
             },
             {
                 id: 11,
-                title: "CHALLENGES AND INTERACTIVE LEARNING",
+                title: "Course Duration",
                 content: (
-                    <p>
-                        Hands-on real-world learning with engaging challenges, instant feedback, and group collaborations to build professional-grade applications.
-                    </p>
+                    <ul>
+                    <li>Total Duration: 16 to 20 weeks</li>
+                    <li>Front-End: 6-8 weeks</li>
+                    <li>Back-End (C#, .NET Core, Entity Framework): 6-8 weeks</li>
+                    <li>Database (SQL Server): 3-4 weeks</li>
+                    <li>Project Development: 2-4 weeks</li>
+                    </ul>
                 )
             }
         ],

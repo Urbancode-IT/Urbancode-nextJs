@@ -26,6 +26,7 @@ export default function SingleCoursepage({ params }) {
   // --- Curriculum State ---
   const [curriculumActiveIndex, setCurriculumActiveIndex] = useState(null);
   const [curriculumPage, setCurriculumPage] = useState(0);
+  const [openNestedItems, setOpenNestedItems] = useState({});
   const itemsPerPage = 5;
 
   // Check if this course should use the new layout
@@ -63,6 +64,14 @@ export default function SingleCoursepage({ params }) {
       setCurriculumPage(curriculumPage + 1);
       setCurriculumActiveIndex(null);
     }
+  };
+
+  const toggleNestedItem = (parentIndex, childIndex) => {
+    const key = `${parentIndex}-${childIndex}`;
+    setOpenNestedItems((prev) => ({
+      ...prev,
+      [key]: !prev[key],
+    }));
   };
 
   const handleCurriculumPrev = () => {
@@ -243,9 +252,132 @@ export default function SingleCoursepage({ params }) {
                             <div className="nict-curriculum-collapse">
                                 <div className="nict-curriculum-content">
                                   <ul className="mb-0 ps-3">
-                                    {item.items.map((subitem, i) => (
-                                      <li key={i} className="mb-1 lh-base">{subitem}</li>
-                                    ))}
+                                    {item.items.map((subitem, i) => {
+                                      if (typeof subitem === "string") {
+                                        const subheadings = [
+                                          "Basics:", "DOM & Events:", "Advanced JS:", "Practice Projects:",
+                                          "Angular Basics:", "Angular Forms & Services:", 
+                                          "Angular Routing + Full-Stack Integration:", "Angular + Authentication:",
+                                          "Core Java (Foundations)", "Angular (Frontend Framework)",
+                                          "Getting Started with Angular:",
+                                          "Basics", "DOM & Events", "Flexbox & CSS Grid", "Flexbox: display flex", "CSS Grid",
+                                          "Advanced JS", "Practice Projects",
+                                          "Angular Basics", "Angular Forms & Services",
+                                          "Angular Routing + Full-Stack Integration", "Angular + Authentication",
+                                          "Introduction to React", "JSX", "Components", "State Basics", "Event Handling", "Rendering",
+                                          "Hooks (Core)", "Forms", "React Router", "Context API", "API Integration", "Styling in React", "Lifting State Up",
+                                          "Advanced Hooks", "Custom Hooks", "Code Splitting", "Error Boundaries", "Performance Optimization", "Portals", "React 18 Features",
+                                          "State Management", "Authentication", "File & Folder Structure", "React Patterns", "React Suspense & Streaming", "SSR & Next.js", "Testing", "Deployment"
+                                        ];
+                                        const isSubheading = subheadings.some(h => subitem.trim() === h);
+                                        const isGoal = subitem.trim().startsWith("Goal:") || subitem.trim().startsWith("**Goal:**");
+                                        const regionPrefix = "Region:";
+                                        const azPrefix = "Availability Zone:";
+                                        const lambdaPrefix = "Lambda Function:";
+                                        const dynamodbPrefix = "DynamoDB:";
+                                        const isRegion = subitem.startsWith(regionPrefix);
+                                        const isAZ = subitem.startsWith(azPrefix);
+                                        const isLambda = subitem.startsWith(lambdaPrefix);
+                                        const isDynamoDB = subitem.startsWith(dynamodbPrefix);
+
+                                        return (
+                                          <li key={i} className={`mb-1 lh-base${isSubheading || isGoal || isRegion || isAZ || isLambda || isDynamoDB ? " nict-practice-item" : ""}`}>
+                                            {isSubheading || isGoal ? (
+                                              <strong className="text-dark">{subitem.replace(/\*\*/g, '')}</strong>
+                                            ) : isRegion ? (
+                                              <><strong className="text-dark">{regionPrefix}</strong>{subitem.slice(regionPrefix.length)}</>
+                                            ) : isAZ ? (
+                                              <><strong className="text-dark">{azPrefix}</strong>{subitem.slice(azPrefix.length)}</>
+                                            ) : isLambda ? (
+                                              <><strong className="text-dark">{lambdaPrefix}</strong>{subitem.slice(lambdaPrefix.length)}</>
+                                            ) : isDynamoDB ? (
+                                              <><strong className="text-dark">{dynamodbPrefix}</strong>{subitem.slice(dynamodbPrefix.length)}</>
+                                            ) : (
+                                              subitem
+                                            )}
+                                          </li>
+                                        );
+                                      }
+
+                                      const nestedKey = `${index}-${i}`;
+                                      const isNestedOpen = openNestedItems[nestedKey];
+
+                                      return (
+                                        <li key={i} className="nict-nested-item mb-2">
+                                          <button
+                                            type="button"
+                                            className="nict-nested-toggle d-flex justify-content-between align-items-center w-100 p-2 rounded-3 mb-2"
+                                            onClick={() => toggleNestedItem(index, i)}
+                                          >
+                                            <span>{subitem.title}</span>
+                                            <span className="nict-nested-icon">
+                                              {isNestedOpen ? <FiMinus /> : <FiPlus />}
+                                            </span>
+                                          </button>
+
+                                          {isNestedOpen && (
+                                            <ul className="nict-nested-list mt-2 ps-4 mb-0">
+                                              {subitem.details.map((detail, detailIndex) => {
+                                                const practicePrefix = "Practice:";
+                                                const isPractice = detail.startsWith(practicePrefix);
+                                                
+                                                // Check for subheadings
+                                                   const subheadings = [
+                                                     "Basics:", "DOM & Events:", "Advanced JS:", "Practice Projects:",
+                                                     "Angular Basics:", "Angular Forms & Services:", 
+                                                     "Angular Routing + Full-Stack Integration:", "Angular + Authentication:",
+                                                     "Core Java (Foundations)",
+                                                     "Basics", "DOM & Events", "Flexbox & CSS Grid", "CSS Grid",
+                                                     "Advanced JS", "Practice Projects",
+                                                     "Angular Basics", "Angular Forms & Services",
+                                                     "Angular Routing + Full-Stack Integration", "Angular + Authentication",
+                                                     "Data Binding and Its Types", "Directives and Their Types",
+                                                     "Pipes and Their Types", "Forms in Angular",
+                                                     "Services in Angular", "HTTP Client and API Integration",
+                                                     "Authentication with Local Storage", "Authorization and Role-Based Guards",
+                                                     "Student Management Project (CRUD Example)",
+                                                     "Introduction to React", "JSX", "Components", "State Basics", "Event Handling", "Rendering",
+                                                     "Hooks (Core)", "Forms", "React Router", "Context API", "API Integration", "Styling in React", "Lifting State Up",
+                                                     "Advanced Hooks", "Custom Hooks", "Code Splitting", "Error Boundaries", "Performance Optimization", "Portals", "React 18 Features",
+                                                     "State Management", "Authentication", "File & Folder Structure", "React Patterns", "React Suspense & Streaming", "SSR & Next.js", "Testing", "Deployment"
+                                                   ];
+                                                  const isSubheading = subheadings.some(h => detail.trim() === h);
+                                                  const cssBasicsPrefix = "CSS basics:";
+                                                  const flexboxPrefix = "Flexbox:";
+                                                  const isCSSBasics = detail.startsWith(cssBasicsPrefix);
+                                                  const isFlexbox = detail.startsWith(flexboxPrefix);
+                                                  const isMiniProject = detail.startsWith("Mini Project:");
+                                                  const goalPrefix = "Goal:";
+                                                  const isGoal = detail.startsWith(goalPrefix);
+
+                                                  return (
+                                                    <li
+                                                      key={detailIndex}
+                                                      className={`mb-1 lh-base text-secondary${isPractice || isSubheading || isMiniProject || isGoal || isCSSBasics || isFlexbox ? " nict-practice-item" : ""}`}
+                                                    >
+                                                      {isPractice ? (
+                                                        <><strong>{practicePrefix}</strong>{detail.slice(practicePrefix.length)}</>
+                                                      ) : isCSSBasics ? (
+                                                        <><strong className="text-dark">{cssBasicsPrefix}</strong>{detail.slice(cssBasicsPrefix.length)}</>
+                                                      ) : isFlexbox ? (
+                                                        <><strong className="text-dark">{flexboxPrefix}</strong>{detail.slice(flexboxPrefix.length)}</>
+                                                      ) : isSubheading ? (
+                                                        <strong className="text-dark">{detail}</strong>
+                                                      ) : isMiniProject ? (
+                                                        detail
+                                                      ) : isGoal ? (
+                                                        <><strong className="text-dark">{goalPrefix}</strong>{detail.slice(goalPrefix.length)}</>
+                                                      ) : (
+                                                        detail
+                                                      )}
+                                                    </li>
+                                                  );
+                                              })}
+                                            </ul>
+                                          )}
+                                        </li>
+                                      );
+                                    })}
                                   </ul>
                                 </div>
                             </div>

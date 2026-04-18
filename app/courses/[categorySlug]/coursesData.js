@@ -667,54 +667,190 @@ const coursesData = {
   courseContentData: [
     {
       id: 1,
-      title: "Web Foundations",
-      icon: "bi bi-code-slash",
+      title: "Frontend Development",
+      icon: "bi bi-window",
       defaultOpen: true,
       items: [
-        "Introduction to web development and full stack architecture",
-        "HTML5: structure and semantic elements",
-        "CSS3: styling, layout, and responsive design",
-        "JavaScript basics and DOM manipulation",
-        "Version control with Git and GitHub"
+        {
+          title: "HTML5 (Structure & Semantics)",
+          details: [
+            "Doctype, Headings, paragraphs, text formatting",
+            "Links & images",
+            "Lists (ordered, unordered, definition)",
+            "Tables (with colspan/rowspan)",
+            "Forms & inputs (basic + HTML5 types like email, number, date)",
+            "Semantic elements (header, nav, section, article, footer, aside)",
+            "Multimedia (video, audio, iframe)",
+            "Practice: Build a multi-page portfolio structure with HTML only."
+          ]
+        },
+        {
+          title: "CSS (Styling & Layouts)",
+          details: [
+            "CSS basics:",
+            "selectors, properties, colors, fonts",
+            "Box Model (margin, padding, border)",
+            "Display: block, inline, inline-block, none",
+            "Positioning: relative, absolute, fixed, sticky",
+            "Pseudo-classes & pseudo-elements (:hover, ::before)",
+            "Practice: Style your HTML portfolio make it responsive.",
+            "Flexbox & CSS Grid",
+            "Flexbox: ",
+            "display flex",
+            "direction, wrap, justify & align content", 
+            "flex grow/shrink/basis",
+            "CSS Grid",
+            "display:grid, rows & columns, grid areas",
+            "template layouts, combining grid & flexbox",
+            "Practice: Build a responsive landing page with Flexbox & Grid."
+          ]
+        },
+        {
+          title: "JavaScript (ES6 & DOM)",
+          details: [
+            "Basics",
+            "What is JS? Role in browsers",
+            "Variables (let, const, var)",
+            "Data types & operators",
+            "Strings, numbers, arrays, objects",
+            "Functions (declarations, expressions, arrow functions, higher-order functions)",
+            "Loops & conditionals",
+            "DOM & Events",
+            "DOM tree, querySelector, getElementById",
+            "Changing HTML/CSS dynamically",
+            "Event handling (addEventListener, event bubbling, delegation)",
+            "Form validation & regex",
+            "LocalStorage & SessionStorage",
+            "Advanced JS",
+            "Array methods (map, filter, reduce)",
+            "OOP (classes, constructors, this, inheritance)",
+            "JSON handling",
+            "Fetch API & async/await",
+            "Error handling (try...catch)",
+            "Modular JS (import/export)",
+            "Common design patterns (Module, Observer)",
+            "Practice Projects",
+            "To-do list with LocalStorage",
+            "Calculator app",
+            "Weather app using Fetch API",
+            "Interactive quiz app"
+          ]
+        },
+        {
+          title: "Bootstrap (Rapid UI Framework)",
+          details: [
+            "Why use Bootstrap vs custom CSS",
+            "Setup via CDN & file structure",
+            "Grid system (12 columns, breakpoints)",
+            "Utilities (spacing, colors, display)",
+            "Components: navbars, buttons, forms, cards, modals",
+            "Practice: Create a responsive blog or e-commerce product grid."
+          ]
+        },
+        {
+          title: "Web Design Principles (UI/UX)",
+          details: [
+            "Color theory & accessibility contrast ratios",
+            "Typography best practices (Google Fonts)",
+            "Layout principles (proximity, alignment, white space)",
+            "Wireframing basics",
+            "UX heuristics (consistency, feedback, error prevention)",
+            "Practice: Redesign your portfolio with UI/UX principles."
+          ]
+        },
+        {
+          title: "Angular (Frontend Framework)",
+          details: [
+            "Angular Basics",
+            "Angular setup (CLI, project structure)",
+            "Components, Modules, Templates",
+            "Data Binding (Interpolation, Property, Event, Two-way)",
+            "Directives (ngIf, ngFor, ngSwitch)",
+            "Mini Project: Task Tracker App",
+            "Angular Forms & Services",
+            "Template-driven vs Reactive forms",
+            "Form validation (sync & async)",
+            "Dependency Injection",
+            "Angular Services & HttpClient (API calls)",
+            "Mini Project: Weather Dashboard with API Integration",
+            "Angular Routing + Full-Stack Integration",
+            "Angular Router (navigation, route params, guards)",
+            "Lazy loading modules",
+            "Consuming REST APIs (Spring Boot / Node backend)",
+            "Displaying data in Angular (tables, lists, cards, pagination)",
+            "Mini Project: Frontend for Product Catalog",
+            "Angular + Authentication",
+            "JWT Authentication flow (login, signup, logout)",
+            "Storing tokens (LocalStorage, Http Interceptors)",
+            "Role-based route guards (Admin/User access)",
+            "Mini Project: Secure User Login + Dashboard"
+          ]
+        }
       ]
     },
     {
       id: 2,
-      title: "Programming with Java",
-      icon: "bi bi-cup-hot",
+      title: "Java Backend Development Curriculum",
+      icon: "bi bi-cpu",
       items: [
-        "Core Java syntax and OOP principles",
-        "Control structures, arrays, and strings",
-        "Classes, inheritance, and polymorphism",
-        "Exception handling and file I/O",
-        "Collections framework and generics"
+        "Core Java (Foundations)",
+        "**Goal:** Build strong fundamentals in Java programming.",
+        "Java Basics",
+        "JVM, JRE, JDK",
+        "Data types, variables, operators",
+        "Control structures (if, switch, loops)",
+        "Object-Oriented Programming (OOP)",
+        "Classes, Objects, Constructors",
+        "Inheritance, Polymorphism, Abstraction, Encapsulation",
+        "Core APIs",
+        "String, StringBuilder, Wrapper classes",
+        "Collections Framework (List, Set, Map, Queue)",
+        "Generics",
+        "Exception Handling",
+        "Input/Output (I/O Streams, File handling)",
+        "Multithreading & Concurrency (Thread, Runnable, Executors)",
+        "Java 8+ Features",
+        "Lambda expressions, Streams API, Functional interface"
       ]
     },
     {
       id: 3,
-      title: "Database Management",
+      title: "Databases & SQL",
       icon: "bi bi-database",
       items: [
-        "Introduction to SQL and relational databases",
-        "CRUD operations using MySQL",
-        "Database design and normalization",
-        "JDBC for database connectivity",
-        "Connecting Java applications with MySQL"
+    "Goal: Work with relational databases efficientl",
+    "Relational Database Concepts",
+    "SQL Basics",
+    "SELECT, INSERT, UPDATE, DELETE",
+    "WHERE, GROUP BY, HAVING, ORDER BY",
+    "Joins (INNER, LEFT, RIGHT, FULL)",
+    "Constraints & Indexes",
       ]
     },
     {
       id: 4,
-      title: "Back-End Development",
+      title: "Spring Framework & Spring Boot",
       icon: "bi bi-gear",
       items: [
-        "Introduction to Java EE and Servlets",
-        "JSP (JavaServer Pages) and MVC architecture",
-        "Building dynamic web applications",
-        "Form handling and session management",
-        "Deploying Java web apps on Tomcat"
+    "Goal:Build production-grade Java applications easily",
+    "Spring Core",
+    "IoC Container, Beans, Dependency Injection",
+    "Spring MVC",
+    "Controllers, Models, Views",
+    "Spring Boot",
+    "Auto-configuration, Starter dependencies",
+    "RESTful APIs (GET, POST, PUT, DELETE)",
+    "Request/Response handling with JSON",
+    "Exception handling",
+    "Application properties & Profiles",
+    "Spring Data JPA & Hibernate",
+     "ORM basics",
+     "Entity mapping (OneToOne, OneToMany, ManyToMany)",
+    "Query Methods, JPQL, Native Queries",
+    "Spring Security (Basic + JWT Authentication)",
+     "Validation & AOP (Aspect Oriented Programming)",
       ]
-    },
- 
+    }
   ],
   whatYouLearnData: [
     {
@@ -771,47 +907,147 @@ const coursesData = {
       icon: "bi bi-lightbulb",
       defaultOpen: true,
       items: [
-        "Introduction to Angular and its ecosystem",
-        "Setting up the Angular development environment",
-        "Understanding TypeScript and ES6 features",
-        "Angular project structure and file organization",
-        "Creating your first Angular app"
+        "Overview of TypeScript",
+        "Why TypeScript for Angular",
+        "TypeScript vs JavaScript",
+        "Setting up TypeScript Environment"
       ]
     },
     {
       id: 2,
-      title: "Core Concepts",
+      title: "Angular Installation",
       icon: "bi bi-box",
       items: [
-        "Components and templates",
-        "Data binding and interpolation",
-        "Directives: built-in and custom",
-        "Event handling and property binding",
-        "Component communication (Input & Output)"
+        "Prerequisites (Node.js, npm)",
+        "Installing Angular CLI",
+        "Creating a New Angular Project",
+        "Running and Building the Application"
       ]
     },
     {
       id: 3,
-      title: "Services and Dependency Injection",
+      title: "Understanding Angular Project Structure",
       icon: "bi bi-gear",
       items: [
-        "Creating and using services",
-        "Dependency Injection in Angular",
-        "Observable and RxJS introduction",
-        "Managing data flow with services",
-        "Reusable logic with service layers"
+        "Overview of Angular Files and Folders",
+        "main.ts and app.module.ts",
+        "Components, Modules, and Templates",
+        "Best Practices for Folder Organization"
       ]
     },
     {
       id: 4,
-      title: "Routing and Navigation",
+      title: "Routing and Advanced Routing",
       icon: "bi bi-map",
       items: [
-        "Routing setup and configuration",
-        "Navigating between views",
-        "Route parameters and query strings",
-        "Lazy loading modules",
-        "Route guards and authentication"
+        "Introduction to Angular Routing",
+        "Configuring Routes in app-routing.module.ts",
+        "Route Parameters",
+        "Route Guards and Navigation Control"
+      ]
+    },
+    {
+      id: 5,
+      title: "Data Binding and Its Types",
+      icon: "bi bi-cpu",
+      items: [
+        "Concept of Data Binding",
+        "Interpolation – Displaying dynamic data",
+        "Property Binding – Binding DOM properties",
+        "Event Binding – Listening to user actions",
+        "Two-Way Binding – Synchronizing data"
+      ]
+    },
+    {
+      id: 6,
+      title: "Directives and Their Types",
+      icon: "bi bi-cpu",
+      items: [
+        "What are Directives",
+        "Structural Directives – *ngIf, *ngFor, *ngSwitch",
+        "Attribute Directives – ngClass, ngStyle",
+        "Creating Custom Directives"
+      ]
+    },
+    {
+      id: 7,
+      title: "Pipes and Their Types",
+      icon: "bi bi-cpu",
+      items: [
+        "Introduction to Pipes",
+        "Built-in Pipes – date, uppercase, currency, etc.",
+        "Custom Pipes – Creating and Registering",
+        "Async Pipe for Observables"
+      ]
+    },
+    {
+      id: 8,
+      title: "Forms in Angular",
+      icon: "bi bi-ui-checks",
+      items: [
+        "Forms Overview and Differences",
+        "Template-Driven Forms – Simplicity and Syntax",
+        "Reactive Forms – FormBuilder and FormGroup",
+        "Form Validation (Built-in & Custom)",
+        "CRUD Operation Using Reactive Forms and Template Forms",
+        "Custom Toast Service"
+      ]
+    },
+    {
+      id: 9,
+      title: "Services in Angular",
+      icon: "bi bi-ui-checks",
+      items: [
+        "Concept of Services and Single Responsibility",
+        "Creating and Registering a Service",
+        "Using Services Across Components"
+      ]
+    },
+    {
+      id: 10,
+      title: "HTTP Client and API Integration",
+      icon: "bi bi-shield-lock",
+      items: [
+        "Introduction to Angular HttpClient",
+        "Performing GET, POST, PUT, DELETE Requests",
+        "Handling Observables and RxJS Operators",
+        "Managing API Errors and Responses",
+        "Integrating with RESTful JSON APIs"
+      ]
+    },
+    {
+      id: 11,
+      title: "Authentication with Local Storage",
+      icon: "bi bi-shield-lock",
+      items: [
+        "Overview of Client-Side Authentication",
+        "Login and Logout Functionality",
+        "Managing User Sessions",
+        "Handling Unauthorized Access"
+      ]
+    },
+    {
+      id: 12,
+      title: "Authorization and Role-Based Guards",
+      icon: "bi bi-shield-lock",
+      items: [
+        "Introduction to Angular Guards",
+        "Implementing CanActivate and CanActivateChild",
+        "Creating Role-Based Access Controls",
+        "Protecting Routes Based on Roles"
+      ]
+    },
+    {
+      id: 13,
+      title: "Student Management Project (CRUD Example)",
+      icon: "bi bi-kanban",
+      items: [
+        "Project Setup and Overview",
+        "Creating Components and Models",
+        "Implementing CRUD (Create, Read, Update, Delete) Operations",
+        "Integrating Reactive Forms",
+        "Applying Role-Based Guards",
+        "Final Project Workflow"
       ]
     },
 
@@ -1169,47 +1405,111 @@ const coursesData = {
       icon: "bi bi-lightbulb",
       defaultOpen: true,
       items: [
-        "What is React Native and how it works",
-        "Setting up your environment (Expo and CLI)",
-        "Project structure and app components",
-        "Understanding React vs React Native",
-        "Running your first mobile app"
+      "Introduction to mobile app development and the significance of cross-platform development.",
+      "React Native: A framework to build mobile applications for iOS and Android using a single codebase",
+      "Differences between React Native and Native Development (iOS/Android).",
+      "Overview of Mobile App Development: Native vs Hybrid vs Cross-Platform.",
+      "Role of React Native and Firebase in Full-Stack Mobile App Development",
+      "Setting Up the Development Environment: Visual Studio Code, React Native CLI, Expo, and Firebase.",
       ]
     },
     {
       id: 2,
-      title: "Core Concepts",
+      title: "Module-1: HTML, CSS, and Bootstrap",
       icon: "bi bi-box",
       items: [
-        "JSX and component structure",
-        "Props and state management",
-        "Conditional rendering and styling",
-        "Flexbox layout for mobile UI",
-        "Reusable components and composition"
+       "HTML Fundamentals: Structure of an HTML Document, Semantic HTML5, Forms, Tables, and Multimedia",
+
+       "CSS Basics: Selectors, Box Model, Flexbox, Grid Layout, Styling Forrns, Animations, and Transitions",
+
+       "Bootstrap: Grid System and Breakpoints, Components (Navbar, Cards, Buttons, Forms), Customizing Themes",
+
+       "Responsive Design: Using Media Queries, Mobile-First Design Principles.",
       ]
     },
     {
       id: 3,
-      title: "Navigation and State Management",
+      title: "Module-2: JavaScript (Pre-requisite)",
       icon: "bi bi-compass",
       items: [
-        "Using React Navigation (Stack, Tab, Drawer)",
-        "Passing parameters between screens",
-        "Global state management with Context API",
-        "Async data flow with Redux Toolkit",
-        "Persisting app data with AsyncStorage"
+        "JavaScript Basics: Variables (var, let, const), Data Types (String, Number, Boolean, Undefined, Null), Type Conversion",
+
+        "Control Flow: Conditionals (if, else, switch), Loops (for, while, do while)",
+
+        "Functions and Objects: Declaring Functions, Arrow Functions, Objects, Arrays, and Array Methods",
+
+        "Advanced JavaScript Concepts: ES6 Features, Destructuring, Template Literals, Spread/Rest Operators, Arrow Functions, this keyword",
+
+        "Asynchronous JavaScript: Callbacks, Promises, async/await, Closures, Higher-Order Functions",
       ]
     },
     {
       id: 4,
-      title: "Working with APIs",
+      title: "Module-3: React Native Basics",
       icon: "bi bi-cloud-arrow-down",
       items: [
-        "Fetching data from REST APIs",
-        "POST, PUT, DELETE operations",
-        "Handling loading states and errors",
-        "Integration with backend services",
-        "Authentication using JWT tokens"
+     "Introduction to React Native: React Native Overview, Setting up a React Native Project with Expo or React Native CU.",
+
+     "Components and JSX: Understanding Functional and Class Components, JSX Syntax.",
+
+     "State and Props: Managing state in components, passing data through props.",
+
+     "Handling User Input: Forms, Text Inputs, Buttons, Haridling Events",
+
+    "Styling in React Native: Using StyleSheet, Flexbox, and responsive design for mobile apps",
+      ]
+    },
+    {
+      id: 5,
+      title: "Module-4: React Navigation & State Management",
+      icon: "bi bi-map",
+      items: [
+        "React Navigation: Setting up Stack, Tab, and Drawer Navigation.",
+        "React Navigation: Passing Params, Deep Linking, and Nested Navigators.",
+        "State Management: Introduction to Context API and Redux for global state management.",
+        "Handling Async Operations: Making HTTP requests with fetch or Axios for interacting with APIs."
+      ]
+    },
+    {
+      id: 6,
+      title: "Module-5: Firebase Backend Integration",
+      icon: "bi bi-shield-lock",
+      items: [
+        "Introduction to Firebase: Firebase Authentication, Firestore Database, Firebase Storage",
+        "Firebase Authentication: User Sign Up, Login, Logout, Password Reset",
+        "Firebase Firestore: Cloud Firestore Basics, Reading, Writing, and Updating Data.",
+        "Firebase Storage: Uploading and retrieving files (Images, Videos).",
+        "Real-Time Database: Implementing Real-Time Data Synchronization with Firebase."
+      ]
+    },
+    {
+      id: 7,
+      title: "Module-6: Deployment of React Native Mobile App",
+      icon: "bi bi-cloud-upload",
+      items: [
+        "Deploying React Native Apps: Using Expo or React Native CU for app builds and publishing to the App Store and Google Play",
+        "Firebase Hosting: Deploying static sites and front-end applications using Firebase Hosting for web applications if required."
+      ]
+    },
+    {
+      id: 8,
+      title: "Module-7: Capstone Project",
+      icon: "bi bi-kanban",
+      items: [
+        "Project Objective: Build a Full-Stack Mobile Application using React Native (Front-End) and Firebase (Backend-less data storage).",
+        "Example Projects: E-Commerce App, Social Media App, Task Management App, or Personal Finance Tracker.",
+        "Final Deliverables: A working mobile app, Firebase integration, and deployment on Google Play/Apple App Store."
+      ]
+    },
+    {
+      id: 9,
+      title: "Course Duration",
+      icon: "bi bi-clock-history",
+      items: [
+        "Total Duration: 12 to 16 weeks",
+        "React Native Development: 8-10 weeks",
+        "Firebase Integration and Real-Time Data: 3-4 weeks",
+        "Project Development: 2-4 weeks"
       ]
     },
 
@@ -1367,51 +1667,128 @@ const coursesData = {
   courseContentData: [
     {
       id: 1,
-      title: "Getting Started with React",
+      title: "Basics (Beginner Level)",
       icon: "bi bi-lightbulb",
       defaultOpen: true,
       items: [
-        "Introduction to React and its ecosystem",
-        "Setting up the development environment",
-        "JSX syntax and rendering elements",
-        "Understanding components and props",
-        "Creating your first React app"
+        "Introduction to React",
+        "What is React? Why React? SPA concept",
+        "React vs Vanilla JS",
+        "Setup (Vite/CRA)",
+        "JSX",
+        "JSX rules & syntax",
+        "Embedding expressions { }",
+        "Fragments (<> </>)",
+        "Components",
+        "Function components",
+        "Component hierarchy",
+        "Props (passing data parent child)",
+        "Default props & propTypes (validation)",
+        "State Basics",
+        "useState hook",
+        "Difference: Props vs State",
+        "Updating state correctly (immutability)",
+        "Event Handling",
+        "onClick, onChange, onSubmit",
+        "Passing functions as props",
+        "Rendering",
+        "Lists (.map())",
+        "Keys importance",
+        "Conditional rendering (if, ternary, &&)"
       ]
     },
     {
       id: 2,
-      title: "Components and State",
+      title: "Intermediate Level",
       icon: "bi bi-puzzle",
       items: [
-        "Functional vs Class components",
-        "State and setState basics",
-        "Event handling in React",
-        "Conditional rendering",
-        "Lists and keys"
+        "Hooks (Core)",
+        "useEffect lifecycle methods (componentDidMount, etc.)",
+        "Cleanup functions",
+        "Forms",
+        "Controlled components (state-based)",
+        "Uncontrolled components (refs)",
+        "Multiple inputs, form validation",
+        "React Router",
+        "Setup with react-router-dom",
+        "Route, Link, Navigate",
+        "Nested routes",
+        "Protected routes",
+        "Context API",
+        "Avoiding prop drilling",
+        "useContext hook",
+        "API Integration",
+        "Fetch vs Axios",
+        "Loading & error handling",
+        "Displaying data in UI",
+        "Styling in React",
+        "CSS, CSS Modules",
+        "Styled Components",
+        "Tailwind CSS (most used now)",
+        "Lifting State Up",
+        "Sharing data between sibling components"
       ]
     },
     {
       id: 3,
-      title: "React Hooks",
+      title: "Advanced Level",
       icon: "bi bi-diagram-3",
       items: [
-        "Introduction to Hooks",
-        "Using useState and useEffect",
-        "Managing multiple states",
-        "Custom hooks and reusability",
-        "Lifecycle equivalents with Hooks"
+        "Advanced Hooks",
+        "useReducer (state management)",
+        "useRef (DOM refs, persist values)",
+        "useMemo (performance optimization)",
+        "useCallback (function memoization)",
+        "Custom Hooks",
+        "Reusable logic (useFetch, useForm)",
+        "Code Splitting",
+        "React.lazy + Suspense",
+        "Dynamic imports",
+        "Error Boundaries",
+        "Catch UI crashes",
+        "Performance Optimization",
+        "React.memo",
+        "Virtualization (react-window, react-virtualized)",
+        "Avoiding re-renders",
+        "Portals",
+        "Modals, tooltips outside root",
+        "React 18 Features",
+        "Concurrent rendering",
+        "useTransition",
+        "useDeferredValue"
       ]
     },
     {
       id: 4,
-      title: "State Management and Context API",
+      title: "Expert Level",
       icon: "bi bi-diagram-2",
       items: [
-        "Prop drilling problem and solutions",
-        "Using Context API for global state",
-        "Building custom context providers",
-        "Integrating useReducer for complex states",
-        "Structuring large-scale React apps"
+        "State Management",
+        "Redux Toolkit (modern Redux)",
+        "Zustand / Recoil / Jotai (alternative libraries)",
+        "Authentication",
+        "JWT, Cookies, Sessions",
+        "Protected routes with React Router",
+        "File & Folder Structure",
+        "Organizing components, hooks, utils",
+        "React Patterns",
+        "Higher Order Components (HOC)",
+        "Render Props",
+        "Compound Components pattern",
+        "React Suspense & Streaming",
+        "Suspense for data fetching",
+        "Concurrent features deep dive",
+        "SSR & Next.js",
+        "Next.js basics (pages, routing)",
+        "Server-side rendering",
+        "Static site generation",
+        "Testing",
+        "Jest basics",
+        "React Testing Library",
+        "Snapshot testing",
+        "Deployment",
+        "Build & deploy (Netlify, Vercel)",
+        "Environment variables"
       ]
     },
    
@@ -2116,53 +2493,120 @@ const coursesData = {
             icon: "bi bi-cloud",
             defaultOpen: true,
             items: [
-              "Introduction to Cloud Computing",
-              "Overview of AWS Global Infrastructure",
-              "AWS Management Console & CLI",
-              "Core AWS Services (EC2, S3, RDS, IAM)",
-              "Understanding Regions and Availability Zones",
-              "AWS Free Tier and Account Setup"
+              "Cloud computing involves using remote servers hosted on the internet to store, manage, and process data.",
+              "AWS (Amazon Web Services) is a leading cloud provider offering a wide range of services."
             ]
           },
           {
             id: 2,
-            title: "Compute, Storage & Networking",
-            icon: "bi bi-hdd-network",
+            title: "Regions and Availability Zones",
+            icon: "bi bi-globe",
             items: [
-              "Elastic Compute Cloud (EC2) and AMIs",
-              "Simple Storage Service (S3) Essentials",
-              "Elastic Block Store (EBS) and Glacier",
-              "Virtual Private Cloud (VPC) and Subnets",
-              "Elastic Load Balancing (ELB) and Auto Scaling",
-              "DNS Management with Route 53"
+              "Region: A geographic area where AWS has data centers. Each region is independent.",
+              "Availability Zone: A region has multiple availability zones (data centers), which help ensure high availability."
             ]
           },
           {
             id: 3,
-            title: "AWS Security & Identity",
-            icon: "bi bi-shield-lock",
+            title: "Free Tier Account Creation",
+            icon: "bi bi-person-plus",
             items: [
-              "Identity and Access Management (IAM)",
-              "Security Groups and Network ACLs",
-              "Key Management Service (KMS)",
-              "AWS Organizations and Billing Control",
-              "AWS Shared Responsibility Model",
-              "Best Practices for Cloud Security"
+              "AWS offers a free tier, allowing users to try many services without charge (up to certain limits).",
+              "Setting up an account gives access to services like EC2 and S3 for free for the first 12 months."
             ]
           },
           {
             id: 4,
-            title: "Databases & Analytics",
-            icon: "bi bi-database",
+            title: "Basic Identity & Access Management (IAM)",
+            icon: "bi bi-shield-lock",
             items: [
-              "Amazon RDS and Aurora",
-              "DynamoDB (NoSQL Database)",
-              "Redshift Data Warehousing",
-              "ElastiCache for Performance Optimization",
-              "Athena and QuickSight for Data Analytics"
+              "IAM allows you to manage who has access to AWS resources.",
+              "You can create users, groups, and roles, assign them permissions, and control their access."
             ]
           },
-
+          {
+            id: 5,
+            title: "Elastic Compute Cloud (EC2)",
+            icon: "bi bi-cpu",
+            items: [
+              "EC2 provides scalable virtual machines (VMs) in the cloud.",
+              "You can launch an instance (a virtual server) and run applications on it."
+            ]
+          },
+          {
+            id: 6,
+            title: "Simple Storage Service (S3)",
+            icon: "bi bi-hdd",
+            items: [
+              "S3 is a storage service where you can store files or data in what AWS calls \"buckets.\"",
+              "It’s often used for backups, file sharing, or hosting static content."
+            ]
+          },
+          {
+            id: 7,
+            title: "Virtual Private Cloud (VPC)",
+            icon: "bi bi-diagram-3",
+            items: [
+              "A VPC lets you create a private network in AWS. You control the network configuration, including IP addresses and subnets, just like in a traditional on-premises network."
+            ]
+          },
+          {
+            id: 8,
+            title: "Relations Database Services (RDS)",
+            icon: "bi bi-database",
+            items: [
+              "RDS is a managed service for databases like MySQL, PostgreSQL, or SQL Server.",
+              "AWS handles backups, patching, and scaling for you."
+            ]
+          },
+          {
+            id: 9,
+            title: "Route 53",
+            icon: "bi bi-map",
+            items: [
+              "Route 53 is a Domain Name System (DNS) service, which helps route users to your applications or websites.",
+              "It can also monitor and route traffic based on health checks."
+            ]
+          },
+          {
+            id: 10,
+            title: "Content Delivery Network (CDN) – CloudFront",
+            icon: "bi bi-lightning",
+            items: [
+              "CloudFront speeds up the delivery of your website content by caching it at different locations globally.",
+              "It makes your website load faster for users in different parts of the world."
+            ]
+          },
+          {
+            id: 11,
+            title: "CloudWatch & CloudTrail",
+            icon: "bi bi-eye",
+            items: [
+              "CloudWatch is used to monitor AWS resources and applications. It collects performance data and allows you to set alarms for resource usage.",
+              "CloudTrail tracks every API call made in your AWS account, providing a history of changes made to your resources. It's useful for security and troubleshooting."
+            ]
+          },
+          {
+            id: 12,
+            title: "Config & AWS CLI",
+            icon: "bi bi-terminal",
+            items: [
+              "AWS Config helps track the state of your AWS resources over time. It can notify you when resources are misconfigured or out of compliance with desired settings.",
+              "The CLI allows you to manage AWS services using commands in your terminal or command prompt, rather than navigating the AWS console."
+            ]
+          },
+          {
+            id: 13,
+            title: "Serverless & Messaging",
+            icon: "bi bi-send",
+            items: [
+              "Serverless computing means you don’t manage servers. AWS manages the infrastructure for you.",
+              "Lambda Function: Allows you to run code in response to events (like a file being uploaded to S3) without provisioning servers.",
+              "DynamoDB: A fully managed NoSQL database that scales automatically based on demand.",
+              "SNS is a messaging service that allows you to send notifications (emails, SMS, etc.) to subscribers.",
+              "SQS allows you to send, store, and receive messages between distributed systems. It helps manage communication between different parts of an application."
+            ]
+          }
         ],
         whatYouLearnData: [
           {
