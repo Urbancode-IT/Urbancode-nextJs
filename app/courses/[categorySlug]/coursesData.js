@@ -671,7 +671,6 @@ const coursesData = {
       icon: "bi bi-code-slash",
       defaultOpen: true,
       items: [
-<<<<<<< HEAD
         {
           title: "HTML5 (Structure & Semantics)",
           details: [
@@ -787,13 +786,6 @@ const coursesData = {
             "Mini Project: Secure User Login + Dashboard"
           ]
         }
-=======
-        "Introduction to web development and full stack architecture",
-        "HTML5: structure and semantic elements",
-        "CSS3: styling, layout, and responsive design",
-        "JavaScript basics and DOM manipulation",
-        "Version control with Git and GitHub"
->>>>>>> 1dd2fcc1f9f70c9c8ac4e37eb7caf50c986df9d3
       ]
     },
     {
