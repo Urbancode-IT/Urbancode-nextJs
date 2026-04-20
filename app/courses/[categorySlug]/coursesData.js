@@ -1,5 +1,3 @@
-import React from 'react';
-
 const coursesData = {
   "Programming Languages": {
     mainCategoryDesc: "Build Your Tommorow with Code",
@@ -24,234 +22,47 @@ const coursesData = {
         courseContentData: [
           {
             id: 1,
-            title: "Introduction to Java",
+            title: "Java Fundamentals",
             icon: "bi bi-braces",
             defaultOpen: true,
             items: [
-              <style>{`
-                details.curriculum-details[open] .plus-icon { display: none; }
-                details.curriculum-details[open] .minus-icon { display: inline; }
-                details.curriculum-details:not([open]) .plus-icon { display: inline; }
-                details.curriculum-details:not([open]) .minus-icon { display: none; }
-              `}</style>,
-              "Overview of Java",
-              "History of Java",
-              "Features of Java",
-              "Installing Java Development Kit (JDK)"
+              "Java environment setup",
+              "Syntax and data types",
+              "Control statements and operators",
+              "Arrays and strings"
             ]
           },
           {
             id: 2,
-            title: "Java Basics",
+            title: "Object-Oriented Programming",
             icon: "bi bi-diagram-3",
             items: [
-              "Writing your first Java program",
-              "Data types and variables"
+              "Classes, objects, and methods",
+              "Constructors and overloading",
+              "Inheritance, polymorphism, abstraction, and encapsulation",
+              "Interfaces and packages"
             ]
           },
           {
             id: 3,
-            title: "Object-Oriented Programming (OOP)",
-            icon: "bi bi-layers",
+            title: "Exception Handling & File I/O",
+            icon: "bi bi-file-earmark-text",
             items: [
-              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
-                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
-                  <span style={{ fontWeight: '600', color: '#333', fontSize: '0.95rem' }}>Classes and Objects</span>
-                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
-                    <span className="plus-icon">+</span>
-                    <span className="minus-icon">-</span>
-                  </div>
-                </summary>
-                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
-                  <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>Understand the fundamental building blocks of Java: state (fields) and behavior (methods) in objects.</p>
-                </div>
-              </details>,
-              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
-                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
-                  <span style={{ fontWeight: '600', color: '#333', fontSize: '0.95rem' }}>Inheritance</span>
-                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
-                    <span className="plus-icon">+</span>
-                    <span className="minus-icon">-</span>
-                  </div>
-                </summary>
-                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
-                  <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>Master code reusability and establishing relationships between parent and child classes.</p>
-                </div>
-              </details>,
-              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
-                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
-                  <span style={{ fontWeight: '600', color: '#333', fontSize: '0.95rem' }}>Polymorphism</span>
-                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
-                    <span className="plus-icon">+</span>
-                    <span className="minus-icon">-</span>
-                  </div>
-                </summary>
-                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
-                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
-                    <p style={{ margin: '0 0 8px 0' }}>1) Method-Overloading (Compile-time)</p>
-                    <p style={{ margin: 0 }}>2) Method-Overriding (Runtime)</p>
-                  </div>
-                </div>
-              </details>,
-              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
-                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
-                  <span style={{ fontWeight: '600', color: '#333', fontSize: '0.95rem' }}>Encapsulation</span>
-                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
-                    <span className="plus-icon">+</span>
-                    <span className="minus-icon">-</span>
-                  </div>
-                </summary>
-                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
-                  <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>Learn data hiding and protecting internal object state using access modifiers and getters/setters.</p>
-                </div>
-              </details>,
-              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
-                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
-                  <span style={{ fontWeight: '600', color: '#333', fontSize: '0.95rem' }}>Abstraction</span>
-                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
-                    <span className="plus-icon">+</span>
-                    <span className="minus-icon">-</span>
-                  </div>
-                </summary>
-                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
-                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
-                    <p style={{ margin: '0 0 8px 0' }}>1) Abstract classes (Partial abstraction)</p>
-                    <p style={{ margin: 0 }}>2) Interfaces (Full abstraction/Contracts)</p>
-                  </div>
-                </div>
-              </details>
+              "Try, catch, and finally blocks",
+              "Custom exceptions",
+              "Working with files and buffers",
+              "Serialization basics"
             ]
           },
           {
             id: 4,
-            title: "Control, Selection, and Jumping Statements",
-            icon: "bi bi-arrow-repeat",
+            title: "Advanced Core Concepts",
+            icon: "bi bi-gear",
             items: [
-              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
-                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
-                  <span style={{ fontWeight: '600', color: '#333', fontSize: '0.95rem' }}>Control Statements (Loops)</span>
-                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
-                    <span className="plus-icon">+</span>
-                    <span className="minus-icon">-</span>
-                  </div>
-                </summary>
-                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
-                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
-                    <p style={{ margin: '0 0 8px 0' }}>- While Loop</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Do....While Loop</p>
-                    <p style={{ margin: 0 }}>- For and Nested For Loops</p>
-                  </div>
-                </div>
-              </details>,
-              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
-                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
-                  <span style={{ fontWeight: '600', color: '#333', fontSize: '0.95rem' }}>Selection Statements</span>
-                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
-                    <span className="plus-icon">+</span>
-                    <span className="minus-icon">-</span>
-                  </div>
-                </summary>
-                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
-                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
-                    <p style={{ margin: '0 0 8px 0' }}>- If Statement</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- If....else Statement</p>
-                    <p style={{ margin: 0 }}>- Else....if Ladder</p>
-                  </div>
-                </div>
-              </details>,
-              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
-                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
-                  <span style={{ fontWeight: '600', color: '#333', fontSize: '0.95rem' }}>Jumping Statements</span>
-                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
-                    <span className="plus-icon">+</span>
-                    <span className="minus-icon">-</span>
-                  </div>
-                </summary>
-                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
-                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
-                    <p style={{ margin: '0 0 8px 0' }}>- Break Statement</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Continue Statement</p>
-                    <p style={{ margin: 0 }}>- Switch Statement</p>
-                  </div>
-                </div>
-              </details>
-            ]
-          },
-          {
-            id: 5,
-            title: "Intermediate Concepts",
-            icon: "bi bi-mortarboard",
-            items: [
-              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
-                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
-                  <span style={{ fontWeight: '600', color: '#333', fontSize: '0.95rem' }}>Scanner and User Input</span>
-                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
-                    <span className="plus-icon">+</span>
-                    <span className="minus-icon">-</span>
-                  </div>
-                </summary>
-                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
-                  <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>Mastering the Scanner class to read different types of user inputs from the console.</p>
-                </div>
-              </details>,
-              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
-                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
-                  <span style={{ fontWeight: '600', color: '#333', fontSize: '0.95rem' }}>Typecasting</span>
-                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
-                    <span className="plus-icon">+</span>
-                    <span className="minus-icon">-</span>
-                  </div>
-                </summary>
-                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
-                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
-                    <p style={{ margin: '0 0 8px 0' }}>- Upcasting and Downcasting (Reference types)</p>
-                    <p style={{ margin: 0 }}>- Narrowing and Widening (Primitive types)</p>
-                  </div>
-                </div>
-              </details>,
-              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
-                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
-                  <span style={{ fontWeight: '600', color: '#333', fontSize: '0.95rem' }}>Arrays and Strings</span>
-                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
-                    <span className="plus-icon">+</span>
-                    <span className="minus-icon">-</span>
-                  </div>
-                </summary>
-                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
-                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
-                    <p style={{ margin: '0 0 8px 0' }}>- Array fundamentals and operations</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- String types (Immutable vs Mutable)</p>
-                    <p style={{ margin: 0 }}>- Essential String methods and manipulations</p>
-                  </div>
-                </div>
-              </details>,
-              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
-                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
-                  <span style={{ fontWeight: '600', color: '#333', fontSize: '0.95rem' }}>Collections and Keywords</span>
-                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
-                    <span className="plus-icon">+</span>
-                    <span className="minus-icon">-</span>
-                  </div>
-                </summary>
-                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
-                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
-                    <p style={{ margin: '0 0 8px 0' }}>- List, Set, and Map frameworks</p>
-                    <p style={{ margin: 0 }}>- Reserved Keywords and their specific uses in Java</p>
-                  </div>
-                </div>
-              </details>,
-              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
-                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
-                  <span style={{ fontWeight: '600', color: '#333', fontSize: '0.95rem' }}>Exception Handling</span>
-                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
-                    <span className="plus-icon">+</span>
-                    <span className="minus-icon">-</span>
-                  </div>
-                </summary>
-                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
-                  <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>Mastering try-catch blocks and error management to build robust applications.</p>
-                </div>
-              </details>
+              "Multithreading and concurrency",
+              "Java Collection Framework",
+              "JDBC database connectivity",
+              "Introduction to JVM memory model"
             ]
           }
         ],
@@ -279,143 +90,55 @@ const coursesData = {
   courseContentData: [
     {
       id: 1,
-      title: "Module 1: Wrapper Class",
-      icon: "bi bi-box",
+      title: "Core Java Refresher",
+      icon: "bi bi-book",
       defaultOpen: true,
       items: [
-        "Understanding wrapper classes for primitive data types",
-        "Auto boxing and unboxing"
+        "Introduction to Java and JVM architecture",
+        "Setting up the Java environment (JDK, IDEs)",
+        "Data types, operators, and control structures",
+        "Classes, objects, and methods",
+        "Constructors, inheritance, and polymorphism",
+        "Exception handling and debugging"
       ]
     },
     {
       id: 2,
-      title: "Module 2: Encapsulation",
-      icon: "bi bi-shield-lock",
+      title: "Working with Collections",
+      icon: "bi bi-database",
       items: [
-        "Encapsulation principles and benefits",
-        "Implementing encapsulation in Java classes"
+        "Arrays and ArrayList",
+        "Collections Framework (List, Set, Map)",
+        "Generics and Wrapper classes",
+        "Comparable vs Comparator",
+        "Iterators and enhanced for-loops"
       ]
     },
     {
       id: 3,
-      title: "Module 3: Singleton Class",
-      icon: "bi bi-person-badge",
+      title: "Input/Output and Threads",
+      icon: "bi bi-window",
       items: [
-        "Designing and implementing singleton classes",
-        "Singleton patterns and best practices"
+        "File handling with Java I/O and NIO",
+        "Serialization and deserialization",
+        "Multithreading and synchronization",
+        "Thread lifecycle and concurrency",
+        "Lambda expressions and functional interfaces"
       ]
     },
     {
       id: 4,
-      title: "Module 4: SQL",
-      icon: "bi bi-database",
+      title: "Database Connectivity (JDBC)",
+      icon: "bi bi-gear",
       items: [
-        "Introduction to SQL (Structured Query Language)",
-        "Connecting Java applications to databases",
-        "Executing SQL queries using JDBC"
+        "Introduction to JDBC",
+        "Connecting Java with MySQL / PostgreSQL",
+        "Executing SQL queries from Java",
+        "PreparedStatement and ResultSet",
+        "Transaction management"
       ]
     },
-    {
-      id: 5,
-      title: "Module 5: Multithreading",
-      icon: "bi bi-cpu",
-      items: [
-        "Basics of multithreading in Java",
-        "Synchronization and thread safety",
-        "Thread pools and concurrency utilities"
-      ]
-    },
-    {
-      id: 6,
-      title: "Module 6: XML, JSON, CSV",
-      icon: "bi bi-filetype-json",
-      items: [
-        "Parsing and generating XML using DOM and SAX parsers",
-        "Working with JSON data in Java",
-        "Reading and writing CSV files"
-      ]
-    },
-    {
-      id: 7,
-      title: "Module 7: JDBC Connection",
-      icon: "bi bi-plug",
-      items: [
-        "Establishing database connections using JDBC",
-        "CRUD operations (Create, Read, Update, Delete) using JDBC"
-      ]
-    },
-    {
-      id: 8,
-      title: "Module 8: Serialization",
-      icon: "bi bi-layers",
-      items: [
-        "Serializing and de-serializing objects in Java",
-        "Implementing Serializable and Externalizable interfaces"
-      ]
-    },
-    {
-      id: 9,
-      title: "Module 9: Java Regex",
-      icon: "bi bi-regex",
-      items: [
-        "Understanding regular expressions in Java",
-        "Pattern matching and text manipulation using regex"
-      ]
-    },
-    {
-      id: 10,
-      title: "Module 10: Date and Time",
-      icon: "bi bi-calendar-event",
-      items: [
-        "Handling date and time in Java",
-        "Working with Local Date, Local Date Time, and other date/time classes"
-      ]
-    },
-    {
-      id: 11,
-      title: "Module 11: Coding Standards",
-      icon: "bi bi-journal-check",
-      items: [
-        "Introduction to coding standards and best practices",
-        "Naming conventions, code formatting, and documentation"
-      ]
-    },
-    {
-      id: 12,
-      title: "Module 12: Factory Design Pattern",
-      icon: "bi bi-vector-pen",
-      items: [
-        "Understanding the Factory design pattern",
-        "Implementing factory methods and factory classes"
-      ]
-    },
-    {
-      id: 13,
-      title: "Module 13: Generics",
-      icon: "bi bi-code-square",
-      items: [
-        "Introduction to generics in Java",
-        "Writing generic classes, methods, and interfaces"
-      ]
-    },
-    {
-      id: 14,
-      title: "Module 14: Debugging",
-      icon: "bi bi-bug",
-      items: [
-        "Techniques for debugging Java applications",
-        "Using debugging tools and IDE features effectively"
-      ]
-    },
-    {
-      id: 15,
-      title: "Module 15: J2EE (Java 2 Platform, Enterprise Edition) Overview",
-      icon: "bi bi-building",
-      items: [
-        "Introduction to J2EE architecture and components",
-        "Understanding servlets, JSP (Java Server Pages), and EJB (Enterprise JavaBeans)"
-      ]
-    }
+
   ],
   whatYouLearnData: [
     {
@@ -944,10 +667,11 @@ const coursesData = {
   courseContentData: [
     {
       id: 1,
-      title: "Frontend Development",
-      icon: "bi bi-window",
+      title: "Web Foundations",
+      icon: "bi bi-code-slash",
       defaultOpen: true,
       items: [
+<<<<<<< HEAD
         {
           title: "HTML5 (Structure & Semantics)",
           details: [
@@ -1063,71 +787,52 @@ const coursesData = {
             "Mini Project: Secure User Login + Dashboard"
           ]
         }
+=======
+        "Introduction to web development and full stack architecture",
+        "HTML5: structure and semantic elements",
+        "CSS3: styling, layout, and responsive design",
+        "JavaScript basics and DOM manipulation",
+        "Version control with Git and GitHub"
+>>>>>>> 1dd2fcc1f9f70c9c8ac4e37eb7caf50c986df9d3
       ]
     },
     {
       id: 2,
-      title: "Java Backend Development Curriculum",
-      icon: "bi bi-cpu",
+      title: "Programming with Java",
+      icon: "bi bi-cup-hot",
       items: [
-        "Core Java (Foundations)",
-        "**Goal:** Build strong fundamentals in Java programming.",
-        "Java Basics",
-        "JVM, JRE, JDK",
-        "Data types, variables, operators",
-        "Control structures (if, switch, loops)",
-        "Object-Oriented Programming (OOP)",
-        "Classes, Objects, Constructors",
-        "Inheritance, Polymorphism, Abstraction, Encapsulation",
-        "Core APIs",
-        "String, StringBuilder, Wrapper classes",
-        "Collections Framework (List, Set, Map, Queue)",
-        "Generics",
-        "Exception Handling",
-        "Input/Output (I/O Streams, File handling)",
-        "Multithreading & Concurrency (Thread, Runnable, Executors)",
-        "Java 8+ Features",
-        "Lambda expressions, Streams API, Functional interface"
+        "Core Java syntax and OOP principles",
+        "Control structures, arrays, and strings",
+        "Classes, inheritance, and polymorphism",
+        "Exception handling and file I/O",
+        "Collections framework and generics"
       ]
     },
     {
       id: 3,
-      title: "Databases & SQL",
+      title: "Database Management",
       icon: "bi bi-database",
       items: [
-    "Goal: Work with relational databases efficientl",
-    "Relational Database Concepts",
-    "SQL Basics",
-    "SELECT, INSERT, UPDATE, DELETE",
-    "WHERE, GROUP BY, HAVING, ORDER BY",
-    "Joins (INNER, LEFT, RIGHT, FULL)",
-    "Constraints & Indexes",
+        "Introduction to SQL and relational databases",
+        "CRUD operations using MySQL",
+        "Database design and normalization",
+        "JDBC for database connectivity",
+        "Connecting Java applications with MySQL"
       ]
     },
     {
       id: 4,
-      title: "Spring Framework & Spring Boot",
+      title: "Back-End Development",
       icon: "bi bi-gear",
       items: [
-    "Goal:Build production-grade Java applications easily",
-    "Spring Core",
-    "IoC Container, Beans, Dependency Injection",
-    "Spring MVC",
-    "Controllers, Models, Views",
-    "Spring Boot",
-    "Auto-configuration, Starter dependencies",
-    "RESTful APIs (GET, POST, PUT, DELETE)",
-    "Request/Response handling with JSON",
-    "Exception handling",
-    "Application properties & Profiles",
-    "Spring Data JPA & Hibernate",
-     "ORM basics",
-     "Entity mapping (OneToOne, OneToMany, ManyToMany)",
-    "Query Methods, JPQL, Native Queries",
-    "Spring Security (Basic + JWT Authentication)",
-     "Validation & AOP (Aspect Oriented Programming)",
+        "Introduction to Java EE and Servlets",
+        "JSP (JavaServer Pages) and MVC architecture",
+        "Building dynamic web applications",
+        "Form handling and session management",
+        "Deploying Java web apps on Tomcat"
       ]
-    }
+    },
+ 
   ],
   whatYouLearnData: [
     {
@@ -1184,147 +889,47 @@ const coursesData = {
       icon: "bi bi-lightbulb",
       defaultOpen: true,
       items: [
-        "Overview of TypeScript",
-        "Why TypeScript for Angular",
-        "TypeScript vs JavaScript",
-        "Setting up TypeScript Environment"
+        "Introduction to Angular and its ecosystem",
+        "Setting up the Angular development environment",
+        "Understanding TypeScript and ES6 features",
+        "Angular project structure and file organization",
+        "Creating your first Angular app"
       ]
     },
     {
       id: 2,
-      title: "Angular Installation",
+      title: "Core Concepts",
       icon: "bi bi-box",
       items: [
-        "Prerequisites (Node.js, npm)",
-        "Installing Angular CLI",
-        "Creating a New Angular Project",
-        "Running and Building the Application"
+        "Components and templates",
+        "Data binding and interpolation",
+        "Directives: built-in and custom",
+        "Event handling and property binding",
+        "Component communication (Input & Output)"
       ]
     },
     {
       id: 3,
-      title: "Understanding Angular Project Structure",
+      title: "Services and Dependency Injection",
       icon: "bi bi-gear",
       items: [
-        "Overview of Angular Files and Folders",
-        "main.ts and app.module.ts",
-        "Components, Modules, and Templates",
-        "Best Practices for Folder Organization"
+        "Creating and using services",
+        "Dependency Injection in Angular",
+        "Observable and RxJS introduction",
+        "Managing data flow with services",
+        "Reusable logic with service layers"
       ]
     },
     {
       id: 4,
-      title: "Routing and Advanced Routing",
+      title: "Routing and Navigation",
       icon: "bi bi-map",
       items: [
-        "Introduction to Angular Routing",
-        "Configuring Routes in app-routing.module.ts",
-        "Route Parameters",
-        "Route Guards and Navigation Control"
-      ]
-    },
-    {
-      id: 5,
-      title: "Data Binding and Its Types",
-      icon: "bi bi-cpu",
-      items: [
-        "Concept of Data Binding",
-        "Interpolation – Displaying dynamic data",
-        "Property Binding – Binding DOM properties",
-        "Event Binding – Listening to user actions",
-        "Two-Way Binding – Synchronizing data"
-      ]
-    },
-    {
-      id: 6,
-      title: "Directives and Their Types",
-      icon: "bi bi-cpu",
-      items: [
-        "What are Directives",
-        "Structural Directives – *ngIf, *ngFor, *ngSwitch",
-        "Attribute Directives – ngClass, ngStyle",
-        "Creating Custom Directives"
-      ]
-    },
-    {
-      id: 7,
-      title: "Pipes and Their Types",
-      icon: "bi bi-cpu",
-      items: [
-        "Introduction to Pipes",
-        "Built-in Pipes – date, uppercase, currency, etc.",
-        "Custom Pipes – Creating and Registering",
-        "Async Pipe for Observables"
-      ]
-    },
-    {
-      id: 8,
-      title: "Forms in Angular",
-      icon: "bi bi-ui-checks",
-      items: [
-        "Forms Overview and Differences",
-        "Template-Driven Forms – Simplicity and Syntax",
-        "Reactive Forms – FormBuilder and FormGroup",
-        "Form Validation (Built-in & Custom)",
-        "CRUD Operation Using Reactive Forms and Template Forms",
-        "Custom Toast Service"
-      ]
-    },
-    {
-      id: 9,
-      title: "Services in Angular",
-      icon: "bi bi-ui-checks",
-      items: [
-        "Concept of Services and Single Responsibility",
-        "Creating and Registering a Service",
-        "Using Services Across Components"
-      ]
-    },
-    {
-      id: 10,
-      title: "HTTP Client and API Integration",
-      icon: "bi bi-shield-lock",
-      items: [
-        "Introduction to Angular HttpClient",
-        "Performing GET, POST, PUT, DELETE Requests",
-        "Handling Observables and RxJS Operators",
-        "Managing API Errors and Responses",
-        "Integrating with RESTful JSON APIs"
-      ]
-    },
-    {
-      id: 11,
-      title: "Authentication with Local Storage",
-      icon: "bi bi-shield-lock",
-      items: [
-        "Overview of Client-Side Authentication",
-        "Login and Logout Functionality",
-        "Managing User Sessions",
-        "Handling Unauthorized Access"
-      ]
-    },
-    {
-      id: 12,
-      title: "Authorization and Role-Based Guards",
-      icon: "bi bi-shield-lock",
-      items: [
-        "Introduction to Angular Guards",
-        "Implementing CanActivate and CanActivateChild",
-        "Creating Role-Based Access Controls",
-        "Protecting Routes Based on Roles"
-      ]
-    },
-    {
-      id: 13,
-      title: "Student Management Project (CRUD Example)",
-      icon: "bi bi-kanban",
-      items: [
-        "Project Setup and Overview",
-        "Creating Components and Models",
-        "Implementing CRUD (Create, Read, Update, Delete) Operations",
-        "Integrating Reactive Forms",
-        "Applying Role-Based Guards",
-        "Final Project Workflow"
+        "Routing setup and configuration",
+        "Navigating between views",
+        "Route parameters and query strings",
+        "Lazy loading modules",
+        "Route guards and authentication"
       ]
     },
 
@@ -1682,111 +1287,47 @@ const coursesData = {
       icon: "bi bi-lightbulb",
       defaultOpen: true,
       items: [
-      "Introduction to mobile app development and the significance of cross-platform development.",
-      "React Native: A framework to build mobile applications for iOS and Android using a single codebase",
-      "Differences between React Native and Native Development (iOS/Android).",
-      "Overview of Mobile App Development: Native vs Hybrid vs Cross-Platform.",
-      "Role of React Native and Firebase in Full-Stack Mobile App Development",
-      "Setting Up the Development Environment: Visual Studio Code, React Native CLI, Expo, and Firebase.",
+        "What is React Native and how it works",
+        "Setting up your environment (Expo and CLI)",
+        "Project structure and app components",
+        "Understanding React vs React Native",
+        "Running your first mobile app"
       ]
     },
     {
       id: 2,
-      title: "Module-1: HTML, CSS, and Bootstrap",
+      title: "Core Concepts",
       icon: "bi bi-box",
       items: [
-       "HTML Fundamentals: Structure of an HTML Document, Semantic HTML5, Forms, Tables, and Multimedia",
-
-       "CSS Basics: Selectors, Box Model, Flexbox, Grid Layout, Styling Forrns, Animations, and Transitions",
-
-       "Bootstrap: Grid System and Breakpoints, Components (Navbar, Cards, Buttons, Forms), Customizing Themes",
-
-       "Responsive Design: Using Media Queries, Mobile-First Design Principles.",
+        "JSX and component structure",
+        "Props and state management",
+        "Conditional rendering and styling",
+        "Flexbox layout for mobile UI",
+        "Reusable components and composition"
       ]
     },
     {
       id: 3,
-      title: "Module-2: JavaScript (Pre-requisite)",
+      title: "Navigation and State Management",
       icon: "bi bi-compass",
       items: [
-        "JavaScript Basics: Variables (var, let, const), Data Types (String, Number, Boolean, Undefined, Null), Type Conversion",
-
-        "Control Flow: Conditionals (if, else, switch), Loops (for, while, do while)",
-
-        "Functions and Objects: Declaring Functions, Arrow Functions, Objects, Arrays, and Array Methods",
-
-        "Advanced JavaScript Concepts: ES6 Features, Destructuring, Template Literals, Spread/Rest Operators, Arrow Functions, this keyword",
-
-        "Asynchronous JavaScript: Callbacks, Promises, async/await, Closures, Higher-Order Functions",
+        "Using React Navigation (Stack, Tab, Drawer)",
+        "Passing parameters between screens",
+        "Global state management with Context API",
+        "Async data flow with Redux Toolkit",
+        "Persisting app data with AsyncStorage"
       ]
     },
     {
       id: 4,
-      title: "Module-3: React Native Basics",
+      title: "Working with APIs",
       icon: "bi bi-cloud-arrow-down",
       items: [
-     "Introduction to React Native: React Native Overview, Setting up a React Native Project with Expo or React Native CU.",
-
-     "Components and JSX: Understanding Functional and Class Components, JSX Syntax.",
-
-     "State and Props: Managing state in components, passing data through props.",
-
-     "Handling User Input: Forms, Text Inputs, Buttons, Haridling Events",
-
-    "Styling in React Native: Using StyleSheet, Flexbox, and responsive design for mobile apps",
-      ]
-    },
-    {
-      id: 5,
-      title: "Module-4: React Navigation & State Management",
-      icon: "bi bi-map",
-      items: [
-        "React Navigation: Setting up Stack, Tab, and Drawer Navigation.",
-        "React Navigation: Passing Params, Deep Linking, and Nested Navigators.",
-        "State Management: Introduction to Context API and Redux for global state management.",
-        "Handling Async Operations: Making HTTP requests with fetch or Axios for interacting with APIs."
-      ]
-    },
-    {
-      id: 6,
-      title: "Module-5: Firebase Backend Integration",
-      icon: "bi bi-shield-lock",
-      items: [
-        "Introduction to Firebase: Firebase Authentication, Firestore Database, Firebase Storage",
-        "Firebase Authentication: User Sign Up, Login, Logout, Password Reset",
-        "Firebase Firestore: Cloud Firestore Basics, Reading, Writing, and Updating Data.",
-        "Firebase Storage: Uploading and retrieving files (Images, Videos).",
-        "Real-Time Database: Implementing Real-Time Data Synchronization with Firebase."
-      ]
-    },
-    {
-      id: 7,
-      title: "Module-6: Deployment of React Native Mobile App",
-      icon: "bi bi-cloud-upload",
-      items: [
-        "Deploying React Native Apps: Using Expo or React Native CU for app builds and publishing to the App Store and Google Play",
-        "Firebase Hosting: Deploying static sites and front-end applications using Firebase Hosting for web applications if required."
-      ]
-    },
-    {
-      id: 8,
-      title: "Module-7: Capstone Project",
-      icon: "bi bi-kanban",
-      items: [
-        "Project Objective: Build a Full-Stack Mobile Application using React Native (Front-End) and Firebase (Backend-less data storage).",
-        "Example Projects: E-Commerce App, Social Media App, Task Management App, or Personal Finance Tracker.",
-        "Final Deliverables: A working mobile app, Firebase integration, and deployment on Google Play/Apple App Store."
-      ]
-    },
-    {
-      id: 9,
-      title: "Course Duration",
-      icon: "bi bi-clock-history",
-      items: [
-        "Total Duration: 12 to 16 weeks",
-        "React Native Development: 8-10 weeks",
-        "Firebase Integration and Real-Time Data: 3-4 weeks",
-        "Project Development: 2-4 weeks"
+        "Fetching data from REST APIs",
+        "POST, PUT, DELETE operations",
+        "Handling loading states and errors",
+        "Integration with backend services",
+        "Authentication using JWT tokens"
       ]
     },
 
@@ -1944,128 +1485,51 @@ const coursesData = {
   courseContentData: [
     {
       id: 1,
-      title: "Basics (Beginner Level)",
+      title: "Getting Started with React",
       icon: "bi bi-lightbulb",
       defaultOpen: true,
       items: [
-        "Introduction to React",
-        "What is React? Why React? SPA concept",
-        "React vs Vanilla JS",
-        "Setup (Vite/CRA)",
-        "JSX",
-        "JSX rules & syntax",
-        "Embedding expressions { }",
-        "Fragments (<> </>)",
-        "Components",
-        "Function components",
-        "Component hierarchy",
-        "Props (passing data parent child)",
-        "Default props & propTypes (validation)",
-        "State Basics",
-        "useState hook",
-        "Difference: Props vs State",
-        "Updating state correctly (immutability)",
-        "Event Handling",
-        "onClick, onChange, onSubmit",
-        "Passing functions as props",
-        "Rendering",
-        "Lists (.map())",
-        "Keys importance",
-        "Conditional rendering (if, ternary, &&)"
+        "Introduction to React and its ecosystem",
+        "Setting up the development environment",
+        "JSX syntax and rendering elements",
+        "Understanding components and props",
+        "Creating your first React app"
       ]
     },
     {
       id: 2,
-      title: "Intermediate Level",
+      title: "Components and State",
       icon: "bi bi-puzzle",
       items: [
-        "Hooks (Core)",
-        "useEffect lifecycle methods (componentDidMount, etc.)",
-        "Cleanup functions",
-        "Forms",
-        "Controlled components (state-based)",
-        "Uncontrolled components (refs)",
-        "Multiple inputs, form validation",
-        "React Router",
-        "Setup with react-router-dom",
-        "Route, Link, Navigate",
-        "Nested routes",
-        "Protected routes",
-        "Context API",
-        "Avoiding prop drilling",
-        "useContext hook",
-        "API Integration",
-        "Fetch vs Axios",
-        "Loading & error handling",
-        "Displaying data in UI",
-        "Styling in React",
-        "CSS, CSS Modules",
-        "Styled Components",
-        "Tailwind CSS (most used now)",
-        "Lifting State Up",
-        "Sharing data between sibling components"
+        "Functional vs Class components",
+        "State and setState basics",
+        "Event handling in React",
+        "Conditional rendering",
+        "Lists and keys"
       ]
     },
     {
       id: 3,
-      title: "Advanced Level",
+      title: "React Hooks",
       icon: "bi bi-diagram-3",
       items: [
-        "Advanced Hooks",
-        "useReducer (state management)",
-        "useRef (DOM refs, persist values)",
-        "useMemo (performance optimization)",
-        "useCallback (function memoization)",
-        "Custom Hooks",
-        "Reusable logic (useFetch, useForm)",
-        "Code Splitting",
-        "React.lazy + Suspense",
-        "Dynamic imports",
-        "Error Boundaries",
-        "Catch UI crashes",
-        "Performance Optimization",
-        "React.memo",
-        "Virtualization (react-window, react-virtualized)",
-        "Avoiding re-renders",
-        "Portals",
-        "Modals, tooltips outside root",
-        "React 18 Features",
-        "Concurrent rendering",
-        "useTransition",
-        "useDeferredValue"
+        "Introduction to Hooks",
+        "Using useState and useEffect",
+        "Managing multiple states",
+        "Custom hooks and reusability",
+        "Lifecycle equivalents with Hooks"
       ]
     },
     {
       id: 4,
-      title: "Expert Level",
+      title: "State Management and Context API",
       icon: "bi bi-diagram-2",
       items: [
-        "State Management",
-        "Redux Toolkit (modern Redux)",
-        "Zustand / Recoil / Jotai (alternative libraries)",
-        "Authentication",
-        "JWT, Cookies, Sessions",
-        "Protected routes with React Router",
-        "File & Folder Structure",
-        "Organizing components, hooks, utils",
-        "React Patterns",
-        "Higher Order Components (HOC)",
-        "Render Props",
-        "Compound Components pattern",
-        "React Suspense & Streaming",
-        "Suspense for data fetching",
-        "Concurrent features deep dive",
-        "SSR & Next.js",
-        "Next.js basics (pages, routing)",
-        "Server-side rendering",
-        "Static site generation",
-        "Testing",
-        "Jest basics",
-        "React Testing Library",
-        "Snapshot testing",
-        "Deployment",
-        "Build & deploy (Netlify, Vercel)",
-        "Environment variables"
+        "Prop drilling problem and solutions",
+        "Using Context API for global state",
+        "Building custom context providers",
+        "Integrating useReducer for complex states",
+        "Structuring large-scale React apps"
       ]
     },
    
@@ -2765,120 +2229,53 @@ const coursesData = {
             icon: "bi bi-cloud",
             defaultOpen: true,
             items: [
-              "Cloud computing involves using remote servers hosted on the internet to store, manage, and process data.",
-              "AWS (Amazon Web Services) is a leading cloud provider offering a wide range of services."
+              "Introduction to Cloud Computing",
+              "Overview of AWS Global Infrastructure",
+              "AWS Management Console & CLI",
+              "Core AWS Services (EC2, S3, RDS, IAM)",
+              "Understanding Regions and Availability Zones",
+              "AWS Free Tier and Account Setup"
             ]
           },
           {
             id: 2,
-            title: "Regions and Availability Zones",
-            icon: "bi bi-globe",
+            title: "Compute, Storage & Networking",
+            icon: "bi bi-hdd-network",
             items: [
-              "Region: A geographic area where AWS has data centers. Each region is independent.",
-              "Availability Zone: A region has multiple availability zones (data centers), which help ensure high availability."
+              "Elastic Compute Cloud (EC2) and AMIs",
+              "Simple Storage Service (S3) Essentials",
+              "Elastic Block Store (EBS) and Glacier",
+              "Virtual Private Cloud (VPC) and Subnets",
+              "Elastic Load Balancing (ELB) and Auto Scaling",
+              "DNS Management with Route 53"
             ]
           },
           {
             id: 3,
-            title: "Free Tier Account Creation",
-            icon: "bi bi-person-plus",
+            title: "AWS Security & Identity",
+            icon: "bi bi-shield-lock",
             items: [
-              "AWS offers a free tier, allowing users to try many services without charge (up to certain limits).",
-              "Setting up an account gives access to services like EC2 and S3 for free for the first 12 months."
+              "Identity and Access Management (IAM)",
+              "Security Groups and Network ACLs",
+              "Key Management Service (KMS)",
+              "AWS Organizations and Billing Control",
+              "AWS Shared Responsibility Model",
+              "Best Practices for Cloud Security"
             ]
           },
           {
             id: 4,
-            title: "Basic Identity & Access Management (IAM)",
-            icon: "bi bi-shield-lock",
-            items: [
-              "IAM allows you to manage who has access to AWS resources.",
-              "You can create users, groups, and roles, assign them permissions, and control their access."
-            ]
-          },
-          {
-            id: 5,
-            title: "Elastic Compute Cloud (EC2)",
-            icon: "bi bi-cpu",
-            items: [
-              "EC2 provides scalable virtual machines (VMs) in the cloud.",
-              "You can launch an instance (a virtual server) and run applications on it."
-            ]
-          },
-          {
-            id: 6,
-            title: "Simple Storage Service (S3)",
-            icon: "bi bi-hdd",
-            items: [
-              "S3 is a storage service where you can store files or data in what AWS calls \"buckets.\"",
-              "It’s often used for backups, file sharing, or hosting static content."
-            ]
-          },
-          {
-            id: 7,
-            title: "Virtual Private Cloud (VPC)",
-            icon: "bi bi-diagram-3",
-            items: [
-              "A VPC lets you create a private network in AWS. You control the network configuration, including IP addresses and subnets, just like in a traditional on-premises network."
-            ]
-          },
-          {
-            id: 8,
-            title: "Relations Database Services (RDS)",
+            title: "Databases & Analytics",
             icon: "bi bi-database",
             items: [
-              "RDS is a managed service for databases like MySQL, PostgreSQL, or SQL Server.",
-              "AWS handles backups, patching, and scaling for you."
+              "Amazon RDS and Aurora",
+              "DynamoDB (NoSQL Database)",
+              "Redshift Data Warehousing",
+              "ElastiCache for Performance Optimization",
+              "Athena and QuickSight for Data Analytics"
             ]
           },
-          {
-            id: 9,
-            title: "Route 53",
-            icon: "bi bi-map",
-            items: [
-              "Route 53 is a Domain Name System (DNS) service, which helps route users to your applications or websites.",
-              "It can also monitor and route traffic based on health checks."
-            ]
-          },
-          {
-            id: 10,
-            title: "Content Delivery Network (CDN) – CloudFront",
-            icon: "bi bi-lightning",
-            items: [
-              "CloudFront speeds up the delivery of your website content by caching it at different locations globally.",
-              "It makes your website load faster for users in different parts of the world."
-            ]
-          },
-          {
-            id: 11,
-            title: "CloudWatch & CloudTrail",
-            icon: "bi bi-eye",
-            items: [
-              "CloudWatch is used to monitor AWS resources and applications. It collects performance data and allows you to set alarms for resource usage.",
-              "CloudTrail tracks every API call made in your AWS account, providing a history of changes made to your resources. It's useful for security and troubleshooting."
-            ]
-          },
-          {
-            id: 12,
-            title: "Config & AWS CLI",
-            icon: "bi bi-terminal",
-            items: [
-              "AWS Config helps track the state of your AWS resources over time. It can notify you when resources are misconfigured or out of compliance with desired settings.",
-              "The CLI allows you to manage AWS services using commands in your terminal or command prompt, rather than navigating the AWS console."
-            ]
-          },
-          {
-            id: 13,
-            title: "Serverless & Messaging",
-            icon: "bi bi-send",
-            items: [
-              "Serverless computing means you don’t manage servers. AWS manages the infrastructure for you.",
-              "Lambda Function: Allows you to run code in response to events (like a file being uploaded to S3) without provisioning servers.",
-              "DynamoDB: A fully managed NoSQL database that scales automatically based on demand.",
-              "SNS is a messaging service that allows you to send notifications (emails, SMS, etc.) to subscribers.",
-              "SQS allows you to send, store, and receive messages between distributed systems. It helps manage communication between different parts of an application."
-            ]
-          }
+
         ],
         whatYouLearnData: [
           {
@@ -3783,136 +3180,55 @@ const coursesData = {
         courseContentData: [
           {
             id: 1,
-            title: "Module 1: Introduction to Python",
+            title: "Python Fundamentals",
             icon: "bi bi-book",
             defaultOpen: true,
             items: [
-              "Overview of Python: Applications and features",
-              "Installing Python and setting up environment",
-              "Understanding the Python interpreter"
+              "Introduction to Python and applications",
+              "Setting up Python and IDEs",
+              "Variables, data types, expressions",
+              "Conditional statements and loops",
+              "Functions and modules",
+              "Error handling and debugging"
             ]
           },
           {
             id: 2,
-            title: "Module 2: Basic Python Syntax and Data Types",
-            icon: "bi bi-code",
+            title: "Data Handling in Python",
+            icon: "bi bi-database",
             items: [
-              "Python Syntax: Indentation and structure",
-              "Variables and Data Types (Int, Float, String)",
-              "Basic Operators in Python"
+              "Lists, tuples, dictionaries, and sets",
+              "String formatting and manipulation",
+              "Working with files (txt, CSV, JSON)",
+              "Introduction to Python libraries (NumPy, Pandas)",
+              "Basic data structures and algorithms"
             ]
           },
           {
             id: 3,
-            title: "Module 3: Control Structures",
-            icon: "bi bi-shuffle",
+            title: "APIs & Automation",
+            icon: "bi bi-window",
             items: [
-              "Decision making: if, else, and elif statements",
-              "Loops: for loops and while loops",
-              "Loop control statements: break, continue"
+              "Working with REST APIs in Python",
+              "Automating tasks with Python scripts",
+              "Web scraping with BeautifulSoup",
+              "Version control using Git",
+              "Building command-line tools"
             ]
           },
           {
             id: 4,
-            title: "Module 4: Functions and Modules",
-            icon: "bi bi-box",
-            items: [
-              "Creating functions, parameters, and return statements",
-              "Built-in vs. User-defined functions",
-              "Importing and using standard/custom modules"
-            ]
-          },
-          {
-            id: 5,
-            title: "Module 5: Data Structures",
-            icon: "bi bi-collection",
-            items: [
-              "Lists: Creation, slicing, and manipulation",
-              "Tuples: Properties and usage",
-              "Dictionaries: Key-value pairs and operations"
-            ]
-          },
-          {
-            id: 6,
-            title: "Module 6: File Handling",
-            icon: "bi bi-file-earmark-text",
-            items: [
-              "Reading and writing text files",
-              "Working with different file formats",
-              "File operations and management"
-            ]
-          },
-          {
-            id: 7,
-            title: "Module 7: Error Handling and Exception",
-            icon: "bi bi-exclamation-triangle",
-            items: [
-              "Introduction to exceptions in Python",
-              "Using try, except, and finally blocks",
-              "Best practices for error handling"
-            ]
-          },
-          {
-            id: 8,
-            title: "Module 8: Introduction to OOP",
-            icon: "bi bi-cpu",
-            items: [
-              "OOP Concepts: Classes and Objects",
-              "Understanding Inheritance and Polymorphism",
-              "Building real-world classes in Python"
-            ]
-          },
-          {
-            id: 9,
-            title: "Module 9: Introduction to Libraries",
-            icon: "bi bi-bar-chart",
-            items: [
-              "Overview of NumPy for numerical computing",
-              "Pandas for data analysis and manipulation",
-              "Matplotlib for data visualization"
-            ]
-          },
-          {
-            id: 10,
-            title: "Module 10: Statistics Basics",
-            icon: "bi bi-calculator",
-            items: [
-              "Standard Deviation & Variance",
-              "Data deviation & distribution",
-              "Bias-Variance Trade-off (Underfitting & Overfitting)"
-            ]
-          },
-          {
-            id: 11,
-            title: "Module 11: Advanced Statistics & Distance Metrics",
-            icon: "bi bi-diagram-3",
-            items: [
-              "Distance Metrics: Euclidean & Manhattan Distance",
-              "Outlier Analysis: What is an Outlier?",
-              "Inter Quartile Range (IQR) & Box plots"
-            ]
-          },
-          {
-            id: 12,
-            title: "Module 12: Data Pre-processing & Analysis",
-            icon: "bi bi-stars",
-            items: [
-              "Missing Value Treatment: Central & KNN imputation",
-              "Data Transformation: Dummification",
-              "Correlation Analysis: Pearson correlation"
-            ]
-          },
-          {
-            id: 13,
-            title: "Module 13: ChatGPT & OpenAI API",
+            title: "ChatGPT & OpenAI API",
             icon: "bi bi-robot",
             items: [
               "Introduction to ChatGPT and GPT models",
               "Setting up OpenAI API in Python",
               "Generating text, summaries, and responses",
+              "Fine-tuning prompts for better output",
               "Integrating ChatGPT into Python applications"
             ]
-          }
+          },
+ 
         ],
         whatYouLearnData: [
           {
@@ -3997,7 +3313,7 @@ const coursesData = {
             icon: "bi bi-display",
             items: [
               "Power BI Introduction",
-              "Component of Power BI",
+              "Components of Power BI",
               "Architecture of Power BI"
             ]
           },
@@ -4500,58 +3816,24 @@ const coursesData = {
             defaultOpen: true,
             items: [
               <div key="base-1" className="mb-4">
-                <h6 className="fw-semibold text-dark mb-2">Module 1: Introduction to SAS</h6>
-                <p className="fw-medium mb-1">Introduction to SAS</p>
+                <h6 className="fw-semibold text-dark mb-2">Module 1: SAS Fundamentals</h6>
                 <ul className="list-disc pl-4">
-                  <li>Overview of SAS software and its applications.</li>
-                  <li>Understanding the SAS programming environment and interface.</li>
+                  <li>Introduction to SAS and its applications</li>
+                  <li>Installing and navigating SAS environment</li>
+                  <li>Data types, variables, and datasets</li>
+                  <li>Basic SAS programming syntax</li>
+                  <li>Reading and writing datasets</li>
+                  <li>Debugging and error handling</li>
                 </ul>
               </div>,
               <div key="base-2" className="mb-4">
-                <h6 className="fw-semibold text-dark mb-2">Module 2: SAS Fundamentals</h6>
-                <p className="fw-medium mb-1">Data Step Programming</p>
-                <ul className="list-disc pl-4 mb-2">
-                  <li>Data step concepts: Reading and writing data.</li>
-                  <li>Understanding variables, data types, and arrays.</li>
-                </ul>
-                <p className="fw-medium mb-1">Data Manipulation</p>
+                <h6 className="fw-semibold text-dark mb-2">Module 2: Data Management in SAS</h6>
                 <ul className="list-disc pl-4">
-                  <li>Data manipulation techniques: combining datasets, conditional processing.</li>
-                  <li>Using functions and informats to clean and transform data.</li>
-                </ul>
-              </div>,
-              <div key="base-3" className="mb-4">
-                <h6 className="fw-semibold text-dark mb-2">Module 3: Procedures in SAS</h6>
-                <p className="fw-medium mb-1">Working with Procedures</p>
-                <ul className="list-disc pl-4">
-                  <li>Utilizing PROC PRINT, PROC SORT, PROC FREQ for basic data analysis.</li>
-                  <li>Summary statistics and frequency distributions with PROC MEANS and PROC FREQ.</li>
-                </ul>
-              </div>,
-              <div key="base-4" className="mb-4">
-                <h6 className="fw-semibold text-dark mb-2">Module 4: SAS Programming Techniques</h6>
-                <p className="fw-medium mb-1">Reading and Writing External Files</p>
-                <ul className="list-disc pl-4 mb-2">
-                  <li>Importing and exporting data in different formats (CSV, Excel, etc.).</li>
-                  <li>Utilizing SAS data steps for file processing.</li>
-                </ul>
-                <p className="fw-medium mb-1">SAS Functions</p>
-                <ul className="list-disc pl-4">
-                  <li>Working with SAS functions for data manipulation and transformation.</li>
-                  <li>Understanding common functions and their applications.</li>
-                </ul>
-              </div>,
-              <div key="base-5" className="mb-4">
-                <h6 className="fw-semibold text-dark mb-2">Module 5: Advanced SAS Concepts</h6>
-                <p className="fw-medium mb-1">SAS Formats and Informats</p>
-                <ul className="list-disc pl-4 mb-2">
-                  <li>Utilizing SAS formats and informats for data conversion and reporting.</li>
-                  <li>Custom formats and informats creation.</li>
-                </ul>
-                <p className="fw-medium mb-1">Introduction to Macros</p>
-                <ul className="list-disc pl-4">
-                  <li>Basics of SAS macros, creating and using macros for automation.</li>
-                  <li>Understanding macro variables and macro programming.</li>
+                  <li>Data step basics and data manipulation</li>
+                  <li>Sorting, merging, and concatenating datasets</li>
+                  <li>Creating new variables and functions</li>
+                  <li>Conditional logic and loops in SAS</li>
+                  <li>Working with dates and character variables</li>
                 </ul>
               </div>
             ]
@@ -4562,54 +3844,23 @@ const coursesData = {
             icon: "bi bi-gear",
             items: [
               <div key="adv-1" className="mb-4">
-                <h6 className="fw-semibold text-dark mb-2">Module 1: Advanced SAS Programming Concepts</h6>
-                <p className="fw-medium mb-1">Review of Base SAS Concepts</p>
-                <ul className="list-disc pl-4 mb-2">
-                  <li>Brief recap of fundamental SAS programming techniques covered in the Base SAS certification course.</li>
-                </ul>
-                <p className="fw-medium mb-1">Advanced Data Manipulation Techniques</p>
+                <h6 className="fw-semibold text-dark mb-2">Module 3: Advanced SAS Programming</h6>
                 <ul className="list-disc pl-4">
-                  <li>Complex data merging and manipulation using advanced DATA step programming.</li>
-                  <li>Using SQL in SAS for advanced data querying and manipulation.</li>
+                  <li>SAS Macros for automation</li>
+                  <li>SQL in SAS (PROC SQL)</li>
+                  <li>Arrays, Do loops, and iterative processing</li>
+                  <li>Advanced data manipulation techniques</li>
+                  <li>Error handling and debugging best practices</li>
                 </ul>
               </div>,
               <div key="adv-2" className="mb-4">
-                <h6 className="fw-semibold text-dark mb-2">Module 2: Advanced Data Step Processing</h6>
-                <p className="fw-medium mb-1">Advanced Data Step Programming</p>
+                <h6 className="fw-semibold text-dark mb-2">Module 4: Data Analysis and Reporting</h6>
                 <ul className="list-disc pl-4">
-                  <li>Use of advanced array processing techniques for data manipulation.</li>
-                  <li>Leveraging hash objects and techniques for efficient data handling.</li>
-                </ul>
-              </div>,
-              <div key="adv-3" className="mb-4">
-                <h6 className="fw-semibold text-dark mb-2">Module 3: Advanced PROC SQL</h6>
-                <ul className="list-disc pl-4">
-                  <li>Complex SQL querying, subqueries, joins, and optimization techniques.</li>
-                  <li>Utilizing advanced PROC SQL features for data aggregation and transformation.</li>
-                </ul>
-              </div>,
-              <div key="adv-4" className="mb-4">
-                <h6 className="fw-semibold text-dark mb-2">Module 4: SAS Macro Language</h6>
-                <p className="fw-medium mb-1">Advanced Macro Programming</p>
-                <ul className="list-disc pl-4">
-                  <li>In-depth understanding of macro language features and applications.</li>
-                  <li>Macro debugging, stored compiled macros, and advanced macro programming.</li>
-                </ul>
-              </div>,
-              <div key="adv-5" className="mb-4">
-                <h6 className="fw-semibold text-dark mb-2">Module 5: Efficiency and Optimization</h6>
-                <p className="fw-medium mb-1">Performance Tuning and Optimization</p>
-                <ul className="list-disc pl-4">
-                  <li>Techniques for optimizing SAS code and improving performance.</li>
-                  <li>Efficient programming methods and resource management.</li>
-                </ul>
-              </div>,
-              <div key="adv-6" className="mb-4">
-                <h6 className="fw-semibold text-dark mb-2">Module 6: Integration and Automation</h6>
-                <p className="fw-medium mb-1">Integration with External Applications</p>
-                <ul className="list-disc pl-4">
-                  <li>Integrating SAS with other applications and languages.</li>
-                  <li>Automation and scheduling using SAS in batch processes.</li>
+                  <li>Descriptive statistics and summary reports</li>
+                  <li>PROC MEANS, PROC FREQ, PROC UNIVARIATE</li>
+                  <li>Data visualization using PROC SGPLOT & PROC REPORT</li>
+                  <li>Generating automated reports</li>
+                  <li>Introduction to statistical procedures</li>
                 </ul>
               </div>
             ]
@@ -4761,131 +4012,54 @@ const coursesData = {
         courseContentData: [
           {
             id: 1,
-            title: "Module 1: Modern Data Engineering Foundations & Data Warehousing",
+            title: "Data Engineering Fundamentals",
             icon: "bi bi-book",
             defaultOpen: true,
             items: [
-              "Role And Responsibilities Of A Modern Data Engineer",
-              "Data Lifecycle: Ingestion, Processing, Storage, Analytics",
-              "Common Data Architecture Patterns (Lambda, Kappa)",
-              "Batch Vs Streaming Processing Systems",
-              "OLTP Vs OLAP Systems And Use Cases",
-              "Google Cloud Platform Overview",
-              "GCP Project Setup And Billing Basics",
-              "IAM Fundamentals And Service Accounts",
-              "Cloud Storage Buckets And Lifecycle Management"
+              "Introduction to Data Engineering",
+              "Data pipeline architecture and design patterns",
+              "ETL vs ELT processes",
+              "Data storage solutions (SQL, NoSQL, Data Lakes)",
+              "Data quality and validation techniques"
             ]
           },
           {
             id: 2,
-            title: "Module 2: Python for Data Engineering",
-            icon: "bi bi-code",
+            title: "Cloud-Based Data Solutions",
+            icon: "bi bi-cloud",
             items: [
-              "Python Fundamentals And Control Structures",
-              "Functions And Modular Programming",
-              "Object-Oriented Programming For Pipelines",
-              "Handling CSV, JSON, And Parquet Files",
-              "Local And Cloud Storage Integration",
-              "Logging Standards And Error Handling",
-              "Building Reusable Ingestion Frameworks"
+              "Google Cloud Platform overview",
+              "BigQuery for data warehousing",
+              "Cloud Storage for data lakes",
+              "Cloud Pub/Sub for real-time data streaming",
+              "Cloud Dataflow for batch and stream processing"
             ]
           },
           {
             id: 3,
-            title: "Module 3: ETL Development & API Integration",
+            title: "Workflow Orchestration with Apache Airflow",
             icon: "bi bi-gear",
             items: [
-              "ETL Vs ELT Architectures",
-              "Schema Validation And Data Quality Checks",
-              "Handling Missing, Late, And Corrupt Data",
-              "Working With REST APIs And Authentication",
-              "Transformations Using Pandas",
-              "Introduction To PySpark",
-              "Automated ETL Workflows"
+              "Introduction to Apache Airflow",
+              "DAGs, tasks, and operators",
+              "Scheduling and monitoring workflows",
+              "Integrating Airflow with cloud services",
+              "Best practices for workflow management"
             ]
           },
           {
             id: 4,
-            title: "Module 4: SQL for Data Engineering",
+            title: "Data Engineering with Python & MySQL",
             icon: "bi bi-database",
             items: [
-              "Relational Database Fundamentals",
-              "Joins, Subqueries, And CTEs",
-              "Aggregations And Grouping Techniques",
-              "Query Performance Optimization Basics",
-              "Hands-On Analytical SQL Use Cases"
+              "Python for data engineering",
+              "MySQL database design and management",
+              "Building data pipelines with Python and MySQL",
+              "Data ingestion and transformation techniques",
+              "Performance optimization for data pipelines"
             ]
           },
-          {
-            id: 5,
-            title: "Module 5: Advanced SQL & Data Warehousing",
-            icon: "bi bi-layers",
-            items: [
-              "Window Functions And Analytical Queries",
-              "Star And Snowflake Schema Modeling",
-              "Fact And Dimension Table Design",
-              "Slowly Changing Dimensions (SCD)",
-              "Implementing SCD Type 2",
-              "Enterprise Data Warehouse Best Practices"
-            ]
-          },
-          {
-            id: 6,
-            title: "Module 6: BigQuery Deep Dive",
-            icon: "bi bi-search",
-            items: [
-              "BigQuery Architecture And Internals",
-              "Loading Data From Cloud Storage",
-              "Partitioning And Clustering Strategies",
-              "Query Execution Plan Analysis",
-              "Cost Optimization Techniques",
-              "Monitoring And Performance Tuning"
-            ]
-          },
-          {
-            id: 7,
-            title: "Module 7: Streaming with Pub/Sub & Dataflow",
-            icon: "bi bi-broadcast",
-            items: [
-              "Streaming Data Fundamentals",
-              "Pub/Sub Topics And Subscriptions",
-              "Message Ordering And Delivery Semantics",
-              "Apache Beam Programming Model",
-              "Windowing, Triggers, And Watermarks",
-              "Dataflow Pipeline Design",
-              "Streaming Data Ingestion Into BigQuery"
-            ]
-          },
-          {
-            id: 8,
-            title: "Module 8: Orchestration & Production Best Practices",
-            icon: "bi bi-cpu-fill",
-            items: [
-              "Workflow Orchestration Concepts",
-              "Apache Airflow Fundamentals",
-              "Cloud Composer Architecture",
-              "Building And Scheduling DAGs",
-              "Monitoring, Logging, And Alerting",
-              "Security And IAM Best Practices",
-              "CI/CD For Data Pipelines"
-            ]
-          },
-          {
-            id: 9,
-            title: "Module 9: Real-Time Project & Certification Preparation",
-            icon: "bi bi-award",
-            items: [
-              "Understanding Real-World Data Engineering Scenarios",
-              "Designing End-To-End Data Pipeline Architecture",
-              "Ingesting Data From APIs And File",
-              "Processing Data Using Python And Dataflow",
-              "Loading Curated Data Into BigQuery",
-              "Orchestrating Workflows Using Airflow",
-              "Performance And Cost Optimization",
-              "Documentation And Architecture Diagrams",
-              "Interview And Certification Discussion"
-            ]
-          }
+
         ],
         whatYouLearnData: [
           {
@@ -5869,196 +5043,54 @@ const coursesData = {
         courseContentData: [
           {
             id: 1,
-            title: "Basic Reconnaissance",
-            icon: "bi bi-search",
+            title: "Cybersecurity Fundamentals",
+            icon: "bi bi-shield",
             defaultOpen: true,
             items: [
-              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
-                <style>{`
-                  .nict-curriculum-content ul { list-style-type: none !important; padding-left: 0 !important; }
-                  details.curriculum-details[open] .plus-icon { display: none; }
-                  details.curriculum-details[open] .minus-icon { display: inline; }
-                  details.curriculum-details:not([open]) .plus-icon { display: inline; }
-                  details.curriculum-details:not([open]) .minus-icon { display: none; }
-                `}</style>
-                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
-                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: Gathering information about potential targets without illegal intrusion.</span>
-                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
-                    <span className="plus-icon">+</span>
-                    <span className="minus-icon">-</span>
-                  </div>
-                </summary>
-                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
-                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
-                    <div style={{ marginBottom: '12px' }}>
-                      <p style={{ margin: '0 0 4px 0' }}><strong>Topic 1:</strong> What is Reconnaissance?</p>
-                      <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>Explain the concept of gathering information about potential targets without illegal intrusion.</p>
-                    </div>
-                    <div style={{ marginBottom: '0' }}>
-                      <p style={{ margin: '0 0 4px 0' }}><strong>Topic 2:</strong> Google Searching Skills.</p>
-                      <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>Teach how to use search engines to find information responsibly.</p>
-                    </div>
-                  </div>
-                </div>
-              </details>
+              "Introduction to Cybersecurity and its importance",
+              "Types of cyber threats and attacks",
+              "Basic networking concepts",
+              "Security terminology and principles",
+              "Setting up a secure lab environment"
             ]
           },
           {
             id: 2,
-            title: "Phishing Awareness",
-            icon: "bi bi-envelope-exclamation",
+            title: "Network Security",
+            icon: "bi bi-wifi",
             items: [
-              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
-                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
-                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: Understanding and recognizing phishing attempts.</span>
-                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
-                    <span className="plus-icon">+</span>
-                    <span className="minus-icon">-</span>
-                  </div>
-                </summary>
-                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
-                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
-                    <div style={{ marginBottom: '12px' }}>
-                      <p style={{ margin: '0 0 4px 0' }}><strong>Topic 1:</strong> Understanding Phishing.</p>
-                      <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>Explain what phishing is and how it works.</p>
-                    </div>
-                    <div style={{ marginBottom: '12px' }}>
-                      <p style={{ margin: '0 0 4px 0' }}><strong>Topic 2:</strong> Recognizing Phishing Attempts.</p>
-                      <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>Show examples of common phishing emails and websites.</p>
-                    </div>
-                    <div style={{ marginBottom: '0' }}>
-                      <p style={{ margin: '0 0 4px 0' }}><strong>Practice:</strong></p>
-                      <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>Hands-on Activity: Create a mock quiz to identify phishing emails or webpages.</p>
-                    </div>
-                  </div>
-                </div>
-              </details>
+              "Understanding firewalls and VPNs",
+              "Network protocols and services",
+              "Intrusion detection and prevention systems (IDS/IPS)",
+              "Packet sniffing and analysis",
+              "Securing routers and switches"
             ]
           },
           {
             id: 3,
-            title: "Social Engineering and Phishing Attacks",
-            icon: "bi bi-people",
+            title: "Ethical Hacking & Penetration Testing",
+            icon: "bi bi-hammer",
             items: [
-              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
-                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
-                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: Defense tools and basic security settings.</span>
-                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
-                    <span className="plus-icon">+</span>
-                    <span className="minus-icon">-</span>
-                  </div>
-                </summary>
-                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
-                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
-                    <div style={{ marginBottom: '12px' }}>
-                      <p style={{ margin: '0 0 4px 0' }}><strong>Topic 1:</strong> Antivirus Software.</p>
-                      <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>Explain what antivirus software is and why it is important.</p>
-                    </div>
-                    <div style={{ marginBottom: '12px' }}>
-                      <p style={{ margin: '0 0 4px 0' }}><strong>Topic 2:</strong> Firewalls.</p>
-                      <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>Describe what firewalls do and basic settings.</p>
-                    </div>
-                    <div style={{ marginBottom: '0' }}>
-                      <p style={{ margin: '0 0 4px 0' }}><strong>Practice:</strong></p>
-                      <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>Hands-on Activity: Demonstrate the use of basic security tools on personal devices.</p>
-                    </div>
-                  </div>
-                </div>
-              </details>
+              "Reconnaissance and footprinting",
+              "Scanning and enumeration",
+              "Vulnerability assessment tools",
+              "Exploitation techniques",
+              "Reporting and documentation"
             ]
           },
           {
             id: 4,
-            title: "Introduction to Social Engineering",
-            icon: "bi bi-person-bounding-box",
+            title: "Web Application Security",
+            icon: "bi bi-window",
             items: [
-              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
-                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
-                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: Protecting oneself from social engineering.</span>
-                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
-                    <span className="plus-icon">+</span>
-                    <span className="minus-icon">-</span>
-                  </div>
-                </summary>
-                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
-                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
-                    <div style={{ marginBottom: '12px' }}>
-                      <p style={{ margin: '0 0 4px 0' }}><strong>Topic 1:</strong> What is Social Engineering?</p>
-                      <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>Explain the concept and how it can be used both ethically and unethically.</p>
-                    </div>
-                    <div style={{ marginBottom: '12px' }}>
-                      <p style={{ margin: '0 0 4px 0' }}><strong>Topic 2:</strong> Protecting Against Social Engineering.</p>
-                      <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>Discuss basic strategies to protect oneself from social engineering attacks.</p>
-                    </div>
-                    <div style={{ marginBottom: '0' }}>
-                      <p style={{ margin: '0 0 4px 0' }}><strong>Practice:</strong></p>
-                      <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>Role-Playing Exercise: Simulate a simple social engineering scenario in a controlled environment.</p>
-                    </div>
-                  </div>
-                </div>
-              </details>
+              "OWASP Top 10 vulnerabilities",
+              "SQL injection and XSS attacks",
+              "Cross-Site Request Forgery (CSRF)",
+              "Secure coding practices",
+              "Web application penetration testing"
             ]
           },
-          {
-            id: 5,
-            title: "Introduction to Cryptography",
-            icon: "bi bi-lock",
-            items: [
-              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
-                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
-                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: Encrypting and decrypting messages.</span>
-                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
-                    <span className="plus-icon">+</span>
-                    <span className="minus-icon">-</span>
-                  </div>
-                </summary>
-                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
-                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
-                    <div style={{ marginBottom: '12px' }}>
-                      <p style={{ margin: '0 0 4px 0' }}><strong>Topic 1:</strong> Basics of Cryptography.</p>
-                      <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>Introduce simple cryptographic methods like Caesar cipher.</p>
-                    </div>
-                    <div style={{ marginBottom: '12px' }}>
-                      <p style={{ margin: '0 0 4px 0' }}><strong>Topic 2:</strong> Encrypting and Decrypting Messages.</p>
-                      <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>Teach basic encryption techniques and their applications.</p>
-                    </div>
-                    <div style={{ marginBottom: '0' }}>
-                      <p style={{ margin: '0 0 4px 0' }}><strong>Practice:</strong></p>
-                      <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>Hands-on Activity: Encrypt and decrypt simple messages using online tools or Python scripts.</p>
-                    </div>
-                  </div>
-                </div>
-              </details>
-            ]
-          },
-          {
-            id: 6,
-            title: "Cybersecurity Poster Campaign",
-            icon: "bi bi-megaphone",
-            items: [
-              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
-                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
-                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: Awareness through posters and presentations.</span>
-                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
-                    <span className="plus-icon">+</span>
-                    <span className="minus-icon">-</span>
-                  </div>
-                </summary>
-                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
-                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
-                    <div style={{ marginBottom: '12px' }}>
-                      <p style={{ margin: '0 0 4px 0' }}><strong>Topic 1:</strong> Project Overview.</p>
-                      <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>Students create informational posters on a specific cybersecurity topic (like password security or phishing) to teach their peers about staying safe online.</p>
-                    </div>
-                    <div style={{ marginBottom: '0' }}>
-                      <p style={{ margin: '0 0 4px 0' }}><strong>Practice:</strong></p>
-                      <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>Presentation: Allow students to present their posters in class or a school-wide cybersecurity awareness event.</p>
-                    </div>
-                  </div>
-                </div>
-              </details>
-            ]
-          }
+
         ],
         whatYouLearnData: [
           {
@@ -6109,43 +5141,51 @@ const coursesData = {
         "courseContentData": [
           {
             "id": 1,
-            "title": "Introduction to Cybersecurity",
+            "title": "Beginner – Cybersecurity Fundamentals",
             "icon": "bi bi-shield-lock",
             "defaultOpen": true,
             "items": [
-              "Overview: What is cybersecurity and why is it important?",
-              "Ethical Hacking: Explain the role of ethical hackers in protecting systems and networks.",
-              "Cyber Ethics: Discuss the ethical boundaries and legal aspects of hacking.",
+              "Introduction to ethical hacking and threat landscape",
+              "Legal, compliance, and ethical considerations",
+              "Security concepts: CIA triad, risk, vulnerabilities",
+              "Setting up a lab (Kali Linux, virtual machines)",
+              "Basic Linux commands and scripting for pentesters"
             ]
           },
           {
             "id": 2,
-            "title": "Understanding Computers and Networks",
+            "title": "Beginner – Reconnaissance & Information Gathering",
             "icon": "bi bi-people",
             "items": [
-              "Basic Concepts: Introduce basic computer and network concepts, including how the internet works.",
-              "Types of Networks: Differentiate between LAN, WAN, and the Internet.",
-              "Safety Practices: Teach safe internet usage practices to protect against common risks.",
+              "Passive vs active reconnaissance",
+              "OSINT techniques and tools",
+              "Domain, subdomain, and infrastructure discovery",
+              "Email harvesting and footprinting",
+              "Mapping attack surface"
             ]
           },
           {
             "id": 3,
-            "title": "Creating a Safe Lab Environment",
+            "title": "Beginner – Scanning & Enumeration",
             "icon": "bi bi-search",
             "items": [
-              "Virtual Machines: Introduction to virtual environments using tools like VirtualBox.",
-              "Setting Up a Safe Practice Area: Guide students on setting up a simple lab using safe and legal resources.",
+              "Port scanning with Nmap",
+              "Service and version detection",
+              "Vulnerability scanning basics",
+              "Banner grabbing and fingerprinting",
+              "Enumerating hosts, users, and shares"
             ]
           },
           {
             "id": 4,
-            "title": "Password Security",
+            "title": "Intermediate – Network & System Exploitation",
             "icon": "bi bi-diagram-3",
             "items": [
-              "Importance of Strong Passwords: Discuss how passwords protect information and the consequences of weak passwords.",
-              "Creating Strong Passwords: Teach methods to create strong,memorable passwords.",
-              "Hands-on Activity: Use online tools to test the strength of different passwords (in a controlled setting).",
-              
+              "Exploitation fundamentals and exploit development overview",
+              "Using Metasploit for exploits and payloads",
+              "Privilege escalation techniques",
+              "Post-exploitation: persistence and cleanup",
+              "Hands-on Windows and Linux exploitation labs"
             ]
           },
           
@@ -7963,536 +7003,52 @@ const coursesData = {
         "courseContentData": [
           {
             "id": 1,
-            "title": "Introduction to Salesforce",
+            "title": "Beginner – Salesforce Basics",
             "icon": "bi bi-book",
             "defaultOpen": true,
             "items": [
-              "What is Cloud Computing?",
-              "Types of Cloud Computing Services with examples",
-              "Cloud Computing Architecture",
-              "What is Salesforce?",
-              "Services provided by Salesforce",
-              "What is CRM Process?",
-              "Kinds of Apps developed by Salesforce",
-              "Advantages of Salesforce",
-              "Employment opportunities with Salesforce"
+              "Introduction to Salesforce and CRM concepts",
+              "Salesforce interface navigation",
+              "Understanding standard objects and fields",
+              "Creating and managing users",
+              "Setting up roles, profiles, and permissions"
             ]
           },
           {
             "id": 2,
-            "title": "Production and Sandbox Environments",
+            "title": "Beginner – Data Management",
             "icon": "bi bi-database",
             "items": [
-              "Production Environment",
-              "Types of Sandbox Environments",
-              "Registering with Developer Organization",
-              "Salesforce Terminology"
+              "Managing data import and export",
+              "Data validation rules",
+              "Duplicate management",
+              "Understanding record types and page layouts"
             ]
           },
           {
             "id": 3,
-            "title": "Creating a new Application",
+            "title": "Intermediate – Automation & Workflow",
             "icon": "bi bi-gear",
             "items": [
-              "Steps to create the Application",
-              "Different options involved while creating the object"
+              "Creating workflow rules and process builder",
+              "Automating approvals and tasks",
+              "Introduction to Flow Builder",
+              "Email alerts and notifications"
             ]
           },
           {
             "id": 4,
-            "title": "Creating a Tab",
+            "title": "Intermediate – Reports & Dashboards",
             "icon": "bi bi-bar-chart-line",
             "items": [
-              "Steps to create the tab",
-              "Different options involved with the tab"
+              "Creating custom reports",
+              "Building dashboards for insights",
+              "Using filters, formulas, and summary reports",
+              "Sharing and scheduling reports"
             ]
           },
-          {
-            "id": 5,
-            "title": "Creating Custom Fields",
-            "icon": "bi bi-plus-square",
-            "items": [
-              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
-                <style>{`
-                  .nict-curriculum-content ul { list-style-type: none !important; padding-left: 0 !important; }
-                  details.curriculum-details[open] .plus-icon { display: none; }
-                  details.curriculum-details[open] .minus-icon { display: inline; }
-                  details.curriculum-details:not([open]) .plus-icon { display: inline; }
-                  details.curriculum-details:not([open]) .minus-icon { display: none; }
-                `}</style>
-                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
-                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: Master custom field creation and dependencies.</span>
-                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
-                    <span className="plus-icon">+</span>
-                    <span className="minus-icon">-</span>
-                  </div>
-                </summary>
-                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
-                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
-                    <p style={{ margin: '0 0 8px 0' }}>- Different Data Types involved while creating custom fields</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Different options involved with custom fields</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Changing the Default Currency Type</p>
-                    <p style={{ margin: '0' }}>- Field Dependencies</p>
-                  </div>
-                </div>
-              </details>
-            ]
-          },
-          {
-            "id": 6,
-            "title": "Custom Validation Rules",
-            "icon": "bi bi-check-all",
-            "items": [
-              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
-                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
-                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: Configuring custom validations and formulas.</span>
-                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
-                    <span className="plus-icon">+</span>
-                    <span className="minus-icon">-</span>
-                  </div>
-                </summary>
-                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
-                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
-                    <p style={{ margin: '0 0 8px 0' }}>- Steps to configure custom validations</p>
-                    <p style={{ margin: '0' }}>- Different formula functions involved with custom validations</p>
-                  </div>
-                </div>
-              </details>
-            ]
-          },
-          {
-            "id": 7,
-            "title": "Search Layouts, Inline Editing, Enhanced List Views and Record Ids",
-            "icon": "bi bi-search",
-            "items": [
-              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
-                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
-                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: UI customization and record management.</span>
-                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
-                    <span className="plus-icon">+</span>
-                    <span className="minus-icon">-</span>
-                  </div>
-                </summary>
-                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
-                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
-                    <p style={{ margin: '0 0 8px 0' }}>- Enable more columns at tab level, search results level and look up dialog Level</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Working with inline editing</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Working with enhanced list views</p>
-                    <p style={{ margin: '0' }}>- Analyzing Record Ids of the components</p>
-                  </div>
-                </div>
-              </details>
-            ]
-          },
-          {
-            "id": 8,
-            "title": "Creating Relationships",
-            "icon": "bi bi-diagram-2",
-            "items": [
-              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
-                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
-                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: Understand data relationships and limits.</span>
-                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
-                    <span className="plus-icon">+</span>
-                    <span className="minus-icon">-</span>
-                  </div>
-                </summary>
-                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
-                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
-                    <p style={{ margin: '0 0 8px 0' }}>- Different Types of Relationships</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Creating a junction object</p>
-                    <p style={{ margin: '0' }}>- Governor Limits in Salesforce</p>
-                  </div>
-                </div>
-              </details>
-            ]
-          },
-          {
-            "id": 9,
-            "title": "Page Layouts and Mini Page Layouts",
-            "icon": "bi bi-layout-text-window",
-            "items": [
-              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
-                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
-                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: Customizing record page views.</span>
-                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
-                    <span className="plus-icon">+</span>
-                    <span className="minus-icon">-</span>
-                  </div>
-                </summary>
-                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
-                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
-                    <p style={{ margin: '0 0 8px 0' }}>- Different options available in page layout</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Steps to configure mini page layout</p>
-                    <p style={{ margin: '0' }}>- Adding Related Lists to Layout</p>
-                  </div>
-                </div>
-              </details>
-            ]
-          },
-          {
-            "id": 10,
-            "title": "Record Types",
-            "icon": "bi bi-tags",
-            "items": [
-              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
-                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
-                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: Managing multiple business processes.</span>
-                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
-                    <span className="plus-icon">+</span>
-                    <span className="minus-icon">-</span>
-                  </div>
-                </summary>
-                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
-                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
-                    <p style={{ margin: '0 0 8px 0' }}>- Steps to configure Record Types</p>
-                    <p style={{ margin: '0' }}>- Creating Record Types for standard objects</p>
-                  </div>
-                </div>
-              </details>
-            ]
-          },
-          {
-            "id": 11,
-            "title": "Field History Tracking and Activities",
-            "icon": "bi bi-clock-history",
-            "items": [
-              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
-                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
-                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: Auditing and task management.</span>
-                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
-                    <span className="plus-icon">+</span>
-                    <span className="minus-icon">-</span>
-                  </div>
-                </summary>
-                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
-                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
-                    <p style={{ margin: '0 0 8px 0' }}>- Steps to configure Field History Tracking</p>
-                    <p style={{ margin: '0' }}>- Steps to enable and creating activates</p>
-                  </div>
-                </div>
-              </details>
-            ]
-          },
-          {
-            "id": 12,
-            "title": "Security in Salesforce",
-            "icon": "bi bi-shield-lock",
-            "items": [
-              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
-                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
-                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: Master the Salesforce security model.</span>
-                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
-                    <span className="plus-icon">+</span>
-                    <span className="minus-icon">-</span>
-                  </div>
-                </summary>
-                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
-                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
-                    <p style={{ margin: '0 0 8px 0' }}>- Users in Salesforce and enabling Grant Login Access</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Profiles and Permission Sets</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Role Hierarchy</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- OWD (Organization Wide Defaults)</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Manual Sharing and Sharing Rules</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Purpose of Grant Access using Hierarchies</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Purpose of View All, Modify All, View All Data and Modify All Data</p>
-                    <p style={{ margin: '0' }}>- Apex Managed Sharing</p>
-                  </div>
-                </div>
-              </details>
-            ]
-          },
-          {
-            "id": 13,
-            "title": "Import Wizard and Data Loader",
-            "icon": "bi bi-cloud-arrow-up",
-            "items": [
-              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
-                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
-                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: Data migration and management tools.</span>
-                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
-                    <span className="plus-icon">+</span>
-                    <span className="minus-icon">-</span>
-                  </div>
-                </summary>
-                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
-                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
-                    <p style={{ margin: '0 0 8px 0' }}>- Difference between Import Wizard and Data Loader</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Generating Security Token and Maintaining IP range using Trusted IP</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Data Loader Settings</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Data Loader Operations</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Purpose of External Id</p>
-                    <p style={{ margin: '0' }}>- Purpose of Data Export</p>
-                  </div>
-                </div>
-              </details>
-            ]
-          },
-          {
-            "id": 14,
-            "title": "Workflow Rules",
-            "icon": "bi bi-lightning",
-            "items": [
-              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
-                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
-                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: Automating business tasks.</span>
-                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
-                    <span className="plus-icon">+</span>
-                    <span className="minus-icon">-</span>
-                  </div>
-                </summary>
-                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
-                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
-                    <p style={{ margin: '0 0 8px 0' }}>- Difference between evaluation criteria</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Difference between rule criteria</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Types of workflow actions</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Re-evaluation Criteria for Field Update</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Types of Email Templates</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Setting to enable Task Action</p>
-                    <p style={{ margin: '0' }}>- Different scenarios with Workflow Rules</p>
-                  </div>
-                </div>
-              </details>
-            ]
-          },
-          {
-            "id": 15,
-            "title": "Approval Process",
-            "icon": "bi bi-person-check",
-            "items": [
-              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
-                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
-                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: Multi-stage record approvals.</span>
-                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
-                    <span className="plus-icon">+</span>
-                    <span className="minus-icon">-</span>
-                  </div>
-                </summary>
-                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
-                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
-                    <p style={{ margin: '0 0 8px 0' }}>- Configuring Approval Process</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Different options available with Approval Process</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Creating custom hierarchy field</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Adding multiple steps to the approval process</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Purpose of Queues and steps to configure the Queue</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Difference between Queue and Public Group</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Working with the Queues</p>
-                    <p style={{ margin: '0' }}>- Approving the records from Email</p>
-                  </div>
-                </div>
-              </details>
-            ]
-          },
-          {
-            "id": 16,
-            "title": "Lightning Process Builder",
-            "icon": "bi bi-cpu",
-            "items": [
-              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
-                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
-                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: Modern visual automation.</span>
-                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
-                    <span className="plus-icon">+</span>
-                    <span className="minus-icon">-</span>
-                  </div>
-                </summary>
-                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
-                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
-                    <p style={{ margin: '0 0 8px 0' }}>- Options involved with Process Builder</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Advantages over Workflow Rules</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Disadvantages over Workflow Rules</p>
-                    <p style={{ margin: '0' }}>- Submitting the records for approval automatically</p>
-                  </div>
-                </div>
-              </details>
-            ]
-          },
-          {
-            "id": 17,
-            "title": "Reports and Dashboards",
-            "icon": "bi bi-graph-up",
-            "items": [
-              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
-                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
-                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: Data visualization and analytics.</span>
-                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
-                    <span className="plus-icon">+</span>
-                    <span className="minus-icon">-</span>
-                  </div>
-                </summary>
-                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
-                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
-                    <p style={{ margin: '0 0 8px 0' }}>- Different types of Reports</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Scheduling the Reports</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Creating the Dashboard</p>
-                    <p style={{ margin: '0' }}>- Different Components involved in Dashboard</p>
-                  </div>
-                </div>
-              </details>
-            ]
-          },
-          {
-            "id": 18,
-            "title": "Lead Generation",
-            "icon": "bi bi-people",
-            "items": [
-              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
-                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
-                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: Capturing leads and cases from web.</span>
-                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
-                    <span className="plus-icon">+</span>
-                    <span className="minus-icon">-</span>
-                  </div>
-                </summary>
-                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
-                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
-                    <p style={{ margin: '0 0 8px 0' }}>- Generating Web to Lead</p>
-                    <p style={{ margin: '0' }}>- Generating Web to Case</p>
-                  </div>
-                </div>
-              </details>
-            ]
-          },
-          {
-            "id": 19,
-            "title": "Rules on Leads and Cases",
-            "icon": "bi bi-list-check",
-            "items": [
-              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
-                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
-                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: Assignment and escalation rules.</span>
-                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
-                    <span className="plus-icon">+</span>
-                    <span className="minus-icon">-</span>
-                  </div>
-                </summary>
-                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
-                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
-                    <p style={{ margin: '0 0 8px 0' }}>- Assignment Rules</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Auto Responsive Rules</p>
-                    <p style={{ margin: '0' }}>- Escalation Rules</p>
-                  </div>
-                </div>
-              </details>
-            ]
-          },
-          {
-            "id": 20,
-            "title": "Logs",
-            "icon": "bi bi-file-text",
-            "items": [
-              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
-                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
-                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: Debugging and email logs.</span>
-                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
-                    <span className="plus-icon">+</span>
-                    <span className="minus-icon">-</span>
-                  </div>
-                </summary>
-                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
-                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
-                    <p style={{ margin: '0 0 8px 0' }}>- Debug Logs</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Debug Level</p>
-                    <p style={{ margin: '0' }}>- Email Log Files</p>
-                  </div>
-                </div>
-              </details>
-            ]
-          },
-          {
-            "id": 21,
-            "title": "Jobs",
-            "icon": "bi bi-briefcase",
-            "items": [
-              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
-                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
-                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: Monitoring background processes.</span>
-                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
-                    <span className="plus-icon">+</span>
-                    <span className="minus-icon">-</span>
-                  </div>
-                </summary>
-                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
-                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
-                    <p style={{ margin: '0 0 8px 0' }}>- Bulk Data Load Jobs</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Scheduled Jobs</p>
-                    <p style={{ margin: '0' }}>- Apex Jobs</p>
-                  </div>
-                </div>
-              </details>
-            ]
-          },
-          {
-            "id": 22,
-            "title": "Monitor",
-            "icon": "bi bi-display",
-            "items": [
-              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
-                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
-                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: System health and API monitoring.</span>
-                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
-                    <span className="plus-icon">+</span>
-                    <span className="minus-icon">-</span>
-                  </div>
-                </summary>
-                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
-                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
-                    <p style={{ margin: '0 0 8px 0' }}>- System Overview</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Time-Based Workflow</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- API Usage Notifications</p>
-                    <p style={{ margin: '0' }}>- Case Escalations</p>
-                  </div>
-                </div>
-              </details>
-            ]
-          },
-          {
-            "id": 23,
-            "title": "Email Administration",
-            "icon": "bi bi-envelope",
-            "items": [
-              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
-                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
-                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: Configuring organizational email settings.</span>
-                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
-                    <span className="plus-icon">+</span>
-                    <span className="minus-icon">-</span>
-                  </div>
-                </summary>
-                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
-                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
-                    <p style={{ margin: '0 0 8px 0' }}>- Deliverability</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Organization-Wide Addresses</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Compliance BCC Email</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Test Deliverability</p>
-                    <p style={{ margin: '0' }}>- Apex Exception Email</p>
-                  </div>
-                </div>
-              </details>
-            ]
-          },
-          {
-            "id": 24,
-            "title": "Domain Management",
-            "icon": "bi bi-globe",
-            "items": [
-              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
-                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
-                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: Setting up custom domains.</span>
-                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
-                    <span className="plus-icon">+</span>
-                    <span className="minus-icon">-</span>
-                  </div>
-                </summary>
-                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
-                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
-                    <p style={{ margin: '0 0 8px 0' }}>- My Domain</p>
-                    <p style={{ margin: '0' }}>- Domain</p>
-                  </div>
-                </div>
-              </details>
-            ]
-          }
+          
+          
         ],
         "whatYouLearnData": [
           {
@@ -8544,232 +7100,54 @@ const coursesData = {
         courseContentData: [
           {
             id: 1,
-            title: "Basics of Programming",
+            title: "Salesforce Fundamentals",
             icon: "bi bi-book",
             defaultOpen: true,
             items: [
-              "Comparing Natural and Formal Languages",
-              "Different types of Tokens",
-              "Types of statements to write a program",
-              "Data Types involved in Apex Language",
-              "Arithmetic and Logical Operators",
-              "Conditional Statements",
-              "Controlling / Looping Statements"
+              "Introduction to Salesforce and CRM concepts",
+              "Salesforce platform overview",
+              "Objects, fields, and relationships",
+              "Salesforce data model and security",
+              "Introduction to Salesforce Lightning Experience",
             ],
           },
           {
             id: 2,
-            title: "Introduction to Oops Concepts",
+            title: "Salesforce Administration Basics",
             icon: "bi bi-gear",
             items: [
-              "Encapsulation",
-              "Abstraction",
-              "Polymorphism",
-              "Inheritance"
+              "User management and profiles",
+              "Roles, permissions, and sharing rules",
+              "Reports and dashboards",
+              "Data import/export and validation rules",
+              "Workflow rules and process automation basics",
             ],
           },
           {
             id: 3,
-            title: "Exception Handling",
+            title: "Apex Programming",
             icon: "bi bi-code-slash",
             items: [
-              "Caught Exceptions",
-              "Uncaught Exceptions"
+              "Apex classes and triggers",
+              "SOQL and SOSL queries",
+              "Exception handling and testing",
+              "Asynchronous Apex (Future, Queueable, Batch Apex)",
+              "Best practices for Apex development",
             ],
           },
           {
             id: 4,
-            title: "Working with Eclipse",
+            title: "Visualforce & Lightning",
             icon: "bi bi-window",
             items: [
-              "Creating Projects and capturing components from the Server"
+              "Building Visualforce pages",
+              "Introduction to Lightning Components",
+              "Lightning App Builder and UI customization",
+              "Custom Lightning components with Apex controllers",
+              "Deploying and managing Lightning apps",
             ],
           },
-          {
-            id: 5,
-            title: "Collections",
-            icon: "bi bi-collection",
-            items: [
-              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
-                <style>{`
-                  .nict-curriculum-content ul { list-style-type: none !important; padding-left: 0 !important; }
-                  details.curriculum-details[open] .plus-icon { display: none; }
-                  details.curriculum-details[open] .minus-icon { display: inline; }
-                  details.curriculum-details:not([open]) .plus-icon { display: inline; }
-                  details.curriculum-details:not([open]) .minus-icon { display: none; }
-                `}</style>
-                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
-                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: Master Apex collection types and debugging.</span>
-                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
-                    <span className="plus-icon">+</span>
-                    <span className="minus-icon">-</span>
-                  </div>
-                </summary>
-                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
-                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
-                    <p style={{ margin: '0 0 8px 0' }}>- List</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Set</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Map</p>
-                    <p style={{ margin: '0' }}>- Working with Debug Logs</p>
-                  </div>
-                </div>
-              </details>
-            ],
-          },
-          {
-            id: 6,
-            title: "SOQL and SOSL Queries",
-            icon: "bi bi-search",
-            items: [
-              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
-                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
-                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: Advanced data retrieval and queries.</span>
-                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
-                    <span className="plus-icon">+</span>
-                    <span className="minus-icon">-</span>
-                  </div>
-                </summary>
-                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
-                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
-                    <p style={{ margin: '0 0 8px 0' }}>- Different Tools used</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Writing simple SOQL queries</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Using Order by, Group by and Aggregate functions</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Difference between Limit and Offset</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Fetching Parent Object Information from the Child Object</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Fetching Child Object records from the Parent Object</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Writing SOSL Queries</p>
-                    <p style={{ margin: '0' }}>- Governor Limits for the queries</p>
-                  </div>
-                </div>
-              </details>
-            ],
-          },
-          {
-            id: 7,
-            title: "DML Statements",
-            icon: "bi bi-database-up",
-            items: [
-              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
-                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
-                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: Master data manipulation and error handling.</span>
-                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
-                    <span className="plus-icon">+</span>
-                    <span className="minus-icon">-</span>
-                  </div>
-                </summary>
-                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
-                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
-                    <p style={{ margin: '0 0 8px 0' }}>- Insert, Update, Delete and Undelete</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Difference between Insert and Database.insert</p>
-                    <p style={{ margin: '0' }}>- Difference between Update and Database.update</p>
-                  </div>
-                </div>
-              </details>
-            ],
-          },
-          {
-            id: 8,
-            title: "Apex Triggers",
-            icon: "bi bi-lightning-charge",
-            items: [
-              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
-                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
-                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: Automated database logic and best practices.</span>
-                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
-                    <span className="plus-icon">+</span>
-                    <span className="minus-icon">-</span>
-                  </div>
-                </summary>
-                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
-                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
-                    <p style={{ margin: '0 0 8px 0' }}>- Difference between Workflow Rules and Apex Triggers</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Difference between Before mode and After mode</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Trigger Events</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Trigger Context Variables</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Trigger Collections and availability for the different events</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Trigger Best Practices</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Developing Triggers by taking different scenarios</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Avoiding Recursive Triggers</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Avoiding Mixed DML Operation Error</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Purpose of Future method in Apex</p>
-                    <p style={{ margin: '0' }}>- Order of execution in Salesforce</p>
-                  </div>
-                </div>
-              </details>
-            ],
-          },
-          {
-            id: 9,
-            title: "Batch Apex Classes",
-            icon: "bi bi-stack",
-            items: [
-              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
-                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
-                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: Large-scale data processing.</span>
-                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
-                    <span className="plus-icon">+</span>
-                    <span className="minus-icon">-</span>
-                  </div>
-                </summary>
-                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
-                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
-                    <p style={{ margin: '0 0 8px 0' }}>- Developing Batch Classes</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Purpose of Database.stateful</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Scheduling the Batch Class through user interface</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Scheduling the Batch Class Programmatically</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Monitoring Batch Jobs</p>
-                    <p style={{ margin: '0' }}>- Monitoring Schedulable Jobs</p>
-                  </div>
-                </div>
-              </details>
-            ],
-          },
-          {
-            id: 10,
-            title: "Visualforce Pages",
-            icon: "bi bi-window-stack",
-            items: [
-              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
-                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
-                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: Custom UI development and performance.</span>
-                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
-                    <span className="plus-icon">+</span>
-                    <span className="minus-icon">-</span>
-                  </div>
-                </summary>
-                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
-                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
-                    <p style={{ margin: '0 0 8px 0' }}>- Types of Controllers</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Creating Login App by using Standard Controller and Custom Controller</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Static Resources</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Displaying Error Messages on VF Page</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- StandardController - Displaying multiple records using RecordSetVar</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- CustomController - Displaying multiple records by fetching from the database</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Types of Tables available in Visualforce</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Pagination using StandardSetController</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Pagination using Limit and Offset</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Getting the governor limits dynamically using Limits Class</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Usage of the Custom Labels in Salesforce</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Displaying List of records with Wrapper Class</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Custom Settings in Salesforce</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Rendered, Rerender, RenderAs and contentType usage</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Ajax Functions with different examples</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Overriding the Standard and Custom Buttons with Visualforce Pages</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Inline Visualforce Pages</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Usage of immediate keyword</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Passing the parameters between the Visualforce pages</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Using retURL and saveURL</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- View State of VF Page and improving the performance of the view state</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Difference between System Mode and User Mode</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Difference between with sharing and without sharing</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Visualforce Components</p>
-                    <p style={{ margin: '0 0 8px 0' }}>- Visualforce and the order of execution</p>
-                    <p style={{ margin: '0' }}>- Providing Security for Apex Classes and Visualforce Pages</p>
-                  </div>
-                </div>
-              </details>
-            ],
-          }
+          
         ],
         whatYouLearnData: [
           {
