@@ -36,11 +36,11 @@ export const metadata = {
   openGraph: {
     title: "Urbancode Edutech | Best Full Stack Development & IT Training Institute in Chennai",
     description: "Upskill with Urbancode — industry-focused courses in Full Stack Development, MERN Stack, Data Analytics, Python, Cloud Computing, and Software Testing with placement & internship programs.",
-    url: "https://www.urbancode.in/",
+    url: "https://urbancode.in/",
     siteName: "Urbancode Edutech",
     images: [
       {
-        url: "https://www.urbancode.in/images/home/og-image.jpg",
+        url: "https://urbancode.in/images/home/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "Urbancode Edutech - IT & Coding Training Institute in Chennai",
@@ -50,7 +50,7 @@ export const metadata = {
     type: "website",
   },
   alternates: {
-    canonical: "https://www.urbancode.in/",
+    canonical: "https://urbancode.in/",
   },
 };
 
@@ -88,8 +88,8 @@ export default function HomePage() {
   "@context": "https://schema.org",
   "@type": "EducationalOrganization",
   "name": "Urbancode Edutech",
-  "url": "https://www.urbancode.in",
-  "logo": "https://www.urbancode.in/images/logo.png",
+  "url": "https://urbancode.in",
+  "logo": "https://urbancode.in/images/logo.png",
   "description": "IT and coding training institute in Chennai offering courses in Full Stack Development, Python, MERN stack, and data science with internship and placement support.",
   "address": [
         {
