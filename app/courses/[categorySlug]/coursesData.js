@@ -4024,7 +4024,7 @@ const coursesData = {
           {
             title: "Master Python Programming",
             desc: "From basics to advanced Python concepts including functions, OOP, and async programming.",
-            icon: "bi bi-book"
+            icon: "bi bi-books"
           },
           {
             title: "Leverage ChatGPT & AI",
