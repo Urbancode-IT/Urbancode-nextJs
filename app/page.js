@@ -130,7 +130,7 @@ export default function HomePage() {
       <Carousel />
       <Courses />
       <InDemandTools />
-      <GetCertified /> 
+      {/* <GetCertified />  */}
       <VideoTestimonials />
       <TestimonialCarousel />
       <FaqBootstrap />
