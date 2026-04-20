@@ -52,8 +52,8 @@ const Kidz = () => {
       stars: "★★★★★",
       rating: "5.0",
       students: 42,
-      url: "/courses/kidz-space/junior-web-development"
-       
+      url: "/courses/kidz-space/junior-web-development",
+      isSummerCamp: true
     },
     {
       title: "Core Python",
@@ -63,7 +63,8 @@ const Kidz = () => {
       stars: "★★★★★",
       rating: "5.0",
       students: 58,
-      url: "/courses/kidz-space/python-core"
+      url: "/courses/kidz-space/python-core",
+      isSummerCamp: true
     },
     {
       title: "Advanced Python",
@@ -71,9 +72,10 @@ const Kidz = () => {
       duration: "2 Months",
       desc: "Level up with file handling, modules, APIs, testing, and best practices—prepare for automation, data, and AI tracks. Take it to next level",
       stars: "★★★★☆",
-      rating: "4.0",
+      rating: "4.8",
       students: 39,
-      url: "/courses/kidz-space/advanced-python"
+      url: "/courses/kidz-space/advanced-python",
+      isSummerCamp: true
     },
     {
       title: "C Programming",
@@ -141,12 +143,181 @@ const Kidz = () => {
           </h2>
 
           {/* Subheading */}
-          <p className="kids-subheading mx-auto mb-5">
+          {/* <p className="kids-subheading mx-auto mb-5">
             More than a coding school, we craft transformative learning journeys that spark curiosity,
             foster creativity, and empower young minds to become tomorrow's innovators.
-          </p>
+          </p> */}
 
-          {/* Cards Row */}
+          {/* Video Testimonial with Content */}
+          <div className="row justify-content-center mt-5">
+            <div className="col-lg-10">
+              <div className="testimonial-container-card card border-0 p-4 p-md-5" style={{ borderRadius: "24px", background: "#fff", boxShadow: "0 10px 40px rgba(0,0,0,0.08)" }}>
+                <div className="row align-items-center">
+                  {/* Video Column */}
+                  <div className="col-md-5 d-flex justify-content-center mb-4 mb-md-0">
+                    <div style={{ width: "100%", maxWidth: "300px" }}>
+                      <video 
+                        src="/videos/kids-testimonial-video1.mp4#t=0.5" 
+                  controls 
+                  autoPlay={false}
+                  playsInline
+                  preload="auto"
+                  className="bg-dark"
+                  style={{
+                    width: "100%",
+                    aspectRatio: "9 / 16",
+                    height: "auto",
+                    objectFit: "cover",
+                    objectPosition: "top",
+                    borderRadius: "20px",
+                    display: "block",
+                    boxShadow: "0 10px 30px rgba(0, 0, 0, 0.1)"
+                  }}
+                >
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            </div>
+
+            {/* Text Content Column */}
+            <div className="col-md-6 text-center text-md-start px-md-5">
+              <h3 className="fw-bold mb-1" style={{ color: '#2C3E50', fontSize: '28px' }}>Adhrit</h3>
+              <p className="text-success fw-semibold mb-3 fs-5">Course: Python</p>
+              
+              <div className="position-relative text-start">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" className="bi bi-quote mb-2" viewBox="0 0 16 16" style={{ color: '#1ABC9C', opacity: 0.4 }}>
+                  <path d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 9 7.558V11a1 1 0 0 0 1 1h2Zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 3 7.558V11a1 1 0 0 0 1 1h2Z"/>
+                </svg>
+                <p className="fs-6 fst-italic text-muted fw-medium" style={{ lineHeight: "1.8" }}>
+                  "My experience with the Python course has been amazing. The instructors make complex concepts easy to understand through fun projects. I've learned how to build my own games and interactive applications from scratch. Urbancode provides the perfect environment for young coders like me to experiment, learn, and grow my skills for the future!"
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{ <BannerSlider banners={kidsBanners} forceEnquiry={true} /> }
+
+
+      <div id="kids-courses-section" className="container py-5">
+        <h2 className="section-title">Our Kids <span className='text-success text-shine'>&nbsp;Courses</span></h2>
+        <p className="section-subtitle text-muted">
+          Explore expertly designed courses tailored for young learners. Each program blends engaging, interactive activities with structured learning outcomes to build strong foundational skills and future-ready knowledge.
+        </p>
+
+        {/* ☀️ Summer Camp Banner */}
+        <div className="summer-camp-banner">
+          <div className="summer-camp-banner-inner">
+            <div className="sc-banner-icon">☀️</div>
+            <div className="sc-banner-text">
+              <span className="sc-banner-title">Summer Camp 2026</span>
+              <span className="sc-banner-sub">Limited seats · Enroll before they fill up!</span>
+            </div>
+            
+          </div>
+        </div>
+
+        {/* Summer Camp Courses — First 3 */}
+        <div className="row g-4 mb-3">
+          {courses.filter(c => c.isSummerCamp).map((course, index) => (
+            <div className="col-md-6 col-lg-4" key={`sc-${index}`}>
+              <div className="course-card summer-camp-card shadow-md">
+                {/* Diagonal ribbon */}
+                <div className="sc-ribbon"><span>☀️ Summer Camp</span></div>
+                <a href={course.url} style={{textDecoration:"none"}}>
+                  <div className="position-relative">
+                    <Image
+                      src={course.img}
+                      width={400}
+                      height={250}
+                      alt={course.title}
+                      className="w-100 course-img sc-course-img"
+                    />
+                    <span className="badge-duration">{course.duration}</span>
+                  </div>
+                  <div className="course-body">
+                    <h5 className="kids-course-title">{course.title}</h5>
+                    <p className="course-desc">{course.desc}</p>
+                    <div className="rating d-flex justify-content-between">
+                      <span>
+                        <span className="rating-stars">{course.stars}</span> {course.rating}
+                      </span>
+                      <span className="d-flex align-items-center gap-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-people-fill" viewBox="0 0 16 16">
+                          <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5" />
+                        </svg>
+                        {course.students}
+                      </span>
+                    </div>
+                    <button className="btn btn-enroll sc-enroll-btn" onClick={() => setSelectedCourse(course)}>Enroll now</button>
+                  </div>
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Divider */}
+        <div className="sc-divider">
+          <span>More Courses</span>
+        </div>
+
+        {/* Regular Courses */}
+        <div className="row g-5">
+          {courses.filter(c => !c.isSummerCamp).map((course, index) => (
+            <div className="col-md-6 col-lg-3" key={`reg-${index}`}>
+              <div className="course-card shadow-md">
+                <a href={course.url} style={{textDecoration:"none"}}>
+                  <div className="position-relative">
+                    <Image
+                      src={course.img}
+                      width={400}
+                      height={250}
+                      alt={course.title}
+                      className="w-100 course-img"
+                    />
+                    <span className="badge-duration">{course.duration}</span>
+                  </div>
+                  <div className="course-body">
+                    <h5 className="kids-course-title">{course.title}</h5>
+                    <p className="course-desc">{course.desc}</p>
+                    <div className="rating d-flex justify-content-between">
+                      <span>
+                        <span className="rating-stars">{course.stars}</span> {course.rating}
+                      </span>
+                      <span className="d-flex align-items-center gap-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-people-fill" viewBox="0 0 16 16">
+                          <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5" />
+                        </svg>
+                        {course.students}
+                      </span>
+                    </div>
+                    <button className="btn btn-enroll fs-11" onClick={() => setSelectedCourse(course)}>Enroll now</button>
+                  </div>
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {selectedCourse && (
+          <EnquiryFormModal
+            isOpen={!!selectedCourse}
+            onClose={() => setSelectedCourse(null)}
+            courseName={selectedCourse.title}
+          />
+        )}
+      </div>
+
+
+
+      {/* Why Choose Content (moved from above) */}
+      <section className="why-choose-features py-5">
+        <div className="container text-center">
           <div className="row g-4">
             {/* Card 1 */}
             <div className="col-md-6 col-lg-3">
@@ -218,87 +389,6 @@ const Kidz = () => {
           </div>
         </div>
       </section>
-
-{ <BannerSlider banners={kidsBanners} forceEnquiry={true} /> }
-
-
-      <div id="kids-courses-section" className="container py-5">
-        <h2 className="section-title">Our Kids <span className='text-success text-shine'>&nbsp;Courses</span></h2>
-        <p className="section-subtitle text-muted">
-          Explore expertly designed courses tailored for young learners. Each program blends engaging, interactive activities with structured learning outcomes to build strong foundational skills and future-ready knowledge.
-        </p>
-
-        <div className="row g-5">
-          {courses.map((course, index) => (
-            <div className="col-md-6 col-lg-3" key={index}>
-              <div className="course-card shadow-md">
-                <a href={course.url} style={{textDecoration:"none"}}>
-                <div className="position-relative">
-                  <Image
-                    src={course.img}
-                    width={400}
-                    height={250}
-                    alt={course.title}
-                    className="w-100 course-img"
-                  />
-                  <span className="badge-duration">{course.duration}</span>
-                </div>
-
-
-                <div className="course-body">
-                  <h5 className="kids-course-title">{course.title}</h5>
-                  <p className="course-desc">{course.desc}</p>
-
-                  <div className="rating d-flex justify-content-between">
-                    <span>
-                      <span className="rating-stars">{course.stars}</span> {course.rating}
-                    </span>
-                    <span className="d-flex align-items-center gap-1">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
-                        className="bi bi-people-fill"
-                        viewBox="0 0 16 16"
-                      >
-                        <path d="M7 14s-1 0-1-1 1-4 5-4 
-                      5 3 5 4-1 1-1 1zm4-6a3 3 
-                      0 1 0 0-6 3 3 0 0 0 0 
-                      6m-5.784 6A2.24 2.24 0 0 
-                      1 5 13c0-1.355.68-2.75 
-                      1.936-3.72A6.3 6.3 0 0 
-                      0 5 9c-4 0-5 3-5 4s1 1 
-                      1 1zM4.5 8a2.5 2.5 0 1 
-                      0 0-5 2.5 2.5 0 0 0 0 5" />
-                      </svg>
-                      {course.students}
-                    </span>
-                  </div>
-
-                  <button
-                    className=" btn btn-enroll fs-11"
-                    onClick={() => setSelectedCourse(course)}
-                  >
-                    Enroll now
-                  </button>
-
-                  {selectedCourse && (
-                    <EnquiryFormModal
-                      isOpen={!!selectedCourse}
-                      onClose={() => setSelectedCourse(null)}
-                      courseName={selectedCourse.title}
-                    />
-                  )}
-
-                </div></a>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-
 
       {/* Tech Journey Section */}
       <section className="tech-journey my-5">

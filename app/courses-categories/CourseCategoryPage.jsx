@@ -23,7 +23,7 @@ import languagesImg from "@/public/images/courses-images/languages.webp";
 import englishImg from "@/public/images/courses-images/english.webp";
 import crmImg from "@/public/images/courses-images/crm-course.webp";
 import appDevImg from "@/public/images/courses-images/app.webp";
-import automationImg from "@/public/images/courses-images/automation.png";
+const automationImg = "/images/courses-images/automation.jpg";
 
 const toolLogos = [
   { name: 'Angular', logo: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/angularjs/angularjs-original.svg', desc: 'Master Angular to build industry-ready single-page applications. Our curriculum focuses on TypeScript, RxJS, and high-performance front-end architecture.', link: '/courses/fullstack-development' },
@@ -240,7 +240,7 @@ const CourseCategoryPage = () => {
                 className="card-image"
                 width={400}
                 height={250}
-                placeholder="blur"
+                placeholder={typeof course.img === 'string' ? 'empty' : 'blur'}
                 style={{ objectFit: "cover" }}
               />
             </div>

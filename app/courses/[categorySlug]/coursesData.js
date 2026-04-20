@@ -948,7 +948,6 @@ const coursesData = {
       icon: "bi bi-window",
       defaultOpen: true,
       items: [
-<<<<<<< HEAD
         {
           title: "HTML5 (Structure & Semantics)",
           details: [
@@ -1064,111 +1063,6 @@ const coursesData = {
             "Mini Project: Secure User Login + Dashboard"
           ]
         }
-=======
-        "Introduction to web development and full stack architecture",
-        <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
-          <style>{`
-            details.curriculum-details[open] .plus-icon { display: none; }
-            details.curriculum-details[open] .minus-icon { display: inline; }
-            details.curriculum-details:not([open]) .plus-icon { display: inline; }
-            details.curriculum-details:not([open]) .minus-icon { display: none; }
-          `}</style>
-          <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
-            <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>HTML5: structure and semantic elements</span>
-            <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
-              <span className="plus-icon">+</span>
-              <span className="minus-icon">-</span>
-            </div>
-          </summary>
-          <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
-            <ul style={{ listStyleType: 'disc', paddingLeft: '20px', margin: 0, color: '#555', fontSize: '0.9rem' }}>
-              <li style={{ marginBottom: '8px' }}>Doctype, headings, paragraphs, text formatting</li>
-              <li style={{ marginBottom: '8px' }}>Links & images</li>
-              <li style={{ marginBottom: '8px' }}>Lists (ordered, unordered, definition)</li>
-              <li style={{ marginBottom: '8px' }}>Tables (with colspan/rowspan)</li>
-              <li style={{ marginBottom: '8px' }}>Forms & inputs (basic + HTML5 types like email, number, date)</li>
-              <li style={{ marginBottom: '8px' }}>Semantic elements (header, nav, section, article, footer, aside)</li>
-              <li style={{ marginBottom: '8px' }}>Multimedia (video, audio, iframe)</li>
-              <li style={{ marginBottom: '0' }}><strong>Practice:</strong> Build a multi-page portfolio structure with HTML only.</li>
-            </ul>
-          </div>
-        </details>,
-        <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
-          <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
-            <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>CSS (Styling & Layouts)</span>
-            <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
-              <span className="plus-icon">+</span>
-              <span className="minus-icon">-</span>
-            </div>
-          </summary>
-          <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
-            <ul style={{ listStyleType: 'disc', paddingLeft: '20px', margin: 0, color: '#555', fontSize: '0.9rem' }}>
-              <li style={{ marginBottom: '8px' }}>CSS Selectors, Colors, Backgrounds</li>
-              <li style={{ marginBottom: '8px' }}>Box Model: Margin, Border, Padding, Content</li>
-              <li style={{ marginBottom: '8px' }}>Display & Position: Block, Inline, Flex, Grid</li>
-              <li style={{ marginBottom: '8px' }}>Responsive Design: Media Queries</li>
-              <li style={{ marginBottom: '8px' }}>CSS Animations & Transitions</li>
-              <li style={{ marginBottom: '0' }}><strong>Practice:</strong> Create a responsive landing page layout.</li>
-            </ul>
-          </div>
-        </details>,
-        <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
-          <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
-            <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Bootstrap (Rapid UI Framework)</span>
-            <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
-              <span className="plus-icon">+</span>
-              <span className="minus-icon">-</span>
-            </div>
-          </summary>
-          <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
-            <ul style={{ listStyleType: 'disc', paddingLeft: '20px', margin: 0, color: '#555', fontSize: '0.9rem' }}>
-              <li style={{ marginBottom: '8px' }}>Bootstrap Grid System & Breakpoints</li>
-              <li style={{ marginBottom: '8px' }}>Layout Components: Container, Row, Col</li>
-              <li style={{ marginBottom: '8px' }}>Content Components: Cards, Modals, Navbars</li>
-              <li style={{ marginBottom: '8px' }}>Utilities: Spacing, Typography, Colors</li>
-              <li style={{ marginBottom: '0' }}><strong>Practice:</strong> Build a modern dashboard UI using Bootstrap.</li>
-            </ul>
-          </div>
-        </details>,
-        <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
-          <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
-            <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>JavaScript (ES6 & DOM)</span>
-            <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
-              <span className="plus-icon">+</span>
-              <span className="minus-icon">-</span>
-            </div>
-          </summary>
-          <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
-            <ul style={{ listStyleType: 'disc', paddingLeft: '20px', margin: 0, color: '#555', fontSize: '0.9rem' }}>
-              <li style={{ marginBottom: '8px' }}>Variables (let, const), Data Types, Operators</li>
-              <li style={{ marginBottom: '8px' }}>Functions, Scope, Closures</li>
-              <li style={{ marginBottom: '8px' }}>DOM Manipulation & Event Handling</li>
-              <li style={{ marginBottom: '8px' }}>ES6 Features: Arrow functions, Destructuring, Spread/Rest</li>
-              <li style={{ marginBottom: '8px' }}>Async/Await & Fetch API</li>
-              <li style={{ marginBottom: '0' }}><strong>Practice:</strong> Develop a dynamic To-Do List app.</li>
-            </ul>
-          </div>
-        </details>,
-        <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
-          <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
-            <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Angular (Frontend Framework)</span>
-            <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
-              <span className="plus-icon">+</span>
-              <span className="minus-icon">-</span>
-            </div>
-          </summary>
-          <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
-            <ul style={{ listStyleType: 'disc', paddingLeft: '20px', margin: 0, color: '#555', fontSize: '0.9rem' }}>
-              <li style={{ marginBottom: '8px' }}>Introduction to Angular Architecture</li>
-              <li style={{ marginBottom: '8px' }}>Components, Directives, Pipes</li>
-              <li style={{ marginBottom: '8px' }}>Services & Dependency Injection</li>
-              <li style={{ marginBottom: '8px' }}>Routing & Navigation</li>
-              <li style={{ marginBottom: '8px' }}>Observables & RxJS</li>
-              <li style={{ marginBottom: '0' }}><strong>Practice:</strong> Build a simple CRUD application with Angular.</li>
-            </ul>
-          </div>
-        </details>
->>>>>>> dab8b3691ff3b0d4ef5edd0ae44307b5370288c4
       ]
     },
     {
@@ -9145,37 +9039,12 @@ const coursesData = {
             icon: "bi bi-layers",
             defaultOpen: true,
             items: [
-              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
-                <style>{`
-                  details.curriculum-details[open] .plus-icon { display: none; }
-                  details.curriculum-details[open] .minus-icon { display: inline; }
-                  details.curriculum-details:not([open]) .plus-icon { display: inline; }
-                  details.curriculum-details:not([open]) .minus-icon { display: none; }
-                `}</style>
-                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
-                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: Understand the interface, triggers, and building simple A-to-B flows.</span>
-                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
-                    <span className="plus-icon">+</span>
-                    <span className="minus-icon">-</span>
-                  </div>
-                </summary>
-                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
-                  <ul style={{ listStyleType: 'disc', paddingLeft: '20px', margin: 0, color: '#555', fontSize: '0.9rem' }}>
-                    <li style={{ marginBottom: '8px' }}><strong>Topic 1:</strong> SharePoint as a Data Source.</li>
-                    <li style={{ marginBottom: '8px', color: '#666', fontSize: '0.85rem' }}>Lists vs. Libraries: When to use each (Structured data vs. Document management).</li>
-                    <li style={{ marginBottom: '8px', color: '#666', fontSize: '0.85rem' }}>Column Types: Understanding Choice, Date, Person, and Lookup columns (and why "Multiple lines of text" can be tricky in flows).</li>
-                    <li style={{ marginBottom: '8px', marginTop: '12px' }}><strong>Topic 2:</strong> The Big Picture.</li>
-                    <li style={{ marginBottom: '8px', color: '#666', fontSize: '0.85rem' }}>Introduction to the Power Platform ecosystem. Explain the difference between Automated, Instant, and Scheduled flows.</li>
-                    <li style={{ marginBottom: '8px', marginTop: '12px' }}><strong>Topic 3:</strong> Copilot & Templates.</li>
-                    <li style={{ marginBottom: '8px', color: '#666', fontSize: '0.85rem' }}>Teaching how to use Microsoft Copilot to describe a flow in natural language.</li>
-                    <li style={{ marginBottom: '8px', marginTop: '12px' }}><strong>Topic 4:</strong> SharePoint Integration (The Basics).</li>
-                    <li style={{ marginBottom: '8px', color: '#666', fontSize: '0.85rem' }}>Triggers like When an item is created and actions like "Send an email (V2)."</li>
-                    <li style={{ marginBottom: '8px', marginTop: '12px' }}><strong>Practice:</strong></li>
-                    <li style={{ marginBottom: '0', color: '#666', fontSize: '0.85rem' }}>Build a flow that notifies a Teams channel whenever a new document is uploaded to a specific SharePoint folder.</li>
-                  </ul>
-                </div>
-              </details>,
-              
+              "SharePoint as a Data Source: Lists vs. Libraries",
+              "Understanding Column Types & Data Structures",
+              "Introduction to Power Platform Ecosystem",
+              "Automated, Instant, and Scheduled Flows",
+              "Microsoft Copilot & Templates usage",
+              "Practice: Document upload notification system"
             ]
           },
           {
@@ -9183,35 +9052,11 @@ const coursesData = {
             title: "Logic, Loops, and Approvals",
             icon: "bi bi-diagram-2",
             items: [
-              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
-                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
-                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: Adding intelligence to flows using conditions and standard business processes.</span>
-                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
-                    <span className="plus-icon">+</span>
-                    <span className="minus-icon">-</span>
-                  </div>
-                </summary>
-                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
-                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
-                    <div style={{ marginBottom: '12px' }}>
-                      <p style={{ margin: '0 0 4px 0' }}><strong>Topic 1:</strong> Conditional Logic.</p>
-                      <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>Using the Condition (If/Yes/No) and Switch actions to handle different data values.</p>
-                    </div>
-                    <div style={{ marginBottom: '12px' }}>
-                      <p style={{ margin: '0 0 4px 0' }}><strong>Topic 2:</strong> The Approvals Connector.</p>
-                      <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>Mastering "Start and wait for an approval." Discussing the difference between Basic and Custom approvals.</p>
-                    </div>
-                    <div style={{ marginBottom: '12px' }}>
-                      <p style={{ margin: '0 0 4px 0' }}><strong>Topic 3:</strong> Working with Lists (Loops).</p>
-                      <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>Introduction to the Apply to Each loop and how to update multiple SharePoint items at once.</p>
-                    </div>
-                    <div style={{ marginBottom: '0' }}>
-                      <p style={{ margin: '0 0 4px 0' }}><strong>Practice:</strong></p>
-                      <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>Create a "Leave Request" system: User submits a SharePoint list item -&gt; Manager gets a Teams Approval -&gt; List status updates to "Approved" or "Rejected."</p>
-                    </div>
-                  </div>
-                </div>
-              </details>,
+              "Conditional Logic (Condition & Switch actions)",
+              "The Approvals Connector: Basic vs. Custom",
+              "Working with Lists & Loops (Apply to Each)",
+              "Updating multiple SharePoint items",
+              "Practice: Leave Request system with Manager Approval"
             ]
           },
           {
@@ -9219,35 +9064,11 @@ const coursesData = {
             title: "Data Manipulation & Expressions",
             icon: "bi bi-braces",
             items: [
-              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
-                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
-                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: Move beyond the Dynamic Content picker and start using formulas.</span>
-                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
-                    <span className="plus-icon">+</span>
-                    <span className="minus-icon">-</span>
-                  </div>
-                </summary>
-                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
-                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
-                    <div style={{ marginBottom: '12px' }}>
-                      <p style={{ margin: '0 0 4px 0' }}><strong>Topic 1:</strong> Introduction to WDL (Workflow Definition Language).</p>
-                      <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>Using basic expressions like utcNow(), formatDateTime(), and variables.</p>
-                    </div>
-                    <div style={{ marginBottom: '12px' }}>
-                      <p style={{ margin: '0 0 4px 0' }}><strong>Topic 2:</strong> Data Operations.</p>
-                      <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>Using Compose, Select, and Filter Array to clean data without using heavy loops.</p>
-                    </div>
-                    <div style={{ marginBottom: '12px' }}>
-                      <p style={{ margin: '0 0 4px 0' }}><strong>Topic 3:</strong> Input/Output Mastery.</p>
-                      <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>Handling JSON data and using the Parse JSON action to make external data usable.</p>
-                    </div>
-                    <div style={{ marginBottom: '0' }}>
-                      <p style={{ margin: '0 0 4px 0' }}><strong>Practice:</strong></p>
-                      <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>Build a "Weekly Digest" flow that finds all SharePoint items created in the last 7 days, filters for "High Priority" only, and emails a formatted HTML table to a supervisor.</p>
-                    </div>
-                  </div>
-                </div>
-              </details>,
+              "Introduction to WDL (Workflow Definition Language)",
+              "Expressions: utcNow(), formatDateTime(), variables",
+              "Data Operations: Compose, Select, and Filter Array",
+              "JSON Mastery & Parse JSON action",
+              "Practice: Weekly Digest flow with HTML table formatting"
             ]
           },
           {
@@ -9255,35 +9076,11 @@ const coursesData = {
             title: "Professionalism, Error Handling, and AI",
             icon: "bi bi-shield-check",
             items: [
-              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
-                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
-                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: Building flows that don't break and following organization best practices.</span>
-                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
-                    <span className="plus-icon">+</span>
-                    <span className="minus-icon">-</span>
-                  </div>
-                </summary>
-                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
-                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
-                    <div style={{ marginBottom: '12px' }}>
-                      <p style={{ margin: '0 0 4px 0' }}><strong>Topic 1:</strong> Error Handling (Try-Catch).</p>
-                      <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>Using Configure Run After to send a notification if a flow fails.</p>
-                    </div>
-                    <div style={{ marginBottom: '12px' }}>
-                      <p style={{ margin: '0 0 4px 0' }}><strong>Topic 2:</strong> Advanced SharePoint & AI.</p>
-                      <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>Using AI Builder to extract data from an invoice (PDF) and save it to SharePoint.</p>
-                    </div>
-                    <div style={{ marginBottom: '12px' }}>
-                      <p style={{ margin: '0 0 4px 0' }}><strong>Topic 3:</strong> Solutions & Governance.</p>
-                      <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>Why we build inside Solutions and naming conventions (e.g., [Dept] - [Trigger] - [Action]).</p>
-                    </div>
-                    <div style={{ marginBottom: '0' }}>
-                      <p style={{ margin: '0 0 4px 0' }}><strong>Practice:</strong></p>
-                      <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>A "Travel Expense Claim" flow that uses AI to read a receipt, asks for approval if the amount is &gt;$100, and logs the final result in a SharePoint Archive.</p>
-                    </div>
-                  </div>
-                </div>
-              </details>,
+              "Error Handling (Try-Catch) & Configure Run After",
+              "Advanced SharePoint Integration",
+              "AI Builder: Extracting data from PDF/Invoices",
+              "Solutions & Governance naming conventions",
+              "Practice: Travel Expense Claim flow with AI receipt reading"
             ]
           },
           {
@@ -9291,35 +9088,11 @@ const coursesData = {
             title: "The Professional Handoff (ALM)",
             icon: "bi bi-box-arrow-in-right",
             items: [
-              <details className="curriculum-details" style={{ marginBottom: '10px', border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
-                <summary style={{ cursor: 'pointer', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 20px', background: '#fff' }}>
-                  <span style={{ fontWeight: '500', color: '#333', fontSize: '0.95rem' }}>Goal: Learn how to move automations between environments (Dev → Test → Prod) and manage dependencies.</span>
-                  <div style={{ width: '24px', height: '24px', border: '1px solid #28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#28a745', fontSize: '18px', lineHeight: '1' }}>
-                    <span className="plus-icon">+</span>
-                    <span className="minus-icon">-</span>
-                  </div>
-                </summary>
-                <div style={{ padding: '15px 20px', background: '#fff', borderTop: '1px solid #f0f0f0' }}>
-                  <div style={{ color: '#555', fontSize: '0.9rem' }}>
-                    <div style={{ marginBottom: '12px' }}>
-                      <p style={{ margin: '0 0 4px 0' }}><strong>Topic 1:</strong> The Container Concept (Solutions).</p>
-                      <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>Why we don't use "My Flows." Creating a Solution and adding existing flows, SharePoint connection references, and environment variables.</p>
-                    </div>
-                    <div style={{ marginBottom: '12px' }}>
-                      <p style={{ margin: '0 0 4px 0' }}><strong>Topic 2:</strong> Exporting & Packaging.</p>
-                      <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>The difference between Managed (read only for Prod) and Unmanaged (editable for Dev) solutions. Checking for "Missing Dependencies" before exporting.</p>
-                    </div>
-                    <div style={{ marginBottom: '12px' }}>
-                      <p style={{ margin: '0 0 4px 0' }}><strong>Topic 3:</strong> Importing & Connection References.</p>
-                      <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>The Import process: Mapping connections to the new environment. Using Environment Variables so SharePoint Site URLs change automatically when moving from Dev to Prod.</p>
-                    </div>
-                    <div style={{ marginBottom: '0' }}>
-                      <p style={{ margin: '0 0 4px 0' }}><strong>Practice:</strong></p>
-                      <p style={{ margin: 0, color: '#666', fontSize: '0.85rem' }}>Export the "Travel Expense" flow from the Developer environment and successfully import it into a "Test" environment, ensuring all SharePoint links update correctly without manual editing.</p>
-                    </div>
-                  </div>
-                </div>
-              </details>,
+              "The Container Concept: Solutions vs. My Flows",
+              "Connection References & Environment Variables",
+              "Managed vs. Unmanaged Solutions",
+              "ALM: Moving flows between Dev, Test, and Prod",
+              "Practice: Multi-environment export/import with dynamic URLs"
             ]
           }
         ],

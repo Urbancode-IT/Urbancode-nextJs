@@ -2,6 +2,7 @@
 import React from 'react';
 import './projects.css';
 import { useState } from 'react';
+import axios from 'axios';
 import { submitProjectEnquiryForm } from '@/lib/api/api';
 const Projects = () => {
   const [formData, setFormData] = useState({
@@ -28,15 +29,51 @@ const Projects = () => {
   // basic frontend validation
   const validate = () => {
     const newErrors = {};
-    if (!formData.name.trim()) newErrors.name = "Name is required";
-    if (!formData.email) newErrors.email = "Email is required";
-    else if (!/\S+@\S+\.\S+/.test(formData.email))
+    
+    // Name validation
+    if (!formData.name.trim()) {
+      newErrors.name = "Name is required";
+    } else if (formData.name.trim().length < 3) {
+      newErrors.name = "Name must be at least 3 characters";
+    } else if (!/^[a-zA-Z\s'-]+$/.test(formData.name.trim())) {
+      newErrors.name = "Name can only contain letters, spaces, hyphens, and apostrophes";
+    }
+    
+    // Email validation
+    if (!formData.email) {
+      newErrors.email = "Email is required";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       newErrors.email = "Invalid email format";
-    if (!formData.phone) newErrors.phone = "Phone number is required";
-    else if (!/^\d{10}$/.test(formData.phone))
-      newErrors.phone = "Phone must be 10 digits";
-    if (!formData.subject.trim()) newErrors.subject = "Subject is required";
-    if (!formData.message.trim()) newErrors.message = "Message cannot be empty";
+    } else if (formData.email.length > 255) {
+      newErrors.email = "Email is too long";
+    }
+    
+    // Phone validation
+    if (!formData.phone) {
+      newErrors.phone = "Phone number is required";
+    } else {
+      const cleanPhone = formData.phone.replace(/\D/g, '');
+      if (cleanPhone.length !== 10) {
+        newErrors.phone = "Phone must be exactly 10 digits";
+      }
+    }
+    
+    // Subject validation
+    if (!formData.subject.trim()) {
+      newErrors.subject = "Subject is required";
+    } else if (formData.subject.trim().length < 5) {
+      newErrors.subject = "Subject must be at least 5 characters";
+    }
+    
+    // Message validation
+    if (!formData.message.trim()) {
+      newErrors.message = "Message cannot be empty";
+    } else if (formData.message.trim().length < 10) {
+      newErrors.message = "Message must be at least 10 characters";
+    } else if (formData.message.length > 1000) {
+      newErrors.message = "Message is too long (max 1000 characters)";
+    }
+    
     return newErrors;
   };
 
@@ -259,6 +296,11 @@ const Projects = () => {
                         value={formData.name}
                         onChange={handleChange}
                         placeholder="Your full name"
+                        required
+                        minLength="3"
+                        maxLength="100"
+                        pattern="^[a-zA-Z\s'-]+$"
+                        disabled={isSubmitting}
                       />
                       {errors.name && (
                         <div className="invalid-feedback">{errors.name}</div>
@@ -278,6 +320,9 @@ const Projects = () => {
                         value={formData.email}
                         onChange={handleChange}
                         placeholder="you@example.com"
+                        required
+                        maxLength="255"
+                        disabled={isSubmitting}
                       />
                       {errors.email && (
                         <div className="invalid-feedback">{errors.email}</div>
@@ -297,6 +342,11 @@ const Projects = () => {
                         value={formData.phone}
                         onChange={handleChange}
                         placeholder="10-digit mobile number"
+                        required
+                        inputMode="numeric"
+                        maxLength="10"
+                        pattern="^\d{10}$"
+                        disabled={isSubmitting}
                       />
                       {errors.phone && (
                         <div className="invalid-feedback">{errors.phone}</div>
@@ -316,6 +366,10 @@ const Projects = () => {
                         value={formData.subject}
                         onChange={handleChange}
                         placeholder="Project inquiry"
+                        required
+                        minLength="5"
+                        maxLength="200"
+                        disabled={isSubmitting}
                       />
                       {errors.subject && (
                         <div className="invalid-feedback">{errors.subject}</div>
@@ -335,6 +389,10 @@ const Projects = () => {
                         value={formData.message}
                         onChange={handleChange}
                         placeholder="Tell us about your project..."
+                        required
+                        minLength="10"
+                        maxLength="1000"
+                        disabled={isSubmitting}
                       ></textarea>
                       {errors.message && (
                         <div className="invalid-feedback">{errors.message}</div>

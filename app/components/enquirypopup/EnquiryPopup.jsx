@@ -98,11 +98,44 @@ export default function EnquiryPopup({ delay = 3000 }) {
     }
   }
 
+  const validateForm = (formDataObj) => {
+    const errors = {};
+    
+    // Name validation
+    if (!formDataObj.name || !formDataObj.name.trim()) {
+      errors.name = "Name is required.";
+    } else if (formDataObj.name.trim().length < 3) {
+      errors.name = "Name must be at least 3 characters.";
+    } else if (!/^[a-zA-Z\s'-]+$/.test(formDataObj.name.trim())) {
+      errors.name = "Name can only contain letters, spaces, hyphens, and apostrophes.";
+    }
+    
+    // Email validation
+    if (!formDataObj.email || !formDataObj.email.trim()) {
+      errors.email = "Email is required.";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formDataObj.email.trim())) {
+      errors.email = "Please enter a valid email address.";
+    }
+    
+    // Phone validation
+    if (!formDataObj.phone || !formDataObj.phone.trim()) {
+      errors.phone = "Phone number is required.";
+    } else {
+      const cleanPhone = formDataObj.phone.replace(/\D/g, '');
+      if (cleanPhone.length !== 10) {
+        errors.phone = "Phone number must be exactly 10 digits.";
+      } else if (!/^\d{10}$/.test(cleanPhone)) {
+        errors.phone = "Phone number must contain only digits.";
+      }
+    }
+    
+    return errors;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (isSubmitting) return;
 
-    setIsSubmitting(true);
     const f = new FormData(e.target);
 
     const formData = {
@@ -113,6 +146,15 @@ export default function EnquiryPopup({ delay = 3000 }) {
       course: "Anniversary Flash Sale",
       mode: "Not specified"
     };
+
+    // Validate form
+    const errors = validateForm(formData);
+    if (Object.keys(errors).length > 0) {
+      alert(Object.values(errors).join("\n"));
+      return;
+    }
+
+    setIsSubmitting(true);
 
     // Trigger celebration immediately on click
     triggerCelebration();
@@ -165,6 +207,9 @@ export default function EnquiryPopup({ delay = 3000 }) {
             type="text"
             placeholder="Your name"
             required
+            minLength="3"
+            maxLength="100"
+            pattern="^[a-zA-Z\s'-]+$"
             disabled={isSubmitting}
           />
           <input
@@ -172,17 +217,22 @@ export default function EnquiryPopup({ delay = 3000 }) {
             type="email"
             placeholder="Email address"
             required
+            maxLength="255"
             disabled={isSubmitting}
           />
           <input
             name="phone"
             type="tel"
-            placeholder="Phone number"
+            placeholder="Phone number (10 digits)"
+            inputMode="numeric"
+            maxLength="10"
+            pattern="^\d{10}$"
             disabled={isSubmitting}
           />
           <textarea
             name="message"
             placeholder="Your message (optional)"
+            maxLength="500"
             disabled={isSubmitting}
           />
 

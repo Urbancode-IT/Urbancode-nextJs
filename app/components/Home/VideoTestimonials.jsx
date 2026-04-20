@@ -5,51 +5,57 @@ import Link from 'next/link';
 import { videoData } from '../../data/videoTestimonialsData';
 import './VideoTestimonials.css';
 
-const VideoTestimonials = () => {
-    const [activeIndex, setActiveIndex] = useState(1); // Start with second video in center
-    const videoRefs = useRef([]);
 
+const VideoTestimonials = () => {
+    const [index, setIndex] = useState(0);
+    const [cardsToShow, setCardsToShow] = useState(3);
+    const videoRefs = useRef([]);
     const shouldPlay = useRef(false);
 
-    // Handle Autoplay and Performance optimization
+    useEffect(() => {
+        const updateCardsToShow = () => {
+            if (window.innerWidth < 576) setCardsToShow(1);
+            else if (window.innerWidth < 768) setCardsToShow(2);
+            else if (window.innerWidth < 1024) setCardsToShow(3);
+            else setCardsToShow(4);
+        };
+
+        updateCardsToShow();
+        window.addEventListener("resize", updateCardsToShow);
+        return () => window.removeEventListener("resize", updateCardsToShow);
+    }, []);
+
+    // Handle Autoplay logic: pause all that are out of view, optionally play clicked one
     useEffect(() => {
         videoRefs.current.forEach((video, idx) => {
             if (video) {
-                if (idx === activeIndex) {
-                    if (shouldPlay.current) {
-                        video.currentTime = 0; 
-                        video.play().catch(err => {
-                            console.log("Playback restricted:", err);
-                        });
-                        shouldPlay.current = false; // Reset after playing
-                    }
-                } else {
+                if (idx === index && shouldPlay.current) {
+                    video.currentTime = 0; 
+                    video.play().catch(err => {
+                        console.log("Playback restricted:", err);
+                    });
+                    shouldPlay.current = false;
+                } else if (idx < index || idx >= index + cardsToShow) {
                     video.pause();
                 }
             }
         });
-    }, [activeIndex]);
+    }, [index, cardsToShow]);
 
     const handleNext = () => {
-        shouldPlay.current = true;
-        setActiveIndex((prev) => (prev + 1) % videoData.length);
+        if (index < videoData.length - cardsToShow) {
+            setIndex((prev) => prev + 1);
+        }
     };
 
     const handlePrev = () => {
-        shouldPlay.current = true;
-        setActiveIndex((prev) => (prev - 1 + videoData.length) % videoData.length);
-    };
-
-    const handleDotClick = (index) => {
-        shouldPlay.current = true;
-        setActiveIndex(index);
-    };
-
-    const handleCardClick = (index, e) => {
-        if (index !== activeIndex) {
-            shouldPlay.current = true;
-            setActiveIndex(index);
+        if (index > 0) {
+            setIndex((prev) => prev - 1);
         }
+    };
+
+    const handleDotClick = (dotIndex) => {
+        setIndex(dotIndex);
     };
 
     return (
@@ -60,68 +66,61 @@ const VideoTestimonials = () => {
             viewport={{ once: false }}
             transition={{ duration: 0.8 }}
         >
-            <div className="container">
+            <div className="container position-relative">
                 <div className="text-center mb-5">
                     <h2 className="section-main-title text-shine">The voice that matters</h2>
-                    {/* <p className="fs1rem text-muted">Celebrating the remarkable success stories and career breakthroughs we've proudly helped achieve.</p> */}
                 </div>
 
                 <div className="video-carousel-wrapper">
-                    <button className="nav-btn prev-btn" onClick={handlePrev}>❮</button>
+                    <button 
+                        className="nav-btn prev-btn" 
+                        onClick={handlePrev}
+                        disabled={index === 0}
+                        style={{ opacity: index === 0 ? 0.5 : 1, cursor: index === 0 ? 'not-allowed' : 'pointer' }}
+                    >❮</button>
                     
                     <div className="video-cards-container">
-                        {videoData.map((video, index) => {
-                            const isActive = index === activeIndex;
-                            let position = "side-card";
-                            if (isActive) position = "center-card";
-                            else if (index === (activeIndex - 1 + videoData.length) % videoData.length) position = "left-card";
-                            else if (index === (activeIndex + 1) % videoData.length) position = "right-card";
-                            else position = "hidden-card";
-
-                            return (
+                        <div 
+                            className="video-carousel-track"
+                            style={{ transform: `translateX(-${index * (100 / cardsToShow)}%)` }}
+                        >
+                            {videoData.map((video, idx) => (
                                 <div 
                                     key={video.id} 
-                                    className={`video-card ${position}`}
-                                    onClick={(e) => handleCardClick(index, e)} 
-                                    style={{ cursor: 'pointer' }}
+                                    className="video-card-slide"
+                                    style={{ flex: `0 0 calc(${100 / cardsToShow}% - 20px)`, margin: '0 10px' }}
                                 >
-                                    {isActive && (
-                                        <div 
-                                            className="video-click-overlay"
-                                            onClick={(e) => {
-                                                e.stopPropagation();
-                                                const v = videoRefs.current[index];
-                                                if (v.paused) v.play(); else v.pause();
-                                            }}
-                                        />
-                                    )}
                                     <video 
-                                        ref={el => videoRefs.current[index] = el}
+                                        ref={el => videoRefs.current[idx] = el}
                                         src={video.src + "#t=0.5"}
                                         controls
                                         autoPlay={false}
                                         playsInline
                                         preload="auto"
-                                        onEnded={handleNext} 
                                         className="testimonial-video bg-dark"
                                     >
                                         Your browser does not support the video tag.
                                     </video>
                                 </div>
-                            );
-                        })}
+                            ))}
+                        </div>
                     </div>
 
-                    <button className="nav-btn next-btn" onClick={handleNext}>❯</button>
+                    <button 
+                        className="nav-btn next-btn" 
+                        onClick={handleNext}
+                        disabled={index >= videoData.length - cardsToShow}
+                        style={{ opacity: index >= videoData.length - cardsToShow ? 0.5 : 1, cursor: index >= videoData.length - cardsToShow ? 'not-allowed' : 'pointer' }}
+                    >❯</button>
                 </div>
 
                 <div className="carousel-controls mt-4">
                     <div className="carousel-dots">
-                        {videoData.map((_, index) => (
+                        {videoData.slice(0, Math.max(1, videoData.length - cardsToShow + 1)).map((_, i) => (
                             <span 
-                                key={index} 
-                                className={`carousel-dot ${index === activeIndex ? 'active' : ''}`}
-                                onClick={() => handleDotClick(index)}
+                                key={i} 
+                                className={`carousel-dot ${i === index ? 'active' : ''}`}
+                                onClick={() => handleDotClick(i)}
                             />
                         ))}
                     </div>

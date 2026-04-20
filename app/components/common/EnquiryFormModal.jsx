@@ -47,18 +47,58 @@ const EnquiryFormModal = ({ isOpen, onClose, courseName, onSuccess, downloadUrls
 
   const validateForm = () => {
     const newErrors = {};
-    if (!formData.name.trim()) newErrors.name = "Name is required.";
-    if (!formData.email) newErrors.email = "Email is required.";
-    else if (!/\S+@\S+\.\S+/.test(formData.email))
+    
+    // Name validation
+    if (!formData.name.trim()) {
+      newErrors.name = "Name is required.";
+    } else if (formData.name.trim().length < 3) {
+      newErrors.name = "Name must be at least 3 characters.";
+    } else if (!/^[a-zA-Z\s'-]+$/.test(formData.name.trim())) {
+      newErrors.name = "Name can only contain letters, spaces, hyphens, and apostrophes.";
+    }
+    
+    // Email validation
+    if (!formData.email) {
+      newErrors.email = "Email is required.";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       newErrors.email = "Invalid email format.";
-    if (!formData.phone) newErrors.phone = "Phone number is required.";
-    else if (!/^\d{10}$/.test(formData.phone))
-      newErrors.phone = "Phone must be 10 digits.";
-    if (!formData.course) newErrors.course = "Please select a course.";
-    if (!formData.mode) newErrors.mode = "Please select a mode.";
+    } else if (formData.email.length > 255) {
+      newErrors.email = "Email is too long.";
+    }
+    
+    // Phone validation
+    if (!formData.phone) {
+      newErrors.phone = "Phone number is required.";
+    } else {
+      const cleanPhone = formData.phone.replace(/\D/g, '');
+      if (cleanPhone.length !== 10) {
+        newErrors.phone = "Phone must be exactly 10 digits.";
+      }
+    }
+    
+    // PIN validation
+    if (formData.pin && !/^\d{6}$/.test(formData.pin.trim())) {
+      newErrors.pin = "PIN must be 6 digits.";
+    }
+    
+    // Course validation
+    if (!formData.course) {
+      newErrors.course = "Please select a course.";
+    }
+    
+    // Mode validation
+    if (!formData.mode) {
+      newErrors.mode = "Please select a mode.";
+    }
+    
+    // Demo mode specific validations
     if (isDemoMode) {
-      if (!formData.preferredDate) newErrors.preferredDate = "Date is required.";
-      if (!formData.preferredTime) newErrors.preferredTime = "Time is required.";
+      if (!formData.preferredDate) {
+        newErrors.preferredDate = "Date is required.";
+      }
+      if (!formData.preferredTime) {
+        newErrors.preferredTime = "Time is required.";
+      }
     }
 
     setErrors(newErrors);
@@ -73,7 +113,23 @@ const EnquiryFormModal = ({ isOpen, onClose, courseName, onSuccess, downloadUrls
     setStatus({ type: "loading", message: "Sending your enquiry..." });
 
     try {
-      const result = await submitEnquiryForm(formData);
+      // Clean payload for backend compatibility
+      const apiPayload = {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        pin: formData.pin,
+        course: formData.course,
+        message: formData.message,
+        mode: formData.mode,
+      };
+
+      // Append demo-specific fields to the message so they aren't lost or rejected
+      if (isDemoMode) {
+        apiPayload.message = `[DEMO REQUEST] Preferred Date: ${formData.preferredDate || 'N/A'}, Preferred Time: ${formData.preferredTime || 'N/A'}. Additional Msg: ${formData.message}`;
+      }
+
+      const result = await submitEnquiryForm(apiPayload);
 
       if (result.success) {
         setStatus({
@@ -222,6 +278,11 @@ const EnquiryFormModal = ({ isOpen, onClose, courseName, onSuccess, downloadUrls
                         placeholder="Enter your name"
                         value={formData.name}
                         onChange={handleChange}
+                        required
+                        minLength="3"
+                        maxLength="100"
+                        pattern="^[a-zA-Z\s'-]+$"
+                        disabled={loading}
                       />
                       {errors.name && <small className="text-danger">{errors.name}</small>}
                     </div>
@@ -234,18 +295,26 @@ const EnquiryFormModal = ({ isOpen, onClose, courseName, onSuccess, downloadUrls
                         placeholder="Enter your email"
                         value={formData.email}
                         onChange={handleChange}
+                        required
+                        maxLength="255"
+                        disabled={loading}
                       />
                       {errors.email && <small className="text-danger">{errors.email}</small>}
                     </div>
 
                     <div className="col-md-6">
                       <input
-                        type="text"
+                        type="tel"
                         className="form-control"
                         name="phone"
-                        placeholder="Enter your phone number"
+                        placeholder="Enter your phone number (10 digits)"
                         value={formData.phone}
                         onChange={handleChange}
+                        required
+                        inputMode="numeric"
+                        maxLength="10"
+                        pattern="^\d{10}$"
+                        disabled={loading}
                       />
                       {errors.phone && <small className="text-danger">{errors.phone}</small>}
                     </div>
@@ -255,10 +324,15 @@ const EnquiryFormModal = ({ isOpen, onClose, courseName, onSuccess, downloadUrls
                         type="text"
                         className="form-control"
                         name="pin"
-                        placeholder="Enter your pin code"
+                        placeholder="Enter your pin code (6 digits)"
                         value={formData.pin}
                         onChange={handleChange}
+                        inputMode="numeric"
+                        maxLength="6"
+                        pattern="^\d{6}$"
+                        disabled={loading}
                       />
+                      {errors.pin && <small className="text-danger">{errors.pin}</small>}
                     </div>
 
                     <div className="col-md-6">

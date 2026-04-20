@@ -37,15 +37,28 @@ const ContactUs = () => {
   const validateForm = () => {
     const { name, email, mobile, interest, message } = formData;
 
-    if (!name.trim()) return "Please enter your name.";
-    if (!email.trim()) return "Please enter your email.";
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
-      return "Please enter a valid email address.";
-    if (!mobile.trim()) return "Please enter your mobile number.";
-    if (!/^\d{10}$/.test(mobile.trim()))
-      return "Please enter a valid 10-digit mobile number.";
+    // Name validation
+    if (!name.trim()) return "Name is required.";
+    if (name.trim().length < 3) return "Name must be at least 3 characters.";
+    if (!/^[a-zA-Z\s'-]+$/.test(name.trim())) return "Name can only contain letters, spaces, hyphens, and apostrophes.";
+    
+    // Email validation
+    if (!email.trim()) return "Email is required.";
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return "Please enter a valid email address.";
+    if (email.length > 255) return "Email is too long.";
+    
+    // Mobile validation
+    if (!mobile.trim()) return "Mobile number is required.";
+    const cleanMobile = mobile.replace(/\D/g, '');
+    if (cleanMobile.length !== 10) return "Mobile number must be exactly 10 digits.";
+    
+    // Interest validation
     if (!interest.trim()) return "Please select an interest.";
-    if (!message.trim()) return "Please enter a message.";
+    
+    // Message validation
+    if (!message.trim()) return "Message cannot be empty.";
+    if (message.trim().length < 10) return "Message must be at least 10 characters.";
+    if (message.length > 1000) return "Message is too long (max 1000 characters).";
 
     return null; // valid
   };
@@ -113,6 +126,11 @@ const ContactUs = () => {
               placeholder="Enter name"
               value={formData.name}
               onChange={handleInputChange}
+              required
+              minLength="3"
+              maxLength="100"
+              pattern="^[a-zA-Z\s'-]+$"
+              disabled={loading}
             />
             <input
               type="email"
@@ -120,19 +138,29 @@ const ContactUs = () => {
               placeholder="Enter mail ID"
               value={formData.email}
               onChange={handleInputChange}
+              required
+              maxLength="255"
+              disabled={loading}
             />
             <input
-              type="text"
+              type="tel"
               name="mobile"
-              placeholder="Mobile No"
+              placeholder="Mobile No (10 digits)"
               value={formData.mobile}
               onChange={handleInputChange}
+              required
+              inputMode="numeric"
+              maxLength="10"
+              pattern="^\d{10}$"
+              disabled={loading}
             />
             <div className="select-wrapper">
               <select
                 name="interest"
                 value={formData.interest}
                 onChange={handleInputChange}
+                required
+                disabled={loading}
               >
                 <option value="">Interested In</option>
                 <option value="Course Enquiry">Course Enquiry</option>
@@ -157,6 +185,10 @@ const ContactUs = () => {
                 placeholder="Message Box"
                 value={formData.message}
                 onChange={handleInputChange}
+                required
+                minLength="10"
+                maxLength="1000"
+                disabled={loading}
               ></textarea>
               <button type="submit" className="submit-btn" disabled={loading}>
                 {loading ? "Sending..." : "Submit"}{" "}

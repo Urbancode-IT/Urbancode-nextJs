@@ -2,9 +2,11 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import "./Chatbot.css"; // move your CSS here
+import EnquiryFormModal from "./common/EnquiryFormModal";
 
 const ChatbotWidget = () => {
   const [showPopup, setShowPopup] = useState(false);
+  const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
   const soundPlayedRef = useRef(false);
 
   useEffect(() => {
@@ -73,11 +75,14 @@ const ChatbotWidget = () => {
             onClick={(e) => {
               e.stopPropagation();
               setShowPopup(false);
+              setIsDemoModalOpen(true);
             }}
           >
-            <div className="chatbot-text">
-              🎉Exciting Offers are Live! <br/>Enroll a course today
-            </div><br/>
+        <div className="chatbot-text">
+  <p className="title">🎉 Exciting Offers are Live!</p>
+  <p className="subtitle">Enroll in a course today</p>
+  <p className="cta">Book a demo now →</p>
+</div>
             
           </div>
         )}
@@ -108,6 +113,13 @@ const ChatbotWidget = () => {
           className="chatbot-iframe"
         ></iframe>
       </div>
+
+      <EnquiryFormModal
+        isOpen={isDemoModalOpen}
+        onClose={() => setIsDemoModalOpen(false)}
+        isDemoMode={true}
+        courseName=""
+      />
     </>
   );
 };

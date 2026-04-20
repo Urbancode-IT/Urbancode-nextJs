@@ -1,5 +1,188 @@
 /* ...existing code... */
 
+/* ============================================================
+   ☀️ SUMMER CAMP STYLES
+   ============================================================ */
+
+/* Summer Camp Banner */
+.kidz-page .summer-camp-banner {
+  background: linear-gradient(135deg, #fff8e1 0%, #fff3cd 50%, #ffeaa7 100%);
+  border: 2px solid #f6c90e;
+  border-radius: 16px;
+  padding: 16px 24px;
+  margin-bottom: 28px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(246, 201, 14, 0.25);
+  animation: sc-banner-pulse 3s ease-in-out infinite;
+}
+
+@keyframes sc-banner-pulse {
+  0%, 100% { box-shadow: 0 4px 20px rgba(246, 201, 14, 0.25); }
+  50% { box-shadow: 0 6px 30px rgba(246, 201, 14, 0.5); }
+}
+
+.kidz-page .summer-camp-banner::before {
+  content: '';
+  position: absolute;
+  top: -30px; right: -30px;
+  width: 100px; height: 100px;
+  background: radial-gradient(circle, rgba(246,201,14,0.3) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.kidz-page .summer-camp-banner-inner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.kidz-page .sc-banner-icon {
+  font-size: 2.2rem;
+  animation: sc-spin 6s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes sc-spin {
+  0%   { transform: rotate(0deg) scale(1); }
+  25%  { transform: rotate(15deg) scale(1.1); }
+  50%  { transform: rotate(0deg) scale(1); }
+  75%  { transform: rotate(-15deg) scale(1.1); }
+  100% { transform: rotate(0deg) scale(1); }
+}
+
+.kidz-page .sc-banner-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.kidz-page .sc-banner-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #b7660a;
+  letter-spacing: 0.3px;
+}
+
+.kidz-page .sc-banner-sub {
+  font-size: 0.82rem;
+  color: #9a5c00;
+  font-weight: 500;
+}
+
+.kidz-page .sc-banner-sparks {
+  display: flex;
+  gap: 8px;
+  font-size: 1.3rem;
+  animation: sc-float 2s ease-in-out infinite;
+}
+
+@keyframes sc-float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-4px); }
+}
+
+/* Summer Camp Card */
+.kidz-page .summer-camp-card {
+  position: relative;
+  border: 2px solid transparent;
+  background:
+    linear-gradient(var(--bg-neutral, #fff), var(--bg-neutral, #fff)) padding-box,
+    linear-gradient(135deg, #f6c90e, #ff9a3c, #f6c90e) border-box !important;
+  box-shadow: 0 4px 24px rgba(246, 201, 14, 0.22), 0 2px 8px rgba(0,0,0,0.10) !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+  overflow: visible !important;
+}
+
+.kidz-page .summer-camp-card:hover {
+  transform: translateY(-6px);
+  background:
+    linear-gradient(#3d3d3d, #3d3d3d) padding-box,
+    linear-gradient(135deg, #f6c90e, #ff9a3c, #f6c90e) border-box !important;
+  box-shadow: 0 12px 40px rgba(246, 201, 14, 0.40), 0 4px 16px rgba(0,0,0,0.15) !important;
+}
+
+/* Diagonal Ribbon */
+.kidz-page .sc-ribbon {
+  position: absolute;
+  top: 14px;
+  left: -4px;
+  z-index: 10;
+  background: linear-gradient(135deg, #f6c90e, #ff9a3c);
+  color: #6b3a00;
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 4px 12px 4px 10px;
+  border-radius: 0 20px 20px 0;
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.15);
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+}
+
+.kidz-page .sc-ribbon::before {
+  content: '';
+  position: absolute;
+  left: 0; bottom: -5px;
+  width: 0; height: 0;
+  border-right: 5px solid #c47c00;
+  border-bottom: 5px solid transparent;
+}
+
+/* Summer camp course image — full colour (not grayscale) */
+.kidz-page .sc-course-img {
+  filter: none !important;
+}
+
+/* Summer Camp Enroll Button */
+.kidz-page .sc-enroll-btn {
+  background: linear-gradient(135deg, #f6c90e, #ff9a3c) !important;
+  color: #6b3a00 !important;
+  font-weight: 600;
+  border: none;
+  width: 100%;
+  border-radius: 6px;
+  font-size: small;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.kidz-page .sc-enroll-btn:hover {
+  opacity: 0.88;
+  transform: scale(1.02);
+}
+
+.kidz-page .summer-camp-card:hover .sc-enroll-btn {
+  background: linear-gradient(135deg, #f6c90e, #ff9a3c) !important;
+  color: #6b3a00 !important;
+}
+
+/* "More Courses" Divider */
+.kidz-page .sc-divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 32px 0 24px;
+  color: #aaa;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.kidz-page .sc-divider::before,
+.kidz-page .sc-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #ddd, transparent);
+}
+
+/* Responsive Summer Camp Banner */
+@media (max-width: 576px) {
+  .kidz-page .sc-banner-sparks { display: none; }
+  .kidz-page .summer-camp-banner { padding: 12px 16px; }
+  .kidz-page .sc-banner-title { font-size: 1rem; }
+}
 
 /* Section blending: Remove top padding from Why Choose section to blend with Hero */
 .why-choose-kids {

@@ -159,7 +159,7 @@ const FlightTransition = ({ isAnimating }) => {
               boxShadow: '0 10px 30px rgba(0,0,0,0.2)',
             }}>
                 <div style={{ fontSize: '26px', fontWeight: '900', display: 'flex', alignItems: 'center', gap: '20px' }}>
-                    <span style={{ opacity: 0.5 }}>CHENNAI</span>
+                    <span style={{ opacity: 0.5 }}>INDIA</span>
                     <motion.span 
                        animate={{ x: [0, 5, 0] }}
                        transition={{ repeat: Infinity, duration: 0.5 }}

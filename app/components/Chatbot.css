@@ -201,3 +201,35 @@
 .chatbot-action:hover {
     background: #099268;
 }
+.chatbot-text {
+  background: #f1f5f9;
+  padding: 14px 18px;
+  border-radius: 14px;
+  max-width: 260px;
+  font-family: "Segoe UI", sans-serif;
+  line-height: 1.4;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 15px;
+  margin: 0 0 4px;
+}
+
+.subtitle {
+  font-size: 14px;
+  margin: 0;
+  color: #444;
+}
+
+.cta {
+  font-size: 14px;
+  margin-top: 6px;
+  font-weight: 600;
+  color: #2563eb;
+  cursor: pointer;
+}
+
+.cta:hover {
+  text-decoration: underline;
+}

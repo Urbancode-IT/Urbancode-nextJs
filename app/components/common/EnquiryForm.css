@@ -7,17 +7,63 @@
   align-items: center;
   justify-content: center;
   z-index: 11000;
+  padding: 16px;
+  overflow-y: auto;
 }
 
 .enquiry-modal {
   max-width: 600px;
-  width: 90%;
+  width: 100%;
+  max-height: 90dvh;
+  overflow-y: auto;
   background: linear-gradient(180deg, #e3f0eb 0%, #f3f5f3 100%);
   border-radius: 20px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
   padding: 24px;
   position: relative;
   text-align: left;
+  /* Custom scrollbar */
+  scrollbar-width: thin;
+  scrollbar-color: #c3ddd4 transparent;
+}
+
+.enquiry-modal::-webkit-scrollbar {
+  width: 5px;
+}
+.enquiry-modal::-webkit-scrollbar-thumb {
+  background: #c3ddd4;
+  border-radius: 10px;
+}
+
+/* Mobile: <= 480px */
+@media (max-width: 480px) {
+  .enquiry-overlay {
+    padding: 10px;
+    align-items: flex-start;
+    padding-top: 20px;
+  }
+
+  .enquiry-modal {
+    padding: 16px 14px;
+    border-radius: 14px;
+    max-height: 88dvh;
+  }
+
+  .enquiry-header h3 {
+    font-size: 18px !important;
+  }
+
+  .enquiry-modal input,
+  .enquiry-modal select,
+  .enquiry-modal textarea {
+    font-size: 13px;
+    padding: 8px 10px;
+  }
+
+  .enquiry-modal .submit-btn {
+    font-size: 14px;
+    padding: 9px 0;
+  }
 }
 
 .enquiry-header {
