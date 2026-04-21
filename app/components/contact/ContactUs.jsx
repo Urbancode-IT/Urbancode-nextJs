@@ -51,6 +51,7 @@ const ContactUs = () => {
     if (!mobile.trim()) return "Mobile number is required.";
     const cleanMobile = mobile.replace(/\D/g, '');
     if (cleanMobile.length !== 10) return "Mobile number must be exactly 10 digits.";
+    if (!/^[6-9]\d{9}$/.test(cleanMobile)) return "Please enter a valid 10-digit Indian mobile number.";
     
     // Interest validation
     if (!interest.trim()) return "Please select an interest.";

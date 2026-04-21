@@ -28,15 +28,30 @@ function App() {
 
     const { firstName, lastName, email, mobile, program, experience, interest } = formData
 
+    // Name validation
     if (!firstName.trim()) { alert('Please enter your first name.'); return }
+    if (firstName.trim().length < 2) { alert('First name must be at least 2 characters.'); return }
+    if (!/^[a-zA-Z\s'-]+$/.test(firstName.trim())) { alert('First name can only contain letters.'); return }
+
     if (!lastName.trim()) { alert('Please enter your last name.'); return }
+    if (lastName.trim().length < 1) { alert('Last name is required.'); return }
+    if (!/^[a-zA-Z\s'-]+$/.test(lastName.trim())) { alert('Last name can only contain letters.'); return }
+
+    // Email validation
     if (!email.trim()) { alert('Please enter your email.'); return }
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { alert('Please enter a valid email address.'); return }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { alert('Please enter a valid email address.'); return }
+    if (email.length > 255) { alert('Email is too long.'); return }
+
+    // Mobile validation
     if (!mobile.trim()) { alert('Please enter your mobile number.'); return }
-    else if (!/^\d{10}$/.test(mobile.trim())) { alert('Please enter your full 10-digit mobile number.'); return }
+    const cleanMobile = mobile.replace(/\D/g, '');
+    if (cleanMobile.length !== 10) { alert('Mobile number must be exactly 10 digits.'); return }
+    if (!/^[6-9]\d{9}$/.test(cleanMobile)) { alert('Please enter a valid 10-digit Indian mobile number.'); return }
+
     if (!program) { alert('Please select a program.'); return }
     if (!experience) { alert('Please select your experience.'); return }
     if (!interest.trim()) { alert('Please tell us why you are interested in this internship.'); return }
+    if (interest.trim().length < 10) { alert('Interest description must be at least 10 characters.'); return }
 
     // Form submission logic would go here
     const result = await submitInternshipApplication(formData);

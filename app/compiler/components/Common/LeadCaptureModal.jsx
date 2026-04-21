@@ -57,6 +57,7 @@ const LeadCaptureModal = ({
     const normalized = normalizePhone(formData.phone);
     if (!normalized) nextErrors.phone = 'Mobile number is required.';
     else if (normalized.length !== 10) nextErrors.phone = 'Enter a valid 10-digit mobile number.';
+    else if (!/^[6-9]\d{9}$/.test(normalized)) nextErrors.phone = 'Please enter a valid Indian mobile number.';
 
     setErrors(nextErrors);
     return Object.keys(nextErrors).length === 0;

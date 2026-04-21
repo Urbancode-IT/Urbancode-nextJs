@@ -35,13 +35,26 @@ const Mentor = () => {
 
     const { name, email, mobile, experience, interest } = formData;
 
+    // Name validation
     if (!name.trim()) return setStatus("error"), setMessage("Please enter your name.");
-    if (!email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
+    if (name.trim().length < 3) return setStatus("error"), setMessage("Name must be at least 3 characters.");
+    if (!/^[a-zA-Z\s'-]+$/.test(name.trim())) return setStatus("error"), setMessage("Name can only contain letters.");
+
+    // Email validation
+    if (!email.trim()) return setStatus("error"), setMessage("Please enter your email.");
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
       return setStatus("error"), setMessage("Please enter a valid email address.");
-    if (!/^\d{10}$/.test(mobile.trim()))
-      return setStatus("error"), setMessage("Please enter your 10-digit mobile number.");
+
+    // Mobile validation
+    const cleanMobile = mobile.replace(/\D/g, '');
+    if (cleanMobile.length !== 10)
+      return setStatus("error"), setMessage("Mobile number must be exactly 10 digits.");
+    if (!/^[6-9]\d{9}$/.test(cleanMobile))
+      return setStatus("error"), setMessage("Please enter a valid 10-digit Indian mobile number.");
+
     if (!experience) return setStatus("error"), setMessage("Please select your experience.");
     if (!interest.trim()) return setStatus("error"), setMessage("Please enter your message.");
+    if (interest.trim().length < 10) return setStatus("error"), setMessage("Message must be at least 10 characters.");
 
     setStatus("sending");
     setMessage("Submitting your application...");

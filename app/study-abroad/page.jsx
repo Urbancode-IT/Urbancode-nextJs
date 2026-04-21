@@ -36,14 +36,44 @@ const StudyAbroadPage = () => {
 
     const handleFormSubmit = async (e) => {
         e.preventDefault();
-        setIsSubmitting(true);
         setFormStatus({ type: "", message: "" });
+
+        // Basic Validation
+        const { name, email, phone, country, education, course } = formData;
+        
+        if (!name.trim() || name.trim().length < 3) {
+            setFormStatus({ type: "error", message: "Please enter a valid name (min 3 characters)." });
+            return;
+        }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            setFormStatus({ type: "error", message: "Please enter a valid email address." });
+            return;
+        }
+        const cleanPhone = phone.replace(/\D/g, '');
+        if (cleanPhone.length !== 10 || !/^[6-9]\d{9}$/.test(cleanPhone)) {
+            setFormStatus({ type: "error", message: "Please enter a valid 10-digit mobile number." });
+            return;
+        }
+        if (!country) {
+            setFormStatus({ type: "error", message: "Please select a preferred destination." });
+            return;
+        }
+        if (!education) {
+            setFormStatus({ type: "error", message: "Please select your highest qualification." });
+            return;
+        }
+        if (!course.trim()) {
+            setFormStatus({ type: "error", message: "Please enter your preferred course." });
+            return;
+        }
+
+        setIsSubmitting(true);
 
         // Prepare data for existing handler
         const submissionData = {
-            name: formData.name,
-            email: formData.email,
-            phone: formData.phone,
+            name: formData.name.trim(),
+            email: formData.email.trim(),
+            phone: cleanPhone,
             course: `Study Abroad - ${formData.country} (${formData.course})`,
             message: `Education Level: ${formData.education}\nMessage: ${formData.message}`,
             mode: "Online/Offline" // Default for the handler

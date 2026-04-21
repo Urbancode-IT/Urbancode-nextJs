@@ -55,6 +55,8 @@ const Projects = () => {
       const cleanPhone = formData.phone.replace(/\D/g, '');
       if (cleanPhone.length !== 10) {
         newErrors.phone = "Phone must be exactly 10 digits";
+      } else if (!/^[6-9]\d{9}$/.test(cleanPhone)) {
+        newErrors.phone = "Please enter a valid 10-digit Indian mobile number.";
       }
     }
     

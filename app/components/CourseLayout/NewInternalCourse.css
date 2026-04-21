@@ -686,106 +686,124 @@
 .nict-tools-section {
     background-color: #F2F2F2;
     width: 100%;
-    padding: 40px 0;
+    padding: 60px 0;
 }
 
 .nict-tools-covered {
-    width: 92%;
-    max-width: 1100px;
+    width: 90%;
+    max-width: 1300px;
     margin: 0 auto;
-    padding: 32px 24px;
-    background: linear-gradient(180deg, #155e42 0%, #3da878 100%);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 30px;
 }
 
-.nict-tools-title {
+.nict-tools-main-title {
     font-size: 28px;
     font-weight: 600;
-    color: #ffffff;
-    margin-top: 0;
-    margin-bottom: 32px;
+    color: #2C3E50;
+    margin-bottom: 48px;
     text-align: center;
 }
 
-.nict-tools-inner {
-    width: 100%;
-}
-
-.nict-tools-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
+.nict-tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 24px;
     justify-content: center;
-    align-items: center;
 }
 
-.nict-tool-pill {
-    position: relative;
-    height: 48px;
-    padding: 0 16px;
-    border-radius: 12px;
-    color: #ffffff;
-    cursor: pointer;
-    background: rgba(255, 255, 255, 0.12);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
+.nict-tool-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    cursor: default;
+}
+
+.nict-tool-card:hover {
+    transform: translateY(-8px);
+    background: #ffffff;
+    border-color: rgba(0, 181, 111, 0.3);
+    box-shadow: 0 20px 40px -12px rgba(0, 181, 111, 0.15);
+}
+
+.nict-tool-icon-box {
+    width: 68px;
+    height: 68px;
     display: flex;
     align-items: center;
-    gap: 10px;
-    transition: all 0.3s ease;
-    overflow: hidden;
+    justify-content: center;
+    background: #ffffff;
+    border-radius: 16px;
+    transition: all 0.4s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
-.nict-tool-pill::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -150%;
-    width: 50%;
-    height: 100%;
-    background: linear-gradient(90deg,
-            transparent,
-            rgba(255, 255, 255, 0.5),
-            transparent);
-    transform: skewX(-25deg);
-    animation: nictToolShine 12s infinite linear;
-    animation-delay: calc(var(--index) * 1.2s);
+.nict-tool-card:hover .nict-tool-icon-box {
+    transform: scale(1.1);
+    box-shadow: 0 8px 20px rgba(16, 185, 129, 0.2);
 }
 
-@keyframes nictToolShine {
-    0% {
-        left: -150%;
-    }
-
-    8% {
-        left: 150%;
-    }
-
-    100% {
-        left: 150%;
-    }
-}
-
-.nict-tool-pill:hover {
-    background: rgba(255, 255, 255, 0.18);
-    border-color: rgba(255, 255, 255, 0.4);
-    transform: translateY(-3px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-.nict-tool-pill img {
-    width: 24px;
-    height: 24px;
+.nict-tool-card img {
+    width: 44px;
+    height: 44px;
     object-fit: contain;
 }
 
-.nict-tool-pill span {
+.nict-tool-name {
     font-size: 15px;
     font-weight: 600;
-    white-space: nowrap;
+    color: #1e293b;
+    text-align: center;
+    transition: color 0.3s ease;
 }
+
+.nict-tool-card:hover .nict-tool-name {
+    color: #0F8A5F;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .nict-tools-section {
+        padding: 40px 0;
+    }
+
+    .nict-tools-main-title {
+        font-size: 24px;
+        margin-bottom: 32px;
+    }
+
+    .nict-tools-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+
+    .nict-tool-card {
+        padding: 20px 16px;
+        border-radius: 16px;
+    }
+
+    .nict-tool-icon-box {
+        width: 50px;
+        height: 50px;
+    }
+
+    .nict-tool-card img {
+        width: 32px;
+        height: 32px;
+    }
+
+    .nict-tool-name {
+        font-size: 13px;
+    }
+}
+
 
 @media (min-width: 768px) {
     .nict-tools-covered {

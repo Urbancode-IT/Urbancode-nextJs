@@ -9,15 +9,29 @@ const BookDemoWidget = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [isHovered, setIsHovered] = useState(false);
 
+    const [isMounted, setIsMounted] = useState(false);
+
+    React.useEffect(() => {
+        setIsMounted(true);
+    }, []);
+
     return (
         <>
             <motion.div 
                 className="book-demo-widget"
-                initial={{ opacity: 0, x: 50 }}
+                initial={{ opacity: 0, x: 100 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 1 }}
-                onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)}
+                transition={{ delay: 1, type: "spring", stiffness: 260, damping: 20 }}
+                drag
+                dragConstraints={isMounted ? { 
+                    left: -window.innerWidth + 180, 
+                    right: 0, 
+                    top: -window.innerHeight * 0.2, 
+                    bottom: window.innerHeight * 0.6 
+                } : false}
+                whileDrag={{ scale: 1.05, cursor: 'grabbing' }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
             >
                 <div 
                     className="book-demo-trigger"
@@ -25,22 +39,12 @@ const BookDemoWidget = () => {
                 >
                     <div className="demo-icon-wrapper">
                         <MdOutlinePlayCircle className="demo-icon" />
-                        <div className="demo-pulse"></div>
+                        <div className="demo-glow"></div>
                     </div>
                     
-                    <AnimatePresence>
-                        {isHovered && (
-                            <motion.span 
-                                className="demo-text"
-                                initial={{ opacity: 0, width: 0 }}
-                                animate={{ opacity: 1, width: 'auto' }}
-                                exit={{ opacity: 0, width: 0 }}
-                                transition={{ duration: 0.3 }}
-                            >
-                                Book a Demo
-                            </motion.span>
-                        )}
-                    </AnimatePresence>
+                    <span className="demo-text">
+                        Book a Demo
+                    </span>
                 </div>
             </motion.div>
 

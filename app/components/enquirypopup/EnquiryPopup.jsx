@@ -115,6 +115,8 @@ export default function EnquiryPopup({ delay = 3000 }) {
       errors.email = "Email is required.";
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formDataObj.email.trim())) {
       errors.email = "Please enter a valid email address.";
+    } else if (formDataObj.email.trim().length > 255) {
+      errors.email = "Email is too long.";
     }
     
     // Phone validation
@@ -124,8 +126,8 @@ export default function EnquiryPopup({ delay = 3000 }) {
       const cleanPhone = formDataObj.phone.replace(/\D/g, '');
       if (cleanPhone.length !== 10) {
         errors.phone = "Phone number must be exactly 10 digits.";
-      } else if (!/^\d{10}$/.test(cleanPhone)) {
-        errors.phone = "Phone number must contain only digits.";
+      } else if (!/^[6-9]\d{9}$/.test(cleanPhone)) {
+        errors.phone = "Please enter a valid 10-digit Indian mobile number.";
       }
     }
     

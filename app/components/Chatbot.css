@@ -225,9 +225,17 @@
 .cta {
   font-size: 14px;
   margin-top: 6px;
-  font-weight: 600;
+  font-weight: 700;
   color: #2563eb;
   cursor: pointer;
+  display: inline-block;
+  animation: better-blink 1.5s infinite;
+}
+
+@keyframes better-blink {
+  0% { opacity: 1; transform: scale(1); color: #2563eb; }
+  50% { opacity: 0.8; transform: scale(1.05); color: #dc2626; }
+  100% { opacity: 1; transform: scale(1); color: #2563eb; }
 }
 
 .cta:hover {
