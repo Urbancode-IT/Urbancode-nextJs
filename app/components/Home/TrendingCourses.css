@@ -134,6 +134,73 @@
     box-shadow: 0 25px 45px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(0, 181, 111, 0.4);
 }
 
+/* Refined Highlight for Summer Camp */
+.trending-course-card.special-highlight {
+    position: relative;
+    overflow: hidden; /* To clip the ribbon and shimmer */
+    box-shadow: 0 15px 40px rgba(0, 181, 111, 0.3) !important;
+    border: 1.5px solid rgba(0, 181, 111, 0.6) !important;
+    transform: scale(1.03);
+    background: #0b1115;
+}
+
+/* Diagonal Ribbon */
+.special-badge {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 120px;
+    height: 120px;
+    z-index: 20;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.special-badge::after {
+    content: "SUMMER CAMP";
+    position: absolute;
+    top: 25px;
+    left: -40px;
+    width: 160px;
+    background: linear-gradient(90deg, #00B56F, #008f58);
+    color: white;
+    text-align: center;
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    padding: 6px 0;
+    transform: rotate(-45deg);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Shimmer Sweep Effect */
+.special-highlight::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        110deg,
+        transparent 40%,
+        rgba(255, 255, 255, 0.08) 50%,
+        transparent 60%
+    );
+    background-size: 200% 100%;
+    animation: shimmerSweep 4s infinite linear;
+    pointer-events: none;
+    z-index: 5;
+}
+
+@keyframes shimmerSweep {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+.trending-course-card.special-highlight:hover {
+    box-shadow: 0 30px 60px rgba(0, 181, 111, 0.5) !important;
+    transform: scale(1.05) translateY(-5px);
+}
+
 /* Modal and Hover Styles... */
 .card-hover-overlay {
     position: absolute;
@@ -264,22 +331,24 @@
 }
 
 .trending-enroll-trigger {
-    background: #00B56F;
+    background: linear-gradient(90deg, #1B8A5A 0%, #03482E 100%);
     color: white;
-    border: 1px solid #00B56F;
-    padding: 12px 25px;
+    border: none;
+    padding: 12px 30px;
     font-size: 15px;
     font-weight: 600;
-    border-radius: 10px;
+    border-radius: 50px;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
     white-space: nowrap;
+    box-shadow: 0 4px 12px rgba(27, 138, 90, 0.3);
 }
 
 .trending-enroll-trigger:hover {
-    background: #008f58;
+    background: linear-gradient(90deg, #1B8A5A 0%, #03482E 100%);
     transform: translateY(-2px);
-    box-shadow: 0 8px 15px rgba(0, 181, 111, 0.3);
+    box-shadow: 0 8px 20px rgba(27, 138, 90, 0.45);
+    filter: brightness(1.1);
 }
 
 .trending-brochure-trigger {

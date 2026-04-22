@@ -16,6 +16,7 @@ import coursesData from "./coursesData";
 import EnquiryFormModal from "@/app/components/common/EnquiryFormModal.jsx";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import { Star, Users, Clock } from "lucide-react";
 
 const categoryTools = {
   "Fullstack Development": [
@@ -342,15 +343,22 @@ export default function Courses({ categorySlug }) {
                                   {course.desc}
                                 </Card.Text>
 
-                                <div className="d-flex justify-content-between text-muted fs-11">
-                                  <span>★★★★★ {course.rating}</span>
-                                  <span>👥 {course.students}</span>
+                                <div className="d-flex justify-content-between align-items-center mt-3 mb-2">
+                                  <div className="course-rating-pill">
+                                    <Star size={14} fill="#FFD700" color="#FFD700" />
+                                    <span>{course.rating}</span>
+                                  </div>
+                                  <div className="course-students-pill">
+                                    <Users size={14} />
+                                    <span>{course.students}</span>
+                                  </div>
                                 </div>
 
-                                <div className="d-flex justify-content-between align-items-center mt-2 fs-11">
-                                  <span className="text-muted small">
-                                    ⏳ {course.duration}
-                                  </span>
+                                <div className="d-flex justify-content-between align-items-center mt-2">
+                                  <div className="course-duration-pill">
+                                    <Clock size={14} />
+                                    <span>{course.duration}</span>
+                                  </div>
                                   <Button
                                     variant="dark"
                                     size="sm"

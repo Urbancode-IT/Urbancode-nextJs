@@ -288,13 +288,21 @@
   color: #fff;
 }
 
+
+
 .kidz-page .course-img {
   height: 150px;
   border-radius: 1rem;
   object-fit: cover;
   position: relative;
   width: 100%;
-  filter: grayscale(80%);
+  filter: none;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.kidz-page .course-card:hover .course-img {
+  transform: scale(1.05);
+  filter: brightness(1.05);
 }
 
 .kidz-page .badge-duration {
@@ -349,17 +357,49 @@
 }
 
 .kidz-page .btn-enroll {
-  background: #595959;
-  color: #fff;
+  background: linear-gradient(135deg, #1ABC9C 0%, #16A085 100%) !important;
+  color: #fff !important;
   width: 100%;
-  border-radius: 6px;
+  border-radius: 50px;
   margin-top: auto;
-  font-size: small;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 20px;
+  border: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(26, 188, 156, 0.3);
 }
 
 .kidz-page .course-card:hover .btn-enroll {
-  background: #fff;
-  color: #595959;
+  background: linear-gradient(135deg, #1ABC9C 0%, #16A085 100%) !important;
+  color: #fff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(26, 188, 156, 0.4);
+}
+
+.course-rating-pill, .course-students-pill, .course-duration-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.course-rating-pill {
+  background: rgba(255, 215, 0, 0.12);
+  color: #b8860b;
+}
+
+.course-students-pill {
+  background: rgba(111, 66, 193, 0.08);
+  color: #6f42c1;
+}
+
+.course-duration-pill {
+  background: rgba(25, 135, 84, 0.1);
+  color: #198754;
 }
 
 /* Why Choose Section */

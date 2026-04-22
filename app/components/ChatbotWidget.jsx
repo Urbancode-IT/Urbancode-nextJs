@@ -80,7 +80,7 @@ const ChatbotWidget = () => {
           >
         <div className="chatbot-text">
   <p className="title">🎉 Exciting Offers are Live!</p>
-  <p className="subtitle">Enroll in a course today</p>
+  {/* <p className="subtitle">Enroll in a course today</p> */}
   <p className="cta">Book a demo now →</p>
 </div>
             

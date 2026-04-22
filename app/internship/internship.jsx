@@ -2,6 +2,7 @@
 import { useState } from 'react'
 import './internship.css'
 import { submitInternshipApplication } from '../../lib/api/api'
+import { Clock } from 'lucide-react'
 
 function App() {
   const [formData, setFormData] = useState({
@@ -210,8 +211,8 @@ function App() {
                 <img src={internship.image} alt={internship.title} />
                 <h5>{internship.title}</h5>
                 <p>{internship.description}</p>
-                <div className="duration">
-                  <i className="fa-regular fa-clock"></i> {internship.duration}
+                <div className="course-duration-pill mt-auto mb-2" style={{ width: 'fit-content' }}>
+                  <Clock size={14} /> {internship.duration}
                 </div>
                 <a
                   href="#application"

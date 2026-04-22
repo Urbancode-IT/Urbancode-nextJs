@@ -12,6 +12,20 @@ const courses = [
 //   description: "Wish you a very Happy Tamil New Year! Celebrate the spirit of new beginnings with our special course offerings. Embrace the joy of learning and growth this Tamil New Year with us!",
 //   image: "/images/courses/tamilnewyear.jpg",
 // },
+ {
+  id: 9,
+  title: "Kids Web Design Summer Camp",
+  duration: "3 Months",
+  description: "Introduce kids to the exciting world of web design! Learn HTML, CSS, and basic design skills to create fun and interactive websites. Perfect for beginners to build creativity and confidence.",
+  image: "/images/courses/web-design-kids.webp",
+},
+{
+  id: 10,
+  title: "Kids Python Programming Summer Camp",
+  duration: "3 Months",
+  description: "Make coding fun with Python! Kids will learn basic programming concepts, logic building, and create simple games and projects in an easy and engaging way.",
+  image: "/images/courses/python-kids.webp",
+},
   
   {
     id: 2,
@@ -55,13 +69,14 @@ const courses = [
   description: "Learn to build intelligent AI applications using Generative AI, LLMs, and modern tools like OpenAI, LangChain, and Python. Create chatbots, AI assistants, and real-world AI solutions.",
   image: "/images/courses/gen-ai-poster.webp",
 },
-{
-    id: 8,
-    title: "Mobile App Development (Android & iOS)",
-    duration: "3 Months",
-    description: "Build cross-platform mobile apps using React Native. Create real-world applications with a single JavaScript codebase.",
-    image: "/images/courses/poster1.webp",
-  }
+// {
+//     id: 8,
+//     title: "Mobile App Development (Android & iOS)",
+//     duration: "3 Months",
+//     description: "Build cross-platform mobile apps using React Native. Create real-world applications with a single JavaScript codebase.",
+//     image: "/images/courses/poster1.webp",
+//   },
+
  
 
 ];
@@ -146,7 +161,14 @@ const TrendingCourses = () => {
 
                 <div className="trending-scroll-track" ref={sliderRef} onScroll={checkScrollPosition}>
                     {courses.map((course) => (
-                        <div key={course.id} className="trending-course-card" onClick={() => setSelectedCourse(course)}>
+                        <div 
+                           key={course.id} 
+                           className={`trending-course-card ${[9, 10].includes(course.id) ? 'special-highlight' : ''}`} 
+                           onClick={() => setSelectedCourse(course)}
+                        >
+                            {[9, 10].includes(course.id) && (
+                                <div className="special-badge"></div>
+                            )}
                             <div className="trending-image-box">
                                 <img src={course.image} alt={course.title} className="trending-image-fg" />
                                 <div className="card-hover-overlay">

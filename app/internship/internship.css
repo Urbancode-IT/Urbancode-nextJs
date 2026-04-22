@@ -101,12 +101,25 @@
     height: 144px;
     border-radius: 6px;
     object-fit: cover;
-    filter: grayscale(100%);
-    transition: filter 0.3s ease-in-out;
+    filter: none;
+    transition: all 0.3s ease-in-out;
 }
 
 .internship-page .custom-card:hover img {
-    filter: grayscale(0%);
+    transform: scale(1.05);
+    filter: brightness(1.05);
+}
+
+.internship-page .course-duration-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: rgba(25, 135, 84, 0.1);
+  color: #198754;
 }
 
 /* Card Heading */
@@ -165,22 +178,23 @@
     position: absolute;
     bottom: 20px;
     right: 20px;
-    width: 75px;
-    height: 17px;
-    background: #595959;
+    padding: 6px 18px;
+    background: linear-gradient(90deg, #1B8A5A 0%, #03482E 100%);
     color: #fff;
-    font-weight: 500;
-    font-size: 9px;
-    line-height: 17px;
+    font-weight: 600;
+    font-size: 11px;
     text-align: center;
-    border-radius: 3px;
+    border-radius: 50px;
     text-decoration: none;
     display: inline-block;
-    transition: background 0.3s;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(27, 138, 90, 0.2);
 }
 
 .internship-page .custom-card:hover .apply-btn {
-    background: #0db23c;
+    background: linear-gradient(90deg, #1B8A5A 0%, #03482E 100%);
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(27, 138, 90, 0.35);
 }
 
 /* Why Choose Section - FIXED FOR MOBILE */
