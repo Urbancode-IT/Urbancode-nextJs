@@ -229,8 +229,16 @@ const ProblemsTopics = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
             >
-                <h1>Coding Problems</h1>
-                <p>Master your skills with topic-specific coding challenges</p>
+                <h1>Don't stop at concepts, <br /> <span className="text-gradient">Start coding immediately</span></h1>
+                <div className="header-features">
+                    <span className="feature-tag">Practice while you learn</span>
+                    <span className="feature-tag">Write code instantly</span>
+                    <span className="feature-tag">Build confidence</span>
+                </div>
+                <p className="header-description">
+                    The best way to understand coding is to practice while you learn.<br></br> Use our online compiler to 
+                    write code instantly, test programs, fix mistakes, and build confidence while learning.
+                </p>
             </motion.div>
 
             <div className="problems-topics-container">
@@ -287,6 +295,19 @@ const ProblemsTopics = () => {
                                 <div className="topic-content">
                                     <h3>{topic.title}</h3>
                                     <p className="topic-description">{topic.description}</p>
+
+                                    <div className="topic-mastery-section">
+                                        <div className="mastery-label">
+                                            <span>Mastery</span>
+                                            <span>{progress}%</span>
+                                        </div>
+                                        <div className="mastery-progress-bg">
+                                            <div 
+                                                className="mastery-progress-fill" 
+                                                style={{ width: `${progress}%` }}
+                                            />
+                                        </div>
+                                    </div>
 
                                     <div className="topic-footer">
                                         <div className="topic-badge">
