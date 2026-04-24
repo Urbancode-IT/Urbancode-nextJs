@@ -71,19 +71,22 @@ const ChatbotWidget = () => {
         </div>
         {showPopup && (
           <div
-            className="chatbot-popup chatbot-popup-show"
+            className="premium-notification"
             onClick={(e) => {
               e.stopPropagation();
               setShowPopup(false);
               setIsDemoModalOpen(true);
             }}
           >
-        <div className="chatbot-text">
-  <p className="title">🎉 Exciting Offers are Live!</p>
-  {/* <p className="subtitle">Enroll in a course today</p> */}
-  <p className="cta">Book a demo now →</p>
-</div>
-            
+            <div className="notification-icon">🎁</div>
+            <div className="notification-content">
+              <p className="notif-title">Exciting Offers are Live!</p>
+              <p className="notif-link">Book a demo now →</p>
+            </div>
+            <div className="notif-close" onClick={(e) => {
+              e.stopPropagation();
+              setShowPopup(false);
+            }}>×</div>
           </div>
         )}
       </div>

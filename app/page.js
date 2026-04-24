@@ -125,16 +125,34 @@ export default function HomePage() {
 `
         }}
       />
-      <HeroSection />
-      <BannerSlider banners={homeBanners} />
-      <Carousel />
-      <Courses />
-      <InDemandTools />
-      {/* <GetCertified />  */}
-      <VideoTestimonials />
-      <TestimonialCarousel />
-      <FaqBootstrap />
-      <TrendingCourses />
+      <div className="home-section">
+        <HeroSection />
+      </div>
+      <div className="home-section">
+        <BannerSlider banners={homeBanners} />
+      </div>
+      <div className="home-section">
+        <Carousel />
+      </div>
+      <div className="home-section">
+        <Courses />
+      </div>
+      <div className="home-section">
+        <InDemandTools />
+      </div>
+
+      <div className="home-section">
+        <VideoTestimonials />
+      </div>
+      <div className="home-section">
+        <TestimonialCarousel />
+      </div>
+      <div className="home-section">
+        <FaqBootstrap />
+      </div>
+      <div className="home-section">
+        <TrendingCourses />
+      </div>
     </>
   );
 }

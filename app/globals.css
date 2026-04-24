@@ -15,7 +15,7 @@
   --color-muted:     #6c757d;
 
   /* ── Spacing / layout ─────────────────────────────────────────── */
-  --site-header-height: 72px;
+  --site-header-height: 71px;
 
   /* ── Bootstrap overrides ─────────────────────────────────────── */
   --bs-body-font-family:  var(--font-sans) !important;
@@ -45,7 +45,7 @@
 
 @media (max-width: 768px) {
   :root {
-    --site-header-height: 64px;
+    --site-header-height: 71px;
   }
 }
 
@@ -270,4 +270,32 @@ a:hover {
   0%   { background-position: 100% 0; width: 60px;  opacity: 0.6; }
   50%  { background-position:   0% 0; width: 100px; opacity: 1;   }
   100% { background-position:-100% 0; width: 60px;  opacity: 0.6; }
-}
+}
+
+/* ================================================================
+   HOME SECTION SPACING UTILITY
+   ================================================================ */
+.home-section {
+  margin-top: 100px !important;
+  display: block !important;
+}
+
+.home-section:first-of-type {
+  margin-top: 0 !important;
+}
+
+.home-section:last-of-type {
+  margin-bottom: 100px !important;
+}
+
+/* Force children to shed their large vertical paddings/margins with higher specificity */
+body .home-section > div,
+body .home-section > section,
+body .home-section > article,
+body .home-section > .container,
+body .home-section > .py-5 {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}

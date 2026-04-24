@@ -3,6 +3,8 @@
     text-align: center;
     font-family: 'Inter', sans-serif;
     overflow: hidden;
+    position: relative;
+    background-color: #fcfcfc;
 }
 
 .idt-in-demand-container .section-main-title {
@@ -38,23 +40,24 @@
 .idt-tool-item-wrapper {
     width: 140px;
     height: 100px;
-    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 50%, #e9ecef 100%);
+    background: linear-gradient(135deg, #f1f5f9 0%, #ffffff 50%, #e2e8f0 100%);
     border-radius: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(148, 163, 184, 0.4);
 
     box-shadow:
         0 8px 16px rgba(0, 0, 0, 0.08),
-        0 4px 8px rgba(0, 0, 0, 0.06),
-        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        0 4px 8px rgba(0, 0, 0, 0.04),
+        inset 0 1px 0 rgba(255, 255, 255, 1);
 
     display: flex;
     align-items: center;
     justify-content: center;
     flex: 0 0 140px;
 
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     position: relative;
     overflow: hidden;
+    z-index: 1;
 }
 
 .idt-tool-item-wrapper::before {
@@ -64,18 +67,39 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.4), transparent);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), transparent);
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.4s ease;
     border-radius: 16px;
+    z-index: 0;
+}
+
+.idt-tool-item-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.25) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    transform: skewX(-25deg);
+    animation: shine-sweep 4s infinite cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 2;
+    pointer-events: none;
 }
 
 .idt-tool-item-wrapper:hover {
     transform: translateY(-8px) scale(1.05);
     box-shadow:
-        0 16px 32px rgba(0, 0, 0, 0.12),
-        0 8px 16px rgba(0, 0, 0, 0.08),
+        0 20px 40px rgba(100, 116, 139, 0.15),
+        0 10px 20px rgba(0, 0, 0, 0.1),
         inset 0 1px 0 rgba(255, 255, 255, 1);
+    border-color: rgba(148, 163, 184, 0.8);
 }
 
 .idt-tool-item-wrapper:hover::before {
@@ -86,19 +110,20 @@
 .idt-tool-logo-base {
     width: 90%;
     height: 70%;
-    background: #ffffff;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(4px);
     border-radius: 12px;
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 
     display: flex;
     align-items: center;
     justify-content: center;
 
     box-shadow:
-        0 4px 12px rgba(0, 0, 0, 0.08),
-        0 2px 4px rgba(0, 0, 0, 0.04);
+        0 4px 12px rgba(0, 0, 0, 0.15),
+        0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 12px;
-    transition: all 0.3s ease;
+    transition: all 0.4s ease;
     position: relative;
     z-index: 1;
 }
@@ -113,13 +138,16 @@
 
 
 .idt-tool-item-wrapper:hover .idt-tool-icon {
-    transform: scale(1.12);
+    transform: scale(1.15);
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
 }
 
 .idt-tool-item-wrapper:hover .idt-tool-logo-base {
     box-shadow:
-        0 6px 16px rgba(0, 0, 0, 0.12),
-        0 3px 6px rgba(0, 0, 0, 0.06);
+        0 8px 24px rgba(100, 116, 139, 0.2),
+        0 4px 12px rgba(0, 0, 0, 0.08);
+    background: #ffffff;
+    border-color: rgba(148, 163, 184, 0.4);
 }
 
 /* Infinite scroll */
@@ -143,6 +171,18 @@
     }
 }
 
+@keyframes shine-sweep {
+    0% {
+        left: -150%;
+    }
+    15% {
+        left: 200%;
+    }
+    100% {
+        left: 200%;
+    }
+}
+
 /* Edge fade */
 .idt-tools-slider-container::before,
 .idt-tools-slider-container::after {
@@ -157,12 +197,12 @@
 
 .idt-tools-slider-container::before {
     left: 0;
-    background: linear-gradient(to right, var(--bg-neutral) 20%, transparent);
+    background: linear-gradient(to right, #fcfcfc 20%, transparent);
 }
 
 .idt-tools-slider-container::after {
     right: 0;
-    background: linear-gradient(to left, var(--bg-neutral) 20%, transparent);
+    background: linear-gradient(to left, #fcfcfc 20%, transparent);
 }
 
 /* Mobile */

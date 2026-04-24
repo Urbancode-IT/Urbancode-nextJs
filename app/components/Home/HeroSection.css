@@ -1,8 +1,8 @@
 .home_header_main_container {
   background: linear-gradient(180deg, var(--bg-neutral), #EDFFFB, var(--bg-neutral));
   overflow: hidden;
-  padding-top: var(--site-header-height, 72px);
-  /* Space for fixed navbar */
+  padding-top: calc(var(--site-header-height, 71px) + 20px);
+  /* Space for fixed navbar plus extra breathing room */
 }
 
 .home_header_container {
@@ -285,7 +285,7 @@
   }
 
   .home_header_container {
-    padding: 1rem 0; /* Reduced mobile gap */
+    padding: 2.5rem 0 1rem 0; /* Increased mobile gap from 1rem to 2.5rem */
   }
 
   .home-hero-content {

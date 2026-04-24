@@ -336,10 +336,10 @@ export default function Courses({ categorySlug }) {
                               </div>
 
                               <Card.Body className="p-0 pt-3">
-                                <Card.Title className="card-course-title text-center">
+                                <Card.Title className="card-course-title">
                                   {course.title}
                                 </Card.Title>
-                                <Card.Text className="text-muted course-desc text-center text-sm-start">
+                                <Card.Text className="text-muted course-desc">
                                   {course.desc}
                                 </Card.Text>
 

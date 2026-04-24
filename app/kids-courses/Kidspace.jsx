@@ -15,10 +15,10 @@ const Kidz = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Show loader for 8 seconds when page loads (multi-stage animation)
+    // Show loader for 3 seconds when page loads (multi-stage animation)
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 8000);
+    }, 3000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -243,7 +243,7 @@ const Kidz = () => {
                   <div className="course-body">
                     <h5 className="kids-course-title">{course.title}</h5>
                     <p className="course-desc">{course.desc}</p>
-                    <div className="d-flex justify-content-between align-items-center mt-3 mb-3">
+                    <div className="d-flex justify-content-between align-items-center mt-3 mb-2">
                       <div className="course-rating-pill">
                         <Star size={14} fill="#FFD700" color="#FFD700" />
                         <span>{course.rating}</span>
@@ -253,12 +253,12 @@ const Kidz = () => {
                         <span>{course.students}</span>
                       </div>
                     </div>
-                    <div className="d-flex justify-content-between align-items-center">
+                    <div className="d-flex justify-content-between align-items-center mt-2">
                       <div className="course-duration-pill">
                         <Clock size={14} />
                         <span>{course.duration}</span>
                       </div>
-                      <button className="btn btn-enroll sc-enroll-btn" onClick={() => setSelectedCourse(course)}>Enroll now</button>
+                      <button className="btn btn-enroll sc-enroll-btn" onClick={() => setSelectedCourse(course)}>Enroll Now</button>
                     </div>
                   </div>
                 </a>
@@ -273,9 +273,9 @@ const Kidz = () => {
         </div>
 
         {/* Regular Courses */}
-        <div className="row g-5">
+        <div className="row g-4">
           {courses.filter(c => !c.isSummerCamp).map((course, index) => (
-            <div className="col-md-6 col-lg-3" key={`reg-${index}`}>
+            <div className="col-md-6 col-lg-4" key={`reg-${index}`}>
               <div className="course-card shadow-md">
                 <a href={course.url} style={{textDecoration:"none"}}>
                   <div className="position-relative">
@@ -291,7 +291,7 @@ const Kidz = () => {
                   <div className="course-body">
                     <h5 className="kids-course-title">{course.title}</h5>
                     <p className="course-desc">{course.desc}</p>
-                    <div className="d-flex justify-content-between align-items-center mt-3 mb-3">
+                    <div className="d-flex justify-content-between align-items-center mt-3 mb-2">
                       <div className="course-rating-pill">
                         <Star size={14} fill="#FFD700" color="#FFD700" />
                         <span>{course.rating}</span>
@@ -301,12 +301,12 @@ const Kidz = () => {
                         <span>{course.students}</span>
                       </div>
                     </div>
-                    <div className="d-flex justify-content-between align-items-center">
+                    <div className="d-flex justify-content-between align-items-center mt-2">
                       <div className="course-duration-pill">
                         <Clock size={14} />
                         <span>{course.duration}</span>
                       </div>
-                      <button className="btn btn-enroll fs-11" onClick={() => setSelectedCourse(course)}>Enroll now</button>
+                      <button className="btn btn-enroll fs-11" onClick={() => setSelectedCourse(course)}>Enroll Now</button>
                     </div>
                   </div>
                 </a>

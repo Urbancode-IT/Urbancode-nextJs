@@ -68,10 +68,10 @@ const makeIcons = (count) =>
 // Python Mascot - slides in from left
 const PythonMascot = ({ animationPhase }) => {
   const enterStart = 0;
-  const enterEnd = 2;
-  const mergeStart = 2;
-  const mergeEnd = 5;
-  const launchStart = 5;
+  const enterEnd = 0.8;
+  const mergeStart = 0.8;
+  const mergeEnd = 1.8;
+  const launchStart = 1.8;
   
   return (
     <motion.div
@@ -121,11 +121,11 @@ const PythonMascot = ({ animationPhase }) => {
 
 // CSS Mascot - enters from right
 const CSSMascot = ({ animationPhase }) => {
-  const enterStart = 0.5;
-  const enterEnd = 2.5;
-  const mergeStart = 2;
-  const mergeEnd = 5;
-  const launchStart = 5;
+  const enterStart = 0.2;
+  const enterEnd = 1;
+  const mergeStart = 0.8;
+  const mergeEnd = 1.8;
+  const launchStart = 1.8;
   
   return (
     <motion.div
@@ -175,11 +175,11 @@ const CSSMascot = ({ animationPhase }) => {
 
 // SQL Mascot - drops from top
 const SQLMascot = ({ animationPhase }) => {
-  const enterStart = 1;
-  const enterEnd = 3;
-  const mergeStart = 2;
-  const mergeEnd = 5;
-  const launchStart = 5;
+  const enterStart = 0.4;
+  const enterEnd = 1.2;
+  const mergeStart = 0.8;
+  const mergeEnd = 1.8;
+  const launchStart = 1.8;
   
   return (
     <motion.div
@@ -239,14 +239,14 @@ export default function KidsLoader({ isLoading = true }) {
     // 7-8s: Launch
     
     const phaseTimers = [
-      setTimeout(() => setAnimationPhase('merge'), 2000),
-      setTimeout(() => setAnimationPhase('launch'), 5000),
-      setTimeout(() => setAnimationPhase('complete'), 7000),
+      setTimeout(() => setAnimationPhase('merge'), 800),
+      setTimeout(() => setAnimationPhase('launch'), 1800),
+      setTimeout(() => setAnimationPhase('complete'), 2600),
     ];
 
     const subtextTimer = setInterval(() => {
       setSubtextIndex(prev => (prev + 1) % subtexts.length);
-    }, 2000);
+    }, 800);
 
     return () => {
       phaseTimers.forEach(timer => clearTimeout(timer));
@@ -353,8 +353,8 @@ export default function KidsLoader({ isLoading = true }) {
                   : {}
               }
               transition={{
-                scale: animationPhase === 'merge' ? { duration: 3, delay: 2 } : { duration: 1.5, delay: 5 },
-                y: animationPhase === 'launch' ? { duration: 1, delay: 5.5 } : {},
+                scale: animationPhase === 'merge' ? { duration: 1, delay: 0.8 } : { duration: 0.6, delay: 1.8 },
+                y: animationPhase === 'launch' ? { duration: 0.4, delay: 2.1 } : {},
               }}
             >
               {/* Python Mascot */}
@@ -374,8 +374,8 @@ export default function KidsLoader({ isLoading = true }) {
                     : { scale: 0, opacity: 0 }
                 }
                 transition={{
-                  scale: { duration: 0.8, delay: 4.5 },
-                  opacity: { duration: 0.5, delay: 4.5 },
+                  scale: { duration: 0.3, delay: 1.6 },
+                  opacity: { duration: 0.2, delay: 1.6 },
                 }}
               >
                 {/* Charging glow */}
@@ -383,15 +383,15 @@ export default function KidsLoader({ isLoading = true }) {
                   initial={{ opacity: 0 }}
                   animate={animationPhase === 'launch' ? { opacity: [0.3, 1, 0] } : { opacity: 0 }}
                   transition={{
-                    duration: 1.5,
-                    delay: 5,
+                    duration: 0.6,
+                    delay: 1.8,
                   }}
                   className={styles.chargeGlow}
                 ></motion.div>
 
                 <motion.div
                   animate={animationPhase === 'launch' ? { y: -300, opacity: 0 } : { y: 0, opacity: 1 }}
-                  transition={{ duration: 1.5, delay: 5.5, ease: 'easeIn' }}
+                  transition={{ duration: 0.6, delay: 2.1, ease: 'easeIn' }}
                 >
                   <Image
                     src={mascotSrc.rocket}
@@ -416,9 +416,9 @@ export default function KidsLoader({ isLoading = true }) {
                       : {}
                   }
                   transition={{
-                    duration: animationPhase === 'launch' ? 1.5 : 3,
+                    duration: animationPhase === 'launch' ? 0.6 : 1.2,
                     repeat: animationPhase === 'merge' ? Infinity : 0,
-                    delay: animationPhase === 'launch' ? 5.5 : 0,
+                    delay: animationPhase === 'launch' ? 2.1 : 0,
                   }}
                 ></motion.div>
               </motion.div>
@@ -486,7 +486,7 @@ export default function KidsLoader({ isLoading = true }) {
                   initial={{ width: '0%' }}
                   animate={{ width: ['0%', '100%'] }}
                   transition={{
-                    duration: 8,
+                    duration: 3,
                     ease: 'linear',
                   }}
                 ></motion.div>

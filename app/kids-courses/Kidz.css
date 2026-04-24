@@ -96,11 +96,11 @@
 }
 
 .kidz-page .summer-camp-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-8px);
   background:
-    linear-gradient(#3d3d3d, #3d3d3d) padding-box,
+    linear-gradient(#ffffff, #ffffff) padding-box,
     linear-gradient(135deg, #f6c90e, #ff9a3c, #f6c90e) border-box !important;
-  box-shadow: 0 12px 40px rgba(246, 201, 14, 0.40), 0 4px 16px rgba(0,0,0,0.15) !important;
+  box-shadow: 0 12px 32px rgba(246, 201, 14, 0.35) !important;
 }
 
 /* Diagonal Ribbon */
@@ -136,19 +136,37 @@
 
 /* Summer Camp Enroll Button */
 .kidz-page .sc-enroll-btn {
-  background: linear-gradient(135deg, #f6c90e, #ff9a3c) !important;
+  background: linear-gradient(135deg, #f6c90e 0%, #ff9a3c 100%) !important;
   color: #6b3a00 !important;
-  font-weight: 600;
-  border: none;
-  width: 100%;
-  border-radius: 6px;
-  font-size: small;
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  border: none !important;
+  font-weight: 700 !important;
+  padding: 8px 22px !important;
+  border-radius: 12px !important;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+  box-shadow: 0 4px 15px rgba(0, 184, 148, 0.3);
+  font-size: 0.78rem !important;
+  letter-spacing: 0.3px;
+  text-transform: capitalize;
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
 }
 
 .kidz-page .sc-enroll-btn:hover {
-  opacity: 0.88;
-  transform: scale(1.02);
+  transform: translateY(-3px) scale(1.02) !important;
+  box-shadow: 0 8px 20px rgba(246, 201, 14, 0.5) !important;
+  filter: brightness(1.05) !important;
+}
+
+.kidz-page .sc-enroll-btn::after {
+  content: ' →';
+  opacity: 0;
+  transition: all 0.3s ease;
+  margin-left: 5px;
+}
+
+.kidz-page .sc-enroll-btn:hover::after {
+  opacity: 1;
 }
 
 .kidz-page .summer-camp-card:hover .sc-enroll-btn {
@@ -273,49 +291,48 @@
 
 /* Course Cards */
 .kidz-page .course-card {
-  box-shadow: 5px 8px 10px rgba(7, 7, 7, 0.15);
-  border-radius: 0.5rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06) !important;
+  border-radius: 20px !important;
   overflow: hidden;
-  background: var(--bg-neutral);
-  box-shadow: 0 0 7px 3px rgba(0, 0, 0, 0.25);
-  transition: background 0.3s ease, color 0.3s ease;
+  background: #ffffff !important;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
   height: 100%;
-  padding: 0.8rem 1rem;
+  padding: 1.25rem !important;
+  border: 1px solid rgba(0, 0, 0, 0.05) !important;
+  position: relative;
 }
 
 .kidz-page .course-card:hover {
-  background: #848282;
-  color: #fff;
+  transform: translateY(-8px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12) !important;
 }
 
-
-
 .kidz-page .course-img {
-  height: 150px;
-  border-radius: 1rem;
+  height: 200px;
+  border-radius: 14px;
   object-fit: cover;
   position: relative;
   width: 100%;
-  filter: none;
-  transition: transform 0.3s ease, filter 0.3s ease;
+  transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .kidz-page .course-card:hover .course-img {
   transform: scale(1.05);
-  filter: brightness(1.05);
 }
 
 .kidz-page .badge-duration {
   position: absolute;
-  top: 12px;
-  right: 12px;
-  background: #1ABC9C;
+  top: 15px;
+  right: 15px;
+  background: rgba(26, 188, 156, 0.9);
+  backdrop-filter: blur(4px);
   color: #fff;
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
-  border-radius: 12px;
-  padding: 4px 8px;
-  opacity: 0.8;
+  border-radius: 8px;
+  padding: 6px 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  z-index: 2;
 }
 
 .kidz-page .course-body {
@@ -339,9 +356,7 @@
   margin-bottom: 15px;
 }
 
-.kidz-page .course-card:hover .course-desc {
-  color: #fff;
-}
+/* Removed white text on hover to maintain readability */
 
 .kidz-page .rating {
   display: flex;
@@ -357,49 +372,75 @@
 }
 
 .kidz-page .btn-enroll {
-  background: linear-gradient(135deg, #1ABC9C 0%, #16A085 100%) !important;
-  color: #fff !important;
-  width: 100%;
-  border-radius: 50px;
-  margin-top: auto;
-  font-size: 14px;
-  font-weight: 600;
-  padding: 10px 20px;
-  border: none;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 10px rgba(26, 188, 156, 0.3);
+  background: linear-gradient(135deg, #00b894 0%, #008f7a 100%) !important;
+  border: none !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  padding: 8px 22px !important;
+  border-radius: 12px !important;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+  box-shadow: 0 4px 15px rgba(0, 184, 148, 0.3);
+  font-size: 0.78rem !important;
+  letter-spacing: 0.3px;
+  text-transform: capitalize;
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+  
 }
 
-.kidz-page .course-card:hover .btn-enroll {
-  background: linear-gradient(135deg, #1ABC9C 0%, #16A085 100%) !important;
-  color: #fff !important;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(26, 188, 156, 0.4);
+.kidz-page .btn-enroll:hover {
+  transform: translateY(-3px) scale(1.02) !important;
+  box-shadow: 0 8px 20px rgba(0, 184, 148, 0.5) !important;
+  filter: brightness(1.1) !important;
+}
+
+.kidz-page .btn-enroll::after {
+  content: ' →';
+  opacity: 0;
+  transition: all 0.3s ease;
+  margin-left: 5px;
+}
+
+.kidz-page .btn-enroll:hover::after {
+  opacity: 1;
 }
 
 .course-rating-pill, .course-students-pill, .course-duration-pill {
   display: flex;
   align-items: center;
-  gap: 6px;
-  padding: 4px 12px;
-  border-radius: 20px;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 12px;
   font-size: 0.75rem;
-  font-weight: 600;
+  font-weight: 700;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(4px);
 }
 
 .course-rating-pill {
-  background: rgba(255, 215, 0, 0.12);
-  color: #b8860b;
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.12) 0%, rgba(255, 215, 0, 0.05) 100%);
+  color: #a67c00;
+  border-color: rgba(255, 215, 0, 0.2);
 }
 
 .course-students-pill {
-  background: rgba(111, 66, 193, 0.08);
-  color: #6f42c1;
+  background: linear-gradient(135deg, rgba(111, 66, 193, 0.1) 0%, rgba(111, 66, 193, 0.04) 100%);
+  color: #5a32a3;
+  border-color: rgba(111, 66, 193, 0.15);
 }
 
 .course-duration-pill {
-  background: rgba(25, 135, 84, 0.1);
-  color: #198754;
+  background: linear-gradient(135deg, rgba(25, 135, 84, 0.1) 0%, rgba(25, 135, 84, 0.04) 100%);
+  color: #146c43;
+  border-color: rgba(25, 135, 84, 0.15);
+}
+
+.course-rating-pill:hover, .course-students-pill:hover, .course-duration-pill:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 /* Why Choose Section */
@@ -436,13 +477,10 @@
 
 .kidz-page .kids-card:hover {
   background-color: #fff !important;
-  ;
   box-shadow: 5px 20px 20px rgba(0, 0, 0, 0.3) !important;
 }
 
-.kidz-page .course-card:hover .kids-course-title {
-  color: #fff !important;
-}
+/* Removed white text on hover to maintain readability */
 
 .kidz-page .kids-card-title {
   font-size: 20px;
