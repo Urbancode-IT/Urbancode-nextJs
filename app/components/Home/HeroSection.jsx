@@ -91,7 +91,7 @@ export default function HeroSection() {
 
             <div className="mt-3 stats_line">
               <span>
-                <b>800+</b> Students Empowered &nbsp;|&nbsp;
+                <b>1000+</b> Students Empowered &nbsp;|&nbsp;
                 <b>80+</b> Courses &nbsp;|&nbsp;
               </span>
               <span>
