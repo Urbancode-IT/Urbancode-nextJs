@@ -1,11 +1,11 @@
 'use client';
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { submitEnquiryForm } from "@/lib/api/api";
 import { Send, User, Mail, Phone, MapPin, BookOpen, Clock } from "lucide-react";
 import "./FormPage.css";
 
-const EnquiryPage = () => {
+const EnquiryFormContent = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const courseFromUrl = searchParams.get('course');
@@ -249,4 +249,14 @@ const EnquiryPage = () => {
   );
 };
 
-export default EnquiryPage;
+export default function EnquiryPage() {
+  return (
+    <Suspense fallback={
+      <div className="form-page-wrapper" style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+        <div className="status-alert loading">Loading form...</div>
+      </div>
+    }>
+      <EnquiryFormContent />
+    </Suspense>
+  );
+}
