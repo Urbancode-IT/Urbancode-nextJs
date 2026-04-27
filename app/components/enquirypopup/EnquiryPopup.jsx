@@ -1,10 +1,12 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import "./EnquiryPopup.css";
 import { submitEnquiryForm } from "@/lib/api/api";
 
 export default function EnquiryPopup({ delay = 3000 }) {
+  const router = useRouter();
   const [visible, setVisible] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const storageKey = "anniversaryOfferSubmitted";
@@ -158,21 +160,18 @@ export default function EnquiryPopup({ delay = 3000 }) {
 
     setIsSubmitting(true);
 
-    // Trigger celebration immediately on click
-    triggerCelebration();
+
+
 
     try {
       const result = await submitEnquiryForm(formData);
 
       if (result.success) {
-        // Small delay to let animation complete
-        setTimeout(() => {
-          alert("Your enquiry has been submitted successfully!");
-          try {
-            localStorage.setItem(storageKey, "true");
-          } catch { }
-          closePopup();
-        }, 800);
+        try {
+          localStorage.setItem(storageKey, "true");
+        } catch { }
+        closePopup();
+        router.push('/thankyou');
       } else {
         throw new Error(result.message);
       }

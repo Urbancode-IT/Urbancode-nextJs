@@ -1,5 +1,6 @@
 'use client';
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import Swal from 'sweetalert2';
 import confetti from 'canvas-confetti';
@@ -7,6 +8,7 @@ import "./EnquiryForm.css";
 import { submitEnquiryForm } from "@/lib/api/api";
 
 const EnquiryFormModal = ({ isOpen, onClose, courseName, onSuccess, downloadUrls, dynamicDownloads, extraOptions = [], isSelectMode = false, isDemoMode = false, isBrochureMode = false }) => {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -134,46 +136,14 @@ const EnquiryFormModal = ({ isOpen, onClose, courseName, onSuccess, downloadUrls
       const result = await submitEnquiryForm(apiPayload);
 
       if (result.success) {
-        setStatus({
-          type: "success",
-          message: "Enquiry submitted successfully! Our team will get back to you soon."
-        });
-
-        const allDownloadUrls = [...(downloadUrls || [])];
+        setStatus({ type: "success", message: "Success! Redirecting..." });
+        if (onSuccess) onSuccess();
         
-        // Handle dynamic downloads based on selection
-        if (dynamicDownloads && dynamicDownloads[formData.course]) {
-          allDownloadUrls.push(dynamicDownloads[formData.course]);
-        }
-
-        // Trigger downloads if available
-        if (allDownloadUrls.length > 0) {
-            allDownloadUrls.forEach((url, index) => {
-                triggerDownload(url, index);
-            });
-            confetti({
-                particleCount: 150,
-                spread: 70,
-                origin: { y: 0.6 },
-                colors: ['#00a86b', '#ffffff', '#e6f7f0']
-            });
-        }
-
-        setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          pin: "",
-          course: courseName || "",
-          message: "",
-          mode: "",
-          preferredDate: "",
-          preferredTime: "",
-        });
-
+        // Give a small delay to show success state before redirecting and closing
         setTimeout(() => {
-          if (onSuccess) onSuccess();
-        }, 3000);
+          onClose();
+          router.push('/thankyou');
+        }, 500);
       } else {
         throw new Error(result.message);
       }
@@ -215,53 +185,6 @@ const EnquiryFormModal = ({ isOpen, onClose, courseName, onSuccess, downloadUrls
             </div>
 
             <AnimatePresence mode="wait">
-              {status.type === "success" ? (
-                <motion.div
-                  key="success-view"
-                  className="enquiry-success-view"
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
-                  transition={{ type: "spring", damping: 20, stiffness: 300 }}
-                >
-                  <div className="success-icon-wrapper">
-                    <motion.div
-                      className="success-icon-circle"
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 1 }}
-                      transition={{ delay: 0.2, type: "spring", bounce: 0.5 }}
-                    >
-                      <svg viewBox="0 0 52 52" className="checkmark-svg">
-                        <motion.path
-                          fill="none"
-                          stroke="#00a86b"
-                          strokeWidth="5"
-                          strokeLinecap="round"
-                          d="M14.1 27.2l7.1 7.2 16.7-16.8"
-                          initial={{ pathLength: 0 }}
-                          animate={{ pathLength: 1 }}
-                          transition={{ delay: 0.5, duration: 0.4 }}
-                        />
-                      </svg>
-                    </motion.div>
-                  </div>
-                  <h2 className="success-title">Thank You!</h2>
-                  <p className="success-message">
-                    {downloadUrls 
-                      ? "Your curriculum documents are being downloaded."
-                      : "Our team will reach out to you shortly to help you with the next steps."
-                    }
-                  </p>
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="success-btn"
-                    onClick={onClose}
-                  >
-                    Got it!
-                  </motion.button>
-                </motion.div>
-              ) : (
                 <motion.form 
                   key="enquiry-form"
                   onSubmit={handleSubmit} 
@@ -457,7 +380,6 @@ const EnquiryFormModal = ({ isOpen, onClose, courseName, onSuccess, downloadUrls
                     </div>
                   </div>
                 </motion.form>
-              )}
             </AnimatePresence>
           </motion.div>
         </motion.div>

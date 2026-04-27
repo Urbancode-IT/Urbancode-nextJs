@@ -19,6 +19,12 @@ const inter = Inter({
 export const metadata = {
   title: 'Urbancode | Learn with Experts',
   description: 'Transforming skills into success with expert-led coding courses in Chennai.',
+  other: {
+    "geo.region": "IN-TN",
+    "geo.placename": "Chennai",
+    "geo.position": "13.0827;80.2707",
+    "ICBM": "13.0827, 80.2707",
+  }
 };
 
 export default function RootLayout({ children }) {
@@ -40,6 +46,96 @@ export default function RootLayout({ children }) {
               f.parentNode.insertBefore(j,f);
               })(window,document,'script','dataLayer','GTM-MTFL2HHJ');
             `,
+          }}
+        />
+
+        {/* ✅ Production-Ready Optimized Structured Data */}
+        <Script
+          id="structured-data"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@graph": [
+                {
+                  "@type": "Organization",
+                  "@id": "https://urbancode.in/#organization",
+                  "name": "Urbancode",
+                  "url": "https://urbancode.in",
+                  "logo": "https://urbancode.in/images/home/logo.png",
+                  "sameAs": [
+                    "https://www.facebook.com/profile.php?id=61563183054002",
+                    "https://www.instagram.com/urbancode_edutech/",
+                    "https://www.linkedin.com/company/urbancode-edutech-solutions/",
+                    "https://www.youtube.com/channel/UC7ngZ5r2ov-qoXJRjaXJGKA"
+                  ]
+                },
+                {
+                  "@type": "EducationalOrganization",
+                  "name": "Urbancode - Velachery Branch",
+                  "@id": "https://urbancode.in/#velachery",
+                  "parentOrganization": { "@id": "https://urbancode.in/#organization" },
+                  "url": "https://urbancode.in",
+                  "telephone": "+91 9429694123",
+                  "priceRange": "₹₹",
+                  "areaServed": "Chennai",
+                  "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "52/159, Velachery Main Rd, next to GURU NANAK COLLEGE, near Phoenix Marketcity, Velachery",
+                    "addressLocality": "Chennai",
+                    "addressRegion": "Tamil Nadu",
+                    "postalCode": "600042",
+                    "addressCountry": "IN"
+                  },
+                  "geo": {
+                    "@type": "GeoCoordinates",
+                    "latitude": 12.9419,
+                    "longitude": 80.2076
+                  },
+                  "openingHoursSpecification": [
+                    {
+                      "@type": "OpeningHoursSpecification",
+                      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+                      "opens": "09:00",
+                      "closes": "20:00"
+                    }
+                  ],
+                  "hasMap": "https://www.google.com/maps?cid=9830790481062909186"
+                },
+                {
+                  "@type": "EducationalOrganization",
+                  "name": "Urbancode - Pallikaranai Branch",
+                  "@id": "https://urbancode.in/#pallikaranai",
+                  "parentOrganization": { "@id": "https://urbancode.in/#organization" },
+                  "url": "https://urbancode.in",
+                  "telephone": "+91 9429694123",
+                  "priceRange": "₹₹",
+                  "areaServed": "Chennai",
+                  "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "9/29, 5th St, Kamakoti Nagar, Pallikaranai",
+                    "addressLocality": "Chennai",
+                    "addressRegion": "Tamil Nadu",
+                    "postalCode": "600100",
+                    "addressCountry": "IN"
+                  },
+                  "geo": {
+                    "@type": "GeoCoordinates",
+                    "latitude": 12.9377,
+                    "longitude": 80.2154
+                  },
+                  "openingHoursSpecification": [
+                    {
+                      "@type": "OpeningHoursSpecification",
+                      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+                      "opens": "09:00",
+                      "closes": "20:00"
+                    }
+                  ],
+                  "hasMap": "https://www.google.com/maps?cid=3800681766627067121"
+                }
+              ]
+            })
           }}
         />
       </head>

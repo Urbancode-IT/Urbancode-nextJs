@@ -162,9 +162,14 @@ const deslugify = (slug) =>
 
 export default function Courses({ categorySlug }) {
   const [selectedCourse, setSelectedCourse] = useState(null);
+  
+  // Use categorySlug prop or default to first category
   const [activeCategory, setActiveCategory] = useState(
     categorySlug ? categorySlug.replace(/-/g, " ") : categories[0]
   );
+  
+  // Keep a safe slug for routing
+  const currentCategorySlug = categorySlug || slugify(activeCategory);
   const router = useRouter();
   const [search, setSearch] = useState("");
   const [openIndex, setOpenIndex] = useState(null);
@@ -180,9 +185,14 @@ export default function Courses({ categorySlug }) {
   }, [categorySlug]);
 
   const activeCategoryData = coursesData[activeCategory] || {};
-  const allCourses = Object.values(coursesData)
-    .map((cat) => cat.courses)
-    .flat();
+  
+  // Flatten all courses and inject their category slug for correct routing during search
+  const allCourses = Object.entries(coursesData).flatMap(([categoryName, catData]) => 
+    (catData.courses || []).map(course => ({
+      ...course,
+      parentCategorySlug: slugify(categoryName)
+    }))
+  );
 
   const filteredCourses =
     search.trim() === ""
@@ -319,9 +329,10 @@ export default function Courses({ categorySlug }) {
                             <Card
                               className="h-100 card rounded-4 p-2 p-sm-3 p-md-4"
                               style={{ cursor: "pointer" }}
-                              onClick={() =>
-                                router.push(`/courses/${categorySlug}/${courseSlug}`)
-                              }
+                              onClick={() => {
+                                const finalCategorySlug = course.parentCategorySlug || currentCategorySlug;
+                                router.push(`/courses/${finalCategorySlug}/${courseSlug}`);
+                              }}
                             >
                               <div
                                 className="img-holder rounded-3 position-relative"

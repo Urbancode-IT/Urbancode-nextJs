@@ -1,11 +1,13 @@
 'use client';
 import React, { useRef, useState, useEffect } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { sendContactMessage } from "@/lib/api/api";
 import "./ContactUs.css";
 import CinematicLoader from "./CinematicLoader";
 
 const ContactUs = () => {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -14,8 +16,6 @@ const ContactUs = () => {
     message: "",
   });
   const [loading, setLoading] = useState(false);
-  const [submittedName, setSubmittedName] = useState("");
-  const [showPopup, setShowPopup] = useState(false);
   const [activeMap, setActiveMap] = useState(0);
   const [showLoader, setShowLoader] = useState(false);
 
@@ -78,8 +78,7 @@ const ContactUs = () => {
     setLoading(false);
 
     if (response.success) {
-      setSubmittedName(formData.name);
-      setShowPopup(true);
+      router.push('/thankyou');
       setFormData({
         name: "",
         email: "",
@@ -276,16 +275,7 @@ const ContactUs = () => {
         </div>
       </div>
 
-      {/* Thank You Popup */}
-      {showPopup && (
-        <div className="thankyou-popup">
-          <div className="popup-content">
-            <h3>Thank you, {submittedName}!</h3>
-            <p>Your response has been received. We will get back to you soon.</p>
-            <button onClick={() => setShowPopup(false)}>Close</button>
-          </div>
-        </div>
-      )}
+
       </section>
     </>
   );

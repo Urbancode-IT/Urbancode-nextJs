@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { FaStar, FaQuoteLeft, FaCheckCircle, FaAward, FaUniversity, FaSearch } from 'react-icons/fa';
 import { submitEnquiryForm } from "@/lib/api/api";
@@ -10,6 +11,7 @@ import { destinations, services, testimonials } from './data';
 import './StudyAbroad.css';
 
 const StudyAbroadPage = () => {
+    const router = useRouter();
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedCountry, setSelectedCountry] = useState("");
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -82,7 +84,7 @@ const StudyAbroadPage = () => {
         try {
             const result = await submitEnquiryForm(submissionData);
             if (result.success) {
-                setFormStatus({ type: "success", message: "Thank you! Your consultation request has been sent." });
+                router.push('/thankyou');
                 setFormData({ name: "", email: "", phone: "", country: "", education: "", course: "", message: "" });
             } else {
                 setFormStatus({ type: "error", message: result.message || "Failed to send. Please try again." });

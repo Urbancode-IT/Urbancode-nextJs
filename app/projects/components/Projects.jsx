@@ -2,9 +2,11 @@
 import React from 'react';
 import './projects.css';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import { submitProjectEnquiryForm } from '@/lib/api/api';
 const Projects = () => {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -99,10 +101,7 @@ const Projects = () => {
       );
 
       if (res.status === 200) {
-        setStatus({
-          type: "success",
-          message: "Message sent successfully! We'll get back to you soon.",
-        });
+        router.push('/thankyou');
         setFormData({
           name: "",
           email: "",

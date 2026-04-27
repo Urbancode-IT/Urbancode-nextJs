@@ -1,0 +1,251 @@
+.success-stories-section {
+  padding: 80px 0;
+  background-color: #ffffff;
+}
+
+
+
+.slider-container-wrapper {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 50px; /* Add padding to give buttons dedicated space */
+}
+
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #ffffff !important;
+  border: 1px solid rgba(0,0,0,0.08) !important;
+  border-radius: 50% !important;
+  width: 48px !important;
+  height: 48px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08) !important;
+  color: var(--color-brand) !important;
+  transition: all 0.3s ease;
+  outline: none !important;
+}
+
+.slider-btn:hover {
+  background-color: var(--color-brand) !important;
+  color: #ffffff !important;
+}
+
+.left-btn {
+  left: 0;
+}
+
+.right-btn {
+  right: 0;
+}
+
+@media (max-width: 1250px) {
+  .slider-container-wrapper {
+    padding: 0 20px;
+  }
+  .left-btn { left: -10px; }
+  .right-btn { right: -10px; }
+}
+
+.success-cards-container {
+  display: flex;
+  overflow-x: auto;
+  gap: 30px;
+  padding: 20px 0 40px 0; /* Removed horizontal padding so exactly whole cards fit */
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+}
+
+.success-cards-container::-webkit-scrollbar {
+  display: none; /* WebKit */
+}
+
+.success-card {
+  flex: 0 0 calc((100% - 60px) / 3);
+  scroll-snap-align: start;
+  background-color: #ffffff;
+  border-radius: 20px;
+  padding: 30px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Add a subtle background pattern or gradient to card */
+.success-card::before {
+  content: "";
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle, rgba(25, 135, 84, 0.08) 0%, rgba(255, 255, 255, 0) 70%);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.success-card > * {
+  z-index: 1;
+  position: relative;
+}
+
+.success-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.success-card-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.student-avatar {
+  width: 50px;
+  height: 50px;
+  background-color: #646b70;
+  color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.student-info {
+  flex: 1;
+}
+
+.student-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 4px 0;
+}
+
+.student-role {
+  font-size: 0.85rem;
+  color: #555;
+  margin: 0 0 8px 0;
+}
+
+.company-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: rgba(25, 135, 84, 0.08);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  color: var(--color-brand-dark);
+  font-weight: 600;
+}
+
+.company-icon {
+  font-size: 0.8rem;
+}
+
+.success-card-body {
+  flex: 1;
+  margin-bottom: 25px;
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+}
+
+.quote-icon {
+  margin-right: 8px;
+  min-width: 20px;
+  opacity: 0.2;
+  margin-top: 2px;
+  color: var(--color-brand);
+}
+
+.student-review {
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.success-card-video-container {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.success-video {
+  width: 100%;
+  max-height: 220px;
+  object-fit: cover;
+  border-radius: 12px;
+  outline: none;
+}
+
+.success-card-footer {
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.course-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: #555;
+  font-weight: 500;
+}
+
+.package-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.package-label {
+  font-size: 0.85rem;
+  color: #777;
+}
+
+.package-value {
+  background: rgba(25, 135, 84, 0.12);
+  color: var(--color-brand-dark);
+  font-weight: 700;
+  padding: 6px 16px;
+  border-radius: 8px;
+  font-size: 1.05rem;
+}
+
+@media (max-width: 1024px) {
+  .success-card {
+    flex: 0 0 calc((100% - 30px) / 2);
+  }
+}
+
+@media (max-width: 768px) {
+  .success-card {
+    flex: 0 0 100%;
+  }
+}

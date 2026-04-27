@@ -11,10 +11,11 @@ import TestimonialCarousel from './components/Home/TestimonialCarousel';
 import BannerSlider from './components/common/BannerSlider';
 import GetCertified from './components/Home/GetCertified';
 import FestivePopup from './components/FestivePopup/FestivePopup';
+import SuccessStories from './components/Home/SuccessStories';
 
 export const metadata = {
-  title: "Urbancode Edutech | Best Full Stack Development & Coding Training Institute in Chennai",
-  description: "Join Urbancode Edutech — Chennai’s top IT training institute offering Full Stack Development, MERN Stack, Python, Data Science, and Software Testing courses. Learn online or offline with internship and placement support.",
+  title: "Software Training Institute in Chennai | Urbancode",
+  description: "Learn Full Stack, MERN, Testing, Gen AI and more at Urbancode Chennai. Industry experts, hands-on projects and placement assistance.",
   verification: {
     google: "WEXErXa5JBg5hZPCEKFY_g1UVf9R3AxHCZYgQWjQspY",
   },
@@ -139,6 +140,9 @@ export default function HomePage() {
       </div>
       <div className="home-section">
         <InDemandTools />
+      </div>
+      <div className="home-section">
+        <SuccessStories />
       </div>
 
       <div className="home-section">

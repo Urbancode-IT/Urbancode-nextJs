@@ -1,5 +1,6 @@
 'use client';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { submitEnquiryForm } from '../../../../lib/api/api';
 import './LeadCaptureModal.css';
 
@@ -11,6 +12,7 @@ const LeadCaptureModal = ({
   context,
   onSuccess,
 }) => {
+  const router = useRouter();
   const didTriggerSuccessRef = useRef(false);
   const isMountedRef = useRef(false);
   const [formData, setFormData] = useState({
@@ -131,6 +133,8 @@ const LeadCaptureModal = ({
         if (!result?.success) {
           throw new Error(result?.message || 'Failed to submit enquiry.');
         }
+        onClose();
+        router.push('/thankyou');
         return { ok: true, apiError: null };
       })
       .catch((err) => ({ ok: false, apiError: err?.message || 'Unknown error' }))

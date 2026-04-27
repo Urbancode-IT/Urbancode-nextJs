@@ -1,10 +1,12 @@
 'use client'
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import './internship.css'
 import { submitInternshipApplication } from '../../lib/api/api'
 import { Clock } from 'lucide-react'
 
 function App() {
+  const router = useRouter()
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -58,7 +60,7 @@ function App() {
     const result = await submitInternshipApplication(formData);
 
     if (result.success) {
-      alert("✅ Application submitted successfully!");
+      router.push('/thankyou');
       setFormData({
         firstName: '',
         lastName: '',

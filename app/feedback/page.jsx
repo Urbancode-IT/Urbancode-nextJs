@@ -1,5 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import { MdCheckCircle, MdError, MdLanguage, MdCall } from 'react-icons/md';
 import { FaInstagram, FaLinkedin, FaYoutube, FaFacebook, FaWhatsapp } from 'react-icons/fa';
@@ -16,6 +17,7 @@ const API = API_BASE === '' || API_BASE.startsWith('/')
     : { questions: `${API_BASE}/api/questions`, trainers: `${API_BASE}/api/trainers/active`, responses: `${API_BASE}/api/responses` };
 
 const FeedbackForm = () => {
+    const router = useRouter();
     const [questions, setQuestions] = useState([]);
     const [answers, setAnswers] = useState({}); // { questionId: value }
     const [submitted, setSubmitted] = useState(false);
@@ -302,6 +304,7 @@ const FeedbackForm = () => {
                 showConfirmButton: false
             });
             setSubmitted(true);
+            router.push('/thankyou');
             window.scrollTo({ top: 0, behavior: 'smooth' });
         } catch (err) {
             const msg = err.response?.data?.message || 'Something went wrong. Please try again.';
