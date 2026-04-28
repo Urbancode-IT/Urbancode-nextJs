@@ -1,7 +1,6 @@
 'use client';
 import React, { useState, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { submitEnquiryForm } from "@/lib/api/api";
 import { Send, User, Mail, Phone, MapPin, BookOpen, Clock } from "lucide-react";
 import "./FormPage.css";
 
@@ -57,20 +56,40 @@ const EnquiryFormContent = () => {
     setLoading(true);
     setStatus({ type: "loading", message: "Sending your enquiry..." });
 
+    const scriptURL = "https://script.google.com/macros/s/AKfycbyqhIsaZZb1mvkcRtxrquaDboujLLpts-q5s1ed1JIRiuzt5l76OHeFxuTZPzRWxqh_/exec";
+
     try {
-      const result = await submitEnquiryForm(formData);
-      if (result.success) {
-        setStatus({ type: "success", message: "Success! Redirecting..." });
-        setTimeout(() => {
-          router.push('/thankyou');
-        }, 800);
-      } else {
-        throw new Error(result.message);
-      }
+      const payload = {
+        name: formData.name,
+        phone: formData.phone,
+        email: formData.email,
+        course: formData.course,
+        message: formData.message || "Interested in " + formData.course,
+      };
+
+      // Using fetch with 'text/plain' and 'no-cors' to handle Google Apps Script 
+      // redirects and preflight restrictions effectively.
+      await fetch(scriptURL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8",
+        },
+        body: JSON.stringify(payload),
+        mode: "no-cors",
+      });
+
+      // Since 'no-cors' results in an opaque response, we assume success if no network error occurred
+      setStatus({ type: "success", message: "Success! Redirecting..." });
+      
+      setTimeout(() => {
+        router.push('/thankyou');
+      }, 1000);
+
     } catch (error) {
+      console.error("Form Submission Error:", error);
       setStatus({
         type: "error",
-        message: error.message || "Something went wrong. Please try again.",
+        message: "Something went wrong. Please try again.",
       });
     } finally {
       setLoading(false);

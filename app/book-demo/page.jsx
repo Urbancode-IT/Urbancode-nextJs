@@ -1,7 +1,6 @@
 'use client';
 import React, { useState, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { submitEnquiryForm } from "@/lib/api/api";
 import { 
   Send, 
   User, 
@@ -77,31 +76,39 @@ const BookDemoContent = () => {
     setLoading(true);
     setStatus({ type: "loading", message: "Scheduling your demo session..." });
 
+    const scriptURL = "https://script.google.com/macros/s/AKfycbyqhIsaZZb1mvkcRtxrquaDboujLLpts-q5s1ed1JIRiuzt5l76OHeFxuTZPzRWxqh_/exec";
+
     try {
-      // Constructing message with demo details for backend compatibility
-      const demoMessage = `[DEMO REQUEST] Preferred Date: ${formData.preferredDate}, Time: ${formData.preferredTime}. User Message: ${formData.message}`;
-      
-      const apiPayload = {
+      const payload = {
         name: formData.name,
-        email: formData.email,
         phone: formData.phone,
+        email: formData.email,
         course: formData.course,
-        message: demoMessage,
+        message: `[DEMO REQUEST] Date: ${formData.preferredDate}, Time: ${formData.preferredTime}. Msg: ${formData.message || 'N/A'}`,
       };
 
-      const result = await submitEnquiryForm(apiPayload);
-      if (result.success) {
-        setStatus({ type: "success", message: "Demo Scheduled! Redirecting..." });
-        setTimeout(() => {
-          router.push('/thankyou');
-        }, 1000);
-      } else {
-        throw new Error(result.message);
-      }
+      // Using fetch with 'text/plain' and 'no-cors' to handle Google Apps Script 
+      // redirects and preflight restrictions effectively.
+      await fetch(scriptURL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8",
+        },
+        body: JSON.stringify(payload),
+        mode: "no-cors",
+      });
+
+      setStatus({ type: "success", message: "Demo Scheduled! Redirecting..." });
+      
+      setTimeout(() => {
+        router.push('/thankyou');
+      }, 1000);
+
     } catch (error) {
+      console.error("Demo Submission Error:", error);
       setStatus({
         type: "error",
-        message: error.message || "Something went wrong. Please try again.",
+        message: "Something went wrong. Please try again.",
       });
     } finally {
       setLoading(false);

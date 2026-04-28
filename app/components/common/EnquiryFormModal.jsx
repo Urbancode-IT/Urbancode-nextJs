@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import Swal from 'sweetalert2';
 import confetti from 'canvas-confetti';
 import "./EnquiryForm.css";
-import { submitEnquiryForm } from "@/lib/api/api";
 
 const EnquiryFormModal = ({ isOpen, onClose, courseName, onSuccess, downloadUrls, dynamicDownloads, extraOptions = [], isSelectMode = false, isDemoMode = false, isBrochureMode = false }) => {
   const router = useRouter();
@@ -116,43 +115,51 @@ const EnquiryFormModal = ({ isOpen, onClose, courseName, onSuccess, downloadUrls
     setLoading(true);
     setStatus({ type: "loading", message: "Sending your enquiry..." });
 
+    const scriptURL = "https://script.google.com/macros/s/AKfycbyqhIsaZZb1mvkcRtxrquaDboujLLpts-q5s1ed1JIRiuzt5l76OHeFxuTZPzRWxqh_/exec";
+
     try {
-      // Clean payload for backend compatibility
-      const apiPayload = {
+      // Prepare payload with requested fields
+      const payload = {
         name: formData.name,
-        email: formData.email,
         phone: formData.phone,
-        pin: formData.pin,
+        email: formData.email,
         course: formData.course,
-        message: formData.message,
-        mode: formData.mode,
+        message: isDemoMode 
+          ? `[DEMO REQUEST] Date: ${formData.preferredDate}, Time: ${formData.preferredTime}. Msg: ${formData.message}` 
+          : formData.message,
       };
 
-      // Append demo-specific fields to the message so they aren't lost or rejected
-      if (isDemoMode) {
-        apiPayload.message = `[DEMO REQUEST] Preferred Date: ${formData.preferredDate || 'N/A'}, Preferred Time: ${formData.preferredTime || 'N/A'}. Additional Msg: ${formData.message}`;
+      // Using fetch with 'text/plain' to avoid CORS preflight issues common with Google Apps Script
+      // while still sending a JSON string in the body.
+      const response = await fetch(scriptURL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8",
+        },
+        body: JSON.stringify(payload),
+        mode: "no-cors",
+      });
+
+      if (!response.ok && response.type !== 'opaque') {
+        throw new Error("Failed to submit form");
       }
 
-      const result = await submitEnquiryForm(apiPayload);
+      // Handle Success
+      setStatus({ type: "success", message: "Success! Redirecting..." });
+      
+      if (onSuccess) onSuccess();
 
-      if (result.success) {
-        setStatus({ type: "success", message: "Success! Redirecting..." });
-        if (onSuccess) onSuccess();
-        
-        // Give a small delay to show success state before redirecting and closing
-        setTimeout(() => {
-          onClose();
-          router.push('/thankyou');
-        }, 500);
-      } else {
-        throw new Error(result.message);
-      }
+      // Close modal and redirect to thank you page
+      setTimeout(() => {
+        onClose();
+        router.push('/thankyou');
+      }, 1000);
 
     } catch (error) {
       console.error("Enquiry Form Error:", error);
       setStatus({
         type: "error",
-        message: error.message || "Something went wrong. Please try again.",
+        message: "Something went wrong. Please try again.",
       });
     } finally {
       setLoading(false);

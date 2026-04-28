@@ -99,11 +99,21 @@ export default async function BlogDetailPage({ params }) {
             ></div>
 
             {/* Blog Content */}
-            {blog.content && blog.content.map((paragraph, index) => (
-                <p key={index} className="content-text">
-                    {renderParagraphWithLinks(paragraph)}
-                </p>
-            ))}
+            {blog.content && blog.content.map((paragraph, index) => {
+                // If the paragraph contains HTML tags, render it as HTML
+                const hasHtml = /<[a-z][\s\S]*>/i.test(paragraph);
+                if (hasHtml) {
+                    return (
+                        <p key={index} className="content-text" dangerouslySetInnerHTML={{ __html: paragraph }} />
+                    );
+                }
+                return (
+                    <p key={index} className="content-text">
+                        {renderParagraphWithLinks(paragraph)}
+                    </p>
+                );
+            })}
+
 
             {/* Divider */}
             <div className="divider"></div>

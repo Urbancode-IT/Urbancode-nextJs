@@ -141,9 +141,9 @@ export default function HomePage() {
       <div className="home-section">
         <InDemandTools />
       </div>
-      {/* { <div className="home-section">
+      {/* <div className="home-section">
         <SuccessStories />
-      </div> } */}
+      </div> */}
 
       <div className="home-section">
         <VideoTestimonials />
