@@ -19,18 +19,18 @@ const inter = Inter({
 export const metadata = {
   title: 'Urbancode | Learn with Experts',
   description: 'Transforming skills into success with expert-led coding courses in Chennai.',
-  other: {
-    "geo.region": "IN-TN",
-    "geo.placename": "Chennai",
-    "geo.position": "13.0827;80.2707",
-    "ICBM": "13.0827, 80.2707",
-  }
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={inter.variable}>
       <head>
+        {/* ✅ GEO Meta Tags for SEO Audit Tools */}
+        <meta name="geo.region" content="IN-TN" />
+        <meta name="geo.placename" content="Chennai" />
+        <meta name="geo.position" content="13.0827;80.2707" />
+        <meta name="ICBM" content="13.0827, 80.2707" />
+
         {/* ✅ Google Tag Manager - MUST be before interactive */}
         <Script
           id="gtm-script"

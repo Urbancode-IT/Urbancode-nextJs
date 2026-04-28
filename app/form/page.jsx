@@ -14,10 +14,8 @@ const EnquiryFormContent = () => {
     name: "",
     email: "",
     phone: "",
-    pin: "",
     course: courseFromUrl || "",
     message: "",
-    mode: "",
   });
 
   const [errors, setErrors] = useState({});
@@ -47,7 +45,6 @@ const EnquiryFormContent = () => {
     if (cleanPhone.length !== 10) newErrors.phone = "10-digit phone required.";
     
     if (!formData.course) newErrors.course = "Please select a course.";
-    if (!formData.mode) newErrors.mode = "Please select a mode.";
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -168,19 +165,6 @@ const EnquiryFormContent = () => {
             </div>
 
             <div className="form-group">
-              <label className="form-label">PIN Code</label>
-              <input
-                type="text"
-                name="pin"
-                className="form-control-custom"
-                placeholder="600001"
-                value={formData.pin}
-                onChange={handleChange}
-                disabled={loading}
-              />
-            </div>
-
-            <div className="form-group">
               <label className="form-label">Select Course</label>
               <select
                 name="course"
@@ -202,22 +186,7 @@ const EnquiryFormContent = () => {
               {errors.course && <div className="error-text">{errors.course}</div>}
             </div>
 
-            <div className="form-group">
-              <label className="form-label">Preferred Mode</label>
-              <select
-                name="mode"
-                className="form-control-custom"
-                value={formData.mode}
-                onChange={handleChange}
-                disabled={loading}
-              >
-                <option value="">Select Mode</option>
-                <option value="Online">Online</option>
-                <option value="Offline">Offline</option>
-                <option value="Hybrid">Hybrid</option>
-              </select>
-              {errors.mode && <div className="error-text">{errors.mode}</div>}
-            </div>
+
 
             <div className="form-group full-width">
               <label className="form-label">Your Message</label>
