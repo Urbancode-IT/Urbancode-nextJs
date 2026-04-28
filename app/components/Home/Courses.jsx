@@ -65,7 +65,7 @@ const CourseCard = ({ course }) => {
             <div className="jg-card-img-container">
                 <Image 
                     src={course.image} 
-                    alt={`${course.title} Course in Chennai - Urbancode`} 
+                    alt={`${course.title} `} 
                     className="jg-card-img" 
                     width={400}
                     height={300}
@@ -243,7 +243,7 @@ const Courses = () => {
                     transition={{ duration: 0.6 }}
                 >
                     <h2 className="jg-courses-title text-shine">
-                        Best Job-Oriented IT Courses in Chennai
+                        100% Job Guaranteed Courses
                     </h2>
                     <FeatureSubtitles />
                 </motion.div>

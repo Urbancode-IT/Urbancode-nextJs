@@ -68,7 +68,7 @@ const VideoTestimonials = () => {
         >
             <div className="container position-relative">
                 <div className="text-center mb-5">
-                    <h2 className="section-main-title text-shine">The voice that matters</h2>
+                    <h2 className="section-main-title text-shine">Video Testimonials</h2>
                 </div>
 
                 <div className="video-carousel-wrapper">

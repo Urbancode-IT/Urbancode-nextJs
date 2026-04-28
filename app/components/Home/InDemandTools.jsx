@@ -50,7 +50,7 @@ const InDemandTools = () => {
             viewport={{ once: false }}
             transition={{ duration: 0.8 }}
         >
-            <h2 className="section-main-title text-shine">Master In-Demand IT Tools & Technologies</h2>
+            <h2 className="section-main-title text-shine">In Demand Tools</h2>
 
             <div className="idt-tools-slider-container">
                 {/* Row 1 */}

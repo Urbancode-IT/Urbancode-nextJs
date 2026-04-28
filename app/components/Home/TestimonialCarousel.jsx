@@ -113,7 +113,7 @@ const TestimonialCarousel = () => {
                         >
                             <div>
                                 <FaQuoteLeft size={36} className="text-dark mb-3" />
-                                <h5 className="fw-bold fs-2">What our students say</h5>
+                                <h5 className="fw-bold fs-2">Testimonials</h5>
                             </div>
 
                             <div className="d-flex align-items-center justify-content-between mt-3">

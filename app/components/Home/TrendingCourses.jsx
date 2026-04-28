@@ -147,7 +147,7 @@ const TrendingCourses = () => {
             transition={{ duration: 0.8 }}
         >
             <div className="trending-header text-center mb-5">
-                <h2 className="section-main-title text-shine">Trending IT Courses in Chennai</h2>
+                <h2 className="section-main-title text-shine">Featured Courses</h2>
             </div>
 
             <motion.div
