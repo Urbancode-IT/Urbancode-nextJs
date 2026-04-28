@@ -83,6 +83,8 @@ const courses = [
 
 import { motion } from 'framer-motion';
 
+import Image from 'next/image';
+
 const TrendingCourses = () => {
     const sliderRef = useRef(null);
     const [isAtStart, setIsAtStart] = useState(true);
@@ -145,7 +147,7 @@ const TrendingCourses = () => {
             transition={{ duration: 0.8 }}
         >
             <div className="trending-header text-center mb-5">
-                <h2 className="section-main-title text-shine">Featured Courses</h2>
+                <h2 className="section-main-title text-shine">Trending IT Courses in Chennai</h2>
             </div>
 
             <motion.div
@@ -170,7 +172,14 @@ const TrendingCourses = () => {
                                 <div className="special-badge"></div>
                             )}
                             <div className="trending-image-box">
-                                <img src={course.image} alt={course.title} className="trending-image-fg" />
+                                <Image 
+                                    src={course.image} 
+                                    alt={`${course.title} Training in Chennai`} 
+                                    className="trending-image-fg" 
+                                    width={300}
+                                    height={400}
+                                    style={{ objectFit: 'cover' }}
+                                />
                                 <div className="card-hover-overlay">
                                     <span>View Details</span>
                                 </div>
@@ -188,7 +197,13 @@ const TrendingCourses = () => {
                         <button className="trending-modal-close" onClick={() => setSelectedCourse(null)}>&times;</button>
                         <div className="trending-modal-content">
                             <div className="trending-modal-media">
-                                <img src={selectedCourse.image} alt={selectedCourse.title} />
+                                <Image 
+                                    src={selectedCourse.image} 
+                                    alt={`${selectedCourse.title} - Urbancode Edutech`} 
+                                    width={400}
+                                    height={500}
+                                    style={{ objectFit: 'cover', borderRadius: '12px' }}
+                                />
                             </div>
                             <div className="trending-modal-info">
                                 <h3>{selectedCourse.title}</h3>

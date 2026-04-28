@@ -1,0 +1,27 @@
+# Urbancode Edutech - IT Training Institute in Chennai
+
+Urbancode Edutech is a premier IT and coding training institute based in Chennai (Velachery & Pallikaranai). We specialize in job-oriented courses with 100% placement assistance.
+
+## Core Courses
+- **MERN Stack Development**: MongoDB, Express.js, React, Node.js.
+- **Full Stack Development**: Python, Java, .NET.
+- **Python with AI**: Machine Learning, Deep Learning, Generative AI.
+- **Data Analytics & Science**: Power BI, SQL, Python for Data.
+- **AWS DevOps & Cloud**: Cloud infrastructure and CI/CD pipelines.
+- **Software Testing**: Manual and Automation (Selenium).
+- **UI/UX Design**: Modern product design workflows.
+
+## Locations
+- **Velachery Branch**: 52/159, Velachery Main Rd, Chennai, Tamil Nadu 600042.
+- **Pallikaranai Branch**: Kamakoti Nagar, Pallikaranai, Chennai, Tamil Nadu 600100.
+
+## Why Urbancode?
+- Industry Expert Mentors.
+- 1-on-1 Personalized Demos.
+- Real-time Industry Projects.
+- Mock Interviews and Career Counseling.
+
+## Contact Information
+- Website: https://urbancode.in
+- Phone: +91 9429694123
+- Email: info@urbancode.in

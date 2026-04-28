@@ -19,18 +19,24 @@ const inter = Inter({
 export const metadata = {
   title: 'Urbancode | Learn with Experts',
   description: 'Transforming skills into success with expert-led coding courses in Chennai.',
+  other: {
+    "geo.region": "IN-TN",
+    "geo.placename": "Chennai",
+    "geo.position": "12.9419;80.2076",
+    "ICBM": "12.9419, 80.2076",
+    "DC.title": "Urbancode | Learn with Experts",
+    "DC.description": "Transforming skills into success with expert-led coding courses in Chennai.",
+    "DC.publisher": "Urbancode",
+    "DC.coverage": "IN-TN",
+    "DC.language": "en",
+    "target_country": "IN",
+  }
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={inter.variable}>
       <head>
-        {/* ✅ GEO Meta Tags for SEO Audit Tools */}
-        <meta name="geo.region" content="IN-TN" />
-        <meta name="geo.placename" content="Chennai" />
-        <meta name="geo.position" content="13.0827;80.2707" />
-        <meta name="ICBM" content="13.0827, 80.2707" />
-
         {/* ✅ Google Tag Manager - MUST be before interactive */}
         <Script
           id="gtm-script"
@@ -60,15 +66,25 @@ export default function RootLayout({ children }) {
                 {
                   "@type": "Organization",
                   "@id": "https://urbancode.in/#organization",
-                  "name": "Urbancode",
+                  "name": "Urbancode Edutech",
+                  "legalName": "Urbancode Edutech Solutions",
                   "url": "https://urbancode.in",
                   "logo": "https://urbancode.in/images/home/logo.png",
+                  "image": "https://urbancode.in/images/home/og-image.jpg",
+                  "description": "Premium IT and coding training institute in Chennai providing job-oriented certification courses.",
                   "sameAs": [
                     "https://www.facebook.com/profile.php?id=61563183054002",
                     "https://www.instagram.com/urbancode_edutech/",
                     "https://www.linkedin.com/company/urbancode-edutech-solutions/",
                     "https://www.youtube.com/channel/UC7ngZ5r2ov-qoXJRjaXJGKA"
-                  ]
+                  ],
+                  "contactPoint": {
+                    "@type": "ContactPoint",
+                    "telephone": "+91 9429694123",
+                    "contactType": "customer service",
+                    "areaServed": "IN",
+                    "availableLanguage": ["en", "ta"]
+                  }
                 },
                 {
                   "@type": "EducationalOrganization",

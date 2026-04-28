@@ -56,12 +56,21 @@ const coursesData = [
     }
 ];
 
+import Image from 'next/image';
+
 const CourseCard = ({ course }) => {
     const router = useRouter();
     return (
         <div className="jg-course-card" onClick={() => router.push(course.path)} style={{ cursor: 'pointer' }}>
             <div className="jg-card-img-container">
-                <img src={course.image} alt={course.title} className="jg-card-img" />
+                <Image 
+                    src={course.image} 
+                    alt={`${course.title} Course in Chennai - Urbancode`} 
+                    className="jg-card-img" 
+                    width={400}
+                    height={300}
+                    style={{ objectFit: 'cover' }}
+                />
                 <div className="jg-card-glass-overlay">
                     <div className="jg-card-content-stack">
                         <div className="jg-card-title-box">
@@ -234,7 +243,7 @@ const Courses = () => {
                     transition={{ duration: 0.6 }}
                 >
                     <h2 className="jg-courses-title text-shine">
-                        100% Job Guaranteed Courses
+                        Best Job-Oriented IT Courses in Chennai
                     </h2>
                     <FeatureSubtitles />
                 </motion.div>
