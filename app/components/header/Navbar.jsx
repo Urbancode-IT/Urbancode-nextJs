@@ -132,7 +132,7 @@ export default function Navbar() {
                   />
                 </svg>
               </Link>
-              <Link href="/projects" onClick={handleLinkClick}>Projects</Link>
+              <Link href="/portfolio" onClick={handleLinkClick}>Portfolio</Link>
               <Link href="/contact-us" onClick={handleLinkClick}>Contact us</Link>
             </div>
           </div>

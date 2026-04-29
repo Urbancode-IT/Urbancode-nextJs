@@ -1,0 +1,401 @@
+/* ── THEME VARIABLES ── */
+:root, [data-theme="light"] {
+  --bg:           #f0faf4; /* Synced with HeroSection.css */
+
+  --navbar-bg:    rgba(255, 255, 255, 0.85);
+  --card-bg:      #ffffff;
+  --text:         #212529BF;
+  --text-muted:   #212529BF;
+  --text-sub:     #212529BF;
+  --border:       #e2f0e2;
+  --link:         #212529;
+  --toggle-bg:    #f3f4f6;
+  --toggle-color: #374151;
+  --input-bg:     #f9fafb;
+  --input-border: #e5e7eb;
+  --modal-bg:     #ffffff;
+  --shadow:       rgba(0,0,0,0.08);
+}
+
+[data-theme="dark"] {
+  --bg:           #060d0a; /* Unified dark green-black */
+  --navbar-bg:    rgba(10, 20, 15, 0.85);
+  --card-bg:      #0e1a14; /* Dark cards */
+  --text:         #ffffff; /* Brighter white for headings */
+  --text-muted:   #a0b0a8; /* Muted green-grey for body text */
+  --text-sub:     #708078;
+  --accent:       var(--brand-green); /* Neon green accent replaced with brand green */
+  --border:       rgba(27, 122, 54, 0.15); /* Brand green border */
+  --link:         #ffffff;
+  --toggle-bg:    #1e3b1e;
+  --toggle-color: var(--brand-green);
+  --input-bg:     #050c08;
+  --input-border: #1e3b1e;
+  --modal-bg:     #0e1a14;
+  --shadow:       rgba(27, 122, 54, 0.05); /* Brand green glow */
+}
+
+body {
+  overflow-x: hidden !important;
+}
+
+/* ── NAVBAR WRAPPER ── */
+.navbar__wrapper {
+  position: fixed;
+
+
+  top: 0;
+  left: 0;
+  width: 100%;
+  box-sizing: border-box; /* Crucial to prevent horizontal scroll caused by padding! */
+  z-index: 9999;
+  padding: 8px 24px;
+  display: flex;
+  justify-content: center;
+  background: linear-gradient(to bottom, var(--bg) 14px, transparent 14px); /* Mask content in the 8px top gap */
+
+  pointer-events: none; /* Let clicks pass through the transparent wrapper sides */
+}
+
+.navbar {
+  pointer-events: auto; /* Re-enable clicks exactly on the actual nav bar */
+}
+
+/* ── NAVBAR ── */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  height: 68px;
+  background: var(--navbar-bg);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 999px;
+  width: 100%;
+  max-width: 1100px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s;
+}
+
+/* Override potential .navbar styles from other CSS files */
+.navbar__wrapper .navbar {
+  position: relative; /* keep fixed positioning only on the wrapper */
+  top: auto;
+  left: auto;
+  right: auto;
+  margin: 0 auto;
+  pointer-events: auto;
+}
+
+/* ── LOGO ── */
+.logo__wrapper {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.logo__img {
+  display: block;
+  height: 44px;
+  width: auto;
+  max-width: min(52vw, 240px);
+  object-fit: contain;
+  object-position: left center;
+}
+
+[data-theme="dark"] .logo__img {
+  filter: invert(1) hue-rotate(180deg);
+  opacity: 0.9;
+}
+
+/* ── NAV LINKS ── */
+.nav__links {
+  display: flex;
+  list-style: none;
+  gap: 28px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav__link {
+  text-decoration: none;
+  color: var(--link);
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s;
+  white-space: nowrap;
+}
+
+.nav__link:hover {
+  color: var(--brand-green);
+}
+
+/* ── ACTIONS ── */
+.nav__actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav__contact {
+  background: var(--brand-green);
+  color: #fff;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.2s, transform 0.15s;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(27, 122, 54, 0.2);
+}
+
+.nav__contact:hover {
+  background: var(--brand-green);
+  filter: brightness(1.1);
+  transform: scale(1.03);
+  box-shadow: 0 6px 16px rgba(27, 122, 54, 0.4);
+}
+
+[data-theme="dark"] .nav__contact {
+  box-shadow: 0 0 20px rgba(27, 122, 54, 0.3);
+}
+
+/* ── TOGGLE ── */
+.nav__toggle {
+  width: 54px;
+  height: 28px;
+  border-radius: 99px;
+  border: 1px solid var(--border);
+  background: var(--toggle-bg);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 0 4px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.toggle__circle {
+  width: 20px;
+  height: 20px;
+  background: var(--brand-green);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateX(0);
+}
+
+[data-theme="dark"] .toggle__circle {
+  transform: translateX(26px);
+}
+
+.toggle__circle svg {
+  color: #fff;
+}
+
+/* ── HAMBURGER ── */
+.nav__hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+}
+
+.nav__hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: background 0.3s;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .navbar__wrapper {
+    padding: 10px 16px;
+  }
+
+  .navbar {
+    border-radius: 20px;
+    height: auto;
+    flex-wrap: wrap;
+    padding: 14px 20px;
+    gap: 10px;
+  }
+
+  .nav__links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    gap: 14px;
+    padding: 14px 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .nav__links--open {
+    display: flex;
+  }
+
+  .nav__hamburger {
+    display: flex;
+  }
+}
+
+/* ══ MODAL ══ */
+.modal__overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  padding: 20px;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.modal__box {
+  background: var(--modal-bg);
+  border-radius: 20px;
+  padding: 40px;
+  width: 100%;
+  max-width: 540px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  animation: slideUp 0.25s ease;
+  box-shadow: 0 24px 60px var(--shadow);
+  border: 1px solid var(--border);
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.modal__close {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  background: var(--toggle-bg);
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-size: 13px;
+  cursor: pointer;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.modal__close:hover {
+  background: var(--border);
+}
+
+.modal__title {
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--text);
+  margin: 12px 0 4px;
+  letter-spacing: -0.5px;
+}
+
+.modal__sub {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}
+
+.modal__form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.modal__row {
+  display: flex;
+  gap: 12px;
+}
+
+.modal__field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  flex: 1;
+}
+
+.modal__field label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.modal__field input,
+.modal__field select,
+.modal__field textarea {
+  border: 1.5px solid var(--input-border);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 13px;
+  color: var(--text);
+  background: var(--input-bg);
+  font-family: inherit;
+  outline: none;
+  resize: none;
+  transition: border-color 0.2s, background 0.3s, color 0.3s;
+}
+
+.modal__field input:focus,
+.modal__field select:focus,
+.modal__field textarea:focus {
+  border-color: var(--brand-green);
+}
+
+.modal__submit {
+  background: var(--brand-green);
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 13px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.2s, transform 0.1s;
+  margin-top: 4px;
+}
+
+.modal__submit:hover {
+  background: var(--brand-green);
+  filter: brightness(1.1);
+  transform: scale(1.02);
+}
+
+@media (max-width: 500px) {
+  .modal__box {
+    padding: 24px 16px;
+  }
+  .modal__row {
+    flex-direction: column;
+  }
+}

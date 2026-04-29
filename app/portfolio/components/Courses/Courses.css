@@ -1,0 +1,469 @@
+/* =========================================================
+   PREMIUM MODERN COURSE SECTION (Support Light & Dark)
+   ========================================================= */
+
+.courses-page {
+  padding: 120px 20px;
+  background: var(--bg); /* Theme dynamic background */
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.5s ease;
+}
+
+/* Dynamic Ambient Glow */
+/* Dynamic Ambient Glow Removed as requested */
+.courses-page::before {
+  display: none;
+}
+
+.featured-single {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  justify-content: center;
+  gap: 20px; /* Reduced gap to bring text and laptops closer */
+  position: relative;
+  z-index: 10;
+  width: 95%; /* Small side gaps */
+}
+
+
+
+/* Center Left Column Styling */
+.courses-featured-left {
+  position: relative;
+  z-index: 5;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 20px;
+}
+
+
+
+@keyframes pulse-neon {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.6; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.courses-featured-title {
+  font-family: var(--sans);
+  font-size: 42px;
+  font-weight: 600;
+  color: var(--text); 
+  line-height: 1.1;
+  margin-bottom: 25px;
+  letter-spacing: -0.05em;
+}
+
+.text-neon {
+  color: var(--text-h);
+  display: inline-block;
+}
+
+.courses-featured-desc {
+  font-size: 18px;
+  color: var(--text2); 
+  line-height: 1.7;
+  max-width: 520px;
+  margin-bottom: 40px;
+}
+
+.courses-cta-group {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.btn-enroll-unique {
+  background: var(--neon); 
+  color: var(--btn-text);
+  padding: 20px 50px;
+  border-radius: 16px;
+  font-weight: 600;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: none; /* Glow removed as requested */
+}
+
+.btn-enroll-unique:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn-read-doc {
+  background: transparent;
+  color: var(--text);
+  padding: 20px 35px;
+  border-radius: 16px;
+  font-weight: 700;
+  font-size: 17px;
+  border: 1px solid var(--badge-border);
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+
+.btn-read-doc:hover {
+  background: var(--pill-bg);
+  border-color: var(--neon);
+  transform: translateY(-5px);
+}
+
+/* Center Right Column (Laptops) */
+.courses-featured-right {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 2500px;
+}
+
+.layered-laptops-wrapper {
+  position: relative;
+  width: 100%;
+  height: 380px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 3000px;
+  animation: groupedFloatingLaptop 6s ease-in-out infinite; /* Grouped animation */
+}
+
+@keyframes groupedFloatingLaptop {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+.laptop-mockup-container {
+  position: absolute;
+  width: 85%;
+  max-width: 420px; 
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.laptop-bg {
+  z-index: 1;
+  transform: translateX(80px) translateY(30px) scale(0.7);
+  opacity: 0.4;
+  filter: blur(2px);
+}
+
+.laptop-fg {
+  z-index: 2;
+  transform: translateX(-20px) translateY(-25px) scale(1.1);
+}
+
+.laptop-mockup-container:hover {
+  transform: scale(1.08) translateZ(120px) translateX(0px);
+  opacity: 1;
+  filter: blur(0);
+  z-index: 10;
+}
+
+.laptop-screen {
+  background: #000;
+  border: 6px solid var(--neon); /* Changed to theme color and made it thinner */
+  border-radius: 12px; /* Reduced border radius as requested */
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); /* Reduced shadow, no glow */
+  aspect-ratio: 16 / 10;
+  position: relative;
+}
+
+/* Image inside screen styling */
+.screen-img-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.4; /* Keep it subtle so UI still shows */
+  z-index: 1;
+  mix-blend-mode: luminosity;
+}
+
+[data-theme="light"] .screen-img-overlay {
+  opacity: 0.2;
+}
+
+.screen-content {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(10, 10, 10, 0.9) 0%, rgba(21, 21, 21, 0.8) 100%);
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  position: relative;
+  z-index: 2; /* Content above image overlay */
+}
+
+/* Screen Code Preview Styling */
+.screen-code-preview {
+  margin-top: 25px;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 15px;
+  border-radius: 12px;
+  text-align: left;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 13px;
+  border: 1px solid rgba(var(--nr), var(--ng), var(--nb), 0.1);
+  width: 80%;
+}
+
+.code-line {
+  color: #a5b4fc;
+  margin-bottom: 4px;
+}
+
+.code-line span {
+  color: var(--neon);
+  font-weight: 700;
+}
+
+[data-theme="light"] .screen-code-preview {
+  background: rgba(0, 0, 0, 0.05);
+  color: #374151;
+}
+
+/* Light Theme Overrides for Laptop */
+[data-theme="light"] .laptop-screen {
+  border-color: var(--neon); /* Keep it green as requested */
+  background: #f9fafb;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1), 
+              0 0 20px rgba(var(--nr), var(--ng), var(--nb), 0.1);
+}
+
+.screen-content {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #0a0a0a 0%, #151515 100%);
+  display: flex;
+  flex-direction: column;
+  padding: 25px;
+  position: relative;
+}
+
+[data-theme="light"] .screen-content {
+  background: linear-gradient(135deg, #ffffff 0%, #f3f4f6 100%);
+}
+
+/* Inner Screen Header */
+.screen-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(var(--nr), var(--ng), var(--nb), 0.15);
+  margin-bottom: 30px;
+}
+
+.screen-logo {
+  color: var(--neon);
+  font-weight: 800;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.screen-nav {
+  display: flex;
+  gap: 18px;
+}
+
+.nav-dot {
+  width: 7px;
+  height: 7px;
+  background: rgba(var(--nr), var(--ng), var(--nb), 0.25);
+  border-radius: 50%;
+}
+
+.screen-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.screen-title {
+  font-size: 32px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 15px;
+  letter-spacing: -1px;
+}
+
+[data-theme="light"] .screen-title {
+  color: #111;
+}
+
+.screen-subtitle {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.45);
+  max-width: 320px;
+  line-height: 1.6;
+}
+
+[data-theme="light"] .screen-subtitle {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+/* Glowing Aura behind laptop */
+/* Laptop Aura Removed as requested */
+.laptop-aura {
+  display: none;
+}
+
+/* Responsive adjustment */
+@media (max-width: 1200px) {
+  .featured-single {
+    gap: 40px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .featured-single {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 100px;
+  }
+  
+  .courses-featured-left {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .courses-featured-desc {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .laptop-mockup-container {
+    transform: rotateY(0deg) rotateX(0deg);
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .courses-page {
+    padding: 80px 20px;
+  }
+  
+  .courses-featured-title {
+    font-size: 52px;
+  }
+  
+  .courses-cta-group {
+    flex-direction: column;
+    width: 100%;
+    gap: 15px;
+  }
+  
+  .btn-enroll-unique, .btn-read-doc {
+    width: 100%;
+    padding: 16px 30px;
+  }
+}
+
+/* =========================================================
+   EXPLORE TOOLS MODAL STYLES (Dynamic Theme)
+   ========================================================= */
+
+.tools-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(5px);
+}
+
+.tools-modal-box {
+  background: var(--card-bg); 
+  border: 1px solid var(--card-border);
+  backdrop-filter: blur(30px);
+  padding: 60px; /* Increased padding for more space */
+  border-radius: 48px; /* Softer rounded corners */
+  width: 95%; /* Use almost the whole screen width on mobile */
+  max-width: 1200px; /* Significantly wider box */
+  position: relative;
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6);
+  text-align: center;
+}
+
+.tools-modal-close {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  background: var(--pill-bg);
+  border: 1px solid var(--badge-border);
+  color: var(--text);
+  width: 45px; 
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.tools-modal-close:hover {
+  background: var(--neon);
+  color: var(--btn-text);
+  transform: rotate(90deg) scale(1.1);
+}
+
+.tools-modal-title {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 40px;
+  text-align: center;
+  letter-spacing: -1px;
+}
+
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); /* Bigger icons, more items per row */
+  gap: 30px; /* Increased gap */
+  justify-items: center;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.tool-card {
+  width: 90px; /* Bigger cards */
+  height: 90px;
+  background: var(--pill-bg);
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 1px solid var(--badge-border);
+}
+
+.tool-card:hover {
+  background: rgba(var(--nr), var(--ng), var(--nb), 0.15);
+  border-color: var(--neon);
+  transform: translateY(-10px) scale(1.1);
+  box-shadow: none; /* Glow removed */
+}

@@ -1,0 +1,267 @@
+.about-card {
+  --accent: rgba(27, 122, 54, 0.2);
+  position: relative;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1.5px solid rgba(27, 122, 54, 0.18);
+  border-radius: 24px;
+  padding: 30px 26px;
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+  cursor: default;
+  overflow: hidden;
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease,
+    background 0.35s ease;
+}
+
+.about-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 26px 70px rgba(27, 122, 54, 0.14);
+  border-color: rgba(27, 122, 54, 0.45);
+}
+
+.about-card__icon {
+  width: 62px;
+  height: 62px;
+  min-width: 62px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(27, 122, 54, 0.18);
+  position: relative;
+  z-index: 1;
+  transition: transform 0.35s ease;
+}
+
+.about-card:hover .about-card__icon {
+  transform: translateY(-2px);
+}
+
+.about-card__icon::before {
+  content: "";
+  position: absolute;
+  inset: -14px;
+  border-radius: 30px;
+  background: radial-gradient(circle at 30% 25%, var(--accent), transparent 60%);
+  opacity: 0.25;
+  filter: blur(10px);
+  z-index: -1;
+  transition: opacity 0.35s ease;
+}
+
+.about-card:hover .about-card__icon::before {
+  opacity: 0.45;
+}
+
+.about-card__icon-emoji {
+  font-size: 28px;
+  line-height: 1;
+  transform: translateY(-0.5px);
+}
+
+.about-card__badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  width: 40px;
+  height: 40px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(27, 122, 54, 0.08);
+  border: 1px solid rgba(27, 122, 54, 0.16);
+  color: var(--brand-green);
+  font-weight: 900;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  z-index: 4;
+  box-shadow: 0 10px 24px rgba(27, 122, 54, 0.15);
+  pointer-events: none;
+}
+
+.about-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: relative;
+  z-index: 1;
+}
+
+.about-card__title {
+  font-size: 17px;
+  font-weight: 700;
+  color: #0d1f1a;
+  font-family: var(--sans);
+  margin: 0;
+}
+
+.about-card__desc {
+  font-size: 14px;
+  color: var(--brand-green);
+  line-height: 1.75;
+  margin: 0;
+}
+
+/* Shine effect on hover */
+.about-card::after {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  background: linear-gradient(
+    115deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.75) 50%,
+    transparent 60%
+  );
+  transform: translateX(-60%);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+}
+
+.about-card:hover::after {
+  opacity: 0.65;
+  animation: aboutCardShine 0.7s ease both;
+}
+
+@keyframes aboutCardShine {
+  from {
+    transform: translateX(-60%);
+  }
+  to {
+    transform: translateX(40%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-card,
+  .about-card:hover {
+    transition: none;
+  }
+  .about-card:hover::after {
+    animation: none;
+  }
+  .about-card__wire::before {
+    animation: none;
+    background: var(--accent);
+  }
+}
+
+/* --- Wire Border Animation --- */
+.about-card__wire {
+  position: absolute;
+  inset: 0px; /* aligns exactly with the border edge */
+  border-radius: inherit;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+  /* Mask to only show the border perimeter */
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  padding: 2px; /* thickness of the wire */
+  opacity: 0.6;
+  transition: opacity 0.35s ease;
+}
+
+.about-card:hover .about-card__wire {
+  opacity: 1;
+}
+
+.about-card__wire::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(from 0deg, transparent 70%, var(--accent) 90%, transparent 100%);
+  animation: wireCardSpin 3s linear infinite;
+}
+
+@keyframes wireCardSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* --- Hanging Tag Animation --- */
+.about-card__hanging-tag {
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  transform-origin: top center;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: swingingTag 3s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 5;
+}
+
+@keyframes swingingTag {
+  0% { transform: translateX(-50%) rotate(4deg); }
+  50% { transform: translateX(-50%) rotate(-4deg); }
+  100% { transform: translateX(-50%) rotate(4deg); }
+}
+
+.hanging-tag-string {
+  width: 1.5px;
+  height: 14px;
+  background-color: rgba(27, 122, 54, 0.4);
+  /* Use the card's accent color for the string glow */
+  box-shadow: 0 0 4px var(--accent);
+}
+
+.hanging-tag-body {
+  background: var(--accent);
+  color: #fff;
+  font-size: 10px;
+  padding: 4px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(4px);
+}
+
+[data-theme="dark"] .about-card {
+  background: rgba(15, 23, 42, 0.6);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .about-card__title {
+  color: #ffffff;
+}
+
+[data-theme="dark"] .about-card__desc {
+  color: #cbd5e1;
+}
+
+[data-theme="dark"] .about-card__icon {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .about-card__badge {
+  background: rgba(27, 122, 54, 0.08);
+  border-color: rgba(27, 122, 54, 0.2);
+  color: var(--brand-green);
+}
+
+[data-theme="dark"] .hanging-tag-body {
+  background: var(--brand-green);
+  color: #000;
+}

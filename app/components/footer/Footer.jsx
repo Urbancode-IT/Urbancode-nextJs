@@ -8,8 +8,9 @@ import "./Footer.css";
 function Footer() {
   const pathname = usePathname();
   const isFeedbackPage = pathname.startsWith('/feedback');
+  const isPortfolioPage = pathname.startsWith('/portfolio');
 
-  if (isFeedbackPage) return null;
+  if (isFeedbackPage || isPortfolioPage) return null;
 
   return (
     <footer className="footer">
@@ -49,7 +50,7 @@ function Footer() {
               <li><Link href="/"> Home</Link></li>
               <li><Link href="/about-us"> About Us</Link></li>
               <li><Link href="/contact-us"> Contact Us</Link></li>
-              <li><Link href="/projects"> Projects</Link></li>
+              <li><Link href="/portfolio"> Portfolio</Link></li>
               <li><Link href="/blogs">Blogs</Link></li>
             </ul>
           </div>

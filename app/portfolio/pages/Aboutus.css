@@ -1,0 +1,231 @@
+.glass-about-section {
+  padding: var(--section-gap) 24px;
+  background: var(--bg);
+  min-height: auto;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.glass-blobs {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  animation: blob-float 20s infinite alternate ease-in-out;
+}
+
+.b1 { width: 400px; height: 400px; background: radial-gradient(circle, rgba(0, 208, 132, 0.15), transparent); top: 10%; left: 5%; }
+.b2 { width: 300px; height: 300px; background: radial-gradient(circle, rgba(51, 154, 240, 0.1), transparent); bottom: 10%; right: 10%; }
+
+@keyframes blob-float {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(50px, 80px) scale(1.1); }
+}
+
+.glass-about-container {
+  width: 100%;
+  max-width: 1200px;
+  position: relative;
+  z-index: 10;
+}
+
+.main-glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 40px;
+  padding: 80px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .main-glass-card {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.glass-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.glass-heading {
+  font-family: var(--heading);
+  font-size: var(--fs-h2);
+  font-weight: 700;
+  color: var(--text-h);
+  line-height: 1.1;
+  margin-bottom: 24px;
+  letter-spacing: -0.02em;
+}
+
+.accent-text { color: inherit; }
+
+.glass-description {
+  font-size: var(--fs-body);
+  color: var(--text);
+  line-height: 1.8;
+  margin-bottom: 40px;
+  max-width: 540px;
+}
+
+.glass-cta {
+  background: var(--neon);
+  color: white;
+  border: none;
+  padding: 16px 40px;
+  border-radius: 100px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(0, 208, 132, 0.2);
+  transition: all 0.3s ease;
+}
+
+/* ONE BIG PRICE TAG CONTAINER */
+.glass-stack-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1200px;
+  padding-top: 0;
+}
+
+.big-tag-container {
+  position: relative;
+  width: 300px;
+  background: var(--card-bg);
+  border-radius: 20px;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.22), 0 8px 20px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  overflow: visible;
+  border: 1px solid var(--border);
+}
+
+[data-theme="dark"] .big-tag-container {
+  background: #1e1e1e;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+/* TAG HOLE AREA — sits ON TOP of the card image, top-left corner */
+.tag-hole-area {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 30;
+}
+
+/* Short connector since tag is ON the card */
+.tag-string-top {
+  width: 2px;
+  height: 10px;
+  background: #222;
+}
+
+.tag-hole {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 2.5px solid #222;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  margin-top: -9px;
+  position: relative;
+  z-index: 10;
+}
+
+[data-theme="dark"] .tag-hole {
+  background: #1e1e1e;
+  border-color: #aaa;
+}
+
+/* IMAGE STAGE — fixed size, all images same */
+.tag-image-stage {
+  width: 100%;
+  height: 260px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px 20px 0 0;
+  background: #f0f0f0;
+}
+
+[data-theme="dark"] .tag-image-stage {
+  background: #2a2a2a;
+}
+
+.tag-flipping-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* TAG FOOTER */
+.tag-footer {
+  padding: 16px 18px 18px;
+}
+
+.tag-footer-text h4 {
+  font-size: 17px;
+  font-weight: 800;
+  color: #111;
+  margin-bottom: 3px;
+}
+
+[data-theme="dark"] .tag-footer-text h4 { color: #fff; }
+
+.tag-footer-text p {
+  font-size: 11px;
+  color: #888;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+
+.dot-indicators {
+  display: flex;
+  gap: 8px;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #ccc;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dot.active {
+  background: var(--neon);
+  transform: scale(1.4);
+}
+
+@media (max-width: 1024px) {
+  .glass-grid { grid-template-columns: 1fr; text-align: center; gap: 40px; }
+  .glass-description { margin: 0 auto 30px; }
+  .glass-stack-right { justify-content: center; }
+}
+
+@media (max-width: 768px) {
+  .glass-about-section { padding: 80px 20px; }
+  .main-glass-card { border-radius: 24px; padding: 30px; }
+  .big-tag-container { width: 260px; }
+}

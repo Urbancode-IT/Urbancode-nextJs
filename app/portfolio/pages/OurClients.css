@@ -1,0 +1,150 @@
+.our-clients {
+  padding: var(--section-gap) 24px;
+  background-color: var(--bg);
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.our-clients-container {
+  max-width: 1400px;
+  width: 100%;
+}
+
+/* ── Our Recognition Header ── */
+.our-clients-header {
+  margin-bottom: 60px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+
+.our-clients-header h2 {
+  font-size: var(--fs-h2);
+  font-weight: 700;
+  color: var(--text-h);
+  margin-bottom: 20px;
+}
+
+.our-clients-desc {
+  font-size: var(--fs-body);
+  color: var(--text-muted);
+  max-width: 800px;
+  line-height: 1.8;
+  margin: 0 auto;
+}
+
+/* ── Single Marquee (Urbancode Style) ── */
+.clients-marquee {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  padding: 60px 0;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(5px);
+  border-top: 1px solid rgba(27, 122, 54, 0.05);
+  border-bottom: 1px solid rgba(27, 122, 54, 0.05);
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 15%,
+    black 85%,
+    transparent
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 15%,
+    black 85%,
+    transparent
+  );
+}
+
+.clients-marquee-track {
+  display: flex;
+  align-items: center;
+  gap: 120px; /* More spaced out like in the screenshot */
+  width: max-content;
+  animation: clientsScroll 30s linear infinite;
+  will-change: transform;
+}
+
+.clients-marquee:hover .clients-marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes clientsScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-100% / 4));
+  }
+}
+
+/* ── Logo Item ── */
+.clients-logo-item {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.clients-logo-img {
+  height: 60px; /* Slightly larger for better detail */
+  width: auto;
+  max-width: 200px;
+  object-fit: contain;
+  transition: all 0.4s ease;
+  filter: none;
+  opacity: 1;
+}
+
+.clients-logo-img:hover {
+  transform: scale(1.1);
+  filter: grayscale(0%) opacity(1); /* Full color on hover */
+}
+
+/* ── Dark mode refinement ── */
+[data-theme="dark"] .clients-logo-img {
+  filter: brightness(1.5) contrast(1.2); /* Enhance for dark mode without losing color */
+}
+
+[data-theme="dark"] .clients-logo-img:hover {
+  filter: grayscale(0%) opacity(1) invert(0) brightness(1); /* Return to original on hover */
+}
+
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .clients-marquee-track {
+    gap: 80px;
+  }
+  .clients-logo-img {
+    height: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .our-clients {
+    padding: 60px 16px;
+  }
+
+  .our-clients-header h2 {
+    font-size: 32px;
+  }
+
+  .clients-marquee-track {
+    gap: 60px;
+    animation-duration: 20s;
+  }
+
+  .clients-logo-img {
+    height: 35px;
+  }
+}
+

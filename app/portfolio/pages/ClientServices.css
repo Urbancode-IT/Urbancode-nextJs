@@ -1,0 +1,124 @@
+.client-services {
+  padding: 80px 24px;
+  background-color: var(--bg);
+  display: flex;
+  justify-content: center;
+}
+
+.services-container {
+  max-width: 1200px;
+  width: 100%;
+}
+
+.services-header {
+  margin-bottom: 50px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+
+.services-desc {
+  font-size: 18px;
+  color: var(--text-muted);
+  max-width: 600px;
+  line-height: 1.6;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  max-width: 1000px;
+  margin: 0 auto;
+  perspective: 1200px; /* Added perspective for 3D rotation */
+}
+
+.service-card {
+  background: var(--card-bg);
+  padding: 24px;
+  border-radius: 60px 4px 60px 4px; /* Distinct leaf shape */
+  border: 1px solid var(--border);
+  transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.6s ease, border-color 0.4s ease, border-radius 0.6s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+  min-height: 250px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transform-style: preserve-3d;
+}
+
+.service-card:hover,
+.service-card:active {
+  transform: translateY(-12px);
+  border-radius: 4px 60px 4px 60px; /* Morphing leaf shape */
+  box-shadow: 0 20px 60px rgba(27, 122, 54, 0.35); /* Intense glow around the card */
+  border-color: var(--brand-green);
+  background: radial-gradient(circle at center, rgba(27, 122, 54, 0.05) 0%, rgba(27, 122, 54, 0.1) 100%); /* Full box glow */
+}
+
+/* Removed dark color override to maintain visibility in dark mode */
+
+
+/* Ensure content has some depth */
+.service-card-header,
+.service-title,
+.service-description {
+  position: relative;
+  z-index: 1;
+  transform: translateZ(25px); /* Lift content for better contrast */
+}
+
+.service-card-header {
+  display: flex;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 13px; /* Slightly smaller header font */
+  color: var(--brand-green);
+  margin-bottom: 12px; /* Reduced from 20px */
+  letter-spacing: 0.5px;
+}
+
+.service-id {
+  opacity: 0.8;
+}
+
+.service-label {
+  text-transform: uppercase;
+}
+
+.service-title {
+  font-size: 19px; /* Reduced from 22px */
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+.service-description {
+  font-size: 14px; /* Reduced from 15px */
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+  .services-heading {
+    font-size: 36px;
+  }
+}

@@ -1,0 +1,194 @@
+/* Removed Google Fonts import to use Next.js optimized Inter font */
+
+/* ── Global font base ── */
+*, *::before, *::after {
+  font-family: var(--sans) !important;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+
+
+.container {
+  padding: 20px;
+}
+
+:root {
+  --sans: var(--font-inter, 'Inter', system-ui, -apple-system, sans-serif);
+  --heading: var(--font-inter, 'Inter', system-ui, -apple-system, sans-serif);
+  --mono: ui-monospace, Consolas, monospace;
+
+  /* Fluid Typography Scale */
+  --fs-h1: clamp(2.5rem, 5vw, 4.5rem);
+  --fs-h2: clamp(2rem, 4vw, 3rem);
+  --fs-h3: clamp(1.5rem, 3vw, 2rem);
+  --fs-body: clamp(0.95rem, 1.2vw, 1.1rem);
+  --fs-sm: 0.85rem;
+
+  /* Standard Spacing */
+  --section-gap: clamp(80px, 12vw, 120px);
+  --container-max: 1300px;
+  --card-radius: 24px;
+  
+  /* Brand Colors (Synced) */
+  --brand-green: #1b7a36;
+  --neon: var(--brand-green);
+  --text: #0d1f14;
+  --text-h: #000000;
+  --text-muted: #64748b;
+  --text-sub: #94a3b8;
+  --card-bg: #ffffff;
+  --bg: #fff;
+  --border: #e5e4e7;
+  
+  /* Transitions */
+  --trans-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+  font: var(--fs-body)/1.7 var(--sans);
+  letter-spacing: -0.01em;
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #e2e8f0;
+    --text-h: #ffffff;
+    --text-muted: #9ca3af;
+    --text-sub: #cbd5e1;
+    --card-bg: #111827;
+    --bg: #060d0a;
+    --border: #2e303a;
+    --code-bg: #1f2028;
+    --accent: #c084fc;
+    --accent-bg: rgba(192, 132, 252, 0.15);
+    --accent-border: rgba(192, 132, 252, 0.5);
+    --social-bg: rgba(47, 48, 58, 0.5);
+    --shadow:
+      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+  }
+
+  #social .button-icon {
+    filter: invert(1) brightness(2);
+  }
+}
+
+/* ── Dark Theme Overrides ── */
+[data-theme="dark"] {
+  --text: #e2e8f0;
+  --text-h: #ffffff;
+  --text-muted: #9ca3af;
+  --text-sub: #cbd5e1;
+  --card-bg: #111827;
+  --bg: #060d0a;
+  --border: #2e303a;
+  --code-bg: #1f2028;
+  --accent: #c084fc;
+  --accent-bg: rgba(192, 132, 252, 0.15);
+  --accent-border: rgba(192, 132, 252, 0.5);
+  --social-bg: rgba(47, 48, 58, 0.5);
+  --shadow: rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+  
+  --footer-bg: #060d0a; /* Syncing with Hero dark bg */
+  --footer-border: rgba(27, 122, 54, 0.12);
+  --footer-text: #9ca3af;
+  --footer-title: #e0ffe8;
+  --footer-copy: var(--brand-green);
+  --footer-social-bg: #0f1f16;
+  --footer-social-border: rgba(27, 122, 54, 0.2);
+  --footer-social-text: #9ca3af;
+}
+
+[data-theme="dark"] .footer__logo {
+  filter: invert(1) hue-rotate(180deg); /* Makes logo visible while preserving brand colors */
+  opacity: 0.9;
+}
+
+
+
+body {
+  margin: 0;
+  background-color: var(--bg);
+  font-family: var(--sans);
+  color: var(--text);
+}
+
+[data-theme="dark"] body {
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+#root {
+  width: 100%;
+  margin: 0;
+  text-align: left;
+  border: none;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+/* ── Global Heading Styles ── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--heading);
+  font-weight: 600;
+  margin: 0 0 8px;
+  color: var(--text-h);
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 800;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+section {
+  padding: 80px 20px; /* Standard vertical padding */
+  scroll-margin-top: 80px;
+}
+
+.text-green {
+  color: var(--brand-green);
+}
+
+p {
+  margin: 16px 0; /* Standardized content margin */
+  font-size: 16px; /* Standardized content size */
+  font-weight: 400; /* Use standard weight for readability */
+  line-height: 1.7;
+  color: var(--text); /* Standardized content color */
+}
+
+code,
+.counter {
+  font-family: var(--mono);
+  display: inline-flex;
+  border-radius: 4px;
+  color: var(--text-h);
+}
+
+code {
+  font-size: 15px;
+  line-height: 135%;
+  padding: 4px 8px;
+  background: var(--code-bg);
+}
