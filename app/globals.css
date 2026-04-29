@@ -280,12 +280,24 @@ a:hover {
   display: block !important;
 }
 
+@media (max-width: 768px) {
+  .home-section {
+    margin-top: 40px !important;
+  }
+}
+
 .home-section:first-of-type {
   margin-top: 0 !important;
 }
 
 .home-section:last-of-type {
   margin-bottom: 100px !important;
+}
+
+@media (max-width: 768px) {
+  .home-section:last-of-type {
+    margin-bottom: 40px !important;
+  }
 }
 
 /* Force children to shed their large vertical paddings/margins with higher specificity */

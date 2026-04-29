@@ -51,8 +51,8 @@ const Milestones = () => {
       icon: <Heart size={24} />
     },
     { 
-      number: "5+", 
-      label: "Years Excellence", 
+      number: "2+", 
+      label: "Years Experience", 
       subtitle: "Established in Chennai, TN",
       icon: <Award size={24} />
     },

@@ -65,7 +65,7 @@
 
 .milestones-title {
   font-size: var(--fs-h2);
-  font-weight: 800;
+  font-weight: 700;
   color: var(--text-h);
   margin-bottom: 20px;
   line-height: 1.2;
@@ -133,8 +133,8 @@
 /* Stat Typography */
 .stat-number {
   font-size: 2.5rem;
-  font-weight: 800;
-  color: #1b7a36;
+  font-weight: 700;
+  color: #198754;
   margin-bottom: 8px;
   line-height: 1;
   letter-spacing: -1px;

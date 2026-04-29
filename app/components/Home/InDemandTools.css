@@ -102,6 +102,15 @@
     border-color: rgba(148, 163, 184, 0.8);
 }
 
+.idt-highlight-new {
+    border-color: #D4AF37 !important; /* Premium Gold */
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3), 0 8px 16px rgba(0, 0, 0, 0.08);
+}
+
+.idt-highlight-new:hover {
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.5), 0 20px 40px rgba(100, 116, 139, 0.15) !important;
+}
+
 .idt-tool-item-wrapper:hover::before {
     opacity: 1;
 }
@@ -126,6 +135,28 @@
     transition: all 0.4s ease;
     position: relative;
     z-index: 1;
+}
+
+.idt-large-logo .idt-tool-icon {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.idt-new-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: linear-gradient(135deg, #D4AF37 0%, #FFD700 100%);
+    color: #000;
+    font-size: 8px;
+    font-weight: 900;
+    padding: 2px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    z-index: 5;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 /* Icon */

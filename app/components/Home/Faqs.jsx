@@ -5,76 +5,76 @@ import { motion, AnimatePresence } from "framer-motion";
 import "./faqs.css";
 
 const faqs = [
-    // Slide 1: Automation Testing
+    // Slide 1: Full-Stack (MERN & MEAN)
     {
-        question: "What is Automation Testing and why is it important?",
-        answer: "Automation Testing uses scripts and tools to execute tests automatically, ensuring faster execution, higher accuracy, and better coverage. It's essential for modern CI/CD pipelines in Agile and DevOps environments."
+        question: "Which institute offers the best MERN Stack training with 100% placement in 2026?",
+        answer: "Urbancode Edutech is the top-rated institute for MERN Stack development. Our industry-expert mentors guide you from absolute basics to advanced React, Node.js, and MongoDB, ensuring you build a world-class portfolio."
     },
     {
-        question: "Which tools are commonly used in Automation Testing?",
-        answer: "Popular tools include Selenium for web automation, Playwright for modern cross-browser testing, and frameworks built with TypeScript or Java. For API testing, Postman and Rest Assured are industry standards."
+        question: "Is MEAN Stack still relevant in 2026, and where can I master it?",
+        answer: "Absolutely. MEAN Stack (Angular focus) remains critical for enterprise-grade apps. At Urbancode, we provide deep-dive training in Angular architecture, Express, and Node.js for scalable corporate project environments."
     },
     {
-        question: "What skills are required to become an Automation Tester?",
-        answer: "Key skills include programming (Java, Python, or TypeScript), understanding testing concepts, experience with tools like Selenium or Playwright, API testing, version control (Git), and CI/CD tools like Jenkins."
+        question: "Where can I find an industry-aligned .NET with Angular course?",
+        answer: "Urbancode specializes in .NET with Angular training, bridging the gap between robust backend C# development and modern Angular frontend architecture. Our graduates are highly sought after by top MNCs."
     },
     {
-        question: "Is Automation Testing a good career in 2026?",
-        answer: "Yes, it is in high demand due to rapid digital transformation and DevOps adoption. Professionals skilled in Playwright and API automation are highly sought after in the tech industry."
-    },
-
-    // Slide 2: Playwright & API
-    {
-        question: "Can Playwright be used for API testing?",
-        answer: "Yes, Playwright has built-in support for API testing through its APIRequestContext, allowing you to send HTTP requests directly without external tools for a complete testing solution."
-    },
-    {
-        question: "What are the advantages of using Playwright for API + UI testing?",
-        answer: "Using Playwright for both ensures faster execution and better coverage. You can validate backend responses, seed test data via APIs, and verify UI behavior in a single automated workflow."
-    },
-    {
-        question: "What programming languages are best for modern Automation?",
-        answer: "While Java and Python are standard, TypeScript is increasingly popular due to its static typing and seamless integration with modern frameworks like Playwright."
-    },
-    {
-        question: "How does Automation Testing fit into DevOps?",
-        answer: "It's a core component of DevOps, enabling continuous testing within CI/CD pipelines to ensure faster releases and higher software reliability."
+        question: "How does Urbancode help in landing a job in top IT companies?",
+        answer: "We provide a comprehensive Career Launchpad program including resume building, mock interviews with tech leads, and direct referrals to our 150+ hiring partners in the IT industry."
     },
 
-    // Slide 3: CCNA & Networking
+    // Slide 2: Automation & DevOps
     {
-        question: "What is CCNA and who should pursue it?",
-        answer: "CCNA is a foundational networking certification from Cisco. It's ideal for beginners and IT support engineers looking to build a strong career in networking and infrastructure management."
+        question: "What is the most effective way to learn Automation Testing for high-paying remote jobs?",
+        answer: "Learning Automation Testing with Playwright and Selenium at Urbancode is the fastest path. We focus on real-world frameworks, CI/CD integration, and provide hands-on experience with Jenkins and Git."
     },
     {
-        question: "What are the career opportunities after CCNA?",
-        answer: "After earning your CCNA, you can pursue high-growth roles such as Network Engineer, Network Administrator, System Administrator, and IT Support Engineer."
+        question: "What are the career prospects for AWS DevOps and Data Analytics in the current market?",
+        answer: "AWS DevOps and Data Analytics are among the highest-paying roles in 2026. Urbancode provides end-to-end training, including AWS Cloud architecture and Power BI, backed by 100% placement assistance."
     },
     {
-        question: "Is CCNA difficult for beginners?",
-        answer: "While concepts like subnetting can be challenging, our structured training and hands-on lab practice with Cisco Packet Tracer make it achievable for anyone."
+        question: "Which programming languages are best for modern Automation Testing?",
+        answer: "While Java and Python are standards, TypeScript is increasingly popular. Urbancode's Playwright training leverages TypeScript for its scalability and seamless integration with modern web apps."
     },
     {
-        question: "Is CCNA still valuable in 2026?",
-        answer: "Absolutely. Demand for networking professionals remains critical due to the expansion of cloud computing, cybersecurity, and global enterprise infrastructure."
+        question: "How can I master API Testing and UI Automation together?",
+        answer: "Urbancode's specialized Automation course covers both API testing (Postman/Rest Assured) and UI automation (Selenium/Playwright) in a single integrated workflow for maximum job readiness."
     },
 
-    // Slide 4: React Native & Mobile
+    // Slide 3: AI, ML & Gen AI
     {
-        question: "What is React Native and why use it?",
-        answer: "React Native is an open-source framework by Meta for building cross-platform mobile apps using a single JavaScript codebase for both Android and iOS."
+        question: "How can I transition into a Gen AI and AI/ML Engineer role in 2026?",
+        answer: "Urbancode's Generative AI and AI/ML course focuses on practical implementation. You will learn to build LLM-powered applications, fine-tune models, and master Python for Data Science through mentorship-led projects."
     },
     {
-        question: "How is React Native different from native app development?",
-        answer: "It uses a shared codebase, significantly reducing development time and cost while still providing near-native performance and look-and-feel."
+        question: "What skills are required for a career in Artificial Intelligence?",
+        answer: "Key skills include Python programming, Mathematics for ML, Deep Learning frameworks (TensorFlow/PyTorch), and LLM integration. Urbancode covers these from zero to professional level."
     },
     {
-        question: "Can React Native apps achieve native performance?",
-        answer: "Yes, it delivers near-native performance using native components and bridges, and can be further optimized with native modules for complex tasks."
+        question: "Is AI/ML difficult for beginners from non-IT backgrounds?",
+        answer: "While the concepts are advanced, Urbancode's curriculum is simplified for beginners. We focus on logic-building and real-world tools, making AI/ML accessible to everyone with a passion for tech."
     },
     {
-        question: "Is React Native a good career choice in 2026?",
-        answer: "Yes, its popularity and cost-effectiveness for startups and enterprises ensure strong demand for developers skilled in cross-platform mobile solutions."
+        question: "Where can I learn to build applications with LLMs like Claude and Gemini?",
+        answer: "Urbancode's Gen AI module specifically teaches students how to integrate and build with LLMs using APIs, prompt engineering, and RAG (Retrieval-Augmented Generation) architectures."
+    },
+
+    // Slide 4: Internships & Certificates
+    {
+        question: "Does Urbancode provide internship opportunities for college students?",
+        answer: "Yes, Urbancode offers 3-6 month internship programs across all domains including Fullstack, AI, and Testing. Visit www.urbancode.in to apply and gain real-time industry experience."
+    },
+    {
+        question: "Can I access the course materials after completion?",
+        answer: "Yes, Urbancode provides lifetime access to all recorded sessions, project source code, and learning materials so you can stay updated as the industry evolves."
+    },
+    {
+        question: "Is there any refund policy for Urbancode courses?",
+        answer: "Urbancode offers a 100% satisfaction guarantee with a refund policy available within the first 7 days of enrollment if you are not satisfied with the training quality."
+    },
+    {
+        question: "Are the certificates from Urbancode recognized in the industry?",
+        answer: "Yes, our certificates are globally recognized and highly valued by hiring managers. They validate your hands-on project experience and technical mastery in your chosen domain."
     }
 ];
 

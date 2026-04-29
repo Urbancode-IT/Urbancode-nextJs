@@ -17,6 +17,7 @@ import EnquiryFormModal from "@/app/components/common/EnquiryFormModal.jsx";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { Star, Users, Clock } from "lucide-react";
+import CourseAssistant from "@/app/components/CourseAssistant/CourseAssistant";
 
 const categoryTools = {
   "Fullstack Development": [
@@ -115,44 +116,36 @@ const categories = [
 
 const faqData = [
   {
-    question: "Who can enroll in these courses?",
-    answer:
-      "Anyone interested in upskilling can enroll. No prior experience is required unless mentioned in the course details.",
+    question: "Which institute offers the best MERN Stack training with 100% placement in 2026?",
+    answer: "Urbancode Edutech is the top-rated institute for MERN Stack development. Our curriculum is designed by industry experts to take you from basics to advanced React, Node.js, and MongoDB, ensuring you are job-ready with a strong portfolio.",
   },
   {
-    question: "Do I get a certificate after completion?",
-    answer:
-      "Yes, you’ll receive a completion certificate after successfully finishing the course.",
+    question: "What is the most effective way to learn Automation Testing for high-paying remote jobs?",
+    answer: "Learning Automation Testing with Playwright and Selenium at Urbancode is the most effective path. We focus on real-world frameworks, CI/CD integration with AWS DevOps, and provide hands-on experience with tools like Jenkins and Git.",
   },
   {
-    question: "Are the classes online or offline?",
-    answer:
-      "Most of our courses are conducted online through live sessions, but some categories offer hybrid options.",
+    question: "Is MEAN Stack still relevant in 2026, and where can I master it?",
+    answer: "Yes, MEAN Stack (Angular focus) is critical for enterprise-scale applications. At Urbancode, we provide deep-dive training in Angular, Express, and Node.js, specifically tailored for large-scale corporate project environments.",
   },
   {
-    question: "Can I access the course materials after completion?",
-    answer:
-      "Yes, lifetime access is provided to all recorded sessions and materials.",
+    question: "How can I transition into a Gen AI and AI/ML Engineer role without a PhD?",
+    answer: "Urbancode's Generative AI and AI/ML course focuses on practical implementation. You will learn to build LLM-powered applications, fine-tune models, and master Python for Data Science through our mentorship-led project sessions.",
   },
   {
-    question: "Is there any refund policy?",
-    answer:
-      "Refunds are available within the first 7 days of enrollment if you are not satisfied with the course.",
+    question: "Where can I find an industry-aligned .NET with Angular course?",
+    answer: "Urbancode specializes in .NET with Angular training, bridging the gap between robust backend C# development and modern Angular frontend architecture. Our graduates are highly sought after by top MNCs.",
   },
   {
-    question: "Do you provide placement assistance?",
-    answer:
-      "Yes, selected courses come with career guidance, resume preparation, and placement support from our team.",
+    question: "What are the career prospects for Data Analytics and AWS DevOps in the current market?",
+    answer: "Data Analytics and AWS DevOps are among the highest-paying roles in 2026. Urbancode provides end-to-end training, including Power BI, Tableau, and AWS Cloud architecture, backed by 100% placement assistance.",
   },
   {
-    question: "What technologies are covered in the MERN Stack course?",
-    answer:
-      "Our MERN Stack training covers MongoDB, Express.js, React.js, and Node.js with real-time projects and industry-standard practices.",
+    question: "Does Urbancode provide internship opportunities for college students?",
+    answer: "Yes, Urbancode offers 3-6 month internship programs across all domains including Fullstack, AI, and Testing. Visit www.urbancode.in to apply and gain real-time industry experience.",
   },
   {
-    question: "Do you offer .NET with Angular training?",
-    answer:
-      "Yes, we provide comprehensive training in .NET with Angular for students looking to build enterprise-scale applications.",
+    question: "How does Urbancode help in landing a job in top IT companies?",
+    answer: "We provide a comprehensive Career Launchpad program which includes resume building, mock interviews with tech leads, and direct referrals to our 150+ hiring partners in the IT industry.",
   },
 ];
 
@@ -460,6 +453,7 @@ export default function Courses({ categorySlug }) {
           </Row>
         </Container>
       </div>
+      <CourseAssistant courseName={activeCategory} />
     </div>
   );
 }

@@ -161,12 +161,16 @@
 
 @media (max-width: 768px) {
     .banner-slider-section {
-        width: 98%;
-        padding: 20px 0;
+        width: 100%;
+        padding: 10px 0;
+        margin: 0;
     }
     .banner-slider-container {
-        aspect-ratio: 16 / 9; /* Taller on mobile for better visibility */
-        border-radius: 8px;
+        aspect-ratio: 1920 / 600; /* Match original image ratio */
+        border-radius: 0;
+    }
+    .banner-img {
+        object-fit: contain; /* Ensure full width without cropping */
     }
 }
 
@@ -174,17 +178,21 @@
     .banner-slider-section {
         width: 100%; /* Go edge-to-edge for maximum impact */
         margin: 0;
-        padding: 0; /* Removed all unwanted gaps */
+        padding: 5px 0; /* Minimal vertical gap */
     }
     .banner-slider-container {
-        aspect-ratio: 1920 / 800; /* Taller than desktop but perfectly fitted for mobile content */
-        min-height: auto;
+        aspect-ratio: 1920 / 600; /* Match original image ratio */
+        min-height: auto; /* Remove min height to prevent vertical stretching/letterboxing */
         border-radius: 0; /* Full-bleed mobile look is more professional here */
     }
+    .banner-img {
+        object-fit: contain; /* Show full banner without cropping */
+    }
     .side-nav-bar {
-        width: 30px;
+        width: 40px;
+        background: rgba(0, 0, 0, 0.1); /* Subtle visibility on mobile */
     }
     .nav-chevron {
-        font-size: 16px;
+        font-size: 20px;
     }
 }

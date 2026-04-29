@@ -25,11 +25,11 @@ body {
   --heading: var(--font-inter, 'Inter', system-ui, -apple-system, sans-serif);
   --mono: ui-monospace, Consolas, monospace;
 
-  /* Fluid Typography Scale */
-  --fs-h1: clamp(2.5rem, 5vw, 4.5rem);
-  --fs-h2: clamp(2rem, 4vw, 3rem);
-  --fs-h3: clamp(1.5rem, 3vw, 2rem);
-  --fs-body: clamp(0.95rem, 1.2vw, 1.1rem);
+  /* Fluid Typography Scale (Synced with Home) */
+  --fs-h1: clamp(2.25rem, 5vw, 3.5rem);
+  --fs-h2: clamp(1.5rem, 3vw, 2.25rem);
+  --fs-h3: clamp(1.25rem, 2.5vw, 1.75rem);
+  --fs-body: 1rem;
   --fs-sm: 0.85rem;
 
   /* Standard Spacing */
@@ -38,11 +38,11 @@ body {
   --card-radius: 24px;
   
   /* Brand Colors (Synced) */
-  --brand-green: #1b7a36;
+  --brand-green: #198754;
   --neon: var(--brand-green);
-  --text: #0d1f14;
-  --text-h: #000000;
-  --text-muted: #64748b;
+  --text: #1a1a1a;
+  --text-h: #1a1a1a;
+  --text-muted: #6c757d;
   --text-sub: #94a3b8;
   --card-bg: #ffffff;
   --bg: #fff;
@@ -51,7 +51,7 @@ body {
   /* Transitions */
   --trans-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
-  font: var(--fs-body)/1.7 var(--sans);
+  font: var(--fs-body)/1.65 var(--sans);
   letter-spacing: -0.01em;
   color: var(--text);
   background: var(--bg);
@@ -150,8 +150,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h2 {
-  font-size: clamp(1.8rem, 4vw, 2.8rem);
-  font-weight: 800;
+  font-size: var(--fs-h2);
+  font-weight: 700;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -159,6 +159,7 @@ h2 {
   flex-wrap: wrap;
   text-align: center;
   margin-bottom: 20px;
+  color: var(--brand-green);
 }
 
 section {
@@ -171,11 +172,11 @@ section {
 }
 
 p {
-  margin: 16px 0; /* Standardized content margin */
-  font-size: 16px; /* Standardized content size */
-  font-weight: 400; /* Use standard weight for readability */
-  line-height: 1.7;
-  color: var(--text); /* Standardized content color */
+  margin: 16px 0;
+  font-size: var(--fs-body);
+  font-weight: 400;
+  line-height: 1.65;
+  color: var(--text);
 }
 
 code,

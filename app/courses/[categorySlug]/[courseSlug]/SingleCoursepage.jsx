@@ -8,6 +8,7 @@ import { newCourseData } from "@/app/data/newCourseData";
 import NewInternalCourse from "@/app/components/CourseLayout/NewInternalCourse";
 import { FiPlus, FiMinus } from "react-icons/fi";
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
+import CourseAssistant from "@/app/components/CourseAssistant/CourseAssistant";
 
 const newCourseMapping = {
   "mern-stack": "mern-stack",
@@ -436,6 +437,7 @@ export default function SingleCoursepage({ params }) {
         {/* End of Course Content */}
 
       </div>
+      <CourseAssistant courseName={course.title} />
     </div>
   );
 }
