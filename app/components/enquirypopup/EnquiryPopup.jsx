@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import "./EnquiryPopup.css";
 import { submitEnquiryForm } from "@/lib/api/api";
+import { FormInput, FormTextarea, FormButton } from "@/app/components/common/FormUI";
 
 export default function EnquiryPopup({ delay = 3000 }) {
   const router = useRouter();
@@ -203,48 +204,45 @@ export default function EnquiryPopup({ delay = 3000 }) {
         </p>
 
         <form className="enq-form" onSubmit={handleSubmit}>
-          <input
+          <FormInput
             name="name"
-            type="text"
             placeholder="Your name"
             required
-            minLength="3"
-            maxLength="100"
-            pattern="^[a-zA-Z\s'-]+$"
             disabled={isSubmitting}
+            className="mb-2"
           />
-          <input
+          <FormInput
             name="email"
             type="email"
             placeholder="Email address"
             required
-            maxLength="255"
             disabled={isSubmitting}
+            className="mb-2"
           />
-          <input
+          <FormInput
             name="phone"
             type="tel"
             placeholder="Phone number (10 digits)"
-            inputMode="numeric"
-            maxLength="10"
-            pattern="^\d{10}$"
+            required
             disabled={isSubmitting}
+            className="mb-2"
           />
-          <textarea
+          <FormTextarea
             name="message"
             placeholder="Your message (optional)"
-            maxLength="500"
             disabled={isSubmitting}
+            rows="2"
+            className="mb-3"
           />
 
-          <button
+          <FormButton
             type="submit"
-            className="enq-btn"
-            disabled={isSubmitting}
+            variant="success"
+            className="w-100 py-2 enq-btn"
+            loading={isSubmitting}
           >
-            <img src="/icons/ticket-white.svg" alt="" />
-            {isSubmitting ? "Submitting..." : "Enroll now"}
-          </button>
+            Enroll now
+          </FormButton>
         </form>
 
         {/* Enhanced Celebration container */}

@@ -6,6 +6,7 @@ import { MdCheckCircle, MdError, MdLanguage, MdCall } from 'react-icons/md';
 import { FaInstagram, FaLinkedin, FaYoutube, FaFacebook, FaWhatsapp } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 import './FeedbackForm.css';
+import { FormInput, FormTextarea, FormRadioGroup, FormCheckbox, FormButton, FormCard, FormSelect } from "@/app/components/common/FormUI";
 
 // API Configuration: feedback API runs on same backend as compiler (urbancode-nextjs.onrender.com).
 // Set NEXT_PUBLIC_FEEDBACK_API_URL='' to use /api/feedback proxy (same-origin).
@@ -369,27 +370,39 @@ const FeedbackForm = () => {
         switch (q.type) {
             case 'text':
                 const isEmail = q.questionText.toLowerCase().includes('email');
-                return <input type={isEmail ? "email" : "text"} value={val || ''} onChange={(e) => handleAnswerChange(q._id, e.target.value)} />;
-            case 'textarea': return <textarea value={val || ''} onChange={(e) => handleAnswerChange(q._id, e.target.value)}></textarea>;
+                return (
+                    <FormInput 
+                        type={isEmail ? "email" : "text"} 
+                        value={val || ''} 
+                        onChange={(e) => handleAnswerChange(q._id, e.target.value)} 
+                    />
+                );
+            case 'textarea': 
+                return (
+                    <FormTextarea 
+                        value={val || ''} 
+                        onChange={(e) => handleAnswerChange(q._id, e.target.value)} 
+                    />
+                );
             case 'radio':
                 return (
-                    <div className="radio-group-horizontal">
-                        {q.options.map(opt => (
-                            <label key={opt} className={`radio-pill ${val === opt ? 'active' : ''}`}>
-                                <input type="radio" checked={val === opt} onChange={() => handleAnswerChange(q._id, opt)} />
-                                {opt}
-                            </label>
-                        ))}
-                    </div>
+                    <FormRadioGroup 
+                        name={q._id}
+                        options={q.options}
+                        value={val}
+                        onChange={(e) => handleAnswerChange(q._id, e.target.value)}
+                    />
                 );
             case 'checkbox':
                 return (
                     <div className="checkbox-grid">
                         {q.options.map(opt => (
-                            <label key={opt} className="checkbox-item">
-                                <input type="checkbox" checked={(val || []).includes(opt)} onChange={() => handleCheckboxChange(q._id, opt)} />
-                                <span>{opt}</span>
-                            </label>
+                            <FormCheckbox 
+                                key={opt}
+                                label={opt}
+                                checked={(val || []).includes(opt)} 
+                                onChange={() => handleCheckboxChange(q._id, opt)} 
+                            />
                         ))}
                     </div>
                 );
@@ -485,57 +498,58 @@ const FeedbackForm = () => {
                                     return (
                                         <div key="trainer-block-wrapper" className="trainer-evaluation-wrapper">
                                             {trainerEvaluations.map((trainer, tIndex) => (
-                                                <div key={tIndex} id={`trainer-block-${tIndex}`} className="trainer-block-card card-style">
-                                                    <div className="trainer-header">
+                                                <div key={tIndex} id={`trainer-block-${tIndex}`}>
+                                                    <FormCard className="p-4 mb-4">
+                                                    <div className="trainer-header d-flex justify-content-between align-items-center mb-4">
                                                         <div className="trainer-label">
-                                                            <span className="trainer-count">{tIndex + 1}</span>
-                                                            <span>{trainerEvalQuestions[0]?.questionText || 'Trainer Evaluation'}</span>
+                                                            <span className="trainer-count me-2">{tIndex + 1}</span>
+                                                            <span className="fw-bold">{trainerEvalQuestions[0]?.questionText || 'Trainer Evaluation'}</span>
                                                         </div>
                                                         {trainerEvaluations.length > 1 && (
-                                                            <button type="button" className="t-remove-btn" onClick={() => removeTrainer(tIndex)}>Remove</button>
+                                                            <button type="button" className="btn btn-outline-danger btn-sm" onClick={() => removeTrainer(tIndex)}>Remove</button>
                                                         )}
                                                     </div>
 
-                                                    <div className="form-group dynamic-question">
-                                                        <label>Select Trainer Type <span className="required">*</span></label>
-                                                        <div className="radio-group-horizontal">
-                                                            {['Course Training', 'Placement'].map(type => (
-                                                                <label key={type} className={`radio-pill ${trainer.trainerType === type ? 'active' : ''}`} onClick={() => updateTrainerType(tIndex, type)}>
-                                                                    <input type="radio" checked={trainer.trainerType === type} onChange={() => { }} />
-                                                                    {type}
-                                                                </label>
-                                                            ))}
-                                                        </div>
+                                                    <div className="form-group mb-4">
+                                                        <FormRadioGroup
+                                                            label="Select Trainer Type"
+                                                            name={`trainerType-${tIndex}`}
+                                                            options={['Course Training', 'Placement']}
+                                                            value={trainer.trainerType}
+                                                            onChange={(e) => updateTrainerType(tIndex, e.target.value)}
+                                                            required
+                                                        />
                                                     </div>
 
-                                                    <div className="form-group dynamic-question">
-                                                        <label>Select Trainer <span className="required">*</span></label>
-                                                        <select value={trainer.trainerId} onChange={(e) => updateTrainerSelection(tIndex, e.target.value)} required className="dynamic-select">
-                                                            <option value="">-- Choose a Trainer --</option>
-                                                            {trainers.map(t => <option key={t._id} value={t._id}>{t.name} {t.specialization ? `(${t.specialization})` : ''}</option>)}
-                                                            <option value="other">Other (Enter Manually)</option>
-                                                        </select>
+                                                    <div className="form-group mb-4">
+                                                        <FormSelect
+                                                            label="Select Trainer"
+                                                            value={trainer.trainerId}
+                                                            onChange={(e) => updateTrainerSelection(tIndex, e.target.value)}
+                                                            options={[
+                                                                ...trainers.map(t => ({ value: t._id, label: `${t.name} ${t.specialization ? `(${t.specialization})` : ''}` })),
+                                                                { value: 'other', label: 'Other (Enter Manually)' }
+                                                            ]}
+                                                            placeholder="-- Choose a Trainer --"
+                                                            required
+                                                        />
                                                     </div>
 
                                                     {trainer.trainerId === 'other' && (
-                                                        <div className="form-group dynamic-question animated-fade">
-                                                            <label>Enter Trainer Name <span className="required">*</span></label>
-                                                            <input 
-                                                                type="text" 
+                                                        <div className="form-group mb-4 animated-fade">
+                                                            <FormInput
+                                                                label="Enter Trainer Name"
                                                                 placeholder="Type trainer name here..." 
                                                                 value={trainer.trainerName}
                                                                 onChange={(e) => updateManualTrainerName(tIndex, e.target.value)}
                                                                 required
-                                                                className="dynamic-input"
-                                                                style={{ width: '100%', padding: '12px', borderRadius: '10px', border: '1px solid #e2e8f0' }}
                                                             />
                                                         </div>
                                                     )}
 
-                                                    {/* Render all trainer eval questions for this trainer */}
                                                     {trainerEvalQuestions.map(teq => (
-                                                        <div key={teq._id} className="form-group dynamic-question">
-                                                            {teq.questionText.trim() !== '.' && <label>{teq.questionText} {teq.required && <span className="required">*</span>}</label>}
+                                                        <div key={teq._id} className="form-group mb-4">
+                                                            {teq.questionText.trim() !== '.' && <label className="form-label-standard d-block mb-2">{teq.questionText} {teq.required && <span className="text-danger">*</span>}</label>}
                                                             {teq.type === 'matrix' ? (
                                                                 <div className="matrix-table-container">
                                                                     <table className="matrix-table">
@@ -559,24 +573,26 @@ const FeedbackForm = () => {
                                                             )}
                                                         </div>
                                                     ))}
+                                                    </FormCard>
                                                 </div>
                                             ))}
-                                            <div className="add-trainer-section">
-                                                <button type="button" className="add-trainer-btn" onClick={addTrainer}>+ Add Another Trainer</button>
+                                            <div className="add-trainer-section text-center mb-5">
+                                                <FormButton type="button" variant="outline" onClick={addTrainer}>+ Add Another Trainer</FormButton>
                                             </div>
                                         </div>
                                     );
                                 }
 
-                                // Render other questions
                                 if (q.questionText.toLowerCase().includes('trainer name')) return null;
 
                                 return (
-                                    <div key={q._id} id={`q-${q._id}`} className="question-card card-style">
-                                        <div className="form-group dynamic-question">
-                                            <label>{q.questionText} {q.required && <span className="required">*</span>}</label>
-                                            <div className="question-content">{renderQuestion(q)}</div>
-                                        </div>
+                                    <div key={q._id} id={`q-${q._id}`} className="mb-4">
+                                        <FormCard className="p-4">
+                                            <div className="form-group">
+                                                <label className="form-label-standard d-block mb-3">{q.questionText} {q.required && <span className="text-danger">*</span>}</label>
+                                                <div className="question-content">{renderQuestion(q)}</div>
+                                            </div>
+                                        </FormCard>
                                     </div>
                                 );
                             })}
@@ -584,10 +600,10 @@ const FeedbackForm = () => {
                     );
                 })}
 
-                <div className="form-footer">
-                    <button type="submit" className="submit-btn" disabled={submitting}>
-                        {submitting ? 'Submitting...' : 'Submit Feedback'}
-                    </button>
+                <div className="form-footer mt-5 mb-5 text-center">
+                    <FormButton type="submit" variant="success" className="px-5 py-3" loading={submitting}>
+                        Submit Feedback
+                    </FormButton>
                 </div>
             </form>
         </div>

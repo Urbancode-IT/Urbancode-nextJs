@@ -1,0 +1,113 @@
+.form-ui-group {
+  margin-bottom: var(--form-spacing);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-ui-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #444;
+  margin-left: 2px;
+}
+
+.form-ui-input,
+.form-ui-select,
+.form-ui-textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: var(--form-input-radius);
+  border: 1px solid #ccc;
+  outline: none;
+  font-size: 14px;
+  background: white;
+  transition: var(--transition-base);
+}
+
+.form-ui-input:focus,
+.form-ui-select:focus,
+.form-ui-textarea:focus {
+  border-color: var(--form-primary);
+  box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.15);
+}
+
+.form-ui-input:disabled,
+.form-ui-select:disabled,
+.form-ui-textarea:disabled {
+  background-color: #f5f5f5;
+  cursor: not-allowed;
+}
+
+.form-ui-error {
+  font-size: 12px;
+  color: var(--form-error);
+  margin-top: 4px;
+  margin-left: 2px;
+  font-weight: 500;
+}
+
+.form-ui-button {
+  background: var(--form-dark);
+  color: white;
+  border: none;
+  border-radius: var(--form-btn-radius);
+  padding: 12px 24px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-base);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.form-ui-button:hover:not(:disabled) {
+  background: var(--form-dark-hover);
+  transform: translateY(-1px);
+}
+
+.form-ui-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.form-ui-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.form-ui-button.primary {
+  background: var(--form-primary);
+}
+
+.form-ui-button.primary:hover:not(:disabled) {
+  background: var(--form-primary-hover);
+}
+
+.form-ui-button.success {
+  background: var(--form-success-gradient);
+  box-shadow: 0 4px 15px rgba(0, 168, 107, 0.2);
+}
+
+.form-ui-card {
+  background: var(--form-bg);
+  border-radius: var(--form-radius);
+  box-shadow: var(--form-shadow);
+  padding: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+@media (max-width: 480px) {
+  .form-ui-card {
+    padding: 20px;
+    border-radius: 16px;
+  }
+  
+  .form-ui-input,
+  .form-ui-select,
+  .form-ui-textarea {
+    font-size: 13px;
+    padding: 9px 12px;
+  }
+}

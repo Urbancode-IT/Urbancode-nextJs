@@ -285,15 +285,52 @@
     color: #000;
 }
 
+/* TRANSFORM SECTION */
+.mentorpage-transform-section {
+  padding: 100px 0;
+  background: var(--form-bg-alt, #f8fafc);
+}
+
 /* Application Section */
-.internship-page .application-section {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    padding: 60px 15px;
-    background: linear-gradient(180deg,
-            rgba(var(--bg-neutral-rgb), 0.4) 0%,
-            rgba(182, 225, 209, 0.4) 100%);
+.application-section {
+  padding: 100px 0;
+  background: var(--form-bg-alt, #f8fafc);
+}
+
+.application-section .section-title {
+  font-size: 36px;
+  font-weight: 800;
+  color: #1e293b;
+  margin-bottom: 15px;
+}
+
+.application-section .section-subtitle {
+  font-size: 18px;
+  color: #64748b;
+  line-height: 1.6;
+}
+
+.application-card .form-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.application-card .form-subtitle {
+  color: #64748b;
+  font-size: 16px;
+}
+
+/* Redundant styles removed as they are now handled by FormUI */
+
+@media (max-width: 768px) {
+  .application-section {
+    padding: 60px 0;
+  }
+  
+  .application-section .section-title {
+    font-size: 28px;
+  }
 }
 
 .internship-page .application-card {

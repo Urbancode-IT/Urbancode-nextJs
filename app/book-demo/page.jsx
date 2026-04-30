@@ -1,5 +1,6 @@
 'use client';
 import React, { useState, useEffect, Suspense } from "react";
+import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
 import { 
   Send, 
@@ -16,6 +17,8 @@ import {
   Video
 } from "lucide-react";
 import "./BookDemoPage.css";
+
+import { FormInput, FormSelect, FormTextarea, FormButton, FormCard } from "@/app/components/common/FormUI";
 
 const BookDemoContent = () => {
   const router = useRouter();
@@ -87,8 +90,6 @@ const BookDemoContent = () => {
         message: `[DEMO REQUEST] Date: ${formData.preferredDate}, Time: ${formData.preferredTime}. Msg: ${formData.message || 'N/A'}`,
       };
 
-      // Using fetch with 'text/plain' and 'no-cors' to handle Google Apps Script 
-      // redirects and preflight restrictions effectively.
       await fetch(scriptURL, {
         method: "POST",
         headers: {
@@ -115,199 +116,148 @@ const BookDemoContent = () => {
     }
   };
 
+  const courseOptions = [
+    "Python with AI",
+    "Full Stack Development",
+    "Data Science",
+    "UI/UX Design",
+    "Software Testing",
+    "Cloud/DevOps",
+    "Digital Marketing",
+    "Other"
+  ];
+
+  const timeOptions = [
+    "Morning (10 AM - 1 PM)",
+    "Afternoon (2 PM - 5 PM)",
+    "Evening (6 PM - 9 PM)"
+  ];
+
   return (
     <div className="book-demo-page-wrapper">
-      <div className="book-demo-container">
-        {/* Left Side: Info */}
-        <div className="demo-info-side">
-          <div className="demo-info-content">
-            <h1>Experience the Future of Learning</h1>
-            <p>
-              Book a personalized 1-on-1 demo session with our industry experts. 
-              Discover our curriculum, platform, and placement strategy.
-            </p>
-            
-            <div className="demo-features">
-              <div className="demo-feature-item">
-                <div className="demo-feature-icon">
-                  <Video size={20} />
-                </div>
-                <div className="demo-feature-text">
-                  <strong>Live Interaction</strong>
-                  <span>Directly speak with our technical mentors</span>
-                </div>
-              </div>
-              <div className="demo-feature-item">
-                <div className="demo-feature-icon">
-                  <Sparkles size={20} />
-                </div>
-                <div className="demo-feature-text">
-                  <strong>Career Counseling</strong>
-                  <span>Get a roadmap tailored to your goals</span>
-                </div>
-              </div>
-              <div className="demo-feature-item">
-                <div className="demo-feature-icon">
-                  <Monitor size={20} />
-                </div>
-                <div className="demo-feature-text">
-                  <strong>Platform Walkthrough</strong>
-                  <span>Explore our hands-on coding environment</span>
-                </div>
-              </div>
+      <div className="container" style={{maxWidth: '700px'}}>
+        <FormCard className="p-0 overflow-hidden" style={{ background: 'linear-gradient(180deg, #e3f0eb 0%, #f3f5f3 100%)', border: 'none' }}>
+          {/* Form Side */}
+          <div className="demo-form-side p-4 p-md-5">
+            <div className="text-center mb-4">
+              <Image 
+                src="/images/home/logo.png" 
+                alt="Urban Code Logo" 
+                width={150} 
+                height={35}
+                priority
+              />
+              <h1 className="h3 fw-bold mt-3 mb-2 text-dark">Book a Demo Session</h1>
+              <p className="small text-muted">Experience our expert-led training with a free personalized demo.</p>
             </div>
+
+            {status.message && (
+              <div className={`alert alert-${status.type === 'error' ? 'danger' : 'success'} mb-4 text-center`}>
+                {status.message}
+              </div>
+            )}
+
+            <form onSubmit={handleSubmit}>
+              <div className="row g-3">
+                <div className="col-md-6">
+                  <FormInput
+                    label="Full Name"
+                    name="name"
+                    placeholder="John Doe"
+                    value={formData.name}
+                    onChange={handleChange}
+                    error={errors.name}
+                    disabled={loading}
+                    required
+                  />
+                </div>
+
+                <div className="col-md-6">
+                  <FormInput
+                    label="Email Address"
+                    type="email"
+                    name="email"
+                    placeholder="john@example.com"
+                    value={formData.email}
+                    onChange={handleChange}
+                    error={errors.email}
+                    disabled={loading}
+                    required
+                  />
+                </div>
+
+                <div className="col-md-6">
+                  <FormInput
+                    label="Mobile Number"
+                    type="tel"
+                    name="phone"
+                    placeholder="9876543210"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    error={errors.phone}
+                    disabled={loading}
+                    required
+                  />
+                </div>
+
+                <div className="col-md-6">
+                  <FormSelect
+                    label="Select Course"
+                    name="course"
+                    placeholder="Choose Course"
+                    options={courseOptions}
+                    value={formData.course}
+                    onChange={handleChange}
+                    error={errors.course}
+                    disabled={loading}
+                    required
+                  />
+                </div>
+
+                <div className="col-md-6">
+                  <FormInput
+                    label="Preferred Date"
+                    type="date"
+                    name="preferredDate"
+                    min={new Date().toISOString().split('T')[0]}
+                    value={formData.preferredDate}
+                    onChange={handleChange}
+                    error={errors.preferredDate}
+                    disabled={loading}
+                    required
+                  />
+                </div>
+
+                <div className="col-md-6">
+                  <FormSelect
+                    label="Preferred Time"
+                    name="preferredTime"
+                    placeholder="Select Time"
+                    options={timeOptions}
+                    value={formData.preferredTime}
+                    onChange={handleChange}
+                    error={errors.preferredTime}
+                    disabled={loading}
+                    required
+                  />
+                </div>
+
+                <div className="col-12 text-center mt-4">
+                  <FormButton 
+                    type="submit" 
+                    variant="success" 
+                    className="px-4 py-2 rounded-pill"
+                    loading={loading}
+                    style={{ minWidth: '160px', backgroundColor: '#444444', border: 'none' }}
+                  >
+                    {loading ? "Scheduling..." : "Book My Free Demo"}
+                    {!loading && <Send size={18} className="ms-2" />}
+                  </FormButton>
+                </div>
+              </div>
+            </form>
           </div>
-        </div>
-
-        {/* Right Side: Form */}
-        <div className="demo-form-side">
-          {status.message && (
-            <div className={`demo-status-alert ${status.type}`}>
-              {status.type === 'loading' ? <Clock size={18} /> : <CheckCircle2 size={18} />}
-              {status.message}
-            </div>
-          )}
-
-          <form onSubmit={handleSubmit} className="demo-form-grid">
-            <div className="demo-form-group">
-              <label className="demo-label"><User size={14} /> Full Name</label>
-              <div className="demo-input-wrapper">
-                <input
-                  type="text"
-                  name="name"
-                  className="demo-control"
-                  placeholder="John Doe"
-                  value={formData.name}
-                  onChange={handleChange}
-                  disabled={loading}
-                />
-                <i><User size={18} /></i>
-              </div>
-              {errors.name && <div className="demo-error">{errors.name}</div>}
-            </div>
-
-            <div className="demo-form-group">
-              <label className="demo-label"><Mail size={14} /> Email Address</label>
-              <div className="demo-input-wrapper">
-                <input
-                  type="email"
-                  name="email"
-                  className="demo-control"
-                  placeholder="john@example.com"
-                  value={formData.email}
-                  onChange={handleChange}
-                  disabled={loading}
-                />
-                <i><Mail size={18} /></i>
-              </div>
-              {errors.email && <div className="demo-error">{errors.email}</div>}
-            </div>
-
-            <div className="demo-form-group">
-              <label className="demo-label"><Phone size={14} /> Mobile Number</label>
-              <div className="demo-input-wrapper">
-                <input
-                  type="tel"
-                  name="phone"
-                  className="demo-control"
-                  placeholder="9876543210"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  disabled={loading}
-                />
-                <i><Phone size={18} /></i>
-              </div>
-              {errors.phone && <div className="demo-error">{errors.phone}</div>}
-            </div>
-
-            <div className="demo-form-group">
-              <label className="demo-label"><BookOpen size={14} /> Select Course</label>
-              <div className="demo-input-wrapper">
-                <select
-                  name="course"
-                  className="demo-control"
-                  value={formData.course}
-                  onChange={handleChange}
-                  disabled={loading}
-                >
-                  <option value="">Choose Course</option>
-                  <option value="Python with AI">Python with AI</option>
-                  <option value="Full Stack Development">Full Stack Development</option>
-                  <option value="Data Science">Data Science</option>
-                  <option value="UI/UX Design">UI/UX Design</option>
-                  <option value="Software Testing">Software Testing</option>
-                  <option value="Cloud/DevOps">Cloud/DevOps</option>
-                  <option value="Digital Marketing">Digital Marketing</option>
-                  <option value="Other">Other</option>
-                </select>
-                <i><BookOpen size={18} /></i>
-              </div>
-              {errors.course && <div className="demo-error">{errors.course}</div>}
-            </div>
-
-            <div className="demo-form-group">
-              <label className="demo-label"><Calendar size={14} /> Preferred Date</label>
-              <div className="demo-input-wrapper">
-                <input
-                  type="date"
-                  name="preferredDate"
-                  className="demo-control"
-                  min={new Date().toISOString().split('T')[0]}
-                  value={formData.preferredDate}
-                  onChange={handleChange}
-                  disabled={loading}
-                />
-                <i><Calendar size={18} /></i>
-              </div>
-              {errors.preferredDate && <div className="demo-error">{errors.preferredDate}</div>}
-            </div>
-
-            <div className="demo-form-group">
-              <label className="demo-label"><Clock size={14} /> Preferred Time</label>
-              <div className="demo-input-wrapper">
-                <select
-                  name="preferredTime"
-                  className="demo-control"
-                  value={formData.preferredTime}
-                  onChange={handleChange}
-                  disabled={loading}
-                >
-                  <option value="">Select Time</option>
-                  <option value="Morning (10 AM - 1 PM)">Morning (10 AM - 1 PM)</option>
-                  <option value="Afternoon (2 PM - 5 PM)">Afternoon (2 PM - 5 PM)</option>
-                  <option value="Evening (6 PM - 9 PM)">Evening (6 PM - 9 PM)</option>
-                </select>
-                <i><Clock size={18} /></i>
-              </div>
-              {errors.preferredTime && <div className="demo-error">{errors.preferredTime}</div>}
-            </div>
-
-            <div className="demo-form-group full-width">
-              <label className="demo-label">Message (Optional)</label>
-              <textarea
-                name="message"
-                className="demo-control"
-                rows="2"
-                style={{paddingLeft: '16px'}}
-                placeholder="Anything else you'd like to share?"
-                value={formData.message}
-                onChange={handleChange}
-                disabled={loading}
-              ></textarea>
-            </div>
-
-            <div className="demo-form-group full-width">
-              <button 
-                type="submit" 
-                className="demo-submit-btn"
-                disabled={loading}
-              >
-                {loading ? "Scheduling..." : "Book My Free Demo"}
-                {!loading && <Send size={18} />}
-              </button>
-            </div>
-          </form>
-        </div>
+        </FormCard>
       </div>
     </div>
   );

@@ -5,6 +5,8 @@ import './internship.css'
 import { submitInternshipApplication } from '../../lib/api/api'
 import { Clock } from 'lucide-react'
 
+import { FormInput, FormSelect, FormTextarea, FormButton, FormCard } from "@/app/components/common/FormUI";
+
 function App() {
   const router = useRouter()
   const [formData, setFormData] = useState({
@@ -17,12 +19,14 @@ function App() {
     interest: '',
     portfolio: ''
   })
+  const [loading, setLoading] = useState(false)
 
   const handleInputChange = (e) => {
-    const { id, value } = e.target
+    const { id, name, value } = e.target
+    const fieldName = id || name
     setFormData(prev => ({
       ...prev,
-      [id]: value
+      [fieldName]: value
     }))
   }
 
@@ -31,33 +35,17 @@ function App() {
 
     const { firstName, lastName, email, mobile, program, experience, interest } = formData
 
-    // Name validation
     if (!firstName.trim()) { alert('Please enter your first name.'); return }
-    if (firstName.trim().length < 2) { alert('First name must be at least 2 characters.'); return }
-    if (!/^[a-zA-Z\s'-]+$/.test(firstName.trim())) { alert('First name can only contain letters.'); return }
-
     if (!lastName.trim()) { alert('Please enter your last name.'); return }
-    if (lastName.trim().length < 1) { alert('Last name is required.'); return }
-    if (!/^[a-zA-Z\s'-]+$/.test(lastName.trim())) { alert('Last name can only contain letters.'); return }
-
-    // Email validation
     if (!email.trim()) { alert('Please enter your email.'); return }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { alert('Please enter a valid email address.'); return }
-    if (email.length > 255) { alert('Email is too long.'); return }
-
-    // Mobile validation
     if (!mobile.trim()) { alert('Please enter your mobile number.'); return }
-    const cleanMobile = mobile.replace(/\D/g, '');
-    if (cleanMobile.length !== 10) { alert('Mobile number must be exactly 10 digits.'); return }
-    if (!/^[6-9]\d{9}$/.test(cleanMobile)) { alert('Please enter a valid 10-digit Indian mobile number.'); return }
-
     if (!program) { alert('Please select a program.'); return }
     if (!experience) { alert('Please select your experience.'); return }
     if (!interest.trim()) { alert('Please tell us why you are interested in this internship.'); return }
-    if (interest.trim().length < 10) { alert('Interest description must be at least 10 characters.'); return }
 
-    // Form submission logic would go here
+    setLoading(true)
     const result = await submitInternshipApplication(formData);
+    setLoading(false)
 
     if (result.success) {
       router.push('/thankyou');
@@ -163,6 +151,9 @@ function App() {
     }
   ]
 
+  const programOptions = internships.map(i => i.title);
+  const experienceOptions = ["Fresher", "0-1 year", "2-3 years", "3+ years"];
+
   const features = [
     {
       icon: "fas fa-laptop-code",
@@ -261,119 +252,118 @@ function App() {
             </p>
           </div>
 
-          <div className="application-card">
-            <h4 className="form-title">Apply for Internship</h4>
-            <p className="form-subtitle">
-              Fill out the form below to apply for one of our internship programs.
-            </p>
+          <div className="row justify-content-center">
+            <div className="col-lg-10">
+              <FormCard className="p-4 p-md-5">
+                <h4 className="form-title text-center mb-2">Apply for Internship</h4>
+                <p className="form-subtitle text-center mb-5">
+                  Fill out the form below to apply for one of our internship programs.
+                </p>
 
-            <form onSubmit={handleSubmit}>
-              <div className="row g-3">
-                <div className="col-md-6">
-                  <label htmlFor="firstName"></label>
-                  <input
-                    type="text"
-                    id="firstName"
-                    className="form-control custom-input"
-                    placeholder="Enter first name"
-                    value={formData.firstName}
-                    onChange={handleInputChange}
-                  />
-                </div>
-                <div className="col-md-6">
-                  <label htmlFor="lastName"></label>
-                  <input
-                    type="text"
-                    id="lastName"
-                    className="form-control custom-input"
-                    placeholder="Enter last name"
-                    value={formData.lastName}
-                    onChange={handleInputChange}
-                  />
-                </div>
-                <div className="col-12">
-                  <label htmlFor="email"></label>
-                  <input
-                    type="email"
-                    id="email"
-                    className="form-control custom-input"
-                    placeholder="Enter your email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                  />
-                </div>
-                <div className="col-12">
-                  <label htmlFor="mobile"></label>
-                  <input
-                    type="tel"
-                    id="mobile"
-                    className="form-control custom-input"
-                    placeholder="Enter your mobile number"
-                    value={formData.mobile}
-                    onChange={handleInputChange}
-                  />
-                </div>
-                <div className="col-12">
-                  <label htmlFor="program"></label>
-                  <select
-                    id="program"
-                    className="form-select custom-input"
-                    value={formData.program}
-                    onChange={handleInputChange}
-                  >
-                    <option value="" disabled>Select a program</option>
-                    {internships.map(internship => (
-                      <option key={internship.id} value={internship.title}>
-                        {internship.title}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-                <div className="col-12">
-                  <label htmlFor="experience"></label>
-                  <select
-                    id="experience"
-                    className="form-select custom-input"
-                    value={formData.experience}
-                    onChange={handleInputChange}
-                  >
-                    <option value="" disabled>Select your experience</option>
-                    <option value="Fresher">Fresher</option>
-                    <option value="0-1 year">0-1 year</option>
-                    <option value="2-3 years">2-3 years</option>
-                    <option value="3+ years">3+ years</option>
-                  </select>
-                </div>
-                <div className="col-12">
-                  <label htmlFor="interest"></label>
-                  <textarea
-                    id="interest"
-                    className="form-control custom-input"
-                    rows="3"
-                    placeholder="Tell us about your goals and what you hope to gain"
-                    value={formData.interest}
-                    onChange={handleInputChange}
-                  ></textarea>
-                </div>
-                <div className="col-12">
-                  <label htmlFor="portfolio"></label>
-                  <input
-                    type="url"
-                    id="portfolio"
-                    className="form-control custom-input"
-                    placeholder="https://github.com/yourusername"
-                    value={formData.portfolio}
-                    onChange={handleInputChange}
-                  />
-                </div>
-                <div className="submit-container">
-                  <button type="submit" className="submit-btn">
-                    Submit Application
-                  </button>
-                </div>
-
-              </div>
-            </form>
+                <form onSubmit={handleSubmit}>
+                  <div className="row g-4">
+                    <div className="col-md-6">
+                      <FormInput
+                        label="First Name"
+                        id="firstName"
+                        placeholder="Enter first name"
+                        value={formData.firstName}
+                        onChange={handleInputChange}
+                        required
+                        disabled={loading}
+                      />
+                    </div>
+                    <div className="col-md-6">
+                      <FormInput
+                        label="Last Name"
+                        id="lastName"
+                        placeholder="Enter last name"
+                        value={formData.lastName}
+                        onChange={handleInputChange}
+                        required
+                        disabled={loading}
+                      />
+                    </div>
+                    <div className="col-md-6">
+                      <FormInput
+                        label="Email Address"
+                        type="email"
+                        id="email"
+                        placeholder="Enter your email"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        required
+                        disabled={loading}
+                      />
+                    </div>
+                    <div className="col-md-6">
+                      <FormInput
+                        label="Mobile Number"
+                        type="tel"
+                        id="mobile"
+                        placeholder="Enter your mobile number"
+                        value={formData.mobile}
+                        onChange={handleInputChange}
+                        required
+                        disabled={loading}
+                      />
+                    </div>
+                    <div className="col-md-6">
+                      <FormSelect
+                        label="Select Program"
+                        id="program"
+                        placeholder="Select a program"
+                        options={programOptions}
+                        value={formData.program}
+                        onChange={handleInputChange}
+                        required
+                        disabled={loading}
+                      />
+                    </div>
+                    <div className="col-md-6">
+                      <FormSelect
+                        label="Experience"
+                        id="experience"
+                        placeholder="Select your experience"
+                        options={experienceOptions}
+                        value={formData.experience}
+                        onChange={handleInputChange}
+                        required
+                        disabled={loading}
+                      />
+                    </div>
+                    <div className="col-12">
+                      <FormTextarea
+                        label="Reason for Interest"
+                        id="interest"
+                        rows="3"
+                        placeholder="Tell us about your goals and what you hope to gain"
+                        value={formData.interest}
+                        onChange={handleInputChange}
+                        required
+                        disabled={loading}
+                      />
+                    </div>
+                    <div className="col-12">
+                      <FormInput
+                        label="Portfolio/GitHub URL"
+                        type="url"
+                        id="portfolio"
+                        placeholder="https://github.com/yourusername"
+                        value={formData.portfolio}
+                        onChange={handleInputChange}
+                        disabled={loading}
+                      />
+                    </div>
+                    <div className="col-12 mt-4">
+                      <FormButton type="submit" variant="success" className="w-100 py-3" loading={loading}>
+                        Submit Application
+                      </FormButton>
+                    </div>
+                  </div>
+                </form>
+              </FormCard>
+            </div>
           </div>
         </div>
       </section>

@@ -21,12 +21,13 @@
   position: relative;
   width: 520px;
   max-width: 100%;
-  background: linear-gradient(180deg, #ffffff 0%, #eefbf0 100%);
+  background: var(--form-bg);
   padding: 40px 32px 50px;
-  border-radius: 26px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  border-radius: var(--form-radius);
+  box-shadow: var(--form-shadow);
   overflow: hidden;
   animation: cardSlideUp 0.4s cubic-bezier(0.18, 1.25, 0.4, 1);
+  border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 @keyframes cardSlideUp {
@@ -57,6 +58,7 @@
   justify-content: center;
   transition: all 0.2s ease;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 2;
 }
 
 .enq-close:hover {
@@ -72,7 +74,7 @@
   margin-left: -32px;
   margin-top: -40px;
   padding: 16px 0;
-  background: linear-gradient(90deg, #079e4f, #0b6d2e);
+  background: var(--form-success-gradient);
   text-align: center;
   font-size: 18px;
   font-weight: 800;
@@ -88,7 +90,7 @@
   left: 0;
   width: 100%;
   height: 8px;
-  background: linear-gradient(90deg, #068945, #095a26);
+  background: rgba(0, 0, 0, 0.1);
 }
 
 /* Title */
@@ -124,82 +126,14 @@
   padding: 14px 18px;
   font-size: 15px;
   background: #fff;
-  border-radius: 12px;
-  border: 1.5px solid #dfe9e2;
-  outline: none;
-  transition: all 0.3s ease;
-  font-family: inherit;
-}
+  border-radius: var(--form-input-radius);
+/* Redundant input/button styles removed - now handled by FormUI */
 
-.enq-form input:focus,
-.enq-form textarea:focus {
-  border-color: #079e4f;
-  box-shadow: 0 6px 20px rgba(7, 158, 79, 0.15);
-  transform: translateY(-2px);
-}
-
-.enq-form input::placeholder,
-.enq-form textarea::placeholder {
-  color: #9ab0a4;
-}
-
-textarea {
-  min-height: 90px;
-  resize: vertical;
-}
-
-/* Submit button */
-.enq-btn {
-  margin-top: 10px;
-  background: linear-gradient(90deg, #12d46c, #0c9246);
-  color: #fff;
-  padding: 16px;
-  font-size: 16px;
-  border-radius: 50px;
-  border: none;
-  font-weight: 700;
-  cursor: pointer;
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  align-items: center;
-  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  position: relative;
-  overflow: hidden;
-}
-
-.enq-btn::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: left 0.6s;
-}
-
-.enq-btn:hover::before {
-  left: 100%;
-}
-
-.enq-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 25px rgba(7, 158, 79, 0.35);
-}
-
-.enq-btn:active {
-  transform: translateY(-1px);
-}
-
-.enq-btn img {
-  width: 20px;
-  height: 20px;
-  transition: transform 0.3s ease;
-}
-
-.enq-btn:hover img {
-  transform: scale(1.1) rotate(5deg);
+@media (max-width: 500px) {
+  .enq-card {
+    padding: 25px 20px;
+    width: 92%;
+  }
 }
 
 /* Enhanced Celebration particles */

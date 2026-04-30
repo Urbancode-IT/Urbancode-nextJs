@@ -447,7 +447,7 @@
   display: inline;
   box-shadow: none;
   transition: var(--trans);
-  font-weight: 600;
+  font-weight: 400;
   animation: none;
 }
 

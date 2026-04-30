@@ -1,9 +1,10 @@
 'use client';
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MessageSquare, X, Send, Bot, User, ChevronRight, Sparkles } from 'lucide-react';
+import { MessageSquare, X, Send, Bot, User, ChevronRight, Sparkles, Phone, Mail } from 'lucide-react';
 import './CourseAssistant.css';
 
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
 const CourseAssistant = ({ courseName }) => {
@@ -31,42 +32,60 @@ const CourseAssistant = ({ courseName }) => {
     return () => clearTimeout(timer);
   }, [isOpen]);
 
-  const initialMessages = {
-    "MERN Stack Development": [
-      { id: 1, type: 'bot', text: `Hi there! I'm your **MERN Stack Guide**. Ready to build modern web apps with MongoDB, Express, React, and Node?` },
-      { id: 2, type: 'bot', text: `The MERN stack is the #1 choice for startups and tech giants like Netflix and Airbnb. 🚀` },
-      { id: 3, type: 'bot', text: `What would you like to explore first?`, options: ["Market Trends 📈", "Curriculum Details 📚", "Job Placement 💼", "Prerequisites 🛠️"] }
-    ],
-    "MEAN Stack Development": [
-        { id: 1, type: 'bot', text: `Hello! I'm your **MEAN Stack Expert**. Interested in mastering Angular, Node.js, Express, and MongoDB?` },
-        { id: 2, type: 'bot', text: `MEAN is perfect for building scalable enterprise-grade applications.` },
-        { id: 3, type: 'bot', text: `How can I help you today?`, options: ["Job Opportunities 💼", "Angular vs React ⚔️", "Syllabus 📚"] }
-    ],
-    "default": [
-      { id: 1, type: 'bot', text: `Hello! I'm your learning assistant for **${courseName}**. How can I help you today?` },
-      { id: 2, type: 'bot', text: `I can tell you about the curriculum, career paths, or how we help you get hired.` },
-      { id: 3, type: 'bot', text: `What's on your mind?`, options: ["Career Growth 🚀", "Course Syllabus 📚", "Ask a Question 💬"] }
-    ]
+  const FAQ_DATA = {
+    "MERN Stack Development": {
+      "Fundamental Overview": "MERN stands for MongoDB, Express, React, and Node.js. It's a powerful JavaScript stack used to build high-performance full-stack web applications.",
+      "Market Trends": "MERN is currently the most popular stack for startups. React has over 40% market share in frontend libraries, and Node.js is the preferred choice for scalable backend systems.",
+      "Fresher Salaries": "Freshers in MERN Stack typically earn between ₹4LPA to ₹7LPA in India, depending on their project portfolio.",
+      "Professional Salaries": "Experienced MERN developers (3+ years) can easily earn between ₹12LPA to ₹25LPA.",
+      "Course Duration": "The comprehensive program lasts 5 months, with 3 months of intensive training and 2 months of project-based internship.",
+      "Placement Support": "We provide 100% placement support, including resume optimization, LinkedIn branding, and direct referrals to our 200+ hiring partners.",
+      "Hands-on Projects": "You will build 3 major projects: An E-commerce platform, a real-time Chat application, and a Video Streaming service.",
+      "Certifications": "You'll receive an Industry-Recognized Course Completion Certificate and an Internship Experience Certificate.",
+      "Technology Stack": "HTML5, CSS3, JavaScript ES6+, React, Redux, Node.js, Express, MongoDB, Git, and AWS deployment.",
+      "Eligibility": "Students, working professionals, or anyone with a passion for coding. No prior degree in CS is mandatory!"
+    },
+    "MEAN Stack Development": {
+      "Fundamental Overview": "MEAN stands for MongoDB, Express, Angular, and Node.js. It's an all-JavaScript stack ideal for building robust, enterprise-level web applications.",
+      "Market Trends": "MEAN is highly preferred by large-scale enterprises for its structured approach and Angular's powerful frontend capabilities.",
+      "Fresher Salaries": "Freshers in MEAN Stack usually start at ₹3.5LPA to ₹6LPA.",
+      "Professional Salaries": "Senior MEAN developers earn between ₹15LPA to ₹30LPA in top MNCs.",
+      "Course Duration": "The program is 5 months long, covering everything from frontend to backend and database management.",
+      "Placement Support": "Yes! We offer lifetime placement support and unlimited mock interviews.",
+      "Hands-on Projects": "Projects include an Enterprise Resource Planning (ERP) tool, a Healthcare Portal, and a Banking dashboard.",
+      "Certifications": "Global certification preparation and an Urban Code professional certificate.",
+      "Technology Stack": "TypeScript, Angular, RxJS, Node, Express, MongoDB, and Firebase.",
+      "Eligibility": "Best for those who prefer structured frameworks and want to work in large corporate environments."
+    }
   };
 
-  const knowledgeBase = {
-    "Market Trends 📈": "Full-stack developers are highly sought after. In India, a MERN developer can earn anywhere from ₹5LPA to ₹25LPA depending on expertise.",
-    "Curriculum Details 📚": "We cover everything from HTML/CSS to advanced React hooks, Node.js server architecture, and MongoDB aggregation.",
-    "Job Placement 💼": "Urbancode offers 100% placement assistance. We help you with resume building, mock interviews, and direct referrals.",
-    "Prerequisites 🛠️": "Just basic computer knowledge and a logic-driven mindset! We start from absolute zero.",
-    "Career Growth 🚀": `${courseName} is a high-growth field in 2026. Experts are seeing a 40% increase in remote job opportunities.`,
-    "Course Syllabus 📚": `Our ${courseName} syllabus is industry-aligned, covering the latest tools and best practices.`,
-    "Job Opportunities 💼": "Companies are actively hiring for these roles. We've seen a surge in demand for specialized engineers.",
-    "Angular vs React ⚔️": "Angular is a full-featured framework (great for enterprise), while React is a library (highly flexible). We teach both depending on the path you choose!",
-    "Syllabus 📚": "We dive deep into TypeScript, Angular RxJS, and full-stack integration."
+  const CATEGORIES = [
+    "Fundamental Overview",
+    "Market Trends",
+    "Fresher Salaries",
+    "Professional Salaries",
+    "Course Duration",
+    "Hands-on Projects",
+    "Placement Support",
+    "Certifications",
+    "Technology Stack",
+    "Eligibility"
+  ];
+
+  const getInitialMessages = (course) => {
+    return [
+      { id: 1, type: 'bot', text: `Hi! I'm your **${course}** owl assistant. I'm here to help you understand this course better.` },
+      { id: 2, type: 'bot', text: `Please select what you'd like to know:`, 
+        options: CATEGORIES 
+      }
+    ];
   };
 
   useEffect(() => {
     if (isOpen) {
       setShowTeaser(false);
       if (messages.length === 0) {
-        const courseKey = initialMessages[courseName] ? courseName : "default";
-        setMessages(initialMessages[courseKey]);
+        setMessages(getInitialMessages(courseName));
       }
     }
   }, [isOpen, courseName]);
@@ -74,37 +93,47 @@ const CourseAssistant = ({ courseName }) => {
   const handleSend = (text) => {
     if (!text.trim()) return;
 
-    // Handle "Ask a Question" redirect
-    if (text === "Ask a Question 💬") {
-      router.push('/contact-us');
-      setIsOpen(false);
-      return;
-    }
-
     const userMsg = { id: Date.now(), type: 'user', text };
     setMessages(prev => [...prev, userMsg]);
     setInputValue('');
     setIsTyping(true);
 
     setTimeout(() => {
-      let botResponse = "That's a great question! Our mentors can give you a more detailed breakdown. Would you like me to book a quick call for you?";
-      
-      const lowerText = text.toLowerCase().trim();
+      let botResponse = "";
+      let foundMatch = false;
 
-      if (knowledgeBase[text]) {
-        botResponse = knowledgeBase[text];
-      } else if (lowerText === 'yes' || lowerText === 'yeah' || lowerText === 'sure') {
-        botResponse = "Perfect! Please share your contact number or email, and our career counselor will reach out to you within 24 hours. 😊";
-      } else if (lowerText === 'no' || lowerText === 'not now') {
-        botResponse = "No problem! Feel free to explore the syllabus above. I'm here if you have any other questions later.";
-      } else if (lowerText.includes('price') || lowerText.includes('fee')) {
-        botResponse = "Our course fees are very competitive and come with flexible EMI options. Would you like me to connect you with our admissions team for the exact breakdown?";
+      const courseData = FAQ_DATA[courseName] || FAQ_DATA["MERN Stack Development"]; // Fallback to MERN if not found
+      const lowerInput = text.toLowerCase().trim();
+
+      // Check if it's one of the buttons
+      if (courseData[text]) {
+        botResponse = courseData[text];
+        foundMatch = true;
+      } else {
+        // Semantic check
+        for (const [key, value] of Object.entries(courseData)) {
+          const lowerKey = key.toLowerCase();
+          if (lowerInput.includes(lowerKey) || lowerKey.includes(lowerInput)) {
+            botResponse = value;
+            foundMatch = true;
+            break;
+          }
+        }
       }
 
-      const botMsg = { id: Date.now() + 1, type: 'bot', text: botResponse };
+      if (!foundMatch) {
+        botResponse = "I'm sorry, I don't have a specific answer for that. For more details, please contact us at **info@urbancode.in** or call **+91 94296 94123**. Our trainers will reach out to you within 24 hours!";
+      }
+
+      const botMsg = { 
+        id: Date.now() + 1, 
+        type: 'bot', 
+        text: botResponse,
+        options: foundMatch ? CATEGORIES.filter(c => c !== text).slice(0, 3) : CATEGORIES.slice(0, 3) // Suggest more
+      };
       setMessages(prev => [...prev, botMsg]);
       setIsTyping(false);
-    }, 1000);
+    }, 600);
   };
 
   return (
@@ -116,7 +145,17 @@ const CourseAssistant = ({ courseName }) => {
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
       >
-        {isOpen ? <X size={24} /> : <Bot size={28} />}
+        {isOpen ? (
+          <X size={24} />
+        ) : (
+          <Image
+            src="/images/owl-mascot.png"
+            width={55}
+            height={55}
+            alt="Owl Assistant"
+            className="rounded-circle mascot-img"
+          />
+        )}
       </motion.button>
 
       {/* Chat Window */}
@@ -124,26 +163,40 @@ const CourseAssistant = ({ courseName }) => {
         {isOpen && (
           <motion.div
             className="assistant-window"
-            initial={{ opacity: 0, y: -20, scale: 0.95, transformOrigin: 'top left' }}
+            initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -20, scale: 0.95 }}
+            exit={{ opacity: 0, y: 20, scale: 0.95 }}
           >
-            {/* Header */}
-            <div className="assistant-header">
-              <div className="assistant-info">
-                <div className="bot-avatar">
-                  <Bot size={20} color="#fff" />
-                  <span className="status-indicator"></span>
+            {/* Header - Matching screenshot */}
+            <div className="assistant-header-new">
+              <div className="header-info">
+                <div className="header-logo-circle">
+                   <Image 
+                    src="/images/home/logo.png" 
+                    width={40} 
+                    height={40} 
+                    alt="Logo" 
+                    className="logo-img"
+                  />
                 </div>
-                <div>
-                  <h3>Urbancode Guide</h3>
-                  <p>Course Specialist</p>
+                <div className="header-text-new">
+                  <h3>Course Assistant</h3>
+                  <p>Online</p>
                 </div>
               </div>
+              <button className="close-btn-new" onClick={() => setIsOpen(false)}>
+                <X size={20} />
+              </button>
             </div>
 
             {/* Chat Messages */}
             <div className="assistant-body">
+              {/* Welcome Card - Matching screenshot */}
+              <div className="welcome-card">
+                <h3>Welcome to Urbancode!</h3>
+                <p>How can I assist you today?</p>
+              </div>
+
               {messages.map((msg) => (
                 <div key={msg.id} className={`message-container ${msg.type}`}>
                   <div className="message-bubble">

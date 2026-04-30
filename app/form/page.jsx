@@ -1,8 +1,11 @@
 'use client';
 import React, { useState, useEffect, Suspense } from "react";
+import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Send, User, Mail, Phone, MapPin, BookOpen, Clock } from "lucide-react";
 import "./FormPage.css";
+
+import { FormInput, FormSelect, FormTextarea, FormButton, FormCard } from "@/app/components/common/FormUI";
 
 const EnquiryFormContent = () => {
   const router = useRouter();
@@ -13,8 +16,10 @@ const EnquiryFormContent = () => {
     name: "",
     email: "",
     phone: "",
-    course: courseFromUrl || "",
-    message: "",
+    countryCode: "+91",
+    interest: "Course Enquiry",
+    selectedCourse: courseFromUrl || "",
+    convenientTime: "",
   });
 
   const [errors, setErrors] = useState({});
@@ -23,7 +28,7 @@ const EnquiryFormContent = () => {
 
   useEffect(() => {
     if (courseFromUrl) {
-      setFormData(prev => ({ ...prev, course: courseFromUrl }));
+      setFormData(prev => ({ ...prev, selectedCourse: courseFromUrl }));
     }
   }, [courseFromUrl]);
 
@@ -41,9 +46,15 @@ const EnquiryFormContent = () => {
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) newErrors.email = "Invalid email.";
     
     const cleanPhone = formData.phone.replace(/\D/g, '');
-    if (cleanPhone.length !== 10) newErrors.phone = "10-digit phone required.";
+    if (formData.countryCode === "+91") {
+      if (cleanPhone.length !== 10) newErrors.phone = "10-digit number required.";
+    } else {
+      if (cleanPhone.length < 7) newErrors.phone = "Invalid number.";
+    }
     
-    if (!formData.course) newErrors.course = "Please select a course.";
+    if (!formData.interest) newErrors.interest = "Required.";
+    if (formData.interest === "Course Enquiry" && !formData.selectedCourse) newErrors.selectedCourse = "Select a course.";
+    if (!formData.convenientTime) newErrors.convenientTime = "Select time.";
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -61,14 +72,14 @@ const EnquiryFormContent = () => {
     try {
       const payload = {
         name: formData.name,
-        phone: formData.phone,
+        phone: `${formData.countryCode} ${formData.phone}`,
         email: formData.email,
-        course: formData.course,
-        message: formData.message || "Interested in " + formData.course,
+        interest: formData.interest,
+        course: formData.interest === "Course Enquiry" ? formData.selectedCourse : formData.interest,
+        time: formData.convenientTime,
+        message: "Website Enquiry Form",
       };
 
-      // Using fetch with 'text/plain' and 'no-cors' to handle Google Apps Script 
-      // redirects and preflight restrictions effectively.
       await fetch(scriptURL, {
         method: "POST",
         headers: {
@@ -78,7 +89,6 @@ const EnquiryFormContent = () => {
         mode: "no-cors",
       });
 
-      // Since 'no-cors' results in an opaque response, we assume success if no network error occurred
       setStatus({ type: "success", message: "Success! Redirecting..." });
       
       setTimeout(() => {
@@ -96,142 +106,190 @@ const EnquiryFormContent = () => {
     }
   };
 
+  const interestOptions = [
+    "Course Enquiry",
+    "Placement Assistance",
+    "Internship",
+    "Mentorship",
+    "Franchise",
+    "Corporate Training",
+    "Other"
+  ];
+
+  const courseOptions = [
+    "MERN Stack Development",
+    "MEAN Stack Development",
+    "Python Full Stack Development",
+    "Java Full Stack Development",
+    "Software Testing (Selenium & Playwright)",
+    "UI/UX Design",
+    "Data Science & AI",
+    "Digital Marketing",
+    "AWS & DevOps",
+    "CCNA Networking",
+    "React Native Development",
+    "Cyber Security",
+    "Kidspace Coding Courses",
+    "Other"
+  ];
+
+  const timeSlots = [
+    "09:00 AM - 12:00 PM",
+    "12:00 PM - 03:00 PM",
+    "03:00 PM - 06:00 PM",
+    "06:00 PM - 09:00 PM",
+    "Any Time"
+  ];
+
+  const countryCodes = [
+    { label: "IND +91", value: "+91" },
+    { label: "USA +1", value: "+1" },
+    { label: "UK +44", value: "+44" },
+    { label: "UAE +971", value: "+971" },
+    { label: "AUS +61", value: "+61" },
+  ];
+
   return (
     <div className="form-page-wrapper">
-      <div className="form-container-card">
-        {/* Left Side: Info */}
-        <div className="form-info-side">
-          <h1>Get in Touch with Our Experts</h1>
-          <p>
-            Ready to transform your career? Fill out the form and our counselors 
-            will reach out to you within 24 hours.
-          </p>
-          
-          <div className="info-items">
-            <div className="info-item">
-              <i><BookOpen size={20} /></i>
-              <div>
-                <strong>Expert Mentorship</strong>
-                <div style={{fontSize: '0.85rem', opacity: 0.8}}>Learn from industry professionals</div>
-              </div>
+      <div className="container" style={{maxWidth: '700px'}}>
+        <FormCard className="p-0 overflow-hidden" style={{ background: 'linear-gradient(180deg, #e3f0eb 0%, #f3f5f3 100%)', border: 'none' }}>
+          {/* Form Side */}
+          <div className="form-input-side p-4 p-md-5">
+            <div className="text-center mb-4">
+              <Image 
+                src="/images/home/logo.png" 
+                alt="Urban Code Logo" 
+                width={150} 
+                height={35}
+                priority
+              />
+              <h1 className="h3 fw-bold mt-3 mb-2 text-dark">Enquire Today</h1>
+              <p className="small text-muted">Fill out the form and our experts will reach out to you.</p>
             </div>
-            <div className="info-item">
-              <i><Clock size={20} /></i>
-              <div>
-                <strong>Flexible Learning</strong>
-                <div style={{fontSize: '0.85rem', opacity: 0.8}}>Online and Offline batches available</div>
+
+            {status.message && (
+              <div className={`alert alert-${status.type === 'error' ? 'danger' : 'success'} mb-4 text-center`}>
+                {status.message}
               </div>
-            </div>
-            <div className="info-item">
-              <i><MapPin size={20} /></i>
-              <div>
-                <strong>Placement Support</strong>
-                <div style={{fontSize: '0.85rem', opacity: 0.8}}>100% assistance for your dream job</div>
+            )}
+
+            <form onSubmit={handleSubmit}>
+              <div className="row g-3">
+                <div className="col-md-6">
+                  <FormInput
+                    label="Full Name"
+                    name="name"
+                    placeholder="John Doe"
+                    value={formData.name}
+                    onChange={handleChange}
+                    error={errors.name}
+                    disabled={loading}
+                    required
+                  />
+                </div>
+
+                <div className="col-md-6">
+                  <FormInput
+                    label="Email Address"
+                    type="email"
+                    name="email"
+                    placeholder="john@example.com"
+                    value={formData.email}
+                    onChange={handleChange}
+                    error={errors.email}
+                    disabled={loading}
+                    required
+                  />
+                </div>
+
+                <div className="col-12">
+                  <div className="row g-2 align-items-end">
+                    <div className="col-auto" style={{ minWidth: '120px' }}>
+                      <FormSelect
+                        label="Code"
+                        name="countryCode"
+                        value={formData.countryCode}
+                        onChange={handleChange}
+                        options={countryCodes}
+                        disabled={loading}
+                        className="ps-2 pe-4"
+                      />
+                    </div>
+                    <div className="col">
+                      <FormInput
+                        label="Mobile Number"
+                        type="tel"
+                        name="phone"
+                        placeholder="Number"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        error={errors.phone}
+                        disabled={loading}
+                        required
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div className="col-md-6">
+                  <FormSelect
+                    label="Interested In"
+                    name="interest"
+                    value={formData.interest}
+                    onChange={handleChange}
+                    options={interestOptions}
+                    error={errors.interest}
+                    disabled={loading}
+                    required
+                  />
+                </div>
+
+                {formData.interest === "Course Enquiry" && (
+                  <div className="col-md-6">
+                    <FormSelect
+                      label="Select Course"
+                      name="selectedCourse"
+                      placeholder="Choose Course"
+                      options={courseOptions}
+                      value={formData.selectedCourse}
+                      onChange={handleChange}
+                      error={errors.selectedCourse}
+                      disabled={loading}
+                      required
+                    />
+                  </div>
+                )}
+
+                <div className={formData.interest === "Course Enquiry" ? "col-md-6" : "col-md-12"}>
+                  <FormSelect
+                    label="Convenient Time to Call"
+                    name="convenientTime"
+                    placeholder="Select Time"
+                    options={timeSlots}
+                    value={formData.convenientTime}
+                    onChange={handleChange}
+                    error={errors.convenientTime}
+                    disabled={loading}
+                    required
+                  />
+                </div>
+
+                <div className="col-12 mt-4 text-center">
+                  <FormButton 
+                    type="submit" 
+                    variant="success" 
+                    className="px-4 py-2 rounded-pill"
+                    loading={loading}
+                    style={{ minWidth: '160px', backgroundColor: '#444444', border: 'none' }}
+                  >
+                    {loading ? "Sending..." : "Submit Enquiry"}
+                    {!loading && <Send size={18} className="ms-2" />}
+                  </FormButton>
+                </div>
               </div>
-            </div>
+            </form>
           </div>
-        </div>
-
-        {/* Right Side: Form */}
-        <div className="form-input-side">
-          {status.message && (
-            <div className={`status-alert ${status.type}`}>
-              {status.message}
-            </div>
-          )}
-
-          <form onSubmit={handleSubmit} className="form-grid">
-            <div className="form-group">
-              <label className="form-label">Full Name</label>
-              <input
-                type="text"
-                name="name"
-                className="form-control-custom"
-                placeholder="John Doe"
-                value={formData.name}
-                onChange={handleChange}
-                disabled={loading}
-              />
-              {errors.name && <div className="error-text">{errors.name}</div>}
-            </div>
-
-            <div className="form-group">
-              <label className="form-label">Email Address</label>
-              <input
-                type="email"
-                name="email"
-                className="form-control-custom"
-                placeholder="john@example.com"
-                value={formData.email}
-                onChange={handleChange}
-                disabled={loading}
-              />
-              {errors.email && <div className="error-text">{errors.email}</div>}
-            </div>
-
-            <div className="form-group">
-              <label className="form-label">Mobile Number</label>
-              <input
-                type="tel"
-                name="phone"
-                className="form-control-custom"
-                placeholder="9876543210"
-                value={formData.phone}
-                onChange={handleChange}
-                disabled={loading}
-              />
-              {errors.phone && <div className="error-text">{errors.phone}</div>}
-            </div>
-
-            <div className="form-group">
-              <label className="form-label">Select Course</label>
-              <select
-                name="course"
-                className="form-control-custom"
-                value={formData.course}
-                onChange={handleChange}
-                disabled={loading}
-              >
-                <option value="">Choose Course</option>
-                <option value="Python with AI">Python with AI</option>
-                <option value="Full Stack Development">Full Stack Development</option>
-                <option value="Data Science">Data Science</option>
-                <option value="UI/UX Design">UI/UX Design</option>
-                <option value="Software Testing">Software Testing</option>
-                <option value="Cloud/DevOps">Cloud/DevOps</option>
-                <option value="Digital Marketing">Digital Marketing</option>
-                <option value="Other">Other</option>
-              </select>
-              {errors.course && <div className="error-text">{errors.course}</div>}
-            </div>
-
-
-
-            <div className="form-group full-width">
-              <label className="form-label">Your Message</label>
-              <textarea
-                name="message"
-                className="form-control-custom"
-                rows="3"
-                placeholder="Tell us about your requirements..."
-                value={formData.message}
-                onChange={handleChange}
-                disabled={loading}
-              ></textarea>
-            </div>
-
-            <div className="form-group full-width">
-              <button 
-                type="submit" 
-                className="form-submit-btn"
-                disabled={loading}
-              >
-                {loading ? "Sending..." : "Submit Enquiry"}
-                {!loading && <Send size={18} />}
-              </button>
-            </div>
-          </form>
-        </div>
+        </FormCard>
       </div>
     </div>
   );

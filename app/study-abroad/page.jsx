@@ -10,6 +10,8 @@ import EnquiryFormModal from "@/app/components/common/EnquiryFormModal.jsx";
 import { destinations, services, testimonials } from './data';
 import './StudyAbroad.css';
 
+import { FormInput, FormSelect, FormTextarea, FormButton, FormCard } from "@/app/components/common/FormUI";
+
 const StudyAbroadPage = () => {
     const router = useRouter();
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -96,8 +98,17 @@ const StudyAbroadPage = () => {
         }
     };
 
+    const destinationOptions = [
+        "USA", "UK", "Canada", "Australia", "Germany", "Ireland", "Singapore"
+    ];
+
+    const educationOptions = [
+        "12th Standard", "Undergraduate", "Postgraduate", "PhD"
+    ];
+
     return (
         <div className="study-abroad-container">
+            {/* ... hero and other sections ... */}
             {/* Hero Section */}
             <section className="study-hero">
                 <div className="container">
@@ -291,72 +302,91 @@ const StudyAbroadPage = () => {
             <section id="consultation" className="section-padding consultation-section">
                 <div className="container">
                     <div className="row justify-content-center">
-                        <div className="col-lg-8">
-                            <motion.div 
-                                className="consultation-card"
-                                initial={{ opacity: 0, y: 30 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                            >
-                                <h3>Book Your Free Expert Consultation</h3>
+                        <div className="col-lg-10">
+                            <FormCard className="p-4 p-md-5">
+                                <h3 className="text-center mb-5 fw-bold">Book Your Free Expert Consultation</h3>
                                 <form onSubmit={handleFormSubmit}>
                                     <div className="row g-4">
                                         <div className="col-md-6">
-                                            <div className="form-group">
-                                                <label>Full Name</label>
-                                                <input type="text" name="name" className="form-control" placeholder="John Doe" required value={formData.name} onChange={handleFormChange} />
-                                            </div>
+                                            <FormInput 
+                                                label="Full Name" 
+                                                name="name" 
+                                                placeholder="John Doe" 
+                                                required 
+                                                value={formData.name} 
+                                                onChange={handleFormChange} 
+                                                disabled={isSubmitting}
+                                            />
                                         </div>
                                         <div className="col-md-6">
-                                            <div className="form-group">
-                                                <label>Email Address</label>
-                                                <input type="email" name="email" className="form-control" placeholder="john@example.com" required value={formData.email} onChange={handleFormChange} />
-                                            </div>
+                                            <FormInput 
+                                                label="Email Address" 
+                                                type="email" 
+                                                name="email" 
+                                                placeholder="john@example.com" 
+                                                required 
+                                                value={formData.email} 
+                                                onChange={handleFormChange} 
+                                                disabled={isSubmitting}
+                                            />
                                         </div>
                                         <div className="col-md-6">
-                                            <div className="form-group">
-                                                <label>Phone Number</label>
-                                                <input type="tel" name="phone" className="form-control" placeholder="9876543210" required value={formData.phone} onChange={handleFormChange} />
-                                            </div>
+                                            <FormInput 
+                                                label="Phone Number" 
+                                                type="tel" 
+                                                name="phone" 
+                                                placeholder="9876543210" 
+                                                required 
+                                                value={formData.phone} 
+                                                onChange={handleFormChange} 
+                                                disabled={isSubmitting}
+                                            />
                                         </div>
                                         <div className="col-md-6">
-                                            <div className="form-group">
-                                                <label>Preferred Destination</label>
-                                                <select name="country" className="form-select" required value={formData.country} onChange={handleFormChange}>
-                                                    <option value="">Select Country</option>
-                                                    <option value="USA">USA</option>
-                                                    <option value="UK">UK</option>
-                                                    <option value="Canada">Canada</option>
-                                                    <option value="Australia">Australia</option>
-                                                    <option value="Germany">Germany</option>
-                                                    <option value="Ireland">Ireland</option>
-                                                    <option value="Singapore">Singapore</option>
-                                                </select>
-                                            </div>
+                                            <FormSelect 
+                                                label="Preferred Destination" 
+                                                name="country" 
+                                                placeholder="Select Country"
+                                                options={destinationOptions}
+                                                required 
+                                                value={formData.country} 
+                                                onChange={handleFormChange} 
+                                                disabled={isSubmitting}
+                                            />
                                         </div>
                                         <div className="col-md-6">
-                                            <div className="form-group">
-                                                <label>Highest Qualification</label>
-                                                <select name="education" className="form-select" required value={formData.education} onChange={handleFormChange}>
-                                                    <option value="">Select Level</option>
-                                                    <option value="12th Standard">12th Standard</option>
-                                                    <option value="Undergraduate">Undergraduate</option>
-                                                    <option value="Postgraduate">Postgraduate</option>
-                                                    <option value="PhD">PhD</option>
-                                                </select>
-                                            </div>
+                                            <FormSelect 
+                                                label="Highest Qualification" 
+                                                name="education" 
+                                                placeholder="Select Level"
+                                                options={educationOptions}
+                                                required 
+                                                value={formData.education} 
+                                                onChange={handleFormChange} 
+                                                disabled={isSubmitting}
+                                            />
                                         </div>
                                         <div className="col-md-6">
-                                            <div className="form-group">
-                                                <label>Preferred Course</label>
-                                                <input type="text" name="course" className="form-control" placeholder="MS in Computer Science" required value={formData.course} onChange={handleFormChange} />
-                                            </div>
+                                            <FormInput 
+                                                label="Preferred Course" 
+                                                name="course" 
+                                                placeholder="MS in Computer Science" 
+                                                required 
+                                                value={formData.course} 
+                                                onChange={handleFormChange} 
+                                                disabled={isSubmitting}
+                                            />
                                         </div>
                                         <div className="col-12">
-                                            <div className="form-group">
-                                                <label>Message (Optional)</label>
-                                                <textarea name="message" className="form-control" rows="4" placeholder="Tell us about your goals..." value={formData.message} onChange={handleFormChange}></textarea>
-                                            </div>
+                                            <FormTextarea 
+                                                label="Message (Optional)" 
+                                                name="message" 
+                                                rows="4" 
+                                                placeholder="Tell us about your goals..." 
+                                                value={formData.message} 
+                                                onChange={handleFormChange} 
+                                                disabled={isSubmitting}
+                                            />
                                         </div>
                                         
                                         {/* Status Message */}
@@ -366,16 +396,19 @@ const StudyAbroadPage = () => {
                                             </div>
                                         )}
 
-                                        <div className="col-12">
-                                            <button type="submit" className="submit-btn-lg" disabled={isSubmitting}>
-                                                {isSubmitting ? (
-                                                    <><span className="spinner-border spinner-border-sm me-2"></span> Sending Request...</>
-                                                ) : "Schedule My Free Consultation"}
-                                            </button>
+                                        <div className="col-12 mt-4">
+                                            <FormButton 
+                                                type="submit" 
+                                                variant="success" 
+                                                className="w-100 py-3"
+                                                loading={isSubmitting}
+                                            >
+                                                {isSubmitting ? "Sending Request..." : "Schedule My Free Consultation"}
+                                            </FormButton>
                                         </div>
                                     </div>
                                 </form>
-                            </motion.div>
+                            </FormCard>
                         </div>
                     </div>
                 </div>

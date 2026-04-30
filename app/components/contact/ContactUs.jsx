@@ -1,19 +1,26 @@
 'use client';
 import React, { useRef, useState, useEffect } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { sendContactMessage } from "@/lib/api/api";
 import "./ContactUs.css";
 import CinematicLoader from "./CinematicLoader";
 
+import { FormInput, FormSelect, FormTextarea, FormButton, FormCard } from "@/app/components/common/FormUI";
+
 const ContactUs = () => {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const courseFromUrl = searchParams.get('course');
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     mobile: "",
-    interest: "",
-    message: "",
+    countryCode: "+91",
+    interest: courseFromUrl ? "Course Enquiry" : "",
+    selectedCourse: courseFromUrl || "",
+    convenientTime: "",
   });
   const [loading, setLoading] = useState(false);
   const [activeMap, setActiveMap] = useState(0);
@@ -35,33 +42,34 @@ const ContactUs = () => {
 
   // validation logic
   const validateForm = () => {
-    const { name, email, mobile, interest, message } = formData;
+    const { name, email, mobile, countryCode, interest, selectedCourse, convenientTime } = formData;
 
-    // Name validation
     if (!name.trim()) return "Name is required.";
     if (name.trim().length < 3) return "Name must be at least 3 characters.";
-    if (!/^[a-zA-Z\s'-]+$/.test(name.trim())) return "Name can only contain letters, spaces, hyphens, and apostrophes.";
     
-    // Email validation
     if (!email.trim()) return "Email is required.";
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return "Please enter a valid email address.";
-    if (email.length > 255) return "Email is too long.";
     
-    // Mobile validation
     if (!mobile.trim()) return "Mobile number is required.";
+    
+    // Country specific validation
     const cleanMobile = mobile.replace(/\D/g, '');
-    if (cleanMobile.length !== 10) return "Mobile number must be exactly 10 digits.";
-    if (!/^[6-9]\d{9}$/.test(cleanMobile)) return "Please enter a valid 10-digit Indian mobile number.";
+    if (countryCode === "+91") {
+      if (cleanMobile.length !== 10) return "Indian mobile number must be 10 digits.";
+      if (!/^[6-9]\d{9}$/.test(cleanMobile)) return "Please enter a valid Indian mobile number.";
+    } else if (countryCode === "+1") {
+      if (cleanMobile.length !== 10) return "USA/Canada mobile number must be 10 digits.";
+    } else if (countryCode === "+971") {
+      if (cleanMobile.length !== 9) return "UAE mobile number must be 9 digits.";
+    } else {
+      if (cleanMobile.length < 7 || cleanMobile.length > 15) return "Please enter a valid mobile number.";
+    }
     
-    // Interest validation
     if (!interest.trim()) return "Please select an interest.";
-    
-    // Message validation
-    if (!message.trim()) return "Message cannot be empty.";
-    if (message.trim().length < 10) return "Message must be at least 10 characters.";
-    if (message.length > 1000) return "Message is too long (max 1000 characters).";
+    if (interest === "Course Enquiry" && !selectedCourse) return "Please select a course.";
+    if (!convenientTime) return "Please select a convenient time for call.";
 
-    return null; // valid
+    return null;
   };
 
   // form submit
@@ -74,7 +82,12 @@ const ContactUs = () => {
     }
 
     setLoading(true);
-    const response = await sendContactMessage(formData);
+    const submissionData = {
+      ...formData,
+      mobile: `${formData.countryCode} ${formData.mobile}`,
+      message: `Interest: ${formData.interest}${formData.selectedCourse ? ' - ' + formData.selectedCourse : ''} | Convenient Time: ${formData.convenientTime}`
+    };
+    const response = await sendContactMessage(submissionData);
     setLoading(false);
 
     if (response.success) {
@@ -83,13 +96,67 @@ const ContactUs = () => {
         name: "",
         email: "",
         mobile: "",
+        countryCode: "+91",
         interest: "",
-        message: "",
+        selectedCourse: "",
+        convenientTime: "",
       });
     } else {
       alert(response.message || "Failed to send message. Please try again.");
     }
   };
+
+  const interestOptions = [
+    "Course Enquiry",
+    "Placement Assistance",
+    "Internship",
+    "Mentorship",
+    "Franchise",
+    "Corporate Training",
+    "School Tie-up",
+    "College Tie-up",
+    "Partnership",
+    "Sponsorship",
+    "Bulk Hiring",
+    "Career with Urbancode",
+    "Other"
+  ];
+
+  const courseOptions = [
+    "MERN Stack Development",
+    "MEAN Stack Development",
+    "Python Full Stack Development",
+    "Java Full Stack Development",
+    "Software Testing (Selenium & Playwright)",
+    "UI/UX Design",
+    "Data Science & AI",
+    "Digital Marketing",
+    "AWS & DevOps",
+    "CCNA Networking",
+    "React Native Development",
+    "Cyber Security",
+    "Kidspace Coding Courses",
+    "Other"
+  ];
+
+  const timeSlots = [
+    "09:00 AM - 12:00 PM",
+    "12:00 PM - 03:00 PM",
+    "03:00 PM - 06:00 PM",
+    "06:00 PM - 09:00 PM",
+    "Any Time"
+  ];
+
+  const countryCodes = [
+    { label: "IND +91", value: "+91" },
+    { label: "USA +1", value: "+1" },
+    { label: "UK +44", value: "+44" },
+    { label: "UAE +971", value: "+971" },
+    { label: "AUS +61", value: "+61" },
+    { label: "CAN +1", value: "+1" },
+    { label: "SGP +65", value: "+65" },
+    { label: "MYS +60", value: "+60" },
+  ];
 
   return (
     <>
@@ -116,86 +183,112 @@ const ContactUs = () => {
       </div>
 
       <div className="contact-content">
-        {/* Left: Form */}
-        <div className="contact-form">
-          <h3>Get In Touch</h3>
-          <form onSubmit={handleSubmit}>
-            <input
-              type="text"
-              name="name"
-              placeholder="Enter name"
-              value={formData.name}
-              onChange={handleInputChange}
-              required
-              minLength="3"
-              maxLength="100"
-              pattern="^[a-zA-Z\s'-]+$"
-              disabled={loading}
-            />
-            <input
-              type="email"
-              name="email"
-              placeholder="Enter mail ID"
-              value={formData.email}
-              onChange={handleInputChange}
-              required
-              maxLength="255"
-              disabled={loading}
-            />
-            <input
-              type="tel"
-              name="mobile"
-              placeholder="Mobile No (10 digits)"
-              value={formData.mobile}
-              onChange={handleInputChange}
-              required
-              inputMode="numeric"
-              maxLength="10"
-              pattern="^\d{10}$"
-              disabled={loading}
-            />
-            <div className="select-wrapper">
-              <select
-                name="interest"
-                value={formData.interest}
-                onChange={handleInputChange}
-                required
-                disabled={loading}
-              >
-                <option value="">Interested In</option>
-                <option value="Course Enquiry">Course Enquiry</option>
-                <option value="Placement Assistance">Placement Assistance</option>
-                <option value="Internship">Internship</option>
-                <option value="Mentorship">Mentorship</option>
-                <option value="Franchise">Franchise</option>
-                <option value="Corporate Training">Corporate Training</option>
-                <option value="School Tie-up">School Tie-up</option>
-                <option value="College Tie-up">College Tie-up</option>
-                <option value="Partnership">Partnership</option>
-                <option value="Sponsorship">Sponsorship</option>
-                <option value="Bulk Hiring">Bulk Hiring</option>
-                <option value="Career with Urbancode">Career with Urbancode</option>
-                <option value="Other">Other</option>
-              </select>
-            </div>
+        {/* Left: Form Area */}
+        <div className="contact-form-container" style={{ flex: '1.2' }}>
+          <FormCard title="Get In Touch" className="p-4 p-md-5">
+            <form onSubmit={handleSubmit}>
+              <div className="row g-4">
+                <div className="col-md-6">
+                  <FormInput
+                    label="Name"
+                    name="name"
+                    placeholder="Enter your full name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    required
+                    disabled={loading}
+                  />
+                </div>
+                <div className="col-md-6">
+                  <FormInput
+                    label="Email ID"
+                    type="email"
+                    name="email"
+                    placeholder="Enter mail ID"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    required
+                    disabled={loading}
+                  />
+                </div>
+                <div className="col-12">
+                  <div className="row g-2 align-items-end">
+                    <div className="col-auto" style={{ minWidth: '120px' }}>
+                      <FormSelect
+                        label="Code"
+                        name="countryCode"
+                        value={formData.countryCode}
+                        onChange={handleInputChange}
+                        options={countryCodes}
+                        disabled={loading}
+                        className="ps-2 pe-4"
+                      />
+                    </div>
+                    <div className="col">
+                      <FormInput
+                        label="Mobile Number"
+                        type="tel"
+                        name="mobile"
+                        placeholder="Number"
+                        value={formData.mobile}
+                        onChange={handleInputChange}
+                        required
+                        disabled={loading}
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className="col-md-6">
+                  <FormSelect
+                    label="Interested In"
+                    name="interest"
+                    value={formData.interest}
+                    onChange={handleInputChange}
+                    options={interestOptions}
+                    placeholder="Select interest"
+                    required
+                    disabled={loading}
+                  />
+                </div>
 
-            <div className="message-submit">
-              <textarea
-                name="message"
-                placeholder="Message Box"
-                value={formData.message}
-                onChange={handleInputChange}
-                required
-                minLength="10"
-                maxLength="1000"
-                disabled={loading}
-              ></textarea>
-              <button type="submit" className="submit-btn" disabled={loading}>
-                {loading ? "Sending..." : "Submit"}{" "}
-                <i className="fas fa-arrow-right"></i>
-              </button>
-            </div>
-          </form>
+                {formData.interest === "Course Enquiry" && (
+                  <div className="col-md-6">
+                    <FormSelect
+                      label="Select Course"
+                      name="selectedCourse"
+                      value={formData.selectedCourse}
+                      onChange={handleInputChange}
+                      options={courseOptions}
+                      placeholder="Choose exact course"
+                      required
+                      disabled={loading}
+                    />
+                  </div>
+                )}
+
+                <div className={formData.interest === "Course Enquiry" ? "col-md-6" : "col-md-12"}>
+                  <FormSelect
+                    label="Convenient Time to Call"
+                    name="convenientTime"
+                    value={formData.convenientTime}
+                    onChange={handleInputChange}
+                    options={timeSlots}
+                    placeholder="Select time"
+                    required
+                    disabled={loading}
+                  />
+                </div>
+
+
+
+                <div className="col-12 mt-4">
+                  <FormButton type="submit" variant="success" className="w-100 py-3" loading={loading}>
+                    {loading ? "Sending Message..." : "Submit Message"}
+                  </FormButton>
+                </div>
+              </div>
+            </form>
+          </FormCard>
         </div>
 
         {/* Divider */}

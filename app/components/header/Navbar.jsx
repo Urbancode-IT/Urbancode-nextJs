@@ -98,7 +98,7 @@ export default function Navbar() {
             {!isFeedbackPage && (
               <div className="navbar-phone">
                 <FiPhoneCall className="phone-icon" />
-                <a href="tel:+919878798797">+91 9878798797</a>
+                <a href="tel:+919878798797" className="gtm-phone-call" data-gtm-label="header_phone_click">+91 9878798797</a>
               </div>
             )}
 

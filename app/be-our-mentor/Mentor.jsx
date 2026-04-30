@@ -13,6 +13,8 @@ import expertise3 from "@/public/images/mentorImages/mentor3.jpg";
 import expertise4 from "@/public/images/mentorImages/mentor4.jpg";
 import mentorHero from "@/public/images/mentorImages/mentorHero.jpg";
 
+import { FormInput, FormSelect, FormTextarea, FormButton, FormCard } from "@/app/components/common/FormUI";
+
 const Mentor = () => {
     const router = useRouter();
     const [formData, setFormData] = useState({
@@ -23,13 +25,14 @@ const Mentor = () => {
       interest: '',
     })
   
- const [status, setStatus] = useState("idle"); 
+  const [status, setStatus] = useState("idle"); 
   // "idle" | "sending" | "success" | "error"
   const [message, setMessage] = useState("");
 
   const handleInputChange = (e) => {
-    const { id, value } = e.target;
-    setFormData(prev => ({ ...prev, [id]: value }));
+    const { id, name, value } = e.target;
+    const fieldName = id || name;
+    setFormData(prev => ({ ...prev, [fieldName]: value }));
   };
 
   const handleSubmit = async (e) => {
@@ -37,26 +40,11 @@ const Mentor = () => {
 
     const { name, email, mobile, experience, interest } = formData;
 
-    // Name validation
     if (!name.trim()) return setStatus("error"), setMessage("Please enter your name.");
-    if (name.trim().length < 3) return setStatus("error"), setMessage("Name must be at least 3 characters.");
-    if (!/^[a-zA-Z\s'-]+$/.test(name.trim())) return setStatus("error"), setMessage("Name can only contain letters.");
-
-    // Email validation
     if (!email.trim()) return setStatus("error"), setMessage("Please enter your email.");
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
-      return setStatus("error"), setMessage("Please enter a valid email address.");
-
-    // Mobile validation
-    const cleanMobile = mobile.replace(/\D/g, '');
-    if (cleanMobile.length !== 10)
-      return setStatus("error"), setMessage("Mobile number must be exactly 10 digits.");
-    if (!/^[6-9]\d{9}$/.test(cleanMobile))
-      return setStatus("error"), setMessage("Please enter a valid 10-digit Indian mobile number.");
-
+    if (!mobile.trim()) return setStatus("error"), setMessage("Please enter your mobile number.");
     if (!experience) return setStatus("error"), setMessage("Please select your experience.");
     if (!interest.trim()) return setStatus("error"), setMessage("Please enter your message.");
-    if (interest.trim().length < 10) return setStatus("error"), setMessage("Message must be at least 10 characters.");
 
     setStatus("sending");
     setMessage("Submitting your application...");
@@ -75,6 +63,8 @@ const Mentor = () => {
       setTimeout(() => setStatus("idle"), 3000);
     }
   };
+
+  const experienceOptions = ["Fresher", "0-1 year", "2-3 years", "3+ years"];
 
   return (
     <div className="mentorpage">
@@ -239,118 +229,103 @@ const Mentor = () => {
 
       {/* TRANSFORM SECTION */}
       <section id="mentorform" className="mentorpage-transform-section">
-        <div className="container text-center mentorpage-transform-box">
-          <h2 className="mentorpage-transform-title">Ready to Transform Lives?</h2>
-          <p className="mentorpage-transform-subtitle">
-            Share your expertise, mentor real projects, and see learners land offers.
-          </p>
+        <div className="container">
+          <div className="row justify-content-center">
+            <div className="col-lg-10">
+              <FormCard className="p-4 p-md-5">
+                <h2 className="text-center mb-2 fw-bold">Ready to Transform Lives?</h2>
+                <p className="text-center mb-5 text-muted">
+                  Share your expertise, mentor real projects, and see learners land offers.
+                </p>
 
-          <form onSubmit={handleSubmit}>
-            <div className="row g-3">
-              <div className="col-md-6">
-                {/* <label htmlFor="name">Name</label> */}
-                <input
-                  type="text"
-                  id="name"
-                  className="form-control custom-input"
-                  placeholder="Enter name"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                />
-              </div>
+                <form onSubmit={handleSubmit}>
+                  <div className="row g-4">
+                    <div className="col-md-6">
+                      <FormInput
+                        id="name"
+                        placeholder="Enter name"
+                        value={formData.name}
+                        onChange={handleInputChange}
+                        required
+                        disabled={status === "sending"}
+                      />
+                    </div>
+                    <div className="col-md-6">
+                      <FormInput
+                        type="email"
+                        id="email"
+                        placeholder="Enter email"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        required
+                        disabled={status === "sending"}
+                      />
+                    </div>
+                    <div className="col-md-6">
+                      <FormInput
+                        type="tel"
+                        id="mobile"
+                        placeholder="Enter mobile number"
+                        value={formData.mobile}
+                        onChange={handleInputChange}
+                        required
+                        disabled={status === "sending"}
+                      />
+                    </div>
+                    <div className="col-md-6">
+                      <FormSelect
+                        id="experience"
+                        placeholder="Select experience"
+                        options={experienceOptions}
+                        value={formData.experience}
+                        onChange={handleInputChange}
+                        required
+                        disabled={status === "sending"}
+                      />
+                    </div>
+                    <div className="col-12">
+                      <FormTextarea
+                        id="interest"
+                        rows="4"
+                        placeholder="Tell us about your goals"
+                        value={formData.interest}
+                        onChange={handleInputChange}
+                        required
+                        disabled={status === "sending"}
+                      />
+                    </div>
+                    <div className="col-12 mt-4">
+                      <FormButton type="submit" variant="success" className="w-100 py-3" loading={status === "sending"}>
+                        Start Journey Today
+                      </FormButton>
+                    </div>
+                  </div>
+                </form>
 
-              <div className="col-6">
-                {/* <label htmlFor="email">Email</label> */}
-                <input
-                  type="email"
-                  id="email"
-                  className="form-control custom-input"
-                  placeholder="Enter email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                />
-              </div>
-
-              <div className="col-6">
-                {/* <label htmlFor="mobile">Mobile Number</label> */}
-                <input
-                  type="tel"
-                  id="mobile"
-                  className="form-control custom-input"
-                  placeholder="Enter mobile number"
-                  value={formData.mobile}
-                  onChange={handleInputChange}
-                />
-              </div>
-
-              <div className="col-6">
-                {/* <label htmlFor="experience">Experience</label> */}
-                <select
-                  id="experience"
-                  className="form-select custom-input"
-                  value={formData.experience}
-                  onChange={handleInputChange}
-                >
-                  <option value="">Select experience</option>
-                  <option value="Fresher">Fresher</option>
-                  <option value="0-1 year">0-1 year</option>
-                  <option value="2-3 years">2-3 years</option>
-                  <option value="3+ years">3+ years</option>
-                </select>
-              </div>
-
-              <div className="col-12">
-                {/* <label htmlFor="interest">Your Message</label> */}
-                <textarea
-                  id="interest"
-                  className="form-control custom-input"
-                  rows="3"
-                  placeholder="Tell us about your goals"
-                  value={formData.interest}
-                  onChange={handleInputChange}
-                ></textarea>
-              </div>
-
-              <div className="col-12 text-center">
-                <button
-                  type="submit"
-                  disabled={status === "sending"}
-                  className="mentorpage-shine-btn position-relative"
-                >
-                  {status === "sending" ? (
-                    <>
-                      <span className="spinner-border spinner-border-sm me-2"></span>
-                      Sending...
-                    </>
-                  ) : (
-                    "Start Journey Today"
+                {/* ✅ Animated Status Message */}
+                <AnimatePresence>
+                  {status !== "idle" && message && (
+                    <motion.div
+                      key={status}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.3 }}
+                      className={`mentor-status-message mt-3 text-center ${
+                        status === "success"
+                          ? "text-success"
+                          : status === "error"
+                          ? "text-danger"
+                          : "text-muted"
+                      }`}
+                    >
+                      {message}
+                    </motion.div>
                   )}
-                </button>
-              </div>
+                </AnimatePresence>
+              </FormCard>
             </div>
-          </form>
-
-          {/* ✅ Animated Status Message */}
-          <AnimatePresence>
-            {status !== "idle" && message && (
-              <motion.div
-                key={status}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.3 }}
-                className={`mentor-status-message mt-3 ${
-                  status === "success"
-                    ? "text-success"
-                    : status === "error"
-                    ? "text-danger"
-                    : "text-muted"
-                }`}
-              >
-                {message}
-              </motion.div>
-            )}
-          </AnimatePresence>
+          </div>
         </div>
       </section>
     </div>

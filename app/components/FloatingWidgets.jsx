@@ -14,10 +14,20 @@ const FloatingWidgets = () => {
   }
 
   const handleWhatsAppClick = () => {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      'event': 'whatsapp_click',
+      'gtm_label': 'floating_widget_whatsapp'
+    });
     window.open("https://wa.me/9878798797", "_blank");
   };
 
   const handleCallClick = () => {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      'event': 'phone_click',
+      'gtm_label': 'floating_widget_phone'
+    });
     window.location.href = "tel:+919878798797";
   };
 

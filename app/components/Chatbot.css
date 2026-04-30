@@ -68,10 +68,11 @@
     bottom: 100px;
     right: 24px;
     width: 380px;
+    max-height: calc(100vh - 120px);
     height: 600px;
     z-index: 9999;
     border-radius: 16px;
-    box-shadow: 0 10px 30px #2c3e50;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
     overflow: hidden;
     display: none;
     opacity: 0;

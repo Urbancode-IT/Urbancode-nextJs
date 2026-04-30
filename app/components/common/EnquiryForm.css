@@ -16,9 +16,9 @@
   width: 100%;
   max-height: 90dvh;
   overflow-y: auto;
-  background: linear-gradient(180deg, #e3f0eb 0%, #f3f5f3 100%);
-  border-radius: 20px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  background: var(--form-bg);
+  border-radius: var(--form-radius);
+  box-shadow: var(--form-shadow);
   padding: 24px;
   position: relative;
   text-align: left;
@@ -45,7 +45,7 @@
 
   .enquiry-modal {
     padding: 16px 14px;
-    border-radius: 14px;
+    border-radius: 16px;
     max-height: 88dvh;
   }
 
@@ -105,7 +105,7 @@
 .enquiry-modal input,
 .enquiry-modal select {
   padding: 10px 12px;
-  border-radius: 8px;
+  border-radius: var(--form-input-radius);
   border: 1px solid #ccc;
   outline: none;
   font-size: 14px;
@@ -113,15 +113,15 @@
 
 .enquiry-modal input:focus,
 .enquiry-modal select:focus {
-  border-color: #28a745;
+  border-color: var(--form-primary);
   box-shadow: 0 0 3px rgba(40, 167, 69, 0.3);
 }
 
 .enquiry-modal .submit-btn {
-  background: #444;
+  background: var(--form-dark);
   color: white;
   border: none;
-  border-radius: 25px;
+  border-radius: var(--form-btn-radius);
   padding: 10px 0;
   margin-top: 6px;
   cursor: pointer;
@@ -129,7 +129,7 @@
 }
 
 .enquiry-modal .submit-btn:hover {
-  background: #2e2e2e;
+  background: var(--form-dark-hover);
 }
 
 .status-message {
@@ -206,7 +206,7 @@
 }
 
 .success-btn {
-  background: linear-gradient(135deg, #00a86b 0%, #008f58 100%);
+  background: var(--form-success-gradient);
   color: white;
   border: none;
   padding: 12px 40px;
