@@ -37,24 +37,6 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={inter.variable}>
       <head>
-        {/* ✅ Google Tag Manager - MUST be before interactive */}
-        <Script
-          id="gtm-script"
-          strategy="beforeInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function(w,d,s,l,i){w[l]=w[l]||[];
-              w[l].push({'gtm.start': new Date().getTime(), event:'gtm.js'});
-              var f=d.getElementsByTagName(s)[0],
-              j=d.createElement(s), dl=l!='dataLayer'?'&l='+l:'';
-              j.async=true;
-              j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
-              f.parentNode.insertBefore(j,f);
-              })(window,document,'script','dataLayer','GTM-MTFL2HHJ');
-            `,
-          }}
-        />
-
         {/* ✅ Production-Ready Optimized Structured Data */}
         <Script
           id="structured-data"
@@ -157,6 +139,17 @@ export default function RootLayout({ children }) {
       </head>
 
       <body>
+        {/* ✅ Google Tag Manager - afterInteractive (Recommended for GTM) */}
+        <Script id="google-tag-manager" strategy="afterInteractive">
+          {`
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-MTFL2HHJ');
+          `}
+        </Script>
+
         {/* ✅ GTM NoScript (correct placement) */}
         <noscript>
           <iframe
