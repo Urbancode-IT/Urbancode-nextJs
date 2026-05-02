@@ -35,10 +35,10 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en" className={inter.variable} suppressHydrationWarning>
       <head>
         {/* ✅ Production-Ready Optimized Structured Data */}
-        <Script
+        <script
           id="structured-data"
           type="application/ld+json"
           dangerouslySetInnerHTML={{

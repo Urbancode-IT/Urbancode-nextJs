@@ -9,7 +9,7 @@ import {
 import { FiPlus, FiMinus, FiDownload } from "react-icons/fi";
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 import EnquiryFormModal from "@/app/components/common/EnquiryFormModal.jsx";
-import CourseAssistant from "@/app/components/CourseAssistant/CourseAssistant";
+// import CourseAssistant from "@/app/components/CourseAssistant/CourseAssistant";
 
 const NewInternalCourse = ({ data }) => {
     // Check if data exists
@@ -292,7 +292,7 @@ const NewInternalCourse = ({ data }) => {
             />
 
             {/* Course Assistant - Active for all courses in this layout */}
-            <CourseAssistant courseName={heroData.highlightText} />
+            {/* <CourseAssistant courseName={heroData.highlightText} /> */}
         </div>
     );
 };

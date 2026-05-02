@@ -17,7 +17,7 @@ import EnquiryFormModal from "@/app/components/common/EnquiryFormModal.jsx";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { Star, Users, Clock } from "lucide-react";
-import CourseAssistant from "@/app/components/CourseAssistant/CourseAssistant";
+// import CourseAssistant from "@/app/components/CourseAssistant/CourseAssistant";
 
 const categoryTools = {
   "Fullstack Development": [
@@ -453,7 +453,7 @@ export default function Courses({ categorySlug }) {
           </Row>
         </Container>
       </div>
-      <CourseAssistant courseName={activeCategory} />
+      {/* <CourseAssistant courseName={activeCategory} /> */}
     </div>
   );
 }

@@ -6,6 +6,7 @@ import './CourseAssistant.css';
 
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import FAQ_DATA from './courseFaqData.json';
 
 const CourseAssistant = ({ courseName }) => {
   const router = useRouter();
@@ -32,32 +33,7 @@ const CourseAssistant = ({ courseName }) => {
     return () => clearTimeout(timer);
   }, [isOpen]);
 
-  const FAQ_DATA = {
-    "MERN Stack Development": {
-      "Fundamental Overview": "MERN stands for MongoDB, Express, React, and Node.js. It's a powerful JavaScript stack used to build high-performance full-stack web applications.",
-      "Market Trends": "MERN is currently the most popular stack for startups. React has over 40% market share in frontend libraries, and Node.js is the preferred choice for scalable backend systems.",
-      "Fresher Salaries": "Freshers in MERN Stack typically earn between ₹4LPA to ₹7LPA in India, depending on their project portfolio.",
-      "Professional Salaries": "Experienced MERN developers (3+ years) can easily earn between ₹12LPA to ₹25LPA.",
-      "Course Duration": "The comprehensive program lasts 5 months, with 3 months of intensive training and 2 months of project-based internship.",
-      "Placement Support": "We provide 100% placement support, including resume optimization, LinkedIn branding, and direct referrals to our 200+ hiring partners.",
-      "Hands-on Projects": "You will build 3 major projects: An E-commerce platform, a real-time Chat application, and a Video Streaming service.",
-      "Certifications": "You'll receive an Industry-Recognized Course Completion Certificate and an Internship Experience Certificate.",
-      "Technology Stack": "HTML5, CSS3, JavaScript ES6+, React, Redux, Node.js, Express, MongoDB, Git, and AWS deployment.",
-      "Eligibility": "Students, working professionals, or anyone with a passion for coding. No prior degree in CS is mandatory!"
-    },
-    "MEAN Stack Development": {
-      "Fundamental Overview": "MEAN stands for MongoDB, Express, Angular, and Node.js. It's an all-JavaScript stack ideal for building robust, enterprise-level web applications.",
-      "Market Trends": "MEAN is highly preferred by large-scale enterprises for its structured approach and Angular's powerful frontend capabilities.",
-      "Fresher Salaries": "Freshers in MEAN Stack usually start at ₹3.5LPA to ₹6LPA.",
-      "Professional Salaries": "Senior MEAN developers earn between ₹15LPA to ₹30LPA in top MNCs.",
-      "Course Duration": "The program is 5 months long, covering everything from frontend to backend and database management.",
-      "Placement Support": "Yes! We offer lifetime placement support and unlimited mock interviews.",
-      "Hands-on Projects": "Projects include an Enterprise Resource Planning (ERP) tool, a Healthcare Portal, and a Banking dashboard.",
-      "Certifications": "Global certification preparation and an Urban Code professional certificate.",
-      "Technology Stack": "TypeScript, Angular, RxJS, Node, Express, MongoDB, and Firebase.",
-      "Eligibility": "Best for those who prefer structured frameworks and want to work in large corporate environments."
-    }
-  };
+
 
   const CATEGORIES = [
     "Fundamental Overview",
@@ -90,7 +66,7 @@ const CourseAssistant = ({ courseName }) => {
     }
   }, [isOpen, courseName]);
 
-  const handleSend = (text) => {
+  const handleSend = async (text) => {
     if (!text.trim()) return;
 
     const userMsg = { id: Date.now(), type: 'user', text };
@@ -98,42 +74,71 @@ const CourseAssistant = ({ courseName }) => {
     setInputValue('');
     setIsTyping(true);
 
-    setTimeout(() => {
-      let botResponse = "";
-      let foundMatch = false;
+    let courseData = FAQ_DATA[courseName];
+    if (!courseData) {
+      const cName = courseName || "this course";
+      courseData = {
+        "Fundamental Overview": `The **${cName}** program is a comprehensive course designed to equip you with industry-relevant skills and hands-on experience.`,
+        "Market Trends": `The demand for **${cName}** professionals is growing rapidly. Top companies are actively hiring candidates with these specialized skills.`,
+        "Fresher Salaries": `Freshers starting in **${cName}** typically earn highly competitive salaries, ranging from ₹3.5LPA to ₹7LPA depending on interview performance.`,
+        "Professional Salaries": `Experienced professionals in **${cName}** can command premium salaries, often exceeding ₹15LPA to ₹25LPA based on expertise.`,
+        "Course Duration": "The course is structured over 3 to 5 months, including in-depth training and an intensive project-based internship.",
+        "Placement Support": "We offer 100% placement support! This includes resume building, mock interviews, and direct interviews with our hiring partners.",
+        "Hands-on Projects": `You will build real-world, industry-standard projects specific to **${cName}** to showcase in your portfolio.`,
+        "Certifications": "Yes, you will receive a verified Course Completion Certificate and an Internship Experience Certificate from Urbancode.",
+        "Technology Stack": `The curriculum covers the complete, modern technology stack required to master **${cName}** from scratch.`,
+        "Eligibility": "Anyone with a passion for learning can join! It is perfect for college students, freshers, and working professionals. No prior coding experience required."
+      };
+    }
 
-      const courseData = FAQ_DATA[courseName] || FAQ_DATA["MERN Stack Development"]; // Fallback to MERN if not found
-      const lowerInput = text.toLowerCase().trim();
+    try {
+      // Prepare history for API (exclude initial boilerplate to save tokens)
+      const chatHistory = messages
+        .filter(m => m.id !== 1 && m.id !== 2) 
+        .map(m => ({ type: m.type, text: m.text }));
 
-      // Check if it's one of the buttons
-      if (courseData[text]) {
-        botResponse = courseData[text];
-        foundMatch = true;
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          message: text,
+          history: chatHistory,
+          courseName: courseName,
+          courseFaq: courseData
+        })
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.reply) {
+        // AI returned a response
+        // Use marked or standard react html render - the API returns basic markdown 
+        // which our dangerouslySetInnerHTML handles for **bold** tags.
+        let formattedText = data.reply.replace(/\n/g, '<br/>');
+        const botMsg = { 
+          id: Date.now() + 1, 
+          type: 'bot', 
+          text: formattedText
+        };
+        setMessages(prev => [...prev, botMsg]);
       } else {
-        // Semantic check
-        for (const [key, value] of Object.entries(courseData)) {
-          const lowerKey = key.toLowerCase();
-          if (lowerInput.includes(lowerKey) || lowerKey.includes(lowerInput)) {
-            botResponse = value;
-            foundMatch = true;
-            break;
-          }
-        }
+        throw new Error(data.error || "API Error");
       }
-
-      if (!foundMatch) {
-        botResponse = "I'm sorry, I don't have a specific answer for that. For more details, please contact us at **info@urbancode.in** or call **+91 94296 94123**. Our trainers will reach out to you within 24 hours!";
-      }
-
+    } catch (error) {
+      console.error(error);
+      const isGeminiMissing = error.message.includes("GEMINI_API_KEY");
+      
       const botMsg = { 
         id: Date.now() + 1, 
         type: 'bot', 
-        text: botResponse,
-        options: foundMatch ? CATEGORIES.filter(c => c !== text).slice(0, 3) : CATEGORIES.slice(0, 3) // Suggest more
+        text: isGeminiMissing 
+          ? "⚠️ **AI Offline!** Please add your `GEMINI_API_KEY` to your `.env.local` file to unlock my AI brain."
+          : "I'm having trouble connecting to my AI brain right now. For detailed queries, contact **admin@urbancode.in** or call **+91 9878798797**!"
       };
       setMessages(prev => [...prev, botMsg]);
+    } finally {
       setIsTyping(false);
-    }, 600);
+    }
   };
 
   return (

@@ -1,0 +1,98 @@
+{
+  "MERN Stack Development": {
+    "Fundamental Overview": "MERN stands for MongoDB, Express, React, and Node.js. It's a powerful JavaScript stack used to build high-performance full-stack web applications.",
+    "Market Trends": "MERN is currently the most popular stack for startups. React has over 40% market share in frontend libraries, and Node.js is the preferred choice for scalable backend systems.",
+    "Fresher Salaries": "Freshers in MERN Stack typically earn between ₹4LPA to ₹7LPA in India, depending on their project portfolio.",
+    "Professional Salaries": "Experienced MERN developers (3+ years) can easily earn between ₹12LPA to ₹25LPA.",
+    "Course Duration": "The comprehensive program lasts 5 months, with 3 months of intensive training and 2 months of project-based internship.",
+    "Placement Support": "We provide 100% placement support, including resume optimization, LinkedIn branding, and direct referrals to our 200+ hiring partners.",
+    "Hands-on Projects": "You will build 3 major projects: An E-commerce platform, a real-time Chat application, and a Video Streaming service.",
+    "Certifications": "You'll receive an Industry-Recognized Course Completion Certificate and an Internship Experience Certificate.",
+    "Technology Stack": "HTML5, CSS3, JavaScript ES6+, React, Redux, Node.js, Express, MongoDB, Git, and AWS deployment.",
+    "Eligibility": "Students, working professionals, or anyone with a passion for coding. No prior degree in CS is mandatory!"
+  },
+  "MEAN Stack Development": {
+    "Fundamental Overview": "MEAN stands for MongoDB, Express, Angular, and Node.js. It's an all-JavaScript stack ideal for building robust, enterprise-level web applications.",
+    "Market Trends": "MEAN is highly preferred by large-scale enterprises for its structured approach and Angular's powerful frontend capabilities.",
+    "Fresher Salaries": "Freshers in MEAN Stack usually start at ₹3.5LPA to ₹6LPA.",
+    "Professional Salaries": "Senior MEAN developers earn between ₹15LPA to ₹30LPA in top MNCs.",
+    "Course Duration": "The program is 5 months long, covering everything from frontend to backend and database management.",
+    "Placement Support": "Yes! We offer lifetime placement support and unlimited mock interviews.",
+    "Hands-on Projects": "Projects include an Enterprise Resource Planning (ERP) tool, a Healthcare Portal, and a Banking dashboard.",
+    "Certifications": "Global certification preparation and an Urban Code professional certificate.",
+    "Technology Stack": "TypeScript, Angular, RxJS, Node, Express, MongoDB, and Firebase.",
+    "Eligibility": "Best for those who prefer structured frameworks and want to work in large corporate environments."
+  },
+  "Data Science": {
+    "Fundamental Overview": "Data Science involves extracting insights from structured and unstructured data using scientific methods, algorithms, and systems.",
+    "Market Trends": "Data Science is the 'sexiest job of the 21st century' with immense demand in AI, Finance, Healthcare, and E-commerce.",
+    "Fresher Salaries": "Data Science freshers typically earn between ₹5LPA to ₹9LPA.",
+    "Professional Salaries": "Experienced Data Scientists easily earn upwards of ₹20LPA to ₹40LPA.",
+    "Course Duration": "The complete Data Science bootcamp runs for 6 months including an industrial internship.",
+    "Placement Support": "We provide 100% placement assistance, resume building, and mock interviews with industry experts.",
+    "Hands-on Projects": "You'll build Predictive Models, Recommendation Systems, and NLP-based Chatbots.",
+    "Certifications": "Receive an Industry-Recognized Data Science Certificate and Internship Experience letter.",
+    "Technology Stack": "Python, R, SQL, Pandas, NumPy, Scikit-learn, TensorFlow, PowerBI, and Tableau.",
+    "Eligibility": "Open to engineers, statisticians, and anyone with a strong analytical mindset. Basic math knowledge is recommended."
+  },
+  "Python Full Stack Development": {
+    "Fundamental Overview": "Python Full Stack involves using Python (Django/Flask) for the backend and HTML/CSS/JS (React or Angular) for the frontend.",
+    "Market Trends": "Python is globally the #1 most loved language. Python full-stack is heavily used in AI startups and rapid web development.",
+    "Fresher Salaries": "Freshers typically start around ₹4LPA to ₹7.5LPA.",
+    "Professional Salaries": "Senior Python Full Stack engineers can earn ₹14LPA to ₹28LPA.",
+    "Course Duration": "The program lasts 5 months with dedicated project phases.",
+    "Placement Support": "100% placement support with access to our exclusive job portal and hiring partners.",
+    "Hands-on Projects": "Social Media Dashboard, Inventory Management System, and a Blogging Platform.",
+    "Certifications": "Urban Code Course Completion Certificate and an Internship Experience Certificate.",
+    "Technology Stack": "Python, Django, Flask, HTML, CSS, JavaScript, React, PostgreSQL.",
+    "Eligibility": "Anyone can join! It is highly beginner-friendly."
+  },
+  "UI/UX Designing": {
+    "Fundamental Overview": "UI/UX Design focuses on the user experience and visual layout of digital products like apps and websites.",
+    "Market Trends": "Every product needs a designer. UI/UX is booming with companies prioritizing user-centric designs.",
+    "Fresher Salaries": "Freshers earn between ₹3LPA to ₹6LPA.",
+    "Professional Salaries": "Senior Product Designers earn between ₹12LPA to ₹25LPA.",
+    "Course Duration": "The UI/UX program is 3 months long.",
+    "Placement Support": "We help you build a stunning Behance portfolio and provide direct placement support.",
+    "Hands-on Projects": "App redesigns, Wireframing E-commerce platforms, and building interactive prototypes.",
+    "Certifications": "UI/UX Professional Certificate from Urban Code.",
+    "Technology Stack": "Figma, Adobe XD, Sketch, Photoshop, Illustrator, and InVision.",
+    "Eligibility": "Open to creative individuals. No coding background is required!"
+  },
+  "Software Testing": {
+    "Fundamental Overview": "Software Testing (QA) ensures that applications are bug-free, reliable, and meet user requirements using manual and automated techniques.",
+    "Market Trends": "Automation testing is highly sought after to speed up the software delivery pipeline (CI/CD).",
+    "Fresher Salaries": "Freshers in testing earn between ₹3LPA to ₹5LPA.",
+    "Professional Salaries": "Automation Test Engineers with experience earn ₹10LPA to ₹22LPA.",
+    "Course Duration": "The course duration is 3 to 4 months.",
+    "Placement Support": "100% placement assistance and dedicated mock technical interviews.",
+    "Hands-on Projects": "Testing live e-commerce websites and building an automation framework from scratch.",
+    "Certifications": "Certified QA Tester Certificate from Urban Code.",
+    "Technology Stack": "Manual Testing, Java/Python, Selenium WebDriver, TestNG, JUnit, Postman (API Testing).",
+    "Eligibility": "Perfect for anyone looking for a smoother entry into the IT industry."
+  },
+  "Cloud & DevOps": {
+    "Fundamental Overview": "DevOps integrates software development and IT operations. Cloud computing provides the infrastructure (like AWS/Azure).",
+    "Market Trends": "DevOps is one of the highest-paying domains, essential for any modern software company.",
+    "Fresher Salaries": "Cloud/DevOps freshers earn between ₹4.5LPA to ₹8LPA.",
+    "Professional Salaries": "Senior DevOps Engineers often earn ₹18LPA to ₹35LPA+.",
+    "Course Duration": "The training runs for 4 to 5 months.",
+    "Placement Support": "Extensive interview preparation and placement drives with top MNCs.",
+    "Hands-on Projects": "Setting up CI/CD pipelines, containerizing applications, and deploying scalable servers.",
+    "Certifications": "Course Completion Certificate and guidance for AWS/Azure Global Certifications.",
+    "Technology Stack": "AWS, Linux, Docker, Kubernetes, Jenkins, Git, Terraform, Ansible.",
+    "Eligibility": "Best for students with basic OS/networking knowledge or IT professionals looking to upskill."
+  },
+  "Digital Marketing": {
+    "Fundamental Overview": "Digital Marketing encompasses SEO, social media, content marketing, and paid advertising to drive business growth online.",
+    "Market Trends": "Every business is moving online, making digital marketers crucial for lead generation and brand awareness.",
+    "Fresher Salaries": "Freshers start at ₹2.5LPA to ₹4.5LPA.",
+    "Professional Salaries": "Experienced Growth Hackers and Marketing Managers earn ₹10LPA to ₹25LPA.",
+    "Course Duration": "The comprehensive course is 3 months.",
+    "Placement Support": "100% placement support with marketing agency partners.",
+    "Hands-on Projects": "Running live ad campaigns, SEO audits for real websites, and Social Media strategizing.",
+    "Certifications": "Urban Code Certificate, plus preparation for Google Ads and HubSpot Certifications.",
+    "Technology Stack": "SEO, SEM, Google Ads, Meta Ads, Google Analytics, WordPress, Mailchimp.",
+    "Eligibility": "Open to anyone! Great for creative thinkers, business owners, and freshers."
+  }
+}
