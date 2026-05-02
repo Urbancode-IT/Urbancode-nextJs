@@ -17,10 +17,10 @@ import ClientServices from "./pages/ClientServices";
 const HomePage = () => (
   <>
     <HeroSection />
+    <OurClients />
     <AboutUs />
     <ProjectsSection />
     <ServicesOffer />
-    <OurClients />
     <DigitalFuture />
     <ClientServices />
     <Milestones />

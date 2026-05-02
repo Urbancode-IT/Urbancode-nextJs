@@ -1,7 +1,7 @@
 /* ── Digital Future Section ── */
 .digital-future {
-  padding: 60px 20px;
-  background: var(--bg);
+  padding: 50px 20px;
+  background: transparent;
   position: relative;
   overflow: hidden;
 }

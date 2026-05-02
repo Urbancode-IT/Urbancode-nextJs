@@ -1,23 +1,27 @@
 .thank-you-page {
-  min-height: 100vh;
+  min-height: calc(100vh - 71px); /* Navbar height */
+  margin-top: 71px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 40px 20px;
+  padding: 20px;
   background: white;
   font-family: 'Inter', sans-serif;
+  box-sizing: border-box;
 }
 
 .thank-you-container {
   width: 100%;
-  max-width: 600px;
+  max-width: 540px;
+  margin: auto;
 }
 
 .thank-you-card {
   background: linear-gradient(180deg, #e3f0eb 0%, #f3f5f3 100%);
-  padding: 50px 40px;
+  padding: 30px 24px;
   border-radius: 32px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.05);
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -25,7 +29,7 @@
 }
 
 .thank-you-header {
-  margin-bottom: 40px;
+  margin-bottom: 24px;
 }
 
 .thank-you-logo {
@@ -33,7 +37,7 @@
 }
 
 .success-icon-wrapper {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -45,19 +49,19 @@
 }
 
 .thank-you-title {
-  font-size: 2.5rem;
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
   font-weight: 800;
   color: #0f172a;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
   letter-spacing: -1px;
   line-height: 1.1;
 }
 
 .thank-you-message {
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   color: #475569;
-  margin-bottom: 40px;
-  line-height: 1.6;
+  margin-bottom: 30px;
+  line-height: 1.5;
 }
 
 .thank-you-message strong {
@@ -130,8 +134,8 @@
 }
 
 .thank-you-footer {
-  margin-top: 50px;
-  padding-top: 30px;
+  margin-top: 30px;
+  padding-top: 20px;
   border-top: 1px solid #f1f5f9;
 }
 
@@ -154,21 +158,70 @@
   .action-buttons {
     flex-direction: row;
     justify-content: center;
+    gap: 20px;
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 640px) {
+  .thank-you-page {
+    padding: 15px;
+    min-height: calc(100vh - 71px);
+  }
+  
   .thank-you-card {
-    padding: 40px 24px;
+    padding: 30px 20px;
     border-radius: 24px;
   }
   
   .thank-you-title {
-    font-size: 1.85rem;
+    font-size: 1.75rem;
   }
   
   .thank-you-message {
-    font-size: 1rem;
+    font-size: 0.95rem;
+    margin-bottom: 24px;
+  }
+  
+  .success-icon {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .btn-primary-thankyou,
+  .btn-secondary-thankyou {
+    padding: 12px 20px;
+    font-size: 0.9rem;
+  }
+
+  .thank-you-footer {
+    margin-top: 20px;
+    padding-top: 15px;
+  }
+}
+
+@media (max-height: 700px) {
+  .thank-you-card {
+    padding: 20px;
+  }
+  .thank-you-header { margin-bottom: 15px; }
+  .success-icon-wrapper { margin-bottom: 15px; }
+  .thank-you-message { margin-bottom: 20px; }
+  .thank-you-footer { margin-top: 15px; }
+}
+
+@media (max-width: 380px) {
+  .thank-you-title {
+    font-size: 1.5rem;
+  }
+  
+  .thank-you-logo {
+    width: 130px;
+    height: auto;
+  }
+  
+  .success-icon {
+    width: 60px;
+    height: 60px;
   }
 }
 

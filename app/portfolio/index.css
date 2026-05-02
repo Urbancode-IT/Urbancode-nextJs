@@ -33,7 +33,7 @@ body {
   --fs-sm: 0.85rem;
 
   /* Standard Spacing */
-  --section-gap: clamp(80px, 12vw, 120px);
+  --section-gap: clamp(40px, 8vw, 60px);
   --container-max: 1300px;
   --card-radius: 24px;
   
@@ -159,12 +159,12 @@ h2 {
   flex-wrap: wrap;
   text-align: center;
   margin-bottom: 20px;
-  color: var(--brand-green);
+  color: var(--text-h);
 }
 
 section {
-  padding: 80px 20px; /* Standard vertical padding */
-  scroll-margin-top: 80px;
+  padding: 50px 20px; /* Standard vertical padding */
+  scroll-margin-top: 60px;
 }
 
 .text-green {

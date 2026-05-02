@@ -225,7 +225,7 @@
 }
 
 @media (max-width: 768px) {
-  .glass-about-section { padding: 80px 20px; }
+  .glass-about-section { padding: 60px 20px; }
   .main-glass-card { border-radius: 24px; padding: 30px; }
   .big-tag-container { width: 260px; }
 }

@@ -55,7 +55,7 @@ const ServicesOffer = () => {
       <div className="offer-container">
         <div className="offer-header">
 
-          <h2>Services for Clients</h2>
+          <h2>Services for <span className="text-green">Clients</span></h2>
           <p className="offer-desc">
             Whether you need a digital product built or your team upskilled — we deliver excellence every time.
           </p>
