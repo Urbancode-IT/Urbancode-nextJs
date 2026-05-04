@@ -37,6 +37,21 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={inter.variable} suppressHydrationWarning>
       <head>
+        {/* ✅ Google Ads / GA4 Global Site Tag — MUST be in <head> for Google tag validation */}
+        <Script
+          id="google-gtag"
+          strategy="beforeInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-ZZX212RD85"
+        />
+        <Script id="google-gtag-init" strategy="beforeInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-ZZX212RD85');
+          `}
+        </Script>
+
         {/* ✅ Production-Ready Optimized Structured Data */}
         <script
           id="structured-data"
@@ -139,7 +154,17 @@ export default function RootLayout({ children }) {
       </head>
 
       <body>
-        {/* ✅ Google Tag Manager - afterInteractive (Recommended for GTM) */}
+        {/* ✅ GTM NoScript — must be FIRST element after <body> per Google's official instructions */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-MTFL2HHJ"
+            height="0"
+            width="0"
+            style={{ display: 'none', visibility: 'hidden' }}
+          />
+        </noscript>
+
+        {/* ✅ Google Tag Manager JS - afterInteractive */}
         <Script id="google-tag-manager" strategy="afterInteractive">
           {`
             (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -149,16 +174,6 @@ export default function RootLayout({ children }) {
             })(window,document,'script','dataLayer','GTM-MTFL2HHJ');
           `}
         </Script>
-
-        {/* ✅ GTM NoScript (correct placement) */}
-        <noscript>
-          <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-MTFL2HHJ"
-            height="0"
-            width="0"
-            style={{ display: 'none', visibility: 'hidden' }}
-          />
-        </noscript>
 
         <BootstrapClient />
         <Navbar />
