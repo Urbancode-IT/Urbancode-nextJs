@@ -6,37 +6,37 @@ import Image from "next/image";
 
 const testimonials = [
     {
-        name: "Priyadarshini",
+        name: "Ashwini Raguram",
         feedback:
-            "Your patience and determination to teach kids shows how passionate you are towards teaching. Such a commendable teacher you are, I wish you all success and with Urbancode may your journey continue for a long tenure. We need teachers like you in today's world - Krithika Varshini M/O Anamika. Scratch Program - Trainer",
+            "I completed my Data Analyst placement training in Urbancode under the trainer Siva. The training covered SQL and Power BI in a very practical, interview-focused manner. What stood out was the additional support provided like, separate refresh sessions, CV preparation, Naukri profile updates, and mock interviews. The training was strongly aligned with real time scenarios and interview questions, which boosted my confidence significantly. Overall, it’s a well-structured program for anyone looking to start a career in data analytics.",
         rating: 5,
         image: "/images/home/avatar1.jpg",
     },
     {
-        name: "Harathy L",
+        name: "subha v",
         feedback:
-            "Power BI class by 'Urbancode' exceeded my expectations. The course content was comprehensive, covering all essential aspects of Power BI. The instructor's expertise and support system were excellent. The step-by-step guidance during these exercises made me feel confident in using Power BI for my own projects. I highly recommend 'Urbancode'. Thank you and Best Wishes Team!",
+            "This place has shaped my child's learning interest . I was little confused on how my Middle school going child would be able to learn the concepts etc .. but UrbanCode has the best teachers who gives great focus to the child and makes sure that one recives a depth knowledge !We are happy and continuing with the Advanced course now . Would highly recommend for middle school or high school going kids based on my experience here .",
         rating: 5,
         image: "/images/home/avatar2.jpg",
     },
     {
-        name: "Shyam Sundar",
+        name: "Ranjith Vigneshwar",
         feedback:
-            "Power BI class by 'Urbancode' exceeded my expectations. The course content was comprehensive, covering all essential aspects of Power BI. The instructor's expertise and support system were excellent. The step-by-step guidance during these exercises made me feel confident in using Power BI for my own projects. I highly recommend 'Urbancode'. Thank you and Best Wishes Team!",
+            "I had a great learning experience with Urban Code Training Institute during my Data Analyst course. The trainers are very knowledgeable and supportive, making sure every concept is explained clearly. The course was structured in a practical way, which helped me gain strong hands-on experience. I learned a lot throughout the training, and the guidance I received has boosted my confidence to apply my skills in real-time projects. I truly appreciate their constant support and encouragement",
         rating: 5,
         image: "/images/home/avatar3.jpg",
     },
     {
-        name: "Millar Jayakumar",
+        name: "Sadham Hussain",
         feedback:
-            "Taking the Base SAS and advanced SAS classes with URBANCODE has been an enriching experience. The course provided a comprehensive understanding of SAS programming and data analysis. The trainer's depth of knowledge and engaging teaching style made complex concepts accessible, fostering a deeper understanding of both Base SAS and advanced SAS.",
-        rating: 4,
+            "I am truly thankful to the institute, especially CEO Mr. Siva and all the faculty members, for giving me hope and helping me achieve my dream job. The training here is phenomenal — if you want to become a techie and learn the latest technologies, this is the right place. You can clearly see how they prepare and guide students to succeed in their careers.I enrolled in the Java Selenium course and successfully got placed as a Software Test Engineer in a reputed company. Urban Code Training and Solutions is truly a one-stop destination for career growth. It has shaped my learning, boosted my confidence, and supported my overall growth in the best possible way.♥️ Highly recommended! ❤️(FYI: This is a genuine review, unlike some institutes that pay money to people just to write fake ones.)",
+        rating: 5,
         image: "/images/home/avatar4.jpg",
     },
     {
-        name: "Himali",
+        name: "sraja kohila",
         feedback:
-            "I recently completed Advanced SAS training at Urbancode and I am thoroughly impressed. The instructors demonstrated a deep understanding of the subject, making complex concepts easy to grasp. The hands-on approach and real-world examples enriched my learning experience. Highly recommended!",
+            "I joined this institute to achieve my dream job, and it has been a really good experience. The trainers are very friendly, approachable, and highly knowledgeable, always ready to clear doubts with patience. Compared to other institutions, the fees here are quite low, but the quality of training is excellent. The atmosphere is positive and motivating, which helped me gain both skills and confidence. I could see real improvement in myself after attending the sessions. I want to give special thanks to the CEO, Mr. Siva sir, who is very kind and supportive. His personal guidance and motivation gave me the confidence to move forward without fear. Overall, this institute not only trains you but also inspires you to reach your career goals, and I am truly thankful for their support in my journey towards my dream job.",
         rating: 5,
         image: "/images/home/avatar5.jpg",
     },
@@ -48,10 +48,10 @@ const testimonials = [
         image: "/images/home/avatar6.jpg",
     },
     {
-        name: "Tamarai",
+        name: "Rubini",
         feedback:
-            "A good teacher will definitely identify students' strength and enhance their skills. You are doing a very good job.",
-        rating: 4,
+            "The classes were engaging and informative. The teaching methodology was effective in helping me understand complex concepts.I appreciate the teacher's patience and willingness to clarify doubts. The classes were well-structured and easy to follow.The teaching approach was innovative and interactive, making learning enjoyable and fun.",
+        rating: 5,
         image: "/images/home/avatar7.jpg",
     },
 ];
@@ -59,6 +59,7 @@ const testimonials = [
 const TestimonialCarousel = () => {
     const [index, setIndex] = useState(0);
     const [cardsToShow, setCardsToShow] = useState(3);
+    const [selectedTestimonial, setSelectedTestimonial] = useState(null);
     const leftCardRef = useRef(null);
 
     useEffect(() => {
@@ -109,7 +110,7 @@ const TestimonialCarousel = () => {
                     <div className="col-lg-3 col-md-4 col-12">
                         <div
                             ref={leftCardRef}
-                            className=" rounded-3 shadow-lg p-4 d-flex flex-column justify-content-between sidebar-equal-height"
+                            className=" rounded-3 shadow-sm p-4 d-flex flex-column justify-content-between sidebar-equal-height bg-white border"
                         >
                             <div>
                                 <FaQuoteLeft size={36} className="text-dark mb-3" />
@@ -161,12 +162,20 @@ const TestimonialCarousel = () => {
                                         style={{ flex: `0 0 calc(${100 / cardsToShow}% - 1rem)` }}
                                     >
                                         <h5 className="fw-bold mb-2">{card.name}</h5>
-                                        <p className="text-muted fs08rem mb-3">{card.feedback}</p>
+                                        <div className="testimonial-text-wrapper mb-3">
+                                            <p className="text-muted fs08rem mb-1">{card.feedback}</p>
+                                            <button 
+                                                className="read-more-btn btn p-0 text-success fw-semibold fs07rem"
+                                                onClick={() => setSelectedTestimonial(card)}
+                                            >
+                                                Read More
+                                            </button>
+                                        </div>
 
                                         <div className="d-flex flex-column align-items-center mt-auto">
-                                            <div className="text-success d-flex justify-content-center gap-1 mb-2">
+                                            <div className="testimonial-stars d-flex justify-content-center gap-1 mb-2">
                                                 {Array.from({ length: card.rating }).map((_, i) => (
-                                                    <FaStar key={i} className="opacity-75" />
+                                                    <FaStar key={i} />
                                                 ))}
                                             </div>
                                             <div className="avatar position-relative rounded-circle overflow-hidden">
@@ -189,6 +198,40 @@ const TestimonialCarousel = () => {
                     </div>
                 </div>
             </div>
+
+            {/* Full Review Modal */}
+            {selectedTestimonial && (
+                <div className="testimonial-modal-overlay" onClick={() => setSelectedTestimonial(null)}>
+                    <div className="testimonial-modal-content" onClick={(e) => e.stopPropagation()}>
+                        <button className="modal-close-btn" onClick={() => setSelectedTestimonial(null)}>×</button>
+                        <div className="d-flex flex-column align-items-center">
+                            <div className="testimonial-stars mb-3">
+                                {Array.from({ length: selectedTestimonial.rating }).map((_, i) => (
+                                    <FaStar key={i} />
+                                ))}
+                            </div>
+                            <h4 className="fw-bold mb-3">{selectedTestimonial.name}</h4>
+                            <div className="testimonial-modal-body">
+                                <FaQuoteLeft className="quote-icon-modal mb-2" />
+                                <p className="text-muted">{selectedTestimonial.feedback}</p>
+                            </div>
+                            <div className="avatar-large mt-4">
+                                {selectedTestimonial.image ? (
+                                    <Image
+                                        src={selectedTestimonial.image}
+                                        alt={selectedTestimonial.name}
+                                        width={80}
+                                        height={80}
+                                        className="rounded-circle"
+                                    />
+                                ) : (
+                                    getInitials(selectedTestimonial.name)
+                                )}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

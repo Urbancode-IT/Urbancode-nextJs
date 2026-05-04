@@ -1,5 +1,13 @@
 .testimonial_main_container {
-  background-color: var(--bg-neutral);
+  background-color: #fcfcfc;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Removed background shimmer for a cleaner look without shadows */
+.testimonial_main_container > .container {
+  position: relative;
+  z-index: 1;
 }
 
 .read_revire_text {
@@ -11,46 +19,209 @@
   align-items: stretch;
 }
 
-/* Uniform testimonial cards */
+/* ★ Gold Stars with Twinkle Effect */
+.testimonial-stars {
+  color: #FFB800;
+  font-size: 1rem;
+  display: flex;
+  gap: 2px;
+}
+
+.testimonial-stars svg {
+  animation: starTwinkle 2s infinite ease-in-out;
+}
+
+/* Staggered animation for stars to make them twinkle independently */
+.testimonial-stars svg:nth-child(1) { animation-delay: 0s; }
+.testimonial-stars svg:nth-child(2) { animation-delay: 0.4s; }
+.testimonial-stars svg:nth-child(3) { animation-delay: 0.8s; }
+.testimonial-stars svg:nth-child(4) { animation-delay: 1.2s; }
+.testimonial-stars svg:nth-child(5) { animation-delay: 1.6s; }
+
+@keyframes starTwinkle {
+  0%, 100% { 
+    opacity: 1; 
+    transform: scale(1);
+    filter: drop-shadow(0 0 0px transparent);
+  }
+  50% { 
+    opacity: 0.6; 
+    transform: scale(0.85);
+    filter: drop-shadow(0 0 5px rgba(255, 184, 0, 0.6));
+  }
+}
+
+/* Uniform testimonial cards - SHADOWS REMOVED */
 .testimonial-card {
-  background: linear-gradient(135deg, var(--bg-neutral), #c3f5eb);
+  background: linear-gradient(160deg, #ffffff 0%, #f9fdfc 40%, #e0f9f4 100%);
   width: 300px;
   flex: 0 0 auto;
   clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
   padding: 1.5rem;
   border-radius: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   text-align: center;
-  border: 1px solid #dadada;
+  border: 1px solid rgba(200, 220, 210, 0.6); /* Slightly more visible border since shadows are gone */
+  position: relative;
+  box-shadow: none !important; /* Explicitly removing shadows */
 
   /* FIXED HEIGHT */
   height: 340px;
   overflow: hidden;
+}
 
+.testimonial-text-wrapper {
+    position: relative;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Read More Button */
+.read-more-btn {
+    border: none;
+    background: transparent;
+    transition: all 0.3s ease;
+    text-decoration: underline;
+    opacity: 0.8;
+}
+
+.read-more-btn:hover {
+    opacity: 1;
+    transform: translateX(5px);
+    color: #1a6d2d !important;
+}
+
+/* Glossy top edge highlight */
+.testimonial-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #28a745, #FFB800, #28a745);
+  border-radius: 1rem 1rem 0 0;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.testimonial-card:hover::before {
+  opacity: 1;
 }
 
 /* Truncate text with ellipsis */
 .testimonial-card p {
-  font-size: 0.95rem;
-  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
   display: -webkit-box;
-  -webkit-line-clamp: 6;
+  -webkit-line-clamp: 5;
   /* max lines */
-  line-clamp: 6;
+  line-clamp: 5;
   /* standard property for compatibility */
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
+  line-height: 1.5;
 }
 
 .testimonial-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.1);
+  box-shadow: none !important; /* Ensuring no shadow on hover */
+  border-color: rgba(40, 167, 69, 0.4);
 }
 
+/* Modal Styling */
+.testimonial-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Lighter overlay */
+    backdrop-filter: blur(4px); /* Reduced blur for cleaner look */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    animation: fadeIn 0.3s ease;
+}
+
+.testimonial-modal-content {
+    background: #ffffff;
+    padding: 3rem 2rem;
+    border-radius: 2rem;
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: none; /* Removed modal shadow */
+    border: 1px solid #eee;
+    animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: #f0f0f0;
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.modal-close-btn:hover {
+    background: #e0e0e0;
+    transform: rotate(90deg);
+}
+
+.testimonial-modal-body {
+    text-align: center;
+    font-style: italic;
+    line-height: 1.8;
+}
+
+.quote-icon-modal {
+    font-size: 2rem;
+    color: rgba(40, 167, 69, 0.2);
+}
+
+.avatar-large {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #28a745;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border: 4px solid #fcfcfc;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Progress bar */
 .progress-bar-wrapper {
   height: 6px;
   background: #e8e8e8;
@@ -60,7 +231,7 @@
 
 .progress-bar-fill {
   height: 100%;
-  background: #28a745;
+  background: linear-gradient(90deg, #28a745, #20c997);
   border-radius: 3px;
   transition: width 0.4s ease;
 }
@@ -78,8 +249,13 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  border: 2px solid rgba(255, 184, 0, 0.3);
+  transition: border-color 0.3s ease;
 }
 
+.testimonial-card:hover .avatar {
+  border-color: #FFB800;
+}
 
 @media (max-width: 768px) {
   .avatar {
@@ -176,8 +352,8 @@
   transform: scale(0.95);
 }
 
-/* Hover depth effect */
+/* Hover depth effect - SHADOW REMOVED */
 .testimonial-card.active:hover {
   transform: scale(1.03) translateY(-6px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  box-shadow: none !important;
 }

@@ -185,12 +185,12 @@ const ContactUs = () => {
       <div className="contact-content">
         {/* Left: Form Area */}
         <div className="contact-form-container" style={{ flex: '1.2' }}>
-          <FormCard title="Get In Touch" className="p-4 p-md-5">
+          <FormCard title="Get in Touch" className="contact-form-card">
             <form onSubmit={handleSubmit}>
-              <div className="row g-4">
+              <div className="row g-2">
                 <div className="col-md-6">
                   <FormInput
-                    label="Name"
+                    // label="Name"
                     name="name"
                     placeholder="Enter your full name"
                     value={formData.name}
@@ -201,7 +201,7 @@ const ContactUs = () => {
                 </div>
                 <div className="col-md-6">
                   <FormInput
-                    label="Email ID"
+                    // label="Email ID"
                     type="email"
                     name="email"
                     placeholder="Enter mail ID"
@@ -215,7 +215,7 @@ const ContactUs = () => {
                   <div className="row g-2 align-items-end">
                     <div className="col-auto" style={{ minWidth: '120px' }}>
                       <FormSelect
-                        label="Code"
+                          // label="Code"
                         name="countryCode"
                         value={formData.countryCode}
                         onChange={handleInputChange}
@@ -226,7 +226,7 @@ const ContactUs = () => {
                     </div>
                     <div className="col">
                       <FormInput
-                        label="Mobile Number"
+                        // label="Mobile Number"
                         type="tel"
                         name="mobile"
                         placeholder="Number"
@@ -240,7 +240,7 @@ const ContactUs = () => {
                 </div>
                 <div className="col-md-6">
                   <FormSelect
-                    label="Interested In"
+                    // label="Interested In"
                     name="interest"
                     value={formData.interest}
                     onChange={handleInputChange}
@@ -251,10 +251,23 @@ const ContactUs = () => {
                   />
                 </div>
 
+                <div className="col-md-6">
+                  <FormSelect
+                    // label="Convenient Time to Call"
+                    name="convenientTime"
+                    value={formData.convenientTime}
+                    onChange={handleInputChange}
+                    options={timeSlots}
+                    placeholder="Select time"
+                    required
+                    disabled={loading}
+                  />
+                </div>
+
                 {formData.interest === "Course Enquiry" && (
-                  <div className="col-md-6">
+                  <div className="col-12">
                     <FormSelect
-                      label="Select Course"
+                      // label="Select Course"
                       name="selectedCourse"
                       value={formData.selectedCourse}
                       onChange={handleInputChange}
@@ -266,24 +279,11 @@ const ContactUs = () => {
                   </div>
                 )}
 
-                <div className={formData.interest === "Course Enquiry" ? "col-md-6" : "col-md-12"}>
-                  <FormSelect
-                    label="Convenient Time to Call"
-                    name="convenientTime"
-                    value={formData.convenientTime}
-                    onChange={handleInputChange}
-                    options={timeSlots}
-                    placeholder="Select time"
-                    required
-                    disabled={loading}
-                  />
-                </div>
 
 
-
-                <div className="col-12 mt-4">
-                  <FormButton type="submit" variant="success" className="w-100 py-3" loading={loading}>
-                    {loading ? "Sending Message..." : "Submit Message"}
+                <div className="col-12 mt-4 text-center">
+                  <FormButton type="submit" variant="success" className="px-5 py-2" loading={loading}>
+                    {loading ? "Sending Message..." : "Submit"}
                   </FormButton>
                 </div>
               </div>
