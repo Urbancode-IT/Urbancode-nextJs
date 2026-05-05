@@ -1,7 +1,355 @@
 // Coding problems data organized by topic
 // Each problem includes: id, title, description, difficulty, tags, starter code, test cases, and solution
 
+const miniStatements = [
+    "Welcome to Urbancode Compiler",
+    "Practice makes perfect",
+    "Hello, Mini Question 3",
+    "Code. Test. Improve.",
+    "Think first, then code",
+    "Consistency beats intensity",
+    "Debugging is learning",
+    "Focus on clean logic",
+    "Small steps, big progress",
+    "Solve one bug at a time",
+    "Never stop practicing",
+    "Write readable code",
+    "Keep functions simple",
+    "Check your edge cases",
+    "Learn by building daily",
+    "Strong basics win interviews",
+    "Test before final submit",
+    "Break problems into parts",
+    "Name variables clearly",
+    "Master loops and conditions",
+    "Understand before optimizing",
+    "Fix errors calmly",
+    "Predict output first",
+    "Use console logs wisely",
+    "Practice arrays every day",
+    "Functions make code reusable",
+    "Comments should add value",
+    "Validate input carefully",
+    "Handle invalid cases",
+    "Avoid duplicate code",
+    "Read problem twice",
+    "Write pseudocode first",
+    "Syntax matters a lot",
+    "Plan then implement",
+    "Refactor for clarity",
+    "One concept per session",
+    "Build confidence with repetition",
+    "Review solved problems",
+    "Ask why, not just how",
+    "Sharpen problem-solving mindset",
+    "Track your learning streak",
+    "Time your coding attempts",
+    "Learn from wrong answers",
+    "Stay curious and consistent",
+    "Strong logic beats shortcuts",
+    "Solve, then explain",
+    "Be patient with complex bugs",
+    "Improve line by line",
+    "Discipline creates mastery",
+    "Ready for question 50"
+];
+
+const miniProblems = miniStatements.map((statement, index) => ({
+    id: index + 1,
+    title: `Mini Print Challenge ${index + 1}`,
+    description: `Write a JavaScript program that prints exactly this text:\n"${statement}"`,
+    difficulty: 1,
+    tags: ["javascript", "mini", "beginner"],
+    starterCode: `// Print the exact statement below
+console.log("");`,
+    testCases: [
+        {
+            input: "No input",
+            expectedOutput: statement,
+        }
+    ],
+    solution: `console.log("${statement}");`,
+    hints: ["Use console.log()", "Match the sentence exactly as given"],
+    theory: "This mini challenge focuses on output formatting and basic JavaScript syntax. Use console.log() to print the exact expected text."
+}));
+
+const TOPIC_MIN_PROBLEMS = 50;
+const AUTO_DIFFICULTY_CYCLE = [2, 3, 2, 3, 2];
+const AUTO_TASKS = [
+    "Compute the sum from 1 to N",
+    "Reverse a given word",
+    "Count vowels in a sentence",
+    "Check palindrome text",
+    "Generate first N Fibonacci numbers"
+];
+
+const getDifficultyForChallenge = (challengeNo) =>
+    AUTO_DIFFICULTY_CYCLE[(challengeNo - 1) % AUTO_DIFFICULTY_CYCLE.length];
+
+const makeTaskPayload = (challengeNo) => {
+    const type = (challengeNo - 1) % AUTO_TASKS.length;
+    const n = 8 + (challengeNo % 9);
+    const word = `compiler${challengeNo}`;
+    const phrase = `Urbancode Challenge ${challengeNo}`;
+    return { type, n, word, phrase };
+};
+
+const getSqlTemplate = ({ type, n, word, phrase }) => {
+    if (type === 0) {
+        return {
+            description: `Using a CTE, generate numbers from 1 to ${n} and return their total sum as total_sum.`,
+            starterCode: `-- Use recursive CTE to generate sequence and sum it
+WITH RECURSIVE seq(n) AS (
+  SELECT 1
+  UNION ALL
+  SELECT n + 1 FROM seq WHERE n < ${n}
+)
+SELECT 0 AS total_sum;`,
+            solution: `WITH RECURSIVE seq(n) AS (
+  SELECT 1
+  UNION ALL
+  SELECT n + 1 FROM seq WHERE n < ${n}
+)
+SELECT SUM(n) AS total_sum FROM seq;`
+        };
+    }
+    if (type === 1) {
+        return {
+            description: `Reverse the text '${word}' using SQL string functions and return it as reversed_text.`,
+            starterCode: `SELECT '' AS reversed_text;`,
+            solution: `SELECT REVERSE('${word}') AS reversed_text;`
+        };
+    }
+    if (type === 2) {
+        return {
+            description: `Count vowels in '${phrase}' and return the result as vowel_count.`,
+            starterCode: `SELECT 0 AS vowel_count;`,
+            solution: `SELECT LENGTH(LOWER('${phrase}')) - LENGTH(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(LOWER('${phrase}'),'a',''),'e',''),'i',''),'o',''),'u','')) AS vowel_count;`
+        };
+    }
+    if (type === 3) {
+        return {
+            description: `Check whether '${word.split('').reverse().join('')}' is a palindrome. Return 'YES' or 'NO' as is_palindrome.`,
+            starterCode: `SELECT 'NO' AS is_palindrome;`,
+            solution: `SELECT CASE WHEN '${word.split('').reverse().join('')}' = REVERSE('${word.split('').reverse().join('')}') THEN 'YES' ELSE 'NO' END AS is_palindrome;`
+        };
+    }
+    return {
+        description: `Return first ${Math.min(n, 10)} Fibonacci values in ascending order as column fib_value using a recursive CTE.`,
+        starterCode: `-- Return fibonacci sequence
+SELECT 0 AS fib_value;`,
+        solution: `WITH RECURSIVE fib(step, a, b) AS (
+  SELECT 1, 0, 1
+  UNION ALL
+  SELECT step + 1, b, a + b FROM fib WHERE step < ${Math.min(n, 10)}
+)
+SELECT a AS fib_value FROM fib;`
+    };
+};
+
+const getScriptTemplate = (topic, payload) => {
+    const { type, n, word, phrase } = payload;
+    if (type === 0) return { title: `Sum 1..${n}`, statement: String((n * (n + 1)) / 2) };
+    if (type === 1) return { title: `Reverse '${word}'`, statement: word.split('').reverse().join('') };
+    if (type === 2) {
+        const v = (phrase.toLowerCase().match(/[aeiou]/g) || []).length;
+        return { title: `Vowel Count`, statement: String(v) };
+    }
+    if (type === 3) {
+        const text = word.split('').reverse().join('');
+        return { title: `Palindrome Check`, statement: text === text.split('').reverse().join('') ? "YES" : "NO" };
+    }
+    const fibN = Math.min(n, 10);
+    const fib = [0, 1];
+    while (fib.length < fibN) fib.push(fib[fib.length - 1] + fib[fib.length - 2]);
+    return { title: `Fibonacci ${fibN}`, statement: fib.slice(0, fibN).join(" ") };
+};
+
+const buildAutoProblemByTopic = (topic, id, challengeNo) => {
+    const payload = makeTaskPayload(challengeNo);
+    const difficulty = getDifficultyForChallenge(challengeNo);
+    const base = {
+        id,
+        title: `${topic.toUpperCase()} Challenge ${challengeNo}: ${AUTO_TASKS[payload.type]}`,
+        description: `Solve this ${difficulty === 3 ? "tough" : "average"} problem: ${AUTO_TASKS[payload.type]}.`,
+        difficulty,
+        tags: [topic, "auto-generated", difficulty === 3 ? "tough" : "average"],
+        hints: [
+            "Break the problem into small steps",
+            "Handle edge cases before final output"
+        ],
+        theory: "This auto-generated challenge focuses on algorithmic thinking, transformation logic, and clean implementation."
+    };
+
+    if (["sql", "mysql", "postgresql", "sqlserver"].includes(topic)) {
+        const sql = getSqlTemplate(payload);
+        return {
+            ...base,
+            description: sql.description,
+            starterCode: sql.starterCode,
+            solution: sql.solution
+        };
+    }
+
+    const template = getScriptTemplate(topic, payload);
+
+    if (topic === "python") {
+        return {
+            ...base,
+            title: `${topic.toUpperCase()} Challenge ${challengeNo}: ${template.title}`,
+            description: `${AUTO_TASKS[payload.type]} and print only the final result.`,
+            starterCode: "def solve():\n    # write logic\n    pass\n\nsolve()",
+            solution: `def solve():\n    print("${template.statement}")\n\nsolve()`
+        };
+    }
+
+    if (topic === "java") {
+        return {
+            ...base,
+            title: `${topic.toUpperCase()} Challenge ${challengeNo}: ${template.title}`,
+            description: `${AUTO_TASKS[payload.type]} and print the result.`,
+            starterCode: `public class Main {
+    public static void main(String[] args) {
+        // Write logic
+    }
+}`,
+            solution: `public class Main {
+    public static void main(String[] args) {
+        System.out.println("${template.statement}");
+    }
+}`
+        };
+    }
+
+    if (topic === "c++") {
+        return {
+            ...base,
+            title: `${topic.toUpperCase()} Challenge ${challengeNo}: ${template.title}`,
+            description: `${AUTO_TASKS[payload.type]} and print the result.`,
+            starterCode: `#include <iostream>
+using namespace std;
+
+int main() {
+    // Write logic
+    return 0;
+}`,
+            solution: `#include <iostream>
+using namespace std;
+
+int main() {
+    cout << "${template.statement}" << endl;
+    return 0;
+}`
+        };
+    }
+
+    if (topic === "html") {
+        return {
+            ...base,
+            title: `${topic.toUpperCase()} Challenge ${challengeNo}: Semantic Layout`,
+            description: "Build a semantic card layout with heading, paragraph, and button inside a section.",
+            starterCode: `<section class="challenge-card">
+</section>`,
+            solution: `<section class="challenge-card">
+  <h1>Challenge ${challengeNo}</h1>
+  <p>Build clean semantic HTML structure.</p>
+  <button>Start Solving</button>
+</section>`
+        };
+    }
+
+    if (topic === "css") {
+        return {
+            ...base,
+            title: `${topic.toUpperCase()} Challenge ${challengeNo}: Card Styling`,
+            description: "Style a card with gradient background, rounded corners, and hover transition.",
+            starterCode: `.challenge-card {
+}`,
+            solution: `.challenge-card {
+    background: linear-gradient(135deg, #1d4ed8, #7c3aed);
+    color: #ffffff;
+    border-radius: 14px;
+    padding: 16px;
+    transition: transform 0.25s ease;
+}
+
+.challenge-card:hover {
+    transform: translateY(-4px);
+}`
+        };
+    }
+
+    if (topic === "react") {
+        return {
+            ...base,
+            title: `${topic.toUpperCase()} Challenge ${challengeNo}: Dynamic Component`,
+            description: "Create a React component that renders a title and maps over at least three list items.",
+            starterCode: `import React from "react";
+import { createRoot } from "react-dom/client";
+
+function App() {
+    return <div></div>;
+}
+
+const root = createRoot(document.getElementById("root"));
+root.render(<App />);`,
+            solution: `import React from "react";
+import { createRoot } from "react-dom/client";
+
+function App() {
+    const items = ["Arrays", "Objects", "Functions"];
+    return (
+        <div>
+            <h1>React Challenge ${challengeNo}</h1>
+            <ul>
+                {items.map((item) => <li key={item}>{item}</li>)}
+            </ul>
+        </div>
+    );
+}
+
+const root = createRoot(document.getElementById("root"));
+root.render(<App />);`
+        };
+    }
+
+    if (topic === "angular") {
+        return {
+            ...base,
+            title: `${topic.toUpperCase()} Challenge ${challengeNo}: Template Binding`,
+            description: "Use interpolation and *ngFor style rendering in template syntax.",
+            starterCode: `<h2></h2>
+<ul></ul>`,
+            solution: `<h2>{{title}}</h2>
+<ul>
+  <li *ngFor="let item of items">{{ item }}</li>
+</ul>`
+        };
+    }
+
+    return {
+        ...base,
+        title: `${topic.toUpperCase()} Challenge ${challengeNo}: ${template.title}`,
+        description: `${AUTO_TASKS[payload.type]} and print final output only.`,
+        starterCode: `function solve() {
+  // write logic
+}
+solve();`,
+        solution: `function solve() {
+  console.log("${template.statement}");
+}
+solve();`
+    };
+};
+
 export const problemsData = {
+    mini: {
+        title: "Mini JavaScript Questions",
+        icon: "javascript",
+        color: "#8a5cf6",
+        totalProblems: 50,
+        problems: miniProblems
+    },
     sql: {
         title: "SQL Problems",
         icon: "sql",
@@ -1947,6 +2295,29 @@ root.render(<App />);`,
         ]
     }
 };
+
+const ensureMinimumProblemsPerTopic = (data, minCount = TOPIC_MIN_PROBLEMS) => {
+    Object.keys(data).forEach((topic) => {
+        const topicData = data[topic];
+        if (!topicData || !Array.isArray(topicData.problems)) return;
+
+        const existingIds = topicData.problems
+            .map((p) => Number(p.id))
+            .filter((n) => Number.isFinite(n));
+        let nextId = existingIds.length ? Math.max(...existingIds) + 1 : 1;
+
+        const needed = Math.max(0, minCount - topicData.problems.length);
+        for (let i = 0; i < needed; i += 1) {
+            const challengeNo = topicData.problems.length + 1;
+            topicData.problems.push(buildAutoProblemByTopic(topic, nextId, challengeNo));
+            nextId += 1;
+        }
+
+        topicData.totalProblems = topicData.problems.length;
+    });
+};
+
+ensureMinimumProblemsPerTopic(problemsData);
 
 // Helper functions
 export const getCustomProblems = (topic) => {
