@@ -12,6 +12,7 @@ import BannerSlider from './components/common/BannerSlider';
 import GetCertified from './components/Home/GetCertified';
 import FestivePopup from './components/FestivePopup/FestivePopup';
 import SuccessStories from './components/Home/SuccessStories';
+import InstitutionVideos from './components/Home/InstitutionVideos';
 
 export const metadata = {
   title: "Software Training Institute in Chennai | Urbancode",
@@ -137,6 +138,9 @@ export default function HomePage() {
       </div>
       <div className="home-section">
         <Courses />
+      </div>
+      <div className="home-section">
+        <InstitutionVideos />
       </div>
       <div className="home-section">
         <InDemandTools />

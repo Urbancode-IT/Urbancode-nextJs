@@ -78,9 +78,9 @@ const ChatbotWidget = () => {
               setIsDemoModalOpen(true);
             }}
           >
-            <div className="notification-icon">🎁</div>
+            {/* <div className="notification-icon">🎁</div> */}
             <div className="notification-content">
-              <p className="notif-title">Exciting Offers are Live!</p>
+              <p className="notif-title">How may I assist you today?</p>
               <p className="notif-link">Book a demo now →</p>
             </div>
             <div className="notif-close" onClick={(e) => {

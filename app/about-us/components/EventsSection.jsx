@@ -1,142 +1,168 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useRef } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./EventsSection.css";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 const events = [
   {
-    id: 4,
-  id: 4,
-  title: "Emerging Trends in Business AI",
-  date: "September 16, 2025",
-  location: "St Joseph's College Of Engineering, Chennai",
-  badge: "Seminar",
-  attendees: "180+ Attendees",
-  description:
-    "Students explored how AI is reshaping modern business workflows, decision-making, automation, and the future of work across industries.",
-  img: "/images/events/event5.jpg",
-  },
-  {
     id: 1,
-    title: "BB GRAND MEET UP 2025",
-    date: "April 21, 2025",
-    location: "Guindy, Chennai – The Ramada Plaza",
-    badge: "Workshop",
-    attendees: "150+ Attendees",
-    description:
-      "A complete guide for final-year students to prepare for interviews, improve resumes, and approach companies effectively.",
-    img: "/images/events/event1.jpg",
+    title: "Emerging Trends in Business AI",
+    description: "Students explored how AI is reshaping modern business workflows, decision-making, automation, and the future of work across industries.",
+    date: "September 16, 2025",
+    location: "St Joseph's College Of Engineering, Chennai",
+    badge: "Seminar",
+    attendees: "180+",
+    img: "/images/events/event5.jpg",
   },
   {
     id: 2,
-    title: "Workshop & Seminars",
-    date: "Jun 15, 2024",
-    location: "SIMATS Engineering, Thandalam – 602105",
-    badge: "Seminar",
-    attendees: "200+ Attendees",
-    description:
-      "Industry experts shared insights on skill trends, future job roles, and the importance of personal branding in careers.",
-    img: "/images/events/event4.png",
+    title: "BB GRAND MEET UP 2025",
+    description: "A complete guide for final-year students to prepare for interviews, improve resumes, and approach companies effectively.",
+    date: "April 21, 2025",
+    location: "Guindy, Chennai – The Ramada Plaza",
+    badge: "Workshop",
+    attendees: "150+",
+    img: "/images/events/event1.jpg",
   },
   {
     id: 3,
+    title: "Workshop & Seminars",
+    description: "Industry experts shared insights on skill trends, future job roles, and the importance of personal branding in careers.",
+    date: "Jun 15, 2024",
+    location: "SIMATS Engineering, Thandalam – 602105",
+    badge: "Seminar",
+    attendees: "200+",
+    img: "/images/events/event4.png",
+  },
+  {
+    id: 4,
     title: "Urbancode AI Workshop",
+    description: "Students worked on live startup ideas with mentors guiding them through business models, pitch decks, and funding basics.",
     date: "March 19, 2024",
     location: "Kings Engineering College, Sriperumbudur",
     badge: "Bootcamp",
-    attendees: "90+ Attendees",
-    description:
-      "Students worked on live startup ideas with mentors guiding them through business models, pitch decks, and funding basics.",
+    attendees: "90+",
     img: "/images/events/event3.jpg",
   },
 ];
 
 const EventSection = () => {
-  const [current, setCurrent] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
+  const container = useRef(null);
+  const triggerRef = useRef(null);
 
-  useEffect(() => {
-    if (isPaused) return;
+  useGSAP(() => {
+    const cards = gsap.utils.toArray(".stacked-event-card");
+    const indicator = document.querySelector(".scroll-stack-indicator");
+    
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: triggerRef.current,
+        start: "top top",
+        end: `+=${events.length * 100}%`,
+        pin: true,
+        scrub: 1,
+        anticipatePin: 1,
+      }
+    });
 
-    const slideTimer = setInterval(() => {
-      nextSlide();
-    }, 3000);
+    tl.to(indicator, { opacity: 0, y: 30, duration: 0.2 }, 0);
 
-    return () => clearInterval(slideTimer);
-  }, [current, isPaused]);
+    cards.forEach((card, i) => {
+      if (i === 0) return;
 
-  const nextSlide = () => setCurrent((prev) => (prev + 1) % events.length);
-  const prevSlide = () => setCurrent((prev) => (prev - 1 + events.length) % events.length);
-  const goToSlide = (index) => setCurrent(index);
+      tl.fromTo(card, 
+        { 
+          y: "110vh",
+          scale: 0.9,
+          opacity: 0,
+          rotateX: -10,
+        },
+        { 
+          y: "0%",
+          scale: 1,
+          opacity: 1,
+          rotateX: 0,
+          duration: 1,
+          ease: "power2.out",
+        },
+        i * 0.8
+      );
+
+      if (i > 0) {
+        tl.to(cards[i-1], {
+          scale: 0.85,
+          opacity: 0.4,
+          filter: "blur(8px)",
+          duration: 1,
+          ease: "power2.inOut"
+        }, i * 0.8);
+      }
+    });
+
+    return () => {
+      ScrollTrigger.getAll().forEach(t => t.kill());
+    };
+  }, { scope: triggerRef });
 
   return (
-    <section className="event-section">
-      <div className="container">
+    <section ref={triggerRef} className="event-stacked-pin-section">
+      <div className="container h-100 p-0 position-relative d-flex flex-column align-items-center justify-content-center">
         
-        <h2 className="section-main-title">
-          <span style={{ color: 'var(--color-text)' }}>Campus</span>{" "}
-          <span className="text-shine">Events We Conducted</span>
-        </h2>
+        <div className="event-header-overlay">
+          <h2 className="section-main-title">
+            <span style={{ color: 'var(--color-text)' }}>Campus</span>{" "}
+            <span className="text-shine">Events We Conducted</span>
+          </h2>
+        </div>
 
-        <p className="section-subtitle">
-          Empowering students with skills, opportunities, and industry exposure through engaging campus events.
-        </p>
-
-        <div
-          className="events-slider"
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-        >
-          {events.map((event, i) => {
-            let position = "";
-            if (i === current) position = "active";
-            else if (i === (current - 1 + events.length) % events.length) position = "prev";
-            else if (i === (current + 1) % events.length) position = "next";
-
-            return (
-              <div key={event.id} className={`event-card ${position}`}>
-                <div className="event-img">
-                  <img src={event.img} alt={event.title} />
-                  <div className="event-badge">{event.badge}</div>
+        <div className="cards-stack-layer">
+          {events.map((event, i) => (
+            <div 
+              key={event.id} 
+              className="stacked-event-card"
+              style={{ zIndex: i + 1 }}
+            >
+              <div className="card-inner-luxury">
+                <div className="event-img-wrapper-full">
+                  <img src={event.img} alt={event.title} className="card-bg-img" />
+                  <div className="event-badge-premium">{event.badge}</div>
                 </div>
 
-                <div className="event-content">
-                  <h5>{event.title}</h5>
-
-                  <p><i className="fas fa-calendar-alt"></i> {event.date}</p>
-                  <p><i className="fas fa-map-marker-alt"></i> {event.location}</p>
-
-                  <p className="event-description">{event.description}</p>
-
-                  <div className="event-footer">
-                    <span><i className="fas fa-users"></i> {event.attendees}</span>
-                    <button>Learn More</button>
+                <div className="card-luxury-content">
+                  <h5 className="luxury-title">{event.title}</h5>
+                  <p className="luxury-description">{event.description}</p>
+                  
+                  {/* Metadata Row with all 3 in one line */}
+                  <div className="luxury-info-strip">
+                    <span className="info-badge">
+                      <i className="fas fa-calendar-alt"></i> {event.date}
+                    </span>
+                    <span className="info-badge location-badge">
+                      <i className="fas fa-map-marker-alt"></i> {event.location}
+                    </span>
+                    <span className="info-badge attendees-badge">
+                      <i className="fas fa-users"></i> {event.attendees}
+                    </span>
                   </div>
                 </div>
               </div>
-            );
-          })}
+            </div>
+          ))}
         </div>
 
-        <div className="slider-controls">
-          <button className="slider-btn prev-btn" onClick={prevSlide}>
-            <i className="fas fa-chevron-left"></i>
-          </button>
-
-          <div className="slider-dots">
-            {events.map((_, i) => (
-              <div
-                key={i}
-                className={`dot ${i === current ? "active" : ""}`}
-                onClick={() => goToSlide(i)}
-              ></div>
-            ))}
+        {/* Minimal Animated Arrow Indicator */}
+        <div className="scroll-stack-indicator">
+          <div className="indicator-v-arrow">
+            <i className="fas fa-chevron-down"></i>
           </div>
-
-          <button className="slider-btn next-btn" onClick={nextSlide}>
-            <i className="fas fa-chevron-right"></i>
-          </button>
         </div>
 
       </div>

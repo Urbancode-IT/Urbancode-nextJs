@@ -7,21 +7,21 @@ import { usePathname, useRouter } from 'next/navigation';
 import './Navbar.css';
 import ChatbotWidget from '../ChatbotWidget';
 import FloatingWidgets from '../FloatingWidgets';
-import { FiPhoneCall } from 'react-icons/fi';
+import { FiPhoneCall, FiChevronDown } from 'react-icons/fi';
 import { FaPlane } from 'react-icons/fa';
 import FlightTransition from '../animations/FlightTransition';
 import BookDemoWidget from '../BookDemoWidget';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [careerOpen, setCareerOpen] = useState(false);
+  const [practiceOpen, setPracticeOpen] = useState(false);
   const [isFlying, setIsFlying] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
 
   const handleLinkClick = () => {
     setIsOpen(false);
-    setCareerOpen(false);
+    setPracticeOpen(false);
   };
 
   const handleStudyAbroadClick = (e) => {
@@ -53,7 +53,7 @@ export default function Navbar() {
     router.push('/kids-courses');
   };
 
-  const toggleCareer = () => setCareerOpen(!careerOpen);
+  const togglePractice = () => setPracticeOpen(!practiceOpen);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -116,22 +116,49 @@ export default function Navbar() {
               </Link>
               {/* <Link href="/about-us" onClick={handleLinkClick}>About </Link> */}
               <Link href="/kids-courses" onClick={handleKidsSpaceClick}>Kids space</Link>
-              <Link href="/compiler" onClick={handleLinkClick} className="compiler-link">
-                Online-compiler
-                <svg
-                  className="sparkle-icon"
-                  width="14"
-                  height="14"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
+              <div 
+                className={`dropdown ${practiceOpen ? 'active' : ''}`}
+                onMouseEnter={() => window.innerWidth > 768 && setPracticeOpen(true)}
+                onMouseLeave={() => window.innerWidth > 768 && setPracticeOpen(false)}
+              >
+                <button 
+                  className={`dropdown-toggle practice-link ${practiceOpen ? 'active' : ''}`}
+                  onClick={(e) => {
+                    if (window.innerWidth <= 768) {
+                      togglePractice();
+                    }
+                  }}
                 >
-                  <path
-                    d="M12 0C12 7 15 12 24 12C15 12 12 17 12 24C12 17 9 12 0 12C9 12 12 7 12 0Z"
-                    fill="#fab005"
-                  />
-                </svg>
-              </Link>
+                  Practice
+                  <FiChevronDown className={`chevron-icon ${practiceOpen ? 'rotate' : ''}`} />
+                </button>
+                <div className={`dropdown-menu ${practiceOpen ? 'show' : ''}`}>
+                  <Link href="/compiler" onClick={handleLinkClick}>
+                    Online Compiler
+                    <svg
+                      className="sparkle-icon"
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M12 0C12 7 15 12 24 12C15 12 12 17 12 24C12 17 9 12 0 12C9 12 12 7 12 0Z"
+                        fill="#fab005"
+                      />
+                    </svg>
+                  </Link>
+                  <a 
+                    href="https://codementor.urbancode.in/" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    onClick={handleLinkClick}
+                  >
+                    Dev Arena
+                  </a>
+                </div>
+              </div>
               <Link href="/portfolio" onClick={handleLinkClick}>Portfolio</Link>
               <Link href="/contact-us" onClick={handleLinkClick}>Contact us</Link>
             </div>

@@ -1,0 +1,196 @@
+/* WhyChooseUs.css */
+
+.why-choose-us-section {
+    background-color: var(--bg-neutral);
+    overflow: hidden;
+}
+
+.comparison-subtitle {
+    color: var(--color-muted, #666);
+    font-size: var(--fs-body-lg, 1.1rem);
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.comparison-container {
+    max-width: 1100px;
+    margin: 40px auto 0;
+    border-radius: 32px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.comparison-row {
+    display: flex;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.comparison-row:last-child {
+    border-bottom: none;
+}
+
+.comparison-col {
+    flex: 1;
+    padding: 25px 40px;
+    display: flex;
+    align-items: center;
+}
+
+/* Headers */
+.header-row {
+    background: #f8f9fa;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.95rem;
+}
+
+.us-header {
+    color: var(--color-brand, #198754);
+    background: rgba(25, 135, 84, 0.03);
+    justify-content: center;
+    border-right: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.others-header {
+    color: var(--color-muted, #888);
+    justify-content: center;
+}
+
+/* Body Columns */
+.us-col {
+    background: linear-gradient(90deg, rgba(25, 135, 84, 0.05) 0%, rgba(25, 135, 84, 0) 100%);
+    border-right: 1px solid rgba(0, 0, 0, 0.05);
+    border-left: 4px solid transparent;
+    color: var(--color-text, #1a1a1a);
+    font-weight: 600;
+}
+
+.others-col {
+    background: #fff;
+    color: var(--color-muted, #777);
+    font-weight: 400;
+}
+
+.point-content {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    position: relative;
+    overflow: hidden;
+    padding: 8px 15px;
+    border-radius: 12px;
+    width: 100%;
+}
+
+@keyframes highlightShimmer {
+    0% { transform: translateX(-100%); opacity: 0; }
+    50% { opacity: 0.5; }
+    100% { transform: translateX(100%); opacity: 0; }
+}
+
+.us-col .point-content::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(25, 135, 84, 0.1), transparent);
+    animation: highlightShimmer 1.5s ease-in-out forwards;
+    animation-delay: inherit;
+}
+
+.icon-check {
+    color: var(--color-brand, #198754);
+    font-size: 1.4rem;
+    flex-shrink: 0;
+}
+
+.icon-cross {
+    color: #e53e3e; /* Standard error/red */
+    opacity: 0.4;
+    font-size: 1.4rem;
+    flex-shrink: 0;
+}
+
+/* Active & Hover Effects */
+.comparison-row.active-highlight {
+    border-color: rgba(25, 135, 84, 0.15);
+    z-index: 2;
+    position: relative;
+}
+
+.active-highlight .us-col {
+    border-left-color: var(--color-brand, #198754);
+    background: linear-gradient(90deg, rgba(25, 135, 84, 0.12) 0%, rgba(25, 135, 84, 0.02) 100%);
+}
+
+.active-highlight .icon-check {
+    filter: drop-shadow(0 0 10px rgba(25, 135, 84, 0.5));
+}
+
+.comparison-row:not(.header-row):hover {
+    background: rgba(25, 135, 84, 0.02) !important;
+    transform: translateX(10px) !important;
+    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    z-index: 3;
+}
+
+.comparison-row:not(.header-row):hover .us-col {
+    border-left-color: var(--color-brand, #198754);
+    background: linear-gradient(90deg, rgba(25, 135, 84, 0.15) 0%, rgba(25, 135, 84, 0.05) 100%);
+}
+
+.comparison-row:not(.header-row):hover .icon-check {
+    transform: scale(1.2);
+    filter: drop-shadow(0 0 12px rgba(25, 135, 84, 0.6));
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .comparison-container {
+        border-radius: 20px;
+        background: transparent;
+        box-shadow: none;
+        border: none;
+    }
+
+    .comparison-row {
+        flex-direction: column;
+        background: #fff;
+        border-radius: 20px;
+        margin-bottom: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        overflow: hidden;
+    }
+
+    .comparison-col {
+        padding: 20px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .us-col {
+        border-right: none;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        background: rgba(25, 135, 84, 0.03);
+    }
+
+    .mobile-label {
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        font-weight: 800;
+        margin-bottom: 8px;
+        letter-spacing: 1px;
+    }
+
+    .us-col .mobile-label { color: var(--color-brand); }
+    .others-col .mobile-label { color: #888; }
+    
+    .point-content { font-size: 0.95rem; }
+}

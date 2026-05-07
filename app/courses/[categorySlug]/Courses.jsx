@@ -318,9 +318,9 @@ export default function Courses({ categorySlug }) {
                           .replace(/\s+/g, "-");
 
                         return (
-                          <Col xs={12} sm={6} lg={4} className="mb-4" key={idx}>
+                          <Col xs={12} sm={6} lg={6} xl={4} className="mb-4" key={idx}>
                             <Card
-                              className="h-100 card rounded-4 p-2 p-sm-3 p-md-4"
+                              className="h-100 card rounded-4 p-2 p-sm-3 p-md-3"
                               style={{ cursor: "pointer" }}
                               onClick={() => {
                                 const finalCategorySlug = course.parentCategorySlug || currentCategorySlug;
@@ -347,7 +347,7 @@ export default function Courses({ categorySlug }) {
                                   {course.desc}
                                 </Card.Text>
 
-                                <div className="d-flex justify-content-between align-items-center mt-3 mb-2">
+                                <div className="d-flex flex-wrap justify-content-between align-items-center mt-3 mb-2 gap-2">
                                   <div className="course-rating-pill">
                                     <Star size={14} fill="#FFD700" color="#FFD700" />
                                     <span>{course.rating}</span>
@@ -358,7 +358,7 @@ export default function Courses({ categorySlug }) {
                                   </div>
                                 </div>
 
-                                <div className="d-flex justify-content-between align-items-center mt-2">
+                                <div className="d-flex flex-wrap justify-content-between align-items-center mt-2 gap-2">
                                   <div className="course-duration-pill">
                                     <Clock size={14} />
                                     <span>{course.duration}</span>

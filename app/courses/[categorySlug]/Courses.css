@@ -96,11 +96,11 @@
 .course-rating-pill, .course-students-pill, .course-duration-pill {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px 16px;
-  border-radius: 12px;
-  font-size: 0.8rem;
-  font-weight: 700;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 10px;
+  font-size: 0.75rem;
+  font-weight: 600;
   white-space: nowrap;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   border: 1px solid rgba(255, 255, 255, 0.3);
@@ -142,12 +142,12 @@
   border: none !important;
   color: #ffffff !important;
   font-weight: 700 !important;
-  padding: 8px 22px !important;
-  border-radius: 12px !important;
+  padding: 7px 16px !important;
+  border-radius: 10px !important;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
   box-shadow: 0 4px 15px rgba(0, 184, 148, 0.3);
-  font-size: 0.78rem !important;
-  letter-spacing: 0.3px;
+  font-size: 0.75rem !important;
+  letter-spacing: 0.2px;
   text-transform: capitalize;
   white-space: nowrap;
   position: relative;

@@ -36,28 +36,24 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
+    background: rgba(26, 183, 157, 0.6);
     border-radius: 50%;
-    background: rgba(26, 183, 157, 0.4);
     z-index: -1;
-    animation: pulse 2s infinite;
+    transform: translate(-50%, -50%);
+    display: block;
+    animation: premium-pulse 2.5s infinite ease-out;
+    pointer-events: none;
 }
 
-@keyframes pulse {
+@keyframes premium-pulse {
     0% {
         transform: translate(-50%, -50%) scale(1);
         opacity: 0.8;
     }
-
-    70% {
-        transform: translate(-50%, -50%) scale(1.4);
-        opacity: 0;
-    }
-
     100% {
-        transform: translate(-50%, -50%) scale(1);
+        transform: translate(-50%, -50%) scale(2.2);
         opacity: 0;
     }
 }
@@ -135,8 +131,8 @@
     }
 
     .chatbot-pulse {
-        width: 66px;
-        height: 66px;
+        width: 56px;
+        height: 56px;
     }
 }
 

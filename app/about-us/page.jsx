@@ -6,10 +6,12 @@ import MissionVision from "./components/MissionVision";
 import OurMileStoneNew from "./components/OurMileStoneNew";
 import MissionVisionNew from "./components/MissionVisionNew";
 import TrainingSection from "./components/TrainingSection";
+import WhyChooseUs from "./components/WhyChooseUs";
 import FeaturesSection from "./components/FeaturesSection";
 import ImageGallery from "./components/ImageGallery";
 import EventsSection from "./components/EventsSection";
 import TeamSection from "./components/TeamSection";
+import InstitutionVideos from "../components/Home/InstitutionVideos";
 
 const About = () => {
   return (
@@ -62,7 +64,9 @@ const About = () => {
         <OurMileStoneNew />
         <MissionVisionNew />
         <TrainingSection />
-        <FeaturesSection />
+        <WhyChooseUs />
+        {/* <InstitutionVideos /> */}
+        {/* <FeaturesSection /> */}
         <ImageGallery />
         <EventsSection />
       </div>
