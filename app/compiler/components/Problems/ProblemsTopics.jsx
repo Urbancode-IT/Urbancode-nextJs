@@ -6,7 +6,7 @@ import LeadCaptureModal from '../Common/LeadCaptureModal';
 import './ProblemsTopics.css';
 
 // Import icons (using react-icons for better quality match to screenshot)
-import { FaPython, FaDatabase, FaJs, FaCss3Alt, FaReact, FaHtml5, FaJava, FaAngular, FaPencilAlt } from 'react-icons/fa';
+import { FaPython, FaDatabase, FaJs, FaCss3Alt, FaReact, FaHtml5, FaJava, FaAngular, FaPencilAlt, FaRocket } from 'react-icons/fa';
 import { SiCplusplus, SiMysql, SiPostgresql } from 'react-icons/si';
 
 const ProblemsTopics = () => {
@@ -50,6 +50,13 @@ const ProblemsTopics = () => {
 
     // Metadata for topics (icons, titles, and descriptions/images)
     const topicsMetadata = {
+        mini: {
+            icon: <FaRocket />,
+            title: 'Mini JavaScript Questions',
+            description: 'Quick beginner-friendly compiler questions to build confidence with syntax and output basics.',
+            imageUrl: '',
+            gradient: 'linear-gradient(135deg, #8a5cf6 0%, #5b21b6 100%)'
+        },
         python: {
             icon: <FaPython />,
             title: 'Python Development',
@@ -137,7 +144,7 @@ const ProblemsTopics = () => {
                     });
 
                     // Sort to maintain a consistent order
-                    const order = ['python', 'sql', 'javascript', 'css', 'react', 'html', 'java', 'c++', 'angular'];
+                    const order = ['mini', 'python', 'sql', 'javascript', 'css', 'react', 'html', 'java', 'c++', 'angular'];
                     mergedTopics.sort((a, b) => {
                         const indexA = order.indexOf(a.id);
                         const indexB = order.indexOf(b.id);
@@ -146,7 +153,13 @@ const ProblemsTopics = () => {
                         return indexA - indexB;
                     });
 
-                    const filtered = mergedTopics.filter(t => t.id !== 'sqlserver');
+                    const filtered = mergedTopics.filter((t) => {
+                        const id = String(t?.id || '').toLowerCase().trim();
+                        const title = String(t?.title || '').toLowerCase().trim();
+                        const isMiniCard = id === 'mini' || id.startsWith('mini-') || title.includes('mini javascript questions');
+                        const isSqlVariantCard = id === 'sqlserver' || id === 'mysql' || id === 'postgresql';
+                        return !isSqlVariantCard && !isMiniCard;
+                    });
                     setTopics(filtered);
 
                     // Fetch solved counts in background
