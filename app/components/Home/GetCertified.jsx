@@ -151,7 +151,7 @@ const GetCertified = () => {
                                                     <div className="gc-initial-card">
                                                         <div className="gc-card-glass-glow"></div>
                                                         <span className="gc-featured-tag" style={{ '--accent': brand.color }}>
-                                                            {brand.name} ECOSYSTEM
+                                                            {brand.name} CERTIFICATION
                                                         </span>
                                                         <div className="gc-brand-wrap">
                                                             <img src={brand.logo} alt={brand.name} />
@@ -202,7 +202,7 @@ const GetCertified = () => {
 
                                         <div className="gc-featured-content">
                                             <span className="gc-featured-tag" style={{ '--accent': brands.find(b => b.name === expandedBrand)?.color }}>
-                                                {expandedBrand} MASTERCLASS
+                                                {expandedBrand} CERTIFICATION PATHWAY
                                             </span>
                                             <div className="gc-brand-wrap">
                                                 <img src={brands.find(b => b.name === expandedBrand)?.logo} alt={expandedBrand} />
@@ -236,6 +236,24 @@ const GetCertified = () => {
                                         transition={{ delay: 0.3 }}
                                     >
                                         <h2 className="gc-tracks-title">{expandedBrand} <span>Curriculum</span></h2>
+                                        <div className="gc-nav-buttons">
+                                            <button 
+                                                className={`gc-nav-btn ${!showPrev ? 'disabled' : ''}`} 
+                                                onClick={() => scroll('left')}
+                                                aria-label="Previous"
+                                                disabled={!showPrev}
+                                            >
+                                                <ChevronLeft size={20} />
+                                            </button>
+                                            <button 
+                                                className={`gc-nav-btn ${!showNext ? 'disabled' : ''}`} 
+                                                onClick={() => scroll('right')}
+                                                aria-label="Next"
+                                                disabled={!showNext}
+                                            >
+                                                <ChevronRight size={20} />
+                                            </button>
+                                        </div>
                                     </motion.div>
 
                                     <div className="gc-carousel-wrap">
@@ -268,30 +286,7 @@ const GetCertified = () => {
                                             ))}
                                         </div>
 
-                                        <AnimatePresence>
-                                            {showPrev && (
-                                                <motion.button 
-                                                    initial={{ opacity: 0, x: -10 }}
-                                                    animate={{ opacity: 1, x: 0 }}
-                                                    exit={{ opacity: 0, x: -10 }}
-                                                    className="gc-side-nav prev" 
-                                                    onClick={() => scroll('left')}
-                                                >
-                                                    <ChevronLeft size={24} />
-                                                </motion.button>
-                                            )}
-                                            {showNext && (
-                                                <motion.button 
-                                                    initial={{ opacity: 0, x: 10 }}
-                                                    animate={{ opacity: 1, x: 0 }}
-                                                    exit={{ opacity: 0, x: 10 }}
-                                                    className="gc-side-nav next" 
-                                                    onClick={() => scroll('right')}
-                                                >
-                                                    <ChevronRight size={24} />
-                                                </motion.button>
-                                            )}
-                                        </AnimatePresence>
+
                                     </div>
                                 </div>
                             </motion.div>

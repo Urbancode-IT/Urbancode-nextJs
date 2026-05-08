@@ -7,12 +7,13 @@ import './InstitutionVideos.css';
 const InstitutionVideos = () => {
     const [index, setIndex] = useState(0);
     const [cardsToShow, setCardsToShow] = useState(3);
+    const [isPaused, setIsPaused] = useState(false);
 
     useEffect(() => {
         const updateCardsToShow = () => {
-            if (window.innerWidth < 576) setCardsToShow(1);
+            if (window.innerWidth < 640) setCardsToShow(1);
             else if (window.innerWidth < 992) setCardsToShow(2);
-            else if (window.innerWidth < 1200) setCardsToShow(3);
+            else if (window.innerWidth < 1280) setCardsToShow(3);
             else setCardsToShow(4);
         };
 
@@ -21,19 +22,43 @@ const InstitutionVideos = () => {
         return () => window.removeEventListener("resize", updateCardsToShow);
     }, []);
 
+    // Auto-scroll logic
+    useEffect(() => {
+        if (isPaused) return;
+        
+        const timer = setInterval(() => {
+            setIndex((prev) => {
+                const nextIndex = prev + 1;
+                if (nextIndex > institutionVideosData.length - cardsToShow) {
+                    return 0;
+                }
+                return nextIndex;
+            });
+        }, 4000); // 4 seconds
+
+        return () => clearInterval(timer);
+    }, [isPaused, cardsToShow, institutionVideosData.length]);
+
     const handleNext = () => {
+        setIsPaused(true);
         if (index < institutionVideosData.length - cardsToShow) {
             setIndex((prev) => prev + 1);
+        } else {
+            setIndex(0); // Loop back
         }
     };
 
     const handlePrev = () => {
+        setIsPaused(true);
         if (index > 0) {
             setIndex((prev) => prev - 1);
+        } else {
+            setIndex(institutionVideosData.length - cardsToShow); // Go to last
         }
     };
 
     const handleDotClick = (dotIndex) => {
+        setIsPaused(true);
         setIndex(dotIndex);
     };
 
@@ -60,11 +85,14 @@ const InstitutionVideos = () => {
                     </h2>
                 </motion.div>
 
-                <div className="video-carousel-wrapper">
+                <div 
+                    className="video-carousel-wrapper"
+                    onMouseEnter={() => setIsPaused(true)}
+                    onMouseLeave={() => setIsPaused(false)}
+                >
                     <button 
                         className="nav-btn prev-btn" 
                         onClick={handlePrev}
-                        disabled={index === 0}
                         aria-label="Previous videos"
                     >❮</button>
                     
@@ -72,7 +100,7 @@ const InstitutionVideos = () => {
                         <motion.div 
                             className="video-carousel-track"
                             animate={{ x: `-${index * (100 / cardsToShow)}%` }}
-                            transition={{ type: "spring", stiffness: 120, damping: 20 }}
+                            transition={{ type: "spring", stiffness: 100, damping: 20, mass: 1 }}
                         >
                             {institutionVideosData.map((video, idx) => (
                                 <motion.div 
@@ -80,24 +108,25 @@ const InstitutionVideos = () => {
                                     className="video-card-slide"
                                     style={{ 
                                         flex: `0 0 ${100 / cardsToShow}%`, 
-                                        padding: '0 12px' /* Consistent gutter */
                                     }}
-                                    initial={{ opacity: 0, scale: 0.9 }}
+                                    initial={{ opacity: 0, scale: 0.95 }}
                                     whileInView={{ opacity: 1, scale: 1 }}
                                     viewport={{ once: true }}
                                 >
-                                    <div className="video-iframe-wrapper">
-                                        <div className="play-overlay">
-                                            <div className="play-icon" />
+                                    <div className="video-card-inner">
+                                        <div className="video-iframe-wrapper">
+                                            <div className="play-overlay">
+                                                <div className="play-icon" />
+                                            </div>
+                                            <iframe
+                                                src={`https://www.youtube.com/embed/${video.videoId}?rel=0&modestbranding=1&autohide=1&showinfo=0`}
+                                                title={video.title}
+                                                frameBorder="0"
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                allowFullScreen
+                                                className="institution-video-iframe"
+                                            ></iframe>
                                         </div>
-                                        <iframe
-                                            src={`https://www.youtube.com/embed/${video.videoId}?rel=0&modestbranding=1&autohide=1&showinfo=0`}
-                                            title={video.title}
-                                            frameBorder="0"
-                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                            allowFullScreen
-                                            className="institution-video-iframe"
-                                        ></iframe>
                                     </div>
                                 </motion.div>
                             ))}
@@ -107,7 +136,6 @@ const InstitutionVideos = () => {
                     <button 
                         className="nav-btn next-btn" 
                         onClick={handleNext}
-                        disabled={index >= institutionVideosData.length - cardsToShow}
                         aria-label="Next videos"
                     >❯</button>
                 </div>

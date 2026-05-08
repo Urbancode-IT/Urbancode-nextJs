@@ -176,7 +176,7 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: var(--ls-tight);
   text-align: center;
   color: var(--color-brand);
-  margin: 0 auto 15px;
+  margin: 60px auto 20px;
   padding-bottom: 15px;
   max-width: 100%;
   word-wrap: break-word;

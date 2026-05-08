@@ -117,7 +117,7 @@ const EventSection = () => {
       <div className="container h-100 p-0 position-relative d-flex flex-column align-items-center justify-content-center">
         
         <div className="event-header-overlay">
-          <h2 className="section-main-title">
+          <h2 className="section-main-title events-section-title">
             <span style={{ color: 'var(--color-text)' }}>Campus</span>{" "}
             <span className="text-shine">Events We Conducted</span>
           </h2>

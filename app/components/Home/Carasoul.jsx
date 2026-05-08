@@ -8,7 +8,7 @@ const Carousel = () => {
         { id: 2, name: "capgemini", logo: "/images/home/capgemini.png" },
         { id: 3, name: "cisco", logo: "/images/home/cisco.png" },
         { id: 4, name: "deloitte", logo: "/images/home/deloitte.png" },
-        { id: 5, name: "freshworks", logo: "/images/home/freshworks.png" },
+        { id: 5, name: "freshworks", logo: "/images/home/saint-gobain.png" },
         { id: 6, name: "github", logo: "/images/home/github.png" },
         { id: 7, name: "hcl", logo: "/images/home/hcl.png" },
         { id: 8, name: "ibm", logo: "/images/home/ibm.png" },
@@ -30,9 +30,9 @@ const Carousel = () => {
                         <h2 className="section-main-title text-shine">
                             Our students thrive in top MNCs
                         </h2>
-                        <p className="fs1rem text-muted">
+                        {/* <p className="fs1rem text-muted">
                             Empowering students with industry-relevant skills to build successful and lasting professional careers.
-                        </p>
+                        </p> */}
                     </div>
                     <div className="company-track">
                         {duplicatedCompanies.map((company, index) => (

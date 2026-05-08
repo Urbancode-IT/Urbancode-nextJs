@@ -77,7 +77,7 @@ export default function RootLayout({ children }) {
                   ],
                   "contactPoint": {
                     "@type": "ContactPoint",
-                    "telephone": "+91 9429694123",
+                    "telephone": "+91 9878798797",
                     "contactType": "customer service",
                     "areaServed": "IN",
                     "availableLanguage": ["en", "ta"]
@@ -89,7 +89,7 @@ export default function RootLayout({ children }) {
                   "@id": "https://urbancode.in/#velachery",
                   "parentOrganization": { "@id": "https://urbancode.in/#organization" },
                   "url": "https://urbancode.in",
-                  "telephone": "+91 9429694123",
+                  "telephone": "+91 9878798797",
                   "priceRange": "₹₹",
                   "areaServed": "Chennai",
                   "address": {

@@ -1,0 +1,494 @@
+/* Placement Testimonials Section Styles */
+
+.pt-section-wrapper {
+    position: relative;
+    width: 100%;
+    background: linear-gradient(180deg, var(--bg-neutral), rgba(215, 235, 226, .2) 50%, var(--bg-neutral)), 
+                linear-gradient(259.47deg, rgba(102, 102, 102, .078) -.37%, rgba(0, 181, 111, .13) 104.31%);
+    padding: 80px 0;
+    display: flex;
+    justify-content: center;
+    font-family: 'Inter', sans-serif;
+    overflow: hidden;
+}
+
+/* Background Motion */
+.pt-section-bg-motion {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.pt-motion-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.4;
+    animation: drift 20s infinite alternate ease-in-out;
+}
+
+.pt-blob-1 {
+    width: 400px;
+    height: 400px;
+    background: rgba(25, 135, 84, 0.15);
+    top: -100px;
+    left: -100px;
+}
+
+.pt-blob-2 {
+    width: 350px;
+    height: 350px;
+    background: rgba(0, 181, 111, 0.1);
+    bottom: -50px;
+    right: -50px;
+    animation-delay: -5s;
+    animation-duration: 25s;
+}
+
+@keyframes drift {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    50% { transform: translate(50px, 30px) rotate(10deg); }
+    100% { transform: translate(-20px, 60px) rotate(-10deg); }
+}
+
+.pt-container {
+    position: relative;
+    width: 100%;
+    max-width: 1440px;
+    padding: 0 40px;
+    box-sizing: border-box;
+    z-index: 2;
+}
+
+/* Header Section */
+.pt-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.pt-title {
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 1.2;
+    margin: 0 0 30px 0;
+    letter-spacing: -0.5px;
+}
+
+/* Testimonial Grid */
+.pt-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    width: 100%;
+}
+
+/* Testimonial Card */
+.pt-card {
+    position: relative;
+    background: linear-gradient(135deg, #0f0f0f 0%, #0b3d2e 45%, #16a34a 100%);
+    border-radius: 24px;
+    padding: 30px;
+    color: white;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 320px;
+    border: 1px solid transparent;
+    z-index: 1;
+}
+
+.pt-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0) 100%);
+    transform: skewX(-25deg);
+    transition: all 0.75s ease;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.pt-card:hover::after {
+    left: 200%;
+    transition: all 0.8s ease-in-out;
+}
+
+.pt-card:hover {
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 0 25px 50px rgba(22, 163, 74, 0.25), inset 0 0 20px rgba(22, 163, 74, 0.1);
+    border: 1px solid rgba(22, 163, 74, 0.5);
+}
+
+/* Glassmorphism Accents */
+.pt-card::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle, rgba(22, 163, 74, 0.3) 0%, transparent 70%);
+    border-radius: 50%;
+    z-index: 1;
+    transition: all 0.6s ease;
+}
+
+.pt-card:hover::before {
+    transform: scale(1.4);
+    background: radial-gradient(circle, rgba(22, 163, 74, 0.4) 0%, transparent 70%);
+}
+
+/* Card Header: Student Info */
+.pt-card-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    z-index: 2;
+}
+
+.pt-student-initials-wrapper {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border: 1.5px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(5px);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.pt-card:hover .pt-student-initials-wrapper {
+    transform: scale(1.1) rotate(5deg);
+    background: rgba(22, 163, 74, 0.3);
+    border-color: rgba(22, 163, 74, 0.6);
+}
+
+.pt-student-initials {
+    font-size: 22px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 1px;
+}
+
+.pt-student-meta {
+    display: flex;
+    flex-direction: column;
+}
+
+.pt-student-name {
+    font-size: 19px;
+    font-weight: 700;
+    color: #ffffff !important;
+    margin: 0 0 2px 0;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.pt-course-name {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 500;
+}
+
+/* Content Area */
+.pt-card-content {
+    flex-grow: 1;
+    margin-bottom: 20px;
+    z-index: 2;
+}
+
+.pt-quote-icon {
+    font-size: 24px;
+    color: #16a34a;
+    margin-bottom: 10px;
+    opacity: 0.8;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s ease;
+    display: inline-block;
+}
+
+.pt-card:hover .pt-quote-icon {
+    transform: translateY(-4px) scale(1.1);
+    opacity: 1;
+}
+
+.pt-testimonial-text {
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+    font-style: italic;
+    margin-bottom: 15px;
+    max-height: 4.8em; /* Exactly 3 lines (1.6 * 3) */
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+/* Custom scrollbar for reviews */
+.pt-testimonial-text::-webkit-scrollbar {
+    width: 4px;
+}
+
+.pt-testimonial-text::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+}
+
+.pt-testimonial-text::-webkit-scrollbar-thumb {
+    background: rgba(22, 163, 74, 0.4);
+    border-radius: 10px;
+}
+
+.pt-testimonial-text::-webkit-scrollbar-thumb:hover {
+    background: rgba(22, 163, 74, 0.6);
+}
+
+/* Star Ratings */
+.pt-stars {
+    display: flex;
+    gap: 4px;
+    color: #fbbf24;
+    font-size: 14px;
+}
+
+/* Footer Section: Company Details */
+.pt-card-footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 2;
+}
+
+.pt-company-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.pt-placed-at {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.pt-company-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.pt-company-icon {
+    color: #16a34a;
+}
+
+.pt-company-name {
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+}
+
+/* Background Circles */
+.pt-bg-circle {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(40px);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.pt-circle-1 {
+    top: -20px;
+    right: -20px;
+    width: 100px;
+    height: 100px;
+    background: rgba(22, 163, 74, 0.2);
+}
+
+.pt-circle-2 {
+    bottom: -30px;
+    left: -10px;
+    width: 80px;
+    height: 80px;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.pt-salary-badge {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 5px 12px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #fff;
+    backdrop-filter: blur(5px);
+}
+
+/* Decorative Accents */
+.pt-accent-line {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0%;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, #16a34a, transparent);
+    transition: width 0.5s ease, left 0.5s ease;
+    transform: translateX(-50%);
+}
+
+.pt-card:hover .pt-accent-line {
+    width: 100%;
+}
+
+/* =========================================
+   MOBILE SLIDER — hidden on desktop
+   ========================================= */
+.pt-mobile-slider-wrapper {
+    display: none;
+}
+
+/* =========================================
+   RESPONSIVE BREAKPOINTS
+   ========================================= */
+
+@media (max-width: 1100px) {
+    .pt-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .pt-section-wrapper {
+        padding: 60px 0;
+    }
+
+    .pt-title {
+        font-size: 30px;
+    }
+}
+
+/* ---- Mobile: Switch from grid to slider ---- */
+@media (max-width: 640px) {
+    .pt-container {
+        padding: 0;
+    }
+
+    .pt-header {
+        padding: 0 20px;
+        margin-bottom: 30px;
+    }
+
+    .pt-title {
+        font-size: 26px;
+    }
+
+    /* Hide the desktop grid */
+    .pt-grid {
+        display: none;
+    }
+
+    /* Show the mobile slider */
+    .pt-mobile-slider-wrapper {
+        display: block;
+        width: 100%;
+    }
+
+    /* Horizontal scroll track – one card per view */
+    .pt-mobile-track {
+        display: flex;
+        overflow-x: scroll;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        gap: 0;
+    }
+
+    .pt-mobile-track::-webkit-scrollbar {
+        display: none;
+    }
+
+    .pt-mobile-slide {
+        flex: 0 0 100%;
+        min-width: 100%;
+        scroll-snap-align: start;
+        padding: 0 20px;
+        box-sizing: border-box;
+    }
+
+    .pt-mobile-slide .pt-card {
+        min-height: auto;
+        width: 100%;
+    }
+
+    /* Nav row: prev btn | dots | next btn */
+    .pt-mobile-nav {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        margin-top: 24px;
+        padding: 0 20px;
+    }
+
+    .pt-mobile-nav-btn {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        border: 1.5px solid rgba(22, 163, 74, 0.5);
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(8px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        color: #16a34a;
+        transition: all 0.25s ease;
+        flex-shrink: 0;
+    }
+
+    .pt-mobile-nav-btn:hover:not(.pt-nav-disabled) {
+        background: #16a34a;
+        color: #fff;
+        border-color: #16a34a;
+        transform: scale(1.08);
+    }
+
+    .pt-nav-disabled {
+        opacity: 0.3;
+        pointer-events: none;
+    }
+
+    /* Dot indicators */
+    .pt-dots {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+    }
+
+    .pt-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        border: none;
+        background: rgba(22, 163, 74, 0.25);
+        cursor: pointer;
+        transition: all 0.25s ease;
+        padding: 0;
+    }
+
+    .pt-dot-active {
+        background: #16a34a;
+        width: 22px;
+        border-radius: 4px;
+    }
+}

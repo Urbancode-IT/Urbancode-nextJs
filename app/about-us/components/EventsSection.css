@@ -17,6 +17,10 @@
   pointer-events: none;
 }
 
+.events-section-title {
+  margin-bottom: 60px !important;
+}
+
 .cards-stack-layer {
   position: relative;
   width: 100%;
@@ -27,7 +31,7 @@
   align-items: center;
   z-index: 5;
   perspective: 2500px;
-  margin-top: 5vh;
+  margin-top: 15vh;
 }
 
 .stacked-event-card {
