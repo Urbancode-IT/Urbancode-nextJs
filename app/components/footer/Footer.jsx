@@ -35,11 +35,9 @@ function Footer() {
               <a href="https://www.youtube.com/channel/UC7ngZ5r2ov-qoXJRjaXJGKA" target="_blank" rel="noopener noreferrer">
                 <i className="fab fa-youtube"></i>
               </a>
-              {!isFeedbackPage && (
-                <a href="https://wa.me/919429694123?text=Hello%20Team%20Urbancode" target="_blank" rel="noopener noreferrer">
-                  <i className="fab fa-whatsapp"></i>
-                </a>
-              )}
+              <a href="https://api.whatsapp.com/send/?phone=919878798797&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer">
+                <i className="fab fa-whatsapp"></i>
+              </a>
             </div>
           </div>
 

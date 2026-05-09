@@ -16,11 +16,13 @@ const FloatingWidgets = () => {
   const handleWhatsAppClick = () => {
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
-      'event': 'whatsapp_click',
-      'gtm_label': 'floating_widget_whatsapp'
+      event: "whatsapp_click",
+      button_location: "floating_widget"
     });
-    window.open("https://wa.me/9878798797", "_blank");
+
+    window.location.href = "/whatsapp";
   };
+
 
   const handleCallClick = () => {
     window.dataLayer = window.dataLayer || [];

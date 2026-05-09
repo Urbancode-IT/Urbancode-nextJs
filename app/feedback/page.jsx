@@ -456,7 +456,7 @@ const FeedbackForm = () => {
                             <a href="https://www.youtube.com/channel/UC7ngZ5r2ov-qoXJRjaXJGKA" target="_blank" rel="noopener noreferrer" title="YouTube">
                                 <FaYoutube size={20} />
                             </a>
-                            <a href="https://api.whatsapp.com/send/?phone=919429694123&text=Hello+Team+Urbancode&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" title="WhatsApp">
+                            <a href="https://api.whatsapp.com/send/?phone=919878798797&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" title="WhatsApp">
                                 <FaWhatsapp size={20} />
                             </a>
                         </div>

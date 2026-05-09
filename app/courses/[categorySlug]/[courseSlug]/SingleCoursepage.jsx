@@ -2,6 +2,7 @@
 'use client';
 import coursesData from "../coursesData";
 import './styles.css';
+
 import { useState } from "react";
 import EnquiryFormModal from "@/app/components/common/EnquiryFormModal.jsx";
 import { newCourseData } from "@/app/data/newCourseData";
@@ -191,6 +192,8 @@ export default function SingleCoursepage({ params }) {
                 >
                   Get Brochure
                 </button>
+
+
                 {/* Popup Form */}
                 <EnquiryFormModal
                   isOpen={showEnquiry}

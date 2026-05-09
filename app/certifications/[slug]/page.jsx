@@ -114,19 +114,6 @@ const CertificationDetailPage = () => {
                                 <h4>Career Guaranteed</h4>
                                 <p className="sidebar-desc">Get certified and start your career in tech with industry recognized credentials.</p>
 
-                                {data.certificateSample && (
-                                    <div className="cert-sample-preview">
-                                        <p className="sample-label">Certificate Sample</p>
-                                        <div className="sample-img-container">
-                                            <img 
-                                                src={data.certificateSample} 
-                                                alt="Certificate Sample" 
-                                                className="sample-img"
-                                                onError={(e) => e.target.style.display = 'none'}
-                                            />
-                                        </div>
-                                    </div>
-                                )}
 
                                 <button 
                                     onClick={() => setIsEnquiryOpen(true)}

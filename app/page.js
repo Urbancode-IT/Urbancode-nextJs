@@ -152,6 +152,7 @@ export default function HomePage() {
       {/* <div className="home-section">
         <GetCertified />
       </div> */}
+
       {/* <div className="home-section">
         <SuccessStories />
       </div> */}

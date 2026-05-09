@@ -9,7 +9,7 @@ import './GetCertified.css';
 import { certifications } from '@/app/data/certificationData';
 
 // Custom Tilt Card Component for 3D effect
-const TiltCard = ({ children, className, onClick }) => {
+const TiltCard = ({ children, className, onClick, style }) => {
     const x = useMotionValue(0);
     const y = useMotionValue(0);
 
@@ -42,13 +42,13 @@ const TiltCard = ({ children, className, onClick }) => {
 
     return (
         <motion.div
-            style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
+            style={{ ...style, rotateX, rotateY, transformStyle: "preserve-3d" }}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
             onClick={onClick}
             className={className}
         >
-            <div style={{ transform: "translateZ(50px)", transformStyle: "preserve-3d" }}>
+            <div style={{ transform: "translateZ(50px)", transformStyle: "preserve-3d", height: '100%', display: 'flex', flexDirection: 'column' }}>
                 {children}
             </div>
         </motion.div>
@@ -64,9 +64,9 @@ const GetCertified = () => {
     const allCerts = Object.values(certifications);
     
     const brands = [
-        { name: 'AWS', icon: <Cloud size={16} />, logo: '/images/home/amazon.png', color: '#FF9900' },
-        { name: 'CNCF', icon: <Server size={16} />, logo: '/images/home/fullstack.png', color: '#326CE5' },
-        { name: 'Microsoft', icon: <Database size={16} />, logo: '/images/home/microsoft.png', color: '#00A4EF' },
+        { name: 'AWS', icon: <Cloud size={16} />, logo: 'https://img.icons8.com/color/512/amazon-web-services.png', color: '#FF9900', rgb: '255, 153, 0' },
+        { name: 'CNCF', icon: <Server size={16} />, logo: 'https://img.icons8.com/color/512/kubernetes.png', color: '#326CE5', rgb: '50, 108, 229' },
+        { name: 'Microsoft', icon: <Database size={16} />, logo: 'https://img.icons8.com/color/512/azure-1.png', color: '#00A4EF', rgb: '0, 164, 239' },
     ];
 
     const getBrandMainCert = (brandName) => {
@@ -118,7 +118,7 @@ const GetCertified = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                     >
-                        Choose Your Career Path
+                        Get Certified
                     </motion.h2>
                 </div>
 
@@ -147,10 +147,11 @@ const GetCertified = () => {
                                                 <TiltCard 
                                                     className="gc-brand-box-wrapper"
                                                     onClick={() => setExpandedBrand(brand.name)}
+                                                    style={{ '--accent': brand.color, '--accent-rgb': brand.rgb }}
                                                 >
-                                                    <div className="gc-initial-card">
+                                                    <div className="gc-initial-card" style={{ '--accent': brand.color, '--accent-rgb': brand.rgb }}>
                                                         <div className="gc-card-glass-glow"></div>
-                                                        <span className="gc-featured-tag" style={{ '--accent': brand.color }}>
+                                                        <span className="gc-featured-tag">
                                                             {brand.name} CERTIFICATION
                                                         </span>
                                                         <div className="gc-brand-wrap">
@@ -192,6 +193,10 @@ const GetCertified = () => {
                                 <div className="gc-featured-side">
                                     <motion.div 
                                         className="gc-featured-card"
+                                        style={{ 
+                                            '--accent': brands.find(b => b.name === expandedBrand)?.color,
+                                            '--accent-rgb': brands.find(b => b.name === expandedBrand)?.rgb 
+                                        }}
                                         initial={{ x: -20, opacity: 0 }}
                                         animate={{ x: 0, opacity: 1 }}
                                         transition={{ delay: 0.2 }}

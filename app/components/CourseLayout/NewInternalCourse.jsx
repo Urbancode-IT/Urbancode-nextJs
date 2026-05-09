@@ -8,6 +8,7 @@ import {
 } from "react-icons/fa";
 import { FiPlus, FiMinus, FiDownload } from "react-icons/fi";
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
+
 import EnquiryFormModal from "@/app/components/common/EnquiryFormModal.jsx";
 // import CourseAssistant from "@/app/components/CourseAssistant/CourseAssistant";
 
@@ -115,6 +116,7 @@ const NewInternalCourse = ({ data }) => {
                             <button className="nict-hero-btn secondary" onClick={() => setIsBrochureOpen(true)}>
                                 <FiDownload className="nict-btn-icon" /> Download Brochure
                             </button>
+
                         </div>
                     </div>
 

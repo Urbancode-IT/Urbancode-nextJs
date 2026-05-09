@@ -26,6 +26,27 @@ const courses = [
   description: "Make coding fun with Python! Kids will learn basic programming concepts, logic building, and create simple games and projects in an easy and engaging way.",
   image: "/images/courses/python-kids.webp",
 },
+{
+  id: 11,
+  title: "Data Analytics Summer Camp",
+  duration: "3 Months",
+  description: "Learn how to analyze data, create reports, and gain valuable insights using modern analytics tools. Students will explore data visualization, dashboards, and real-world business case studies in an easy-to-understand way.",
+  image: "/images/courses/poster11.webp",
+},
+{
+  id: 12,
+  title: "Power Automate Summer Camp",
+  duration: "3 Months",
+  description: "Discover the power of automation with Microsoft Power Automate. Students will learn to create workflows, automate repetitive tasks, connect apps, and improve productivity through hands-on projects.",
+  image: "/images/courses/poster12.webp",
+},
+{
+  id: 13,
+  title: "Generative AI Summer Camp",
+  duration: "3 Months",
+  description: "Explore the exciting world of Generative AI and learn how AI tools can create text, images, and smart solutions. Students will work on creative AI projects while understanding the basics of modern artificial intelligence.",
+  image: "/images/courses/poster13.webp",
+},
   
   {
     id: 2,
@@ -48,13 +69,13 @@ const courses = [
     description: "Learn Google Cloud, Airflow, MySQL, and Python to build scalable data pipelines and handle real-time data processing.",
     image: "/images/courses/poster3.webp",
   },
-  {
-    id: 5,
-    title: "Data Analyst",
-    duration: "3 Months",
-    description: "Analyze and visualize data using Excel, SQL, Power BI, and Python. Work on real-time datasets and business insights.",
-    image: "/images/courses/poster4.webp",
-  },
+//   {
+//     id: 5,
+//     title: "Data Analyst",
+//     duration: "3 Months",
+//     description: "Analyze and visualize data using Excel, SQL, Power BI, and Python. Work on real-time datasets and business insights.",
+//     image: "/images/courses/poster4.webp",
+//   },
   {
     id: 6,
     title: ".NET + Angular Development",
@@ -62,13 +83,13 @@ const courses = [
     description: "Combine C# .NET backend with Angular frontend to build scalable enterprise-level web applications.",
     image: "/images/courses/poster5.webp",
   },
-   {
-  id: 7,
-  title: "Generative AI Development",
-  duration: "3 Months",
-  description: "Learn to build intelligent AI applications using Generative AI, LLMs, and modern tools like OpenAI, LangChain, and Python. Create chatbots, AI assistants, and real-world AI solutions.",
-  image: "/images/courses/gen-ai-poster.webp",
-},
+//    {
+//   id: 7,
+//   title: "Generative AI Development",
+//   duration: "3 Months",
+//   description: "Learn to build intelligent AI applications using Generative AI, LLMs, and modern tools like OpenAI, LangChain, and Python. Create chatbots, AI assistants, and real-world AI solutions.",
+//   image: "/images/courses/gen-ai-poster.webp",
+// },
 // {
 //     id: 8,
 //     title: "Mobile App Development (Android & iOS)",
