@@ -100,20 +100,45 @@ export default function HeroSection() {
               </span>
             </div>
 
-            <div className="d-flex align-items-center justify-content-start mt-4">
-              <div className="d-flex ms-2">
-                {["men/32", "women/65", "men/45", "women/12"].map((u, i) => (
-                  <img
-                    key={i}
-                    src={`https://randomuser.me/api/portraits/${u}.jpg`}
-                    alt="Students learning MERN Stack at Urbancode Chennai"
-                    className="rounded-circle border border-white shadow students_img"
+          <div className="d-flex align-items-center justify-content-start mt-4">
+<div className="d-flex align-items-center ms-2">
+  {[
+    "/images/home/hs1.png",
+    "/images/home/hs2.png",
+    "/images/home/hs3.png",
+    "/images/home/hs4.png"
+  ].map((src, i) => (
+    <img
+      key={i}
+      src={src}
+      alt="Indian Students"
+      className="rounded-circle border border-white shadow students_img"
+      style={{
+        width: "60px",
+        height: "60px",
+        objectFit: "cover",
+        marginLeft: i !== 0 ? "-12px" : "0",
+        zIndex: 5 - i
+      }}
+    />
+  ))}
 
-                  />
-                ))}
-              </div>
-              <span className="ms-2 fw-bold">+</span>
-            </div>
+  {/* Plus Circle */}
+  <div
+    className="rounded-circle bg-success text-white d-flex align-items-center justify-content-center fw-bold shadow"
+    style={{
+      width: "60px",
+      height: "60px",
+      marginLeft: "-12px",
+      border: "3px solid white",
+      fontSize: "28px",
+      zIndex: 0
+    }}
+  >
+    +
+  </div>
+</div>
+</div>
 
             <button className="btn enroll_btn rounded-pill px-4 py-2 mt-5"
               onClick={() => setShowEnquiry(true)}>
