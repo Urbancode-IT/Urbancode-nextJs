@@ -19,224 +19,326 @@
     width: 100%;
 }
 
-/* Slider rows */
+/* Slider rows - Animated Staggered Layout */
 .idt-slider-track {
     display: flex;
-    gap: 50px;
-    width: max-content;
-    animation: scroll-left 12s linear infinite;
-    padding: 10px 0;
+    gap: 30px;
+    width: fit-content; /* Critical for animation */
+    justify-content: flex-start;
+    padding: 20px 0;
+    flex-wrap: nowrap;
+    animation: slide-linear 100s linear infinite; /* SLOW SCROLL */
+    will-change: transform;
 }
 
 .idt-slider-track.idt-row-reverse {
-    animation: scroll-right 12s linear infinite;
+    animation-direction: reverse;
 }
 
 .idt-slider-track:hover {
     animation-play-state: paused;
 }
 
+@keyframes slide-linear {
+    from { transform: translateX(0); }
+    to { transform: translateX(calc(-100% / 3)); }
+}
+
 /* === RECTANGLE CARD === */
 .idt-tool-item-wrapper {
     width: 140px;
     height: 100px;
-    background: linear-gradient(135deg, #f1f5f9 0%, #ffffff 50%, #e2e8f0 100%);
+    background: linear-gradient(135deg, #e2e8f0 0%, #ffffff 50%, #cbd5e1 100%); /* Base Silver */
     border-radius: 16px;
     border: 1px solid rgba(148, 163, 184, 0.4);
-
-    box-shadow:
-        0 8px 16px rgba(0, 0, 0, 0.08),
-        0 4px 8px rgba(0, 0, 0, 0.04),
+    box-shadow: 
+        0 8px 16px rgba(0, 0, 0, 0.1),
         inset 0 1px 0 rgba(255, 255, 255, 1);
-
     display: flex;
     align-items: center;
     justify-content: center;
     flex: 0 0 140px;
-
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
     position: relative;
     overflow: hidden;
     z-index: 1;
 }
 
-.idt-tool-item-wrapper::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), transparent);
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    border-radius: 16px;
-    z-index: 0;
-}
-
+/* Shine Animation Overlay */
 .idt-tool-item-wrapper::after {
     content: '';
     position: absolute;
-    top: 0;
-    left: -150%;
-    width: 60%;
-    height: 100%;
+    top: -50%;
+    left: -100%;
+    width: 50%;
+    height: 200%;
     background: linear-gradient(
         to right,
         rgba(255, 255, 255, 0) 0%,
-        rgba(255, 255, 255, 0.25) 50%,
+        rgba(255, 255, 255, 0.4) 50%,
         rgba(255, 255, 255, 0) 100%
     );
-    transform: skewX(-25deg);
-    animation: shine-sweep 4s infinite cubic-bezier(0.4, 0, 0.2, 1);
+    transform: rotate(30deg);
+    transition: none;
     z-index: 2;
     pointer-events: none;
 }
 
-.idt-tool-item-wrapper:hover {
-    transform: translateY(-8px) scale(1.05);
-    box-shadow:
-        0 20px 40px rgba(100, 116, 139, 0.15),
-        0 10px 20px rgba(0, 0, 0, 0.1),
-        inset 0 1px 0 rgba(255, 255, 255, 1);
-    border-color: rgba(148, 163, 184, 0.8);
+.idt-tool-item-wrapper:hover::after {
+    animation: metal-shine 0.8s ease-in-out;
 }
 
+@keyframes metal-shine {
+    from { left: -100%; }
+    to { left: 150%; }
+}
+
+/* Hover: Pop-out lift only, no color change */
+.idt-tool-item-wrapper:hover {
+    transform: translateY(-15px) scale(1.12);
+    box-shadow: 
+        0 25px 50px rgba(0, 0, 0, 0.18),
+        0 8px 20px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+/* Special Highlight: Light green glass card for NEW tools */
 .idt-highlight-new {
-    border-color: #D4AF37 !important; /* Premium Gold */
-    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3), 0 8px 16px rgba(0, 0, 0, 0.08);
+    border-color: rgba(22, 163, 74, 0.3) !important;
+    background: linear-gradient(145deg, #ffffff 0%, #f0fdf4 60%, #dcfce7 100%) !important;
+    box-shadow: 
+        0 8px 20px rgba(22, 163, 74, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    overflow: hidden;
+    position: relative;
+}
+
+/* Glass shine sweep on NEW cards */
+.idt-highlight-new::before {
+    content: '';
+    position: absolute;
+    top: -60%;
+    left: -80%;
+    width: 60%;
+    height: 220%;
+    background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.6) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    transform: rotate(25deg);
+    animation: glass-shine-sweep 4s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 3;
+}
+
+@keyframes glass-shine-sweep {
+    0%   { left: -80%; opacity: 0; }
+    10%  { opacity: 1; }
+    40%  { left: 130%; opacity: 1; }
+    41%  { opacity: 0; }
+    100% { left: 130%; opacity: 0; }
 }
 
 .idt-highlight-new:hover {
-    box-shadow: 0 0 30px rgba(212, 175, 55, 0.5), 0 20px 40px rgba(100, 116, 139, 0.15) !important;
+    /* Only lift/scale, no color change */
+    transform: translateY(-15px) scale(1.12);
+    box-shadow: 
+        0 25px 50px rgba(22, 163, 74, 0.2),
+        0 8px 20px rgba(22, 163, 74, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 1);
+    border-color: rgba(22, 163, 74, 0.5) !important;
 }
 
-.idt-tool-item-wrapper:hover::before {
-    opacity: 1;
-}
-
-/* Inner logo box */
-.idt-tool-logo-base {
-    width: 90%;
-    height: 70%;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(4px);
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    box-shadow:
-        0 4px 12px rgba(0, 0, 0, 0.15),
-        0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 12px;
-    transition: all 0.4s ease;
-    position: relative;
-    z-index: 1;
-}
-
-.idt-large-logo .idt-tool-icon {
-    width: 100% !important;
-    height: 100% !important;
-}
-
+/* Badge stays gold always */
 .idt-new-badge {
     position: absolute;
     top: -5px;
     right: -5px;
-    background: linear-gradient(135deg, #D4AF37 0%, #FFD700 100%);
+    background: linear-gradient(135deg, #BF953F, #FCF6BA, #B38728);
     color: #000;
     font-size: 8px;
     font-weight: 900;
     padding: 2px 8px;
     border-radius: 4px;
     text-transform: uppercase;
-    letter-spacing: 0.8px;
     z-index: 5;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
-/* Icon */
-.idt-tool-icon {
-    width: 90%;
-    height: 90%;
-    object-fit: contain;
-    transition: transform 0.3s ease;
-}
-
-
-.idt-tool-item-wrapper:hover .idt-tool-icon {
-    transform: scale(1.15);
-    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+.idt-tool-logo-base {
+    width: 85%;
+    height: 75%;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    transition: all 0.4s ease;
+    position: relative;
+    z-index: 1;
 }
 
 .idt-tool-item-wrapper:hover .idt-tool-logo-base {
-    box-shadow:
-        0 8px 24px rgba(100, 116, 139, 0.2),
-        0 4px 12px rgba(0, 0, 0, 0.08);
     background: #ffffff;
-    border-color: rgba(148, 163, 184, 0.4);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+    transform: scale(1.02);
 }
 
-/* Infinite scroll */
-@keyframes scroll-left {
-    0% {
-        transform: translateX(0);
-    }
-
-    100% {
-        transform: translateX(calc(-100% / 3));
-    }
+.idt-tool-icon {
+    width: 80%;
+    height: 80%;
+    object-fit: contain;
+    transition: transform 0.5s ease;
 }
 
-@keyframes scroll-right {
-    0% {
-        transform: translateX(calc(-100% / 3));
-    }
-
-    100% {
-        transform: translateX(0);
-    }
+.idt-tool-item-wrapper:hover .idt-tool-icon {
+    transform: scale(1.1);
 }
 
 @keyframes shine-sweep {
-    0% {
-        left: -150%;
-    }
-    15% {
-        left: 200%;
-    }
-    100% {
-        left: 200%;
-    }
+    /* Removed in favor of metal-shine */
 }
 
-/* Edge fade */
+/* Edge fade removed (no cloudy effect) */
 .idt-tools-slider-container::before,
 .idt-tools-slider-container::after {
-    content: "";
+    display: none;
+}
+
+/* Modal Styling */
+.idt-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75); /* Darkened for better contrast */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    animation: fadeIn 0.4s ease;
+}
+
+.idt-modal-card {
+    background: rgba(15, 23, 42, 0.85); /* Much darker and more solid for readability */
+    backdrop-filter: blur(40px); /* Heavier blur for true frosted glass effect */
+    -webkit-backdrop-filter: blur(40px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    width: 100%;
+    max-width: 550px;
+    border-radius: 40px;
+    padding: 50px 40px;
+    position: relative;
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6);
+    animation: modalPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    color: white;
+    text-align: center;
+}
+
+.idt-modal-close {
     position: absolute;
-    top: -20px;
-    bottom: -20px;
-    width: 250px;
-    z-index: 2;
-    pointer-events: none;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
 }
 
-.idt-tools-slider-container::before {
-    left: 0;
-    background: linear-gradient(to right, #fcfcfc 20%, transparent);
+.idt-modal-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: rotate(90deg);
 }
 
-.idt-tools-slider-container::after {
-    right: 0;
-    background: linear-gradient(to left, #fcfcfc 20%, transparent);
+.idt-modal-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 30px;
 }
 
-/* Mobile */
+.idt-modal-icon-box {
+    width: 100px;
+    height: 100px;
+    background: white;
+    border-radius: 24px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 
+        0 15px 30px rgba(0, 0, 0, 0.2),
+        0 0 0 4px rgba(212, 175, 55, 0.2);
+}
+
+.idt-modal-icon-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.idt-modal-header h3 {
+    font-size: 32px;
+    margin: 0;
+    background: linear-gradient(135deg, #BF953F, #FCF6BA, #B38728);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 800;
+}
+
+.idt-modal-body p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 35px;
+}
+
+.idt-modal-action-btn {
+    display: inline-block;
+    padding: 16px 40px;
+    background: linear-gradient(90deg, #1B8A5A 0%, #03482E 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 20px rgba(27, 138, 90, 0.3);
+}
+
+.idt-modal-action-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(27, 138, 90, 0.5);
+    filter: brightness(1.1);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes modalPop {
+    from { transform: scale(0.8) translateY(20px); opacity: 0; }
+    to { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+/* Mobile Adjustments */
 @media (max-width: 768px) {
     .idt-in-demand-container {
         padding: 40px 0;
@@ -257,8 +359,15 @@
         gap: 25px;
     }
 
-    .idt-tools-slider-container::before,
-    .idt-tools-slider-container::after {
-        width: 100px;
+    .idt-modal-card {
+        padding: 30px 20px;
+    }
+
+    .idt-modal-header h3 {
+        font-size: 26px;
+    }
+
+    .idt-modal-body p {
+        font-size: 16px;
     }
 }

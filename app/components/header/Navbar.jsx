@@ -149,14 +149,14 @@ export default function Navbar() {
                       />
                     </svg>
                   </Link>
-                  <a 
+                  {/* <a 
                     href="https://codementor.urbancode.in/" 
                     target="_blank" 
                     rel="noopener noreferrer" 
                     onClick={handleLinkClick}
                   >
                     Dev Arena
-                  </a>
+                  </a> */}
                 </div>
               </div>
               <Link href="/portfolio" onClick={handleLinkClick}>Portfolio</Link>

@@ -8,6 +8,7 @@ import Navbar from './components/header/Navbar';
 import Footer from './components/footer/Footer';
 import BootstrapClient from './components/BootstrapClient';
 import Script from 'next/script';
+import SmoothScroll from './components/common/SmoothScroll';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -177,7 +178,9 @@ export default function RootLayout({ children }) {
 
         <BootstrapClient />
         <Navbar />
-        <main>{children}</main>
+        <SmoothScroll>
+          <main>{children}</main>
+        </SmoothScroll>
         <Footer />
       </body>
     </html>

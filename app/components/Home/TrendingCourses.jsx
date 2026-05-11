@@ -199,7 +199,7 @@ const TrendingCourses = () => {
                                     className="trending-image-fg" 
                                     width={300}
                                     height={400}
-                                    style={{ objectFit: 'cover' }}
+                                    style={{ objectFit: 'contain' }}
                                 />
                                 <div className="card-hover-overlay">
                                     <span>View Details</span>
@@ -223,7 +223,7 @@ const TrendingCourses = () => {
                                     alt={`${selectedCourse.title} - Urbancode Edutech`} 
                                     width={400}
                                     height={500}
-                                    style={{ objectFit: 'cover', borderRadius: '12px' }}
+                                    style={{ objectFit: 'contain', borderRadius: '12px' }}
                                 />
                             </div>
                             <div className="trending-modal-info">

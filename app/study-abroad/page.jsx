@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { FaStar, FaQuoteLeft, FaCheckCircle, FaAward, FaUniversity, FaSearch } from 'react-icons/fa';
+import { Send } from "lucide-react";
 import { submitEnquiryForm } from "@/lib/api/api";
 import EnquiryFormModal from "@/app/components/common/EnquiryFormModal.jsx";
 import { destinations, services, testimonials } from './data';
@@ -300,117 +301,120 @@ const StudyAbroadPage = () => {
 
             {/* Consultation Section */}
             <section id="consultation" className="section-padding consultation-section">
-                <div className="container">
-                    <div className="row justify-content-center">
-                        <div className="col-lg-10">
-                            <FormCard className="p-4 p-md-5">
-                                <h3 className="text-center mb-5 fw-bold">Book Your Free Expert Consultation</h3>
-                                <form onSubmit={handleFormSubmit}>
-                                    <div className="row g-4">
-                                        <div className="col-md-6">
-                                            <FormInput 
-                                                label="Full Name" 
-                                                name="name" 
-                                                placeholder="John Doe" 
-                                                required 
-                                                value={formData.name} 
-                                                onChange={handleFormChange} 
-                                                disabled={isSubmitting}
-                                            />
-                                        </div>
-                                        <div className="col-md-6">
-                                            <FormInput 
-                                                label="Email Address" 
-                                                type="email" 
-                                                name="email" 
-                                                placeholder="john@example.com" 
-                                                required 
-                                                value={formData.email} 
-                                                onChange={handleFormChange} 
-                                                disabled={isSubmitting}
-                                            />
-                                        </div>
-                                        <div className="col-md-6">
-                                            <FormInput 
-                                                label="Phone Number" 
-                                                type="tel" 
-                                                name="phone" 
-                                                placeholder="9876543210" 
-                                                required 
-                                                value={formData.phone} 
-                                                onChange={handleFormChange} 
-                                                disabled={isSubmitting}
-                                            />
-                                        </div>
-                                        <div className="col-md-6">
-                                            <FormSelect 
-                                                label="Preferred Destination" 
-                                                name="country" 
-                                                placeholder="Select Country"
-                                                options={destinationOptions}
-                                                required 
-                                                value={formData.country} 
-                                                onChange={handleFormChange} 
-                                                disabled={isSubmitting}
-                                            />
-                                        </div>
-                                        <div className="col-md-6">
-                                            <FormSelect 
-                                                label="Highest Qualification" 
-                                                name="education" 
-                                                placeholder="Select Level"
-                                                options={educationOptions}
-                                                required 
-                                                value={formData.education} 
-                                                onChange={handleFormChange} 
-                                                disabled={isSubmitting}
-                                            />
-                                        </div>
-                                        <div className="col-md-6">
-                                            <FormInput 
-                                                label="Preferred Course" 
-                                                name="course" 
-                                                placeholder="MS in Computer Science" 
-                                                required 
-                                                value={formData.course} 
-                                                onChange={handleFormChange} 
-                                                disabled={isSubmitting}
-                                            />
-                                        </div>
-                                        <div className="col-12">
-                                            <FormTextarea 
-                                                label="Message (Optional)" 
-                                                name="message" 
-                                                rows="4" 
-                                                placeholder="Tell us about your goals..." 
-                                                value={formData.message} 
-                                                onChange={handleFormChange} 
-                                                disabled={isSubmitting}
-                                            />
-                                        </div>
-                                        
-                                        {/* Status Message */}
-                                        {formStatus.message && (
-                                            <div className={`col-12 alert alert-${formStatus.type === 'success' ? 'success' : 'danger'}`}>
-                                                {formStatus.message}
-                                            </div>
-                                        )}
+                <div className="container" style={{maxWidth: '700px'}}>
+                    <FormCard className="p-0 overflow-hidden" style={{ background: 'linear-gradient(180deg, #e3f0eb 0%, #f3f5f3 100%)', border: 'none' }}>
+                        <div className="p-4 p-md-5">
+                            <div className="text-center mb-4">
+                                <Image 
+                                    src="/images/home/logo.png" 
+                                    alt="Urban Code Logo" 
+                                    width={150} 
+                                    height={35}
+                                    priority
+                                />
+                                <h3 className="h3 fw-bold mt-3 mb-2 text-dark">Book Your Free Expert Consultation</h3>
+                                <p className="small text-muted">Get personalized guidance for your international academic journey.</p>
+                            </div>
 
-                                        <div className="col-12 mt-4">
-                                            <FormButton 
-                                                type="submit" 
-                                                variant="success" 
-                                                className="w-100 py-3"
-                                                loading={isSubmitting}
-                                            >
-                                                {isSubmitting ? "Sending Request..." : "Schedule My Free Consultation"}
-                                            </FormButton>
-                                        </div>
+                            {formStatus.message && (
+                                <div className={`alert alert-${formStatus.type === 'error' ? 'danger' : 'success'} mb-4 text-center`}>
+                                    {formStatus.message}
+                                </div>
+                            )}
+
+                            <form onSubmit={handleFormSubmit}>
+                                <div className="row g-3">
+                                    <div className="col-md-6">
+                                        <FormInput 
+                                            name="name" 
+                                            placeholder="Full Name" 
+                                            required 
+                                            value={formData.name} 
+                                            onChange={handleFormChange} 
+                                            disabled={isSubmitting}
+                                        />
                                     </div>
-                                </form>
-                            </FormCard>
+                                    <div className="col-md-6">
+                                        <FormInput 
+                                            type="email" 
+                                            name="email" 
+                                            placeholder="Email Address" 
+                                            required 
+                                            value={formData.email} 
+                                            onChange={handleFormChange} 
+                                            disabled={isSubmitting}
+                                        />
+                                    </div>
+                                    <div className="col-md-6">
+                                        <FormInput 
+                                            type="tel" 
+                                            name="phone" 
+                                            placeholder="Phone Number" 
+                                            required 
+                                            value={formData.phone} 
+                                            onChange={handleFormChange} 
+                                            disabled={isSubmitting}
+                                        />
+                                    </div>
+                                    <div className="col-md-6">
+                                        <FormSelect 
+                                            name="country" 
+                                            placeholder="Preferred Destination"
+                                            options={destinationOptions}
+                                            required 
+                                            value={formData.country} 
+                                            onChange={handleFormChange} 
+                                            disabled={isSubmitting}
+                                        />
+                                    </div>
+                                    <div className="col-md-6">
+                                        <FormSelect 
+                                            name="education" 
+                                            placeholder="Highest Qualification"
+                                            options={educationOptions}
+                                            required 
+                                            value={formData.education} 
+                                            onChange={handleFormChange} 
+                                            disabled={isSubmitting}
+                                        />
+                                    </div>
+                                    <div className="col-md-6">
+                                        <FormInput 
+                                            name="course" 
+                                            placeholder="Preferred Course (e.g. MS in CS)" 
+                                            required 
+                                            value={formData.course} 
+                                            onChange={handleFormChange} 
+                                            disabled={isSubmitting}
+                                        />
+                                    </div>
+                                    <div className="col-12">
+                                        <FormTextarea 
+                                            name="message" 
+                                            rows="4" 
+                                            placeholder="Message (Optional) - Tell us about your goals..." 
+                                            value={formData.message} 
+                                            onChange={handleFormChange} 
+                                            disabled={isSubmitting}
+                                        />
+                                    </div>
+                                    
+                                    <div className="col-12 text-center mt-4">
+                                        <FormButton 
+                                            type="submit" 
+                                            variant="success" 
+                                            className="px-4 py-2 rounded-pill"
+                                            loading={isSubmitting}
+                                            style={{ minWidth: '160px', backgroundColor: '#444444', border: 'none' }}
+                                        >
+                                            {isSubmitting ? "Sending Request..." : "Schedule My Free Consultation"}
+                                            {!isSubmitting && <Send size={18} className="ms-2" />}
+                                        </FormButton>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
-                    </div>
+                    </FormCard>
                 </div>
             </section>
 

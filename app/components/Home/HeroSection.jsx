@@ -7,7 +7,7 @@ import "./HeroSection.css";
 
 export default function HeroSection() {
   const [showEnquiry, setShowEnquiry] = useState(false);
-  const words = [ "IT Career", "Success", "Opportunity"];
+  const words = [  "Success", "Opportunity"];
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [displayedLetters, setDisplayedLetters] = useState(words[0]);
   const maxWordLength = Math.max(...words.map((w) => w.length));
