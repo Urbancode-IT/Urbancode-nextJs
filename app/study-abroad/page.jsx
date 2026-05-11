@@ -303,8 +303,8 @@ const StudyAbroadPage = () => {
             <section id="consultation" className="section-padding consultation-section">
                 <div className="container" style={{maxWidth: '700px'}}>
                     <FormCard className="p-0 overflow-hidden" style={{ background: 'linear-gradient(180deg, #e3f0eb 0%, #f3f5f3 100%)', border: 'none' }}>
-                        <div className="p-4 p-md-5">
-                            <div className="text-center mb-4">
+                        <div className="p-3 p-md-4">
+                            <div className="text-center mb-3">
                                 <Image 
                                     src="/images/home/logo.png" 
                                     alt="Urban Code Logo" 
@@ -323,7 +323,7 @@ const StudyAbroadPage = () => {
                             )}
 
                             <form onSubmit={handleFormSubmit}>
-                                <div className="row g-3">
+                                <div className="row g-2">
                                     <div className="col-md-6">
                                         <FormInput 
                                             name="name" 
@@ -391,7 +391,7 @@ const StudyAbroadPage = () => {
                                     <div className="col-12">
                                         <FormTextarea 
                                             name="message" 
-                                            rows="4" 
+                                            rows="3" 
                                             placeholder="Message (Optional) - Tell us about your goals..." 
                                             value={formData.message} 
                                             onChange={handleFormChange} 
@@ -399,7 +399,7 @@ const StudyAbroadPage = () => {
                                         />
                                     </div>
                                     
-                                    <div className="col-12 text-center mt-4">
+                                    <div className="col-12 text-center mt-2">
                                         <FormButton 
                                             type="submit" 
                                             variant="success" 
