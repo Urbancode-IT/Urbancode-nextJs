@@ -1,4 +1,4 @@
-import { FaGraduationCap, FaFileSignature, FaPassport, FaHome, FaLanguage, FaBriefcase, FaUserCheck, FaMapMarkerAlt } from 'react-icons/fa';
+import { FaGraduationCap, FaFileSignature, FaPassport, FaHome, FaLanguage, FaBriefcase, FaUserCheck, FaMapMarkerAlt, FaSearch, FaUniversity, FaMoneyCheckAlt, FaPlaneDeparture } from 'react-icons/fa';
 
 export const destinations = [
     {
@@ -53,66 +53,66 @@ export const destinations = [
 
 export const services = [
     {
-        title: "Scholarship Assistance",
-        description: "We help you find and apply for scholarships to reduce your financial burden.",
-        icon: <FaGraduationCap />
+        title: "Course Selection",
+        description: "Expert counseling to help you choose the right course that aligns with your career goals and interests.",
+        icon: <FaSearch />
     },
     {
-        title: "Visa Success",
-        description: "Expert guidance for visa documentation and interview preparation to ensure high success rates.",
-        icon: <FaPassport />
+        title: "University Selection",
+        description: "Shortlisting top-ranked universities globally that best fit your academic profile and budget.",
+        icon: <FaUniversity />
     },
     {
-        title: "University Admissions",
-        description: "Get admission to top-ranked universities tailored to your profile and interests.",
+        title: "Application & SOP",
+        description: "End-to-end support for your application, including professional SOP editing and LOR guidance.",
         icon: <FaFileSignature />
     },
     {
-        title: "Application Support",
-        description: "End-to-end support for your application, from SOP to recommendation letters.",
-        icon: <FaUserCheck />
+        title: "Loan Application",
+        description: "Assistance with educational loans through our partner banks to fund your international education.",
+        icon: <FaMoneyCheckAlt />
     },
     {
-        title: "Career Guidance",
-        description: "Professional counseling to help you choose the right course and career path.",
-        icon: <FaBriefcase />
+        title: "Visa Success",
+        description: "Expert guidance for visa documentation and mock interview preparation to ensure high success rates.",
+        icon: <FaPassport />
     },
     {
-        title: "Accommodation",
-        description: "Assistance in finding safe and affordable housing near your university.",
-        icon: <FaHome />
+        title: "Scholarship Guidance",
+        description: "Identifying and applying for eligible scholarships to reduce your overall financial burden.",
+        icon: <FaGraduationCap />
     },
     {
-        title: "Language Coaching",
-        description: "Expert training for IELTS, TOEFL, PTE, and other language proficiency tests.",
-        icon: <FaLanguage />
+        title: "Pre-Departure Support",
+        description: "Briefing sessions on culture, lifestyle, and travel essentials before you fly to your destination.",
+        icon: <FaPlaneDeparture />
     },
     {
         title: "Post-Arrival Support",
-        description: "We help you settle in with airport pickup, bank account setup, and more.",
+        description: "Assistance with airport pickup, local accommodation, and settling into your new environment.",
         icon: <FaMapMarkerAlt />
     }
 ];
 
 export const testimonials = [
     {
-        name: "Rahul Sharma",
-        university: "University of Toronto, Canada",
+        name: "Sriram",
+        university: "Greenwich University, UK",
         review: "Urbancode helped me through every step of my Canadian student visa process. Their scholarship guidance was a lifesaver!",
         rating: 5,
         image: "/images/home/avatar1.jpg"
     },
     {
-        name: "Sneha Reddy",
-        university: "University of Manchester, UK",
+        name: "Ashmathi",
+        university: "Dublin Business School, Ireland",
         review: "The counseling sessions were very informative. They helped me choose the perfect course that aligned with my career goals.",
         rating: 5,
         image: "/images/home/avatar2.jpg"
     },
     {
-        name: "Arjun Mehta",
-        university: "Arizona State University, USA",
-        review: "Got my US visa in the first attempt thanks to their rigorous interview prep. Highly recommend their services!",
+        name: "Vishnu",
+        university: "Coventry University, UK",
+        review: "Got my Uk visa in the first attempt thanks to their rigorous interview prep. Highly recommend their services!",
         rating: 5,
         image: "/images/home/avatar3.jpg"
     }

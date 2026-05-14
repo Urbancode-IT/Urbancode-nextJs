@@ -10,17 +10,17 @@ section {
 }
 
 /* Sections */
-.section-padding {
-    padding: 80px 0;
+.study-abroad-container .section-padding {
+    padding: 60px 0;
 }
 
 .section-bg-light {
     background-color: #fcfcfc;
 }
 
-.section-header {
+.study-abroad-container .section-header {
     text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: 35px;
 }
 
 .section-header p {
@@ -33,7 +33,7 @@ section {
 /* Hero Section */
 .study-hero {
     position: relative;
-    padding: 100px 0 60px;
+    padding: 80px 0 40px;
     background-color: #fcfcfc;
     overflow: hidden;
 }
@@ -521,13 +521,178 @@ section {
 }
 
 @media (max-width: 768px) {
-    .section-padding {
-        padding: 50px 0;
+    .study-abroad-container .section-padding {
+        padding: 15px 0;
+    }
+    .study-hero {
+        padding: 30px 0 0;
     }
     .study-hero-content h1 {
-        font-size: 2.2rem;
+        font-size: 2.1rem;
+        margin-bottom: 10px;
     }
     .hero-stats {
         flex-wrap: wrap;
+        gap: 10px;
+    }
+    .hero-trust-row {
+        gap: 12px;
+        margin-top: 10px !important;
+    }
+    .study-abroad-container .section-header {
+        margin-bottom: 10px;
+    }
+    .stats-divider-line {
+        margin: 15px auto 5px;
+    }
+    .proficiency-content-card {
+        padding: 20px;
+    }
+    .prof-title {
+        font-size: 1.4rem;
     }
 }
+
+.badge-pill-modern {
+    background: linear-gradient(135deg, #00B56F 0%, #008f58 100%);
+    color: white;
+    padding: 10px 25px;
+    border-radius: 50px;
+    display: inline-flex;
+    align-items: center;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(0, 181, 111, 0.2);
+}
+
+.exception-text {
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 400;
+}
+
+/* Proficiency Section */
+.proficiency-section {
+    background-color: #f8fafc;
+}
+
+.proficiency-main-desc {
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.proficiency-tabs-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.proficiency-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.prof-tab-btn {
+    padding: 12px 35px;
+    border-radius: 50px;
+    border: 2px solid #e2e8f0;
+    background: #fff;
+    font-weight: 600;
+    color: #4a5568;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.prof-tab-btn:hover {
+    border-color: #00B56F;
+    color: #00B56F;
+}
+
+.prof-tab-btn.active {
+    background: linear-gradient(135deg, #00B56F 0%, #008f58 100%);
+    color: #fff;
+    border-color: transparent;
+    box-shadow: 0 8px 20px rgba(0, 181, 111, 0.3);
+    transform: translateY(-2px);
+}
+
+.proficiency-content-card {
+    background: #fff;
+    padding: 50px;
+    border-radius: 30px;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(0, 181, 111, 0.08);
+    position: relative;
+    overflow: hidden;
+}
+
+.proficiency-content-card::after {
+    content: '';
+    position: absolute;
+    bottom: -50px;
+    right: -50px;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(0, 181, 111, 0.03) 0%, transparent 70%);
+    border-radius: 50%;
+}
+
+.prof-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #1a202c;
+    margin-bottom: 20px;
+}
+
+.prof-desc {
+    font-size: 1.05rem;
+    color: #4a5568;
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+
+.prof-highlights {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.prof-h-item {
+    display: flex;
+    align-items: flex-start;
+    font-size: 0.95rem;
+    color: #2d3748;
+    font-weight: 500;
+}
+
+.btn-prof-enquire {
+    background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+    color: #fff;
+    border: none;
+    padding: 14px 35px;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: none;
+    letter-spacing: normal;
+    font-size: 1rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.btn-prof-enquire:hover {
+    background: #00B56F;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 25px rgba(0, 181, 111, 0.3);
+}
+
+.prof-icon-large {
+    font-size: 160px;
+    color: rgba(0, 181, 111, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+

@@ -29,6 +29,26 @@ const StudyAbroadPage = () => {
         message: ""
     });
 
+    const [activeProficiency, setActiveProficiency] = useState("IELTS");
+
+    const proficiencyData = {
+        IELTS: {
+            title: "IELTS (International English Language Testing System)",
+            description: "The world's most popular English language proficiency test for higher education and global migration. It assesses your Listening, Reading, Writing, and Speaking skills.",
+            highlights: ["Accepted in UK, Canada, Australia, and New Zealand", "Flexible test dates", "Comprehensive preparation material provided"]
+        },
+        PTE: {
+            title: "PTE (Pearson Test of English)",
+            description: "A computer-based English language test for non-native English speakers who want to study abroad. It is known for fast results and an unbiased computer-based scoring system.",
+            highlights: ["Fast results (typically within 48 hours)", "Unbiased machine scoring", "Accepted by thousands of universities worldwide"]
+        },
+        Duolingo: {
+            title: "Duolingo English Test",
+            description: "A modern, convenient, and affordable English proficiency assessment. You can take the test online, anytime, anywhere in under an hour.",
+            highlights: ["Take the test from home", "Results in 2 days", "Accepted by over 4000 institutions globally"]
+        }
+    };
+
     const handleEnquireClick = (country) => {
         setSelectedCountry(country);
         setIsModalOpen(true);
@@ -240,6 +260,45 @@ const StudyAbroadPage = () => {
                 </div>
             </section>
 
+            {/* Services Section */}
+            <section className="section-padding">
+                <div className="container">
+                    <div className="section-header">
+                        <h2 className="section-main-title text-shine">Our Expert Services</h2>
+                        <p>Comprehensive support from planning to your first day on campus. We handle the complexity so you can focus on your future.</p>
+                        
+                        <motion.div 
+                            className="free-service-badge mt-4"
+                            initial={{ opacity: 0, y: 10 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                        >
+                            <span className="badge-pill-modern">
+                                <FaCheckCircle className="me-2" />
+                                100% Free Service for Students* 
+                                <span className="exception-text small ms-2">(Except Germany)</span>
+                            </span>
+                        </motion.div>
+                    </div>
+                    <div className="row g-4">
+                        {services.map((service, index) => (
+                            <div className="col-lg-3 col-md-6" key={index}>
+                                <motion.div 
+                                    className="service-box"
+                                    whileHover={{ y: -5 }}
+                                >
+                                    <div className="service-icon">
+                                        {service.icon}
+                                    </div>
+                                    <h4>{service.title}</h4>
+                                    <p className="text-muted">{service.description}</p>
+                                </motion.div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
             {/* Destinations Section */}
             <section className="section-padding section-bg-light">
                 <div className="container">
@@ -273,28 +332,64 @@ const StudyAbroadPage = () => {
                 </div>
             </section>
 
-            {/* Services Section */}
-            <section className="section-padding">
+            {/* English Proficiency Section */}
+            <section className="section-padding proficiency-section">
                 <div className="container">
                     <div className="section-header">
-                        <h2 className="section-main-title text-shine">Our Expert Services</h2>
-                        <p>Comprehensive support from planning to your first day on campus. We handle the complexity so you can focus on your future.</p>
+                        <h2 className="section-main-title text-shine">Master Your English Proficiency</h2>
+                        <p className="proficiency-main-desc">
+                            English proficiency certifications like <strong>IELTS, PTE, and Duolingo</strong> are essential milestones in your study abroad journey. 
+                            At Urbancode, we provide comprehensive, result-oriented training for all these exams. 
+                            Master the language under the guidance of experts with over <strong>10+ years of professional experience</strong> and achieve your target score with confidence.
+                        </p>
                     </div>
-                    <div className="row g-4">
-                        {services.map((service, index) => (
-                            <div className="col-lg-3 col-md-6" key={index}>
-                                <motion.div 
-                                    className="service-box"
-                                    whileHover={{ y: -5 }}
+
+                    <div className="proficiency-tabs-container">
+                        <div className="proficiency-buttons">
+                            {Object.keys(proficiencyData).map((key) => (
+                                <button 
+                                    key={key}
+                                    className={`prof-tab-btn ${activeProficiency === key ? 'active' : ''}`}
+                                    onClick={() => setActiveProficiency(key)}
                                 >
-                                    <div className="service-icon">
-                                        {service.icon}
+                                    {key}
+                                </button>
+                            ))}
+                        </div>
+
+                        <motion.div 
+                            key={activeProficiency}
+                            initial={{ opacity: 0, x: 20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.4 }}
+                            className="proficiency-content-card"
+                        >
+                            <div className="row align-items-center">
+                                <div className="col-lg-7">
+                                    <h3 className="prof-title">{proficiencyData[activeProficiency].title}</h3>
+                                    <p className="prof-desc">{proficiencyData[activeProficiency].description}</p>
+                                    <div className="prof-highlights">
+                                        {proficiencyData[activeProficiency].highlights.map((h, i) => (
+                                            <div key={i} className="prof-h-item">
+                                                <FaCheckCircle className="text-success me-2" />
+                                                <span>{h}</span>
+                                            </div>
+                                        ))}
                                     </div>
-                                    <h4>{service.title}</h4>
-                                    <p className="text-muted">{service.description}</p>
-                                </motion.div>
+                                    <button 
+                                        className="btn-prof-enquire mt-4"
+                                        onClick={() => handleEnquireClick(activeProficiency)}
+                                    >
+                                        Enroll for {activeProficiency} Coaching
+                                    </button>
+                                </div>
+                                <div className="col-lg-5 d-none d-lg-block text-center">
+                                    <div className="prof-icon-large">
+                                        <FaAward />
+                                    </div>
+                                </div>
                             </div>
-                        ))}
+                        </motion.div>
                     </div>
                 </div>
             </section>
@@ -305,14 +400,7 @@ const StudyAbroadPage = () => {
                     <FormCard className="p-0 overflow-hidden" style={{ background: 'linear-gradient(180deg, #e3f0eb 0%, #f3f5f3 100%)', border: 'none' }}>
                         <div className="p-3 p-md-4">
                             <div className="text-center mb-3">
-                                <Image 
-                                    src="/images/home/logo.png" 
-                                    alt="Urban Code Logo" 
-                                    width={150} 
-                                    height={35}
-                                    priority
-                                />
-                                <h3 className="h3 fw-bold mt-3 mb-2 text-dark">Book Your Free Expert Consultation</h3>
+                                <h3 className="h3 fw-bold mt-3 mb-2 text-dark">Book Your Free Consultation</h3>
                                 <p className="small text-muted">Get personalized guidance for your international academic journey.</p>
                             </div>
 
@@ -407,8 +495,7 @@ const StudyAbroadPage = () => {
                                             loading={isSubmitting}
                                             style={{ minWidth: '160px', backgroundColor: '#444444', border: 'none' }}
                                         >
-                                            {isSubmitting ? "Sending Request..." : "Schedule My Free Consultation"}
-                                            {!isSubmitting && <Send size={18} className="ms-2" />}
+                                            {isSubmitting ? "Sending..." : "Submit"}
                                         </FormButton>
                                     </div>
                                 </div>

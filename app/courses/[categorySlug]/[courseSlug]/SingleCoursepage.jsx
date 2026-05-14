@@ -9,6 +9,7 @@ import { newCourseData } from "@/app/data/newCourseData";
 import NewInternalCourse from "@/app/components/CourseLayout/NewInternalCourse";
 import { FiPlus, FiMinus } from "react-icons/fi";
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
+import ProgramCohorts from "@/app/components/CourseLayout/ProgramCohorts";
 // import CourseAssistant from "@/app/components/CourseAssistant/CourseAssistant";
 
 const newCourseMapping = {
@@ -438,6 +439,11 @@ export default function SingleCoursepage({ params }) {
             )}
         </div>
         {/* End of Course Content */}
+        
+        {/* Program Cohorts Section */}
+        {/* {categorySlug !== "kidz-space" && (
+          <ProgramCohorts onApply={() => setShowEnquiry(true)} />
+        )} */}
 
       </div>
       {/* <CourseAssistant courseName={course.title} /> */}

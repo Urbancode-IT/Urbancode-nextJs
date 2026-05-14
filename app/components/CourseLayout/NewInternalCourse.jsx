@@ -8,6 +8,7 @@ import {
 } from "react-icons/fa";
 import { FiPlus, FiMinus, FiDownload } from "react-icons/fi";
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
+import ProgramCohorts from "./ProgramCohorts";
 
 import EnquiryFormModal from "@/app/components/common/EnquiryFormModal.jsx";
 // import CourseAssistant from "@/app/components/CourseAssistant/CourseAssistant";
@@ -233,6 +234,9 @@ const NewInternalCourse = ({ data }) => {
                     </div>
                 </section>
             </div>
+
+            {/* Program Cohorts Section */}
+            {/* <ProgramCohorts onApply={() => setIsEnquiryOpen(true)} /> */}
 
 
             {/* 5. FAQ SECTION */}

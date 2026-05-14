@@ -7,6 +7,7 @@ import EnquiryFormModal from '@/app/components/common/EnquiryFormModal';
 import { motion } from 'framer-motion';
 import { ChevronRight, Star, Clock, BookOpen, Award, CheckCircle2 } from 'lucide-react';
 import './CertificationDetails.css';
+import ProgramCohorts from '@/app/components/CourseLayout/ProgramCohorts';
 
 import { certifications as certificationData } from '@/app/data/certificationData';
 
@@ -140,6 +141,9 @@ const CertificationDetailPage = () => {
                         </div>
                     </div>
                 </div>
+                
+                {/* Program Cohorts Section */}
+                {/* <ProgramCohorts onApply={() => setIsEnquiryOpen(true)} /> */}
             </div>
 
             <EnquiryFormModal 
