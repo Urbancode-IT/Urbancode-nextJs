@@ -9,7 +9,8 @@ export default function HeroSection() {
   const [showEnquiry, setShowEnquiry] = useState(false);
   const words = [  "Success", "Opportunity"];
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
-  const [displayedLetters, setDisplayedLetters] = useState(words[0]);
+  const [displayedLetters, setDisplayedLetters] = useState("Success");
+  const [isMounted, setIsMounted] = useState(false);
   const maxWordLength = Math.max(...words.map((w) => w.length));
 
   const socialLinks = [
@@ -28,23 +29,33 @@ export default function HeroSection() {
   ];
 
   useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isMounted) return;
+    
     const word = words[currentWordIndex];
     let letterIndex = 0;
     setDisplayedLetters("");
 
+    let timeoutId;
     const letterInterval = setInterval(() => {
       setDisplayedLetters(word.slice(0, letterIndex + 1));
       letterIndex++;
       if (letterIndex === word.length) {
         clearInterval(letterInterval);
-        setTimeout(() => {
+        timeoutId = setTimeout(() => {
           setCurrentWordIndex((prev) => (prev + 1) % words.length);
         }, 1500);
       }
     }, 120);
 
-    return () => clearInterval(letterInterval);
-  }, [currentWordIndex]);
+    return () => {
+      clearInterval(letterInterval);
+      if (timeoutId) clearTimeout(timeoutId);
+    };
+  }, [currentWordIndex, isMounted]);
 
   const images = ["/images/home/s1.webp", "/images/home/s2.webp", "/images/home/s3.webp", "/images/home/s4.webp"];
   const [imageOrder, setImageOrder] = useState([0, 1, 2, 3]);
@@ -78,9 +89,10 @@ export default function HeroSection() {
             <h1 className="fw-bold fs25rem animated-title">
               Transforming Skills into <br />
               <span
-                className="text-success animated-word"
+                className="text-success animated-word pe-1"
+                style={{ minHeight: "45px", minWidth: "20px" }}
               >
-                {displayedLetters ? displayedLetters : "|"}
+                {isMounted ? displayedLetters : "Success"}
               </span>
             </h1>
 

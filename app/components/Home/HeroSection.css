@@ -148,7 +148,10 @@
 .animated-word {
   white-space: nowrap;
   overflow: hidden;
-  height: 45px;
+  display: inline-block;
+  min-height: 45px;
+  border-right: 3px solid #198754;
+  padding-right: 4px;
   animation: blink 0.7s infinite;
 }
 
