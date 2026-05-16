@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './globals.css';
-import "@fortawesome/fontawesome-free/css/all.min.css";
+import './globals.css';
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { Inter } from 'next/font/google';
 
@@ -38,6 +38,14 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={inter.variable} suppressHydrationWarning>
       <head>
+        {/* FontAwesome CDN for reliable icon loading */}
+        <link 
+          rel="stylesheet" 
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" 
+          integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" 
+          crossOrigin="anonymous" 
+          referrerPolicy="no-referrer" 
+        />
         {/* ✅ Google Ads / GA4 Global Site Tag — MUST be in <head> for Google tag validation */}
         <Script
           id="google-gtag"

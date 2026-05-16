@@ -120,12 +120,11 @@ const Milestones = () => {
                 key={index} 
                 variants={itemVariants}
                 className="stat-card"
-                whileHover={{ y: -10, transition: { duration: 0.2 } }}
               >
-                <div className="stat-card-inner">
-                  <div className="stat-icon-wrapper">
-                    {milestone.icon}
-                  </div>
+                <div className="stat-icon-wrapper">
+                  {milestone.icon}
+                </div>
+                <div className="stat-info">
                   <div className="stat-number">
                     {milestone.number}
                   </div>

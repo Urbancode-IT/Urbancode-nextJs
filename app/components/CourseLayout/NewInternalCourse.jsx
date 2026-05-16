@@ -11,7 +11,7 @@ import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 import ProgramCohorts from "./ProgramCohorts";
 
 import EnquiryFormModal from "@/app/components/common/EnquiryFormModal.jsx";
-// import CourseAssistant from "@/app/components/CourseAssistant/CourseAssistant";
+import CourseAssistant from "@/app/components/CourseAssistant/CourseAssistant";
 
 const NewInternalCourse = ({ data }) => {
     // Check if data exists
@@ -34,6 +34,8 @@ const NewInternalCourse = ({ data }) => {
     // --- Enquiry Modal State ---
     const [isEnquiryOpen, setIsEnquiryOpen] = useState(false);
     const [isBrochureOpen, setIsBrochureOpen] = useState(false);
+    const [isJoinOpen, setIsJoinOpen] = useState(false);
+    const [selectedBatch, setSelectedBatch] = useState(null);
 
 
     // ===========================================================================
@@ -114,10 +116,18 @@ const NewInternalCourse = ({ data }) => {
                             <button className="nict-hero-btn" onClick={handleEnrollClick}>
                                 Enroll now <FaArrowRight className="nict-btn-icon" />
                             </button>
+                            {/* <button
+                                className="nict-hero-btn secondary"
+                                onClick={() => {
+                                    const el = document.getElementById('batches-section');
+                                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                                }}
+                            >
+                                Join Now
+                            </button> */}
                             <button className="nict-hero-btn secondary" onClick={() => setIsBrochureOpen(true)}>
                                 <FiDownload className="nict-btn-icon" /> Download Brochure
                             </button>
-
                         </div>
                     </div>
 
@@ -236,7 +246,10 @@ const NewInternalCourse = ({ data }) => {
             </div>
 
             {/* Program Cohorts Section */}
-            {/* <ProgramCohorts onApply={() => setIsEnquiryOpen(true)} /> */}
+            {/* <ProgramCohorts onApply={(batch) => {
+                setSelectedBatch(batch);
+                setIsJoinOpen(true);
+            }} /> */}
 
 
             {/* 5. FAQ SECTION */}
@@ -295,6 +308,14 @@ const NewInternalCourse = ({ data }) => {
                 courseName={heroData.highlightText || "Course"}
                 isBrochureMode={true}
                 downloadUrls={[heroData.brochure || "/brochure.jpg"]}
+            />
+
+            <EnquiryFormModal
+                isOpen={isJoinOpen}
+                onClose={() => setIsJoinOpen(false)}
+                courseName={heroData.highlightText || "Course"}
+                isJoinMode={true}
+                batchInfo={selectedBatch}
             />
 
             {/* Course Assistant - Active for all courses in this layout */}

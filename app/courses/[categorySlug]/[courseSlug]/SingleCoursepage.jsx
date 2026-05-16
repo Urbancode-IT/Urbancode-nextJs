@@ -10,7 +10,7 @@ import NewInternalCourse from "@/app/components/CourseLayout/NewInternalCourse";
 import { FiPlus, FiMinus } from "react-icons/fi";
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 import ProgramCohorts from "@/app/components/CourseLayout/ProgramCohorts";
-// import CourseAssistant from "@/app/components/CourseAssistant/CourseAssistant";
+import CourseAssistant from "@/app/components/CourseAssistant/CourseAssistant";
 
 const newCourseMapping = {
   "mern-stack": "mern-stack",
@@ -25,6 +25,8 @@ const newCourseMapping = {
 export default function SingleCoursepage({ params }) {
   const { categorySlug, courseSlug } = params;
   const [showEnquiry, setShowEnquiry] = useState(false);
+  const [showJoin, setShowJoin] = useState(false);
+  const [selectedBatch, setSelectedBatch] = useState(null);
 
   // --- Curriculum State ---
   const [curriculumActiveIndex, setCurriculumActiveIndex] = useState(null);
@@ -135,12 +137,23 @@ export default function SingleCoursepage({ params }) {
                   {course.aboutData.content1}
                 </p>
 
-                <button 
-                  className="btn btn-dark rounded-pill mt-3 px-4 py-2 enroll-btn w-sm-100 w-md-auto"
-                  onClick={() => setShowEnquiry(true)}
-                >
-                  Enroll Today
-                </button>
+                <div className="d-flex flex-wrap gap-3 mt-3">
+                  <button
+                    className="btn btn-dark rounded-pill px-4 py-2 enroll-btn"
+                    onClick={() => setShowEnquiry(true)}
+                  >
+                    Enroll Today
+                  </button>
+                  {/* <button
+                    className="btn rounded-pill px-4 py-2 join-now-hero-btn"
+                    onClick={() => {
+                      const el = document.getElementById('batches-section');
+                      if (el) el.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                  >
+                    Join Now
+                  </button> */}
+                </div>
               </div>
               <div className="mt-4 mt-md-5">
                 <h2 className="fw-semibold mb-3 text-center text-lg-start">About This Course</h2>
@@ -442,8 +455,19 @@ export default function SingleCoursepage({ params }) {
         
         {/* Program Cohorts Section */}
         {/* {categorySlug !== "kidz-space" && (
-          <ProgramCohorts onApply={() => setShowEnquiry(true)} />
+          <ProgramCohorts onApply={(batch) => {
+            setSelectedBatch(batch);
+            setShowJoin(true);
+          }} />
         )} */}
+
+        <EnquiryFormModal
+          isOpen={showJoin}
+          onClose={() => setShowJoin(false)}
+          courseName={course.title}
+          isJoinMode={true}
+          batchInfo={selectedBatch}
+        />
 
       </div>
       {/* <CourseAssistant courseName={course.title} /> */}

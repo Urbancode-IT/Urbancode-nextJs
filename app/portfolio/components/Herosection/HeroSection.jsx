@@ -175,7 +175,7 @@ export default function HeroSection() {
               <div className="avatar-hero plus">+</div>
             </div>
             <span className="avatar-text-hero">
-              <strong className="text-1000">100+ Happy Clients</strong> worldwide
+              <strong className="text-1000">50+ Happy Clients</strong> worldwide
             </span>
           </motion.div>
         </div>

@@ -35,26 +35,27 @@ export default function HeroSection() {
   useEffect(() => {
     if (!isMounted) return;
     
-    const word = words[currentWordIndex];
-    let letterIndex = 0;
-    setDisplayedLetters("");
+    let isCancelled = false;
+    let word = words[currentWordIndex];
+    let charIndex = 0;
 
-    let timeoutId;
-    const letterInterval = setInterval(() => {
-      setDisplayedLetters(word.slice(0, letterIndex + 1));
-      letterIndex++;
-      if (letterIndex === word.length) {
-        clearInterval(letterInterval);
-        timeoutId = setTimeout(() => {
-          setCurrentWordIndex((prev) => (prev + 1) % words.length);
-        }, 1500);
+    const type = () => {
+      if (isCancelled) return;
+      if (charIndex <= word.length) {
+        setDisplayedLetters(word.slice(0, charIndex));
+        charIndex++;
+        setTimeout(type, 120);
+      } else {
+        setTimeout(() => {
+          if (!isCancelled) {
+            setCurrentWordIndex((prev) => (prev + 1) % words.length);
+          }
+        }, 2000);
       }
-    }, 120);
-
-    return () => {
-      clearInterval(letterInterval);
-      if (timeoutId) clearTimeout(timeoutId);
     };
+
+    type();
+    return () => { isCancelled = true; };
   }, [currentWordIndex, isMounted]);
 
   const images = ["/images/home/s1.webp", "/images/home/s2.webp", "/images/home/s3.webp", "/images/home/s4.webp"];

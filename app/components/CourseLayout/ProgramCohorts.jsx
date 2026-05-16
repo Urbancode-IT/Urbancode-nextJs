@@ -1,90 +1,75 @@
 "use client";
 import React from "react";
 import "./ProgramCohorts.css";
-import { CalendarDays, Clock, Users } from "lucide-react";
+import { Clock, LayoutGrid } from "lucide-react";
 
-const ProgramCohorts = ({ batches, onApply }) => {
-  // Dummy batches as requested, can be overridden by props
+const ProgramCohorts = ({ onApply }) => {
   const defaultBatches = [
     {
       id: 1,
       name: "Regular Classes",
-      date: "16th May 2026",
       time: "10:00 AM IST",
-      type: "Weekend (Sat-Sun)"
+      batchType: "Weekday (Mon-Fri)",
     },
     {
       id: 2,
       name: "Fast Track",
-      date: "25th May 2026",
       time: "07:00 PM IST",
-      type: "Weekday (Mon-Fri)"
-    }
+      batchType: "Weekday (Mon-Fri)",
+    },
+    {
+      id: 3,
+      name: "Placement Classes",
+      time: "11:00 AM IST",
+      batchType: "Weekend (Sat-Sun)",
+    },
   ];
 
-  const displayBatches = batches || defaultBatches;
-
   return (
-    <div className="program-cohorts-section container">
-      <h2 className="cohorts-title">Program Batches</h2>
-      <p className="cohorts-subtitle">Next Batches</p>
-      
-      <div className="cohorts-container">
-        <table className="cohorts-table">
-          <thead className="cohorts-header">
-            <tr>
-              <th></th>
-              <th>
-                <div className="header-content">
-                  <CalendarDays className="header-icon" size={18} />
-                  <span>DATE</span>
-                </div>
-              </th>
-              <th>
-                <div className="header-content">
-                  <Clock className="header-icon" size={18} />
-                  <span>TIME</span>
-                </div>
-              </th>
-              <th>
-                <div className="header-content">
-                  <Users className="header-icon" size={18} />
-                  <span>BATCH TYPE</span>
-                </div>
-              </th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {displayBatches.map((batch) => (
-              <tr key={batch.id} className="cohort-row">
-                <td>
-                  <div className="cohort-name-cell">
-                    <span className="status-dot"></span>
-                    <span className="batch-name">{batch.name}</span>
-                  </div>
-                </td>
-                <td data-label="DATE" className="date-cell">
-                  {batch.date}
-                </td>
-                <td data-label="TIME" className="time-cell">
-                  {batch.time}
-                </td>
-                <td data-label="BATCH TYPE" className="type-cell">
-                  {batch.type}
-                </td>
-                <td className="apply-btn-cell">
-                  <button 
-                    className="apply-now-btn"
-                    onClick={() => onApply && onApply(batch)}
-                  >
-                    Apply Now
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+    <div id="batches-section" className="program-cohorts-section container">
+      <div className="cohorts-header-text">
+        <h2 className="cohorts-title">Batches</h2>
+        <p className="cohorts-subtitle">
+          Enroll in our upcoming sessions and kickstart your career journey.
+        </p>
+      </div>
+
+      <div className="cohorts-list">
+        {defaultBatches.map((batch) => (
+          <div key={batch.id} className="cohort-row-card">
+            {/* Batch Name */}
+            <div className="cohort-name-col">
+              <span className="batch-dot"></span>
+              <span className="batch-name-text">{batch.name}</span>
+            </div>
+
+            {/* TIME */}
+            <div className="cohort-info-col">
+              <span className="info-label">
+                <Clock size={13} className="info-icon" /> TIME
+              </span>
+              <span className="info-value">{batch.time}</span>
+            </div>
+
+            {/* BATCH TYPE */}
+            <div className="cohort-info-col">
+              <span className="info-label">
+                <LayoutGrid size={13} className="info-icon" /> BATCH TYPE
+              </span>
+              <span className="info-value">{batch.batchType}</span>
+            </div>
+
+            {/* Join Now */}
+            <div className="cohort-action-col">
+              <button
+                className="apply-now-btn"
+                onClick={() => onApply && onApply(batch)}
+              >
+                Join Now
+              </button>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );

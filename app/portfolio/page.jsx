@@ -13,7 +13,6 @@ import ContactSection from "./pages/ContactSection";
 import OurClients from "./pages/OurClients";
 import DigitalFuture from "./pages/DigitalFuture";
 import ClientServices from "./pages/ClientServices";
-
 const HomePage = () => (
   <>
     <HeroSection />

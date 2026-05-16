@@ -59,8 +59,8 @@
     color: #565151;
 }
 
-.social-icons i {
-    font-size: 1.3rem;
+.social-icons svg {
+    font-size: 1.4rem;
 }
 
 .social-icons a:hover {
@@ -146,7 +146,7 @@
 /* Adjust social icons for better touch targets on mobile */
 @media (max-width: 768px) {
     .social-icons a {
-        font-size: 20px;
+        font-size: 24px;
         margin-right: 15px;
         margin-left: 0;
         display: inline-block;

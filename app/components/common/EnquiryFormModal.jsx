@@ -6,7 +6,20 @@ import Swal from 'sweetalert2';
 import confetti from 'canvas-confetti';
 import "./EnquiryForm.css";
 
-const EnquiryFormModal = ({ isOpen, onClose, courseName, onSuccess, downloadUrls, dynamicDownloads, extraOptions = [], isSelectMode = false, isDemoMode = false, isBrochureMode = false }) => {
+const EnquiryFormModal = ({ 
+  isOpen, 
+  onClose, 
+  courseName, 
+  onSuccess, 
+  downloadUrls, 
+  dynamicDownloads, 
+  extraOptions = [], 
+  isSelectMode = false, 
+  isDemoMode = false, 
+  isBrochureMode = false,
+  isJoinMode = false,
+  batchInfo = null 
+}) => {
   const router = useRouter();
   const [formData, setFormData] = useState({
     name: "",
@@ -85,12 +98,12 @@ const EnquiryFormModal = ({ isOpen, onClose, courseName, onSuccess, downloadUrls
     }
     
     // Course validation
-    if (!formData.course) {
+    if (!isJoinMode && !formData.course) {
       newErrors.course = "Please select a course.";
     }
     
     // Mode validation
-    if (!formData.mode) {
+    if (!isJoinMode && !formData.mode) {
       newErrors.mode = "Please select a mode.";
     }
     
@@ -113,7 +126,7 @@ const EnquiryFormModal = ({ isOpen, onClose, courseName, onSuccess, downloadUrls
     if (!validateForm()) return;
 
     setLoading(true);
-    setStatus({ type: "loading", message: "Sending your enquiry..." });
+    setStatus({ type: "loading", message: isJoinMode ? "Sending your request..." : "Sending your enquiry..." });
 
     const scriptURL = "https://script.google.com/macros/s/AKfycbyqhIsaZZb1mvkcRtxrquaDboujLLpts-q5s1ed1JIRiuzt5l76OHeFxuTZPzRWxqh_/exec";
 
@@ -124,9 +137,11 @@ const EnquiryFormModal = ({ isOpen, onClose, courseName, onSuccess, downloadUrls
         phone: formData.phone,
         email: formData.email,
         course: formData.course,
-        message: isDemoMode 
-          ? `[DEMO REQUEST] Date: ${formData.preferredDate}, Time: ${formData.preferredTime}. Msg: ${formData.message}` 
-          : formData.message,
+        message: isJoinMode
+          ? `[JOIN REQUEST] Request to join ${courseName} ${batchInfo ? `(${batchInfo.name} - ${batchInfo.schedule})` : ""} batch.`
+          : (isDemoMode 
+            ? `[DEMO REQUEST] Date: ${formData.preferredDate}, Time: ${formData.preferredTime}. Msg: ${formData.message}` 
+            : formData.message),
       };
 
       // Using fetch with 'text/plain' to avoid CORS preflight issues common with Google Apps Script
@@ -145,7 +160,16 @@ const EnquiryFormModal = ({ isOpen, onClose, courseName, onSuccess, downloadUrls
       }
 
       // Handle Success
-      setStatus({ type: "success", message: "Success! Redirecting..." });
+      if (isJoinMode) {
+        Swal.fire({
+          title: 'Request Sent!',
+          text: 'Your request has been sent to the trainer. You will be able to join the class once the trainer approves it.',
+          icon: 'success',
+          confirmButtonColor: '#28a745'
+        });
+      } else {
+        setStatus({ type: "success", message: "Success! Redirecting..." });
+      }
       
       if (onSuccess) onSuccess();
 
@@ -183,9 +207,9 @@ const EnquiryFormModal = ({ isOpen, onClose, courseName, onSuccess, downloadUrls
           >
             <div className="enquiry-header">
               <h3>
-                {isBrochureMode 
-                  ? "Get Course Brochure" 
-                  : (isDemoMode ? "Book a Demo Session" : "Enquire Today")
+                {isJoinMode 
+                  ? "Join Class" 
+                  : (isBrochureMode ? "Get Course Brochure" : (isDemoMode ? "Book a Demo Session" : "Enquire Today"))
                 }
               </h3>
               <button className="close-btn" onClick={onClose}>×</button>
@@ -251,77 +275,83 @@ const EnquiryFormModal = ({ isOpen, onClose, courseName, onSuccess, downloadUrls
                       {errors.phone && <small className="text-danger">{errors.phone}</small>}
                     </div>
 
-                    <div className="col-md-6">
-                      <input
-                        type="text"
-                        className="form-control"
-                        name="pin"
-                        placeholder="Enter your pin code (6 digits)"
-                        value={formData.pin}
-                        onChange={handleChange}
-                        inputMode="numeric"
-                        maxLength="6"
-                        pattern="^\d{6}$"
-                        disabled={loading}
-                      />
-                      {errors.pin && <small className="text-danger">{errors.pin}</small>}
-                    </div>
-
-                    <div className="col-md-6">
-                      {isSelectMode && extraOptions.length > 0 ? (
-                        <select
-                          className="form-select"
-                          name="course"
-                          value={formData.course}
+                    {!isJoinMode && (
+                      <div className="col-md-6">
+                        <input
+                          type="text"
+                          className="form-control"
+                          name="pin"
+                          placeholder="Enter your pin code (6 digits)"
+                          value={formData.pin}
                           onChange={handleChange}
-                        >
-                          <option value="">Choose Course</option>
-                          {extraOptions.map((opt, i) => (
-                            <option key={i} value={opt}>{opt}</option>
-                          ))}
-                        </select>
-                      ) : (
-                        <>
-                          <input
-                            list="courses"
-                            className="form-control"
-                            name="course"
-                            value={formData.course}
-                            onChange={handleChange}
-                            placeholder="Select or type your course"
-                          />
-                          <datalist id="courses">
-                            {extraOptions.map((opt, i) => <option key={i} value={opt} />)}
-                            <option value="Python with AI" />
-                            <option value="webdevelopment" />
-                            <option value="Full Stack Development" />
-                            <option value="Data Science" />
-                            <option value="UI/UX Design" />
-                            <option value="Digital Marketing" />
-                            <option value="Cybersecurity" />
-                            <option value="Cloud Computing" />
-                            <option value="Help me choose my course" />
-                            <option value="Other" />
-                          </datalist>
-                        </>
-                      )}
-                      {errors.course && <small className="text-danger">{errors.course}</small>}
-                    </div>
+                          inputMode="numeric"
+                          maxLength="6"
+                          pattern="^\d{6}$"
+                          disabled={loading}
+                        />
+                        {errors.pin && <small className="text-danger">{errors.pin}</small>}
+                      </div>
+                    )}
 
-                    <div className="col-md-6">
-                      <select
-                        className="form-select"
-                        name="mode"
-                        value={formData.mode}
-                        onChange={handleChange}
-                      >
-                        <option value="">Mode</option>
-                        <option value="Online">Online</option>
-                        <option value="Offline">Offline</option>
-                        <option value="lets decide later">Let's decide later</option>
-                      </select>
-                      {errors.mode && <small className="text-danger">{errors.mode}</small>}
-                    </div>
+                    {!isJoinMode && (
+                      <>
+                        <div className="col-md-6">
+                          {isSelectMode && extraOptions.length > 0 ? (
+                            <select
+                              className="form-select"
+                              name="course"
+                              value={formData.course}
+                              onChange={handleChange}
+                            >
+                              <option value="">Choose Course</option>
+                              {extraOptions.map((opt, i) => (
+                                <option key={i} value={opt}>{opt}</option>
+                              ))}
+                            </select>
+                          ) : (
+                            <>
+                              <input
+                                list="courses"
+                                className="form-control"
+                                name="course"
+                                value={formData.course}
+                                onChange={handleChange}
+                                placeholder="Select or type your course"
+                              />
+                              <datalist id="courses">
+                                {extraOptions.map((opt, i) => <option key={i} value={opt} />)}
+                                <option value="Python with AI" />
+                                <option value="webdevelopment" />
+                                <option value="Full Stack Development" />
+                                <option value="Data Science" />
+                                <option value="UI/UX Design" />
+                                <option value="Digital Marketing" />
+                                <option value="Cybersecurity" />
+                                <option value="Cloud Computing" />
+                                <option value="Help me choose my course" />
+                                <option value="Other" />
+                              </datalist>
+                            </>
+                          )}
+                          {errors.course && <small className="text-danger">{errors.course}</small>}
+                        </div>
+
+                        <div className="col-md-6">
+                          <select
+                            className="form-select"
+                            name="mode"
+                            value={formData.mode}
+                            onChange={handleChange}
+                          >
+                            <option value="">Mode</option>
+                            <option value="Online">Online</option>
+                            <option value="Offline">Offline</option>
+                            <option value="lets decide later">Let's decide later</option>
+                          </select>
+                          {errors.mode && <small className="text-danger">{errors.mode}</small>}
+                        </div>
+                      </>
+                    )}
 
                     {isDemoMode && (
                       <>
@@ -355,16 +385,18 @@ const EnquiryFormModal = ({ isOpen, onClose, courseName, onSuccess, downloadUrls
                       </>
                     )}
 
-                    <div className="col-12">
-                      <textarea
-                        className="form-control"
-                        name="message"
-                        rows="4"
-                        placeholder="Any specific requirements?"
-                        value={formData.message}
-                        onChange={handleChange}
-                      ></textarea>
-                    </div>
+                    {!isJoinMode && (
+                      <div className="col-12">
+                        <textarea
+                          className="form-control"
+                          name="message"
+                          rows="4"
+                          placeholder="Any specific requirements?"
+                          value={formData.message}
+                          onChange={handleChange}
+                        ></textarea>
+                      </div>
+                    )}
 
                     {/* ✅ Status Message (only for non-success states) */}
                     {status.message && status.type !== "success" && (
@@ -382,7 +414,7 @@ const EnquiryFormModal = ({ isOpen, onClose, courseName, onSuccess, downloadUrls
                         {loading ? (
                           <span className="spinner-border spinner-border-sm me-2"></span>
                         ) : null}
-                        {loading ? "Sending..." : "Submit"}
+                        {loading ? "Sending..." : (isJoinMode ? "Join Class" : "Submit")}
                       </button>
                     </div>
                   </div>

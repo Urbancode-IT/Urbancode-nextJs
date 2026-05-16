@@ -14,21 +14,21 @@ const aboutData = {
       id: 1,
       title: "Expert Mentors",
       subtitle: "Industry Leaders",
-      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400",
+      image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=800",
       delay: 0
     },
     {
       id: 2,
       name: "Hands-on Projects",
       subtitle: "Real-world Experience",
-      image: heroImg,
+      image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=800",
       delay: 0.2
     },
     {
       id: 3,
       name: "Placement Support",
       subtitle: "Career Guidance",
-      image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&q=80&w=400",
+      image: "https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?auto=format&fit=crop&q=80&w=800",
       delay: 0.4
     }
   ]

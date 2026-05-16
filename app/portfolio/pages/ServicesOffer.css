@@ -10,19 +10,18 @@
   width: 100%;
 }
 
-.offer-header {
-  margin-bottom: 50px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.offer-header h2 {
+  font-size: var(--fs-h2);
+  font-weight: 700;
+  color: var(--text-h);
+  margin-bottom: 20px;
 }
 
 
 
 .offer-desc {
   font-family: var(--sans);
-  font-size: 16px;
+  font-size: var(--fs-body);
   color: var(--text);
   max-width: 600px;
   line-height: 1.6;

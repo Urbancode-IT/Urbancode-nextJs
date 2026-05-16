@@ -2,15 +2,14 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import "@fortawesome/fontawesome-free/css/all.min.css";
+import { FaLinkedin, FaFacebookF, FaInstagram, FaYoutube, FaWhatsapp } from "react-icons/fa";
 import "./Footer.css";
 
 function Footer() {
   const pathname = usePathname();
   const isFeedbackPage = pathname.startsWith('/feedback');
-  const isPortfolioPage = pathname.startsWith('/portfolio');
 
-  if (isFeedbackPage || isPortfolioPage) return null;
+  if (isFeedbackPage) return null;
 
   return (
     <footer className="footer">
@@ -24,19 +23,19 @@ function Footer() {
             <h4>Social Media</h4>
             <div className="social-icons">
               <a href="https://www.linkedin.com/company/99156099/admin/dashboard/" target="_blank" rel="noopener noreferrer">
-                <i className="fab fa-linkedin"></i>
+                <FaLinkedin />
               </a>
               <a href="https://www.facebook.com/profile.php?id=61563183054002#" target="_blank" rel="noopener noreferrer">
-                <i className="fab fa-facebook"></i>
+                <FaFacebookF />
               </a>
               <a href="https://www.instagram.com/urbancode_edutech/" target="_blank" rel="noopener noreferrer">
-                <i className="fab fa-instagram"></i>
+                <FaInstagram />
               </a>
               <a href="https://www.youtube.com/channel/UC7ngZ5r2ov-qoXJRjaXJGKA" target="_blank" rel="noopener noreferrer">
-                <i className="fab fa-youtube"></i>
+                <FaYoutube />
               </a>
               <a href="https://api.whatsapp.com/send/?phone=919878798797&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer">
-                <i className="fab fa-whatsapp"></i>
+                <FaWhatsapp />
               </a>
             </div>
           </div>

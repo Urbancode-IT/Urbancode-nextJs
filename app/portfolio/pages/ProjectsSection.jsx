@@ -194,6 +194,50 @@ const Icons = {
   )
 };
 
+const MetricChart = ({ type, percentage, value }) => {
+  if (type === "gauge") {
+    const radius = 20;
+    const circumference = 2 * Math.PI * radius;
+    const offset = circumference - (percentage / 100) * circumference;
+    return (
+      <div className="metric-gauge">
+        <svg width="60" height="60" viewBox="0 0 50 50">
+          <circle cx="25" cy="25" r={radius} stroke="#f1f5f9" strokeWidth="4" fill="none" />
+          <circle 
+            cx="25" cy="25" r={radius} stroke="#00b56f" strokeWidth="4" fill="none"
+            strokeDasharray={circumference}
+            strokeDashoffset={offset}
+            strokeLinecap="round"
+            style={{ transition: 'stroke-dashoffset 1s ease-in-out' }}
+          />
+          <text x="50%" y="50%" textAnchor="middle" dy=".3em" fontSize="10" fontWeight="800" fill="#111827">
+            {value}
+          </text>
+        </svg>
+      </div>
+    );
+  }
+  if (type === "timeline") {
+    return (
+      <div className="metric-timeline">
+        <div className="timeline-bar">
+          <div className="timeline-progress" style={{ width: `${percentage}%` }}></div>
+        </div>
+        <span className="timeline-value">{value}</span>
+      </div>
+    );
+  }
+  if (type === "reach") {
+    return (
+      <div className="metric-reach">
+        <Icons.Globe />
+        <span className="reach-value">{value}</span>
+      </div>
+    );
+  }
+  return <div className="stat-value">{value}</div>;
+};
+
 const PROJECTS = [
   {
     id: 1,
@@ -213,9 +257,9 @@ const PROJECTS = [
       { icon: <Icons.Smartphone />, text: "Mobile-first responsive design" }
     ],
     highlights: [
-      { label: "Lighthouse Score", value: "98/100" },
-      { label: "Build Time", value: "3 months" },
-      { label: "Client Reach", value: "Global" }
+      { label: "Lighthouse Score", value: "98/100", type: "gauge", percentage: 98 },
+      { label: "Build Time", value: "3 months", type: "timeline", percentage: 40 },
+      { label: "Client Reach", value: "Global", type: "reach" }
     ],
     modalEmoji: "⚙️"
   },
@@ -237,9 +281,9 @@ const PROJECTS = [
       { icon: <Icons.Mail />, text: "Integrated lead capture" }
     ],
     highlights: [
-      { label: "Client Location", value: "Belgium" },
-      { label: "Build Time", value: "2 months" },
-      { label: "Target Market", value: "Enterprise" }
+      { label: "Performance", value: "Fast", type: "gauge", percentage: 95 },
+      { label: "Build Time", value: "2 months", type: "timeline", percentage: 30 },
+      { label: "Target Market", value: "Enterprise", type: "reach" }
     ],
     modalEmoji: "💡"
   },
@@ -261,9 +305,9 @@ const PROJECTS = [
       { icon: <Icons.Smartphone />, text: "Mobile-friendly design" }
     ],
     highlights: [
-      { label: "Clients Served", value: "500+" },
-      { label: "Build Time", value: "3 months" },
-      { label: "Industry", value: "Finance" }
+      { label: "Accuracy", value: "99.9%", type: "gauge", percentage: 99 },
+      { label: "Project Duration", value: "3 months", type: "timeline", percentage: 40 },
+      { label: "Industry", value: "Finance", type: "reach" }
     ],
     modalEmoji: "📊"
   },
@@ -285,9 +329,9 @@ const PROJECTS = [
       { icon: <Icons.Target />, text: "Assessment & quiz system" }
     ],
     highlights: [
-      { label: "Students", value: "1000+" },
-      { label: "Subjects Covered", value: "3" },
-      { label: "Delivery", value: "Online" }
+      { label: "Uptime", value: "99.8%", type: "gauge", percentage: 99 },
+      { label: "Subjects", value: "3 Main", type: "timeline", percentage: 60 },
+      { label: "Delivery", value: "Online", type: "reach" }
     ],
     modalEmoji: "📚"
   },
@@ -309,9 +353,9 @@ const PROJECTS = [
       { icon: <Icons.Bell />, text: "Real-time job alerts" }
     ],
     highlights: [
-      { label: "Placements", value: "500+" },
-      { label: "Companies", value: "50+" },
-      { label: "Domains Covered", value: "3" }
+      { label: "Placements", value: "High", type: "gauge", percentage: 90 },
+      { label: "Companies", value: "50+", type: "timeline", percentage: 50 },
+      { label: "Domains", value: "3 Fields", type: "reach" }
     ],
     modalEmoji: "🎯"
   },
@@ -333,9 +377,9 @@ const PROJECTS = [
       { icon: <Icons.Smartphone />, text: "Mobile-first shopping" }
     ],
     highlights: [
-      { label: "Products", value: "200+" },
-      { label: "Since Launch", value: "Sales ↑" },
-      { label: "Customer Rating", value: "5★" }
+      { label: "Sales Growth", value: "2x", type: "gauge", percentage: 80 },
+      { label: "Inventory", value: "200+", type: "timeline", percentage: 70 },
+      { label: "Rating", value: "5★", type: "reach" }
     ],
     modalEmoji: "🛍️"
   }
@@ -417,14 +461,26 @@ const ProjectsSection = () => {
             >
               {/* LEFT: VISUAL PANEL */}
               <div className="project-modal__visual-panel">
-                <div className="project-modal__banner-wrap">
-                  <img 
-                    src={selectedProject.image} 
-                    alt={selectedProject.title} 
-                    className="project-modal__banner-screenshot" 
-                  />
-                  <div className="project-modal__visual-overlay" />
+                <div className="laptop-mockup">
+                  <div className="laptop-screen">
+                    <div className="browser-bar">
+                      <div className="browser-dots">
+                        <span></span><span></span><span></span>
+                      </div>
+                      <div className="browser-address">{selectedProject.link.replace('https://', '')}</div>
+                    </div>
+                    <div className="project-modal__banner-wrap">
+                      <img 
+                        src={selectedProject.image} 
+                        alt={selectedProject.title} 
+                        className="project-modal__banner-screenshot" 
+                      />
+                    </div>
+                  </div>
+                  <div className="laptop-base"></div>
                 </div>
+
+                <div className="project-modal__visual-overlay" />
                 
                 <motion.div 
                   className="project-modal__visual-info"
@@ -439,21 +495,24 @@ const ProjectsSection = () => {
 
               {/* RIGHT: CONTENT PANEL */}
               <div className="project-modal__content-panel">
-                <button className="project-modal__close-btn" onClick={closeModal}>✕</button>
+                <div className="project-modal__close-btn" onClick={closeModal}>✕</div>
                 
                 <div className="project-modal__scroll-area">
-                  <motion.p 
-                    className="modal-desc-text"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.4 }}
-                  >
-                    {selectedProject.fullDesc}
-                  </motion.p>
+                  <div className="modal-section">
+                    <h4 className="modal-section-title">Project Overview</h4>
+                    <motion.p 
+                      className="modal-desc-text"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.4 }}
+                    >
+                      {selectedProject.fullDesc}
+                    </motion.p>
+                  </div>
 
                   {/* Features */}
                   <div className="modal-section">
-                    <h4 className="modal-section-title">Key Features</h4>
+                    <h4 className="modal-section-title">Core Capabilities</h4>
                     <div className="modal-features-list">
                       {selectedProject.features.map((f, i) => (
                         <motion.div 
@@ -472,16 +531,16 @@ const ProjectsSection = () => {
 
                   {/* Tech Stack */}
                   <div className="modal-section">
-                    <h4 className="modal-section-title">Tech Stack</h4>
+                    <h4 className="modal-section-title">Technologies Used</h4>
                     <div className="modal-tech-flex">
                       {selectedProject.tech.map((t, i) => (
                         <motion.span 
                           key={t} 
                           className="modal-tech-pill"
-                          whileHover={{ y: -3, scale: 1.05 }}
+                          whileHover={{ y: -2, scale: 1.05 }}
                           initial={{ opacity: 0, scale: 0.8 }}
                           animate={{ opacity: 1, scale: 1 }}
-                          transition={{ delay: 0.7 + i * 0.05 }}
+                          transition={{ delay: 0.6 + i * 0.05 }}
                         >
                           {t}
                         </motion.span>
@@ -491,17 +550,17 @@ const ProjectsSection = () => {
 
                   {/* Highlights */}
                   <div className="modal-section">
-                    <h4 className="modal-section-title">Project Highlights</h4>
+                    <h4 className="modal-section-title">Success Metrics</h4>
                     <div className="modal-stats-grid">
                       {selectedProject.highlights.map((h, i) => (
                         <motion.div 
                           key={i} 
-                          className="modal-stat-item"
+                          className={`modal-stat-item is-${h.type || 'default'}`}
                           initial={{ opacity: 0, y: 10 }}
                           animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: 0.8 + i * 0.1 }}
+                          transition={{ delay: 0.7 + i * 0.1 }}
                         >
-                          <div className="stat-value">{h.value}</div>
+                          <MetricChart type={h.type} percentage={h.percentage} value={h.value} />
                           <div className="stat-label">{h.label}</div>
                         </motion.div>
                       ))}
@@ -516,18 +575,18 @@ const ProjectsSection = () => {
                     target="_blank" 
                     rel="noopener noreferrer" 
                     className="modal-primary-btn"
-                    whileHover={{ scale: 1.02 }}
+                    whileHover={{ scale: 1.02, backgroundColor: "#008f58" }}
                     whileTap={{ scale: 0.98 }}
                   >
-                    Explore Live Project →
+                    View Live Website →
                   </motion.a>
                   <motion.button 
                     className="modal-secondary-btn" 
                     onClick={handleStartSimilarProject}
-                    whileHover={{ scale: 1.02 }}
+                    whileHover={{ scale: 1.02, backgroundColor: "#f9fafb" }}
                     whileTap={{ scale: 0.98 }}
                   >
-                    Start Similar Project
+                    Start Your Project
                   </motion.button>
                 </div>
               </div>
