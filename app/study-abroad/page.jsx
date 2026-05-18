@@ -107,7 +107,7 @@ const StudyAbroadPage = () => {
         try {
             const result = await submitEnquiryForm(submissionData);
             if (result.success) {
-                router.push('/thankyou');
+                router.push('/study-abroad-thankyou');
                 setFormData({ name: "", email: "", phone: "", country: "", education: "", course: "", message: "" });
             } else {
                 setFormStatus({ type: "error", message: result.message || "Failed to send. Please try again." });
