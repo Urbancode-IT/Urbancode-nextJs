@@ -29,9 +29,6 @@ const ProgramCohorts = ({ onApply }) => {
     <div id="batches-section" className="program-cohorts-section container">
       <div className="cohorts-header-text">
         <h2 className="cohorts-title">Batches</h2>
-        <p className="cohorts-subtitle">
-          Enroll in our upcoming sessions and kickstart your career journey.
-        </p>
       </div>
 
       <div className="cohorts-list">

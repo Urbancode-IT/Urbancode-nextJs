@@ -354,7 +354,36 @@ section {
     color: #666;
     margin-bottom: 15px;
     height: 60px;
-    overflow: hidden;
+    overflow-y: auto;
+    padding-right: 8px; /* Smooth padding gap */
+    scrollbar-width: thin; /* Firefox support */
+    scrollbar-color: #00B56F rgba(0, 0, 0, 0.03); /* Firefox green thumb / light track */
+}
+
+/* Custom premium scrollbar for destination card description scroll */
+.destination-info p::-webkit-scrollbar {
+    width: 5px; /* Sleek, narrow & elegant */
+}
+
+.destination-info p::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.03); /* Extremely soft translucent track */
+    border-radius: 10px;
+}
+
+.destination-info p::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #00B56F 0%, #008f58 100%); /* Gorgeous emerald green gradient thumb */
+    border-radius: 10px;
+}
+
+.destination-info p::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #00d181 0%, #00B56F 100%); /* Lighter interactive emerald on hover */
+}
+
+/* HIDE native Windows up/down arrow scrollbar buttons */
+.destination-info p::-webkit-scrollbar-button {
+    display: none !important;
+    height: 0 !important;
+    width: 0 !important;
 }
 
 .uni-count {

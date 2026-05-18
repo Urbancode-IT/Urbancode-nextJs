@@ -1,15 +1,20 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import "./Chatbot.css"; // move your CSS here
 import EnquiryFormModal from "./common/EnquiryFormModal";
 
 const ChatbotWidget = () => {
+  const pathname = usePathname();
   const [showPopup, setShowPopup] = useState(false);
   const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
   const soundPlayedRef = useRef(false);
 
   useEffect(() => {
+    if (pathname && pathname.startsWith('/study-abroad')) {
+      return;
+    }
     const timer = setTimeout(() => {
       setShowPopup(true);
 
@@ -54,6 +59,10 @@ const ChatbotWidget = () => {
       chatbotClose.removeEventListener("click", closeChat);
     };
   }, []);
+
+  if (pathname && pathname.startsWith('/study-abroad')) {
+    return null;
+  }
 
   return (
     <>

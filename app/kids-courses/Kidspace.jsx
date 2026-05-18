@@ -7,18 +7,28 @@ import KidsLoader from './KidsLoader';
 
 import BannerSlider from '../components/common/BannerSlider';
 import KidsHero from './KidsHero';
+import KidsInteractiveGame from '../components/CourseLayout/KidsInteractiveGame';
 import { Star, Users, Clock } from "lucide-react";
 
 const Kidz = () => {
   const [selectedCourse, setSelectedCourse] = useState(null);
   const [showEnquiry, setShowEnquiry] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [levelsUnlocked, setLevelsUnlocked] = useState(false);
 
   useEffect(() => {
     // Show loader for 3 seconds when page loads (multi-stage animation)
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 3000);
+
+    // Check local storage for unlocked level progress
+    if (typeof window !== 'undefined') {
+      const unlocked = localStorage.getItem('kidsPlayZoneUnlocked') === 'true';
+      if (unlocked) {
+        setLevelsUnlocked(true);
+      }
+    }
 
     return () => clearTimeout(timer);
   }, []);
@@ -134,6 +144,22 @@ const Kidz = () => {
       <KidsLoader isLoading={isLoading} />
 
       <KidsHero />
+
+      {/* 🎮 Interactive Play Zone Section */}
+      <section id="interactive-play-zone" className="py-5" style={{ background: 'transparent', position: 'relative' }}>
+        <div className="container text-center">
+          <h2 className="kids-heading fw-semibold mb-3">
+            Kids <span className="text-success text-shine">Play Zone</span>
+          </h2>
+          <p className="kids-subheading mx-auto mb-5 text-muted" style={{ maxWidth: '650px', fontSize: '18px', lineHeight: '1.6' }}>
+            Test your problem-solving skills! Guide the robot safely to the star in 10 challenging levels.
+            Be careful of the obstacles!
+          </p>
+          <div style={{ position: 'relative', zIndex: 10 }}>
+            <KidsInteractiveGame onUnlockClick={() => setShowEnquiry(true)} levelsUnlocked={levelsUnlocked} />
+          </div>
+        </div>
+      </section>
 
       {/* Why Choose Urbancode for Kids Section */}
       <section className="why-choose-kids py-5">
@@ -421,7 +447,13 @@ const Kidz = () => {
                   <EnquiryFormModal
                     isOpen={showEnquiry}
                     onClose={() => setShowEnquiry(false)}
-                    courseName="Arrange a Free Demo Class"
+                    courseName="Kids Course Play Zone Unlock"
+                    onSuccess={() => {
+                      if (typeof window !== 'undefined') {
+                        localStorage.setItem('kidsPlayZoneUnlocked', 'true');
+                        setLevelsUnlocked(true);
+                      }
+                    }}
                   />
                 )}
                 &nbsp;&nbsp;

@@ -2,10 +2,12 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MdOutlinePlayCircle } from 'react-icons/md';
+import { usePathname } from 'next/navigation';
 import EnquiryFormModal from './common/EnquiryFormModal';
 import './BookDemoWidget.css';
 
 const BookDemoWidget = () => {
+    const pathname = usePathname();
     const [isOpen, setIsOpen] = useState(false);
     const [isHovered, setIsHovered] = useState(false);
 
@@ -14,6 +16,10 @@ const BookDemoWidget = () => {
     React.useEffect(() => {
         setIsMounted(true);
     }, []);
+
+    if (pathname && pathname.startsWith('/study-abroad')) {
+        return null;
+    }
 
     return (
         <>

@@ -1,16 +1,22 @@
 //app/courses/[categorySlug]/[courseSlug]/SingleCoursepage.jsx
 'use client';
+import React from "react";
+import { FaChild, FaUserGraduate, FaChalkboardTeacher, FaGamepad, FaLanguage, FaPuzzlePiece, FaLightbulb, FaCertificate } from "react-icons/fa";
 import coursesData from "../coursesData";
 import './styles.css';
-
-import { useState } from "react";
-import EnquiryFormModal from "@/app/components/common/EnquiryFormModal.jsx";
 import { newCourseData } from "@/app/data/newCourseData";
 import NewInternalCourse from "@/app/components/CourseLayout/NewInternalCourse";
-import { FiPlus, FiMinus } from "react-icons/fi";
-import { MdChevronLeft, MdChevronRight } from "react-icons/md";
-import ProgramCohorts from "@/app/components/CourseLayout/ProgramCohorts";
-import CourseAssistant from "@/app/components/CourseAssistant/CourseAssistant";
+
+const kidsHighlights = [
+  { icon: <FaChild />, label: "Age Group", value: "7 - 14 Years" },
+  { icon: <FaUserGraduate />, label: "Coaches", value: "Kid-Friendly Mentors" },
+  { icon: <FaChalkboardTeacher />, label: "Class mode", value: "Online/Offline" },
+  { icon: <FaGamepad />, label: "Method", value: "Game-Based Learning" },
+  { icon: <FaLanguage />, label: "Language", value: "Tamil/English" },
+  { icon: <FaPuzzlePiece />, label: "Activities", value: "Fun Puzzles & Games" },
+  { icon: <FaLightbulb />, label: "Focus", value: "Creative Thinking" },
+  { icon: <FaCertificate />, label: "Certificate", value: "Supercoder Certificate" },
+];
 
 const newCourseMapping = {
   "mern-stack": "mern-stack",
@@ -22,19 +28,203 @@ const newCourseMapping = {
   "automation-testing": "automation-testing",
 };
 
+// Tool matching logic based on course title keywords
+const getToolsForCourse = (title) => {
+    const t = title.toLowerCase();
+    const defaultTools = newCourseData["mern-stack"]?.toolsData || [];
+    
+    if (t.includes("power automate") || t.includes("automate flow")) {
+        return [
+            { id: 1, name: "Power Automate", icon: "https://api.iconify.design/simple-icons:powerautomate.svg?color=%230066FF" },
+            { id: 2, name: "SharePoint", icon: "https://api.iconify.design/simple-icons:microsoftsharepoint.svg?color=%23036C70" },
+            { id: 3, name: "Office 365", icon: "https://api.iconify.design/simple-icons:microsoft.svg?color=%2300A4EF" },
+            { id: 4, name: "MS Teams", icon: "https://api.iconify.design/simple-icons:microsoftteams.svg?color=%236264A7" },
+            { id: 5, name: "AI Builder", icon: "https://api.iconify.design/simple-icons:microsoft.svg?color=%2300A4EF" },
+            { id: 6, name: "Excel Online", icon: "https://api.iconify.design/simple-icons:microsoftexcel.svg?color=%23217346" },
+            { id: 7, name: "Outlook", icon: "https://api.iconify.design/simple-icons:microsoftoutlook.svg?color=%230072C6" }
+        ];
+    }
+    if (t.includes("sharepoint")) {
+        return [
+            { id: 1, name: "SharePoint", icon: "https://api.iconify.design/simple-icons:microsoftsharepoint.svg?color=%23036C70" },
+            { id: 2, name: "Power Automate", icon: "https://api.iconify.design/simple-icons:powerautomate.svg?color=%230066FF" },
+            { id: 3, name: "React", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+            { id: 4, name: "TypeScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
+            { id: 5, name: "Yeoman", icon: "https://api.iconify.design/simple-icons:yeoman.svg?color=%23333333" },
+            { id: 6, name: "Gulp", icon: "https://api.iconify.design/simple-icons:gulp.svg?color=%23CF4647" },
+            { id: 7, name: "Node.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
+            { id: 8, name: "VS Code", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" },
+            { id: 9, name: "Github", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" }
+        ];
+    }
+    if (t.includes("salesforce")) {
+        return [
+            { id: 1, name: "Salesforce", icon: "https://api.iconify.design/simple-icons:salesforce.svg?color=%2300A1E0" },
+            { id: 2, name: "Apex", icon: "https://api.iconify.design/simple-icons:salesforce.svg?color=%2300A1E0" },
+            { id: 3, name: "LWC", icon: "https://api.iconify.design/simple-icons:salesforce.svg?color=%2300A1E0" },
+            { id: 4, name: "Visualforce", icon: "https://api.iconify.design/simple-icons:salesforce.svg?color=%2300A1E0" },
+            { id: 5, name: "Flow Builder", icon: "https://api.iconify.design/simple-icons:salesforce.svg?color=%2300A1E0" },
+            { id: 6, name: "Salesforce CLI", icon: "https://api.iconify.design/simple-icons:salesforce.svg?color=%2300A1E0" },
+            { id: 7, name: "VS Code", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" },
+            { id: 8, name: "Github", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" }
+        ];
+    }
+    if (t.includes("react native") || t.includes("mobile app")) {
+        return [
+            { id: 1, name: "React Native", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+            { id: 2, name: "Redux", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg" },
+            { id: 3, name: "Android Studio", icon: "https://api.iconify.design/simple-icons:androidstudio.svg?color=%233DDC84" },
+            { id: 4, name: "Xcode", icon: "https://api.iconify.design/simple-icons:xcode.svg?color=%231575F9" },
+            { id: 5, name: "JavaScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
+            { id: 6, name: "Node.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
+            { id: 7, name: "VS Code", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" },
+            { id: 8, name: "Github", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" }
+        ];
+    }
+    if (t.includes("testing") || t.includes("qa") || t.includes("selenium")) {
+        return [
+            { id: 1, name: "Selenium", icon: "https://api.iconify.design/simple-icons:selenium.svg?color=%2343B02A" },
+            { id: 2, name: "JUnit", icon: "https://api.iconify.design/simple-icons:junit5.svg?color=%2325A162" },
+            { id: 3, name: "Java", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" },
+            { id: 4, name: "Postman", icon: "https://api.iconify.design/simple-icons:postman.svg?color=%23FF6C37" },
+            { id: 5, name: "Jenkins", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg" },
+            { id: 6, name: "Maven", icon: "https://api.iconify.design/simple-icons:apachemaven.svg?color=%23C71A22" },
+            { id: 7, name: "Git", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },
+            { id: 8, name: "Github", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" }
+        ];
+    }
+    if (t.includes("devops") || t.includes("aws") || t.includes("cloud") || t.includes("kubernetes") || t.includes("docker")) {
+        return [
+            { id: 1, name: "AWS", icon: "https://api.iconify.design/simple-icons:amazonaws.svg?color=%23232F3E" },
+            { id: 2, name: "Docker", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" },
+            { id: 3, name: "Kubernetes", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" },
+            { id: 4, name: "Jenkins", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg" },
+            { id: 5, name: "Terraform", icon: "https://api.iconify.design/simple-icons:terraform.svg?color=%23844FBA" },
+            { id: 6, name: "Ansible", icon: "https://api.iconify.design/simple-icons:ansible.svg?color=%23EE0000" },
+            { id: 7, name: "Linux", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" },
+            { id: 8, name: "Github", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" }
+        ];
+    }
+    if (t.includes("ui/ux") || t.includes("ux design") || t.includes("figma") || t.includes("graphic") || t.includes("designing")) {
+        return [
+            { id: 1, name: "Figma", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" },
+            { id: 2, name: "Adobe XD", icon: "https://api.iconify.design/simple-icons:adobexd.svg?color=%23FF61F6" },
+            { id: 3, name: "Photoshop", icon: "https://cdn.jsdelivr.net/npm/simple-icons@10.0.0/icons/adobephotoshop.svg" },
+            { id: 4, name: "Illustrator", icon: "https://cdn.jsdelivr.net/npm/simple-icons@10.0.0/icons/adobeillustrator.svg" },
+            { id: 5, name: "Sketch", icon: "https://api.iconify.design/simple-icons:sketch.svg?color=%23F7B500" },
+            { id: 6, name: "InVision", icon: "https://api.iconify.design/simple-icons:invision.svg?color=%23FF3366" }
+        ];
+    }
+    if (t.includes("cyber") || t.includes("security") || t.includes("hacking") || t.includes("penetration")) {
+        return [
+            { id: 1, name: "Wireshark", icon: "https://api.iconify.design/simple-icons:wireshark.svg?color=%231679A7" },
+            { id: 2, name: "Nmap", icon: "https://cdn.jsdelivr.net/npm/simple-icons@10.0.0/icons/linux.svg" },
+            { id: 3, name: "Metasploit", icon: "https://api.iconify.design/simple-icons:metasploit.svg?color=%23000000" },
+            { id: 4, name: "Burp Suite", icon: "https://api.iconify.design/simple-icons:portswigger.svg?color=%23FF6633" },
+            { id: 5, name: "Kali Linux", icon: "https://api.iconify.design/simple-icons:kalilinux.svg?color=%23557C94" },
+            { id: 6, name: "Linux", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" },
+            { id: 7, name: "OWASP ZAP", icon: "https://api.iconify.design/simple-icons:owasp.svg?color=%23000000" }
+        ];
+    }
+    if (t.includes("marketing") || t.includes("seo") || t.includes("search engine")) {
+        return [
+            { id: 1, name: "Analytics", icon: "https://api.iconify.design/simple-icons:googleanalytics.svg?color=%23E37400" },
+            { id: 2, name: "Search Console", icon: "https://api.iconify.design/simple-icons:googlesearchconsole.svg?color=%234285F4" },
+            { id: 3, name: "SEMrush", icon: "https://api.iconify.design/simple-icons:semrush.svg?color=%23F26F21" },
+            { id: 4, name: "WordPress", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-plain.svg" },
+            { id: 5, name: "Mailchimp", icon: "https://api.iconify.design/simple-icons:mailchimp.svg?color=%23FFE01B" }
+        ];
+    }
+    if (t.includes("medical") || t.includes("anatomy")) {
+        return [
+            { id: 1, name: "ICD-10", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/chrome/chrome-original.svg" },
+            { id: 2, name: "CPT Guides", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/chrome/chrome-original.svg" },
+            { id: 3, name: "HCPCS II", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/chrome/chrome-original.svg" },
+            { id: 4, name: "Anatomy", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/chrome/chrome-original.svg" },
+            { id: 5, name: "Terminology", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/chrome/chrome-original.svg" }
+        ];
+    }
+    if (t.includes("english") || t.includes("spoken") || t.includes("communication") || t.includes("language") || t.includes("ielts") || t.includes("pte")) {
+        return [
+            { id: 1, name: "Grammar", icon: "https://api.iconify.design/simple-icons:grammarly.svg?color=%2311A683" },
+            { id: 2, name: "Vocabulary", icon: "https://api.iconify.design/simple-icons:grammarly.svg?color=%2311A683" },
+            { id: 3, name: "Pronunciation", icon: "https://api.iconify.design/simple-icons:grammarly.svg?color=%2311A683" },
+            { id: 4, name: "Speaking", icon: "https://api.iconify.design/simple-icons:grammarly.svg?color=%2311A683" },
+            { id: 5, name: "Writing", icon: "https://api.iconify.design/simple-icons:grammarly.svg?color=%2311A683" }
+        ];
+    }
+    if (t.includes("angular")) {
+        return [
+            { id: 1, name: "Angular", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg" },
+            { id: 2, name: "TypeScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
+            { id: 3, name: "HTML5", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" },
+            { id: 4, name: "CSS3", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" },
+            { id: 5, name: "JavaScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
+            { id: 6, name: "Node.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
+            { id: 7, name: "Bootstrap", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" },
+            { id: 8, name: "Github", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
+            { id: 9, name: "VS Code", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" }
+        ];
+    }
+    if (t.includes("java full stack") || (t.includes("java") && !t.includes("javascript"))) {
+        return [
+            { id: 1, name: "Java", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" },
+            { id: 2, name: "Spring", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" },
+            { id: 3, name: "MySQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" },
+            { id: 4, name: "HTML5", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" },
+            { id: 5, name: "CSS3", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" },
+            { id: 6, name: "JavaScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
+            { id: 7, name: "Docker", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" },
+            { id: 8, name: "PostgreSQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" },
+            { id: 9, name: "Github", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" }
+        ];
+    }
+    if (t.includes("python") || t.includes("data") || t.includes("ai") || t.includes("machine")) {
+        return [
+            { id: 1, name: "Python", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
+            { id: 2, name: "Pandas", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" },
+            { id: 3, name: "TensorFlow", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" },
+            { id: 4, name: "NumPy", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" },
+            { id: 5, name: "Jupyter", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original.svg" },
+            { id: 6, name: "PyTorch", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" },
+            { id: 7, name: "MySQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" },
+            { id: 8, name: "Docker", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" },
+            { id: 9, name: "VS Code", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" },
+            { id: 10, name: "Github", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" }
+        ];
+    }
+    if (t.includes("c ") || t.includes("c++") || t.includes("dsa") || t.includes("structures")) {
+        return [
+            { id: 1, name: "C", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" },
+            { id: 2, name: "C++", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" },
+            { id: 3, name: "Linux", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" },
+            { id: 4, name: "Bash", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" },
+            { id: 5, name: "Ubuntu", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ubuntu/ubuntu-plain.svg" },
+            { id: 6, name: "VS Code", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" },
+            { id: 7, name: "GCC", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/gcc/gcc-original.svg" },
+            { id: 8, name: "Github", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" }
+        ];
+    }
+    if (t.includes("html") || t.includes("css")) {
+        return [
+            { id: 1, name: "HTML5", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" },
+            { id: 2, name: "CSS3", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" },
+            { id: 3, name: "JavaScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
+            { id: 4, name: "Bootstrap", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" },
+            { id: 5, name: "Tailwind CSS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" },
+            { id: 6, name: "Figma", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" },
+            { id: 7, name: "VS Code", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" },
+            { id: 8, name: "Github", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" }
+        ];
+    }
+    
+    return defaultTools;
+};
+
 export default function SingleCoursepage({ params }) {
   const { categorySlug, courseSlug } = params;
-  const [showEnquiry, setShowEnquiry] = useState(false);
-  const [showJoin, setShowJoin] = useState(false);
-  const [selectedBatch, setSelectedBatch] = useState(null);
 
-  // --- Curriculum State ---
-  const [curriculumActiveIndex, setCurriculumActiveIndex] = useState(null);
-  const [curriculumPage, setCurriculumPage] = useState(0);
-  const [openNestedItems, setOpenNestedItems] = useState({});
-  const itemsPerPage = 5;
-
-  // Check if this course should use the new layout
+  // Check if this course should use the directly mapped new layout data
   const newCourseKey = newCourseMapping[courseSlug];
   if (newCourseKey && categorySlug !== "kidz-space" && newCourseData[newCourseKey]) {
     return <NewInternalCourse data={newCourseData[newCourseKey]} />;
@@ -52,425 +242,61 @@ export default function SingleCoursepage({ params }) {
 
   if (!course) return <div>Course not found</div>;
 
-  // --- Curriculum Handling ---
-  const curriculumData = course.courseContentData || [];
-  const totalCurriculumPages = Math.ceil(curriculumData.length / itemsPerPage);
-  const currentCurriculumItems = curriculumData.slice(
-    curriculumPage * itemsPerPage,
-    (curriculumPage + 1) * itemsPerPage
-  );
+  // Use hero images from new internal course pages and shuffle based on title length
+  const heroImages = [
+    "/images/courses/z1.webp",
+    "/images/courses/z2.webp",
+    "/images/courses/z3.webp"
+  ];
+  const imageIndex = course.title.length % heroImages.length;
+  const heroImage = heroImages[imageIndex];
 
-  const toggleCurriculumItem = (index) => {
-    setCurriculumActiveIndex(curriculumActiveIndex === index ? null : index);
-  };
-
-  const handleCurriculumNext = () => {
-    if (curriculumPage < totalCurriculumPages - 1) {
-      setCurriculumPage(curriculumPage + 1);
-      setCurriculumActiveIndex(null);
-    }
-  };
-
-  const toggleNestedItem = (parentIndex, childIndex) => {
-    const key = `${parentIndex}-${childIndex}`;
-    setOpenNestedItems((prev) => ({
-      ...prev,
-      [key]: !prev[key],
-    }));
-  };
-
-  const handleCurriculumPrev = () => {
-    if (curriculumPage > 0) {
-      setCurriculumPage(curriculumPage - 1);
-      setCurriculumActiveIndex(null);
-    }
-  };
-
-  return (
-
-    <div className="single-coursepage bg-gray px-3 px-md-4 px-lg-5 pb-4 pb-md-5">
-
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Course",
-            name: course.title,
-            description: course.description,
-            provider: {
-              "@type": "Organization",
-              name: "Urbancode Edutech",
-              url: "https://www.urbancode.in",
-            },
-          }),
-        }}
-      />
-
-      <div className="container py-3 py-md-4 py-lg-5">
-        {/* Top Section */}
-        <div className="row g-4 g-lg-5">
-          <div className="col-12 col-lg-7">
-            <div className="d-flex flex-column justify-content-around h-100">
-              {/* breadcrumb */}
-              <p className="text-secondary opacity-75 small mb-2 mb-md-3">
-                <a
-                  className="text-decoration-none text-dark fw-medium"
-                  href={`/courses/${categorySlug}`}
-                >
-                  {categorySlug.replace(/-/g, " ").replace(/\b\w/g, (char) => char.toUpperCase())}
-                </a>
-                <span className="mx-1 mx-md-2 text-muted">›</span>
-                <span className="text-dark">
-                  {course.title}
-                </span>
-              </p>
-              <h1 className="fw-bold mb-3 mb-md-4 text-center text-lg-start">
-                {course.aboutData.topic}
-              </h1>
-              <div>
-                <div className="d-flex flex-wrap align-items-center gap-2 gap-md-3 mb-3 text-muted small">
-                  <span>⭐ {course.rating}/5</span>
-                  <span>👩‍🎓 {course.students}+ students</span>
-                </div>
-                <p className="text-secondary fs-md-9 lh-base">
-                  {course.aboutData.content1}
-                </p>
-
-                <div className="d-flex flex-wrap gap-3 mt-3">
-                  <button
-                    className="btn btn-dark rounded-pill px-4 py-2 enroll-btn"
-                    onClick={() => setShowEnquiry(true)}
-                  >
-                    Enroll Today
-                  </button>
-                  {/* <button
-                    className="btn rounded-pill px-4 py-2 join-now-hero-btn"
-                    onClick={() => {
-                      const el = document.getElementById('batches-section');
-                      if (el) el.scrollIntoView({ behavior: 'smooth' });
-                    }}
-                  >
-                    Join Now
-                  </button> */}
-                </div>
-              </div>
-              <div className="mt-4 mt-md-5">
-                <h2 className="fw-semibold mb-3 text-center text-lg-start">About This Course</h2>
-                <p className="text-secondary fs-md-9 lh-base">
-                  {course.aboutData.content2}
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Right Section */}
-          <div className="col-12 col-lg-5">
-            <div className="card shadow-md px-3 px-md-4 py-3 py-md-4 rounded-4 rounded-lg-5 border-0 sticky-lg-top">
-              <img
-                src={course.img}
-                className="card-img-top rounded-4 my-2 my-md-3 img-fluid w-100"
-                alt={course.title}
-              />
-              <div className="card-body d-flex flex-column justify-content-around p-0">
-                <ul className="small px-2 px-md-3 text-secondary">
-                  <li className="mb-2 mb-md-3 d-flex align-items-start">
-                    <i className="bi bi-check-circle-fill text-success me-2"></i>
-                    <span>Hours of Instructor-Led Training</span>
-                  </li>
-                  <li className="mb-2 mb-md-3 d-flex align-items-start">
-                    <i className="bi bi-check-circle-fill text-success me-2"></i>
-                    <span>Hands-on Projects across Web, Data & AI</span>
-                  </li>
-                  <li className="mb-2 mb-md-3 d-flex align-items-start">
-                    <i className="bi bi-check-circle-fill text-success me-2"></i>
-                    <span>Includes Beginner → Expert Level Topics</span>
-                  </li>
-                  <li className="mb-2 mb-md-3 d-flex align-items-start">
-                    <i className="bi bi-check-circle-fill text-success me-2"></i>
-                    <span>Mentor Support, Assignments & Code Reviews</span>
-                  </li>
-                  <li className="mb-2 mb-md-3 d-flex align-items-start">
-                    <i className="bi bi-check-circle-fill text-success me-2"></i>
-                    <span>Job Assistance & Portfolio Guidance</span>
-                  </li>
-                  <li className="mb-2 mb-md-3 d-flex align-items-start">
-                    <i className="bi bi-check-circle-fill text-success me-2"></i>
-                    <span>Urbancode Certificate of Completion</span>
-                  </li>
+  // Map the old course curriculum format to the new NewInternalCourse format
+  const mappedCurriculum = (course.courseContentData || []).map((module, index) => {
+    return {
+      id: module.id || index + 1,
+      title: module.title,
+      content: (
+        <ul className="mb-0 ps-3">
+          {(module.items || []).map((subitem, i) => {
+            if (typeof subitem === "string") {
+              return <li key={i} className="mb-1 lh-base text-secondary">{subitem}</li>;
+            }
+            return (
+              <li key={i} className="mb-2">
+                <strong className="text-dark">{subitem.title}</strong>
+                <ul className="mt-1 ps-3">
+                  {(subitem.details || []).map((detail, di) => (
+                    <li key={di} className="mb-1 text-secondary">{detail}</li>
+                  ))}
                 </ul>
+              </li>
+            );
+          })}
+        </ul>
+      )
+    };
+  });
 
-                <button
-                  className="btn btn-dark w-100 dark-shine-btn rounded-4 mt-2"
-                  onClick={() => setShowEnquiry(true)}
-                >
-                  Get Brochure
-                </button>
+  const transformedData = {
+    heroData: {
+      titleTop: "Advanced training in",
+      highlightText: course.title,
+      subtitle: course.aboutData?.content1 || course.desc,
+      rating: course.rating || 4.5,
+      reviewCount: `${course.students || 500}+`,
+      totalStars: 5,
+      image: course.img || heroImage,
+      isLegacyImage: !!course.img,
+      brochure: course.curriculumUrls?.[0]
+    },
+    highlightsData: categorySlug === "kidz-space" ? kidsHighlights : (newCourseData["mern-stack"]?.highlightsData || []),
+    curriculumData: mappedCurriculum,
+    toolsData: getToolsForCourse(course.title),
+    faqData: newCourseData["mern-stack"]?.faqData || [],
+    locked: course.locked,
+    isKidsSpace: categorySlug === "kidz-space"
+  };
 
-
-                {/* Popup Form */}
-                <EnquiryFormModal
-                  isOpen={showEnquiry}
-                  onClose={() => setShowEnquiry(false)}
-                  courseName={course.title}
-                  downloadUrls={course.curriculumUrls}
-                />
-              </div>
-            </div>
-          </div>
-          {/* End of Right Section */}
-        </div>
-
-        {/* What You'll Learn */}
-        <div className="mt-4 mt-md-5">
-          <h2 className="fw-semibold mb-3 mb-md-4 text-center text-lg-start">What You'll Learn</h2>
-          <div className="row g-3 g-md-4">
-            {course.whatYouLearnData.map((t, i) => (
-              <div className="col-12 col-sm-6 col-lg-4" key={i}>
-                <div className="card h-100 card-wyl rounded-3 border-1 shadow-sm shadow-md-lg p-0 mh-135">
-                  <div className="card-body d-flex align-items-start py-3">
-                    <i className={`${t.icon} me-3 gray-bg rounded-3 p-2 flex-shrink-0`}></i>
-                    <div className="flex-grow-1">
-                      <h6 className="fs-16 mb-1">{t.title}</h6>
-                      <p className="fs-7 text-secondary mb-0 lh-sm">{t.desc}</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-        {/* End of What You'll Learn */}
-
-        {/* Course Content (Premium UI) */}
-        <div className="nict-curriculum-section mt-5">
-            <section className="nict-course-curriculum">
-                <div className="nict-curriculum-header">
-                    <h2 className="fw-semibold text-center text-lg-start">Course Curriculum</h2>
-                </div>
-
-                <div className="nict-curriculum-list">
-                    {currentCurriculumItems.map((item, index) => (
-                        <div
-                            key={item.id}
-                            className={`nict-curriculum-item ${curriculumActiveIndex === index ? "active" : ""}`}
-                        >
-                            <div
-                                className="nict-curriculum-title"
-                                onClick={() => toggleCurriculumItem(index)}
-                            >
-                                <div className="nict-title-left">
-                                    <span className="nict-index">{item.id}</span>
-                                    <span className="nict-text">{item.title}</span>
-                                </div>
-
-                                {curriculumActiveIndex === index ? <FiMinus /> : <FiPlus />}
-                            </div>
-
-                            <div className="nict-curriculum-collapse">
-                                <div className="nict-curriculum-content">
-                                  <ul className="mb-0 ps-3">
-                                    {item.items.map((subitem, i) => {
-                                      if (typeof subitem === "string") {
-                                        const subheadings = [
-                                          "Basics:", "DOM & Events:", "Advanced JS:", "Practice Projects:",
-                                          "Angular Basics:", "Angular Forms & Services:", 
-                                          "Angular Routing + Full-Stack Integration:", "Angular + Authentication:",
-                                          "Core Java (Foundations)", "Angular (Frontend Framework)",
-                                          "Getting Started with Angular:",
-                                          "Basics", "DOM & Events", "Flexbox & CSS Grid", "Flexbox: display flex", "CSS Grid",
-                                          "Advanced JS", "Practice Projects",
-                                          "Angular Basics", "Angular Forms & Services",
-                                          "Angular Routing + Full-Stack Integration", "Angular + Authentication",
-                                          "Introduction to React", "JSX", "Components", "State Basics", "Event Handling", "Rendering",
-                                          "Hooks (Core)", "Forms", "React Router", "Context API", "API Integration", "Styling in React", "Lifting State Up",
-                                          "Advanced Hooks", "Custom Hooks", "Code Splitting", "Error Boundaries", "Performance Optimization", "Portals", "React 18 Features",
-                                          "State Management", "Authentication", "File & Folder Structure", "React Patterns", "React Suspense & Streaming", "SSR & Next.js", "Testing", "Deployment"
-                                        ];
-                                        const isSubheading = subheadings.some(h => subitem.trim() === h);
-                                        const isGoal = subitem.trim().startsWith("Goal:") || subitem.trim().startsWith("**Goal:**");
-                                        const regionPrefix = "Region:";
-                                        const azPrefix = "Availability Zone:";
-                                        const lambdaPrefix = "Lambda Function:";
-                                        const dynamodbPrefix = "DynamoDB:";
-                                        const isRegion = subitem.startsWith(regionPrefix);
-                                        const isAZ = subitem.startsWith(azPrefix);
-                                        const isLambda = subitem.startsWith(lambdaPrefix);
-                                        const isDynamoDB = subitem.startsWith(dynamodbPrefix);
-
-                                        return (
-                                          <li key={i} className={`mb-1 lh-base${isSubheading || isGoal || isRegion || isAZ || isLambda || isDynamoDB ? " nict-practice-item" : ""}`}>
-                                            {isSubheading || isGoal ? (
-                                              <strong className="text-dark">{subitem.replace(/\*\*/g, '')}</strong>
-                                            ) : isRegion ? (
-                                              <><strong className="text-dark">{regionPrefix}</strong>{subitem.slice(regionPrefix.length)}</>
-                                            ) : isAZ ? (
-                                              <><strong className="text-dark">{azPrefix}</strong>{subitem.slice(azPrefix.length)}</>
-                                            ) : isLambda ? (
-                                              <><strong className="text-dark">{lambdaPrefix}</strong>{subitem.slice(lambdaPrefix.length)}</>
-                                            ) : isDynamoDB ? (
-                                              <><strong className="text-dark">{dynamodbPrefix}</strong>{subitem.slice(dynamodbPrefix.length)}</>
-                                            ) : (
-                                              subitem
-                                            )}
-                                          </li>
-                                        );
-                                      }
-
-                                      const nestedKey = `${index}-${i}`;
-                                      const isNestedOpen = openNestedItems[nestedKey];
-
-                                      return (
-                                        <li key={i} className="nict-nested-item mb-2">
-                                          <button
-                                            type="button"
-                                            className="nict-nested-toggle d-flex justify-content-between align-items-center w-100 p-2 rounded-3 mb-2"
-                                            onClick={() => toggleNestedItem(index, i)}
-                                          >
-                                            <span>{subitem.title}</span>
-                                            <span className="nict-nested-icon">
-                                              {isNestedOpen ? <FiMinus /> : <FiPlus />}
-                                            </span>
-                                          </button>
-
-                                          {isNestedOpen && (
-                                            <ul className="nict-nested-list mt-2 ps-4 mb-0">
-                                              {subitem.details.map((detail, detailIndex) => {
-                                                const practicePrefix = "Practice:";
-                                                const isPractice = detail.startsWith(practicePrefix);
-                                                
-                                                // Check for subheadings
-                                                   const subheadings = [
-                                                     "Basics:", "DOM & Events:", "Advanced JS:", "Practice Projects:",
-                                                     "Angular Basics:", "Angular Forms & Services:", 
-                                                     "Angular Routing + Full-Stack Integration:", "Angular + Authentication:",
-                                                     "Core Java (Foundations)",
-                                                     "Basics", "DOM & Events", "Flexbox & CSS Grid", "CSS Grid",
-                                                     "Advanced JS", "Practice Projects",
-                                                     "Angular Basics", "Angular Forms & Services",
-                                                     "Angular Routing + Full-Stack Integration", "Angular + Authentication",
-                                                     "Data Binding and Its Types", "Directives and Their Types",
-                                                     "Pipes and Their Types", "Forms in Angular",
-                                                     "Services in Angular", "HTTP Client and API Integration",
-                                                     "Authentication with Local Storage", "Authorization and Role-Based Guards",
-                                                     "Student Management Project (CRUD Example)",
-                                                     "Introduction to React", "JSX", "Components", "State Basics", "Event Handling", "Rendering",
-                                                     "Hooks (Core)", "Forms", "React Router", "Context API", "API Integration", "Styling in React", "Lifting State Up",
-                                                     "Advanced Hooks", "Custom Hooks", "Code Splitting", "Error Boundaries", "Performance Optimization", "Portals", "React 18 Features",
-                                                     "State Management", "Authentication", "File & Folder Structure", "React Patterns", "React Suspense & Streaming", "SSR & Next.js", "Testing", "Deployment"
-                                                   ];
-                                                  const isSubheading = subheadings.some(h => detail.trim() === h);
-                                                  const cssBasicsPrefix = "CSS basics:";
-                                                  const flexboxPrefix = "Flexbox:";
-                                                  const isCSSBasics = detail.startsWith(cssBasicsPrefix);
-                                                  const isFlexbox = detail.startsWith(flexboxPrefix);
-                                                  const isMiniProject = detail.startsWith("Mini Project:");
-                                                  const goalPrefix = "Goal:";
-                                                  const isGoal = detail.startsWith(goalPrefix);
-
-                                                  return (
-                                                    <li
-                                                      key={detailIndex}
-                                                      className={`mb-1 lh-base text-secondary${isPractice || isSubheading || isMiniProject || isGoal || isCSSBasics || isFlexbox ? " nict-practice-item" : ""}`}
-                                                    >
-                                                      {isPractice ? (
-                                                        <><strong>{practicePrefix}</strong>{detail.slice(practicePrefix.length)}</>
-                                                      ) : isCSSBasics ? (
-                                                        <><strong className="text-dark">{cssBasicsPrefix}</strong>{detail.slice(cssBasicsPrefix.length)}</>
-                                                      ) : isFlexbox ? (
-                                                        <><strong className="text-dark">{flexboxPrefix}</strong>{detail.slice(flexboxPrefix.length)}</>
-                                                      ) : isSubheading ? (
-                                                        <strong className="text-dark">{detail}</strong>
-                                                      ) : isMiniProject ? (
-                                                        detail
-                                                      ) : isGoal ? (
-                                                        <><strong className="text-dark">{goalPrefix}</strong>{detail.slice(goalPrefix.length)}</>
-                                                      ) : (
-                                                        detail
-                                                      )}
-                                                    </li>
-                                                  );
-                                              })}
-                                            </ul>
-                                          )}
-                                        </li>
-                                      );
-                                    })}
-                                  </ul>
-                                </div>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-
-                {totalCurriculumPages > 1 && (
-                  <div className="nict-curriculum-navigation">
-                      <button
-                          className={`nict-nav-arrow ${curriculumPage === 0 ? "nict-disabled" : ""}`}
-                          onClick={handleCurriculumPrev}
-                          disabled={curriculumPage === 0}
-                      >
-                          <MdChevronLeft />
-                      </button>
-
-                      <div className="nict-nav-dots">
-                          {[...Array(totalCurriculumPages)].map((_, i) => (
-                              <span
-                                  key={i}
-                                  className={`nict-dot ${curriculumPage === i ? "active" : ""}`}
-                                  onClick={() => {
-                                      setCurriculumPage(i);
-                                      setCurriculumActiveIndex(null);
-                                  }}
-                              ></span>
-                          ))}
-                      </div>
-
-                      <button
-                          className={`nict-nav-arrow ${curriculumPage === totalCurriculumPages - 1 ? "nict-disabled" : ""}`}
-                          onClick={handleCurriculumNext}
-                          disabled={curriculumPage === totalCurriculumPages - 1}
-                      >
-                          <MdChevronRight />
-                      </button>
-                  </div>
-                )}
-            </section>
-
-            {/* Locked full syllabus CTA (render only when course.locked is true) */}
-            {course.locked === true && (
-              <div className="text-center mt-3">
-                <button
-                  className="btn btn-outline-secondary rounded-pill px-3 py-2 lock-cta"
-                  onClick={() => setShowEnquiry(true)}
-                  title="Request full syllabus"
-                >
-                  <i className="bi bi-lock-fill me-2"></i>
-                  Full syllabus locked — Get Brochure
-                </button>
-              </div>
-            )}
-        </div>
-        {/* End of Course Content */}
-        
-        {/* Program Cohorts Section */}
-        {/* {categorySlug !== "kidz-space" && (
-          <ProgramCohorts onApply={(batch) => {
-            setSelectedBatch(batch);
-            setShowJoin(true);
-          }} />
-        )} */}
-
-        <EnquiryFormModal
-          isOpen={showJoin}
-          onClose={() => setShowJoin(false)}
-          courseName={course.title}
-          isJoinMode={true}
-          batchInfo={selectedBatch}
-        />
-
-      </div>
-      {/* <CourseAssistant courseName={course.title} /> */}
-    </div>
-  );
+  return <NewInternalCourse data={transformedData} />;
 }

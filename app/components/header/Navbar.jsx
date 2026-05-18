@@ -98,7 +98,11 @@ export default function Navbar() {
             {!isFeedbackPage && (
               <div className="navbar-phone">
                 <FiPhoneCall className="phone-icon" />
-                <a href="tel:+919878798797" className="gtm-phone-call" data-gtm-label="header_phone_click">+91 9878798797</a>
+                {pathname && pathname.startsWith('/study-abroad') ? (
+                  <a href="/study-abroad-redirect?type=call" className="gtm-phone-call" data-gtm-label="header_phone_click">+91 8598095980</a>
+                ) : (
+                  <a href="tel:+919878798797" className="gtm-phone-call" data-gtm-label="header_phone_click">+91 9878798797</a>
+                )}
               </div>
             )}
 

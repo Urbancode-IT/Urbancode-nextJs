@@ -20,7 +20,11 @@ const FloatingWidgets = () => {
       button_location: "floating_widget"
     });
 
-    window.location.href = "/whatsapp";
+    if (pathname && pathname.startsWith('/study-abroad')) {
+      window.location.href = "/study-abroad-redirect?type=whatsapp";
+    } else {
+      window.location.href = "/whatsapp";
+    }
   };
 
 
@@ -30,7 +34,11 @@ const FloatingWidgets = () => {
       'event': 'phone_click',
       'gtm_label': 'floating_widget_phone'
     });
-    window.location.href = "tel:+919878798797";
+    if (pathname && pathname.startsWith('/study-abroad')) {
+      window.location.href = "/study-abroad-redirect?type=call";
+    } else {
+      window.location.href = "tel:+919878798797";
+    }
   };
 
   return (

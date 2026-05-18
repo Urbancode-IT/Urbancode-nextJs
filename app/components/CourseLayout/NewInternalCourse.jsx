@@ -30,6 +30,8 @@ const NewInternalCourse = ({ data }) => {
 
     // --- FAQ State ---
     const [faqActiveIndex, setFaqActiveIndex] = useState(null);
+    const [faqPage, setFaqPage] = useState(0);
+    const faqItemsPerPage = 5;
 
     // --- Enquiry Modal State ---
     const [isEnquiryOpen, setIsEnquiryOpen] = useState(false);
@@ -68,8 +70,28 @@ const NewInternalCourse = ({ data }) => {
     };
 
     // --- FAQ Handling ---
+    const totalFaqPages = Math.ceil(faqData.length / faqItemsPerPage);
+    const currentFaqItems = faqData.slice(
+        faqPage * faqItemsPerPage,
+        (faqPage + 1) * faqItemsPerPage
+    );
+
     const toggleFAQ = (index) => {
         setFaqActiveIndex(faqActiveIndex === index ? null : index);
+    };
+
+    const handleFaqNext = () => {
+        if (faqPage < totalFaqPages - 1) {
+            setFaqPage(faqPage + 1);
+            setFaqActiveIndex(null);
+        }
+    };
+
+    const handleFaqPrev = () => {
+        if (faqPage > 0) {
+            setFaqPage(faqPage - 1);
+            setFaqActiveIndex(null);
+        }
     };
 
     const handleEnrollClick = () => {
@@ -116,15 +138,17 @@ const NewInternalCourse = ({ data }) => {
                             <button className="nict-hero-btn" onClick={handleEnrollClick}>
                                 Enroll now <FaArrowRight className="nict-btn-icon" />
                             </button>
-                            {/* <button
-                                className="nict-hero-btn secondary"
-                                onClick={() => {
-                                    const el = document.getElementById('batches-section');
-                                    if (el) el.scrollIntoView({ behavior: 'smooth' });
-                                }}
-                            >
-                                Join Now
-                            </button> */}
+                            {!data.isKidsSpace && (
+                                <button
+                                    className="nict-hero-btn secondary"
+                                    onClick={() => {
+                                        const el = document.getElementById('batches-section');
+                                        if (el) el.scrollIntoView({ behavior: 'smooth' });
+                                    }}
+                                >
+                                    Join Now
+                                </button>
+                            )}
                             <button className="nict-hero-btn secondary" onClick={() => setIsBrochureOpen(true)}>
                                 <FiDownload className="nict-btn-icon" /> Download Brochure
                             </button>
@@ -132,12 +156,14 @@ const NewInternalCourse = ({ data }) => {
                     </div>
 
                     {/* RIGHT IMAGE */}
-                    <div className="nict-hero-image-wrapper">
-                        <img
-                            src={heroData.image || "/mern.png"}
-                            alt={heroData.highlightText}
-                            className="nict-hero-image"
-                        />
+                    <div className={`nict-hero-image-wrapper ${heroData.isLegacyImage ? 'legacy-image-wrapper' : ''}`}>
+                        <div className={heroData.isLegacyImage ? 'legacy-image-container' : ''}>
+                            <img
+                                src={heroData.image || "/mern.png"}
+                                alt={heroData.highlightText}
+                                className={`nict-hero-image ${heroData.isLegacyImage ? 'legacy-image' : ''}`}
+                            />
+                        </div>
                     </div>
                 </div>
             </section>
@@ -159,22 +185,24 @@ const NewInternalCourse = ({ data }) => {
 
 
             {/* 3. TOOLS COVERED */}
-            <div className="nict-tools-section">
-                <section className="nict-tools-covered">
-                    <h2 className="nict-tools-main-title">Tools Covered</h2>
+            {!data.isKidsSpace && (
+                <div className="nict-tools-section">
+                    <section className="nict-tools-covered">
+                        <h2 className="nict-tools-main-title">Tools Covered</h2>
 
-                    <div className="nict-tools-grid">
-                        {toolsData && toolsData.map((tool, index) => (
-                            <div className="nict-tool-card" key={tool.id || index}>
-                                <div className="nict-tool-icon-box">
-                                    <img src={tool.icon} alt={tool.name} />
+                        <div className="nict-tools-grid">
+                            {toolsData && toolsData.map((tool, index) => (
+                                <div className="nict-tool-card" key={tool.id || index}>
+                                    <div className="nict-tool-icon-box">
+                                        <img src={tool.icon} alt={tool.name} />
+                                    </div>
+                                    <span className="nict-tool-name">{tool.name}</span>
                                 </div>
-                                <span className="nict-tool-name">{tool.name}</span>
-                            </div>
-                        ))}
-                    </div>
-                </section>
-            </div>
+                            ))}
+                        </div>
+                    </section>
+                </div>
+            )}
 
             {/* 4. COURSE CURRICULUM */}
             <div className="nict-curriculum-section">
@@ -245,11 +273,13 @@ const NewInternalCourse = ({ data }) => {
                 </section>
             </div>
 
-            {/* Program Cohorts Section */}
-            {/* <ProgramCohorts onApply={(batch) => {
-                setSelectedBatch(batch);
-                setIsJoinOpen(true);
-            }} /> */}
+            {/* Program Cohorts (only for non-kids-space) */}
+            {!data.isKidsSpace && (
+                <ProgramCohorts onApply={(batch) => {
+                    setSelectedBatch(batch);
+                    setIsJoinOpen(true);
+                }} />
+            )}
 
 
             {/* 5. FAQ SECTION */}
@@ -274,7 +304,7 @@ const NewInternalCourse = ({ data }) => {
                     {/* RIGHT COLUMN */}
                     <div className="nict-faq-column right">
                         <div className="nict-faq-right">
-                            {faqData.map((item, index) => (
+                            {currentFaqItems.map((item, index) => (
                                 <div
                                     key={index}
                                     className={`nict-faq-item ${faqActiveIndex === index ? "nict-active" : ""} ${isHighlighted(item) ? 'nict-highlighted' : ''}`}
@@ -290,6 +320,39 @@ const NewInternalCourse = ({ data }) => {
                                     </div>
                                 </div>
                             ))}
+
+                            {totalFaqPages > 1 && (
+                                <div className="nict-curriculum-navigation mt-4">
+                                    <button
+                                        className={`nict-nav-arrow ${faqPage === 0 ? "nict-disabled" : ""}`}
+                                        onClick={handleFaqPrev}
+                                        disabled={faqPage === 0}
+                                    >
+                                        <MdChevronLeft />
+                                    </button>
+
+                                    <div className="nict-nav-dots">
+                                        {[...Array(totalFaqPages)].map((_, i) => (
+                                            <span
+                                                key={i}
+                                                className={`nict-dot ${faqPage === i ? "active" : ""}`}
+                                                onClick={() => {
+                                                    setFaqPage(i);
+                                                    setFaqActiveIndex(null);
+                                                }}
+                                            ></span>
+                                        ))}
+                                    </div>
+
+                                    <button
+                                        className={`nict-nav-arrow ${faqPage === totalFaqPages - 1 ? "nict-disabled" : ""}`}
+                                        onClick={handleFaqNext}
+                                        disabled={faqPage === totalFaqPages - 1}
+                                    >
+                                        <MdChevronRight />
+                                    </button>
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>

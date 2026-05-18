@@ -8,6 +8,8 @@ const InstitutionVideos = () => {
     const [index, setIndex] = useState(0);
     const [cardsToShow, setCardsToShow] = useState(3);
     const [isPaused, setIsPaused] = useState(false);
+    const [activePlay, setActivePlay] = useState({});
+
 
     useEffect(() => {
         const updateCardsToShow = () => {
@@ -114,18 +116,40 @@ const InstitutionVideos = () => {
                                     viewport={{ once: true }}
                                 >
                                     <div className="video-card-inner">
-                                        <div className="video-iframe-wrapper">
-                                            <div className="play-overlay">
-                                                <div className="play-icon" />
-                                            </div>
-                                            <iframe
-                                                src={`https://www.youtube.com/embed/${video.videoId}?rel=0&modestbranding=1&autohide=1&showinfo=0`}
-                                                title={video.title}
-                                                frameBorder="0"
-                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                                allowFullScreen
-                                                className="institution-video-iframe"
-                                            ></iframe>
+                                        <div 
+                                            className="video-iframe-wrapper cursor-pointer"
+                                            onClick={() => {
+                                                if (!activePlay[video.id]) {
+                                                    setActivePlay(prev => ({ ...prev, [video.id]: true }));
+                                                    setIsPaused(true); // Pause autoplay scroll while user watches
+                                                }
+                                            }}
+                                            style={{ cursor: activePlay[video.id] ? 'default' : 'pointer' }}
+                                        >
+                                            {!activePlay[video.id] ? (
+                                                <>
+                                                    <img
+                                                        src={`https://img.youtube.com/vi/${video.videoId}/hqdefault.jpg`}
+                                                        alt={video.title}
+                                                        className="w-100 h-100 object-fit-cover position-absolute top-0 start-0"
+                                                        loading="lazy"
+                                                        style={{ zIndex: 1, borderRadius: '24px' }}
+                                                    />
+                                                    <div className="play-overlay" style={{ opacity: 0.9, zIndex: 2 }}>
+                                                        <div className="play-icon" />
+                                                    </div>
+                                                </>
+                                            ) : (
+                                                <iframe
+                                                    src={`https://www.youtube.com/embed/${video.videoId}?autoplay=1&rel=0&modestbranding=1&autohide=1&showinfo=0`}
+                                                    title={video.title}
+                                                    frameBorder="0"
+                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                    allowFullScreen
+                                                    className="institution-video-iframe"
+                                                    style={{ zIndex: 3 }}
+                                                ></iframe>
+                                            )}
                                         </div>
                                     </div>
                                 </motion.div>

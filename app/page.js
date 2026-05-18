@@ -1,19 +1,35 @@
 //app/page.js
 
+import dynamic from 'next/dynamic';
 import HeroSection from './components/Home/HeroSection';
-import TrendingCourses from './components/Home/TrendingCourses';
-import Courses from './components/Home/Courses';
-import PlacementTestimonials from './components/Home/PlacementTestimonials';
-import InDemandTools from './components/Home/InDemandTools';
-import FaqBootstrap from './components/Home/Faqs';
-import Carousel from './components/Home/Carasoul';
-import VideoTestimonials from './components/Home/VideoTestimonials';
-import TestimonialCarousel from './components/Home/TestimonialCarousel';
 import BannerSlider from './components/common/BannerSlider';
-import GetCertified from './components/Home/GetCertified';
-import FestivePopup from './components/FestivePopup/FestivePopup';
-import SuccessStories from './components/Home/SuccessStories';
-import InstitutionVideos from './components/Home/InstitutionVideos';
+
+// Code-splitting below-the-fold sections for massive initial bundle savings
+const TrendingCourses = dynamic(() => import('./components/Home/TrendingCourses'));
+const Courses = dynamic(() => import('./components/Home/Courses'));
+
+const PlacementTestimonials = dynamic(() => import('./components/Home/PlacementTestimonials'), {
+  loading: () => <div className="placeholder-skeleton" style={{ height: '350px', background: '#07090d', margin: '20px 0', borderRadius: '16px' }} />
+});
+
+const InDemandTools = dynamic(() => import('./components/Home/InDemandTools'), {
+  loading: () => <div className="placeholder-skeleton" style={{ height: '300px', background: '#0a0d14', margin: '20px 0', borderRadius: '16px' }} />
+});
+
+const FaqBootstrap = dynamic(() => import('./components/Home/Faqs'));
+const Carousel = dynamic(() => import('./components/Home/Carasoul'));
+
+const VideoTestimonials = dynamic(() => import('./components/Home/VideoTestimonials'), {
+  loading: () => <div className="placeholder-skeleton" style={{ height: '400px', background: '#0a0d14', margin: '20px 0', borderRadius: '16px' }} />
+});
+
+const TestimonialCarousel = dynamic(() => import('./components/Home/TestimonialCarousel'), {
+  loading: () => <div className="placeholder-skeleton" style={{ height: '300px', background: '#08090d', margin: '20px 0', borderRadius: '16px' }} />
+});
+
+const InstitutionVideos = dynamic(() => import('./components/Home/InstitutionVideos'), {
+  loading: () => <div className="placeholder-skeleton" style={{ height: '400px', background: '#0a0d14', margin: '20px 0', borderRadius: '16px' }} />
+});
 
 export const metadata = {
   title: "Software Training Institute in Chennai | Urbancode",

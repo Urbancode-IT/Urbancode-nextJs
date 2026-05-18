@@ -34,9 +34,15 @@ function Footer() {
               <a href="https://www.youtube.com/channel/UC7ngZ5r2ov-qoXJRjaXJGKA" target="_blank" rel="noopener noreferrer">
                 <FaYoutube />
               </a>
-              <a href="https://api.whatsapp.com/send/?phone=919878798797&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer">
-                <FaWhatsapp />
-              </a>
+              {pathname && pathname.startsWith('/study-abroad') ? (
+                <a href="/study-abroad-redirect?type=whatsapp" rel="noopener noreferrer">
+                  <FaWhatsapp />
+                </a>
+              ) : (
+                <a href="https://api.whatsapp.com/send/?phone=919878798797&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer">
+                  <FaWhatsapp />
+                </a>
+              )}
             </div>
           </div>
 

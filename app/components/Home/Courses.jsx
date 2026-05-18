@@ -139,36 +139,70 @@ const Courses = () => {
     const [isAtStart, setIsAtStart] = useState(true);
     const [isAtEnd, setIsAtEnd] = useState(false);
     const [isPaused, setIsPaused] = useState(false);
+    const [isVisible, setIsVisible] = useState(false);
     const requestRef = useRef();
-    const startTimeRef = useRef();
     const speed = 1.0; // Pixels per frame
 
-    const animate = (time) => {
-        if (!sliderRef.current || isPaused) {
-            requestRef.current = requestAnimationFrame(animate);
+    // Viewport Visibility Observer: Only occupy CPU resources when element is in view!
+    useEffect(() => {
+        if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
+            setIsVisible(true); // Fallback for legacy runtimes
             return;
         }
 
-        const track = sliderRef.current;
-        const scrollWidth = track.scrollWidth;
-        const clientWidth = track.clientWidth;
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                setIsVisible(entry.isIntersecting);
+            },
+            { threshold: 0.05, rootMargin: '100px' } // Pre-warm the loop 100px before entry
+        );
 
-        // Move track
-        track.scrollLeft += speed;
-
-        // Reset to middle if reached the end of the cloned set to create infinite effect
-        // The original width is roughly scrollWidth / 2
-        if (track.scrollLeft >= (scrollWidth / 2)) {
-            track.scrollLeft = 0;
+        const currentTrack = sliderRef.current;
+        if (currentTrack) {
+            observer.observe(currentTrack);
         }
 
-        requestRef.current = requestAnimationFrame(animate);
-    };
+        return () => {
+            if (currentTrack) {
+                observer.unobserve(currentTrack);
+            }
+        };
+    }, []);
 
+    // Highly optimized frame animation loop
     useEffect(() => {
+        if (!isVisible || isPaused) {
+            if (requestRef.current) {
+                cancelAnimationFrame(requestRef.current);
+                requestRef.current = null;
+            }
+            return;
+        }
+
+        const animate = () => {
+            if (!sliderRef.current) return;
+            const track = sliderRef.current;
+            const scrollWidth = track.scrollWidth;
+
+            track.scrollLeft += speed;
+
+            // Infinite loop scroll resetting
+            if (track.scrollLeft >= (scrollWidth / 2)) {
+                track.scrollLeft = 0;
+            }
+
+            requestRef.current = requestAnimationFrame(animate);
+        };
+
         requestRef.current = requestAnimationFrame(animate);
-        return () => cancelAnimationFrame(requestRef.current);
-    }, [isPaused]);
+
+        return () => {
+            if (requestRef.current) {
+                cancelAnimationFrame(requestRef.current);
+                requestRef.current = null;
+            }
+        };
+    }, [isVisible, isPaused]);
 
     const checkScrollPosition = () => {
         if (!sliderRef.current) return;

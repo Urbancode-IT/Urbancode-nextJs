@@ -3,6 +3,7 @@ import { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { videoData } from '../../data/videoTestimonialsData';
+import OptimizedVideo from '../common/OptimizedVideo';
 import './VideoTestimonials.css';
 
 
@@ -90,17 +91,18 @@ const VideoTestimonials = () => {
                                     className="video-card-slide"
                                     style={{ flex: `0 0 calc(${100 / cardsToShow}% - 20px)`, margin: '0 10px' }}
                                 >
-                                    <video 
+                                    <OptimizedVideo 
                                         ref={el => videoRefs.current[idx] = el}
-                                        src={video.src + "#t=0.5"}
-                                        controls
+                                        src={video.src}
+                                        poster="" // Rely entirely on video's original first frame as thumbnail
+                                        controls={true}
                                         autoPlay={false}
-                                        playsInline
-                                        preload="auto"
+                                        loop={false}
+                                        muted={false} // Let the user hear their voice!
+                                        playOnVisible={false} // Manage programmatically via the carousel
+                                        preload="metadata" // Load metadata to capture and display original first frame
                                         className="testimonial-video bg-dark"
-                                    >
-                                        Your browser does not support the video tag.
-                                    </video>
+                                    />
                                 </div>
                             ))}
                         </div>

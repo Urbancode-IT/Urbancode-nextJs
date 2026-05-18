@@ -162,7 +162,7 @@ const PlacementTestimonials = () => {
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
                 >
-                    <h2 className="pt-title text-shine">What Our Students Say</h2>
+                    <h2 className="pt-title text-shine">What Our Alumni Says</h2>
                 </motion.div>
 
                 {/* Desktop Grid */}
