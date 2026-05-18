@@ -8,7 +8,7 @@ import CinematicLoader from "./CinematicLoader";
 
 import { FormInput, FormSelect, FormTextarea, FormButton, FormCard } from "@/app/components/common/FormUI";
 
-const ContactUs = () => {
+const ContactUs = ({ redirectUrl = '/thankyou' }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const courseFromUrl = searchParams.get('course');
@@ -91,7 +91,7 @@ const ContactUs = () => {
     setLoading(false);
 
     if (response.success) {
-      router.push('/thankyou');
+      router.push(redirectUrl);
       setFormData({
         name: "",
         email: "",
