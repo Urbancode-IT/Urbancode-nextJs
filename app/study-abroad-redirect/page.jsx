@@ -1,9 +1,9 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { motion } from 'framer-motion';
 
-export default function StudyAbroadRedirect() {
+function StudyAbroadRedirectContent() {
     const searchParams = useSearchParams();
     const type = searchParams.get('type'); // 'whatsapp' or 'call'
     const [progress, setProgress] = useState(0);
@@ -118,5 +118,13 @@ export default function StudyAbroadRedirect() {
                 </div>
             </motion.div>
         </div>
+    );
+}
+
+export default function StudyAbroadRedirect() {
+    return (
+        <Suspense fallback={<div style={{ minHeight: '100vh', background: '#0b1a13' }} />}>
+            <StudyAbroadRedirectContent />
+        </Suspense>
     );
 }
