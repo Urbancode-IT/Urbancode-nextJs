@@ -1,8 +1,10 @@
 .problems-container {
-    padding: 40px 60px;
+    padding: 32px 60px 40px;
     background-color: #f8fafc;
-    min-height: calc(100vh - 72px);
+    min-height: calc(100vh - 72px - var(--site-header-height, 71px));
     font-family: 'Inter', sans-serif;
+    position: relative;
+    z-index: 0;
 }
 
 /* Header Section */

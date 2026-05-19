@@ -106,6 +106,23 @@
     flex-direction: column;
 }
 
+.question-meta-row {
+    margin-bottom: 16px;
+}
+
+.question-number-badge {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #0f766e;
+    background: #ecfdf5;
+    border: 1px solid #a7f3d0;
+    padding: 6px 12px;
+    border-radius: 999px;
+}
+
 .question-text {
     font-size: 1.4rem;
     color: #1a202c;

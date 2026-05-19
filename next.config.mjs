@@ -7,6 +7,15 @@ const nextConfig = {
     unoptimized: true, // needed if you use next/image
   },
 
+  async redirects() {
+    return [
+      { source: '/thank-you', destination: '/thankyou', permanent: true },
+      { source: '/thank-you/:path*', destination: '/thankyou/:path*', permanent: true },
+      { source: '/Thankyou', destination: '/thankyou', permanent: true },
+      { source: '/ThankYou', destination: '/thankyou', permanent: true },
+    ];
+  },
+
   // Proxy compiler backend through same origin in dev — avoids browser CORS to onrender.com
   async rewrites() {
     return [

@@ -1,6 +1,9 @@
 .compiler-wrapper {
   width: 100%;
   min-height: 100vh;
+  /* Clear the main site fixed navbar so KoderPlatform bar + page titles are not covered */
+  padding-top: var(--site-header-height, 71px);
+  box-sizing: border-box;
   background-color: #f8fafc;
   position: relative;
   z-index: 10;
@@ -12,7 +15,7 @@
   min-height: 100vh;
   width: 100%;
   padding-top: 0;
-  /* Removed padding-top as compiler-navbar handles its own sticky offset from the fixed site header */
+  /* Site header offset lives on .compiler-wrapper (App.css) so all routes clear the fixed navbar */
   background-color: var(--bg-app);
   color: var(--text-primary);
 }

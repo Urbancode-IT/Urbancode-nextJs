@@ -1,6 +1,6 @@
 'use client';
 import React, { useState } from "react";
-import { useRouter } from "next/navigation";
+import { goToThankYou } from "@/lib/navigation/goToThankYou";
 import { motion, AnimatePresence } from "framer-motion";
 import Swal from 'sweetalert2';
 import confetti from 'canvas-confetti';
@@ -20,7 +20,6 @@ const EnquiryFormModal = ({
   isJoinMode = false,
   batchInfo = null 
 }) => {
-  const router = useRouter();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -176,7 +175,7 @@ const EnquiryFormModal = ({
       // Close modal and redirect to thank you page
       setTimeout(() => {
         onClose();
-        router.push('/thankyou');
+        goToThankYou();
       }, 1000);
 
     } catch (error) {

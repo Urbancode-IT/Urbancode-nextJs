@@ -80,6 +80,7 @@ const Quiz = () => {
         const icons = {
             python: <FaPython />,
             java: <FaJava />,
+            c: <FaCode />,
             cpp: <SiCplusplus />,
             html: <FaHtml5 />,
             sql: <FaDatabase />,
@@ -377,6 +378,11 @@ const Quiz = () => {
 
             <div className="quiz-content">
                 <div className="question-card">
+                    <div className="question-meta-row" aria-live="polite">
+                        <span className="question-number-badge">
+                            Question {currentQuestion + 1} / {quizData.questions.length}
+                        </span>
+                    </div>
                     <h2 className="question-text">{question.question}</h2>
 
                     <div className="options-list">

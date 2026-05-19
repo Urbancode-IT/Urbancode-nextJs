@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { submitProjectEnquiryForm } from "@/lib/api/api";
-import { useRouter } from "next/navigation";
+import { goToThankYou } from "@/lib/navigation/goToThankYou";
 import "./ContactSection.css";
 
 const ContactSection = () => {
-  const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -42,7 +41,7 @@ const ContactSection = () => {
 
       const result = await submitProjectEnquiryForm(payload);
       if (result.success) {
-        router.push("/thankyou");
+        goToThankYou();
       } else {
         alert(result.message);
       }

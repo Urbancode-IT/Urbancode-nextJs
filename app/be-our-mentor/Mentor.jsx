@@ -3,7 +3,7 @@
 import Image from "next/image";
 import "./Mentor.css";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { goToThankYou } from "@/lib/navigation/goToThankYou";
 import { submitMentorApplication} from "../../lib/api/api";
 import { motion, AnimatePresence } from "framer-motion";
 // Import static images (auto-optimized by Next.js)
@@ -16,7 +16,6 @@ import mentorHero from "@/public/images/mentorImages/mentorHero.jpg";
 import { FormInput, FormSelect, FormTextarea, FormButton, FormCard } from "@/app/components/common/FormUI";
 
 const Mentor = () => {
-    const router = useRouter();
     const [formData, setFormData] = useState({
       name: '',
       email: '',
@@ -54,7 +53,7 @@ const Mentor = () => {
     if (result.success) {
       setStatus("success");
       setMessage("✅ Application submitted successfully!");
-      router.push('/thankyou');
+      goToThankYou();
       setFormData({ name: '', email: '', mobile: '', experience: '', interest: '' });
       setTimeout(() => setStatus("idle"), 2500);
     } else {

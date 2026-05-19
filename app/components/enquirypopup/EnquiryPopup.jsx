@@ -1,13 +1,12 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { goToThankYou } from "@/lib/navigation/goToThankYou";
 import "./EnquiryPopup.css";
 import { submitEnquiryForm } from "@/lib/api/api";
 import { FormInput, FormTextarea, FormButton } from "@/app/components/common/FormUI";
 
 export default function EnquiryPopup({ delay = 3000 }) {
-  const router = useRouter();
   const [visible, setVisible] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const storageKey = "anniversaryOfferSubmitted";
@@ -172,7 +171,7 @@ export default function EnquiryPopup({ delay = 3000 }) {
           localStorage.setItem(storageKey, "true");
         } catch { }
         closePopup();
-        router.push('/thankyou');
+        goToThankYou();
       } else {
         throw new Error(result.message);
       }

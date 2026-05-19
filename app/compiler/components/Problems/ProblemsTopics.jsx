@@ -324,7 +324,7 @@ const ProblemsTopics = () => {
 
                                     <div className="topic-footer">
                                         <div className="topic-badge">
-                                            {topic.solvedCount} / {topic.totalProblems} Solved
+                                            {topic.solvedCount} / {Number(topic.totalProblems) || 0} Solved
                                         </div>
                                         {['python', 'sql', 'javascript', 'css', 'react', 'html', 'java', 'c++', 'angular'].includes(topic.id) && (
                                             <button

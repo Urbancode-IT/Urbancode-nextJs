@@ -6,7 +6,31 @@ import { CheckCircle, Home, ArrowRight, BookOpen } from 'lucide-react';
 import { motion } from 'framer-motion';
 import './ThankYou.css';
 
+const THANK_YOU_PATH = '/thankyou';
+
 const ThankYouPage = () => {
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const pageLocation = window.location.href;
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: 'page_view',
+      page_location: pageLocation,
+      page_path: THANK_YOU_PATH,
+      page_title: 'Thank You - Form Submission',
+    });
+
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', 'page_view', {
+        page_location: pageLocation,
+        page_path: THANK_YOU_PATH,
+        page_title: 'Thank You - Form Submission',
+      });
+    }
+  }, []);
+
   return (
     <div className="thank-you-page">
       <motion.div 

@@ -2,11 +2,10 @@
 import React from 'react';
 import './projects.css';
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { goToThankYou } from '@/lib/navigation/goToThankYou';
 import axios from 'axios';
 import { submitProjectEnquiryForm } from '@/lib/api/api';
 const Projects = () => {
-  const router = useRouter();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -101,7 +100,7 @@ const Projects = () => {
       );
 
       if (res.status === 200) {
-        router.push('/thankyou');
+        goToThankYou();
         setFormData({
           name: "",
           email: "",

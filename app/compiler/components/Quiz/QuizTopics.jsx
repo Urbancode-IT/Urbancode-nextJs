@@ -4,7 +4,7 @@ import { quizzesApi } from '../../services/api';
 import './QuizTopics.css';
 
 // Import icons (using react-icons for consistency with Problems page)
-import { FaPython, FaDatabase, FaJs, FaReact, FaHtml5, FaJava, FaCss3Alt, FaAngular } from 'react-icons/fa';
+import { FaPython, FaDatabase, FaJs, FaReact, FaHtml5, FaJava, FaCss3Alt, FaAngular, FaCode } from 'react-icons/fa';
 
 const QuizTopics = () => {
     const navigate = useNavigate();
@@ -16,6 +16,7 @@ const QuizTopics = () => {
     const topicsMetadata = {
         python: { icon: <FaPython />, color: '#3776AB', title: 'Python Programming' },
         java: { icon: <FaJava />, color: '#007396', title: 'Java Programming' },
+        c: { icon: <FaCode />, color: '#283593', title: 'C Programming' },
         'c++': { icon: <FaDatabase />, color: '#00599C', title: 'C++ Programming' },
         html: { icon: <FaHtml5 />, color: '#E34F26', title: 'HTML & Web Development' },
         sql: { icon: <FaDatabase />, color: '#4a5568', title: 'SQL & Databases' },

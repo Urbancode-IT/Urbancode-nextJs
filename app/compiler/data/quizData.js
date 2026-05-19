@@ -239,6 +239,44 @@ export const quizData = {
             ]
         }
     },
+    c: {
+        title: "C Programming",
+        icon: "c",
+        color: "#283593",
+        levels: {
+            beginner: [
+                { id: 1, question: "Which function prints formatted text to stdout using specifiers such as %d and %s?", options: ["scanf", "printf", "fread", "perror"], correctAnswer: 1, explanation: "printf writes formatted output to the standard output stream." },
+                { id: 2, question: "Which function reads formatted input from stdin according to a format string?", options: ["gets", "scanf", "fgets", "strcpy"], correctAnswer: 1, explanation: "scanf parses stdin using conversion specifiers in the format string." },
+                { id: 3, question: "Which function writes a single character to stdout?", options: ["putc", "putchar", "puts", "ungetc"], correctAnswer: 1, explanation: "putchar writes one character to the standard output stream." },
+                { id: 4, question: "Which function reads the next character from stdin (as an unsigned char converted to int, or EOF)?", options: ["puts", "getchar", "fopen", "sprintf"], correctAnswer: 1, explanation: "getchar reads a single character from the standard input stream." },
+                { id: 5, question: "What does sizeof(int) evaluate to?", options: ["Always 4", "The size in bytes of int on the implementation", "The value stored in an int", "The number of bits only"], correctAnswer: 1, explanation: "sizeof yields the size in bytes of a type or expression for the current implementation." },
+                { id: 6, question: "Which header declares printf and scanf?", options: ["<stdlib.h>", "<stdio.h>", "<string.h>", "<ctype.h>"], correctAnswer: 1, explanation: "Standard I/O declarations live in <stdio.h>." },
+                { id: 7, question: "Which macro is commonly used for successful program termination from stdlib.h?", options: ["EXIT_FAIL", "EXIT_SUCCESS", "OK_EXIT", "END_MAIN"], correctAnswer: 1, explanation: "EXIT_SUCCESS is the portable macro for normal termination status." },
+                { id: 8, question: "Which function prints a string followed by a newline to stdout?", options: ["puts", "putc", "fscanf", "memcmp"], correctAnswer: 0, explanation: "puts writes a string and appends a newline to stdout." },
+                { id: 9, question: "Which function converts a string to a long with base detection and error reporting hooks?", options: ["atoi", "atol", "strtol", "strlen"], correctAnswer: 2, explanation: "strtol parses a string to a long and supports radix and end-pointer error checking." }
+            ],
+            average: [
+                { id: 1, question: "What does malloc return if allocation fails?", options: ["A null pointer", "Zero-filled memory", "A trap representation always", "The stack pointer"], correctAnswer: 0, explanation: "malloc returns NULL on failure; it does not zero memory." },
+                { id: 2, question: "How does calloc differ from malloc for the allocated bytes?", options: ["calloc may be faster always", "calloc sets all bytes to zero", "calloc cannot fail", "No difference"], correctAnswer: 1, explanation: "calloc allocates and initializes storage to all-bits-zero." },
+                { id: 3, question: "What may realloc do when growing a block?", options: ["Always shrink in place", "Move the block to a new address and free the old conceptually", "Never change the pointer value", "Call free automatically without returning"], correctAnswer: 1, explanation: "realloc may relocate the object; the old pointer must not be used after a successful move." },
+                { id: 4, question: "What is the effect of free(NULL) in standard C?", options: ["Undefined behavior", "Crash", "No operation", "Double free"], correctAnswer: 2, explanation: "free(NULL) is explicitly a no-op in the C standard." },
+                { id: 5, question: "Why is strcpy considered risky for arbitrary input?", options: ["It always truncates", "It does not check destination bounds", "It allocates memory", "It skips null terminators"], correctAnswer: 1, explanation: "strcpy copies until '\\0' with no length limit, enabling buffer overflows." },
+                { id: 6, question: "If two buffers overlap, which function is required for copying between them?", options: ["memcpy", "memmove", "memcmp", "memset"], correctAnswer: 1, explanation: "Overlapping copies are only guaranteed safe with memmove, not memcpy." },
+                { id: 7, question: "What does strcmp return when the strings are equal?", options: ["1", "0", "-1", "The length"], correctAnswer: 1, explanation: "strcmp returns 0 when both C strings compare equal." },
+                { id: 8, question: "What does strlen compute?", options: ["The allocated buffer size", "The number of characters before '\\0'", "The struct size", "The file size"], correctAnswer: 1, explanation: "strlen counts bytes until but not including the terminating null character." }
+            ],
+            tough: [
+                { id: 1, question: "What does the restrict keyword promise about pointers in C99?", options: ["They point to const data", "They do not alias the same object for the duration", "They are thread-local", "They are always volatile"], correctAnswer: 1, explanation: "restrict tells the compiler the pointed-to object is not accessed via another unqualified pointer in that scope." },
+                { id: 2, question: "Is volatile alone sufficient to implement thread-safe mutexes in portable C?", options: ["Yes", "No", "Only on Windows", "Only for float"], correctAnswer: 1, explanation: "volatile does not provide atomicity or ordering guarantees needed for synchronization." },
+                { id: 3, question: "What does the offsetof macro yield?", options: ["Size of struct", "Byte offset of a member from struct start", "Alignment of malloc", "Index in an array"], correctAnswer: 1, explanation: "offsetof expands to a byte offset of a member within its structure type." },
+                { id: 4, question: "What precondition does bsearch assume about the array?", options: ["It is heap-ordered", "It is sorted by the same comparison relation", "It is unique-only", "It is empty"], correctAnswer: 1, explanation: "bsearch requires the array to be sorted according to the comparator used." },
+                { id: 5, question: "Does the C standard require qsort to be a stable sort?", options: ["Yes always", "No", "Only for integers", "Only if comparator returns -1,0,1"], correctAnswer: 1, explanation: "Stability is not required; qsort only guarantees sorted order per the comparator." },
+                { id: 6, question: "What linkage does static at file scope give a function in C?", options: ["External by default", "Internal linkage (translation-unit local)", "Inline only", "Weak symbol always"], correctAnswer: 1, explanation: "static on a file-scope function limits its name to the current translation unit." },
+                { id: 7, question: "Reading an uninitialized automatic int and using its value is:", options: ["Always zero", "Implementation-defined only", "Undefined behavior", "Well-defined if volatile"], correctAnswer: 2, explanation: "Indeterminate reads of uninitialized automatic storage invoke undefined behavior." },
+                { id: 8, question: "What does assert(expression) do when expression is false (with assertions enabled)?", options: ["Returns 0", "Prints and may abort the program", "Ignores silently", "Throws C++ style"], correctAnswer: 1, explanation: "assert typically prints diagnostics and calls abort when the predicate is false." }
+            ]
+        }
+    },
     'c++': {
         title: "C++ Programming",
         icon: "cpp",
@@ -279,6 +317,59 @@ export const quizData = {
                     options: ["*", "&", "+", "/"],
                     correctAnswer: 2,
                     explanation: "+ is the addition operator."
+                },
+                {
+                    id: 6,
+                    question: "Which manipulator inserts a newline and flushes the cout buffer?",
+                    options: ["ends", "endl", "ws", "dec"],
+                    correctAnswer: 1,
+                    explanation: "endl inserts a newline character and flushes the stream."
+                },
+                {
+                    id: 7,
+                    question: "What does `using namespace std;` do?",
+                    options: ["Imports only macros", "Brings std names into scope without std:: prefix", "Deletes unused symbols", "Links object files"], correctAnswer: 1,
+                    explanation: "It is a using-directive that makes unqualified lookup consider names from namespace std."
+                },
+                {
+                    id: 8,
+                    question: "Which operator allocates a single dynamic object in C++?",
+                    options: ["malloc", "new", "alloca", "reserve"],
+                    correctAnswer: 1,
+                    explanation: "new allocates storage for an object and runs constructors for class types."
+                },
+                {
+                    id: 9,
+                    question: "Which form should be used to release an array allocated with `new T[n]`?",
+                    options: ["delete", "delete[]", "free", "dispose"],
+                    correctAnswer: 1,
+                    explanation: "delete[] matches array allocation from new[] and runs destructors for each element."
+                },
+                {
+                    id: 10,
+                    question: "What is the default access level for members of a `class`?",
+                    options: ["public", "protected", "private", "internal"],
+                    correctAnswer: 2,
+                    explanation: "Class members are private by default in C++."
+                },
+                {
+                    id: 11,
+                    question: "Which keyword marks a member function that does not modify logical object state?",
+                    options: ["static", "inline", "const after the parameter list", "virtual only"],
+                    correctAnswer: 2,
+                    explanation: "A const member function promises not to modify *this for users of const objects."
+                },
+                {
+                    id: 12,
+                    question: "Which header is the usual place for std::string?",
+                    options: ["<cstring>", "<string>", "<strings>", "<strstream>"], correctAnswer: 1,
+                    explanation: "std::string is declared in the <string> header."
+                },
+                {
+                    id: 13,
+                    question: "What does `std::cin >> x` skip by default before reading?",
+                    options: ["Nothing", "Leading whitespace", "Only newlines", "Comments"], correctAnswer: 1,
+                    explanation: "Formatted extraction skips leading whitespace by default."
                 }
             ],
             average: [
@@ -316,6 +407,61 @@ export const quizData = {
                     options: ["A function that creates an object", "A function that deletes an object", "A function that copies an object", "None"],
                     correctAnswer: 1,
                     explanation: "A destructor is called when an object goes out of scope or is deleted."
+                },
+                {
+                    id: 6,
+                    question: "What does std::vector::push_back do?",
+                    options: ["Removes the last element", "Appends an element to the end", "Sorts the vector", "Clears memory without destroying"],
+                    correctAnswer: 1,
+                    explanation: "push_back appends a new element to the end, growing the sequence as needed."
+                },
+                {
+                    id: 7,
+                    question: "Compared to std::unordered_map, what does std::map guarantee about key order?",
+                    options: ["No ordering", "Sorted order by key using the comparator", "Random shuffle each access", "Insertion order only"], correctAnswer: 1,
+                    explanation: "std::map is an ordered associative container sorted by the key comparison."
+                },
+                {
+                    id: 8,
+                    question: "What does marking a single-argument constructor `explicit` prevent?",
+                    options: ["Inheritance", "Implicit conversions from that argument type", "Virtual dispatch", "Move semantics"], correctAnswer: 1,
+                    explanation: "explicit disables implicit conversion construction from the parameter type."
+                },
+                {
+                    id: 9,
+                    question: "What is nullptr in C++11?",
+                    options: ["A macro equal to 0", "A null pointer literal of type std::nullptr_t", "A keyword for volatile pointers", "A smart pointer"], correctAnswer: 1,
+                    explanation: "nullptr is a pointer literal with its own type that converts to any pointer type."
+                },
+                {
+                    id: 10,
+                    question: "What does the `override` contextual keyword document?",
+                    options: ["A final class", "That a virtual function intends to override a base virtual", "That a function is noexcept", "That a template is exported"], correctAnswer: 1,
+                    explanation: "override makes overriding intent explicit and ill-formed if no base virtual matches."
+                },
+                {
+                    id: 11,
+                    question: "The Rule of Five adds which two operations beyond the Rule of Three?",
+                    options: ["Move constructor and move assignment", "Swap and clone", "Hash and compare", "Lock and unlock"], correctAnswer: 0,
+                    explanation: "Move constructor and move assignment join destructor, copy ctor, and copy assign for resource types."
+                },
+                {
+                    id: 12,
+                    question: "Can std::unique_ptr be copied?",
+                    options: ["Yes, always", "No, only moved", "Yes, if T is trivial", "Yes, with shared_ptr only"], correctAnswer: 1,
+                    explanation: "unique_ptr is move-only; copy operations are deleted."
+                },
+                {
+                    id: 13,
+                    question: "What does `auto x = expr;` typically do in C++11?",
+                    options: ["Forces int", "Deduces the type of x from expr", "Always makes a pointer", "Disables templates"], correctAnswer: 1,
+                    explanation: "auto performs type deduction from the initializer."
+                },
+                {
+                    id: 14,
+                    question: "Which cast is the safest first choice for numeric conversions like double to int?",
+                    options: ["reinterpret_cast", "static_cast", "const_cast", "C-style only"], correctAnswer: 1,
+                    explanation: "static_cast expresses well-known conversions checked at compile time where possible."
                 }
             ],
             tough: [
@@ -353,8 +499,56 @@ export const quizData = {
                     options: ["Moves a file", "Enables move semantics", "Copies a variable", "None"],
                     correctAnswer: 1,
                     explanation: "std::move is used to indicate that an object can be 'moved' from, avoiding expensive copies."
+                },
+                {
+                    id: 6,
+                    question: "What does SFINAE refer to in template metaprogramming?",
+                    options: ["Slow functions are not allowed", "Substitution Failure Is Not An Error", "Static final inline analysis", "Single file includes no aliases"], correctAnswer: 1,
+                    explanation: "Invalid template substitutions are ignored during overload resolution instead of hard errors."
+                },
+                {
+                    id: 7,
+                    question: "What pattern is the Curiously Recurring Template Pattern (CRTP)?",
+                    options: ["A virtual base class for all widgets", "A derived class inherits a base templated on the derived type", "A mutex wrapper", "A constexpr random generator"], correctAnswer: 1,
+                    explanation: "CRTP uses static polymorphism by inheriting from a template instantiated with the derived class."
+                },
+                {
+                    id: 8,
+                    question: "What does constexpr on a function promise (C++11/14 sense)?",
+                    options: ["It must throw", "It may be evaluated at compile time if used in constant contexts", "It cannot recurse", "It disables inlining"], correctAnswer: 1,
+                    explanation: "constexpr functions can participate in constant evaluation when arguments are constant expressions."
+                },
+                {
+                    id: 9,
+                    question: "What does std::optional<T> model?",
+                    options: ["A pointer that never nulls", "A value that may or may not be present", "A thread-local T", "A vector of size 1"], correctAnswer: 1,
+                    explanation: "optional represents either a contained value or an empty state."
+                },
+                {
+                    id: 10,
+                    question: "What is Argument-Dependent Lookup (ADL)?",
+                    options: ["Only macros expand", "Overload resolution also searches namespaces associated with argument types", "Templates must be exported", "Lambda capture rules"], correctAnswer: 1,
+                    explanation: "ADL brings associated namespaces of function arguments into consideration for unqualified calls."
+                },
+                {
+                    id: 11,
+                    question: "Reading an uninitialized automatic `int` and branching on it is typically:",
+                    options: ["Well-defined zero", "Implementation-defined only", "Undefined behavior", "Safe with -O0"], correctAnswer: 2,
+                    explanation: "Using an indeterminate automatic variable value is undefined behavior."
+                },
+                {
+                    id: 12,
+                    question: "What is std::variant?",
+                    options: ["A discriminated union of alternatives", "A vector of void*", "A tuple of references only", "A thread pool"], correctAnswer: 0,
+                    explanation: "variant is a type-safe sum type holding one of several alternatives."
+                },
+                {
+                    id: 13,
+                    question: "Why mark move operations noexcept when designing containers like std::vector?",
+                    options: ["To forbid exceptions in destructors", "So strong exception safety can use move on reallocation when safe", "To disable RTTI", "To make them private"], correctAnswer: 1,
+                    explanation: "noexcept move operations allow containers to prefer moves during reallocation under exception safety guarantees."
                 }
-            ]
+            ],
         }
     },
     html: {
@@ -621,9 +815,16 @@ export const quizData = {
 export const getQuizByTopicAndLevel = (topic, level = 'beginner') => {
     const topicData = quizData[topic];
     if (!topicData) return null;
+    const raw = topicData.levels[level] || [];
+    /* Stable per-level serial (1..n) for UI keys; source data often repeats id: 1 across levels. */
+    const questions = raw.map((q, index) => ({
+        ...q,
+        id: index + 1,
+        serial: index + 1
+    }));
     return {
         ...topicData,
-        questions: topicData.levels[level] || []
+        questions
     };
 };
 

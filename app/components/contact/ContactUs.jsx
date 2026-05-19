@@ -1,15 +1,15 @@
 'use client';
 import React, { useRef, useState, useEffect } from "react";
 import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { sendContactMessage } from "@/lib/api/api";
+import { goToThankYou } from "@/lib/navigation/goToThankYou";
 import "./ContactUs.css";
 import CinematicLoader from "./CinematicLoader";
 
 import { FormInput, FormSelect, FormTextarea, FormButton, FormCard } from "@/app/components/common/FormUI";
 
 const ContactUs = ({ redirectUrl = '/thankyou' }) => {
-  const router = useRouter();
   const searchParams = useSearchParams();
   const courseFromUrl = searchParams.get('course');
 
@@ -91,7 +91,7 @@ const ContactUs = ({ redirectUrl = '/thankyou' }) => {
     setLoading(false);
 
     if (response.success) {
-      router.push(redirectUrl);
+      goToThankYou(redirectUrl);
       setFormData({
         name: "",
         email: "",

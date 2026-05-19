@@ -4,11 +4,13 @@
     align-items: center;
     padding: 0 32px;
     height: 72px;
+    flex-shrink: 0;
     background-color: #0f172a;
     border-bottom: 1px solid #1e293b;
     color: #f8fafc;
     position: sticky;
-    top: var(--site-header-height, 72px);
+    /* Stick just below the main Urbancode header when the page scrolls */
+    top: var(--site-header-height, 71px);
     z-index: 1000;
     font-family: 'Inter', sans-serif;
 }

@@ -1,6 +1,6 @@
 'use client'
 import { useState } from 'react'
-import { useRouter } from 'next/navigation'
+import { goToThankYou } from '@/lib/navigation/goToThankYou'
 import './internship.css'
 import { submitInternshipApplication } from '../../lib/api/api'
 import { Clock } from 'lucide-react'
@@ -8,7 +8,6 @@ import { Clock } from 'lucide-react'
 import { FormInput, FormSelect, FormTextarea, FormButton, FormCard } from "@/app/components/common/FormUI";
 
 function App() {
-  const router = useRouter()
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -48,7 +47,7 @@ function App() {
     setLoading(false)
 
     if (result.success) {
-      router.push('/thankyou');
+      goToThankYou();
       setFormData({
         firstName: '',
         lastName: '',

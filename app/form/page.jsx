@@ -1,14 +1,14 @@
 'use client';
 import React, { useState, useEffect, Suspense } from "react";
 import Image from "next/image";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
+import { goToThankYou } from "@/lib/navigation/goToThankYou";
 import { Send, User, Mail, Phone, MapPin, BookOpen, Clock } from "lucide-react";
 import "./FormPage.css";
 
 import { FormInput, FormSelect, FormTextarea, FormButton, FormCard } from "@/app/components/common/FormUI";
 
 const EnquiryFormContent = () => {
-  const router = useRouter();
   const searchParams = useSearchParams();
   const courseFromUrl = searchParams.get('course');
 
@@ -92,7 +92,7 @@ const EnquiryFormContent = () => {
       setStatus({ type: "success", message: "Success! Redirecting..." });
       
       setTimeout(() => {
-        router.push('/thankyou');
+        goToThankYou();
       }, 1000);
 
     } catch (error) {

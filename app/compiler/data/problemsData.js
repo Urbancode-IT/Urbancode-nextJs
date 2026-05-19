@@ -73,7 +73,8 @@ console.log("");`,
     theory: "This mini challenge focuses on output formatting and basic JavaScript syntax. Use console.log() to print the exact expected text."
 }));
 
-const TOPIC_MIN_PROBLEMS = 50;
+/* Do not pad every topic to the same count — topic cards use totalProblems and would all look identical (e.g. 0/50). */
+const TOPIC_MIN_PROBLEMS = 0;
 const AUTO_DIFFICULTY_CYCLE = [2, 3, 2, 3, 2];
 const AUTO_TASKS = [
     "Compute the sum from 1 to N",
