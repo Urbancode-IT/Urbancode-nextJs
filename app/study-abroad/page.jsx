@@ -3,12 +3,13 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { FaStar, FaQuoteLeft, FaCheckCircle, FaAward, FaUniversity, FaSearch } from 'react-icons/fa';
 import { Send } from "lucide-react";
 import { submitEnquiryForm } from "@/lib/api/api";
 import EnquiryFormModal from "@/app/components/common/EnquiryFormModal.jsx";
-import { destinations, services, testimonials } from './data';
+import { destinations, services, testimonials, showcaseData } from './data';
 import './StudyAbroad.css';
 
 import { FormInput, FormSelect, FormTextarea, FormButton, FormCard } from "@/app/components/common/FormUI";
@@ -30,22 +31,26 @@ const StudyAbroadPage = () => {
     });
 
     const [activeProficiency, setActiveProficiency] = useState("IELTS");
+    const [activeShowcase, setActiveShowcase] = useState("Australia");
 
     const proficiencyData = {
         IELTS: {
             title: "IELTS (International English Language Testing System)",
             description: "The world's most popular English language proficiency test for higher education and global migration. It assesses your Listening, Reading, Writing, and Speaking skills.",
-            highlights: ["Accepted in UK, Canada, Australia, and New Zealand", "Flexible test dates", "Comprehensive preparation material provided"]
+            highlights: ["Accepted in UK, Canada, Australia, and New Zealand", "Flexible test dates", "Comprehensive preparation material provided"],
+            certificateImage: "/images/study-abroad/IELTS (1).jpg"
         },
         PTE: {
             title: "PTE (Pearson Test of English)",
             description: "A computer-based English language test for non-native English speakers who want to study abroad. It is known for fast results and an unbiased computer-based scoring system.",
-            highlights: ["Fast results (typically within 48 hours)", "Unbiased machine scoring", "Accepted by thousands of universities worldwide"]
+            highlights: ["Fast results (typically within 48 hours)", "Unbiased machine scoring", "Accepted by thousands of universities worldwide"],
+            certificateImage: "/images/study-abroad/PTE.jpg"
         },
         Duolingo: {
             title: "Duolingo English Test",
             description: "A modern, convenient, and affordable English proficiency assessment. You can take the test online, anytime, anywhere in under an hour.",
-            highlights: ["Take the test from home", "Results in 2 days", "Accepted by over 4000 institutions globally"]
+            highlights: ["Take the test from home", "Results in 2 days", "Accepted by over 4000 institutions globally"],
+            certificateImage: "/images/study-abroad/1.webp"
         }
     };
 
@@ -261,7 +266,7 @@ const StudyAbroadPage = () => {
             </section>
 
             {/* Services Section */}
-            <section className="section-padding">
+            <section className="section-padding services-section-light">
                 <div className="container">
                     <div className="section-header">
                         <h2 className="section-main-title text-shine">Our Expert Services</h2>
@@ -291,7 +296,7 @@ const StudyAbroadPage = () => {
                                         {service.icon}
                                     </div>
                                     <h4>{service.title}</h4>
-                                    <p className="text-muted">{service.description}</p>
+                                    <p>{service.description}</p>
                                 </motion.div>
                             </div>
                         ))}
@@ -300,7 +305,7 @@ const StudyAbroadPage = () => {
             </section>
 
             {/* Destinations Section */}
-            <section className="section-padding section-bg-light">
+            <section className="section-padding destinations-section-light">
                 <div className="container">
                     <div className="section-header">
                         <h2 className="section-main-title text-shine">Top Study Destinations</h2>
@@ -323,11 +328,130 @@ const StudyAbroadPage = () => {
                                         <h3>{dest.country}</h3>
                                         <p>{dest.description}</p>
                                         <span className="uni-count"><FaUniversity className="me-2" />{dest.universities}</span>
-                                        <button className="enquire-btn-mini" onClick={() => handleEnquireClick(dest.country)}>Enquire Now</button>
+                                        <div className="dest-btn-group">
+                                            <button className="dest-btn dest-btn-primary" onClick={() => handleEnquireClick(dest.country)}>Enquire Now</button>
+                                            <Link href={`/study-abroad/${dest.country.toLowerCase().replace(/\s+/g, '-')}`} className="dest-btn dest-btn-outline">
+                                                View Details
+                                            </Link>
+                                        </div>
                                     </div>
                                 </motion.div>
                             </div>
                         ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Dream Country Benefits Showcase Section */}
+            <section className="section-padding showcase-section">
+                <div className="container">
+                    <div className="section-header mb-4">
+                        <h2 className="section-main-title text-shine fs-2">Explore Dream Country Benefits</h2>
+                        <p className="fs-6">Get a detailed overview of what makes each destination a top choice for international studies, tailored to your career aspirations.</p>
+                    </div>
+
+                    <div className="showcase-card-wrapper position-relative overflow-hidden rounded-4 shadow-lg"
+                        style={{
+                            backgroundImage: `url(${showcaseData[activeShowcase].bgImage})`,
+                            backgroundSize: 'cover',
+                            backgroundPosition: 'center',
+                            transition: 'all 0.6s ease'
+                        }}>
+                        {/* Overlay with flag-themed gradient */}
+                        <div className="showcase-card-overlay" style={{ background: showcaseData[activeShowcase].gradient }} />
+
+                        <div className="position-relative z-index-2 p-3 p-md-4">
+                            {/* Choose your dream country tab bar (At the TOP of the card) */}
+                            <div className="mb-4 pb-3 border-bottom border-white border-opacity-10">
+                                <div className="showcase-tabs-container position-relative">
+                                    <div className="showcase-tabs-bar">
+                                        {Object.keys(showcaseData).map((key) => (
+                                            <button 
+                                                key={key}
+                                                className={`showcase-tab ${activeShowcase === key ? 'active' : ''}`}
+                                                onClick={() => setActiveShowcase(key)}
+                                                style={{
+                                                    '--active-accent': showcaseData[key].accentColor
+                                                }}
+                                            >
+                                                <span className="me-2">{showcaseData[key].flagEmoji}</span>
+                                                {showcaseData[key].flagName}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="row align-items-center">
+                                {/* Left side: Content */}
+                                <div className="col-lg-7 text-white">
+                                    <motion.div
+                                        key={activeShowcase}
+                                        initial={{ opacity: 0, x: -30 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        transition={{ duration: 0.5 }}
+                                    >
+                                        <h2 className="showcase-country-title country-title-handwritten">
+                                            {showcaseData[activeShowcase].title}
+                                        </h2>
+                                        
+                                        <h4 className="showcase-country-subtitle fw-bold mb-3">
+                                            {showcaseData[activeShowcase].subtitle}
+                                        </h4>
+
+                                        <ul className="showcase-highlights-list list-unstyled mb-4">
+                                            {showcaseData[activeShowcase].highlights.map((highlight, idx) => (
+                                                <motion.li 
+                                                    key={idx} 
+                                                    className="d-flex align-items-center mb-2"
+                                                    initial={{ opacity: 0, y: 10 }}
+                                                    animate={{ opacity: 1, y: 0 }}
+                                                    transition={{ delay: idx * 0.05 }}
+                                                >
+                                                    <span className="showcase-bullet-dot me-3">•</span>
+                                                    <span className="showcase-highlight-text fs-6">{highlight}</span>
+                                                </motion.li>
+                                            ))}
+                                        </ul>
+
+                                        <button 
+                                            className="showcase-expert-btn px-4 py-2 rounded-pill fw-bold text-white shadow-sm"
+                                            style={{
+                                                background: showcaseData[activeShowcase].accentColor,
+                                                borderColor: 'transparent',
+                                                transition: 'all 0.3s ease'
+                                            }}
+                                            onClick={() => handleEnquireClick(activeShowcase)}
+                                        >
+                                            {showcaseData[activeShowcase].btnText}
+                                        </button>
+                                    </motion.div>
+                                </div>
+
+                                {/* Right side: Art Composition (dome & flag brush stroke) */}
+                                <div className="col-lg-5 d-none d-lg-block">
+                                    <div className="showcase-graphic-wrap position-relative w-100 d-flex justify-content-center align-items-center" style={{ height: '280px' }}>
+                                        <motion.div 
+                                            key={`flag-${activeShowcase}`}
+                                            className="showcase-flag-brush position-absolute"
+                                            style={{ backgroundImage: `url(${showcaseData[activeShowcase].flagUrl})` }}
+                                            initial={{ opacity: 0, scale: 0.8, rotate: -15 }}
+                                            animate={{ opacity: 0.8, scale: 1, rotate: -5 }}
+                                            transition={{ duration: 0.6 }}
+                                        />
+                                        <motion.div 
+                                            key={`landmark-${activeShowcase}`}
+                                            className="showcase-landmark-frame position-absolute"
+                                            initial={{ opacity: 0, y: 50, scale: 0.9 }}
+                                            animate={{ opacity: 1, y: 0, scale: 1 }}
+                                            transition={{ duration: 0.6, delay: 0.2 }}
+                                        >
+                                            <img src={showcaseData[activeShowcase].landmarkUrl} alt={`${activeShowcase} Landmark`} />
+                                        </motion.div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -384,8 +508,12 @@ const StudyAbroadPage = () => {
                                     </button>
                                 </div>
                                 <div className="col-lg-5 d-none d-lg-block text-center">
-                                    <div className="prof-icon-large">
-                                        <FaAward />
+                                    <div className="prof-cert-container">
+                                        <img 
+                                            src={proficiencyData[activeProficiency].certificateImage} 
+                                            alt={`${activeProficiency} Certificate`} 
+                                            className="prof-cert-img" 
+                                        />
                                     </div>
                                 </div>
                             </div>

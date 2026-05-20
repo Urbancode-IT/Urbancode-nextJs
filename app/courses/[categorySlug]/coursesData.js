@@ -1171,7 +1171,7 @@ const coursesData = {
   aboutData: {
     topic: "Master Microsoft SharePoint — Build and Manage Modern Collaborative Workspaces!",
     content1: "Learn to design, configure, and develop on the SharePoint Online platform. From site architecture and permissions to custom SPFx development with React, this course prepares you for enterprise-level collaboration roles.",
-    content2: "Our SharePoint curriculum blends administrative mastery with developer expertise. You'll master lists, libraries, and metadata management, then dive into SPFx development using Node.js, Yeoman, and Gulp. The course also covers advanced automation using Power Automate triggers specifically for SharePoint, making you a versatile SharePoint professional."
+    content2: "Our SharePoint curriculum blends administrative mastery with developer expertise. You'll master lists, libraries, and metadata management, then dive into SPFx development using Node.js. The course also covers advanced automation using Power Automate triggers specifically for SharePoint, making you a versatile SharePoint professional."
   },
   courseContentData: [
     {
@@ -1228,7 +1228,7 @@ const coursesData = {
       title: "SPFx Development & Advanced Concepts",
       icon: "bi bi-code-slash",
       items: [
-        "SPFx Environment setup: Node.js, Yeoman, Gulp",
+        "SPFx Environment setup: Node.js",
         "Creating custom SPFx Web Parts using React",
         "SharePoint REST API & Property Pane Controls",
         "Deploying to App Catalog & Hub Site architecture",

@@ -50,11 +50,9 @@ const getToolsForCourse = (title) => {
             { id: 2, name: "Power Automate", icon: "https://api.iconify.design/simple-icons:powerautomate.svg?color=%230066FF" },
             { id: 3, name: "React", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
             { id: 4, name: "TypeScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
-            { id: 5, name: "Yeoman", icon: "https://api.iconify.design/simple-icons:yeoman.svg?color=%23333333" },
-            { id: 6, name: "Gulp", icon: "https://api.iconify.design/simple-icons:gulp.svg?color=%23CF4647" },
-            { id: 7, name: "Node.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
-            { id: 8, name: "VS Code", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" },
-            { id: 9, name: "Github", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" }
+            { id: 5, name: "Node.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
+            { id: 6, name: "VS Code", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" },
+            { id: 7, name: "Github", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" }
         ];
     }
     if (t.includes("salesforce")) {
