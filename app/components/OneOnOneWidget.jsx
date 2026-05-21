@@ -52,7 +52,7 @@ const OneOnOneWidget = () => {
                     </div>
                     
                     <span className="one-on-one-text">
-                        One on One
+                       Free Consultation
                     </span>
                 </div>
             </motion.div>
