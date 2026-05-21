@@ -98,7 +98,7 @@ export const testimonials = [
     {
         name: "Sriram",
         university: "Greenwich University, UK",
-        review: "Urbancode helped me through every step of my Canadian student visa process. Their scholarship guidance was a lifesaver!",
+        review: "Urbancode helped me through every step of my UK student visa process. Their scholarship guidance was a lifesaver!",
         rating: 5,
         image: "/images/home/avatar1.jpg"
     },

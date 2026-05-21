@@ -11,7 +11,7 @@ import { FiPhoneCall, FiChevronDown } from 'react-icons/fi';
 import { FaPlane } from 'react-icons/fa';
 import FlightTransition from '../animations/FlightTransition';
 import BookDemoWidget from '../BookDemoWidget';
-
+import OneOnOneWidget from '../OneOnOneWidget';
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [practiceOpen, setPracticeOpen] = useState(false);
@@ -184,6 +184,7 @@ export default function Navbar() {
           <FloatingWidgets />
           <ChatbotWidget />
           <BookDemoWidget />
+          <OneOnOneWidget />
         </>
       )}
       <FlightTransition isAnimating={isFlying} />

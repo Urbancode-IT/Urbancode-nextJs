@@ -18,7 +18,8 @@ const EnquiryFormModal = ({
   isDemoMode = false, 
   isBrochureMode = false,
   isJoinMode = false,
-  batchInfo = null 
+  batchInfo = null,
+  customTitle = null
 }) => {
   const [formData, setFormData] = useState({
     name: "",
@@ -206,9 +207,12 @@ const EnquiryFormModal = ({
           >
             <div className="enquiry-header">
               <h3>
-                {isJoinMode 
-                  ? "Join Class" 
-                  : (isBrochureMode ? "Get Course Brochure" : (isDemoMode ? "Book a Demo Session" : "Enquire Today"))
+                {customTitle 
+                  ? customTitle
+                  : (isJoinMode 
+                    ? "Join Class" 
+                    : (isBrochureMode ? "Get Course Brochure" : (isDemoMode ? "Book a Demo Session" : "Enquire Today"))
+                  )
                 }
               </h3>
               <button className="close-btn" onClick={onClose}>×</button>
