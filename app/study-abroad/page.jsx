@@ -11,8 +11,22 @@ import { submitEnquiryForm } from "@/lib/api/api";
 import EnquiryFormModal from "@/app/components/common/EnquiryFormModal.jsx";
 import { destinations, services, testimonials, showcaseData } from './data';
 import './StudyAbroad.css';
-
 import { FormInput, FormSelect, FormTextarea, FormButton, FormCard } from "@/app/components/common/FormUI";
+
+const getCountryFlag = (uni) => {
+    if (!uni) return "";
+    const lower = uni.toLowerCase();
+    if (lower.includes("uk") || lower.includes("united kingdom")) return "🇬🇧";
+    if (lower.includes("ireland")) return "🇮🇪";
+    if (lower.includes("usa") || lower.includes("us") || lower.includes("united states")) return "🇺🇸";
+    if (lower.includes("canada")) return "🇨🇦";
+    if (lower.includes("australia")) return "🇦🇺";
+    if (lower.includes("germany")) return "🇩🇪";
+    if (lower.includes("singapore")) return "🇸🇬";
+    if (lower.includes("france")) return "🇫🇷";
+    if (lower.includes("new zealand")) return "🇳🇿";
+    return "🎓";
+};
 
 const StudyAbroadPage = () => {
     const router = useRouter();
@@ -634,34 +648,52 @@ const StudyAbroadPage = () => {
             </section>
 
             {/* Testimonials Section */}
-            <section className="section-padding">
+            <section className="section-padding success-stories-section">
                 <div className="container">
-                    <div className="section-header">
+                    <div className="section-header text-center">
                         <h2 className="section-main-title text-shine">Success Stories</h2>
-                        <p>Join hundreds of students who realized their dreams through our expert guidance and support.</p>
+                        <p className="section-subtitle">Join hundreds of students who realized their dreams through our expert guidance and support.</p>
                     </div>
                     <div className="row g-4 justify-content-center">
                         {testimonials.map((test, index) => (
                             <div className="col-lg-4 col-md-6" key={index}>
                                 <motion.div 
                                     className="test-card"
-                                    initial={{ opacity: 0, scale: 0.95 }}
-                                    whileInView={{ opacity: 1, scale: 1 }}
+                                    initial={{ opacity: 0, y: 30 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
+                                    transition={{ duration: 0.5, delay: index * 0.1 }}
                                 >
+                                    {/* Watermark Quote Icon */}
+                                    <div className="quote-watermark">“</div>
+                                    
                                     <div className="test-header">
-                                        <img src={test.image} alt={test.name} className="test-avatar" />
+                                        <div className="avatar-wrapper">
+                                            <img src={test.image} alt={test.name} className="test-avatar" />
+                                            <div className="visa-check-badge">
+                                                <FaCheckCircle />
+                                            </div>
+                                        </div>
                                         <div className="test-user">
-                                            <h5>{test.name}</h5>
-                                            <span>{test.university}</span>
+                                            <div className="user-name-row">
+                                                <h5>{test.name}</h5>
+                                                <span className="visa-approved-text">Visa Approved</span>
+                                            </div>
+                                            <span className="user-uni">
+                                                <span className="uni-flag">{getCountryFlag(test.university)}</span>
+                                                <span className="uni-name">{test.university}</span>
+                                            </span>
                                         </div>
                                     </div>
+                                    
                                     <div className="rating-stars">
                                         {[...Array(test.rating)].map((_, i) => <FaStar key={i} />)}
                                     </div>
+                                    
+                                    <div className="test-divider"></div>
+                                    
                                     <p className="test-text">
-                                        <FaQuoteLeft className="me-2 opacity-25" />
-                                        {test.review}
+                                        "{test.review}"
                                     </p>
                                 </motion.div>
                             </div>
