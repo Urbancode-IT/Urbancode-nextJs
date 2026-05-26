@@ -349,13 +349,13 @@ const ContactUs = ({ redirectUrl = '/thankyou' }) => {
                 title="Urbancode Velachery"
               ></iframe>
 
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1943.9239392081095!2d77.7269961!3d8.6987733!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b0413da2e8782f7%3A0x7fbba27adfcbeff3!2sSIVA%E2%80%99S%20SPECTRUM%20NEET%20ACADEMY!5e0!3m2!1sen!2sin!4v1716618451871!5m2!1sen!2sin"
-                allowFullScreen=""
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Urbancode Tirunelveli"
-              ></iframe>
+             <iframe
+  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3944.893055021927!2d77.724389!3d8.69871!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b0413c4ce75c0fd%3A0x4e3fe58c93ab7a34!2sUrbancode%20Training%20and%20Solutions!5e0!3m2!1sen!2sin!4v1759989999999!5m2!1sen!2sin"
+  allowFullScreen=""
+  loading="lazy"
+  referrerPolicy="no-referrer-when-downgrade"
+  title="Urbancode Tirunelveli"
+></iframe>
             </div>
           </div>
 
@@ -413,7 +413,7 @@ const ContactUs = ({ redirectUrl = '/thankyou' }) => {
                   Fab Sapphire Towers, No.29/5, 3rd Floor, South Bye Pass Road, Tirunelveli – 627005
                 </p>
                 <a 
-                  href="https://maps.app.goo.gl/ZzmVsSWf9RcvCQot8" 
+                  href="https://maps.app.goo.gl/6VQpva4Me3jy1QpY6" 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="branch-map-link"
