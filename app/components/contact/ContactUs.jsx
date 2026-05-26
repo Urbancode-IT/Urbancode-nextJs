@@ -26,11 +26,11 @@ const ContactUs = ({ redirectUrl = '/thankyou' }) => {
   const [activeMap, setActiveMap] = useState(0);
   const [showLoader, setShowLoader] = useState(false);
 
-  // alternate maps every 2 sec
+  // alternate maps every 2.5 sec
   useEffect(() => {
     const interval = setInterval(() => {
-      setActiveMap((prev) => (prev === 0 ? 1 : 0));
-    }, 2000);
+      setActiveMap((prev) => (prev + 1) % 3);
+    }, 2500);
     return () => clearInterval(interval);
   }, []);
 
@@ -289,6 +289,41 @@ const ContactUs = ({ redirectUrl = '/thankyou' }) => {
               </div>
             </form>
           </FormCard>
+
+          {/* Contact Details - below form */}
+          <div className="general-details-container">
+            <h3 className="branches-title">Contact Details</h3>
+            <div className="general-details-grid">
+              <div className="contact-item">
+                <i className="fas fa-phone"></i>
+                <div>
+                  <h4>Phone</h4>
+                  <p>+91 98787 98797</p>
+                </div>
+              </div>
+              <div className="contact-item">
+                <i className="fas fa-envelope"></i>
+                <div>
+                  <h4>Email</h4>
+                  <p>admin@urbancode.in</p>
+                </div>
+              </div>
+              <div className="contact-item">
+                <i className="fas fa-building"></i>
+                <div>
+                  <h4>Company</h4>
+                  <p>Urbancode Edutech Solutions Pvt Ltd</p>
+                </div>
+              </div>
+              <div className="contact-item">
+                <i className="fas fa-file-invoice"></i>
+                <div>
+                  <h4>GST No</h4>
+                  <p>33AADCU726Q1ZR</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Divider */}
@@ -297,7 +332,7 @@ const ContactUs = ({ redirectUrl = '/thankyou' }) => {
         {/* Right: Info + Maps */}
         <div className="contact-info">
           <div className="map-box">
-            <div className={`map-slider ${activeMap === 1 ? "shift" : ""}`}>
+            <div className="map-slider" style={{ transform: `translateX(-${activeMap * (100 / 3)}%)` }}>
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.6988594264685!2d80.21742727608103!3d12.991102787326096!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a52675e83808383%3A0x34ba42591d2df4f1!2sUrbancode%20Training%20and%20Solutions!5e0!3m2!1sen!2sin!4v1759989388834!5m2!1sen!2sin"
                 allowFullScreen=""
@@ -313,66 +348,87 @@ const ContactUs = ({ redirectUrl = '/thankyou' }) => {
                 referrerPolicy="no-referrer-when-downgrade"
                 title="Urbancode Velachery"
               ></iframe>
+
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1943.9239392081095!2d77.7269961!3d8.6987733!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b0413da2e8782f7%3A0x7fbba27adfcbeff3!2sSIVA%E2%80%99S%20SPECTRUM%20NEET%20ACADEMY!5e0!3m2!1sen!2sin!4v1716618451871!5m2!1sen!2sin"
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Urbancode Tirunelveli"
+              ></iframe>
             </div>
           </div>
 
-          <div className="contact-grid">
-            <div className="contact-item">
-              <i className="fas fa-map-marker-alt"></i>
-              <div>
-                <h4>Pallikaranai</h4>
-                <p>9/29, 5th St, Kamakoti Nagar, Pallikaranai, Chennai, Tamil Nadu, 600100</p>
+          {/* Branches Section */}
+          <div className="branches-container">
+            <h3 className="branches-title">Our Branches</h3>
+            <div className="branch-cards-grid">
+              
+              {/* Velachery Card */}
+              <div className="branch-card">
+                <div className="branch-header">
+                  <i className="fas fa-map-marker-alt"></i>
+                  <h4>Velachery (Chennai)</h4>
+                </div>
+                <p className="branch-address">
+                  52/159, Velachery Rd, next to Guru Nanak College, near Phoenix Marketcity, Anna Garden, Velachery, Chennai, Tamil Nadu 600042
+                </p>
+                <a 
+                  href="https://www.google.com/maps?cid=9830790481062909186" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="branch-map-link"
+                >
+                  <i className="fas fa-directions"></i> View on Google Maps
+                </a>
               </div>
-            </div>
 
-            <div className="contact-item">
-              <i className="fas fa-map-marker-alt"></i>
-              <div>
-                <h4>Velachery</h4>
-                <p>52/159, Velachery Rd, next to Guru Nanak College, near Phoenix Marketcity, Anna Garden, Velachery, Chennai, Tamil Nadu 600042</p>
+              {/* Pallikaranai Card */}
+              <div className="branch-card">
+                <div className="branch-header">
+                  <i className="fas fa-map-marker-alt"></i>
+                  <h4>Pallikaranai (Chennai)</h4>
+                </div>
+                <p className="branch-address">
+                  9/29, 5th St, Kamakoti Nagar, Pallikaranai, Chennai, Tamil Nadu, 600100
+                </p>
+                <a 
+                  href="https://www.google.com/maps?cid=3800681766627067121" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="branch-map-link"
+                >
+                  <i className="fas fa-directions"></i> View on Google Maps
+                </a>
               </div>
-            </div>
 
-            <div className="contact-item">
-              <i className="fas fa-phone"></i>
-              <div>
-                <h4>Phone</h4>
-                <p>+91 98787 98797</p>
+              {/* Tirunelveli Card - Highlighted as new branch */}
+              <div className="branch-card new-branch-card">
+                <span className="new-branch-badge"><span className="pulse-dot"></span> NEW BRANCH</span>
+                <div className="branch-header">
+                  <i className="fas fa-map-marker-alt"></i>
+                  <h4>Tirunelveli Branch</h4>
+                </div>
+                <p className="branch-address">
+                  Fab Sapphire Towers, No.29/5, 3rd Floor, South Bye Pass Road, Tirunelveli – 627005
+                </p>
+                <a 
+                  href="https://maps.app.goo.gl/ZzmVsSWf9RcvCQot8" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="branch-map-link"
+                >
+                  <i className="fas fa-directions"></i> View on Google Maps
+                </a>
               </div>
-            </div>
 
-            <div className="contact-item">
-              <i className="fas fa-building"></i>
-              <div>
-                <h4>Company</h4>
-                <p>Urbancode Edutech Solutions Pvt Ltd</p>
-              </div>
-            </div>
-
-            <div className="contact-item">
-              <i className="fas fa-envelope"></i>
-              <div>
-                <h4>Email</h4>
-                <p>admin@urbancode.in</p>
-              </div>
-            </div>
-
-            <div className="contact-item">
-              <i className="fas fa-file-invoice"></i>
-              <div>
-                <h4>GST No</h4>
-                <p>33AADCU726Q1ZR</p>
-              </div>
             </div>
           </div>
         </div>
       </div>
-
-
       </section>
     </>
   );
 };
-
 
 export default ContactUs;

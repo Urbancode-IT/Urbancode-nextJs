@@ -4,6 +4,9 @@ import dynamic from 'next/dynamic';
 import HeroSection from './components/Home/HeroSection';
 import BannerSlider from './components/common/BannerSlider';
 
+// Branch announcement popup (client-only, uses sessionStorage)
+const BranchAnnouncement = dynamic(() => import('./components/BranchAnnouncement/BranchAnnouncement'));
+
 // Code-splitting below-the-fold sections for massive initial bundle savings
 const TrendingCourses = dynamic(() => import('./components/Home/TrendingCourses'));
 const Courses = dynamic(() => import('./components/Home/Courses'));
@@ -98,7 +101,7 @@ export default function HomePage() {
 
   return (
     <>
-      {/* <FestivePopup /> */}
+      <BranchAnnouncement />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

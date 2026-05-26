@@ -155,6 +155,38 @@ export default function RootLayout({ children }) {
                     }
                   ],
                   "hasMap": "https://www.google.com/maps?cid=3800681766627067121"
+                },
+                {
+                  "@type": "EducationalOrganization",
+                  "name": "Urbancode - Tirunelveli Branch",
+                  "@id": "https://urbancode.in/#tirunelveli",
+                  "parentOrganization": { "@id": "https://urbancode.in/#organization" },
+                  "url": "https://urbancode.in",
+                  "telephone": "+91 9878798797",
+                  "priceRange": "₹₹",
+                  "areaServed": "Tirunelveli",
+                  "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "Fab Sapphire Towers, No.29/5, 3rd Floor, South Bye Pass Road",
+                    "addressLocality": "Tirunelveli",
+                    "addressRegion": "Tamil Nadu",
+                    "postalCode": "627005",
+                    "addressCountry": "IN"
+                  },
+                  "geo": {
+                    "@type": "GeoCoordinates",
+                    "latitude": 8.6988,
+                    "longitude": 77.7270
+                  },
+                  "openingHoursSpecification": [
+                    {
+                      "@type": "OpeningHoursSpecification",
+                      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+                      "opens": "09:00",
+                      "closes": "20:00"
+                    }
+                  ],
+                  "hasMap": "https://maps.app.goo.gl/ZzmVsSWf9RcvCQot8"
                 }
               ]
             })

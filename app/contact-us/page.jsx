@@ -4,16 +4,18 @@ import { Suspense } from "react";
 import ContactUs from "../components/contact/ContactUs";
 
 export const metadata = {
-  title: "Contact Urbancode | Best IT Training Institute in Chennai (Velachery & Pallikaranai)",
+  title: "Contact Urbancode | Best IT Training Institute in Chennai & Tirunelveli",
   description:
-    "Contact Urbancode Edutech — Chennai’s trusted IT training and placement institute. Visit our branches in Velachery and Pallikaranai or call us to learn about web development, Python, and full stack courses with internship support.",
+    "Contact Urbancode Edutech — Chennai and Tirunelveli’s trusted IT training and placement institute. Visit our branches in Velachery, Pallikaranai, and Tirunelveli or call us to learn about web development, Python, and full stack courses with internship support.",
   keywords: [
     "Contact Urbancode Chennai",
     "Urbancode Velachery",
     "Urbancode Pallikaranai",
+    "Urbancode Tirunelveli",
     "IT training institute contact",
     "software course admission Chennai",
-    "coding institute phone number Chennai",
+    "software course admission Tirunelveli",
+    "coding institute phone number Tirunelveli",
     "Urbancode Edutech contact details",
     "Internship and placement support Chennai",
   ],
@@ -21,9 +23,9 @@ export const metadata = {
     canonical: "https://urbancode.in/contact-us",
   },
   openGraph: {
-    title: "Contact Urbancode | IT & Coding Training in Chennai",
+    title: "Contact Urbancode | IT & Coding Training in Chennai & Tirunelveli",
     description:
-      "Reach out to Urbancode Edutech — top IT training institute in Chennai with expert trainers, internship programs, and placement support.",
+      "Reach out to Urbancode Edutech — top IT training institute in Chennai & Tirunelveli with expert trainers, internship programs, and placement support.",
     url: "https://urbancode.in/contact-us",
     siteName: "Urbancode Edutech",
     images: [
@@ -31,7 +33,7 @@ export const metadata = {
         url: "https://urbancode.in/images/og/contact-us.jpg",
         width: 1200,
         height: 630,
-        alt: "Contact Urbancode Edutech - Chennai IT Institute",
+        alt: "Contact Urbancode Edutech - Chennai & Tirunelveli IT Institute",
       },
     ],
     locale: "en_IN",
@@ -51,7 +53,7 @@ export default function ContactUsPage() {
             "name": "Urbancode Edutech",
             "url": "https://urbancode.in/contact-us",
             "logo": "https://urbancode.in/images/logo.png",
-            "description": "Urbancode Edutech is a leading IT and coding training institute in Chennai offering courses in web development, MERN stack, Python, and software testing with placement support.",
+            "description": "Urbancode Edutech is a leading IT and coding training institute in Chennai & Tirunelveli offering courses in web development, MERN stack, Python, and software testing with placement support.",
             "address": [
               {
                 "@type": "PostalAddress",
@@ -67,6 +69,14 @@ export default function ContactUsPage() {
                 "addressLocality": "Chennai",
                 "addressRegion": "Tamil Nadu",
                 "postalCode": "600100",
+                "addressCountry": "IN"
+              },
+              {
+                "@type": "PostalAddress",
+                "streetAddress": "Fab Sapphire Towers, No.29/5, 3rd Floor, South Bye Pass Road",
+                "addressLocality": "Tirunelveli",
+                "addressRegion": "Tamil Nadu",
+                "postalCode": "627005",
                 "addressCountry": "IN"
               }
             ],

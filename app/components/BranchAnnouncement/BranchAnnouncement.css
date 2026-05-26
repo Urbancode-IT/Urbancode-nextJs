@@ -1,0 +1,612 @@
+/* ═══════════════════════════════════════════════════════════
+   Branch Announcement – Green Glass + Ribbon Cutting
+   ═══════════════════════════════════════════════════════════ */
+
+.branch-announce-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  pointer-events: none;
+  perspective: 1200px;
+}
+
+.branch-announce-overlay.active {
+  pointer-events: all;
+}
+
+/* ── Backdrop ─────────────────────────────────────────── */
+.branch-announce-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* ── Card Container ───────────────────────────────────── */
+.branch-announce-card {
+  position: relative;
+  z-index: 10000;
+  width: 90%;
+  max-width: 460px;
+  background: linear-gradient(
+    160deg,
+    rgba(16, 45, 30, 0.85),
+    rgba(8, 32, 20, 0.92),
+    rgba(5, 22, 14, 0.96)
+  );
+  border-radius: 28px;
+  border: 1px solid rgba(74, 222, 128, 0.18);
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px rgba(74, 222, 128, 0.06),
+    0 24px 80px rgba(0, 0, 0, 0.55),
+    0 0 60px rgba(34, 197, 94, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  transform-style: preserve-3d;
+}
+
+/* Animated green gradient border glow */
+.branch-announce-card::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 29px;
+  padding: 1.5px;
+  background: linear-gradient(
+    135deg,
+    rgba(34, 197, 94, 0.6),
+    rgba(74, 222, 128, 0.3),
+    rgba(16, 185, 129, 0.5),
+    rgba(52, 211, 153, 0.3),
+    rgba(34, 197, 94, 0.6)
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: greenBorderFlow 5s ease-in-out infinite;
+  background-size: 400% 400%;
+}
+
+@keyframes greenBorderFlow {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ── Shine Sweep Effect ───────────────────────────────── */
+.branch-announce-shine {
+  position: absolute;
+  inset: 0;
+  border-radius: 28px;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.branch-announce-shine::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 40%;
+  height: 200%;
+  background: linear-gradient(
+    105deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.06) 45%,
+    rgba(255, 255, 255, 0.12) 50%,
+    rgba(255, 255, 255, 0.06) 55%,
+    transparent 70%
+  );
+  transform: skewX(-20deg);
+  animation: shineSweep 5s ease-in-out infinite;
+  animation-delay: 2.5s;
+}
+
+@keyframes shineSweep {
+  0%   { left: -60%; }
+  35%  { left: 130%; }
+  100% { left: 130%; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   RIBBON CUTTING ANIMATION
+   ═══════════════════════════════════════════════════════════ */
+
+.ribbon-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 15;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+/* ── Scissors ─────────────────────────────────────────── */
+.ribbon-scissors {
+  position: absolute;
+  z-index: 20;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg) scale(1);
+  opacity: 1;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.4));
+  animation: scissorsSnip 1.2s ease-in-out infinite;
+}
+
+@keyframes scissorsSnip {
+  0%, 100% { transform: translate(-50%, -50%) rotate(-45deg) scale(1); }
+  50%      { transform: translate(-50%, -50%) rotate(-45deg) scale(1.08); }
+}
+
+.ribbon-container.cut .ribbon-scissors {
+  opacity: 0;
+  transform: translate(-50%, -50%) rotate(0deg) scale(0.3);
+  transition: all 0.35s ease-in;
+}
+
+/* ── Ribbon Halves ────────────────────────────────────── */
+.ribbon-half {
+  position: absolute;
+  top: 50%;
+  width: 55%;
+  height: 48px;
+  transform: translateY(-50%);
+  overflow: visible;
+  transition: all 0.7s cubic-bezier(0.55, 0, 1, 0.45);
+}
+
+.ribbon-left {
+  left: -5%;
+  transform-origin: left center;
+}
+
+.ribbon-right {
+  right: -5%;
+  transform-origin: right center;
+}
+
+/* The ribbon band itself */
+.ribbon-band {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    #dc2626 0%,
+    #ef4444 15%,
+    #f87171 30%,
+    #ef4444 50%,
+    #dc2626 70%,
+    #b91c1c 100%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow:
+    0 4px 15px rgba(220, 38, 38, 0.3),
+    inset 0 2px 4px rgba(255, 255, 255, 0.2),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* Satin sheen */
+.ribbon-band::after {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 0;
+  right: 0;
+  height: 12px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.3),
+    rgba(255, 255, 255, 0.05)
+  );
+}
+
+.ribbon-text {
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 3px;
+  color: rgba(255, 255, 255, 0.9);
+  text-transform: uppercase;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  white-space: nowrap;
+  position: relative;
+  z-index: 1;
+}
+
+/* Ribbon fold (triangular end) */
+.ribbon-fold {
+  position: absolute;
+  top: 50%;
+  width: 0;
+  height: 0;
+  border-top: 24px solid transparent;
+  border-bottom: 24px solid transparent;
+  transform: translateY(-50%);
+}
+
+.ribbon-left .ribbon-fold {
+  right: -16px;
+  border-left: 16px solid #dc2626;
+}
+
+.ribbon-right .ribbon-fold {
+  left: -16px;
+  border-right: 16px solid #dc2626;
+}
+
+/* ── Cut State — ribbon halves fall away ──────────────── */
+.ribbon-container.cut .ribbon-left {
+  transform: translateY(-50%) rotate(35deg) translateY(120px);
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.55, 0, 1, 0.45);
+}
+
+.ribbon-container.cut .ribbon-right {
+  transform: translateY(-50%) rotate(-35deg) translateY(120px);
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.55, 0, 1, 0.45);
+  transition-delay: 0.05s;
+}
+
+/* ── Cut Spark / Flash ────────────────────────────────── */
+.ribbon-spark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.9), rgba(74, 222, 128, 0.5), transparent);
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  z-index: 25;
+  transition: none;
+}
+
+.ribbon-container.cut .ribbon-spark {
+  width: 180px;
+  height: 180px;
+  opacity: 1;
+  animation: sparkFlash 0.6s ease-out forwards;
+}
+
+@keyframes sparkFlash {
+  0%   { width: 0; height: 0; opacity: 1; }
+  40%  { width: 180px; height: 180px; opacity: 0.8; }
+  100% { width: 250px; height: 250px; opacity: 0; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   CONTENT (hidden behind ribbon, revealed after cut)
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Close Button ─────────────────────────────────────── */
+.branch-announce-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.45);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.branch-announce-close:hover {
+  background: rgba(239, 68, 68, 0.15);
+  border-color: rgba(239, 68, 68, 0.3);
+  color: #fca5a5;
+  transform: rotate(90deg) scale(1.1);
+}
+
+/* ── Inner Content ────────────────────────────────────── */
+.branch-announce-inner {
+  padding: 48px 36px 42px;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.branch-announce-inner.revealed {
+  opacity: 1;
+}
+
+/* ── Green Glow Orb ───────────────────────────────────── */
+.branch-announce-glow {
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 120px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(34, 197, 94, 0.15) 0%,
+    rgba(34, 197, 94, 0.05) 50%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 1;
+  filter: blur(10px);
+}
+
+/* ── Heading ──────────────────────────────────────────── */
+.branch-announce-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 8px;
+  color: rgba(255, 255, 255, 0.88);
+  letter-spacing: -0.01em;
+}
+
+/* ── Location ─────────────────────────────────────────── */
+.branch-announce-location {
+  font-size: 2.2rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  background: linear-gradient(135deg, #86efac, #4ade80, #22c55e, #16a34a);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 18px;
+  text-transform: uppercase;
+  filter: drop-shadow(0 0 20px rgba(34, 197, 94, 0.25));
+}
+
+/* ── Description ──────────────────────────────────────── */
+.branch-announce-desc {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.7;
+  margin-bottom: 28px;
+  max-width: 340px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ── Address ──────────────────────────────────────────── */
+.branch-announce-address {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: rgba(34, 197, 94, 0.04);
+  border: 1px solid rgba(74, 222, 128, 0.1);
+  border-radius: 16px;
+  padding: 14px 18px;
+  margin-bottom: 30px;
+  text-align: left;
+  backdrop-filter: blur(8px);
+}
+
+.branch-announce-address-icon {
+  flex-shrink: 0;
+  color: #4ade80;
+  margin-top: 2px;
+}
+
+.branch-announce-address-text {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.48);
+  line-height: 1.6;
+}
+
+/* ── CTA Button ───────────────────────────────────────── */
+.branch-announce-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 36px;
+  background: linear-gradient(135deg, #16a34a, #22c55e);
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  box-shadow:
+    0 4px 20px rgba(34, 197, 94, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.branch-announce-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #15803d, #16a34a);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.branch-announce-cta:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 8px 35px rgba(34, 197, 94, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.branch-announce-cta:hover::before {
+  opacity: 1;
+}
+
+.branch-announce-cta span,
+.branch-announce-cta svg {
+  position: relative;
+  z-index: 1;
+}
+
+.branch-announce-cta svg {
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.branch-announce-cta:hover svg {
+  transform: translateX(4px);
+}
+
+/* ── Floating particles ──────────────────────────────── */
+.branch-announce-particles {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  border-radius: 28px;
+  z-index: 1;
+}
+
+.branch-announce-particle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(74, 222, 128, 0.35);
+  animation: floatParticle 7s ease-in-out infinite;
+}
+
+.branch-announce-particle:nth-child(1) {
+  width: 3px; height: 3px;
+  top: 18%; left: 12%;
+  animation-delay: 0s;
+  animation-duration: 6s;
+}
+
+.branch-announce-particle:nth-child(2) {
+  width: 2px; height: 2px;
+  top: 55%; left: 82%;
+  animation-delay: 1.2s;
+  animation-duration: 8s;
+  background: rgba(34, 197, 94, 0.3);
+}
+
+.branch-announce-particle:nth-child(3) {
+  width: 3px; height: 3px;
+  top: 78%; left: 25%;
+  animation-delay: 2.5s;
+  animation-duration: 7s;
+  background: rgba(52, 211, 153, 0.3);
+}
+
+.branch-announce-particle:nth-child(4) {
+  width: 2px; height: 2px;
+  top: 32%; left: 72%;
+  animation-delay: 3.5s;
+  animation-duration: 9s;
+  background: rgba(74, 222, 128, 0.25);
+}
+
+.branch-announce-particle:nth-child(5) {
+  width: 4px; height: 4px;
+  top: 48%; left: 42%;
+  animation-delay: 1.8s;
+  animation-duration: 6.5s;
+  background: rgba(34, 197, 94, 0.15);
+}
+
+@keyframes floatParticle {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0; }
+  15%      { opacity: 0.8; }
+  50%      { transform: translate(12px, -20px) scale(1.6); opacity: 0.5; }
+  85%      { opacity: 0.2; }
+}
+
+/* ── Responsive ───────────────────────────────────────── */
+@media (max-width: 520px) {
+  .branch-announce-card {
+    max-width: 95%;
+    border-radius: 22px;
+  }
+
+  .branch-announce-card::before {
+    border-radius: 23px;
+  }
+
+  .branch-announce-inner {
+    padding: 40px 22px 32px;
+  }
+
+  .branch-announce-title {
+    font-size: 1.25rem;
+  }
+
+  .branch-announce-location {
+    font-size: 1.7rem;
+  }
+
+  .branch-announce-desc {
+    font-size: 0.84rem;
+  }
+
+  .branch-announce-cta {
+    padding: 12px 28px;
+    font-size: 0.85rem;
+  }
+
+  .branch-announce-close {
+    top: 12px;
+    right: 12px;
+    width: 32px;
+    height: 32px;
+  }
+
+  .ribbon-half {
+    height: 38px;
+  }
+
+  .ribbon-fold {
+    border-top-width: 19px !important;
+    border-bottom-width: 19px !important;
+  }
+
+  .ribbon-left .ribbon-fold {
+    border-left-width: 12px !important;
+    right: -12px;
+  }
+
+  .ribbon-right .ribbon-fold {
+    border-right-width: 12px !important;
+    left: -12px;
+  }
+
+  .ribbon-text {
+    font-size: 0.55rem;
+    letter-spacing: 2px;
+  }
+
+  .branch-announce-shine::after {
+    width: 50%;
+  }
+}
