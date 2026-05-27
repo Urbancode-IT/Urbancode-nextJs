@@ -258,7 +258,7 @@ const StudyAbroadPage = () => {
                                 </div>
 
                                 <div className="stats-divider-line mt-5"></div>
-
+{/* 
                                 <div className="hero-trust-row mt-4">
                                     <div className="trust-item">
                                         <span className="trust-val">100+</span> 
@@ -272,7 +272,7 @@ const StudyAbroadPage = () => {
                                         <span className="trust-val">50+</span> 
                                         <span className="trust-txt">Study Abroad Experts</span>
                                     </div>
-                                </div>
+                                </div> */}
                             </motion.div>
                         </div>
                     </div>
@@ -360,7 +360,7 @@ const StudyAbroadPage = () => {
             <section className="section-padding showcase-section">
                 <div className="container">
                     <div className="section-header mb-4">
-                        <h2 className="section-main-title text-shine fs-2">Explore Dream Country Benefits</h2>
+                        <h2 className="section-main-title text-shine fs-2">Benefits of Your Dream Country</h2>
                         <p className="fs-6">Get a detailed overview of what makes each destination a top choice for international studies, tailored to your career aspirations.</p>
                     </div>
 

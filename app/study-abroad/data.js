@@ -172,8 +172,7 @@ export const showcaseData = {
         ],
         accentColor: "#dc3545",
         btnText: "Talk to a UK expert",
-        landmarkUrl: "https://images.unsplash.com/photo-1486894980609-e35c7269654f?auto=format&fit=crop&q=80&w=600",
-        flagUrl: "https://images.unsplash.com/photo-1562240020-ce31ccb0fa7d?auto=format&fit=crop&q=80&w=600",
+landmarkUrl: "https://images.unsplash.com/photo-1505761671935-60b3a7427bad?q=80&w=600&auto=format&fit=crop",        flagUrl: "https://images.unsplash.com/photo-1562240020-ce31ccb0fa7d?auto=format&fit=crop&q=80&w=600",
         gradient: "linear-gradient(135deg, rgba(20, 10, 35, 0.96) 0%, rgba(45, 15, 60, 0.88) 55%, rgba(220, 53, 69, 0.4) 100%)"
     },
     Canada: {
@@ -210,9 +209,8 @@ export const showcaseData = {
         ],
         accentColor: "#198754",
         btnText: "Talk to an Ireland expert",
-        landmarkUrl: "https://images.unsplash.com/photo-1543832903-43af43d61183?auto=format&fit=crop&q=80&w=600",
-        flagUrl: "https://images.unsplash.com/photo-1563821034440-b3fae3fb280c?auto=format&fit=crop&q=80&w=600",
-        gradient: "linear-gradient(135deg, rgba(10, 45, 25, 0.96) 0%, rgba(20, 80, 40, 0.88) 55%, rgba(253, 126, 20, 0.4) 100%)"
+       landmarkUrl: "https://images.unsplash.com/photo-1590089415225-401ed6f9db8e?q=80&w=600&auto=format&fit=crop",
+flagUrl: "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?q=80&w=600&auto=format&fit=crop",     gradient: "linear-gradient(135deg, rgba(10, 45, 25, 0.96) 0%, rgba(20, 80, 40, 0.88) 55%, rgba(253, 126, 20, 0.4) 100%)"
     },
     Germany: {
         title: "GERMANY",
@@ -249,8 +247,7 @@ export const showcaseData = {
         accentColor: "#0d6efd",
         btnText: "Talk to a France expert",
         landmarkUrl: "https://images.unsplash.com/photo-1431274172761-fca41d930114?auto=format&fit=crop&q=80&w=600",
-        flagUrl: "https://images.unsplash.com/photo-1539069000497-2a543b295325?auto=format&fit=crop&q=80&w=600",
-        gradient: "linear-gradient(135deg, rgba(8, 24, 68, 0.96) 0%, rgba(13, 50, 125, 0.88) 55%, rgba(220, 53, 69, 0.4) 100%)"
+flagUrl: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=600&auto=format&fit=crop",        gradient: "linear-gradient(135deg, rgba(8, 24, 68, 0.96) 0%, rgba(13, 50, 125, 0.88) 55%, rgba(220, 53, 69, 0.4) 100%)"
     },
     Singapore: {
         title: "SINGAPORE",
