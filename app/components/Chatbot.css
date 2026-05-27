@@ -180,7 +180,7 @@
 .notif-title {
   margin: 0;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 500;
   color: #1a1a1a;
   letter-spacing: -0.2px;
 }
@@ -247,4 +247,4 @@
   .notif-link {
     font-size: 12px;
   }
-}
+}

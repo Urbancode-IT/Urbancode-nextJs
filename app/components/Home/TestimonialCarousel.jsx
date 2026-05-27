@@ -13,7 +13,7 @@ const testimonials = [
         image: "/images/home/avatar1.jpg",
     },
     {
-        name: "subha v",
+        name: "Subha V",
         feedback:
             "This place has shaped my child's learning interest . I was little confused on how my Middle school going child would be able to learn the concepts etc .. but UrbanCode has the best teachers who gives great focus to the child and makes sure that one recives a depth knowledge !We are happy and continuing with the Advanced course now . Would highly recommend for middle school or high school going kids based on my experience here .",
         rating: 5,
@@ -34,7 +34,7 @@ const testimonials = [
         image: "/images/home/avatar4.jpg",
     },
     {
-        name: "sraja kohila",
+        name: "S Raja Kohila",
         feedback:
             "I joined this institute to achieve my dream job, and it has been a really good experience. The trainers are very friendly, approachable, and highly knowledgeable, always ready to clear doubts with patience. Compared to other institutions, the fees here are quite low, but the quality of training is excellent. The atmosphere is positive and motivating, which helped me gain both skills and confidence. I could see real improvement in myself after attending the sessions. I want to give special thanks to the CEO, Mr. Siva sir, who is very kind and supportive. His personal guidance and motivation gave me the confidence to move forward without fear. Overall, this institute not only trains you but also inspires you to reach your career goals, and I am truly thankful for their support in my journey towards my dream job.",
         rating: 5,
