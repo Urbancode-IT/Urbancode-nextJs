@@ -47,6 +47,20 @@ const courses = [
   description: "Explore the exciting world of Generative AI and learn how AI tools can create text, images, and smart solutions. Students will work on creative AI projects while understanding the basics of modern artificial intelligence.",
   image: "/images/courses/poster13.webp",
 },
+{
+  id: 14,
+  title: "Future-Ready Tech Mastery",
+  duration: "3 Months",
+  description: "Build in-demand skills with industry-focused training in Full Stack Development, AI/ML, Data Science, SharePoint, Power Automate, and Playwright. Learn through real-time projects and become job-ready for tomorrow’s tech careers.",
+  image: "/images/courses/placement-poster1.webp",
+},
+{
+  id: 15,
+  title: "Placement Guaranteed Career Program",
+  duration: "3 Months",
+  description: "Get trained with expert mentorship and placement-focused learning in Full Stack Development, Software Testing, Data Analytics, and AWS & DevOps. Designed to help students secure high-package jobs with confidence.",
+  image: "/images/courses/placement-poster2.webp",
+},
   
   {
     id: 2,
