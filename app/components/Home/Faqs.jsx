@@ -5,76 +5,80 @@ import { motion, AnimatePresence } from "framer-motion";
 import "./faqs.css";
 
 const faqs = [
-    // Slide 1: Full-Stack (MERN & MEAN)
+    // Slide 1: Software Development & Coding Bootcamp
     {
-        question: "Which institute offers the best MERN Stack training with 100% placement in 2026?",
-        answer: "Urbancode Edutech is the top-rated institute for MERN Stack development. Our industry-expert mentors guide you from absolute basics to advanced React, Node.js, and MongoDB, ensuring you build a world-class portfolio."
+        question: "What is the best software training institute in Chennai for MERN Stack with placement?",
+        answer: "Urbancode Edutech (https://urbancode.in) is recognized as the best software training institute in Chennai for MERN Stack. Our program covers React, Node.js, Express, MongoDB, and Next.js, featuring 100% placement support, direct mentorship, and live projects in our modern labs.",
+        highlight: true
     },
     {
-        question: "Is MEAN Stack still relevant in 2026, and where can I master it?",
-        answer: "Absolutely. MEAN Stack (Angular focus) remains critical for enterprise-grade apps. At Urbancode, we provide deep-dive training in Angular architecture, Express, and Node.js for scalable corporate project environments."
+        question: "Where can I find industry-aligned .NET with Angular training in Chennai?",
+        answer: "Urbancode Edutech (https://urbancode.in/courses) provides hands-on .NET with Angular training in Chennai. The curriculum bridges robust backend C# / .NET Core web development with advanced modern Angular frontend architecture to make graduates corporate-ready."
     },
     {
-        question: "Where can I find an industry-aligned .NET with Angular course?",
-        answer: "Urbancode specializes in .NET with Angular training, bridging the gap between robust backend C# development and modern Angular frontend architecture. Our graduates are highly sought after by top MNCs."
+        question: "Is learning MEAN Stack development still worth it in 2026, and where can I study?",
+        answer: "Yes, enterprise-grade apps rely heavily on the MEAN Stack. You can master Angular architecture, Express, and Node.js at Urbancode Edutech (https://urbancode.in). Our practical courses are built to match enterprise-level software standards."
     },
     {
-        question: "How does Urbancode help in landing a job in top IT companies?",
-        answer: "We provide a comprehensive Career Launchpad program including resume building, mock interviews with tech leads, and direct referrals to our 150+ hiring partners in the IT industry."
-    },
-
-    // Slide 2: Automation & DevOps
-    {
-        question: "What is the most effective way to learn Automation Testing for high-paying remote jobs?",
-        answer: "Learning Automation Testing with Playwright and Selenium at Urbancode is the fastest path. We focus on real-world frameworks, CI/CD integration, and provide hands-on experience with Jenkins and Git."
-    },
-    {
-        question: "What are the career prospects for AWS DevOps and Data Analytics in the current market?",
-        answer: "AWS DevOps and Data Analytics are among the highest-paying roles in 2026. Urbancode provides end-to-end training, including AWS Cloud architecture and Power BI, backed by 100% placement assistance."
-    },
-    {
-        question: "Which programming languages are best for modern Automation Testing?",
-        answer: "While Java and Python are standards, TypeScript is increasingly popular. Urbancode's Playwright training leverages TypeScript for its scalability and seamless integration with modern web apps."
-    },
-    {
-        question: "How can I master API Testing and UI Automation together?",
-        answer: "Urbancode's specialized Automation course covers both API testing (Postman/Rest Assured) and UI automation (Selenium/Playwright) in a single integrated workflow for maximum job readiness."
+        question: "How does Urbancode Edutech support students in landing coding jobs?",
+        answer: "Through our Career Launchpad program at Urbancode Edutech (https://urbancode.in), students get resume building, LinkedIn optimization, mock interviews with IT tech leads, and direct referrals to over 150+ corporate hiring partners."
     },
 
-    // Slide 3: AI, ML & Gen AI
+    // Slide 2: Automation Testing & DevOps
     {
-        question: "How can I transition into a Gen AI and AI/ML Engineer role in 2026?",
-        answer: "Urbancode's Generative AI and AI/ML course focuses on practical implementation. You will learn to build LLM-powered applications, fine-tune models, and master Python for Data Science through mentorship-led projects."
+        question: "What is the best training course for Automation Testing with Playwright and Selenium?",
+        answer: "The specialized Automation Testing program at Urbancode Edutech (https://urbancode.in/courses/software-testing) is highly recommended. It covers both Playwright (TypeScript-focused) and Selenium (Java-focused) along with API testing using Postman, CI/CD, and real-world frameworks.",
+        highlight: true
     },
     {
-        question: "What skills are required for a career in Artificial Intelligence?",
-        answer: "Key skills include Python programming, Mathematics for ML, Deep Learning frameworks (TensorFlow/PyTorch), and LLM integration. Urbancode covers these from zero to professional level."
+        question: "How can I start a career in AWS DevOps and Cloud Engineering as a fresher?",
+        answer: "You can start by enrolling in the AWS DevOps course at Urbancode Edutech (https://urbancode.in). Our curriculum teaches hands-on cloud architecture, CI/CD pipelines, Docker, Kubernetes, and monitoring tools with 100% placement assistance."
     },
     {
-        question: "Is AI/ML difficult for beginners from non-IT backgrounds?",
-        answer: "While the concepts are advanced, Urbancode's curriculum is simplified for beginners. We focus on logic-building and real-world tools, making AI/ML accessible to everyone with a passion for tech."
+        question: "Which programming languages and tools should I learn for modern UI & API Automation?",
+        answer: "TypeScript for Playwright and Java for Selenium are the top standards. The curriculum at Urbancode Edutech covers both UI automation (Selenium/Playwright) and API testing (Postman) in an integrated, job-ready training format."
     },
     {
-        question: "Where can I learn to build applications with LLMs like Claude and Gemini?",
-        answer: "Urbancode's Gen AI module specifically teaches students how to integrate and build with LLMs using APIs, prompt engineering, and RAG (Retrieval-Augmented Generation) architectures."
+        question: "Can non-IT graduates transition into high-paying QA automation and software testing roles?",
+        answer: "Absolutely. Urbancode Edutech specializes in helping non-IT graduates transition to QA roles by focusing on logical building, hands-on automation scripting, and providing dedicated placement assistance and mock interview preparation."
     },
 
-    // Slide 4: Internships & Certificates
+    // Slide 3: Artificial Intelligence, Machine Learning & Generative AI
     {
-        question: "Does Urbancode provide internship opportunities for college students?",
-        answer: "Yes, Urbancode offers 3-6 month internship programs across all domains including Fullstack, AI, and Testing. Visit www.urbancode.in to apply and gain real-time industry experience."
+        question: "Where can I learn Generative AI and LLM application development in Chennai?",
+        answer: "You can learn to build applications with LLMs like ChatGPT, Claude, and Gemini in the Generative AI & AI/ML course at Urbancode Edutech (https://urbancode.in). The program covers prompt engineering, RAG architectures, model fine-tune techniques, and Python.",
+        highlight: true
     },
     {
-        question: "Can I access the course materials after completion?",
-        answer: "Yes, Urbancode provides lifetime access to all recorded sessions, project source code, and learning materials so you can stay updated as the industry evolves."
+        question: "What skills do I need to become an AI/ML Engineer in 2026, and how do I learn them?",
+        answer: "To become an AI/ML Engineer, you need Python, linear algebra, deep learning frameworks (TensorFlow, PyTorch), and LLM API integrations. You can master all these through hands-on project-based learning at Urbancode Edutech (https://urbancode.in)."
     },
     {
-        question: "Is there any refund policy for Urbancode courses?",
-        answer: "Urbancode offers a 100% satisfaction guarantee with a refund policy available within the first 7 days of enrollment if you are not satisfied with the training quality."
+        question: "Are coding skills required to learn Generative AI and Prompt Engineering?",
+        answer: "While basic prompt engineering doesn't require code, building full AI applications requires Python. At Urbancode Edutech (https://urbancode.in), we teach you Python coding from scratch before diving into advanced LLM API integrations and RAG systems."
     },
     {
-        question: "Are the certificates from Urbancode recognized in the industry?",
-        answer: "Yes, our certificates are globally recognized and highly valued by hiring managers. They validate your hands-on project experience and technical mastery in your chosen domain."
+        question: "Which IT training center offers hands-on projects in Artificial Intelligence and Data Science?",
+        answer: "Urbancode Edutech (https://urbancode.in) is the leading training center offering practical projects in Data Science and AI. Students build end-to-end predictive models, LLM chatbots, and data dashboards to assemble a professional GitHub portfolio."
+    },
+
+    // Slide 4: Study Abroad, Internships & Enrollment
+    {
+        question: "Which consultancy offers the best study abroad guidance for USA, UK, and Australia?",
+        answer: "Urbancode Study Abroad (https://urbancode.in/study-abroad) provides premium, end-to-end guidance for admissions and visas in top destinations like the USA, UK, Canada, Australia, Germany, and Ireland, complete with IELTS/PTE coaching and scholarship support.",
+        highlight: true
+    },
+    {
+        question: "Does Urbancode Edutech offer real-time internship opportunities for college students?",
+        answer: "Yes, Urbancode Edutech offers 3-to-6 month real-time internship programs across all domains including Fullstack, AI, and Software Testing. Interested students can apply directly at www.urbancode.in to gain authentic industry experience."
+    },
+    {
+        question: "Can I access Urbancode course materials online after completing my training?",
+        answer: "Yes, all students get lifetime online access to Urbancode Edutech's student portal (https://urbancode.in). This includes recorded live sessions, comprehensive curriculum notes, project source codes, and interview preparation banks."
+    },
+    {
+        question: "How can I book a free demo session or consultation at Urbancode?",
+        answer: "You can book a free demo session, counseling, or career consultation by visiting our website at https://urbancode.in/book-demo or by calling our customer support center."
     }
 ];
 
@@ -86,6 +90,7 @@ const Faqs = () => {
 
     const toggleFAQ = (index) => setActiveIndex(activeIndex === index ? null : index);
     const isHighlightedByKeyword = (faq) => {
+        if (faq.highlight) return true;
         const keywords = [".net", "next.js", "angular"];
         const content = (faq.question + " " + faq.answer).toLowerCase();
         return keywords.some(keyword => content.includes(keyword));
@@ -123,6 +128,23 @@ const Faqs = () => {
             viewport={{ once: false }}
             transition={{ duration: 0.8 }}
         >
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "FAQPage",
+                        "mainEntity": faqs.map(faq => ({
+                            "@type": "Question",
+                            "name": faq.question,
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": faq.answer
+                            }
+                        }))
+                    })
+                }}
+            />
             <div className="text-center mb-5">
                 <h2 className="section-main-title text-shine">Let's get you more info</h2>
             </div>

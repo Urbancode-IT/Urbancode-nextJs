@@ -412,6 +412,9 @@ const ContactUs = ({ redirectUrl = '/thankyou' }) => {
                 <p className="branch-address">
                   Fab Sapphire Towers, No.29/5, 3rd Floor, South Bye Pass Road, Tirunelveli – 627005
                 </p>
+                <a href="tel:+919967699674" className="branch-phone-link">
+                  <i className="fas fa-phone"></i> +91 99676 99674
+                </a>
                 <a 
                   href="https://maps.app.goo.gl/6VQpva4Me3jy1QpY6" 
                   target="_blank" 

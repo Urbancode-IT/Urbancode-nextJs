@@ -67,7 +67,7 @@ const TestimonialCarousel = () => {
             setIndex((prev) =>
                 prev < testimonials.length - cardsToShow ? prev + 1 : 0
             );
-        }, 2000);
+        }, 8000);
         return () => clearInterval(interval);
     }, [cardsToShow]);
 
@@ -165,7 +165,7 @@ const TestimonialCarousel = () => {
                                         <div className="testimonial-text-wrapper mb-3">
                                             <p className="text-muted fs08rem mb-1">{card.feedback}</p>
                                             <button 
-                                                className="read-more-btn btn p-0 text-success fw-semibold fs07rem"
+                                                className="read-more-btn btn p-0 fw-semibold fs07rem"
                                                 onClick={() => setSelectedTestimonial(card)}
                                             >
                                                 Read More

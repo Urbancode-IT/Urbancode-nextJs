@@ -406,6 +406,29 @@
   font-size: 0.85rem;
 }
 
+.contact-us-page .branch-phone-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1 rem;
+  color: #17944d;
+  font-weight: 600;
+  text-decoration: none;
+  padding-left: 28px;
+  transition: all 0.2s ease;
+  width: fit-content;
+}
+
+.contact-us-page .branch-phone-link:hover {
+  color: #0d5a2f;
+  text-decoration: none;
+  transform: translateX(3px);
+}
+
+.contact-us-page .branch-phone-link i {
+  font-size: 0.85rem;
+}
+
 /* ── General Contact Section ── */
 .contact-us-page .general-details-container {
   display: flex;

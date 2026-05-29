@@ -404,6 +404,7 @@ const StudyAbroadPage = () => {
                                         initial={{ opacity: 0, x: -30 }}
                                         animate={{ opacity: 1, x: 0 }}
                                         transition={{ duration: 0.5 }}
+                                        style={{ '--country-accent': showcaseData[activeShowcase].accentColor }}
                                     >
                                         <h2 className="showcase-country-title country-title-handwritten">
                                             {showcaseData[activeShowcase].title}

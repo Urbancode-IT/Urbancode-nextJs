@@ -53,7 +53,8 @@
 
 /* Uniform testimonial cards - SHADOWS REMOVED */
 .testimonial-card {
-  background: linear-gradient(160deg, #ffffff 0%, #f9fdfc 40%, #e0f9f4 100%);
+  background: linear-gradient(135deg, #0f0f0f 0%, #0b3d2e 45%, #16a34a 100%);
+  color: white;
   width: 300px;
   flex: 0 0 auto;
   clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);
@@ -64,13 +65,17 @@
   flex-direction: column;
   justify-content: space-between;
   text-align: center;
-  border: 1px solid rgba(200, 220, 210, 0.6); /* Slightly more visible border since shadows are gone */
+  border: 1px solid rgba(22, 163, 74, 0.3); /* Premium subtle green border */
   position: relative;
   box-shadow: none !important; /* Explicitly removing shadows */
 
   /* FIXED HEIGHT */
   height: 340px;
   overflow: hidden;
+}
+
+.testimonial-card h5 {
+  color: #ffffff !important;
 }
 
 .testimonial-text-wrapper {
@@ -87,12 +92,13 @@
     transition: all 0.3s ease;
     text-decoration: underline;
     opacity: 0.8;
+    color: #4ade80 !important; /* Highly readable light green on dark gradient */
 }
 
 .read-more-btn:hover {
     opacity: 1;
     transform: translateX(5px);
-    color: #1a6d2d !important;
+    color: #ffffff !important;
 }
 
 /* Glossy top edge highlight */
@@ -126,12 +132,13 @@
   overflow: hidden;
   text-overflow: ellipsis;
   line-height: 1.5;
+  color: rgba(255, 255, 255, 0.8) !important; /* Override text-muted on dark gradient background */
 }
 
 .testimonial-card:hover {
   transform: translateY(-6px);
   box-shadow: none !important; /* Ensuring no shadow on hover */
-  border-color: rgba(40, 167, 69, 0.4);
+  border-color: rgba(22, 163, 74, 0.6);
 }
 
 /* Modal Styling */
