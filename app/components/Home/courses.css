@@ -1,11 +1,14 @@
 /* =========================================
-   Job Guarantee Courses Section - Unique Styles
+   Job Guarantee Courses Section - Enhanced Interactive Styles
    ========================================= */
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+/* ── Section Wrapper ── */
 .jg-courses-section-wrapper {
     position: relative;
     width: 100%;
-    min-height: 550px;
+    min-height: 580px;
     margin: 0;
     background: linear-gradient(180deg, var(--bg-neutral) 0%, rgba(215, 235, 226, 0.2) 50%, var(--bg-neutral) 100%),
         linear-gradient(259.47deg,
@@ -20,6 +23,9 @@
     box-sizing: border-box;
 }
 
+
+
+/* ── Main Content ── */
 .jg-courses-main-content {
     width: 100%;
     max-width: 1440px;
@@ -30,9 +36,11 @@
     gap: 40px;
     padding: 0 40px;
     box-sizing: border-box;
+    position: relative;
+    z-index: 2;
 }
 
-/* Header Section */
+/* ── Header ── */
 .jg-courses-header-container {
     width: 100%;
     text-align: center;
@@ -40,9 +48,10 @@
     flex-direction: column;
     align-items: center;
     z-index: 5;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
+/* ── Title ── */
 .jg-courses-title {
     position: relative;
     font-weight: 600;
@@ -53,61 +62,75 @@
     letter-spacing: -0.5px;
 }
 
-/* .jg-courses-title::after {
-    content: "";
-    position: absolute;
-    bottom: -12px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 5px;
-    background: linear-gradient(90deg, #00B56F, #12d46c, #00B56F);
-    background-size: 200% 100%;
-    border-radius: 10px;
-    animation: underline-shine 3s ease-in-out infinite;
-} */
-
-/* Features Subtitles */
+/* ── Feature Subtitle Pills ── */
 .jg-features-subtitles {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: clamp(15px, 3vw, 40px);
-    margin-top: 15px;
+    gap: clamp(12px, 2.5vw, 36px);
+    margin-top: 22px;
     width: 100%;
 }
 
+/* Each pill gets a unique accent color via nth-child */
 .jg-feature-subtitle-item {
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 12px 24px;
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(0, 181, 111, 0.1);
-    border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
+    padding: 13px 26px;
+    background: rgba(255, 255, 255, 0.82);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1.5px solid rgba(0, 181, 111, 0.18);
+    border-radius: 18px;
+    box-shadow:
+        0 4px 18px rgba(0, 181, 111, 0.08),
+        0 1px 4px rgba(0,0,0,0.05);
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+                box-shadow 0.35s ease,
+                border-color 0.35s ease,
+                background 0.35s ease;
+    cursor: default;
 }
 
 .jg-feature-subtitle-item:hover {
-    transform: translateY(-5px);
-    background: rgba(255, 255, 255, 0.9);
-    box-shadow: 0 10px 30px rgba(0, 181, 111, 0.12);
-    border-color: rgba(0, 181, 111, 0.3);
+    transform: translateY(-7px) scale(1.04);
+    background: rgba(255, 255, 255, 0.97);
+    box-shadow:
+        0 16px 40px rgba(0, 181, 111, 0.18),
+        0 4px 12px rgba(0,0,0,0.08);
+    border-color: rgba(0, 181, 111, 0.45);
+}
+
+/* Icon wrapper — unique gradient per pill */
+.jg-feature-subtitle-item:nth-child(1) .jg-feature-subtitle-icon-wrapper {
+    background: linear-gradient(135deg, #00b56f 0%, #059669 100%);
+    box-shadow: 0 4px 14px rgba(0, 181, 111, 0.35);
+}
+.jg-feature-subtitle-item:nth-child(2) .jg-feature-subtitle-icon-wrapper {
+    background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
+    box-shadow: 0 4px 14px rgba(14, 165, 233, 0.35);
+}
+.jg-feature-subtitle-item:nth-child(3) .jg-feature-subtitle-icon-wrapper {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    box-shadow: 0 4px 14px rgba(245, 158, 11, 0.35);
 }
 
 .jg-feature-subtitle-icon-wrapper {
-    width: 42px;
-    height: 42px;
-    background: linear-gradient(135deg, #00B56F 0%, #059669 100%);
-    border-radius: 12px;
+    width: 44px;
+    height: 44px;
+    border-radius: 13px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
-    font-size: 18px;
+    font-size: 19px;
     flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.jg-feature-subtitle-item:hover .jg-feature-subtitle-icon-wrapper {
+    transform: rotate(-8deg) scale(1.12);
 }
 
 .jg-feature-subtitle-text {
@@ -116,22 +139,22 @@
 }
 
 .jg-feature-subtitle-title {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 700;
-    color: #2d3748;
-    line-height: 1;
+    color: #1a202c;
+    line-height: 1.1;
     margin-bottom: 4px;
 }
 
 .jg-feature-subtitle-detail {
-    font-size: 12px;
-    font-weight: 500;
-    color: #718096;
+    font-size: 11px;
+    font-weight: 600;
+    color: #64748b;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.8px;
 }
 
-/* Slider Section */
+/* ── Slider Container ── */
 .jg-courses-slider-container {
     display: flex;
     flex-direction: column;
@@ -140,57 +163,76 @@
     max-width: 1300px;
     position: relative;
     min-width: 0;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
+/* ── Nav Buttons ── */
 .jg-nav-side-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    width: 54px;
-    height: 54px;
+    width: 52px;
+    height: 52px;
     border-radius: 50%;
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    background: rgba(255, 255, 255, 0.4);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: 2px solid rgba(0, 181, 111, 0.35);
+    background: linear-gradient(135deg, rgba(0,181,111,0.15) 0%, rgba(255,255,255,0.85) 100%);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow:
+        0 4px 20px rgba(0, 181, 111, 0.15),
+        0 1px 6px rgba(0,0,0,0.08);
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 22px;
-    color: #333;
+    font-size: 20px;
+    font-weight: 700;
+    color: #00b56f;
     z-index: 20;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .jg-nav-side-btn:hover:not(.is-disabled) {
-    transform: translateY(-50%) scale(1.1);
-    background: rgba(255, 255, 255, 0.6);
+    transform: translateY(-50%) scale(1.15);
+    background: linear-gradient(135deg, #00b56f 0%, #059669 100%);
+    color: #fff;
+    border-color: #00b56f;
+    box-shadow:
+        0 8px 28px rgba(0, 181, 111, 0.40),
+        0 2px 8px rgba(0,0,0,0.12);
 }
 
-.jg-nav-side-btn.prev {
-    left: -27px;
+.jg-nav-side-btn.is-disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
 }
 
-.jg-nav-side-btn.next {
-    right: -27px;
-}
+.jg-nav-side-btn.prev { left: -27px; }
+.jg-nav-side-btn.next { right: -27px; }
 
+/* ── Glass Track Wrapper ── */
 .jg-courses-glass-track-wrapper {
     width: 100%;
-    background: linear-gradient(99.41deg, rgba(25, 135, 84, 0.08) 1.17%, rgba(49, 49, 49, 0.05) 100.99%);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+    background: linear-gradient(
+        120deg,
+        rgba(0, 181, 111, 0.07) 0%,
+        rgba(255, 255, 255, 0.55) 50%,
+        rgba(16, 185, 129, 0.06) 100%
+    );
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1.5px solid rgba(0, 181, 111, 0.15);
+    box-shadow:
+        0 12px 48px rgba(0, 181, 111, 0.10),
+        0 2px 12px rgba(0,0,0,0.06),
+        inset 0 1px 0 rgba(255,255,255,0.7);
     border-radius: 40px;
     padding: 25px;
     box-sizing: border-box;
     overflow: hidden;
 }
 
+/* ── Scroll Track ── */
 .jg-courses-scroll-track {
     display: flex;
     gap: 25px;
@@ -206,28 +248,58 @@
     display: none;
 }
 
-/* Course Card */
+/* ── Course Card ── */
 .jg-course-card {
     width: 306px;
     height: 331px;
     flex-shrink: 0;
     position: relative;
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 22px;
+    border: 1.5px solid rgba(255, 255, 255, 0.25);
     opacity: 1;
-    transform: rotate(0deg);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+    box-shadow:
+        0 8px 24px rgba(0, 0, 0, 0.14),
+        0 1px 4px rgba(0,0,0,0.08);
     overflow: hidden;
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: all 0.42s cubic-bezier(0.165, 0.84, 0.44, 1);
     scroll-snap-align: start;
     scroll-snap-stop: always;
+    cursor: pointer;
 }
 
+/* Colored top-glow on hover per card position */
 .jg-course-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.18);
+    transform: translateY(-12px) scale(1.02);
+    box-shadow:
+        0 24px 50px rgba(0, 181, 111, 0.22),
+        0 6px 20px rgba(0, 0, 0, 0.14);
+    border-color: rgba(0, 181, 111, 0.4);
 }
 
+/* Animated shimmer overlay on hover */
+.jg-course-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        125deg,
+        transparent 30%,
+        rgba(255,255,255,0.12) 50%,
+        transparent 70%
+    );
+    background-size: 250% 250%;
+    background-position: 200% 200%;
+    transition: background-position 0.6s ease;
+    pointer-events: none;
+    border-radius: inherit;
+    z-index: 3;
+}
+
+.jg-course-card:hover::after {
+    background-position: -50% -50%;
+}
+
+/* ── Card Image Container ── */
 .jg-card-img-container {
     width: 100%;
     height: 100%;
@@ -237,31 +309,73 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.5s ease;
 }
 
+.jg-course-card:hover .jg-card-img {
+    transform: scale(1.06);
+}
+
+/* ── Glass Overlay (title bar) ── */
 .jg-card-glass-overlay {
     position: absolute;
-    bottom: 25px;
+    bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
     width: 88%;
-    background: rgba(49, 49, 49, 0.75);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
+    background: linear-gradient(
+        135deg,
+        rgba(0, 181, 111, 0.25) 0%,
+        rgba(30, 30, 30, 0.82) 100%
+    );
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     border-radius: 22px;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    padding: 18px;
+    border: 1px solid rgba(0, 181, 111, 0.25);
+    padding: 16px 18px;
     z-index: 2;
     box-sizing: border-box;
+    transition: all 0.35s ease;
+}
+
+.jg-course-card:hover .jg-card-glass-overlay {
+    background: linear-gradient(
+        135deg,
+        rgba(0, 181, 111, 0.40) 0%,
+        rgba(20, 20, 20, 0.88) 100%
+    );
+    border-color: rgba(0, 181, 111, 0.50);
+    box-shadow: 0 4px 20px rgba(0, 181, 111, 0.25);
+    bottom: 22px;
 }
 
 .jg-card-title-text {
-    font-size: 19px;
+    font-size: 18px;
     font-weight: 700;
     color: #fff;
     margin: 0;
     text-align: center;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.4px;
+    text-shadow: 0 1px 6px rgba(0,0,0,0.4);
+}
+
+/* ── Dot-indicator pulse accent (decorative) ── */
+.jg-card-glass-overlay::before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 3px;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #00b56f, #10b981);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.jg-course-card:hover .jg-card-glass-overlay::before {
+    opacity: 1;
 }
 
 /* =========================================
@@ -284,12 +398,12 @@
     }
 
     .jg-courses-title {
-        font-size: 34px;
+        font-size: 26px;
         margin-bottom: 20px;
     }
 
     .jg-features-subtitles {
-        gap: 15px;
+        gap: 12px;
     }
 
     .jg-feature-subtitle-item {
@@ -299,8 +413,9 @@
     }
 
     .jg-nav-side-btn {
-        width: 48px;
-        height: 48px;
+        width: 44px;
+        height: 44px;
+        font-size: 17px;
     }
 }
 
@@ -310,19 +425,19 @@
     }
 
     .jg-courses-title {
-        font-size: 26px;
+        font-size: 22px;
         letter-spacing: -0.5px;
         margin-bottom: 20px;
     }
 
     .jg-feature-subtitle-icon-wrapper {
-        width: 36px;
-        height: 36px;
+        width: 38px;
+        height: 38px;
         font-size: 16px;
     }
 
     .jg-feature-subtitle-title {
-        font-size: 14px;
+        font-size: 13px;
     }
 
     .jg-course-card {
