@@ -1,14 +1,16 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaTerminal, FaPlay, FaCode, FaExclamationCircle } from "react-icons/fa";
+import { FaTerminal, FaPlay, FaExclamationCircle } from "react-icons/fa";
 import Editor from "../Editor.jsx";
+import { executeCode, getPyodide } from "../../utils/codeExecutor";
 
 const CodeCompiler = ({ language, label }) => {
     const [code, setCode] = useState("");
     const [output, setOutput] = useState("");
     const [isRunning, setIsExecuting] = useState(false);
-    const variables = useRef({});
+    const [error, setError] = useState("");
+    const [pythonReady, setPythonReady] = useState(language !== "python");
 
     useEffect(() => {
         const starterCode = {
@@ -20,173 +22,53 @@ const CodeCompiler = ({ language, label }) => {
         if (starterCode[language]) {
             setCode(starterCode[language]);
         }
+        setOutput("");
+        setError("");
+        setPythonReady(language !== "python");
     }, [language]);
-
-    const [error, setError] = useState("");
-    const pyodideRef = useRef(null);
 
     useEffect(() => {
-        if (language === "python" && !pyodideRef.current) {
-            const loadPyodideEngine = async () => {
-                try {
-                    if (window.loadPyodide) {
-                        setOutput("Initializing Python environment...");
-                        const pyodide = await window.loadPyodide({
-                            indexURL: "https://cdn.jsdelivr.net/pyodide/v0.23.4/full/"
-                        });
-                        // Load sqlite3 package as it is unvendored in newer Pyodide versions
-                        await pyodide.loadPackage('sqlite3');
-                        pyodideRef.current = pyodide;
-                        setOutput((prev) => prev + "\nPython Ready.");
-                    }
-                } catch (e) {
-                    console.error("Failed to load Pyodide:", e);
-                    setError("Failed to load Python engine. Please check internet connection.");
+        if (language !== "python") return;
+        let cancelled = false;
+        setOutput("Initializing Python environment...");
+        getPyodide()
+            .then(() => {
+                if (!cancelled) {
+                    setPythonReady(true);
+                    setOutput("Python ready. Click Run Code.");
                 }
-            };
-            setTimeout(loadPyodideEngine, 1000);
-        }
+            })
+            .catch((e) => {
+                if (!cancelled) {
+                    setError(
+                        e?.message ||
+                            "Failed to load Python engine. Check your internet connection."
+                    );
+                    setOutput("");
+                }
+            });
+        return () => {
+            cancelled = true;
+        };
     }, [language]);
 
-    const runPython = async (sourceCode) => {
-        if (!pyodideRef.current) {
-            return { error: "Python engine not loaded yet. Please wait." };
-        }
-        try {
-            let capturedOutput = "";
-            pyodideRef.current.setStdout({
-                batched: (msg) => {
-                    capturedOutput += msg + "\n";
-                    setOutput((prev) => prev + msg + "\n");
-                }
-            });
-            await pyodideRef.current.runPythonAsync(sourceCode);
-            return { output: capturedOutput };
-        } catch (error) {
-            return { error: error.message };
-        }
-    };
-
-    const runJava = (sourceCode) => {
-        let outputBuffer = "";
-        const vars = {};
-
-        const evaluateExpression = (expr) => {
-            expr = expr.trim();
-            if (expr.startsWith('"') && expr.endsWith('"')) return expr.slice(1, -1);
-            if (!isNaN(expr)) return Number(expr);
-            if (vars[expr] !== undefined) return vars[expr];
-
-            const mathMatch = expr.match(/([\w\d]+)\s*([\+\-\*\/])\s*([\w\d]+)/);
-            if (mathMatch) {
-                const val1 = evaluateExpression(mathMatch[1]);
-                const val2 = evaluateExpression(mathMatch[3]);
-                const op = mathMatch[2];
-                if (typeof val1 === 'number' && typeof val2 === 'number') {
-                    switch (op) {
-                        case '+': return val1 + val2;
-                        case '-': return val1 - val2;
-                        case '*': return val1 * val2;
-                        case '/': return val1 / val2;
-                        default: return expr;
-                    }
-                }
-                if (op === '+') return val1 + "" + val2;
-            }
-            return expr;
-        };
-
-        const lines = sourceCode.split('\n');
-        try {
-            lines.forEach(line => {
-                line = line.trim();
-                const intMatch = line.match(/int\s+(\w+)\s*=\s*(\d+);/);
-                if (intMatch) vars[intMatch[1]] = Number(intMatch[2]);
-
-                const strMatch = line.match(/String\s+(\w+)\s*=\s*"(.*)";/);
-                if (strMatch) vars[strMatch[1]] = strMatch[2];
-
-                if (line.includes('System.out.println')) {
-                    const match = line.match(/System\.out\.println\((.*)\);/);
-                    if (match) {
-                        let content = match[1];
-                        const parts = content.split('+');
-                        let lineOut = "";
-                        parts.forEach(part => {
-                            lineOut += evaluateExpression(part);
-                        });
-                        outputBuffer += lineOut + "\n";
-                    }
-                }
-            });
-        } catch (e) {
-            return { error: e.message, output: outputBuffer };
-        }
-
-        if (!outputBuffer) outputBuffer = "Build Success. (No output captured)";
-        return { output: outputBuffer };
-    };
-
-    const runCPlusPlus = (sourceCode) => {
-        let outputBuffer = "";
-        const lines = sourceCode.split('\n');
-        try {
-            lines.forEach(line => {
-                line = line.trim();
-                const intMatch = line.match(/int\s+(\w+)\s*=\s*(\d+);/);
-                if (intMatch) variables.current[intMatch[1]] = Number(intMatch[2]);
-
-                if (line.includes('cout')) {
-                    const match = line.match(/cout\s*<<\s*"(.*)"\s*(<<\s*endl|;)?/);
-                    if (match) {
-                        outputBuffer += match[1] + "\n";
-                    } else {
-                        const varMatch = line.match(/cout\s*<<\s*(\w+)\s*(<<\s*endl|;)?/);
-                        if (varMatch && variables.current[varMatch[1]]) {
-                            outputBuffer += variables.current[varMatch[1]] + "\n";
-                        }
-                    }
-                }
-            });
-        } catch (e) {
-            return { error: e.message, output: outputBuffer };
-        }
-        if (!outputBuffer) outputBuffer = "Build Success. (No output captured)";
-        return { output: outputBuffer };
-    };
-
-    const runSQL = (sourceCode) => {
-        if (sourceCode.toLowerCase().includes('select')) {
-            return { output: "Query Executed Successfully.\n\n| id | name      | role      |\n|----|-----------|-----------|\n| 1  | John Doe  | Admin     |\n| 2  | Jane Doe  | User      |\n| 3  | Bob Smith | Editor    |" };
-        } else if (sourceCode.trim()) {
-            return { output: "Command Executed Successfully (1 row affected)." };
-        }
-        return { output: "" };
-    };
-
     const handleRun = async () => {
+        if (language === "python" && !pythonReady) {
+            setError("Python engine is still loading. Please wait.");
+            return;
+        }
         setIsExecuting(true);
         setOutput("");
         setError("");
-
-        setTimeout(async () => {
-            let res = { output: "" };
-            if (language === "python") {
-                res = await runPython(code);
-            } else if (language === "java") {
-                res = runJava(code);
-            } else if (language === "c++") {
-                res = runCPlusPlus(code);
-            } else if (language === "sql") {
-                res = runSQL(code);
-            } else {
-                res = { error: `Execution not implemented for ${language}` };
-            }
-
+        try {
+            const res = await executeCode(language, code);
             if (res.error) setError(res.error);
-            if (res.output && language !== "python") setOutput(res.output);
+            if (res.output) setOutput(res.output);
+        } catch (e) {
+            setError(e?.message || "Execution failed.");
+        } finally {
             setIsExecuting(false);
-        }, 800);
+        }
     };
 
     return (
@@ -201,7 +83,7 @@ const CodeCompiler = ({ language, label }) => {
                 </div>
                 <button
                     onClick={handleRun}
-                    disabled={isRunning}
+                    disabled={isRunning || (language === "python" && !pythonReady)}
                     className="run-button"
                 >
                     {isRunning ? (

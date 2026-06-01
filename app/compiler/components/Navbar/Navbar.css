@@ -51,7 +51,18 @@
 .compiler-navbar-nav {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 8px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    max-width: min(72vw, 900px);
+    scrollbar-width: thin;
+}
+
+.nav-link-lang {
+    padding: 8px 12px;
+    font-size: 0.8rem;
+    text-transform: none;
+    letter-spacing: 0;
 }
 
 .nav-link {
