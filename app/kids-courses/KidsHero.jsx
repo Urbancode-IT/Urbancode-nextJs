@@ -1,94 +1,99 @@
 'use client';
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import EnquiryFormModal from '../components/common/EnquiryFormModal';
 import './KidsHero.css';
 
 /**
- * KidsHero Component
- * A responsive, full-viewport hero section designed for a kids-facing course or space.
- * Features smooth scaling fonts, semantic HTML, and an anchored responsive image.
+ * KidsHero v2 – Premium EdTech Redesign
+ * Mobile  : single column → badge → title → desc → hero card → stats → CTAs
+ * Tablet  : 2-col → left text | right hero card with floating elements
+ * Desktop : wide 2-col with trust band below
  */
 const KidsHero = () => {
   const [showEnquiry, setShowEnquiry] = useState(false);
+  const router = useRouter();
 
+  const goToPlayzone = () => router.push('/kids-courses/playzone');
   const scrollToCourses = () => {
-    const element = document.getElementById('kids-courses-section');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    const el = document.getElementById('kids-courses-section');
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <section className="kids-hero-section">
-      <div className="kids-hero-container">
-        <div className="kids-hero-content-left">
-          <div className="kids-hero-text-wrap">
-            <h1 className="kids-hero-main-title">
-              Keep <span className="highlight-text">
-                Learning
-                <svg className="underline-svg" viewBox="0 0 262 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M2 15C50 8 150 8 260 15" stroke="#00B56F" strokeWidth="4" strokeLinecap="round"/>
-                  <path d="M10 5C60 -2 160 -2 250 5" stroke="#00B56F" strokeWidth="4" strokeLinecap="round" opacity="0.7"/>
-                </svg>
-              </span><br />
-              on Track
-            </h1>
-            <p className="kids-hero-description">
-              When schools and districts have reliable access to substitute teachers and subs have the freedom to choose what and when they teach
-            </p>
-            <div className="kids-hero-action">
-              <button 
-                onClick={() => setShowEnquiry(true)}
-                className="kids-enroll-btn"
-              >
-                Enroll now
-              </button>
-              <img src="/images/KidsImages/arrow.png" alt="arrow" className="kids-arrow-img" />
-            </div>
+    <section className="kh2-section">
+      <div className="kh2-inner">
+
+        {/* ════════ LEFT COLUMN ════════
+            On mobile: display:contents dissolves this wrapper so
+            children become direct flex items of kh2-inner, allowing
+            correct order: badge(1) → title(2) → desc(3) → [card](4) → stats(5) → cta(6)
+        */}
+        <div className="kh2-left">
+
+          {/* 1 – Announcement badge */}
+          <div className="kh2-badge-wrap">
+            <button
+              className="kh2-badge"
+              onClick={goToPlayzone}
+              id="kids-hero-playzone-card"
+              aria-label="Visit Kids Play Zone"
+            >
+              <span className="kh2-badge-text">Kids Play Zone is Live!</span>
+              <span className="kh2-badge-link">Free coding games →</span>
+            </button>
           </div>
 
-          <div className="kids-hero-stats-grid">
-            <div className="stat-card-gray stat-mentors">
-              <h2 className="stat-number">50+</h2>
-              <p className="stat-label">Best certified mentors </p>
-            </div>
-            <div 
-              className="stat-card-gray stat-transform"
-              onClick={scrollToCourses}
+          {/* 2 – Headline */}
+          <h1 className="kh2-title">
+             Preparing Kids for a World Beyond {' '}
+            <span className="kh2-highlight">
+              Textbooks
+              <svg className="kh2-underline-svg" viewBox="0 0 220 14" fill="none" aria-hidden="true">
+                <path d="M3 10C55 4 140 4 217 10" stroke="#00C16A" strokeWidth="3.5" strokeLinecap="round"/>
+                <path d="M10 4C65 -1 145 -1 210 4"  stroke="#00C16A" strokeWidth="2.5" strokeLinecap="round" opacity="0.4"/>
+              </svg>
+            </span>
+          </h1>
+
+          {/* 3 – Description */}
+          <p className="kh2-desc">
+           Beyond academics, nurturing the creators and innovators of tomorrow.
+          </p>
+
+          {/* CTA buttons */}
+          <div className="kh2-cta-row">
+            <button
+              className="kh2-btn-primary"
+              onClick={() => setShowEnquiry(true)}
+              id="kids-hero-enroll-btn"
             >
-              <div className="stat-image-placeholder">
-                 <img src="/images/KidsImages/junior.png" alt="Transforming" />
-              </div>
-              <h3 className="stat-title">Transforming skills</h3>
-              <div className="stat-icon-arrow">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M7 17L17 7M17 7H7M17 7V17" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </div>
-              <img src="/images/KidsImages/scribble.png" alt="scribble" className="kids-scribble-img" />
-            </div>
+              Book Free Demo
+            </button>
+            <button
+              className="kh2-btn-secondary"
+              onClick={scrollToCourses}
+              id="kids-hero-explore-btn"
+            >
+              Explore Courses
+            </button>
           </div>
         </div>
 
-        <div className="kids-hero-image-right" onClick={scrollToCourses}>
-          <div className="image-bg-blob"></div>
-          <img 
-            src="/images/KidsImages/kidsspace-hero.png" 
-            alt="Kid with books" 
-            className="main-hero-img"
-          />
-          <div className="decoration-lines">
-            <div className="line line-1"></div>
-            <div className="line line-2"></div>
-            <div className="line line-3"></div>
-          </div>
-          <div className="pear-decoration">
-             <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 2C10 2 8 4 8 7C8 8.5 8.5 10 9.5 11C8 12.5 7 14.5 7 17C7 19.5 9 22 12 22C15 22 17 19.5 17 17C17 14.5 16 12.5 14.5 11C15.5 10 16 8.5 16 7C16 4 14 2 12 2Z" stroke="#FAF8F4" strokeWidth="1"/>
-             </svg>
+        {/* ════════ RIGHT COLUMN — Hero Card (order:4 on mobile) ════════ */}
+        <div className="kh2-right">
+          <div className="kh2-hero-card" id="kids-hero-image-section">
+            {/* Main child image — no bg, no floating cards */}
+            <img
+              src="/images/KidsImages/kidsspace-hero.png"
+              alt="Kid learning to code"
+              className="kh2-card-img"
+            />
           </div>
         </div>
       </div>
+
+
 
       {showEnquiry && (
         <EnquiryFormModal

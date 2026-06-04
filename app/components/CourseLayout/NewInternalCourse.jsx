@@ -12,6 +12,7 @@ import ProgramCohorts from "./ProgramCohorts";
 
 import EnquiryFormModal from "@/app/components/common/EnquiryFormModal.jsx";
 import CourseAssistant from "@/app/components/CourseAssistant/CourseAssistant";
+import KidsMascot    from "./KidsMascot";
 
 const NewInternalCourse = ({ data }) => {
     // Check if data exists
@@ -155,16 +156,22 @@ const NewInternalCourse = ({ data }) => {
                         </div>
                     </div>
 
-                    {/* RIGHT IMAGE */}
-                    <div className={`nict-hero-image-wrapper ${heroData.isLegacyImage ? 'legacy-image-wrapper' : ''}`}>
-                        <div className={heroData.isLegacyImage ? 'legacy-image-container' : ''}>
-                            <img
-                                src={heroData.image || "/mern.png"}
-                                alt={heroData.highlightText}
-                                className={`nict-hero-image ${heroData.isLegacyImage ? 'legacy-image' : ''}`}
-                            />
+                    {/* RIGHT – interactive mascot for Kids Space, image for all others */}
+                    {data.isKidsSpace ? (
+                        <div className="nict-hero-mascot-wrapper">
+                            <KidsMascot courseName={heroData.highlightText} />
                         </div>
-                    </div>
+                    ) : (
+                        <div className={`nict-hero-image-wrapper ${heroData.isLegacyImage ? 'legacy-image-wrapper' : ''}`}>
+                            <div className={heroData.isLegacyImage ? 'legacy-image-container' : ''}>
+                                <img
+                                    src={heroData.image || "/mern.png"}
+                                    alt={heroData.highlightText}
+                                    className={`nict-hero-image ${heroData.isLegacyImage ? 'legacy-image' : ''}`}
+                                />
+                            </div>
+                        </div>
+                    )}
                 </div>
             </section>
 

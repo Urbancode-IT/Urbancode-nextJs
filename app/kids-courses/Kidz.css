@@ -1,6 +1,222 @@
 /* ...existing code... */
 
 /* ============================================================
+   🎥 TESTIMONIAL VIDEO POPUP
+   ============================================================ */
+
+/* Backdrop */
+.kids-testimonial-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.65);
+  z-index: 9998;
+  animation: testimonial-fade-in 0.3s ease;
+}
+
+/* Modal Container */
+.kids-testimonial-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  width: min(760px, calc(100vw - 32px));
+  max-height: 90vh;
+  overflow-y: auto;
+  background: #fff;
+  border-radius: 20px;
+  padding: clamp(20px, 5vw, 36px);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.3);
+  animation: testimonial-slide-up 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes testimonial-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes testimonial-slide-up {
+  from { opacity: 0; transform: translate(-50%, -42%); }
+  to   { opacity: 1; transform: translate(-50%, -50%); }
+}
+
+/* Close Button */
+.kids-testimonial-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: #f3f4f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+  padding: 0;
+}
+
+.kids-testimonial-close:hover {
+  background: #e5e7eb;
+  transform: scale(1.1);
+}
+
+/* Heading Area */
+.kids-testimonial-heading {
+  text-align: center;
+  margin-bottom: 20px;
+  padding-right: 20px;
+}
+
+.kids-testimonial-badge {
+  display: inline-block;
+  background: #ecfdf5;
+  color: #059669;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 999px;
+  padding: 4px 14px;
+  margin-bottom: 10px;
+}
+
+.kids-testimonial-title {
+  font-size: clamp(17px, 4vw, 22px);
+  font-weight: 700;
+  color: #2c3e50;
+  margin: 0 0 6px;
+}
+
+.kids-testimonial-subtitle {
+  color: #6b7280;
+  font-size: 14px;
+  margin: 0;
+}
+
+/* Video + Quote Row */
+.kids-testimonial-body {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: flex-start;
+  margin-bottom: 22px;
+}
+
+/* Video Column */
+.kids-testimonial-video-wrap {
+  flex: 0 0 auto;
+  width: min(220px, 100%);
+}
+
+.kids-testimonial-video {
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 14px;
+  display: block;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
+.kids-testimonial-video:-webkit-full-screen {
+  object-fit: contain;
+  background-color: #000;
+}
+
+.kids-testimonial-video:fullscreen {
+  object-fit: contain;
+  background-color: #000;
+}
+
+/* Quote Column */
+.kids-testimonial-quote-wrap {
+  flex: 1 1 180px;
+}
+
+.kids-testimonial-student-name {
+  color: #2c3e50;
+  font-size: clamp(18px, 4vw, 24px);
+  font-weight: 700;
+  margin: 0 0 3px;
+}
+
+.kids-testimonial-course-label {
+  font-size: 15px;
+  color: #059669;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.kids-testimonial-quote-icon {
+  opacity: 0.4;
+  margin-bottom: 12px;
+  display: block;
+  width: 32px;
+  height: 32px;
+}
+
+.kids-testimonial-quote-text {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(15px, 2.5vw, 17px);
+  font-style: italic;
+  color: #4b5563;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* Star Rating */
+.kids-testimonial-stars {
+  display: flex;
+  gap: 3px;
+  margin-top: 12px;
+  align-items: center;
+}
+
+.kids-testimonial-stars-count {
+  font-size: 12px;
+  color: #6b7280;
+  margin-left: 6px;
+}
+
+/* CTA Button Area */
+.kids-testimonial-cta {
+  text-align: center;
+}
+
+.kids-testimonial-cta-btn {
+  background: #16a34a;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 11px 36px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  width: min(260px, 100%);
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.kids-testimonial-cta-btn:hover {
+  background: #15803d;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(22, 163, 74, 0.35);
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .kids-testimonial-body {
+    flex-direction: column;
+  }
+
+  .kids-testimonial-video-wrap {
+    width: 100%;
+    max-width: 200px;
+    margin: 0 auto;
+  }
+}
+
+/* ============================================================
    ☀️ SUMMER CAMP STYLES
    ============================================================ */
 
@@ -444,14 +660,17 @@
 }
 
 /* Why Choose Section */
-.kidz-page .why-choose-kids .overlay {
-  width: 64px;
-  height: 64px;
-  background: #DDEBE6;
-  border-radius: 50%;
+.kidz-page .why-choose-kids .overlay,
+.kidz-page .why-choose-features .overlay {
+  width: 56px;
+  height: 56px;
+  background: rgba(0, 193, 106, 0.1);
+  border: 1px solid rgba(0, 193, 106, 0.2);
+  border-radius: 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .kidz-page .kids-heading {
@@ -468,16 +687,26 @@
 }
 
 .kidz-page .kids-card {
-  border-radius: 12px;
-  box-shadow: 0px 0px 8px 1px rgba(0, 0, 0, 0.25);
-  border: none;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 20px !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04) !important;
+  border: 1px solid rgba(0, 193, 106, 0.15) !important;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
   background-color: #fff !important;
 }
 
 .kidz-page .kids-card:hover {
   background-color: #fff !important;
-  box-shadow: 5px 20px 20px rgba(0, 0, 0, 0.3) !important;
+  transform: translateY(-5px);
+  border-color: rgba(0, 193, 106, 0.45) !important;
+  box-shadow: 0 12px 32px rgba(0, 193, 106, 0.12) !important;
+}
+
+.kidz-page .kids-card:hover .overlay {
+  background: #00C16A !important;
+}
+
+.kidz-page .kids-card:hover .overlay svg {
+  color: #fff !important;
 }
 
 /* Removed white text on hover to maintain readability */
@@ -494,6 +723,155 @@
 }
 
 /* Tech Journey Section */
+.kidz-page .why-choose-features {
+  padding: clamp(60px, 8vh, 100px) clamp(20px, 5vw, 80px);
+  /* background: linear-gradient(160deg, #f0fdf8 0%, #f8fafc 60%, #eef9f4 100%); */
+  background:var(--bg-neutral);
+  position: relative;
+  overflow: hidden;
+}
+.kidz-page .why-choose-features::before {
+  content: '';
+  position: absolute;
+  top: -80px; right: -80px;
+  width: 320px; height: 320px;
+  background: radial-gradient(circle, rgba(0,193,106,0.07) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* WCF Container */
+.kidz-page .wcf-container {
+  max-width: 1260px;
+  margin: 0 auto;
+}
+
+/* WCF Grid - now directly in container */
+.kidz-page .why-choose-features .wcf-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+}
+@media (max-width: 1100px) {
+  .kidz-page .why-choose-features .wcf-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 580px) {
+  .kidz-page .why-choose-features .wcf-grid { grid-template-columns: 1fr; }
+}
+
+/* WCF Card - 3D Flip */
+.kidz-page .wcf-card {
+  background: transparent;
+  perspective: 1000px;
+  height: 250px;
+}
+
+.kidz-page .wcf-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform-style: preserve-3d;
+}
+
+.kidz-page .wcf-card:hover .wcf-card-inner {
+  transform: rotateY(180deg);
+}
+
+.kidz-page .wcf-card-front,
+.kidz-page .wcf-card-back {
+  position: absolute;
+  inset: 0;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+  border: 1.5px solid rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.kidz-page .wcf-card-front {
+  background: linear-gradient(135deg, #0f0f0f 0%, #0b3d2e 45%, #16a34a 100%);
+}
+
+.kidz-page .wcf-card-front .wcf-card-title {
+  color: #ffffff;
+}
+
+.kidz-page .wcf-card-front .wcf-card-num {
+  color: rgba(255, 255, 255, 0.1);
+}
+
+.kidz-page .wcf-card-front .wcf-icon-wrap {
+  background: rgba(255, 255, 255, 0.15) !important;
+  color: #ffffff !important;
+}
+
+.kidz-page .wcf-card-back {
+  transform: rotateY(180deg);
+}
+
+.kidz-page .wcf-back-green { border: 2px solid rgba(0,193,106,0.3); box-shadow: 0 10px 30px rgba(0,193,106,0.15); }
+.kidz-page .wcf-back-teal { border: 2px solid rgba(49,123,116,0.3); box-shadow: 0 10px 30px rgba(49,123,116,0.15); }
+.kidz-page .wcf-back-yellow { border: 2px solid rgba(255,200,61,0.3); box-shadow: 0 10px 30px rgba(255,200,61,0.15); }
+.kidz-page .wcf-back-purple { border: 2px solid rgba(111,66,193,0.3); box-shadow: 0 10px 30px rgba(111,66,193,0.15); }
+
+/* WCF Icon */
+.kidz-page .wcf-icon-wrap {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  transition: transform 0.3s ease;
+}
+.kidz-page .wcf-card:hover .wcf-icon-wrap { transform: scale(1.08); }
+
+.kidz-page .wcf-icon-green  { background: rgba(0,193,106,0.12);  color: #00C16A; }
+.kidz-page .wcf-icon-teal   { background: rgba(49,123,116,0.12); color: #317B74; }
+.kidz-page .wcf-icon-yellow { background: rgba(255,200,61,0.15);  color: #c98000; }
+.kidz-page .wcf-icon-purple { background: rgba(111,66,193,0.10);  color: #6f42c1; }
+
+/* WCF Card Body */
+.kidz-page .wcf-card-body { flex: 1; }
+
+.kidz-page .wcf-card-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1a2535;
+  margin: 0;
+  line-height: 1.3;
+}
+.kidz-page .wcf-card-text {
+  font-size: 15px;
+  color: #475569;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* WCF Watermark Number */
+.kidz-page .wcf-card-num {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  font-size: 36px;
+  font-weight: 900;
+  color: rgba(0,0,0,0.05);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+  font-family: 'Inter', sans-serif;
+}
+
+/* ─── Tech Journey Section ─────────────────────── */
 .kidz-page .tech-journey {
   background: linear-gradient(90deg, #DDEAE5 1.32%, #DCEAE5 100%);
   border-radius: 24px;
@@ -1071,5 +1449,989 @@
   .kidz-page .d-flex.flex-wrap.gap-3 {
     justify-content: center;
     gap: 20px;
+  }
+}
+
+/* ══════════════════════════════════════════════════
+   PARENT OUTCOMES SECTION
+   ══════════════════════════════════════════════════ */
+.kids-outcomes-section {
+  background: linear-gradient(180deg, #f7f9fc 0%, #eef6f2 100%);
+  padding: clamp(48px, 8vh, 100px) clamp(16px, 5vw, 80px);
+}
+
+.kids-outcomes-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.kids-outcomes-header {
+  text-align: center;
+  margin-bottom: clamp(32px, 5vw, 56px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.kids-outcomes-badge {
+  display: inline-block;
+  background: #ecfdf5;
+  border: 1.5px solid #86efac;
+  color: #059669;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 6px 18px;
+  border-radius: 50px;
+  letter-spacing: 0.4px;
+}
+
+.kids-outcomes-sub {
+  font-size: clamp(14px, 1.2vw, 17px);
+  color: #64748b;
+  max-width: 620px;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.kids-outcomes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: clamp(16px, 2vw, 24px);
+  margin-bottom: clamp(32px, 5vw, 52px);
+}
+
+.kids-outcome-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: clamp(20px, 3vw, 32px);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  border: 1px solid rgba(0,0,0,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.kids-outcome-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: linear-gradient(180deg, #00b56f, #059669);
+  border-radius: 4px 0 0 4px;
+}
+
+.kids-outcome-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(0,181,111,0.12);
+}
+
+.kids-outcome-icon {
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+
+.kids-outcome-metric {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.kids-outcome-metric-val {
+  font-size: clamp(28px, 3.5vw, 40px);
+  font-weight: 800;
+  color: #00b56f;
+  line-height: 1;
+}
+
+.kids-outcome-metric-label {
+  font-size: 12px;
+  color: #9ca3af;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.kids-outcome-title {
+  font-size: clamp(16px, 1.4vw, 19px);
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 8px;
+}
+
+.kids-outcome-desc {
+  font-size: clamp(13px, 1vw, 15px);
+  color: #6b7280;
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* Trust Strip */
+.kids-trust-strip {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(16px, 3vw, 40px);
+  background: #fff;
+  border-radius: 20px;
+  padding: clamp(20px, 3vh, 32px) clamp(20px, 4vw, 48px);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  border: 1px solid #e5e7eb;
+}
+
+.kids-trust-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.kids-trust-val {
+  font-size: clamp(22px, 2.5vw, 32px);
+  font-weight: 800;
+  color: #059669;
+  line-height: 1.1;
+}
+
+.kids-trust-label {
+  font-size: clamp(11px, 0.9vw, 13px);
+  color: #9ca3af;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  white-space: nowrap;
+}
+
+/* ══════════════════════════════════════════════════
+   PLAYZONE CTA CARD
+   ══════════════════════════════════════════════════ */
+.kids-playzone-cta-section {
+  padding: clamp(48px, 7vh, 88px) clamp(16px, 5vw, 80px) clamp(32px, 5vh, 60px);
+  max-width: 1260px;
+  margin: 30px auto 0;
+}
+
+.kids-playzone-cta-card {
+  background: linear-gradient(135deg, #0d1e25 0%, #15323a 50%, #1a4150 100%);
+  border: 1px solid rgba(0, 181, 111, 0.25);
+  border-radius: 28px;
+  padding: clamp(32px, 5vw, 56px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(24px, 4vw, 48px);
+  flex-wrap: wrap;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25), 0 0 30px rgba(0, 181, 111, 0.1);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.kids-playzone-cta-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 181, 111, 0.2);
+  border-color: rgba(0, 181, 111, 0.45);
+}
+
+.kids-playzone-cta-card::after {
+  content: '🧩';
+  position: absolute;
+  right: -20px;
+  bottom: -20px;
+  font-size: 120px;
+  opacity: 0.06;
+  pointer-events: none;
+}
+
+.kids-playzone-cta-left {
+  flex: 1;
+  min-width: 240px;
+}
+
+.kids-playzone-cta-badge {
+  display: inline-block;
+  background: rgba(0,181,111,0.2);
+  border: 1px solid rgba(0,181,111,0.4);
+  color: #4ade80;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 14px;
+  border-radius: 30px;
+  margin-bottom: 14px;
+}
+
+.kids-playzone-cta-card h3 {
+  font-size: clamp(22px, 2.5vw, 32px);
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.kids-playzone-cta-card p {
+  font-size: clamp(13px, 1.1vw, 16px);
+  color: rgba(255,255,255,0.72);
+  line-height: 1.65;
+  max-width: 500px;
+  margin-bottom: 22px;
+}
+
+.kids-playzone-cta-btn {
+  background: linear-gradient(135deg, #00b56f, #059669);
+  color: #fff;
+  border: none;
+  padding: clamp(12px, 1.5vh, 16px) clamp(24px, 2.5vw, 36px);
+  border-radius: 50px;
+  font-size: clamp(14px, 1.2vw, 17px);
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 6px 24px rgba(0,181,111,0.4);
+}
+
+.kids-playzone-cta-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 32px rgba(0,181,111,0.55);
+}
+
+.kids-playzone-cta-right {
+  flex-shrink: 0;
+}
+
+.kids-playzone-game-previews {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.kids-playzone-preview-pill {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #fff;
+  font-size: clamp(12px, 1vw, 14px);
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: 14px;
+  backdrop-filter: blur(8px);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.kids-playzone-preview-pill:hover {
+  background: rgba(0, 181, 111, 0.18);
+  border-color: rgba(0, 181, 111, 0.5);
+  color: #4ade80;
+  transform: scale(1.05) translateX(4px);
+  box-shadow: 0 6px 18px rgba(0, 181, 111, 0.2);
+}
+
+@media (max-width: 768px) {
+  .kids-outcomes-grid { grid-template-columns: 1fr; }
+  .kids-trust-strip { gap: 20px; }
+  .kids-playzone-cta-card { flex-direction: column; }
+  .kids-playzone-cta-right { display: none; }
+}
+
+/* ══════════════════════════════════════════════════
+   KIDS TESTIMONIAL SECTION
+   ══════════════════════════════════════════════════ */
+.kids-testimonial-section {
+  background-color: var(--kids-hero-bg, #FAF8F4);
+  padding: 30px clamp(16px, 5vw, 80px) !important;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.testimonial-container-card {
+  border-radius: 24px !important;
+  background: linear-gradient(135deg, #FAF8F4 0%, #f0fdf4 100%) !important;
+  border: 1.5px solid rgba(0, 181, 111, 0.18) !important;
+  box-shadow: 0 10px 30px rgba(0, 181, 111, 0.05) !important;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonial-container-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 40px rgba(0, 181, 111, 0.09) !important;
+}
+
+.kids-testimonial-video-wrapper {
+  width: 100%;
+  max-width: 220px; /* Reduced from 300px to make it compact */
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.kids-testimonial-video {
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  height: auto;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 16px;
+  display: block;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
+.kids-testimonial-quote-text {
+  font-size: clamp(13px, 1.05vw, 15.5px);
+  font-style: italic;
+  font-weight: 500;
+  color: #4b5563;
+  line-height: 1.65;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .kids-testimonial-section {
+    padding: 24px 16px !important;
+  }
+  .kids-testimonial-video-wrapper {
+    max-width: 180px;
+    margin-bottom: 16px;
+  }
+}
+/* Backdrop */
+.testimonial-popup-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.65);
+  z-index: 9998;
+  backdrop-filter: blur(4px);
+}
+
+/* Modal */
+.testimonial-popup-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+
+  width: min(560px, calc(100vw - 32px));
+  max-height: 90vh;
+  overflow-y: auto;
+
+  background: #ffffff;
+  border-radius: 20px;
+  padding: clamp(20px, 5vw, 36px);
+
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.3);
+  animation: popupFadeIn 0.35s ease;
+}
+
+/* Close Button */
+.testimonial-popup-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+
+  width: 32px;
+  height: 32px;
+
+  border: none;
+  border-radius: 50%;
+
+  background: #f3f4f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.testimonial-popup-close:hover {
+  background: #e5e7eb;
+  transform: rotate(90deg);
+}
+
+/* Header */
+.testimonial-popup-header {
+  text-align: center;
+  margin-bottom: 20px;
+  padding-right: 20px;
+}
+
+/* Badge */
+.testimonial-popup-badge {
+  display: inline-block;
+  background: #ecfdf5;
+  color: #059669;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  border-radius: 999px;
+  padding: 4px 14px;
+  margin-bottom: 10px;
+}
+
+/* Title */
+.testimonial-popup-title {
+  font-size: clamp(17px, 4vw, 22px);
+  font-weight: 700;
+  color: #2c3e50;
+  margin: 0 0 6px;
+}
+
+/* Subtitle */
+.testimonial-popup-subtitle {
+  color: #6b7280;
+  font-size: 14px;
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Animation */
+@keyframes popupFadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -48%) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+  .testimonial-popup-modal {
+    width: calc(100vw - 24px);
+    padding: 20px;
+    border-radius: 18px;
+  }
+
+  .testimonial-popup-header {
+    padding-right: 12px;
+  }
+}
+
+
+/* ============================================================
+   ❓ KIDS FAQ SECTION
+   ============================================================ */
+
+.kids-faq-section {
+  background: var(--bg-neutral, #ffffff);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── Left panel ── */
+.kids-faq-left {
+  position: relative;
+  padding-bottom: 16px;
+  margin-top: -24px;
+}
+
+/* Giant background "?" watermark */
+@media (min-width: 1025px) {
+  .kids-faq-left::before {
+    content: "?";
+    position: absolute;
+    font-size: 22rem;
+    font-weight: 900;
+    top: -150px;
+    left: -10px;
+    z-index: 0;
+    opacity: 0.06;
+    background: linear-gradient(135deg, #f472b6, #60a5fa, #fbbf24, #4ade80);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    pointer-events: none;
+    user-select: none;
+  }
+}
+
+.kids-faq-left-title {
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: #1a2535;
+  line-height: 1.25;
+  position: relative;
+  z-index: 2;
+  margin-bottom: 32px;
+}
+
+/* Contact box */
+.kids-faq-contact-box {
+  background: #fff;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
+  border: 1.5px solid #f0f0f0;
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.kids-faq-contact-box:hover {
+  box-shadow: 0 8px 32px rgba(167, 139, 250, 0.18);
+  transform: translateY(-4px);
+}
+
+.kids-faq-contact-heading {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #1a2535;
+  margin: 0 0 8px;
+}
+
+.kids-faq-contact-text {
+  font-size: 0.875rem;
+  color: #64748b;
+  line-height: 1.6;
+  margin: 0 0 16px;
+}
+
+.kids-faq-mail-btn {
+  display: inline-block;
+  background: linear-gradient(135deg, #7c3aed, #a78bfa);
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 10px 22px;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 14px rgba(124, 58, 237, 0.3);
+}
+
+.kids-faq-mail-btn:hover {
+  background: linear-gradient(135deg, #6d28d9, #7c3aed);
+  color: #fff;
+  text-decoration: none;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(124, 58, 237, 0.4);
+}
+
+
+
+/* ── Right accordion ── */
+.kids-faq-accordion-wrapper {
+  min-height: 100px;
+}
+
+.kids-faq-page-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* FAQ item — colored via CSS variables */
+.kids-faq-item {
+  border: 1.5px solid var(--faq-border, #e2e8f0);
+  border-radius: 14px;
+  background: var(--faq-bg, #ffffff);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.kids-faq-item:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  transform: translateX(3px);
+}
+
+/* Question button */
+.kids-faq-question {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  text-align: left;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: background 0.25s ease;
+}
+
+.kids-faq-question:hover {
+  background: rgba(0, 0, 0, 0.025);
+}
+
+.kids-faq-question.active {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.kids-faq-q-text {
+  flex: 1;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1a2535;
+  line-height: 1.45;
+}
+
+.kids-faq-q-icon {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: var(--faq-border, #e2e8f0);
+  color: var(--faq-icon, #64748b);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.kids-faq-question.active .kids-faq-q-icon {
+  transform: rotate(45deg);
+  background: var(--faq-icon, #64748b);
+  color: #fff;
+}
+
+/* Answer */
+.kids-faq-answer {
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+  padding: 0 20px;
+}
+
+.kids-faq-answer-text {
+  margin: 0;
+  padding: 10px 0 18px;
+  font-size: 0.9rem;
+  color: #4b5563;
+  line-height: 1.75;
+  border-top: 1px dashed var(--faq-border, #e2e8f0);
+}
+
+/* ── Pagination ── */
+.kids-faq-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 1.5rem;
+}
+
+.kids-faq-nav-btn {
+  background: #1a2535;
+  border: none;
+  color: #fff;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(26, 37, 53, 0.2);
+  flex-shrink: 0;
+}
+
+.kids-faq-nav-btn:hover {
+  background: #7c3aed;
+  box-shadow: 0 6px 18px rgba(124, 58, 237, 0.35);
+  transform: translateY(-3px) scale(1.05);
+}
+
+.kids-faq-dots {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.kids-faq-dot {
+  width: 10px;
+  height: 6px;
+  border-radius: 3px;
+  background: #dfe2e5;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.kids-faq-dot:hover {
+  background: #b5bcc2;
+  transform: scale(1.2);
+}
+
+.kids-faq-dot.active {
+  width: 24px;
+}
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+  .kids-faq-main-title {
+    font-size: 22px;
+  }
+
+  .kids-faq-subtitle {
+    font-size: 0.875rem;
+  }
+
+  .kids-faq-left-title {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+
+  .kids-faq-contact-box {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .kids-faq-q-text {
+    font-size: 0.875rem;
+  }
+
+  .kids-faq-question {
+    padding: 14px 16px;
+    gap: 10px;
+  }
+
+  .kids-faq-answer {
+    padding: 0 16px;
+  }
+
+  .kids-faq-answer-text {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .kids-faq-nav-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+  }
+}
+
+
+/* ============================================================
+   🎓 ENHANCED KIDS COURSE CARDS  (kc-card)
+   ============================================================ */
+
+.kidz-page .kc-card {
+  border-radius: 20px;
+  overflow: hidden;
+  background: #ffffff;
+  border: 2px solid transparent;
+  transition: transform 0.35s cubic-bezier(0.165, 0.84, 0.44, 1),
+              box-shadow 0.35s cubic-bezier(0.165, 0.84, 0.44, 1),
+              border-color 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.kidz-page .kc-card:hover {
+  transform: translateY(-8px);
+}
+
+/* Gold Outline & Glow for Summer Camp */
+.kidz-page .kc-card-gold {
+  border-color: rgba(218, 165, 32, 0.5);
+  box-shadow: 0 4px 20px rgba(218, 165, 32, 0.15);
+}
+
+.kidz-page .kc-card-gold:hover {
+  border-color: rgba(255, 215, 0, 1);
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.7), 0 10px 40px rgba(255, 215, 0, 0.5);
+}
+
+/* Silver Outline & Glow for Regular Courses */
+.kidz-page .kc-card-silver {
+  border-color: rgba(192, 192, 192, 0.5);
+  box-shadow: 0 4px 20px rgba(192, 192, 192, 0.15);
+}
+
+.kidz-page .kc-card-silver:hover {
+  border-color: rgba(224, 224, 224, 1);
+  box-shadow: 0 0 25px rgba(224, 224, 224, 0.7), 0 10px 40px rgba(224, 224, 224, 0.5);
+}
+
+/* Image wrapper */
+.kidz-page .kc-img-wrap {
+  overflow: hidden;
+  position: relative;
+  border-radius: 18px 18px 0 0; /* Fixes sharp edges */
+}
+
+.kidz-page .kc-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.55s cubic-bezier(0.165, 0.84, 0.44, 1),
+              filter 0.4s ease;
+  filter: saturate(0.9);
+}
+
+.kidz-page .kc-card:hover .kc-img {
+  transform: scale(1.06);
+  filter: saturate(1.15) brightness(1.04);
+}
+
+/* Card body */
+.kidz-page .kc-body {
+  padding: 18px 18px 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.kidz-page .kc-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a2535;
+  margin: 0 0 8px;
+  line-height: 1.35;
+  transition: color 0.25s ease;
+}
+
+.kidz-page .kc-card-gold:hover .kc-title {
+  color: #daa520;
+}
+
+.kidz-page .kc-card-silver:hover .kc-title {
+  color: #888888;
+}
+
+.kidz-page .kc-desc {
+  font-size: 0.8rem;
+  color: #64748b;
+  line-height: 1.65;
+  margin: 0 0 14px;
+  flex: 1;
+}
+
+/* Meta pills row */
+.kidz-page .kc-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-bottom: 16px;
+}
+
+.kidz-page .kc-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: 8px;
+  white-space: nowrap;
+  border: 1px solid transparent;
+}
+
+.kidz-page .kc-pill-star {
+  background: rgba(255, 215, 0, 0.12);
+  color: #a67c00;
+  border-color: rgba(255, 215, 0, 0.25);
+}
+
+.kidz-page .kc-pill-students {
+  background: rgba(99, 102, 241, 0.09);
+  color: #4f46e5;
+  border-color: rgba(99, 102, 241, 0.18);
+}
+
+.kidz-page .kc-pill-clock {
+  background: rgba(16, 185, 129, 0.09);
+  color: #047857;
+  border-color: rgba(16, 185, 129, 0.18);
+}
+
+/* Enroll buttons */
+.kidz-page .kc-enroll-btn {
+  display: block;
+  width: 100%;
+  text-align: center;
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  padding: 10px 20px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Shine effect */
+.kidz-page .kc-enroll-btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
+  transform: skewX(-25deg);
+  animation: kc-shine 3s infinite;
+  z-index: 2;
+  pointer-events: none;
+}
+
+@keyframes kc-shine {
+  0% { left: -100%; }
+  20% { left: 200%; }
+  100% { left: 200%; }
+}
+
+.kidz-page .kc-enroll-gold {
+  background: linear-gradient(135deg, #ffd700, #daa520);
+  box-shadow: 0 4px 14px rgba(218, 165, 32, 0.4);
+}
+
+.kidz-page .kc-enroll-silver {
+  background: linear-gradient(135deg, #e0e0e0, #a0a0a0);
+  box-shadow: 0 4px 14px rgba(160, 160, 160, 0.4);
+  color: #1a2535;
+}
+
+.kidz-page .kc-enroll-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0);
+  transition: background 0.3s ease;
+}
+
+.kidz-page .kc-enroll-btn:hover {
+  transform: translateY(-2px) scale(1.01);
+  filter: brightness(1.08);
+}
+
+.kidz-page .kc-enroll-gold:hover {
+  box-shadow: 0 8px 22px rgba(218, 165, 32, 0.55);
+}
+
+.kidz-page .kc-enroll-silver:hover {
+  box-shadow: 0 8px 22px rgba(160, 160, 160, 0.55);
+}
+
+.kidz-page .kc-enroll-btn:hover::before {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .kidz-page .kc-img {
+    height: 180px;
+  }
+
+  .kidz-page .kc-title {
+    font-size: 15px;
+  }
+
+  .kidz-page .kc-body {
+    padding: 14px 14px 16px;
   }
 }

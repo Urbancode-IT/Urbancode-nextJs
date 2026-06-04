@@ -37,6 +37,8 @@ const InstitutionVideos = dynamic(() => import('./components/Home/InstitutionVid
   loading: () => <div className="placeholder-skeleton" style={{ height: '400px', background: '#0a0d14', margin: '20px 0', borderRadius: '16px' }} />
 });
 
+const GetCertified = dynamic(() => import('./components/Home/GetCertified'));
+
 export const metadata = {
   title: "Software Training Institute in Chennai | Urbancode",
   description: "Learn Full Stack, MERN, Testing, Gen AI and more at Urbancode Chennai. Industry experts, hands-on projects and placement assistance.",

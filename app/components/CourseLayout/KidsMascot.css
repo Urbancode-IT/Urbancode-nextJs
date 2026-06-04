@@ -1,0 +1,432 @@
+/* ===========================================================================
+   KidsMascot.css  –  Interactive UC Owl Mascot (Ollie)
+   Premium design: dual orbits, glow platform, glassmorphic bubble, no stars.
+=========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap');
+
+/* ── Root ──────────────────────────────────────────────────────────────────── */
+.km-root {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  min-height: 360px;
+  padding-top: 80px;
+  font-family: 'Fredoka', 'Inter', 'Segoe UI', sans-serif;
+}
+
+/* ── Clickable scene wrapper ───────────────────────────────────────────────── */
+.km-scene {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.km-scene:focus-visible {
+  outline: 3px dashed #1B8A5A;
+  outline-offset: 14px;
+}
+
+/* ── Mascot image box ──────────────────────────────────────────────────────── */
+.km-mascot-image-box {
+  position: relative;
+  z-index: 2;
+}
+
+/* ── Mascot image ──────────────────────────────────────────────────────────── */
+.km-svg {
+  width: 220px;
+  height: 264px;
+  display: block;
+  filter: drop-shadow(0 18px 36px rgba(44, 62, 80, 0.22))
+          drop-shadow(0 4px 12px rgba(0, 0, 0, 0.12));
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.km-scene:hover .km-svg {
+  filter: drop-shadow(0 24px 48px rgba(44, 62, 80, 0.35))
+          drop-shadow(0 6px 16px rgba(0, 0, 0, 0.18));
+}
+
+/* ── Glowing platform under mascot ────────────────────────────────────────── */
+.km-platform {
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 130px;
+  height: 18px;
+  background: radial-gradient(ellipse at center, rgba(44, 62, 80, 0.35) 0%, rgba(44, 62, 80, 0) 70%);
+  filter: blur(6px);
+  border-radius: 50%;
+  z-index: 1;
+  animation: km-platform-pulse 2.8s ease-in-out infinite;
+}
+
+@keyframes km-platform-pulse {
+  0%, 100% { opacity: 0.7; transform: translateX(-50%) scaleX(1);   }
+  50%       { opacity: 1.0; transform: translateX(-50%) scaleX(1.15); }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   MASCOT BODY ANIMATIONS
+   (Panda SVG element transition and transform-origin definitions)
+═══════════════════════════════════════════════════════════════════════════ */
+.km-left-ear {
+  transform-origin: 62px 56px;
+  transition: transform 0.3s ease-in-out;
+}
+.km-right-ear {
+  transform-origin: 158px 56px;
+  transition: transform 0.3s ease-in-out;
+}
+.km-left-arm-group {
+  transform-origin: 50px 180px;
+  transition: transform 0.3s ease-in-out;
+}
+.km-right-arm-group {
+  transform-origin: 170px 180px;
+  transition: transform 0.3s ease-in-out;
+}
+.km-head-group {
+  transform-origin: 110px 100px;
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.km-pupil {
+  transition: transform 0.08s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* IDLE – gentle endless float */
+.km-s-idle .km-svg {
+  animation: km-float 3.2s ease-in-out infinite;
+}
+
+@keyframes km-float {
+  0%, 100% { transform: translateY(0);     }
+  50%       { transform: translateY(-14px); }
+}
+
+/* WAVING – small sway & wave arm */
+.km-s-waving .km-svg {
+  animation: km-sway 0.5s ease-in-out 3;
+}
+.km-s-waving .km-right-arm-group {
+  animation: km-wave-right-arm 0.25s ease-in-out infinite alternate;
+}
+
+@keyframes km-sway {
+  0%, 100% { transform: translateY(0)    rotate(0deg);  }
+  25%       { transform: translateY(-6px) rotate(-3deg); }
+  75%       { transform: translateY(-6px) rotate(3deg);  }
+}
+@keyframes km-wave-right-arm {
+  0% { transform: rotate(-20deg); }
+  100% { transform: rotate(-80deg); }
+}
+
+/* EXCITED – big bounce & arm/ear wiggle */
+.km-s-excited .km-svg {
+  animation: km-jump 0.44s cubic-bezier(0.34, 1.56, 0.64, 1) 4;
+}
+.km-s-excited .km-left-ear {
+  animation: km-left-ear-wiggle 0.22s ease-in-out infinite alternate;
+}
+.km-s-excited .km-right-ear {
+  animation: km-right-ear-wiggle 0.22s ease-in-out infinite alternate;
+}
+.km-s-excited .km-left-arm-group {
+  animation: km-excited-left-arm 0.22s ease-in-out infinite alternate;
+}
+.km-s-excited .km-right-arm-group {
+  animation: km-excited-right-arm 0.22s ease-in-out infinite alternate;
+}
+
+@keyframes km-jump {
+  0%   { transform: translateY(0)     scale(1.00, 1.00); }
+  28%  { transform: translateY(-28px) scale(1.06, 0.96); }
+  58%  { transform: translateY(-42px) scale(0.96, 1.08); }
+  84%  { transform: translateY(-10px) scale(1.02, 0.99); }
+  100% { transform: translateY(0)     scale(1.00, 1.00); }
+}
+@keyframes km-left-ear-wiggle {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(-12deg); }
+}
+@keyframes km-right-ear-wiggle {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(12deg); }
+}
+@keyframes km-excited-left-arm {
+  0% { transform: rotate(20deg); }
+  100% { transform: rotate(-35deg) translate(-2px, -4px); }
+}
+@keyframes km-excited-right-arm {
+  0% { transform: rotate(-20deg); }
+  100% { transform: rotate(35deg) translate(2px, -4px); }
+}
+
+/* THINKING – gentle rocking & head tilt / arm lift */
+.km-s-thinking .km-svg {
+  animation: km-rock 1.5s ease-in-out infinite alternate;
+}
+.km-s-thinking .km-head-group {
+  animation: km-think-head 1.5s ease-in-out infinite alternate;
+}
+.km-s-thinking .km-left-arm-group {
+  animation: km-think-left-arm 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes km-rock {
+  from { transform: rotate(-4deg) translateY(-5px); }
+  to   { transform: rotate(4deg)  translateY(-5px); }
+}
+@keyframes km-think-head {
+  0% { transform: rotate(-4deg); }
+  100% { transform: rotate(4deg); }
+}
+@keyframes km-think-left-arm {
+  0% { transform: rotate(20deg); }
+  100% { transform: translate(6px, -14px) rotate(50deg); }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   DOM PARTICLES
+═══════════════════════════════════════════════════════════════════════════ */
+.km-particle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 18px;
+  line-height: 1;
+  pointer-events: none;
+  animation: km-burst 0.88s cubic-bezier(0.25, 0.46, 0.45, 0.94) var(--d, 0s) forwards;
+  z-index: 30;
+}
+
+@keyframes km-burst {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) translate(0, 0) scale(0.5);
+  }
+  60% { opacity: 1; }
+  100% {
+    opacity: 0;
+    transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(1.3);
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   PREMIUM SPEECH BUBBLE
+═══════════════════════════════════════════════════════════════════════════ */
+.km-bubble {
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%) translateY(0) scale(0.8);
+  opacity: 0;
+  transition:
+    opacity 0.28s ease,
+    transform 0.36s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  pointer-events: none;
+  z-index: 20;
+
+  /* Glassmorphic card */
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 2px solid rgba(27, 138, 90, 0.30);
+  border-radius: 20px;
+  padding: 0;
+  width: 260px;
+  max-width: 290px;
+  box-shadow:
+    0 20px 50px rgba(27, 138, 90, 0.18),
+    0 6px 20px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  overflow: hidden;
+}
+
+/* Header strip */
+.km-bubble-header {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: linear-gradient(135deg, #1B8A5A 0%, #14a068 100%);
+  padding: 9px 14px 8px;
+}
+
+.km-bubble-avatar {
+  font-size: 17px;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+
+.km-bubble-title {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.04em;
+  flex: 1;
+}
+
+.km-bubble-badge {
+  font-size: 9px;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.22);
+  color: #ffffff;
+  border-radius: 100px;
+  padding: 2px 8px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Body text */
+.km-bubble-body {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #2C3E50;
+  line-height: 1.5;
+  padding: 12px 14px 8px;
+  text-align: left;
+}
+
+/* Typing dots footer */
+.km-bubble-footer {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 14px 11px;
+}
+
+.km-bubble-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #1B8A5A;
+  opacity: 0.4;
+  animation: km-dot-bounce 1.4s ease-in-out infinite;
+}
+
+.km-bubble-dot:nth-child(2) { animation-delay: 0.2s; }
+.km-bubble-dot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes km-dot-bounce {
+  0%, 80%, 100% { opacity: 0.4; transform: scale(1);    }
+  40%           { opacity: 1;   transform: scale(1.35); }
+}
+
+/* Tail */
+.km-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -13px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 8px solid transparent;
+  border-top-color: rgba(27, 138, 90, 0.30);
+}
+
+.km-bubble::before {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: rgba(255, 255, 255, 0.96);
+  z-index: 1;
+}
+
+.km-bubble--on {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-12px) scale(1);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   BACKGROUND ELEMENTS  (no stars — dual orbit rings + glow + code floats)
+═══════════════════════════════════════════════════════════════════════════ */
+.km-bg-elements {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+}
+
+/* Himalayan hills & bamboo background illustration */
+.km-bg-svg {
+  position: absolute;
+  width: 440px;
+  height: 440px;
+  bottom: -20px;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.9;
+  animation: km-bg-sway 12s ease-in-out infinite alternate;
+}
+
+@keyframes km-bg-sway {
+  0% { transform: scale(1) rotate(0deg) translateY(0); }
+  100% { transform: scale(1.02) rotate(1deg) translateY(-2px); }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   CLICK HINT TEXT
+═══════════════════════════════════════════════════════════════════════════ */
+.km-hint {
+  margin-top: 14px;
+  font-family: 'Fredoka', 'Inter', sans-serif;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #1B8A5A;
+  user-select: none;
+  letter-spacing: 0.02em;
+  animation: km-hint-breathe 2.6s ease-in-out infinite;
+  z-index: 2;
+}
+
+@keyframes km-hint-breathe {
+  0%, 100% { opacity: 0.65; }
+  50%       { opacity: 0.25; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 480px) {
+  .km-svg {
+    width: 180px;
+    height: 216px;
+  }
+
+  .km-bubble {
+    width: 220px;
+    max-width: 240px;
+    font-size: 12px;
+  }
+
+  .km-root {
+    min-height: 300px;
+    padding-top: 60px;
+  }
+
+  .km-bg-svg {
+    width: 310px;
+    height: 310px;
+    bottom: 5px;
+  }
+}
