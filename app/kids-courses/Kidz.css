@@ -489,8 +489,8 @@
 /* Section Styling */
 .kidz-page .section-title {
   font-weight: 600;
-  font-size: 32px;
-  line-height: 48px;
+  font-size: 32px !important;
+  line-height: 44px !important;
   text-align: center;
   margin-bottom: 10px;
 }
@@ -675,8 +675,8 @@
 
 .kidz-page .kids-heading {
   color: #2C3E50;
-  font-size: 32px;
-  line-height: 48px;
+  font-size: 32px !important;
+  line-height: 44px !important;
 }
 
 .kidz-page .kids-subheading {

@@ -577,7 +577,7 @@ const KidsFaqSection = () => {
       <div className="container py-5">
         {/* Heading */}
         <h2 className="section-title mb-5">
-          Frequently Asked <span className="text-success text-shine">Questions</span>
+          Frequently Asked &nbsp;<span className="text-success text-shine">Questions</span>
         </h2>
 
         <div className="row align-items-start g-4">
