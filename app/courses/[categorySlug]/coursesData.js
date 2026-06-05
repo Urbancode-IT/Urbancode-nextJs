@@ -1661,132 +1661,191 @@ const coursesData = {
     }
   ]
 }
-,      {
-        title: "Next.js Development",
-        desc: "Build blazing-fast, SEO-friendly web apps with Next.js. Master Server-Side Rendering (SSR), API routes, and modern React patterns to become an elite web developer.",
-        rating: 4.8,
-        duration: "2 months",
-        students: "784",
-        img: "/images/courses/nextjs-cc.png",
-        aboutData: {
-          topic: "Master Next.js — The Leading React Framework for Production!",
-          content1:
-            "Learn Next.js, the powerful React framework for building fast, SEO-friendly, and production-ready web applications. This course focuses entirely on mastering Next.js from fundamentals to advanced concepts.",
-          content2:
-            "From file-based routing and diverse rendering methods (SSR, SSG, ISR) to API routes and authentication, this course prepares you to build enterprise-grade applications. You'll gain hands-on experience with Middleware, Server Actions, and performance optimization techniques like next/image."
-        },
-        courseContentData: [
-          {
-            id: 1,
-            title: "Next.js Fundamentals",
-            icon: "bi bi-lightning-charge",
-            defaultOpen: true,
-            items: [
-              "Introduction to Next.js",
-              "Why Next.js over React",
-              "Project setup & folder structure",
-              "Pages Router vs App Router"
-            ]
-          },
-          {
-            id: 2,
-            title: "Routing & Rendering",
-            icon: "bi bi-signpost-split",
-            items: [
-              "File-based routing & nested routes",
-              "Dynamic routing & navigation",
-              "Server-Side Rendering (SSR) & Static Site Generation (SSG)",
-              "Incremental Static Regeneration (ISR)"
-            ]
-          },
-          {
-            id: 3,
-            title: "Components & Styling",
-            icon: "bi bi-layout-text-window-reverse",
-            items: [
-              "Server Components vs Client Components",
-              "Next.js Layout system",
-              "CSS Modules, Global CSS, and Tailwind CSS",
-              "Responsive UI design"
-            ]
-          },
-          {
-            id: 4,
-            title: "Data Fetching & APIs",
-            icon: "bi bi-cloud-arrow-down",
-            items: [
-              "Fetch API usage in Server & Client Components",
-              "Creating API Routes (GET, POST, PUT, DELETE)",
-              "Handling backend logic inside Next.js",
-              "API integration best practices"
-            ]
-          },
-          {
-            id: 5,
-            title: "Security & Authentication",
-            icon: "bi bi-shield-lock",
-            items: [
-              "Basic and JWT authentication",
-              "NextAuth.js patterns",
-              "Protected routes and middleware"
-            ]
-          },
-          {
-            id: 6,
-            title: "Optimization & Deployment",
-            icon: "bi bi-speedometer2",
-            items: [
-              "Image optimization (next/image)",
-              "Lazy loading and code splitting",
-              "SEO best practices in Next.js",
-              "Deploying applications on Vercel"
-            ]
-          },
-          {
-            id: 7,
-            title: "Modern Next.js & Projects",
-            icon: "bi bi-award",
-            items: [
-              "Server Actions and Middleware",
-              "Portfolio Website",
-              "Blog Application with Markdown",
-              "Full CRUD & Authentication App"
-            ]
-          }
-        ],
-        whatYouLearnData: [
-          {
-            title: "Build High-Performance Apps",
-            desc: "Leverage SSR and SSG for ultra-fast load times and SEO.",
-            icon: "bi bi-lightning-charge"
-          },
-          {
-            title: "Modern Rendering Patterns",
-            desc: "Master Server Components and Client Components logic.",
-            icon: "bi bi-boxes"
-          },
-          {
-            title: "Full-Stack Capabilities",
-            desc: "Create full-stack apps with API Routes and Server Actions.",
-            icon: "bi bi-stack"
-          },
-          {
-            title: "Vercel Deployment",
-            desc: "Instantly deploy and scale your Next.js apps globally.",
-            icon: "bi bi-cloud-arrow-up"
-          },
-          {
-            title: "Tailwind CSS Design",
-            desc: "Design beautiful, modern UIs using Tailwind CSS integration.",
-            icon: "bi bi-paint-bucket"
-          },
-          {
-            title: "Next-Level SEO",
-            desc: "Boost your search engine visibility with built-in Next.js features.",
-            icon: "bi bi-search"
-          }
-        ]
-      }
+,  {
+  title: "Next.js Development",
+  desc: "Build blazing-fast, SEO-friendly web apps with Next.js. Master Server-Side Rendering (SSR), API routes, and modern React patterns to become an elite web developer.",
+  rating: 4.8,
+  duration: "2 months",
+  students: "784",
+  img: "/images/courses/nextjs-cc.png",
+  aboutData: {
+    topic: "Master Next.js — The Leading React Framework for Production!",
+    content1:
+      "Learn Next.js, the powerful React framework for building fast, SEO-friendly, and production-ready web applications. This course covers everything from web fundamentals to full-stack development with AI-powered tools.",
+    content2:
+      "From HTML5 and React foundations to advanced Next.js features like Server Actions, App Router, MongoDB integration, and authentication — this course prepares you to build and deploy enterprise-grade applications with modern best practices."
+  },
+  courseContentData: [
+    {
+      id: 1,
+      title: "Phase 1: Web Development Foundations",
+      icon: "bi bi-globe2",
+      defaultOpen: true,
+      items: [
+        "HTML5: Semantic HTML, Forms & Validation, Accessibility",
+        "CSS3: Flexbox, Grid, Responsive Design, Animations",
+        "JavaScript ES6+: Variables, Functions, Arrays & Objects",
+        "Async/Await, Fetch API, Modules, Event Loop",
+        "Scope & Closures, Destructuring, Spread & Rest Operators"
+      ]
+    },
+    {
+      id: 2,
+      title: "Phase 2: React Fundamentals",
+      icon: "bi bi-box",
+      items: [
+        "React Basics: JSX, Components, Props, State",
+        "React Hooks: useState, useEffect, useRef, useMemo, useCallback",
+        "Event Handling, Conditional Rendering, Lists & Keys",
+        "Forms & Validation, Context API",
+        "Component-Based Architecture & Folder Organization"
+      ]
+    },
+    {
+      id: 3,
+      title: "Phase 3: Next.js Fundamentals",
+      icon: "bi bi-lightning-charge",
+      items: [
+        "Introduction to Next.js: React vs Next.js, Benefits",
+        "App Router: File-Based Routing, Nested & Dynamic Routes",
+        "Catch-All Routes, Route Groups",
+        "Navigation: Link Component, useRouter, Programmatic Navigation",
+        "Special Files: loading.js, error.js, not-found.js"
+      ]
+    },
+    {
+      id: 4,
+      title: "Phase 4: Layouts, Templates & Components",
+      icon: "bi bi-layout-text-window-reverse",
+      items: [
+        "Root Layout, Nested Layouts, Shared Layouts",
+        "Template Files & Re-rendering Behavior",
+        "Server Components vs Client Components",
+        "Component Composition & best practices"
+      ]
+    },
+    {
+      id: 5,
+      title: "Phase 5: Data Fetching, Rendering & Caching",
+      icon: "bi bi-cloud-arrow-down",
+      items: [
+        "Server-Side & Client-Side Data Fetching",
+        "Static Rendering, Dynamic Rendering, Streaming",
+        "Incremental Static Regeneration (ISR)",
+        "Cache Strategies, Revalidation & Dynamic Data Updates"
+      ]
+    },
+    {
+      id: 6,
+      title: "Phase 6: Server Actions & Full Stack Development",
+      icon: "bi bi-server",
+      items: [
+        "Server Actions: Form Handling, Data Mutations, CRUD",
+        "Route Handlers: GET, POST, PUT, DELETE",
+        "REST API Development, Validation & Error Handling",
+        "Environment Variables & Security Best Practices"
+      ]
+    },
+    {
+      id: 7,
+      title: "Phase 7: MongoDB & Database Integration",
+      icon: "bi bi-database",
+      items: [
+        "MongoDB: Collections, Documents, CRUD Operations",
+        "Mongoose: Schemas, Models, Validation, Relationships",
+        "One-to-One & One-to-Many Relationships",
+        "Database Design Best Practices"
+      ]
+    },
+    {
+      id: 8,
+      title: "Phase 8: Authentication, Authorization & Middleware",
+      icon: "bi bi-shield-lock",
+      items: [
+        "Auth.js (NextAuth): Login, Registration, Session Management",
+        "Protected Routes & Role-Based Access Control",
+        "Middleware: Route Protection, Redirects, Request Validation",
+        "Password Hashing, Environment Security, Secure API Development"
+      ]
+    },
+    {
+      id: 9,
+      title: "Phase 9: Forms, Validation & File Uploads",
+      icon: "bi bi-upload",
+      items: [
+        "Controlled Forms & Form Handling",
+        "React Hook Form & Zod Validation",
+        "Single & Multiple File Uploads, Image Uploads",
+        "Cloudinary Integration & Media Management"
+      ]
+    },
+    {
+      id: 10,
+      title: "Phase 10: SEO & Performance Optimization",
+      icon: "bi bi-speedometer2",
+      items: [
+        "Metadata API, Dynamic Metadata, Open Graph Tags",
+        "Sitemap Generation & Robots.txt",
+        "Image & Font Optimization, Lazy Loading, Code Splitting",
+        "Loading States, Error Boundaries, Performance Best Practices"
+      ]
+    },
+    {
+      id: 11,
+      title: "Phase 11: Deployment & Production Readiness",
+      icon: "bi bi-cloud-arrow-up",
+      items: [
+        "Version Control: Git & GitHub",
+        "Vercel Deployment, Environment Variables, Production Configuration",
+        "Logging, Error Handling & Production Debugging",
+        "Project Structure, Scalability & Maintainability"
+      ]
+    },
+    {
+      id: 12,
+      title: "Phase 12: AI-Powered Development",
+      icon: "bi bi-cpu",
+      items: [
+        "AI Tools: ChatGPT, Claude, GitHub Copilot, Cursor, Windsurf, v0, Bolt.new",
+        "Prompt Engineering & AI Pair Programming",
+        "Code Generation, Code Reviews, Documentation Generation",
+        "Debugging with AI & Feature Planning"
+      ]
+    }
+  ],
+  whatYouLearnData: [
+    {
+      title: "Master Web Foundations & React",
+      desc: "Build strong HTML5, CSS3, JavaScript ES6+, and React skills as a base for Next.js.",
+      icon: "bi bi-code-slash"
+    },
+    {
+      title: "Navigate the Next.js App Router",
+      desc: "Master file-based routing, layouts, Server & Client Components with confidence.",
+      icon: "bi bi-signpost-split"
+    },
+    {
+      title: "Build Full-Stack Applications",
+      desc: "Create complete apps using Server Actions, Route Handlers, and REST APIs.",
+      icon: "bi bi-stack"
+    },
+    {
+      title: "Integrate MongoDB & Auth",
+      desc: "Connect MongoDB with Mongoose and implement secure authentication using Auth.js.",
+      icon: "bi bi-shield-lock"
+    },
+    {
+      title: "Optimize SEO & Performance",
+      desc: "Leverage Next.js metadata, image optimization, and caching for lightning-fast apps.",
+      icon: "bi bi-speedometer2"
+    },
+    {
+      title: "Deploy with AI-Powered Workflows",
+      desc: "Ship production apps on Vercel while using AI tools like Copilot and Cursor to code faster.",
+      icon: "bi bi-cloud-arrow-up"
+    }
+  ]
+}
     ],
   },
 
@@ -2875,7 +2934,7 @@ const coursesData = {
         desc: "Transform raw data into strategic decisions. Master Excel, SQL, Python, Power BI, and Tableau to secure lucrative roles as a professional Data Analyst.",
         rating: 4.8,
         duration: "3 months",
-        students: "500+",
+        students: "500",
         img: "https://images.unsplash.com/photo-1543286386-713bdd548da4?auto=format&fit=crop&q=80&w=800",
         aboutData: {
           topic: "Master Data Analytics — From Data Mining to Actionable Business Insights!",
@@ -3091,7 +3150,7 @@ const coursesData = {
         desc: "Master the future of AI with Generative AI. Learn Python, LLMs, RAG, Vector Stores, and Prompt Engineering to build intelligent chatbots and agents.",
         rating: 4.9,
         duration: "3 months",
-        students: "750+",
+        students: "250",
         "img": "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800",
         aboutData: {
           topic: "Master Generative AI — From LLMs to Autonomous Agents!",

@@ -1,6 +1,6 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import KidsInteractiveGame from '../../components/CourseLayout/KidsInteractiveGame';
+import VisualRotationGame from './VisualRotationGame';
 import EnquiryFormModal from '../../components/common/EnquiryFormModal';
 import MemoryMatchGame from './MemoryMatchGame';
 import MathChallengeGame from './MathChallengeGame';
@@ -10,7 +10,7 @@ import './playzone.css';
 export default function PlayzonePage() {
   const [showEnquiry, setShowEnquiry] = useState(false);
   const [levelsUnlocked, setLevelsUnlocked] = useState(false);
-  const [activeGame, setActiveGame] = useState('robot');
+  const [activeGame, setActiveGame] = useState('visual');
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -20,7 +20,7 @@ export default function PlayzonePage() {
   }, []);
 
   const games = [
-    { id: 'robot',   emoji: '🤖', label: 'Code the Robot',   desc: 'Logical thinking & sequencing' },
+    { id: 'visual',  emoji: '🎯', label: 'Visual IQ',         desc: 'Shape rotation & spatial reasoning' },
     { id: 'memory',  emoji: '🧠', label: 'Memory Matrix',     desc: 'Visual memory & focus' },
     { id: 'math',    emoji: '🔢', label: 'Math Blitz',        desc: 'Mental arithmetic & speed' },
     { id: 'pattern', emoji: '🎨', label: 'Pattern Detective', desc: 'Pattern recognition & IQ' },
@@ -28,6 +28,7 @@ export default function PlayzonePage() {
 
   return (
     <div className="playzone-page">
+
       {/* ── Hero Banner ── */}
       <div className="playzone-hero">
         <div className="playzone-hero-inner">
@@ -39,21 +40,15 @@ export default function PlayzonePage() {
             Hand-crafted IQ-boosting games that make learning feel like play.
             Each game is designed to sharpen real cognitive skills.
           </p>
-
-          {/* Skill Pills */}
           <div className="playzone-skill-pills">
             {['🧩 Problem Solving', '🔁 Logical Thinking', '📐 Pattern Recognition', '⚡ Mental Agility'].map((s, i) => (
               <span key={s} className="playzone-skill-pill" style={{ animationDelay: `${0.6 + i * 0.12}s` }}>{s}</span>
             ))}
           </div>
         </div>
-
-        {/* Floating background orbs */}
         <div className="playzone-orb orb-1" />
         <div className="playzone-orb orb-2" />
         <div className="playzone-orb orb-3" />
-
-        {/* Animated line motion */}
         <div className="hero-lines-wrap" aria-hidden="true">
           <div className="hero-line hl-1" />
           <div className="hero-line hl-2" />
@@ -87,16 +82,14 @@ export default function PlayzonePage() {
 
       {/* ── Game Area ── */}
       <div className="playzone-game-area">
-        {activeGame === 'robot' && (
+
+        {activeGame === 'visual' && (
           <div className="game-section">
             <div className="game-section-header">
-              <h2>🤖 Code the Robot</h2>
-              <p>Program a robot to reach the star using block commands. Train logical thinking and algorithmic reasoning.</p>
+              <h2>🎯 Visual IQ</h2>
+              <p>Look at the shape and pick the correctly rotated version. Builds spatial reasoning and IQ-level visual thinking.</p>
             </div>
-            <KidsInteractiveGame
-              onUnlockClick={() => setShowEnquiry(true)}
-              levelsUnlocked={levelsUnlocked}
-            />
+            <VisualRotationGame />
           </div>
         )}
 
@@ -129,6 +122,7 @@ export default function PlayzonePage() {
             <PatternGame />
           </div>
         )}
+
       </div>
 
       {/* ── Parent Benefits Strip ── */}
@@ -137,10 +131,10 @@ export default function PlayzonePage() {
           <h3>Why These Games Work</h3>
           <div className="playzone-benefits-grid">
             {[
-              { icon: '🧠', title: 'Boosts IQ', text: 'Research shows pattern & logic games increase fluid intelligence by up to 30%.' },
-              { icon: '🎯', title: 'Builds Focus', text: 'Memory tasks train sustained attention — a key predictor of academic success.' },
-              { icon: '⚡', title: 'Mental Speed', text: 'Math Blitz improves processing speed and numerical fluency in just 10 min/day.' },
-              { icon: '🏆', title: 'Builds Confidence', text: 'Level-based progression gives kids achievable wins that motivate further learning.' },
+              { icon: '🧠', title: 'Boosts IQ',         text: 'Research shows pattern & logic games increase fluid intelligence by up to 30%.' },
+              { icon: '🎯', title: 'Builds Focus',       text: 'Memory tasks train sustained attention — a key predictor of academic success.' },
+              { icon: '⚡', title: 'Mental Speed',       text: 'Visual IQ games improve processing speed and spatial fluency in just 10 min/day.' },
+              { icon: '🏆', title: 'Builds Confidence',  text: 'Level-based progression gives kids achievable wins that motivate further learning.' },
             ].map(b => (
               <div key={b.title} className="playzone-benefit-card">
                 <div className="playzone-benefit-icon">{b.icon}</div>
@@ -158,7 +152,12 @@ export default function PlayzonePage() {
           <h3>Ready to take it further?</h3>
           <p>Enroll in our structured coding courses and watch your child build real tech skills.</p>
           <div className="playzone-cta-btns">
-            <button className="playzone-cta-primary" onClick={() => setShowEnquiry(true)} id="playzone-book-demo-btn">
+            <button
+              type="button"
+              className="playzone-cta-primary"
+              id="playzone-book-demo-btn"
+              onClick={() => setShowEnquiry(true)}
+            >
               Book Free Demo Class
             </button>
             <a href="/kids-courses" className="playzone-cta-secondary">
@@ -181,6 +180,7 @@ export default function PlayzonePage() {
           }}
         />
       )}
+
     </div>
   );
 }

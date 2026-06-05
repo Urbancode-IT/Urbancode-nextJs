@@ -8,7 +8,7 @@ import BannerSlider from './components/common/BannerSlider';
 const BranchAnnouncement = dynamic(() => import('./components/BranchAnnouncement/BranchAnnouncement'));
 
 // Coming Soon popup (client-only, uses sessionStorage)
-const ComingSoonPopup = dynamic(() => import('./components/ComingSoonPopup/ComingSoonPopup'));
+// const ComingSoonPopup = dynamic(() => import('./components/ComingSoonPopup/ComingSoonPopup'));
 
 // Code-splitting below-the-fold sections for massive initial bundle savings
 const TrendingCourses = dynamic(() => import('./components/Home/TrendingCourses'));
@@ -107,7 +107,7 @@ export default function HomePage() {
   return (
     <>
       {/* <BranchAnnouncement /> */}
-      <ComingSoonPopup />
+      {/* <ComingSoonPopup /> */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

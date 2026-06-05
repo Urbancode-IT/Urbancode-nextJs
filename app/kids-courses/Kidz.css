@@ -797,7 +797,7 @@
 }
 
 .kidz-page .wcf-card-front {
-  background: linear-gradient(135deg, #0f0f0f 0%, #0b3d2e 45%, #16a34a 100%);
+  background: #4ade80;
 }
 
 .kidz-page .wcf-card-front .wcf-card-title {
@@ -817,10 +817,59 @@
   transform: rotateY(180deg);
 }
 
-.kidz-page .wcf-back-green { border: 2px solid rgba(0,193,106,0.3); box-shadow: 0 10px 30px rgba(0,193,106,0.15); }
-.kidz-page .wcf-back-teal { border: 2px solid rgba(49,123,116,0.3); box-shadow: 0 10px 30px rgba(49,123,116,0.15); }
-.kidz-page .wcf-back-yellow { border: 2px solid rgba(255,200,61,0.3); box-shadow: 0 10px 30px rgba(255,200,61,0.15); }
-.kidz-page .wcf-back-purple { border: 2px solid rgba(111,66,193,0.3); box-shadow: 0 10px 30px rgba(111,66,193,0.15); }
+/* -----------------------------------
+   CARD 1 — PINK 💖
+----------------------------------- */
+.kidz-page .wcf-card:nth-child(1) .wcf-card-front {
+  background: linear-gradient(135deg, #ff6fb5, #ff8ec7);
+}
+.kidz-page .wcf-card:nth-child(1) .wcf-card-back {
+  background: linear-gradient(135deg, #fff0f7, #ffe4f1);
+  border: 2px solid #ff8ec7;
+}
+
+/* -----------------------------------
+   CARD 2 — SKY BLUE 💙
+----------------------------------- */
+.kidz-page .wcf-card:nth-child(2) .wcf-card-front {
+  background: linear-gradient(135deg, #60a5fa, #38bdf8);
+}
+.kidz-page .wcf-card:nth-child(2) .wcf-card-back {
+  background: linear-gradient(135deg, #eff8ff, #dff4ff);
+  border: 2px solid #60a5fa;
+}
+
+/* -----------------------------------
+   CARD 3 — SUNNY YELLOW ☀️
+----------------------------------- */
+.kidz-page .wcf-card:nth-child(3) .wcf-card-front {
+  background: linear-gradient(135deg, #ffd93d, #ffb84d);
+}
+.kidz-page .wcf-card:nth-child(3) .wcf-card-back {
+  background: linear-gradient(135deg, #fffbea, #fff3cc);
+  border: 2px solid #ffca28;
+}
+
+/* -----------------------------------
+   CARD 4 — MINT GREEN 💚
+----------------------------------- */
+.kidz-page .wcf-card:nth-child(4) .wcf-card-front {
+  background: linear-gradient(135deg, #34d399, #10b981);
+}
+.kidz-page .wcf-card:nth-child(4) .wcf-card-back {
+  background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+  border: 2px solid #34d399;
+}
+
+
+
+
+/* -----------------------------------
+   EXISTING GREEN → OVERRIDE ONLY
+----------------------------------- */
+.kidz-page .wcf-card-front {
+  background: unset; /* removes old #4ade80 */
+}
 
 /* WCF Icon */
 .kidz-page .wcf-icon-wrap {
@@ -2391,9 +2440,9 @@
 }
 
 .kidz-page .kc-enroll-silver {
-  background: linear-gradient(135deg, #e0e0e0, #a0a0a0);
+  background:linear-gradient(135deg, #0f0f0f 0%, #0b3d2e 45%, #16a34a 100%);
   box-shadow: 0 4px 14px rgba(160, 160, 160, 0.4);
-  color: #1a2535;
+  color: #ffffff;
 }
 
 .kidz-page .kc-enroll-btn::before {
