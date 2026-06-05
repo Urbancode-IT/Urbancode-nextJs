@@ -617,37 +617,196 @@
 .pattern-skip-btn:hover { border-color: #00b56f; color: #059669; }
 .pattern-undo-btn:disabled { opacity: 0.4; cursor: not-allowed; }
 
-/* ── Benefits ──────────────────────────────────── */
+/* ── BENEFITS SECTION - KIDS PREMIUM STYLE ───────────────── */
+
 .playzone-benefits {
-  background: linear-gradient(135deg, #FAF8F4 0%, #f0fdf4 100%);
-  color: #3A3A38;
-  padding: clamp(40px, 6vh, 80px) clamp(20px, 5vw, 80px);
-  margin-top: 40px;
-  border-top: 1px solid #e5e7eb;
-  border-bottom: 1px solid #e5e7eb;
+  background: linear-gradient(
+    135deg,
+    #fff8f8 0%,
+    #f5faff 35%,
+    #fffbea 70%,
+    #f0fff4 100%
+  );
+  padding: clamp(50px, 7vh, 90px) clamp(20px, 5vw, 80px);
+  margin-top: 50px;
+  position: relative;
+  overflow: hidden;
 }
-.playzone-benefits-inner { max-width: 1100px; margin: 0 auto; }
-.playzone-benefits h3 { font-size: clamp(24px, 3vw, 36px); font-weight: 600; text-align: center; margin-bottom: 36px; color: #2C3E50; }
+
+.playzone-benefits::before {
+  content: '';
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  background: rgba(255, 105, 180, 0.08);
+  border-radius: 50%;
+  top: -120px;
+  left: -120px;
+}
+
+.playzone-benefits::after {
+  content: '';
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  background: rgba(59, 130, 246, 0.06);
+  border-radius: 50%;
+  bottom: -150px;
+  right: -150px;
+}
+
+.playzone-benefits-inner {
+  max-width: 1150px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.playzone-benefits h3 {
+  font-size:32px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 45px;
+  color: #2C3E50;
+}
+
+/* Grid */
 
 .playzone-benefits-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
+  gap: 24px;
 }
+
+/* Base Card */
 
 .playzone-benefit-card {
-  background: #ffffff;
-  border: 1.5px solid rgba(0, 181, 111, 0.12);
-  border-radius: 16px;
-  padding: 28px 24px;
-  transition: transform 0.2s, background 0.2s;
-  box-shadow: 0 8px 24px rgba(0, 181, 111, 0.03);
+  position: relative;
+  overflow: hidden;
+  border-radius: 24px;
+  padding: 30px 24px;
+  transition: all 0.35s ease;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+  cursor: pointer;
 }
-.playzone-benefit-card:hover { transform: translateY(-4px); background: #f0fdf4; border-color: rgba(0, 181, 111, 0.25); }
-.playzone-benefit-icon { font-size: 36px; margin-bottom: 14px; }
-.playzone-benefit-card h4 { font-size: 17px; font-weight: 700; margin-bottom: 8px; color: #317B74; }
-.playzone-benefit-card p { font-size: 14px; color: #6b7280; line-height: 1.6; margin: 0; }
 
+/* Floating Bubble */
+
+.playzone-benefit-card::before {
+  content: '';
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  top: -40px;
+  right: -40px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.18);
+}
+
+.playzone-benefit-card:hover {
+  transform: translateY(-10px) scale(1.03);
+}
+
+/* CARD 1 - PINK */
+
+.playzone-benefit-card:nth-child(1) {
+  background: linear-gradient(135deg,#ff7eb3,#ff5f9e);
+}
+
+.playzone-benefit-card:nth-child(1) h4,
+.playzone-benefit-card:nth-child(1) p {
+  color: white;
+}
+
+/* CARD 2 - BLUE */
+
+.playzone-benefit-card:nth-child(2) {
+  background: linear-gradient(135deg,#60a5fa,#38bdf8);
+}
+
+.playzone-benefit-card:nth-child(2) h4,
+.playzone-benefit-card:nth-child(2) p {
+  color: white;
+}
+
+/* CARD 3 - YELLOW */
+
+.playzone-benefit-card:nth-child(3) {
+  background: linear-gradient(135deg,#ffd93d,#ffb84d);
+}
+
+.playzone-benefit-card:nth-child(3) h4 {
+  color: #5a3d00;
+}
+
+.playzone-benefit-card:nth-child(3) p {
+  color: #6b4f00;
+}
+
+/* CARD 4 - GREEN */
+
+.playzone-benefit-card:nth-child(4) {
+  background: linear-gradient(135deg,#34d399,#10b981);
+}
+
+.playzone-benefit-card:nth-child(4) h4,
+.playzone-benefit-card:nth-child(4) p {
+  color: white;
+}
+
+/* Icon */
+
+.playzone-benefit-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.22);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 38px;
+  margin-bottom: 18px;
+  transition: transform 0.3s ease;
+}
+
+.playzone-benefit-card:hover .playzone-benefit-icon {
+  transform: rotate(-8deg) scale(1.15);
+}
+
+/* Heading */
+
+.playzone-benefit-card h4 {
+  font-size: 20px;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+/* Text */
+
+.playzone-benefit-card p {
+  font-size: 14px;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* Mobile */
+
+@media (max-width:768px) {
+  .playzone-benefits-grid {
+    gap: 18px;
+  }
+
+  .playzone-benefit-card {
+    padding: 24px 20px;
+  }
+
+  .playzone-benefit-icon {
+    width: 64px;
+    height: 64px;
+    font-size: 32px;
+  }
+}
 /* ── CTA ───────────────────────────────────────── */
 .playzone-cta {
   background: linear-gradient(135deg, #317B74 0%, #00B56F 100%);

@@ -147,7 +147,8 @@ const Kidz = () => {
     {
       title: "Junior Web Developer",
       img: "/images/KidsImages/kids8.webp",
-      duration: "3 Months",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
+      duration: "2 Months",
       desc: "Kickstart your journey as a developer! Learn HTML, CSS, and JavaScript to design interactive websites and gain real-world project skills.",
       rating: "5.0", students: 42,
       url: "/courses/kidz-space/junior-web-development",
@@ -157,6 +158,7 @@ const Kidz = () => {
     {
       title: "Core Python",
       img: "/images/KidsImages/kids2.webp",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
       duration: "2 Months",
       desc: "Start from zero and build strong coding fundamentals—variables, loops, functions, OOP—and complete mini-projects with confidence.",
       rating: "5.0", students: 58,
@@ -167,6 +169,7 @@ const Kidz = () => {
     {
       title: "Advanced Python",
       img: "/images/KidsImages/kids3.webp",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
       duration: "2 Months",
       desc: "Level up with file handling, modules, APIs, testing, and best practices—prepare for automation, data, and AI tracks.",
       rating: "4.8", students: 39,
@@ -177,6 +180,7 @@ const Kidz = () => {
     {
       title: "C Programming",
       img: "/images/KidsImages/kids4.webp",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg",
       duration: "2 Months",
       desc: "Understand how computers really work. Learn memory, pointers, arrays, and problem-solving that shapes logic for any language.",
       rating: "4.0", students: 47,
@@ -184,8 +188,9 @@ const Kidz = () => {
       accent: "#8b5cf6", emoji: "🔧"
     },
     {
-      title: "CPP",
+      title: "C++",
       img: "/images/KidsImages/kids5.webp",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg",
       duration: "2 Months",
       desc: "Build high-performance apps with OOP, STL, and problem patterns used in competitive programming and real systems.",
       rating: "5.0", students: 34,
@@ -195,6 +200,7 @@ const Kidz = () => {
     {
       title: "SQL",
       img: "/images/KidsImages/kids6.webp",
+      icon: "https://img.icons8.com/color/96/database.png",
       duration: "1 Month",
       desc: "Speak the language of data. Learn queries, joins, aggregations, and build dashboards and insights with confidence.",
       rating: "4.0", students: 41,
@@ -204,6 +210,7 @@ const Kidz = () => {
     {
       title: "Graphic Designing",
       img: "/images/KidsImages/kids7.webp",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg",
       duration: "3 Months",
       desc: "Create eye-catching posters, thumbnails, and brand logos. Learn color, typography, and composition with hands-on projects.",
       rating: "5.0", students: 37,
@@ -213,6 +220,7 @@ const Kidz = () => {
     {
       title: "AI & ML",
       img: "/images/KidsImages/kids1.webp",
+      icon: "https://img.icons8.com/color/96/artificial-intelligence.png",
       duration: "3 Months",
       desc: "Step into the future. Learn data prep, models, and decision-making. Start applying AI concepts in beginner-friendly projects.",
       rating: "5.0", students: 29,
@@ -307,6 +315,87 @@ const Kidz = () => {
       <KidsHero />
       {<BannerSlider banners={kidsBanners} forceEnquiry={true} />}
 
+      
+
+      <div id="kids-courses-section" className="container py-5">
+        <h2 className="section-title">Our Kids <span className='text-success text-shine'>&nbsp;Courses</span></h2>
+        <p className="section-subtitle text-muted">
+          Explore expertly designed courses tailored for young learners. Each program blends engaging, interactive activities with structured learning outcomes to build strong foundational skills and future-ready knowledge.
+        </p>
+
+        {/* Summer Camp Banner */}
+        {/* Summer Camp Courses */}
+        <div className="row g-4 mb-3">
+          {courses.filter(c => c.isSummerCamp).map((course, index) => (
+            <div className="col-md-6 col-lg-4" key={`sc-${index}`}>
+              <div className="kc-card kc-card-gold summer-camp-card shadow-md">
+                <div className="sc-ribbon"><span>☀️ Summer Camp</span></div>
+                <a href={course.url} style={{ textDecoration: "none" }}>
+                  <div className="kc-img-wrap position-relative">
+                    <Image src={course.img} width={400} height={250} alt={course.title} className="w-100 kc-img sc-course-img" />
+                    {course.icon && (
+                      <div className="kc-course-icon-badge">
+                        <img src={course.icon} alt={`${course.title} Icon`} className="kc-course-icon" />
+                      </div>
+                    )}
+                  </div>
+                  <div className="kc-body">
+                    <h5 className="kc-title">{course.title}</h5>
+                    <p className="kc-desc">{course.desc}</p>
+                    <div className="kc-meta">
+                      <span className="kc-pill kc-pill-star"><Star size={13} fill="#FFD700" color="#FFD700" /> {course.rating}</span>
+                      <span className="kc-pill kc-pill-students"><Users size={13} /> {course.students} students</span>
+                      <span className="kc-pill kc-pill-clock"><Clock size={13} /> {course.duration}</span>
+                    </div>
+                    <button className="kc-enroll-btn kc-enroll-gold" onClick={e => { e.preventDefault(); setSelectedCourse(course); }}>Enroll Now →</button>
+                  </div>
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="sc-divider"><span>More Courses</span></div>
+
+        {/* Regular Courses */}
+        <div className="row g-4">
+          {courses.filter(c => !c.isSummerCamp).map((course, index) => (
+            <div className="col-md-6 col-lg-4" key={`reg-${index}`}>
+              <div className="kc-card kc-card-silver shadow-md">
+                <a href={course.url} style={{ textDecoration: "none" }}>
+                  <div className="kc-img-wrap position-relative">
+                    <Image src={course.img} width={400} height={250} alt={course.title} className="w-100 kc-img" />
+                    {course.icon && (
+                      <div className="kc-course-icon-badge">
+                        <img src={course.icon} alt={`${course.title} Icon`} className="kc-course-icon" />
+                      </div>
+                    )}
+                  </div>
+                  <div className="kc-body">
+                    <h5 className="kc-title">{course.title}</h5>
+                    <p className="kc-desc">{course.desc}</p>
+                    <div className="kc-meta">
+                      <span className="kc-pill kc-pill-star"><Star size={13} fill="#FFD700" color="#FFD700" /> {course.rating}</span>
+                      <span className="kc-pill kc-pill-students"><Users size={13} /> {course.students} students</span>
+                      <span className="kc-pill kc-pill-clock"><Clock size={13} /> {course.duration}</span>
+                    </div>
+                    <button className="kc-enroll-btn kc-enroll-silver" onClick={e => { e.preventDefault(); setSelectedCourse(course); }}>Enroll Now →</button>
+                  </div>
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {selectedCourse && (
+          <EnquiryFormModal
+            isOpen={!!selectedCourse}
+            onClose={() => setSelectedCourse(null)}
+            courseName={selectedCourse.title}
+          />
+        )}
+      </div>
+
        {/* ── Unlock Your Child's Potential — on page ── */}
       <section className="why-choose-features">
         <div className="container py-5">
@@ -389,75 +478,6 @@ const Kidz = () => {
         </div>
       </section>
 
-
-      <div id="kids-courses-section" className="container py-5">
-        <h2 className="section-title">Our Kids <span className='text-success text-shine'>&nbsp;Courses</span></h2>
-        <p className="section-subtitle text-muted">
-          Explore expertly designed courses tailored for young learners. Each program blends engaging, interactive activities with structured learning outcomes to build strong foundational skills and future-ready knowledge.
-        </p>
-
-        {/* Summer Camp Banner */}
-        {/* Summer Camp Courses */}
-        <div className="row g-4 mb-3">
-          {courses.filter(c => c.isSummerCamp).map((course, index) => (
-            <div className="col-md-6 col-lg-4" key={`sc-${index}`}>
-              <div className="kc-card kc-card-gold summer-camp-card shadow-md">
-                <div className="sc-ribbon"><span>☀️ Summer Camp</span></div>
-                <a href={course.url} style={{ textDecoration: "none" }}>
-                  <div className="kc-img-wrap position-relative">
-                    <Image src={course.img} width={400} height={250} alt={course.title} className="w-100 kc-img sc-course-img" />
-                  </div>
-                  <div className="kc-body">
-                    <h5 className="kc-title">{course.title}</h5>
-                    <p className="kc-desc">{course.desc}</p>
-                    <div className="kc-meta">
-                      <span className="kc-pill kc-pill-star"><Star size={13} fill="#FFD700" color="#FFD700" /> {course.rating}</span>
-                      <span className="kc-pill kc-pill-students"><Users size={13} /> {course.students} students</span>
-                      <span className="kc-pill kc-pill-clock"><Clock size={13} /> {course.duration}</span>
-                    </div>
-                    <button className="kc-enroll-btn kc-enroll-gold" onClick={e => { e.preventDefault(); setSelectedCourse(course); }}>Enroll Now →</button>
-                  </div>
-                </a>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <div className="sc-divider"><span>More Courses</span></div>
-
-        {/* Regular Courses */}
-        <div className="row g-4">
-          {courses.filter(c => !c.isSummerCamp).map((course, index) => (
-            <div className="col-md-6 col-lg-4" key={`reg-${index}`}>
-              <div className="kc-card kc-card-silver shadow-md">
-                <a href={course.url} style={{ textDecoration: "none" }}>
-                  <div className="kc-img-wrap position-relative">
-                    <Image src={course.img} width={400} height={250} alt={course.title} className="w-100 kc-img" />
-                  </div>
-                  <div className="kc-body">
-                    <h5 className="kc-title">{course.title}</h5>
-                    <p className="kc-desc">{course.desc}</p>
-                    <div className="kc-meta">
-                      <span className="kc-pill kc-pill-star"><Star size={13} fill="#FFD700" color="#FFD700" /> {course.rating}</span>
-                      <span className="kc-pill kc-pill-students"><Users size={13} /> {course.students} students</span>
-                      <span className="kc-pill kc-pill-clock"><Clock size={13} /> {course.duration}</span>
-                    </div>
-                    <button className="kc-enroll-btn kc-enroll-silver" onClick={e => { e.preventDefault(); setSelectedCourse(course); }}>Enroll Now →</button>
-                  </div>
-                </a>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {selectedCourse && (
-          <EnquiryFormModal
-            isOpen={!!selectedCourse}
-            onClose={() => setSelectedCourse(null)}
-            courseName={selectedCourse.title}
-          />
-        )}
-      </div>
 
 
       {/* ── Kids FAQ Section ── */}
