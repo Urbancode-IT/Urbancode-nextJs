@@ -45,6 +45,7 @@
     flex-direction: column;
     align-items: flex-start;
     text-align: left;
+    margin-top:20px;
 }
 
 .nict-hero-title {
