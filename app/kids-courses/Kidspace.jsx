@@ -104,7 +104,7 @@ const Kidz = () => {
     // Show popup on every page refresh — no sessionStorage gate
     const popupTimer = setTimeout(() => {
       setShowTestimonialPopup(true);
-    }, 4000);
+    }, 9000);
 
     return () => {
       clearTimeout(loaderTimer);

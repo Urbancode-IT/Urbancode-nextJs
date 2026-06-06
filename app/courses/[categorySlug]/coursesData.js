@@ -453,89 +453,301 @@ const coursesData = {
     content2:
       "The DSA course by Urbancode focuses on practical understanding and problem-solving. You’ll master core data structures, algorithmic techniques, and pattern-based problem-solving used in coding interviews. Each module includes coding exercises, mock tests, and real-world challenges designed to prepare you for competitive programming and top-tier tech placements."
   },
-  courseContentData: [
-    {
-      id: 1,
-      title: "Programming Foundations",
-      icon: "bi bi-book",
-      defaultOpen: true,
-      items: [
-        "Introduction to programming and logic building",
-        "Understanding time and space complexity",
-        "Big O notation and performance analysis",
-        "Recursion fundamentals",
-        "Mathematical problems and patterns"
-      ]
-    },
-    {
-      id: 2,
-      title: "Arrays and Strings",
-      icon: "bi bi-database",
-      items: [
-        "1D and 2D arrays",
-        "Common array problems and optimizations",
-        "String manipulation and pattern matching",
-        "Sliding window and two-pointer techniques"
-      ]
-    },
-    {
-      id: 3,
-      title: "Linked Lists & Stacks",
-      icon: "bi bi-diagram-3",
-      items: [
-        "Singly and doubly linked lists",
-        "Fast and slow pointer approaches",
-        "Stack operations and implementation",
-        "Applications of stacks (parsing, evaluation, etc.)"
-      ]
-    },
-    {
-      id: 4,
-      title: "Queues & Hashing",
-      icon: "bi bi-gear",
-      items: [
-        "Queue and circular queue implementation",
-        "Priority queues and Deque",
-        "Hash tables and hash maps",
-        "Collision handling and optimization"
-      ]
-    },
-
-  ],
-  whatYouLearnData: [
-    {
-      title: "Master Core DSA Concepts",
-      desc: "Understand how data structures and algorithms work under the hood.",
-      icon: "bi bi-lightning-charge"
-    },
-    {
-      title: "Improve Problem-Solving Skills",
-      desc: "Solve 100+ real-world problems to build strong analytical thinking.",
-      icon: "bi bi-braces"
-    },
-    {
-      title: "Crack Technical Interviews",
-      desc: "Get interview-ready with pattern-based coding questions and mock tests.",
-      icon: "bi bi-person-check"
-    },
-    {
-      title: "Learn Multiple Languages",
-      desc: "Practice DSA in C++, Java, or Python with language-specific examples.",
-      icon: "bi bi-code-slash"
-    },
-    {
-      title: "Understand Algorithmic Efficiency",
-      desc: "Analyze and optimize your code using time and space complexity.",
-      icon: "bi bi-speedometer2"
-    },
-    {
-      title: "Capstone Problem Solving",
-      desc: "Apply all concepts in advanced projects and algorithmic challenges.",
-      icon: "bi bi-trophy"
-    }
-  ]
-}
-,
+ courseContentData: [
+  {
+    id: 1,
+    title: "Course Introduction & DSA Fundamentals",
+    icon: "bi bi-play-circle",
+    defaultOpen: true,
+    items: [
+      "Course roadmap and interview preparation strategy",
+      "What are Data Structures and Algorithms?",
+      "Real-world applications of DSA",
+      "Coding platforms setup",
+      "Time & Space Complexity",
+      "Big O, Omega & Theta Notation",
+      "Complexity analysis techniques"
+    ]
+  },
+  {
+    id: 2,
+    title: "Arrays & Strings",
+    icon: "bi bi-grid",
+    items: [
+      "Static & Dynamic Arrays",
+      "Array operations and memory representation",
+      "Prefix Sum & Suffix Sum",
+      "Kadane's Algorithm",
+      "Dutch National Flag Algorithm",
+      "Moore Voting Algorithm",
+      "String Fundamentals",
+      "Palindrome & Anagram Problems",
+      "KMP Algorithm",
+      "Z Algorithm & String Hashing"
+    ]
+  },
+  {
+    id: 3,
+    title: "Sorting Algorithms",
+    icon: "bi bi-sort-down",
+    items: [
+      "Bubble Sort",
+      "Selection Sort",
+      "Insertion Sort",
+      "Merge Sort",
+      "Quick Sort",
+      "Heap Sort",
+      "Counting Sort",
+      "Radix Sort",
+      "Bucket Sort",
+      "K-th Element & Sorting Patterns"
+    ]
+  },
+  {
+    id: 4,
+    title: "Hashing & Hash Maps",
+    icon: "bi bi-hash",
+    items: [
+      "Hash Functions",
+      "Collision Handling",
+      "Chaining & Open Addressing",
+      "Linear Probing & Double Hashing",
+      "HashMap & HashSet Internals",
+      "Frequency Counting",
+      "Duplicate Detection",
+      "Caching & Database Indexing"
+    ]
+  },
+  {
+    id: 5,
+    title: "Matrix & Traversal Patterns",
+    icon: "bi bi-table",
+    items: [
+      "Matrix Representation",
+      "Row & Column Traversal",
+      "Spiral Traversal",
+      "Diagonal Traversal",
+      "Zig-Zag Traversal",
+      "Matrix Problem Solving Patterns"
+    ]
+  },
+  {
+    id: 6,
+    title: "Two Pointers & Sliding Window",
+    icon: "bi bi-arrow-left-right",
+    items: [
+      "Two Pointer Technique",
+      "Fast & Slow Pointer",
+      "Opposite Direction Pointers",
+      "Fixed Size Sliding Window",
+      "Dynamic Sliding Window",
+      "Monotonic Window"
+    ]
+  },
+  {
+    id: 7,
+    title: "Binary Search",
+    icon: "bi bi-search",
+    items: [
+      "Iterative Binary Search",
+      "Recursive Binary Search",
+      "Lower & Upper Bound",
+      "Search on Answer",
+      "Rotated Sorted Arrays",
+      "Binary Search on Matrix",
+      "2D Search Problems"
+    ]
+  },
+  {
+    id: 8,
+    title: "Stack & Queue",
+    icon: "bi bi-stack",
+    items: [
+      "Stack using Arrays & Linked Lists",
+      "Monotonic Stack",
+      "Expression Evaluation",
+      "Parentheses Problems",
+      "Queue Operations",
+      "Circular Queue",
+      "Deque",
+      "Applications in BFS & Scheduling"
+    ]
+  },
+  {
+    id: 9,
+    title: "Linked Lists",
+    icon: "bi bi-diagram-3",
+    items: [
+      "Singly Linked List",
+      "Doubly Linked List",
+      "Circular Linked List",
+      "Insertion & Deletion",
+      "Reverse Linked List",
+      "Fast & Slow Pointer Pattern",
+      "Merge Linked Lists"
+    ]
+  },
+  {
+    id: 10,
+    title: "Recursion & Backtracking",
+    icon: "bi bi-arrow-repeat",
+    items: [
+      "Recursion Fundamentals",
+      "Call Stack & Recursion Tree",
+      "Divide and Conquer",
+      "Merge Sort & Quick Sort",
+      "Backtracking Basics",
+      "Decision Tree Approach",
+      "Advanced Backtracking Patterns"
+    ]
+  },
+  {
+    id: 11,
+    title: "Heap & Priority Queue",
+    icon: "bi bi-triangle",
+    items: [
+      "Min Heap & Max Heap",
+      "Heap Operations",
+      "Heapify Process",
+      "Priority Queue Internals",
+      "Top K Problems",
+      "Real-world Applications"
+    ]
+  },
+  {
+    id: 12,
+    title: "Trees & Binary Search Trees",
+    icon: "bi bi-tree",
+    items: [
+      "Tree Terminologies",
+      "Binary Tree Traversals",
+      "Level Order Traversal",
+      "Binary Search Trees",
+      "BST Operations",
+      "AVL Trees",
+      "Red Black Trees",
+      "B Trees & B+ Trees"
+    ]
+  },
+  {
+    id: 13,
+    title: "Graphs",
+    icon: "bi bi-share",
+    items: [
+      "Graph Representation",
+      "Adjacency Matrix & List",
+      "Breadth First Search (BFS)",
+      "Depth First Search (DFS)",
+      "Dijkstra Algorithm",
+      "Bellman Ford Algorithm",
+      "Kruskal & Prim's MST",
+      "Topological Sort",
+      "Union Find (DSU)"
+    ]
+  },
+  {
+    id: 14,
+    title: "Greedy Algorithms",
+    icon: "bi bi-lightning-charge",
+    items: [
+      "Greedy Strategy",
+      "When to Use Greedy",
+      "Greedy vs Dynamic Programming",
+      "Classic Greedy Problems",
+      "Optimization Techniques"
+    ]
+  },
+  {
+    id: 15,
+    title: "Dynamic Programming",
+    icon: "bi bi-cpu",
+    items: [
+      "Memoization",
+      "Tabulation",
+      "Top Down & Bottom Up DP",
+      "Space Optimization",
+      "Knapsack Problems",
+      "DP on Strings",
+      "DP on Matrix",
+      "Stock DP",
+      "Tree & Graph DP"
+    ]
+  },
+  {
+    id: 16,
+    title: "Trie & Advanced Data Structures",
+    icon: "bi bi-diagram-2",
+    items: [
+      "Trie Structure",
+      "Insert & Search Operations",
+      "Prefix Search",
+      "Auto Suggest Systems",
+      "Dictionary Search",
+      "Word Search Problems"
+    ]
+  },
+  {
+    id: 17,
+    title: "Bit Manipulation & Math for DSA",
+    icon: "bi bi-calculator",
+    items: [
+      "Binary Numbers",
+      "Bitwise Operators",
+      "XOR Tricks",
+      "Bit Masking",
+      "Prime Numbers",
+      "GCD & LCM",
+      "Modular Arithmetic",
+      "Fast Exponentiation",
+      "Sieve of Eratosthenes"
+    ]
+  },
+  {
+    id: 18,
+    title: "Design Problems & Advanced Algorithms",
+    icon: "bi bi-gear-wide-connected",
+    items: [
+      "Design Stack & Queue",
+      "Design Browser History",
+      "Design Twitter Feed",
+      "LRU & LFU Cache",
+      "Insert Delete GetRandom O(1)",
+      "Mo's Algorithm",
+      "Sparse Table",
+      "Sweep Line Algorithm"
+    ]
+  },
+  {
+    id: 19,
+    title: "Interview Preparation & Mock Tests",
+    icon: "bi bi-person-workspace",
+    items: [
+      "FAANG Preparation Roadmap",
+      "Pattern-Based Problem Solving",
+      "Array, Graph & DP Patterns",
+      "Mock Coding Interviews",
+      "Optimization Discussions",
+      "Behavioral & HR Preparation"
+    ]
+  },
+  {
+    id: 20,
+    title: "Real World Engineering & Projects",
+    icon: "bi bi-award",
+    items: [
+      "DSA in Search Engines",
+      "Caching Systems",
+      "Recommendation Engines",
+      "Virtual DOM Optimization",
+      "Database Indexing",
+      "Search Engine Project",
+      "Autocomplete System",
+      "URL Shortener",
+      "Chat Application"
+    ]
+  }
+]
+},
 {
   title: "HTML and CSS",
   desc: "Start your front-end web development journey with expert HTML5 and CSS3 training. Learn to design stunning, responsive, and mobile-friendly websites from scratch for high-demand UI roles.",

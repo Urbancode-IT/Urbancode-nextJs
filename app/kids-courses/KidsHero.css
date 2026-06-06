@@ -14,7 +14,6 @@
   --kh2-yellow      : #FFC83D;
   --kh2-teal        : #317B74;
 
-  /* Keep legacy vars so Kidz.css fallback still works */
   --kids-hero-bg    : #F8FAF8;
   --kids-hero-green : #00C16A;
   --kids-hero-teal  : #317B74;
@@ -38,62 +37,78 @@
   0%, 100% { opacity: 1; transform: scale(1); }
   50%       { opacity: 0.5; transform: scale(1.45); }
 }
-@keyframes kh2-badge-glow {
-  0%, 100% { box-shadow: 0 2px 12px rgba(0,193,106,0.08); }
-  50%       { box-shadow: 0 2px 22px rgba(0,193,106,0.22); }
-}
 @keyframes kh2-slide-up {
   from { opacity: 0; transform: translateY(22px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 @keyframes kh2-card-enter {
   from { opacity: 0; transform: scale(0.94) translateY(18px); }
-  to   { opacity: 1; transform: scale(1)    translateY(0); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+@keyframes kh2-badge-attention {
+  0%   { box-shadow: 0 4px 24px rgba(0,193,106,0.18), 0 0 0 0   rgba(0,193,106,0.5); }
+  50%  { box-shadow: 0 4px 24px rgba(0,193,106,0.18), 0 0 0 10px rgba(0,193,106,0); }
+  100% { box-shadow: 0 4px 24px rgba(0,193,106,0.18), 0 0 0 0   rgba(0,193,106,0); }
+}
+@keyframes kh2-arrow-nudge {
+  0%, 100% { transform: translateX(0); }
+  50%       { transform: translateX(3px); }
+}
+@keyframes kh2-icon-ring {
+  0%, 100% { box-shadow: 0 0 0 0   rgba(0, 193, 106, 0.38); }
+  60%       { box-shadow: 0 0 0 6px rgba(0, 193, 106, 0); }
 }
 
 /* ═══════════════════════════════════════════════════
-   SECTION — full page width
+   SECTION
    ═══════════════════════════════════════════════════ */
 .kh2-section {
-  background : var(--kh2-bg);
-  width      : 100%;
-  font-family: 'Inter', sans-serif;
-  display    : flex;
+  background    : var(--kh2-bg);
+  width         : 100%;
+  font-family   : 'Inter', sans-serif;
+  display       : flex;
   flex-direction: column;
-  align-items: center;
-  overflow   : hidden;
-  position   : relative;
-  min-height : 100vh;
-  box-sizing : border-box;
+  align-items   : center;
+  overflow      : hidden;
+  position      : relative;
+  min-height    : 100vh;
+  box-sizing    : border-box;
 }
 
 @media (min-width: 1025px) {
   .kh2-section {
-    height: 100vh;
+    height         : 100vh;
     justify-content: center;
   }
 }
 
 /* ═══════════════════════════════════════════════════
-   INNER ROW (two-column on desktop)
+   INNER ROW
    ═══════════════════════════════════════════════════ */
 .kh2-inner {
-  width        : 100%;
-  max-width    : 1400px;
-  display      : flex;
+  width         : 100%;
+  max-width     : 1400px;
+  display       : flex;
   flex-direction: row;
-  align-items  : center;
-  gap          : clamp(32px, 4vw, 72px);
-  /* padding-top accounts for fixed navbar (~70px) */
-  padding      : clamp(80px, 9vh, 110px) clamp(28px, 5vw, 80px) clamp(20px, 3vh, 40px);
-  flex         : 1;
-  min-height   : 0;
-  box-sizing   : border-box;
+  align-items   : center;
+  gap           : clamp(32px, 4vw, 72px);
+  padding       : clamp(80px, 9vh, 110px) clamp(28px, 5vw, 80px) clamp(20px, 3vh, 40px);
+  flex          : 1;
+  min-height    : 0;
+  box-sizing    : border-box;
+  /* margin-left   : 0px; */
 }
 
 @media (max-width: 1024px) {
   .kh2-inner {
-    min-height : calc(100vh - 90px);
+    min-height: calc(100vh - 90px);
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1300px) {
+  .kh2-inner {
+    
+    margin-left   : 200px;
   }
 }
 
@@ -111,100 +126,214 @@
 /* ── Badge wrapper ───────────────────────────────── */
 .kh2-badge-wrap {
   margin-bottom: 22px;
-  margin-top: 10px; /* Lower the playzone container a bit */
+  margin-top   : 10px;
 }
 
-/* ── Badge button ────────────────────────────────── */
+/* ══════════════════════════════════════
+   BADGE — Kids Play Zone pill
+   ══════════════════════════════════════ */
 .kh2-badge {
   display      : inline-flex;
-  align-items  : center;
-  gap          : 12px;
-  background   : linear-gradient(135deg, #ffffff 0%, #f4fbf7 100%);
-  border       : 1.5px solid rgba(0, 193, 106, 0.32);
-  border-radius: 0; /* Sharp edges */
-  padding      : 10px 22px;
+  align-items  : stretch;
+  border-radius: 12px;
   cursor       : pointer;
-  font-size    : 13px;
-  font-weight  : 600;
-  color        : var(--kh2-text);
   font-family  : 'Inter', sans-serif;
-  transition   : all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   white-space  : nowrap;
-  box-shadow   : 0 4px 12px rgba(0, 193, 106, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  overflow     : hidden;
+  border       : none;
+  outline      : none;
+  background   : #ffffff;
+  padding      : 0;
+  box-shadow   : 0 4px 24px rgba(0, 193, 106, 0.18),
+                 0 1px 4px rgba(0, 0, 0, 0.06);
+  animation    : kh2-badge-attention 3s ease-in-out infinite;
+  transition   : transform 0.22s ease, box-shadow 0.22s ease;
   position     : relative;
-  overflow     : hidden; /* Clips the shine sweep */
-  animation    : kh2-badge-glow 2.4s ease-in-out infinite;
 }
+
 .kh2-badge:hover {
-  background  : #eefdf5;
-  border-color: var(--kh2-green);
-  transform   : translateY(-2px);
-  box-shadow  : 0 8px 24px rgba(0, 193, 106, 0.16);
+  transform : translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 32px rgba(0, 193, 106, 0.28);
+  animation : none;
 }
-.kh2-badge:active {
-  transform   : translateY(0);
+.kh2-badge:active { transform: scale(0.98); }
+
+/* ── Character illustration ── */
+.kh2-badge-char {
+  width          : 62px;
+  display        : flex;
+  align-items    : flex-end;
+  justify-content: center;
+  background     : linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+  border-radius  : 12px 0 0 12px;
+  overflow       : hidden;
+  flex-shrink    : 0;
+  padding        : 4px 0 0 2px;
 }
-.kh2-badge-text  { font-weight: 700; color: var(--kh2-text); }
-.kh2-badge-link  {
-  color       : var(--kh2-green-dark);
-  font-weight : 700;
-  font-size   : 12px;
-  border-left : 1px solid rgba(0, 193, 106, 0.25);
-  padding-left: 10px;
+.kh2-badge-char-img {
+  width     : 48px;
+  height    : 48px;
+  object-fit: contain;
+  display   : block;
+  margin:auto;
 }
 
-/* ── Shine Sweep Effect ──────────────────────────── */
-.kh2-badge::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -150%;
-  width: 60px;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(0, 193, 106, 0.12) 25%,
-    rgba(255, 255, 255, 0.95) 50%,
-    rgba(0, 193, 106, 0.12) 75%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  transform: skewX(-20deg);
-  animation: kh2-badge-shine 4s infinite ease-in-out;
+/* ── Body ── */
+.kh2-badge-body {
+  display        : flex;
+  flex-direction : column;
+  justify-content: center;
+  gap            : 2px;
+  padding        : 10px 14px 10px 12px;
+  background     : #ffffff;
+  position       : relative;
+  border-right   : none;
+  min-width      : 0;
+}
+
+/* ── Eyebrow ── */
+.kh2-badge-eyebrow {
+  display    : flex;
+  align-items: center;
+  gap        : 5px;
+}
+.kh2-live-tag {
+  font-size     : 9px;
+  font-weight   : 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color         : #00C16A;
+}
+
+/* ── Mixed-color title ── */
+.kh2-badge-title {
+  display    : flex;
+  align-items: baseline;
+  gap        : 3px;
+  line-height: 1;
+}
+.kh2-title-kids {
+  font-size  : 18px;
+  font-weight: 900;
+  color      : #1A1A1A;
+  font-family: 'Inter', sans-serif;
+}
+.kh2-title-play {
+  font-size  : 18px;
+  font-weight: 900;
+  color      : #00C16A;
+  font-family: 'Inter', sans-serif;
+}
+.kh2-title-zone {
+  font-size  : 18px;
+  font-weight: 900;
+  color      : #f59e0b;
+  font-family: 'Inter', sans-serif;
+}
+
+/* ── Subtext ── */
+.kh2-badge-subtext {
+  font-size     : 9.5px;
+  font-weight   : 600;
+  color         : #9ca3af;
+  letter-spacing: 0.01em;
+}
+
+/* ── Decorative leaves & star ── */
+.kh2-badge-decos {
+  position      : absolute;
+  top           : 0;
+  right         : 0;
+  display       : flex;
+  gap           : 3px;
+  padding       : 5px 8px 0 0;
   pointer-events: none;
-  z-index: 1;
+}
+.kh2-deco-leaf-tl {
+  display  : inline-flex;
+  transform: rotate(-30deg);
+  opacity  : 0.9;
+  animation: kh2-float-a 3s ease-in-out infinite;
+}
+.kh2-deco-star {
+  display  : inline-flex;
+  animation: kh2-float-b 2.5s ease-in-out infinite 0.4s;
+}
+.kh2-badge-leaf-br {
+  position      : absolute;
+  bottom        : 4px;
+  right         : 6px;
+  transform     : rotate(40deg);
+  opacity       : 0.7;
+  animation     : kh2-float-c 3.5s ease-in-out infinite;
+  pointer-events: none;
 }
 
-@keyframes kh2-badge-shine {
-  0% {
-    left: -150%;
-  }
-  30% {
-    left: 150%;
-  }
-  100% {
-    left: 150%;
-  }
+/* ── Notch divider ── */
+.kh2-badge-notch {
+  display        : flex;
+  flex-direction : column;
+  justify-content: center;
+  gap            : 5px;
+  padding        : 0 7px;
+  background     : #f3fdf7;
+  border-top     : 1.5px solid rgba(0, 193, 106, 0.15);
+  border-bottom  : 1.5px solid rgba(0, 193, 106, 0.15);
+  flex-shrink    : 0;
+}
+.kh2-notch-dot {
+  width        : 4px;
+  height       : 4px;
+  border-radius: 50%;
+  background   : rgba(0, 193, 106, 0.25);
+}
+
+/* ── Green CTA pill ── */
+.kh2-badge-cta {
+  display      : flex;
+  align-items  : center;
+  gap          : 8px;
+  padding      : 0 18px 0 16px;
+  background   : linear-gradient(135deg, #00C16A 0%, #009952 100%);
+  border-radius: 0 12px 12px 0;
+  flex-shrink  : 0;
+  transition   : background 0.18s ease;
+}
+.kh2-badge:hover .kh2-badge-cta {
+  background: linear-gradient(135deg, #009952 0%, #007a3f 100%);
+}
+.kh2-badge-cta-label {
+  font-size     : 12px;
+  font-weight   : 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color         : #fff;
+  line-height   : 1;
+}
+.kh2-badge-cta-arrow {
+  display  : flex;
+  align-items: center;
+  animation: kh2-arrow-nudge 2s ease-in-out infinite;
 }
 
 /* ── Headline ────────────────────────────────────── */
 .kh2-title {
-  font-size    : clamp(24px, 3.5vw, 48px);
-  font-weight  : 700;
-  line-height  : 1.15;
-  color        : var(--kh2-text);
+  font-size     : clamp(24px, 3.5vw, 48px);
+  font-weight   : 700;
+  line-height   : 1.15;
+  color         : var(--kh2-text);
   letter-spacing: -0.02em;
-  margin       : 0 0 20px 0;
-  animation    : kh2-slide-up 0.55s ease both 0.08s;
-  white-space  : normal;
+  margin        : 0 0 20px 0;
+  animation     : kh2-slide-up 0.55s ease both 0.08s;
+  white-space   : normal;
 }
 .kh2-highlight {
-  position  : relative;
-  display   : inline-block;
-  background: linear-gradient(135deg, #00C16A 0%, #009952 100%);
+  position              : relative;
+  display               : inline-block;
+  background            : linear-gradient(135deg, #00C16A 0%, #009952 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-clip: text;
+  background-clip       : text;
 }
 .kh2-underline-svg {
   position      : absolute;
@@ -219,66 +348,38 @@
 .kh2-desc {
   font-size : clamp(15px, 1.15vw, 18px);
   line-height: 1.65;
-  color     : var(--kh2-sub);
-  max-width : 420px;
-  margin    : 0 0 28px 0;
-  animation : kh2-slide-up 0.55s ease both 0.16s;
+  color      : var(--kh2-sub);
+  max-width  : 420px;
+  margin     : 0 0 28px 0;
+  animation  : kh2-slide-up 0.55s ease both 0.16s;
 }
 
-/* – Mobile-only stats (hidden on all views) – */
+/* ── Mobile stats (hidden) ── */
 .kh2-mobile-stats {
-  display: none !important; /* hidden on all views */
-  width  : 100%;
-  grid-template-columns: repeat(3, 1fr);
-  gap    : 10px;
-  margin-bottom: 22px;
-}
-.kh2-mstat-card {
-  background   : #fff;
-  border-radius: 16px;
-  padding      : 14px 8px;
-  text-align   : center;
-  box-shadow   : 0 2px 12px rgba(0,0,0,0.05);
-  border       : 1px solid #e4f2ea;
-  display      : flex;
-  flex-direction: column;
-  gap          : 3px;
-}
-.kh2-mstat-val {
-  font-size  : 20px;
-  font-weight: 800;
-  color      : var(--kh2-green);
-  line-height: 1;
-}
-.kh2-mstat-label {
-  font-size     : 9px;
-  font-weight   : 600;
-  color         : #6b7280;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  display: none !important;
 }
 
 /* ── CTA Row ─────────────────────────────────────── */
 .kh2-cta-row {
-  display    : flex;
+  display   : flex;
   align-items: center;
-  gap        : 12px;
-  flex-wrap  : wrap;
-  animation  : kh2-slide-up 0.55s ease both 0.22s;
+  gap       : 12px;
+  flex-wrap : wrap;
+  animation : kh2-slide-up 0.55s ease both 0.22s;
 }
 .kh2-btn-primary {
-  background   : linear-gradient(135deg, #00C16A 0%, #009952 100%);
-  color        : #fff;
-  border       : none;
-  padding      : 16px 38px;
-  border-radius: 50px;
-  font-size    : 16px;
-  font-weight  : 700;
-  cursor       : pointer;
-  box-shadow   : 0 6px 24px rgba(0,193,106,0.35);
-  transition   : transform 0.2s ease, box-shadow 0.2s ease;
-  font-family  : 'Inter', sans-serif;
-  white-space  : nowrap;
+  background    : linear-gradient(135deg, #00C16A 0%, #009952 100%);
+  color         : #fff;
+  border        : none;
+  padding       : 16px 38px;
+  border-radius : 50px;
+  font-size     : 16px;
+  font-weight   : 700;
+  cursor        : pointer;
+  box-shadow    : 0 6px 24px rgba(0,193,106,0.35);
+  transition    : transform 0.2s ease, box-shadow 0.2s ease;
+  font-family   : 'Inter', sans-serif;
+  white-space   : nowrap;
   letter-spacing: -0.01em;
 }
 .kh2-btn-primary:hover {
@@ -307,33 +408,30 @@
 }
 
 /* ═══════════════════════════════════════════════════
-   RIGHT COLUMN — Hero image (clean, no card shell)
+   RIGHT COLUMN
    ═══════════════════════════════════════════════════ */
 .kh2-right {
   flex           : 1;
   display        : flex;
   align-items    : center;
-  justify-content: center;
+  justify-content: flex-end;
   animation      : kh2-card-enter 0.65s ease both 0.2s;
 }
-
-/* ── Hero card shell — transparent, just holds the img ── */
 .kh2-hero-card {
-  position    : relative;
-  width       : clamp(280px, 34vw, 440px);
-  height      : clamp(380px, 52vh, 540px);
-  overflow    : visible;
-  flex-shrink : 0;
-  background  : transparent;
+  position   : relative;
+  width      : clamp(450px, 48vw, 680px);
+  aspect-ratio: 1.5;
+  height     : auto;
+  overflow   : visible;
+  flex-shrink: 0;
+  background : transparent;
 }
-
-/* ── Hero image — full height, natural display ──────── */
 .kh2-card-img {
   position       : absolute;
   bottom         : 0;
   left           : 50%;
   transform      : translateX(-50%);
-  width          : auto;
+  width          : 100%;
   max-width      : 100%;
   height         : 100%;
   object-fit     : contain;
@@ -342,7 +440,7 @@
 }
 
 /* ═══════════════════════════════════════════════════
-   TRUST BAND — desktop only (hidden on mobile/tablet)
+   TRUST BAND
    ═══════════════════════════════════════════════════ */
 .kh2-trust-band {
   width     : 100%;
@@ -393,72 +491,62 @@
 }
 
 /* ═══════════════════════════════════════════════════
-   TABLET  (≤ 1100px) — keep 2-column, smaller card
+   TABLET (≤ 1100px)
    ═══════════════════════════════════════════════════ */
 @media (max-width: 1100px) {
   .kh2-inner {
     padding   : 90px 48px 48px;
-    gap       : 40px;
+    gap       : 0px;
     min-height: auto;
   }
   .kh2-hero-card {
-    width     : 100%;
-    max-width : 340px;
-    height    : clamp(320px, 52vw, 440px);
+    width    : clamp(380px, 55vw, 600px);
+    max-width: none;
+    height   : auto;
+    aspect-ratio: 1.5;
   }
-  /* Bring floating icons in tighter */
-  .fi-python { left : -28px; }
-  .fi-web    { right: -24px; }
-  .fi-ai     { left : -32px; }
-  .fi-rocket { right: -28px; }
-  .fi-puzzle { left : -22px; }
-  .fi-laptop { right: -24px; }
-
-  /* HIDE trust band on tablet */
   .kh2-trust-band { display: none; }
 }
 
 /* ═══════════════════════════════════════════════════
-   LANDSCAPE SMALL SCREEN (1024×600 "Nest Hub") —
-   treat as desktop: side-by-side, compact
+   LANDSCAPE SMALL SCREEN (Nest Hub 1024×600)
    ═══════════════════════════════════════════════════ */
 @media (max-width: 1100px) and (max-height: 650px) {
   .kh2-inner {
     flex-direction: row !important;
     align-items   : center !important;
-    /* padding       : 0px 40px 24px !important; */
-    margin-top    : -80px !important; /* Push content down from top edge */
+    margin-top    : -80px !important;
     gap           : 32px !important;
     min-height    : auto !important;
+    margin-left   : 80px !important;
   }
   .kh2-left {
-    display        : flex !important;
-    flex-direction : column !important;
-    align-items    : flex-start !important;
-    flex           : 1.2 !important;
-    order          : 0 !important;
+    display       : flex !important;
+    flex-direction: column !important;
+    align-items   : flex-start !important;
+    flex          : 1.2 !important;
+    order         : 0 !important;
   }
   .kh2-badge-wrap { order: unset !important; margin-bottom: 14px !important; }
   .kh2-title {
-    font-size  : 30px !important;
+    font-size    : 30px !important;
     margin-bottom: 10px !important;
-    text-align : left !important;
-    width      : auto !important;
+    text-align   : left !important;
+    width        : auto !important;
   }
   .kh2-desc {
-    font-size : 13px !important;
-    max-width : 340px !important;
+    font-size    : 13px !important;
+    max-width    : 340px !important;
     margin-bottom: 16px !important;
-    text-align: left !important;
+    text-align   : left !important;
   }
   .kh2-cta-row {
     flex-direction: row !important;
     width         : auto !important;
     order         : unset !important;
   }
-  .kh2-btn-primary  { padding: 12px 28px !important; font-size: 14px !important; }
-  .kh2-btn-secondary{ padding: 10px 22px !important; font-size: 14px !important; }
-
+  .kh2-btn-primary   { padding: 12px 28px !important; font-size: 14px !important; }
+  .kh2-btn-secondary { padding: 10px 22px !important; font-size: 14px !important; }
   .kh2-right {
     order          : 1 !important;
     display        : flex !important;
@@ -467,24 +555,26 @@
     justify-content: center !important;
   }
   .kh2-hero-card {
-    width : clamp(200px, 30vw, 300px) !important;
-    height: clamp(260px, 44vh, 340px) !important;
+    width    : clamp(280px, 40vw, 400px) !important;
+    height   : auto !important;
+    aspect-ratio: 1.5 !important;
     max-width: none !important;
   }
-  .fi-python { left: -20px !important; }
-  .fi-web    { right:-18px !important; }
-  .fi-ai     { left: -22px !important; }
-  .fi-rocket { right:-20px !important; }
-  .fi-puzzle, .fi-laptop { display: none !important; }
-
-  /* Hide mobile stats + trust band on this size */
   .kh2-mobile-stats { display: none !important; }
   .kh2-trust-band   { display: none !important; }
+
+  /* Badge compact on small landscape */
+  .kh2-badge-char       { width: 50px !important; }
+  .kh2-badge-char-img   { width: 42px !important; height: 42px !important; }
+  .kh2-title-kids,
+  .kh2-title-play,
+  .kh2-title-zone       { font-size: 15px !important; }
+  .kh2-badge-subtext    { display: none !important; }
+  .kh2-badge-cta-label  { font-size: 11px !important; }
 }
 
 /* ═══════════════════════════════════════════════════
-   MOBILE PORTRAIT (≤ 767px) — single stacked column
-   Section order: badge → title → desc → hero card → stats → CTAs
+   MOBILE PORTRAIT (≤ 767px)
    ═══════════════════════════════════════════════════ */
 @media (max-width: 767px) {
   .kh2-section { overflow: visible; }
@@ -492,19 +582,13 @@
   .kh2-inner {
     flex-direction: column;
     align-items   : center;
-    /* padding-top pushes content below fixed navbar */
     padding       : 75px 20px 32px;
     gap           : 0;
     min-height    : auto;
   }
 
-  /*
-   * display:contents removes kh2-left's own box so its children
-   * become direct flex items of kh2-inner — enabling custom order.
-   */
   .kh2-left { display: contents; }
 
-  /* ── Ordered elements ── */
   .kh2-badge-wrap {
     order          : 1;
     width          : 100%;
@@ -520,13 +604,12 @@
     width        : 100%;
   }
   .kh2-desc {
-    order      : 3;
-    text-align : center;
-    font-size  : 14.5px !important;
-    max-width  : 320px;
-    margin     : 0 auto 20px;
+    order     : 3;
+    text-align: center;
+    font-size : 14.5px !important;
+    max-width : 320px;
+    margin    : 0 auto 20px;
   }
-  /* Hero card — order 4 (between desc and stats) */
   .kh2-right {
     order         : 4;
     width         : 100%;
@@ -535,35 +618,21 @@
     margin-bottom : 22px;
   }
   .kh2-mobile-stats { display: none !important; }
-  .kh2-cta-row      {
+  .kh2-cta-row {
     order         : 6;
     flex-direction: column;
     width         : 100%;
     gap           : 10px;
   }
-
-  /* Card size on mobile */
   .kh2-hero-card {
-    width : min(310px, 86vw);
-    height: 400px;
+    width : min(430px, 98vw);
+    height: auto;
+    aspect-ratio: 1.5;
   }
 
-  /* Floating icons — pull in close so they don't cause h-scroll */
-  .fi-python { top: 13%; left: -18px; }
-  .fi-web    { top: 8%;  right: -16px; }
-  .fi-ai     { top: 42%; left: -20px; }
-  .fi-rocket { top: 37%; right: -18px; }
-  /* Remove bottom icons on mobile to keep it clean */
-  .fi-puzzle, .fi-laptop { display: none; }
-
-  /* Floating mini cards — smaller on mobile */
-  .kh2-achieve-card { top: -10px; right: -8px;  padding: 9px 12px; }
-  .kh2-rating-card  { bottom: -10px; right: -8px; padding: 9px 12px; }
-  .kh2-achieve-val  { font-size: 17px; }
-  .kh2-rating-stars { font-size: 16px; }
-
   /* Full-width buttons */
-  .kh2-btn-primary, .kh2-btn-secondary {
+  .kh2-btn-primary,
+  .kh2-btn-secondary {
     width          : 100%;
     height         : 56px;
     padding        : 0 24px;
@@ -574,18 +643,99 @@
     justify-content: center;
   }
 
-  /* HIDE trust band on mobile */
   .kh2-trust-band { display: none; }
+
+  /* Badge on mobile — slightly smaller */
+  .kh2-badge-char     { width: 54px; }
+  .kh2-badge-char-img { width: 44px; height: 44px; }
+  .kh2-title-kids,
+  .kh2-title-play,
+  .kh2-title-zone     { font-size: 16px; }
+  .kh2-badge-subtext  { font-size: 9px; }
+  .kh2-badge-cta      { padding: 0 14px 0 12px; }
+  .kh2-badge-cta-label{ font-size: 11px; }
 }
 
 /* ═══════════════════════════════════════════════════
    SMALL MOBILE (≤ 390px)
    ═══════════════════════════════════════════════════ */
 @media (max-width: 390px) {
-  .kh2-inner { padding: 65px 16px 24px; }
-  .kh2-title { font-size: 30px !important; }
-  .kh2-hero-card { height: 360px; width: 92vw; }
-  .kh2-fi { padding: 4px 8px 4px 6px; }
-  .kh2-fi-icon  { font-size: 14px; }
-  .kh2-fi-label { font-size: 10px; }
+  .kh2-inner      { padding: 65px 16px 24px; }
+  .kh2-title      { font-size: 30px !important; }
+  .kh2-hero-card {
+    width : 98vw;
+    height: auto;
+    aspect-ratio: 1.5;
+  }
+
+  .kh2-badge-char     { width: 46px; }
+  .kh2-badge-char-img { width: 38px; height: 38px; }
+  .kh2-title-kids,
+  .kh2-title-play,
+  .kh2-title-zone     { font-size: 14px; }
+  .kh2-badge-subtext  { display: none; }
+  .kh2-badge-decos    { display: none; }
+  .kh2-badge-leaf-br  { display: none; }
+  .kh2-badge-cta      { padding: 0 12px; }
+  .kh2-badge-cta-label{ font-size: 10px; }
 }
+
+
+/* pulse effect for play now button*/
+/* ── CTA pulse effect ── */
+.kh2-badge-cta {
+  display      : flex;
+  align-items  : center;
+  gap          : 8px;
+  padding      : 0 18px 0 16px;
+  background   : linear-gradient(135deg, #00C16A 0%, #009952 100%);
+  border-radius: 0 12px 12px 0;
+  flex-shrink  : 0;
+  transition   : background 0.18s ease;
+  position     : relative;
+  overflow     : hidden;
+}
+
+/* Ripple ring on the CTA only */
+.kh2-badge-cta::before {
+  content      : '';
+  position     : absolute;
+  inset        : 0;
+  border-radius: 0 12px 12px 0;
+  box-shadow   : inset 0 0 0 3px rgba(255, 255, 255, 0.45);
+  animation    : kh2-cta-ring 2s ease-out infinite;
+  pointer-events: none;
+}
+
+@keyframes kh2-cta-ring {
+  0%   { box-shadow: inset 0 0 0 3px rgba(255,255,255,0.45); opacity: 1; }
+  70%  { box-shadow: inset 0 0 0 8px rgba(255,255,255,0);   opacity: 0; }
+  100% { box-shadow: inset 0 0 0 3px rgba(255,255,255,0.45); opacity: 1; }
+}
+
+/* Scale bump on the label + arrow together */
+.kh2-badge-cta-label,
+.kh2-badge-cta-arrow {
+  animation: kh2-cta-pop 2s ease-in-out infinite;
+}
+
+@keyframes kh2-cta-pop {
+  0%,100% { transform: scale(1); }
+  50%      { transform: scale(1.06); }
+}
+
+/* Keep arrow nudge separate — override the shared animation */
+.kh2-badge-cta-arrow {
+  animation: kh2-cta-arrow-pulse 2s ease-in-out infinite;
+}
+
+@keyframes kh2-cta-arrow-pulse {
+  0%,100% { transform: translateX(0) scale(1); }
+  40%      { transform: translateX(3px) scale(1.1); }
+  60%      { transform: translateX(1px) scale(1); }
+}
+
+/* Pause all pulse on hover so it feels responsive */
+.kh2-badge:hover .kh2-badge-cta::before  { animation: none; opacity: 0; }
+.kh2-badge:hover .kh2-badge-cta-label    { animation: none; }
+.kh2-badge:hover .kh2-badge-cta-arrow    { animation: none; transform: translateX(3px); }

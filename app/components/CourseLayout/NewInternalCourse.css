@@ -39,8 +39,8 @@
 }
 
 .nict-hero-content.left {
-    flex: 0 1 750px;
-    /* Increased to prevent text wrapping */
+    flex: 0 1 580px;
+    /* Reduced from 750px to prevent overlapping with absolute positioned image on desktops */
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -301,6 +301,10 @@
 @media (min-width: 1600px) {
     .nict-hero-inner {
         max-width: 1400px;
+    }
+
+    .nict-hero-content.left {
+        flex: 0 1 750px;
     }
 
     .nict-hero-title-light,
