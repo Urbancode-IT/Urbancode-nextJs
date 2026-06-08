@@ -150,16 +150,19 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h2 {
-  font-size: var(--fs-h2);
-  font-weight: 700;
+  font-size: var(--section-title-size);
+  font-weight: var(--section-title-weight);
+  line-height: var(--section-title-lh);
+  letter-spacing: var(--section-title-ls);
+  color: var(--section-title-color);
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 12px;
   flex-wrap: wrap;
   text-align: center;
-  margin-bottom: 20px;
-  color: var(--text-h);
+  margin-top: var(--section-title-margin-top);
+  margin-bottom: var(--section-title-margin-bottom);
 }
 
 section {

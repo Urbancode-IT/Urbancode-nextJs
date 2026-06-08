@@ -1,17 +1,15 @@
 'use client';
+
 import { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import Link from 'next/link';
 import { videoData } from '../../data/videoTestimonialsData';
 import OptimizedVideo from '../common/OptimizedVideo';
 import './VideoTestimonials.css';
-
 
 const VideoTestimonials = () => {
     const [index, setIndex] = useState(0);
     const [cardsToShow, setCardsToShow] = useState(3);
     const videoRefs = useRef([]);
-    const shouldPlay = useRef(false);
 
     useEffect(() => {
         const updateCardsToShow = () => {
@@ -20,47 +18,31 @@ const VideoTestimonials = () => {
             else if (window.innerWidth < 1024) setCardsToShow(3);
             else setCardsToShow(4);
         };
-
         updateCardsToShow();
-        window.addEventListener("resize", updateCardsToShow);
-        return () => window.removeEventListener("resize", updateCardsToShow);
+        window.addEventListener('resize', updateCardsToShow);
+        return () => window.removeEventListener('resize', updateCardsToShow);
     }, []);
 
-    // Handle Autoplay logic: pause all that are out of view, optionally play clicked one
     useEffect(() => {
-        videoRefs.current.forEach((video, idx) => {
-            if (video) {
-                if (idx === index && shouldPlay.current) {
-                    video.currentTime = 0; 
-                    video.play().catch(err => {
-                        console.log("Playback restricted:", err);
-                    });
-                    shouldPlay.current = false;
-                } else if (idx < index || idx >= index + cardsToShow) {
-                    video.pause();
-                }
+        videoRefs.current.forEach((videoApi, idx) => {
+            if (!videoApi) return;
+            // ✅ Cards outside visible window: reset to poster via React state
+            if (idx < index || idx >= index + cardsToShow) {
+                videoApi.resetPoster();
             }
         });
     }, [index, cardsToShow]);
 
     const handleNext = () => {
-        if (index < videoData.length - cardsToShow) {
-            setIndex((prev) => prev + 1);
-        }
+        if (index < videoData.length - cardsToShow) setIndex((prev) => prev + 1);
     };
-
     const handlePrev = () => {
-        if (index > 0) {
-            setIndex((prev) => prev - 1);
-        }
+        if (index > 0) setIndex((prev) => prev - 1);
     };
-
-    const handleDotClick = (dotIndex) => {
-        setIndex(dotIndex);
-    };
+    const handleDotClick = (dotIndex) => setIndex(dotIndex);
 
     return (
-        <motion.section 
+        <motion.section
             className="video-testimonials-section py-5"
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -69,38 +51,43 @@ const VideoTestimonials = () => {
         >
             <div className="container position-relative">
                 <div className="text-center mb-5">
-                    <h2 className="section-main-title text-shine">Voice that matters</h2>
+                    <h2 className="section-main-title text-shine">Voice that Matters</h2>
                 </div>
 
                 <div className="video-carousel-wrapper">
-                    <button 
-                        className="nav-btn prev-btn" 
+                    <button
+                        className="nav-btn prev-btn"
                         onClick={handlePrev}
                         disabled={index === 0}
                         style={{ opacity: index === 0 ? 0.5 : 1, cursor: index === 0 ? 'not-allowed' : 'pointer' }}
-                    >❮</button>
-                    
+                    >
+                        ❮
+                    </button>
+
                     <div className="video-cards-container">
-                        <div 
+                        <div
                             className="video-carousel-track"
                             style={{ transform: `translateX(-${index * (100 / cardsToShow)}%)` }}
                         >
                             {videoData.map((video, idx) => (
-                                <div 
-                                    key={video.id} 
+                                <div
+                                    key={video.id}
                                     className="video-card-slide"
-                                    style={{ flex: `0 0 calc(${100 / cardsToShow}% - 20px)`, margin: '0 10px' }}
+                                    style={{
+                                        flex: `0 0 calc(${100 / cardsToShow}% - 20px)`,
+                                        margin: '0 10px'
+                                    }}
                                 >
-                                    <OptimizedVideo 
-                                        ref={el => videoRefs.current[idx] = el}
+                                    <OptimizedVideo
+                                        ref={(el) => (videoRefs.current[idx] = el)}
                                         src={video.src}
-                                        poster="" // Rely entirely on video's original first frame as thumbnail
-                                        controls={true}
+                                        poster={video.poster}
+                                        controls
                                         autoPlay={false}
                                         loop={false}
-                                        muted={false} // Let the user hear their voice!
-                                        playOnVisible={false} // Manage programmatically via the carousel
-                                        preload="metadata" // Load metadata to capture and display original first frame
+                                        muted={false}
+                                        playOnVisible={false}
+                                        preload="none"
                                         className="testimonial-video bg-dark"
                                     />
                                 </div>
@@ -108,23 +95,30 @@ const VideoTestimonials = () => {
                         </div>
                     </div>
 
-                    <button 
-                        className="nav-btn next-btn" 
+                    <button
+                        className="nav-btn next-btn"
                         onClick={handleNext}
                         disabled={index >= videoData.length - cardsToShow}
-                        style={{ opacity: index >= videoData.length - cardsToShow ? 0.5 : 1, cursor: index >= videoData.length - cardsToShow ? 'not-allowed' : 'pointer' }}
-                    >❯</button>
+                        style={{
+                            opacity: index >= videoData.length - cardsToShow ? 0.5 : 1,
+                            cursor: index >= videoData.length - cardsToShow ? 'not-allowed' : 'pointer'
+                        }}
+                    >
+                        ❯
+                    </button>
                 </div>
 
                 <div className="carousel-controls mt-4">
                     <div className="carousel-dots">
-                        {videoData.slice(0, Math.max(1, videoData.length - cardsToShow + 1)).map((_, i) => (
-                            <span 
-                                key={i} 
-                                className={`carousel-dot ${i === index ? 'active' : ''}`}
-                                onClick={() => handleDotClick(i)}
-                            />
-                        ))}
+                        {videoData
+                            .slice(0, Math.max(1, videoData.length - cardsToShow + 1))
+                            .map((_, i) => (
+                                <span
+                                    key={i}
+                                    className={`carousel-dot ${i === index ? 'active' : ''}`}
+                                    onClick={() => handleDotClick(i)}
+                                />
+                            ))}
                     </div>
                 </div>
             </div>

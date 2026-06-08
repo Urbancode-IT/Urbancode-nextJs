@@ -14,10 +14,12 @@
 
 
 .course-title {
-  font-size: 1.9rem !important;
-  font-weight: 500;
-  color: hsla(210, 29%, 24%, 1);
-
+  font-size: var(--section-title-size) !important;
+  font-weight: var(--section-title-weight) !important;
+  line-height: var(--section-title-lh) !important;
+  letter-spacing: var(--section-title-ls) !important;
+  color: var(--section-title-color) !important;
+  text-align: center;
 }
 
 .card {
@@ -303,7 +305,7 @@
   }
 
   .course-title {
-    font-size: 1.5rem !important;
+    font-size: var(--section-title-size) !important;
   }
 
   .list-group-item {
@@ -334,9 +336,12 @@
 }
 
 .faq-section h2 {
-  font-size: 30px !important;
-  font-weight: 500 !important;
-  color: #2B3D4F !important;
+  font-size: var(--section-title-size) !important;
+  font-weight: var(--section-title-weight) !important;
+  line-height: var(--section-title-lh) !important;
+  letter-spacing: var(--section-title-ls) !important;
+  color: var(--section-title-color) !important;
+  text-align: center;
 }
 
 .faq-card {

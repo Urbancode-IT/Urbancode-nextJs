@@ -69,10 +69,12 @@
 }
 
 .contact-us-page .contact-header h2 {
-  font-size: 2.5rem;
-  font-weight: 700;
+  font-size: var(--section-title-size);
+  font-weight: var(--section-title-weight);
+  line-height: var(--section-title-lh);
+  letter-spacing: var(--section-title-ls);
+  color: var(--section-title-color);
   margin-bottom: 10px;
-  color: #1d2b3a;
 }
 
 .contact-us-page .contact-header p {

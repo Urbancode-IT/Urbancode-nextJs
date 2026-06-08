@@ -237,10 +237,19 @@ const StudyAbroadPage = () => {
 
                                 <div className="trusted-students-row d-flex align-items-center justify-content-center mt-4">
                                     <div className="student-avatars d-flex">
-                                        <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="student1" className="mini-avatar" />
-                                        <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="student2" className="mini-avatar ms-n2" />
-                                        <img src="https://randomuser.me/api/portraits/men/85.jpg" alt="student3" className="mini-avatar ms-n2" />
-                                    </div>
+    <img
+        src="/images/study-abroad/st01.webp"        alt="Indian student 1"
+        className="mini-avatar"
+    />
+    <img
+        src="/images/study-abroad/st02.webp"        alt="Indian student 2"
+        className="mini-avatar ms-n2"
+    />
+    <img
+        src="/images/study-abroad/st03.webp"        alt="Indian student 3"
+        className="mini-avatar ms-n2"
+    />
+</div>
                                     <div className="trusted-plus ms-3">+1k</div>
                                     <span className="trusted-text ms-2">Joined by 1,000+ aspiring global leaders</span>
                                 </div>

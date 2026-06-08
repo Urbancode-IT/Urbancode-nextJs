@@ -5,10 +5,6 @@ import { useInView } from 'react-intersection-observer';
 import { getOptimizedVideoUrl, getVideoPosterUrl } from '@/lib/cloudinary';
 import PropTypes from 'prop-types';
 
-/**
- * Reusable, high-performance Optimized Video Component.
- * Supports React.forwardRef to allow programmatic play/pause control from parents.
- */
 const OptimizedVideo = React.forwardRef(({
     src,
     poster,
@@ -20,7 +16,7 @@ const OptimizedVideo = React.forwardRef(({
     style = {},
     playOnVisible = true,
     preload = 'none',
-    rootMargin = '200px 0px', // Trigger load 200px before coming into view
+    rootMargin = '200px 0px',
     onClick,
     ...props
 }, ref) => {
@@ -28,117 +24,126 @@ const OptimizedVideo = React.forwardRef(({
     const [isPlaying, setIsPlaying] = useState(false);
     const localVideoRef = useRef(null);
 
-    // Viewport intersection observer
     const { ref: inViewRef, inView } = useInView({
-        triggerOnce: false, 
+        triggerOnce: false,
         rootMargin: rootMargin,
-        threshold: 0.1, 
+        threshold: 0.1,
     });
 
-    // Expose localVideoRef directly to any parent ref
-    useImperativeHandle(ref, () => localVideoRef.current);
+    // ✅ Expose custom API to parent: pause(), resetPoster(), play()
+    useImperativeHandle(ref, () => ({
+        pause: () => {
+            if (localVideoRef.current) {
+                localVideoRef.current.pause();
+                localVideoRef.current.currentTime = 0;
+            }
+            setIsPlaying(false);   // ← resets poster overlay via React state
+        },
+        play: () => {
+            setHasLoaded(true);
+            setTimeout(() => {
+                if (localVideoRef.current) {
+                    localVideoRef.current.play()
+                        .then(() => setIsPlaying(true))
+                        .catch(err => console.error('Playback failed:', err));
+                }
+            }, 50);
+        },
+        resetPoster: () => {
+            if (localVideoRef.current) {
+                localVideoRef.current.pause();
+                localVideoRef.current.currentTime = 0;
+            }
+            setIsPlaying(false);  // ← shows poster overlay again
+        },
+    }));
 
-    // Check if Cloudinary is configured
-    const isCloudinaryActive = 
-        process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME && 
-        process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME !== 'your_cloudinary_cloud_name';
+    const isCloudinaryActive =
+        process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME &&
+        process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME !== 'your_cloudinary_cloud_name' &&
+        src &&
+        !src.startsWith('/') &&
+        !src.startsWith('http://localhost');
 
-    // Generate optimized media assets
-    const videoWebmUrl = isCloudinaryActive ? getOptimizedVideoUrl(src, { format: 'webm' }) : null;
-    const videoMp4Url = getOptimizedVideoUrl(src, { format: 'mp4' });
-    const finalPoster = isCloudinaryActive 
+    const videoMp4Url = isCloudinaryActive
+        ? getOptimizedVideoUrl(src, { format: 'mp4' })
+        : src;
+
+    const videoWebmUrl = isCloudinaryActive
+        ? getOptimizedVideoUrl(src, { format: 'webm' })
+        : null;
+
+    const finalPoster = isCloudinaryActive
         ? getVideoPosterUrl(src, { fallbackPoster: poster, width: 800 })
         : poster;
 
-    // Handle lazy mounting
     useEffect(() => {
         if (inView && !hasLoaded) {
             setHasLoaded(true);
         }
     }, [inView, hasLoaded]);
 
-    // Handle play/pause on viewport entry/exit if not programmatically paused
     useEffect(() => {
         if (!localVideoRef.current || !hasLoaded) return;
-
         if (playOnVisible && inView) {
-            const playPromise = localVideoRef.current.play();
-            if (playPromise !== undefined) {
-                playPromise
-                    .then(() => setIsPlaying(true))
-                    .catch((err) => {
-                        console.warn('Auto-playback prevented by browser policy:', err);
-                        setIsPlaying(false);
-                    });
-            }
-        } else {
+            localVideoRef.current.play()
+                .then(() => setIsPlaying(true))
+                .catch(() => setIsPlaying(false));
+        } else if (!inView) {
             localVideoRef.current.pause();
             setIsPlaying(false);
         }
     }, [inView, hasLoaded, playOnVisible]);
 
     const handlePlayClick = (e) => {
-        if (onClick) {
-            onClick(e);
-            return;
-        }
-
-        if (!localVideoRef.current) return;
-
+        if (onClick) { onClick(e); return; }
         if (isPlaying) {
-            localVideoRef.current.pause();
+            if (localVideoRef.current) localVideoRef.current.pause();
             setIsPlaying(false);
         } else {
-            localVideoRef.current.play()
-                .then(() => setIsPlaying(true))
-                .catch(err => console.error("Playback failed:", err));
+            setHasLoaded(true);
+            setTimeout(() => {
+                if (localVideoRef.current) {
+                    localVideoRef.current.play()
+                        .then(() => setIsPlaying(true))
+                        .catch(err => console.error('Playback failed:', err));
+                }
+            }, 50);
         }
     };
 
-    // Combine standard ref with inView observer ref
     const setRefs = (el) => {
         localVideoRef.current = el;
-        // If the parent passed a functional ref, call it
-        if (typeof ref === 'function') {
-            ref(el);
-        } else if (ref && typeof ref === 'object') {
-            ref.current = el;
-        }
     };
 
     return (
-        <div 
-            ref={inViewRef} 
+        <div
+            ref={inViewRef}
             className={`optimized-video-wrapper position-relative overflow-hidden w-100 h-100 ${className}`}
-            style={{ 
-                minHeight: '200px', 
+            style={{
+                minHeight: '200px',
                 backgroundColor: '#0a0d14',
                 borderRadius: style.borderRadius || 'inherit',
-                ...style 
+                ...style
             }}
             {...props}
         >
-            {/* Poster Thumbnail / Placeholder Loader */}
-            {(!hasLoaded || !isPlaying) && (
-                <div 
+            {/* Poster overlay — always rendered, hidden only when playing */}
+            {!isPlaying && (
+                <div
                     className="video-poster-overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center"
                     style={{
                         backgroundImage: finalPoster ? `url(${finalPoster})` : 'none',
                         backgroundSize: 'cover',
                         backgroundPosition: 'center',
+                        backgroundColor: finalPoster ? 'transparent' : '#0a0d14',
                         zIndex: 2,
-                        transition: 'opacity 0.4s ease',
-                        opacity: isPlaying ? 0 : 1,
-                        pointerEvents: isPlaying ? 'none' : 'auto',
                     }}
                 >
-                    {/* Dark gradient blur over poster */}
-                    <div 
-                        className="position-absolute top-0 start-0 w-100 h-100" 
-                        style={{ background: 'rgba(10, 13, 20, 0.4)' }}
+                    <div
+                        className="position-absolute top-0 start-0 w-100 h-100"
+                        style={{ background: 'rgba(10, 13, 20, 0.35)' }}
                     />
-                    
-                    {/* Glassmorphic Play button */}
                     <button
                         type="button"
                         onClick={handlePlayClick}
@@ -151,9 +156,10 @@ const OptimizedVideo = React.forwardRef(({
                             border: '1px solid rgba(255, 255, 255, 0.3)',
                             color: '#ffffff',
                             fontSize: '24px',
-                            paddingLeft: '5px', // Center the triangle perfectly
+                            paddingLeft: '5px',
                             zIndex: 3,
                             transition: 'all 0.3s ease',
+                            cursor: 'pointer',
                         }}
                         aria-label="Play video"
                     >
@@ -162,7 +168,6 @@ const OptimizedVideo = React.forwardRef(({
                 </div>
             )}
 
-            {/* Video element is dynamically rendered only when component has entered viewport */}
             {hasLoaded && (
                 <video
                     ref={setRefs}
@@ -176,10 +181,9 @@ const OptimizedVideo = React.forwardRef(({
                     style={{ zIndex: 1 }}
                     onPlay={() => setIsPlaying(true)}
                     onPause={() => setIsPlaying(false)}
+                    onEnded={() => setIsPlaying(false)}
                 >
-                    {/* Serve ultra-lightweight WebM streaming first */}
                     {videoWebmUrl && <source src={videoWebmUrl} type="video/webm" />}
-                    {/* Fallback to standard MP4 */}
                     <source src={videoMp4Url} type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>
@@ -188,12 +192,10 @@ const OptimizedVideo = React.forwardRef(({
             <style jsx global>{`
                 .play-btn-glow:hover {
                     transform: scale(1.15);
-                    background: rgba(25, 135, 84, 0.9) !important; /* Premium brand green */
+                    background: rgba(25, 135, 84, 0.9) !important;
                     box-shadow: 0 0 20px rgba(25, 135, 84, 0.6) !important;
                 }
-                .optimized-video-wrapper video {
-                    outline: none;
-                }
+                .optimized-video-wrapper video { outline: none; }
             `}</style>
         </div>
     );
