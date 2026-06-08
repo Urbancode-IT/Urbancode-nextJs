@@ -233,7 +233,15 @@ export default function Courses({ categorySlug }) {
               <div className="course-interactive-scene">
                  <div className="saturn-scene">
                     <div className="saturn-planet">
-                       <div className="planet-surface">UC</div>
+                       <div className="planet-surface">
+                         <Image
+                           src="/images/courses-images/uclogo.png"
+                           alt="Urbancode logo"
+                           fill
+                           sizes="80px"
+                           className="planet-logo"
+                         />
+                       </div>
                        <div className="planet-glow"></div>
                     </div>
                     <div className="rings-container">
@@ -331,6 +339,9 @@ export default function Courses({ categorySlug }) {
                                 className="img-holder rounded-3 position-relative"
                                 style={{ height: "200px" }}
                               >
+                                {course.isNew && (
+                                  <span className="course-new-badge">New</span>
+                                )}
                                 <Image
                                   src={course.img}
                                   alt={course.title}

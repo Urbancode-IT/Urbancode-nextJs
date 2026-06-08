@@ -216,10 +216,6 @@ const NewInternalCourse = ({ data }) => {
                 <section className="nict-course-curriculum">
                     <div className="nict-curriculum-header">
                         <h2>Course Curriculum</h2>
-                        <button className="nict-brochure-btn" onClick={() => setIsBrochureOpen(true)}>
-                            <FiDownload />
-                            Download Brochure
-                        </button>
                     </div>
 
                     <div className="nict-curriculum-list">
@@ -275,6 +271,13 @@ const NewInternalCourse = ({ data }) => {
                             disabled={curriculumPage === totalCurriculumPages - 1}
                         >
                             <MdChevronRight />
+                        </button>
+                    </div>
+
+                    <div className="nict-brochure-action">
+                        <button className="nict-brochure-btn" onClick={() => setIsBrochureOpen(true)}>
+                            <FiDownload />
+                            Download Brochure
                         </button>
                     </div>
                 </section>

@@ -444,7 +444,7 @@ const coursesData = {
   desc: "Crack technical interviews at top FAANG and product-based companies. Master Data Structures and Algorithms (DSA) with extensive problem-solving, pattern recognition, and optimized logic building.",
   rating: 4.8,
   duration: "1.5 months",
-  students: "520",
+  students: "200",
   img: "/images/courses/DSA.png",
   aboutData: {
     topic: "Master Data Structures & Algorithms — Build Strong Foundations for Coding and Interviews!",
@@ -861,6 +861,143 @@ const coursesData = {
     mainImage: "/images/courses/Web_Development.webp",
 
     courses: [
+
+      {
+        title: "AI Powered Fullstack",
+        isNew: true,
+        desc: "Master modern fullstack development with HTML, CSS, JavaScript, React, Node.js, Express, MongoDB, deployment, and AI-assisted workflows using tools like ChatGPT, GitHub Copilot, Cursor, and v0.",
+        rating: 4.9,
+        duration: "3 months",
+        students: "10",
+        img: "/images/courses/Full_Stack_Development.jpg",
+        aboutData: {
+          topic: "AI Powered Fullstack Curriculum",
+          content1: "Learn fullstack development from web foundations to MERN projects while using AI for code generation, debugging, documentation, testing, review, and deployment support.",
+          content2: "This job-focused program combines frontend, backend, database design, full-stack integration, DevOps basics, real-world projects, practical tasks, GitHub portfolio building, interview preparation, and freelancing guidance."
+        },
+        courseContentData: [
+          {
+            id: 1,
+            title: "Web Foundations",
+            icon: "bi bi-code-slash",
+            defaultOpen: true,
+            items: [
+              "HTML5 elements, attributes, forms, semantic HTML, and accessibility basics",
+              "CSS3 selectors, box model, Flexbox, Grid, animations, and transitions",
+              "Responsive mobile-first design, media queries, and modern layout techniques",
+              "JavaScript variables, data types, operators, functions, arrays, objects, loops, and conditionals",
+              "AI usage: ChatGPT for HTML/CSS generation, AI-assisted debugging, image-to-code, and UI generation"
+            ]
+          },
+          {
+            id: 2,
+            title: "Advanced JavaScript and ES6+",
+            icon: "bi bi-braces",
+            items: [
+              "Scope, hoisting, closures, execution context, call stack, and event loop",
+              "let, const, arrow functions, template literals, spread/rest, destructuring, and modules",
+              "DOM manipulation, browser APIs, event handling, delegation, local storage, and session storage",
+              "Callbacks, promises, async/await, and Fetch API",
+              "AI usage: convert callbacks to async/await, explain complex concepts, and debug JavaScript"
+            ]
+          },
+          {
+            id: 3,
+            title: "Git, GitHub and Developer Workflow",
+            icon: "bi bi-git",
+            items: [
+              "Git commits, branching, merging, and pull requests",
+              "GitHub repositories, collaboration, issues, and GitHub Actions basics",
+              "AI usage: generate commit messages, review pull requests, and explain code"
+            ]
+          },
+          {
+            id: 4,
+            title: "React.js",
+            icon: "bi bi-window-stack",
+            items: [
+              "JSX, components, props, state, conditional rendering, lists, keys, and forms",
+              "Hooks including useState, useEffect, useMemo, useCallback, and useRef",
+              "React Router, Context API, Redux Toolkit, Axios, and Fetch API integration",
+              "AI usage: generate React components, add form validation, refactor components, and document code"
+            ]
+          },
+          {
+            id: 5,
+            title: "Backend Development with Node.js and Express",
+            icon: "bi bi-server",
+            items: [
+              "Node.js runtime, modules, file system, and NPM",
+              "Express routing, middleware, error handling, REST APIs, CRUD operations, API design, and status codes",
+              "JWT authentication, password hashing with bcrypt, Postman, and API testing",
+              "AI usage: API generation, API documentation, and test case generation"
+            ]
+          },
+          {
+            id: 6,
+            title: "MongoDB and Database Design",
+            icon: "bi bi-database",
+            items: [
+              "MongoDB CRUD operations, collections, and documents",
+              "Mongoose schemas, models, and validation",
+              "Database relationships, indexing, and aggregation basics",
+              "AI usage: generate schemas, optimize queries, and improve data modeling"
+            ]
+          },
+          {
+            id: 7,
+            title: "Full-Stack Integration and Security",
+            icon: "bi bi-shield-lock",
+            items: [
+              "Connect React frontend with Express backend using Axios requests",
+              "Environment variables and frontend-backend configuration",
+              "JWT authentication, protected routes, and role-based access",
+              "AI usage: generate authentication flows, debug CORS issues, and review security"
+            ]
+          },
+          {
+            id: 8,
+            title: "Modern AI-Powered Development",
+            icon: "bi bi-stars",
+            items: [
+              "AI tools: ChatGPT, Claude, GitHub Copilot, Cursor, Windsurf, Bolt.new, Lovable, v0 by Vercel, and Antigravity",
+              "Prompt engineering, AI code review, AI refactoring, AI testing, AI documentation, and AI pair programming"
+            ]
+          },
+          {
+            id: 9,
+            title: "Deployment and DevOps",
+            icon: "bi bi-cloud-upload",
+            items: [
+              "Frontend deployment with Netlify and Vercel",
+              "Backend deployment with Render and Railway",
+              "MongoDB Atlas database hosting",
+              "Environment variables, CI/CD basics, and GitHub Actions",
+              "AI usage: deployment assistance, log analysis, and production debugging"
+            ]
+          },
+          {
+            id: 10,
+            title: "Projects, Tasks and Career Preparation",
+            icon: "bi bi-award",
+            items: [
+              "Projects: personal portfolio website, static business website, and student management system using MERN",
+              "Frontend tasks: clone website sections, build responsive landing pages, reusable React components, validated forms, and API integrations",
+              "Backend tasks: REST APIs, authentication, CRUD operations, error handling, validation, and database connections",
+              "Full-stack tasks: frontend-backend integration, role-based authentication, dashboards, deployment, hosting, and production debugging",
+              "Career preparation: GitHub portfolio, README writing, interview preparation, mock technical interviews, freelancing guidance, final assessment, code review, deployment review, and project presentation"
+            ]
+          }
+        ],
+        whatYouLearnData: [
+          { title: "Build AI-Assisted Fullstack Apps", desc: "Use modern AI tools to plan, code, debug, test, document, and review applications faster.", icon: "bi bi-stars" },
+          { title: "Master Frontend Development", desc: "Create responsive interfaces with HTML, CSS, JavaScript, React, routing, forms, and state management.", icon: "bi bi-window-stack" },
+          { title: "Develop Backend APIs", desc: "Build secure REST APIs with Node.js, Express, JWT authentication, bcrypt, and Postman testing.", icon: "bi bi-server" },
+          { title: "Work with MongoDB", desc: "Design schemas, perform CRUD operations, model data, index collections, and optimize queries.", icon: "bi bi-database" },
+          { title: "Deploy Real Projects", desc: "Publish frontend, backend, and database-backed apps using Vercel, Netlify, Render, Railway, MongoDB Atlas, and GitHub Actions.", icon: "bi bi-cloud-upload" },
+          { title: "Prepare for Jobs and Freelancing", desc: "Build portfolio projects, complete 50+ practical tasks, prepare for interviews, and learn client-ready delivery workflows.", icon: "bi bi-briefcase" }
+        ]
+      },
 
       {
   title: "Java Full Stack Development",
@@ -3429,102 +3566,201 @@ const coursesData = {
         ]
       },
       {
-        title: "Python Plus ChatGPT",
-        desc: "Future-proof your career. Master Python programming and integrate OpenAI APIs to build intelligent, automated, and cutting-edge software solutions.",
+        title: "Python for Data Analyst",
+        desc: "Build a strong foundation in Python programming and data analysis. Master Python fundamentals, Pandas for data processing, and Matplotlib for insightful visualizations.",
         rating: 5.0,
-        duration: "1 month",
+        duration: "2 months",
         students: "228",
-        img: "/images/courses/Python_Plus_ChatGPT.jpg",
+        img: "/images/courses/data-visualization-course.webp",
         aboutData: {
-          topic: "Master Python & ChatGPT — From Core Programming to AI Integration!",
-          content1: "Take your Python skills to the next level and dive into AI with ChatGPT. Learn Python fundamentals, advanced concepts, and AI integration techniques with hands-on exercises and real-world projects.",
-          content2: "The Python Plus ChatGPT course by Urbancode covers everything from Python basics to advanced AI integration. You'll explore Python programming, data handling, API usage, and finally leverage ChatGPT and OpenAI APIs to build intelligent applications. By the end, you'll be able to create Python-powered AI solutions and be ready for industry challenges."
+          topic: "Python for Data Analyst — Complete Curriculum",
+          content1: "This curriculum is designed to provide a strong foundation in Python programming and data analysis. Students will learn Python fundamentals, advanced concepts, Pandas for data processing, and data visualization using Matplotlib.",
+          content2: "Upon completion, students will be able to write Python programs, manipulate data structures, work with files, use Jupyter Notebook, perform data analysis using Pandas, clean datasets, and create insightful visualizations using Matplotlib."
         },
         courseContentData: [
           {
             id: 1,
-            title: "Python Fundamentals",
+            title: "Introduction to Python",
             icon: "bi bi-book",
             defaultOpen: true,
             items: [
-              "Introduction to Python and applications",
-              "Setting up Python and IDEs",
-              "Variables, data types, expressions",
-              "Conditional statements and loops",
-              "Functions and modules",
-              "Error handling and debugging"
+              "Python Introduction",
+              "Python Installation",
+              "Environment Setup (VS Code, Python Interpreter)",
+              "Running Python Programs",
+              "Understanding Python Development Workflow"
             ]
           },
           {
             id: 2,
-            title: "Data Handling in Python",
-            icon: "bi bi-database",
+            title: "Python Basics",
+            icon: "bi bi-code-slash",
             items: [
-              "Lists, tuples, dictionaries, and sets",
-              "String formatting and manipulation",
-              "Working with files (txt, CSV, JSON)",
-              "Introduction to Python libraries (NumPy, Pandas)",
-              "Basic data structures and algorithms"
+              "Writing Your First Python Program",
+              "Variables and Naming Conventions",
+              "Data Types (int, float, string, bool)",
+              "Input and Output Operations",
+              "Operators and Expressions",
+              {
+                title: "String Manipulation",
+                details: [
+                  "String Methods",
+                  "String Formatting",
+                  "Slicing and Indexing"
+                ]
+              }
             ]
           },
           {
             id: 3,
-            title: "APIs & Automation",
-            icon: "bi bi-window",
+            title: "Intermediate Python",
+            icon: "bi bi-braces",
             items: [
-              "Working with REST APIs in Python",
-              "Automating tasks with Python scripts",
-              "Web scraping with BeautifulSoup",
-              "Version control using Git",
-              "Building command-line tools"
+              {
+                title: "Control Flow Statements",
+                details: ["if, elif, else"]
+              },
+              {
+                title: "Looping Concepts",
+                details: ["for loop", "while loop", "break, continue, pass"]
+              },
+              {
+                title: "Functions",
+                details: [
+                  "Function Definition",
+                  "Parameters and Arguments",
+                  "Return Statements",
+                  "Lambda Functions"
+                ]
+              }
             ]
           },
           {
             id: 4,
-            title: "ChatGPT & OpenAI API",
-            icon: "bi bi-robot",
+            title: "Advanced Python",
+            icon: "bi bi-layers",
             items: [
-              "Introduction to ChatGPT and GPT models",
-              "Setting up OpenAI API in Python",
-              "Generating text, summaries, and responses",
-              "Fine-tuning prompts for better output",
-              "Integrating ChatGPT into Python applications"
+              {
+                title: "Data Structures",
+                details: ["Lists", "Tuples", "Sets", "Dictionaries"]
+              },
+              "Introduction to Classes and Objects",
+              "Basic Object-Oriented Programming Concepts",
+              {
+                title: "File Handling",
+                details: [
+                  "Reading Files",
+                  "Writing Files",
+                  "Working with CSV and Text Files"
+                ]
+              }
             ]
           },
- 
+          {
+            id: 5,
+            title: "Jupyter Notebook & Pandas Setup",
+            icon: "bi bi-journal-code",
+            items: [
+              "What is Jupyter Notebook?",
+              "Installing Jupyter Notebook",
+              "Creating and Managing Notebooks",
+              "What is Pandas?",
+              "Why Pandas is Important for Data Analysis",
+              "Installing Pandas Package",
+              "Verifying Installation",
+              "Importing Pandas in Python"
+            ]
+          },
+          {
+            id: 6,
+            title: "Pandas Basics",
+            icon: "bi bi-table",
+            items: [
+              "Introduction to Pandas",
+              "Series",
+              "DataFrame",
+              "Reading CSV Files",
+              "Reading JSON Files",
+              "Exploring and Analyzing Data",
+              "Data Selection and Filtering",
+              "Sorting and Aggregation"
+            ]
+          },
+          {
+            id: 7,
+            title: "Data Cleaning with Pandas",
+            icon: "bi bi-funnel",
+            items: [
+              "Introduction to Data Cleaning",
+              "Handling Missing Values",
+              "Empty Data Cleaning",
+              "Duplicate Data Detection and Removal",
+              "Finding Wrong Data",
+              "Correcting Wrong Data",
+              "Identifying Wrong Formats",
+              "Converting Data Types",
+              "Data Standardization Techniques"
+            ]
+          },
+          {
+            id: 8,
+            title: "Data Visualization",
+            icon: "bi bi-bar-chart-line",
+            items: [
+              "Introduction to Data Visualization",
+              "Correlation Analysis",
+              "Introduction to Matplotlib",
+              "Line Charts",
+              "Bar Charts",
+              "Pie Charts",
+              "Histograms",
+              "Scatter Plots",
+              "Customizing Charts",
+              "Visual Data Analysis Projects"
+            ]
+          },
+          {
+            id: 9,
+            title: "Capstone Project",
+            icon: "bi bi-award",
+            items: [
+              "Perform end-to-end data analysis using Python, Pandas, and Matplotlib",
+              "Import datasets, clean data, analyze trends, and create visualizations",
+              "Present findings and insights from real-world data analysis projects"
+            ]
+          }
         ],
         whatYouLearnData: [
           {
-            title: "Master Python Programming",
-            desc: "From basics to advanced Python concepts including functions, OOP, and async programming.",
-            icon: "bi bi-book"
+            title: "Write Python Programs",
+            desc: "Build a solid foundation from variables and control flow to functions, OOP, and file handling.",
+            icon: "bi bi-code-slash"
           },
           {
-            title: "Leverage ChatGPT & AI",
-            desc: "Understand GPT models and integrate AI into Python projects using OpenAI API.",
-            icon: "bi bi-robot"
+            title: "Work with Jupyter Notebook",
+            desc: "Set up, manage, and run interactive notebooks for data exploration and analysis.",
+            icon: "bi bi-journal-code"
           },
           {
-            title: "Build Real-World Applications",
-            desc: "Create chatbots, automation scripts, and AI-powered tools with Python and ChatGPT.",
-            icon: "bi bi-gear"
+            title: "Analyze Data with Pandas",
+            desc: "Read CSV and JSON files, filter, sort, aggregate, and explore datasets using Series and DataFrames.",
+            icon: "bi bi-table"
           },
           {
-            title: "Work with Data Efficiently",
-            desc: "Perform data manipulation, analysis, and visualization with Python libraries.",
+            title: "Clean and Prepare Datasets",
+            desc: "Handle missing values, duplicates, wrong formats, and standardize data for reliable analysis.",
+            icon: "bi bi-funnel"
+          },
+          {
+            title: "Create Visualizations with Matplotlib",
+            desc: "Build line, bar, pie, histogram, and scatter charts with customization for data storytelling.",
             icon: "bi bi-bar-chart-line"
           },
           {
-            title: "Deploy AI Solutions",
-            desc: "Learn to deploy AI-powered applications in web environments and automate workflows.",
-            icon: "bi bi-window-stack"
-          },
-          {
-            title: "Enhance Industry Readiness",
-            desc: "Combine Python programming and AI integration skills to be job-ready for modern tech roles.",
-            icon: "bi bi-lightning-charge"
-          },
-          
+            title: "Complete End-to-End Analysis",
+            desc: "Deliver capstone projects from data import through cleaning, analysis, visualization, and presentation.",
+            icon: "bi bi-award"
+          }
         ]
       },
       {
@@ -3540,239 +3776,212 @@ const coursesData = {
           content2: "The Power BI course by Urbancode covers everything from basic Power BI concepts to advanced analytics. Start with Power Query, data modeling, and DAX functions, then move to interactive dashboards, custom visuals, and reporting. Gain industry-ready skills in Power BI Service, Power BI Desktop, and Power BI Mobile, enabling you to drive smarter business decisions."
         },
         courseContentData: [
-          {
-            id: 1,
-            title: "Module 1: Data warehouse Concepts",
-            icon: "bi bi-book",
-            defaultOpen: true,
-            items: [
-              "Introduction about DWC (Data warehousing Concepts)",
-              "Dimensions, Measures, Keys",
-              "Types of Dimensions",
-              "Types of Keys",
-              "Identifying Keys",
-              "Types of Joins",
-              "How to identify Fact and dimension tables",
-              "Schema introduction",
-              "Types of schemas",
-              "Task"
-            ]
-          },
-          {
-            id: 2,
-            title: "Module 2: Business Intelligence",
-            icon: "bi bi-bar-chart",
-            items: [
-              "Introduction about Business Intelligence",
-              "Evolution of BI",
-              "Categories of BI",
-              "BI tools Comparisons",
-              "OLAP and OLTP concepts"
-            ]
-          },
-          {
-            id: 3,
-            title: "Module 3: POWER BI",
-            icon: "bi bi-display",
-            items: [
-              "Power BI Introduction",
-              "Components of Power BI",
-              "Architecture of Power BI"
-            ]
-          },
-          {
-            id: 4,
-            title: "Module 4: Data connectivity",
-            icon: "bi bi-diagram-3",
-            items: [
-              "Importing data to Power BI",
-              "Types of connectivity",
-              "Creating relationships",
-              "Manage relationships",
-              "Cardinality",
-              "Cross filter direction",
-              "Task"
-            ]
-          },
-          {
-            id: 5,
-            title: "Module 5: Power Query Editor",
-            icon: "bi bi-sliders",
-            items: [
-              "Power Query Editor Introduction",
-              "Manage Columns",
-              "Reduce rows",
-              "Data transformation techniques",
-              "Manage Queries",
-              "Table and column conversions",
-              "Split and formatting columns",
-              "Data Conversions",
-              "Creating manual column and tables",
-              "Conditional and custom functions",
-              "Options in View menu",
-              "Sorting and filtering data",
-              "Task"
-            ]
-          },
-          {
-            id: 6,
-            title: "Module 6: DAX",
-            icon: "bi bi-code-slash",
-            items: [
-              "DAX Introduction",
-              "Calculated Measure, Calculated Column, Quick Measure and Calculated tables using DAX Functions",
-              "Time Intelligence Functions",
-              "Aggregation Functions",
-              "Logical Functions",
-              "Filter Functions",
-              "Text Functions",
-              "Table manipulation Functions",
-              "Bin and Grouping",
-              "Task"
-            ]
-          },
-          {
-            id: 7,
-            title: "Module 7: Filter",
-            icon: "bi bi-funnel",
-            items: [
-              "Filter Introduction",
-              "Types of Filters",
-              "Dimension Filter",
-              "Measure Filter",
-              "Date Filter",
-              "Drill through Filter",
-              "Top and Bottom filter",
-              "Basic Filter",
-              "Task"
-            ]
-          },
-          {
-            id: 8,
-            title: "Module 8: Insert Menu",
-            icon: "bi bi-plus-circle",
-            items: [
-              "Visuals",
-              "AI Visuals",
-              "Elements",
-              "Adding buttons",
-              "Task"
-            ]
-          },
-          {
-            id: 9,
-            title: "Module 9: View menu",
-            icon: "bi bi-eye",
-            items: [
-              "Themes and Customization",
-              "Page formatting options",
-              "Layouts",
-              "Page options in Power BI",
-              "Using Panes for Bookmark and selections",
-              "Performance Analysis",
-              "Sync Slicer",
-              "Report Optimisation",
-              "Apply All Slicers",
-              "Task"
-            ]
-          },
-          {
-            id: 10,
-            title: "Module 10: Format and Data Drill",
-            icon: "bi bi-hammer",
-            items: [
-              "Edit Interactions",
-              "Arrange Charts",
-              "Table view",
-              "Task"
-            ]
-          },
-          {
-            id: 11,
-            title: "Module 11: Charts",
-            icon: "bi bi-graph-up",
-            items: [
-              "Stacked and Column Charts",
-              "Trend Charts",
-              "Table and Matrix",
-              "Cards and Gauge",
-              "Slicer",
-              "Play Axis of Scatter chart",
-              "Funnel and geographical maps",
-              "Market Place",
-              "Task"
-            ]
-          },
-          {
-            id: 12,
-            title: "Module 12: Modelling",
-            icon: "bi bi-diagram-2",
-            items: [
-              "Parameter Introduction",
-              "What If for Projection",
-              "Parameter for measure selection",
-              "RLS",
-              "Q&A",
-              "Task"
-            ]
-          },
-          {
-            id: 13,
-            title: "Module 13: Power BI Services",
-            icon: "bi bi-cloud",
-            items: [
-              "Report Deployment",
-              "Manage Security",
-              "Manage Permissions",
-              "Gateway and Types",
-              "Installation of Gateways",
-              "Automate reports",
-              "Report share",
-              "Subscribe",
-              "Quick Insights",
-              "Various refresh options",
-              "Layout change",
-              "Dashboard",
-              "Configure Dashboard",
-              "Report editing in Power Bi services",
-              "Various Export options",
-              "Content packs",
-              "Task"
-            ]
-          }
-        ],
-        whatYouLearnData: [
-          {
-            title: "Master Power BI Fundamentals",
-            desc: "Learn to connect, transform, and model data efficiently.",
-            icon: "bi bi-lightning-charge"
-          },
-          {
-            title: "Create Interactive Dashboards",
-            desc: "Build reports with charts, tables, maps, slicers, and custom visuals.",
-            icon: "bi bi-gear"
-          },
-          {
-            title: "Perform Advanced Analytics",
-            desc: "Use DAX, AI visuals, forecasting, and predictive analytics.",
-            icon: "bi bi-bar-chart-line"
-          },
-          {
-            title: "Collaborate & Share Insights",
-            desc: "Publish dashboards, set up workspaces, and manage access in Power BI Service.",
-            icon: "bi bi-window-stack"
-          },
-          {
-            title: "Work with Real-World Projects",
-            desc: "Create end-to-end reporting solutions and optimize performance for enterprise datasets.",
-            icon: "bi bi-cpu"
-          },
-          {
-            title: "Gain Business Intelligence Skills",
-            desc: "Turn data into actionable insights to drive smarter business decisions.",
-            icon: "bi bi-diagram-3"
-          }
-        ]
+  {
+    id: 1,
+    title: "Module 1: Introduction to Power BI",
+    icon: "bi bi-book",
+    defaultOpen: true,
+    items: [
+      "Overview of Business Intelligence (BI) and data analytics",
+      "Power BI as a self-service BI tool by Microsoft",
+      "Key components: Power BI Desktop, Power BI Service, Power BI Mobile",
+      "Use cases: dashboards, reports, KPI tracking, data storytelling",
+      "The ETL Pipeline: Extract, Transform, Load",
+      "Data sources → Power Query → Data Model → Reports → Dashboards",
+      "On-premises vs cloud data connectivity",
+      "Difference between reports and dashboards",
+      "Downloading and installing Power BI Desktop",
+      "Navigating the Power BI Desktop interface",
+      "Report View, Data View, Model View",
+      "The ribbon, fields pane, filters pane, visualizations pane",
+      "Connect to data source → Transform → Build data model → Create visualizations → Publish"
+    ]
+  },
+  {
+    id: 2,
+    title: "Module 2: Connecting to Data Sources",
+    icon: "bi bi-diagram-3",
+    items: [
+      "Connecting to Excel workbooks and CSV files",
+      "Importing JSON and XML files",
+      "Folder connector: combining multiple files",
+      "PDF data extraction",
+      "SQL Server, MySQL, PostgreSQL connections",
+      "Import mode vs DirectQuery mode vs Live Connection",
+      "Stored procedures and native queries",
+      "Authentication methods (Windows, Database, OAuth)",
+      "SharePoint Online Lists and Folders",
+      "Azure SQL Database and Azure Data Lake",
+      "Connecting to Google Analytics and Salesforce",
+      "Web connector: scraping HTML tables",
+      "REST API connection basics"
+    ]
+  },
+  {
+    id: 3,
+    title: "Module 3: Power Query — Data Transformation",
+    icon: "bi bi-sliders",
+    items: [
+      "Launching Power Query Editor",
+      "Applied Steps panel and query settings",
+      "Data type management and column profiling",
+      "Query dependencies and advanced editor",
+      "Remove duplicates, errors, and blank rows",
+      "Replace values and fill up/down",
+      "Trim, clean, and format text columns",
+      "Change data types (text, number, date, boolean)",
+      "Split columns by delimiter or character count",
+      "Merge columns and conditional column creation",
+      "Extract: first N chars, last N chars, text between",
+      "Custom columns using M expressions",
+      "Transpose, pivot, and unpivot columns",
+      "Group By: aggregations on grouped data",
+      "Append queries: stacking tables vertically",
+      "Merge queries: joins (inner, left, full outer)",
+      "Understanding M formula language syntax",
+      "let...in expression structure",
+      "Common M functions: Text.Upper, Date.Year, List.Sum",
+      "Parameters and parameterized queries"
+    ]
+  },
+  {
+    id: 4,
+    title: "Module 4: Data Modeling",
+    icon: "bi bi-diagram-2",
+    items: [
+      "What is a data model and why it matters",
+      "Fact tables vs dimension tables",
+      "Star schema vs snowflake schema",
+      "Flat tables: limitations and when to avoid them",
+      "Creating relationships between tables",
+      "Cardinality: One-to-Many, Many-to-One, One-to-One, Many-to-Many",
+      "Cross filter direction: Single vs Both",
+      "Active vs Inactive relationships",
+      "USERELATIONSHIP() to activate inactive relationships",
+      "Importance of a dedicated date dimension",
+      "Creating a date table using DAX CALENDAR() and CALENDARAUTO()",
+      "Adding Year, Quarter, Month, Week columns",
+      "Marking a table as Date Table",
+      "Hiding unnecessary columns from report view",
+      "Setting sort-by-column (e.g., sort Month Name by Month Number)",
+      "Data categories: URL, image URL, geography",
+      "Hierarchies: Year > Quarter > Month > Day"
+    ]
+  },
+  {
+    id: 5,
+    title: "Module 5: DAX — Data Analysis Expressions",
+    icon: "bi bi-code-slash",
+    items: [
+      "Measures vs Calculated Columns vs Calculated Tables",
+      "DAX syntax: table[column] and measure names",
+      "Context: Row context vs Filter context",
+      "Implicit vs explicit measures",
+      "Aggregation functions: SUM, AVERAGE, MIN, MAX, COUNT, COUNTA, DISTINCTCOUNT",
+      "Logical functions: IF, AND, OR, NOT, SWITCH, IFERROR",
+      "Text functions: CONCATENATE, LEFT, RIGHT, MID, UPPER, LOWER, FORMAT",
+      "Date & Time functions: TODAY, NOW, YEAR, MONTH, DAY, DATEDIFF, EOMONTH",
+      "Math functions: DIVIDE, ROUND, ABS, INT, MOD, POWER, SQRT",
+      "CALCULATE: the most important DAX function",
+      "ALL, ALLEXCEPT, REMOVEFILTERS: removing filters",
+      "FILTER: row-by-row filtering with conditions",
+      "RELATED and RELATEDTABLE: cross-table lookups",
+      "SELECTEDVALUE and HASONEVALUE",
+      "TOTALYTD, TOTALQTD, TOTALMTD: period-to-date calculations",
+      "DATEADD: shift dates by periods (e.g., prior year)",
+      "SAMEPERIODLASTYEAR: year-over-year comparison",
+      "DATESBETWEEN and DATESINPERIOD",
+      "Rolling averages and running totals",
+      "SUMX, AVERAGEX, MAXX, MINX: iterator (X) functions",
+      "RANKX: ranking with dynamic filters",
+      "TOPN: selecting top N rows",
+      "VAR and RETURN: variables in DAX",
+      "EARLIER and EARLIEST: row context in iterators"
+    ]
+  },
+  {
+    id: 6,
+    title: "Module 6: Visualizations & Report Design",
+    icon: "bi bi-graph-up",
+    items: [
+      "Bar / Column Chart: category comparisons",
+      "Line Chart: trends over time",
+      "Pie / Donut Chart: part-to-whole (max 5 slices)",
+      "Card & Multi-row Card: single KPI display",
+      "Table & Matrix: detailed tabular data",
+      "Map / Filled Map: geographic distribution",
+      "Scatter Chart: correlation analysis",
+      "Treemap: hierarchical part-to-whole",
+      "Gauge: progress toward target",
+      "Waterfall Chart: running total changes",
+      "Slicers: filtering reports by dimension",
+      "Cross-filtering and cross-highlighting between visuals",
+      "Drill-down and drill-through navigation",
+      "Bookmarks: saving report states and creating navigation",
+      "Tooltips: default, report page, and custom tooltips",
+      "Buttons and actions for navigation",
+      "Applying JSON themes for brand consistency",
+      "Conditional formatting: background, font, data bars, icons",
+      "Dynamic titles using DAX SELECTEDVALUE()",
+      "Canvas background, wallpaper, and layout design",
+      "Importing visuals from AppSource",
+      "Deneb: Vega-Lite custom visuals",
+      "HTML Content visual for rich text",
+      "Using R and Python visuals"
+    ]
+  },
+  {
+    id: 7,
+    title: "Module 7: Power BI Service & Deployment",
+    icon: "bi bi-cloud",
+    items: [
+      "Workspaces: My Workspace vs shared workspaces",
+      "Publishing reports from Desktop to Service",
+      "Apps: packaging reports for end-user distribution",
+      "Licensing: Free, Pro, and Premium Per User",
+      "Scheduled refresh setup and frequency",
+      "On-premises Data Gateway: purpose and configuration",
+      "Incremental refresh for large datasets",
+      "Refresh history and failure troubleshooting",
+      "Sharing reports and dashboards with individuals",
+      "Row-Level Security (RLS): static and dynamic",
+      "Workspace roles: Admin, Member, Contributor, Viewer",
+      "Subscriptions and email alerts",
+      "Embedding reports in SharePoint and Teams",
+      "Dataflows: reusable Power Query transformations in the cloud",
+      "Certified and promoted datasets",
+      "Shared datasets and live connections",
+      "Data lineage view"
+    ]
+  },
+  {
+    id: 8,
+    title: "Module 8: Advanced Topics & Best Practices",
+    icon: "bi bi-gear",
+    items: [
+      "Performance Analyzer: identifying slow visuals",
+      "Reducing model size: removing unused columns",
+      "Aggregations and composite models",
+      "Avoiding bi-directional relationships",
+      "Using integer keys instead of text for relationships",
+      "Quick Insights and AI Insights in Power BI Service",
+      "Key Influencers visual: automated ML insights",
+      "Decomposition Tree: drill-down analysis",
+      "Anomaly Detection in line charts",
+      "Smart Narratives: auto-generated summaries",
+      "Q&A visual: natural language queries",
+      "Running Python scripts for data transformation",
+      "Python-based visualizations (matplotlib, seaborn)",
+      "R scripts in Power Query and visuals",
+      "Machine learning model integration via Azure ML",
+      "Naming conventions for measures, tables, and columns",
+      "Documentation and report annotations",
+      "Version control with Tabular Editor and Git",
+      "XMLA endpoint and ALM Toolkit",
+      "Deployment pipelines: Dev → Test → Production"
+    ]
+  }
+],
       },
       {
         title: "Tableau",

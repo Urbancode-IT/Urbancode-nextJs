@@ -400,11 +400,9 @@ const Kidz = () => {
       <section className="why-choose-features">
         <div className="container py-5">
           <h2 className="section-title">
-            Unlock Your Child's  <span className="text-success text-shine"> Potential</span>
-          </h2>
+Where Creativity Meets <span className="text-success text-shine">&nbsp;Technology</span>          </h2>
           <p className="section-subtitle text-muted">
-            Our structured approach helps kids build logic, creativity, and confidence through real-world programming — made fun from day one.
-          </p>
+Give your child the opportunity to learn, experiment, and build real-world projects while developing critical thinking and a passion for innovation.          </p>
 
           <div className="wcf-grid">
             <div className="wcf-card">
@@ -492,7 +490,7 @@ const Kidz = () => {
               <p className="tech-subheading mb-4">
                 Join hundreds of families who trust Urbancode to provide quality, engaging, and age-appropriate tech education for their children.
               </p>
-              <div className="d-flex flex-wrap gap-3">
+              <div className="tech-journey-actions">
                 <button className="btn-demo bg-success" onClick={() => setShowEnquiry(true)}>Book Free Demo Class</button>
                 {showEnquiry && (
                   <EnquiryFormModal
@@ -505,7 +503,7 @@ const Kidz = () => {
                     }}
                   />
                 )}
-                <a href="callto:+919878798797" className="btn-link text-success">Speak with Counselor →</a>
+                <a href="tel:+919878798797" className="btn-counselor-call">Speak with Counselor →</a>
               </div>
             </div>
 

@@ -171,7 +171,15 @@ const CourseCategoryPage = () => {
              <div className="saturn-scene">
                 {/* Central Planet Core */}
                 <div className="saturn-planet" onClick={() => setSelectedTool(null)}>
-                   <div className="planet-surface">UC</div>
+                   <div className="planet-surface">
+                     <Image
+                       src="/images/courses-images/uclogo.png"
+                       alt="Urbancode logo"
+                       fill
+                       sizes="80px"
+                       className="planet-logo"
+                     />
+                   </div>
                    <div className="planet-glow"></div>
                 </div>
                 

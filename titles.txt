@@ -29,7 +29,7 @@ Data Analytics | Transform raw data into strategic decisions. Master Excel, SQL,
 SAS | Propel your analytics career with expert SAS training. Master data management, predictive modeling, and business intelligence to lead data-driven corporate strategies.
 R Programming | Master R Programming for data science and statistical analysis. Learn advanced algorithms, data visualization, and predictive modeling for top analytics roles.
 AI and ML | Lead the data revolution. Master Python, Artificial Intelligence, and Machine Learning algorithms to build predictive models and secure top Data Scientist roles.
-Python Plus ChatGPT | Future-proof your career. Master Python programming and integrate OpenAI APIs to build intelligent, automated, and cutting-edge software solutions.
+Python for Data Analyst | Build a strong foundation in Python programming and data analysis with Pandas, Jupyter Notebook, and Matplotlib.
 SAS | Propel your analytics career with expert SAS training. Master data management, predictive modeling, and business intelligence to lead data-driven corporate strategies.
 Data Engineering | Master Data Engineering with hands-on training in Google Cloud, Apache Airflow, MySQL, and Python. Gain industry-ready skills to design, build, and maintain scalable data pipelines for modern applications.
 MongoDB Database | Master MongoDB from basics to advanced with real-time projects and hands-on labs. Learn data modeling, indexing, aggregation, and secure deployment for modern applications.

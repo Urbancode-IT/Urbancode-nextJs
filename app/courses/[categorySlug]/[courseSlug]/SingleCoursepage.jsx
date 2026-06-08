@@ -177,6 +177,38 @@ const getToolsForCourse = (title) => {
             { id: 9, name: "Github", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" }
         ];
     }
+    if (t.includes("ai powered fullstack")) {
+        return [
+            { id: 1, name: "HTML5", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" },
+            { id: 2, name: "CSS3", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" },
+            { id: 3, name: "JavaScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
+            { id: 4, name: "React.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+            { id: 5, name: "Node.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
+            { id: 6, name: "Express.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" },
+            { id: 7, name: "MongoDB", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" },
+            { id: 8, name: "GitHub", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
+            { id: 9, name: "Postman", icon: "https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg" },
+            { id: 10, name: "ChatGPT", icon: "https://cdn.svgporn.com/logos/openai-icon.svg" },
+            { id: 11, name: "GitHub Copilot", icon: "https://api.iconify.design/simple-icons:githubcopilot.svg?color=%23000000" },
+            { id: 12, name: "Cursor", icon: "https://api.iconify.design/simple-icons:cursor.svg?color=%23000000" },
+            { id: 13, name: "Claude", icon: "https://api.iconify.design/simple-icons:anthropic.svg?color=%23D97757" },
+            { id: 14, name: "v0", icon: "https://api.iconify.design/simple-icons:vercel.svg?color=%23000000" },
+            { id: 15, name: "Vercel", icon: "https://api.iconify.design/simple-icons:vercel.svg?color=%23000000" },
+            { id: 16, name: "Netlify", icon: "https://api.iconify.design/simple-icons:netlify.svg?color=%2300C7B7" },
+        ];
+    }
+    if (t.includes("python for data analyst")) {
+        return [
+            { id: 1, name: "Python", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
+            { id: 2, name: "VS Code", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" },
+            { id: 3, name: "Jupyter", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original.svg" },
+            { id: 4, name: "Pandas", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" },
+            { id: 5, name: "NumPy", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/matplotlib/matplotlib-original.svg" },
+            { id: 8, name: "GitHub", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
+            { id: 9, name: "CSV", icon: "https://api.iconify.design/mdi:file-delimited.svg?color=%23219653" },
+            { id: 10, name: "JSON", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/json/json-original.svg" },
+        ];
+    }
     if (t.includes("python") || t.includes("data") || t.includes("ai") || t.includes("machine")) {
         return [
             { id: 1, name: "Python", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
