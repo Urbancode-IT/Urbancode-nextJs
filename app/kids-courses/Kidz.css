@@ -2655,18 +2655,19 @@
   }
 }
 
-/* Course Icon Badge on top of image */
+/* Course Icon Badge — bottom-right, larger */
 .kidz-page .kc-course-icon-badge {
   position: absolute;
-  top: 12px;
+  bottom: 12px;        /* was top: 12px */
   right: 12px;
+  top: unset;          /* override the old top */
   z-index: 12;
-  width: 44px;
-  height: 44px;
+  width: 52px;         /* was 44px */
+  height: 52px;        /* was 44px */
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(4px);
   border-radius: 50%;
-  padding: 6px;
+  padding: 7px;        /* was 6px */
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.18);
   display: flex;
   align-items: center;

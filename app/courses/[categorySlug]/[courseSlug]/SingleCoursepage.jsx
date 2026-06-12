@@ -191,8 +191,7 @@ const getToolsForCourse = (title) => {
             { id: 10, name: "ChatGPT", icon: "https://cdn.svgporn.com/logos/openai-icon.svg" },
             { id: 11, name: "GitHub Copilot", icon: "https://api.iconify.design/simple-icons:githubcopilot.svg?color=%23000000" },
             { id: 12, name: "Cursor", icon: "https://api.iconify.design/simple-icons:cursor.svg?color=%23000000" },
-            { id: 13, name: "Claude", icon: "https://api.iconify.design/simple-icons:anthropic.svg?color=%23D97757" },
-            { id: 14, name: "v0", icon: "https://api.iconify.design/simple-icons:vercel.svg?color=%23000000" },
+            { id: 13, name: "Claude", icon: "https://api.iconify.design/simple-icons:anthropic.svg" },
             { id: 15, name: "Vercel", icon: "https://api.iconify.design/simple-icons:vercel.svg?color=%23000000" },
             { id: 16, name: "Netlify", icon: "https://api.iconify.design/simple-icons:netlify.svg?color=%2300C7B7" },
         ];

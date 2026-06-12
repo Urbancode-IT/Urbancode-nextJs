@@ -253,6 +253,7 @@ export const newCourseData = {
             reviewCount: "400+",
             totalStars: 5,
             image: "/images/courses/z1.webp",
+            brochure: "/curriculum/mern-stack-brochure.pdf",
         },
         highlightsData: commonHighlights,
         curriculumData: [

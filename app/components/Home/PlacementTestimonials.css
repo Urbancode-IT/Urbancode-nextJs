@@ -68,13 +68,7 @@
     margin-bottom: 50px;
 }
 
-.pt-title {
-    font-weight: 600;
-    font-size: 30px;
-    line-height: 1.2;
-    margin: 0 0 30px 0;
-    letter-spacing: -0.5px;
-}
+
 
 /* Testimonial Grid */
 .pt-grid {
@@ -372,9 +366,7 @@
         padding: 60px 0;
     }
 
-    .pt-title {
-        font-size: 30px;
-    }
+
 }
 
 /* ---- Mobile: Switch from grid to slider ---- */
@@ -388,9 +380,7 @@
         margin-bottom: 30px;
     }
 
-    .pt-title {
-        font-size: 26px;
-    }
+
 
     /* Hide the desktop grid */
     .pt-grid {

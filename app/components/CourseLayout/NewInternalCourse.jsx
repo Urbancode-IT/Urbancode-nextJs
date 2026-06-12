@@ -118,8 +118,21 @@ const NewInternalCourse = ({ data }) => {
                     {/* LEFT CONTENT */}
                     <div className="nict-hero-content left">
                         <h1 className="nict-hero-title">
-                            <span className="nict-hero-title-light">{heroData.titleTop}</span>
-                            <span className="nict-hero-title-bold">{heroData.highlightText}</span>
+                            {(() => {
+                                const title = heroData.highlightText || "";
+                                const words = title.split(" ");
+                                if (words.length <= 2) {
+                                    return <span className="nict-hero-title-shine">{title}</span>;
+                                }
+                                const firstPart = words.slice(0, -2).join(" ");
+                                const lastPart = words.slice(-2).join(" ");
+                                return (
+                                    <>
+                                        <span className="nict-hero-title-plain">{firstPart}{" "}</span>
+                                        <span className="nict-hero-title-shine">{lastPart}</span>
+                                    </>
+                                );
+                            })()}
                         </h1>
 
                         <p className="nict-hero-subtitle">{heroData.subtitle}</p>

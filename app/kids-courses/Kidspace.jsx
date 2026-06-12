@@ -200,7 +200,7 @@ const Kidz = () => {
     {
       title: "SQL",
       img: "/images/KidsImages/kids6.webp",
-      icon: "https://img.icons8.com/color/96/database.png",
+icon: "https://img.icons8.com/fluency/96/sql.png",
       duration: "1 Month",
       desc: "Speak the language of data. Learn queries, joins, aggregations, and build dashboards and insights with confidence.",
       rating: "4.0", students: 41,

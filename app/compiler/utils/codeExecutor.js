@@ -1,4 +1,4 @@
-﻿
+
 // Mock Database for SQL
 export const sqlDatabase = {
     CustomersArchive: {
@@ -648,7 +648,20 @@ export const getPyodide = async () => {
     pyodidePromise = (async () => {
         try {
             const pyodideUrl = "https://cdn.jsdelivr.net/pyodide/v0.23.4/full/pyodide.js";
-            await loadScript(pyodideUrl);
+            
+            // Temporary workaround for Monaco Editor AMD loader collision
+            const oldDefine = typeof window !== 'undefined' ? window.define : undefined;
+            if (oldDefine && typeof window !== 'undefined') {
+                window.define = undefined;
+            }
+            
+            try {
+                await loadScript(pyodideUrl);
+            } finally {
+                if (oldDefine && typeof window !== 'undefined') {
+                    window.define = oldDefine;
+                }
+            }
 
             // Safety wait for global to appear if script execution is slightly delayed
             let attempts = 0;

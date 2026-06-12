@@ -276,7 +276,7 @@ const Courses = () => {
                     viewport={{ once: false }}
                     transition={{ duration: 0.6 }}
                 >
-                    <h2 className="jg-courses-title text-shine">
+                    <h2 className="section-main-title text-shine">
                         100% Job Guaranteed Courses
                     </h2>
                     <FeatureSubtitles />

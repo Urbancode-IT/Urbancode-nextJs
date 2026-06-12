@@ -96,7 +96,7 @@ const courses = [
   {
     title: "Data Engineering",
     desc: "Learn to architect scalable data pipelines. Our Data Engineering courses cover big data frameworks, Hadoop, Spark, and cloud solutions for modern data ecosystems.",
-    img: dataengineeringImg, /* Note: might want to change this img mapping later if a specific one exists */
+    img: dataengineeringImg,
     link: "/courses/data-engineering",
     badge: "1 Course",
   },
@@ -236,25 +236,37 @@ const CourseCategoryPage = () => {
       {/* Courses Grid */}
       <div className="grid-container">
         {courses.map((course, index) => (
-          <div
-            key={index}
-            className="card"
-            onClick={() => (window.location.href = course.link)}
-          >
-            <div className="card-image-wrapper">
-              <Image
-                src={course.img}
-                alt={course.title}
-                className="card-image"
-                width={400}
-                height={250}
-                placeholder={typeof course.img === 'string' ? 'empty' : 'blur'}
-                style={{ objectFit: "cover" }}
-              />
+          <div key={index} className="card-perspective-wrapper">
+            <div
+              className="card"
+              onClick={() => (window.location.href = course.link)}
+            >
+              {/* Image */}
+              <div className="card-image-wrapper">
+                <Image
+                  src={course.img}
+                  alt={course.title}
+                  className="card-image"
+                  width={400}
+                  height={250}
+                  placeholder={typeof course.img === 'string' ? 'empty' : 'blur'}
+                  style={{ objectFit: "cover" }}
+                />
+                <span className="image-badge">{course.badge}</span>
+              </div>
+
+              {/* Text Body */}
+              <div className="card-body-inner">
+                <h3 className="card-title">{course.title}</h3>
+                <p className="card-text">{course.desc}</p>
+              </div>
+
+              {/* Footer: explore text + arrow */}
+              <div className="card-footer-row">
+                <span className="explore-text">Explore Courses</span>
+                <span className="card-cta-arrow" aria-hidden="true">&#8599;</span>
+              </div>
             </div>
-            <h3 className="card-title">{course.title}</h3>
-            <p className="card-text text-muted">{course.desc}</p>
-            <div className="badge">{course.badge}</div>
           </div>
         ))}
       </div>

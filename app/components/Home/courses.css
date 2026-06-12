@@ -51,16 +51,7 @@
     margin-bottom: 10px;
 }
 
-/* ── Title ── */
-.jg-courses-title {
-    position: relative;
-    font-weight: 600;
-    font-size: 30px;
-    line-height: 1.2;
-    color: #1a202c;
-    margin: 0 0 30px 0;
-    letter-spacing: -0.5px;
-}
+
 
 /* ── Feature Subtitle Pills ── */
 .jg-features-subtitles {
@@ -389,10 +380,7 @@
         gap: 30px;
     }
 
-    .jg-courses-title {
-        font-size: 26px;
-        margin-bottom: 20px;
-    }
+
 
     .jg-features-subtitles {
         gap: 12px;
@@ -416,11 +404,7 @@
         padding: 40px 0;
     }
 
-    .jg-courses-title {
-        font-size: 22px;
-        letter-spacing: -0.5px;
-        margin-bottom: 20px;
-    }
+
 
     .jg-feature-subtitle-icon-wrapper {
         width: 38px;

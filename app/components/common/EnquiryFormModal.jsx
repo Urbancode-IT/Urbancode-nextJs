@@ -167,17 +167,24 @@ const EnquiryFormModal = ({
           icon: 'success',
           confirmButtonColor: '#28a745'
         });
+      } else if (isBrochureMode) {
+        // Trigger brochure downloads
+        const urls = downloadUrls && downloadUrls.length > 0 ? downloadUrls : [];
+        urls.forEach((url, index) => triggerDownload(url, index));
+        setStatus({ type: "success", message: "Downloading your brochure..." });
       } else {
         setStatus({ type: "success", message: "Success! Redirecting..." });
       }
       
       if (onSuccess) onSuccess();
 
-      // Close modal and redirect to thank you page
+      // Close modal; redirect to thank-you only for non-brochure modes
       setTimeout(() => {
         onClose();
-        goToThankYou();
-      }, 1000);
+        if (!isBrochureMode && !isJoinMode) {
+          goToThankYou();
+        }
+      }, 1200);
 
     } catch (error) {
       console.error("Enquiry Form Error:", error);

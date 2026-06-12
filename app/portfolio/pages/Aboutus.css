@@ -62,12 +62,13 @@
 
 .glass-heading {
   font-family: var(--heading);
-  font-size: var(--fs-h2);
-  font-weight: 700;
-  color: var(--text-h);
-  line-height: 1.1;
-  margin-bottom: 24px;
-  letter-spacing: -0.02em;
+  font-size: var(--section-title-size);
+  font-weight: var(--section-title-weight);
+  color: var(--section-title-color);
+  line-height: var(--section-title-lh);
+  letter-spacing: var(--section-title-ls);
+  margin-top: var(--section-title-margin-top);
+  margin-bottom: var(--section-title-margin-bottom);
 }
 
 .accent-text { color: inherit; }

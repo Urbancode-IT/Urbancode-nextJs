@@ -75,23 +75,14 @@ const categoryTools = {
     'https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original.svg',
     'https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg'
   ],
-"Automation": [
-     'https://upload.wikimedia.org/wikipedia/commons/4/4d/Microsoft_Power_Automate.svg',
-
-  // JSON (no official → use JS)
-  'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',
-
-  // HTML
-  'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg',
-
-
-
-  // Microsoft (general / Copilot fallback)
-  'https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg',
-
-
-]
+  "Automation": [
+    'https://upload.wikimedia.org/wikipedia/commons/4/4d/Microsoft_Power_Automate.svg',
+    'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',
+    'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg',
+    'https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg',
+  ]
 };
+
 const defaultTools = [
   'https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg',
   'https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original.svg',
@@ -196,64 +187,80 @@ export default function Courses({ categorySlug }) {
           course.desc.toLowerCase().includes(search.toLowerCase())
       );
 
-    const [isClient, setIsClient] = useState(false);
+  const [isClient, setIsClient] = useState(false);
 
-    useEffect(() => {
-        setIsClient(true);
-    }, []);
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
-    return (
-        <div className="wrapper pb-5" style={{ paddingTop: 'var(--site-header-height, 72px)' }}>
-            {/* Top Section */}
-            <div className="container-fluid overall-bg overall-green-bg px-3 px-md-5 course-hero-wrapper">
-                {/* Stars Background */}
-                <div className="cosmic-stars">
-                    {isClient && [...Array(40)].map((_, i) => (
-                        <div
-                            key={i}
-                            className="star"
-                            style={{
-                                '--left': `${Math.random() * 100}%`,
-                                '--top': `${Math.random() * 100}%`,
-                                '--size': `${1 + Math.random() * 2}px`,
-                                '--delay': `${Math.random() * 5}s`,
-                                '--duration': `${2 + Math.random() * 3}s`
-                            }}
-                        ></div>
-                    ))}
-                </div>
+  return (
+    <div className="wrapper pb-5" style={{ paddingTop: 'var(--site-header-height, 72px)' }}>
+      {/* Top Section */}
+      <div className="container-fluid overall-bg overall-green-bg px-3 px-md-5 course-hero-wrapper">
+        {/* Stars Background */}
+        <div className="cosmic-stars">
+          {isClient && [...Array(40)].map((_, i) => (
+            <div
+              key={i}
+              className="star"
+              style={{
+                '--left': `${Math.random() * 100}%`,
+                '--top': `${Math.random() * 100}%`,
+                '--size': `${1 + Math.random() * 2}px`,
+                '--delay': `${Math.random() * 5}s`,
+                '--duration': `${2 + Math.random() * 3}s`
+              }}
+            ></div>
+          ))}
+        </div>
 
         <Container fluid>
-          <Row className="py-5 align-items-center text-center text-md-start">
-            <Col md={7} className="my-auto p-3 p-md-5">
-              <h1 className="main-title">{activeCategoryData.mainCategoryDesc}</h1>
-              <p>{activeCategoryData.subDesc}</p>
+          <Row className="py-5 align-items-center course-hero-row">
+            <Col md={7} lg={7} className="my-auto course-hero-text-col">
+              <h1 className="main-title">
+                {(() => {
+                  const title = activeCategoryData.mainCategoryDesc || "";
+                  const words = title.split(" ");
+                  if (words.length <= 2) {
+                    return <span className="text-shine">{title}</span>;
+                  }
+                  const firstPart = words.slice(0, -2).join(" ");
+                  const lastPart = words.slice(-2).join(" ");
+                  return (
+                    <>
+                      {firstPart}{" "}
+                      <span className="text-shine">{lastPart}</span>
+                    </>
+                  );
+                })()}
+              </h1>
+              <p className="course-hero-subtext">{activeCategoryData.subDesc}</p>
             </Col>
-            <Col md={5} className="p-3">
+            <Col md={5} lg={5} className="course-hero-scene-col">
               <div className="course-interactive-scene">
-                 <div className="saturn-scene">
-                    <div className="saturn-planet">
-                       <div className="planet-surface">
-                         <Image
-                           src="/images/courses-images/uclogo.png"
-                           alt="Urbancode logo"
-                           fill
-                           sizes="80px"
-                           className="planet-logo"
-                         />
-                       </div>
-                       <div className="planet-glow"></div>
+                <div className="saturn-scene">
+                  <div className="saturn-planet">
+                    <div className="planet-surface">
+                      <Image
+                        src="/images/courses-images/uclogo.png"
+                        alt="Urbancode logo"
+                        fill
+                        sizes="80px"
+                        className="planet-logo"
+                      />
                     </div>
-                    <div className="rings-container">
-                       <div className="saturn-ring ring-1">
-                          {(categoryTools[activeCategory] || defaultTools).slice(0, 8).map((logo, i, arr) => (
-                            <div key={i} className="ring-item" style={{ '--index': i, '--total': arr.length }}>
-                               <img src={logo} alt="tool" />
-                            </div>
-                          ))}
-                       </div>
+                    <div className="planet-glow"></div>
+                  </div>
+                  <div className="rings-container">
+                    <div className="saturn-ring ring-1">
+                      {(categoryTools[activeCategory] || defaultTools).slice(0, 8).map((logo, i, arr) => (
+                        <div key={i} className="ring-item" style={{ '--index': i, '--total': arr.length }}>
+                          <img src={logo} alt="tool" />
+                        </div>
+                      ))}
                     </div>
-                 </div>
+                  </div>
+                </div>
               </div>
             </Col>
           </Row>

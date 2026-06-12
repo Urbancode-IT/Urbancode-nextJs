@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { institutionVideosData } from '../../data/institutionVideosData';
 import './InstitutionVideos.css';
 
@@ -9,7 +10,6 @@ const InstitutionVideos = () => {
     const [cardsToShow, setCardsToShow] = useState(3);
     const [isPaused, setIsPaused] = useState(false);
     const [activePlay, setActivePlay] = useState({});
-
 
     useEffect(() => {
         const updateCardsToShow = () => {
@@ -24,10 +24,9 @@ const InstitutionVideos = () => {
         return () => window.removeEventListener("resize", updateCardsToShow);
     }, []);
 
-    // Auto-scroll logic
     useEffect(() => {
         if (isPaused) return;
-        
+
         const timer = setInterval(() => {
             setIndex((prev) => {
                 const nextIndex = prev + 1;
@@ -36,7 +35,7 @@ const InstitutionVideos = () => {
                 }
                 return nextIndex;
             });
-        }, 4000); // 4 seconds
+        }, 4000);
 
         return () => clearInterval(timer);
     }, [isPaused, cardsToShow, institutionVideosData.length]);
@@ -46,7 +45,7 @@ const InstitutionVideos = () => {
         if (index < institutionVideosData.length - cardsToShow) {
             setIndex((prev) => prev + 1);
         } else {
-            setIndex(0); // Loop back
+            setIndex(0);
         }
     };
 
@@ -55,7 +54,7 @@ const InstitutionVideos = () => {
         if (index > 0) {
             setIndex((prev) => prev - 1);
         } else {
-            setIndex(institutionVideosData.length - cardsToShow); // Go to last
+            setIndex(institutionVideosData.length - cardsToShow);
         }
     };
 
@@ -75,7 +74,7 @@ const InstitutionVideos = () => {
             </div>
 
             <div className="container position-relative">
-                <motion.div 
+                <motion.div
                     className="text-center mb-4"
                     initial={{ opacity: 0, y: -20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -87,54 +86,61 @@ const InstitutionVideos = () => {
                     </h2>
                 </motion.div>
 
-                <div 
+                <div
                     className="video-carousel-wrapper"
                     onMouseEnter={() => setIsPaused(true)}
                     onMouseLeave={() => setIsPaused(false)}
                 >
-                    <button 
-                        className="nav-btn prev-btn" 
+                    <button
+                        className="nav-btn prev-btn"
                         onClick={handlePrev}
                         aria-label="Previous videos"
                     >❮</button>
-                    
+
                     <div className="video-cards-container">
-                        <motion.div 
+                        <motion.div
                             className="video-carousel-track"
                             animate={{ x: `-${index * (100 / cardsToShow)}%` }}
                             transition={{ type: "spring", stiffness: 100, damping: 20, mass: 1 }}
                         >
-                            {institutionVideosData.map((video, idx) => (
-                                <motion.div 
-                                    key={video.id} 
+                            {institutionVideosData.map((video) => (
+                                <motion.div
+                                    key={video.id}
                                     className="video-card-slide"
-                                    style={{ 
-                                        flex: `0 0 ${100 / cardsToShow}%`, 
-                                    }}
+                                    style={{ flex: `0 0 ${100 / cardsToShow}%` }}
                                     initial={{ opacity: 0, scale: 0.95 }}
                                     whileInView={{ opacity: 1, scale: 1 }}
                                     viewport={{ once: true }}
                                 >
                                     <div className="video-card-inner">
-                                        <div 
-                                            className="video-iframe-wrapper cursor-pointer"
+                                        <div
+                                            className="video-iframe-wrapper"
                                             onClick={() => {
                                                 if (!activePlay[video.id]) {
                                                     setActivePlay(prev => ({ ...prev, [video.id]: true }));
-                                                    setIsPaused(true); // Pause autoplay scroll while user watches
+                                                    setIsPaused(true);
                                                 }
                                             }}
                                             style={{ cursor: activePlay[video.id] ? 'default' : 'pointer' }}
                                         >
                                             {!activePlay[video.id] ? (
                                                 <>
-                                                    <img
-                                                        src={`https://img.youtube.com/vi/${video.videoId}/hqdefault.jpg`}
-                                                        alt={video.title}
-                                                        className="w-100 h-100 object-fit-cover position-absolute top-0 start-0"
-                                                        loading="lazy"
-                                                        style={{ zIndex: 1, borderRadius: '24px' }}
-                                                    />
+                                                    <div style={{
+                                                        position: 'relative',
+                                                        width: '100%',
+                                                        height: '100%',
+                                                        borderRadius: '24px',
+                                                        overflow: 'hidden'
+                                                    }}>
+                                                        <Image
+                                                            src={video.thumbnail}
+                                                            alt={video.title}
+                                                            fill
+                                                            sizes="(max-width: 640px) 100vw, (max-width: 992px) 50vw, 33vw"
+                                                            style={{ objectFit: 'cover' }}
+                                                            loading="lazy"
+                                                        />
+                                                    </div>
                                                     <div className="play-overlay" style={{ opacity: 0.9, zIndex: 2 }}>
                                                         <div className="play-icon" />
                                                     </div>
@@ -148,7 +154,7 @@ const InstitutionVideos = () => {
                                                     allowFullScreen
                                                     className="institution-video-iframe"
                                                     style={{ zIndex: 3 }}
-                                                ></iframe>
+                                                />
                                             )}
                                         </div>
                                     </div>
@@ -157,8 +163,8 @@ const InstitutionVideos = () => {
                         </motion.div>
                     </div>
 
-                    <button 
-                        className="nav-btn next-btn" 
+                    <button
+                        className="nav-btn next-btn"
                         onClick={handleNext}
                         aria-label="Next videos"
                     >❯</button>
@@ -167,8 +173,8 @@ const InstitutionVideos = () => {
                 <div className="carousel-controls mt-4">
                     <div className="carousel-dots">
                         {institutionVideosData.slice(0, Math.max(1, institutionVideosData.length - cardsToShow + 1)).map((_, i) => (
-                            <span 
-                                key={i} 
+                            <span
+                                key={i}
                                 className={`carousel-dot ${i === index ? 'active' : ''}`}
                                 onClick={() => handleDotClick(i)}
                             />

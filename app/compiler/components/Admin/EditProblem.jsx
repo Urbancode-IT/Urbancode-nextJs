@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { problemsApi } from '../../services/api';
 import toast from 'react-hot-toast';
-import { runSolutionCheck } from '../../utils/codeExecutor';
+import { runSolutionCheck, getPyodide } from '../../utils/codeExecutor';
 import { FaArrowLeft, FaSave, FaFlask, FaTrash, FaPlus } from 'react-icons/fa';
 import './EditProblem.css';
 
@@ -100,16 +100,7 @@ const EditProblem = () => {
         try {
             // Check for python engine if needed
             if (problem.topic === 'python' && !window.pyodideInstance) {
-                // Try load
-                if (window.loadPyodide) {
-                    window.pyodideInstance = await window.loadPyodide({
-                        indexURL: "https://cdn.jsdelivr.net/pyodide/v0.23.4/full/"
-                    });
-                    // Load sqlite3 package as it is unvendored in newer Pyodide versions
-                    if (window.pyodideInstance.loadPackage) {
-                        await window.pyodideInstance.loadPackage('sqlite3');
-                    }
-                }
+                await getPyodide();
             }
 
             const { results, error } = await runSolutionCheck(problem.topic, problem.solution, problem.testCases);

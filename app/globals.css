@@ -44,13 +44,13 @@
 
   /* ── Section Title System (shared across all pages) ──────────── */
   /* Change these to update section title style site-wide          */
-  --section-title-size:          clamp(1.5rem, 3vw, 1.875rem);
+  --section-title-size:          30px;
   --section-title-weight:        600;
-  --section-title-color:         var(--color-brand);
-  --section-title-lh:            var(--lh-heading);
-  --section-title-ls:            var(--ls-tight);
-  --section-title-margin-top:    60px;
-  --section-title-margin-bottom: 20px;
+  --section-title-color:         #1a202c;
+  --section-title-lh:            1.2;
+  --section-title-ls:            -0.5px;
+  --section-title-margin-top:    0px;
+  --section-title-margin-bottom: 30px;
 
   /* ── Form Design System ───────────────────────────────────────── */
   --form-bg: linear-gradient(180deg, #e3f0eb 0%, #f3f5f3 100%);
@@ -70,9 +70,17 @@
 @media (max-width: 768px) {
   :root {
     --site-header-height: 71px;
-    --section-title-size:          clamp(1.25rem, 4vw, 1.5rem);
-    --section-title-margin-top:    40px;
-    --section-title-margin-bottom: 10px;
+    --section-title-size:          26px;
+    --section-title-margin-top:    0px;
+    --section-title-margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --section-title-size:          22px;
+    --section-title-margin-top:    0px;
+    --section-title-margin-bottom: 20px;
   }
 }
 
@@ -182,6 +190,7 @@ h1, h2, h3, h4, h5, h6 {
    SHARED SECTION HEADING (used across all pages)
    ================================================================ */
 .section-main-title {
+  position: relative;
   display: block;
   font-size: var(--section-title-size);
   font-weight: var(--section-title-weight);
@@ -190,7 +199,7 @@ h1, h2, h3, h4, h5, h6 {
   text-align: center;
   color: var(--section-title-color);
   margin: var(--section-title-margin-top) auto var(--section-title-margin-bottom);
-  padding-bottom: 15px;
+  padding-bottom: 0px;
   max-width: 100%;
   word-wrap: break-word;
   transition: var(--transition-base);
@@ -504,7 +513,7 @@ a:hover {
 
 @media (max-width: 768px) {
   .section-main-title {
-    padding-bottom: 10px;
+    padding-bottom: 0px;
     /* margin-top/bottom driven by --section-title-margin-* responsive overrides in :root */
   }
   .fs1rem { font-size: 0.85rem !important; }

@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { FaStar, FaQuoteLeft, FaCheckCircle, FaAward, FaUniversity, FaSearch } from 'react-icons/fa';
+import { FaStar, FaQuoteLeft, FaCheckCircle, FaAward, FaUniversity, FaSearch, FaStethoscope, FaGlobeAmericas, FaUserMd, FaPlaneDeparture, FaClipboardCheck, FaHospital } from 'react-icons/fa';
 import { Send } from "lucide-react";
 import { submitEnquiryForm } from "@/lib/api/api";
 import EnquiryFormModal from "@/app/components/common/EnquiryFormModal.jsx";
@@ -82,9 +82,8 @@ const StudyAbroadPage = () => {
         e.preventDefault();
         setFormStatus({ type: "", message: "" });
 
-        // Basic Validation
         const { name, email, phone, country, education, course } = formData;
-        
+
         if (!name.trim() || name.trim().length < 3) {
             setFormStatus({ type: "error", message: "Please enter a valid name (min 3 characters)." });
             return;
@@ -113,14 +112,13 @@ const StudyAbroadPage = () => {
 
         setIsSubmitting(true);
 
-        // Prepare data for existing handler
         const submissionData = {
             name: formData.name.trim(),
             email: formData.email.trim(),
             phone: cleanPhone,
             course: `Study Abroad - ${formData.country} (${formData.course})`,
             message: `Education Level: ${formData.education}\nMessage: ${formData.message}`,
-            mode: "Online/Offline" // Default for the handler
+            mode: "Online/Offline"
         };
 
         try {
@@ -148,23 +146,19 @@ const StudyAbroadPage = () => {
 
     return (
         <div className="study-abroad-container">
-            {/* ... hero and other sections ... */}
+
             {/* Hero Section */}
             <section className="study-hero">
                 <div className="container">
                     <div className="row justify-content-center text-center position-relative py-5">
-                        
-                        {/* Interactive Floating Milestone Badges */}
+
+                        {/* Floating Milestone Badges */}
                         <div className="floating-container d-none d-lg-block">
-                            <motion.div 
+                            <motion.div
                                 className="milestone-badge badge-left"
                                 initial={{ opacity: 0, x: -30 }}
-                                animate={{ 
-                                    opacity: 1, 
-                                    x: 0,
-                                    y: [0, -12, 0] 
-                                }}
-                                transition={{ 
+                                animate={{ opacity: 1, x: 0, y: [0, -12, 0] }}
+                                transition={{
                                     opacity: { duration: 0.5 },
                                     x: { duration: 0.5 },
                                     y: { duration: 4, repeat: Infinity, ease: "easeInOut" }
@@ -178,14 +172,11 @@ const StudyAbroadPage = () => {
                                 </div>
                             </motion.div>
 
-                            <motion.div 
+                            <motion.div
                                 className="milestone-badge badge-top-right"
                                 initial={{ opacity: 0, y: -30 }}
-                                animate={{ 
-                                    opacity: 1, 
-                                    y: [0, 15, 0] 
-                                }}
-                                transition={{ 
+                                animate={{ opacity: 1, y: [0, 15, 0] }}
+                                transition={{
                                     opacity: { duration: 0.7 },
                                     y: { duration: 5, repeat: Infinity, ease: "easeInOut" }
                                 }}
@@ -198,15 +189,11 @@ const StudyAbroadPage = () => {
                                 </div>
                             </motion.div>
 
-                            <motion.div 
+                            <motion.div
                                 className="milestone-badge badge-bottom-right"
                                 initial={{ opacity: 0, x: 30 }}
-                                animate={{ 
-                                    opacity: 1, 
-                                    x: 0,
-                                    y: [0, -18, 0] 
-                                }}
-                                transition={{ 
+                                animate={{ opacity: 1, x: 0, y: [0, -18, 0] }}
+                                transition={{
                                     opacity: { duration: 0.9 },
                                     x: { duration: 0.9 },
                                     y: { duration: 4.5, repeat: Infinity, ease: "easeInOut" }
@@ -222,13 +209,13 @@ const StudyAbroadPage = () => {
                         </div>
 
                         <div className="col-lg-9 study-hero-main py-5">
-                            <motion.div 
+                            <motion.div
                                 initial={{ opacity: 0, scale: 0.9 }}
                                 animate={{ opacity: 1, scale: 1 }}
                                 transition={{ duration: 0.8 }}
                             >
                                 <h1 className="hero-title-main fw-bold">
-                                    Design Your <span className="highlight-box text-shine">International</span><br className="d-none d-sm-block" /> 
+                                    Design Your <span className="highlight-box text-shine">International</span><br className="d-none d-sm-block" />
                                     Academic Future Today
                                 </h1>
                                 <p className="hero-subtitle-new mt-3">
@@ -237,26 +224,17 @@ const StudyAbroadPage = () => {
 
                                 <div className="trusted-students-row d-flex align-items-center justify-content-center mt-4">
                                     <div className="student-avatars d-flex">
-    <img
-        src="/images/study-abroad/st01.webp"        alt="Indian student 1"
-        className="mini-avatar"
-    />
-    <img
-        src="/images/study-abroad/st02.webp"        alt="Indian student 2"
-        className="mini-avatar ms-n2"
-    />
-    <img
-        src="/images/study-abroad/st03.webp"        alt="Indian student 3"
-        className="mini-avatar ms-n2"
-    />
-</div>
+                                        <img src="/images/study-abroad/st01.webp" alt="Indian student 1" className="mini-avatar" />
+                                        <img src="/images/study-abroad/st02.webp" alt="Indian student 2" className="mini-avatar ms-n2" />
+                                        <img src="/images/study-abroad/st03.webp" alt="Indian student 3" className="mini-avatar ms-n2" />
+                                    </div>
                                     <div className="trusted-plus ms-3">+1k</div>
                                     <span className="trusted-text ms-2">Joined by 1,000+ aspiring global leaders</span>
                                 </div>
-                                
+
                                 <div className="mt-4">
-                                    <motion.button 
-                                        onClick={() => document.getElementById('consultation').scrollIntoView({behavior: 'smooth'})} 
+                                    <motion.button
+                                        onClick={() => document.getElementById('consultation').scrollIntoView({ behavior: 'smooth' })}
                                         className="request-callback-btn"
                                         whileHover={{ scale: 1.05 }}
                                         whileTap={{ scale: 0.95 }}
@@ -267,21 +245,6 @@ const StudyAbroadPage = () => {
                                 </div>
 
                                 <div className="stats-divider-line mt-5"></div>
-{/* 
-                                <div className="hero-trust-row mt-4">
-                                    <div className="trust-item">
-                                        <span className="trust-val">100+</span> 
-                                        <span className="trust-txt">University Tie-ups</span>
-                                    </div>
-                                    <div className="trust-item">
-                                        <span className="trust-val">1000+</span> 
-                                        <span className="trust-txt">Success Stories</span>
-                                    </div>
-                                    <div className="trust-item">
-                                        <span className="trust-val">50+</span> 
-                                        <span className="trust-txt">Study Abroad Experts</span>
-                                    </div>
-                                </div> */}
                             </motion.div>
                         </div>
                     </div>
@@ -294,8 +257,8 @@ const StudyAbroadPage = () => {
                     <div className="section-header">
                         <h2 className="section-main-title text-shine">Our Expert Services</h2>
                         <p>Comprehensive support from planning to your first day on campus. We handle the complexity so you can focus on your future.</p>
-                        
-                        <motion.div 
+
+                        <motion.div
                             className="free-service-badge mt-4"
                             initial={{ opacity: 0, y: 10 }}
                             whileInView={{ opacity: 1, y: 0 }}
@@ -303,7 +266,7 @@ const StudyAbroadPage = () => {
                         >
                             <span className="badge-pill-modern">
                                 <FaCheckCircle className="me-2" />
-                                100% Free Service for Students* 
+                                100% Free Service for Students*
                                 <span className="exception-text small ms-2">(Except Germany)</span>
                             </span>
                         </motion.div>
@@ -311,13 +274,11 @@ const StudyAbroadPage = () => {
                     <div className="row g-4">
                         {services.map((service, index) => (
                             <div className="col-lg-3 col-md-6" key={index}>
-                                <motion.div 
+                                <motion.div
                                     className="service-box"
                                     whileHover={{ y: -5 }}
                                 >
-                                    <div className="service-icon">
-                                        {service.icon}
-                                    </div>
+                                    <div className="service-icon">{service.icon}</div>
                                     <h4>{service.title}</h4>
                                     <p>{service.description}</p>
                                 </motion.div>
@@ -337,7 +298,7 @@ const StudyAbroadPage = () => {
                     <div className="row g-4">
                         {destinations.map((dest, index) => (
                             <div className="col-lg-3 col-md-6" key={index}>
-                                <motion.div 
+                                <motion.div
                                     className="destination-card"
                                     initial={{ opacity: 0, y: 20 }}
                                     whileInView={{ opacity: 1, y: 0 }}
@@ -365,37 +326,163 @@ const StudyAbroadPage = () => {
                 </div>
             </section>
 
+            {/* MBBS Abroad Section */}
+            <section className="section-padding mbbs-section">
+                <div className="container">
+
+                    <div className="section-header">
+                        <h2 className="section-main-title text-shine">Study MBBS Abroad</h2>
+                        <p>Turn your dream of becoming a doctor into reality. Study at NMC-approved, WHO-listed universities across Europe and Central Asia — with English-medium instruction and total costs far below Indian private medical colleges.</p>
+                    </div>
+
+                    {/* Stats banner */}
+                    <div className="mbbs-stats-banner">
+                        {[
+                            { val: "6+",    label: "MBBS Destinations" },
+                            { val: "50+",   label: "Partner Universities" },
+                            { val: "6 Yrs", label: "Programme Duration" },
+                            { val: "100%",  label: "Admission Support" },
+                        ].map((s, i) => (
+                            <div className="mbbs-stat-item" key={i}>
+                                <span className="mbbs-stat-val">{s.val}</span>
+                                <span className="mbbs-stat-label">{s.label}</span>
+                            </div>
+                        ))}
+                    </div>
+
+                    {/* Scrolling ticker */}
+                    <div className="mbbs-ticker-wrap">
+                        <div className="mbbs-ticker-track">
+                            {[
+                                "NMC & WHO Recognised",
+                                "Globally Valid Degree",
+                                "No Donation / Capitation Fee",
+                                "Clinical Hospital Training",
+                                "100% English Medium",
+                                "FMGE / NExT Coaching",
+                                "Affordable Tuition Fees",
+                                "Safe Campus Environment",
+                                "NMC & WHO Recognised",
+                                "Globally Valid Degree",
+                                "No Donation / Capitation Fee",
+                                "Clinical Hospital Training",
+                                "100% English Medium",
+                                "FMGE / NExT Coaching",
+                                "Affordable Tuition Fees",
+                                "Safe Campus Environment",
+                            ].map((text, i) => (
+                                <span className="mbbs-ticker-pill" key={i}>
+                                    <span className="mbbs-ticker-dot" />
+                                    {text}
+                                </span>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Why MBBS abroad */}
+                    <div className="mbbs-why-grid">
+                        {[
+                            { icon: <FaUniversity />,      title: "Accredited Universities",  desc: "WHO-listed and NMC-recognised government & private medical universities." },
+                            { icon: <FaStethoscope />,     title: "Clinical Exposure",         desc: "Structured hospital rotations in affiliated teaching hospitals abroad." },
+                            { icon: <FaPlaneDeparture />,  title: "End-to-End Support",        desc: "University shortlisting, visa, travel, and pre-departure briefing covered." },
+                            { icon: <FaAward />,           title: "Affordable Education",      desc: "Complete MBBS abroad at a fraction of Indian private college fees." },
+                        ].map((item, i) => (
+                            <motion.div
+                                className="mbbs-why-card"
+                                key={i}
+                                initial={{ opacity: 0, y: 16 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: i * 0.08 }}
+                            >
+                                <div className="mbbs-why-icon">{item.icon}</div>
+                                <h4>{item.title}</h4>
+                                <p>{item.desc}</p>
+                            </motion.div>
+                        ))}
+                    </div>
+
+                    {/* Country cards header */}
+                    <div className="mbbs-destinations-header">
+                        <h3 className="mbbs-destinations-title">Top Countries for MBBS Abroad</h3>
+                        <p>Choose from trusted destinations with quality medical education and strong FMGE pass records.</p>
+                    </div>
+
+           <div className="mbbs-countries-grid">
+  {[
+    { code: "ro", country: "Romania",    fee: "From ~₹25L", duration: "6 Years", tag: "EU Degree"       },
+    { code: "ru", country: "Russia",     fee: "From ~₹20L", duration: "6 Years", tag: "NMC Approved"    },
+    { code: "ua", country: "Ukraine",    fee: "From ~₹18L", duration: "6 Years", tag: "Budget Friendly" },
+    { code: "am", country: "Armenia",    fee: "From ~₹22L", duration: "6 Years", tag: "Safe Campus"     },
+    { code: "ge", country: "Georgia",    fee: "From ~₹24L", duration: "6 Years", tag: "WHO Listed"      },
+    { code: "kg", country: "Kyrgyzstan", fee: "From ~₹16L", duration: "6 Years", tag: "Most Affordable" },
+  ].map((c, i) => (
+    <motion.div className="mbbs-country-card" key={i}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: i * 0.08 }}>
+      <div className="mbbs-card-img-box">
+        <img
+          src={`https://flagcdn.com/w160/${c.code}.png`}
+          alt={`${c.country} flag`}
+          className="mbbs-card-flag-img"
+        />
+      </div>
+      <div className="mbbs-card-info">
+        <h3 className="mbbs-card-country-name">{c.country}</h3>
+        <span className="mbbs-card-uni-count">
+          <FaStethoscope className="me-2" />{c.duration} · MBBS
+        </span>
+        <p className="mbbs-card-fee-text">{c.fee} total · {c.tag}</p>
+        <div className="mbbs-dest-btn-group">
+          <button className="dest-btn dest-btn-primary"
+            onClick={() => handleEnquireClick(`MBBS in ${c.country}`)}>
+            Enquire Now
+          </button>
+          {/* <button className="dest-btn dest-btn-outline"
+            onClick={() => handleEnquireClick(`MBBS in ${c.country} - Details`)}>
+            Know More
+          </button> */}
+        </div>
+      </div>
+    </motion.div>
+  ))}
+</div>
+
+                   
+                </div>
+            </section>
+
             {/* Dream Country Benefits Showcase Section */}
             <section className="section-padding showcase-section">
                 <div className="container">
                     <div className="section-header mb-4">
-                        <h2 className="section-main-title text-shine fs-2">Benefits of Your Dream Country</h2>
+                        <h2 className="section-main-title text-shine">Benefits of Your Dream Country</h2>
                         <p className="fs-6">Get a detailed overview of what makes each destination a top choice for international studies, tailored to your career aspirations.</p>
                     </div>
 
-                    <div className="showcase-card-wrapper position-relative overflow-hidden rounded-4 shadow-lg"
+                    <div
+                        className="showcase-card-wrapper position-relative overflow-hidden rounded-4 shadow-lg"
                         style={{
                             backgroundImage: `url(${showcaseData[activeShowcase].bgImage})`,
                             backgroundSize: 'cover',
                             backgroundPosition: 'center',
                             transition: 'all 0.6s ease'
-                        }}>
-                        {/* Overlay with flag-themed gradient */}
+                        }}
+                    >
                         <div className="showcase-card-overlay" style={{ background: showcaseData[activeShowcase].gradient }} />
 
                         <div className="position-relative z-index-2 p-3 p-md-4">
-                            {/* Choose your dream country tab bar (At the TOP of the card) */}
                             <div className="mb-4 pb-3 border-bottom border-white border-opacity-10">
                                 <div className="showcase-tabs-container position-relative">
                                     <div className="showcase-tabs-bar">
                                         {Object.keys(showcaseData).map((key) => (
-                                            <button 
+                                            <button
                                                 key={key}
                                                 className={`showcase-tab ${activeShowcase === key ? 'active' : ''}`}
                                                 onClick={() => setActiveShowcase(key)}
-                                                style={{
-                                                    '--active-accent': showcaseData[key].accentColor
-                                                }}
+                                                style={{ '--active-accent': showcaseData[key].accentColor }}
                                             >
                                                 <span className="me-2">{showcaseData[key].flagEmoji}</span>
                                                 {showcaseData[key].flagName}
@@ -406,7 +493,6 @@ const StudyAbroadPage = () => {
                             </div>
 
                             <div className="row align-items-center">
-                                {/* Left side: Content */}
                                 <div className="col-lg-7 text-white">
                                     <motion.div
                                         key={activeShowcase}
@@ -418,15 +504,15 @@ const StudyAbroadPage = () => {
                                         <h2 className="showcase-country-title country-title-handwritten">
                                             {showcaseData[activeShowcase].title}
                                         </h2>
-                                        
+
                                         <h4 className="showcase-country-subtitle fw-bold mb-3">
                                             {showcaseData[activeShowcase].subtitle}
                                         </h4>
 
                                         <ul className="showcase-highlights-list list-unstyled mb-4">
                                             {showcaseData[activeShowcase].highlights.map((highlight, idx) => (
-                                                <motion.li 
-                                                    key={idx} 
+                                                <motion.li
+                                                    key={idx}
                                                     className="d-flex align-items-center mb-2"
                                                     initial={{ opacity: 0, y: 10 }}
                                                     animate={{ opacity: 1, y: 0 }}
@@ -438,7 +524,7 @@ const StudyAbroadPage = () => {
                                             ))}
                                         </ul>
 
-                                        <button 
+                                        <button
                                             className="showcase-expert-btn px-4 py-2 rounded-pill fw-bold text-white shadow-sm"
                                             style={{
                                                 background: showcaseData[activeShowcase].accentColor,
@@ -452,10 +538,9 @@ const StudyAbroadPage = () => {
                                     </motion.div>
                                 </div>
 
-                                {/* Right side: Art Composition (dome & flag brush stroke) */}
                                 <div className="col-lg-5 d-none d-lg-block">
                                     <div className="showcase-graphic-wrap position-relative w-100 d-flex justify-content-center align-items-center" style={{ height: '280px' }}>
-                                        <motion.div 
+                                        <motion.div
                                             key={`flag-${activeShowcase}`}
                                             className="showcase-flag-brush position-absolute"
                                             style={{ backgroundImage: `url(${showcaseData[activeShowcase].flagUrl})` }}
@@ -463,7 +548,7 @@ const StudyAbroadPage = () => {
                                             animate={{ opacity: 0.8, scale: 1, rotate: -5 }}
                                             transition={{ duration: 0.6 }}
                                         />
-                                        <motion.div 
+                                        <motion.div
                                             key={`landmark-${activeShowcase}`}
                                             className="showcase-landmark-frame position-absolute"
                                             initial={{ opacity: 0, y: 50, scale: 0.9 }}
@@ -486,8 +571,8 @@ const StudyAbroadPage = () => {
                     <div className="section-header">
                         <h2 className="section-main-title text-shine">Master Your English Proficiency</h2>
                         <p className="proficiency-main-desc">
-                            English proficiency certifications like <strong>IELTS, PTE, and Duolingo</strong> are essential milestones in your study abroad journey. 
-                            At Urbancode, we provide comprehensive, result-oriented training for all these exams. 
+                            English proficiency certifications like <strong>IELTS, PTE, and Duolingo</strong> are essential milestones in your study abroad journey.
+                            At Urbancode, we provide comprehensive, result-oriented training for all these exams.
                             Master the language under the guidance of experts with over <strong>10+ years of professional experience</strong> and achieve your target score with confidence.
                         </p>
                     </div>
@@ -495,7 +580,7 @@ const StudyAbroadPage = () => {
                     <div className="proficiency-tabs-container">
                         <div className="proficiency-buttons">
                             {Object.keys(proficiencyData).map((key) => (
-                                <button 
+                                <button
                                     key={key}
                                     className={`prof-tab-btn ${activeProficiency === key ? 'active' : ''}`}
                                     onClick={() => setActiveProficiency(key)}
@@ -505,7 +590,7 @@ const StudyAbroadPage = () => {
                             ))}
                         </div>
 
-                        <motion.div 
+                        <motion.div
                             key={activeProficiency}
                             initial={{ opacity: 0, x: 20 }}
                             animate={{ opacity: 1, x: 0 }}
@@ -524,7 +609,7 @@ const StudyAbroadPage = () => {
                                             </div>
                                         ))}
                                     </div>
-                                    <button 
+                                    <button
                                         className="btn-prof-enquire mt-4"
                                         onClick={() => handleEnquireClick(activeProficiency)}
                                     >
@@ -533,10 +618,10 @@ const StudyAbroadPage = () => {
                                 </div>
                                 <div className="col-lg-5 d-none d-lg-block text-center">
                                     <div className="prof-cert-container">
-                                        <img 
-                                            src={proficiencyData[activeProficiency].certificateImage} 
-                                            alt={`${activeProficiency} Certificate`} 
-                                            className="prof-cert-img" 
+                                        <img
+                                            src={proficiencyData[activeProficiency].certificateImage}
+                                            alt={`${activeProficiency} Certificate`}
+                                            className="prof-cert-img"
                                         />
                                     </div>
                                 </div>
@@ -548,7 +633,7 @@ const StudyAbroadPage = () => {
 
             {/* Consultation Section */}
             <section id="consultation" className="section-padding consultation-section">
-                <div className="container" style={{maxWidth: '700px'}}>
+                <div className="container" style={{ maxWidth: '700px' }}>
                     <FormCard className="p-0 overflow-hidden" style={{ background: 'linear-gradient(180deg, #e3f0eb 0%, #f3f5f3 100%)', border: 'none' }}>
                         <div className="p-3 p-md-4">
                             <div className="text-center mb-3">
@@ -565,84 +650,30 @@ const StudyAbroadPage = () => {
                             <form onSubmit={handleFormSubmit}>
                                 <div className="row g-2">
                                     <div className="col-md-6">
-                                        <FormInput 
-                                            name="name" 
-                                            placeholder="Full Name" 
-                                            required 
-                                            value={formData.name} 
-                                            onChange={handleFormChange} 
-                                            disabled={isSubmitting}
-                                        />
+                                        <FormInput name="name" placeholder="Full Name" required value={formData.name} onChange={handleFormChange} disabled={isSubmitting} />
                                     </div>
                                     <div className="col-md-6">
-                                        <FormInput 
-                                            type="email" 
-                                            name="email" 
-                                            placeholder="Email Address" 
-                                            required 
-                                            value={formData.email} 
-                                            onChange={handleFormChange} 
-                                            disabled={isSubmitting}
-                                        />
+                                        <FormInput type="email" name="email" placeholder="Email Address" required value={formData.email} onChange={handleFormChange} disabled={isSubmitting} />
                                     </div>
                                     <div className="col-md-6">
-                                        <FormInput 
-                                            type="tel" 
-                                            name="phone" 
-                                            placeholder="Phone Number" 
-                                            required 
-                                            value={formData.phone} 
-                                            onChange={handleFormChange} 
-                                            disabled={isSubmitting}
-                                        />
+                                        <FormInput type="tel" name="phone" placeholder="Phone Number" required value={formData.phone} onChange={handleFormChange} disabled={isSubmitting} />
                                     </div>
                                     <div className="col-md-6">
-                                        <FormSelect 
-                                            name="country" 
-                                            placeholder="Preferred Destination"
-                                            options={destinationOptions}
-                                            required 
-                                            value={formData.country} 
-                                            onChange={handleFormChange} 
-                                            disabled={isSubmitting}
-                                        />
+                                        <FormSelect name="country" placeholder="Preferred Destination" options={destinationOptions} required value={formData.country} onChange={handleFormChange} disabled={isSubmitting} />
                                     </div>
                                     <div className="col-md-6">
-                                        <FormSelect 
-                                            name="education" 
-                                            placeholder="Highest Qualification"
-                                            options={educationOptions}
-                                            required 
-                                            value={formData.education} 
-                                            onChange={handleFormChange} 
-                                            disabled={isSubmitting}
-                                        />
+                                        <FormSelect name="education" placeholder="Highest Qualification" options={educationOptions} required value={formData.education} onChange={handleFormChange} disabled={isSubmitting} />
                                     </div>
                                     <div className="col-md-6">
-                                        <FormInput 
-                                            name="course" 
-                                            placeholder="Preferred Course (e.g. MS in CS)" 
-                                            required 
-                                            value={formData.course} 
-                                            onChange={handleFormChange} 
-                                            disabled={isSubmitting}
-                                        />
+                                        <FormInput name="course" placeholder="Preferred Course (e.g. MS in CS)" required value={formData.course} onChange={handleFormChange} disabled={isSubmitting} />
                                     </div>
                                     <div className="col-12">
-                                        <FormTextarea 
-                                            name="message" 
-                                            rows="3" 
-                                            placeholder="Message (Optional) - Tell us about your goals..." 
-                                            value={formData.message} 
-                                            onChange={handleFormChange} 
-                                            disabled={isSubmitting}
-                                        />
+                                        <FormTextarea name="message" rows="3" placeholder="Message (Optional) - Tell us about your goals..." value={formData.message} onChange={handleFormChange} disabled={isSubmitting} />
                                     </div>
-                                    
                                     <div className="col-12 text-center mt-2">
-                                        <FormButton 
-                                            type="submit" 
-                                            variant="success" 
+                                        <FormButton
+                                            type="submit"
+                                            variant="success"
                                             className="px-4 py-2 rounded-pill"
                                             loading={isSubmitting}
                                             style={{ minWidth: '160px', backgroundColor: '#444444', border: 'none' }}
@@ -667,16 +698,15 @@ const StudyAbroadPage = () => {
                     <div className="row g-4 justify-content-center">
                         {testimonials.map((test, index) => (
                             <div className="col-lg-4 col-md-6" key={index}>
-                                <motion.div 
+                                <motion.div
                                     className="test-card"
                                     initial={{ opacity: 0, y: 30 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ duration: 0.5, delay: index * 0.1 }}
                                 >
-                                    {/* Watermark Quote Icon */}
-                                    <div className="quote-watermark">“</div>
-                                    
+                                    <div className="quote-watermark">"</div>
+
                                     <div className="test-header">
                                         <div className="avatar-wrapper">
                                             <img src={test.image} alt={test.name} className="test-avatar" />
@@ -695,16 +725,14 @@ const StudyAbroadPage = () => {
                                             </span>
                                         </div>
                                     </div>
-                                    
+
                                     <div className="rating-stars">
                                         {[...Array(test.rating)].map((_, i) => <FaStar key={i} />)}
                                     </div>
-                                    
+
                                     <div className="test-divider"></div>
-                                    
-                                    <p className="test-text">
-                                        "{test.review}"
-                                    </p>
+
+                                    <p className="test-text">"{test.review}"</p>
                                 </motion.div>
                             </div>
                         ))}
@@ -713,10 +741,10 @@ const StudyAbroadPage = () => {
             </section>
 
             {/* Enquiry Modal */}
-            <EnquiryFormModal 
-                isOpen={isModalOpen} 
-                onClose={() => setIsModalOpen(false)} 
-                courseName={`Study Abroad - ${selectedCountry}`} 
+            <EnquiryFormModal
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+                courseName={`Study Abroad - ${selectedCountry}`}
             />
         </div>
     );

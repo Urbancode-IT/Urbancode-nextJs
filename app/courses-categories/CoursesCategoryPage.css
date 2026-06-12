@@ -112,7 +112,7 @@
   font-weight: 800;
   font-size: 1.5rem;
   letter-spacing: 2px;
-  box-shadow: 
+  box-shadow:
     inset -10px -10px 20px rgba(0,0,0,0.5),
     0 0 50px rgba(25, 135, 84, 0.4);
   animation: planet-float 4s ease-in-out infinite;
@@ -142,7 +142,7 @@
   width: 100%;
   height: 100%;
   transform-style: preserve-3d;
-  transform: rotateX(45deg) rotateY(-5deg); /* Reduced tilt for better visibility */
+  transform: rotateX(45deg) rotateY(-5deg);
   z-index: 5;
 }
 
@@ -179,9 +179,8 @@
   transform-style: preserve-3d;
   cursor: pointer;
   z-index: 10;
-  /* Positions items along circle */
-  transform: rotate(calc(var(--index) * (360deg / var(--total)))) 
-             translateX(calc(50% + (inherit-width / 2))) /* Logic moved to child */
+  transform: rotate(calc(var(--index) * (360deg / var(--total))))
+             translateX(calc(50% + (inherit-width / 2)))
 }
 
 .ring-item.active img {
@@ -226,7 +225,6 @@
   border-radius: 50%;
   box-shadow: 0 4px 15px rgba(0,0,0,0.15);
   transition: all 0.3s ease;
-  /* Counter-rotate to stay vertical despite ring tilt and rotation */
   animation: counter-orbital 25s linear infinite;
 }
 
@@ -330,8 +328,8 @@
 
 @media (max-width: 768px) {
   .orbit-item {
-    transform: 
-      rotateY(calc(var(--index) * (360deg / var(--total)))) 
+    transform:
+      rotateY(calc(var(--index) * (360deg / var(--total))))
       translateZ(180px);
     width: 140px;
   }
@@ -340,181 +338,302 @@
   }
 }
 
-/* -------------------
-   Courses Header
-------------------- */
+/* ==============================================
+   COURSES HEADER
+   ============================================== */
 .courses-header {
   text-align: center;
-  margin: 40px 0;
-  padding: 0 15px;
+  margin: 56px 0 12px;
+  padding: 0 20px;
 }
 
 .courses-title {
-  font-weight: 600;
-  font-size: 32px;
-  line-height: 39px;
-  letter-spacing: -0.02em;
-  color: #1a2b3c;
+  font-weight: 700;
+  font-size: 34px;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  color: #0f172a;
   margin: 0;
 }
 
 .courses-subtitle {
   font-weight: 400;
   font-size: 16px;
-  line-height: 23px;
-  letter-spacing: -0.02em;
-  color: #000;
-  margin-top: 8px;
+  line-height: 1.7;
+  color: #475569;
+  margin: 12px auto 0;
+  max-width: 720px;
 }
 
-/* -------------------
-   Courses Grid
-------------------- */
+/* ==============================================
+   COURSES GRID
+   ============================================== */
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  justify-items: center;
-  gap: 25px;
-  width: 100vw;
-  max-width: 1300px;
-  padding: 0 20px 60px;
+  grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
+  gap: 28px;
+  width: 100%;
+  max-width: 1280px;
+  padding: 36px 32px 88px;
   margin: 0 auto;
   box-sizing: border-box;
+}
+
+/* ==============================================
+   3D CARD WRAPPER & BASE
+   ============================================== */
+.card-perspective-wrapper {
+  perspective: 1000px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .courses-wrapper1 .card {
   position: relative;
   width: 100%;
-  max-width: 320px;
   background: #ffffff;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-  border: 1px solid rgba(0, 0, 0, 0.03);
-  border-radius: 20px;
-  padding: 24px;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  color: #1e293b;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 0;
   overflow: hidden;
   box-sizing: border-box;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  box-shadow:
+    0 4px 6px -1px rgba(15, 23, 42, 0.05),
+    0 2px 4px -1px rgba(15, 23, 42, 0.03);
+  transform-style: preserve-3d;
+  transition:
+    transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1),
+    box-shadow 0.5s cubic-bezier(0.25, 0.8, 0.25, 1),
+    border-color 0.4s ease;
 }
 
 .courses-wrapper1 .card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(25, 135, 84, 0.12);
-  border-color: rgba(25, 135, 84, 0.3);
+  transform: translateY(-8px) rotateX(5deg) rotateY(-2deg) translateZ(10px);
+  border-color: rgba(5, 150, 105, 0.25);
+  box-shadow:
+    0 20px 35px -10px rgba(15, 23, 42, 0.12),
+    0 12px 20px -8px rgba(5, 150, 105, 0.18),
+    0 0 1px 1px rgba(5, 150, 105, 0.08);
 }
 
+/* ==============================================
+   CARD — IMAGE
+   ============================================== */
 .courses-wrapper1 .card-image-wrapper {
   width: 100%;
-  height: 160px;
-  border-radius: 15px;
+  height: 180px;
+  flex-shrink: 0;
   overflow: hidden;
-  margin-bottom: 20px;
-  box-shadow: 0 8px 15px rgba(0,0,0,0.08);
+  position: relative;
+  border-radius: 0;
+}
+
+/* Floating premium glassmorphic badge on top-right of image */
+.courses-wrapper1 .image-badge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: rgba(15, 23, 42, 0.72);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 50px;
+  padding: 5px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: 0.02em;
+  z-index: 2;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  transition: all 0.3s ease;
+}
+
+.courses-wrapper1 .card:hover .image-badge {
+  background: #059669;
+  border-color: #059669;
+  box-shadow: 0 4px 14px rgba(5, 150, 105, 0.3);
+}
+
+/* Soft bottom-to-top dark gradient over image */
+.courses-wrapper1 .card-image-wrapper::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 40%,
+    rgba(15, 23, 42, 0.25) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
 }
 
 .courses-wrapper1 .card-image {
   width: 100%;
   height: 100%;
-  background-size: cover;
-  background-position: center;
-  border-radius: 15px;
-  transition: transform 0.5s ease;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .courses-wrapper1 .card:hover .card-image {
-  transform: scale(1.1);
+  transform: scale(1.06);
+}
+
+/* ==============================================
+   CARD — BODY (text area)
+   ============================================== */
+.courses-wrapper1 .card-body-inner {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 20px 22px 0;
 }
 
 .courses-wrapper1 .card-title {
   margin: 0 0 8px;
-  font-weight: 600;
-  font-size: 18px;
-  color: #1e293b;
-  transition: color 0.3s ease;
+  font-weight: 700;
+  font-size: 16.5px;
+  line-height: 1.35;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+  transition: color 0.22s ease;
 }
 
 .courses-wrapper1 .card:hover .card-title {
-  color: #198754;
+  color: #059669;
 }
 
 .courses-wrapper1 .card-text {
-  font-size: 13px;
-  line-height: 1.6;
-  margin-bottom: 30px;
+  font-size: 13.5px;
+  line-height: 1.65;
   color: #64748b;
-  transition: color 0.3s ease;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
-.courses-wrapper1 .badge {
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-  background: rgba(25, 135, 84, 0.1);
-  border: 1px solid rgba(25, 135, 84, 0.2);
-  border-radius: 50px;
-  padding: 4px 14px;
-  font-size: 11px;
+/* ==============================================
+   CARD — FOOTER ROW (CTA text + arrow)
+   ============================================== */
+.courses-wrapper1 .card-footer-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 16px;
+  padding: 14px 22px 18px;
+  border-top: 1px solid #f1f5f9;
+}
+
+/* Explore Courses Link */
+.courses-wrapper1 .explore-text {
+  font-size: 12.5px;
   font-weight: 600;
-  color: #198754;
-  transition: all 0.3s ease;
+  color: #059669;
+  background: #f0fdf4;
+  border: 1px solid #d1fae5;
+  padding: 6px 14px;
+  border-radius: 50px;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-.courses-wrapper1 .card:hover .badge {
-  background-color: #198754;
-  color: #fff;
-  transform: scale(1.05);
+.courses-wrapper1 .card:hover .explore-text {
+  background: #059669;
+  border-color: #059669;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(5, 150, 105, 0.25);
+  transform: translateY(-1px);
 }
 
+/* Arrow CTA circle */
+.courses-wrapper1 .card-cta-arrow {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #94a3b8;
+  font-size: 15px;
+  flex-shrink: 0;
+  transition:
+    background 0.22s ease,
+    border-color 0.22s ease,
+    color 0.22s ease,
+    transform 0.22s ease;
+}
 
+.courses-wrapper1 .card:hover .card-cta-arrow {
+  background: #059669;
+  border-color: #059669;
+  color: #ffffff;
+  transform: rotate(45deg);
+}
 
-
-/* -------------------
-   Responsive Fixes
-------------------- */
+/* ==============================================
+   RESPONSIVE BREAKPOINTS
+   ============================================== */
 @media (max-width: 900px) {
-  .courses-wrapper1 .expert-container {
+  .expert-container {
     flex-direction: column;
     text-align: center;
     margin-top: 40px;
   }
 
-  .courses-wrapper1 .expert-text,
-  .courses-wrapper1 .expert-interactive {
+  .expert-text,
+  .expert-interactive {
     flex: unset;
     width: 100%;
   }
 
-  .courses-wrapper1 .expert-text h1 {
+  .expert-text h1 {
     font-size: 2rem;
   }
+
+  .grid-container {
+    padding: 28px 24px 72px;
+    gap: 22px;
+  }
 }
 
-@media (max-width: 600px) {
-  .courses-wrapper1 .grid-container {
+@media (max-width: 680px) {
+  .grid-container {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 18px;
+    padding: 24px 18px 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .grid-container {
     grid-template-columns: 1fr;
-    gap: 20px;
-    padding: 0 15px 50px;
+    gap: 16px;
+    padding: 20px 16px 56px;
   }
 
-  .courses-wrapper1 .card {
-    max-width: 100%;
+  .courses-wrapper1 .card-image-wrapper {
+    height: 160px;
   }
 
-  .courses-wrapper1 .expert-text h1 {
+  .expert-text h1 {
     font-size: 1.8rem;
   }
-
 }
 
-
+/* ==============================================
+   SHINE ANIMATION  (for .text-shine)
+   ============================================== */
 @keyframes shine {
-  0% {
-    background-position: 200% center;
-  }
-
-  100% {
-    background-position: -200% center;
-  }
+  0%   { background-position: 200% center; }
+  100% { background-position: -200% center; }
 }
 
 .text-shine {

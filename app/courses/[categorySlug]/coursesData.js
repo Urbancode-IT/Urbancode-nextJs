@@ -865,6 +865,7 @@ const coursesData = {
       {
         title: "AI Powered Fullstack",
         isNew: true,
+        curriculumUrls: ["/curriculum/mern-stack-brochure.pdf"],
         desc: "Master modern fullstack development with HTML, CSS, JavaScript, React, Node.js, Express, MongoDB, deployment, and AI-assisted workflows using tools like ChatGPT, GitHub Copilot, Cursor, and v0.",
         rating: 4.9,
         duration: "3 months",

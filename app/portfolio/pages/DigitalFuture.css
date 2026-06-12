@@ -30,11 +30,13 @@
 }
 
 .digital-future__hero-right h2 {
-  font-size: var(--fs-h2);
-  font-weight: 700;
-  color: var(--text-h);
-  margin-bottom: 20px;
-  line-height: 1.2;
+  font-size: var(--section-title-size);
+  font-weight: var(--section-title-weight);
+  line-height: var(--section-title-lh);
+  letter-spacing: var(--section-title-ls);
+  color: var(--section-title-color);
+  margin-top: var(--section-title-margin-top);
+  margin-bottom: var(--section-title-margin-bottom);
 }
 
 /* ── PHONE MOCKUP ── */
