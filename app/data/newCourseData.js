@@ -16,7 +16,7 @@ const commonHighlights = [
     { icon: <FaCalendarAlt />, label: "Timing", value: "Weekday/Weekend" },
     { icon: <FaLanguage />, label: "Language", value: "Tamil/English" },
     { icon: <FaCertificate />, label: "Qualification", value: "Freshers/Experienced" },
-    { icon: <FaBriefcase />, label: "Internship", value: "3 - 6 months" },
+    { icon: <FaBriefcase />, label: "Internship", value: "1 - 3 months" },
     { icon: <FaCheckCircle />, label: "Placement", value: "100% Job Guaranteed" },
 ];
 

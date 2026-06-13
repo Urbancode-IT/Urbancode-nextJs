@@ -1,0 +1,265 @@
+/* ── Certification Section ── */
+
+/* Outer section wrapper */
+.cs-section-wrapper {
+  display: block;
+  background: #fcfcfc;
+  padding: 80px 0;
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Center-aligned section header */
+.cs-header {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.cs-header .section-main-title {
+  margin: 0 !important;
+}
+
+/* Centered inner container */
+.cs-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between; /* Push columns to outer edges */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  gap: 40px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+/* ── Left panel ── */
+.cs-left {
+  flex: 0 0 580px; /* Widened to support full line title */
+  max-width: 580px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 56px; /* Lower the left section even more */
+}
+
+/* Sub-heading title: intermediate size, clean styling */
+.cs-heading {
+  text-align: left !important;
+  font-size: 44px !important;
+  font-weight: 600 !important;
+  line-height: 1.25 !important;
+  letter-spacing: -0.02em !important;
+  margin-bottom: 20px !important;
+  color: #2d3748 !important; /* A bit lighter than full black */
+  max-width: 580px; /* Widened max-width */
+}
+
+.cs-desc {
+  font-size: 15px;
+  line-height: 1.65;
+  color: #6b7280;
+  margin-bottom: 32px;
+  max-width: 520px; /* Widened max-width to match break points */
+}
+
+/* Responsive line break element */
+.cs-heading-br {
+  display: block;
+}
+
+/* ── Tab buttons ── */
+.cs-tabs {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+}
+
+.cs-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 28px;
+  border-radius: 27px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  letter-spacing: -0.01em;
+}
+
+/* Active tab — dark green pill */
+.cs-tab-active {
+  background: linear-gradient(90deg, #00B56F 0%, #004F30 100%);
+  color: #ffffff;
+  border: none;
+  box-shadow: 0 4px 14px rgba(0, 181, 111, 0.3);
+}
+
+/* Inactive tab — outlined */
+.cs-tab-inactive {
+  background: transparent;
+  color: #6b7280;
+  border: 1.5px solid #d1d5db;
+}
+
+.cs-tab-inactive:hover {
+  color: #00B56F;
+  border-color: #00B56F;
+}
+
+/* ── Right panel — list of cert cards ── */
+.cs-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding-top: 4px;
+}
+
+/* ── Cert card — no arrows, no dividers ── */
+.cs-cert-card {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 24px 0;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-radius: 0;
+  border-bottom: none; /* Removed all horizontal lines */
+}
+
+.cs-cert-card:hover {
+  opacity: 1;
+  transform: translateX(4px);
+}
+
+/* ── Badge ── */
+.cs-badge-wrap {
+  flex-shrink: 0;
+  width: 110px;
+  height: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cs-badge-img {
+  width: 110px;
+  height: 110px;
+  object-fit: contain;
+}
+
+.cs-badge-initials {
+  width: 110px;
+  height: 110px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* ── Cert info text ── */
+.cs-cert-info {
+  flex: 1;
+}
+
+.cs-cert-title {
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: #2d3748; /* A bit lighter than full black */
+  margin-bottom: 8px;
+}
+
+.cs-cert-subtitle {
+  font-size: 14px;
+  line-height: 1.55;
+  color: #6b7280;
+  font-weight: 400;
+  max-width: 360px;
+}
+
+/* ── Responsive: Tablet ── */
+@media (max-width: 1024px) {
+  .cs-section-wrapper {
+    padding: 60px 0;
+  }
+
+  .cs-container {
+    flex-direction: column;
+    padding: 0 40px;
+    gap: 48px;
+  }
+
+  .cs-left {
+    flex: none;
+    max-width: 100%;
+    margin-top: 0; /* Reset top margin when stacked vertically */
+  }
+
+  .cs-heading {
+    font-size: 32px !important;
+    max-width: 100%;
+  }
+
+  .cs-heading-br {
+    display: none;
+  }
+}
+
+/* ── Responsive: Mobile ── */
+@media (max-width: 640px) {
+  .cs-section-wrapper {
+    padding: 40px 0;
+  }
+
+  .cs-container {
+    padding: 0 20px;
+    gap: 36px;
+  }
+
+  .cs-heading {
+    font-size: 26px !important;
+    line-height: 1.25 !important;
+  }
+
+  .cs-desc {
+    font-size: 14px;
+    margin-bottom: 24px;
+  }
+
+  .cs-badge-wrap,
+  .cs-badge-img,
+  .cs-badge-initials {
+    width: 80px;
+    height: 80px;
+    font-size: 16px;
+  }
+
+  .cs-cert-card {
+    gap: 16px;
+    padding: 20px 0;
+  }
+
+  .cs-cert-card:hover {
+    transform: none;
+  }
+
+  .cs-cert-title {
+    font-size: 17px;
+  }
+
+  .cs-cert-subtitle {
+    font-size: 13px;
+  }
+}

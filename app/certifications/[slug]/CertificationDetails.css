@@ -1,53 +1,105 @@
 /* CertificationDetails.css */
 
+/* ── Page wrapper ── */
 .cert-page-container {
     min-height: 100vh;
     background-color: #f8fafc;
-    padding-top: 130px;
+    padding-top: 110px;
     padding-bottom: 80px;
+}
+
+.cert-loading {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cert-loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid #e2e8f0;
+    border-top-color: #00B56F;
+    border-radius: 50%;
+    animation: certSpin 0.8s linear infinite;
+}
+
+@keyframes certSpin {
+    to { transform: rotate(360deg); }
 }
 
 .max-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 24px;
 }
 
+/* ── Breadcrumb ── */
 .breadcrumb-nav {
     display: flex;
     align-items: center;
     gap: 8px;
-    font-size: 14px;
-    color: #64748b;
-    margin-bottom: 30px;
+    font-size: 13px;
+    color: #94a3b8;
+    margin-bottom: 36px;
 }
 
 .breadcrumb-link {
     color: #00a86b;
     text-decoration: none;
     transition: color 0.2s;
+    font-weight: 500;
 }
 
 .breadcrumb-link:hover {
     color: #008f58;
 }
 
+.current-crumb {
+    color: #64748b;
+    font-weight: 500;
+}
+
+/* ── Grid layout ── */
 .cert-grid {
     display: flex;
-    gap: 50px;
+    gap: 48px;
+    align-items: flex-start;
 }
 
 .cert-main-content {
     flex: 2;
+    min-width: 0;
 }
 
 .cert-sidebar {
-    flex: 1;
+    flex: 0 0 320px;
+}
+
+/* ── Badge hero ── */
+.cert-badge-hero {
+    margin-bottom: 24px;
+}
+
+.cert-badge-hero-img {
+    width: 140px;
+    height: 140px;
+    object-fit: contain;
+}
+
+/* ── Header row ── */
+.cert-header-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
 }
 
 .cert-brand-badge {
-    display: inline-block;
-    padding: 4px 12px;
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 14px;
     background-color: #dcfce7;
     color: #166534;
     border-radius: 9999px;
@@ -55,201 +107,221 @@
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
-    margin-bottom: 15px;
 }
 
+.cert-level-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 14px;
+    background: rgba(0, 181, 111, 0.1);
+    color: #00795A;
+    border-radius: 9999px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* ── Main title ── */
 .cert-main-title {
-    font-size: 42px;
+    font-size: clamp(28px, 4vw, 42px);
     font-weight: 800;
     color: #0f172a;
-    line-height: 1.1;
-    margin-bottom: 25px;
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+    margin-bottom: 24px;
 }
 
+/* ── Meta stats ── */
 .cert-meta-stats {
     display: flex;
     flex-wrap: wrap;
-    gap: 30px;
+    gap: 20px;
     margin-bottom: 40px;
     color: #64748b;
+    font-size: 14px;
 }
 
 .stat-item {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
 }
 
 .stat-item strong {
     color: #0f172a;
+    font-weight: 700;
 }
 
 .stat-icon-green {
-    color: #22c55e;
+    color: #10b981;
+    flex-shrink: 0;
 }
 
+.stat-students {
+    font-size: 14px;
+    color: #64748b;
+}
+
+/* ── About sections ── */
 .cert-about-section {
     margin-bottom: 40px;
 }
 
 .cert-about-section h3 {
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 700;
-    margin-bottom: 15px;
+    margin-bottom: 14px;
     color: #0f172a;
+    letter-spacing: -0.02em;
 }
 
 .cert-desc {
-    font-size: 18px;
-    line-height: 1.6;
+    font-size: 16px;
+    line-height: 1.75;
     color: #475569;
 }
 
+/* ── Learning points ── */
 .points-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 15px;
-    margin-bottom: 40px;
+    gap: 14px;
 }
 
 .point-item {
     display: flex;
-    gap: 12px;
+    gap: 10px;
     align-items: flex-start;
-    color: #475569;
+    color: #374151;
+    font-size: 14px;
+    line-height: 1.5;
 }
 
-.curriculum-box {
-    background: #fff;
+/* ── Course Redirect Box ── */
+.cert-course-redirect-box {
+    background: #ffffff;
     border-radius: 20px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    padding: 30px;
     border: 1px solid #e2e8f0;
-    overflow: hidden;
-}
-
-.curr-item {
-    padding: 18px 25px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #f1f5f9;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
 }
 
-.curr-item:last-child {
-    border-bottom: none;
+.cert-course-redirect-box p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #475569;
+    margin: 0;
 }
 
-.curr-info {
-    display: flex;
+.cert-course-link-btn {
+    display: inline-flex;
     align-items: center;
-    gap: 15px;
-}
-
-.curr-num {
-    width: 32px;
-    height: 32px;
-    background: #f1f5f9;
-    color: #64748b;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 12px;
+    gap: 8px;
+    padding: 12px 28px;
+    background: linear-gradient(90deg, #00B56F 0%, #004F30 100%);
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 15px;
     font-weight: 700;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(0, 181, 111, 0.25);
+    transition: all 0.2s ease;
 }
 
-.curr-title {
-    font-weight: 600;
-    color: #1e293b;
+.cert-course-link-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 181, 111, 0.35);
 }
 
-/* Sidebar Card */
+/* ── Sidebar ── */
 .sticky-top {
     position: sticky;
-    top: 130px;
+    top: 100px;
 }
 
 .sidebar-card {
     background: #ffffff;
-    border-radius: 32px;
-    padding: 35px;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+    border-radius: 24px;
+    padding: 32px 28px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
     text-align: center;
     border: 1px solid #f1f5f9;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
 }
 
-.sidebar-icon {
-    color: #10b981;
-    margin-bottom: 25px;
+.sidebar-badge-wrap {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.sidebar-badge-img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+}
+
+.sidebar-brand-logo {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 20px;
+}
+
+.sidebar-brand-logo img {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
 }
 
 .sidebar-card h4 {
-    font-size: 22px;
+    font-size: 18px;
     font-weight: 700;
     color: #0f172a;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
 }
 
 .sidebar-desc {
-    font-size: 15px;
+    font-size: 14px;
     color: #64748b;
-    margin-bottom: 30px;
-    line-height: 1.5;
-}
-
-/* Certificate Sample */
-.cert-sample-preview {
-    margin-bottom: 25px;
-    text-align: left;
-}
-
-.sample-label {
-    font-size: 13px;
-    font-weight: 700;
-    color: #1e293b;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 12px;
-    padding-left: 2px;
-}
-
-.sample-img-container {
-    background: #f8fafc;
-    border-radius: 16px;
-    padding: 10px;
-    border: 1px solid #e2e8f0;
-    overflow: hidden;
-    transition: transform 0.3s ease;
-}
-
-.sample-img-container:hover {
-    transform: translateY(-5px) rotate(1deg);
-}
-
-.sample-img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    margin-bottom: 24px;
+    line-height: 1.6;
 }
 
 .enquiry-trigger-btn {
     width: 100%;
-    background: #10b981;
+    background: linear-gradient(90deg, #00B56F 0%, #004F30 100%);
     color: #ffffff;
     border: none;
-    padding: 18px;
-    border-radius: 16px;
-    font-size: 16px;
+    padding: 14px;
+    border-radius: 14px;
+    font-size: 15px;
     font-weight: 700;
     cursor: pointer;
-    transition: all 0.3s;
-    box-shadow: 0 10px 20px rgba(0, 168, 107, 0.2);
+    transition: all 0.25s ease;
+    box-shadow: 0 6px 16px rgba(0, 181, 111, 0.25);
+    margin-bottom: 20px;
 }
 
 .enquiry-trigger-btn:hover {
-    background: #008f58;
+    opacity: 0.9;
     transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(0, 181, 111, 0.3);
+}
+
+.benefit-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: left;
 }
 
 .benefit-item {
@@ -258,18 +330,52 @@
     gap: 10px;
     font-size: 13px;
     color: #475569;
-    margin-top: 12px;
-    text-align: left;
 }
 
+/* ── Responsive ── */
 @media (max-width: 992px) {
     .cert-grid {
         flex-direction: column;
     }
-    .cert-main-title {
-        font-size: 32px;
+
+    .cert-sidebar {
+        flex: none;
+        width: 100%;
     }
+
+    .sticky-top {
+        position: static;
+    }
+
     .points-grid {
         grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    .cert-page-container {
+        padding-top: 90px;
+        padding-bottom: 60px;
+    }
+
+    .cert-badge-hero-img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .cert-main-title {
+        font-size: 26px;
+    }
+
+    .cert-meta-stats {
+        gap: 14px;
+    }
+
+    .curr-item {
+        padding: 14px 16px;
+    }
+
+    .sidebar-card {
+        padding: 24px 20px;
     }
 }

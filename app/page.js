@@ -1,5 +1,3 @@
-//app/page.js
-
 import dynamic from 'next/dynamic';
 import HeroSection from './components/Home/HeroSection';
 import BannerSlider from './components/common/BannerSlider';
@@ -38,6 +36,10 @@ const InstitutionVideos = dynamic(() => import('./components/Home/InstitutionVid
 });
 
 const GetCertified = dynamic(() => import('./components/Home/GetCertified'));
+
+// const CertificationSection = dynamic(() => import('./components/Home/CertificationSection'), {
+//   loading: () => <div className="placeholder-skeleton" style={{ height: '608px', background: 'rgba(0,181,111,0.04)', margin: '20px 0', borderRadius: '16px' }} />
+// });
 
 export const metadata = {
   title: "Software Training Institute in Chennai | Urbancode",
@@ -174,12 +176,13 @@ export default function HomePage() {
       <div className="home-section">
         <InDemandTools />
       </div>
-      {/* <div className="home-section">
-        <GetCertified />
+{/* 
+      <div className="home-section">
+        <CertificationSection />
       </div> */}
 
       {/* <div className="home-section">
-        <SuccessStories />
+        <GetCertified />
       </div> */}
 
       <div className="home-section">

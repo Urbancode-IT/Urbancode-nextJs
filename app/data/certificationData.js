@@ -1,4 +1,195 @@
 export const certifications = {
+    'aws-solutions-architect-associate': {
+        id: 'aws-solutions-architect-associate',
+        title: 'AWS Solutions Architect Associate',
+        brand: 'AWS',
+        brandLogo: 'https://img.icons8.com/color/512/amazon-web-services.png',
+        badgeImg: '/images/home/certificate logo/Rectangle 585.png',
+        rating: '4.9',
+        ratingsCount: '2,450 ratings',
+        students: '20,000+',
+        duration: '40 Hours',
+        totalHours: '40 total hours',
+        modules: '14 Modules',
+        level: 'Associate',
+        slug: 'aws-solutions-architect-associate',
+        featured: true,
+        featuredByBrand: true,
+        description: 'Master the art of designing distributed systems on AWS. One of the most valued certifications in the cloud industry.',
+        learningPoints: [
+            'Designing resilient architectures on AWS',
+            'Designing high-performing architectures',
+            'Designing secure applications and architectures',
+            'Designing cost-optimized architectures',
+            'AWS well-architected framework implementation',
+            'Migration and innovation strategies'
+        ],
+        curriculum: [
+            { title: 'Designing Resilient Architectures', duration: '10h' },
+            { title: 'Designing High-Performing Architectures', duration: '8h' },
+            { title: 'Designing Secure Architectures', duration: '8h' },
+            { title: 'Designing Cost-Optimized Architectures', duration: '5h' },
+            { title: 'Well-Architected Framework', duration: '4h' },
+            { title: 'EC2, S3 & Core Services', duration: '5h' }
+        ]
+    },
+    'aws-certified-cloud-practitioner': {
+        id: 'aws-certified-cloud-practitioner',
+        title: 'AWS Cloud Practitioner',
+        brand: 'AWS',
+        brandLogo: 'https://img.icons8.com/color/512/amazon-web-services.png',
+        badgeImg: '/images/home/certificate logo/image 35.png',
+        rating: '4.8',
+        ratingsCount: '3,200 ratings',
+        students: '30,000+',
+        duration: '20 Hours',
+        totalHours: '20 total hours',
+        modules: '8 Modules',
+        level: 'Foundational',
+        slug: 'aws-certified-cloud-practitioner',
+        description: 'The perfect starting point for anyone new to AWS or cloud computing. Learn cloud concepts, security, and pricing.',
+        learningPoints: [
+            'Cloud Computing Concepts',
+            'AWS Global Infrastructure',
+            'Core AWS Services (EC2, S3, RDS)',
+            'Security & Compliance',
+            'Pricing & Billing',
+            'Migration Strategies'
+        ],
+        curriculum: [
+            { title: 'Cloud Concepts & AWS Fundamentals', duration: '4h' },
+            { title: 'AWS Core Services', duration: '5h' },
+            { title: 'Security & Compliance', duration: '4h' },
+            { title: 'Billing, Pricing & Support', duration: '4h' },
+            { title: 'Practice Exams & Tips', duration: '3h' }
+        ]
+    },
+    'aws-solutions-architect-professional': {
+        id: 'aws-solutions-architect-professional',
+        title: 'AWS Solutions Architect Professional',
+        brand: 'AWS',
+        brandLogo: 'https://img.icons8.com/color/512/amazon-web-services.png',
+        badgeImg: '/images/home/certificate logo/image 36.png',
+        rating: '4.9',
+        ratingsCount: '1,800 ratings',
+        students: '10,000+',
+        duration: '60 Hours',
+        totalHours: '60 total hours',
+        modules: '18 Modules',
+        level: 'Professional',
+        slug: 'aws-solutions-architect-professional',
+        description: 'Designed for experienced cloud architects. Master enterprise-grade AWS solutions and advanced architectural patterns.',
+        learningPoints: [
+            'Advanced Networking & Hybrid Architectures',
+            'Multi-Account Strategies',
+            'Enterprise Integration',
+            'Cost Optimization at Scale',
+            'Advanced Security & Compliance',
+            'Disaster Recovery & Business Continuity'
+        ],
+        curriculum: [
+            { title: 'Advanced Networking', duration: '12h' },
+            { title: 'Multi-Account & Organizations', duration: '8h' },
+            { title: 'Enterprise Application Integration', duration: '10h' },
+            { title: 'Migration & Transfer', duration: '10h' },
+            { title: 'Advanced Security', duration: '10h' },
+            { title: 'Cost Optimization Strategies', duration: '10h' }
+        ]
+    },
+    'ccna-introduction-to-networks': {
+        id: 'ccna-introduction-to-networks',
+        title: 'CCNA Introduction to Networks',
+        brand: 'CCNA',
+        brandLogo: 'https://img.icons8.com/color/512/cisco.png',
+        badgeImg: '/images/home/certificate logo/ccna2.png',
+        rating: '4.8',
+        ratingsCount: '1,200 ratings',
+        students: '8,000+',
+        duration: '30 Hours',
+        totalHours: '30 total hours',
+        modules: '10 Modules',
+        level: 'Beginner',
+        slug: 'ccna-introduction-to-networks',
+        description: 'Start your networking journey with this foundational course. Learn how networks operate and get hands-on with Cisco IOS.',
+        learningPoints: [
+            'OSI & TCP/IP Models',
+            'IP Addressing & Subnetting',
+            'Cisco IOS Basics',
+            'Ethernet & Switching',
+            'Routing Fundamentals',
+            'Network Troubleshooting'
+        ],
+        curriculum: [
+            { title: 'Networking Fundamentals', duration: '6h' },
+            { title: 'IP Addressing & Subnetting', duration: '7h' },
+            { title: 'Cisco IOS & CLI', duration: '6h' },
+            { title: 'Switching & VLANs', duration: '6h' },
+            { title: 'Routing Basics', duration: '5h' }
+        ]
+    },
+    'ccna-core-certification': {
+        id: 'ccna-core-certification',
+        title: 'CCNA Core Certification',
+        brand: 'CCNA',
+        brandLogo: 'https://img.icons8.com/color/512/cisco.png',
+        badgeImg: '/images/home/certificate logo/ccna1.webp',
+        rating: '4.9',
+        ratingsCount: '2,100 ratings',
+        students: '15,000+',
+        duration: '50 Hours',
+        totalHours: '50 total hours',
+        modules: '15 Modules',
+        level: 'Associate',
+        slug: 'ccna-core-certification',
+        featuredByBrand: true,
+        description: 'Complete CCNA prep covering everything tested on the Cisco 200-301 exam. Includes hands-on labs and practice tests.',
+        learningPoints: [
+            'Network Access & IP Connectivity',
+            'IP Services',
+            'Security Fundamentals',
+            'Automation & Programmability',
+            'SDN & Intent-Based Networking',
+            'Packet Tracer Labs'
+        ],
+        curriculum: [
+            { title: 'Network Access', duration: '10h' },
+            { title: 'IP Connectivity & Services', duration: '10h' },
+            { title: 'Security Fundamentals', duration: '10h' },
+            { title: 'Automation & SDN', duration: '10h' },
+            { title: 'Full Practice Exams', duration: '10h' }
+        ]
+    },
+    'ccnp-enterprise-certification': {
+        id: 'ccnp-enterprise-certification',
+        title: 'CCNP Enterprise Certification',
+        brand: 'CCNA',
+        brandLogo: 'https://img.icons8.com/color/512/cisco.png',
+        badgeImg: '/images/home/certificate logo/ccna3.png',
+        rating: '4.8',
+        ratingsCount: '900 ratings',
+        students: '5,000+',
+        duration: '70 Hours',
+        totalHours: '70 total hours',
+        modules: '20 Modules',
+        level: 'Professional',
+        slug: 'ccnp-enterprise-certification',
+        description: 'Advanced enterprise networking including SD-WAN, advanced routing protocols, and enterprise campus network design.',
+        learningPoints: [
+            'Advanced OSPF & BGP',
+            'SD-WAN Architecture',
+            'Enterprise Campus Design',
+            'QoS & Traffic Management',
+            'Network Automation with Python',
+            'Multicast Networking'
+        ],
+        curriculum: [
+            { title: 'Advanced Routing Protocols', duration: '15h' },
+            { title: 'SD-WAN Implementation', duration: '15h' },
+            { title: 'Enterprise Campus Design', duration: '15h' },
+            { title: 'Network Automation', duration: '15h' },
+            { title: 'QoS & Multicast', duration: '10h' }
+        ]
+    },
     'aws-solution-architect': {
         id: 1,
         title: 'AWS Certified Solutions Architect - Associate',
