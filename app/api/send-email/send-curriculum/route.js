@@ -1,7 +1,5 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
-import fs from 'fs';
-import path from 'path';
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -58,16 +56,28 @@ export async function POST(req) {
     let pdfFileName = '';
 
     if (brochureUrl && !brochureUrl.endsWith('.jpg') && !brochureUrl.endsWith('.png')) {
-      const decodedPath = decodeURIComponent(brochureUrl);
-      const filePath = path.join(process.cwd(), 'public', decodedPath);
-      if (fs.existsSync(filePath)) {
-        fileFound = true;
-        pdfFileName = path.basename(filePath);
-        attachments.push({
-          filename: pdfFileName,
-          path: filePath,
-          contentType: 'application/pdf',
-        });
+      try {
+        const origin = new URL(req.url).origin;
+        const fullUrl = brochureUrl.startsWith('http')
+          ? brochureUrl
+          : new URL(brochureUrl, origin).toString();
+
+        const response = await fetch(fullUrl);
+        if (response.ok) {
+          const arrayBuffer = await response.arrayBuffer();
+          const buffer = Buffer.from(arrayBuffer);
+          fileFound = true;
+          pdfFileName = brochureUrl.split('/').pop() || 'curriculum.pdf';
+          attachments.push({
+            filename: pdfFileName,
+            content: buffer,
+            contentType: 'application/pdf',
+          });
+        } else {
+          console.warn(`Brochure URL returned status: ${response.status}`);
+        }
+      } catch (fetchErr) {
+        console.error('Failed to fetch brochure attachment:', fetchErr);
       }
     }
 
