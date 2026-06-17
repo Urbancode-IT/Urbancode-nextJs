@@ -117,6 +117,14 @@ const NewInternalCourse = ({ data }) => {
                 <div className="nict-hero-inner nict-hero-split">
                     {/* LEFT CONTENT */}
                     <div className="nict-hero-content left">
+                        {heroData.highlightText && heroData.highlightText.toLowerCase().includes("ai powered fullstack") && (
+                            <div className="nict-updated-course-banner">
+                                <span className="nict-updated-banner-icon">💡</span>
+                                <p className="nict-updated-banner-text">
+                                    (AI powered fullstack is the updated course for mern stack) 
+                                </p>
+                            </div>
+                        )}
                         <h1 className="nict-hero-title">
                             {(() => {
                                 const title = heroData.highlightText || "";
@@ -298,10 +306,13 @@ const NewInternalCourse = ({ data }) => {
 
             {/* Program Cohorts (only for non-kids-space) */}
             {!data.isKidsSpace && (
-                <ProgramCohorts onApply={(batch) => {
-                    setSelectedBatch(batch);
-                    setIsJoinOpen(true);
-                }} />
+                <ProgramCohorts 
+                    batches={data.batches}
+                    onApply={(batch) => {
+                        setSelectedBatch(batch);
+                        setIsJoinOpen(true);
+                    }} 
+                />
             )}
 
 

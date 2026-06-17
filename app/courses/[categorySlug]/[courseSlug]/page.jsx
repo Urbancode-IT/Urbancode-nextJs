@@ -1,6 +1,7 @@
 // app/courses/[categorySlug]/[courseSlug]/page.jsx
 import coursesData from "../coursesData";
 import SingleCoursepage from "./SingleCoursepage";
+import { redirect } from "next/navigation";
 
 // Pre-generate all static paths
 export async function generateStaticParams() {
@@ -90,5 +91,8 @@ export async function generateMetadata({ params }) {
 
 export default async function Coursepage({ params }) {
   const { categorySlug, courseSlug } = await params;
+  if (courseSlug === "mern-stack") {
+    redirect("/courses/fullstack-development/ai-powered-fullstack");
+  }
   return <SingleCoursepage params={{ categorySlug, courseSlug }} />;
 }

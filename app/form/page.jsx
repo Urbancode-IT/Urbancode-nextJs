@@ -117,7 +117,7 @@ const EnquiryFormContent = () => {
   ];
 
   const courseOptions = [
-    "MERN Stack Development",
+    "AI Powered Fullstack Development",
     "MEAN Stack Development",
     "Python Full Stack Development",
     "Java Full Stack Development",

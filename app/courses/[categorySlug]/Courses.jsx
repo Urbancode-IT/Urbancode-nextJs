@@ -339,7 +339,11 @@ export default function Courses({ categorySlug }) {
                               style={{ cursor: "pointer" }}
                               onClick={() => {
                                 const finalCategorySlug = course.parentCategorySlug || currentCategorySlug;
-                                router.push(`/courses/${finalCategorySlug}/${courseSlug}`);
+                                if (courseSlug === "mern-stack") {
+                                  router.push(`/courses/fullstack-development/ai-powered-fullstack`);
+                                } else {
+                                  router.push(`/courses/${finalCategorySlug}/${courseSlug}`);
+                                }
                               }}
                             >
                               <div

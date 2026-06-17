@@ -348,8 +348,8 @@
 }
 
 .courses-title {
-  font-weight: 700;
-  font-size: 34px;
+  font-weight: 600;
+  font-size: 30px;
   line-height: 1.2;
   letter-spacing: -0.03em;
   color: #0f172a;
@@ -453,8 +453,8 @@
 }
 
 .courses-wrapper1 .card:hover .image-badge {
-  background: #059669;
-  border-color: #059669;
+  background:linear-gradient(90deg, #036c2d, #17944d, #002a11, #0b0703) ;
+  border-color: linear-gradient(90deg, #036c2d, #17944d, #002a11, #0b0703) ;
   box-shadow: 0 4px 14px rgba(5, 150, 105, 0.3);
 }
 
@@ -505,7 +505,7 @@
 }
 
 .courses-wrapper1 .card:hover .card-title {
-  color: #059669;
+  color: linear-gradient(90deg, #036c2d, #17944d, #002a11, #0b0703) ;
 }
 
 .courses-wrapper1 .card-text {
@@ -535,8 +535,8 @@
 .courses-wrapper1 .explore-text {
   font-size: 12.5px;
   font-weight: 600;
-  color: #059669;
-  background: #f0fdf4;
+  color: #ffffff;
+  background:linear-gradient(90deg, #036c2d, #17944d, #002a11, #0b0703) ;
   border: 1px solid #d1fae5;
   padding: 6px 14px;
   border-radius: 50px;
@@ -544,8 +544,8 @@
 }
 
 .courses-wrapper1 .card:hover .explore-text {
-  background: #059669;
-  border-color: #059669;
+  background:linear-gradient(90deg, #036c2d, #17944d, #002a11, #0b0703) ;
+  border-color:linear-gradient(90deg, #036c2d, #17944d, #002a11, #0b0703) ;
   color: #ffffff;
   box-shadow: 0 4px 12px rgba(5, 150, 105, 0.25);
   transform: translateY(-1px);
@@ -556,12 +556,12 @@
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: #f8fafc;
+  background: linear-gradient(90deg, #036c2d, #17944d, #002a11, #0b0703) ;;
   border: 1px solid #e2e8f0;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #94a3b8;
+  color:#ffffff;
   font-size: 15px;
   flex-shrink: 0;
   transition:
@@ -572,8 +572,8 @@
 }
 
 .courses-wrapper1 .card:hover .card-cta-arrow {
-  background: #059669;
-  border-color: #059669;
+  background:linear-gradient(90deg, #036c2d, #17944d, #002a11, #0b0703) ;
+  border-color: linear-gradient(90deg, #036c2d, #17944d, #002a11, #0b0703) ;
   color: #ffffff;
   transform: rotate(45deg);
 }

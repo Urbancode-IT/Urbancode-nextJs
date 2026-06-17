@@ -253,12 +253,6 @@ const getToolsForCourse = (title) => {
 export default function SingleCoursepage({ params }) {
   const { categorySlug, courseSlug } = params;
 
-  // Check if this course should use the directly mapped new layout data
-  const newCourseKey = newCourseMapping[courseSlug];
-  if (newCourseKey && categorySlug !== "kidz-space" && newCourseData[newCourseKey]) {
-    return <NewInternalCourse data={newCourseData[newCourseKey]} />;
-  }
-
   const category = Object.entries(coursesData).find(
     ([key]) => key.toLowerCase().replace(/\s+/g, "-") === categorySlug
   )?.[1];
@@ -266,10 +260,20 @@ export default function SingleCoursepage({ params }) {
   if (!category) return <div>Category not found</div>;
 
   const course = category.courses.find(
-    (c) => c.title.toLowerCase().replace(/\s+/g, "-") === courseSlug
+    (c) => c && c.title && c.title.toLowerCase().replace(/\s+/g, "-") === courseSlug
   );
 
   if (!course) return <div>Course not found</div>;
+
+  // Check if this course should use the directly mapped new layout data
+  const newCourseKey = newCourseMapping[courseSlug];
+  if (newCourseKey && categorySlug !== "kidz-space" && newCourseData[newCourseKey]) {
+    const combinedData = {
+      ...newCourseData[newCourseKey],
+      batches: course.batches || newCourseData[newCourseKey].batches
+    };
+    return <NewInternalCourse data={combinedData} />;
+  }
 
   // Use hero images from new internal course pages and shuffle based on title length
   const heroImages = [
@@ -324,7 +328,8 @@ export default function SingleCoursepage({ params }) {
     toolsData: getToolsForCourse(course.title),
     faqData: newCourseData["mern-stack"]?.faqData || [],
     locked: course.locked,
-    isKidsSpace: categorySlug === "kidz-space"
+    isKidsSpace: categorySlug === "kidz-space",
+    batches: course.batches
   };
 
   return <NewInternalCourse data={transformedData} />;

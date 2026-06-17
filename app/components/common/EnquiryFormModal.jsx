@@ -168,10 +168,36 @@ const EnquiryFormModal = ({
           confirmButtonColor: '#28a745'
         });
       } else if (isBrochureMode) {
-        // Trigger brochure downloads
-        const urls = downloadUrls && downloadUrls.length > 0 ? downloadUrls : [];
-        urls.forEach((url, index) => triggerDownload(url, index));
-        setStatus({ type: "success", message: "Downloading your brochure..." });
+        const brochureUrl = downloadUrls && downloadUrls.length > 0 ? downloadUrls[0] : "";
+        const emailResponse = await fetch("/api/send-email/send-curriculum", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            course: formData.course,
+            brochureUrl: brochureUrl
+          })
+        });
+
+        if (!emailResponse.ok) {
+          const errRes = await emailResponse.json();
+          throw new Error(errRes.message || "Failed to send curriculum email.");
+        }
+
+        Swal.fire({
+          title: 'Curriculum Sent! 🚀',
+          text: `The curriculum for ${formData.course} has been successfully sent to ${formData.email}. Please check your inbox (and spam folder)!`,
+          icon: 'success',
+          confirmButtonColor: '#036c2d',
+          background: '#ffffff',
+          color: '#2C3E50',
+          iconColor: '#17944d'
+        });
+
+        setStatus({ type: "success", message: "Curriculum sent to your email!" });
       } else {
         setStatus({ type: "success", message: "Success! Redirecting..." });
       }

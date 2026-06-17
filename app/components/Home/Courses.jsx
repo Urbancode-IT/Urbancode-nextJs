@@ -10,7 +10,7 @@ const coursesData = [
         title: "MERN Stack",
         description: "Master MongoDB, Express.js, React, and Node.js for complete full-stack JavaScript applications.",
         image: "/images/home/t11.webp",
-        path: "/training/mern-stack"
+        path: "/courses/fullstack-development/ai-powered-fullstack"
     },
     {
         id: 2,

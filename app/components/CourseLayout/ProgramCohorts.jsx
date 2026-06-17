@@ -3,8 +3,8 @@ import React from "react";
 import "./ProgramCohorts.css";
 import { Clock, LayoutGrid } from "lucide-react";
 
-const ProgramCohorts = ({ onApply }) => {
-  const defaultBatches = [
+const ProgramCohorts = ({ onApply, batches }) => {
+  const cohortBatches = batches && batches.length > 0 ? batches : [
     {
       id: 1,
       name: "Regular Classes",
@@ -32,7 +32,7 @@ const ProgramCohorts = ({ onApply }) => {
       </div>
 
       <div className="cohorts-list">
-        {defaultBatches.map((batch) => (
+        {cohortBatches.map((batch) => (
           <div key={batch.id} className="cohort-row-card">
             {/* Batch Name */}
             <div className="cohort-name-col">
