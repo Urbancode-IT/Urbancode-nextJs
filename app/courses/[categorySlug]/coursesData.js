@@ -2663,7 +2663,7 @@ const coursesData = {
         rating: 5.0,
         duration: "1 month",
         students: "106",
-        img: "/images/courses/Figma.jpg",
+        img: "/images/courses/new/figma.png",
         aboutData: {
           topic: "Master Figma — From Basic Design to Advanced Prototyping!",
           content1:
@@ -2784,7 +2784,7 @@ const coursesData = {
         rating: 5.0,
         duration: "1 month",
         students: "106",
-        img: "/images/courses/Photoshop.jpg",
+        img: "/images/courses/new/photoshop.png",
         aboutData: {
           topic:
             "Master Adobe Photoshop — From Beginner to Professional Graphic Designer!",
@@ -2899,7 +2899,7 @@ const coursesData = {
         rating: 5.0,
         duration: "1 month",
         students: "106",
-        img: "/images/courses/Graphic_Design.jpg",
+        img: "/images/courses/new/graphic-design.png",
         aboutData: {
           topic:
             "Become a Professional Graphic Designer — From Design Basics to Brand Identity!",
@@ -3020,7 +3020,7 @@ const coursesData = {
         rating: 5.0,
         duration: "1 month",
         students: "106",
-        img: "/images/courses/Canva.jpg",
+        img: "/images/courses/new/canva.png",
         aboutData: {
           topic: "Master Canva — Design Like a Pro with Ease and Creativity!",
           content1:
@@ -3976,7 +3976,7 @@ const coursesData = {
         rating: 4.8,
         duration: "3 months",
         students: "500",
-        img: "/images/courses/data-analytics.webp",
+        img: "/images/courses/new/data-analytics.png",
         aboutData: {
           topic:
             "Master Data Analytics — From Data Mining to Actionable Business Insights!",
@@ -4121,7 +4121,7 @@ const coursesData = {
         rating: 5.0,
         duration: "1 month",
         students: "105",
-        img: "/images/courses/aiml.webp",
+        img: "/images/courses/new/ai-ml.png",
         aboutData: {
           topic:
             "Master Data Science — From Python Fundamentals to Machine Learning & AI!",
@@ -4243,7 +4243,7 @@ const coursesData = {
         rating: 4.9,
         duration: "3 months",
         students: "250",
-        img: "/images/courses/genai.webp",
+        img: "/images/courses/new/geai.png",
         aboutData: {
           topic: "Master Generative AI — From LLMs to Autonomous Agents!",
           content1:
@@ -4353,7 +4353,7 @@ const coursesData = {
         rating: 5.0,
         duration: "2 months",
         students: "228",
-        img: "/images/courses/pythonfor-dt.webp",
+        img: "/images/courses/new/pythonfordt.png",
         aboutData: {
           topic: "Python for Data Analyst — Complete Curriculum",
           content1:
@@ -4576,7 +4576,7 @@ const coursesData = {
         rating: 5.0,
         duration: "1 month",
         students: "337",
-        img: "/images/courses/powerbi.webp",
+        img: "/images/courses/new/powerbi.png",
         aboutData: {
           topic: "Master Power BI — Transform Data into Actionable Insights!",
           content1:
@@ -4820,7 +4820,7 @@ const coursesData = {
         rating: 5.0,
         duration: "1 month",
         students: "386",
-        img: "/images/courses/tableau.webp",
+        img: "/images/courses/new/tableau.png",
         aboutData: {
           topic:
             "Master Tableau — From Basic Charts to Advanced Dashboards & Analytics!",
@@ -5129,7 +5129,7 @@ const coursesData = {
         rating: 5.0,
         duration: "1 month",
         students: "986",
-        img: "/images/courses/sas.webp",
+        img: "/images/courses/new/sas.png",
         aboutData: {
           topic: "Master SAS — From Data Management to Advanced Analytics!",
           content1:
@@ -5253,7 +5253,7 @@ const coursesData = {
         rating: 5.0,
         duration: "1 month",
         students: "676",
-        img: "/images/courses/rprogramming.webp",
+        img: "/images/courses/new/rprogramming.png",
         aboutData: {
           topic:
             "Master R Programming — From Fundamentals to Advanced Analytics!",
@@ -6000,7 +6000,7 @@ const coursesData = {
         rating: 5.0,
         duration: "1 month",
         students: "1,264",
-        img: "/images/courses/java_cc.png",
+        img: "/images/courses/new/java.png",
         aboutData: {
           topic:
             "Master Core Java — The Foundation of Every Developer & Tester!",
@@ -6121,7 +6121,7 @@ const coursesData = {
         rating: 5.0,
         duration: "1 month",
         students: "872",
-        img: "/images/courses/selenium-cc.png",
+        img: "/images/courses/new/selenium.png",
         aboutData: {
           topic:
             "Master Selenium — The Industry Standard for Web Automation Testing!",
@@ -6242,7 +6242,7 @@ const coursesData = {
         rating: 5.0,
         duration: "1 month",
         students: "11,204",
-        img: "/images/courses/playwright-cc.png",
+        img: "/images/courses/new/playwright.png",
         aboutData: {
           topic:
             "Master Playwright — Modern End-to-End Automation for Web Applications!",
@@ -6387,7 +6387,7 @@ const coursesData = {
         rating: 5.0,
         duration: "1 month",
         students: "106",
-        img: "/images/courses/typescript-cc.png",
+        img: "/images/courses/new/typescript.png",
         aboutData: {
           topic:
             "Master Testing with TypeScript — From Unit Tests to End-to-End Automation!",

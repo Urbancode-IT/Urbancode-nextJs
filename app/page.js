@@ -35,11 +35,11 @@ const InstitutionVideos = dynamic(() => import('./components/Home/InstitutionVid
   loading: () => <div className="placeholder-skeleton" style={{ height: '400px', background: '#0a0d14', margin: '20px 0', borderRadius: '16px' }} />
 });
 
-const GetCertified = dynamic(() => import('./components/Home/GetCertified'));
+// const GetCertified = dynamic(() => import('./components/Home/GetCertified'));
 
-const CertificationSection = dynamic(() => import('./components/Home/CertificationSection'), {
-  loading: () => <div className="placeholder-skeleton" style={{ height: '608px', background: 'rgba(0,181,111,0.04)', margin: '20px 0', borderRadius: '16px' }} />
-});
+// const CertificationSection = dynamic(() => import('./components/Home/CertificationSection'), {
+//   loading: () => <div className="placeholder-skeleton" style={{ height: '608px', background: 'rgba(0,181,111,0.04)', margin: '20px 0', borderRadius: '16px' }} />
+// });
 
 export const metadata = {
   title: "Software Training Institute in Chennai | Urbancode",
@@ -176,10 +176,10 @@ export default function HomePage() {
       <div className="home-section">
         <InDemandTools />
       </div>
-
+{/* 
       <div className="home-section">
         <CertificationSection />
-      </div>
+      </div> */}
 
       {/* <div className="home-section">
         <GetCertified />
