@@ -400,7 +400,7 @@
 }
 
 .nict-highlight-card:hover .nict-highlight-icon {
-    transform: scale(1.1) rotate(4deg);
+    /* transform: scale(1.1) rotate(4deg); */
     box-shadow: 0 12px 24px -6px rgba(3, 108, 45, 0.5);
 }
 

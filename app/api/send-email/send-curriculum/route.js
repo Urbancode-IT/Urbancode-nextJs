@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import nodemailer from 'nodemailer';
+import { getGmailTransporter, getGmailSender } from '@/lib/mailer/gmailTransporter';
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -7,24 +7,6 @@ const toText = (value, fallback = '') => {
   if (value === undefined || value === null) return fallback;
   const text = String(value).trim();
   return text || fallback;
-};
-
-const getTransporter = () => {
-  const host = process.env.SMTP_HOST;
-  const port = Number(process.env.SMTP_PORT || 587);
-  const user = (process.env.SMTP_USER || '').trim();
-  const pass = (process.env.SMTP_PASS || '').trim().replace(/\s+/g, '');
-
-  if (!host || !user || !pass) {
-    throw new Error('SMTP is not configured. Set SMTP_HOST, SMTP_USER, SMTP_PASS, and SMTP_PORT.');
-  }
-
-  return nodemailer.createTransport({
-    host,
-    port,
-    secure: port === 465,
-    auth: { user, pass },
-  });
 };
 
 export async function POST(req) {
@@ -43,12 +25,8 @@ export async function POST(req) {
       return NextResponse.json({ success: false, message: 'Valid email is required.' }, { status: 400 });
     }
 
-    const sender =
-      process.env.ENQUIRY_FROM_EMAIL ||
-      process.env.SMTP_FROM ||
-      process.env.SMTP_USER;
-
-    const transporter = getTransporter();
+    const sender = getGmailSender();
+    const transporter = getGmailTransporter();
 
     // Prepare attachment if file exists
     const attachments = [];
@@ -107,20 +85,27 @@ export async function POST(req) {
           }
           .header {
             background: linear-gradient(135deg, #036c2d 0%, #17944d 100%);
-            padding: 40px 30px;
+            padding: 32px 30px;
             text-align: center;
             color: #ffffff;
           }
-          .header h1 {
-            margin: 0;
-            font-size: 28px;
-            font-weight: 700;
-            letter-spacing: -0.5px;
+          .header-logo {
+            display: inline-block;
+            background: #ffffff;
+            padding: 8px 16px;
+            border-radius: 10px;
+            margin-bottom: 14px;
+          }
+          .header-logo img {
+            display: block;
+            height: 48px;
+            width: auto;
           }
           .header p {
-            margin: 10px 0 0 0;
-            font-size: 16px;
-            opacity: 0.9;
+            margin: 6px 0 0 0;
+            font-size: 14px;
+            color: #d4f5e2;
+            letter-spacing: 0.4px;
           }
           .content {
             padding: 40px 30px;
@@ -191,7 +176,9 @@ export async function POST(req) {
       <body>
         <div class="email-container">
           <div class="header">
-            <h1>UrbanCode</h1>
+            <div class="header-logo">
+              <img src="https://www.urbancode.in/images/home/logo.png" alt="UrbanCode" />
+            </div>
             <p>Empowering Next-Gen Tech Talents</p>
           </div>
           <div class="content">

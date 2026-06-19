@@ -161,6 +161,21 @@ const EnquiryFormModal = ({
 
       // Handle Success
       if (isJoinMode) {
+        // Notify admin@urbancode.in about the join request
+        fetch("/api/send-email/course-enquiry", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            phone: formData.phone,
+            course: formData.course || courseName,
+            mode: "Not specified",
+            pin: formData.pin || "N/A",
+            message: `[JOIN REQUEST] ${formData.name} wants to join the ${courseName} class.${batchInfo ? ` Batch: ${batchInfo.name} — ${batchInfo.schedule}` : ""}`,
+          }),
+        }).catch((err) => console.warn("Admin join notification failed:", err));
+
         Swal.fire({
           title: 'Request Sent!',
           text: 'Your request has been sent to the trainer. You will be able to join the class once the trainer approves it.',
@@ -187,6 +202,21 @@ const EnquiryFormModal = ({
           throw new Error(errRes.message || "Failed to send curriculum email.");
         }
 
+        // Notify admin@urbancode.in about this brochure download
+        fetch("/api/send-email/course-enquiry", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            phone: formData.phone,
+            course: formData.course,
+            mode: formData.mode || "Not specified",
+            pin: formData.pin || "N/A",
+            message: `[BROCHURE DOWNLOAD] Student downloaded the ${formData.course} curriculum/brochure.`,
+          }),
+        }).catch((err) => console.warn("Admin brochure notification failed:", err));
+
         Swal.fire({
           title: 'Curriculum Sent! 🚀',
           text: `The curriculum for ${formData.course} has been successfully sent to ${formData.email}. Please check your inbox (and spam folder)!`,
@@ -199,6 +229,23 @@ const EnquiryFormModal = ({
 
         setStatus({ type: "success", message: "Curriculum sent to your email!" });
       } else {
+        // Send branded enquiry notification to admin@urbancode.in
+        fetch("/api/send-email/course-enquiry", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            phone: formData.phone,
+            course: formData.course,
+            mode: formData.mode,
+            pin: formData.pin,
+            message: isDemoMode
+              ? `[DEMO REQUEST] Date: ${formData.preferredDate}, Time: ${formData.preferredTime}. Msg: ${formData.message}`
+              : formData.message,
+          }),
+        }).catch((err) => console.warn("Admin email notification failed:", err));
+
         setStatus({ type: "success", message: "Success! Redirecting..." });
       }
       

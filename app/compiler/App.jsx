@@ -55,7 +55,7 @@ function App() {
           <div className="route-content">
             <Suspense fallback={<PageLoader />}>
               <Routes>
-                <Route path="/" element={<Navigate to="/python" replace />} />
+                <Route path="/" element={<Navigate to="/problems" replace />} />
                 <Route path="/html" element={<HtmlCompiler />} />
                 <Route path="/python" element={<CodeCompiler language="python" label="Python" />} />
                 <Route path="/java" element={<CodeCompiler language="java" label="Java" />} />

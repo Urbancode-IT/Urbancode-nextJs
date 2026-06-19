@@ -13,21 +13,19 @@ export async function POST(req) {
   try {
     const body = await req.json();
 
-    const name    = toText(body?.name, '');
-    const email   = toText(body?.email, '');
-    const phone   = toText(body?.phone || body?.mobile || body?.phoneNumber || body?.mobileNumber, '');
-    const course  = toText(body?.course || body?.courseName || body?.program, 'Course Enquiry');
-    const mode    = toText(body?.mode, 'Not specified');
-    const pin     = toText(body?.pin, 'N/A');
-    const message = toText(body?.message, 'No message provided');
+    const name       = toText(body?.name, '');
+    const email      = toText(body?.email, '');
+    const phone      = toText(body?.phone || body?.mobile || body?.mobileNumber, '');
+    const experience = toText(body?.experience, 'Not specified');
+    const interest   = toText(body?.interest, 'No message provided');
 
     if (!name)  return NextResponse.json({ success: false, message: 'Name is required.' }, { status: 400 });
     if (!email || !EMAIL_REGEX.test(email))
-                 return NextResponse.json({ success: false, message: 'Valid email is required.' }, { status: 400 });
+                return NextResponse.json({ success: false, message: 'Valid email is required.' }, { status: 400 });
     if (!phone) return NextResponse.json({ success: false, message: 'Phone number is required.' }, { status: 400 });
 
-    const recipient  = process.env.ENQUIRY_TO_EMAIL || 'admin@urbancode.in';
-    const sender     = getGmailSender();
+    const recipient   = process.env.ENQUIRY_TO_EMAIL || 'admin@urbancode.in';
+    const sender      = getGmailSender();
     const transporter = getGmailTransporter();
 
     const htmlContent = `
@@ -36,7 +34,7 @@ export async function POST(req) {
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>New Course Enquiry – ${course}</title>
+  <title>New Mentor Application – UrbanCode</title>
 </head>
 <body style="margin:0;padding:0;background-color:#f0f4f8;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;">
   <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#f0f4f8;padding:30px 0;">
@@ -46,12 +44,11 @@ export async function POST(req) {
                style="max-width:600px;width:100%;background:#ffffff;border-radius:16px;
                       overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,0.08);">
 
-          <!-- HEADER with logo -->
+          <!-- HEADER -->
           <tr>
             <td style="background:linear-gradient(135deg,#036c2d 0%,#17944d 100%);padding:32px 30px;text-align:center;">
               <img src="https://www.urbancode.in/images/home/logo.png"
-                   alt="UrbanCode"
-                   width="180"
+                   alt="UrbanCode" width="180"
                    style="display:inline-block;max-width:180px;height:auto;margin-bottom:12px;
                           background:#ffffff;padding:8px 14px;border-radius:10px;" />
               <p style="margin:0;color:#d4f5e2;font-size:14px;letter-spacing:0.5px;">
@@ -63,10 +60,10 @@ export async function POST(req) {
           <!-- ALERT BADGE -->
           <tr>
             <td style="padding:0 30px;">
-              <div style="background:#fff8e1;border-left:4px solid #f59e0b;
+              <div style="background:#e3f2fd;border-left:4px solid #1565c0;
                           border-radius:0 8px 8px 0;padding:14px 18px;margin-top:28px;">
-                <p style="margin:0;font-size:13px;color:#92400e;font-weight:600;">
-                  🔔 New Enquiry Alert — Action Required
+                <p style="margin:0;font-size:13px;color:#0d47a1;font-weight:600;">
+                  🤝 New Mentor Application — Review Required
                 </p>
               </div>
             </td>
@@ -76,13 +73,12 @@ export async function POST(req) {
           <tr>
             <td style="padding:28px 30px 10px;">
               <h2 style="margin:0 0 6px;font-size:22px;color:#1a2b3c;">
-                New Course Enquiry
+                Mentor Application
               </h2>
               <p style="margin:0 0 24px;font-size:14px;color:#64748b;">
-                A prospective student has submitted an enquiry via the website.
+                A professional has applied to become a mentor through the website.
               </p>
 
-              <!-- Details Table -->
               <table width="100%" cellpadding="0" cellspacing="0" border="0"
                      style="border-collapse:collapse;border-radius:10px;overflow:hidden;
                             border:1px solid #e2e8f0;">
@@ -101,7 +97,7 @@ export async function POST(req) {
                 </tr>
                 <tr style="background:#f8fafc;">
                   <td style="padding:13px 16px;font-size:13px;font-weight:600;color:#475569;
-                              border-bottom:1px solid #e2e8f0;">📞 Phone</td>
+                              border-bottom:1px solid #e2e8f0;">📞 Mobile</td>
                   <td style="padding:13px 16px;font-size:14px;color:#1a2b3c;
                               border-bottom:1px solid #e2e8f0;">
                     <a href="tel:${phone}" style="color:#036c2d;text-decoration:none;font-weight:600;">${phone}</a>
@@ -109,26 +105,14 @@ export async function POST(req) {
                 </tr>
                 <tr>
                   <td style="padding:13px 16px;font-size:13px;font-weight:600;color:#475569;
-                              border-bottom:1px solid #e2e8f0;background:#f8fafc;">🎓 Course</td>
+                              border-bottom:1px solid #e2e8f0;background:#f8fafc;">📊 Experience Level</td>
                   <td style="padding:13px 16px;font-size:14px;color:#1a2b3c;
-                              border-bottom:1px solid #e2e8f0;font-weight:600;">${course}</td>
+                              border-bottom:1px solid #e2e8f0;">${experience}</td>
                 </tr>
                 <tr style="background:#f8fafc;">
                   <td style="padding:13px 16px;font-size:13px;font-weight:600;color:#475569;
-                              border-bottom:1px solid #e2e8f0;">💻 Mode</td>
-                  <td style="padding:13px 16px;font-size:14px;color:#1a2b3c;
-                              border-bottom:1px solid #e2e8f0;">${mode}</td>
-                </tr>
-                <tr>
-                  <td style="padding:13px 16px;font-size:13px;font-weight:600;color:#475569;
-                              border-bottom:1px solid #e2e8f0;background:#f8fafc;">📍 PIN Code</td>
-                  <td style="padding:13px 16px;font-size:14px;color:#1a2b3c;
-                              border-bottom:1px solid #e2e8f0;">${pin}</td>
-                </tr>
-                <tr style="background:#f8fafc;">
-                  <td style="padding:13px 16px;font-size:13px;font-weight:600;color:#475569;
-                              vertical-align:top;">💬 Message</td>
-                  <td style="padding:13px 16px;font-size:14px;color:#1a2b3c;">${message}</td>
+                              vertical-align:top;">💬 Goals / Message</td>
+                  <td style="padding:13px 16px;font-size:14px;color:#1a2b3c;">${interest}</td>
                 </tr>
               </table>
             </td>
@@ -137,11 +121,11 @@ export async function POST(req) {
           <!-- CTA -->
           <tr>
             <td style="padding:24px 30px 32px;text-align:center;">
-              <a href="mailto:${email}?subject=Re: Your Enquiry for ${encodeURIComponent(course)} at UrbanCode"
+              <a href="mailto:${email}?subject=Re: Your Mentor Application at UrbanCode"
                  style="display:inline-block;background:linear-gradient(90deg,#036c2d 0%,#17944d 100%);
                         color:#ffffff;text-decoration:none;padding:13px 32px;border-radius:30px;
                         font-weight:600;font-size:15px;box-shadow:0 6px 18px rgba(3,108,45,0.3);">
-                Reply to Student
+                Reply to Applicant
               </a>
             </td>
           </tr>
@@ -172,27 +156,25 @@ export async function POST(req) {
       from: `"UrbanCode" <${sender}>`,
       to: recipient,
       replyTo: email,
-      subject: `🔔 New Enquiry: ${course} — ${name}`,
+      subject: `🤝 New Mentor Application — ${name}`,
       text: [
-        'New course enquiry received:',
+        'New mentor application received:',
         `Name: ${name}`,
         `Email: ${email}`,
         `Phone: ${phone}`,
-        `Course: ${course}`,
-        `Mode: ${mode}`,
-        `PIN: ${pin}`,
-        `Message: ${message}`,
+        `Experience: ${experience}`,
+        `Goals / Message: ${interest}`,
       ].join('\n'),
       html: htmlContent,
     });
 
-    return NextResponse.json({ success: true, message: 'Enquiry submitted successfully.' });
+    return NextResponse.json({ success: true, message: 'Application submitted successfully.' });
   } catch (error) {
-    console.error('Course enquiry email error:', error);
+    console.error('Mentor email error:', error);
     const isAuthError = error?.code === 'EAUTH';
     const message = isAuthError
-      ? 'Gmail SMTP authentication failed. Verify your GMAIL_SENDER and GMAIL_APP_PASSWORD in .env.local.'
-      : error?.message || 'Failed to send enquiry email.';
+      ? 'Gmail SMTP authentication failed. Verify GMAIL_SENDER and GMAIL_APP_PASSWORD in .env.local.'
+      : error?.message || 'Failed to send mentor application email.';
     return NextResponse.json({ success: false, message }, { status: 500 });
   }
 }
