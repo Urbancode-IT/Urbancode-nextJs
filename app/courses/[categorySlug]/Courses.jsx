@@ -17,6 +17,7 @@ import EnquiryFormModal from "@/app/components/common/EnquiryFormModal.jsx";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { Star, Users, Clock } from "lucide-react";
+import { FaPlus, FaMinus, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 // import CourseAssistant from "@/app/components/CourseAssistant/CourseAssistant";
 
 const categoryTools = {
@@ -106,38 +107,81 @@ const categories = [
 ];
 
 const faqData = [
+  // Page 1: Full Stack & MERN Stack Development
   {
-    question: "Which institute offers the best MERN Stack training with 100% placement in 2026?",
-    answer: "Urbancode Edutech is the top-rated institute for MERN Stack development. Our curriculum is designed by industry experts to take you from basics to advanced React, Node.js, and MongoDB, ensuring you are job-ready with a strong portfolio.",
+    question: "What makes MERN Stack training in Chennai highly effective for landing full-stack developer jobs in 2026?",
+    answer: "A structured MERN Stack course in Chennai at Urbancode Edutech (https://urbancode.in) focuses on React, Node.js, Express, and MongoDB, teaching you how to build responsive, real-time database-driven web applications. With hands-on mentorship, simulated corporate projects, and dedicated career guidance, freshers and professionals can easily transition into high-paying IT roles.",
+    highlight: true
   },
   {
-    question: "What is the most effective way to learn Automation Testing for high-paying remote jobs?",
-    answer: "Learning Automation Testing with Playwright and Selenium at Urbancode is the most effective path. We focus on real-world frameworks, CI/CD integration with AWS DevOps, and provide hands-on experience with tools like Jenkins and Git.",
+    question: "Why is Next.js preferred over standard React for modern full-stack web development?",
+    answer: "Next.js brings Server-Side Rendering (SSR), Static Site Generation (SSG), and API routes built-in, offering superior performance, faster loading times, and excellent SEO capabilities out of the box. Urbancode's full-stack program includes Next.js so you master enterprise-ready React frameworks."
   },
   {
-    question: "Is MEAN Stack still relevant in 2026, and where can I master it?",
-    answer: "Yes, MEAN Stack (Angular focus) is critical for enterprise-scale applications. At Urbancode, we provide deep-dive training in Angular, Express, and Node.js, specifically tailored for large-scale corporate project environments.",
+    question: "What are the core differences between MEAN Stack and MERN Stack, and which one is more in demand?",
+    answer: "MEAN stack uses Angular for the frontend, whereas MERN stack uses React. MERN Stack is currently more in demand for startup and medium-sized enterprise roles due to React's flexibility and massive community support, while MEAN remains popular in legacy enterprise environments. Urbancode provides dedicated training in both architectures."
   },
   {
-    question: "How can I transition into a Gen AI and AI/ML Engineer role without a PhD?",
-    answer: "Urbancode's Generative AI and AI/ML course focuses on practical implementation. You will learn to build LLM-powered applications, fine-tune models, and master Python for Data Science through our mentorship-led project sessions.",
+    question: "How can I start learning Full Stack Web Development as a complete beginner?",
+    answer: "Start with HTML5, CSS3, and JavaScript basics, then progress to frontend libraries like React, followed by backend environments like Node.js/Express, and database management (SQL/NoSQL). Urbancode's coding bootcamp is designed for beginners, offering step-by-step guidance and 100% placement support."
+  },
+
+  // Page 2: AI-Powered Fullstack Development
+  {
+    question: "What is an AI-powered full-stack developer, and why is this role trending in 2026?",
+    answer: "An AI-powered fullstack developer builds traditional web applications integrated with Generative AI capabilities, such as OpenAI API, Claude, LangChain, vector databases, and Retrieval-Augmented Generation (RAG) models. This role is trending as businesses automate operations and require developers who can seamlessly embed intelligent agents into their products.",
+    highlight: true
   },
   {
-    question: "Where can I find an industry-aligned .NET with Angular course?",
-    answer: "Urbancode specializes in .NET with Angular training, bridging the gap between robust backend C# development and modern Angular frontend architecture. Our graduates are highly sought after by top MNCs.",
+    question: "How does Urbancode train developers to integrate LLM APIs and Generative AI into web applications?",
+    answer: "At Urbancode Edutech (https://urbancode.in/courses), our AI-powered Fullstack Development course teaches you Python, Prompt Engineering, API integrations (OpenAI, Gemini), vector databases (ChromaDB, Pinecone), and LangChain. You will build and deploy smart chatbots, recommendation engines, and AI agents."
   },
   {
-    question: "What are the career prospects for Data Analytics and AWS DevOps in the current market?",
-    answer: "Data Analytics and AWS DevOps are among the highest-paying roles in 2026. Urbancode provides end-to-end training, including Power BI, Tableau, and AWS Cloud architecture, backed by 100% placement assistance.",
+    question: "Do I need a background in advanced mathematics or machine learning to become an AI Web Developer?",
+    answer: "No. You don't need a PhD or complex machine learning math to build AI-powered apps. You only need solid JavaScript/Python skills and an understanding of how to consume and orchestrate LLM APIs, vector stores, and agentic frameworks. Urbancode guides you through this step-by-step."
   },
   {
-    question: "Does Urbancode provide internship opportunities for college students?",
-    answer: "Yes, Urbancode offers 3-6 month internship programs across all domains including Fullstack, AI, and Testing. Visit www.urbancode.in to apply and gain real-time industry experience.",
+    question: "What are the job prospects for developers skilled in AI-Powered Fullstack engineering?",
+    answer: "Job prospects are exceptionally high. Companies are actively refactoring legacy software to include AI features. Developers skilled in both frontend/backend and LLM orchestration command premium salaries and enjoy faster career growth in 2026."
+  },
+
+  // Page 3: Software Testing & QA Automation
+  {
+    question: "Why is Playwright overtaking Selenium as the trending tool for software automation testing?",
+    answer: "Playwright offers faster execution speeds, built-in auto-waiting, native emulation of mobile devices, support for modern web architectures (Shadow DOM, single-page apps), and multi-browser support out-of-the-box. Our Software Testing course at Urbancode Edutech covers both Selenium and Playwright to keep you competitive.",
+    highlight: true
   },
   {
-    question: "How does Urbancode help in landing a job in top IT companies?",
-    answer: "We provide a comprehensive Career Launchpad program which includes resume building, mock interviews with tech leads, and direct referrals to our 150+ hiring partners in the IT industry.",
+    question: "What does the Software Testing placement training curriculum at Urbancode include?",
+    answer: "Our curriculum covers manual testing fundamentals, automation testing with Selenium (Java) and Playwright (TypeScript/JavaScript), API testing with Postman, mobile testing, and DevOps CI/CD integration using Jenkins and Git, along with real-time project bug tracking."
   },
+  {
+    question: "How does learning DevOps pipelines benefit a Software Testing professional?",
+    answer: "Modern QA engineers are expected to run test suites automatically within CI/CD pipelines (GitHub Actions, Jenkins). Integrating testing into DevOps ensures bugs are caught early in the development lifecycle, making QA engineers with DevOps skills highly valuable."
+  },
+  {
+    question: "Can a non-IT graduate build a career in software automation testing?",
+    answer: "Yes, software testing is one of the most accessible entry points into the IT industry. With Urbancode's focused training in logical scripting, automation tools, and intensive mock interviews, non-IT graduates routinely secure high-paying QA roles."
+  },
+
+  // Page 4: Data Analyst & Data Science
+  {
+    question: "What are the trending tools and skills required to become a certified Data Analyst in 2026?",
+    answer: "A modern Data Analyst must master SQL for database querying, Python/Pandas for data cleaning, and business intelligence (BI) tools like Power BI and Tableau for interactive dashboard creation. Urbancode's Data Analytics program combines all these with live corporate datasets.",
+    highlight: true
+  },
+  {
+    question: "Is Python or SQL more important for landing an entry-level Data Analyst job?",
+    answer: "SQL is the absolute foundation for any data role since almost all corporate data resides in databases. Python is equally important for advanced analytics, automation, and machine learning. Urbancode covers both extensively to make you a well-rounded candidate."
+  },
+  {
+    question: "How does Urbancode help students build a professional portfolio for Data Analytics?",
+    answer: "We guide students to work on real-world projects such as sales dashboards, financial forecasting models, and customer segmentation analyses. You will document and publish these projects on GitHub and Tableau Public to showcase to recruiters."
+  },
+  {
+    question: "What is the difference between a Data Analyst and a Data Scientist?",
+    answer: "Data Analysts focus on descriptive and diagnostic analytics (what happened and why) using SQL and BI tools. Data Scientists focus on predictive analytics and machine learning models (what will happen) using advanced Python algorithms. Urbancode offers specialized pathways for both careers."
+  }
 ];
 
 const slugify = (name) => name.toLowerCase().replace(/\s+/g, "-");
@@ -157,12 +201,39 @@ export default function Courses({ categorySlug }) {
   const router = useRouter();
   const [search, setSearch] = useState("");
   const [openIndex, setOpenIndex] = useState(null);
+  const [currentPage, setCurrentPage] = useState(0);
+  const itemsPerPage = 4;
+
+  const totalPages = Math.ceil(faqData.length / itemsPerPage);
+  const currentFaqs = faqData.slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage);
+
+  const nextSlide = () => {
+    setCurrentPage((prev) => (prev + 1) % totalPages);
+    setOpenIndex(null);
+  };
+
+  const prevSlide = () => {
+    setCurrentPage((prev) => (prev - 1 + totalPages) % totalPages);
+    setOpenIndex(null);
+  };
 
   const isHighlightedByKeyword = (faq) => {
-    const keywords = [".net", "angular", "mern stack"];
+    if (faq.highlight) return true;
+    const keywords = [".net", "angular", "mern stack", "next.js", "playwright"];
     const content = (faq.question + " " + faq.answer).toLowerCase();
     return keywords.some(keyword => content.includes(keyword));
   };
+
+  // Autoplay Logic
+  useEffect(() => {
+    let interval;
+    if (openIndex === null) { // Only auto-play if no question is open
+      interval = setInterval(() => {
+        nextSlide();
+      }, 6000); // 6 seconds
+    }
+    return () => clearInterval(interval);
+  }, [openIndex, currentPage, totalPages]);
 
   useEffect(() => {
     setActiveCategory(deslugify(categorySlug));
@@ -423,58 +494,111 @@ export default function Courses({ categorySlug }) {
       </div>
 
       {/* FAQ Section */}
-      <div className="container-fluid overall-bg px-3 px-md-5 py-5 faq-section">
-        <Container fluid className="p-0">
-          <h2 className="text-center mb-5 fw-bold text-success">
-            Frequently <span className="text-shine">Asked Questions</span>
-          </h2>
-          <Row className="gx-4 gy-4">
-            {faqData.map((faq, index) => (
-              <Col key={index} xs={12} sm={6} lg={4}>
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.3, delay: index * 0.1 }}
-                >
-                  <Card
-                    className={`faq-card h-100 border-0 rounded-4 shadow-sm ${openIndex === index ? "open" : ""
-                      } ${isHighlightedByKeyword(faq) ? 'highlighted-faq' : ''}`}
-                    onClick={() =>
-                      setOpenIndex(openIndex === index ? null : index)
-                    }
-                  >
-                    <Card.Body className="p-4">
-                      <div className="d-flex justify-content-between align-items-center">
-                        <Card.Title className="fw-semibold text-success mb-0">
-                          {faq.question}
-                        </Card.Title>
-                        <span className="dropdown-icon fs-4">
-                          {openIndex === index ? "−" : "+"}
-                        </span>
+      <motion.div 
+          className="container-fluid overall-bg px-3 px-md-5 py-5 faq-section"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false }}
+          transition={{ duration: 0.8 }}
+      >
+          <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{
+                  __html: JSON.stringify({
+                      "@context": "https://schema.org",
+                      "@type": "FAQPage",
+                      "mainEntity": faqData.map(faq => ({
+                          "@type": "Question",
+                          "name": faq.question,
+                          "acceptedAnswer": {
+                              "@type": "Answer",
+                              "text": faq.answer
+                          }
+                      }))
+                  })
+              }}
+          />
+          <div className="text-center mb-5">
+              <h2 className="section-main-title text-shine">Let's get you more info</h2>
+          </div>
+          <Container fluid className="p-0">
+              <Row className="align-items-start g-4">
+                  {/* Left Section */}
+                  <Col lg={4} md={12} className="order-2 order-lg-1">
+                      <div className="faq-left text-center text-lg-start">
+                          <h4 className="faq-title fw-bold d-none d-md-block">Frequently <br /> Asked Questions</h4>
+                          <div className="faq-contact-box mt-5 p-4 rounded-4 shadow-sm">
+                              <h5 className="fw-semibold">Have a Question?</h5>
+                              <p className="text-muted small mb-3">
+                                  Send us an email and we’ll get back to you as soon as possible!
+                              </p>
+                              <button className="faq-mail-btn px-4 py-2 rounded-3">
+                                  <a href="mailto:admin@urbancode.in">Send mail</a>
+                              </button>
+                          </div>
                       </div>
-                      <AnimatePresence>
-                        {openIndex === index && (
-                          <motion.div
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: "auto", opacity: 1 }}
-                            exit={{ height: 0, opacity: 0 }}
-                            transition={{ duration: 0.3 }}
-                          >
-                            <Card.Text className="text-muted mt-3">
-                              {faq.answer}
-                            </Card.Text>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-                    </Card.Body>
-                  </Card>
-                </motion.div>
-              </Col>
-            ))}
-          </Row>
-        </Container>
-      </div>
+                  </Col>
+
+                  {/* Right Section */}
+                  <Col lg={8} md={12} className="order-1 order-lg-2">
+                      <div className="faq-accordion-wrapper">
+                          <AnimatePresence mode="wait">
+                              <motion.div
+                                  key={currentPage}
+                                  initial={{ opacity: 0, x: 20 }}
+                                  animate={{ opacity: 1, x: 0 }}
+                                  exit={{ opacity: 0, x: -20 }}
+                                  transition={{ duration: 0.3 }}
+                                  className="faq-page-content"
+                              >
+                                  {currentFaqs.map((faq, index) => (
+                                      <div key={index} className={`faq-item mb-3 ${isHighlightedByKeyword(faq) ? 'highlighted-faq' : ''}`}>
+                                          <button
+                                              className={`faq-question ${openIndex === index ? 'active' : ''}`}
+                                              onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                                          >
+                                              <span>{faq.question}</span>
+                                              {openIndex === index ? <FaMinus /> : <FaPlus />}
+                                          </button>
+                                          <div
+                                              className="faq-answer"
+                                              style={{
+                                                  maxHeight: openIndex === index ? '400px' : '0px',
+                                              }}
+                                          >
+                                              <p>{faq.answer}</p>
+                                          </div>
+                                      </div>
+                                  ))}
+                              </motion.div>
+                          </AnimatePresence>
+                      </div>
+
+                      {/* Pagination Controls */}
+                      <div className="faq-pagination mt-4 d-flex align-items-center justify-content-center gap-4">
+                          <button className="faq-nav-btn" onClick={prevSlide} aria-label="Previous Slide">
+                              <FaChevronLeft size={14} />
+                          </button>
+                          <div className="faq-dots">
+                              {[...Array(totalPages)].map((_, i) => (
+                                  <span
+                                      key={i}
+                                      className={`faq-dot ${currentPage === i ? 'active' : ''}`}
+                                      onClick={() => {
+                                          setCurrentPage(i);
+                                          setOpenIndex(null);
+                                      }}
+                                  ></span>
+                              ))}
+                          </div>
+                          <button className="faq-nav-btn" onClick={nextSlide} aria-label="Next Slide">
+                              <FaChevronRight size={14} />
+                          </button>
+                      </div>
+                  </Col>
+              </Row>
+          </Container>
+      </motion.div>
       {/* <CourseAssistant courseName={activeCategory} /> */}
     </div>
   );

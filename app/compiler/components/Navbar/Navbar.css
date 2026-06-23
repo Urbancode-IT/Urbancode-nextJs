@@ -122,3 +122,160 @@
         padding: 10px;
     }
 }
+
+/* UC compiler special button */
+.nav-link.uc-compiler-btn {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
+    color: #ffffff !important;
+    border: none;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-link.uc-compiler-btn:hover {
+    background: linear-gradient(135deg, #34d399 0%, #10b981 100%) !important;
+    box-shadow: 0 6px 18px rgba(16, 185, 129, 0.4);
+    transform: translateY(-2px);
+}
+
+.nav-link.uc-compiler-btn svg {
+    color: #ffffff !important;
+    opacity: 1 !important;
+}
+
+/* Smooth Redirect Overlay */
+.uc-redirect-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999999;
+    animation: fadeIn 0.4s ease-out forwards;
+}
+
+.uc-redirect-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.uc-anim-logo-container {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.uc-glow-effect {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(16, 185, 129, 0.4) 0%, transparent 70%);
+    filter: blur(8px);
+    animation: pulseGlow 1.8s ease-in-out infinite;
+}
+
+.uc-svg-logo {
+    z-index: 10;
+}
+
+.uc-circle-bg {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.05);
+    stroke-width: 4;
+}
+
+.uc-circle-loader {
+    fill: none;
+    stroke: #10b981;
+    stroke-width: 4;
+    stroke-linecap: round;
+    stroke-dasharray: 250;
+    stroke-dashoffset: 250;
+    transform-origin: 50px 50px;
+    animation: drawLoader 2s cubic-bezier(0.4, 0, 0.2, 1) forwards, spinLoader 2s linear infinite;
+}
+
+.uc-text {
+    fill: #ffffff;
+    font-size: 24px;
+    font-weight: 900;
+    font-family: 'Outfit', 'Inter', sans-serif;
+    letter-spacing: 1px;
+    filter: drop-shadow(0 2px 8px rgba(16, 185, 129, 0.5));
+    animation: pulseText 1.8s ease-in-out infinite;
+}
+
+.uc-loading-text {
+    font-family: 'Outfit', 'Inter', sans-serif;
+    color: #e2e8f0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    display: flex;
+    gap: 2px;
+}
+
+.uc-loading-text span {
+    display: inline-block;
+    animation: bounceLetter 1.4s ease-in-out infinite;
+}
+
+.uc-loading-text span:nth-child(1) { animation-delay: 0s; }
+.uc-loading-text span:nth-child(2) { animation-delay: 0.1s; }
+.uc-loading-text span:nth-child(3) { animation-delay: 0.2s; }
+.uc-loading-text span:nth-child(4) { animation-delay: 0.3s; }
+.uc-loading-text span:nth-child(5) { animation-delay: 0.4s; }
+.uc-loading-text span:nth-child(6) { animation-delay: 0.5s; }
+.uc-loading-text span:nth-child(7) { animation-delay: 0.6s; }
+.uc-loading-text span:nth-child(8) { animation-delay: 0.7s; }
+.uc-loading-text span:nth-child(9) { animation-delay: 0.8s; }
+.uc-loading-text span:nth-child(10) { animation-delay: 0.9s; }
+.uc-loading-text span:nth-child(11) { animation-delay: 1.0s; }
+.uc-loading-text span:nth-child(12) { animation-delay: 1.1s; }
+.uc-loading-text span:nth-child(13) { animation-delay: 1.2s; }
+.uc-loading-text span:nth-child(14) { animation-delay: 1.3s; }
+.uc-loading-text span:nth-child(15) { animation-delay: 1.4s; }
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes pulseGlow {
+    0%, 100% { transform: scale(1); opacity: 0.5; }
+    50% { transform: scale(1.15); opacity: 0.8; }
+}
+
+@keyframes drawLoader {
+    to { stroke-dashoffset: 0; }
+}
+
+@keyframes spinLoader {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes pulseText {
+    0%, 100% { transform: scale(1); opacity: 0.9; }
+    50% { transform: scale(1.05); opacity: 1; fill: #10b981; }
+}
+
+@keyframes bounceLetter {
+    0%, 100% { transform: translateY(0); color: #e2e8f0; }
+    50% { transform: translateY(-8px); color: #10b981; }
+}

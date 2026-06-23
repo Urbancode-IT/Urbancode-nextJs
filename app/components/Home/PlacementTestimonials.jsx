@@ -33,7 +33,7 @@ const testimonialsData = [
         course: "Software Engineer",
         company: "VKnowLabs Private Limited",
         package: "₹5.2 LPA",
-        review: "Landing a job at Zoho was my ultimate dream. The technical rounds were exceptionally tough, but the mock interviews and deep-dives into Data Structures and Algorithms here prepared me perfectly. The constant encouragement from the trainers kept me motivated through the most challenging parts of the course.",
+        review: "Landing a job at VKnowLabs Private Limited was my ultimate dream. The technical rounds were exceptionally tough, but the mock interviews and deep-dives into Data Structures and Algorithms here prepared me perfectly. The constant encouragement from the trainers kept me motivated through the most challenging parts of the course.",
         status: "Successfully Employed",
         image: "https://i.pravatar.cc/150?u=rahul"
     },
