@@ -106,7 +106,7 @@ const TestimonialCard = ({ data, index }) => {
                 <p className="pt-testimonial-text">"{data.review}"</p>
                 <div className="pt-stars">
                     {[...Array(5)].map((_, i) => (
-                        <Star key={i} size={14} fill="currentColor" stroke="none" />
+                        <Star key={i} size={12} fill="currentColor" stroke="none" />
                     ))}
                 </div>
             </div>

@@ -1,0 +1,8 @@
+{
+  "crons": [
+    {
+      "path": "/api/google-reviews/sync?secret=urbancode-cron-secret-2026",
+      "schedule": "0 0 * * 0"
+    }
+  ]
+}

@@ -37,13 +37,13 @@ const BannerSlider = ({ banners = [], forceEnquiry = false }) => {
     const handleNext = (e) => {
         e.stopPropagation();
         setCurrent((prev) => (prev === banners.length - 1 ? 0 : prev + 1));
-        startTimer(); // reset timer on manual move
+        startTimer();
     };
 
     const handlePrev = (e) => {
         e.stopPropagation();
         setCurrent((prev) => (prev === 0 ? banners.length - 1 : prev - 1));
-        startTimer(); // reset timer on manual move
+        startTimer();
     };
 
     const handleBannerClick = (banner) => {
@@ -55,17 +55,16 @@ const BannerSlider = ({ banners = [], forceEnquiry = false }) => {
         setShowEnquiry(true);
     };
 
-
     return (
         <section className="banner-slider-section">
             <div className="banner-slider-container">
-                <div 
-                    className="banner-track" 
+                <div
+                    className="banner-track"
                     style={{ transform: `translateX(-${current * 100}%)` }}
                 >
                     {banners.map((banner, index) => (
-                        <div 
-                            key={index} 
+                        <div
+                            key={index}
                             className="banner-slide"
                             onClick={() => handleBannerClick(banner)}
                             style={{ cursor: 'pointer' }}
@@ -103,6 +102,7 @@ const BannerSlider = ({ banners = [], forceEnquiry = false }) => {
                     dynamicDownloads={selectedBanner.dynamicDownloads}
                     extraOptions={selectedBanner.extraOptions}
                     isSelectMode={selectedBanner.isSelectMode}
+                    customTitle={selectedBanner.customTitle}
                 />
             )}
         </section>

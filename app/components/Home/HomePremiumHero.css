@@ -1,0 +1,560 @@
+/* HomePremiumHero.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+.premium-hero-section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh; /* Force exactly viewport height so only hero is visible before scroll */
+    background: linear-gradient(180deg, #F7FCF9 0%, #EEF8F3 100%);
+    overflow: hidden;
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; 
+    padding-top: 120px; /* Minimum boundary so it clears navbar */
+    padding-bottom: 0px;
+}
+
+/* Background Images */
+.premium-bg-1, .premium-bg-2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+    z-index: 0;
+}
+.premium-bg-1 {
+    opacity: 0.6;
+}
+
+.premium-bg-2 {
+    opacity: 0.6;
+    mix-blend-mode: multiply;
+}
+
+/* Foreground Content Wrapper */
+.premium-hero-content {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Center the entire group vertically */
+    width: 100%;
+    max-width: 1440px;
+    padding: 0 20px;
+    text-align: center;
+    flex-grow: 1; /* Stretch to fill the 100vh section */
+    margin: 0;
+}
+
+/* Text Container */
+.premium-text-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 100px;
+    margin-bottom: 0px; 
+}
+@media (min-width: 1600px) {
+    .premium-text-block {
+        margin-top: 120px; 
+    }
+}
+
+/* Top Badge */
+.premium-badge {
+    width: 317px;
+    height: 33px;
+    border-radius: 9999px;
+    background: #FFFFFF;
+    border: 1px solid #00B56F;
+    box-shadow: 0px 2px 10px -3px rgba(28,29,34,.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #1C1D22;
+    margin-bottom: 20px;
+}
+.premium-badge-dot {
+    width: 6px;
+    height: 6px;
+    background: #00B56F;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #00B56F;
+    animation: dotPulse 2s infinite;
+}
+
+@keyframes dotPulse {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 181, 111, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(0, 181, 111, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 181, 111, 0); }
+}
+
+/* Title */
+.premium-title {
+    font-weight: 500;
+    font-size: 52px;
+    line-height: 56px;
+    letter-spacing: -2px;
+    color: #1C1D22;
+    max-width: 900px;
+    margin: 0 0 16px 0;
+}
+.premium-title span { display: block; }
+
+/* Description */
+.premium-desc {
+    width: 100%;
+    max-width: 540px;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -0.5px;
+    color: rgba(28,29,34,.55);
+    margin: 0 0 24px 0;
+}
+
+/* CTA Buttons */
+.premium-cta-container {
+    display: flex;
+    gap: 12px;
+    margin-bottom: -20px; /* Pull pillars up tightly */
+    z-index: 15;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Certificate Button */
+.premium-btn-certificate {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 20px;
+    border-radius: 64px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1.5px dashed #00B56F;
+    background: rgba(0, 181, 111, 0.06);
+    color: #007A4D;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    letter-spacing: 0.2px;
+}
+.premium-btn-certificate:hover {
+    background: rgba(0, 181, 111, 0.13);
+    border-color: #007A4D;
+    transform: translateY(-1px);
+    color: #005C39;
+}
+
+.premium-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #008753;
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 64px;
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 14px rgba(0, 181, 111, 0.2);
+    white-space: nowrap;
+}
+.premium-btn-primary:hover {
+    background: #006D43;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 22px rgba(0, 181, 111, 0.3);
+}
+
+.premium-btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    border-radius: 64px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid #00B56F;
+    background: transparent;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+.premium-btn-text-gradient {
+    font-size: 15px;
+    font-weight: 500;
+    background: linear-gradient(90deg, #00B56F 0%, #004F30 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 0.3s ease;
+}
+.premium-btn-secondary:hover {
+    background: linear-gradient(90deg, #00B56F 0%, #004F30 100%);
+}
+.premium-btn-secondary:hover .premium-btn-text-gradient {
+    -webkit-text-fill-color: #FFFFFF;
+}
+
+/* Pillar Layout */
+.premium-pillars-wrapper {
+    position: relative;
+    width: 1600px; /* Fixed width to prevent responsive overlapping and clipping */
+    max-width: 1600px;
+    height: 850px; /* Fully accommodate center pillar */
+    margin-top: -170px; /* Overlap buttons proportionally on large screens */
+    margin-bottom: -170px; /* -850px * (1 - 0.8) to remove extra space left by scaling */
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    transform: scale(0.8); /* Base scale for large screens */
+    transform-origin: top center; /* Scale from top so it pulls up neatly */
+}
+
+.premium-pillar-container {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    z-index: 2;
+}
+
+/* Pillar specific positioning */
+.pillar-left-large { left: calc(50% - 820px); bottom: 0px; width: 200px; height: 537px; z-index: 2; }
+.pillar-left-small { left: calc(50% - 650px); bottom: 0px; width: 240px; height: 384px; z-index: 4; }
+.pillar-center { left: calc(50% - 340px); bottom: 0px; width: 680px; height: 850px; z-index: 5; }
+.pillar-right-small { left: calc(50% + 410px); bottom: 0px; width: 240px; height: 384px; z-index: 4; }
+.pillar-right-large { left: calc(50% + 620px); bottom: 0px; width: 200px; height: 537px; z-index: 2; }
+
+.premium-pillar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: bottom;
+}
+
+/* Icons above pillars */
+.premium-course-icon-wrapper {
+    position: absolute;
+    top: -55px; /* Sits on top of the pillar ellipse */
+    left: calc(50% - 50px); /* 100px width / 2 */
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+.premium-course-icon-wrapper img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    filter: drop-shadow(0px 8px 16px rgba(0,0,0,0.15));
+    /* No float animation for non-AI icons */
+}
+.premium-course-icon-wrapper img,
+.premium-mobile-pillar-icon img {
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+.premium-course-icon-wrapper:hover img,
+.premium-mobile-pillar-item:hover img {
+    transform: scale(1.15) translateY(-5px);
+    filter: drop-shadow(0px 12px 24px rgba(0, 181, 111, 0.5));
+}
+
+@keyframes premiumFloat {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Course Labels */
+.premium-course-label {
+    position: absolute;
+    /* Label positioning will be handled inline to match reference for each pillar */
+    min-width: 170px;
+    width: max-content;
+    padding: 0 24px;
+    height: 52px;
+    background: rgba(0, 181, 111, 0.15);
+    border: 2px solid #00B56F;
+    border-radius: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 700;
+    color: #00B56F;
+    z-index: 9;
+    white-space: nowrap;
+    box-shadow: 0 4px 12px rgba(0, 181, 111, 0.1);
+    backdrop-filter: blur(2px);
+}
+
+/* SVG Connector Lines */
+.premium-connector-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 8;
+}
+
+.premium-ai-center {
+    position: absolute;
+    top: 340px; /* Moved slightly upwards as requested */
+    left: calc(50% - 150px); /* 300px / 2 */
+    width: 300px;
+    height: 310px;
+    z-index: 10;
+}
+.premium-ai-center img {
+       width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transform: scale(1.5) translateY(20px);
+    animation: premiumAiFloat 4s ease-in-out infinite;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+.premium-ai-center:hover img {
+      transform: scale(1.65) translateY(10px);
+    filter: drop-shadow(0px 15px 30px rgba(0, 181, 111, 0.6));
+    animation-play-state: paused;
+}
+
+@keyframes premiumAiFloat {
+    0%   { transform: translateY(0px) rotateX(0deg) rotateY(0deg) scale(1); }
+    50%  { transform: translateY(-5px) rotateX(10deg) rotateY(15deg) scale(1.05); }
+    100% { transform: translateY(0px) rotateX(0deg) rotateY(0deg) scale(1); }
+}
+
+/* ── Course icon click launch animation ── */
+/* Applied to the <a> wrapper when clicked */
+.course-icon-launching {
+    animation: courseIconLaunch 1.05s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    pointer-events: none; /* Prevent double-click */
+}
+
+/* For desktop icon wrappers and buttons: animate the img inside or the element */
+.course-icon-launching .course-icon-img,
+.premium-ai-center.course-icon-launching .course-icon-img,
+.premium-btn-secondary.course-icon-launching {
+    animation: courseIconPulseLaunch 1s ease-out forwards;
+}
+
+/* For mobile pillar icon: animate the icon bubble */
+.premium-mobile-pillar-item.course-icon-launching .premium-mobile-pillar-icon {
+    animation: courseIconPulseLaunchMobile 1s ease-out forwards;
+}
+
+@keyframes courseIconPulseLaunch {
+    0%   { transform: scale(1);      filter: drop-shadow(0 0 0px #00B56F); }
+    30%  { transform: scale(0.9);    filter: drop-shadow(0 0 10px #00B56F); }
+    60%  { transform: scale(1.3);    filter: drop-shadow(0 0 35px #00E88A); }
+    100% { transform: scale(1);      filter: drop-shadow(0 0 0px #00B56F); }
+}
+
+@keyframes courseIconPulseLaunchMobile {
+    0%   { transform: scale(1);    box-shadow: 0 4px 14px rgba(0,181,111,0.45); }
+    30%  { transform: scale(0.9);  box-shadow: 0 2px 10px rgba(0,181,111,0.8); }
+    60%  { transform: scale(1.3);  box-shadow: 0 8px 40px rgba(0,232,138,0.9); }
+    100% { transform: scale(1);    box-shadow: 0 4px 14px rgba(0,181,111,0.45); }
+}
+
+/* ── CSS mini pillars: always hidden — real 3D pillar images used on all screens ── */
+.premium-mobile-pillars { display: none !important; }
+
+/* Responsive Styles */
+@media (max-width: 1440px) {
+    .premium-pillars-wrapper {
+        transform: scale(0.58);
+        margin-top: -170px; /* Pull it upward more */
+        margin-bottom: -357px; /* -850 * (1 - 0.58) */
+    }
+    .premium-ai-center {
+        transform: scale(0.65); /* Reduced AI image significantly to prevent button overlap */
+        top: 350px; /* Moved slightly upwards to match */
+    }
+}
+
+@media (max-width: 1250px) {
+    .premium-pillars-wrapper {
+        transform: scale(0.50);
+        margin-top: -150px; /* Pull it upward more */
+        margin-bottom: -425px; /* -850 * (1 - 0.5) */
+    }
+}
+
+@media (max-width: 1050px) {
+    .premium-pillars-wrapper {
+        transform: scale(0.45);
+        margin-top: -100px; /* Proportional overlap */
+        margin-bottom: -467px; /* -850 * (1 - 0.45) */
+    }
+}
+
+/* Specific fix for short screens like Nest Hub (1024x600) */
+@media (max-width: 1024px) and (max-height: 650px) {
+    .premium-hero-section {
+        padding-top: 80px;
+    }
+    .premium-title {
+        font-size: 42px;
+        line-height: 1.1;
+    }
+    .premium-desc {
+        font-size: 14px;
+        margin-bottom: 16px;
+    }
+    .premium-pillars-wrapper {
+        transform: scale(0.42); /* Shrink pillars so they fit */
+        margin-top: -110px;
+        margin-bottom: -493px;
+    }
+}
+
+/* ── Tablet View (769px – 992px) ── */
+@media (max-width: 992px) {
+    .premium-hero-section {
+        padding-top: 71px;      /* exactly navbar height — clears it */
+        min-height: 100vh;
+        overflow: hidden;
+        justify-content: center; /* vertically center all content */
+        align-items: center;
+    }
+    .premium-hero-content {
+        flex-grow: 0;            /* don't stretch, just wrap content */
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 0;          /* centering handles placement */
+    }
+    .premium-text-block {
+        margin-top: 0 !important;
+        margin-bottom: 0;
+    }
+    .premium-title { font-size: 36px; line-height: 42px; letter-spacing: -1.5px; }
+    .premium-desc  { font-size: 14px; line-height: 22px; margin-bottom: 16px; max-width: 560px; }
+    /* scale=0.40 → visual height = 850*0.40 = 340px; surplus = 850*0.60 = 510px */
+    .premium-pillars-wrapper {
+        transform: scale(0.40);
+        margin-top: 0;
+        margin-bottom: -510px;  /* collapse surplus white-space */
+        flex-shrink: 0;
+    }
+    
+    /* Bring side pillars back inwards for tablet/mobile to prevent overflow */
+    .pillar-left-large { left: calc(50% - 685px); width: 165px; height: 443px; }
+    .pillar-left-small { left: calc(50% - 550px); width: 200px; height: 320px; }
+    .pillar-right-small { left: calc(50% + 350px); width: 200px; height: 320px; }
+    .pillar-right-large { left: calc(50% + 520px); width: 165px; height: 443px; }
+}
+
+/* ── Mobile View (≤768px) ── */
+@media (max-width: 768px) {
+    .premium-hero-section {
+        min-height: 100vh;
+        padding-top: 71px;      /* exactly navbar height */
+        padding-bottom: 0;
+        overflow: hidden;
+        justify-content: center; /* vertically center content */
+        align-items: center;
+    }
+    .premium-hero-content {
+        flex-grow: 0;            /* wrap content naturally */
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 0;
+    }
+    .premium-text-block {
+        margin-top: 0 !important;
+        margin-bottom: 10px;
+    }
+    .premium-title {
+        font-size: 26px;
+        line-height: 32px;
+        letter-spacing: -1px;
+    }
+    .premium-desc {
+        font-size: 13px;
+        line-height: 20px;
+        margin-bottom: 14px;
+    }
+    .premium-cta-container {
+        flex-direction: row;
+        gap: 10px;
+        margin-bottom: 0;
+    }
+    .premium-btn-primary  { width: 145px; height: 44px; font-size: 14px; }
+    .premium-btn-secondary { width: 155px; height: 44px; }
+    .premium-btn-text-gradient { font-size: 14px; }
+    .premium-badge {
+        font-size: 11px;
+        width: auto;
+        padding: 0 12px;
+        height: 30px;
+        min-height: 30px;
+        margin-bottom: 12px;
+    }
+    /* scale=0.32 → visual = 272px; surplus = 578px → margin-bottom=-578px */
+    .premium-pillars-wrapper {
+        transform: scale(0.32);
+        margin-top: 0;
+        margin-bottom: -578px;
+        flex-shrink: 0;
+    }
+}
+
+/* ── Small phones (≤480px) ── */
+@media (max-width: 480px) {
+    /* scale=0.28 → surplus = 850*0.72 = 612px → margin-bottom=-612px */
+    .premium-pillars-wrapper {
+        transform: scale(0.28);
+        margin-top: 0;
+        margin-bottom: -612px;
+    }
+    .premium-title { font-size: 24px; line-height: 30px; }
+    .premium-desc  { font-size: 12px; }
+}
+
+/* ── Extra-small phones (≤390px) ── */
+@media (max-width: 390px) {
+    /* scale=0.25 → surplus = 850*0.75 = 637px → margin-bottom=-637px */
+    .premium-pillars-wrapper {
+        transform: scale(0.25);
+        margin-top: 0;
+        margin-bottom: -637px;
+    }
+    .premium-title  { font-size: 22px; line-height: 28px; }
+    .premium-desc   { font-size: 12px; }
+}
+
+/* ── Tiny phones (≤360px) ── */
+@media (max-width: 360px) {
+    /* scale=0.23 → surplus = 850*0.77 = 654px → margin-bottom=-654px */
+    .premium-pillars-wrapper {
+        transform: scale(0.23);
+        margin-top: 0;
+        margin-bottom: -654px;
+    }
+    .premium-title  { font-size: 20px; line-height: 26px; }
+}

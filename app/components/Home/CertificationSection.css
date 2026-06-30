@@ -3,11 +3,40 @@
 /* Outer section wrapper */
 .cs-section-wrapper {
   display: block;
-  background: #fcfcfc;
+  background: linear-gradient(180deg, var(--bg-neutral) 0%, rgba(215, 235, 226, 0.2) 50%, var(--bg-neutral) 100%),
+              linear-gradient(259.47deg,
+                  rgba(102, 102, 102, 0.078) -0.37%,
+                  rgba(0, 181, 111, 0.13) 104.31%);
   padding: 80px 0;
   position: relative;
   width: 100%;
   box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* Subtle background pattern */
+.cs-section-wrapper::before {
+  content: '';
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(0, 181, 111, 0.08) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.cs-section-wrapper::after {
+  content: '';
+  position: absolute;
+  bottom: -40px;
+  left: -40px;
+  width: 160px;
+  height: 160px;
+  background: radial-gradient(circle, rgba(0, 181, 111, 0.06) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
 }
 
 /* Center-aligned section header */
@@ -15,6 +44,18 @@
   width: 100%;
   text-align: center;
   margin-bottom: 48px;
+  animation: csFadeInDown 0.6s ease both;
+}
+
+@keyframes csFadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .cs-header .section-main-title {
@@ -26,25 +67,37 @@
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  justify-content: space-between; /* Push columns to outer edges */
+  justify-content: space-between;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 40px;
   gap: 40px;
   box-sizing: border-box;
   width: 100%;
+  animation: csFadeInUp 0.7s ease 0.15s both;
+}
+
+@keyframes csFadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ── Left panel ── */
 .cs-left {
-  flex: 0 0 580px; /* Widened to support full line title */
+  flex: 0 0 580px;
   max-width: 580px;
   display: flex;
   flex-direction: column;
-  margin-top: 56px; /* Lower the left section even more */
+  margin-top: 56px;
 }
 
-/* Sub-heading title: intermediate size, clean styling */
+/* Sub-heading title */
 .cs-heading {
   text-align: left !important;
   font-size: 44px !important;
@@ -52,8 +105,8 @@
   line-height: 1.25 !important;
   letter-spacing: -0.02em !important;
   margin-bottom: 20px !important;
-  color: #2d3748 !important; /* A bit lighter than full black */
-  max-width: 580px; /* Widened max-width */
+  color: #2d3748 !important;
+  max-width: 580px;
 }
 
 .cs-desc {
@@ -61,7 +114,7 @@
   line-height: 1.65;
   color: #6b7280;
   margin-bottom: 32px;
-  max-width: 520px; /* Widened max-width to match break points */
+  max-width: 520px;
 }
 
 /* Responsive line break element */
@@ -86,8 +139,10 @@
   font-size: 15px;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   letter-spacing: -0.01em;
+  position: relative;
+  overflow: hidden;
 }
 
 /* Active tab — dark green pill */
@@ -96,6 +151,12 @@
   color: #ffffff;
   border: none;
   box-shadow: 0 4px 14px rgba(0, 181, 111, 0.3);
+  transform: scale(1);
+}
+
+.cs-tab-active:hover {
+  box-shadow: 0 6px 20px rgba(0, 181, 111, 0.4);
+  transform: scale(1.03);
 }
 
 /* Inactive tab — outlined */
@@ -108,6 +169,8 @@
 .cs-tab-inactive:hover {
   color: #00B56F;
   border-color: #00B56F;
+  background: rgba(0, 181, 111, 0.04);
+  transform: scale(1.03);
 }
 
 /* ── Right panel — list of cert cards ── */
@@ -119,23 +182,42 @@
   padding-top: 4px;
 }
 
-/* ── Cert card — no arrows, no dividers ── */
+/* ── Cert card ── */
+@keyframes csCardSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 .cs-cert-card {
   display: flex;
   align-items: center;
   gap: 24px;
-  padding: 24px 0;
+  padding: 22px 20px;
   text-decoration: none;
   color: inherit;
   cursor: pointer;
-  transition: all 0.2s ease;
-  border-radius: 0;
-  border-bottom: none; /* Removed all horizontal lines */
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 14px;
+  border-bottom: none;
+  animation: csCardSlideIn 0.5s ease both;
+  position: relative;
 }
+
+.cs-cert-card:nth-child(1) { animation-delay: 0.2s; }
+.cs-cert-card:nth-child(2) { animation-delay: 0.35s; }
+.cs-cert-card:nth-child(3) { animation-delay: 0.5s; }
 
 .cs-cert-card:hover {
   opacity: 1;
-  transform: translateX(4px);
+  transform: translateX(6px);
+  background: rgba(0, 181, 111, 0.04);
+  box-shadow: 0 4px 20px rgba(0, 181, 111, 0.08);
 }
 
 /* ── Badge ── */
@@ -146,6 +228,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.cs-cert-card:hover .cs-badge-wrap {
+  transform: scale(1.06) rotate(-2deg);
 }
 
 .cs-badge-img {
@@ -177,8 +264,13 @@
   font-size: 22px;
   line-height: 1.25;
   letter-spacing: -0.02em;
-  color: #2d3748; /* A bit lighter than full black */
+  color: #2d3748;
   margin-bottom: 8px;
+  transition: color 0.3s ease;
+}
+
+.cs-cert-card:hover .cs-cert-title {
+  color: #00B56F;
 }
 
 .cs-cert-subtitle {
@@ -204,7 +296,7 @@
   .cs-left {
     flex: none;
     max-width: 100%;
-    margin-top: 0; /* Reset top margin when stacked vertically */
+    margin-top: 0;
   }
 
   .cs-heading {
@@ -248,7 +340,7 @@
 
   .cs-cert-card {
     gap: 16px;
-    padding: 20px 0;
+    padding: 16px 12px;
   }
 
   .cs-cert-card:hover {

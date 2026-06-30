@@ -74,17 +74,13 @@ const InstitutionVideos = () => {
             </div>
 
             <div className="container position-relative">
-                <motion.div
+                <div
                     className="text-center mb-4"
-                    initial={{ opacity: 0, y: -20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
                 >
                     <h2 className="section-main-title text-shine">
                         Trending Course Insights
                     </h2>
-                </motion.div>
+                </div>
 
                 <div
                     className="video-carousel-wrapper"
@@ -104,13 +100,10 @@ const InstitutionVideos = () => {
                             transition={{ type: "spring", stiffness: 100, damping: 20, mass: 1 }}
                         >
                             {institutionVideosData.map((video) => (
-                                <motion.div
+                                <div
                                     key={video.id}
                                     className="video-card-slide"
                                     style={{ flex: `0 0 ${100 / cardsToShow}%` }}
-                                    initial={{ opacity: 0, scale: 0.95 }}
-                                    whileInView={{ opacity: 1, scale: 1 }}
-                                    viewport={{ once: true }}
                                 >
                                     <div className="video-card-inner">
                                         <div
@@ -158,7 +151,7 @@ const InstitutionVideos = () => {
                                             )}
                                         </div>
                                     </div>
-                                </motion.div>
+                                </div>
                             ))}
                         </motion.div>
                     </div>

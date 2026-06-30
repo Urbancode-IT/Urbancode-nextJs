@@ -1,5 +1,5 @@
 import dynamic from 'next/dynamic';
-import HeroSection from './components/Home/HeroSection';
+import HomePremiumHero from './components/Home/HomePremiumHero';
 import BannerSlider from './components/common/BannerSlider';
 
 // Branch announcement popup (client-only, uses sessionStorage)
@@ -31,15 +31,19 @@ const TestimonialCarousel = dynamic(() => import('./components/Home/TestimonialC
   loading: () => <div className="placeholder-skeleton" style={{ height: '300px', background: '#08090d', margin: '20px 0', borderRadius: '16px' }} />
 });
 
+const GoogleReviews = dynamic(() => import('./components/GoogleReviews/GoogleReviews'), {
+  loading: () => <div className="placeholder-skeleton" style={{ height: '400px', background: '#0b0f19', margin: '20px 0', borderRadius: '16px' }} />
+});
+
 const InstitutionVideos = dynamic(() => import('./components/Home/InstitutionVideos'), {
   loading: () => <div className="placeholder-skeleton" style={{ height: '400px', background: '#0a0d14', margin: '20px 0', borderRadius: '16px' }} />
 });
 
 // const GetCertified = dynamic(() => import('./components/Home/GetCertified'));
 
-// const CertificationSection = dynamic(() => import('./components/Home/CertificationSection'), {
-//   loading: () => <div className="placeholder-skeleton" style={{ height: '608px', background: 'rgba(0,181,111,0.04)', margin: '20px 0', borderRadius: '16px' }} />
-// });
+const CertificationSection = dynamic(() => import('./components/Home/CertificationSection'), {
+  loading: () => <div className="placeholder-skeleton" style={{ height: '608px', background: 'rgba(0,181,111,0.04)', margin: '20px 0', borderRadius: '16px' }} />
+});
 
 export const metadata = {
   title: "Software Training Institute in Chennai | Urbancode",
@@ -85,6 +89,26 @@ export const metadata = {
 
 export default function HomePage() {
   const homeBanners = [
+    {
+      src: "/images/home/tvlbanner.png",
+      alt: "Urbancode Tirunelveli Branch - Now Open",
+      type: "enquiry",
+      courseName: "Tirunelveli Branch Enquiry",
+      customTitle: "Enquire – Tirunelveli Branch",
+      isSelectMode: true,
+      extraOptions: [
+        "Full Stack Development",
+        "Python with AI",
+        "Data Science",
+        "MERN Stack",
+        "Software Testing",
+        "Digital Marketing",
+        "UI/UX Design",
+        "AWS / Cloud Computing",
+        "Cybersecurity",
+        "Help me choose my course",
+      ]
+    },
     {
       src: "/images/home/studyabroad.webp",
       alt: "Study Abroad",
@@ -156,7 +180,7 @@ export default function HomePage() {
         }}
       />
       <div className="home-section">
-        <HeroSection />
+        <HomePremiumHero />
       </div>
       <div className="home-section">
         <BannerSlider banners={homeBanners} />
@@ -176,10 +200,9 @@ export default function HomePage() {
       <div className="home-section">
         <InDemandTools />
       </div>
-{/* 
-      <div className="home-section">
+      <div id="certification-section" className="home-section">
         <CertificationSection />
-      </div> */}
+      </div>
 
       {/* <div className="home-section">
         <GetCertified />
@@ -188,8 +211,11 @@ export default function HomePage() {
       <div className="home-section">
         <VideoTestimonials />
       </div>
-      <div className="home-section">
+      {/* <div className="home-section">
         <TestimonialCarousel />
+      </div> */}
+      <div className="home-section">
+        <GoogleReviews />
       </div>
       <div className="home-section">
         <FaqBootstrap />

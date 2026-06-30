@@ -232,7 +232,7 @@ const StudyAbroadPage = () => {
                                     <span className="trusted-text ms-2">Joined by 1,000+ aspiring global leaders</span>
                                 </div>
 
-                                <div className="mt-4">
+                                <div className="mt-4 d-flex flex-wrap justify-content-center gap-3">
                                     <motion.button
                                         onClick={() => document.getElementById('consultation').scrollIntoView({ behavior: 'smooth' })}
                                         className="request-callback-btn"
@@ -241,6 +241,15 @@ const StudyAbroadPage = () => {
                                         transition={{ type: "spring", stiffness: 400, damping: 10 }}
                                     >
                                         Start Your Application
+                                    </motion.button>
+                                    <motion.button
+                                        onClick={() => document.getElementById('english-proficiency').scrollIntoView({ behavior: 'smooth' })}
+                                        className="hero-proficiency-btn"
+                                        whileHover={{ scale: 1.05 }}
+                                        whileTap={{ scale: 0.95 }}
+                                        transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                                    >
+                                        🎓 English Proficiency
                                     </motion.button>
                                 </div>
 
@@ -566,7 +575,7 @@ const StudyAbroadPage = () => {
             </section>
 
             {/* English Proficiency Section */}
-            <section className="section-padding proficiency-section">
+            <section id="english-proficiency" className="section-padding proficiency-section">
                 <div className="container">
                     <div className="section-header">
                         <h2 className="section-main-title text-shine">Master Your English Proficiency</h2>

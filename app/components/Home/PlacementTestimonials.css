@@ -74,7 +74,7 @@
 .pt-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+    gap: 22px;
     width: 100%;
 }
 
@@ -82,16 +82,16 @@
 .pt-card {
     position: relative;
     background: linear-gradient(135deg, #0f0f0f 0%, #0b3d2e 45%, #16a34a 100%);
-    border-radius: 24px;
-    padding: 30px;
+    border-radius: 18px;
+    padding: 22px;
     color: white;
     overflow: hidden;
     transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    min-height: 320px;
+    min-height: 260px;
     border: 1px solid transparent;
     z-index: 1;
 }
@@ -116,8 +116,8 @@
 }
 
 .pt-card:hover {
-    transform: translateY(-15px) scale(1.02);
-    box-shadow: 0 25px 50px rgba(22, 163, 74, 0.25), inset 0 0 20px rgba(22, 163, 74, 0.1);
+    transform: translateY(-8px) scale(1.01);
+    box-shadow: 0 20px 40px rgba(22, 163, 74, 0.2), inset 0 0 15px rgba(22, 163, 74, 0.08);
     border: 1px solid rgba(22, 163, 74, 0.5);
 }
 
@@ -144,14 +144,14 @@
 .pt-card-header {
     display: flex;
     align-items: center;
-    gap: 15px;
-    margin-bottom: 20px;
+    gap: 12px;
+    margin-bottom: 14px;
     z-index: 2;
 }
 
 .pt-student-initials-wrapper {
-    width: 60px;
-    height: 60px;
+    width: 46px;
+    height: 46px;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.15);
     display: flex;
@@ -170,10 +170,10 @@
 }
 
 .pt-student-initials {
-    font-size: 22px;
+    font-size: 17px;
     font-weight: 700;
     color: #ffffff;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
 }
 
 .pt-student-meta {
@@ -182,7 +182,7 @@
 }
 
 .pt-student-name {
-    font-size: 19px;
+    font-size: 15px;
     font-weight: 700;
     color: #ffffff !important;
     margin: 0 0 2px 0;
@@ -190,7 +190,7 @@
 }
 
 .pt-course-name {
-    font-size: 13px;
+    font-size: 12px;
     color: rgba(255, 255, 255, 0.8);
     font-weight: 500;
 }
@@ -198,17 +198,19 @@
 /* Content Area */
 .pt-card-content {
     flex-grow: 1;
-    margin-bottom: 20px;
+    margin-bottom: 14px;
     z-index: 2;
 }
 
 .pt-quote-icon {
-    font-size: 24px;
+    font-size: 18px;
     color: #16a34a;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     opacity: 0.8;
     transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s ease;
     display: inline-block;
+    width: 18px;
+    height: 18px;
 }
 
 .pt-card:hover .pt-quote-icon {
@@ -217,14 +219,14 @@
 }
 
 .pt-testimonial-text {
-    font-size: 14.5px;
-    line-height: 1.6;
-    color: rgba(255, 255, 255, 0.9);
+    font-size: 13px;
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.88);
     font-style: italic;
-    margin-bottom: 15px;
-    max-height: 4.8em; /* Exactly 3 lines (1.6 * 3) */
+    margin-bottom: 10px;
+    max-height: 4.65em; /* ~3 lines (1.55 * 3) */
     overflow-y: auto;
-    padding-right: 5px;
+    padding-right: 4px;
 }
 
 /* Custom scrollbar for reviews */
@@ -257,7 +259,7 @@
 /* Footer Section: Company Details */
 .pt-card-footer {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding-top: 20px;
+    padding-top: 14px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -288,7 +290,7 @@
 }
 
 .pt-company-name {
-    font-size: 16px;
+    font-size: 13.5px;
     font-weight: 700;
     color: #fff;
 }
@@ -320,9 +322,9 @@
 
 .pt-salary-badge {
     background: rgba(255, 255, 255, 0.1);
-    padding: 5px 12px;
-    border-radius: 8px;
-    font-size: 13px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 12px;
     font-weight: 600;
     color: #fff;
     backdrop-filter: blur(5px);

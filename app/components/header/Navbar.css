@@ -161,8 +161,8 @@
   }
 }
 
-/* Mobiles */
-@media (max-width: 768px) {
+/* Tablets and Mobiles */
+@media (max-width: 1099px) {
   .navbar-right {
     margin-left: 0;
     gap: 0;

@@ -49,6 +49,14 @@ const VideoTestimonials = () => {
             viewport={{ once: false }}
             transition={{ duration: 0.8 }}
         >
+            {/* Cinematic Background Elements */}
+            <div className="cinematic-bg-elements">
+                <div className="glow-circle glow-1" />
+                <div className="glow-circle glow-2" />
+                <div className="light-streak" style={{ top: '20%' }} />
+                <div className="light-streak" style={{ top: '80%' }} />
+            </div>
+
             <div className="container position-relative">
                 <div className="text-center mb-5">
                     <h2 className="section-main-title text-shine">Voice that Matters</h2>
