@@ -115,13 +115,13 @@ export default function HomePage() {
       type: "link",
       link: "/study-abroad"
     },
-    {
-      src: "/images/home/kidssummercamp.webp",
-      alt: "Kids Summer Camp",
-      type: "form-download",
-      courseName: "Kids Summer Camp",
-      downloadUrls: ["/curriculum/pythonforkids.pdf", "/curriculum/webdevelopmentKids.pdf"]
-    },
+    // {
+    //   src: "/images/home/kidssummercamp.webp",
+    //   alt: "Kids Summer Camp",
+    //   type: "form-download",
+    //   courseName: "Kids Summer Camp",
+    //   downloadUrls: ["/curriculum/pythonforkids.pdf", "/curriculum/webdevelopmentKids.pdf"]
+    // },
     {
       src: "/images/home/dataengineering.webp",
       alt: "New Course: Data Engineering",
