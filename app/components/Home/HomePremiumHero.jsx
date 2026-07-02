@@ -103,7 +103,7 @@ const HomePremiumHero = () => {
             <div className="premium-hero-content">
                 <div className="premium-text-block" style={{ marginTop: '100px', marginBottom: '0px' }}>
                     {/* Step 1: Top Badge */}
-                    <motion.a 
+                    {/* <motion.a 
                         href="/courses"
                         className="premium-badge"
                         style={{ textDecoration: 'none' }}
@@ -114,7 +114,7 @@ const HomePremiumHero = () => {
                         <span className="premium-badge-dot"></span>
                         Enroll Now for Our Upcoming IT Courses
                         <FaArrowRight size={10} style={{ marginLeft: '4px' }} />
-                    </motion.a>
+                    </motion.a> */}
 
                     {/* Step 2: Title */}
                     <h1 className="premium-title" style={{
@@ -131,7 +131,7 @@ const HomePremiumHero = () => {
                             animate="visible"
                             variants={titleLineAnim}
                         >
-                            The Right Skill Today
+                            The right skill today
                         </motion.span>
                         <motion.span
                             initial="hidden"
@@ -139,7 +139,7 @@ const HomePremiumHero = () => {
                             variants={titleLineAnim}
                             transition={{ delay: 0.2 }}
                         >
-                            For The Right Career Tomorrow
+                            for the right career tomorrow
                         </motion.span>
                     </h1>
 
@@ -171,7 +171,7 @@ const HomePremiumHero = () => {
                             className="premium-btn-secondary"
                             onClick={handleStudyAbroadClick}
                         >
-                            <span className="premium-btn-text-gradient">Study Overseas</span>
+                            <span className="premium-btn-text-gradient">Study Abroad</span>
                         </a>
                         <a 
                             href="#certification-section"
