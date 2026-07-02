@@ -4,16 +4,17 @@
 .premium-hero-section {
     position: relative;
     width: 100%;
-    min-height: 100vh; /* Force exactly viewport height so only hero is visible before scroll */
+    min-height: 100vh;
     background: linear-gradient(180deg, #F7FCF9 0%, #EEF8F3 100%);
     overflow: hidden;
     font-family: 'Inter', sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start; 
-    padding-top: 120px; /* Minimum boundary so it clears navbar */
+    justify-content: flex-start;
+    padding-top: 80px; /* Clear the navbar (navbar ~70-80px) */
     padding-bottom: 0px;
+    box-sizing: border-box;
 }
 
 /* Background Images */
@@ -58,12 +59,12 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-    margin-top: 100px;
-    margin-bottom: 0px; 
+    margin-top: 20px;   /* Small consistent offset — section padding-top handles navbar clearance */
+    margin-bottom: 0px;
 }
 @media (min-width: 1600px) {
     .premium-text-block {
-        margin-top: 120px; 
+        margin-top: 30px;
     }
 }
 
@@ -212,16 +213,18 @@
 /* Pillar Layout */
 .premium-pillars-wrapper {
     position: relative;
-    width: 1600px; /* Fixed width to prevent responsive overlapping and clipping */
+    width: 1600px;
     max-width: 1600px;
-    height: 850px; /* Fully accommodate center pillar */
-    margin-top: -170px; /* Overlap buttons proportionally on large screens */
-    margin-bottom: -170px; /* -850px * (1 - 0.8) to remove extra space left by scaling */
+    height: 850px;
+    /* scale=0.8 → visual height = 680px; surplus = 850*(1-0.8) = 170px */
+    margin-top: -180px;   /* Overlap the CTA buttons */
+    margin-bottom: -170px; /* Collapse surplus space */
     display: flex;
     align-items: flex-end;
     justify-content: center;
-    transform: scale(0.8); /* Base scale for large screens */
-    transform-origin: top center; /* Scale from top so it pulls up neatly */
+    transform: scale(0.8);
+    transform-origin: top center;
+    flex-shrink: 0;
 }
 
 .premium-pillar-container {
@@ -384,12 +387,11 @@
 @media (max-width: 1440px) {
     .premium-pillars-wrapper {
         transform: scale(0.58);
-        margin-top: -170px; /* Pull it upward more */
+        margin-top: -180px;
         margin-bottom: -357px; /* -850 * (1 - 0.58) */
     }
     .premium-ai-center {
-        transform: scale(0.65); /* Reduced AI image significantly to prevent button overlap */
-        top: 350px; /* Moved slightly upwards to match */
+        top: 350px;
     }
 }
 
