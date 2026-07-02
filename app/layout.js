@@ -1,6 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './globals.css';
-import './globals.css';
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { Inter } from 'next/font/google';
 
@@ -32,6 +31,16 @@ export const metadata = {
     "DC.language": "en",
     "target_country": "IN",
   }
+};
+
+/* ── Explicit viewport: required by Next.js App Router to guarantee
+   width=device-width, initial-scale=1 in production builds.
+   Without this, some deployment platforms omit the viewport meta and
+   browsers fall back to a 980px virtual viewport, scaling all px sizes. ── */
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
 };
 
 export default function RootLayout({ children }) {

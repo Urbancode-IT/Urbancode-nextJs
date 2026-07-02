@@ -101,7 +101,7 @@ const HomePremiumHero = () => {
             />
 
             <div className="premium-hero-content">
-                <div className="premium-text-block">
+                <div className="premium-text-block" style={{ marginTop: '100px', marginBottom: '0px' }}>
                     {/* Step 1: Top Badge */}
                     <motion.a 
                         href="/courses"
@@ -117,7 +117,15 @@ const HomePremiumHero = () => {
                     </motion.a>
 
                     {/* Step 2: Title */}
-                    <h1 className="premium-title">
+                    <h1 className="premium-title" style={{
+							fontWeight: 500,
+							fontSize: '52px',
+							lineHeight: '56px',
+							letterSpacing: '-2px',
+							color: '#1C1D22',
+							maxWidth: '900px',
+							margin: '0 0 16px 0',
+						}}>
                         <motion.span
                             initial="hidden"
                             animate="visible"
@@ -138,6 +146,7 @@ const HomePremiumHero = () => {
                     {/* Step 3: Description */}
                     <motion.p 
                         className="premium-desc"
+                        style={{ fontSize: '16px', lineHeight: '24px' }}
                         initial="hidden"
                         animate="visible"
                         variants={fadeInUp}
