@@ -9,12 +9,13 @@ const GoogleReviews = () => {
     const [error, setError] = useState(null);
     const [activeBranch, setActiveBranch] = useState('All');
 
-    // Branch Google Maps review links
-    const branchReviewLinks = {
-        'All':          'https://share.google/loDUhZWEmQNBiZrYS',
-        'Velachery':    'https://share.google/loDUhZWEmQNBiZrYS',
-        'Pallikaranai': 'https://share.google/as4eRKh5XEDehAw00',
-        'Tirunelveli':  'https://share.google/iewXO1x2b9ChoLO2L',
+    const [isWriteReviewModalOpen, setIsWriteReviewModalOpen] = useState(false);
+
+    // Branch Google Maps review links for modal
+    const writeReviewLinks = {
+        'Velachery': 'https://g.page/r/CfH0LR1ZQro0EAE/review',
+        'Pallikaranai': 'https://g.page/r/CQI15nsz8W2IEAE/review',
+        'Tirunelveli': 'https://www.google.com/search?sca_esv=47fdd52eba661d26&rlz=1C1ONGR_enIN1082IN1083&sxsrf=APpeQnsPW-Nth2KLEW3ZAskdQ61FRMzs6g:1782982138857&si=APenkKm7iecQ4G6P-TsbSMFKIQtv3EFIqRAFw-i8uEbk55Z-_3FUiqlbF9e4rNiuCQoVGzSERo25DzRGEjXpofXaARMjWSzIXmPyifkoOmv4p1JOGpytj8x-NDrWsrhqby6vkymFi2dqcYmKH7cwKJC-GoRmYKX80euUyzpMStaelkhu-_5idtw%3D&q=Urbancode+Training+and+Solutions+Reviews&sa=X&ved=2ahUKEwjO1ZuIzrOVAxV_wTgGHbaSLGUQ0bkNegQIKxAH&biw=1280&bih=631&dpr=1.5#lrd=0x3b0413c4ce75c0fd:0x4e3fe58c93ab7a34,3,,,,',
     };
     const branches = ['All', 'Velachery', 'Pallikaranai', 'Tirunelveli'];
 
@@ -446,14 +447,12 @@ const GoogleReviews = () => {
                         </button>
                     ))}
                 </div>
-                <a
-                    href={branchReviewLinks[activeBranch]}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                <button
+                    onClick={() => setIsWriteReviewModalOpen(true)}
                     className="gr-write-review-btn"
                 >
                     Write a Review
-                </a>
+                </button>
             </div>
 
             <div className="gr-main-content">
@@ -504,6 +503,31 @@ const GoogleReviews = () => {
                     <button className={`gr-nav-side-btn next ${isAtEnd ? 'is-disabled' : ''}`} onClick={slideNext}>&gt;</button>
                 </div>
             </div>
+
+            {/* Write Review Branch Selection Modal */}
+            {isWriteReviewModalOpen && (
+                <div className="gr-modal-overlay" onClick={() => setIsWriteReviewModalOpen(false)}>
+                    <div className="gr-modal-content" onClick={e => e.stopPropagation()}>
+                        <button className="gr-modal-close" onClick={() => setIsWriteReviewModalOpen(false)}>&times;</button>
+                        <h3>Select a Branch</h3>
+                        <p>Where would you like to leave a review?</p>
+                        <div className="gr-modal-options">
+                            {Object.entries(writeReviewLinks).map(([branch, link]) => (
+                                <a 
+                                    key={branch} 
+                                    href={link} 
+                                    target="_blank" 
+                                    rel="noopener noreferrer"
+                                    className="gr-modal-branch-btn"
+                                    onClick={() => setIsWriteReviewModalOpen(false)}
+                                >
+                                    {branch}
+                                </a>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            )}
         </section>
     );
 };

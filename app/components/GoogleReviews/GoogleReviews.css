@@ -92,6 +92,9 @@
     transition: all 0.3s ease;
     box-shadow: 0 4px 14px rgba(0, 181, 111, 0.3);
     white-space: nowrap;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
 }
 
 .gr-write-review-btn:hover {
@@ -365,6 +368,87 @@
 
 @keyframes gr-spin {
     to { transform: rotate(360deg); }
+}
+
+/* Modal Styles */
+.gr-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.gr-modal-content {
+    background: #fff;
+    padding: 30px;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    animation: grCardFadeIn 0.3s ease;
+}
+
+.gr-modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #888;
+    transition: color 0.2s;
+    line-height: 1;
+}
+
+.gr-modal-close:hover {
+    color: #333;
+}
+
+.gr-modal-content h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.gr-modal-content p {
+    color: #666;
+    margin-bottom: 24px;
+    font-size: 0.95rem;
+}
+
+.gr-modal-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.gr-modal-branch-btn {
+    display: block;
+    padding: 12px 20px;
+    background: rgba(0, 181, 111, 0.08);
+    color: #00B56F;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.2s;
+    border: 1px solid rgba(0, 181, 111, 0.2);
+}
+
+.gr-modal-branch-btn:hover {
+    background: #00B56F;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 181, 111, 0.2);
 }
 
 /* ── Responsive ── */
