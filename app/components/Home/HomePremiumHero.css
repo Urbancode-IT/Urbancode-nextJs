@@ -6,7 +6,8 @@
     position: relative;
     width: 100%;
     min-height: 100vh; /* Force exactly viewport height so only hero is visible before scroll */
-    background: linear-gradient(180deg, #F7FCF9 0%, #EEF8F3 100%);
+    /* Blend the hero section smoothly into the next section (global bg #fcfcfc) */
+    background: linear-gradient(180deg, #F7FCF9 0%, #EEF8F3 75%, #fcfcfc 100%);
     overflow: hidden;
     font-family: 'Inter', sans-serif;
     display: flex;
