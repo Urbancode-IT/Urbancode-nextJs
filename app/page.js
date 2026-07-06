@@ -1,5 +1,5 @@
 import dynamic from 'next/dynamic';
-import HomePremiumHero from './components/Home/HomePremiumHero';
+import NewHeroSection from './components/Home/NewHeroSection';
 import BannerSlider from './components/common/BannerSlider';
 
 // Branch announcement popup (client-only, uses sessionStorage)
@@ -180,7 +180,7 @@ export default function HomePage() {
         }}
       />
       <div className="home-section">
-        <HomePremiumHero />
+        <NewHeroSection />
       </div>
       <div className="home-section">
         <BannerSlider banners={homeBanners} />

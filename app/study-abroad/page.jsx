@@ -1,15 +1,17 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { FaStar, FaQuoteLeft, FaCheckCircle, FaAward, FaUniversity, FaSearch, FaStethoscope, FaGlobeAmericas, FaUserMd, FaPlaneDeparture, FaClipboardCheck, FaHospital } from 'react-icons/fa';
+import { FaStar, FaQuoteLeft, FaCheckCircle, FaAward, FaUniversity, FaSearch, FaStethoscope, FaGlobeAmericas, FaUserMd, FaPlaneDeparture, FaClipboardCheck, FaHospital, FaArrowRight } from 'react-icons/fa';
 import { Send } from "lucide-react";
 import { submitEnquiryForm } from "@/lib/api/api";
 import EnquiryFormModal from "@/app/components/common/EnquiryFormModal.jsx";
 import { destinations, services, testimonials, showcaseData } from './data';
+import '../components/Home/NewHeroSection.css';
+import '../components/CourseLayout/ProgramCohorts.css';
 import './StudyAbroad.css';
 import { FormInput, FormSelect, FormTextarea, FormButton, FormCard } from "@/app/components/common/FormUI";
 
@@ -26,6 +28,158 @@ const getCountryFlag = (uni) => {
     if (lower.includes("france")) return "🇫🇷";
     if (lower.includes("new zealand")) return "🇳🇿";
     return "🎓";
+};
+
+// Fixed-size hero stat cards — same 220px card at every screen size (desktop, tablet, mobile).
+// The HeroStatsCarousel below handles fitting them via arrows, not by resizing the cards.
+const heroStatCards = [
+    { icon: <FaUniversity size={24} color="#60a5fa" className="mb-2" />, val: "Top 1%", label: "Global Admits" },
+    { icon: <FaCheckCircle size={24} color="#34d399" className="mb-2" />, val: "98%", label: "Visa Success" },
+    { icon: <FaAward size={24} color="#fbbf24" className="mb-2" />, val: "Scholarships", label: "Up to 100% Funding" },
+    { icon: <FaGlobeAmericas size={24} color="#a78bfa" className="mb-2" />, val: "500+", label: "Universities" },
+    { icon: <FaStar size={24} color="#f472b6" className="mb-2" />, val: "10+ Years", label: "Expert Guidance" },
+];
+
+const renderHeroCard = (card, key, compact = false) => (
+    <div className={`hero-card ${compact ? 'hero-card-compact' : ''}`} key={key}>
+        <div className="hero-card-glass">
+            {card.icon}
+            <h3 className="hero-card-title text-center">{card.val}</h3>
+            <p className="hero-card-desc text-center">{card.label}</p>
+        </div>
+    </div>
+);
+
+// Mobile version: one compact card visible at a time, auto-advances on a timer,
+// with dot indicators — a proper slide-by-slide carousel, not a continuous scroll strip.
+const HeroStatsMarquee = ({ cards }) => {
+    const [index, setIndex] = useState(0);
+
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setIndex((prev) => (prev + 1) % cards.length);
+        }, 2200);
+        return () => clearInterval(timer);
+    }, [cards.length]);
+
+    return (
+        <div className="hero-cards-wrapper hero-cards-wrapper-single">
+            <div className="hero-cards-viewport-single">
+                <div
+                    className="hero-cards-track-single"
+                    style={{ transform: `translateX(-${index * 100}%)` }}
+                >
+                    {cards.map((card, i) => (
+                        <div className="hero-card-single-slide" key={`slide-${i}`}>
+                            {renderHeroCard(card, `mcard-${i}`, true)}
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </div>
+    );
+};
+
+// Desktop/tablet version: fixed 220px cards, manual arrow-controlled carousel.
+// Cards keep a fixed width and stay in a single row; when they don't all fit,
+// left/right arrow buttons step through them one at a time (with a peek of the
+// next/previous card), instead of wrapping to a second row.
+const HeroStatsCarousel = ({ cards }) => {
+    const viewportRef = useRef(null);
+    const [index, setIndex] = useState(0);
+    const [maxIndex, setMaxIndex] = useState(0);
+    const [needsArrows, setNeedsArrows] = useState(false);
+
+    const CARD_WIDTH = 220;
+    const GAP = 16;
+    const step = CARD_WIDTH + GAP;
+
+    useEffect(() => {
+        const recalc = () => {
+            if (!viewportRef.current) return;
+            const availableWidth = viewportRef.current.offsetWidth;
+            const totalWidth = cards.length * CARD_WIDTH + (cards.length - 1) * GAP;
+
+            if (totalWidth <= availableWidth) {
+                setNeedsArrows(false);
+                setMaxIndex(0);
+                setIndex(0);
+            } else {
+                const visibleCount = Math.max(1, Math.floor(availableWidth / step));
+                const newMaxIndex = Math.max(0, cards.length - visibleCount);
+                setNeedsArrows(true);
+                setMaxIndex(newMaxIndex);
+                setIndex((prev) => Math.min(prev, newMaxIndex));
+            }
+        };
+
+        recalc();
+        const resizeObserver = new ResizeObserver(recalc);
+        if (viewportRef.current) resizeObserver.observe(viewportRef.current);
+        window.addEventListener('resize', recalc);
+
+        return () => {
+            resizeObserver.disconnect();
+            window.removeEventListener('resize', recalc);
+        };
+    }, [cards, step]);
+
+    const goPrev = () => setIndex((prev) => Math.max(0, prev - 1));
+    const goNext = () => setIndex((prev) => Math.min(maxIndex, prev + 1));
+
+    return (
+        <div className="hero-cards-wrapper">
+            <div className="hero-cards-carousel">
+                {needsArrows && (
+                    <button
+                        type="button"
+                        className="hero-cards-arrow hero-cards-arrow-left"
+                        onClick={goPrev}
+                        disabled={index === 0}
+                        aria-label="Previous"
+                    >
+                        &#8249;
+                    </button>
+                )}
+
+                <div className="hero-cards-viewport" ref={viewportRef}>
+                    <div
+                        className={`hero-cards-track ${needsArrows ? '' : 'centered'}`}
+                        style={needsArrows ? { transform: `translateX(-${index * step}px)` } : undefined}
+                    >
+                        {cards.map((card, i) => renderHeroCard(card, `card-${i}`, false))}
+                    </div>
+                </div>
+
+                {needsArrows && (
+                    <button
+                        type="button"
+                        className="hero-cards-arrow hero-cards-arrow-right"
+                        onClick={goNext}
+                        disabled={index === maxIndex}
+                        aria-label="Next"
+                    >
+                        &#8250;
+                    </button>
+                )}
+            </div>
+        </div>
+    );
+};
+
+// Top-level switch: mobile gets the compact auto-scroll marquee,
+// desktop/tablet get the fixed-size arrow carousel.
+const HeroStats = ({ cards }) => {
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const checkViewport = () => setIsMobile(window.innerWidth <= 767);
+        checkViewport();
+        window.addEventListener('resize', checkViewport);
+        return () => window.removeEventListener('resize', checkViewport);
+    }, []);
+
+    return isMobile ? <HeroStatsMarquee cards={cards} /> : <HeroStatsCarousel cards={cards} />;
 };
 
 const StudyAbroadPage = () => {
@@ -148,115 +302,47 @@ const StudyAbroadPage = () => {
         <div className="study-abroad-container">
 
             {/* Hero Section */}
-            <section className="study-hero">
-                <div className="container">
-                    <div className="row justify-content-center text-center position-relative py-5">
+            <section className="new-hero-section study-premium-override">
+                {/* Skyline Background */}
+                <div className="hero-bg-container"></div>
 
-                        {/* Floating Milestone Badges */}
-                        <div className="floating-container d-none d-lg-block">
-                            <motion.div
-                                className="milestone-badge badge-left"
-                                initial={{ opacity: 0, x: -30 }}
-                                animate={{ opacity: 1, x: 0, y: [0, -12, 0] }}
-                                transition={{
-                                    opacity: { duration: 0.5 },
-                                    x: { duration: 0.5 },
-                                    y: { duration: 4, repeat: Infinity, ease: "easeInOut" }
-                                }}
-                                whileHover={{ scale: 1.1, rotate: 2 }}
-                            >
-                                <div className="badge-icon icon-green"><FaCheckCircle /></div>
-                                <div className="badge-content">
-                                    <span className="badge-val">98%</span>
-                                    <span className="badge-txt">Visa Success</span>
-                                </div>
-                            </motion.div>
-
-                            <motion.div
-                                className="milestone-badge badge-top-right"
-                                initial={{ opacity: 0, y: -30 }}
-                                animate={{ opacity: 1, y: [0, 15, 0] }}
-                                transition={{
-                                    opacity: { duration: 0.7 },
-                                    y: { duration: 5, repeat: Infinity, ease: "easeInOut" }
-                                }}
-                                whileHover={{ scale: 1.1, rotate: -2 }}
-                            >
-                                <div className="badge-icon icon-gold"><FaAward /></div>
-                                <div className="badge-content">
-                                    <span className="badge-val">100+</span>
-                                    <span className="badge-txt">Scholarship Partners</span>
-                                </div>
-                            </motion.div>
-
-                            <motion.div
-                                className="milestone-badge badge-bottom-right"
-                                initial={{ opacity: 0, x: 30 }}
-                                animate={{ opacity: 1, x: 0, y: [0, -18, 0] }}
-                                transition={{
-                                    opacity: { duration: 0.9 },
-                                    x: { duration: 0.9 },
-                                    y: { duration: 4.5, repeat: Infinity, ease: "easeInOut" }
-                                }}
-                                whileHover={{ scale: 1.1, rotate: 3 }}
-                            >
-                                <div className="badge-icon icon-blue"><FaUniversity /></div>
-                                <div className="badge-content">
-                                    <span className="badge-val">Top 1%</span>
-                                    <span className="badge-txt">Global University Admits</span>
-                                </div>
-                            </motion.div>
+                <div className="new-hero-content">
+                    <div className="hero-top">
+                        <div className="new-hero-title">
+                            <span className="hero-title-line1">Design your <span style={{ color: "#000" }}>international</span></span>
+                            <br />
+                            <span className="hero-title-line2">academic future today</span>
                         </div>
-
-                        <div className="col-lg-9 study-hero-main py-5">
-                            <motion.div
-                                initial={{ opacity: 0, scale: 0.9 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                transition={{ duration: 0.8 }}
-                            >
-                                <h1 className="hero-title-main fw-bold">
-                                    Design Your <span className="highlight-box text-shine">International</span><br className="d-none d-sm-block" />
-                                    Academic Future Today
-                                </h1>
-                                <p className="hero-subtitle-new mt-3">
-                                    Launch your career on the global stage. Urbancode offers strategic guidance for admissions into leading universities in the US, UK, Canada, and beyond with complete scholarship support.
-                                </p>
-
-                                <div className="trusted-students-row d-flex align-items-center justify-content-center mt-4">
-                                    <div className="student-avatars d-flex">
-                                        <img src="/images/study-abroad/st01.webp" alt="Indian student 1" className="mini-avatar" />
-                                        <img src="/images/study-abroad/st02.webp" alt="Indian student 2" className="mini-avatar ms-n2" />
-                                        <img src="/images/study-abroad/st03.webp" alt="Indian student 3" className="mini-avatar ms-n2" />
-                                    </div>
-                                    <div className="trusted-plus ms-3">+1k</div>
-                                    <span className="trusted-text ms-2">Joined by 1,000+ aspiring global leaders</span>
-                                </div>
-
-                                <div className="mt-4 d-flex flex-wrap justify-content-center gap-3">
-                                    <motion.button
-                                        onClick={() => document.getElementById('consultation').scrollIntoView({ behavior: 'smooth' })}
-                                        className="request-callback-btn"
-                                        whileHover={{ scale: 1.05 }}
-                                        whileTap={{ scale: 0.95 }}
-                                        transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                                    >
-                                        Start Your Application
-                                    </motion.button>
-                                    <motion.button
-                                        onClick={() => document.getElementById('english-proficiency').scrollIntoView({ behavior: 'smooth' })}
-                                        className="hero-proficiency-btn"
-                                        whileHover={{ scale: 1.05 }}
-                                        whileTap={{ scale: 0.95 }}
-                                        transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                                    >
-                                        🎓 English Proficiency
-                                    </motion.button>
-                                </div>
-
-                                <div className="stats-divider-line mt-5"></div>
-                            </motion.div>
-                        </div>
+                    <p className="new-hero-description">
+                        Launch your career on the global stage. Urbancode offers strategic guidance for admissions into leading universities in the US, UK, Canada, and beyond with complete scholarship support.
+                    </p>
+                    <div className="hero-buttons">
+                        <button onClick={() => document.getElementById('consultation').scrollIntoView({ behavior: 'smooth' })} className="hero-btn-primary">
+                            <span>Start Application</span>
+                            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M4.58331 10.9997H17.4166" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                <path d="M10.9999 4.58301L17.4166 10.9997L10.9999 17.4163" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                            </svg>
+                        </button>
+                        <button onClick={() => document.getElementById('english-proficiency').scrollIntoView({ behavior: 'smooth' })} className="hero-btn-secondary">
+                            <span>🎓 IELTS PTE Training</span>
+                            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M4.58331 10.9997H17.4166" stroke="url(#sa_gradient)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                <path d="M10.9999 4.58301L17.4166 10.9997L10.9999 17.4163" stroke="url(#sa_gradient)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                <defs>
+                                    <linearGradient id="sa_gradient" x1="4.58331" y1="10.9997" x2="17.4166" y2="10.9997" gradientUnits="userSpaceOnUse">
+                                        <stop stopColor="#00B56F" />
+                                        <stop offset="1" stopColor="#004F30" />
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                        </button>
                     </div>
+                </div>
+
+                <div className="hero-bottom pt-5">
+                    <HeroStats cards={heroStatCards} />
+                </div>
                 </div>
             </section>
 
@@ -268,16 +354,16 @@ const StudyAbroadPage = () => {
                         <p>Comprehensive support from planning to your first day on campus. We handle the complexity so you can focus on your future.</p>
 
                         <motion.div
-                            className="free-service-badge mt-4"
+                            className="premium-free-service-banner"
                             initial={{ opacity: 0, y: 10 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                         >
-                            <span className="badge-pill-modern">
-                                <FaCheckCircle className="me-2" />
-                                100% Free Service for Students*
-                                <span className="exception-text small ms-2">(Except Germany)</span>
-                            </span>
+                            <div className="pfsb-content">
+                                <span className="pfsb-icon"><FaAward /></span>
+                                <span className="pfsb-text">100% Free Service for Students*</span>
+                                <span className="pfsb-exception">(Except Germany)</span>
+                            </div>
                         </motion.div>
                     </div>
                     <div className="row g-4">
@@ -459,7 +545,7 @@ const StudyAbroadPage = () => {
   ))}
 </div>
 
-                   
+
                 </div>
             </section>
 
@@ -636,6 +722,65 @@ const StudyAbroadPage = () => {
                                 </div>
                             </div>
                         </motion.div>
+
+                        <div className="prof-batches mt-5">
+                            <h2 className="cohorts-title mb-4" style={{ fontSize: '24px' }}>Batches</h2>
+                            <div className="cohorts-list" style={{ padding: 0 }}>
+                                <div className="cohort-row-card">
+                                    <div className="cohort-name-col">
+                                        <div className="batch-dot"></div>
+                                        <span className="batch-name-text">Regular Classes</span>
+                                    </div>
+                                    <div className="cohort-info-col">
+                                        <span className="info-label">🕒 TIME</span>
+                                        <span className="info-value">11:00 AM IST</span>
+                                    </div>
+                                    <div className="cohort-info-col">
+                                        <span className="info-label">📅 BATCH TYPE</span>
+                                        <span className="info-value">Weekday (Mon-Fri)</span>
+                                    </div>
+                                    <div className="cohort-action-col">
+                                        <button className="btn btn-success fw-bold px-4 rounded-pill" onClick={() => handleEnquireClick(activeProficiency)}>Join Now</button>
+                                    </div>
+                                </div>
+
+                                <div className="cohort-row-card">
+                                    <div className="cohort-name-col">
+                                        <div className="batch-dot"></div>
+                                        <span className="batch-name-text">Fast Track</span>
+                                    </div>
+                                    <div className="cohort-info-col">
+                                        <span className="info-label">🕒 TIME</span>
+                                        <span className="info-value">02:00 PM IST</span>
+                                    </div>
+                                    <div className="cohort-info-col">
+                                        <span className="info-label">📅 BATCH TYPE</span>
+                                        <span className="info-value">Weekday (Mon-Fri)</span>
+                                    </div>
+                                    <div className="cohort-action-col">
+                                        <button className="btn btn-success fw-bold px-4 rounded-pill" onClick={() => handleEnquireClick(activeProficiency)}>Join Now</button>
+                                    </div>
+                                </div>
+
+                                <div className="cohort-row-card">
+                                    <div className="cohort-name-col">
+                                        <div className="batch-dot"></div>
+                                        <span className="batch-name-text">Weekend Classes</span>
+                                    </div>
+                                    <div className="cohort-info-col">
+                                        <span className="info-label">🕒 TIME</span>
+                                        <span className="info-value">11:00 AM IST</span>
+                                    </div>
+                                    <div className="cohort-info-col">
+                                        <span className="info-label">📅 BATCH TYPE</span>
+                                        <span className="info-value">Weekend (Sat-Sun)</span>
+                                    </div>
+                                    <div className="cohort-action-col">
+                                        <button className="btn btn-success fw-bold px-4 rounded-pill" onClick={() => handleEnquireClick(activeProficiency)}>Join Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
