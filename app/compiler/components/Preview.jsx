@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import toast from 'react-hot-toast';
-import { FaEye, FaExclamationTriangle, FaTrash } from 'react-icons/fa';
+import { FaEye, FaExclamationTriangle, FaTrash, FaCommentDots } from 'react-icons/fa';
 
 export default function Preview({ srcDoc }) {
     const [errors, setErrors] = useState([]);
@@ -13,7 +13,7 @@ export default function Preview({ srcDoc }) {
             } else if (event.data.type === "iframe-alert") {
                 toast(event.data.message, {
                     duration: 4000,
-                    icon: '💬',
+                    icon: <FaCommentDots color="#3b82f6" />,
                 });
             }
         };

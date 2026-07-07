@@ -1,5 +1,6 @@
 'use client';
 import React, { useState, useEffect, useCallback } from 'react';
+import { FaRedo, FaEye, FaStar, FaTrophy, FaRocket } from 'react-icons/fa';
 
 const EMOJIS = ['🐼','🦁','🐸','🦊','🐧','🦄','🐙','🦋','🐢','🦈','🌺','⭐'];
 
@@ -125,7 +126,7 @@ export default function MemoryMatchGame() {
           </button>
         ))}
         <button className="memory-reset-btn" onClick={() => resetGame()} id="memory-reset-btn">
-          🔄 Restart
+          <FaRedo className="me-2" /> Restart
         </button>
       </div>
 
@@ -140,7 +141,7 @@ export default function MemoryMatchGame() {
           <span className="memory-stat-label">Matched</span>
         </div>
         {peeking && (
-          <div className="memory-peek-badge">👀 Memorize!</div>
+          <div className="memory-peek-badge"><FaEye className="me-1" /> Memorize!</div>
         )}
       </div>
 
@@ -167,14 +168,14 @@ export default function MemoryMatchGame() {
       {/* Win Banner */}
       {won && (
         <div className="memory-win-banner">
-          <div className="memory-win-emoji">🎉</div>
+          <div className="memory-win-emoji"><FaStar color="gold" size={64} /></div>
           <h3>Amazing Memory!</h3>
           <p>You matched all pairs in <strong>{moves} moves</strong>!</p>
-          {bestMoves[levelIdx] === moves && <div className="memory-new-best">🏆 New Best Score!</div>}
+          {bestMoves[levelIdx] === moves && <div className="memory-new-best"><FaTrophy color="gold" className="me-1" /> New Best Score!</div>}
           <div className="memory-win-actions">
             {levelIdx < LEVELS.length - 1 && (
               <button className="memory-next-btn" onClick={() => resetGame(levelIdx + 1)} id="memory-next-level-btn">
-                Next Level 🚀
+                Next Level <FaRocket className="ms-1" />
               </button>
             )}
             <button className="memory-retry-btn" onClick={() => resetGame()} id="memory-play-again-btn">

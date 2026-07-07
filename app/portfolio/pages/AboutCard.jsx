@@ -1,4 +1,5 @@
 import React from "react";
+import { FaStar } from "react-icons/fa";
 import "./AboutCard.css";
 
 function AboutCard({ icon, iconBg, title, desc, index }) {
@@ -12,7 +13,7 @@ function AboutCard({ icon, iconBg, title, desc, index }) {
         {/* Hanging Tag */}
         <div className="about-card__hanging-tag">
           <div className="hanging-tag-string"></div>
-          <div className="hanging-tag-body">✨</div>
+          <div className="hanging-tag-body"><FaStar size={10} color="#FFD700" /></div>
         </div>
       </div>
 

@@ -384,8 +384,13 @@ section {
 
 /* Destinations Cards Premium Light Style */
 .destination-card {
-    background: #ffffff;
-    border-radius: 24px;
+background:
+linear-gradient(
+180deg,
+#ffffff 0%,
+#fcfffd 45%,
+#f5fff9 100%
+);    border-radius: 24px;
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
     transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
@@ -517,8 +522,13 @@ section {
 
 /* Redesigned Service Box */
 .service-box {
-    background: #ffffff;
-    padding: 35px 25px;
+background:
+linear-gradient(
+180deg,
+#ffffff 0%,
+#fcfffd 45%,
+#f5fff9 100%
+);    padding: 35px 25px;
     border-radius: 20px;
     text-align: left;
     transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
@@ -635,15 +645,33 @@ section {
 }
 
 /* Consultation Form */
-.consultation-section {
-    background-color: #fcfcfc;
+.consultation-section{
+    overflow: visible !important;
+    position: relative;
+    z-index: 5;
+    background:#fcfcfc;
 }
 
-.consultation-card {
-    background: #fff;
-    padding: 40px;
-    border-radius: 30px;
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
+.consultation-card{
+    overflow: visible !important;
+    position: relative;
+    z-index: 10;
+}
+
+.consultation-card *{
+    overflow: visible;
+}
+
+.form-control,
+.form-select,
+textarea{
+    position: relative;
+    z-index: 2;
+}
+
+.react-select__menu,
+.react-select__menu-portal{
+    z-index:99999 !important;
 }
 
 .consultation-card h3 {
@@ -690,13 +718,13 @@ section {
 }
 
 /* Testimonials & Success Stories Section */
-.success-stories-section {
-    background: linear-gradient(180deg, #ffffff 0%, #f4fbf8 60%, #eefbf5 100%);
-    position: relative;
-    overflow: hidden;
+.success-stories-section{
+    background:#fcfcfc;
+    position:relative;
+    overflow:hidden;
 }
 
-.success-stories-section::before {
+/* .success-stories-section::before {
     content: '';
     position: absolute;
     top: -10%;
@@ -706,9 +734,9 @@ section {
     background: radial-gradient(circle, rgba(0, 181, 111, 0.04) 0%, transparent 70%);
     border-radius: 50%;
     pointer-events: none;
-}
+} */
 
-.success-stories-section::after {
+/* .success-stories-section::after {
     content: '';
     position: absolute;
     bottom: -10%;
@@ -718,7 +746,7 @@ section {
     background: radial-gradient(circle, rgba(0, 181, 111, 0.05) 0%, transparent 70%);
     border-radius: 50%;
     pointer-events: none;
-}
+} */
 
 .stories-badge-pill {
     display: inline-block;
@@ -943,6 +971,8 @@ section {
     }
     .prof-title {
         font-size: 1.4rem;
+        line-height: 1.5;
+        padding-bottom: 10px;
     }
 }
 
@@ -1012,13 +1042,18 @@ section {
 }
 
 .proficiency-content-card {
-    background: #fff;
-    padding: 50px;
+background:
+linear-gradient(
+180deg,
+#ffffff 0%,
+#fcfffd 45%,
+#f5fff9 100%
+);    padding: 50px;
     border-radius: 30px;
     box-shadow: 0 15px 45px rgba(0, 0, 0, 0.06);
     border: 1px solid rgba(0, 181, 111, 0.08);
     position: relative;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .proficiency-content-card::after {
@@ -1032,11 +1067,13 @@ section {
     border-radius: 50%;
 }
 
-.prof-title {
-    font-size: 1.875rem;
-    font-weight: 600;
-    color: #1a202c;
-    margin-bottom: 20px;
+.prof-title{
+    font-size:1.9rem;
+    line-height:1.6;
+    padding-bottom:12px;
+    overflow:visible;
+    height:auto;
+    margin-bottom:18px;
 }
 
 .prof-desc {
@@ -1593,9 +1630,42 @@ height: 140px;
 }
 
 @media (max-width: 768px) {
+    /* Switch stats banner to 2×2 grid so numbers aren't squeezed */
+    .mbbs-stats-banner {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        border-radius: 16px;
+        gap: 0;
+    }
+
+    /* Reset flex border-right; add grid dividers instead */
+    .mbbs-stat-item {
+        padding: 24px 16px;
+        border-right: none;
+    }
+    /* Right border on left-column items (odd children) */
+    .mbbs-stat-item:nth-child(odd) {
+        border-right: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    /* Bottom border on top-row items (1st and 2nd) */
+    .mbbs-stat-item:nth-child(1),
+    .mbbs-stat-item:nth-child(2) {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    /* Remove default last-child rule since grid resets it */
+    .mbbs-stat-item:last-child { border-right: none; }
+
+    /* Bigger, bolder numbers in 2×2 grid */
+    .mbbs-stat-val {
+        font-size: 30px;
+    }
+    .mbbs-stat-label {
+        font-size: 12px;
+        letter-spacing: 0.5px;
+    }
+
+    /* Other mobile adjustments */
     .mbbs-countries-grid { grid-template-columns: repeat(2, 1fr); }
-    .mbbs-stat-val { font-size: 22px; }
-    .mbbs-stat-item { padding: 20px 10px; }
     .mbbs-process-strip { padding: 28px 20px; }
     .mbbs-process-step:nth-child(1),
     .mbbs-process-step:nth-child(2),
@@ -1613,7 +1683,7 @@ height: 140px;
 
 /* Dream Country Benefits Showcase Styles */
 .showcase-section {
-    background-color: #f8fafc !important;
+    background-color: #fcfcfc !important;
     padding: 40px 0 !important;
 }
 
@@ -2213,4 +2283,338 @@ height: 140px;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+/* ============================================================
+   VIEW-ALL MOBILE CARD PATTERN
+   Applies to: Services section, Destinations section.
+   Desktop/tablet: unaffected, all cards show in the normal grid.
+   Mobile (<=768px): only first 3 items show; items with
+   .extra-mobile-card are hidden until the parent row gets
+   .show-all-mobile (toggled by the "View All" button state).
+   ============================================================ */
+
+.view-all-mobile-wrap {
+    display: none;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.view-all-mobile-btn {
+    background: linear-gradient(135deg, #00B56F 0%, #008f58 100%);
+    color: #fff;
+    border: none;
+    padding: 12px 32px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(0, 181, 111, 0.25);
+    transition: all 0.3s ease;
+}
+
+.view-all-mobile-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(0, 181, 111, 0.35);
+}
+
+@media (max-width: 768px) {
+    .view-all-mobile-wrap {
+        display: flex;
+    }
+
+    .extra-mobile-card {
+        display: none;
+    }
+
+    .row.show-all-mobile .extra-mobile-card {
+        display: block;
+    }
+}
+
+/* ============================================================
+   MBBS SECTION — MOBILE ONE-AT-A-TIME SWIPEABLE SLIDER
+   Desktop/tablet: .mbbs-countries-grid shows as before.
+   Mobile: grid is hidden, .mbbs-mobile-slider (hidden by
+   default) becomes visible instead.
+   ============================================================ */
+
+.mbbs-mobile-slider {
+    display: none;
+}
+
+.mbbs-mobile-slider-viewport {
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+    overflow: hidden;
+    touch-action: pan-y;
+}
+
+.mbbs-mobile-slider-track {
+    display: flex;
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.mbbs-mobile-slide {
+    flex: 0 0 100%;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 4px;
+}
+
+.mbbs-mobile-slide .mbbs-country-card {
+    margin: 0;
+}
+
+.mbbs-mobile-slider-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 18px;
+}
+
+.mbbs-slider-arrow {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+    color: #047857;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.mbbs-slider-arrow:hover:not(:disabled) {
+    background: #00B56F;
+    color: #fff;
+}
+
+.mbbs-slider-arrow:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+.mbbs-slider-dots {
+    display: flex;
+    gap: 8px;
+}
+
+.mbbs-slider-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #d1fae5;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.mbbs-slider-dot.active {
+    background: #059669;
+    width: 20px;
+    border-radius: 4px;
+}
+
+@media (max-width: 768px) {
+    .mbbs-countries-grid {
+        display: none;
+    }
+
+    .mbbs-mobile-slider {
+        display: block;
+        margin-bottom: 20px;
+    }
+}
+
+/* ============================================================
+   ENGLISH PROFICIENCY — UNIFIED CONTAINER
+   Wraps the certification tabs+content AND the batches list in
+   one shared card so they read as a single section.
+   ============================================================ */
+
+.proficiency-unified-card {
+    background: #fff;
+    border-radius: 30px;
+    padding: 40px;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(0, 181, 111, 0.08);
+}
+
+/* The inner cert card no longer needs its own shadow/border —
+   it now lives inside the unified container */
+.proficiency-unified-card .proficiency-content-card {
+    background: transparent;
+    padding: 0;
+    box-shadow: none;
+    border: none;
+    margin-top: 30px;
+}
+
+.proficiency-unified-card .proficiency-content-card::after {
+    display: none;
+}
+
+.prof-batches-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0, 181, 111, 0.2), transparent);
+    margin: 40px 0 0 0;
+}
+
+.proficiency-unified-card .prof-batches {
+    margin-top: 30px !important;
+}
+
+@media (max-width: 768px) {
+    .proficiency-unified-card {
+        padding: 20px;
+        border-radius: 20px;
+    }
+}
+/* ===========================
+   HERO MOBILE FIX
+===========================*/
+
+.hero-tags-mobile-container {
+    display: none;
+}
+
+.hero-cards-desktop-container {
+    display: block;
+}
+
+/* Tag Styles */
+.hero-tag {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    flex-shrink: 0;
+}
+
+.hero-tag-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-tag-text {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.hero-tag-val {
+    color: #fff;
+    font-weight: 700;
+    font-size: 13px;
+}
+
+.hero-tag-label {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 12px;
+}
+
+@media (max-width: 1024px) {
+    .hero-cards-desktop-container {
+        display: none !important;
+    }
+
+    .hero-tags-mobile-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+        padding: 0 20px;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width:768px){
+
+.hero-cards-wrapper{
+    padding:0;
+    width:100%;
+}
+
+.hero-cards-carousel{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+}
+
+.hero-cards-arrow{
+    width:38px;
+    height:38px;
+    flex-shrink:0;
+}
+
+.hero-cards-viewport{
+    overflow:hidden;
+}
+
+}
+@media(max-width:768px){
+
+.service-box,
+.destination-card,
+.test-card,
+.mbbs-country-card{
+    height:100%;
+    display:flex;
+    flex-direction:column;
+}
+
+.destination-info,
+.mbbs-card-info{
+    display:flex;
+    flex-direction:column;
+    flex:1;
+}
+
+.dest-btn-group,
+.mbbs-dest-btn-group{
+    margin-top:auto;
+}
+
+.destination-img-box img{
+    object-fit:cover;
+}
+
+}
+/* ===============================
+   Mobile Auto Scroll Testimonials
+================================ */
+
+@media (max-width:768px){
+
+.success-stories-slider{
+    display:flex;
+    gap:18px;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    scroll-behavior:smooth;
+
+    -ms-overflow-style:none;
+    scrollbar-width:none;
+}
+
+.success-stories-slider::-webkit-scrollbar{
+    display:none;
+}
+
+.success-stories-slider>*{
+    min-width:88%;
+    scroll-snap-align:center;
+}
+
 }

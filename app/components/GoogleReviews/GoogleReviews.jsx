@@ -435,25 +435,31 @@ const GoogleReviews = () => {
             </h2>
 
             {/* Branch Filter + Write Review */}
-            <div className="gr-branch-filter-bar">
-                <div className="gr-branch-tabs">
-                    {branches.map(b => (
-                        <button
-                            key={b}
-                            className={`gr-branch-tab ${activeBranch === b ? 'active' : ''}`}
-                            onClick={() => setActiveBranch(b)}
-                        >
-                            {b}
-                        </button>
-                    ))}
-                </div>
-                <button
-                    onClick={() => setIsWriteReviewModalOpen(true)}
-                    className="gr-write-review-btn"
-                >
-                    Write a Review
-                </button>
-            </div>
+      <div className="gr-branch-filter-bar">
+    <div className="gr-branch-tabs">
+
+        {branches.map(branch => (
+            <button
+                key={branch}
+                className={`gr-branch-tab ${
+                    activeBranch === branch ? "active" : ""
+                }`}
+                onClick={() => setActiveBranch(branch)}
+            >
+                {branch}
+            </button>
+        ))}
+
+        <button
+            type="button"
+            className="gr-write-review-btn"
+            onClick={() => setIsWriteReviewModalOpen(true)}
+        >
+             Write a Review
+        </button>
+
+    </div>
+</div>
 
             <div className="gr-main-content">
                 <div

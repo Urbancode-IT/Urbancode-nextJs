@@ -1,5 +1,6 @@
 'use client';
 import React, { useState, useEffect } from 'react';
+import { FaBrain, FaBullseye, FaCheck, FaTimes, FaRedo, FaCheckCircle, FaTimesCircle, FaArrowRight, FaHandPointDown, FaTrophy, FaStar, FaDumbbell } from 'react-icons/fa';
 
 const SHAPES = [
   {
@@ -150,10 +151,10 @@ export default function VisualRotationGame() {
   };
 
   const getIQLabel = (s) => {
-    if (s >= 7) return { label: 'Genius! 🏆',          color: '#10b981' };
-    if (s >= 5) return { label: 'Sharp Mind! 🌟',       color: '#6366f1' };
-    if (s >= 3) return { label: 'Good Try! 💪',         color: '#f59e0b' };
-    return         { label: 'Keep Practicing! 🎯',      color: '#f43f5e' };
+    if (s >= 7) return { label: <><FaTrophy color="gold" className="ms-1" /> Genius!</>,          color: '#10b981' };
+    if (s >= 5) return { label: <><FaStar color="gold" className="ms-1" /> Sharp Mind!</>,       color: '#6366f1' };
+    if (s >= 3) return { label: <><FaDumbbell color="orange" className="ms-1" /> Good Try!</>,         color: '#f59e0b' };
+    return         { label: <><FaBullseye color="red" className="ms-1" /> Keep Practicing!</>,      color: '#f43f5e' };
   };
 
   // ── Finished Screen ────────────────────────────────────────
@@ -161,7 +162,7 @@ export default function VisualRotationGame() {
     const iq = getIQLabel(score);
     return (
       <div style={{ textAlign: 'center', padding: '40px 20px', maxWidth: 480, margin: '0 auto' }}>
-        <div style={{ fontSize: 72, marginBottom: 12 }}>🧠</div>
+        <div style={{ marginBottom: 12 }}><FaBrain size={72} color="#8b5cf6" /></div>
         <div style={{ fontSize: 28, fontWeight: 900, color: iq.color, marginBottom: 8 }}>
           {iq.label}
         </div>
@@ -189,7 +190,7 @@ export default function VisualRotationGame() {
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               fontSize: 16,
             }}>
-              {a.correct ? '✓' : '✗'}
+              {a.correct ? <FaCheck /> : <FaTimes />}
             </div>
           ))}
         </div>
@@ -200,7 +201,7 @@ export default function VisualRotationGame() {
           color: '#fff', fontWeight: 800, fontSize: 16, cursor: 'pointer',
           boxShadow: '0 8px 24px rgba(99,102,241,0.3)',
         }}>
-          🔄 Play Again
+          <FaRedo className="me-2" /> Play Again
         </button>
       </div>
     );
@@ -224,7 +225,7 @@ export default function VisualRotationGame() {
           {current + 1} / {TOTAL_QUESTIONS}
         </span>
         <span style={{ fontSize: 13, fontWeight: 700, color: '#10b981', whiteSpace: 'nowrap' }}>
-          ✅ {score}
+          <FaCheckCircle className="me-1" /> {score}
         </span>
       </div>
 
@@ -235,7 +236,7 @@ export default function VisualRotationGame() {
         border: '1.5px solid #c7d2fe', textAlign: 'center',
       }}>
         <div style={{ fontSize: 14, fontWeight: 700, color: '#6366f1', marginBottom: 4 }}>
-          🎯 Question {current + 1}
+          <FaBullseye className="me-1" /> Question {current + 1}
         </div>
         <div style={{ fontSize: 17, fontWeight: 800, color: '#1e1b4b', marginBottom: 16 }}>
           Which option shows the shape rotated correctly?
@@ -256,7 +257,7 @@ export default function VisualRotationGame() {
             </div>
           </div>
 
-          <div style={{ fontSize: 28 }}>➡️</div>
+          <div style={{ fontSize: 28 }}><FaArrowRight color="#64748b" /></div>
 
           <div style={{ textAlign: 'center' }}>
             <div
@@ -332,8 +333,8 @@ export default function VisualRotationGame() {
               <div style={{ fontSize: 12, fontWeight: 700, color: '#94a3b8' }}>
                 {rotation}° rotation
               </div>
-              {showResult && isCorrect && <div style={{ fontSize: 18 }}>✅</div>}
-              {showResult && isSelected && !isCorrect && <div style={{ fontSize: 18 }}>❌</div>}
+              {showResult && isCorrect && <div style={{ fontSize: 18 }}><FaCheckCircle color="#10b981" /></div>}
+              {showResult && isSelected && !isCorrect && <div style={{ fontSize: 18 }}><FaTimesCircle color="#f43f5e" /></div>}
             </button>
           );
         })}

@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, MapPin, ArrowRight } from 'lucide-react';
+import { X, MapPin, ArrowRight, Sparkles } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import './BranchAnnouncement.css';
 
@@ -186,7 +186,7 @@ const BranchAnnouncement = () => {
               {/* Left ribbon half */}
               <div className="ribbon-half ribbon-left">
                 <div className="ribbon-band">
-                  <span className="ribbon-text">✦ GRAND OPENING ✦</span>
+                  <span className="ribbon-text d-flex align-items-center gap-1"><Sparkles size={14} /> GRAND OPENING <Sparkles size={14} /></span>
                 </div>
                 <div className="ribbon-fold" />
               </div>
@@ -194,7 +194,7 @@ const BranchAnnouncement = () => {
               {/* Right ribbon half */}
               <div className="ribbon-half ribbon-right">
                 <div className="ribbon-band">
-                  <span className="ribbon-text">✦ GRAND OPENING ✦</span>
+                  <span className="ribbon-text d-flex align-items-center gap-1"><Sparkles size={14} /> GRAND OPENING <Sparkles size={14} /></span>
                 </div>
                 <div className="ribbon-fold" />
               </div>

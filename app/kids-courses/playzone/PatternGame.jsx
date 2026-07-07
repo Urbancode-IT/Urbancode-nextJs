@@ -1,5 +1,6 @@
 'use client';
 import React, { useState, useCallback } from 'react';
+import { FaFire, FaUserSecret, FaCheckCircle, FaTimesCircle } from 'react-icons/fa';
 
 /* ─── Pattern shapes: emoji-based sequences ─── */
 const SHAPE_SETS = [
@@ -144,7 +145,7 @@ export default function PatternGame() {
         </div>
         {streak >= 2 && (
           <div className="pattern-stat streak">
-            <span>🔥{streak}</span>
+            <span><FaFire color="orange" className="me-1"/>{streak}</span>
             <label>Streak</label>
           </div>
         )}
@@ -155,7 +156,7 @@ export default function PatternGame() {
       </div>
 
       <p className="pattern-instruction">
-        🕵️ What comes in the <strong>blank</strong> tiles? Pick the correct shapes in order!
+        <FaUserSecret className="me-2" size={20} /> What comes in the <strong>blank</strong> tiles? Pick the correct shapes in order!
       </p>
 
       {/* Sequence Display */}
@@ -174,7 +175,7 @@ export default function PatternGame() {
       {/* Feedback */}
       {feedback && (
         <div className={`pattern-feedback ${feedback}`}>
-          {feedback === 'correct' ? '✅ Correct! Well done!' : `❌ The answer was: ${pattern.answers.join(' ')}`}
+          {feedback === 'correct' ? <><FaCheckCircle className="me-1"/> Correct! Well done!</> : <><FaTimesCircle className="me-1"/> The answer was: {pattern.answers}</>}
         </div>
       )}
 

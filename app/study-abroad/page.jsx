@@ -5,10 +5,11 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { FaStar, FaQuoteLeft, FaCheckCircle, FaAward, FaUniversity, FaSearch, FaStethoscope, FaGlobeAmericas, FaUserMd, FaPlaneDeparture, FaClipboardCheck, FaHospital, FaArrowRight } from 'react-icons/fa';
+import { FaStar, FaQuoteLeft, FaCheckCircle, FaAward, FaUniversity, FaSearch, FaStethoscope, FaGlobeAmericas, FaUserMd, FaPlaneDeparture, FaClipboardCheck, FaHospital, FaArrowRight, FaGraduationCap, FaRegClock, FaCalendarAlt, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { Send } from "lucide-react";
 import { submitEnquiryForm } from "@/lib/api/api";
 import EnquiryFormModal from "@/app/components/common/EnquiryFormModal.jsx";
+import TestimonialCarousel from '../components/Home/TestimonialCarousel';
 import { destinations, services, testimonials, showcaseData } from './data';
 import '../components/Home/NewHeroSection.css';
 import '../components/CourseLayout/ProgramCohorts.css';
@@ -33,15 +34,15 @@ const getCountryFlag = (uni) => {
 // Fixed-size hero stat cards — same 220px card at every screen size (desktop, tablet, mobile).
 // The HeroStatsCarousel below handles fitting them via arrows, not by resizing the cards.
 const heroStatCards = [
-    { icon: <FaUniversity size={24} color="#60a5fa" className="mb-2" />, val: "Top 1%", label: "Global Admits" },
-    { icon: <FaCheckCircle size={24} color="#34d399" className="mb-2" />, val: "98%", label: "Visa Success" },
-    { icon: <FaAward size={24} color="#fbbf24" className="mb-2" />, val: "Scholarships", label: "Up to 100% Funding" },
-    { icon: <FaGlobeAmericas size={24} color="#a78bfa" className="mb-2" />, val: "500+", label: "Universities" },
-    { icon: <FaStar size={24} color="#f472b6" className="mb-2" />, val: "10+ Years", label: "Expert Guidance" },
+    { icon: <FaUniversity size={24} color="#60a5fa" className="mb-2" />, val: "Top 1%", label: "Global Admits", gradient: "linear-gradient(130.48deg, #02284F 2.78%, #036AD5 122.15%)" },
+    { icon: <FaCheckCircle size={24} color="#34d399" className="mb-2" />, val: "98%", label: "Visa Success", gradient: "linear-gradient(129.99deg, #0f5132 -3.08%, #20c997 119.93%)" },
+    { icon: <FaAward size={24} color="#fbbf24" className="mb-2" />, val: "Scholarships", label: "Up to 100% Funding", gradient: "linear-gradient(129.31deg, #9F6E00 -2.98%, #EAB94B 118.56%)" },
+    { icon: <FaGlobeAmericas size={24} color="#a78bfa" className="mb-2" />, val: "500+", label: "Universities", gradient: "linear-gradient(129.99deg, #7A1FCD -3.08%, #CA90FF 119.93%)" },
+    { icon: <FaStar size={24} color="#f472b6" className="mb-2" />, val: "10+ Years", label: "Expert Guidance", gradient: "linear-gradient(130.3deg, #A22C27 -5.39%, #FF7C77 115.93%)" },
 ];
 
 const renderHeroCard = (card, key, compact = false) => (
-    <div className={`hero-card ${compact ? 'hero-card-compact' : ''}`} key={key}>
+    <div className={`hero-card ${compact ? 'hero-card-compact' : ''}`} key={key} style={{ background: card.gradient || 'linear-gradient(135deg, #1f2937, #111827)' }}>
         <div className="hero-card-glass">
             {card.icon}
             <h3 className="hero-card-title text-center">{card.val}</h3>
@@ -50,85 +51,124 @@ const renderHeroCard = (card, key, compact = false) => (
     </div>
 );
 
-// Mobile version: one compact card visible at a time, auto-advances on a timer,
-// with dot indicators — a proper slide-by-slide carousel, not a continuous scroll strip.
-const HeroStatsMarquee = ({ cards }) => {
-    const [index, setIndex] = useState(0);
-
-    useEffect(() => {
-        const timer = setInterval(() => {
-            setIndex((prev) => (prev + 1) % cards.length);
-        }, 2200);
-        return () => clearInterval(timer);
-    }, [cards.length]);
-
-    return (
-        <div className="hero-cards-wrapper hero-cards-wrapper-single">
-            <div className="hero-cards-viewport-single">
-                <div
-                    className="hero-cards-track-single"
-                    style={{ transform: `translateX(-${index * 100}%)` }}
-                >
-                    {cards.map((card, i) => (
-                        <div className="hero-card-single-slide" key={`slide-${i}`}>
-                            {renderHeroCard(card, `mcard-${i}`, true)}
-                        </div>
-                    ))}
-                </div>
-            </div>
+const renderHeroTag = (card, key) => (
+    <div className="hero-tag" key={key} style={{ background: card.gradient || 'linear-gradient(135deg, #1f2937, #111827)' }}>
+        <div className="hero-tag-icon">
+            {/* Clone icon to change size/margin for tag layout */}
+            {React.cloneElement(card.icon, { size: 16, className: "" })}
         </div>
-    );
-};
+        <div className="hero-tag-text">
+            <span className="hero-tag-val">{card.val}</span>
+            <span className="hero-tag-label">{card.label}</span>
+        </div>
+    </div>
+);
 
-// Desktop/tablet version: fixed 220px cards, manual arrow-controlled carousel.
-// Cards keep a fixed width and stay in a single row; when they don't all fit,
-// left/right arrow buttons step through them one at a time (with a peek of the
-// next/previous card), instead of wrapping to a second row.
-const HeroStatsCarousel = ({ cards }) => {
+/* ─────────────────────────────────────────────────────────────
+   HeroStats — responsive card-count carousel.
+
+   FIX (vs. earlier version): the ResizeObserver now watches
+   `wrapperRef` (.hero-cards-wrapper), a container whose width is
+   controlled purely by CSS/layout and is NEVER set inline by this
+   component. The old version watched `viewportRef`, but this
+   component also sets `viewportRef`'s inline width based on the
+   very same calculation — so every recalculation resized the
+   thing it was measuring, causing the count to drift instead of
+   cleanly reporting 5 → 4 → 3 → 2 cards as the screen shrinks.
+
+   Arrow space (2 × 42px button + 10px gap each) is subtracted
+   from the available width BEFORE dividing by card step, so the
+   computed count is guaranteed to actually fit next to the arrows.
+   ───────────────────────────────────────────────────────────── */
+/* ─────────────────────────────────────────────────────────────
+   HeroStats — unified responsive carousel.
+
+   The ResizeObserver measures the wrapper width and computes how
+   many 220px cards fit. On mobile this naturally yields count=1,
+   viewportWidth=220px, step=236px — one compact card at a time
+   with arrows on each side. No special mobile path needed.
+
+   Touch swipe is wired up on the viewport for mobile.
+   ───────────────────────────────────────────────────────────── */
+const HeroStats = ({ cards }) => {
+    const wrapperRef = useRef(null);
     const viewportRef = useRef(null);
     const [index, setIndex] = useState(0);
     const [maxIndex, setMaxIndex] = useState(0);
     const [needsArrows, setNeedsArrows] = useState(false);
+    const [visibleCount, setVisibleCount] = useState(cards.length);
+
+    // Touch / swipe refs
+    const touchStartX = useRef(0);
+    const touchDeltaX = useRef(0);
 
     const CARD_WIDTH = 220;
     const GAP = 16;
+    const ARROW_WIDTH = 42;
+    const ARROW_GAP = 10;
     const step = CARD_WIDTH + GAP;
 
     useEffect(() => {
         const recalc = () => {
-            if (!viewportRef.current) return;
-            const availableWidth = viewportRef.current.offsetWidth;
+            if (!wrapperRef.current) return;
+
+            const cs = window.getComputedStyle(wrapperRef.current);
+            const paddingLeft = parseFloat(cs.paddingLeft) || 0;
+            const paddingRight = parseFloat(cs.paddingRight) || 0;
+            const contentWidth = wrapperRef.current.clientWidth - paddingLeft - paddingRight;
+
             const totalWidth = cards.length * CARD_WIDTH + (cards.length - 1) * GAP;
 
-            if (totalWidth <= availableWidth) {
+            // All cards fit — no arrows needed
+            if (totalWidth <= contentWidth) {
                 setNeedsArrows(false);
                 setMaxIndex(0);
                 setIndex(0);
-            } else {
-                const visibleCount = Math.max(1, Math.floor(availableWidth / step));
-                const newMaxIndex = Math.max(0, cards.length - visibleCount);
-                setNeedsArrows(true);
-                setMaxIndex(newMaxIndex);
-                setIndex((prev) => Math.min(prev, newMaxIndex));
+                setVisibleCount(cards.length);
+                return;
             }
+
+            // Arrows needed — reserve their space, count whole cards in what remains
+            const arrowsSpace = (ARROW_WIDTH + ARROW_GAP) * 2;
+            const availableForCards = contentWidth - arrowsSpace;
+            const count = Math.max(1, Math.floor((availableForCards + GAP) / step));
+            const newMaxIndex = Math.max(0, cards.length - count);
+            setNeedsArrows(true);
+            setVisibleCount(count);
+            setMaxIndex(newMaxIndex);
+            setIndex((prev) => Math.min(prev, newMaxIndex));
         };
 
         recalc();
         const resizeObserver = new ResizeObserver(recalc);
-        if (viewportRef.current) resizeObserver.observe(viewportRef.current);
+        if (wrapperRef.current) resizeObserver.observe(wrapperRef.current);
         window.addEventListener('resize', recalc);
 
         return () => {
             resizeObserver.disconnect();
             window.removeEventListener('resize', recalc);
         };
-    }, [cards, step]);
+    }, [cards]);
 
     const goPrev = () => setIndex((prev) => Math.max(0, prev - 1));
     const goNext = () => setIndex((prev) => Math.min(maxIndex, prev + 1));
 
+    // Touch swipe handlers
+    const handleTouchStart = (e) => { touchStartX.current = e.touches[0].clientX; touchDeltaX.current = 0; };
+    const handleTouchMove  = (e) => { touchDeltaX.current = e.touches[0].clientX - touchStartX.current; };
+    const handleTouchEnd   = () => {
+        if (touchDeltaX.current > 40)  goPrev();
+        else if (touchDeltaX.current < -40) goNext();
+        touchDeltaX.current = 0;
+    };
+
+    // JS-sets an exact pixel width on the viewport so only whole cards show
+    const viewportWidth = needsArrows
+        ? visibleCount * CARD_WIDTH + (visibleCount - 1) * GAP
+        : undefined;
+
     return (
-        <div className="hero-cards-wrapper">
+        <div className="hero-cards-wrapper" ref={wrapperRef}>
             <div className="hero-cards-carousel">
                 {needsArrows && (
                     <button
@@ -142,7 +182,14 @@ const HeroStatsCarousel = ({ cards }) => {
                     </button>
                 )}
 
-                <div className="hero-cards-viewport" ref={viewportRef}>
+                <div
+                    className="hero-cards-viewport"
+                    ref={viewportRef}
+                    style={viewportWidth ? { width: viewportWidth, flexShrink: 0, overflow: 'hidden' } : { overflow: 'hidden', width: '100%' }}
+                    onTouchStart={handleTouchStart}
+                    onTouchMove={handleTouchMove}
+                    onTouchEnd={handleTouchEnd}
+                >
                     <div
                         className={`hero-cards-track ${needsArrows ? '' : 'centered'}`}
                         style={needsArrows ? { transform: `translateX(-${index * step}px)` } : undefined}
@@ -167,21 +214,6 @@ const HeroStatsCarousel = ({ cards }) => {
     );
 };
 
-// Top-level switch: mobile gets the compact auto-scroll marquee,
-// desktop/tablet get the fixed-size arrow carousel.
-const HeroStats = ({ cards }) => {
-    const [isMobile, setIsMobile] = useState(false);
-
-    useEffect(() => {
-        const checkViewport = () => setIsMobile(window.innerWidth <= 767);
-        checkViewport();
-        window.addEventListener('resize', checkViewport);
-        return () => window.removeEventListener('resize', checkViewport);
-    }, []);
-
-    return isMobile ? <HeroStatsMarquee cards={cards} /> : <HeroStatsCarousel cards={cards} />;
-};
-
 const StudyAbroadPage = () => {
     const router = useRouter();
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -200,6 +232,16 @@ const StudyAbroadPage = () => {
 
     const [activeProficiency, setActiveProficiency] = useState("IELTS");
     const [activeShowcase, setActiveShowcase] = useState("Australia");
+
+    // Mobile "view all" toggles — each card section shows 3 cards on mobile until expanded
+    const [showAllServices, setShowAllServices] = useState(false);
+    const [showAllDestinations, setShowAllDestinations] = useState(false);
+
+    // MBBS mobile slider state
+    const [mbbsSlideIndex, setMbbsSlideIndex] = useState(0);
+    const [mbbsShowAll, setMbbsShowAll] = useState(false);
+    const mbbsTouchStartX = useRef(0);
+    const mbbsTouchDeltaX = useRef(0);
 
     const proficiencyData = {
         IELTS: {
@@ -298,6 +340,63 @@ const StudyAbroadPage = () => {
         "12th Standard", "Undergraduate", "Postgraduate", "PhD"
     ];
 
+    const mbbsCountries = [
+        { code: "ro", country: "Romania",    fee: "From ~₹25L", duration: "6 Years", tag: "EU Degree"       },
+        { code: "ru", country: "Russia",     fee: "From ~₹20L", duration: "6 Years", tag: "NMC Approved"    },
+        { code: "ua", country: "Ukraine",    fee: "From ~₹18L", duration: "6 Years", tag: "Budget Friendly" },
+        { code: "am", country: "Armenia",    fee: "From ~₹22L", duration: "6 Years", tag: "Safe Campus"     },
+        { code: "ge", country: "Georgia",    fee: "From ~₹24L", duration: "6 Years", tag: "WHO Listed"      },
+        { code: "kg", country: "Kyrgyzstan", fee: "From ~₹16L", duration: "6 Years", tag: "Most Affordable" },
+    ];
+
+    const mbbsVisibleCount = mbbsShowAll ? mbbsCountries.length : Math.min(3, mbbsCountries.length);
+    const mbbsMaxIndex = Math.max(0, mbbsVisibleCount - 1);
+
+    const mbbsGoPrev = () => setMbbsSlideIndex((prev) => Math.max(0, prev - 1));
+    const mbbsGoNext = () => setMbbsSlideIndex((prev) => Math.min(mbbsMaxIndex, prev + 1));
+
+    const handleMbbsTouchStart = (e) => {
+        mbbsTouchStartX.current = e.touches[0].clientX;
+        mbbsTouchDeltaX.current = 0;
+    };
+    const handleMbbsTouchMove = (e) => {
+        mbbsTouchDeltaX.current = e.touches[0].clientX - mbbsTouchStartX.current;
+    };
+    const handleMbbsTouchEnd = () => {
+        const SWIPE_THRESHOLD = 40;
+        if (mbbsTouchDeltaX.current > SWIPE_THRESHOLD) {
+            mbbsGoPrev();
+        } else if (mbbsTouchDeltaX.current < -SWIPE_THRESHOLD) {
+            mbbsGoNext();
+        }
+        mbbsTouchDeltaX.current = 0;
+    };
+
+    const renderMbbsCard = (c, i) => (
+        <div className="mbbs-country-card" key={i}>
+            <div className="mbbs-card-img-box">
+                <img
+                    src={`https://flagcdn.com/w160/${c.code}.png`}
+                    alt={`${c.country} flag`}
+                    className="mbbs-card-flag-img"
+                />
+            </div>
+            <div className="mbbs-card-info">
+                <h3 className="mbbs-card-country-name">{c.country}</h3>
+                <span className="mbbs-card-uni-count">
+                    <FaStethoscope className="me-2" />{c.duration} · MBBS
+                </span>
+                <p className="mbbs-card-fee-text">{c.fee} total · {c.tag}</p>
+                <div className="mbbs-dest-btn-group">
+                    <button className="dest-btn dest-btn-primary"
+                        onClick={() => handleEnquireClick(`MBBS in ${c.country}`)}>
+                        Enquire Now
+                    </button>
+                </div>
+            </div>
+        </div>
+    );
+
     return (
         <div className="study-abroad-container">
 
@@ -325,7 +424,7 @@ const StudyAbroadPage = () => {
                             </svg>
                         </button>
                         <button onClick={() => document.getElementById('english-proficiency').scrollIntoView({ behavior: 'smooth' })} className="hero-btn-secondary">
-                            <span>🎓 IELTS PTE Training</span>
+                            <span className="d-flex align-items-center"><FaGraduationCap className="me-2" size={18} /> IELTS PTE Training</span>
                             <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M4.58331 10.9997H17.4166" stroke="url(#sa_gradient)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                                 <path d="M10.9999 4.58301L17.4166 10.9997L10.9999 17.4163" stroke="url(#sa_gradient)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -341,7 +440,12 @@ const StudyAbroadPage = () => {
                 </div>
 
                 <div className="hero-bottom pt-5">
-                    <HeroStats cards={heroStatCards} />
+                    <div className="hero-tags-mobile-container">
+                        {heroStatCards.map((card, i) => renderHeroTag(card, `tag-${i}`))}
+                    </div>
+                    <div className="hero-cards-desktop-container">
+                        <HeroStats cards={heroStatCards} />
+                    </div>
                 </div>
                 </div>
             </section>
@@ -366,9 +470,12 @@ const StudyAbroadPage = () => {
                             </div>
                         </motion.div>
                     </div>
-                    <div className="row g-4">
-                        {services.map((service, index) => (
-                            <div className="col-lg-3 col-md-6" key={index}>
+<div
+ className={`row g-4 ${
+    showAllServices ? "show-all-mobile" : ""
+ }`}
+>                        {services.map((service, index) => (
+                            <div className={`col-lg-3 col-md-6 view-all-item ${index >= 3 ? 'extra-mobile-card' : ''}`} key={index}>
                                 <motion.div
                                     className="service-box"
                                     whileHover={{ y: -5 }}
@@ -380,6 +487,17 @@ const StudyAbroadPage = () => {
                             </div>
                         ))}
                     </div>
+                    {services.length > 3 && (
+                        <div className="view-all-mobile-wrap">
+                            <button
+                                type="button"
+                                className="view-all-mobile-btn"
+                                onClick={() => setShowAllServices(v => !v)}
+                            >
+                                {showAllServices ? 'View Less' : `View All ${services.length}`}
+                            </button>
+                        </div>
+                    )}
                 </div>
             </section>
 
@@ -390,9 +508,9 @@ const StudyAbroadPage = () => {
                         <h2 className="section-main-title text-shine">Top Study Destinations</h2>
                         <p>Choose your pathway to global excellence. We represent top universities across 8+ major educational hubs worldwide.</p>
                     </div>
-                    <div className="row g-4">
+                    <div className={`row g-4 view-all-container ${showAllDestinations ? 'show-all-mobile' : ''}`}>
                         {destinations.map((dest, index) => (
-                            <div className="col-lg-3 col-md-6" key={index}>
+                            <div className={`col-lg-3 col-md-6 view-all-item ${index >= 3 ? 'extra-mobile-card' : ''}`} key={index}>
                                 <motion.div
                                     className="destination-card"
                                     initial={{ opacity: 0, y: 20 }}
@@ -418,6 +536,17 @@ const StudyAbroadPage = () => {
                             </div>
                         ))}
                     </div>
+                    {destinations.length > 3 && (
+                        <div className="view-all-mobile-wrap">
+                            <button
+                                type="button"
+                                className="view-all-mobile-btn"
+                                onClick={() => setShowAllDestinations(v => !v)}
+                            >
+                                {showAllDestinations ? 'View Less' : `View All ${destinations.length}`}
+                            </button>
+                        </div>
+                    )}
                 </div>
             </section>
 
@@ -503,48 +632,111 @@ const StudyAbroadPage = () => {
                         <p>Choose from trusted destinations with quality medical education and strong FMGE pass records.</p>
                     </div>
 
-           <div className="mbbs-countries-grid">
-  {[
-    { code: "ro", country: "Romania",    fee: "From ~₹25L", duration: "6 Years", tag: "EU Degree"       },
-    { code: "ru", country: "Russia",     fee: "From ~₹20L", duration: "6 Years", tag: "NMC Approved"    },
-    { code: "ua", country: "Ukraine",    fee: "From ~₹18L", duration: "6 Years", tag: "Budget Friendly" },
-    { code: "am", country: "Armenia",    fee: "From ~₹22L", duration: "6 Years", tag: "Safe Campus"     },
-    { code: "ge", country: "Georgia",    fee: "From ~₹24L", duration: "6 Years", tag: "WHO Listed"      },
-    { code: "kg", country: "Kyrgyzstan", fee: "From ~₹16L", duration: "6 Years", tag: "Most Affordable" },
-  ].map((c, i) => (
-    <motion.div className="mbbs-country-card" key={i}
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: i * 0.08 }}>
-      <div className="mbbs-card-img-box">
-        <img
-          src={`https://flagcdn.com/w160/${c.code}.png`}
-          alt={`${c.country} flag`}
-          className="mbbs-card-flag-img"
-        />
-      </div>
-      <div className="mbbs-card-info">
-        <h3 className="mbbs-card-country-name">{c.country}</h3>
-        <span className="mbbs-card-uni-count">
-          <FaStethoscope className="me-2" />{c.duration} · MBBS
-        </span>
-        <p className="mbbs-card-fee-text">{c.fee} total · {c.tag}</p>
-        <div className="mbbs-dest-btn-group">
-          <button className="dest-btn dest-btn-primary"
-            onClick={() => handleEnquireClick(`MBBS in ${c.country}`)}>
-            Enquire Now
-          </button>
-          {/* <button className="dest-btn dest-btn-outline"
-            onClick={() => handleEnquireClick(`MBBS in ${c.country} - Details`)}>
-            Know More
-          </button> */}
-        </div>
-      </div>
-    </motion.div>
-  ))}
-</div>
+                    {/* Desktop / tablet grid — hidden on mobile via CSS */}
+                    <div className="mbbs-countries-grid">
+                        {mbbsCountries.map((c, i) => (
+                            <motion.div className="mbbs-country-card" key={i}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: i * 0.08 }}>
+                                <div className="mbbs-card-img-box">
+                                    <img
+                                        src={`https://flagcdn.com/w160/${c.code}.png`}
+                                        alt={`${c.country} flag`}
+                                        className="mbbs-card-flag-img"
+                                    />
+                                </div>
+                                <div className="mbbs-card-info">
+                                    <h3 className="mbbs-card-country-name">{c.country}</h3>
+                                    <span className="mbbs-card-uni-count">
+                                        <FaStethoscope className="me-2" />{c.duration} · MBBS
+                                    </span>
+                                    <p className="mbbs-card-fee-text">{c.fee} total · {c.tag}</p>
+                                    <div className="mbbs-dest-btn-group">
+                                        <button className="dest-btn dest-btn-primary"
+                                            onClick={() => handleEnquireClick(`MBBS in ${c.country}`)}>
+                                            Enquire Now
+                                        </button>
+                                    </div>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </div>
 
+                    {/* Mobile-only one-at-a-time swipeable slider */}
+                    <div className="mbbs-mobile-slider">
+                        <div
+                            className="mbbs-mobile-slider-viewport"
+                            onTouchStart={handleMbbsTouchStart}
+                            onTouchMove={handleMbbsTouchMove}
+                            onTouchEnd={handleMbbsTouchEnd}
+                        >
+                            <div
+                                className="mbbs-mobile-slider-track"
+                                style={{ transform: `translateX(-${mbbsSlideIndex * 100}%)` }}
+                            >
+                                {mbbsCountries.slice(0, mbbsVisibleCount).map((c, i) => (
+                                    <div className="mbbs-mobile-slide" key={i}>
+                                        {renderMbbsCard(c, i)}
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+                        <div className="mbbs-mobile-slider-controls">
+                            <button
+                                type="button"
+                                className="mbbs-slider-arrow"
+                                onClick={mbbsGoPrev}
+                                disabled={mbbsSlideIndex === 0}
+                                aria-label="Previous"
+                            >
+                                <FaChevronLeft />
+                            </button>
+                            <div className="mbbs-slider-dots">
+                                {mbbsCountries.slice(0, mbbsVisibleCount).map((_, i) => (
+                                    <span
+                                        key={i}
+                                        className={`mbbs-slider-dot ${i === mbbsSlideIndex ? 'active' : ''}`}
+                                        onClick={() => setMbbsSlideIndex(i)}
+                                    />
+                                ))}
+                            </div>
+                            <button
+                                type="button"
+                                className="mbbs-slider-arrow"
+                                onClick={mbbsGoNext}
+                                disabled={mbbsSlideIndex === mbbsMaxIndex}
+                                aria-label="Next"
+                            >
+                                <FaChevronRight />
+                            </button>
+                        </div>
+
+                        {!mbbsShowAll && mbbsCountries.length > 3 && (
+                            <div className="view-all-mobile-wrap">
+                                <button
+                                    type="button"
+                                    className="view-all-mobile-btn"
+                                    onClick={() => setMbbsShowAll(true)}
+                                >
+                                    View More
+                                </button>
+                            </div>
+                        )}
+                        {mbbsShowAll && (
+                            <div className="view-all-mobile-wrap">
+                                <button
+                                    type="button"
+                                    className="view-all-mobile-btn"
+                                    onClick={() => { setMbbsShowAll(false); setMbbsSlideIndex(0); }}
+                                >
+                                    View Less
+                                </button>
+                            </div>
+                        )}
+                    </div>
 
                 </div>
             </section>
@@ -673,114 +865,124 @@ const StudyAbroadPage = () => {
                     </div>
 
                     <div className="proficiency-tabs-container">
-                        <div className="proficiency-buttons">
-                            {Object.keys(proficiencyData).map((key) => (
-                                <button
-                                    key={key}
-                                    className={`prof-tab-btn ${activeProficiency === key ? 'active' : ''}`}
-                                    onClick={() => setActiveProficiency(key)}
-                                >
-                                    {key}
-                                </button>
-                            ))}
-                        </div>
 
-                        <motion.div
-                            key={activeProficiency}
-                            initial={{ opacity: 0, x: 20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 0.4 }}
-                            className="proficiency-content-card"
-                        >
-                            <div className="row align-items-center">
-                                <div className="col-lg-7">
-                                    <h3 className="prof-title">{proficiencyData[activeProficiency].title}</h3>
-                                    <p className="prof-desc">{proficiencyData[activeProficiency].description}</p>
-                                    <div className="prof-highlights">
-                                        {proficiencyData[activeProficiency].highlights.map((h, i) => (
-                                            <div key={i} className="prof-h-item">
-                                                <FaCheckCircle className="text-success me-2" />
-                                                <span>{h}</span>
-                                            </div>
-                                        ))}
-                                    </div>
+                        {/* Unified container — certification + batches read as ONE section */}
+                        <div className="proficiency-unified-card">
+
+                            <div className="proficiency-buttons">
+                                {Object.keys(proficiencyData).map((key) => (
                                     <button
-                                        className="btn-prof-enquire mt-4"
-                                        onClick={() => handleEnquireClick(activeProficiency)}
+                                        key={key}
+                                        className={`prof-tab-btn ${activeProficiency === key ? 'active' : ''}`}
+                                        onClick={() => setActiveProficiency(key)}
                                     >
-                                        Enroll for {activeProficiency} Coaching
+                                        {key}
                                     </button>
+                                ))}
+                            </div>
+
+                            <motion.div
+                                key={activeProficiency}
+                                initial={{ opacity: 0, x: 20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ duration: 0.4 }}
+                                className="proficiency-content-card"
+                            >
+                                <div className="row align-items-center">
+                                    <div className="col-lg-7">
+                                        <h3 className="prof-title">{proficiencyData[activeProficiency].title}</h3>
+                                        <p className="prof-desc">{proficiencyData[activeProficiency].description}</p>
+                                        <div className="prof-highlights">
+                                            {proficiencyData[activeProficiency].highlights.map((h, i) => (
+                                                <div key={i} className="prof-h-item">
+                                                    <FaCheckCircle className="text-success me-2" />
+                                                    <span>{h}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                        <button
+                                            className="btn-prof-enquire mt-4"
+                                            onClick={() => handleEnquireClick(activeProficiency)}
+                                        >
+                                            Enroll for {activeProficiency} Coaching
+                                        </button>
+                                    </div>
+                                    <div className="col-lg-5 d-none d-lg-block text-center">
+                                        <div className="prof-cert-container">
+                                            <img
+                                                src={proficiencyData[activeProficiency].certificateImage}
+                                                alt={`${activeProficiency} Certificate`}
+                                                className="prof-cert-img"
+                                            />
+                                        </div>
+                                    </div>
                                 </div>
-                                <div className="col-lg-5 d-none d-lg-block text-center">
-                                    <div className="prof-cert-container">
-                                        <img
-                                            src={proficiencyData[activeProficiency].certificateImage}
-                                            alt={`${activeProficiency} Certificate`}
-                                            className="prof-cert-img"
-                                        />
+                            </motion.div>
+
+                            <div className="prof-batches-divider" />
+
+                            <div className="prof-batches mt-5">
+                                <h2 className="cohorts-title mb-4" style={{ fontSize: '24px' }}>Batches</h2>
+                                <div className="cohorts-list" style={{ padding: 0 }}>
+                                    <div className="cohort-row-card">
+                                        <div className="cohort-name-col">
+                                            <div className="batch-dot"></div>
+                                            <span className="batch-name-text">Regular Classes</span>
+                                        </div>
+                                        <div className="cohort-info-col">
+                                            <span className="info-label d-flex align-items-center gap-1"><FaRegClock className="me-1"/> TIME</span>
+                                            <span className="info-value">11:00 AM IST</span>
+                                        </div>
+                                        <div className="cohort-info-col">
+                                            <span className="info-label d-flex align-items-center gap-1"><FaCalendarAlt className="me-1"/> BATCH TYPE</span>
+                                            <span className="info-value">Weekday (Mon-Fri)</span>
+                                        </div>
+                                        <div className="cohort-action-col">
+                                            <button className="btn btn-success fw-bold px-4 rounded-pill" onClick={() => handleEnquireClick(activeProficiency)}>Join Now</button>
+                                        </div>
+                                    </div>
+
+                                    <div className="cohort-row-card">
+                                        <div className="cohort-name-col">
+                                            <div className="batch-dot"></div>
+                                            <span className="batch-name-text">Fast Track</span>
+                                        </div>
+                                        <div className="cohort-info-col">
+                                            <span className="info-label d-flex align-items-center gap-1"><FaRegClock className="me-1"/> TIME</span>
+                                            <span className="info-value">02:00 PM IST</span>
+                                        </div>
+                                        <div className="cohort-info-col">
+                                            <span className="info-label d-flex align-items-center gap-1"><FaCalendarAlt className="me-1"/> BATCH TYPE</span>
+                                            <span className="info-value">Weekday (Mon-Fri)</span>
+                                        </div>
+                                        <div className="cohort-action-col">
+                                            <button className="btn btn-success fw-bold px-4 rounded-pill" onClick={() => handleEnquireClick(activeProficiency)}>Join Now</button>
+                                        </div>
+                                    </div>
+
+                                    <div className="cohort-row-card">
+                                        <div className="cohort-name-col">
+                                            <div className="batch-dot"></div>
+                                            <span className="batch-name-text">Weekend Classes</span>
+                                        </div>
+                                        <div className="cohort-info-col">
+                                            <span className="info-label d-flex align-items-center gap-1"><FaRegClock className="me-1"/> TIME</span>
+                                            <span className="info-value">11:00 AM IST</span>
+                                        </div>
+                                        <div className="cohort-info-col">
+                                            <span className="info-label d-flex align-items-center gap-1"><FaCalendarAlt className="me-1"/> BATCH TYPE</span>
+                                            <span className="info-value">Weekend (Sat-Sun)</span>
+                                        </div>
+                                        <div className="cohort-action-col">
+                                            <button className="btn btn-success fw-bold px-4 rounded-pill" onClick={() => handleEnquireClick(activeProficiency)}>Join Now</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </motion.div>
 
-                        <div className="prof-batches mt-5">
-                            <h2 className="cohorts-title mb-4" style={{ fontSize: '24px' }}>Batches</h2>
-                            <div className="cohorts-list" style={{ padding: 0 }}>
-                                <div className="cohort-row-card">
-                                    <div className="cohort-name-col">
-                                        <div className="batch-dot"></div>
-                                        <span className="batch-name-text">Regular Classes</span>
-                                    </div>
-                                    <div className="cohort-info-col">
-                                        <span className="info-label">🕒 TIME</span>
-                                        <span className="info-value">11:00 AM IST</span>
-                                    </div>
-                                    <div className="cohort-info-col">
-                                        <span className="info-label">📅 BATCH TYPE</span>
-                                        <span className="info-value">Weekday (Mon-Fri)</span>
-                                    </div>
-                                    <div className="cohort-action-col">
-                                        <button className="btn btn-success fw-bold px-4 rounded-pill" onClick={() => handleEnquireClick(activeProficiency)}>Join Now</button>
-                                    </div>
-                                </div>
-
-                                <div className="cohort-row-card">
-                                    <div className="cohort-name-col">
-                                        <div className="batch-dot"></div>
-                                        <span className="batch-name-text">Fast Track</span>
-                                    </div>
-                                    <div className="cohort-info-col">
-                                        <span className="info-label">🕒 TIME</span>
-                                        <span className="info-value">02:00 PM IST</span>
-                                    </div>
-                                    <div className="cohort-info-col">
-                                        <span className="info-label">📅 BATCH TYPE</span>
-                                        <span className="info-value">Weekday (Mon-Fri)</span>
-                                    </div>
-                                    <div className="cohort-action-col">
-                                        <button className="btn btn-success fw-bold px-4 rounded-pill" onClick={() => handleEnquireClick(activeProficiency)}>Join Now</button>
-                                    </div>
-                                </div>
-
-                                <div className="cohort-row-card">
-                                    <div className="cohort-name-col">
-                                        <div className="batch-dot"></div>
-                                        <span className="batch-name-text">Weekend Classes</span>
-                                    </div>
-                                    <div className="cohort-info-col">
-                                        <span className="info-label">🕒 TIME</span>
-                                        <span className="info-value">11:00 AM IST</span>
-                                    </div>
-                                    <div className="cohort-info-col">
-                                        <span className="info-label">📅 BATCH TYPE</span>
-                                        <span className="info-value">Weekend (Sat-Sun)</span>
-                                    </div>
-                                    <div className="cohort-action-col">
-                                        <button className="btn btn-success fw-bold px-4 rounded-pill" onClick={() => handleEnquireClick(activeProficiency)}>Join Now</button>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
+                        {/* /proficiency-unified-card */}
+
                     </div>
                 </div>
             </section>
@@ -788,7 +990,7 @@ const StudyAbroadPage = () => {
             {/* Consultation Section */}
             <section id="consultation" className="section-padding consultation-section">
                 <div className="container" style={{ maxWidth: '700px' }}>
-                    <FormCard className="p-0 overflow-hidden" style={{ background: 'linear-gradient(180deg, #e3f0eb 0%, #f3f5f3 100%)', border: 'none' }}>
+                    <FormCard className="p-0" style={{ background: 'linear-gradient(180deg, #e3f0eb 0%, #f3f5f3 100%)', border: 'none', overflow: 'visible' }}>
                         <div className="p-3 p-md-4">
                             <div className="text-center mb-3">
                                 <h3 className="h3 fw-bold mt-3 mb-2 text-dark">Book Your Free Consultation</h3>
@@ -842,56 +1044,15 @@ const StudyAbroadPage = () => {
                 </div>
             </section>
 
-            {/* Testimonials Section */}
-            <section className="section-padding success-stories-section">
+            {/* Testimonials Section — Voice That Matters */}
+            
+            <section className="success-stories-section" style={{ paddingTop: '40px', paddingBottom: '40px' }}>
                 <div className="container">
-                    <div className="section-header text-center">
-                        <h2 className="section-main-title text-shine">Success Stories</h2>
-                        <p className="section-subtitle">Join hundreds of students who realized their dreams through our expert guidance and support.</p>
-                    </div>
-                    <div className="row g-4 justify-content-center">
-                        {testimonials.map((test, index) => (
-                            <div className="col-lg-4 col-md-6" key={index}>
-                                <motion.div
-                                    className="test-card"
-                                    initial={{ opacity: 0, y: 30 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                                >
-                                    <div className="quote-watermark">"</div>
-
-                                    <div className="test-header">
-                                        <div className="avatar-wrapper">
-                                            <img src={test.image} alt={test.name} className="test-avatar" />
-                                            <div className="visa-check-badge">
-                                                <FaCheckCircle />
-                                            </div>
-                                        </div>
-                                        <div className="test-user">
-                                            <div className="user-name-row">
-                                                <h5>{test.name}</h5>
-                                                <span className="visa-approved-text">Visa Approved</span>
-                                            </div>
-                                            <span className="user-uni">
-                                                <span className="uni-flag">{getCountryFlag(test.university)}</span>
-                                                <span className="uni-name">{test.university}</span>
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                    <div className="rating-stars">
-                                        {[...Array(test.rating)].map((_, i) => <FaStar key={i} />)}
-                                    </div>
-
-                                    <div className="test-divider"></div>
-
-                                    <p className="test-text">"{test.review}"</p>
-                                </motion.div>
-                            </div>
-                        ))}
+                    <div className="section-header text-center mb-0">
+                        <h2 className="section-main-title text-shine">The Voice That Matters</h2>
                     </div>
                 </div>
+                <TestimonialCarousel />
             </section>
 
             {/* Enquiry Modal */}

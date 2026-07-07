@@ -1,10 +1,11 @@
 'use client';
 import React, { useState, useEffect, useCallback, useRef } from 'react';
+import { FaPlus, FaRandom, FaBolt, FaSortNumericUp, FaRegClock, FaStar, FaFire, FaTrophy, FaMedal, FaDumbbell, FaRedo } from 'react-icons/fa';
 
 const MODES = [
-  { id: 'add',   label: '➕ Addition',       ops: ['+'],           range: [1, 20], timeLimit: 30 },
-  { id: 'mix',   label: '🔀 Mixed',          ops: ['+', '-', '×'], range: [1, 12], timeLimit: 45 },
-  { id: 'fast',  label: '⚡ Speed Round',    ops: ['+', '-', '×'], range: [2, 15], timeLimit: 20 },
+  { id: 'add',   label: <><FaPlus color="green" className="me-1" /> Addition</>,       ops: ['+'],           range: [1, 20], timeLimit: 30 },
+  { id: 'mix',   label: <><FaRandom color="blue" className="me-1" /> Mixed</>,          ops: ['+', '-', '×'], range: [1, 12], timeLimit: 45 },
+  { id: 'fast',  label: <><FaBolt color="orange" className="me-1" /> Speed Round</>,    ops: ['+', '-', '×'], range: [2, 15], timeLimit: 20 },
 ];
 
 function generateQuestion(ops, [min, max]) {
@@ -130,7 +131,7 @@ export default function MathChallengeGame() {
 
       {gameState === 'idle' && (
         <div className="math-start-screen">
-          <div className="math-start-emoji">🔢</div>
+          <div className="math-start-emoji"><FaSortNumericUp size={64} color="#0d6efd" /></div>
           <h3>Math Blitz</h3>
           <p>Answer as many questions as you can in <strong>{mode.timeLimit} seconds</strong>!<br />Streaks earn bonus points.</p>
           <button className="math-start-btn" onClick={startGame} id="math-start-btn">
@@ -149,13 +150,13 @@ export default function MathChallengeGame() {
             />
           </div>
           <div className="math-timer-label" style={{ color: timerColor }}>
-            ⏱ {timeLeft}s
+            <FaRegClock className="me-1" /> {timeLeft}s
           </div>
 
           {/* Score & Streak */}
           <div className="math-stats-row">
-            <div className="math-stat-pill math-score-pill">⭐ {score} pts</div>
-            {streak >= 2 && <div className="math-stat-pill math-streak-pill">🔥 x{streak} Streak!</div>}
+            <div className="math-stat-pill math-score-pill"><FaStar color="gold" className="me-1" /> {score} pts</div>
+            {streak >= 2 && <div className="math-stat-pill math-streak-pill"><FaFire color="orange" className="me-1" /> x{streak} Streak!</div>}
           </div>
 
           {/* Question */}
@@ -187,7 +188,9 @@ export default function MathChallengeGame() {
 
       {gameState === 'ended' && (
         <div className="math-end-screen">
-          <div className="math-end-emoji">{score >= 80 ? '🏆' : score >= 40 ? '🥈' : '💪'}</div>
+          <div className="math-end-emoji">
+            {score >= 80 ? <FaTrophy color="gold" size={64} /> : score >= 40 ? <FaMedal color="silver" size={64} /> : <FaDumbbell color="#6c757d" size={64} />}
+          </div>
           <h3>Time's Up!</h3>
           <div className="math-end-stats">
             <div className="math-end-stat"><span>{score}</span><label>Total Points</label></div>
@@ -196,11 +199,11 @@ export default function MathChallengeGame() {
             <div className="math-end-stat"><span>{accuracy}%</span><label>Accuracy</label></div>
           </div>
           {highScore[modeIdx] === score && score > 0 && (
-            <div className="math-new-best">🏆 New High Score!</div>
+            <div className="math-new-best"><FaTrophy color="gold" className="me-1" /> New High Score!</div>
           )}
           <div className="math-end-actions">
             <button className="math-start-btn" onClick={startGame} id="math-play-again-btn">
-              🔄 Play Again
+              <FaRedo className="me-2" /> Play Again
             </button>
           </div>
         </div>

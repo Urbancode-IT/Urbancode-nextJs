@@ -218,7 +218,7 @@ const EnquiryFormModal = ({
         }).catch((err) => console.warn("Admin brochure notification failed:", err));
 
         Swal.fire({
-          title: 'Curriculum Sent! 🚀',
+          title: 'Curriculum Sent!',
           text: `The curriculum for ${formData.course} has been successfully sent to ${formData.email}. Please check your inbox (and spam folder)!`,
           icon: 'success',
           confirmButtonColor: '#036c2d',
