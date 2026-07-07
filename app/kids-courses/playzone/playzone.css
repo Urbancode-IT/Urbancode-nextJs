@@ -224,7 +224,7 @@
   color: #00b56f;
 }
 
-.tab-emoji { font-size: 22px; margin-bottom: 4px; }
+.tab-icon { font-size: 22px; margin-bottom: 4px; display: flex; align-items: center; justify-content: center; }
 .tab-label { font-size: 14px; font-weight: 700; }
 .tab-desc  { font-size: 11px; color: #9ca3af; margin-top: 2px; }
 .playzone-tab.active .tab-desc { color: #059669; }

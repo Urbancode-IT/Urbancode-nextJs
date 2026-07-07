@@ -2,13 +2,56 @@
 import React, { useState, useCallback } from 'react';
 import { FaFire, FaUserSecret, FaCheckCircle, FaTimesCircle } from 'react-icons/fa';
 
-/* ─── Pattern shapes: emoji-based sequences ─── */
+import { 
+  FaCircle, FaStar, FaMoon, FaSun, FaBolt, FaSnowflake, 
+  FaDog, FaCat, FaFrog, FaBug, FaFish, 
+  FaAppleWhole, FaLemon, FaCarrot, FaLeaf, FaTree, 
+  FaMusic, FaGuitar, FaDrum, FaHeadphones, FaMicrophone
+} from 'react-icons/fa6';
+
+const iconColorMap = {
+  'circle-red': { icon: FaCircle, color: '#ef4444' },
+  'circle-blue': { icon: FaCircle, color: '#3b82f6' },
+  'circle-yellow': { icon: FaCircle, color: '#eab308' },
+  'circle-green': { icon: FaCircle, color: '#22c55e' },
+  'circle-purple': { icon: FaCircle, color: '#a855f7' },
+  'star': { icon: FaStar, color: '#fbbf24' },
+  'moon': { icon: FaMoon, color: '#94a3b8' },
+  'sun': { icon: FaSun, color: '#f59e0b' },
+  'bolt': { icon: FaBolt, color: '#eab308' },
+  'snowflake': { icon: FaSnowflake, color: '#60a5fa' },
+  'dog': { icon: FaDog, color: '#8b5cf6' },
+  'cat': { icon: FaCat, color: '#f43f5e' },
+  'frog': { icon: FaFrog, color: '#22c55e' },
+  'bug': { icon: FaBug, color: '#ef4444' },
+  'fish': { icon: FaFish, color: '#3b82f6' },
+  'apple': { icon: FaAppleWhole, color: '#ef4444' },
+  'lemon': { icon: FaLemon, color: '#eab308' },
+  'carrot': { icon: FaCarrot, color: '#f97316' },
+  'leaf': { icon: FaLeaf, color: '#22c55e' },
+  'tree': { icon: FaTree, color: '#16a34a' },
+  'music': { icon: FaMusic, color: '#ec4899' },
+  'guitar': { icon: FaGuitar, color: '#f97316' },
+  'drum': { icon: FaDrum, color: '#06b6d4' },
+  'headphones': { icon: FaHeadphones, color: '#8b5cf6' },
+  'microphone': { icon: FaMicrophone, color: '#3b82f6' }
+};
+
+const renderShape = (shapeId, size = 32) => {
+  if (!shapeId) return null;
+  const cfg = iconColorMap[shapeId];
+  if (!cfg) return shapeId;
+  const Icon = cfg.icon;
+  return <Icon size={size} color={cfg.color} />;
+};
+
+/* ─── Pattern shapes: icon-based sequences ─── */
 const SHAPE_SETS = [
-  ['🔴', '🔵', '🟡', '🟢', '🟣'],
-  ['⭐', '🌙', '☀️', '⚡', '❄️'],
-  ['🐶', '🐱', '🐸', '🐼', '🦊'],
-  ['🍎', '🍊', '🍋', '🍇', '🍓'],
-  ['🎵', '🎶', '🎸', '🥁', '🎺'],
+  ['circle-red', 'circle-blue', 'circle-yellow', 'circle-green', 'circle-purple'],
+  ['star', 'moon', 'sun', 'bolt', 'snowflake'],
+  ['dog', 'cat', 'frog', 'bug', 'fish'],
+  ['apple', 'lemon', 'carrot', 'leaf', 'tree'],
+  ['music', 'guitar', 'drum', 'headphones', 'microphone'],
 ];
 
 const LEVELS = [
@@ -167,7 +210,7 @@ export default function PatternGame() {
             className={`pattern-tile ${tile.isBlank ? 'blank' : ''} ${tile.val ? 'filled' : ''}`}
             id={`pattern-tile-${i}`}
           >
-            {tile.val || (tile.isBlank ? '?' : '')}
+            {tile.val ? renderShape(tile.val) : (tile.isBlank ? '?' : '')}
           </div>
         ))}
       </div>
@@ -175,7 +218,7 @@ export default function PatternGame() {
       {/* Feedback */}
       {feedback && (
         <div className={`pattern-feedback ${feedback}`}>
-          {feedback === 'correct' ? <><FaCheckCircle className="me-1"/> Correct! Well done!</> : <><FaTimesCircle className="me-1"/> The answer was: {pattern.answers}</>}
+          {feedback === 'correct' ? <><FaCheckCircle className="me-1"/> Correct! Well done!</> : <><FaTimesCircle className="me-1"/> The answer was: <span className="ms-2 d-inline-flex gap-2">{pattern.answers.map((ans, i) => <span key={i}>{renderShape(ans, 20)}</span>)}</span></>}
         </div>
       )}
 
@@ -189,7 +232,7 @@ export default function PatternGame() {
             disabled={!!feedback}
             id={`pattern-choice-${i}`}
           >
-            {shape}
+            {renderShape(shape, 28)}
           </button>
         ))}
       </div>
