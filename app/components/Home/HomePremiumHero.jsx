@@ -101,7 +101,7 @@ const HomePremiumHero = () => {
             />
 
             <div className="premium-hero-content">
-                <div className="premium-text-block" style={{ marginTop: '100px', marginBottom: '0px' }}>
+                <div className="premium-text-block">
                     {/* Step 1: Top Badge */}
                     {/* <motion.a 
                         href="/courses"

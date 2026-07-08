@@ -1,0 +1,656 @@
+.eval-form-page {
+    min-height: 100vh;
+    background: linear-gradient(180deg, #4a90c4 0%, #6eb5e0 40%, #87ceeb 100%);
+    background-attachment: fixed;
+    font-family: 'Inter', sans-serif;
+    padding-bottom: 40px;
+    padding-top: var(--site-header-height, 71px);
+}
+
+.eval-form-header {
+    background: #1a3a5c;
+    color: #fff;
+    text-align: center;
+    padding: 18px 20px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.eval-form-container {
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 24px 20px 48px;
+}
+
+.eval-form-card {
+    width: 100%;
+}
+
+/* Progress stepper */
+.eval-stepper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    padding: 24px 0 20px;
+    overflow-x: auto;
+}
+
+.eval-step {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    height: 36px;
+    padding: 0 14px;
+    background: rgba(255, 255, 255, 0.25);
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 700;
+    font-size: 14px;
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 50%, calc(100% - 10px) 100%, 0 100%, 10px 50%);
+    margin-left: -6px;
+    transition: all 0.3s ease;
+}
+
+.eval-step:first-child {
+    margin-left: 0;
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 50%, calc(100% - 10px) 100%, 0 100%);
+    padding-left: 16px;
+}
+
+.eval-step:last-child {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 10px 50%);
+    padding-right: 16px;
+}
+
+.eval-step.active {
+    background: #fff;
+    color: #1a3a5c;
+}
+
+.eval-step.completed {
+    background: rgba(255, 255, 255, 0.7);
+    color: #1a3a5c;
+}
+
+/* Section */
+.eval-section-title {
+    color: #fff;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+}
+
+.eval-section-divider {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.5);
+    margin-bottom: 24px;
+}
+
+/* Form fields layout */
+.eval-form-fields {
+    width: 100%;
+}
+
+.eval-field-full {
+    grid-column: 1 / -1;
+}
+
+/* Fields */
+.eval-field {
+    margin-bottom: 22px;
+}
+
+.eval-label {
+    display: block;
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.eval-required {
+    color: #ff6b6b;
+}
+
+.eval-input-line {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+    color: #fff;
+    font-size: 0.95rem;
+    padding: 8px 0 8px 28px;
+    outline: none;
+}
+
+.eval-input-line::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.eval-input-wrap {
+    position: relative;
+}
+
+.eval-field-icon {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 14px;
+    pointer-events: none;
+}
+
+.eval-hint {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.75rem;
+    margin-top: 4px;
+    padding-left: 28px;
+}
+
+.eval-name-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+/* Option buttons (single select) */
+.eval-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.eval-option-btn {
+    width: 100%;
+    padding: 14px 18px;
+    background: rgba(26, 58, 92, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-radius: 4px;
+    color: #fff;
+    font-size: 0.9rem;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.eval-option-btn:hover {
+    background: rgba(26, 58, 92, 0.65);
+}
+
+.eval-option-btn.selected {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: #fff;
+    font-weight: 600;
+}
+
+/* Module scores grid */
+.eval-modules-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 12px;
+}
+
+/* Multi-select */
+.eval-multiselect-wrap {
+    position: relative;
+}
+
+.eval-multiselect-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.eval-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: rgba(26, 58, 92, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 4px;
+    color: #fff;
+    font-size: 0.85rem;
+}
+
+.eval-tag-remove {
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    padding: 0;
+    font-size: 14px;
+    line-height: 1;
+}
+
+.eval-multiselect-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 20;
+    background: rgba(26, 58, 92, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 4px;
+    margin-top: 4px;
+    max-height: 220px;
+    overflow-y: auto;
+}
+
+.eval-multiselect-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 0.9rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.eval-multiselect-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.eval-multiselect-item input {
+    accent-color: #fff;
+}
+
+/* Textarea */
+.eval-textarea {
+    width: 100%;
+    min-height: 0;
+    height: auto;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+    color: #fff;
+    font-size: 0.95rem;
+    line-height: 1.45;
+    padding: 4px 0 6px;
+    outline: none;
+    resize: vertical;
+    font-family: inherit;
+    field-sizing: content;
+}
+
+.eval-field:has(.eval-textarea-short) {
+    margin-bottom: 16px;
+}
+
+.eval-textarea-short {
+    min-height: unset;
+    resize: none;
+    overflow: hidden;
+}
+
+.eval-textarea-long {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.eval-textarea::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.eval-prompt-text {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.88rem;
+    line-height: 1.5;
+    margin-bottom: 12px;
+    font-style: italic;
+}
+
+.eval-upload-hint {
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 0.8rem;
+    margin-top: 8px;
+}
+
+.eval-file-upload {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 18px;
+    background: rgba(26, 58, 92, 0.35);
+    border: 1px dashed rgba(255, 255, 255, 0.6);
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+    margin-top: 12px;
+    transition: background 0.2s;
+}
+
+.eval-file-upload:hover {
+    background: rgba(26, 58, 92, 0.55);
+}
+
+.eval-file-upload input {
+    display: none;
+}
+
+/* Navigation */
+.eval-nav {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 32px;
+    padding-bottom: 20px;
+}
+
+.eval-nav-btn {
+    padding: 12px 36px;
+    border-radius: 999px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s ease;
+}
+
+.eval-nav-btn.back {
+    background: #1a3a5c;
+    color: #fff;
+}
+
+.eval-nav-btn.next,
+.eval-nav-btn.submit {
+    background: #1a3a5c;
+    color: #fff;
+}
+
+.eval-nav-btn.submit {
+    background: #fff;
+    color: #1a3a5c;
+}
+
+.eval-nav-btn:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.eval-nav-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.eval-page-indicator {
+    text-align: right;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.85rem;
+    margin-top: 8px;
+}
+
+.eval-error {
+    background: rgba(255, 107, 107, 0.2);
+    border: 1px solid rgba(255, 107, 107, 0.5);
+    color: #fff;
+    padding: 10px 14px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    font-size: 0.9rem;
+}
+
+.eval-success-overlay {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(180deg, #4a90c4 0%, #87ceeb 100%);
+    padding: 20px;
+}
+
+.eval-success-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 40px;
+    text-align: center;
+    max-width: 480px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+}
+
+/* ── Tablet (≥768px) ── */
+@media (min-width: 768px) {
+    .eval-form-container {
+        max-width: 860px;
+        padding: 32px 32px 56px;
+    }
+
+    .eval-form-card {
+        background: rgba(26, 58, 92, 0.32);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 20px;
+        padding: 36px 40px 32px;
+        box-shadow: 0 24px 64px rgba(0, 0, 0, 0.18);
+    }
+
+    .eval-form-header {
+        font-size: 1.25rem;
+        padding: 22px 24px;
+        letter-spacing: 1.5px;
+    }
+
+    .eval-stepper {
+        padding: 28px 0 28px;
+    }
+
+    .eval-step {
+        min-width: 52px;
+        height: 42px;
+        font-size: 15px;
+        padding: 0 18px;
+    }
+
+    .eval-section-title {
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+    }
+
+    .eval-section-divider {
+        margin-bottom: 28px;
+    }
+
+    .eval-form-fields {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px 32px;
+    }
+
+    .eval-form-fields .eval-field-full,
+    .eval-form-fields > .eval-field:not(.eval-field-half) {
+        grid-column: 1 / -1;
+    }
+
+    .eval-field {
+        margin-bottom: 26px;
+    }
+
+    .eval-label {
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+
+    .eval-input-line {
+        font-size: 1.05rem;
+        padding: 10px 0 10px 32px;
+    }
+
+    .eval-field-icon {
+        font-size: 16px;
+    }
+
+    .eval-hint {
+        font-size: 0.8rem;
+        padding-left: 32px;
+    }
+
+    .eval-name-row {
+        gap: 24px;
+    }
+
+    .eval-options {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+
+    .eval-option-btn {
+        padding: 16px 20px;
+        font-size: 0.95rem;
+    }
+
+    .eval-modules-grid {
+        gap: 20px 24px;
+    }
+
+    .eval-textarea-long {
+        min-height: 120px;
+        font-size: 1.05rem;
+    }
+
+    .eval-prompt-text {
+        font-size: 0.95rem;
+    }
+
+    .eval-file-upload {
+        padding: 18px 22px;
+        font-size: 1rem;
+    }
+
+    .eval-nav {
+        margin-top: 36px;
+        gap: 20px;
+    }
+
+    .eval-nav-btn {
+        padding: 14px 48px;
+        font-size: 1rem;
+        min-width: 140px;
+    }
+
+    .eval-page-indicator {
+        font-size: 0.95rem;
+        margin-top: 12px;
+    }
+}
+
+/* ── Desktop (≥1024px) ── */
+@media (min-width: 1024px) {
+    .eval-form-container {
+        max-width: 980px;
+        padding: 40px 40px 64px;
+    }
+
+    .eval-form-card {
+        padding: 44px 56px 40px;
+        border-radius: 24px;
+    }
+
+    .eval-form-header {
+        font-size: 1.35rem;
+        padding: 24px 32px;
+    }
+
+    .eval-stepper {
+        padding: 32px 0 32px;
+    }
+
+    .eval-step {
+        min-width: 60px;
+        height: 46px;
+        font-size: 16px;
+        padding: 0 22px;
+    }
+
+    .eval-section-title {
+        font-size: 1.2rem;
+    }
+
+    .eval-form-fields {
+        gap: 10px 40px;
+    }
+
+    .eval-field {
+        margin-bottom: 28px;
+    }
+
+    .eval-label {
+        font-size: 1.05rem;
+    }
+
+    .eval-input-line {
+        font-size: 1.1rem;
+        padding: 12px 0 12px 36px;
+    }
+
+    .eval-field-icon {
+        font-size: 17px;
+    }
+
+    .eval-options {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+    }
+
+    .eval-option-btn {
+        padding: 18px 22px;
+        font-size: 1rem;
+    }
+
+    .eval-textarea-long {
+        min-height: 140px;
+        font-size: 1.1rem;
+    }
+
+    .eval-nav-btn {
+        padding: 15px 56px;
+        font-size: 1.05rem;
+        min-width: 160px;
+    }
+}
+
+/* ── Large desktop (≥1280px) ── */
+@media (min-width: 1280px) {
+    .eval-form-container {
+        max-width: 1060px;
+    }
+
+    .eval-form-card {
+        padding: 48px 64px 44px;
+    }
+}
+
+@media (max-width: 576px) {
+    .eval-name-row {
+        grid-template-columns: 1fr;
+    }
+
+    .eval-modules-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .eval-form-header {
+        font-size: 0.95rem;
+        padding: 14px 16px;
+    }
+
+    .eval-step {
+        min-width: 36px;
+        height: 32px;
+        font-size: 12px;
+        padding: 0 10px;
+    }
+}

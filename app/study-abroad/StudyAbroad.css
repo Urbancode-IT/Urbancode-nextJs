@@ -50,17 +50,6 @@ section {
     z-index: 2;
 }
 
-.study-abroad-container .hero-title-main {
-    font-size: clamp(24px, 4.5vw, 60px) !important;
-    font-weight: 700 !important;
-    line-height: 0.92 !important;
-    color: #1C1D22 !important;
-    letter-spacing: -2px !important;
-    padding-bottom: 0.12em !important; /* Prevents descender clipping */
-    margin: 0 auto clamp(14px, 2vw, 24px) auto !important;
-    width: 100% !important;
-}
-
 .study-abroad-container .hero-title-line1,
 .study-abroad-container .hero-title-line2 {
     display: block !important;
@@ -68,15 +57,28 @@ section {
     overflow: visible !important;
 }
 
-.study-abroad-container .hero-title-line1 {
-    font-size: calc(clamp(24px, 4.5vw, 60px) - 2px) !important;
-    padding-bottom: 0 !important;
-}
+@media (max-width: 1024px) {
+    .study-abroad-container .hero-title-main {
+        font-size: clamp(24px, 4.5vw, 60px) !important;
+        font-weight: 700 !important;
+        line-height: 0.92 !important;
+        color: #1C1D22 !important;
+        letter-spacing: -2px !important;
+        padding-bottom: 0.12em !important;
+        margin: 0 auto clamp(14px, 2vw, 24px) auto !important;
+        width: 100% !important;
+    }
 
-.study-abroad-container .hero-title-line2 {
-    font-size: clamp(24px, 4.5vw, 60px) !important;
-    margin-top: 0 !important;
-    padding-bottom: 0.12em !important;
+    .study-abroad-container .hero-title-line1 {
+        font-size: calc(clamp(24px, 4.5vw, 60px) - 2px) !important;
+        padding-bottom: 0 !important;
+    }
+
+    .study-abroad-container .hero-title-line2 {
+        font-size: clamp(24px, 4.5vw, 60px) !important;
+        margin-top: 0 !important;
+        padding-bottom: 0.12em !important;
+    }
 }
 
 .highlight-box {
@@ -1005,7 +1007,7 @@ textarea{
 }
 
 .proficiency-tabs-container {
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
@@ -1042,18 +1044,22 @@ textarea{
 }
 
 .proficiency-content-card {
-background:
-linear-gradient(
-180deg,
-#ffffff 0%,
-#fcfffd 45%,
-#f5fff9 100%
-);    padding: 50px;
+    padding: 40px 50px;
     border-radius: 30px;
     box-shadow: 0 15px 45px rgba(0, 0, 0, 0.06);
     border: 1px solid rgba(0, 181, 111, 0.08);
     position: relative;
     overflow: visible;
+}
+
+@media (max-width: 991px) {
+    .proficiency-content-card {
+        padding: 30px 20px;
+    }
+    .mobile-padded-img {
+        padding: 20px;
+        margin-bottom: 20px;
+    }
 }
 
 .proficiency-content-card::after {
@@ -1091,10 +1097,33 @@ linear-gradient(
 
 .prof-h-item {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     font-size: 0.95rem;
     color: #2d3748;
     font-weight: 500;
+}
+
+/* Fixed-size attractive icon badge for highlight bullets — replaces the
+   plain tick, which rendered at inconsistent sizes across items. */
+.prof-h-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #00B56F 0%, #008f58 100%);
+    color: #ffffff;
+    font-size: 11px;
+    margin-right: 10px;
+    box-shadow: 0 3px 8px rgba(0, 181, 111, 0.35);
+}
+
+.prof-h-icon svg {
+    width: 11px;
+    height: 11px;
 }
 
 .btn-prof-enquire {
@@ -2133,6 +2162,33 @@ height: 140px;
     box-shadow: 0 4px 12px rgba(0, 181, 111, 0.1);
 }
 
+/* IELTS/PTE Evaluation Test button — matches evaluation form blue theme */
+.eval-test-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+    padding: 10px 24px;
+    border-radius: 9999px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: none;
+    background: linear-gradient(135deg, #1a3a5c 0%, #2d5a87 100%) !important;
+    color: #ffffff;
+    border: 1px solid #1a3a5c;
+    box-shadow: 0 4px 14px rgba(26, 58, 92, 0.28);
+    transition: all 0.25s ease;
+    letter-spacing: -0.2px;
+}
+
+.eval-test-btn:hover {
+    background: linear-gradient(135deg, #234a72 0%, #4a90c4 100%);
+    color: #ffffff;
+    border-color: #4a90c4;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(74, 144, 196, 0.35);
+}
+
 /* ============================================================
    HERO STAT CARDS — manual arrow-controlled carousel.
    Cards keep a fixed width, stay in ONE row always. If they don't
@@ -2477,73 +2533,268 @@ height: 140px;
     }
 }
 /* ===========================
-   HERO MOBILE FIX
+   STUDY ABROAD HERO — mobile/tablet layout (matches home NewHeroSection)
 ===========================*/
 
-.hero-tags-mobile-container {
+.hero-stat-mobile-carousel {
     display: none;
+    width: 100%;
 }
 
 .hero-cards-desktop-container {
     display: block;
+    width: 100%;
 }
 
-/* Tag Styles */
-.hero-tag {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 16px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    flex-shrink: 0;
+/* Mobile / tablet: stat cards carousel; top spacing handled in mobile block below */
+@media (max-width: 1024px) {
+    .study-abroad-container .study-premium-override.new-hero-section {
+        min-height: max(100vh, 560px);
+        overflow: hidden;
+    }
+
+    .hero-cards-desktop-container {
+        display: none !important;
+    }
+
+    .hero-stat-mobile-carousel {
+        display: block;
+    }
 }
 
-.hero-tag-icon {
+@media (max-width: 768px) {
+    .study-abroad-container .study-premium-override .new-hero-content {
+        flex: 1;
+        justify-content: flex-start;
+        padding-top: calc(var(--site-header-height, 71px) + 20px);
+        padding-bottom: 24px;
+        gap: clamp(10px, 2vh, 20px);
+    }
+
+    .study-abroad-container .study-premium-override .hero-top {
+        margin-top: 0;
+    }
+
+    .study-abroad-container .study-premium-override .hero-bottom {
+        gap: 8px;
+        margin-top: 170px;
+        margin-bottom: 0;
+        padding-top: 0 !important;
+        width: 100%;
+    }
+}
+
+@media (min-width: 1025px) {
+    .hero-stat-mobile-carousel {
+        display: none !important;
+    }
+
+    /* Desktop / monitor: shorter stat cards, slightly below CTAs */
+    .study-abroad-container .study-premium-override .hero-bottom {
+        margin-top: 28px;
+        padding-top: 0 !important;
+    }
+
+    .study-abroad-container .study-premium-override .hero-cards-wrapper {
+        margin-bottom: 24px;
+    }
+
+    .study-abroad-container .study-premium-override .hero-card {
+        min-height: 0 !important;
+        height: auto;
+        width: 220px;
+        flex: 0 0 220px;
+        padding: 0 !important;
+    }
+
+    .study-abroad-container .study-premium-override .hero-card-glass {
+        padding: 12px 14px 14px;
+        margin-bottom: 0;
+        flex-grow: 0;
+        background: transparent;
+        border: none;
+        backdrop-filter: none;
+        box-shadow: none;
+    }
+
+    .study-abroad-container .study-premium-override .hero-card-glass svg {
+        width: 20px !important;
+        height: 20px !important;
+        margin-bottom: 4px !important;
+    }
+
+    .study-abroad-container .study-premium-override .hero-card-title {
+        font-size: 15px;
+        margin: 4px 0 2px;
+        line-height: 1.2;
+    }
+
+    .study-abroad-container .study-premium-override .hero-card-desc {
+        font-size: 0.78rem;
+        line-height: 1.3;
+    }
+
+    /* Match home hero — fixed px so live matches localhost */
+    .study-abroad-container .study-premium-override.new-hero-section .new-hero-content {
+        max-width: 1280px;
+        padding-inline: 40px;
+        padding-top: 110px;
+        padding-bottom: 44px;
+    }
+
+    .study-abroad-container .study-premium-override .hero-title-line1 {
+        font-size: 56px;
+    }
+
+    .study-abroad-container .study-premium-override .hero-title-line2 {
+        font-size: 58px;
+    }
+
+    .study-abroad-container .study-premium-override .new-hero-description {
+        font-size: 16px;
+        max-width: 560px;
+        margin-bottom: 22px;
+    }
+
+    .study-abroad-container .study-premium-override .hero-bg-container {
+        background-size: cover, cover, cover, 960px auto;
+        background-position: center, center, center, center 62%;
+    }
+}
+
+@media (min-width: 1440px) {
+    .study-abroad-container .study-premium-override .hero-bottom {
+        margin-top: 36px;
+    }
+
+    .study-abroad-container .study-premium-override .hero-card-glass {
+        padding: 14px 16px 16px;
+    }
+}
+
+/* ── Stat cards carousel (mobile / tablet) — mirrors home AI Powered Courses ── */
+.study-stat-carousel-wrapper {
+    position: relative;
+    width: 100%;
+    padding: 0 28px;
+    box-sizing: border-box;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.hero-tag-text {
+.study-stat-cards-container {
     display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    -webkit-overflow-scrolling: touch;
+    gap: 14px;
+    padding: 0;
+    margin: 0;
+}
+
+.study-stat-cards-container::-webkit-scrollbar {
+    display: none;
+}
+
+.study-stat-card {
+    position: relative;
+    flex: 0 0 260px;
+    width: 260px;
+    height: 250px;
+    scroll-snap-align: start;
+    border-radius: 14px;
+    padding: 20px 15px 16px;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1), 0px 1px 2px -1px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease;
+}
+
+.study-stat-card-glass {
+    flex-grow: 1;
+    background: rgba(255, 255, 255, 0.14);
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    border-radius: 16px;
+    padding: 10px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 6px;
+    justify-content: center;
+    text-align: center;
 }
 
-.hero-tag-val {
-    color: #fff;
+.study-stat-card-title {
     font-weight: 700;
-    font-size: 13px;
+    font-size: 18px;
+    line-height: 1.2;
+    letter-spacing: -0.4px;
+    color: #ffffff;
+    margin: 6px 0 4px;
 }
 
-.hero-tag-label {
-    color: rgba(255, 255, 255, 0.85);
+.study-stat-card-desc {
+    font-weight: 400;
     font-size: 12px;
+    line-height: 1.45;
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0;
 }
 
-@media (max-width: 1024px) {
-    .hero-cards-desktop-container {
-        display: none !important;
+@media (max-width: 768px) {
+    .study-stat-carousel-wrapper {
+        padding: 0 28px;
+        margin-top: 16px;
     }
 
-    .hero-tags-mobile-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 12px;
-        padding: 0 20px;
-        margin-bottom: 20px;
+    .study-stat-card {
+        flex: 0 0 100%;
+        width: 100%;
+        max-width: 100%;
+        height: 128px;
+        border-radius: 12px;
+        padding: 10px 12px 10px;
+    }
+
+    .study-stat-card-glass {
+        padding: 8px 10px;
+        border-radius: 10px;
+    }
+
+    .study-stat-card-glass svg {
+        width: 18px !important;
+        height: 18px !important;
+        margin-bottom: 2px !important;
+    }
+
+    .study-stat-card-title {
+        font-size: 15px;
+        margin: 3px 0 2px;
+    }
+
+    .study-stat-card-desc {
+        font-size: 11px;
+        line-height: 1.3;
+    }
+
+    .study-stat-carousel-wrapper .hero-cards-nav {
+        width: 28px;
+        height: 28px;
     }
 }
 
-@media (max-width:768px){
-
-.hero-cards-wrapper{
-    padding:0;
-    width:100%;
-}
+@media (max-width: 768px) {
+    .hero-cards-wrapper{
+        padding:0;
+        width:100%;
+    }
 
 .hero-cards-carousel{
     display:flex;
@@ -2617,4 +2868,96 @@ height: 140px;
     scroll-snap-align:center;
 }
 
+}
+
+/* ============================================================
+   EVALUATION TEST — FULL PAGE (styled like the consultation form)
+   ============================================================ */
+
+.eval-fullpage-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    background: #fcfcfc;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.eval-fullpage-scroll {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 16px 40px;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+.eval-fullpage-close {
+    position: fixed;
+    top: 20px;
+    right: 24px;
+    z-index: 2001;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+    font-size: 26px;
+    line-height: 1;
+    color: #1c1c1c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.eval-fullpage-close:hover {
+    background: #1c1c1c;
+    color: #fff;
+    transform: rotate(90deg);
+}
+
+.eval-back-btn {
+    background: #ffffff;
+    color: #1c1c1c;
+    border: 2px solid #1c1c1c;
+    border-radius: 30px;
+    padding: 10px 26px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.eval-back-btn:hover {
+    background: #1c1c1c;
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .eval-fullpage-scroll {
+        padding: 70px 12px 30px;
+    }
+}
+
+/* Proficiency card background gradients — per test type */
+.prof-bg-ielts {
+    background: linear-gradient(45deg,#66a6ff, #89f7fe  );
+}
+
+.prof-bg-pte {
+    background: linear-gradient(40deg, #54091b,#fb3600 );
+}
+
+.prof-bg-duolingo {
+    background: linear-gradient(45deg, #2a925a 0%, #96d947 100%);
+}
+@media (min-width: 1025px) {
+    .study-abroad-container .section-header {
+        margin-left: 80px;
+    }
 }

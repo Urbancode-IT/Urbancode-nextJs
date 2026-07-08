@@ -51,18 +51,132 @@ const renderHeroCard = (card, key, compact = false) => (
     </div>
 );
 
-const renderHeroTag = (card, key) => (
-    <div className="hero-tag" key={key} style={{ background: card.gradient || 'linear-gradient(135deg, #1f2937, #111827)' }}>
-        <div className="hero-tag-icon">
-            {/* Clone icon to change size/margin for tag layout */}
-            {React.cloneElement(card.icon, { size: 16, className: "" })}
+const STAT_CARD_WIDTH = 260;
+const STAT_CARD_GAP = 14;
+
+/* Mobile / tablet carousel — one stat card at a time, matching home AI Powered Courses */
+const HeroStatMobileCarousel = ({ cards }) => {
+    const carouselRef = useRef(null);
+    const wrapperRef = useRef(null);
+    const [isHovered, setIsHovered] = useState(false);
+    const [cardsPerView, setCardsPerView] = useState(1);
+    const [canScrollPrev, setCanScrollPrev] = useState(false);
+    const [canScrollNext, setCanScrollNext] = useState(true);
+
+    const updateScrollButtons = React.useCallback(() => {
+        const slider = carouselRef.current;
+        if (!slider) return;
+        setCanScrollPrev(slider.scrollLeft > 4);
+        setCanScrollNext(slider.scrollLeft < slider.scrollWidth - slider.clientWidth - 4);
+    }, []);
+
+    useEffect(() => {
+        const computeCardsPerView = () => {
+            const wrapper = wrapperRef.current;
+            const width = window.innerWidth;
+
+            if (!wrapper || width > 1024) {
+                setCardsPerView(null);
+            } else {
+                const available = wrapper.clientWidth - 48;
+                const count = Math.max(1, Math.floor((available + STAT_CARD_GAP) / (STAT_CARD_WIDTH + STAT_CARD_GAP)));
+                setCardsPerView(count);
+            }
+            updateScrollButtons();
+        };
+
+        computeCardsPerView();
+        window.addEventListener('resize', computeCardsPerView);
+        return () => window.removeEventListener('resize', computeCardsPerView);
+    }, [updateScrollButtons]);
+
+    useEffect(() => {
+        const handleAutoScroll = () => {
+            const slider = carouselRef.current;
+            if (window.innerWidth > 1024 || isHovered || !slider) return;
+
+            const step = STAT_CARD_WIDTH + STAT_CARD_GAP;
+            const maxScroll = slider.scrollWidth - slider.clientWidth;
+
+            if (slider.scrollLeft >= maxScroll - 4) {
+                slider.scrollTo({ left: 0, behavior: 'smooth' });
+            } else {
+                slider.scrollBy({ left: step, behavior: 'smooth' });
+            }
+
+            setTimeout(updateScrollButtons, 350);
+        };
+
+        const interval = setInterval(handleAutoScroll, 3000);
+        return () => clearInterval(interval);
+    }, [isHovered, updateScrollButtons]);
+
+    const handleScrollCards = (direction) => {
+        const slider = carouselRef.current;
+        if (!slider) return;
+        const amount = (STAT_CARD_WIDTH + STAT_CARD_GAP) * (cardsPerView || 1);
+        slider.scrollBy({ left: direction * amount, behavior: 'smooth' });
+        setTimeout(updateScrollButtons, 350);
+    };
+
+    const cardsContainerStyle =
+        cardsPerView != null
+            ? { width: cardsPerView * (STAT_CARD_WIDTH + STAT_CARD_GAP) - STAT_CARD_GAP }
+            : undefined;
+
+    return (
+        <div className="study-stat-carousel-wrapper" ref={wrapperRef}>
+            <button
+                type="button"
+                className="hero-cards-nav hero-cards-nav-prev"
+                onClick={() => handleScrollCards(-1)}
+                disabled={!canScrollPrev}
+                aria-label="Previous stat"
+            >
+                <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12.5 15L7.5 10L12.5 5" stroke="#1C1D22" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+            </button>
+
+            <div
+                className="study-stat-cards-container"
+                ref={carouselRef}
+                style={cardsContainerStyle}
+                onScroll={updateScrollButtons}
+                onTouchStart={() => setIsHovered(true)}
+                onTouchEnd={() => setIsHovered(false)}
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
+            >
+                {cards.map((card, index) => (
+                    <div
+                        key={`stat-mobile-${index}`}
+                        className="study-stat-card"
+                        style={{ background: card.gradient || 'linear-gradient(135deg, #1f2937, #111827)' }}
+                    >
+                        <div className="study-stat-card-glass">
+                            {React.cloneElement(card.icon, { size: 24, className: 'mb-2' })}
+                            <h3 className="study-stat-card-title">{card.val}</h3>
+                            <p className="study-stat-card-desc">{card.label}</p>
+                        </div>
+                    </div>
+                ))}
+            </div>
+
+            <button
+                type="button"
+                className="hero-cards-nav hero-cards-nav-next"
+                onClick={() => handleScrollCards(1)}
+                disabled={!canScrollNext}
+                aria-label="Next stat"
+            >
+                <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7.5 5L12.5 10L7.5 15" stroke="#1C1D22" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+            </button>
         </div>
-        <div className="hero-tag-text">
-            <span className="hero-tag-val">{card.val}</span>
-            <span className="hero-tag-label">{card.label}</span>
-        </div>
-    </div>
-);
+    );
+};
 
 /* ─────────────────────────────────────────────────────────────
    HeroStats — responsive card-count carousel.
@@ -243,25 +357,44 @@ const StudyAbroadPage = () => {
     const mbbsTouchStartX = useRef(0);
     const mbbsTouchDeltaX = useRef(0);
 
+    const [showBatches, setShowBatches] = useState(false);
+
     const proficiencyData = {
-        IELTS: {
-            title: "IELTS (International English Language Testing System)",
-            description: "The world's most popular English language proficiency test for higher education and global migration. It assesses your Listening, Reading, Writing, and Speaking skills.",
-            highlights: ["Accepted in UK, Canada, Australia, and New Zealand", "Flexible test dates", "Comprehensive preparation material provided"],
-            certificateImage: "/images/study-abroad/IELTS (1).jpg"
-        },
-        PTE: {
-            title: "PTE (Pearson Test of English)",
-            description: "A computer-based English language test for non-native English speakers who want to study abroad. It is known for fast results and an unbiased computer-based scoring system.",
-            highlights: ["Fast results (typically within 48 hours)", "Unbiased machine scoring", "Accepted by thousands of universities worldwide"],
-            certificateImage: "/images/study-abroad/PTE.jpg"
-        },
-        Duolingo: {
-            title: "Duolingo English Test",
-            description: "A modern, convenient, and affordable English proficiency assessment. You can take the test online, anytime, anywhere in under an hour.",
-            highlights: ["Take the test from home", "Results in 2 days", "Accepted by over 4000 institutions globally"],
-            certificateImage: "/images/study-abroad/1.webp"
-        }
+      IELTS: {
+    title: "Achieve 7+ Band in IELTS in just 4 weeks!",
+    description: "Join thousands of successful IELTS aspirants who have boosted their scores with Urbancode's expert guidance. Our structured coaching, proven strategies, and personalized study plans help you master all four modules—Listening, Reading, Writing, and Speaking—effectively.",
+    highlights: [
+        "Accepted in UK, Canada, Australia, and New Zealand",
+        "Flexible test dates",
+        "Comprehensive preparation material provided"
+    ],
+    certificateImage: "/images/study-abroad/ielts_3d.png",
+    // bgColor: "linear-gradient(45deg, #804A8A 0%, #3A0353 100%)"
+},
+
+PTE: {
+    title: "Achieve Your Target PTE Score in 4 weeks!",
+    description: "Join successful PTE aspirants who have boosted their scores with our expert guidance. A computer-based English language test for non-native English speakers who want to study abroad.",
+    highlights: [
+        "Fast results (typically within 48 hours)",
+        "Unbiased machine scoring",
+        "Accepted by thousands of universities worldwide"
+    ],
+    certificateImage: "/images/study-abroad/pte_3d.png",
+    // bgColor: "linear-gradient(45deg, #ee0039 0%, #54091b 100%)"
+},
+
+Duolingo: {
+    title: "Master the Duolingo English Test with Ease!",
+    description: "A modern, convenient, and affordable English proficiency assessment. You can take the test online, anytime, anywhere in under an hour, with our comprehensive preparation.",
+    highlights: [
+        "Take the test from home",
+        "Results in 2 days",
+        "Accepted by over 4000 institutions globally"
+    ],
+    certificateImage: "/images/study-abroad/duolingo_3d.png",
+    // bgColor: "linear-gradient(45deg, #2a925a 0%, #96d947 100%)"
+}
     };
 
     const handleEnquireClick = (country) => {
@@ -439,9 +572,9 @@ const StudyAbroadPage = () => {
                     </div>
                 </div>
 
-                <div className="hero-bottom pt-5">
-                    <div className="hero-tags-mobile-container">
-                        {heroStatCards.map((card, i) => renderHeroTag(card, `tag-${i}`))}
+                <div className="hero-bottom">
+                    <div className="hero-stat-mobile-carousel">
+                        <HeroStatMobileCarousel cards={heroStatCards} />
                     </div>
                     <div className="hero-cards-desktop-container">
                         <HeroStats cards={heroStatCards} />
@@ -855,134 +988,145 @@ const StudyAbroadPage = () => {
             {/* English Proficiency Section */}
             <section id="english-proficiency" className="section-padding proficiency-section">
                 <div className="container">
-                    <div className="section-header">
-                        <h2 className="section-main-title text-shine">Master Your English Proficiency</h2>
-                        <p className="proficiency-main-desc">
-                            English proficiency certifications like <strong>IELTS, PTE, and Duolingo</strong> are essential milestones in your study abroad journey.
-                            At Urbancode, we provide comprehensive, result-oriented training for all these exams.
-                            Master the language under the guidance of experts with over <strong>10+ years of professional experience</strong> and achieve your target score with confidence.
-                        </p>
+                    <div className="section-header row align-items-center justify-content-center mb-5 text-start" style={{ textAlign: 'left' }}>
+                        <div className="col-lg-6">
+                            <h2 className="section-main-title text-shine mb-4" style={{ textAlign: 'left' }}>Master Your English Proficiency</h2>
+                            <p className="proficiency-main-desc text-muted" style={{ textAlign: 'left' }}>
+                                English proficiency certifications like <strong>IELTS, PTE, and Duolingo</strong> are essential milestones in your study abroad journey.
+                                At Urbancode, we provide comprehensive, result-oriented training for all these exams.
+                                Master the language under the guidance of experts with over <strong>10+ years of professional experience</strong> and achieve your target score with confidence.
+                            </p>
+                            <Link
+                                href="/study-abroad/evaluation-form"
+                                className="eval-test-btn"
+                            >
+                                Attend IELTS / PTE Evaluation Test
+                            </Link>
+                        </div>
+                        <div className="col-lg-6 text-center mt-4 mt-lg-0">
+                            <img src="/images/study-abroad/ielts.png" alt="English Proficiency" className="img-fluid" style={{ maxHeight: '350px', objectFit: 'contain' }} />
+                        </div>
                     </div>
 
                     <div className="proficiency-tabs-container">
+                        <div className="proficiency-buttons">
+                            {Object.keys(proficiencyData).map((key) => (
+                                <button
+                                    key={key}
+                                    className={`prof-tab-btn ${activeProficiency === key ? 'active' : ''}`}
+                                    onClick={() => setActiveProficiency(key)}
+                                >
+                                    {key}
+                                </button>
+                            ))}
+                        </div>
 
-                        {/* Unified container — certification + batches read as ONE section */}
-                        <div className="proficiency-unified-card">
-
-                            <div className="proficiency-buttons">
-                                {Object.keys(proficiencyData).map((key) => (
-                                    <button
-                                        key={key}
-                                        className={`prof-tab-btn ${activeProficiency === key ? 'active' : ''}`}
-                                        onClick={() => setActiveProficiency(key)}
-                                    >
-                                        {key}
-                                    </button>
-                                ))}
-                            </div>
-
-                            <motion.div
-                                key={activeProficiency}
-                                initial={{ opacity: 0, x: 20 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ duration: 0.4 }}
-                                className="proficiency-content-card"
-                            >
-                                <div className="row align-items-center">
-                                    <div className="col-lg-7">
-                                        <h3 className="prof-title">{proficiencyData[activeProficiency].title}</h3>
-                                        <p className="prof-desc">{proficiencyData[activeProficiency].description}</p>
-                                        <div className="prof-highlights">
-                                            {proficiencyData[activeProficiency].highlights.map((h, i) => (
-                                                <div key={i} className="prof-h-item">
-                                                    <FaCheckCircle className="text-success me-2" />
-                                                    <span>{h}</span>
-                                                </div>
-                                            ))}
-                                        </div>
+                        <motion.div
+                            key={activeProficiency}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.4 }}
+    className={`proficiency-content-card prof-bg-${activeProficiency.toLowerCase()}`}
+                            // style={{ backgroundColor: proficiencyData[activeProficiency].bgColor }}
+                        >
+                            <div className="row align-items-center">
+                                <div className="col-lg-5 text-center mb-4 mb-lg-0">
+                                    <div className="prof-cert-container mobile-padded-img" style={{ background: 'transparent', border: 'none', boxShadow: 'none' }}>
+                                        <img
+                                            src={proficiencyData[activeProficiency].certificateImage}
+                                            alt={`${activeProficiency} Certificate`}
+                                            className="prof-cert-img"
+                                            style={{ width: '100%', height: 'auto', objectFit: 'contain' }}
+                                        />
+                                    </div>
+                                </div>
+                                <div className="col-lg-7">
+                                    <h3 className="prof-title text-dark fw-bold">{proficiencyData[activeProficiency].title}</h3>
+                                    <p className="prof-desc text-dark">{proficiencyData[activeProficiency].description}</p>
+                                    <div className="prof-highlights mb-4">
+                                        {proficiencyData[activeProficiency].highlights.map((h, i) => (
+                                            <div key={i} className="prof-h-item text-dark">
+                                                <span className="prof-h-icon"><FaStar /></span>
+                                                <span>{h}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                    <div className="d-flex flex-wrap gap-3 align-items-center">
                                         <button
-                                            className="btn-prof-enquire mt-4"
+                                            className="btn-prof-enquire m-0"
+                                            style={{ background: '#1c1c1c', borderRadius: '30px' }}
                                             onClick={() => handleEnquireClick(activeProficiency)}
                                         >
-                                            Enroll for {activeProficiency} Coaching
+                                            Enroll with us now!
+                                        </button>
+                                        <button
+                                            className="btn-prof-enquire m-0"
+                                            style={{ background: '#1c1c1c', borderRadius: '30px' }}
+                                            onClick={() => setShowBatches(!showBatches)}
+                                        >
+                                            Batches
                                         </button>
                                     </div>
-                                    <div className="col-lg-5 d-none d-lg-block text-center">
-                                        <div className="prof-cert-container">
-                                            <img
-                                                src={proficiencyData[activeProficiency].certificateImage}
-                                                alt={`${activeProficiency} Certificate`}
-                                                className="prof-cert-img"
-                                            />
+                                    
+                                    <div className="mt-4 d-flex align-items-center gap-2">
+                                        <div className="text-warning fs-5">
+                                            ★★★★★
                                         </div>
-                                    </div>
-                                </div>
-                            </motion.div>
-
-                            <div className="prof-batches-divider" />
-
-                            <div className="prof-batches mt-5">
-                                <h2 className="cohorts-title mb-4" style={{ fontSize: '24px' }}>Batches</h2>
-                                <div className="cohorts-list" style={{ padding: 0 }}>
-                                    <div className="cohort-row-card">
-                                        <div className="cohort-name-col">
-                                            <div className="batch-dot"></div>
-                                            <span className="batch-name-text">Regular Classes</span>
-                                        </div>
-                                        <div className="cohort-info-col">
-                                            <span className="info-label d-flex align-items-center gap-1"><FaRegClock className="me-1"/> TIME</span>
-                                            <span className="info-value">11:00 AM IST</span>
-                                        </div>
-                                        <div className="cohort-info-col">
-                                            <span className="info-label d-flex align-items-center gap-1"><FaCalendarAlt className="me-1"/> BATCH TYPE</span>
-                                            <span className="info-value">Weekday (Mon-Fri)</span>
-                                        </div>
-                                        <div className="cohort-action-col">
-                                            <button className="btn btn-success fw-bold px-4 rounded-pill" onClick={() => handleEnquireClick(activeProficiency)}>Join Now</button>
-                                        </div>
-                                    </div>
-
-                                    <div className="cohort-row-card">
-                                        <div className="cohort-name-col">
-                                            <div className="batch-dot"></div>
-                                            <span className="batch-name-text">Fast Track</span>
-                                        </div>
-                                        <div className="cohort-info-col">
-                                            <span className="info-label d-flex align-items-center gap-1"><FaRegClock className="me-1"/> TIME</span>
-                                            <span className="info-value">02:00 PM IST</span>
-                                        </div>
-                                        <div className="cohort-info-col">
-                                            <span className="info-label d-flex align-items-center gap-1"><FaCalendarAlt className="me-1"/> BATCH TYPE</span>
-                                            <span className="info-value">Weekday (Mon-Fri)</span>
-                                        </div>
-                                        <div className="cohort-action-col">
-                                            <button className="btn btn-success fw-bold px-4 rounded-pill" onClick={() => handleEnquireClick(activeProficiency)}>Join Now</button>
-                                        </div>
-                                    </div>
-
-                                    <div className="cohort-row-card">
-                                        <div className="cohort-name-col">
-                                            <div className="batch-dot"></div>
-                                            <span className="batch-name-text">Weekend Classes</span>
-                                        </div>
-                                        <div className="cohort-info-col">
-                                            <span className="info-label d-flex align-items-center gap-1"><FaRegClock className="me-1"/> TIME</span>
-                                            <span className="info-value">11:00 AM IST</span>
-                                        </div>
-                                        <div className="cohort-info-col">
-                                            <span className="info-label d-flex align-items-center gap-1"><FaCalendarAlt className="me-1"/> BATCH TYPE</span>
-                                            <span className="info-value">Weekend (Sat-Sun)</span>
-                                        </div>
-                                        <div className="cohort-action-col">
-                                            <button className="btn btn-success fw-bold px-4 rounded-pill" onClick={() => handleEnquireClick(activeProficiency)}>Join Now</button>
+                                        <div className="text-dark fw-bold">
+                                            4.9/5 <span className="fw-normal">Google reviews</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                        </div>
-                        {/* /proficiency-unified-card */}
+                            {showBatches && (
+                                <motion.div 
+                                    initial={{ opacity: 0, height: 0 }}
+                                    animate={{ opacity: 1, height: 'auto' }}
+                                    className="prof-batches mt-5 p-4 rounded-4"
+                                    style={{ background: 'rgba(255, 255, 255, 0.4)', border: '1px solid rgba(255,255,255,0.6)' }}
+                                >
+                                    <h4 className="fw-bold text-dark mb-4" style={{ fontSize: '20px' }}>Available Batches</h4>
+                                    <div className="cohorts-list" style={{ padding: 0 }}>
+                                        <div className="cohort-row-card" style={{ background: '#fff' }}>
+                                            <div className="cohort-name-col">
+                                                <div className="batch-dot"></div>
+                                                <span className="batch-name-text">Regular Classes</span>
+                                            </div>
+                                            <div className="cohort-info-col">
+                                                <span className="info-label d-flex align-items-center gap-1"><FaRegClock className="me-1"/> TIME</span>
+                                                <span className="info-value">11:00 AM IST</span>
+                                            </div>
+                                            <div className="cohort-info-col">
+                                                <span className="info-label d-flex align-items-center gap-1"><FaCalendarAlt className="me-1"/> BATCH TYPE</span>
+                                                <span className="info-value">Weekday (Mon-Fri)</span>
+                                            </div>
+                                            <div className="cohort-action-col">
+                                                <button className="btn btn-dark fw-bold px-4 rounded-pill" onClick={() => handleEnquireClick(activeProficiency)}>Join Now</button>
+                                            </div>
+                                        </div>
 
+                                        <div className="cohort-row-card" style={{ background: '#fff' }}>
+                                            <div className="cohort-name-col">
+                                                <div className="batch-dot"></div>
+                                                <span className="batch-name-text">Fast Track</span>
+                                            </div>
+                                            <div className="cohort-info-col">
+                                                <span className="info-label d-flex align-items-center gap-1"><FaRegClock className="me-1"/> TIME</span>
+                                                <span className="info-value">02:00 PM IST</span>
+                                            </div>
+                                            <div className="cohort-info-col">
+                                                <span className="info-label d-flex align-items-center gap-1"><FaCalendarAlt className="me-1"/> BATCH TYPE</span>
+                                                <span className="info-value">Weekday (Mon-Fri)</span>
+                                            </div>
+                                            <div className="cohort-action-col">
+                                                <button className="btn btn-dark fw-bold px-4 rounded-pill" onClick={() => handleEnquireClick(activeProficiency)}>Join Now</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </motion.div>
+                            )}
+                        </motion.div>
                     </div>
                 </div>
             </section>

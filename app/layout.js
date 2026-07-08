@@ -47,6 +47,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={inter.variable} suppressHydrationWarning>
       <head>
+        {/* Explicit viewport — belt-and-suspenders with export const viewport below */}
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
         {/* FontAwesome CDN for reliable icon loading */}
         <link 
           rel="stylesheet" 

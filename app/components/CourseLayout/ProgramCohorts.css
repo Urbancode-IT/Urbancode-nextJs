@@ -62,7 +62,8 @@
   display: flex;
   align-items: center;
   gap: 0.7rem;
-  background: linear-gradient(135deg, #14532d 0%, #166534 60%, #15803d 100%);
+  /* background: linear-gradient(135deg, #14532d 0%, #166534 60%, #15803d 100%); */
+  background:#0d0d0d;
   padding: 1.3rem 1.5rem;
   height: 100%;
   min-height: 78px;
