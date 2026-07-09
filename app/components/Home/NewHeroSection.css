@@ -121,6 +121,7 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
+  margin-top: 22px;
 }
 
 /* ─── TITLE ───────────────────────────────────────────────
@@ -132,7 +133,7 @@
   width: 100%;
   margin: 0 auto clamp(14px, 2vw, 24px) auto;
   font-style: normal;
-  font-weight: 700;
+  font-weight: 800;
   line-height: 0.92;  /* very tight — lines almost touching, like reference */
   letter-spacing: -2px;
   color: #1C1D22;
@@ -140,7 +141,8 @@
 
 /* shared layout — each span is its own block, never wraps */
 .hero-title-line1,
-.hero-title-line2 {
+.hero-title-line2,
+.hero-title-line3 {
   display: block;
   white-space: nowrap;
   overflow: visible; /* must NOT be hidden — clips descenders at line-height < 1 */
@@ -148,27 +150,34 @@
 
 /* line 1 — no bottom padding so it sits flush against line 2 */
 .hero-title-line1 {
-  font-size: calc(clamp(24px, 4.5vw, 60px) - 2px);
-  padding-bottom: 0;
+  font-size: clamp(30px, 4.8vw, 68px);
+  /* font-size:27px !important; */
+  margin-top: 0;
+  /* padding-bottom: 0.12em; */
 }
 
 /* line 2 — small bottom padding protects descenders (g, y, p) */
-.hero-title-line2 {
-  font-size: clamp(24px, 4.5vw, 60px);
-  margin-top: 0;
-  padding-bottom: 0.12em;
+.hero-title-line2{
+  font-size: clamp(30px, 4.8vw, 68px);
+  /* font-size:27px !important; */
+  /* margin-top: 0; */
+  /* padding-bottom: 0.12em; */
+  /* margin-top:-9px; */
+    margin-top:0px;
+
 }
 
 /* ─── Subtitle ─── */
 .new-hero-description {
   width: 100%;
   max-width: 680px;
-  margin: 0 auto clamp(16px, 2.4vw, 26px) auto;
+  margin: 0 auto clamp(20px, 2.4vw, 26px) auto;
   font-weight: 400;
   font-size: clamp(14px, 1.1vw, 18px);
   line-height: 1.56;
   letter-spacing: -0.6px;
   color: rgba(28, 29, 34, 0.55);
+  margin-top:10px !important;
 }
 
 /* ─── CTA Buttons ─── */
@@ -178,6 +187,7 @@
   justify-content: center;
   align-items: center;
   flex-wrap: nowrap;
+  margin-top: 16px;
 }
 
 .hero-btn-primary, .hero-btn-secondary {
@@ -416,43 +426,22 @@
    ═══════════════════════════════════════════════════════════ */
 @media (min-width: 1025px) and (max-width: 1439px) {
   .new-hero-content {
-    padding-top: 110px;
-    padding-bottom: 44px;
+    padding-top: 99px;
+    padding-bottom: 40px;
   }
 }
 
 /* ═══════════════════════════════════════════════════════════
-   LARGE MONITORS (≥1440px) — same fixed scale as laptop, no upscaling
+   LARGE MONITORS (≥1440px) — scaled up in monitor block at file end
    ═══════════════════════════════════════════════════════════ */
-@media (min-width: 1440px) {
-  .new-hero-content   { max-width: 1280px; }
-  .hero-bottom-title  { font-size: 24px; }
-  .hero-bottom-explore { font-size: 15px; }
-  .hero-cards-container { gap: 18px; }
-
-  .hero-card {
-    aspect-ratio: auto;
-    min-height: 210px;
-    height: 210px;
-    max-height: 210px;
-    padding: 18px 14px 14px;
-  }
-
-  .hero-card-level   { font-size: 10px; margin-bottom: 6px; }
-  .hero-card-glass   { padding: 10px; margin-bottom: 12px; }
-  .hero-card-title   { font-size: 18px; margin-bottom: 5px; }
-  .hero-card-desc    { font-size: 13px; }
-  .hero-card-duration { font-size: 12px; }
-  .hero-card-btn     { width: 32px; height: 32px; }
-}
 
 /* ═══════════════════════════════════════════════════════════
    TABLET + MOBILE  (≤1024px)
    Shared: horizontal scroll, hidden scrollbar, nav arrows
    ═══════════════════════════════════════════════════════════ */
 @media (max-width: 1024px) {
+  .hero-title-line1,
   .hero-title-line2 { font-size: clamp(20px, 4vw, 48px); }
-  .hero-title-line1 { font-size: calc(clamp(20px, 4vw, 48px) - 2px); }
 
   .hero-cards-container {
     display: flex;
@@ -527,7 +516,7 @@
   }
 
   .hero-title-line2 { font-size: clamp(18px, 3.2vw, 34px); }
-  .hero-title-line1 { font-size: calc(clamp(18px, 3.2vw, 34px) ); }
+  .hero-title-line1 { font-size: clamp(18px, 3.2vw, 34px) ; }
   .new-hero-title   { margin-bottom: 8px; }
 
   .new-hero-description {
@@ -550,8 +539,8 @@
     padding-bottom: clamp(40px, 5vw, 60px);
   }
 
+  .hero-title-line1,
   .hero-title-line2 { font-size: clamp(28px, 4.8vw, 52px); }
-  .hero-title-line1 { font-size: calc(clamp(28px, 4.8vw, 52px) - 2px); }
 
   .hero-card { height: 260px; }
 }
@@ -600,12 +589,9 @@
     background-repeat: no-repeat;
     opacity: 1;
   }
+  .hero-title-line1,
   .hero-title-line2 {
     font-size: clamp(20px, 5.5vw, 40px);
-    letter-spacing: -1px;
-  }
-  .hero-title-line1 {
-    font-size: calc(clamp(20px, 5.5vw, 40px) - 2px);
     letter-spacing: -1px;
   }
 
@@ -633,10 +619,15 @@
 
   .hero-btn-secondary span { font-size: 14px; }
 
-  /* Bottom section — pushed 80px below top block on mobile */
-  .hero-bottom {
+  /* Bottom section — home hero cards, nudged upward on mobile */
+  .new-hero-section:not(.study-premium-override) .hero-bottom {
     gap: 12px;
-    margin-top: 80px;
+    margin-top: 50px;
+  }
+
+  /* Skyline bg shifted up with the cards (home only) */
+  .new-hero-section:not(.study-premium-override) .hero-bg-container {
+    background-position: center, center, center, center 44%;
   }
 
   .hero-bottom-title  { font-size: 18px; font-weight: 700; }
@@ -665,8 +656,8 @@
 
 /* ─── Very small phones (≤380px) ─── */
 @media (max-width: 380px) {
+  .hero-title-line1,
   .hero-title-line2 { font-size: clamp(18px, 6vw, 26px); }
-  .hero-title-line1 { font-size: calc(clamp(18px, 6vw, 26px) - 2px); }
 
   .new-hero-description { font-size: 13px; }
 
@@ -681,87 +672,219 @@
 }
 
 /* ═══════════════════════════════════════════════════════════
-   STABLE DESKTOP SIZING (≥1025px)
-   Fixed px values — identical on localhost and production.
-   vw/clamp units can render differently when viewport meta is
-   missing or when monitor DPI scaling differs.
+   STABLE DESKTOP SIZING (1025px – 1439px)
+   ~90% scale — matches correct look at 100% browser zoom on laptop/desktop.
    ═══════════════════════════════════════════════════════════ */
-@media (min-width: 1025px) {
+@media (min-width: 1025px) and (max-width: 1439px) {
   .new-hero-section:not(.study-premium-override) .new-hero-content {
-    max-width: 1280px;
-    padding-inline: 40px;
-    padding-top: 110px;
-    padding-bottom: 44px;
+    max-width: 1152px;
+    padding-inline: 36px;
+    padding-top: 99px;
+    padding-bottom: 40px;
   }
 
   .new-hero-section:not(.study-premium-override) .hero-title-line1,
   .new-hero-section:not(.study-premium-override) .hero-title-line2 {
-    font-size: 58px;
+    font-size: 52px;
+    letter-spacing: -1.8px;
   }
 
-  .new-hero-section:not(.study-premium-override) .hero-title-line1 {
-    font-size: 56px;
+  .new-hero-section:not(.study-premium-override) .new-hero-title {
+    margin-bottom: 20px;
   }
 
   .new-hero-section:not(.study-premium-override) .new-hero-description {
-    font-size: 16px;
-    max-width: 560px;
-    margin-bottom: 22px;
+    font-size: 14px;
+    max-width: 504px;
+    margin-bottom: 20px;
+  }
+
+  .new-hero-section:not(.study-premium-override) .hero-btn-primary,
+  .new-hero-section:not(.study-premium-override) .hero-btn-secondary {
+    height: 41px;
+    padding: 0 22px;
+    font-size: 14px;
+  }
+
+  .new-hero-section:not(.study-premium-override) .hero-btn-secondary span {
+    font-size: 14px;
+  }
+
+  .new-hero-section:not(.study-premium-override) .hero-btn-primary svg,
+  .new-hero-section:not(.study-premium-override) .hero-btn-secondary svg {
+    width: 20px;
+    height: 20px;
   }
 
   .new-hero-section:not(.study-premium-override) .hero-bg-container {
-    background-size: cover, cover, cover, 960px auto;
+    background-size: cover, cover, cover, 864px auto;
     background-position: center, center, center, center 62%;
   }
 
   .new-hero-section:not(.study-premium-override) .hero-cards-container {
-    gap: 18px;
+    gap: 16px;
   }
 
   .new-hero-section:not(.study-premium-override) .hero-card {
-    min-height: 210px;
-    height: 210px;
-    max-height: 210px;
+    min-height: 225px;
+    height: 225px;
+    max-height: 225px;
     padding: 18px 14px 14px;
   }
 
   .new-hero-section:not(.study-premium-override) .hero-card-level {
-    font-size: 10px;
-    margin-bottom: 6px;
-  }
-
-  .new-hero-section:not(.study-premium-override) .hero-card-glass {
-    padding: 10px;
-    margin-bottom: 12px;
-  }
-
-  .new-hero-section:not(.study-premium-override) .hero-card-title {
-    font-size: 18px;
+    font-size: 9px;
     margin-bottom: 5px;
   }
 
-  .new-hero-section:not(.study-premium-override) .hero-card-desc {
-    font-size: 13px;
+  .new-hero-section:not(.study-premium-override) .hero-card-glass {
+    padding: 11px;
+    margin-bottom: 13px;
   }
 
-  .new-hero-section:not(.study-premium-override) .hero-card-duration {
+  .new-hero-section:not(.study-premium-override) .hero-card-title {
+    font-size: 16px;
+    margin-bottom: 4px;
+  }
+
+  .new-hero-section:not(.study-premium-override) .hero-card-desc {
     font-size: 12px;
   }
 
+  .new-hero-section:not(.study-premium-override) .hero-card-duration {
+    font-size: 11px;
+  }
+
   .new-hero-section:not(.study-premium-override) .hero-card-btn {
-    width: 32px;
-    height: 32px;
+    width: 29px;
+    height: 29px;
   }
 
   .new-hero-section:not(.study-premium-override) .hero-bottom-title {
-    font-size: 24px;
+    font-size: 22px;
   }
 
   .new-hero-section:not(.study-premium-override) .hero-bottom-explore {
-    font-size: 15px;
+    font-size: 14px;
   }
 
   .new-hero-section:not(.study-premium-override) .hero-bottom {
-    gap: 16px;
+    gap: 14px;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   MONITOR SIZING (≥1440px) — ~125% scale vs desktop/laptop
+   Matches the look of 125% browser zoom on large monitors only.
+   ═══════════════════════════════════════════════════════════ */
+@media (min-width: 1440px) {
+  .new-hero-section:not(.study-premium-override) .new-hero-content {
+    max-width: 1600px;
+    padding-inline: 50px;
+    padding-top: 138px;
+    padding-bottom: 55px;
+  }
+
+  .new-hero-section:not(.study-premium-override) .hero-title-line1,
+  .new-hero-section:not(.study-premium-override) .hero-title-line2 {
+    font-size: 73px;
+    letter-spacing: -2.5px;
+  }
+
+  .new-hero-section:not(.study-premium-override) .new-hero-title {
+    margin-bottom: 28px;
+  }
+
+  .new-hero-section:not(.study-premium-override) .new-hero-description {
+    font-size: 20px;
+    max-width: 700px;
+    margin-bottom: 28px;
+    letter-spacing: -0.75px;
+  }
+
+  .new-hero-section:not(.study-premium-override) .hero-btn-primary,
+  .new-hero-section:not(.study-premium-override) .hero-btn-secondary {
+    height: 58px;
+    padding: 0 30px;
+    font-size: 20px;
+    gap: 10px;
+  }
+
+  .new-hero-section:not(.study-premium-override) .hero-btn-secondary span {
+    font-size: 20px;
+  }
+
+  .new-hero-section:not(.study-premium-override) .hero-btn-primary svg,
+  .new-hero-section:not(.study-premium-override) .hero-btn-secondary svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .new-hero-section:not(.study-premium-override) .hero-bg-container {
+    background-size: cover, cover, cover, 1200px auto;
+    background-position: center, center, center, center 62%;
+  }
+
+  .new-hero-section:not(.study-premium-override) .hero-cards-container {
+    gap: 22px;
+  }
+
+  .new-hero-section:not(.study-premium-override) .hero-card {
+    min-height: 312px;
+    height: 312px;
+    max-height: 312px;
+    padding: 24px 18px 18px;
+    border-radius: 18px;
+  }
+
+  .new-hero-section:not(.study-premium-override) .hero-card-level {
+    font-size: 13px;
+    margin-bottom: 8px;
+    letter-spacing: 1.75px;
+  }
+
+  .new-hero-section:not(.study-premium-override) .hero-card-glass {
+    padding: 15px;
+    margin-bottom: 18px;
+    border-radius: 20px;
+  }
+
+  .new-hero-section:not(.study-premium-override) .hero-card-title {
+    font-size: 23px;
+    margin-bottom: 6px;
+  }
+
+  .new-hero-section:not(.study-premium-override) .hero-card-desc {
+    font-size: 16px;
+  }
+
+  .new-hero-section:not(.study-premium-override) .hero-card-duration {
+    font-size: 15px;
+  }
+
+  .new-hero-section:not(.study-premium-override) .hero-card-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .new-hero-section:not(.study-premium-override) .hero-bottom-title {
+    font-size: 30px;
+  }
+
+  .new-hero-section:not(.study-premium-override) .hero-bottom-explore {
+    font-size: 19px;
+  }
+
+  .new-hero-section:not(.study-premium-override) .hero-bottom {
+    gap: 20px;
+  }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .hero-title-line1,
+  .hero-title-line2 {
+    font-size: 26px !important;
+    margin-top: -9px !important;
   }
 }

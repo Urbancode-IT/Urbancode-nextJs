@@ -31,9 +31,11 @@ const HeroTop = ({ onEnrollClick, onStudyAbroadClick }) => {
   return (
     <div className="hero-top">
       <div className="new-hero-title">
-        <span className="hero-title-line1"> The right skill today</span>
+        <span className="hero-title-line1"> The right skill today </span>
         <br />
-        <span className="hero-title-line2">for the right career tomorrow</span>
+        <span className="hero-title-line2"> for the right career tomorrow</span>
+        {/* <br/> */}
+        {/* <span className="hero-title-line3"> tomorrow</span> */}
       </div>
       <p className="new-hero-description">
         Master in-demand IT skills with expert-led training, hands-on projects, certification programs, and career-focused learning all in one place.

@@ -41,8 +41,15 @@ const heroStatCards = [
     { icon: <FaStar size={24} color="#f472b6" className="mb-2" />, val: "10+ Years", label: "Expert Guidance", gradient: "linear-gradient(130.3deg, #A22C27 -5.39%, #FF7C77 115.93%)" },
 ];
 
-const renderHeroCard = (card, key, compact = false) => (
-    <div className={`hero-card ${compact ? 'hero-card-compact' : ''}`} key={key} style={{ background: card.gradient || 'linear-gradient(135deg, #1f2937, #111827)' }}>
+const renderHeroCard = (card, key, compact = false, cardSize) => (
+    <div
+        className={`hero-card ${compact ? 'hero-card-compact' : ''}`}
+        key={key}
+        style={{
+            background: card.gradient || 'linear-gradient(135deg, #1f2937, #111827)',
+            ...(cardSize ? { width: cardSize, flex: `0 0 ${cardSize}px`, aspectRatio: '1 / 1' } : {}),
+        }}
+    >
         <div className="hero-card-glass">
             {card.icon}
             <h3 className="hero-card-title text-center">{card.val}</h3>
@@ -51,17 +58,19 @@ const renderHeroCard = (card, key, compact = false) => (
     </div>
 );
 
-const STAT_CARD_WIDTH = 260;
-const STAT_CARD_GAP = 14;
-
-/* Mobile / tablet carousel — one stat card at a time, matching home AI Powered Courses */
+/* Mobile / tablet carousel — one stat card at a time, full-width scaled square */
 const HeroStatMobileCarousel = ({ cards }) => {
     const carouselRef = useRef(null);
     const wrapperRef = useRef(null);
     const [isHovered, setIsHovered] = useState(false);
-    const [cardsPerView, setCardsPerView] = useState(1);
     const [canScrollPrev, setCanScrollPrev] = useState(false);
     const [canScrollNext, setCanScrollNext] = useState(true);
+
+    const getScrollStep = React.useCallback(() => {
+        const slider = carouselRef.current;
+        if (!slider) return 0;
+        return slider.clientWidth;
+    }, []);
 
     const updateScrollButtons = React.useCallback(() => {
         const slider = carouselRef.current;
@@ -71,23 +80,10 @@ const HeroStatMobileCarousel = ({ cards }) => {
     }, []);
 
     useEffect(() => {
-        const computeCardsPerView = () => {
-            const wrapper = wrapperRef.current;
-            const width = window.innerWidth;
-
-            if (!wrapper || width > 1024) {
-                setCardsPerView(null);
-            } else {
-                const available = wrapper.clientWidth - 48;
-                const count = Math.max(1, Math.floor((available + STAT_CARD_GAP) / (STAT_CARD_WIDTH + STAT_CARD_GAP)));
-                setCardsPerView(count);
-            }
-            updateScrollButtons();
-        };
-
-        computeCardsPerView();
-        window.addEventListener('resize', computeCardsPerView);
-        return () => window.removeEventListener('resize', computeCardsPerView);
+        const onResize = () => updateScrollButtons();
+        window.addEventListener('resize', onResize);
+        updateScrollButtons();
+        return () => window.removeEventListener('resize', onResize);
     }, [updateScrollButtons]);
 
     useEffect(() => {
@@ -95,7 +91,7 @@ const HeroStatMobileCarousel = ({ cards }) => {
             const slider = carouselRef.current;
             if (window.innerWidth > 1024 || isHovered || !slider) return;
 
-            const step = STAT_CARD_WIDTH + STAT_CARD_GAP;
+            const step = getScrollStep();
             const maxScroll = slider.scrollWidth - slider.clientWidth;
 
             if (slider.scrollLeft >= maxScroll - 4) {
@@ -109,20 +105,14 @@ const HeroStatMobileCarousel = ({ cards }) => {
 
         const interval = setInterval(handleAutoScroll, 3000);
         return () => clearInterval(interval);
-    }, [isHovered, updateScrollButtons]);
+    }, [isHovered, updateScrollButtons, getScrollStep]);
 
     const handleScrollCards = (direction) => {
         const slider = carouselRef.current;
         if (!slider) return;
-        const amount = (STAT_CARD_WIDTH + STAT_CARD_GAP) * (cardsPerView || 1);
-        slider.scrollBy({ left: direction * amount, behavior: 'smooth' });
+        slider.scrollBy({ left: direction * getScrollStep(), behavior: 'smooth' });
         setTimeout(updateScrollButtons, 350);
     };
-
-    const cardsContainerStyle =
-        cardsPerView != null
-            ? { width: cardsPerView * (STAT_CARD_WIDTH + STAT_CARD_GAP) - STAT_CARD_GAP }
-            : undefined;
 
     return (
         <div className="study-stat-carousel-wrapper" ref={wrapperRef}>
@@ -141,7 +131,6 @@ const HeroStatMobileCarousel = ({ cards }) => {
             <div
                 className="study-stat-cards-container"
                 ref={carouselRef}
-                style={cardsContainerStyle}
                 onScroll={updateScrollButtons}
                 onTouchStart={() => setIsHovered(true)}
                 onTouchEnd={() => setIsHovered(false)}
@@ -149,15 +138,16 @@ const HeroStatMobileCarousel = ({ cards }) => {
                 onMouseLeave={() => setIsHovered(false)}
             >
                 {cards.map((card, index) => (
-                    <div
-                        key={`stat-mobile-${index}`}
-                        className="study-stat-card"
-                        style={{ background: card.gradient || 'linear-gradient(135deg, #1f2937, #111827)' }}
-                    >
-                        <div className="study-stat-card-glass">
-                            {React.cloneElement(card.icon, { size: 24, className: 'mb-2' })}
-                            <h3 className="study-stat-card-title">{card.val}</h3>
-                            <p className="study-stat-card-desc">{card.label}</p>
+                    <div key={`stat-mobile-${index}`} className="study-stat-card-slide">
+                        <div
+                            className="study-stat-card"
+                            style={{ background: card.gradient || 'linear-gradient(135deg, #1f2937, #111827)' }}
+                        >
+                            <div className="study-stat-card-glass">
+                                {React.cloneElement(card.icon, { size: 24, className: 'mb-2' })}
+                                <h3 className="study-stat-card-title">{card.val}</h3>
+                                <p className="study-stat-card-desc">{card.label}</p>
+                            </div>
                         </div>
                     </div>
                 ))}
@@ -211,25 +201,46 @@ const HeroStats = ({ cards }) => {
     const [maxIndex, setMaxIndex] = useState(0);
     const [needsArrows, setNeedsArrows] = useState(false);
     const [visibleCount, setVisibleCount] = useState(cards.length);
+    const [cardWidth, setCardWidth] = useState(150);
+    const [gap, setGap] = useState(16);
 
     // Touch / swipe refs
     const touchStartX = useRef(0);
     const touchDeltaX = useRef(0);
 
-    const CARD_WIDTH = 220;
-    const GAP = 16;
     const ARROW_WIDTH = 42;
     const ARROW_GAP = 10;
-    const step = CARD_WIDTH + GAP;
+    const step = cardWidth + gap;
 
     useEffect(() => {
         const recalc = () => {
             if (!wrapperRef.current) return;
 
+            const isMonitor = window.innerWidth >= 1440;
+            const isDesktop = window.innerWidth >= 1025 && window.innerWidth < 1440;
+            const GAP = isMonitor ? 20 : isDesktop ? 14 : 16;
+
             const cs = window.getComputedStyle(wrapperRef.current);
             const paddingLeft = parseFloat(cs.paddingLeft) || 0;
             const paddingRight = parseFloat(cs.paddingRight) || 0;
             const contentWidth = wrapperRef.current.clientWidth - paddingLeft - paddingRight;
+
+            /* Monitor: fit all 5 cards in one row — no carousel arrows */
+            if (isMonitor) {
+                const CARD_WIDTH = Math.floor((contentWidth - (cards.length - 1) * GAP) / cards.length);
+                setCardWidth(CARD_WIDTH);
+                setGap(GAP);
+                setNeedsArrows(false);
+                setMaxIndex(0);
+                setIndex(0);
+                setVisibleCount(cards.length);
+                return;
+            }
+
+            const CARD_WIDTH = isDesktop ? 135 : 150;
+            setCardWidth(CARD_WIDTH);
+            setGap(GAP);
+            const cardStep = CARD_WIDTH + GAP;
 
             const totalWidth = cards.length * CARD_WIDTH + (cards.length - 1) * GAP;
 
@@ -245,7 +256,7 @@ const HeroStats = ({ cards }) => {
             // Arrows needed — reserve their space, count whole cards in what remains
             const arrowsSpace = (ARROW_WIDTH + ARROW_GAP) * 2;
             const availableForCards = contentWidth - arrowsSpace;
-            const count = Math.max(1, Math.floor((availableForCards + GAP) / step));
+            const count = Math.max(1, Math.floor((availableForCards + GAP) / cardStep));
             const newMaxIndex = Math.max(0, cards.length - count);
             setNeedsArrows(true);
             setVisibleCount(count);
@@ -278,7 +289,7 @@ const HeroStats = ({ cards }) => {
 
     // JS-sets an exact pixel width on the viewport so only whole cards show
     const viewportWidth = needsArrows
-        ? visibleCount * CARD_WIDTH + (visibleCount - 1) * GAP
+        ? visibleCount * cardWidth + (visibleCount - 1) * gap
         : undefined;
 
     return (
@@ -308,7 +319,7 @@ const HeroStats = ({ cards }) => {
                         className={`hero-cards-track ${needsArrows ? '' : 'centered'}`}
                         style={needsArrows ? { transform: `translateX(-${index * step}px)` } : undefined}
                     >
-                        {cards.map((card, i) => renderHeroCard(card, `card-${i}`, false))}
+                        {cards.map((card, i) => renderHeroCard(card, `card-${i}`, false, cardWidth))}
                     </div>
                 </div>
 
@@ -1000,7 +1011,7 @@ Duolingo: {
                                 href="/study-abroad/evaluation-form"
                                 className="eval-test-btn"
                             >
-                                Attend IELTS / PTE Evaluation Test
+                                <span>Demo class Evaluation form</span>
                             </Link>
                         </div>
                         <div className="col-lg-6 text-center mt-4 mt-lg-0">
@@ -1009,84 +1020,65 @@ Duolingo: {
                     </div>
 
                     <div className="proficiency-tabs-container">
-                        <div className="proficiency-buttons">
-                            {Object.keys(proficiencyData).map((key) => (
-                                <button
-                                    key={key}
-                                    className={`prof-tab-btn ${activeProficiency === key ? 'active' : ''}`}
-                                    onClick={() => setActiveProficiency(key)}
-                                >
-                                    {key}
-                                </button>
-                            ))}
-                        </div>
-
-                        <motion.div
-                            key={activeProficiency}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.4 }}
-    className={`proficiency-content-card prof-bg-${activeProficiency.toLowerCase()}`}
-                            // style={{ backgroundColor: proficiencyData[activeProficiency].bgColor }}
-                        >
-                            <div className="row align-items-center">
-                                <div className="col-lg-5 text-center mb-4 mb-lg-0">
-                                    <div className="prof-cert-container mobile-padded-img" style={{ background: 'transparent', border: 'none', boxShadow: 'none' }}>
-                                        <img
-                                            src={proficiencyData[activeProficiency].certificateImage}
-                                            alt={`${activeProficiency} Certificate`}
-                                            className="prof-cert-img"
-                                            style={{ width: '100%', height: 'auto', objectFit: 'contain' }}
-                                        />
-                                    </div>
-                                </div>
-                                <div className="col-lg-7">
-                                    <h3 className="prof-title text-dark fw-bold">{proficiencyData[activeProficiency].title}</h3>
-                                    <p className="prof-desc text-dark">{proficiencyData[activeProficiency].description}</p>
-                                    <div className="prof-highlights mb-4">
-                                        {proficiencyData[activeProficiency].highlights.map((h, i) => (
-                                            <div key={i} className="prof-h-item text-dark">
-                                                <span className="prof-h-icon"><FaStar /></span>
-                                                <span>{h}</span>
-                                            </div>
-                                        ))}
-                                    </div>
-                                    <div className="d-flex flex-wrap gap-3 align-items-center">
-                                        <button
-                                            className="btn-prof-enquire m-0"
-                                            style={{ background: '#1c1c1c', borderRadius: '30px' }}
-                                            onClick={() => handleEnquireClick(activeProficiency)}
-                                        >
-                                            Enroll with us now!
-                                        </button>
-                                        <button
-                                            className="btn-prof-enquire m-0"
-                                            style={{ background: '#1c1c1c', borderRadius: '30px' }}
-                                            onClick={() => setShowBatches(!showBatches)}
-                                        >
-                                            Batches
-                                        </button>
-                                    </div>
-                                    
-                                    <div className="mt-4 d-flex align-items-center gap-2">
-                                        <div className="text-warning fs-5">
-                                            ★★★★★
-                                        </div>
-                                        <div className="text-dark fw-bold">
-                                            4.9/5 <span className="fw-normal">Google reviews</span>
-                                        </div>
-                                    </div>
-                                </div>
+                        <div className={`proficiency-glass-container prof-bg-${activeProficiency.toLowerCase()}`}>
+                            <div className="proficiency-button-parent">
+                            <div className="proficiency-buttons">
+                                {Object.keys(proficiencyData).map((key) => (
+                                    <button
+                                        key={key}
+                                        className={`prof-tab-btn ${activeProficiency === key ? 'active' : ''}`}
+                                        onClick={() => setActiveProficiency(key)}
+                                    >
+                                        {key}
+                                    </button>
+                                ))}
+                            </div>
                             </div>
 
-                            {showBatches && (
-                                <motion.div 
-                                    initial={{ opacity: 0, height: 0 }}
-                                    animate={{ opacity: 1, height: 'auto' }}
-                                    className="prof-batches mt-5 p-4 rounded-4"
-                                    style={{ background: 'rgba(255, 255, 255, 0.4)', border: '1px solid rgba(255,255,255,0.6)' }}
-                                >
-                                    <h4 className="fw-bold text-dark mb-4" style={{ fontSize: '20px' }}>Available Batches</h4>
+                            <motion.div
+                                key={activeProficiency}
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.4 }}
+                                className="proficiency-content-card"
+                            >
+                                <div className="row align-items-center">
+                                    <div className="col-lg-5 text-center mb-4 mb-lg-0">
+                                        <div className="prof-cert-container mobile-padded-img">
+                                            <img
+                                                src={proficiencyData[activeProficiency].certificateImage}
+                                                alt={`${activeProficiency} Certificate`}
+                                                className="prof-cert-img"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="col-lg-7">
+                                        <h3 className="prof-title prof-glass-title">{proficiencyData[activeProficiency].title}</h3>
+                                        <p className="prof-desc prof-glass-desc">{proficiencyData[activeProficiency].description}</p>
+                                        <div className="d-flex flex-wrap gap-3 align-items-center">
+                                            <button
+                                                className="btn-prof-enquire prof-glass-btn m-0"
+                                                onClick={() => handleEnquireClick(activeProficiency)}
+                                            >
+                                                Enroll with us now!
+                                            </button>
+                                            <button
+                                                className="btn-prof-enquire prof-glass-btn m-0"
+                                                onClick={() => setShowBatches(!showBatches)}
+                                            >
+                                                Batches
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {showBatches && (
+                                    <motion.div
+                                        initial={{ opacity: 0, height: 0 }}
+                                        animate={{ opacity: 1, height: 'auto' }}
+                                        className="prof-batches prof-batches-glass mt-5 p-4 rounded-4"
+                                    >
+                                    <h4 className="fw-bold mb-4" style={{ fontSize: '20px' }}>Available Batches</h4>
                                     <div className="cohorts-list" style={{ padding: 0 }}>
                                         <div className="cohort-row-card" style={{ background: '#fff' }}>
                                             <div className="cohort-name-col">
@@ -1127,6 +1119,7 @@ Duolingo: {
                                 </motion.div>
                             )}
                         </motion.div>
+                        </div>
                     </div>
                 </div>
             </section>
