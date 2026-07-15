@@ -93,14 +93,13 @@ export async function POST(req) {
       row('Previous Training Feedback', body?.previousTrainingFeedback),
       row('Training Expectations', body?.trainingExpectations),
       row('Hours Per Week', body?.hoursPerWeek),
-      row('Preferred Timing', body?.preferredTiming),
+      row('Preferred Timing', body?.preferredTiming === 'Other' ? `Other (${toText(body?.preferredTimingOther, 'Not specified')})` : body?.preferredTiming),
       row('Preferred Format', body?.preferredFormat),
     ].join('');
 
     const section5Rows = [
       row('About Paragraph', body?.aboutParagraph),
       row('Writing Task Response', body?.writingResponse),
-      row('Uploaded File', body?.uploadedFileName),
     ].join('');
 
     const htmlContent = `

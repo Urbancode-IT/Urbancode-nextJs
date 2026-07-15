@@ -568,6 +568,7 @@ export const newCourseData = {
             reviewCount: "350+",
             totalStars: 5,
             image: "/images/courses/z2.webp",
+            brochure: "/curriculum/mern-stack-brochure.pdf",
         },
         highlightsData: commonHighlights,
         curriculumData: [
@@ -922,6 +923,7 @@ export const newCourseData = {
             reviewCount: "250+",
             totalStars: 5,
             image: "/images/courses/z3.webp",
+            brochure: "/curriculum/UC_Angular Curriculumn V1.0.pdf",
         },
         highlightsData: commonHighlights,
         curriculumData: [
@@ -1204,6 +1206,7 @@ export const newCourseData = {
             reviewCount: "300+",
             totalStars: 5,
             image: "/images/courses/z5.webp",
+            brochure: "/curriculum/UC_AIML curriculum v1.0.pdf",
         },
         highlightsData: commonHighlights,
         curriculumData: [
@@ -1507,6 +1510,7 @@ export const newCourseData = {
             reviewCount: "450+",
             totalStars: 5,
             image: "/images/courses/z6.webp",
+            brochure: "/curriculum/UC_Software Testing curriculum_V1.1.pdf",
         },
         highlightsData: commonHighlights,
         curriculumData: [
@@ -1640,6 +1644,7 @@ export const newCourseData = {
             reviewCount: "600+",
             totalStars: 5,
             image: "/images/courses/z7.webp",
+            brochure: "/curriculum/UC_AWS DevOps Curriculum v1.0.pdf",
         },
         highlightsData: commonHighlights,
         curriculumData: [

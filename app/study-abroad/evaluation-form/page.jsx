@@ -50,10 +50,10 @@ const INITIAL_FORM = {
     trainingExpectations: '',
     hoursPerWeek: '',
     preferredTiming: '',
+    preferredTimingOther: '',
     preferredFormat: '',
     aboutParagraph: '',
     writingResponse: '',
-    uploadedFileName: '',
 };
 
 function LineInput({ icon: Icon, label, required, hint, className = '', ...inputProps }) {
@@ -192,7 +192,7 @@ export default function EvaluationFormPage() {
                 if (!form.preferredFormat) return 'Please select your preferred class format.';
                 break;
             case 4:
-                if (!form.aboutParagraph.trim()) return 'Please write a short paragraph about yourself (100–150 words).';
+                if (!form.aboutParagraph.trim()) return 'Please write a short paragraph about yourself (max 250 words).';
                 if (!form.writingResponse.trim()) return 'Please write your response to the writing prompt.';
                 break;
             default:
@@ -349,6 +349,14 @@ export default function EvaluationFormPage() {
                         </div>
                         <OptionGroup label="Preferred class timing" name="preferredTiming" value={form.preferredTiming} onChange={setField}
                             options={['Morning', 'Afternoon', 'Evening', 'Flexible', 'Other']} />
+                        {form.preferredTiming === 'Other' && (
+                            <div className="eval-field">
+                                <div className="eval-input-wrap">
+                                    <FaKeyboard className="eval-field-icon" />
+                                    <input className="eval-input-line" placeholder="Please specify your preferred timing" value={form.preferredTimingOther || ''} onChange={(e) => setField('preferredTimingOther', e.target.value)} />
+                                </div>
+                            </div>
+                        )}
                         <OptionGroup label="Preferred class format" required name="preferredFormat" value={form.preferredFormat} onChange={setField}
                             options={['Online', 'Offline', 'Hybrid']} />
                     </>
@@ -358,28 +366,15 @@ export default function EvaluationFormPage() {
                 return (
                     <>
                         <div className="eval-field">
-                            <label className="eval-label">Write a short paragraph (100–150 words) about yourself <span className="eval-required">*</span></label>
+                            <label className="eval-label">Write a short paragraph (max 250 words) about yourself <span className="eval-required">*</span></label>
                             <textarea className="eval-textarea eval-textarea-long" rows={4} value={form.aboutParagraph} onChange={(e) => setField('aboutParagraph', e.target.value)} placeholder="Tell us about yourself..." />
                         </div>
                         <div className="eval-field">
                             <label className="eval-label">
                                 &ldquo;Many people believe that social media has had a negative impact on individuals and society. To what extent do you agree or disagree?&rdquo; <span className="eval-required">*</span>
                             </label>
-                            <p className="eval-prompt-text">Organize and write a passage of 250 words and upload the typed word document here.</p>
+                            <p className="eval-prompt-text">Organize and write a passage of 400 words.</p>
                             <textarea className="eval-textarea eval-textarea-long" rows={6} value={form.writingResponse} onChange={(e) => setField('writingResponse', e.target.value)} placeholder="Write your response here..." />
-                        </div>
-                        <div className="eval-field">
-                            <label className="eval-label">File Upload</label>
-                            <label className="eval-file-upload">
-                                <span>{form.uploadedFileName || 'Choose File'}</span>
-                                <FaUpload />
-                                <input
-                                    type="file"
-                                    accept=".doc,.docx,.txt,.pdf"
-                                    onChange={(e) => setField('uploadedFileName', e.target.files?.[0]?.name || '')}
-                                />
-                            </label>
-                            <p className="eval-upload-hint">If your passage exceeds more than 250 words, write it in word doc or notepad and upload here.</p>
                         </div>
                     </>
                 );

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
@@ -15,6 +15,60 @@ import '../components/Home/NewHeroSection.css';
 import '../components/CourseLayout/ProgramCohorts.css';
 import './StudyAbroad.css';
 import { FormInput, FormSelect, FormTextarea, FormButton, FormCard } from "@/app/components/common/FormUI";
+
+/* ── Counting animation stats banner for MBBS section ─────────────── */
+function useCountUp(target, duration = 1800, started = false) {
+    const [count, setCount] = useState(0);
+    useEffect(() => {
+        if (!started) return;
+        let start = 0;
+        const step = target / (duration / 16);
+        const timer = setInterval(() => {
+            start += step;
+            if (start >= target) { setCount(target); clearInterval(timer); }
+            else setCount(Math.floor(start));
+        }, 16);
+        return () => clearInterval(timer);
+    }, [started, target, duration]);
+    return count;
+}
+
+const MbbsStatsBanner = () => {
+    const ref = useRef(null);
+    const [visible, setVisible] = useState(false);
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => { if (entry.isIntersecting) { setVisible(true); observer.disconnect(); } },
+            { threshold: 0.4 }
+        );
+        if (ref.current) observer.observe(ref.current);
+        return () => observer.disconnect();
+    }, []);
+
+    const stats = [
+        { end: 6,   suffix: '+',    label: 'MBBS Destinations',   gradient: 'linear-gradient(135deg,#667eea,#764ba2)', shadow: 'rgba(102,126,234,0.35)' },
+        { end: 50,  suffix: '+',    label: 'Partner Universities', gradient: 'linear-gradient(135deg,#f093fb,#f5576c)', shadow: 'rgba(245,87,108,0.35)' },
+        { end: 6,   suffix: ' Yrs', label: 'Programme Duration',  gradient: 'linear-gradient(135deg,#4facfe,#00f2fe)', shadow: 'rgba(79,172,254,0.35)' },
+        { end: 100, suffix: '%',    label: 'Admission Support',   gradient: 'linear-gradient(135deg,#43e97b,#38f9d7)', shadow: 'rgba(67,233,123,0.35)' },
+    ];
+
+    return (
+        <div className="mbbs-stats-banner" ref={ref}>
+            {stats.map((s, i) => {
+                // eslint-disable-next-line react-hooks/rules-of-hooks
+                const count = useCountUp(s.end, 1600, visible);
+                return (
+                    <div className="mbbs-stat-item" key={i} style={{ background: s.gradient, boxShadow: `0 20px 50px ${s.shadow}` }}>
+                        {/* gloss overlay */}
+                        <span className="mbbs-stat-gloss" />
+                        <span className="mbbs-stat-val">{count}{s.suffix}</span>
+                        <span className="mbbs-stat-label">{s.label}</span>
+                    </div>
+                );
+            })}
+        </div>
+    );
+};
 
 const getCountryFlag = (uni) => {
     if (!uni) return "";
@@ -34,12 +88,35 @@ const getCountryFlag = (uni) => {
 // Fixed-size hero stat cards — same 220px card at every screen size (desktop, tablet, mobile).
 // The HeroStatsCarousel below handles fitting them via arrows, not by resizing the cards.
 const heroStatCards = [
-    { icon: <FaUniversity size={24} color="#60a5fa" className="mb-2" />, val: "Top 1%", label: "Global Admits", gradient: "linear-gradient(130.48deg, #02284F 2.78%, #036AD5 122.15%)" },
-    { icon: <FaCheckCircle size={24} color="#34d399" className="mb-2" />, val: "98%", label: "Visa Success", gradient: "linear-gradient(129.99deg, #0f5132 -3.08%, #20c997 119.93%)" },
-    { icon: <FaAward size={24} color="#fbbf24" className="mb-2" />, val: "Scholarships", label: "Up to 100% Funding", gradient: "linear-gradient(129.31deg, #9F6E00 -2.98%, #EAB94B 118.56%)" },
-    { icon: <FaGlobeAmericas size={24} color="#a78bfa" className="mb-2" />, val: "500+", label: "Universities", gradient: "linear-gradient(129.99deg, #7A1FCD -3.08%, #CA90FF 119.93%)" },
-    { icon: <FaStar size={24} color="#f472b6" className="mb-2" />, val: "10+ Years", label: "Expert Guidance", gradient: "linear-gradient(130.3deg, #A22C27 -5.39%, #FF7C77 115.93%)" },
+    { image: "/images/study-abroad/cards/admits.png", val: "Top 1%", label: "Global Admits", gradient: "linear-gradient(130.48deg, #02284F 2.78%, #036AD5 122.15%)" },
+    { image: "/images/study-abroad/cards/visa.png", val: "98%", label: "Visa Success", gradient: "linear-gradient(129.99deg, #0f5132 -3.08%, #20c997 119.93%)" },
+    { image: "/images/study-abroad/cards/scholarship.png", val: "100%", label: "Scholarships", gradient: "linear-gradient(129.31deg, #9F6E00 -2.98%, #EAB94B 118.56%)" },
+    { image: "/images/study-abroad/cards/universities.png", val: "500+", label: "Universities", gradient: "linear-gradient(129.99deg, #7A1FCD -3.08%, #CA90FF 119.93%)" },
+    { image: "/images/study-abroad/cards/experience.png", val: "10+ Years", label: "Expert Guidance", gradient: "linear-gradient(130.3deg, #A22C27 -5.39%, #FF7C77 115.93%)" },
 ];
+const AnimatedHeroStatVal = ({ text }) => {
+    const match = text.match(/(\d+)/);
+    if (!match) return <>{text}</>;
+    
+    const num = parseInt(match[0], 10);
+    const prefix = text.substring(0, match.index);
+    const suffix = text.substring(match.index + match[0].length);
+    
+    const ref = useRef(null);
+    const [visible, setVisible] = useState(false);
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => { if (entry.isIntersecting) { setVisible(true); observer.disconnect(); } },
+            { threshold: 0.1 }
+        );
+        if (ref.current) observer.observe(ref.current);
+        return () => observer.disconnect();
+    }, []);
+
+    const count = useCountUp(num, 1500, visible);
+
+    return <span ref={ref}>{prefix}{count}{suffix}</span>;
+}
 
 const renderHeroCard = (card, key, compact = false, cardSize) => (
     <div
@@ -50,9 +127,14 @@ const renderHeroCard = (card, key, compact = false, cardSize) => (
             ...(cardSize ? { width: cardSize, flex: `0 0 ${cardSize}px`, aspectRatio: '1 / 1' } : {}),
         }}
     >
+        {card.image && (
+            <div className="hero-card-media">
+                <img src={card.image} alt={card.val} loading="lazy" />
+            </div>
+        )}
         <div className="hero-card-glass">
             {card.icon}
-            <h3 className="hero-card-title text-center">{card.val}</h3>
+            <h3 className="hero-card-title text-center"><AnimatedHeroStatVal text={card.val} /></h3>
             <p className="hero-card-desc text-center">{card.label}</p>
         </div>
     </div>
@@ -62,22 +144,64 @@ const renderHeroCard = (card, key, compact = false, cardSize) => (
 const HeroStatMobileCarousel = ({ cards }) => {
     const carouselRef = useRef(null);
     const wrapperRef = useRef(null);
-    const [isHovered, setIsHovered] = useState(false);
+
+    const autoScrollRef = useRef(null);
+    const resumeTimerRef = useRef(null);
+
+    const [isPaused, setIsPaused] = useState(false);
+    const [currentIndex, setCurrentIndex] = useState(0);
     const [canScrollPrev, setCanScrollPrev] = useState(false);
     const [canScrollNext, setCanScrollNext] = useState(true);
 
-    const getScrollStep = React.useCallback(() => {
-        const slider = carouselRef.current;
-        if (!slider) return 0;
-        return slider.clientWidth;
-    }, []);
-
-    const updateScrollButtons = React.useCallback(() => {
+    const updateScrollButtons = useCallback(() => {
         const slider = carouselRef.current;
         if (!slider) return;
-        setCanScrollPrev(slider.scrollLeft > 4);
-        setCanScrollNext(slider.scrollLeft < slider.scrollWidth - slider.clientWidth - 4);
-    }, []);
+
+        const step = slider.clientWidth;
+        if (!step) return;
+
+        const maxScrollLeft = slider.scrollWidth - step;
+        const index = Math.round(slider.scrollLeft / step);
+        const hasOverflow = maxScrollLeft > 1;
+
+        setCurrentIndex(index);
+        setCanScrollPrev(hasOverflow && slider.scrollLeft > 1);
+        setCanScrollNext(hasOverflow && slider.scrollLeft < maxScrollLeft - 1);
+    }, [cards.length]);
+
+    const scrollToCard = useCallback((index) => {
+        const slider = carouselRef.current;
+        if (!slider) return;
+
+        const step = slider.clientWidth;
+        if (!step) return;
+
+        const targetIndex = Math.max(0, Math.min(index, cards.length - 1));
+        const maxScrollLeft = Math.max(0, slider.scrollWidth - step);
+
+        slider.scrollTo({
+            left: Math.min(step * targetIndex, maxScrollLeft),
+            behavior: 'smooth',
+        });
+
+        setCurrentIndex(targetIndex);
+    }, [cards.length]);
+
+    const pauseAutoScroll = () => {
+        setIsPaused(true);
+        clearTimeout(resumeTimerRef.current);
+        resumeTimerRef.current = setTimeout(() => setIsPaused(false), 3000);
+    };
+
+    const handleScrollCards = (direction) => {
+        pauseAutoScroll();
+
+        let next = currentIndex + direction;
+        if (next < 0) next = cards.length - 1;
+        if (next >= cards.length) next = 0;
+
+        scrollToCard(next);
+    };
 
     useEffect(() => {
         const onResize = () => updateScrollButtons();
@@ -87,32 +211,33 @@ const HeroStatMobileCarousel = ({ cards }) => {
     }, [updateScrollButtons]);
 
     useEffect(() => {
-        const handleAutoScroll = () => {
-            const slider = carouselRef.current;
-            if (window.innerWidth > 1024 || isHovered || !slider) return;
-
-            const step = getScrollStep();
-            const maxScroll = slider.scrollWidth - slider.clientWidth;
-
-            if (slider.scrollLeft >= maxScroll - 4) {
-                slider.scrollTo({ left: 0, behavior: 'smooth' });
-            } else {
-                slider.scrollBy({ left: step, behavior: 'smooth' });
-            }
-
-            setTimeout(updateScrollButtons, 350);
-        };
-
-        const interval = setInterval(handleAutoScroll, 3000);
-        return () => clearInterval(interval);
-    }, [isHovered, updateScrollButtons, getScrollStep]);
-
-    const handleScrollCards = (direction) => {
         const slider = carouselRef.current;
         if (!slider) return;
-        slider.scrollBy({ left: direction * getScrollStep(), behavior: 'smooth' });
-        setTimeout(updateScrollButtons, 350);
-    };
+
+        const hasOverflow = slider.scrollWidth > slider.clientWidth + 1;
+        if (!hasOverflow) return;
+
+        clearInterval(autoScrollRef.current);
+        autoScrollRef.current = setInterval(() => {
+            if (isPaused) return;
+
+            let next = currentIndex + 1;
+            if (next >= cards.length) next = 0;
+            scrollToCard(next);
+        }, 3000);
+
+        return () => clearInterval(autoScrollRef.current);
+    }, [currentIndex, isPaused, cards.length, scrollToCard]);
+
+    useEffect(() => {
+        const slider = carouselRef.current;
+        if (!slider) return;
+
+        updateScrollButtons();
+        const observer = new ResizeObserver(() => updateScrollButtons());
+        observer.observe(slider);
+        return () => observer.disconnect();
+    }, [updateScrollButtons]);
 
     return (
         <div className="study-stat-carousel-wrapper" ref={wrapperRef}>
@@ -120,48 +245,54 @@ const HeroStatMobileCarousel = ({ cards }) => {
                 type="button"
                 className="hero-cards-nav hero-cards-nav-prev"
                 onClick={() => handleScrollCards(-1)}
-                disabled={!canScrollPrev}
+                disabled={cards.length <= 1}
                 aria-label="Previous stat"
             >
                 <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12.5 15L7.5 10L12.5 5" stroke="#1C1D22" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M12.5 15L7.5 10L12.5 5" stroke="#1C1D22" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
             </button>
 
-            <div
-                className="study-stat-cards-container"
-                ref={carouselRef}
-                onScroll={updateScrollButtons}
-                onTouchStart={() => setIsHovered(true)}
-                onTouchEnd={() => setIsHovered(false)}
-                onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)}
-            >
-                {cards.map((card, index) => (
-                    <div key={`stat-mobile-${index}`} className="study-stat-card-slide">
+            <div className="study-stat-cards-outer">
+                <div
+                    className="study-stat-cards-container"
+                    ref={carouselRef}
+                    onScroll={updateScrollButtons}
+                    onTouchStart={pauseAutoScroll}
+                    onTouchMove={pauseAutoScroll}
+                    onTouchEnd={pauseAutoScroll}
+                    onMouseDown={pauseAutoScroll}
+                >
+                    {cards.map((card, index) => (
+                        <div key={`stat-mobile-${index}`} className="study-stat-card-slide">
                         <div
                             className="study-stat-card"
                             style={{ background: card.gradient || 'linear-gradient(135deg, #1f2937, #111827)' }}
                         >
+                            {card.image && (
+                                <div className="study-stat-card-media">
+                                    <img src={card.image} alt={card.val} loading="lazy" />
+                                </div>
+                            )}
                             <div className="study-stat-card-glass">
-                                {React.cloneElement(card.icon, { size: 24, className: 'mb-2' })}
                                 <h3 className="study-stat-card-title">{card.val}</h3>
                                 <p className="study-stat-card-desc">{card.label}</p>
                             </div>
                         </div>
                     </div>
                 ))}
+                </div>
             </div>
 
             <button
                 type="button"
                 className="hero-cards-nav hero-cards-nav-next"
                 onClick={() => handleScrollCards(1)}
-                disabled={!canScrollNext}
+                disabled={cards.length <= 1}
                 aria-label="Next stat"
             >
                 <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M7.5 5L12.5 10L7.5 15" stroke="#1C1D22" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M7.5 5L12.5 10L7.5 15" stroke="#1C1D22" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
             </button>
         </div>
@@ -217,16 +348,16 @@ const HeroStats = ({ cards }) => {
             if (!wrapperRef.current) return;
 
             const isMonitor = window.innerWidth >= 1440;
-            const isDesktop = window.innerWidth >= 1025 && window.innerWidth < 1440;
-            const GAP = isMonitor ? 20 : isDesktop ? 14 : 16;
+            const isDesktop = window.innerWidth >= 821 && window.innerWidth < 1440;
+            const GAP = isMonitor ? 20 : 16;
 
             const cs = window.getComputedStyle(wrapperRef.current);
             const paddingLeft = parseFloat(cs.paddingLeft) || 0;
             const paddingRight = parseFloat(cs.paddingRight) || 0;
             const contentWidth = wrapperRef.current.clientWidth - paddingLeft - paddingRight;
 
-            /* Monitor: fit all 5 cards in one row — no carousel arrows */
-            if (isMonitor) {
+            /* Desktop and Monitor: fit all 5 cards in one row - no carousel arrows */
+            if (isMonitor || isDesktop) {
                 const CARD_WIDTH = Math.floor((contentWidth - (cards.length - 1) * GAP) / cards.length);
                 setCardWidth(CARD_WIDTH);
                 setGap(GAP);
@@ -237,7 +368,7 @@ const HeroStats = ({ cards }) => {
                 return;
             }
 
-            const CARD_WIDTH = isDesktop ? 135 : 150;
+            const CARD_WIDTH = isDesktop ? 220 : 150;
             setCardWidth(CARD_WIDTH);
             setGap(GAP);
             const cardStep = CARD_WIDTH + GAP;
@@ -362,11 +493,32 @@ const StudyAbroadPage = () => {
     const [showAllServices, setShowAllServices] = useState(false);
     const [showAllDestinations, setShowAllDestinations] = useState(false);
 
-    // MBBS mobile slider state
-    const [mbbsSlideIndex, setMbbsSlideIndex] = useState(0);
-    const [mbbsShowAll, setMbbsShowAll] = useState(false);
-    const mbbsTouchStartX = useRef(0);
-    const mbbsTouchDeltaX = useRef(0);
+    // MBBS slider state
+    const mbbsScrollRef = useRef(null);
+    const scrollMbbs = (dir) => {
+        if (mbbsScrollRef.current) {
+            const amount = window.innerWidth > 768 ? 340 : 280;
+            mbbsScrollRef.current.scrollBy({ left: dir * amount, behavior: 'smooth' });
+        }
+    };
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            if (mbbsScrollRef.current) {
+                const amount = window.innerWidth > 768 ? 340 : 280;
+                const { scrollLeft, scrollWidth, clientWidth } = mbbsScrollRef.current;
+                
+                if (scrollLeft + clientWidth >= scrollWidth - 10) {
+                    // Reached end, loop back
+                    mbbsScrollRef.current.scrollTo({ left: 0, behavior: 'smooth' });
+                } else {
+                    mbbsScrollRef.current.scrollBy({ left: amount, behavior: 'smooth' });
+                }
+            }
+        }, 3000);
+        
+        return () => clearInterval(interval);
+    }, []);
 
     const [showBatches, setShowBatches] = useState(false);
 
@@ -493,53 +645,6 @@ Duolingo: {
         { code: "kg", country: "Kyrgyzstan", fee: "From ~₹16L", duration: "6 Years", tag: "Most Affordable" },
     ];
 
-    const mbbsVisibleCount = mbbsShowAll ? mbbsCountries.length : Math.min(3, mbbsCountries.length);
-    const mbbsMaxIndex = Math.max(0, mbbsVisibleCount - 1);
-
-    const mbbsGoPrev = () => setMbbsSlideIndex((prev) => Math.max(0, prev - 1));
-    const mbbsGoNext = () => setMbbsSlideIndex((prev) => Math.min(mbbsMaxIndex, prev + 1));
-
-    const handleMbbsTouchStart = (e) => {
-        mbbsTouchStartX.current = e.touches[0].clientX;
-        mbbsTouchDeltaX.current = 0;
-    };
-    const handleMbbsTouchMove = (e) => {
-        mbbsTouchDeltaX.current = e.touches[0].clientX - mbbsTouchStartX.current;
-    };
-    const handleMbbsTouchEnd = () => {
-        const SWIPE_THRESHOLD = 40;
-        if (mbbsTouchDeltaX.current > SWIPE_THRESHOLD) {
-            mbbsGoPrev();
-        } else if (mbbsTouchDeltaX.current < -SWIPE_THRESHOLD) {
-            mbbsGoNext();
-        }
-        mbbsTouchDeltaX.current = 0;
-    };
-
-    const renderMbbsCard = (c, i) => (
-        <div className="mbbs-country-card" key={i}>
-            <div className="mbbs-card-img-box">
-                <img
-                    src={`https://flagcdn.com/w160/${c.code}.png`}
-                    alt={`${c.country} flag`}
-                    className="mbbs-card-flag-img"
-                />
-            </div>
-            <div className="mbbs-card-info">
-                <h3 className="mbbs-card-country-name">{c.country}</h3>
-                <span className="mbbs-card-uni-count">
-                    <FaStethoscope className="me-2" />{c.duration} · MBBS
-                </span>
-                <p className="mbbs-card-fee-text">{c.fee} total · {c.tag}</p>
-                <div className="mbbs-dest-btn-group">
-                    <button className="dest-btn dest-btn-primary"
-                        onClick={() => handleEnquireClick(`MBBS in ${c.country}`)}>
-                        Enquire Now
-                    </button>
-                </div>
-            </div>
-        </div>
-    );
 
     return (
         <div className="study-abroad-container">
@@ -697,26 +802,13 @@ Duolingo: {
             {/* MBBS Abroad Section */}
             <section className="section-padding mbbs-section">
                 <div className="container">
-
                     <div className="section-header">
                         <h2 className="section-main-title text-shine">Study MBBS Abroad</h2>
                         <p>Turn your dream of becoming a doctor into reality. Study at NMC-approved, WHO-listed universities across Europe and Central Asia — with English-medium instruction and total costs far below Indian private medical colleges.</p>
                     </div>
 
-                    {/* Stats banner */}
-                    <div className="mbbs-stats-banner">
-                        {[
-                            { val: "6+",    label: "MBBS Destinations" },
-                            { val: "50+",   label: "Partner Universities" },
-                            { val: "6 Yrs", label: "Programme Duration" },
-                            { val: "100%",  label: "Admission Support" },
-                        ].map((s, i) => (
-                            <div className="mbbs-stat-item" key={i}>
-                                <span className="mbbs-stat-val">{s.val}</span>
-                                <span className="mbbs-stat-label">{s.label}</span>
-                            </div>
-                        ))}
-                    </div>
+                    {/* Stats banner with counting animation */}
+                    <MbbsStatsBanner />
 
                     {/* Scrolling ticker */}
                     <div className="mbbs-ticker-wrap">
@@ -771,115 +863,51 @@ Duolingo: {
                     </div>
 
                     {/* Country cards header */}
-                    <div className="mbbs-destinations-header">
+                    <div className="mbbs-destinations-header mt-5">
                         <h3 className="mbbs-destinations-title">Top Countries for MBBS Abroad</h3>
                         <p>Choose from trusted destinations with quality medical education and strong FMGE pass records.</p>
                     </div>
 
-                    {/* Desktop / tablet grid — hidden on mobile via CSS */}
-                    <div className="mbbs-countries-grid">
-                        {mbbsCountries.map((c, i) => (
-                            <motion.div className="mbbs-country-card" key={i}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: i * 0.08 }}>
-                                <div className="mbbs-card-img-box">
-                                    <img
-                                        src={`https://flagcdn.com/w160/${c.code}.png`}
-                                        alt={`${c.country} flag`}
-                                        className="mbbs-card-flag-img"
-                                    />
-                                </div>
-                                <div className="mbbs-card-info">
-                                    <h3 className="mbbs-card-country-name">{c.country}</h3>
-                                    <span className="mbbs-card-uni-count">
-                                        <FaStethoscope className="me-2" />{c.duration} · MBBS
-                                    </span>
-                                    <p className="mbbs-card-fee-text">{c.fee} total · {c.tag}</p>
-                                    <div className="mbbs-dest-btn-group">
-                                        <button className="dest-btn dest-btn-primary"
-                                            onClick={() => handleEnquireClick(`MBBS in ${c.country}`)}>
-                                            Enquire Now
-                                        </button>
+                    {/* Unified responsive slider (matches home page style) */}
+                    <div className="mbbs-unified-slider-container">
+                        <button className="mbbs-unified-arrow prev" onClick={() => scrollMbbs(-1)} aria-label="Previous">
+                            <FaChevronLeft />
+                        </button>
+                        
+                        <div className="mbbs-unified-track" ref={mbbsScrollRef}>
+                            {mbbsCountries.map((c, i) => (
+                                <motion.div className="mbbs-country-card" key={i}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: i * 0.08 }}>
+                                    <div className="mbbs-card-img-box">
+                                        <img
+                                            src={`https://flagcdn.com/w160/${c.code}.png`}
+                                            alt={`${c.country} flag`}
+                                            className="mbbs-card-flag-img"
+                                        />
                                     </div>
-                                </div>
-                            </motion.div>
-                        ))}
-                    </div>
-
-                    {/* Mobile-only one-at-a-time swipeable slider */}
-                    <div className="mbbs-mobile-slider">
-                        <div
-                            className="mbbs-mobile-slider-viewport"
-                            onTouchStart={handleMbbsTouchStart}
-                            onTouchMove={handleMbbsTouchMove}
-                            onTouchEnd={handleMbbsTouchEnd}
-                        >
-                            <div
-                                className="mbbs-mobile-slider-track"
-                                style={{ transform: `translateX(-${mbbsSlideIndex * 100}%)` }}
-                            >
-                                {mbbsCountries.slice(0, mbbsVisibleCount).map((c, i) => (
-                                    <div className="mbbs-mobile-slide" key={i}>
-                                        {renderMbbsCard(c, i)}
+                                    <div className="mbbs-card-info">
+                                        <h3 className="mbbs-card-country-name">{c.country}</h3>
+                                        <span className="mbbs-card-uni-count">
+                                            <FaStethoscope className="me-2" />{c.duration} · MBBS
+                                        </span>
+                                        <p className="mbbs-card-fee-text">{c.fee} total · {c.tag}</p>
+                                        <div className="mbbs-dest-btn-group">
+                                            <button className="dest-btn dest-btn-primary"
+                                                onClick={() => handleEnquireClick(`MBBS in ${c.country}`)}>
+                                                Enquire Now
+                                            </button>
+                                        </div>
                                     </div>
-                                ))}
-                            </div>
+                                </motion.div>
+                            ))}
                         </div>
 
-                        <div className="mbbs-mobile-slider-controls">
-                            <button
-                                type="button"
-                                className="mbbs-slider-arrow"
-                                onClick={mbbsGoPrev}
-                                disabled={mbbsSlideIndex === 0}
-                                aria-label="Previous"
-                            >
-                                <FaChevronLeft />
-                            </button>
-                            <div className="mbbs-slider-dots">
-                                {mbbsCountries.slice(0, mbbsVisibleCount).map((_, i) => (
-                                    <span
-                                        key={i}
-                                        className={`mbbs-slider-dot ${i === mbbsSlideIndex ? 'active' : ''}`}
-                                        onClick={() => setMbbsSlideIndex(i)}
-                                    />
-                                ))}
-                            </div>
-                            <button
-                                type="button"
-                                className="mbbs-slider-arrow"
-                                onClick={mbbsGoNext}
-                                disabled={mbbsSlideIndex === mbbsMaxIndex}
-                                aria-label="Next"
-                            >
-                                <FaChevronRight />
-                            </button>
-                        </div>
-
-                        {!mbbsShowAll && mbbsCountries.length > 3 && (
-                            <div className="view-all-mobile-wrap">
-                                <button
-                                    type="button"
-                                    className="view-all-mobile-btn"
-                                    onClick={() => setMbbsShowAll(true)}
-                                >
-                                    View More
-                                </button>
-                            </div>
-                        )}
-                        {mbbsShowAll && (
-                            <div className="view-all-mobile-wrap">
-                                <button
-                                    type="button"
-                                    className="view-all-mobile-btn"
-                                    onClick={() => { setMbbsShowAll(false); setMbbsSlideIndex(0); }}
-                                >
-                                    View Less
-                                </button>
-                            </div>
-                        )}
+                        <button className="mbbs-unified-arrow next" onClick={() => scrollMbbs(1)} aria-label="Next">
+                            <FaChevronRight />
+                        </button>
                     </div>
 
                 </div>

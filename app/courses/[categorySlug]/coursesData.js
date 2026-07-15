@@ -15,6 +15,7 @@ const coursesData = {
         duration: "3 months",
         students: "956",
         img: "/images/courses/java_cc.png",
+        curriculumUrls: ["/curriculum/UC_Adv Java Curriculum v1.0.pdf"],
         aboutData: {
           topic:
             "Master Core Java to Build Strong Object-Oriented Programming Skills",
@@ -116,6 +117,7 @@ const coursesData = {
         duration: "1 month",
         students: "784",
         img: "/images/courses/advanced-java.webp",
+        curriculumUrls: ["/curriculum/UC_Adv Java Curriculum v1.0.pdf"],
         aboutData: {
           topic:
             "Master Advanced Java — From Core Concepts to Enterprise Development!",
@@ -455,6 +457,10 @@ const coursesData = {
 
       {
         title: "C and C++ Programming",
+                                curriculumUrls: ["/curriculum/UC_C Programming Curriculum v1.0.pdf"],
+                                                        curriculumUrls: ["/curriculum/UC_C++ Programming for Beginners Curriculum v1.0.pdf"],
+
+
         desc: "Master high-performance development with our C & C++ certification. Learn logic building, memory management, and competitive programming skills essential for top-tier product company placements.",
         rating: 4.8,
         duration: "1.5 months",
@@ -1223,6 +1229,7 @@ const coursesData = {
         duration: "3 months",
         students: "765",
         img: "/images/courses/new/java-fullstack.png",
+        curriculumUrls: ["/curriculum/UC_Java Full Stack v1.0.pdf"],
         aboutData: {
           topic:
             "Master Java Full Stack Development — Build Scalable Web Applications from Front-End to Back-End!",
@@ -1449,6 +1456,8 @@ const coursesData = {
 
       {
         title: "Angular",
+                curriculumUrls: ["/curriculum/UC_Angular Curriculumn V1.0.pdf"],
+
         desc: "Elevate your front-end web development skills with our complete Angular training. Master TypeScript, components, and real-world project deployment to secure top-tier UI developer roles.",
         rating: 4.8,
         duration: "1.5 months",
@@ -1963,6 +1972,7 @@ const coursesData = {
         duration: "1.5 months",
         students: "106",
         img: "/images/courses/new/react-native.png",
+        curriculumUrls: ["/curriculum/UC_FSD_React Native Curriculum v1.0.pdf"],
         aboutData: {
           topic:
             "Master React Native — Build High-Performance Cross-Platform Mobile Apps!",
@@ -2205,6 +2215,7 @@ const coursesData = {
         duration: "1 month",
         students: "564",
         img: "/images/courses/new/reactjs.png",
+        curriculumUrls: ["/curriculum/UC_React Curriculum v1.0.pdf"],
         aboutData: {
           topic:
             "Master React.js — Build Dynamic, Modern Web Applications from the Ground Up!",
@@ -2326,6 +2337,7 @@ const coursesData = {
         duration: "2 months",
         students: "584",
         img: "/images/courses/new/python.png",
+        curriculumUrls: ["/curriculum/UC_Python Basic to Advanced Curriculum v1.0.pdf"],
         aboutData: {
           topic:
             "Master Python Full Stack Development — Build Complete Web Applications from Scratch!",
@@ -3148,6 +3160,8 @@ const coursesData = {
     courses: [
       {
         title: "AWS",
+                        curriculumUrls: ["/curriculum/UC_AWS_Curriculum v1.0.pdf"],
+
         desc: "Launch your cloud computing career with comprehensive AWS training. Master architecture, EC2, S3, and DevOps integration to secure high-paying Cloud Engineer roles.",
         rating: 5.0,
         duration: "3 months",
@@ -3520,6 +3534,7 @@ const coursesData = {
         duration: "3 months",
         students: "984",
         img: "/images/courses/DevOps.webp",
+        curriculumUrls: ["/curriculum/Uc_Devops curriculum.V2.0.pdf"],
         aboutData: {
           topic:
             "Become a DevOps Engineer — Automate, Integrate, and Deliver at Scale!",
@@ -6893,6 +6908,7 @@ const coursesData = {
         duration: "1 month",
         students: "106",
         img: "/images/courses/Digital_Marketing.jpg",
+        curriculumUrls: ["/curriculum/UC_Digital marketing curriculum_V1.1.pdf"],
         aboutData: {
           topic:
             "Master Digital Marketing — From Basics to Advanced Strategies!",
@@ -8449,6 +8465,7 @@ const coursesData = {
         duration: "1 month",
         students: "940",
         img: "/images/courses/Kidz_CProgramming.webp",
+        curriculumUrls: ["/curriculum/UC_C Programming Curriculum v1.0.pdf"],
         aboutData: {
           topic: "Learn the Language Behind Every Great Program!",
           content1:
@@ -9159,6 +9176,7 @@ const coursesData = {
         duration: "1 month",
         students: "876",
         img: "/images/courses/Data_Analysis.jpg",
+        curriculumUrls: ["/curriculum/UC_SalesforceDeveloper_Curriculum.pdf"],
         aboutData: {
           topic:
             "Master Salesforce Development — From Basics to Advanced CRM Solutions!",
@@ -9388,6 +9406,7 @@ const coursesData = {
         duration: "1 month",
         students: "546",
         img: "/images/courses/React_Native.jpg",
+        curriculumUrls: ["/curriculum/UC_FSD_React Native Curriculum v1.0.pdf"],
         aboutData: {
           topic:
             "Master React Native — Build High-Performance Cross-Platform Mobile Apps!",
