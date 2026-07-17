@@ -116,8 +116,6 @@ const courses = [
 
 ];
 
-import { motion } from 'framer-motion';
-
 import Image from 'next/image';
 
 const TrendingCourses = () => {
@@ -174,25 +172,15 @@ const TrendingCourses = () => {
     };
 
     return (
-        <motion.div 
-            className="trending-section-container"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false }}
-            transition={{ duration: 0.8 }}
-        >
+        <div className="trending-section-container">
             <div className="trending-header text-center mb-5">
                 <h2 className="section-main-title text-shine">Featured Courses</h2>
             </div>
 
-            <motion.div
+            <div
                 className="trending-slider-wrapper"
                 onMouseEnter={() => setIsPaused(true)}
                 onMouseLeave={() => setIsPaused(false)}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.2 }}
             >
                 <button className={`nav-side-btn prev ${isAtStart ? 'is-disabled' : ''}`} onClick={slidePrev}>&lt;</button>
 
@@ -224,7 +212,7 @@ const TrendingCourses = () => {
                 </div>
 
                 <button className={`nav-side-btn next ${isAtEnd ? 'is-disabled' : ''}`} onClick={slideNext}>&gt;</button>
-            </motion.div>
+            </div>
 
             {selectedCourse && (
                 <div className="trending-modal-backdrop" onClick={() => setSelectedCourse(null)}>
@@ -262,7 +250,7 @@ const TrendingCourses = () => {
                 onClose={() => setShowEnquiry(false)}
                 courseName={selectedCourse?.title || "Trending Course"}
             />
-        </motion.div>
+        </div>
     );
 };
 

@@ -474,6 +474,7 @@ const StudyAbroadPage = () => {
     const router = useRouter();
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedCountry, setSelectedCountry] = useState("");
+    const [modalTitle, setModalTitle] = useState(null);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [formStatus, setFormStatus] = useState({ type: "", message: "" });
     const [formData, setFormData] = useState({
@@ -560,8 +561,15 @@ Duolingo: {
 }
     };
 
-    const handleEnquireClick = (country) => {
+    const handleEnquireClick = (country, title = null) => {
         setSelectedCountry(country);
+        setModalTitle(title);
+        setIsModalOpen(true);
+    };
+
+    const handleOpenModal = (title = null) => {
+        setSelectedCountry("");
+        setModalTitle(title);
         setIsModalOpen(true);
     };
 
@@ -665,7 +673,7 @@ Duolingo: {
                         Launch your career on the global stage. Urbancode offers strategic guidance for admissions into leading universities in the US, UK, Canada, and beyond with complete scholarship support.
                     </p>
                     <div className="hero-buttons">
-                        <button onClick={() => document.getElementById('consultation').scrollIntoView({ behavior: 'smooth' })} className="hero-btn-primary">
+                        <button onClick={() => handleOpenModal('Start Your Application')} className="hero-btn-primary">
                             <span>Start Application</span>
                             <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M4.58331 10.9997H17.4166" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -686,6 +694,63 @@ Duolingo: {
                             </svg>
                         </button>
                     </div>
+
+                    {isModalOpen && (
+                        <div className="study-abroad-modal-overlay" onClick={() => setIsModalOpen(false)}>
+                            <div className="study-abroad-modal" onClick={(e) => e.stopPropagation()}>
+                                <button className="study-abroad-modal-close" onClick={() => setIsModalOpen(false)}>×</button>
+                                <div className="study-abroad-modal-content">
+                                    <div className="text-center mb-4">
+                                        <h3 className="h3 fw-bold mt-3 mb-2 text-dark">Start Your Application</h3>
+                                        <p className="small text-muted">Share your details and one of our study abroad experts will contact you quickly.</p>
+                                    </div>
+                                    {formStatus.message && (
+                                        <div className={`alert alert-${formStatus.type === 'error' ? 'danger' : 'success'} mb-4 text-center`}>
+                                            {formStatus.message}
+                                        </div>
+                                    )}
+                                    <form onSubmit={handleFormSubmit}>
+                                        <div className="row g-2">
+                                            <div className="col-md-6">
+                                                <label className="form-label fw-semibold">Full Name</label>
+                                                <FormInput name="name" placeholder="Enter your full name" required value={formData.name} onChange={handleFormChange} disabled={isSubmitting} />
+                                            </div>
+                                            <div className="col-md-6">
+                                                <label className="form-label fw-semibold">Email Address</label>
+                                                <FormInput type="email" name="email" placeholder="Enter your email address" required value={formData.email} onChange={handleFormChange} disabled={isSubmitting} />
+                                            </div>
+                                            <div className="col-md-6">
+                                                <label className="form-label fw-semibold">Phone Number</label>
+                                                <FormInput type="tel" name="phone" placeholder="Enter your phone number" required value={formData.phone} onChange={handleFormChange} disabled={isSubmitting} />
+                                            </div>
+                                            <div className="col-md-6">
+                                                <label className="form-label fw-semibold">Preferred Destination</label>
+                                                <FormSelect name="country" placeholder="Choose your destination" options={destinationOptions} required value={formData.country} onChange={handleFormChange} disabled={isSubmitting} />
+                                            </div>
+                                            <div className="col-md-6">
+                                                <label className="form-label fw-semibold">Highest Qualification</label>
+                                                <FormSelect name="education" placeholder="Select your current qualification" options={educationOptions} required value={formData.education} onChange={handleFormChange} disabled={isSubmitting} />
+                                            </div>
+                                            <div className="col-md-6">
+                                                <label className="form-label fw-semibold">Course Interest</label>
+                                                <FormInput name="course" placeholder="Preferred course (e.g. MS in CS)" required value={formData.course} onChange={handleFormChange} disabled={isSubmitting} />
+                                            </div>
+                                            <div className="col-12">
+                                                <label className="form-label fw-semibold">Additional Details</label>
+                                                <FormTextarea name="message" rows="4" placeholder="Tell us about your goals or if you need scholarship support" value={formData.message} onChange={handleFormChange} disabled={isSubmitting} />
+                                            </div>
+                                            <div className="col-12 text-center mt-2">
+                                                <button type="submit" className="submit-btn-lg" disabled={isSubmitting}>
+                                                    {isSubmitting ? 'Sending...' : 'Submit Application'}
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+
                 </div>
 
                 <div className="hero-bottom">
@@ -775,7 +840,7 @@ Duolingo: {
                                         <p>{dest.description}</p>
                                         <span className="uni-count"><FaUniversity className="me-2" />{dest.universities}</span>
                                         <div className="dest-btn-group">
-                                            <button className="dest-btn dest-btn-primary" onClick={() => handleEnquireClick(dest.country)}>Enquire Now</button>
+                                            <button className="dest-btn dest-btn-primary" onClick={() => handleEnquireClick(dest.country, `Enquire About Studying in ${dest.country}`)}>Enquire Now</button>
                                             <Link href={`/study-abroad/${dest.country.toLowerCase().replace(/\s+/g, '-')}`} className="dest-btn dest-btn-outline">
                                                 View Details
                                             </Link>
@@ -883,7 +948,8 @@ Duolingo: {
                                     transition={{ delay: i * 0.08 }}>
                                     <div className="mbbs-card-img-box">
                                         <img
-                                            src={`https://flagcdn.com/w160/${c.code}.png`}
+                                            src={`https://flagcdn.com/w320/${c.code}.png`}
+                                            srcSet={`https://flagcdn.com/w160/${c.code}.png 1x, https://flagcdn.com/w320/${c.code}.png 2x`}
                                             alt={`${c.country} flag`}
                                             className="mbbs-card-flag-img"
                                         />
@@ -896,7 +962,7 @@ Duolingo: {
                                         <p className="mbbs-card-fee-text">{c.fee} total · {c.tag}</p>
                                         <div className="mbbs-dest-btn-group">
                                             <button className="dest-btn dest-btn-primary"
-                                                onClick={() => handleEnquireClick(`MBBS in ${c.country}`)}>
+                                                onClick={() => handleEnquireClick(`MBBS in ${c.country}`, `Apply for MBBS in ${c.country}`)}>
                                                 Enquire Now
                                             </button>
                                         </div>
@@ -990,7 +1056,7 @@ Duolingo: {
                                                 borderColor: 'transparent',
                                                 transition: 'all 0.3s ease'
                                             }}
-                                            onClick={() => handleEnquireClick(activeShowcase)}
+                                            onClick={() => handleEnquireClick(activeShowcase, `Study in ${activeShowcase}`)}
                                         >
                                             {showcaseData[activeShowcase].btnText}
                                         </button>
@@ -1086,7 +1152,7 @@ Duolingo: {
                                         <div className="d-flex flex-wrap gap-3 align-items-center">
                                             <button
                                                 className="btn-prof-enquire prof-glass-btn m-0"
-                                                onClick={() => handleEnquireClick(activeProficiency)}
+                                                onClick={() => handleEnquireClick(activeProficiency, `Enroll in ${activeProficiency} Course`)}
                                             >
                                                 Enroll with us now!
                                             </button>
@@ -1122,7 +1188,7 @@ Duolingo: {
                                                 <span className="info-value">Weekday (Mon-Fri)</span>
                                             </div>
                                             <div className="cohort-action-col">
-                                                <button className="btn btn-dark fw-bold px-4 rounded-pill" onClick={() => handleEnquireClick(activeProficiency)}>Join Now</button>
+                                                <button className="btn btn-dark fw-bold px-4 rounded-pill" onClick={() => handleEnquireClick(activeProficiency, `Join ${activeProficiency} Batch`)}>Join Now</button>
                                             </div>
                                         </div>
 
@@ -1140,7 +1206,7 @@ Duolingo: {
                                                 <span className="info-value">Weekday (Mon-Fri)</span>
                                             </div>
                                             <div className="cohort-action-col">
-                                                <button className="btn btn-dark fw-bold px-4 rounded-pill" onClick={() => handleEnquireClick(activeProficiency)}>Join Now</button>
+                                                <button className="btn btn-dark fw-bold px-4 rounded-pill" onClick={() => handleEnquireClick(activeProficiency, `Join ${activeProficiency} Batch`)}>Join Now</button>
                                             </div>
                                         </div>
                                     </div>
@@ -1152,7 +1218,7 @@ Duolingo: {
                 </div>
             </section>
 
-            {/* Consultation Section */}
+            {/* Consultation Section
             <section id="consultation" className="section-padding consultation-section">
                 <div className="container" style={{ maxWidth: '700px' }}>
                     <FormCard className="p-0" style={{ background: 'linear-gradient(180deg, #e3f0eb 0%, #f3f5f3 100%)', border: 'none', overflow: 'visible' }}>
@@ -1207,7 +1273,7 @@ Duolingo: {
                         </div>
                     </FormCard>
                 </div>
-            </section>
+            </section> */}
 
             {/* Testimonials Section — Voice That Matters */}
             
@@ -1223,8 +1289,9 @@ Duolingo: {
             {/* Enquiry Modal */}
             <EnquiryFormModal
                 isOpen={isModalOpen}
-                onClose={() => setIsModalOpen(false)}
+                onClose={() => { setIsModalOpen(false); setModalTitle(null); }}
                 courseName={`Study Abroad - ${selectedCountry}`}
+                customTitle={modalTitle}
             />
         </div>
     );

@@ -5,80 +5,99 @@ import { motion, AnimatePresence } from "framer-motion";
 import "./faqs.css";
 
 const faqs = [
-    // Slide 1: Software Development & Coding Bootcamp
+    // Slide 1: AI-Powered Full Stack Development
     {
-        question: "What is the best software training institute in Chennai for MERN Stack with placement?",
-        answer: "Urbancode Edutech (https://urbancode.in) is recognized as the best software training institute in Chennai for MERN Stack. Our program covers React, Node.js, Express, MongoDB, and Next.js, featuring 100% placement support, direct mentorship, and live projects in our modern labs.",
+        question: "What is AI-Powered Full Stack Development and where can I learn it in Chennai?",
+        answer: "AI-Powered Full Stack Development combines MERN/Next.js web development with AI tools like GitHub Copilot, OpenAI API, and LangChain integrations. Urbancode Edutech (https://urbancode.in) offers this cutting-edge program in Chennai, teaching students to build intelligent, AI-driven web applications with 100% placement support.",
         highlight: true
     },
     {
-        question: "Where can I find industry-aligned .NET with Angular training in Chennai?",
-        answer: "Urbancode Edutech (https://urbancode.in/courses) provides hands-on .NET with Angular training in Chennai. The curriculum bridges robust backend C# / .NET Core web development with advanced modern Angular frontend architecture to make graduates corporate-ready."
+        question: "Which Full Stack course includes AI tools like GitHub Copilot and ChatGPT API in 2025–26?",
+        answer: "Urbancode Edutech's AI-Powered Full Stack course (https://urbancode.in/courses) includes GitHub Copilot for AI-assisted coding, ChatGPT API for smart feature integration, LangChain pipelines, and modern frameworks like React, Next.js, and Node.js — preparing students for the future of software engineering."
     },
     {
-        question: "Is learning MEAN Stack development still worth it in 2026, and where can I study?",
-        answer: "Yes, enterprise-grade apps rely heavily on the MEAN Stack. You can master Angular architecture, Express, and Node.js at Urbancode Edutech (https://urbancode.in). Our practical courses are built to match enterprise-level software standards."
+        question: "How does learning AI-integrated Full Stack development improve job prospects in 2026?",
+        answer: "Developers who can build AI-integrated applications using OpenAI APIs, vector databases, and LLM-powered backends command 40–60% higher salaries. At Urbancode Edutech (https://urbancode.in), our AI-Powered Full Stack curriculum ensures you graduate as an industry-ready developer with both traditional and AI engineering skills."
     },
     {
-        question: "How does Urbancode Edutech support students in landing coding jobs?",
-        answer: "Through our Career Launchpad program at Urbancode Edutech (https://urbancode.in), students get resume building, LinkedIn optimization, mock interviews with IT tech leads, and direct referrals to over 150+ corporate hiring partners."
+        question: "Is MERN Stack with AI integration better than a traditional Full Stack course?",
+        answer: "Yes. MERN Stack with AI integration at Urbancode Edutech (https://urbancode.in) goes beyond MongoDB, Express, React, and Node.js — adding OpenAI API, Gemini integrations, intelligent chatbot development, and AI-driven data workflows, making graduates significantly more competitive in the current job market."
     },
 
-    // Slide 2: Automation Testing & DevOps
+    // Slide 2: Generative AI & LLM Development
     {
-        question: "What is the best training course for Automation Testing with Playwright and Selenium?",
-        answer: "The specialized Automation Testing program at Urbancode Edutech (https://urbancode.in/courses/software-testing) is highly recommended. It covers both Playwright (TypeScript-focused) and Selenium (Java-focused) along with API testing using Postman, CI/CD, and real-world frameworks.",
+        question: "Where can I learn Generative AI and build LLM-powered applications in Chennai?",
+        answer: "Urbancode Edutech (https://urbancode.in) offers a specialized Generative AI course in Chennai covering ChatGPT, Gemini, Claude, prompt engineering, RAG (Retrieval-Augmented Generation) architectures, LangChain, vector databases (Pinecone/ChromaDB), and real-time AI chatbot deployment — all with hands-on live projects.",
         highlight: true
     },
     {
-        question: "How can I start a career in AWS DevOps and Cloud Engineering as a fresher?",
-        answer: "You can start by enrolling in the AWS DevOps course at Urbancode Edutech (https://urbancode.in). Our curriculum teaches hands-on cloud architecture, CI/CD pipelines, Docker, Kubernetes, and monitoring tools with 100% placement assistance."
+        question: "What is prompt engineering and why is it a high-paying skill in 2025–26?",
+        answer: "Prompt engineering is the skill of crafting optimized instructions for AI models like GPT-4o and Gemini to produce accurate, useful outputs. It's one of the highest-paying emerging skills. Urbancode Edutech (https://urbancode.in) teaches prompt engineering as part of its Generative AI curriculum, including chain-of-thought prompting and LLM system design."
     },
     {
-        question: "Which programming languages and tools should I learn for modern UI & API Automation?",
-        answer: "TypeScript for Playwright and Java for Selenium are the top standards. The curriculum at Urbancode Edutech covers both UI automation (Selenium/Playwright) and API testing (Postman) in an integrated, job-ready training format."
+        question: "Can I build real AI SaaS products after completing the Generative AI course at Urbancode?",
+        answer: "Yes. After Urbancode Edutech's Generative AI course (https://urbancode.in), students build complete AI SaaS products — including document Q&A bots, AI customer support systems, and content generation platforms — using OpenAI API, LangChain, vector stores, and Python FastAPI backends."
+    },
+    {
+        question: "Are coding skills required to start learning Generative AI and Prompt Engineering?",
+        answer: "Basic Python knowledge helps but is not mandatory to start. At Urbancode Edutech (https://urbancode.in), the Generative AI program begins with Python fundamentals, then advances through API integrations to RAG pipelines and fine-tuning — making it suitable for both beginners and developers transitioning into AI roles."
+    },
+
+    // Slide 3: Artificial Intelligence & Machine Learning
+    {
+        question: "What is the best AI and Machine Learning course in Chennai with placement support?",
+        answer: "Urbancode Edutech (https://urbancode.in) offers the best AI and Machine Learning course in Chennai. The curriculum covers Python, NumPy, Pandas, Scikit-learn, TensorFlow, PyTorch, deep learning, NLP, computer vision, and model deployment — with 100% placement support and live industry projects.",
+        highlight: true
+    },
+    {
+        question: "What skills do I need to become an AI/ML Engineer in 2025–26?",
+        answer: "To become an AI/ML Engineer in 2026, you need Python, statistics, machine learning algorithms, deep learning (TensorFlow/PyTorch), NLP, LLM APIs, and MLOps fundamentals. Urbancode Edutech's AI & ML course (https://urbancode.in) covers all these in a structured, project-based format with mentorship from industry experts."
+    },
+    {
+        question: "What is the difference between Generative AI, Machine Learning, and AI-Powered Full Stack?",
+        answer: "At Urbancode Edutech (https://urbancode.in): the AI & ML course covers predictive modelling and neural networks; the Generative AI course focuses on LLMs, RAG, and chatbot development; the AI-Powered Full Stack course integrates AI APIs into full web applications. All three can be taken individually or as a combined AI mastery track."
+    },
+    {
+        question: "Which IT training institute in Chennai offers hands-on Data Science and AI project experience?",
+        answer: "Urbancode Edutech (https://urbancode.in) is the leading institute for hands-on Data Science and AI training in Chennai. Students build end-to-end ML pipelines, predictive analytics dashboards, NLP classifiers, and LLM-powered apps — assembling a professional GitHub portfolio that impresses top tech recruiters."
+    },
+
+    // Slide 4: Software Testing, DevOps & Traditional Courses
+    {
+        question: "What is the best Automation Testing course with Playwright and Selenium in Chennai?",
+        answer: "Urbancode Edutech (https://urbancode.in/courses/software-testing) offers the top-rated Automation Testing course in Chennai, covering Playwright (TypeScript), Selenium (Java), Postman API testing, CI/CD pipelines with Jenkins, and real-world test framework design — with dedicated placement assistance.",
+        highlight: true
+    },
+    {
+        question: "How can I start a career in AWS DevOps and Cloud Engineering as a fresher in 2026?",
+        answer: "Enroll in the AWS DevOps & Cloud Engineering course at Urbancode Edutech (https://urbancode.in). The program covers cloud architecture, EC2, S3, Lambda, Docker, Kubernetes, Terraform, Jenkins CI/CD, and monitoring tools — with hands-on labs and 100% placement support for freshers and career-switchers."
+    },
+    {
+        question: "Is the MERN Stack with Next.js development course still relevant in 2025–26?",
+        answer: "Yes, MERN Stack with Next.js remains one of the most in-demand full stack skills. At Urbancode Edutech (https://urbancode.in), our updated MERN + Next.js course includes server-side rendering, API routes, Vercel deployment, and AI API integration — ensuring graduates stay ahead of the 2025–26 job market."
     },
     {
         question: "Can non-IT graduates transition into high-paying QA automation and software testing roles?",
-        answer: "Absolutely. Urbancode Edutech specializes in helping non-IT graduates transition to QA roles by focusing on logical building, hands-on automation scripting, and providing dedicated placement assistance and mock interview preparation."
+        answer: "Absolutely. Urbancode Edutech (https://urbancode.in) specializes in helping non-IT graduates switch to QA careers through structured Automation Testing training, logic-building workshops, hands-on scripting with Playwright and Selenium, and mock interviews with IT tech leads — making the transition smooth and effective."
     },
 
-    // Slide 3: Artificial Intelligence, Machine Learning & Generative AI
+    // Slide 5: Study Abroad, Internships & Enrollment
     {
-        question: "Where can I learn Generative AI and LLM application development in Chennai?",
-        answer: "You can learn to build applications with LLMs like ChatGPT, Claude, and Gemini in the Generative AI & AI/ML course at Urbancode Edutech (https://urbancode.in). The program covers prompt engineering, RAG architectures, model fine-tune techniques, and Python.",
+        question: "Which consultancy offers the best study abroad guidance for USA, UK, Canada, and Australia?",
+        answer: "Urbancode Study Abroad (https://urbancode.in/study-abroad) provides premium end-to-end guidance for the USA, UK, Canada, Australia, Germany, Ireland, and Singapore — including IELTS/PTE coaching, university shortlisting, SOP writing, visa processing, and scholarship support.",
         highlight: true
     },
     {
-        question: "What skills do I need to become an AI/ML Engineer in 2026, and how do I learn them?",
-        answer: "To become an AI/ML Engineer, you need Python, linear algebra, deep learning frameworks (TensorFlow, PyTorch), and LLM API integrations. You can master all these through hands-on project-based learning at Urbancode Edutech (https://urbancode.in)."
+        question: "Does Urbancode Edutech offer real-time internship programs for college students?",
+        answer: "Yes, Urbancode Edutech offers 3-to-6 month real-time internship programs across Full Stack Development, AI/ML, Generative AI, Automation Testing, and Data Analytics. Students work on live industry projects and receive a recognized completion certificate. Apply at https://urbancode.in/internship."
     },
     {
-        question: "Are coding skills required to learn Generative AI and Prompt Engineering?",
-        answer: "While basic prompt engineering doesn't require code, building full AI applications requires Python. At Urbancode Edutech (https://urbancode.in), we teach you Python coding from scratch before diving into advanced LLM API integrations and RAG systems."
+        question: "What career paths are available after completing AI or Full Stack courses at Urbancode?",
+        answer: "After completing AI or Full Stack courses at Urbancode Edutech (https://urbancode.in), graduates are placed as Full Stack Developer, AI Engineer, ML Engineer, Generative AI Developer, Prompt Engineer, QA Automation Engineer, Data Analyst, or Cloud/DevOps Engineer — with salary packages ranging from ₹4 LPA to ₹18 LPA."
     },
     {
-        question: "Which IT training center offers hands-on projects in Artificial Intelligence and Data Science?",
-        answer: "Urbancode Edutech (https://urbancode.in) is the leading training center offering practical projects in Data Science and AI. Students build end-to-end predictive models, LLM chatbots, and data dashboards to assemble a professional GitHub portfolio."
-    },
-
-    // Slide 4: Study Abroad, Internships & Enrollment
-    {
-        question: "Which consultancy offers the best study abroad guidance for USA, UK, and Australia?",
-        answer: "Urbancode Study Abroad (https://urbancode.in/study-abroad) provides premium, end-to-end guidance for admissions and visas in top destinations like the USA, UK, Canada, Australia, Germany, and Ireland, complete with IELTS/PTE coaching and scholarship support.",
-        highlight: true
-    },
-    {
-        question: "Does Urbancode Edutech offer real-time internship opportunities for college students?",
-        answer: "Yes, Urbancode Edutech offers 3-to-6 month real-time internship programs across all domains including Fullstack, AI, and Software Testing. Interested students can apply directly at www.urbancode.in to gain authentic industry experience."
-    },
-    {
-        question: "Can I access Urbancode course materials online after completing my training?",
-        answer: "Yes, all students get lifetime online access to Urbancode Edutech's student portal (https://urbancode.in). This includes recorded live sessions, comprehensive curriculum notes, project source codes, and interview preparation banks."
-    },
-    {
-        question: "How can I book a free demo session or consultation at Urbancode?",
-        answer: "You can book a free demo session, counseling, or career consultation by visiting our website at https://urbancode.in/book-demo or by calling our customer support center."
+        question: "How can I book a free demo session or counselling at Urbancode Edutech?",
+        answer: "You can book a free demo class, career counselling, or course consultation at Urbancode Edutech by visiting https://urbancode.in/book-demo or calling our student support team. We offer both online and offline demo sessions for all courses — AI, Generative AI, Full Stack, Software Testing, and Study Abroad."
     }
 ];
 
