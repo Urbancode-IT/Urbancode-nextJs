@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { FaStar, FaQuoteLeft, FaCheckCircle, FaAward, FaUniversity, FaSearch, FaStethoscope, FaGlobeAmericas, FaUserMd, FaPlaneDeparture, FaClipboardCheck, FaHospital, FaArrowRight, FaGraduationCap, FaRegClock, FaCalendarAlt, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { FaStar, FaQuoteLeft, FaCheckCircle, FaAward, FaUniversity, FaSearch, FaStethoscope, FaGlobeAmericas, FaUserMd, FaPlaneDeparture, FaClipboardCheck, FaHospital, FaArrowRight, FaGraduationCap, FaRegClock, FaCalendarAlt, FaChevronLeft, FaChevronRight, FaClipboardList, FaLaptop, FaEdit, FaFileAlt } from 'react-icons/fa';
 import { Send } from "lucide-react";
 import { submitEnquiryForm } from "@/lib/api/api";
 import EnquiryFormModal from "@/app/components/common/EnquiryFormModal.jsx";
@@ -1160,7 +1160,7 @@ Duolingo: {
                                                 className="btn-prof-enquire prof-glass-btn m-0"
                                                 onClick={() => setShowBatches(!showBatches)}
                                             >
-                                                Batches
+                                                Course Structures
                                             </button>
                                         </div>
                                     </div>
@@ -1172,46 +1172,161 @@ Duolingo: {
                                         animate={{ opacity: 1, height: 'auto' }}
                                         className="prof-batches prof-batches-glass mt-5 p-4 rounded-4"
                                     >
-                                    <h4 className="fw-bold mb-4" style={{ fontSize: '20px' }}>Available Batches</h4>
-                                    <div className="cohorts-list" style={{ padding: 0 }}>
-                                        <div className="cohort-row-card" style={{ background: '#fff' }}>
-                                            <div className="cohort-name-col">
-                                                <div className="batch-dot"></div>
-                                                <span className="batch-name-text">Regular Classes</span>
+                                        <div className="text-center mb-4">
+                                            <h4 className="fw-bold mb-2" style={{ fontSize: '26px', letterSpacing: '1px', color: '#002B5B' }}>
+                                                {activeProficiency} COURSE STRUCTURES
+                                            </h4>
+                                            <p className="small fw-bold" style={{ color: '#444' }}>Flexible options. Expert guidance. Your success, our mission.</p>
+                                        </div>
+
+                                        <div className="row g-4 mb-4 align-items-stretch">
+                                            {/* COMPLETE COURSE */}
+                                            <div className="col-md-4">
+                                                <div className="course-struct-card h-100 p-4 rounded-4 d-flex flex-column" style={{ background: 'rgba(255, 255, 255, 0.8)', border: '1px solid rgba(0, 43, 91, 0.2)', boxShadow: '0 4px 15px rgba(0,0,0,0.05)', borderRadius: '16px' }}>
+                                                    <div className="d-flex justify-content-between align-items-start mb-3 border-bottom pb-3" style={{ borderColor: 'rgba(0, 43, 91, 0.1) !important' }}>
+                                                        <div className="course-badge text-white px-3 py-1 fw-bold rounded-pill" style={{ backgroundColor: '#002B5B', fontSize: '13px' }}>COMPLETE {activeProficiency}</div>
+                                                        <div className="course-hours fw-bold text-center bg-white rounded-circle d-flex flex-column justify-content-center align-items-center" style={{ width: '55px', height: '55px', border: '2px solid #002B5B', color: '#002B5B' }}>
+                                                            <span style={{ fontSize: '20px', lineHeight: '1' }}>30</span>
+                                                            <span style={{ fontSize: '9px', fontWeight: '600' }}>HOURS</span>
+                                                        </div>
+                                                    </div>
+                                                    <div className="d-flex gap-3 mb-3">
+                                                        <FaGraduationCap className="fs-1 flex-shrink-0" style={{ color: '#002B5B' }} />
+                                                        <p className="small fw-bold mb-0 text-dark" style={{ fontSize: '13.5px', lineHeight: '1.5' }}>A comprehensive 30-hour program designed for learners seeking end-to-end {activeProficiency} preparation.</p>
+                                                    </div>
+                                                    <ul className="list-unstyled small fw-semibold mb-0 mt-auto text-dark" style={{ fontSize: '13.5px' }}>
+                                                        <li className="mb-2 d-flex gap-2 align-items-start"><FaCheckCircle className="mt-1 flex-shrink-0" style={{ color: '#002B5B' }}/> <span>Covers all four modules – Listening, Reading, Writing, and Speaking</span></li>
+                                                        <li className="mb-2 d-flex gap-2 align-items-start"><FaCheckCircle className="mt-1 flex-shrink-0" style={{ color: '#002B5B' }}/> <span>Language development, grammar, vocabulary enhancement</span></li>
+                                                        <li className="mb-2 d-flex gap-2 align-items-start"><FaCheckCircle className="mt-1 flex-shrink-0" style={{ color: '#002B5B' }}/> <span>Test strategies and extensive practice</span></li>
+                                                        <li className="mb-0 d-flex gap-2 align-items-start"><FaCheckCircle className="mt-1 flex-shrink-0" style={{ color: '#002B5B' }}/> <span>Personalised feedback for continuous improvement</span></li>
+                                                    </ul>
+                                                    <div className="mt-4 pt-3 border-top text-center" style={{ borderColor: 'rgba(0, 43, 91, 0.1) !important' }}>
+                                                        <button 
+                                                            className="btn rounded-pill w-100 fw-bold shadow-sm course-enroll-btn py-2" 
+                                                            style={{ background: 'linear-gradient(135deg, #001B3B, #004B8B)', color: 'white', letterSpacing: '0.5px' }}
+                                                            onClick={() => handleEnquireClick(activeProficiency, `Enroll in Complete ${activeProficiency} Course`)}
+                                                        >
+                                                            Enroll Now
+                                                        </button>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div className="cohort-info-col">
-                                                <span className="info-label d-flex align-items-center gap-1"><FaRegClock className="me-1"/> TIME</span>
-                                                <span className="info-value">11:00 AM IST</span>
+
+                                            {/* FOCUSED TRAINING */}
+                                            <div className="col-md-4">
+                                                <div className="course-struct-card h-100 p-4 rounded-4 d-flex flex-column" style={{ background: 'rgba(255, 255, 255, 0.8)', border: '1px solid rgba(0, 128, 128, 0.2)', boxShadow: '0 4px 15px rgba(0,0,0,0.05)', borderRadius: '16px' }}>
+                                                    <div className="d-flex justify-content-between align-items-start mb-3 border-bottom pb-3" style={{ borderColor: 'rgba(0, 128, 128, 0.1) !important' }}>
+                                                        <div className="course-badge text-white px-3 py-1 fw-bold rounded-pill" style={{ backgroundColor: '#008080', fontSize: '13px' }}>FOCUSED TRAINING</div>
+                                                        <div className="course-hours fw-bold text-center bg-white rounded-circle d-flex flex-column justify-content-center align-items-center" style={{ width: '55px', height: '55px', border: '2px solid #008080', color: '#008080' }}>
+                                                            <span style={{ fontSize: '20px', lineHeight: '1' }}>20</span>
+                                                            <span style={{ fontSize: '9px', fontWeight: '600' }}>HOURS</span>
+                                                        </div>
+                                                    </div>
+                                                    <div className="d-flex gap-3 mb-3">
+                                                        <div className="flex-shrink-0 d-flex justify-content-center align-items-center rounded-circle" style={{ width: '40px', height: '40px', backgroundColor: '#008080', color: 'white' }}>
+                                                            <FaCheckCircle className="fs-4" />
+                                                        </div>
+                                                        <p className="small fw-bold mb-0 text-dark" style={{ fontSize: '13.5px', lineHeight: '1.5' }}>A structured 20-hour program tailored for candidates who already possess a good command of English but require targeted training in specific {activeProficiency} modules or skill areas.</p>
+                                                    </div>
+                                                    <ul className="list-unstyled small fw-semibold mb-0 mt-auto text-dark" style={{ fontSize: '13.5px' }}>
+                                                        <li className="mb-2 d-flex gap-2 align-items-start"><FaCheckCircle className="mt-1 flex-shrink-0" style={{ color: '#008080' }}/> <span>Focused training on specific modules or skills</span></li>
+                                                        <li className="mb-2 d-flex gap-2 align-items-start"><FaCheckCircle className="mt-1 flex-shrink-0" style={{ color: '#008080' }}/> <span>Emphasis on exam techniques and accuracy</span></li>
+                                                        <li className="mb-2 d-flex gap-2 align-items-start"><FaCheckCircle className="mt-1 flex-shrink-0" style={{ color: '#008080' }}/> <span>Time management strategies</span></li>
+                                                        <li className="mb-0 d-flex gap-2 align-items-start"><FaCheckCircle className="mt-1 flex-shrink-0" style={{ color: '#008080' }}/> <span>Guided practice to improve band scores</span></li>
+                                                    </ul>
+                                                    <div className="mt-4 pt-3 border-top text-center" style={{ borderColor: 'rgba(0, 128, 128, 0.1) !important' }}>
+                                                        <button 
+                                                            className="btn rounded-pill w-100 fw-bold shadow-sm course-enroll-btn py-2" 
+                                                            style={{ background: 'linear-gradient(135deg, #005050, #00B0B0)', color: 'white', letterSpacing: '0.5px' }}
+                                                            onClick={() => handleEnquireClick(activeProficiency, `Enroll in Focused Training for ${activeProficiency}`)}
+                                                        >
+                                                            Enroll Now
+                                                        </button>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div className="cohort-info-col">
-                                                <span className="info-label d-flex align-items-center gap-1"><FaCalendarAlt className="me-1"/> BATCH TYPE</span>
-                                                <span className="info-value">Weekday (Mon-Fri)</span>
-                                            </div>
-                                            <div className="cohort-action-col">
-                                                <button className="btn btn-dark fw-bold px-4 rounded-pill" onClick={() => handleEnquireClick(activeProficiency, `Join ${activeProficiency} Batch`)}>Join Now</button>
+
+                                            {/* CRASH COURSE */}
+                                            <div className="col-md-4">
+                                                <div className="course-struct-card h-100 p-4 rounded-4 d-flex flex-column" style={{ background: 'rgba(255, 255, 255, 0.8)', border: '1px solid rgba(102, 51, 153, 0.2)', boxShadow: '0 4px 15px rgba(0,0,0,0.05)', borderRadius: '16px' }}>
+                                                    <div className="d-flex justify-content-between align-items-start mb-3 border-bottom pb-3" style={{ borderColor: 'rgba(102, 51, 153, 0.1) !important' }}>
+                                                        <div className="course-badge text-white px-3 py-1 fw-bold rounded-pill" style={{ backgroundColor: '#663399', fontSize: '13px' }}>CRASH COURSE</div>
+                                                        <div className="course-hours fw-bold text-center bg-white rounded-circle d-flex flex-column justify-content-center align-items-center" style={{ width: '55px', height: '55px', border: '2px solid #663399', color: '#663399' }}>
+                                                            <span style={{ fontSize: '20px', lineHeight: '1' }}>12</span>
+                                                            <span style={{ fontSize: '9px', fontWeight: '600' }}>HOURS</span>
+                                                        </div>
+                                                    </div>
+                                                    <div className="d-flex gap-3 mb-3">
+                                                        <div className="flex-shrink-0 d-flex justify-content-center align-items-center rounded-circle" style={{ width: '40px', height: '40px', backgroundColor: '#663399', color: 'white' }}>
+                                                            <FaPlaneDeparture className="fs-4" />
+                                                        </div>
+                                                        <p className="small fw-bold mb-0 text-dark" style={{ fontSize: '13.5px', lineHeight: '1.5' }}>A fast-paced 12-hour revision program ideal for candidates appearing for the {activeProficiency} exam in the near future.</p>
+                                                    </div>
+                                                    <ul className="list-unstyled small fw-semibold mb-0 mt-auto text-dark" style={{ fontSize: '13.5px' }}>
+                                                        <li className="mb-2 d-flex gap-2 align-items-start"><FaCheckCircle className="mt-1 flex-shrink-0" style={{ color: '#663399' }}/> <span>Key test strategies and high-impact tips</span></li>
+                                                        <li className="mb-2 d-flex gap-2 align-items-start"><FaCheckCircle className="mt-1 flex-shrink-0" style={{ color: '#663399' }}/> <span>Common question types across all modules</span></li>
+                                                        <li className="mb-2 d-flex gap-2 align-items-start"><FaCheckCircle className="mt-1 flex-shrink-0" style={{ color: '#663399' }}/> <span>Mock practice for real exam experience</span></li>
+                                                        <li className="mb-0 d-flex gap-2 align-items-start"><FaCheckCircle className="mt-1 flex-shrink-0" style={{ color: '#663399' }}/> <span>Maximise performance in a limited timeframe</span></li>
+                                                    </ul>
+                                                    <div className="mt-4 pt-3 border-top text-center" style={{ borderColor: 'rgba(102, 51, 153, 0.1) !important' }}>
+                                                        <button 
+                                                            className="btn rounded-pill w-100 fw-bold shadow-sm course-enroll-btn py-2" 
+                                                            style={{ background: 'linear-gradient(135deg, #461379, #9653D9)', color: 'white', letterSpacing: '0.5px' }}
+                                                            onClick={() => handleEnquireClick(activeProficiency, `Enroll in Crash Course for ${activeProficiency}`)}
+                                                        >
+                                                            Enroll Now
+                                                        </button>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
 
-                                        <div className="cohort-row-card" style={{ background: '#fff' }}>
-                                            <div className="cohort-name-col">
-                                                <div className="batch-dot"></div>
-                                                <span className="batch-name-text">Fast Track</span>
+                                        <div className="features-section mt-4 p-4 rounded-4" style={{ background: 'rgba(255,255,255,0.9)', border: '1px solid rgba(0,0,0,0.05)' }}>
+                                            <div className="text-center mb-4 position-relative">
+                                                <hr className="position-absolute w-100" style={{ top: '50%', transform: 'translateY(-50%)', zIndex: 0, opacity: 0.1, borderColor: '#002B5B' }} />
+                                                <span className="badge px-4 py-2 position-relative" style={{ backgroundColor: '#002B5B', fontSize: '13px', zIndex: 1 }}>EVERY COURSE INCLUDES</span>
                                             </div>
-                                            <div className="cohort-info-col">
-                                                <span className="info-label d-flex align-items-center gap-1"><FaRegClock className="me-1"/> TIME</span>
-                                                <span className="info-value">02:00 PM IST</span>
-                                            </div>
-                                            <div className="cohort-info-col">
-                                                <span className="info-label d-flex align-items-center gap-1"><FaCalendarAlt className="me-1"/> BATCH TYPE</span>
-                                                <span className="info-value">Weekday (Mon-Fri)</span>
-                                            </div>
-                                            <div className="cohort-action-col">
-                                                <button className="btn btn-dark fw-bold px-4 rounded-pill" onClick={() => handleEnquireClick(activeProficiency, `Join ${activeProficiency} Batch`)}>Join Now</button>
+                                            <div className="row g-4">
+                                                <div className="col-md-3 col-sm-6">
+                                                    <div className="d-flex flex-column align-items-center text-center">
+                                                        <div className="mb-2 d-flex justify-content-center align-items-center rounded-circle" style={{ width: '50px', height: '50px', backgroundColor: 'rgba(0, 43, 91, 0.1)' }}>
+                                                            <FaClipboardList className="fs-4" style={{ color: '#002B5B' }} />
+                                                        </div>
+                                                        <h6 className="fw-bold mb-2" style={{ fontSize: '13px', color: '#002B5B' }}>CUSTOMISED STUDY PLAN</h6>
+                                                        <p className="text-muted small mb-0" style={{ fontSize: '12px', lineHeight: '1.4' }}>A personalised plan tailored to your goals, strengths, and target band.</p>
+                                                    </div>
+                                                </div>
+                                                <div className="col-md-3 col-sm-6">
+                                                    <div className="d-flex flex-column align-items-center text-center">
+                                                        <div className="mb-2 d-flex justify-content-center align-items-center rounded-circle" style={{ width: '50px', height: '50px', backgroundColor: 'rgba(0, 128, 128, 0.1)' }}>
+                                                            <FaLaptop className="fs-4" style={{ color: '#008080' }} />
+                                                        </div>
+                                                        <h6 className="fw-bold mb-2" style={{ fontSize: '13px', color: '#008080' }}>HANDS-ON LEARNING</h6>
+                                                        <p className="text-muted small mb-0" style={{ fontSize: '12px', lineHeight: '1.4' }}>Interactive sessions, practical strategies, and real exam simulations.</p>
+                                                    </div>
+                                                </div>
+                                                <div className="col-md-3 col-sm-6">
+                                                    <div className="d-flex flex-column align-items-center text-center">
+                                                        <div className="mb-2 d-flex justify-content-center align-items-center rounded-circle" style={{ width: '50px', height: '50px', backgroundColor: 'rgba(102, 51, 153, 0.1)' }}>
+                                                            <FaEdit className="fs-4" style={{ color: '#663399' }} />
+                                                        </div>
+                                                        <h6 className="fw-bold mb-2" style={{ fontSize: '13px', color: '#663399' }}>REGULAR ASSIGNMENTS</h6>
+                                                        <p className="text-muted small mb-0" style={{ fontSize: '12px', lineHeight: '1.4' }}>Carefully designed assignments to reinforce learning and track progress.</p>
+                                                    </div>
+                                                </div>
+                                                <div className="col-md-3 col-sm-6">
+                                                    <div className="d-flex flex-column align-items-center text-center">
+                                                        <div className="mb-2 d-flex justify-content-center align-items-center rounded-circle" style={{ width: '50px', height: '50px', backgroundColor: 'rgba(230, 126, 34, 0.1)' }}>
+                                                            <FaClipboardCheck className="fs-4" style={{ color: '#e67e22' }} />
+                                                        </div>
+                                                        <h6 className="fw-bold mb-2" style={{ fontSize: '13px', color: '#e67e22' }}>MOCK TESTS WITH FEEDBACK</h6>
+                                                        <p className="text-muted small mb-0" style={{ fontSize: '12px', lineHeight: '1.4' }}>Regular mock tests will be corrected in detail and personalised feedback will be provided.</p>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </motion.div>
-                            )}
+                                    </motion.div>
+                                )}
                         </motion.div>
                         </div>
                     </div>

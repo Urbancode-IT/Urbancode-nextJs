@@ -7883,3 +7883,36 @@ Inner frosted glass chip feel
     }
 }
 
+/* Course Structures Shine Button */
+.course-enroll-btn {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: none;
+    z-index: 1;
+}
+
+.course-enroll-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
+    transform: skewX(-25deg);
+    animation: enrollShine 3s infinite;
+    z-index: -1;
+}
+
+@keyframes enrollShine {
+    0% { left: -100%; }
+    20% { left: 200%; }
+    100% { left: 200%; }
+}
+
+.course-enroll-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2) !important;
+    filter: brightness(1.1);
+}
