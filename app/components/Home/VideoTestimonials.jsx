@@ -42,12 +42,8 @@ const VideoTestimonials = () => {
     const handleDotClick = (dotIndex) => setIndex(dotIndex);
 
     return (
-        <motion.section
+        <section
             className="video-testimonials-section py-5"
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: false }}
-            transition={{ duration: 0.8 }}
         >
             {/* Cinematic Background Elements */}
             <div className="cinematic-bg-elements">
@@ -130,7 +126,7 @@ const VideoTestimonials = () => {
                     </div>
                 </div>
             </div>
-        </motion.section>
+        </section>
     );
 };
 

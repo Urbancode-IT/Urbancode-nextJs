@@ -57,12 +57,8 @@ const InDemandTools = () => {
     };
 
     return (
-        <motion.section 
+        <section 
             className="idt-in-demand-container"
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: false }}
-            transition={{ duration: 0.8 }}
         >
             <h2 className="section-main-title text-shine">In Demand Tools</h2>
 
@@ -148,7 +144,7 @@ const InDemandTools = () => {
                     </div>
                 </div>
             )}
-        </motion.section>
+        </section>
     );
 };
 

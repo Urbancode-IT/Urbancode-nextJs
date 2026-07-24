@@ -80,12 +80,8 @@ const TestimonialCard = ({ data, index }) => {
     };
 
     return (
-        <motion.div
+        <div
             className="pt-card"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
         >
             {/* Blurred background circles for premium look */}
             <div className="pt-bg-circle pt-circle-1"></div>
@@ -125,7 +121,7 @@ const TestimonialCard = ({ data, index }) => {
             </div>
 
             <div className="pt-accent-line"></div>
-        </motion.div>
+        </div>
     );
 };
 
@@ -155,15 +151,11 @@ const PlacementTestimonials = () => {
             </div>
 
             <div className="pt-container">
-                <motion.div
+                <div
                     className="pt-header"
-                    initial={{ opacity: 0, y: -20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
                 >
                     <h2 className="section-main-title text-shine">What Our Alumni Says</h2>
-                </motion.div>
+                </div>
 
                 {/* Desktop Grid */}
                 <div className="pt-grid">

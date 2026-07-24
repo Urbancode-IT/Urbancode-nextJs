@@ -13,7 +13,7 @@ section {
 
 /* Sections */
 .study-abroad-container .section-padding {
-    padding: 60px 0;
+    padding: var(--section-gap) 0;
 }
 
 .section-bg-light {
@@ -22,7 +22,7 @@ section {
 
 .study-abroad-container .section-header {
     text-align: center;
-    margin-bottom: 35px;
+    margin-bottom: var(--section-title-margin-bottom);
     margin-top: 0px;
 }
 
@@ -959,7 +959,7 @@ textarea{
 
 @media (max-width: 768px) {
     .study-abroad-container .section-padding {
-        padding: 15px 0;
+        padding: var(--section-gap-mobile) 0;
     }
     .study-hero {
         padding: 30px 0 0;
@@ -3671,7 +3671,7 @@ section {
 
 /* Sections */
 .study-abroad-container .section-padding {
-    padding: 60px 0;
+    padding: var(--section-gap) 0;
 }
 
 .section-bg-light {
@@ -3680,7 +3680,7 @@ section {
 
 .study-abroad-container .section-header {
     text-align: center;
-    margin-bottom: 35px;
+    margin-bottom: var(--section-title-margin-bottom);
     margin-top: 0px;
 }
 
@@ -4611,7 +4611,7 @@ textarea{
 
 @media (max-width: 768px) {
     .study-abroad-container .section-padding {
-        padding: 15px 0;
+        padding: var(--section-gap-mobile) 0;
     }
     .study-hero {
         padding: 30px 0 0;

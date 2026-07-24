@@ -135,6 +135,13 @@ const courses = [
     link: "/courses/automation",
     badge: "1 Course",
   },
+  {
+    title: "Languages",
+    desc: "Build strong communication skills and master global languages like English, French, and German.",
+    img: languagesImg,
+    link: "/courses/languages",
+    badge: "5 Courses",
+  },
 ];
 
 const CourseCategoryPage = () => {

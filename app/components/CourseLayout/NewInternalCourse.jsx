@@ -39,6 +39,9 @@ const NewInternalCourse = ({ data }) => {
     const [isBrochureOpen, setIsBrochureOpen] = useState(false);
     const [isJoinOpen, setIsJoinOpen] = useState(false);
     const [selectedBatch, setSelectedBatch] = useState(null);
+    
+    // --- SubCourse State ---
+    const [activeSubCourseIndex, setActiveSubCourseIndex] = useState(0);
 
 
     // ===========================================================================
@@ -232,6 +235,95 @@ const NewInternalCourse = ({ data }) => {
                 </div>
             )}
 
+            {/* 3.5. PROGRAMS */}
+            {data.subCourses && (
+                <div className="nict-programs-section" style={{ marginBottom: '60px' }}>
+                    <div className="nict-curriculum-header text-center mb-4">
+                        <h2 style={{ fontSize: '2rem', fontWeight: 'bold' }}>Programs</h2>
+                    </div>
+                    
+                    <div className="nict-programs-container mx-auto" style={{
+                        maxWidth: '900px',
+                        background: 'rgba(240, 245, 250, 0.6)',
+                        borderRadius: '20px',
+                        padding: '40px 20px',
+                        boxShadow: '0 4px 20px rgba(0, 0, 0, 0.05)'
+                    }}>
+                        <div className="d-flex justify-content-center mb-4">
+                            <div style={{
+                                display: 'inline-flex',
+                                background: '#ffffff',
+                                borderRadius: '50px',
+                                padding: '5px',
+                                border: '1px solid rgba(0, 0, 0, 0.05)',
+                                boxShadow: '0 2px 10px rgba(0, 0, 0, 0.05)'
+                            }}>
+                                {data.subCourses.map((sub, index) => (
+                                    <button
+                                        key={index}
+                                        onClick={() => setActiveSubCourseIndex(index)}
+                                        style={{
+                                            border: 'none',
+                                            padding: '10px 25px',
+                                            borderRadius: '50px',
+                                            background: activeSubCourseIndex === index ? 'linear-gradient(135deg, #16a34a 0%, #15803d 100%)' : 'transparent',
+                                            color: activeSubCourseIndex === index ? '#fff' : '#000',
+                                            fontWeight: '600',
+                                            cursor: 'pointer',
+                                            transition: 'all 0.3s ease',
+                                            margin: '0 5px',
+                                            fontSize: '15px'
+                                        }}
+                                    >
+                                        {sub.name}
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
+
+                        <div className="text-center mb-4">
+                            <div className="mb-4 mt-2">
+                                <span className="fw-bold d-inline-flex align-items-center" style={{ 
+                                    fontSize: '1.25rem', 
+                                    color: '#198754', 
+                                    backgroundColor: 'rgba(25, 135, 84, 0.1)', 
+                                    padding: '8px 25px', 
+                                    borderRadius: '50px',
+                                    border: '1px solid rgba(25, 135, 84, 0.2)'
+                                }}>
+                                    <i className="bi bi-clock-history me-2"></i>
+                                    {data.subCourses[activeSubCourseIndex].duration}
+                                </span>
+                            </div>
+                            <p className="mx-auto text-center" style={{ 
+                                maxWidth: '700px', 
+                                fontSize: '1.1rem', 
+                                lineHeight: '1.6',
+                                color: '#495057',
+                                fontStyle: 'italic',
+                                backgroundColor: 'rgba(255, 255, 255, 0.7)',
+                                padding: '15px 20px',
+                                borderRadius: '10px',
+                                boxShadow: '0 2px 10px rgba(0,0,0,0.02)'
+                            }}>
+                                "{data.subCourses[activeSubCourseIndex].desc}"
+                            </p>
+                            
+                            <div className="d-flex justify-content-center mt-4">
+                                <ul className="text-start text-muted" style={{ lineHeight: '1.8', listStyle: 'none', paddingLeft: 0, display: 'inline-block' }}>
+                                    {data.subCourses[activeSubCourseIndex].features?.map((feature, idx) => (
+                                        <li key={idx} className="mb-2 d-flex align-items-start">
+                                            <i className="bi bi-check-circle-fill text-success me-2 mt-1"></i>
+                                            <span>{feature}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
+
             {/* 4. COURSE CURRICULUM */}
             <div className="nict-curriculum-section">
                 <section className="nict-course-curriculum">
@@ -240,7 +332,9 @@ const NewInternalCourse = ({ data }) => {
                     </div>
 
                     <div className="nict-curriculum-list">
-                        {currentCurriculumItems.map((item, index) => (
+                        {currentCurriculumItems.map((item, index) => {
+                            // Safely map items, if item.items isn't in mappedCurriculum format, we just print the item.content
+                            return (
                             <div
                                 key={item.id}
                                 className={`nict-curriculum-item ${curriculumActiveIndex === index ? "active" : ""}`}
@@ -258,10 +352,18 @@ const NewInternalCourse = ({ data }) => {
                                 </div>
 
                                 <div className="nict-curriculum-collapse">
-                                    <div className="nict-curriculum-content">{item.content}</div>
+                                    <div className="nict-curriculum-content">
+                                        {item.content ? item.content : (
+                                            <ul className="mb-0 ps-3">
+                                                {(item.items || []).map((subitem, i) => (
+                                                    <li key={i} className="mb-1 lh-base text-secondary">{subitem}</li>
+                                                ))}
+                                            </ul>
+                                        )}
+                                    </div>
                                 </div>
                             </div>
-                        ))}
+                        )})}
                     </div>
 
                     <div className="nict-curriculum-navigation">

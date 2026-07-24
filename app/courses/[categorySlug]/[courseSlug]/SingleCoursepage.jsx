@@ -323,13 +323,16 @@ export default function SingleCoursepage({ params }) {
       isLegacyImage: !!course.img,
       brochure: course.curriculumUrls?.[0]
     },
-    highlightsData: categorySlug === "kidz-space" ? kidsHighlights : (newCourseData["mern-stack"]?.highlightsData || []),
+    highlightsData: (categorySlug === "kidz-space" ? kidsHighlights : (newCourseData["mern-stack"]?.highlightsData || [])).map(h => 
+      h.label === "Duration" ? { ...h, value: course.duration || h.value } : h
+    ),
     curriculumData: mappedCurriculum,
     toolsData: getToolsForCourse(course.title),
     faqData: newCourseData["mern-stack"]?.faqData || [],
     locked: course.locked,
     isKidsSpace: categorySlug === "kidz-space",
-    batches: course.batches
+    batches: course.batches,
+    subCourses: course.subCourses
   };
 
   return <NewInternalCourse data={transformedData} />;

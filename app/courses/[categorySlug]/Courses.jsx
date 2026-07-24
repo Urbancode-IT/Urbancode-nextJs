@@ -81,7 +81,38 @@ const categoryTools = {
     'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',
     'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg',
     'https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg',
-  ]
+  ],
+   "Languages":[
+    "https://api.iconify.design/lucide:languages.svg",
+
+  // Globe / Global Languages
+  "https://api.iconify.design/lucide:globe.svg",
+
+  // Translate
+  // Languages (Blue)
+  "https://api.iconify.design/lucide:languages.svg?color=%233B82F6",
+
+  // Globe (Green)
+  "https://api.iconify.design/lucide:globe.svg?color=%2310B981",
+
+  // Translate (Purple)
+  "https://api.iconify.design/tabler:language.svg?color=%238B5CF6",
+
+  // Book / Learning (Orange)
+  "https://api.iconify.design/lucide:book-open.svg?color=%23F59E0B",
+
+  // Graduation (Red)
+  "https://api.iconify.design/lucide:graduation-cap.svg?color=%23EF4444",
+
+  // Speech (Cyan)
+  "https://api.iconify.design/lucide:messages-square.svg?color=%2306B6D4",
+
+  // IELTS Certificate (Emerald)
+  "https://api.iconify.design/lucide:badge-check.svg?color=%23059669",
+
+  // Dictionary (Indigo)
+  "https://api.iconify.design/lucide:book-text.svg?color=%234F46E5",
+   ]
 };
 
 const defaultTools = [
@@ -104,6 +135,7 @@ const categories = [
   "CRM",
   "Kidz Space",
   "Automation",
+  "Languages",
 ];
 
 const faqData = [

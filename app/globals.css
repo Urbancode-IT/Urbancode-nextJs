@@ -16,6 +16,8 @@
 
   /* ── Spacing / layout ─────────────────────────────────────────── */
   --site-header-height: 71px;
+  --section-gap: 60px;
+  --section-gap-mobile: 40px;
 
   /* ── Bootstrap overrides ─────────────────────────────────────── */
   --bs-body-font-family:  var(--font-sans) !important;
@@ -49,8 +51,8 @@
   --section-title-color:         #1a202c;
   --section-title-lh:            1.2;
   --section-title-ls:            -0.5px;
-  --section-title-margin-top:    0px;
-  --section-title-margin-bottom: 30px;
+  --section-title-margin-top:    10px;
+  --section-title-margin-bottom: 16px;
 
   /* ── Form Design System ───────────────────────────────────────── */
   --form-bg: linear-gradient(180deg, #e3f0eb 0%, #f3f5f3 100%);
@@ -538,13 +540,13 @@ a:hover {
    HOME SECTION SPACING UTILITY
    ================================================================ */
 .home-section {
-  margin-top: 100px !important;
+  margin-top: var(--section-gap) !important;
   display: block !important;
 }
 
 @media (max-width: 768px) {
   .home-section {
-    margin-top: 40px !important;
+    margin-top: var(--section-gap-mobile) !important;
   }
 }
 
@@ -553,12 +555,12 @@ a:hover {
 }
 
 .home-section:last-of-type {
-  margin-bottom: 100px !important;
+  margin-bottom: var(--section-gap) !important;
 }
 
 @media (max-width: 768px) {
   .home-section:last-of-type {
-    margin-bottom: 40px !important;
+    margin-bottom: var(--section-gap-mobile) !important;
   }
 }
 

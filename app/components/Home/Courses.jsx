@@ -261,34 +261,22 @@ const Courses = () => {
     };
 
     return (
-        <motion.div 
+        <div
             className="jg-courses-section-wrapper"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false }}
-            transition={{ duration: 0.8 }}
         >
             <div className="jg-courses-main-content">
-                <motion.div 
+                <div 
                     className="jg-courses-header-container"
-                    initial={{ opacity: 0, y: -20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: false }}
-                    transition={{ duration: 0.6 }}
                 >
                     <h2 className="section-main-title text-shine">
                         100% Job Guaranteed Courses
                     </h2>
                     <FeatureSubtitles />
-                </motion.div>
-                <motion.div
+                </div>
+                <div
                     className="jg-courses-slider-container"
                     onMouseEnter={() => setIsPaused(true)}
                     onMouseLeave={() => setIsPaused(false)}
-                    initial={{ opacity: 0, x: 30 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: false }}
-                    transition={{ duration: 0.6, delay: 0.4 }}
                 >
                     <button className={`jg-nav-side-btn prev ${isAtStart ? 'is-disabled' : ''}`} onClick={slidePrev}>&lt;</button>
 
@@ -309,9 +297,9 @@ const Courses = () => {
                     </div>
 
                     <button className={`jg-nav-side-btn next ${isAtEnd ? 'is-disabled' : ''}`} onClick={slideNext}>&gt;</button>
-                </motion.div>
+                </div>
             </div>
-        </motion.div>
+        </div>
     );
 };
 

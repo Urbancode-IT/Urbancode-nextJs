@@ -7643,6 +7643,179 @@ const coursesData = {
 
     courses: [
       {
+        title: "IELTS General Training",
+        desc: "Master IELTS General Training with comprehensive modules covering Listening, Reading, Writing, and Speaking to achieve your target band score.",
+        rating: 4.9,
+        duration: "Flexible",
+        students: "50",
+        img: "/images/courses-images/english.webp",
+        isNew: true,
+        subCourses: [
+          {
+            name: "Complete IELTS",
+            duration: "30 Hours",
+            fee: "₹18000 +GST",
+            desc: "A comprehensive 30-hour program designed for learners seeking end-to-end IELTS preparation.",
+            features: [
+              "Covers all four modules - Listening, Reading, Writing, and Speaking",
+              "Language development, grammar, vocabulary enhancement",
+              "Test strategies and extensive practice",
+              "Personalised feedback for continuous improvement"
+            ],
+            curriculumData: [
+              {
+                id: 1,
+                title: "Listening & Reading Modules",
+                icon: "bi bi-headphones",
+                defaultOpen: true,
+                items: [
+                  "Understanding test formats and question types",
+                  "Skimming, scanning, and detailed reading strategies",
+                  "Listening for main ideas and specific details",
+                  "Time management techniques"
+                ]
+              },
+              {
+                id: 2,
+                title: "Writing & Speaking Modules",
+                icon: "bi bi-pencil",
+                items: [
+                  "Structuring letters and essays effectively",
+                  "Grammar and vocabulary building",
+                  "Fluency, pronunciation, and coherence",
+                  "Mock interviews and feedback"
+                ]
+              }
+            ]
+          },
+          {
+            name: "Focused training",
+            duration: "20 Hours",
+            fee: "₹15000 +GST",
+            desc: "A structured program tailored for candidates who already possess a good command of English but require targeted training in specific IELTS modules.",
+            features: [
+              "Focused training on specific modules or skills",
+              "Emphasis on exam techniques and accuracy",
+              "Time management strategies",
+              "Guided practice to improve band scores"
+            ],
+            curriculumData: [
+              {
+                id: 1,
+                title: "Targeted Module Practice",
+                icon: "bi bi-target",
+                defaultOpen: true,
+                items: [
+                  "Identifying weaknesses in specific modules",
+                  "Advanced strategies for challenging question types",
+                  "Intensive practice and feedback loop"
+                ]
+              }
+            ]
+          },
+          {
+            name: "Crash course",
+            duration: "12 Hours",
+            fee: "₹10000 +GST",
+            desc: "A fast-paced 12-hour revision program ideal for candidates appearing for the IELTS exam in the near future.",
+            features: [
+              "Key test strategies and high-impact tips",
+              "Common question types across all modules",
+              "Mock practice for real exam experience",
+              "Maximise performance in a limited timeframe"
+            ],
+            curriculumData: [
+              {
+                id: 1,
+                title: "Intensive Revision & Mock Tests",
+                icon: "bi bi-lightning",
+                defaultOpen: true,
+                items: [
+                  "Quick review of essential strategies",
+                  "Full-length mock tests under timed conditions",
+                  "Detailed feedback and score prediction"
+                ]
+              }
+            ]
+          }
+        ],
+        courseContentData: [
+          {
+            id: 1,
+            title: "IELTS Foundation & English Enhancement",
+            icon: "bi bi-journal-text",
+            defaultOpen: true,
+            items: [
+              "IELTS Academic test format, band scores, assessment criteria, and target-band planning",
+              "English fundamentals: sentence structure, parts of speech, punctuation, and common grammatical errors",
+              "Advanced grammar: tenses, passive voice, modal verbs, conditionals, and complex sentences",
+              "Vocabulary development: synonyms, collocations, academic vocabulary, and paraphrasing techniques",
+              "Outcome: Build the strong language foundation required across all four IELTS modules"
+            ]
+          },
+          {
+            id: 2,
+            title: "Module 1: IELTS Listening",
+            icon: "bi bi-headphones",
+            items: [
+              "Core techniques: predicting answers, identifying keywords, and understanding paraphrases",
+              "Question types: Form/note completion, multiple-choice, matching, and map/diagram labelling",
+              "Contexts covered: everyday conversations, social situations, and academic discussions",
+              "Advanced strategies: recognizing speaker attitude, handling distractors, and navigating complex lectures",
+              "Target: Improve accuracy while maintaining concentration throughout the full listening test"
+            ]
+          },
+          {
+            id: 3,
+            title: "Module 2: IELTS Academic Reading",
+            icon: "bi bi-book",
+            items: [
+              "Core skills: Skimming, scanning, keyword identification, and contextual vocabulary",
+              "Understanding paragraph structure and reading strategically for answers",
+              "Question types: True/False/Not Given, matching headings, summary completion, and short-answer",
+              "Advanced Reading: 20-minute-per-passage strategy, inference, and argument structure",
+              "Target: Band 7+ reading strategy and accuracy for completing 40 questions in 60 minutes"
+            ]
+          },
+          {
+            id: 4,
+            title: "Module 3: IELTS Academic Writing",
+            icon: "bi bi-pencil",
+            items: [
+              "Writing Foundations: Paragraph structure, PEEL framework, cohesion, and formal academic tone",
+              "Task 1 (Charts & Maps): Structuring overviews, describing trends, comparing data, and sequencing processes",
+              "Task 2 (Essays): Standard essay structure (Opinion, Discussion, Problem/Solution, etc.)",
+              "Advanced skills: Brainstorming, strong thesis statements, and avoiding memorized templates",
+              "Target: Write a well-developed 250+ word essay within approximately 40 minutes"
+            ]
+          },
+          {
+            id: 5,
+            title: "Module 4: IELTS Speaking",
+            icon: "bi bi-mic",
+            items: [
+              "Part 1: Developing natural responses for familiar topics using Answer → Reason → Detail structure",
+              "Part 2 (Cue Cards): One-minute preparation, storytelling structure, and continuous 2-minute speaking",
+              "Part 3 (Advanced Discussion): Analytical skills, expressing opinions, and discussing wider implications",
+              "Pronunciation & Fluency: Word stress, intonation, connected speech, and reducing unnecessary pauses",
+              "Advanced Vocabulary: Theme-based learning (Education, Technology, Healthcare, etc.)"
+            ]
+          },
+          {
+            id: 6,
+            title: "Advanced Exam Preparation & Mock Tests",
+            icon: "bi bi-award",
+            items: [
+              "Band 7+ Skill Development: Precision, paraphrase mastery, and systematic error correction",
+              "Maintaining an Error Log (Question → Correct Answer → Why Wrong → Strategy)",
+              "Full-length timed mock examinations across all four modules",
+              "Individual performance analysis by skill to create personalized improvement plans",
+              "Weekly progression: Foundation → Strategy Development → Timed Practice → Mock Tests"
+            ]
+          }
+        ]
+      },
+      {
         title: "Corporate Communication",
         desc: "Elevate your professional presence. Master corporate writing, high-impact presentations, and executive etiquette to accelerate your corporate career trajectory.",
         rating: 4.9,
@@ -8085,6 +8258,7 @@ const coursesData = {
           },
         ],
       },
+      
     ],
   },
 
@@ -8098,9 +8272,9 @@ const coursesData = {
   //     {title:"OET Course",desc:"Master OET with expert-led training focused on real exam strategies and practical communication skills. Prepare confidently for healthcare career success worldwide.",rating:5.0,duration:"1 month",students:"106",img:""},
   //     {title:"PTE Course",desc:"Master the PTE Academic exam with expert-led training, practice tests, and personalized feedback. Achieve your dream score with proven strategies and real exam simulations.",rating:5.0,duration:"1 month",students:"106",img:""},
   //     {title:"IELTS Course",desc:"Master all four IELTS modules – Listening, Reading, Writing, and Speaking – with expert trainers and proven strategies.",rating:5.0,duration:"1 month",students:"106",img:""},
-
   //   ]
   // },
+
   "Kidz Space": {
     mainCategoryDesc: "Fun and interactive coding for kids.",
     subDesc:

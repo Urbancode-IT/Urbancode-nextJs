@@ -140,12 +140,8 @@ const Faqs = () => {
     }, [activeIndex, currentPage, totalPages]);
 
     return (
-        <motion.div 
+        <div 
             className="faq-section container py-5"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false }}
-            transition={{ duration: 0.8 }}
         >
             <script
                 type="application/ld+json"
@@ -240,7 +236,7 @@ const Faqs = () => {
                     </div>
                 </div>
             </div>
-        </motion.div>
+        </div>
     );
 };
 
