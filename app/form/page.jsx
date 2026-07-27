@@ -3,6 +3,7 @@ import React, { useState, useEffect, Suspense } from "react";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { goToThankYou } from "@/lib/navigation/goToThankYou";
+import Swal from 'sweetalert2';
 import { Send, User, Mail, Phone, MapPin, BookOpen, Clock } from "lucide-react";
 import "./FormPage.css";
 
@@ -46,10 +47,8 @@ const EnquiryFormContent = () => {
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) newErrors.email = "Invalid email.";
     
     const cleanPhone = formData.phone.replace(/\D/g, '');
-    if (formData.countryCode === "+91") {
-      if (cleanPhone.length !== 10) newErrors.phone = "10-digit number required.";
-    } else {
-      if (cleanPhone.length < 7) newErrors.phone = "Invalid number.";
+    if (cleanPhone.length < 7 || cleanPhone.length > 15) {
+      newErrors.phone = "Invalid number (7-15 digits required).";
     }
     
     if (!formData.interest) newErrors.interest = "Required.";
@@ -89,6 +88,12 @@ const EnquiryFormContent = () => {
         mode: "no-cors",
       });
 
+      Swal.fire({
+        title: 'Success!',
+        text: 'Your enquiry has been submitted successfully.',
+        icon: 'success',
+        confirmButtonColor: '#036c2d'
+      });
       setStatus({ type: "success", message: "Success! Redirecting..." });
       
       setTimeout(() => {
@@ -97,6 +102,7 @@ const EnquiryFormContent = () => {
 
     } catch (error) {
       console.error("Form Submission Error:", error);
+      Swal.fire({ icon: 'error', title: 'Oops...', text: "Something went wrong. Please try again.", confirmButtonColor: '#d33' });
       setStatus({
         type: "error",
         message: "Something went wrong. Please try again.",

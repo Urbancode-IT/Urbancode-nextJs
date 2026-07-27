@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { goToThankYou } from '@/lib/navigation/goToThankYou';
 import axios from 'axios';
 import { submitProjectEnquiryForm } from '@/lib/api/api';
+import Swal from 'sweetalert2';
 const Projects = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -54,10 +55,8 @@ const Projects = () => {
       newErrors.phone = "Phone number is required";
     } else {
       const cleanPhone = formData.phone.replace(/\D/g, '');
-      if (cleanPhone.length !== 10) {
-        newErrors.phone = "Phone must be exactly 10 digits";
-      } else if (!/^[6-9]\d{9}$/.test(cleanPhone)) {
-        newErrors.phone = "Please enter a valid 10-digit Indian mobile number.";
+      if (cleanPhone.length < 7 || cleanPhone.length > 15) {
+        newErrors.phone = "Please enter a valid 7 to 15 digit mobile number.";
       }
     }
     
@@ -75,6 +74,18 @@ const Projects = () => {
       newErrors.message = "Message must be at least 10 characters";
     } else if (formData.message.length > 1000) {
       newErrors.message = "Message is too long (max 1000 characters)";
+    }
+    
+    // Gibberish validation
+    const consonantMashRegex = /[bcdfghjklmnpqrstvwxzBCDFGHJKLMNPQRSTVWXZ]{7,}/;
+    if (consonantMashRegex.test(formData.name)) {
+      newErrors.name = "Invalid input detected.";
+    }
+    if (consonantMashRegex.test(formData.subject)) {
+      newErrors.subject = "Invalid input detected.";
+    }
+    if (consonantMashRegex.test(formData.message)) {
+      newErrors.message = "Invalid input detected.";
     }
     
     return newErrors;
@@ -100,6 +111,12 @@ const Projects = () => {
       );
 
       if (res.status === 200) {
+        Swal.fire({
+          title: 'Success!',
+          text: 'Your message has been sent successfully.',
+          icon: 'success',
+          confirmButtonColor: '#036c2d'
+        });
         goToThankYou();
         setFormData({
           name: "",
@@ -111,6 +128,12 @@ const Projects = () => {
       }
     } catch (err) {
       console.error(err);
+      Swal.fire({
+        title: 'Error!',
+        text: 'Something went wrong. Please try again later.',
+        icon: 'error',
+        confirmButtonColor: '#d33'
+      });
       setStatus({
         type: "error",
         message: "Something went wrong. Please try again later.",

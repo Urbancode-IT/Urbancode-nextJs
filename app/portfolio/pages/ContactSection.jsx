@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { submitProjectEnquiryForm } from "@/lib/api/api";
 import { goToThankYou } from "@/lib/navigation/goToThankYou";
+import Swal from 'sweetalert2';
 import "./ContactSection.css";
 
 const ContactSection = () => {
@@ -24,7 +25,19 @@ const ContactSection = () => {
 
     // Basic validation
     if (!formData.name || !formData.email || !formData.phone || !formData.interestedIn) {
-      alert("Please fill all required fields.");
+      Swal.fire({ icon: 'warning', title: 'Validation Error', text: 'Please fill all required fields.', confirmButtonColor: '#036c2d' });
+      return;
+    }
+    
+    const cleanPhone = formData.phone.replace(/\D/g, '');
+    if (cleanPhone.length < 7 || cleanPhone.length > 15) {
+      Swal.fire({ icon: 'warning', title: 'Validation Error', text: 'Please enter a valid 7 to 15 digit mobile number.', confirmButtonColor: '#036c2d' });
+      return;
+    }
+
+    const consonantMashRegex = /[bcdfghjklmnpqrstvwxzBCDFGHJKLMNPQRSTVWXZ]{7,}/;
+    if ((formData.name && consonantMashRegex.test(formData.name)) || (formData.message && consonantMashRegex.test(formData.message))) {
+      Swal.fire({ icon: 'warning', title: 'Invalid Input', text: 'Invalid input detected in name or message.', confirmButtonColor: '#036c2d' });
       return;
     }
 
@@ -41,13 +54,20 @@ const ContactSection = () => {
 
       const result = await submitProjectEnquiryForm(payload);
       if (result.success) {
+        Swal.fire({
+          title: 'Success!',
+          text: 'Your enquiry has been submitted successfully.',
+          icon: 'success',
+          confirmButtonColor: '#036c2d'
+        });
         goToThankYou();
+        setFormData({ name: "", email: "", phone: "", interestedIn: "", message: "" });
       } else {
-        alert(result.message);
+        Swal.fire({ icon: 'error', title: 'Oops...', text: result.message || "Failed to send message.", confirmButtonColor: '#d33' });
       }
     } catch (error) {
       console.error("Submission error:", error);
-      alert("Something went wrong. Please try again.");
+      Swal.fire({ icon: 'error', title: 'Oops...', text: "Something went wrong. Please try again.", confirmButtonColor: '#d33' });
     } finally {
       setIsSubmitting(false);
     }

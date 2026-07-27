@@ -3,9 +3,8 @@ import './globals.css';
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { Inter } from 'next/font/google';
 
-import Navbar from './components/header/Navbar';
-import Footer from './components/footer/Footer';
 import BootstrapClient from './components/BootstrapClient';
+import ConditionalLayout from './components/common/ConditionalLayout';
 import Script from 'next/script';
 import SmoothScroll from './components/common/SmoothScroll';
 
@@ -228,11 +227,9 @@ export default function RootLayout({ children }) {
         </Script>
 
         <BootstrapClient />
-        <Navbar />
         <SmoothScroll>
-          <main>{children}</main>
+          <ConditionalLayout>{children}</ConditionalLayout>
         </SmoothScroll>
-        <Footer />
       </body>
     </html>
   );

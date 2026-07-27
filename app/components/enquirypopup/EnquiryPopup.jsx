@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { goToThankYou } from "@/lib/navigation/goToThankYou";
 import "./EnquiryPopup.css";
 import { submitEnquiryForm } from "@/lib/api/api";
+import Swal from 'sweetalert2';
 import { FormInput, FormTextarea, FormButton } from "@/app/components/common/FormUI";
 
 export default function EnquiryPopup({ delay = 3000 }) {
@@ -126,13 +127,16 @@ export default function EnquiryPopup({ delay = 3000 }) {
       errors.phone = "Phone number is required.";
     } else {
       const cleanPhone = formDataObj.phone.replace(/\D/g, '');
-      if (cleanPhone.length !== 10) {
-        errors.phone = "Phone number must be exactly 10 digits.";
-      } else if (!/^[6-9]\d{9}$/.test(cleanPhone)) {
-        errors.phone = "Please enter a valid 10-digit Indian mobile number.";
+      if (cleanPhone.length < 7 || cleanPhone.length > 15) {
+        errors.phone = "Please enter a valid 7 to 15 digit mobile number.";
       }
     }
-    
+    // Gibberish validation
+    const consonantMashRegex = /[bcdfghjklmnpqrstvwxzBCDFGHJKLMNPQRSTVWXZ]{7,}/;
+    if (consonantMashRegex.test(formDataObj.name)) {
+      errors.name = "Invalid input detected.";
+    }
+
     return errors;
   };
 
@@ -154,7 +158,7 @@ export default function EnquiryPopup({ delay = 3000 }) {
     // Validate form
     const errors = validateForm(formData);
     if (Object.keys(errors).length > 0) {
-      alert(Object.values(errors).join("\n"));
+      Swal.fire({ icon: 'warning', title: 'Validation Error', text: Object.values(errors).join("\n"), confirmButtonColor: '#036c2d' });
       return;
     }
 
@@ -178,7 +182,7 @@ export default function EnquiryPopup({ delay = 3000 }) {
 
     } catch (err) {
       console.error("API Error:", err);
-      alert(err.message || "Something went wrong while sending your enquiry. Please try again.");
+      Swal.fire({ icon: 'error', title: 'Oops...', text: err.message || "Something went wrong while sending your enquiry. Please try again.", confirmButtonColor: '#d33' });
     } finally {
       setIsSubmitting(false);
     }

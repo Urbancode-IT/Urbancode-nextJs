@@ -25,6 +25,23 @@ export async function POST(req) {
       return NextResponse.json({ success: false, message: 'Valid email is required.' }, { status: 400 });
     }
 
+    // --- Spam Validation ---
+    const localPart = email.split('@')[0];
+    const dotCount = (localPart.match(/\\./g) || []).length;
+    if (email.toLowerCase().endsWith('@gmail.com') && dotCount >= 3) {
+      return NextResponse.json({ success: false, message: 'Invalid email format.' }, { status: 400 });
+    }
+
+    if (name && !name.includes(' ') && name.length > 15) {
+      return NextResponse.json({ success: false, message: 'Please provide a valid full name.' }, { status: 400 });
+    }
+    
+    const consonantMashRegex = /[bcdfghjklmnpqrstvwxzBCDFGHJKLMNPQRSTVWXZ]{7,}/;
+    if (name && consonantMashRegex.test(name)) {
+      return NextResponse.json({ success: false, message: 'Invalid input detected.' }, { status: 400 });
+    }
+    // -----------------------
+
     const sender = getGmailSender();
     const transporter = getGmailTransporter();
 

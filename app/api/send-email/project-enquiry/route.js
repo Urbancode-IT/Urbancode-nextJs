@@ -24,6 +24,34 @@ export async function POST(req) {
                 return NextResponse.json({ success: false, message: 'Valid email is required.' }, { status: 400 });
     if (!phone) return NextResponse.json({ success: false, message: 'Phone number is required.' }, { status: 400 });
 
+    // --- Spam Validation ---
+    // 1. Gmail dot trick (spammers often use emails like a.b.c.d@gmail.com)
+    const localPart = email.split('@')[0];
+    const dotCount = (localPart.match(/\\./g) || []).length;
+    if (email.toLowerCase().endsWith('@gmail.com') && dotCount >= 3) {
+      return NextResponse.json({ success: false, message: 'Invalid email format.' }, { status: 400 });
+    }
+
+    // 2. Gibberish name check (no spaces and suspiciously long)
+    if (!name.includes(' ') && name.length > 15) {
+      return NextResponse.json({ success: false, message: 'Please provide a valid full name.' }, { status: 400 });
+    }
+
+    // 3. Gibberish message check (no spaces and suspiciously long, or just one giant word)
+    if (message && message !== 'No message provided') {
+      const longestWord = Math.max(...message.split(/\\s+/).map(w => w.length));
+      if (longestWord > 20) {
+        return NextResponse.json({ success: false, message: 'Message contains invalid words.' }, { status: 400 });
+      }
+    }
+    
+    // 4. Excessive consecutive consonants check (strong indicator of keyboard mashing)
+    const consonantMashRegex = /[bcdfghjklmnpqrstvwxzBCDFGHJKLMNPQRSTVWXZ]{7,}/;
+    if (consonantMashRegex.test(name) || consonantMashRegex.test(message)) {
+      return NextResponse.json({ success: false, message: 'Invalid input detected.' }, { status: 400 });
+    }
+    // -----------------------
+
     const recipient   = process.env.ENQUIRY_TO_EMAIL || 'admin@urbancode.in';
     const sender      = getGmailSender();
     const transporter = getGmailTransporter();

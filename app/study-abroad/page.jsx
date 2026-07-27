@@ -8,6 +8,7 @@ import { motion } from 'framer-motion';
 import { FaStar, FaQuoteLeft, FaCheckCircle, FaAward, FaUniversity, FaSearch, FaStethoscope, FaGlobeAmericas, FaUserMd, FaPlaneDeparture, FaClipboardCheck, FaHospital, FaArrowRight, FaGraduationCap, FaRegClock, FaCalendarAlt, FaChevronLeft, FaChevronRight, FaClipboardList, FaLaptop, FaEdit, FaFileAlt } from 'react-icons/fa';
 import { Send } from "lucide-react";
 import { submitEnquiryForm } from "@/lib/api/api";
+import Swal from 'sweetalert2';
 import EnquiryFormModal from "@/app/components/common/EnquiryFormModal.jsx";
 import TestimonialCarousel from '../components/Home/TestimonialCarousel';
 import { destinations, services, testimonials, showcaseData } from './data';
@@ -585,28 +586,28 @@ Duolingo: {
         const { name, email, phone, country, education, course } = formData;
 
         if (!name.trim() || name.trim().length < 3) {
-            setFormStatus({ type: "error", message: "Please enter a valid name (min 3 characters)." });
+            Swal.fire({ icon: 'warning', title: 'Validation Error', text: 'Please enter a valid name (min 3 characters).', confirmButtonColor: '#036c2d' });
             return;
         }
         if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-            setFormStatus({ type: "error", message: "Please enter a valid email address." });
+            Swal.fire({ icon: 'warning', title: 'Validation Error', text: 'Please enter a valid email address.', confirmButtonColor: '#036c2d' });
             return;
         }
         const cleanPhone = phone.replace(/\D/g, '');
-        if (cleanPhone.length !== 10 || !/^[6-9]\d{9}$/.test(cleanPhone)) {
-            setFormStatus({ type: "error", message: "Please enter a valid 10-digit mobile number." });
+        if (cleanPhone.length < 7 || cleanPhone.length > 15) {
+            Swal.fire({ icon: 'warning', title: 'Validation Error', text: 'Please enter a valid 7 to 15 digit mobile number.', confirmButtonColor: '#036c2d' });
             return;
         }
         if (!country) {
-            setFormStatus({ type: "error", message: "Please select a preferred destination." });
+            Swal.fire({ icon: 'warning', title: 'Validation Error', text: 'Please select a preferred destination.', confirmButtonColor: '#036c2d' });
             return;
         }
         if (!education) {
-            setFormStatus({ type: "error", message: "Please select your highest qualification." });
+            Swal.fire({ icon: 'warning', title: 'Validation Error', text: 'Please select your highest qualification.', confirmButtonColor: '#036c2d' });
             return;
         }
         if (!course.trim()) {
-            setFormStatus({ type: "error", message: "Please enter your preferred course." });
+            Swal.fire({ icon: 'warning', title: 'Validation Error', text: 'Please enter your preferred course.', confirmButtonColor: '#036c2d' });
             return;
         }
 
@@ -627,10 +628,10 @@ Duolingo: {
                 router.push('/study-abroad-thankyou');
                 setFormData({ name: "", email: "", phone: "", country: "", education: "", course: "", message: "" });
             } else {
-                setFormStatus({ type: "error", message: result.message || "Failed to send. Please try again." });
+                Swal.fire({ icon: 'error', title: 'Oops...', text: result.message || "Failed to send. Please try again.", confirmButtonColor: '#d33' });
             }
         } catch (error) {
-            setFormStatus({ type: "error", message: "Something went wrong. Please try again later." });
+            Swal.fire({ icon: 'error', title: 'Oops...', text: "Something went wrong. Please try again later.", confirmButtonColor: '#d33' });
         } finally {
             setIsSubmitting(false);
         }

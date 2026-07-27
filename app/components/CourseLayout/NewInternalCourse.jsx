@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import Link from "next/link";
 import "./NewInternalCourse.css";
 import {
     FaStar,
@@ -39,6 +40,7 @@ const NewInternalCourse = ({ data }) => {
     const [isBrochureOpen, setIsBrochureOpen] = useState(false);
     const [isJoinOpen, setIsJoinOpen] = useState(false);
     const [selectedBatch, setSelectedBatch] = useState(null);
+    // const [showEnglishForm, setShowEnglishForm] = useState(false); // removed
     
     // --- SubCourse State ---
     const [activeSubCourseIndex, setActiveSubCourseIndex] = useState(0);
@@ -163,6 +165,11 @@ const NewInternalCourse = ({ data }) => {
                             <button className="nict-hero-btn" onClick={handleEnrollClick}>
                                 Enroll now <FaArrowRight className="nict-btn-icon" />
                             </button>
+                            {heroData.highlightText && heroData.highlightText.toLowerCase().includes('english') && (
+                                <Link href="/english-intake" className="nict-hero-btn secondary" style={{ marginLeft: '10px', backgroundColor: '#036c2d', borderColor: '#036c2d' }}>
+                                    Fill Intake Form
+                                </Link>
+                            )}
                             {!data.isKidsSpace && (
                                 <button
                                     className="nict-hero-btn secondary"
@@ -516,6 +523,8 @@ const NewInternalCourse = ({ data }) => {
                 isJoinMode={true}
                 batchInfo={selectedBatch}
             />
+
+            <Link href="/english-intake" className="btn btn-primary" style={{ backgroundColor: '#036c2d', borderColor: '#036c2d' }}>Fill Intake Form</Link>
 
             {/* Course Assistant - Active for all courses in this layout */}
             {/* <CourseAssistant courseName={heroData.highlightText} /> */}

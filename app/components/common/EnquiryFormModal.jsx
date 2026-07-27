@@ -85,10 +85,8 @@ const EnquiryFormModal = ({
       newErrors.phone = "Phone number is required.";
     } else {
       const cleanPhone = formData.phone.replace(/\D/g, '');
-      if (cleanPhone.length !== 10) {
-        newErrors.phone = "Phone must be exactly 10 digits.";
-      } else if (!/^[6-9]\d{9}$/.test(cleanPhone)) {
-        newErrors.phone = "Please enter a valid 10-digit Indian mobile number.";
+      if (cleanPhone.length < 7 || cleanPhone.length > 15) {
+        newErrors.phone = "Please enter a valid 7 to 15 digit mobile number.";
       }
     }
     
@@ -115,6 +113,15 @@ const EnquiryFormModal = ({
       if (!formData.preferredTime) {
         newErrors.preferredTime = "Time is required.";
       }
+    }
+
+    // Gibberish validation
+    const consonantMashRegex = /[bcdfghjklmnpqrstvwxzBCDFGHJKLMNPQRSTVWXZ]{7,}/;
+    if (consonantMashRegex.test(formData.name)) {
+      newErrors.name = "Invalid input detected.";
+    }
+    if (consonantMashRegex.test(formData.message)) {
+      newErrors.message = "Invalid input detected.";
     }
 
     setErrors(newErrors);
@@ -246,6 +253,12 @@ const EnquiryFormModal = ({
           }),
         }).catch((err) => console.warn("Admin email notification failed:", err));
 
+        Swal.fire({
+          title: 'Success!',
+          text: 'Your enquiry has been submitted successfully.',
+          icon: 'success',
+          confirmButtonColor: '#036c2d'
+        });
         setStatus({ type: "success", message: "Success! Redirecting..." });
       }
       

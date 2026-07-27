@@ -3,6 +3,7 @@ import React, { useState, useEffect, Suspense } from "react";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { goToThankYou } from "@/lib/navigation/goToThankYou";
+import Swal from 'sweetalert2';
 import { 
   Send, 
   User, 
@@ -61,8 +62,9 @@ const BookDemoContent = () => {
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) newErrors.email = "Invalid email.";
     
     const cleanPhone = formData.phone.replace(/\D/g, '');
-    if (cleanPhone.length !== 10) newErrors.phone = "10-digit phone required.";
-    else if (!/^[6-9]\d{9}$/.test(cleanPhone)) newErrors.phone = "Invalid Indian mobile number.";
+    if (cleanPhone.length < 7 || cleanPhone.length > 15) {
+      newErrors.phone = "Invalid number (7-15 digits required).";
+    }
     
     if (!formData.course) newErrors.course = "Please select a course.";
     if (!formData.preferredDate) newErrors.preferredDate = "Please select a date.";
@@ -99,6 +101,12 @@ const BookDemoContent = () => {
         mode: "no-cors",
       });
 
+      Swal.fire({
+        title: 'Success!',
+        text: 'Your demo session has been scheduled successfully.',
+        icon: 'success',
+        confirmButtonColor: '#036c2d'
+      });
       setStatus({ type: "success", message: "Demo Scheduled! Redirecting..." });
       
       setTimeout(() => {
@@ -107,6 +115,7 @@ const BookDemoContent = () => {
 
     } catch (error) {
       console.error("Demo Submission Error:", error);
+      Swal.fire({ icon: 'error', title: 'Oops...', text: "Something went wrong. Please try again.", confirmButtonColor: '#d33' });
       setStatus({
         type: "error",
         message: "Something went wrong. Please try again.",

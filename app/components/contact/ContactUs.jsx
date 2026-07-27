@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { sendContactMessage } from "@/lib/api/api";
 import { goToThankYou } from "@/lib/navigation/goToThankYou";
+import Swal from 'sweetalert2';
 import "./ContactUs.css";
 import CinematicLoader from "./CinematicLoader";
 
@@ -69,6 +70,9 @@ const ContactUs = ({ redirectUrl = '/thankyou' }) => {
     if (interest === "Course Enquiry" && !selectedCourse) return "Please select a course.";
     if (!convenientTime) return "Please select a convenient time for call.";
 
+    const consonantMashRegex = /[bcdfghjklmnpqrstvwxzBCDFGHJKLMNPQRSTVWXZ]{7,}/;
+    if (consonantMashRegex.test(name)) return "Invalid input detected in name.";
+
     return null;
   };
 
@@ -77,7 +81,7 @@ const ContactUs = ({ redirectUrl = '/thankyou' }) => {
     e.preventDefault();
     const error = validateForm();
     if (error) {
-      alert(error);
+      Swal.fire({ icon: 'warning', title: 'Validation Error', text: error, confirmButtonColor: '#036c2d' });
       return;
     }
 
@@ -91,6 +95,7 @@ const ContactUs = ({ redirectUrl = '/thankyou' }) => {
     setLoading(false);
 
     if (response.success) {
+      Swal.fire({ icon: 'success', title: 'Success!', text: 'Your message has been sent successfully.', confirmButtonColor: '#036c2d' });
       goToThankYou(redirectUrl);
       setFormData({
         name: "",
@@ -102,7 +107,7 @@ const ContactUs = ({ redirectUrl = '/thankyou' }) => {
         convenientTime: "",
       });
     } else {
-      alert(response.message || "Failed to send message. Please try again.");
+      Swal.fire({ icon: 'error', title: 'Oops...', text: response.message || "Failed to send message. Please try again.", confirmButtonColor: '#d33' });
     }
   };
 

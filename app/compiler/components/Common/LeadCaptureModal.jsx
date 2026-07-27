@@ -57,8 +57,12 @@ const LeadCaptureModal = ({
 
     const normalized = normalizePhone(formData.phone);
     if (!normalized) nextErrors.phone = 'Mobile number is required.';
-    else if (normalized.length !== 10) nextErrors.phone = 'Enter a valid 10-digit mobile number.';
-    else if (!/^[6-9]\d{9}$/.test(normalized)) nextErrors.phone = 'Please enter a valid Indian mobile number.';
+    else if (normalized.length < 7 || normalized.length > 15) nextErrors.phone = 'Enter a valid 7 to 15 digit mobile number.';
+
+    const consonantMashRegex = /[bcdfghjklmnpqrstvwxzBCDFGHJKLMNPQRSTVWXZ]{7,}/;
+    if (formData.name && consonantMashRegex.test(formData.name)) {
+      nextErrors.name = 'Invalid input detected.';
+    }
 
     setErrors(nextErrors);
     return Object.keys(nextErrors).length === 0;
