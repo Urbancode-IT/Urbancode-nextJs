@@ -7648,7 +7648,7 @@ const coursesData = {
         rating: 4.9,
         duration: "Flexible",
         students: "50",
-        img: "/images/courses-images/english.webp",
+        img: "/images/courses-images/ielts.jpg",
         isNew: true,
         subCourses: [
           {
@@ -7816,12 +7816,166 @@ const coursesData = {
         ]
       },
       {
+        title: "English Language",
+        desc: "Our English language modules are designed to help you develop strong communication skills step by step. Each level focuses on building your confidence and fluency in everyday English.",
+        rating: 4.9,
+        duration: "3 Months",
+        students: "124",
+        img: "/images/courses-images/english.jpg",
+        subCourses: [
+          {
+            name: "Beginner Level",
+            duration: "3 Months",
+            fee: "₹6000 + GST / Per Month",
+            desc: "Start your English journey with the basics.",
+            features: [
+              "Learn basic vocabulary and everyday expressions",
+              "Form simple sentences",
+              "Improve listening comprehension",
+              "Gain confidence in speaking",
+              "Practice real-life conversations and activities"
+            ],
+            curriculumData: [
+              {
+                id: 1,
+                title: "Basics of English",
+                icon: "bi bi-book",
+                defaultOpen: true,
+                items: [
+                  "Learn basic vocabulary and everyday expressions",
+                  "Form simple sentences",
+                  "Improve listening comprehension"
+                ]
+              },
+              {
+                id: 2,
+                title: "Speaking & Activities",
+                icon: "bi bi-mic",
+                items: [
+                  "Gain confidence in speaking",
+                  "Practice real-life conversations and activities"
+                ]
+              }
+            ]
+          },
+          {
+            name: "Intermediate Level",
+            duration: "3 Months",
+            fee: "₹8000 + GST / Per Month",
+            desc: "Strengthen your skills. Communicate with ease.",
+            features: [
+              "Expand vocabulary and sentence structure",
+              "Improve grammar and communication skills",
+              "Develop fluency in speaking and writing",
+              "Better understanding of listening and reading",
+              "Engage in real-life topics and discussions"
+            ],
+            curriculumData: [
+              {
+                id: 1,
+                title: "Grammar & Structure",
+                icon: "bi bi-pencil",
+                defaultOpen: true,
+                items: [
+                  "Expand vocabulary and sentence structure",
+                  "Improve grammar and communication skills"
+                ]
+              },
+              {
+                id: 2,
+                title: "Fluency & Application",
+                icon: "bi bi-chat-dots",
+                items: [
+                  "Develop fluency in speaking and writing",
+                  "Better understanding of listening and reading",
+                  "Engage in real-life topics and discussions"
+                ]
+              }
+            ]
+          },
+          {
+            name: "Advanced Level",
+            duration: "3 Months",
+            fee: "₹10000 + GST / Per Month",
+            desc: "Refine your fluency. Express your ideas confidently.",
+            features: [
+              "Advanced vocabulary and idiomatic expressions",
+              "Complex grammar and sentence mastery",
+              "Improved fluency and accuracy",
+              "Critical thinking and discussion skills",
+              "Confident communication in any situation"
+            ],
+            curriculumData: [
+              {
+                id: 1,
+                title: "Advanced Grammar & Vocabulary",
+                icon: "bi bi-journal-text",
+                defaultOpen: true,
+                items: [
+                  "Advanced vocabulary and idiomatic expressions",
+                  "Complex grammar and sentence mastery"
+                ]
+              },
+              {
+                id: 2,
+                title: "Critical Communication",
+                icon: "bi bi-mic",
+                items: [
+                  "Improved fluency and accuracy",
+                  "Critical thinking and discussion skills",
+                  "Confident communication in any situation"
+                ]
+              }
+            ]
+          }
+        ],
+        courseContentData: [
+          {
+            id: 1,
+            title: "Beginner Level Fundamentals",
+            icon: "bi bi-book",
+            defaultOpen: true,
+            items: [
+              "Learn basic vocabulary and everyday expressions",
+              "Form simple sentences",
+              "Improve listening comprehension",
+              "Gain confidence in speaking",
+              "Practice real-life conversations and activities"
+            ]
+          },
+          {
+            id: 2,
+            title: "Intermediate Level Progression",
+            icon: "bi bi-pencil",
+            items: [
+              "Expand vocabulary and sentence structure",
+              "Improve grammar and communication skills",
+              "Develop fluency in speaking and writing",
+              "Better understanding of listening and reading",
+              "Engage in real-life topics and discussions"
+            ]
+          },
+          {
+            id: 3,
+            title: "Advanced Level Mastery",
+            icon: "bi bi-mic",
+            items: [
+              "Advanced vocabulary and idiomatic expressions",
+              "Complex grammar and sentence mastery",
+              "Improved fluency and accuracy",
+              "Critical thinking and discussion skills",
+              "Confident communication in any situation"
+            ]
+          }
+        ]
+      },
+      {
         title: "Corporate Communication",
         desc: "Elevate your professional presence. Master corporate writing, high-impact presentations, and executive etiquette to accelerate your corporate career trajectory.",
         rating: 4.9,
         duration: "1 month",
-        students: "1,234",
-        img: "/images/courses/Corporate_Communication.webp",
+        students: "234",
+        img: "/images/courses-images/Communication.jpg",
         aboutData: {
           topic: "Master the Art of Professional Communication!",
           content1:
@@ -7931,8 +8085,8 @@ const coursesData = {
         desc: "Speak English with supreme confidence. Master advanced pronunciation, engaging fluency, and professional grammar to unlock global career opportunities.",
         rating: 5.0,
         duration: "1 month",
-        students: "1,548",
-        img: "/images/courses/Spoken_English.webp",
+        students: "548",
+        img: "/images/courses-images/spoken-english.jpg",
         aboutData: {
           topic: "Speak English Fluently and Confidently!",
           content1:
@@ -8042,8 +8196,8 @@ const coursesData = {
         desc: "Unlock global opportunities by mastering French. Develop reading, writing, and conversational fluency for lucrative international career pathways.",
         rating: 4.9,
         duration: "2 months",
-        students: "732",
-        img: "/images/courses/French.webp",
+        students: "132",
+        img: "/images/courses-images/French.jpg",
         aboutData: {
           topic: "Master French — The Language of Art, Culture, and Business!",
           content1:
@@ -8153,8 +8307,8 @@ const coursesData = {
         desc: "Fast-track your global career by mastering German. Achieve conversational excellence and grammatical precision to secure high-paying jobs in European markets.",
         rating: 4.9,
         duration: "2 months",
-        students: "684",
-        img: "/images/courses/German.webp",
+        students: "184",
+        img: "/images/courses-images/German.jpg",
         aboutData: {
           topic: "Learn German — From Basics to Confident Conversation!",
           content1:
