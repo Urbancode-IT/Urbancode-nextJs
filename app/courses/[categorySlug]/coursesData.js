@@ -8197,7 +8197,7 @@ const coursesData = {
         rating: 4.9,
         duration: "2 months",
         students: "132",
-        img: "/images/courses-images/French.jpg",
+        img: "/images/courses-images/french.jpg",
         aboutData: {
           topic: "Master French — The Language of Art, Culture, and Business!",
           content1:
@@ -8308,7 +8308,7 @@ const coursesData = {
         rating: 4.9,
         duration: "2 months",
         students: "184",
-        img: "/images/courses-images/German.jpg",
+        img: "/images/courses-images/german.jpg",
         aboutData: {
           topic: "Learn German — From Basics to Confident Conversation!",
           content1:
