@@ -7975,7 +7975,7 @@ const coursesData = {
         rating: 4.9,
         duration: "1 month",
         students: "234",
-        img: "/images/courses-images/Communication.jpg",
+        img: "/images/courses-images/communication.jpg",
         aboutData: {
           topic: "Master the Art of Professional Communication!",
           content1:
