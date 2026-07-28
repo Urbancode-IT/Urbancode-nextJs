@@ -32,14 +32,10 @@ export default function Navbar() {
       console.log("✈ Destination reached!");
       router.push('/study-abroad');
       
-      // Safety: In case of router delay, ensure state resets or navigate via location after wait
+      // Reset flight state in case the pathname effect misses it (e.g., if already on the page)
       setTimeout(() => {
-        if (window.location.pathname !== '/study-abroad') {
-          console.warn("✈ Router push failed or delayed, using direct navigation.");
-          window.location.href = '/study-abroad';
-        }
         setIsFlying(false);
-      }, 3000);
+      }, 500);
 
       setIsOpen(false);
     }, 3000); 
