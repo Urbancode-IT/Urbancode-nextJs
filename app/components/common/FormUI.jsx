@@ -14,10 +14,15 @@ export const FormInput = ({
 }) => {
   return (
     <div className={`form-group-container ${containerClass}`}>
-      {label && <label className="form-label-standard">{label}</label>}
+      {label && <label className="form-label-standard" htmlFor={props.name}>{label}</label>}
       <input 
+        id={props.name}
         className={`form-input-standard ${error ? 'is-invalid' : ''} ${className}`} 
+        aria-invalid={error ? "true" : "false"}
         {...props} 
+        onBlur={(e) => {
+          if (props.onBlur) props.onBlur(e);
+        }}
       />
       {error && <div className="form-error-message">{error}</div>}
     </div>
@@ -38,10 +43,12 @@ export const FormSelect = ({
 }) => {
   return (
     <div className={`form-group-container ${containerClass}`}>
-      {label && <label className="form-label-standard">{label}</label>}
+      {label && <label className="form-label-standard" htmlFor={props.name}>{label}</label>}
       <div className="form-select-wrapper">
         <select 
+          id={props.name}
           className={`form-select-standard ${error ? 'is-invalid' : ''} ${className}`} 
+          aria-invalid={error ? "true" : "false"}
           {...props}
         >
           {placeholder && <option value="" disabled>{placeholder}</option>}
@@ -64,14 +71,27 @@ export const FormTextarea = ({
   label, 
   error, 
   className = "", 
-  containerClass = "", 
+  containerClass = "",
+  maxLength,
+  value,
   ...props 
 }) => {
   return (
     <div className={`form-group-container ${containerClass}`}>
-      {label && <label className="form-label-standard">{label}</label>}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        {label && <label className="form-label-standard" htmlFor={props.name}>{label}</label>}
+        {maxLength && (
+          <span style={{ fontSize: '0.8rem', color: '#666' }}>
+            {value?.length || 0} / {maxLength}
+          </span>
+        )}
+      </div>
       <textarea 
+        id={props.name}
         className={`form-textarea-standard ${error ? 'is-invalid' : ''} ${className}`} 
+        aria-invalid={error ? "true" : "false"}
+        maxLength={maxLength}
+        value={value}
         {...props} 
       />
       {error && <div className="form-error-message">{error}</div>}

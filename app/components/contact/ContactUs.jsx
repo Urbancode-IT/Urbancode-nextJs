@@ -1,5 +1,5 @@
 'use client';
-import React, { useRef, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { sendContactMessage } from "@/lib/api/api";
@@ -9,21 +9,16 @@ import "./ContactUs.css";
 import CinematicLoader from "./CinematicLoader";
 
 import { FormInput, FormSelect, FormTextarea, FormButton, FormCard } from "@/app/components/common/FormUI";
+import { FormPhoneInput } from "@/app/components/common/FormPhoneInput";
+import { Honeypot } from "@/app/components/common/Honeypot";
+import { useEnquiryForm } from "@/app/hooks/useEnquiryForm";
+import { contactUsSchema } from "@/app/schemas/enquirySchema";
+import { Controller } from "react-hook-form";
 
 const ContactUs = ({ redirectUrl = '/thankyou' }) => {
   const searchParams = useSearchParams();
   const courseFromUrl = searchParams.get('course');
 
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    mobile: "",
-    countryCode: "+91",
-    interest: courseFromUrl ? "Course Enquiry" : "",
-    selectedCourse: courseFromUrl || "",
-    convenientTime: "",
-  });
-  const [loading, setLoading] = useState(false);
   const [activeMap, setActiveMap] = useState(0);
   const [showLoader, setShowLoader] = useState(false);
 
@@ -35,81 +30,45 @@ const ContactUs = ({ redirectUrl = '/thankyou' }) => {
     return () => clearInterval(interval);
   }, []);
 
-  // handle input
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
+  const {
+    register,
+    control,
+    submitHandler,
+    isSubmitting,
+    watch,
+    formState: { errors }
+  } = useEnquiryForm({
+    schema: contactUsSchema,
+    defaultValues: {
+      name: "",
+      email: "",
+      phone: "",
+      interest: courseFromUrl ? "Course Enquiry" : "",
+      selectedCourse: courseFromUrl || "",
+      convenientTime: "",
+      honeypot: ""
+    },
+    onSubmitCallback: async (data, reset) => {
+      const submissionData = {
+        name: data.name.trim(),
+        email: data.email.trim(),
+        mobile: data.phone,
+        message: `Interest: ${data.interest}${data.selectedCourse ? ' - ' + data.selectedCourse : ''} | Convenient Time: ${data.convenientTime}`
+      };
+      
+      const response = await sendContactMessage(submissionData);
 
-  // validation logic
-  const validateForm = () => {
-    const { name, email, mobile, countryCode, interest, selectedCourse, convenientTime } = formData;
-
-    if (!name.trim()) return "Name is required.";
-    if (name.trim().length < 3) return "Name must be at least 3 characters.";
-    
-    if (!email.trim()) return "Email is required.";
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return "Please enter a valid email address.";
-    
-    if (!mobile.trim()) return "Mobile number is required.";
-    
-    // Country specific validation
-    const cleanMobile = mobile.replace(/\D/g, '');
-    if (countryCode === "+91") {
-      if (cleanMobile.length !== 10) return "Indian mobile number must be 10 digits.";
-      if (!/^[6-9]\d{9}$/.test(cleanMobile)) return "Please enter a valid Indian mobile number.";
-    } else if (countryCode === "+1") {
-      if (cleanMobile.length !== 10) return "USA/Canada mobile number must be 10 digits.";
-    } else if (countryCode === "+971") {
-      if (cleanMobile.length !== 9) return "UAE mobile number must be 9 digits.";
-    } else {
-      if (cleanMobile.length < 7 || cleanMobile.length > 15) return "Please enter a valid mobile number.";
+      if (response.success) {
+        Swal.fire({ icon: 'success', title: 'Success!', text: 'Your message has been sent successfully.', confirmButtonColor: '#036c2d' });
+        goToThankYou(redirectUrl);
+        reset();
+      } else {
+        throw new Error(response.message || "Failed to send message. Please try again.");
+      }
     }
-    
-    if (!interest.trim()) return "Please select an interest.";
-    if (interest === "Course Enquiry" && !selectedCourse) return "Please select a course.";
-    if (!convenientTime) return "Please select a convenient time for call.";
+  });
 
-    const consonantMashRegex = /[bcdfghjklmnpqrstvwxzBCDFGHJKLMNPQRSTVWXZ]{7,}/;
-    if (consonantMashRegex.test(name)) return "Invalid input detected in name.";
-
-    return null;
-  };
-
-  // form submit
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const error = validateForm();
-    if (error) {
-      Swal.fire({ icon: 'warning', title: 'Validation Error', text: error, confirmButtonColor: '#036c2d' });
-      return;
-    }
-
-    setLoading(true);
-    const submissionData = {
-      ...formData,
-      mobile: `${formData.countryCode} ${formData.mobile}`,
-      message: `Interest: ${formData.interest}${formData.selectedCourse ? ' - ' + formData.selectedCourse : ''} | Convenient Time: ${formData.convenientTime}`
-    };
-    const response = await sendContactMessage(submissionData);
-    setLoading(false);
-
-    if (response.success) {
-      Swal.fire({ icon: 'success', title: 'Success!', text: 'Your message has been sent successfully.', confirmButtonColor: '#036c2d' });
-      goToThankYou(redirectUrl);
-      setFormData({
-        name: "",
-        email: "",
-        mobile: "",
-        countryCode: "+91",
-        interest: "",
-        selectedCourse: "",
-        convenientTime: "",
-      });
-    } else {
-      Swal.fire({ icon: 'error', title: 'Oops...', text: response.message || "Failed to send message. Please try again.", confirmButtonColor: '#d33' });
-    }
-  };
+  const watchInterest = watch("interest");
 
   const interestOptions = [
     "Course Enquiry",
@@ -152,20 +111,8 @@ const ContactUs = ({ redirectUrl = '/thankyou' }) => {
     "Any Time"
   ];
 
-  const countryCodes = [
-    { label: "IND +91", value: "+91" },
-    { label: "USA +1", value: "+1" },
-    { label: "UK +44", value: "+44" },
-    { label: "UAE +971", value: "+971" },
-    { label: "AUS +61", value: "+61" },
-    { label: "CAN +1", value: "+1" },
-    { label: "SGP +65", value: "+65" },
-    { label: "MYS +60", value: "+60" },
-  ];
-
   return (
     <>
-      {/* ── Cinematic Video Loader ── */}
       {showLoader && (
         <CinematicLoader onComplete={() => setShowLoader(false)} />
       )}
@@ -188,114 +135,109 @@ const ContactUs = ({ redirectUrl = '/thankyou' }) => {
       </div>
 
       <div className="contact-content">
-        {/* Left: Form Area */}
         <div className="contact-form-container" style={{ flex: '1.2' }}>
-          <FormCard title="Get in Touch" className="contact-form-card">
-            <form onSubmit={handleSubmit}>
-              <div className="row g-2">
+          <div className="contact-form-card">
+            <h3 className="form-card-title">Get in Touch</h3>
+            <form onSubmit={submitHandler} noValidate>
+              <Honeypot register={register} />
+              <div className="row g-3">
                 <div className="col-md-6">
-                  <FormInput
-                    // label="Name"
-                    name="name"
-                    placeholder="Enter your full name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    required
-                    disabled={loading}
-                  />
-                </div>
-                <div className="col-md-6">
-                  <FormInput
-                    // label="Email ID"
-                    type="email"
-                    name="email"
-                    placeholder="Enter mail ID"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    required
-                    disabled={loading}
-                  />
-                </div>
-                <div className="col-12">
-                  <div className="row g-2 align-items-end">
-                    <div className="col-auto" style={{ minWidth: '120px' }}>
-                      <FormSelect
-                          // label="Code"
-                        name="countryCode"
-                        value={formData.countryCode}
-                        onChange={handleInputChange}
-                        options={countryCodes}
-                        disabled={loading}
-                        className="ps-2 pe-4"
-                      />
-                    </div>
-                    <div className="col">
-                      <FormInput
-                        // label="Mobile Number"
-                        type="tel"
-                        name="mobile"
-                        placeholder="Number"
-                        value={formData.mobile}
-                        onChange={handleInputChange}
-                        required
-                        disabled={loading}
-                      />
-                    </div>
+                  <div className="modern-input-group">
+                    <input
+                      type="text"
+                      {...register("name")}
+                      placeholder="Enter your full name"
+                      className={`modern-input ${errors.name ? "is-invalid" : ""}`}
+                      disabled={isSubmitting}
+                    />
+                    {errors.name && <span className="form-error">{errors.name.message}</span>}
                   </div>
                 </div>
-                <div className="col-md-6">
-                  <FormSelect
-                    // label="Interested In"
-                    name="interest"
-                    value={formData.interest}
-                    onChange={handleInputChange}
-                    options={interestOptions}
-                    placeholder="Select interest"
-                    required
-                    disabled={loading}
-                  />
-                </div>
 
                 <div className="col-md-6">
-                  <FormSelect
-                    // label="Convenient Time to Call"
-                    name="convenientTime"
-                    value={formData.convenientTime}
-                    onChange={handleInputChange}
-                    options={timeSlots}
-                    placeholder="Select time"
-                    required
-                    disabled={loading}
-                  />
-                </div>
-
-                {formData.interest === "Course Enquiry" && (
-                  <div className="col-12">
-                    <FormSelect
-                      // label="Select Course"
-                      name="selectedCourse"
-                      value={formData.selectedCourse}
-                      onChange={handleInputChange}
-                      options={courseOptions}
-                      placeholder="Choose exact course"
-                      required
-                      disabled={loading}
+                  <div className="modern-input-group">
+                    <input
+                      type="email"
+                      {...register("email")}
+                      placeholder="Enter mail ID"
+                      className={`modern-input ${errors.email ? "is-invalid" : ""}`}
+                      disabled={isSubmitting}
                     />
+                    {errors.email && <span className="form-error">{errors.email.message}</span>}
+                  </div>
+                </div>
+
+                <div className="col-12">
+                  <div className="modern-input-group">
+                    <Controller
+                      name="phone"
+                      control={control}
+                      render={({ field }) => (
+                        <div className={`phone-input-glass-wrapper ${errors.phone ? 'is-invalid' : ''}`}>
+                          <FormPhoneInput
+                            {...field}
+                            disabled={isSubmitting}
+                          />
+                        </div>
+                      )}
+                    />
+                    {errors.phone && <span className="form-error">{errors.phone.message}</span>}
+                  </div>
+                </div>
+
+                <div className="col-md-6">
+                  <div className="modern-input-group">
+                    <select
+                      {...register("interest")}
+                      className={`modern-select ${errors.interest ? "is-invalid" : ""}`}
+                      disabled={isSubmitting}
+                    >
+                      <option value="" disabled>Select interest</option>
+                      {interestOptions.map(opt => <option key={opt} value={opt}>{opt}</option>)}
+                    </select>
+                    {errors.interest && <span className="form-error">{errors.interest.message}</span>}
+                  </div>
+                </div>
+
+                <div className="col-md-6">
+                  <div className="modern-input-group">
+                    <select
+                      {...register("convenientTime")}
+                      className={`modern-select ${errors.convenientTime ? "is-invalid" : ""}`}
+                      disabled={isSubmitting}
+                    >
+                      <option value="" disabled>Select time</option>
+                      {timeSlots.map(opt => <option key={opt} value={opt}>{opt}</option>)}
+                    </select>
+                    {errors.convenientTime && <span className="form-error">{errors.convenientTime.message}</span>}
+                  </div>
+                </div>
+
+                {watchInterest === "Course Enquiry" && (
+                  <div className="col-12">
+                    <div className="modern-input-group">
+                      <select
+                        {...register("selectedCourse")}
+                        className={`modern-select ${errors.selectedCourse ? "is-invalid" : ""}`}
+                        disabled={isSubmitting}
+                      >
+                        <option value="" disabled>Choose exact course</option>
+                        {courseOptions.map(opt => <option key={opt} value={opt}>{opt}</option>)}
+                      </select>
+                      {errors.selectedCourse && <span className="form-error">{errors.selectedCourse.message}</span>}
+                    </div>
                   </div>
                 )}
 
-
-
-                <div className="col-12 mt-4 text-center">
-                  <FormButton type="submit" variant="success" className="px-5 py-2" loading={loading}>
-                    {loading ? "Sending Message..." : "Submit"}
-                  </FormButton>
+                <div className="col-12 mt-2 text-center">
+                  <button type="submit" className="btn-modern-submit" disabled={isSubmitting}>
+                    {isSubmitting ? "Sending Message..." : "Submit"}
+                  </button>
                 </div>
               </div>
             </form>
-          </FormCard>
+          </div>
 
-          {/* Contact Details - below form */}
           <div className="general-details-container">
             <h3 className="branches-title">Contact Details</h3>
             <div className="general-details-grid">
@@ -331,10 +273,8 @@ const ContactUs = ({ redirectUrl = '/thankyou' }) => {
           </div>
         </div>
 
-        {/* Divider */}
         <div className="divider"></div>
 
-        {/* Right: Info + Maps */}
         <div className="contact-info">
           <div className="map-box">
             <div className="map-slider" style={{ transform: `translateX(-${activeMap * (100 / 3)}%)` }}>
@@ -364,12 +304,10 @@ const ContactUs = ({ redirectUrl = '/thankyou' }) => {
             </div>
           </div>
 
-          {/* Branches Section */}
           <div className="branches-container">
             <h3 className="branches-title">Our Branches</h3>
             <div className="branch-cards-grid">
               
-              {/* Velachery Card */}
               <div className="branch-card">
                 <div className="branch-header">
                   <i className="fas fa-map-marker-alt"></i>
@@ -388,7 +326,6 @@ const ContactUs = ({ redirectUrl = '/thankyou' }) => {
                 </a>
               </div>
 
-              {/* Pallikaranai Card */}
               <div className="branch-card">
                 <div className="branch-header">
                   <i className="fas fa-map-marker-alt"></i>
@@ -407,7 +344,6 @@ const ContactUs = ({ redirectUrl = '/thankyou' }) => {
                 </a>
               </div>
 
-              {/* Tirunelveli Card - Highlighted as new branch */}
               <div className="branch-card new-branch-card">
                 <span className="new-branch-badge"><span className="pulse-dot"></span> NEW BRANCH</span>
                 <div className="branch-header">

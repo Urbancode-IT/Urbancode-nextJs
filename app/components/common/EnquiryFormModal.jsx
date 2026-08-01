@@ -1,6 +1,7 @@
 'use client';
 import React, { useState } from "react";
 import { goToThankYou } from "@/lib/navigation/goToThankYou";
+import { FormPhoneInput } from "@/app/components/common/FormPhoneInput";
 import { motion, AnimatePresence } from "framer-motion";
 import Swal from 'sweetalert2';
 import confetti from 'canvas-confetti';
@@ -54,8 +55,20 @@ const EnquiryFormModal = ({
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    // Restrict pin to digits only
+    if (name === "pin") {
+      const digitsOnly = value.replace(/\D/g, "");
+      setFormData({ ...formData, [name]: digitsOnly });
+    } else {
+      setFormData({ ...formData, [name]: value });
+    }
     setErrors({ ...errors, [name]: "" });
+    setStatus({ type: "", message: "" });
+  };
+
+  const handlePhoneChange = (phoneValue) => {
+    setFormData({ ...formData, phone: phoneValue || "" });
+    setErrors({ ...errors, phone: "" });
     setStatus({ type: "", message: "" });
   };
 
@@ -63,12 +76,19 @@ const EnquiryFormModal = ({
     const newErrors = {};
     
     // Name validation
-    if (!formData.name.trim()) {
+    const trimmedName = formData.name.trim();
+    if (!trimmedName) {
       newErrors.name = "Name is required.";
-    } else if (formData.name.trim().length < 3) {
+    } else if (trimmedName.length < 3) {
       newErrors.name = "Name must be at least 3 characters.";
-    } else if (!/^[a-zA-Z\s'-]+$/.test(formData.name.trim())) {
+    } else if (!/^[a-zA-Z\s'-]+$/.test(trimmedName)) {
       newErrors.name = "Name can only contain letters, spaces, hyphens, and apostrophes.";
+    } else if (/(.)(\1{3,})/.test(trimmedName)) {
+      // Reject repeated characters like "aaaa" or "bbbbb"
+      newErrors.name = "Please enter a valid name.";
+    } else if (!/[aeiouAEIOU]/.test(trimmedName.replace(/\s/g, ''))) {
+      // Name without any vowels is likely gibberish
+      newErrors.name = "Please enter a valid name.";
     }
     
     // Email validation
@@ -355,20 +375,13 @@ const EnquiryFormModal = ({
                     </div>
 
                     <div className="col-md-6">
-                      <input
-                        type="tel"
-                        className="form-control"
-                        name="phone"
-                        placeholder="Enter your phone number (10 digits)"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        required
-                        inputMode="numeric"
-                        maxLength="10"
-                        pattern="^\d{10}$"
-                        disabled={loading}
-                      />
-                      {errors.phone && <small className="text-danger">{errors.phone}</small>}
+                        <FormPhoneInput
+                          value={formData.phone}
+                          onChange={handlePhoneChange}
+                          error={errors.phone}
+                          disabled={loading}
+                          name="phone"
+                        />
                     </div>
 
                     {!isJoinMode && (
@@ -484,13 +497,14 @@ const EnquiryFormModal = ({
                     {!isJoinMode && (
                       <div className="col-12">
                         <textarea
-                          className="form-control"
+                          className={`form-control ${errors.message ? "is-invalid" : ""}`}
                           name="message"
                           rows="4"
                           placeholder="Any specific requirements?"
                           value={formData.message}
                           onChange={handleChange}
                         ></textarea>
+                        {errors.message && <small className="text-danger">{errors.message}</small>}
                       </div>
                     )}
 

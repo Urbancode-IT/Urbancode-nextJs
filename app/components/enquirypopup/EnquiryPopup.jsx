@@ -6,10 +6,14 @@ import "./EnquiryPopup.css";
 import { submitEnquiryForm } from "@/lib/api/api";
 import Swal from 'sweetalert2';
 import { FormInput, FormTextarea, FormButton } from "@/app/components/common/FormUI";
+import { FormPhoneInput } from "@/app/components/common/FormPhoneInput";
+import { Honeypot } from "@/app/components/common/Honeypot";
+import { useEnquiryForm } from "@/app/hooks/useEnquiryForm";
+import { popupSchema } from "@/app/schemas/enquirySchema";
+import { Controller } from "react-hook-form";
 
 export default function EnquiryPopup({ delay = 3000 }) {
   const [visible, setVisible] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const storageKey = "anniversaryOfferSubmitted";
 
   useEffect(() => {
@@ -101,92 +105,47 @@ export default function EnquiryPopup({ delay = 3000 }) {
     }
   }
 
-  const validateForm = (formDataObj) => {
-    const errors = {};
-    
-    // Name validation
-    if (!formDataObj.name || !formDataObj.name.trim()) {
-      errors.name = "Name is required.";
-    } else if (formDataObj.name.trim().length < 3) {
-      errors.name = "Name must be at least 3 characters.";
-    } else if (!/^[a-zA-Z\s'-]+$/.test(formDataObj.name.trim())) {
-      errors.name = "Name can only contain letters, spaces, hyphens, and apostrophes.";
-    }
-    
-    // Email validation
-    if (!formDataObj.email || !formDataObj.email.trim()) {
-      errors.email = "Email is required.";
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formDataObj.email.trim())) {
-      errors.email = "Please enter a valid email address.";
-    } else if (formDataObj.email.trim().length > 255) {
-      errors.email = "Email is too long.";
-    }
-    
-    // Phone validation
-    if (!formDataObj.phone || !formDataObj.phone.trim()) {
-      errors.phone = "Phone number is required.";
-    } else {
-      const cleanPhone = formDataObj.phone.replace(/\D/g, '');
-      if (cleanPhone.length < 7 || cleanPhone.length > 15) {
-        errors.phone = "Please enter a valid 7 to 15 digit mobile number.";
-      }
-    }
-    // Gibberish validation
-    const consonantMashRegex = /[bcdfghjklmnpqrstvwxzBCDFGHJKLMNPQRSTVWXZ]{7,}/;
-    if (consonantMashRegex.test(formDataObj.name)) {
-      errors.name = "Invalid input detected.";
-    }
+  const {
+    register,
+    control,
+    submitHandler,
+    isSubmitting,
+    formState: { errors }
+  } = useEnquiryForm({
+    schema: popupSchema,
+    defaultValues: {
+      name: "",
+      email: "",
+      phone: "",
+      message: "",
+      honeypot: ""
+    },
+    onSubmitCallback: async (data, reset) => {
+      const formData = {
+        name: data.name.trim(),
+        email: data.email.trim(),
+        phone: data.phone,
+        message: data.message ? data.message.trim() : "No message provided",
+        course: "Anniversary Flash Sale",
+        mode: "Not specified"
+      };
 
-    return errors;
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (isSubmitting) return;
-
-    const f = new FormData(e.target);
-
-    const formData = {
-      name: f.get("name"),
-      email: f.get("email"),
-      phone: f.get("phone"),
-      message: f.get("message") || "No message provided",
-      course: "Anniversary Flash Sale",
-      mode: "Not specified"
-    };
-
-    // Validate form
-    const errors = validateForm(formData);
-    if (Object.keys(errors).length > 0) {
-      Swal.fire({ icon: 'warning', title: 'Validation Error', text: Object.values(errors).join("\n"), confirmButtonColor: '#036c2d' });
-      return;
-    }
-
-    setIsSubmitting(true);
-
-
-
-
-    try {
       const result = await submitEnquiryForm(formData);
 
       if (result.success) {
         try {
           localStorage.setItem(storageKey, "true");
         } catch { }
+        triggerCelebration(); // Optional: Trigger some animation if needed
         closePopup();
         goToThankYou();
+        reset();
       } else {
         throw new Error(result.message);
       }
-
-    } catch (err) {
-      console.error("API Error:", err);
-      Swal.fire({ icon: 'error', title: 'Oops...', text: err.message || "Something went wrong while sending your enquiry. Please try again.", confirmButtonColor: '#d33' });
-    } finally {
-      setIsSubmitting(false);
     }
-  };
+  });
+
 
   if (!visible) return null;
 
@@ -206,36 +165,44 @@ export default function EnquiryPopup({ delay = 3000 }) {
           Limited-time discounts across all courses. Enquire now to claim your offer.
         </p>
 
-        <form className="enq-form" onSubmit={handleSubmit}>
+        <form className="enq-form" onSubmit={submitHandler} noValidate>
+          <Honeypot register={register} />
+          
           <FormInput
-            name="name"
+            {...register("name")}
             placeholder="Your name"
-            required
+            error={errors.name?.message}
             disabled={isSubmitting}
             className="mb-2"
           />
           <FormInput
-            name="email"
+            {...register("email")}
             type="email"
             placeholder="Email address"
-            required
+            error={errors.email?.message}
             disabled={isSubmitting}
             className="mb-2"
           />
-          <FormInput
+          <Controller
             name="phone"
-            type="tel"
-            placeholder="Phone number (10 digits)"
-            required
-            disabled={isSubmitting}
-            className="mb-2"
+            control={control}
+            render={({ field }) => (
+              <FormPhoneInput
+                {...field}
+                error={errors.phone?.message}
+                disabled={isSubmitting}
+                className="mb-2"
+              />
+            )}
           />
           <FormTextarea
-            name="message"
+            {...register("message")}
             placeholder="Your message (optional)"
+            error={errors.message?.message}
             disabled={isSubmitting}
             rows="2"
             className="mb-3"
+            maxLength={1000}
           />
 
           <FormButton

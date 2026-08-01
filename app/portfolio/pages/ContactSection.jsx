@@ -1,54 +1,39 @@
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import { submitProjectEnquiryForm } from "@/lib/api/api";
 import { goToThankYou } from "@/lib/navigation/goToThankYou";
 import Swal from 'sweetalert2';
+import { useEnquiryForm } from "@/app/hooks/useEnquiryForm";
+import { portfolioProjectFormSchema } from "@/app/schemas/enquirySchema";
+import { Controller } from "react-hook-form";
+import { Honeypot } from "@/app/components/common/Honeypot";
+import { FormPhoneInput } from "@/app/components/common/FormPhoneInput";
 import "./ContactSection.css";
 
 const ContactSection = () => {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    interestedIn: "",
-    message: ""
-  });
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (isSubmitting) return;
-
-    // Basic validation
-    if (!formData.name || !formData.email || !formData.phone || !formData.interestedIn) {
-      Swal.fire({ icon: 'warning', title: 'Validation Error', text: 'Please fill all required fields.', confirmButtonColor: '#036c2d' });
-      return;
-    }
-    
-    const cleanPhone = formData.phone.replace(/\D/g, '');
-    if (cleanPhone.length < 7 || cleanPhone.length > 15) {
-      Swal.fire({ icon: 'warning', title: 'Validation Error', text: 'Please enter a valid 7 to 15 digit mobile number.', confirmButtonColor: '#036c2d' });
-      return;
-    }
-
-    const consonantMashRegex = /[bcdfghjklmnpqrstvwxzBCDFGHJKLMNPQRSTVWXZ]{7,}/;
-    if ((formData.name && consonantMashRegex.test(formData.name)) || (formData.message && consonantMashRegex.test(formData.message))) {
-      Swal.fire({ icon: 'warning', title: 'Invalid Input', text: 'Invalid input detected in name or message.', confirmButtonColor: '#036c2d' });
-      return;
-    }
-
-    setIsSubmitting(true);
-    try {
+  const {
+    register,
+    control,
+    submitHandler,
+    isSubmitting,
+    formState: { errors }
+  } = useEnquiryForm({
+    schema: portfolioProjectFormSchema,
+    defaultValues: {
+      name: "",
+      email: "",
+      phone: "",
+      interestedIn: "",
+      message: "",
+      honeypot: ""
+    },
+    onSubmitCallback: async (data, reset) => {
       const payload = {
-        name: formData.name,
-        email: formData.email,
-        phone: formData.phone,
-        service: formData.interestedIn, // Mapping to backend expected field
-        message: formData.message || "No message provided",
+        name: data.name,
+        email: data.email,
+        phone: data.phone,
+        service: data.interestedIn, // Mapping to backend expected field
+        message: data.message || "No message provided",
         course: "Portfolio Project Inquiry"
       };
 
@@ -61,17 +46,12 @@ const ContactSection = () => {
           confirmButtonColor: '#036c2d'
         });
         goToThankYou();
-        setFormData({ name: "", email: "", phone: "", interestedIn: "", message: "" });
+        reset();
       } else {
         Swal.fire({ icon: 'error', title: 'Oops...', text: result.message || "Failed to send message.", confirmButtonColor: '#d33' });
       }
-    } catch (error) {
-      console.error("Submission error:", error);
-      Swal.fire({ icon: 'error', title: 'Oops...', text: "Something went wrong. Please try again.", confirmButtonColor: '#d33' });
-    } finally {
-      setIsSubmitting(false);
     }
-  };
+  });
 
   return (
     <section className="contact" id="contact">
@@ -101,57 +81,76 @@ const ContactSection = () => {
             </div>
             
             <div className="visual-contact-form">
-              <form onSubmit={handleSubmit}>
+              <form onSubmit={submitHandler} noValidate>
+                <Honeypot register={register} />
                 <div className="form-row-double">
-                  <input 
-                    type="text" 
-                    name="name"
-                    placeholder="Name" 
-                    required 
-                    value={formData.name}
-                    onChange={handleChange}
-                  />
-                  <input 
-                    type="email" 
-                    name="email"
-                    placeholder="Mail ID" 
-                    required 
-                    value={formData.email}
-                    onChange={handleChange}
-                  />
-                </div>
-                <div className="form-row-double">
-                  <input 
-                    type="tel" 
-                    name="phone"
-                    placeholder="Mobile No" 
-                    required 
-                    value={formData.phone}
-                    onChange={handleChange}
-                  />
-                  <select 
-                    name="interestedIn"
-                    required 
-                    value={formData.interestedIn}
-                    onChange={handleChange}
-                  >
-                    <option value="" disabled>Interested In</option>
-                    <option value="Web Development">Web Development</option>
-                    <option value="Mobile App">Mobile App Development</option>
-                    <option value="UI/UX Design">UI/UX Design</option>
-                    <option value="Cloud Services">Cloud Services</option>
-                    <option value="Custom Software">Custom Software</option>
-                    <option value="Corporate Training">Corporate Training</option>
-                  </select>
+                  <div className="w-100">
+                    <input 
+                      type="text" 
+                      placeholder="Name" 
+                      className={errors.name ? "is-invalid" : ""}
+                      {...register("name")}
+                      disabled={isSubmitting}
+                    />
+                    {errors.name && <span className="contact-field-error">{errors.name.message}</span>}
+                  </div>
+                  <div className="w-100">
+                    <input 
+                      type="email" 
+                      placeholder="Mail ID" 
+                      className={errors.email ? "is-invalid" : ""}
+                      {...register("email")}
+                      disabled={isSubmitting}
+                    />
+                    {errors.email && <span className="contact-field-error">{errors.email.message}</span>}
+                  </div>
                 </div>
                 <div className="form-row-single">
-                  <textarea 
-                    name="message"
-                    placeholder="Message" 
-                    rows="4"
-                    value={formData.message}
-                    onChange={handleChange}
-                  ></textarea>
+                  <div className="w-100">
+                    <Controller
+                      name="phone"
+                      control={control}
+                      render={({ field }) => (
+                        <FormPhoneInput
+                          {...field}
+                          placeholder="Mobile No"
+                          error={errors.phone?.message}
+                          disabled={isSubmitting}
+                          containerClass="mb-0"
+                        />
+                      )}
+                    />
+                  </div>
+                </div>
+                <div className="form-row-single">
+                  <div className="w-100">
+                    <select 
+                      className={errors.interestedIn ? "is-invalid" : ""}
+                      {...register("interestedIn")}
+                      disabled={isSubmitting}
+                    >
+                      <option value="" disabled>Interested In</option>
+                      <option value="Web Development">Web Development</option>
+                      <option value="Mobile App">Mobile App Development</option>
+                      <option value="UI/UX Design">UI/UX Design</option>
+                      <option value="Cloud Services">Cloud Services</option>
+                      <option value="Custom Software">Custom Software</option>
+                      <option value="Corporate Training">Corporate Training</option>
+                    </select>
+                    {errors.interestedIn && <span className="contact-field-error">{errors.interestedIn.message}</span>}
+                  </div>
+                </div>
+                <div className="form-row-single">
+                  <div className="w-100">
+                    <textarea 
+                      placeholder="Message" 
+                      rows="4"
+                      className={errors.message ? "is-invalid" : ""}
+                      {...register("message")}
+                      disabled={isSubmitting}
+                    ></textarea>
+                    {errors.message && <span className="contact-field-error">{errors.message.message}</span>}
+                  </div>
                 </div>
                 <button 
                   type="submit" 

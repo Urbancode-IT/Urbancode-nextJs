@@ -4,92 +4,46 @@ import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { goToThankYou } from "@/lib/navigation/goToThankYou";
 import Swal from 'sweetalert2';
-import { 
-  Send, 
-  User, 
-  Mail, 
-  Phone, 
-  MapPin, 
-  Calendar, 
-  Clock, 
-  BookOpen, 
-  Monitor, 
-  Sparkles,
-  CheckCircle2,
-  Video
-} from "lucide-react";
+import { Send } from "lucide-react";
 import "./BookDemoPage.css";
 
 import { FormInput, FormSelect, FormTextarea, FormButton, FormCard } from "@/app/components/common/FormUI";
+import { FormPhoneInput } from "@/app/components/common/FormPhoneInput";
+import { Honeypot } from "@/app/components/common/Honeypot";
+import { useEnquiryForm } from "@/app/hooks/useEnquiryForm";
+import { bookDemoSchema } from "@/app/schemas/enquirySchema";
+import { Controller } from "react-hook-form";
 
 const BookDemoContent = () => {
   const searchParams = useSearchParams();
   const courseFromUrl = searchParams.get('course');
 
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    course: courseFromUrl || "",
-    preferredDate: "",
-    preferredTime: "",
-    message: "",
-  });
+  const {
+    register,
+    control,
+    submitHandler,
+    isSubmitting,
+    formState: { errors }
+  } = useEnquiryForm({
+    schema: bookDemoSchema,
+    defaultValues: {
+      name: "",
+      email: "",
+      phone: "",
+      course: courseFromUrl || "",
+      preferredDate: "",
+      preferredTime: "",
+      honeypot: ""
+    },
+    onSubmitCallback: async (data, reset) => {
+      const scriptURL = "https://script.google.com/macros/s/AKfycbyqhIsaZZb1mvkcRtxrquaDboujLLpts-q5s1ed1JIRiuzt5l76OHeFxuTZPzRWxqh_/exec";
 
-  const [errors, setErrors] = useState({});
-  const [loading, setLoading] = useState(false);
-  const [status, setStatus] = useState({ type: "", message: "" });
-
-  useEffect(() => {
-    if (courseFromUrl) {
-      setFormData(prev => ({ ...prev, course: courseFromUrl }));
-    }
-  }, [courseFromUrl]);
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-    setErrors({ ...errors, [name]: "" });
-    setStatus({ type: "", message: "" });
-  };
-
-  const validateForm = () => {
-    const newErrors = {};
-    if (!formData.name.trim()) newErrors.name = "Name is required.";
-    else if (formData.name.trim().length < 3) newErrors.name = "Name must be at least 3 characters.";
-    
-    if (!formData.email.trim()) newErrors.email = "Email is required.";
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) newErrors.email = "Invalid email.";
-    
-    const cleanPhone = formData.phone.replace(/\D/g, '');
-    if (cleanPhone.length < 7 || cleanPhone.length > 15) {
-      newErrors.phone = "Invalid number (7-15 digits required).";
-    }
-    
-    if (!formData.course) newErrors.course = "Please select a course.";
-    if (!formData.preferredDate) newErrors.preferredDate = "Please select a date.";
-    if (!formData.preferredTime) newErrors.preferredTime = "Please select a time slot.";
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!validateForm()) return;
-
-    setLoading(true);
-    setStatus({ type: "loading", message: "Scheduling your demo session..." });
-
-    const scriptURL = "https://script.google.com/macros/s/AKfycbyqhIsaZZb1mvkcRtxrquaDboujLLpts-q5s1ed1JIRiuzt5l76OHeFxuTZPzRWxqh_/exec";
-
-    try {
       const payload = {
-        name: formData.name,
-        phone: formData.phone,
-        email: formData.email,
-        course: formData.course,
-        message: `[DEMO REQUEST] Date: ${formData.preferredDate}, Time: ${formData.preferredTime}. Msg: ${formData.message || 'N/A'}`,
+        name: data.name.trim(),
+        phone: data.phone,
+        email: data.email.trim(),
+        course: data.course,
+        message: `[DEMO REQUEST] Date: ${data.preferredDate}, Time: ${data.preferredTime}.`,
       };
 
       await fetch(scriptURL, {
@@ -107,23 +61,13 @@ const BookDemoContent = () => {
         icon: 'success',
         confirmButtonColor: '#036c2d'
       });
-      setStatus({ type: "success", message: "Demo Scheduled! Redirecting..." });
       
       setTimeout(() => {
         goToThankYou();
+        reset();
       }, 1000);
-
-    } catch (error) {
-      console.error("Demo Submission Error:", error);
-      Swal.fire({ icon: 'error', title: 'Oops...', text: "Something went wrong. Please try again.", confirmButtonColor: '#d33' });
-      setStatus({
-        type: "error",
-        message: "Something went wrong. Please try again.",
-      });
-    } finally {
-      setLoading(false);
     }
-  };
+  });
 
   const courseOptions = [
     "Python with AI",
@@ -160,24 +104,16 @@ const BookDemoContent = () => {
               <p className="small text-muted">Experience our expert-led training with a free personalized demo.</p>
             </div>
 
-            {status.message && (
-              <div className={`alert alert-${status.type === 'error' ? 'danger' : 'success'} mb-4 text-center`}>
-                {status.message}
-              </div>
-            )}
-
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={submitHandler} noValidate>
+              <Honeypot register={register} />
               <div className="row g-3">
                 <div className="col-md-6">
                   <FormInput
                     label="Full Name"
-                    name="name"
+                    {...register("name")}
                     placeholder="John Doe"
-                    value={formData.name}
-                    onChange={handleChange}
-                    error={errors.name}
-                    disabled={loading}
-                    required
+                    error={errors.name?.message}
+                    disabled={isSubmitting}
                   />
                 </div>
 
@@ -185,41 +121,36 @@ const BookDemoContent = () => {
                   <FormInput
                     label="Email Address"
                     type="email"
-                    name="email"
+                    {...register("email")}
                     placeholder="john@example.com"
-                    value={formData.email}
-                    onChange={handleChange}
-                    error={errors.email}
-                    disabled={loading}
-                    required
+                    error={errors.email?.message}
+                    disabled={isSubmitting}
                   />
                 </div>
 
                 <div className="col-md-6">
-                  <FormInput
-                    label="Mobile Number"
-                    type="tel"
+                  <Controller
                     name="phone"
-                    placeholder="9876543210"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    error={errors.phone}
-                    disabled={loading}
-                    required
+                    control={control}
+                    render={({ field }) => (
+                      <FormPhoneInput
+                        {...field}
+                        label="Mobile Number"
+                        error={errors.phone?.message}
+                        disabled={isSubmitting}
+                      />
+                    )}
                   />
                 </div>
 
                 <div className="col-md-6">
                   <FormSelect
                     label="Select Course"
-                    name="course"
+                    {...register("course")}
                     placeholder="Choose Course"
                     options={courseOptions}
-                    value={formData.course}
-                    onChange={handleChange}
-                    error={errors.course}
-                    disabled={loading}
-                    required
+                    error={errors.course?.message}
+                    disabled={isSubmitting}
                   />
                 </div>
 
@@ -227,27 +158,21 @@ const BookDemoContent = () => {
                   <FormInput
                     label="Preferred Date"
                     type="date"
-                    name="preferredDate"
+                    {...register("preferredDate")}
                     min={new Date().toISOString().split('T')[0]}
-                    value={formData.preferredDate}
-                    onChange={handleChange}
-                    error={errors.preferredDate}
-                    disabled={loading}
-                    required
+                    error={errors.preferredDate?.message}
+                    disabled={isSubmitting}
                   />
                 </div>
 
                 <div className="col-md-6">
                   <FormSelect
                     label="Preferred Time"
-                    name="preferredTime"
+                    {...register("preferredTime")}
                     placeholder="Select Time"
                     options={timeOptions}
-                    value={formData.preferredTime}
-                    onChange={handleChange}
-                    error={errors.preferredTime}
-                    disabled={loading}
-                    required
+                    error={errors.preferredTime?.message}
+                    disabled={isSubmitting}
                   />
                 </div>
 
@@ -256,11 +181,11 @@ const BookDemoContent = () => {
                     type="submit" 
                     variant="success" 
                     className="px-4 py-2 rounded-pill"
-                    loading={loading}
+                    loading={isSubmitting}
                     style={{ minWidth: '160px', backgroundColor: '#444444', border: 'none' }}
                   >
-                    {loading ? "Scheduling..." : "Book My Free Demo"}
-                    {!loading && <Send size={18} className="ms-2" />}
+                    {isSubmitting ? "Scheduling..." : "Book My Free Demo"}
+                    {!isSubmitting && <Send size={18} className="ms-2" />}
                   </FormButton>
                 </div>
               </div>

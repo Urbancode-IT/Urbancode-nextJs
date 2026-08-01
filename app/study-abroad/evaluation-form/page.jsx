@@ -8,6 +8,11 @@ import {
 } from 'react-icons/fa';
 import { submitIeltsEvaluationForm } from '@/lib/api/api';
 import './EvaluationForm.css';
+import { useForm, Controller } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { evaluationFormSchema } from '@/app/schemas/enquirySchema';
+import { FormPhoneInput } from '@/app/components/common/FormPhoneInput';
+import { Honeypot } from '@/app/components/common/Honeypot';
 
 const TOTAL_PAGES = 5;
 
@@ -54,24 +59,26 @@ const INITIAL_FORM = {
     preferredFormat: '',
     aboutParagraph: '',
     writingResponse: '',
+    honeypot: ''
 };
 
-function LineInput({ icon: Icon, label, required, hint, className = '', ...inputProps }) {
+function LineInput({ icon: Icon, label, required, hint, className = '', error, ...inputProps }) {
     return (
         <div className={`eval-field ${className}`.trim()}>
             <label className="eval-label">
                 {label}{required && <span className="eval-required"> *</span>}
             </label>
-            <div className="eval-input-wrap">
+            <div className={`eval-input-wrap ${error ? 'is-invalid' : ''}`}>
                 {Icon && <Icon className="eval-field-icon" />}
                 <input className="eval-input-line" {...inputProps} />
             </div>
             {hint && <p className="eval-hint">{hint}</p>}
+            {error && <p className="eval-error-msg text-danger mt-1" style={{fontSize:'0.85rem'}}>{error}</p>}
         </div>
     );
 }
 
-function OptionGroup({ label, required, options, value, onChange, name }) {
+function OptionGroup({ label, required, options, value, onChange, name, error }) {
     return (
         <div className="eval-field">
             <label className="eval-label">
@@ -83,17 +90,18 @@ function OptionGroup({ label, required, options, value, onChange, name }) {
                         key={opt}
                         type="button"
                         className={`eval-option-btn ${value === opt ? 'selected' : ''}`}
-                        onClick={() => onChange(name, opt)}
+                        onClick={() => onChange(opt)}
                     >
                         {opt}
                     </button>
                 ))}
             </div>
+            {error && <p className="eval-error-msg text-danger mt-1" style={{fontSize:'0.85rem'}}>{error}</p>}
         </div>
     );
 }
 
-function MultiSelect({ label, options, selected, onChange }) {
+function MultiSelect({ label, options, selected = [], onChange, error }) {
     const [open, setOpen] = useState(false);
     const wrapRef = useRef(null);
 
@@ -126,7 +134,7 @@ function MultiSelect({ label, options, selected, onChange }) {
                     ))}
                 </div>
             )}
-            <div className="eval-input-wrap">
+            <div className={`eval-input-wrap ${error ? 'is-invalid' : ''}`}>
                 <input
                     className="eval-input-line"
                     placeholder="-Select-"
@@ -150,88 +158,96 @@ function MultiSelect({ label, options, selected, onChange }) {
                     ))}
                 </div>
             )}
+            {error && <p className="eval-error-msg text-danger mt-1" style={{fontSize:'0.85rem'}}>{error}</p>}
         </div>
     );
 }
 
 export default function EvaluationFormPage() {
     const [page, setPage] = useState(0);
-    const [form, setForm] = useState(INITIAL_FORM);
-    const [error, setError] = useState('');
-    const [submitting, setSubmitting] = useState(false);
+    const [loadTime, setLoadTime] = useState(0);
     const [submitted, setSubmitted] = useState(false);
+    const [submitError, setSubmitError] = useState('');
 
-    const setField = (name, value) => setForm((prev) => ({ ...prev, [name]: value }));
+    useEffect(() => {
+        setLoadTime(Date.now());
+    }, []);
 
-    const validatePage = () => {
-        setError('');
+    const {
+        register,
+        control,
+        handleSubmit,
+        trigger,
+        watch,
+        setValue,
+        formState: { errors, isSubmitting }
+    } = useForm({
+        resolver: zodResolver(evaluationFormSchema),
+        defaultValues: INITIAL_FORM,
+        mode: 'onChange'
+    });
+
+    const watchTakenIeltsBefore = watch('takenIeltsBefore');
+    const watchPreferredTiming = watch('preferredTiming');
+
+    const handleNext = async () => {
+        // Define fields to validate for each step
+        let fieldsToValidate = [];
         switch (page) {
             case 0:
-                if (!form.firstName.trim() || !form.lastName.trim()) return 'Please enter your first and last name.';
-                if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) return 'Please enter a valid email address.';
-                if (!form.phone.trim()) return 'Please enter your phone number.';
-                if (!form.dateOfBirth) return 'Please enter your date of birth.';
-                if (!form.qualification.trim()) return 'Please enter your educational qualification.';
+                fieldsToValidate = ['firstName', 'lastName', 'email', 'phone', 'dateOfBirth', 'qualification'];
                 break;
             case 1:
-                if (!form.ieltsTestType) return 'Please select which IELTS test you are planning to take.';
-                if (!form.ieltsPurpose) return 'Please select why you are planning to take IELTS.';
-                if (!form.takenIeltsBefore) return 'Please indicate if you have taken IELTS before.';
-                if (form.takenIeltsBefore === 'Yes') {
-                    if (!form.overallBandScore.trim()) return 'Please enter your overall band score.';
-                    if (!form.targetBandScore.trim()) return 'Please enter your target IELTS band score.';
+                fieldsToValidate = ['ieltsTestType', 'ieltsPurpose', 'takenIeltsBefore'];
+                if (watchTakenIeltsBefore === 'Yes') {
+                    fieldsToValidate.push('overallBandScore', 'targetBandScore', 'previousAttemptDate', 'listeningScore', 'readingScore', 'writingScore', 'speakingScore', 'preferredTestDate');
                 }
                 break;
             case 2:
-                if (!form.englishProficiency) return 'Please select your current English proficiency level.';
-                if (!form.englishUsageFrequency) return 'Please select how often you use English.';
+                fieldsToValidate = ['englishProficiency', 'challengingAreas', 'englishStrengths', 'formalEnglishStudy', 'englishUsageFrequency'];
                 break;
             case 3:
-                if (!form.trainingType) return 'Please select the type of training you are looking for.';
-                if (!form.attendedCoachingBefore) return 'Please indicate if you have attended IELTS coaching before.';
-                if (!form.preferredFormat) return 'Please select your preferred class format.';
-                break;
-            case 4:
-                if (!form.aboutParagraph.trim()) return 'Please write a short paragraph about yourself (max 250 words).';
-                if (!form.writingResponse.trim()) return 'Please write your response to the writing prompt.';
-                break;
-            default:
+                fieldsToValidate = ['trainingType', 'attendedCoachingBefore', 'previousTrainingFeedback', 'trainingExpectations', 'hoursPerWeek', 'preferredTiming', 'preferredTimingOther', 'preferredFormat'];
                 break;
         }
-        return '';
-    };
 
-    const handleNext = () => {
-        const msg = validatePage();
-        if (msg) { setError(msg); return; }
-        setPage((p) => Math.min(p + 1, TOTAL_PAGES - 1));
+        const isStepValid = await trigger(fieldsToValidate);
+        
+        if (isStepValid) {
+            setPage((p) => Math.min(p + 1, TOTAL_PAGES - 1));
+            setSubmitError('');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
     };
 
     const handleBack = () => {
-        setError('');
+        setSubmitError('');
         setPage((p) => Math.max(p - 1, 0));
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        const msg = validatePage();
-        if (msg) { setError(msg); return; }
+    const onSubmit = async (data) => {
+        if (data.honeypot) {
+            return; // Silent fail
+        }
 
-        setSubmitting(true);
-        setError('');
+        const timeToSubmit = Date.now() - loadTime;
+        if (timeToSubmit < 3000) {
+            setSubmitError("Please complete the form properly.");
+            return;
+        }
+
+        setSubmitError('');
 
         try {
-            const result = await submitIeltsEvaluationForm(form);
-
+            const result = await submitIeltsEvaluationForm(data);
             if (result.success) {
                 setSubmitted(true);
             } else {
-                setError(result.message || 'Failed to submit. Please try again.');
+                setSubmitError(result.message || 'Failed to submit. Please try again.');
             }
         } catch {
-            setError('Something went wrong. Please try again later.');
-        } finally {
-            setSubmitting(false);
+            setSubmitError('Something went wrong. Please try again later.');
         }
     };
 
@@ -258,43 +274,70 @@ export default function EvaluationFormPage() {
                             <div className="eval-name-row">
                                 <div className="eval-input-wrap">
                                     <FaUser className="eval-field-icon" />
-                                    <input className="eval-input-line" placeholder="First" value={form.firstName} onChange={(e) => setField('firstName', e.target.value)} />
+                                    <input className={`eval-input-line ${errors.firstName ? 'is-invalid' : ''}`} placeholder="First" {...register('firstName')} />
                                 </div>
                                 <div className="eval-input-wrap">
-                                    <input className="eval-input-line" placeholder="Last" value={form.lastName} onChange={(e) => setField('lastName', e.target.value)} style={{ paddingLeft: 0 }} />
+                                    <input className={`eval-input-line ${errors.lastName ? 'is-invalid' : ''}`} placeholder="Last" {...register('lastName')} style={{ paddingLeft: 0 }} />
                                 </div>
                             </div>
+                            {(errors.firstName || errors.lastName) && (
+                                <p className="eval-error-msg text-danger mt-1" style={{fontSize:'0.85rem'}}>
+                                    {errors.firstName?.message || errors.lastName?.message}
+                                </p>
+                            )}
                         </div>
-                        <LineInput className="eval-field-half" icon={FaEnvelope} label="Email" required type="email" value={form.email} onChange={(e) => setField('email', e.target.value)} />
-                        <LineInput className="eval-field-half" icon={FaMobileAlt} label="Phone number" required type="tel" value={form.phone} onChange={(e) => setField('phone', e.target.value)} />
-                        <LineInput className="eval-field-half" icon={FaCalendarAlt} label="Date of Birth" required type="date" value={form.dateOfBirth} onChange={(e) => setField('dateOfBirth', e.target.value)} hint="dd-MMM-yyyy" />
-                        <LineInput className="eval-field-half" icon={FaGraduationCap} label="What is your educational qualification?" required value={form.qualification} onChange={(e) => setField('qualification', e.target.value)} />
+                        <LineInput className="eval-field-half" icon={FaEnvelope} label="Email" required type="email" {...register('email')} error={errors.email?.message} />
+                        
+                        <div className="eval-field eval-field-half">
+                            <Controller
+                                name="phone"
+                                control={control}
+                                render={({ field }) => (
+                                    <FormPhoneInput
+                                        {...field}
+                                        label="Phone number"
+                                        error={errors.phone?.message}
+                                    />
+                                )}
+                            />
+                        </div>
+
+                        <LineInput className="eval-field-half" icon={FaCalendarAlt} label="Date of Birth" required type="date" {...register('dateOfBirth')} hint="dd-MMM-yyyy" error={errors.dateOfBirth?.message} />
+                        <LineInput className="eval-field-half" icon={FaGraduationCap} label="What is your educational qualification?" required {...register('qualification')} error={errors.qualification?.message} />
                     </>
                 );
 
             case 1:
                 return (
                     <>
-                        <OptionGroup label="Which IELTS test are you planning to take?" required name="ieltsTestType" value={form.ieltsTestType} onChange={setField}
-                            options={['IELTS Academic', 'IELTS General', 'Not sure yet']} />
-                        <OptionGroup label="Why are you planning to take IELTS?" required name="ieltsPurpose" value={form.ieltsPurpose} onChange={setField}
-                            options={['Higher Education', 'Immigration', 'Work purpose', 'Personal goal']} />
-                        <OptionGroup label="Have you taken IELTS before?" name="takenIeltsBefore" value={form.takenIeltsBefore} onChange={setField}
-                            options={['Yes', 'No']} />
+                        <Controller name="ieltsTestType" control={control} render={({ field: { value, onChange } }) => (
+                            <OptionGroup label="Which IELTS test are you planning to take?" required name="ieltsTestType" value={value} onChange={onChange}
+                                options={['IELTS Academic', 'IELTS General', 'Not sure yet']} error={errors.ieltsTestType?.message} />
+                        )} />
+                        
+                        <Controller name="ieltsPurpose" control={control} render={({ field: { value, onChange } }) => (
+                            <OptionGroup label="Why are you planning to take IELTS?" required name="ieltsPurpose" value={value} onChange={onChange}
+                                options={['Higher Education', 'Immigration', 'Work purpose', 'Personal goal']} error={errors.ieltsPurpose?.message} />
+                        )} />
+                        
+                        <Controller name="takenIeltsBefore" control={control} render={({ field: { value, onChange } }) => (
+                            <OptionGroup label="Have you taken IELTS before?" required name="takenIeltsBefore" value={value} onChange={onChange}
+                                options={['Yes', 'No']} error={errors.takenIeltsBefore?.message} />
+                        )} />
 
-                        {form.takenIeltsBefore === 'Yes' && (
+                        {watchTakenIeltsBefore === 'Yes' && (
                             <>
-                                <LineInput icon={FaCalendarAlt} label="Date of previous attempt" type="date" value={form.previousAttemptDate} onChange={(e) => setField('previousAttemptDate', e.target.value)} hint="dd-MMM-yyyy" />
-                                <LineInput icon={FaHashtag} label="Overall Band Score" required type="text" value={form.overallBandScore} onChange={(e) => setField('overallBandScore', e.target.value)} />
+                                <LineInput icon={FaCalendarAlt} label="Date of previous attempt" type="date" {...register('previousAttemptDate')} hint="dd-MMM-yyyy" error={errors.previousAttemptDate?.message} />
+                                <LineInput icon={FaHashtag} label="Overall Band Score" required type="text" {...register('overallBandScore')} error={errors.overallBandScore?.message} />
                                 <label className="eval-label">Score of each Modules</label>
                                 <div className="eval-modules-grid">
-                                    <LineInput icon={FaHashtag} label="Listening" type="text" value={form.listeningScore} onChange={(e) => setField('listeningScore', e.target.value)} />
-                                    <LineInput icon={FaHashtag} label="Reading" type="text" value={form.readingScore} onChange={(e) => setField('readingScore', e.target.value)} />
-                                    <LineInput icon={FaHashtag} label="Writing" type="text" value={form.writingScore} onChange={(e) => setField('writingScore', e.target.value)} />
-                                    <LineInput icon={FaHashtag} label="Speaking" type="text" value={form.speakingScore} onChange={(e) => setField('speakingScore', e.target.value)} />
+                                    <LineInput icon={FaHashtag} label="Listening" type="text" {...register('listeningScore')} />
+                                    <LineInput icon={FaHashtag} label="Reading" type="text" {...register('readingScore')} />
+                                    <LineInput icon={FaHashtag} label="Writing" type="text" {...register('writingScore')} />
+                                    <LineInput icon={FaHashtag} label="Speaking" type="text" {...register('speakingScore')} />
                                 </div>
-                                <LineInput icon={FaHashtag} label="What is your target IELTS band score?" required type="text" value={form.targetBandScore} onChange={(e) => setField('targetBandScore', e.target.value)} />
-                                <LineInput icon={FaCalendarAlt} label="Do you have a preferred test date or deadline?" type="date" value={form.preferredTestDate} onChange={(e) => setField('preferredTestDate', e.target.value)} hint="dd-MMM-yyyy" />
+                                <LineInput icon={FaHashtag} label="What is your target IELTS band score?" required type="text" {...register('targetBandScore')} error={errors.targetBandScore?.message} />
+                                <LineInput icon={FaCalendarAlt} label="Do you have a preferred test date or deadline?" type="date" {...register('preferredTestDate')} hint="dd-MMM-yyyy" />
                             </>
                         )}
                     </>
@@ -303,62 +346,84 @@ export default function EvaluationFormPage() {
             case 2:
                 return (
                     <>
-                        <OptionGroup label="How would you describe your current English proficiency?" required name="englishProficiency" value={form.englishProficiency} onChange={setField}
-                            options={['Beginner', 'Intermediate', 'Advanced']} />
-                        <MultiSelect label="Which area of English do you find most challenging?" options={CHALLENGE_OPTIONS} selected={form.challengingAreas} onChange={(v) => setField('challengingAreas', v)} />
+                        <Controller name="englishProficiency" control={control} render={({ field: { value, onChange } }) => (
+                            <OptionGroup label="How would you describe your current English proficiency?" required name="englishProficiency" value={value} onChange={onChange}
+                                options={['Beginner', 'Intermediate', 'Advanced']} error={errors.englishProficiency?.message} />
+                        )} />
+                        
+                        <Controller name="challengingAreas" control={control} render={({ field: { value, onChange } }) => (
+                            <MultiSelect label="Which area of English do you find most challenging?" options={CHALLENGE_OPTIONS} selected={value || []} onChange={onChange} error={errors.challengingAreas?.message} />
+                        )} />
+                        
                         <div className="eval-field">
                             <label className="eval-label">What are your strengths in English?</label>
-                            <textarea className="eval-textarea eval-textarea-short" value={form.englishStrengths} onChange={(e) => setField('englishStrengths', e.target.value)} rows={2} />
+                            <textarea className="eval-textarea eval-textarea-short" {...register('englishStrengths')} rows={2} />
                         </div>
                         <div className="eval-field">
                             <label className="eval-label">Have you studied English formally before? If yes, please mention details.</label>
-                            <textarea className="eval-textarea eval-textarea-short" value={form.formalEnglishStudy} onChange={(e) => setField('formalEnglishStudy', e.target.value)} rows={2} />
+                            <textarea className="eval-textarea eval-textarea-short" {...register('formalEnglishStudy')} rows={2} />
                         </div>
-                        <OptionGroup label="How often do you currently use English in daily life?" required name="englishUsageFrequency" value={form.englishUsageFrequency} onChange={setField}
-                            options={['Rarely', 'Occasionally', 'Daily', 'Very frequently']} />
+                        
+                        <Controller name="englishUsageFrequency" control={control} render={({ field: { value, onChange } }) => (
+                            <OptionGroup label="How often do you currently use English in daily life?" required name="englishUsageFrequency" value={value} onChange={onChange}
+                                options={['Rarely', 'Occasionally', 'Daily', 'Very frequently']} error={errors.englishUsageFrequency?.message} />
+                        )} />
                     </>
                 );
 
             case 3:
                 return (
                     <>
-                        <OptionGroup label="What type of training are you looking for?" required name="trainingType" value={form.trainingType} onChange={setField}
-                            options={['Complete IELTS preparation', 'Focus on specific modules', 'Writing correction', 'Speaking practice', 'Mock tests', 'Crash course']} />
-                        <OptionGroup label="Have you attended IELTS coaching before?" required name="attendedCoachingBefore" value={form.attendedCoachingBefore} onChange={setField}
-                            options={['Yes', 'No']} />
+                        <Controller name="trainingType" control={control} render={({ field: { value, onChange } }) => (
+                            <OptionGroup label="What type of training are you looking for?" required name="trainingType" value={value} onChange={onChange}
+                                options={['Complete IELTS preparation', 'Focus on specific modules', 'Writing correction', 'Speaking practice', 'Mock tests', 'Crash course']} error={errors.trainingType?.message} />
+                        )} />
+                        
+                        <Controller name="attendedCoachingBefore" control={control} render={({ field: { value, onChange } }) => (
+                            <OptionGroup label="Have you attended IELTS coaching before?" required name="attendedCoachingBefore" value={value} onChange={onChange}
+                                options={['Yes', 'No']} error={errors.attendedCoachingBefore?.message} />
+                        )} />
+                        
                         <div className="eval-field">
                             <label className="eval-label">If yes, what did you find helpful or unhelpful about the previous training?</label>
                             <div className="eval-input-wrap">
                                 <FaKeyboard className="eval-field-icon" />
-                                <input className="eval-input-line" value={form.previousTrainingFeedback} onChange={(e) => setField('previousTrainingFeedback', e.target.value)} />
+                                <input className="eval-input-line" {...register('previousTrainingFeedback')} />
                             </div>
                         </div>
                         <div className="eval-field">
                             <label className="eval-label">What are your expectations from this IELTS training?</label>
                             <div className="eval-input-wrap">
                                 <FaKeyboard className="eval-field-icon" />
-                                <input className="eval-input-line" value={form.trainingExpectations} onChange={(e) => setField('trainingExpectations', e.target.value)} />
+                                <input className="eval-input-line" {...register('trainingExpectations')} />
                             </div>
                         </div>
                         <div className="eval-field">
                             <label className="eval-label">How many hours per week can you dedicate to IELTS preparation?</label>
                             <div className="eval-input-wrap">
                                 <FaHashtag className="eval-field-icon" />
-                                <input className="eval-input-line" type="text" value={form.hoursPerWeek} onChange={(e) => setField('hoursPerWeek', e.target.value)} />
+                                <input className="eval-input-line" type="text" {...register('hoursPerWeek')} />
                             </div>
                         </div>
-                        <OptionGroup label="Preferred class timing" name="preferredTiming" value={form.preferredTiming} onChange={setField}
-                            options={['Morning', 'Afternoon', 'Evening', 'Flexible', 'Other']} />
-                        {form.preferredTiming === 'Other' && (
+                        
+                        <Controller name="preferredTiming" control={control} render={({ field: { value, onChange } }) => (
+                            <OptionGroup label="Preferred class timing" name="preferredTiming" value={value} onChange={onChange}
+                                options={['Morning', 'Afternoon', 'Evening', 'Flexible', 'Other']} />
+                        )} />
+                        
+                        {watchPreferredTiming === 'Other' && (
                             <div className="eval-field">
                                 <div className="eval-input-wrap">
                                     <FaKeyboard className="eval-field-icon" />
-                                    <input className="eval-input-line" placeholder="Please specify your preferred timing" value={form.preferredTimingOther || ''} onChange={(e) => setField('preferredTimingOther', e.target.value)} />
+                                    <input className="eval-input-line" placeholder="Please specify your preferred timing" {...register('preferredTimingOther')} />
                                 </div>
                             </div>
                         )}
-                        <OptionGroup label="Preferred class format" required name="preferredFormat" value={form.preferredFormat} onChange={setField}
-                            options={['Online', 'Offline', 'Hybrid']} />
+                        
+                        <Controller name="preferredFormat" control={control} render={({ field: { value, onChange } }) => (
+                            <OptionGroup label="Preferred class format" required name="preferredFormat" value={value} onChange={onChange}
+                                options={['Online', 'Offline', 'Hybrid']} error={errors.preferredFormat?.message} />
+                        )} />
                     </>
                 );
 
@@ -367,14 +432,16 @@ export default function EvaluationFormPage() {
                     <>
                         <div className="eval-field">
                             <label className="eval-label">Write a short paragraph (max 250 words) about yourself <span className="eval-required">*</span></label>
-                            <textarea className="eval-textarea eval-textarea-long" rows={4} value={form.aboutParagraph} onChange={(e) => setField('aboutParagraph', e.target.value)} placeholder="Tell us about yourself..." />
+                            <textarea className={`eval-textarea eval-textarea-long ${errors.aboutParagraph ? 'is-invalid' : ''}`} rows={4} {...register('aboutParagraph')} placeholder="Tell us about yourself..." />
+                            {errors.aboutParagraph && <p className="text-danger mt-1" style={{fontSize:'0.85rem'}}>{errors.aboutParagraph.message}</p>}
                         </div>
                         <div className="eval-field">
                             <label className="eval-label">
                                 &ldquo;Many people believe that social media has had a negative impact on individuals and society. To what extent do you agree or disagree?&rdquo; <span className="eval-required">*</span>
                             </label>
                             <p className="eval-prompt-text">Organize and write a passage of 400 words.</p>
-                            <textarea className="eval-textarea eval-textarea-long" rows={6} value={form.writingResponse} onChange={(e) => setField('writingResponse', e.target.value)} placeholder="Write your response here..." />
+                            <textarea className={`eval-textarea eval-textarea-long ${errors.writingResponse ? 'is-invalid' : ''}`} rows={6} {...register('writingResponse')} placeholder="Write your response here..." />
+                            {errors.writingResponse && <p className="text-danger mt-1" style={{fontSize:'0.85rem'}}>{errors.writingResponse.message}</p>}
                         </div>
                     </>
                 );
@@ -401,11 +468,12 @@ export default function EvaluationFormPage() {
                     ))}
                 </div>
 
-                <form onSubmit={page === TOTAL_PAGES - 1 ? handleSubmit : (e) => { e.preventDefault(); handleNext(); }}>
+                <form onSubmit={page === TOTAL_PAGES - 1 ? handleSubmit(onSubmit) : (e) => { e.preventDefault(); handleNext(); }} noValidate>
+                    <Honeypot register={register} />
                     <p className="eval-section-title">Section {page + 1}: {SECTIONS[page]}</p>
                     <div className="eval-section-divider" />
 
-                    {error && <div className="eval-error">{error}</div>}
+                    {submitError && <div className="eval-error">{submitError}</div>}
 
                     <div className="eval-form-fields">
                         {renderPage()}
@@ -413,13 +481,13 @@ export default function EvaluationFormPage() {
 
                     <div className="eval-nav">
                         {page > 0 && (
-                            <button type="button" className="eval-nav-btn back" onClick={handleBack}>Back</button>
+                            <button type="button" className="eval-nav-btn back" onClick={handleBack} disabled={isSubmitting}>Back</button>
                         )}
                         {page < TOTAL_PAGES - 1 ? (
-                            <button type="submit" className="eval-nav-btn next">Next</button>
+                            <button type="button" className="eval-nav-btn next" onClick={handleNext}>Next</button>
                         ) : (
-                            <button type="submit" className="eval-nav-btn submit" disabled={submitting}>
-                                {submitting ? 'Submitting...' : 'Submit'}
+                            <button type="submit" className="eval-nav-btn submit" disabled={isSubmitting}>
+                                {isSubmitting ? 'Submitting...' : 'Submit'}
                             </button>
                         )}
                     </div>

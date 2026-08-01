@@ -221,4 +221,60 @@
 .success-btn:hover {
   box-shadow: 0 6px 20px rgba(0, 168, 107, 0.4);
   transform: translateY(-2px);
-}
+}
+
+/* ── Phone Input inside Enquiry Modal ────────────────────────── */
+
+/* Remove margin/gap from the form-group-container inside modal */
+.enquiry-modal .form-group-container {
+  margin-bottom: 0;
+  gap: 0;
+}
+
+/* Make the phone input wrapper match other form-controls */
+.enquiry-modal .phone-input-custom,
+.enquiry-modal .form-input-standard.phone-input-custom {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0 !important;
+  border: 1px solid #ccc;
+  border-radius: var(--form-input-radius);
+  background: #fff;
+  font-size: 14px;
+  min-height: 42px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.enquiry-modal .phone-input-custom:focus-within {
+  border-color: var(--form-primary);
+  box-shadow: 0 0 3px rgba(40, 167, 69, 0.3);
+}
+
+
+
+
+/* Actual phone number text input */
+.enquiry-modal .PhoneInputInput {
+  flex: 1;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background: transparent;
+  padding: 10px 12px;
+  font-size: 14px;
+  color: #333;
+  min-width: 0;
+}
+
+.enquiry-modal .PhoneInputInput::placeholder {
+  color: #94a3b8;
+}
+
+/* Error message under phone */
+.enquiry-modal .form-error-message {
+  font-size: 13px;
+  color: #d9534f;
+  margin-top: 4px;
+}
+

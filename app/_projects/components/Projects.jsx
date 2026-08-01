@@ -1,113 +1,36 @@
 'use client';
 import React from 'react';
 import './projects.css';
-import { useState } from 'react';
 import { goToThankYou } from '@/lib/navigation/goToThankYou';
 import axios from 'axios';
-import { submitProjectEnquiryForm } from '@/lib/api/api';
 import Swal from 'sweetalert2';
+import { useEnquiryForm } from "@/app/hooks/useEnquiryForm";
+import { projectFormSchema } from "@/app/schemas/enquirySchema";
+import { Controller } from "react-hook-form";
+import { Honeypot } from "@/app/components/common/Honeypot";
+import { FormPhoneInput } from "@/app/components/common/FormPhoneInput";
+
 const Projects = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    subject: "",
-    message: "",
-  });
-
-  const [errors, setErrors] = useState({});
-  const [status, setStatus] = useState({ type: "", message: "" });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  // handle input changes
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-    setErrors({ ...errors, [e.target.name]: "" });
-  };
-
-  // basic frontend validation
-  const validate = () => {
-    const newErrors = {};
-    
-    // Name validation
-    if (!formData.name.trim()) {
-      newErrors.name = "Name is required";
-    } else if (formData.name.trim().length < 3) {
-      newErrors.name = "Name must be at least 3 characters";
-    } else if (!/^[a-zA-Z\s'-]+$/.test(formData.name.trim())) {
-      newErrors.name = "Name can only contain letters, spaces, hyphens, and apostrophes";
-    }
-    
-    // Email validation
-    if (!formData.email) {
-      newErrors.email = "Email is required";
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = "Invalid email format";
-    } else if (formData.email.length > 255) {
-      newErrors.email = "Email is too long";
-    }
-    
-    // Phone validation
-    if (!formData.phone) {
-      newErrors.phone = "Phone number is required";
-    } else {
-      const cleanPhone = formData.phone.replace(/\D/g, '');
-      if (cleanPhone.length < 7 || cleanPhone.length > 15) {
-        newErrors.phone = "Please enter a valid 7 to 15 digit mobile number.";
-      }
-    }
-    
-    // Subject validation
-    if (!formData.subject.trim()) {
-      newErrors.subject = "Subject is required";
-    } else if (formData.subject.trim().length < 5) {
-      newErrors.subject = "Subject must be at least 5 characters";
-    }
-    
-    // Message validation
-    if (!formData.message.trim()) {
-      newErrors.message = "Message cannot be empty";
-    } else if (formData.message.trim().length < 10) {
-      newErrors.message = "Message must be at least 10 characters";
-    } else if (formData.message.length > 1000) {
-      newErrors.message = "Message is too long (max 1000 characters)";
-    }
-    
-    // Gibberish validation
-    const consonantMashRegex = /[bcdfghjklmnpqrstvwxzBCDFGHJKLMNPQRSTVWXZ]{7,}/;
-    if (consonantMashRegex.test(formData.name)) {
-      newErrors.name = "Invalid input detected.";
-    }
-    if (consonantMashRegex.test(formData.subject)) {
-      newErrors.subject = "Invalid input detected.";
-    }
-    if (consonantMashRegex.test(formData.message)) {
-      newErrors.message = "Invalid input detected.";
-    }
-    
-    return newErrors;
-  };
-
-  // handle form submit
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const newErrors = validate();
-    if (Object.keys(newErrors).length > 0) {
-      setErrors(newErrors);
-      return;
-    }
-
-    setIsSubmitting(true);
-    setStatus({ type: "", message: "" });
-
-    try {
-      // call your backend API endpoint
+  const {
+    register,
+    control,
+    submitHandler,
+    isSubmitting,
+    formState: { errors }
+  } = useEnquiryForm({
+    schema: projectFormSchema,
+    defaultValues: {
+      name: "",
+      email: "",
+      phone: "",
+      subject: "",
+      message: "",
+      honeypot: ""
+    },
+    onSubmitCallback: async (data, reset) => {
       const res = await axios.post(
         "https://uc-backend-tpje.onrender.com/api/send-email/contact",
-        formData
+        data
       );
 
       if (res.status === 200) {
@@ -118,30 +41,12 @@ const Projects = () => {
           confirmButtonColor: '#036c2d'
         });
         goToThankYou();
-        setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          subject: "",
-          message: "",
-        });
+        reset();
+      } else {
+        throw new Error("Failed to send message");
       }
-    } catch (err) {
-      console.error(err);
-      Swal.fire({
-        title: 'Error!',
-        text: 'Something went wrong. Please try again later.',
-        icon: 'error',
-        confirmButtonColor: '#d33'
-      });
-      setStatus({
-        type: "error",
-        message: "Something went wrong. Please try again later.",
-      });
-    } finally {
-      setIsSubmitting(false);
     }
-  };
+  });
 
   return (
     <div className="projects-page">
@@ -304,7 +209,8 @@ const Projects = () => {
             {/* Form */}
             <div className="col-lg-7">
               <div className="p-4 rounded-4 shadow-lg bg-light">
-                <form onSubmit={handleSubmit} noValidate>
+                <form onSubmit={submitHandler} noValidate>
+                  <Honeypot register={register} />
                   <div className="row g-3">
                     {/* Name */}
                     <div className="col-md-6">
@@ -314,19 +220,13 @@ const Projects = () => {
                       <input
                         type="text"
                         id="name"
-                        name="name"
                         className={`form-control ${errors.name ? "is-invalid" : ""}`}
-                        value={formData.name}
-                        onChange={handleChange}
+                        {...register("name")}
                         placeholder="Your full name"
-                        required
-                        minLength="3"
-                        maxLength="100"
-                        pattern="^[a-zA-Z\s'-]+$"
                         disabled={isSubmitting}
                       />
                       {errors.name && (
-                        <div className="invalid-feedback">{errors.name}</div>
+                        <span className="proj-field-error">{errors.name.message}</span>
                       )}
                     </div>
 
@@ -338,42 +238,30 @@ const Projects = () => {
                       <input
                         type="email"
                         id="email"
-                        name="email"
                         className={`form-control ${errors.email ? "is-invalid" : ""}`}
-                        value={formData.email}
-                        onChange={handleChange}
+                        {...register("email")}
                         placeholder="you@example.com"
-                        required
-                        maxLength="255"
                         disabled={isSubmitting}
                       />
                       {errors.email && (
-                        <div className="invalid-feedback">{errors.email}</div>
+                        <span className="proj-field-error">{errors.email.message}</span>
                       )}
                     </div>
 
                     {/* Phone */}
                     <div className="col-md-6">
-                      <label htmlFor="phone" className="form-label fw-semibold">
-                        Phone *
-                      </label>
-                      <input
-                        type="tel"
-                        id="phone"
+                      <Controller
                         name="phone"
-                        className={`form-control ${errors.phone ? "is-invalid" : ""}`}
-                        value={formData.phone}
-                        onChange={handleChange}
-                        placeholder="10-digit mobile number"
-                        required
-                        inputMode="numeric"
-                        maxLength="10"
-                        pattern="^\d{10}$"
-                        disabled={isSubmitting}
+                        control={control}
+                        render={({ field }) => (
+                          <FormPhoneInput
+                            {...field}
+                            label="Phone *"
+                            error={errors.phone?.message}
+                            disabled={isSubmitting}
+                          />
+                        )}
                       />
-                      {errors.phone && (
-                        <div className="invalid-feedback">{errors.phone}</div>
-                      )}
                     </div>
 
                     {/* Subject */}
@@ -384,18 +272,13 @@ const Projects = () => {
                       <input
                         type="text"
                         id="subject"
-                        name="subject"
                         className={`form-control ${errors.subject ? "is-invalid" : ""}`}
-                        value={formData.subject}
-                        onChange={handleChange}
+                        {...register("subject")}
                         placeholder="Project inquiry"
-                        required
-                        minLength="5"
-                        maxLength="200"
                         disabled={isSubmitting}
                       />
                       {errors.subject && (
-                        <div className="invalid-feedback">{errors.subject}</div>
+                        <span className="proj-field-error">{errors.subject.message}</span>
                       )}
                     </div>
 
@@ -406,19 +289,14 @@ const Projects = () => {
                       </label>
                       <textarea
                         id="message"
-                        name="message"
                         rows="5"
                         className={`form-control ${errors.message ? "is-invalid" : ""}`}
-                        value={formData.message}
-                        onChange={handleChange}
+                        {...register("message")}
                         placeholder="Tell us about your project..."
-                        required
-                        minLength="10"
-                        maxLength="1000"
                         disabled={isSubmitting}
                       ></textarea>
                       {errors.message && (
-                        <div className="invalid-feedback">{errors.message}</div>
+                        <span className="proj-field-error">{errors.message.message}</span>
                       )}
                     </div>
 
@@ -433,16 +311,6 @@ const Projects = () => {
                         <i className="bi bi-send ms-2"></i>
                       </button>
                     </div>
-
-                    {/* Status message */}
-                    {status.message && (
-                      <div
-                        className={`mt-3 text-center fw-semibold ${status.type === "success" ? "text-success" : "text-danger"
-                          }`}
-                      >
-                        {status.message}
-                      </div>
-                    )}
                   </div>
                 </form>
               </div>

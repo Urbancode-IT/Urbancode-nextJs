@@ -1102,12 +1102,17 @@
   margin-bottom: 15px;
 }
 
+.form-row-double .w-100 {
+  width: 100%;
+}
+
 .form-row-single {
   margin-bottom: 15px;
 }
 
 .visual-contact-form input,
-.visual-contact-form textarea {
+.visual-contact-form textarea,
+.visual-contact-form select {
   width: 100%;
   padding: 14px 16px;
   border-radius: 8px;
@@ -1126,13 +1131,15 @@
 }
 
 [data-theme="dark"] .visual-contact-form input,
-[data-theme="dark"] .visual-contact-form textarea {
+[data-theme="dark"] .visual-contact-form textarea,
+[data-theme="dark"] .visual-contact-form select {
   background: rgba(27, 122, 54, 0.1); /* transparent green tint for dark mode */
   color: #ffffff;
 }
 
 .visual-contact-form input:focus,
-.visual-contact-form textarea:focus {
+.visual-contact-form textarea:focus,
+.visual-contact-form select:focus {
   border-color: var(--brand-green);
   box-shadow: 0 0 0 2px rgba(27, 122, 54, 0.2);
 }
