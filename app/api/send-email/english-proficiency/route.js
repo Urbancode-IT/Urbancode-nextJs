@@ -106,7 +106,7 @@ export async function POST(req) {
     await transporter.sendMail({
       from: sender,
       to: recipient,
-      subject: \`New English Proficiency: \${name} - \${course}\`,
+      subject: `New English Proficiency: ${name} - ${course}`,
       html: htmlContent,
       replyTo: email,
     });
