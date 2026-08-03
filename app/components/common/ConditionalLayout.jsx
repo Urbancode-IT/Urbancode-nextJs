@@ -1,9 +1,9 @@
-﻿"use client";
+"use client";
 import { usePathname } from "next/navigation";
 import Navbar from "@/app/components/header/Navbar";
 import Footer from "@/app/components/footer/Footer";
 
-const HIDDEN_ROUTES = ["/english-intake"];
+const HIDDEN_ROUTES = ["/english-intake", "/english-proficiency"];
 
 export default function ConditionalLayout({ children }) {
   const pathname = usePathname();

@@ -1,4 +1,4 @@
-﻿@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Permanent+Marker&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Permanent+Marker&display=swap');
 
 .study-abroad-container {
     padding: 0;
@@ -3606,7 +3606,7 @@ box-shadow:
     background:
         radial-gradient(ellipse 85% 65% at 8% 18%, rgba(255, 255, 255, 0.38) 0%, transparent 52%),
         radial-gradient(ellipse 70% 55% at 92% 88%, rgba(56, 189, 248, 0.45) 0%, transparent 58%),
-        linear-gradient(135deg, #0c4a6e 0%, #0369a1 22%, #0ea5e9 48%, #7dd3fc 78%, #e0f2fe 100%);
+        linear-gradient(135deg, #0c4a6e 0%, #0369a1 22%, #11a1e3 48%, #7dd3fc 78%, #e0f2fe 100%);
     border-color: rgba(255, 255, 255, 0.48);
     box-shadow:
         0 28px 64px rgba(2, 132, 199, 0.28),

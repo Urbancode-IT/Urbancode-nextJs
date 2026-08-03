@@ -200,17 +200,38 @@ export async function POST(req) {
           </div>
           <div class="content">
             <h2>Hi ${name},</h2>
-            <p>Thank you for your interest in our <strong>${course}</strong> program. Your course curriculum has been successfully delivered and is attached directly to this email!</p>
+            <p>${
+              fileFound
+                ? `Thank you for your interest in our <strong>${course}</strong> program. Your course curriculum has been successfully delivered and is attached directly to this email!`
+                : `Thank you for your interest in our <strong>${course}</strong> program. Our team will reach out to you shortly with more details and the curriculum!`
+            }</p>
             
-            <p>At UrbanCode, we don't just teach code—we build careers. Our training is structured to transform beginners into highly proficient developers who are ready to excel in the tech industry.</p>
-            
-            <div class="features">
-              <div class="features-title">Why Students Choose UrbanCode:</div>
-              <div class="feature-item">🚀 <strong>Industry-Ready Syllabus:</strong> Learn in-demand skills updated for today's market.</div>
-              <div class="feature-item">🤝 <strong>1-on-1 Mentorship:</strong> Direct project guidance and reviews from senior developers.</div>
-              <div class="feature-item">💼 <strong>Placement Assistance:</strong> Real mock interviews, resume reviews, and direct hiring partner referrals.</div>
-              <div class="feature-item">💻 <strong>Interactive Cohorts:</strong> Choose between flexible online and immersive offline classes.</div>
-            </div>
+            ${
+              course.toLowerCase().includes('ielts') || course.toLowerCase().includes('english') || course.toLowerCase().includes('pte') || course.toLowerCase().includes('duolingo')
+                ? `
+                <p>At UrbanCode, we don't just prepare students for language exams—we equip them with the language skills, strategies, and confidence needed to achieve their target band score. Our training is designed to help you communicate effectively in real-life situations while mastering every component of your chosen program.</p>
+                
+                <div class="features">
+                  <div class="features-title">Why Students Choose UrbanCode:</div>
+                  <div class="feature-item">📖 <strong>Comprehensive Curriculum:</strong> Learn proven strategies through a well-structured course.</div>
+                  <div class="feature-item">🎯 <strong>Personalized Mentorship:</strong> Receive one-on-one guidance, individual feedback, and focused support from experienced trainers.</div>
+                  <div class="feature-item">📝 <strong>Regular Practice & Mock Tests:</strong> Improve your performance with realistic practice tests, detailed evaluations, and constructive feedback.</div>
+                  <div class="feature-item">💬 <strong>Flexible Learning Options:</strong> Choose between convenient online classes or engaging offline sessions based on your schedule.</div>
+                  <div class="feature-item">🌍 <strong>Practical English Development:</strong> Build the grammar, vocabulary, and communication skills needed not only for exams but also for work, migration, and everyday life.</div>
+                </div>
+                `
+                : `
+                <p>At UrbanCode, we don't just teach code—we build careers. Our training is structured to transform beginners into highly proficient developers who are ready to excel in the tech industry.</p>
+                
+                <div class="features">
+                  <div class="features-title">Why Students Choose UrbanCode:</div>
+                  <div class="feature-item">🚀 <strong>Industry-Ready Syllabus:</strong> Learn in-demand skills updated for today's market.</div>
+                  <div class="feature-item">🤝 <strong>1-on-1 Mentorship:</strong> Direct project guidance and reviews from senior developers.</div>
+                  <div class="feature-item">💼 <strong>Placement Assistance:</strong> Real mock interviews, resume reviews, and direct hiring partner referrals.</div>
+                  <div class="feature-item">💻 <strong>Interactive Cohorts:</strong> Choose between flexible online and immersive offline classes.</div>
+                </div>
+                `
+            }
 
             <p>We'd love to invite you for a <strong>Free 1-on-1 Interactive Demo Session</strong>. Let's discuss your career goals and how we can achieve them together.</p>
             
@@ -227,11 +248,21 @@ export async function POST(req) {
       </html>
     `;
 
+    const isLanguageCourse = course.toLowerCase().includes('ielts') || course.toLowerCase().includes('english') || course.toLowerCase().includes('pte') || course.toLowerCase().includes('duolingo');
+
     await transporter.sendMail({
       from: `"UrbanCode" <${sender}>`,
       to: email,
       subject: `Your ${course} Course Curriculum from UrbanCode 🚀`,
-      text: `Hi ${name},\n\nThank you for your interest in our ${course} program. Your course curriculum is attached to this email.\n\nWhy choose UrbanCode?\n- Industry-Ready Syllabus\n- 1-on-1 Mentorship\n- Placement Assistance\n- Flexible Online/Offline Cohorts\n\nBook your free interactive demo class here: https://www.urbancode.in/contact-us\n\nBest regards,\nThe UrbanCode Team`,
+      text: `Hi ${name},\n\n${
+        fileFound
+          ? `Thank you for your interest in our ${course} program. Your course curriculum is attached to this email.`
+          : `Thank you for your interest in our ${course} program. Our team will reach out to you shortly with more details and the curriculum!`
+      }\n\nWhy choose UrbanCode?\n${
+        isLanguageCourse
+          ? `- Comprehensive Curriculum\n- Personalized Mentorship\n- Regular Practice & Mock Tests\n- Flexible Learning Options\n- Practical English Development`
+          : `- Industry-Ready Syllabus\n- 1-on-1 Mentorship\n- Placement Assistance\n- Flexible Online/Offline Cohorts`
+      }\n\nBook your free interactive demo class here: https://www.urbancode.in/contact-us\n\nBest regards,\nThe UrbanCode Team`,
       html: htmlContent,
       attachments,
     });

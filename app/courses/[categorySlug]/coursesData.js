@@ -7746,7 +7746,7 @@ const coursesData = {
             icon: "bi bi-journal-text",
             defaultOpen: true,
             items: [
-              "IELTS Academic test format, band scores, assessment criteria, and target-band planning",
+              "IELTS General Training test format, band scores, assessment criteria, and target-band planning",
               "English fundamentals: sentence structure, parts of speech, punctuation, and common grammatical errors",
               "Advanced grammar: tenses, passive voice, modal verbs, conditionals, and complex sentences",
               "Vocabulary development: synonyms, collocations, academic vocabulary, and paraphrasing techniques",
@@ -7755,7 +7755,7 @@ const coursesData = {
           },
           {
             id: 2,
-            title: "Module 1: IELTS Listening",
+            title: "Module 1: IELTS Listening (GT)",
             icon: "bi bi-headphones",
             items: [
               "Core techniques: predicting answers, identifying keywords, and understanding paraphrases",
@@ -7767,7 +7767,7 @@ const coursesData = {
           },
           {
             id: 3,
-            title: "Module 2: IELTS Academic Reading",
+            title: "Module 2: IELTS Reading (GT)",
             icon: "bi bi-book",
             items: [
               "Core skills: Skimming, scanning, keyword identification, and contextual vocabulary",
@@ -7779,7 +7779,7 @@ const coursesData = {
           },
           {
             id: 4,
-            title: "Module 3: IELTS Academic Writing",
+            title: "Module 3: IELTS Writing (GT)",
             icon: "bi bi-pencil",
             items: [
               "Writing Foundations: Paragraph structure, PEEL framework, cohesion, and formal academic tone",
@@ -7791,7 +7791,7 @@ const coursesData = {
           },
           {
             id: 5,
-            title: "Module 4: IELTS Speaking",
+            title: "Module 4: IELTS Speaking (GT)",
             icon: "bi bi-mic",
             items: [
               "Part 1: Developing natural responses for familiar topics using Answer → Reason → Detail structure",
@@ -8191,228 +8191,7 @@ const coursesData = {
         ],
       },
 
-      {
-        title: "French Language",
-        desc: "Unlock global opportunities by mastering French. Develop reading, writing, and conversational fluency for lucrative international career pathways.",
-        rating: 4.9,
-        duration: "2 months",
-        students: "132",
-        img: "/images/courses-images/french.jpg",
-        aboutData: {
-          topic: "Master French — The Language of Art, Culture, and Business!",
-          content1:
-            "Start your journey to fluency in French with practical lessons in grammar, pronunciation, and conversation. Learn to communicate in everyday situations and understand French culture.",
-          content2:
-            "You’ll gain proficiency in listening, reading, and speaking while learning through videos, dialogues, and real-world scenarios. Perfect for students, travelers, and professionals.",
-        },
-        courseContentData: [
-          {
-            id: 1,
-            title: "Introduction to French",
-            icon: "bi bi-flag",
-            defaultOpen: true,
-            items: [
-              "French alphabets and pronunciation",
-              "Basic greetings and introductions",
-              "Numbers, dates, and time",
-              "Everyday expressions",
-            ],
-          },
-          {
-            id: 2,
-            title: "Grammar & Sentence Formation",
-            icon: "bi bi-pencil",
-            items: [
-              "Articles, nouns, and verbs",
-              "Gender and agreement rules",
-              "Common verb conjugations",
-              "Building simple sentences",
-            ],
-          },
-          {
-            id: 3,
-            title: "Conversational French",
-            icon: "bi bi-chat-left-dots",
-            items: [
-              "Asking and answering questions",
-              "Daily conversation practice",
-              "Travel and shopping phrases",
-              "Cultural insights",
-            ],
-          },
-          {
-            id: 4,
-            title: "Listening & Comprehension",
-            icon: "bi bi-headphones",
-            items: [
-              "Audio lessons and comprehension exercises",
-              "Dialogues and storytelling",
-              "Pronunciation correction",
-              "Reading short texts and articles",
-            ],
-          },
-        ],
 
-        whatYouLearnData: [
-          {
-            title: "Speak Basic to Intermediate French",
-            desc: "Gain confidence in everyday French conversations.",
-            icon: "bi bi-chat",
-          },
-          {
-            title: "Understand French Grammar",
-            desc: "Learn sentence structure and verb conjugations easily.",
-            icon: "bi bi-pencil",
-          },
-          {
-            title: "Improve Listening Skills",
-            desc: "Follow dialogues and understand native pronunciation.",
-            icon: "bi bi-headphones",
-          },
-          {
-            title: "Discover French Culture",
-            desc: "Learn customs, etiquette, and phrases used in real life.",
-            icon: "bi bi-globe",
-          },
-          {
-            title: "Prepare for Exams or Travel",
-            desc: "Get ready for DELF exams or visiting French-speaking countries.",
-            icon: "bi bi-award",
-          },
-        ],
-        batches: [
-          {
-            id: 1,
-            name: "Regular Classes",
-            time: "10:00 AM IST",
-            batchType: "Weekday (Mon-Fri)",
-          },
-          {
-            id: 2,
-            name: "Fast Track",
-            time: "07:00 PM IST",
-            batchType: "Weekday (Mon-Fri)",
-          },
-          {
-            id: 3,
-            name: "Placement Classes",
-            time: "11:00 AM IST",
-            batchType: "Weekend (Sat-Sun)",
-          },
-        ],
-      },
-
-      {
-        title: "German Language",
-        desc: "Fast-track your global career by mastering German. Achieve conversational excellence and grammatical precision to secure high-paying jobs in European markets.",
-        rating: 4.9,
-        duration: "2 months",
-        students: "184",
-        img: "/images/courses-images/german.jpg",
-        aboutData: {
-          topic: "Learn German — From Basics to Confident Conversation!",
-          content1:
-            "Whether for travel, study, or career, this course helps you master German pronunciation, grammar, and practical dialogues. Start from beginner level and build your way to conversational fluency.",
-          content2:
-            "You’ll practice speaking, reading, and listening through interactive lessons, exercises, and real-life contexts. Perfect for beginners or anyone looking to learn a global language with strong career prospects.",
-        },
-        courseContentData: [
-          {
-            id: 1,
-            title: "Introduction to German",
-            icon: "bi bi-flag",
-            defaultOpen: true,
-            items: [
-              "German alphabets and pronunciation",
-              "Common greetings and phrases",
-              "Numbers, colors, and days of the week",
-              "Introducing yourself",
-            ],
-          },
-          {
-            id: 2,
-            title: "Grammar & Sentence Structure",
-            icon: "bi bi-pencil-square",
-            items: [
-              "Nouns, articles, and gender",
-              "Verb conjugations and tenses",
-              "Forming simple and compound sentences",
-              "Common prepositions and connectors",
-            ],
-          },
-          {
-            id: 3,
-            title: "Conversational German",
-            icon: "bi bi-chat-left-quote",
-            items: [
-              "Everyday conversations and roleplays",
-              "Shopping, travel, and dining phrases",
-              "Cultural etiquette and expressions",
-              "Listening comprehension practice",
-            ],
-          },
-          {
-            id: 4,
-            title: "Practical Application",
-            icon: "bi bi-briefcase",
-            items: [
-              "Real-life speaking practice",
-              "Pronunciation drills and dialogues",
-              "Reading short texts and emails",
-              "Writing simple messages and paragraphs",
-            ],
-          },
-        ],
-
-        whatYouLearnData: [
-          {
-            title: "Speak Everyday German",
-            desc: "Engage in common conversations confidently.",
-            icon: "bi bi-chat",
-          },
-          {
-            title: "Understand Grammar Easily",
-            desc: "Master sentence structure and common verb forms.",
-            icon: "bi bi-pencil",
-          },
-          {
-            title: "Develop Listening & Reading Skills",
-            desc: "Improve comprehension through interactive exercises.",
-            icon: "bi bi-headphones",
-          },
-          {
-            title: "Gain Cultural Awareness",
-            desc: "Learn how to communicate respectfully in German-speaking regions.",
-            icon: "bi bi-globe",
-          },
-          {
-            title: "Prepare for Goethe Exams or Work Abroad",
-            desc: "Get ready for recognized language certification and career opportunities.",
-            icon: "bi bi-award",
-          },
-        ],
-        batches: [
-          {
-            id: 1,
-            name: "Regular Classes",
-            time: "10:00 AM IST",
-            batchType: "Weekday (Mon-Fri)",
-          },
-          {
-            id: 2,
-            name: "Fast Track",
-            time: "07:00 PM IST",
-            batchType: "Weekday (Mon-Fri)",
-          },
-          {
-            id: 3,
-            name: "Placement Classes",
-            time: "11:00 AM IST",
-            batchType: "Weekend (Sat-Sun)",
-          },
-        ],
-      },
-      
     ],
   },
 

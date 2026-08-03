@@ -1153,7 +1153,7 @@ Duolingo: {
                                         <div className="d-flex flex-wrap gap-3 align-items-center">
                                             <button
                                                 className="btn-prof-enquire prof-glass-btn m-0"
-                                                onClick={() => handleEnquireClick(activeProficiency, `Enroll in ${activeProficiency} Course`)}
+                                                onClick={() => handleEnquireClick(activeProficiency, `English Proficiency`)}
                                             >
                                                 Enroll with us now!
                                             </button>
@@ -1205,7 +1205,7 @@ Duolingo: {
                                                         <button 
                                                             className="btn rounded-pill w-100 fw-bold shadow-sm course-enroll-btn py-2" 
                                                             style={{ background: 'linear-gradient(135deg, #001B3B, #004B8B)', color: 'white', letterSpacing: '0.5px' }}
-                                                            onClick={() => handleEnquireClick(activeProficiency, `Enroll in Complete ${activeProficiency} Course`)}
+                                                            onClick={() => handleEnquireClick(activeProficiency, `English Proficiency`)}
                                                         >
                                                             Enroll Now
                                                         </button>
@@ -1239,7 +1239,7 @@ Duolingo: {
                                                         <button 
                                                             className="btn rounded-pill w-100 fw-bold shadow-sm course-enroll-btn py-2" 
                                                             style={{ background: 'linear-gradient(135deg, #005050, #00B0B0)', color: 'white', letterSpacing: '0.5px' }}
-                                                            onClick={() => handleEnquireClick(activeProficiency, `Enroll in Focused Training for ${activeProficiency}`)}
+                                                            onClick={() => handleEnquireClick(activeProficiency, `English Proficiency`)}
                                                         >
                                                             Enroll Now
                                                         </button>
@@ -1273,7 +1273,7 @@ Duolingo: {
                                                         <button 
                                                             className="btn rounded-pill w-100 fw-bold shadow-sm course-enroll-btn py-2" 
                                                             style={{ background: 'linear-gradient(135deg, #461379, #9653D9)', color: 'white', letterSpacing: '0.5px' }}
-                                                            onClick={() => handleEnquireClick(activeProficiency, `Enroll in Crash Course for ${activeProficiency}`)}
+                                                            onClick={() => handleEnquireClick(activeProficiency, `English Proficiency`)}
                                                         >
                                                             Enroll Now
                                                         </button>
