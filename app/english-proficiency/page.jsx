@@ -6,9 +6,9 @@ import { FormPhoneInput } from "@/app/components/common/FormPhoneInput";
 import Link from "next/link";
 
 const courseOptions = [
-  "Study Abroad - IELTS",
-  "Study Abroad - PTE",
-  "Study Abroad - Duolingo"
+  "IELTS academics",
+  "IELTS General Training",
+  "English Language proficiency"
 ];
 const modeOptions = ["Online", "Offline", "Either"];
 
@@ -17,7 +17,7 @@ const BLANK = {
   email: "", 
   phone: "", 
   pinCode: "", 
-  course: "Study Abroad - IELTS", 
+  course: "IELTS academics", 
   mode: "Online", 
   requirements: "" 
 };

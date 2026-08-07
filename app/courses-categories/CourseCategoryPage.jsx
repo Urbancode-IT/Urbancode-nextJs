@@ -140,7 +140,7 @@ const courses = [
     desc: "Build strong communication skills and master global languages like English, French, and German.",
     img: languagesImg,
     link: "/courses/languages",
-    badge: "5 Courses",
+    badge: "4 Courses",
   },
 ];
 

@@ -7650,6 +7650,7 @@ const coursesData = {
         students: "50",
         img: "/images/courses-images/ielts.jpg",
         isNew: true,
+        curriculumUrls: ["/curriculum/UC_IELTS_Academic Curriculum.pdf"],
         subCourses: [
           {
             name: "Complete IELTS",
