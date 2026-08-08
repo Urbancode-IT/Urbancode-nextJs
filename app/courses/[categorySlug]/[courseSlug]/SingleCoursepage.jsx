@@ -208,6 +208,30 @@ const getToolsForCourse = (title) => {
             { id: 10, name: "JSON", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/json/json-original.svg" },
         ];
     }
+    if (t.includes("data engineering with microsoft azure")) {
+        return [
+            { id: 1, name: "Azure", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/azure/azure-original.svg" },
+            { id: 2, name: "SQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" },
+            { id: 3, name: "Python", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
+            { id: 4, name: "Synapse", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/azure/azure-original.svg" },
+            { id: 5, name: "Spark", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/apachespark/apachespark-original.svg" },
+            { id: 6, name: "Databricks", icon: "https://api.iconify.design/simple-icons:databricks.svg?color=%23FF3621" },
+            { id: 7, name: "ADF", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/azure/azure-original.svg" },
+            { id: 8, name: "GitHub", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
+        ];
+    }
+    if (t.includes("data analyst with microsoft azure")) {
+        return [
+            { id: 1, name: "Azure", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/azure/azure-original.svg" },
+            { id: 2, name: "SQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" },
+            { id: 3, name: "Python", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
+            { id: 4, name: "Pandas", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" },
+            { id: 5, name: "Power BI", icon: "https://cdn.svgporn.com/logos/microsoft-power-bi.svg" },
+            { id: 6, name: "ADF", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/azure/azure-original.svg" },
+            { id: 7, name: "Excel", icon: "https://api.iconify.design/simple-icons:microsoftexcel.svg?color=%23217346" },
+            { id: 8, name: "GitHub", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
+        ];
+    }
     if (t.includes("python") || t.includes("data") || t.includes("ai") || t.includes("machine")) {
         return [
             { id: 1, name: "Python", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },

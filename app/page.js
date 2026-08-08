@@ -2,6 +2,8 @@ import dynamic from 'next/dynamic';
 import NewHeroSection from './components/Home/NewHeroSection';
 import BannerSlider from './components/common/BannerSlider';
 
+import FreedomSalePromo from './components/FreedomSale/FreedomSalePromoWrapper';
+
 // Branch announcement popup (client-only, uses sessionStorage)
 const BranchAnnouncement = dynamic(() => import('./components/BranchAnnouncement/BranchAnnouncement'));
 
@@ -179,6 +181,7 @@ export default function HomePage() {
 `
         }}
       />
+      {/* <FreedomSalePromo /> */}
       <div className="home-section">
         <NewHeroSection />
       </div>
@@ -220,7 +223,7 @@ export default function HomePage() {
       <div className="home-section">
         <FaqBootstrap />
       </div>
-      <div className="home-section">
+      <div id="featured-courses" className="home-section">
         <TrendingCourses />
       </div>
     </>

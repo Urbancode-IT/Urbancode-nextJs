@@ -888,3 +888,26 @@
     margin-top: -9px !important;
   }
 }
+
+/* Shimmer for hero primary button */
+.hero-btn-primary {
+  position: relative;
+  overflow: hidden;
+}
+.hero-btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
+  animation: hero-btn-shimmer 2s infinite linear;
+  transform: skewX(-20deg);
+  pointer-events: none;
+  z-index: 1;
+}
+@keyframes hero-btn-shimmer {
+  0% { left: -100%; }
+  100% { left: 200%; }
+}

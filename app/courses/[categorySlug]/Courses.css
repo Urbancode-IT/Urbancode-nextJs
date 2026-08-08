@@ -847,3 +847,32 @@
   .ring-item { width: 30px; height: 30px; }
   .ring-1 .ring-item { transform: rotate(calc(var(--index) * (360deg / var(--total)))) translateY(-110px); }
 }
+
+/* ── Course Tag Pills ── */
+.course-tags-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.course-tag-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  background: linear-gradient(135deg, rgba(0, 120, 215, 0.08), rgba(0, 120, 215, 0.15));
+  color: #0050a0;
+  border: 1px solid rgba(0, 120, 215, 0.25);
+  transition: background 0.2s ease, transform 0.15s ease;
+  white-space: nowrap;
+}
+
+.course-tag-pill:hover {
+  background: linear-gradient(135deg, rgba(0, 120, 215, 0.18), rgba(0, 120, 215, 0.28));
+  transform: translateY(-1px);
+}
+

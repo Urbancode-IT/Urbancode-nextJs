@@ -91,14 +91,14 @@ const courses = [
     desc: "Unlock lucrative career opportunities with our AI and Data Science certification. Master Generative AI, machine learning, deep learning, NLP, and Python to build predictive models.",
     img: dataScienceImg,
     link: "/courses/ai-and-data-science",
-    badge: "8 Courses",
+    badge: "9 Courses",
   },
   {
     title: "Data Engineering",
     desc: "Learn to architect scalable data pipelines. Our Data Engineering courses cover big data frameworks, Hadoop, Spark, and cloud solutions for modern data ecosystems.",
     img: dataengineeringImg,
     link: "/courses/data-engineering",
-    badge: "1 Course",
+    badge: "2 Courses",
   },
   {
     title: "Database",

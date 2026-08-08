@@ -27,7 +27,7 @@ const BookDemoWidget = () => {
                 className="book-demo-widget"
                 initial={{ opacity: 0, x: 100 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 1, type: "spring", stiffness: 260, damping: 20 }}
+                transition={{ delay: 4.5, type: "spring", stiffness: 260, damping: 20 }}
                 drag
                 dragConstraints={isMounted ? { 
                     left: -window.innerWidth + 180, 

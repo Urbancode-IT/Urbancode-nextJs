@@ -1,0 +1,434 @@
+/* Freedom Sale — fixed overlays only (no layout impact) */
+
+.freedom-sale-intro-wrapper {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.freedom-sale-panel {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100vw; /* Use full width for perfect blur rendering */
+  /* Dark, blurry transparent background */
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  pointer-events: auto;
+  will-change: transform;
+}
+
+.left-panel {
+  left: 0;
+  clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
+}
+
+.right-panel {
+  left: 0; /* Align to left like the other panel for exact alignment */
+  clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
+}
+
+/* Galaxy scattered effect (burst lines) */
+.freedom-burst {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150vw;
+  height: 150vw;
+  transform: translate(-50%, -50%);
+  background: 
+    repeating-conic-gradient(
+      rgba(255, 255, 255, 0.1) 0deg 1deg,
+      transparent 2deg 15deg
+    );
+  animation: burst-spin 60s linear infinite;
+  mask-image: radial-gradient(circle at center, transparent 15%, black 45%, transparent 75%);
+  -webkit-mask-image: radial-gradient(circle at center, transparent 15%, black 45%, transparent 75%);
+  z-index: 9999;
+  pointer-events: none;
+}
+
+@keyframes burst-spin {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+
+.freedom-sale-intro-inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 90vw;
+  max-width: 1000px;
+  z-index: 10000;
+  pointer-events: auto;
+  will-change: transform, opacity, filter;
+}
+
+.freedom-sale-intro-title {
+  margin: 0 auto;
+  font-family: var(--font-inter, 'Inter', sans-serif);
+  font-weight: 900;
+  font-size: clamp(4rem, 15vw, 10rem);
+  line-height: 0.9;
+  text-transform: uppercase;
+  color: transparent;
+}
+
+.freedom-text,
+.sale-text {
+  position: relative;
+  display: inline-block;
+}
+
+/* FREEDOM - Indian Flag Gradient + Shine */
+.freedom-text::before {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    linear-gradient(110deg, transparent 20%, rgba(255,255,255,0.9) 30%, transparent 40%),
+    linear-gradient(
+    180deg,
+    #ff4b1f 0%,
+    #ff7043 15%,
+    #fff7f0 38%,
+    #ffffff 55%,
+    #b8e8d5 72%,
+    #159447 88%,
+    #006b2c 100%
+  );
+  background-size: 200% 100%, 100% 100%;
+  background-position: 200% 0, 0 0;
+  background-repeat: no-repeat;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  z-index: 2;
+  animation: freedom-text-shine 3s infinite linear;
+}
+
+@keyframes freedom-text-shine {
+  0% { background-position: 200% 0, 0 0; }
+  100% { background-position: -200% 0, 0 0; }
+}
+
+/* SALE - Metallic Silver Gradient */
+.sale-text::before {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, #FFFFFF 0%, #999999 50%, #FFFFFF 51%, #CCCCCC 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  z-index: 2;
+}
+
+/* Heavy black 3D shadow and white stroke for BOTH */
+.freedom-text::after,
+.sale-text::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  color: transparent;
+  -webkit-text-stroke: 4px #FFFFFF;
+  text-shadow: 
+    1px 1px 0px #000,
+    2px 2px 0px #000,
+    3px 3px 0px #000,
+    4px 4px 0px #000,
+    5px 5px 0px #000,
+    6px 6px 0px #000,
+    7px 7px 0px #000,
+    8px 8px 0px #000,
+    9px 9px 0px #000,
+    10px 10px 0px #000,
+    15px 15px 15px rgba(0,0,0,0.8);
+  z-index: 1;
+}
+
+.freedom-sale-intro-sub {
+  margin: clamp(16px, 3vw, 24px) 0 5px;
+  font-size: clamp(20px, 4.5vw, 32px);
+  font-weight: 800;
+  color: #fff;
+  text-shadow: 0 4px 15px rgba(0,0,0,0.8);
+  letter-spacing: -0.02em;
+}
+
+.freedom-sale-intro-desc {
+  margin: 0;
+  font-size: clamp(14px, 3vw, 20px);
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.85);
+  text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+}
+
+/* ─── Sticky banner ─── */
+.freedom-sale-banner {
+  position: fixed;
+  top: var(--site-header-height, 71px);
+  left: 50%;
+  z-index: 9998;
+  width: min(720px, 95%);
+  max-width: 720px;
+  box-sizing: border-box;
+  padding: 0;
+  pointer-events: auto;
+  opacity: 0;
+  will-change: transform, opacity, filter;
+}
+
+.freedom-sale-banner-inner {
+  display: flex;
+  align-items: center;
+  gap: clamp(10px, 2vw, 16px);
+  padding: clamp(12px, 2.5vw, 16px) clamp(14px, 3vw, 20px);
+  border-radius: 22px;
+  background: linear-gradient(
+    135deg,
+    rgba(15, 23, 42, 0.88) 0%,
+    rgba(6, 40, 30, 0.82) 100%
+  );
+  backdrop-filter: blur(20px) saturate(1.4);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  border: 1px solid rgba(0, 181, 111, 0.45);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.06) inset,
+    0 8px 32px rgba(0, 0, 0, 0.35),
+    0 0 48px rgba(0, 181, 111, 0.15);
+}
+
+.freedom-sale-banner-inner.freedom-sale-glow-pulse {
+  animation: freedom-banner-glow-once 0.9s ease-out 0.35s 1;
+}
+
+@keyframes freedom-banner-glow-once {
+  0% {
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.06) inset,
+      0 8px 32px rgba(0, 0, 0, 0.35),
+      0 0 24px rgba(0, 181, 111, 0.12);
+  }
+  50% {
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.08) inset,
+      0 12px 40px rgba(0, 0, 0, 0.4),
+      0 0 56px rgba(0, 232, 138, 0.35);
+  }
+  100% {
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.06) inset,
+      0 8px 32px rgba(0, 0, 0, 0.35),
+      0 0 48px rgba(0, 181, 111, 0.15);
+  }
+}
+
+.freedom-sale-banner-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.freedom-sale-banner-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: clamp(10px, 2.2vw, 11px);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #34d399;
+  margin-bottom: 2px;
+}
+
+.freedom-sale-intro-badge-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #00b56f;
+  box-shadow: 0 0 12px #00e88a;
+  animation: badge-dot-pulse 1.5s infinite;
+}
+
+@keyframes badge-dot-pulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(0, 232, 138, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 6px rgba(0, 232, 138, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(0, 232, 138, 0);
+  }
+}
+
+.freedom-sale-banner-offer {
+  margin: 0;
+  font-size: clamp(13px, 2.8vw, 15px);
+  font-weight: 600;
+  line-height: 1.35;
+  color: rgba(255, 255, 255, 0.92);
+  letter-spacing: -0.02em;
+}
+
+.freedom-sale-banner-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.freedom-sale-cta {
+  display: inline-flex;
+  position: relative;
+  overflow: hidden;
+  align-items: center;
+  gap: 6px;
+  padding: clamp(8px, 2vw, 10px) clamp(14px, 3vw, 18px);
+  border-radius: 999px;
+  font-size: clamp(12px, 2.5vw, 14px);
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  /* Tricolor Angled Gradient for CTA */
+  background: linear-gradient(135deg, #FF9933 0%, #FFFFFF 50%, #138808 100%);
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0, 181, 111, 0.35);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+  will-change: transform;
+  /* Dark text for better contrast against white middle */
+  color: #0f172a;
+}
+
+/* Shimmer animation on CTA */
+.freedom-sale-cta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
+  animation: banner-shimmer 2s infinite linear;
+  transform: skewX(-20deg);
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes banner-shimmer {
+  0% { left: -100%; }
+  100% { left: 200%; }
+}
+
+.freedom-sale-cta:hover {
+  transform: scale(1.04);
+  box-shadow: 0 6px 24px rgba(0, 232, 138, 0.45);
+  filter: brightness(1.05);
+}
+
+.freedom-sale-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: none;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.freedom-sale-close:hover {
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+  transform: scale(1.05);
+}
+
+.freedom-sale-banner-spacer {
+  display: none;
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .freedom-sale-banner {
+    width: 90%;
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  .freedom-sale-banner-spacer {
+    display: block !important;
+    height: 105px; /* banner height + margins approx */
+    width: 100%;
+  }
+
+  .freedom-sale-banner {
+    position: fixed;
+    top: var(--site-header-height, 71px) !important;
+    bottom: auto;
+    left: 0 !important;
+    right: 0 !important;
+    margin: 12px auto 0 auto;
+    width: 95%;
+    max-width: 95%;
+    z-index: 9998;
+  }
+
+  .freedom-sale-banner-inner {
+    flex-wrap: wrap;
+    border-radius: 20px;
+  }
+
+  .freedom-sale-banner-text {
+    flex: 1 1 100%;
+  }
+
+  .freedom-sale-banner-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .freedom-sale-cta {
+    flex: 1;
+    justify-content: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .freedom-sale-banner-inner.freedom-sale-glow-pulse {
+    animation: none;
+  }
+
+  .freedom-burst {
+    display: none;
+  }
+
+  .freedom-sale-intro-wrapper,
+  .freedom-sale-panel,
+  .freedom-sale-banner,
+  .freedom-sale-intro-inner {
+    transition: none !important;
+  }
+}

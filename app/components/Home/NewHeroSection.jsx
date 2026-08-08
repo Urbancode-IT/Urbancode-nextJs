@@ -6,26 +6,7 @@ import { useRouter } from 'next/navigation';
 import './NewHeroSection.css';
 import EnquiryFormModal from '../common/EnquiryFormModal';
 
-/* ─── Flight Loading Overlay ─── */
-const FlightOverlay = ({ onDone }) => {
-  useEffect(() => {
-    const t = setTimeout(onDone, 1800);
-    return () => clearTimeout(t);
-  }, [onDone]);
-
-  return (
-    <div className="flight-overlay">
-      <div className="flight-inner">
-        <svg className="flight-plane" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M4 32L28 8l4 12 20-8-10 20 10 4-24 8 4-12L4 32z" fill="#00B56F" opacity="0.9"/>
-          <path d="M28 8L32 20M32 20L52 12M32 20L42 40M42 40L52 16M42 40L18 48M18 48L32 20M18 48L22 36" stroke="#004F30" strokeWidth="1.5" strokeLinecap="round"/>
-        </svg>
-        <div className="flight-trail" />
-        <p className="flight-label">Preparing your study abroad journey…</p>
-      </div>
-    </div>
-  );
-};
+import FlightTransition from '../animations/FlightTransition';
 
 const HeroTop = ({ onEnrollClick, onStudyAbroadClick }) => {
   return (
@@ -201,11 +182,10 @@ export default function NewHeroSection() {
 
   const handleStudyAbroadClick = useCallback(() => {
     setShowFlightOverlay(true);
-  }, []);
-
-  const handleFlightDone = useCallback(() => {
-    setShowFlightOverlay(false);
-    router.push('/study-abroad');
+    setTimeout(() => {
+      setShowFlightOverlay(false);
+      router.push('/study-abroad');
+    }, 3200);
   }, [router]);
 
   const updateScrollButtons = React.useCallback(() => {
@@ -285,7 +265,7 @@ export default function NewHeroSection() {
 
   return (
     <>
-      {showFlightOverlay && <FlightOverlay onDone={handleFlightDone} />}
+      <FlightTransition isAnimating={showFlightOverlay} />
       <section className="new-hero-section">
         <div className="hero-bg-container"></div>
 

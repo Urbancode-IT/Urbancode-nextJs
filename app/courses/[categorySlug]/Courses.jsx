@@ -472,6 +472,15 @@ export default function Courses({ categorySlug }) {
                                   {course.desc}
                                 </Card.Text>
 
+                                {/* Tags */}
+                                {/* {course.tags && course.tags.length > 0 && (
+                                  <div className="course-tags-row">
+                                    {course.tags.map((tag, ti) => (
+                                      <span key={ti} className="course-tag-pill">{tag}</span>
+                                    ))}
+                                  </div>
+                                )} */}
+
                                 <div className="d-flex flex-wrap justify-content-between align-items-center mt-3 mb-2 gap-2">
                                   <div className="course-rating-pill">
                                     <Star size={14} fill="#FFD700" color="#FFD700" />
