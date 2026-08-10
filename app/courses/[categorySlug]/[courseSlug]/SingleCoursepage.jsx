@@ -210,14 +210,15 @@ const getToolsForCourse = (title) => {
     }
     if (t.includes("data engineering with microsoft azure")) {
         return [
-            { id: 1, name: "Azure", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/azure/azure-original.svg" },
-            { id: 2, name: "SQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" },
-            { id: 3, name: "Python", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
-            { id: 4, name: "Synapse", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/azure/azure-original.svg" },
-            { id: 5, name: "Spark", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/apachespark/apachespark-original.svg" },
-            { id: 6, name: "Databricks", icon: "https://api.iconify.design/simple-icons:databricks.svg?color=%23FF3621" },
-            { id: 7, name: "ADF", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/azure/azure-original.svg" },
-            { id: 8, name: "GitHub", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
+            { id: 1, name: "SQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" },
+            { id: 2, name: "Python", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
+            { id: 3, name: "Azure", icon: "/images/courses/new/azure.png" },
+            { id: 4, name: "Azure Synapse", icon: "/images/courses/new/synapse.jpg" },
+            { id: 5, name: "Azure Data Factory", icon: "/images/courses/new/azure_data.jpg" },
+            { id: 6, name: "Apache Spark", icon: "/images/courses/new/apache.webp" },
+            { id: 7, name: "PySpark", icon: "/images/courses/new/pyspark.webp" },
+            { id: 8, name: "Databricks", icon: "https://api.iconify.design/simple-icons:databricks.svg?color=%23FF3621" },
+            { id: 11, name: "Git & GitHub", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
         ];
     }
     if (t.includes("data analyst with microsoft azure")) {

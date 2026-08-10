@@ -5844,12 +5844,12 @@ const coursesData = {
         ],
       },
       {
-        title: "Data Engineering",
+        title: "Data Engineering with GCP ",
         curriculumUrls: ["/curriculum/dataengineeringcurriculum .pdf"],
         desc: "Master Data Engineering with hands-on training in Google Cloud, Apache Airflow, MySQL, and Python. Gain industry-ready skills to design, build, and maintain scalable data pipelines for modern applications.",
         rating: 5.0,
         duration: "1 month",
-        students: "556",
+        students: "56",
         img: "/images/courses/dataEng.webp",
         aboutData: {
           topic:

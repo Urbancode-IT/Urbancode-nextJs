@@ -913,6 +913,11 @@
     transition: transform 0.4s ease;
 }
 
+.nict-tool-card img.local-img-large {
+    width: 64px;
+    height: 64px;
+}
+
 .nict-tool-card:hover img {
     transform: scale(1.1);
 }

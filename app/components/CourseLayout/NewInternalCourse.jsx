@@ -232,7 +232,7 @@ const NewInternalCourse = ({ data }) => {
                             {toolsData && toolsData.map((tool, index) => (
                                 <div className="nict-tool-card" key={tool.id || index}>
                                     <div className="nict-tool-icon-box">
-                                        <img src={tool.icon} alt={tool.name} />
+                                        <img src={tool.icon} alt={tool.name} className={tool.icon.startsWith('/') ? 'local-img-large' : ''} />
                                     </div>
                                     <span className="nict-tool-name">{tool.name}</span>
                                 </div>
