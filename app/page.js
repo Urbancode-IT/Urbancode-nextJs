@@ -181,6 +181,7 @@ export default function HomePage() {
 `
         }}
       />
+    
       {/* <FreedomSalePromo /> */}
       <div className="home-section">
         <NewHeroSection />

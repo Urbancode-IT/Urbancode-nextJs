@@ -16,7 +16,7 @@
 
   /* ── Spacing / layout ─────────────────────────────────────────── */
   --site-header-height: 71px;
-  --section-gap: 60px;
+  --section-gap: 40px;
   --section-gap-mobile: 40px;
 
   /* ── Bootstrap overrides ─────────────────────────────────────── */
@@ -51,8 +51,8 @@
   --section-title-color:         #1a202c;
   --section-title-lh:            1.2;
   --section-title-ls:            -0.5px;
-  --section-title-margin-top:    10px;
-  --section-title-margin-bottom: 16px;
+  --section-title-margin-top:    0px;
+  --section-title-margin-bottom: 20px;
 
   /* ── Form Design System ───────────────────────────────────────── */
   --form-bg: linear-gradient(180deg, #e3f0eb 0%, #f3f5f3 100%);

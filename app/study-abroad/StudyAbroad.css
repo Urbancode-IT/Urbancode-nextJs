@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Permanent+Marker&display=swap');
+﻿@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Permanent+Marker&display=swap');
 
 .study-abroad-container {
     padding: 0;
@@ -6614,7 +6614,7 @@ textarea{
 
     .study-abroad-container .study-premium-override .hero-title-line1,
     .study-abroad-container .study-premium-override .hero-title-line2 {
-        font-size: 73px;
+        font-size: 70px !important;
         letter-spacing: -2.5px;
     }
 

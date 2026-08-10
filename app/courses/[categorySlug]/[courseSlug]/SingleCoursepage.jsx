@@ -214,7 +214,7 @@ const getToolsForCourse = (title) => {
             { id: 2, name: "Python", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
             { id: 3, name: "Azure", icon: "/images/courses/new/azure.png" },
             { id: 4, name: "Azure Synapse", icon: "/images/courses/new/synapse.jpg" },
-            { id: 5, name: "Azure Data Factory", icon: "/images/courses/new/azure_data.jpg" },
+            { id: 5, name: "Azure Data Factory", icon: "/images/courses/new/adf.webp" },
             { id: 6, name: "Apache Spark", icon: "/images/courses/new/apache.webp" },
             { id: 7, name: "PySpark", icon: "/images/courses/new/pyspark.webp" },
             { id: 8, name: "Databricks", icon: "https://api.iconify.design/simple-icons:databricks.svg?color=%23FF3621" },
@@ -228,7 +228,7 @@ const getToolsForCourse = (title) => {
             { id: 3, name: "Python", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
             { id: 4, name: "Pandas", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" },
             { id: 5, name: "Power BI", icon: "https://cdn.svgporn.com/logos/microsoft-power-bi.svg" },
-            { id: 6, name: "ADF", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/azure/azure-original.svg" },
+            { id: 6, name: "ADF", icon: "/images/courses/new/adf.webp" },
             { id: 7, name: "Excel", icon: "https://api.iconify.design/simple-icons:microsoftexcel.svg?color=%23217346" },
             { id: 8, name: "GitHub", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
         ];

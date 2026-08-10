@@ -13,6 +13,7 @@ const FREEDOM_SALE_LANDING = '/#featured-courses';
 export default function FreedomSalePromo() {
   const [phase, setPhase] = useState('checking');
   const [bannerGlow, setBannerGlow] = useState(false);
+  const bgPanelRef = useRef(null);
   const leftPanelRef = useRef(null);
   const rightPanelRef = useRef(null);
   const introInnerRef = useRef(null);
@@ -40,7 +41,8 @@ export default function FreedomSalePromo() {
 
       // Initial state
       gsap.set(introInnerRef.current, { opacity: 0, scale: 0.5, xPercent: -50, yPercent: -50, y: 30 });
-      gsap.set([leftPanelRef.current, rightPanelRef.current], { xPercent: 0 });
+      gsap.set(bgPanelRef.current, { opacity: 1 });
+      gsap.set([leftPanelRef.current, rightPanelRef.current], { opacity: 0, xPercent: 0 });
 
       // Animate text in
       tl.to(introInnerRef.current, {
@@ -70,13 +72,15 @@ export default function FreedomSalePromo() {
         duration: 0.5,
         ease: 'power3.in',
       })
-      // Split screen exit
-      .to('.freedom-burst', { opacity: 0, duration: 0.3 }, "<")
+      // Split screen exit restored perfectly seamlessly
+      .to(['.freedom-burst', '.freedom-particles'], { opacity: 0, duration: 0.3 }, "<")
+      .set(bgPanelRef.current, { opacity: 0 }, "-=0.2")
+      .set([leftPanelRef.current, rightPanelRef.current], { opacity: 1 }, "<")
       .to(leftPanelRef.current, {
         xPercent: -100,
         duration: 0.8,
         ease: 'power3.inOut',
-      }, "-=0.2")
+      }, "<")
       .to(rightPanelRef.current, {
         xPercent: 100,
         duration: 0.8,
@@ -194,12 +198,30 @@ export default function FreedomSalePromo() {
     <div ref={containerRef}>
       {phase === 'intro' && (
         <div className="freedom-sale-intro-wrapper" aria-live="polite">
-          <div ref={leftPanelRef} className="freedom-sale-panel left-panel"></div>
-          <div ref={rightPanelRef} className="freedom-sale-panel right-panel"></div>
+          <div ref={bgPanelRef} className="freedom-sale-panel full-panel"></div>
+          <div ref={leftPanelRef} className="freedom-sale-panel left-panel" style={{opacity: 0}}></div>
+          <div ref={rightPanelRef} className="freedom-sale-panel right-panel" style={{opacity: 0}}></div>
           
-          <div className="freedom-burst"></div>
+          <div className="freedom-burst">
+             <div className="burst-layer layer-1"></div>
+             <div className="burst-layer layer-2"></div>
+          </div>
+
+          <div className="freedom-particles">
+            <div className="particle orange-star p1"></div>
+            <div className="particle white-star p2"></div>
+            <div className="particle orange-star p3"></div>
+            <div className="particle green-star p4"></div>
+            <div className="particle green-star p5"></div>
+            <div className="particle white-star p6"></div>
+            <div className="particle orange-star p7"></div>
+            <div className="particle green-star p8"></div>
+            <div className="particle white-star p9"></div>
+          </div>
 
           <div ref={introInnerRef} className="freedom-sale-intro-inner">
+            <img src="/images/courses/new/leftsideflag.png" alt="Left Flag" className="freedom-flag left-flag" />
+            <img src="/images/courses/new/rightsideflag.png" alt="Right Flag" className="freedom-flag right-flag" />
             <h2 className="freedom-sale-intro-title">
               <span className="freedom-text" data-text="FREEDOM">FREEDOM</span>
               <br />
@@ -208,7 +230,7 @@ export default function FreedomSalePromo() {
             <div className="freedom-sale-intro-sub">
               Massive Discounts on All Courses!
             </div>
-            <p className="freedom-sale-intro-desc">Flat 50% OFF on AI &amp; Full Stack Courses</p>
+            <p className="freedom-sale-intro-desc">Flat <span className="highlight-orange">50% OFF</span> on AI &amp; Full Stack Courses</p>
           </div>
         </div>
       )}

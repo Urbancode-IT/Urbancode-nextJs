@@ -12,15 +12,14 @@ const HeroTop = ({ onEnrollClick, onStudyAbroadClick }) => {
   return (
     <div className="hero-top">
       <div className="new-hero-title">
-        <span className="hero-title-line1"> The right skill today </span>
+        <span className="hero-title-line1"> From job ready tech skills </span>
         <br />
-        <span className="hero-title-line2"> for the right career tomorrow</span>
+        <span className="hero-title-line2"> to overseas education </span>
         {/* <br/> */}
         {/* <span className="hero-title-line3"> tomorrow</span> */}
       </div>
       <p className="new-hero-description">
-        Master in-demand IT skills with expert-led training, hands-on projects, certification programs, and career-focused learning all in one place.
-      </p>
+Explore AI-powered courses with placement guarantee and overseas education consulting with expert guidance. One place for every path forward!      </p>
       <div className="hero-buttons">
         {/* Enroll Now first (primary style) */}
         <button onClick={onEnrollClick} className="hero-btn-primary">
@@ -81,6 +80,22 @@ const cardsData = [
     duration: '14 Weeks • Hands-on',
     gradient: 'linear-gradient(130.48deg, #02284F 2.78%, #036AD5 122.15%)',
     link: '/courses/automation/microsoft-power-automate'
+  },
+  {
+    level: 'ADVANCED',
+    title: 'Data Engineering with Azure',
+    desc: 'Build scalable data pipelines on Microsoft Azure using Synapse, ADF, and Databricks.',
+    duration: '12 Weeks • Data Engineering',
+    gradient: 'linear-gradient(129.31deg, #025043 -2.98%, #048C7F 118.56%)',
+    link: '/courses/data-engineering/data-engineering-with-microsoft-azure'
+  },
+  {
+    level: 'ADVANCED',
+    title: 'Data Analyst with Azure',
+    desc: 'Become a Data Analyst with Azure. Master SQL, Python, ADF, and Power BI.',
+    duration: '12 Weeks • Data Analyst',
+    gradient: 'linear-gradient(129.99deg, #8A2B06 -3.08%, #DE5C24 119.93%)',
+    link: '/courses/data-science/data-analyst-with-microsoft-azure'
   }
 ];
 
@@ -166,8 +181,6 @@ const HeroBottom = ({
   );
 };
 
-const CARD_WIDTH = 260;
-const CARD_GAP = 16;
 
 export default function NewHeroSection() {
   const router = useRouter();
@@ -202,14 +215,14 @@ export default function NewHeroSection() {
       const wrapper = carouselWrapperRef.current;
       const width = window.innerWidth;
 
-      if (!wrapper || width > 1024) {
-        setCardsPerView(null); // desktop: CSS grid handles layout
-      } else {
-        // Subtract the 48px of wrapper padding (24px each side) used for arrows
-        const available = wrapper.clientWidth - 48;
-        const count = Math.max(1, Math.floor((available + CARD_GAP) / (CARD_WIDTH + CARD_GAP)));
-        setCardsPerView(count);
-      }
+      if (!wrapper) return;
+      
+      const arrowSpace = width > 1024 ? 104 : 48; // 36px arrow + 16px gap = 52px each side on desktop, 48px padding on mobile
+      const available = wrapper.clientWidth - arrowSpace;
+      const cardWidth = (width >= 1025 && width <= 1439) ? 230 : 260;
+      const cardGap = width > 1024 ? (width <= 1439 ? 16 : 20) : 14;
+      const count = Math.max(1, Math.floor((available + cardGap) / (cardWidth + cardGap)));
+      setCardsPerView(count);
       updateScrollButtons();
     };
 
@@ -223,10 +236,14 @@ export default function NewHeroSection() {
   React.useEffect(() => {
     const handleAutoScroll = () => {
       const slider = carouselRef.current;
-      if (window.innerWidth > 1024 || isHovered || !slider) return;
+      if (isHovered || !slider) return;
 
+      const width = window.innerWidth;
+      const cardWidth = (width >= 1025 && width <= 1439) ? 230 : 260;
+      const cardGap = width > 1024 ? (width <= 1439 ? 16 : 20) : 14;
+      
       // How far each step is — one card width + gap
-      const step = CARD_WIDTH + CARD_GAP;
+      const step = cardWidth + cardGap;
       const maxScroll = slider.scrollWidth - slider.clientWidth;
 
       // If we're at (or near) the end, jump back to start
@@ -252,16 +269,23 @@ export default function NewHeroSection() {
   const handleScrollCards = (direction) => {
     const slider = carouselRef.current;
     if (!slider) return;
-    const amount = (CARD_WIDTH + CARD_GAP) * (cardsPerView || 1);
+    const width = window.innerWidth;
+    const cardWidth = (width >= 1025 && width <= 1439) ? 230 : 260;
+    const cardGap = width > 1024 ? (width <= 1439 ? 16 : 20) : 14;
+    
+    const amount = (cardWidth + cardGap) * (cardsPerView || 1);
     slider.scrollBy({ left: direction * amount, behavior: 'smooth' });
     setTimeout(updateScrollButtons, 350);
   };
 
   // cardsContainerStyle limits the scroll-track width to exactly N whole cards
-  const cardsContainerStyle =
-    cardsPerView != null
-      ? { width: cardsPerView * (CARD_WIDTH + CARD_GAP) - CARD_GAP }
-      : undefined;
+  let cardsContainerStyle = undefined;
+  if (cardsPerView != null && typeof window !== 'undefined') {
+    const w = window.innerWidth;
+    const cWidth = (w >= 1025 && w <= 1439) ? 230 : 260;
+    const cGap = w > 1024 ? (w <= 1439 ? 16 : 20) : 14;
+    cardsContainerStyle = { width: cardsPerView * (cWidth + cGap) - cGap };
+  }
 
   return (
     <>
