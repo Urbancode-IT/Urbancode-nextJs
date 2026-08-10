@@ -95,7 +95,7 @@ const cardsData = [
     desc: 'Become a Data Analyst with Azure. Master SQL, Python, ADF, and Power BI.',
     duration: '12 Weeks • Data Analyst',
     gradient: 'linear-gradient(129.99deg, #8A2B06 -3.08%, #DE5C24 119.93%)',
-    link: '/courses/data-science/data-analyst-with-microsoft-azure'
+    link: '/courses/ai-and-data-science/data-analyst-with-microsoft-azure'
   }
 ];
 
