@@ -834,7 +834,19 @@
     gap: 22px;
   }
 
+  /* Monitor: nav arrows stay visible in the flex row to reach the 5th card */
+  .new-hero-section:not(.study-premium-override) .hero-cards-nav {
+    display: flex;
+    position: static;
+    transform: none;
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+  }
+
   .new-hero-section:not(.study-premium-override) .hero-card {
+    flex: 0 0 290px;
+    width: 290px;
     min-height: 312px;
     height: 312px;
     max-height: 312px;

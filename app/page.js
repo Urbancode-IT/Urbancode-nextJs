@@ -182,7 +182,7 @@ export default function HomePage() {
         }}
       />
     
-      {/* <FreedomSalePromo /> */}
+       {/* <FreedomSalePromo />  */}
       <div className="home-section">
         <NewHeroSection />
       </div>

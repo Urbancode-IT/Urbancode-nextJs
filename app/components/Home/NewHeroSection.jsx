@@ -219,9 +219,11 @@ export default function NewHeroSection() {
       
       const arrowSpace = width > 1024 ? 104 : 48; // 36px arrow + 16px gap = 52px each side on desktop, 48px padding on mobile
       const available = wrapper.clientWidth - arrowSpace;
-      const cardWidth = (width >= 1025 && width <= 1439) ? 230 : 260;
-      const cardGap = width > 1024 ? (width <= 1439 ? 16 : 20) : 14;
-      const count = Math.max(1, Math.floor((available + cardGap) / (cardWidth + cardGap)));
+      const cardWidth = (width >= 1025 && width <= 1439) ? 230 : 290;
+      const cardGap = width > 1024 ? (width <= 1439 ? 16 : 22) : 14;
+      const rawCount = Math.max(1, Math.floor((available + cardGap) / (cardWidth + cardGap)));
+      // On monitor (≥1440px) cap to 4 cards — nav arrows handle the rest
+      const count = width >= 1440 ? Math.min(rawCount, 4) : rawCount;
       setCardsPerView(count);
       updateScrollButtons();
     };
@@ -239,8 +241,8 @@ export default function NewHeroSection() {
       if (isHovered || !slider) return;
 
       const width = window.innerWidth;
-      const cardWidth = (width >= 1025 && width <= 1439) ? 230 : 260;
-      const cardGap = width > 1024 ? (width <= 1439 ? 16 : 20) : 14;
+      const cardWidth = (width >= 1025 && width <= 1439) ? 230 : 290;
+      const cardGap = width > 1024 ? (width <= 1439 ? 16 : 22) : 14;
       
       // How far each step is — one card width + gap
       const step = cardWidth + cardGap;
@@ -270,8 +272,8 @@ export default function NewHeroSection() {
     const slider = carouselRef.current;
     if (!slider) return;
     const width = window.innerWidth;
-    const cardWidth = (width >= 1025 && width <= 1439) ? 230 : 260;
-    const cardGap = width > 1024 ? (width <= 1439 ? 16 : 20) : 14;
+    const cardWidth = (width >= 1025 && width <= 1439) ? 230 : 290;
+    const cardGap = width > 1024 ? (width <= 1439 ? 16 : 22) : 14;
     
     const amount = (cardWidth + cardGap) * (cardsPerView || 1);
     slider.scrollBy({ left: direction * amount, behavior: 'smooth' });
@@ -282,8 +284,8 @@ export default function NewHeroSection() {
   let cardsContainerStyle = undefined;
   if (cardsPerView != null && typeof window !== 'undefined') {
     const w = window.innerWidth;
-    const cWidth = (w >= 1025 && w <= 1439) ? 230 : 260;
-    const cGap = w > 1024 ? (w <= 1439 ? 16 : 20) : 14;
+    const cWidth = (w >= 1025 && w <= 1439) ? 230 : 290;
+    const cGap = w > 1024 ? (w <= 1439 ? 16 : 22) : 14;
     cardsContainerStyle = { width: cardsPerView * (cWidth + cGap) - cGap };
   }
 
