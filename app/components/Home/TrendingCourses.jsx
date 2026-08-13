@@ -3,120 +3,132 @@
 import React, { useRef, useState, useEffect } from 'react';
 import './TrendingCourses.css';
 import EnquiryFormModal from "@/app/components/common/EnquiryFormModal.jsx";
+import Image from 'next/image';
 
 const courses = [
-//       {
-//   id: 1,
-//   title: "Tamil New Year Special",
-// //   duration: "3 Months",
-//   description: "Wish you a very Happy Tamil New Year! Celebrate the spirit of new beginnings with our special course offerings. Embrace the joy of learning and growth this Tamil New Year with us!",
-//   image: "/images/courses/tamilnewyear.jpg",
-// },
- {
-  id: 9,
-  title: "Kids Web Design Summer Camp",
-  duration: "3 Months",
-  description: "Introduce kids to the exciting world of web design! Learn HTML, CSS, and basic design skills to create fun and interactive websites. Perfect for beginners to build creativity and confidence.",
-  image: "/images/courses/web-design-kids.webp",
-},
-{
-  id: 10,
-  title: "Kids Python Programming Summer Camp",
-  duration: "3 Months",
-  description: "Make coding fun with Python! Kids will learn basic programming concepts, logic building, and create simple games and projects in an easy and engaging way.",
-  image: "/images/courses/python-kids.webp",
-},
-{
-  id: 11,
-  title: "Data Analytics ",
-  duration: "3 Months",
-  description: "Learn how to analyze data, create reports, and gain valuable insights using modern analytics tools. Students will explore data visualization, dashboards, and real-world business case studies in an easy-to-understand way.",
-  image: "/images/courses/poster11.webp",
-},
-{
-  id: 12,
-  title: "Power Automate ",
-  duration: "3 Months",
-  description: "Discover the power of automation with Microsoft Power Automate. Students will learn to create workflows, automate repetitive tasks, connect apps, and improve productivity through hands-on projects.",
-  image: "/images/courses/poster12.webp",
-},
-{
-  id: 13,
-  title: "Generative AI ",
-  duration: "3 Months",
-  description: "Explore the exciting world of Generative AI and learn how AI tools can create text, images, and smart solutions. Students will work on creative AI projects while understanding the basics of modern artificial intelligence.",
-  image: "/images/courses/poster13.webp",
-},
-// {
-// //   id: 14,
-// //   title: "Future-Ready Tech Mastery",
-// //   duration: "3 Months",
-// //   description: "Build in-demand skills with industry-focused training in Full Stack Development, AI/ML, Data Science, SharePoint, Power Automate, and Playwright. Learn through real-time projects and become job-ready for tomorrow’s tech careers.",
-// //   image: "/images/courses/placement-poster1.webp",
-// // },
-{
-  id: 15,
-  title: "Placement Guaranteed Career Program",
-  duration: "3 Months",
-  description: "Get trained with expert mentorship and placement-focused learning in Full Stack Development, Software Testing, Data Analytics, and AWS & DevOps. Designed to help students secure high-package jobs with confidence.",
-  image: "/images/courses/placement-poster3.webp",
-},
-  
+  {
+    id: 1,
+    title: "AI & Machine Learning",
+    duration: "4 Months",
+    badge: "FREEDOM SALE",
+    description: "Don't just use AI — learn how AI works. Build the skills behind intelligent applications using Python, Machine Learning, Deep Learning, and NLP.",
+    tools: ["Python", "Machine Learning", "Deep Learning", "NLP", "TensorFlow", "Keras"],
+    highlights: [
+      "Practical AI skills with industry tools",
+      "TensorFlow, PyTorch, Keras & more",
+      "Build real-world AI projects",
+      "100% Placement Support"
+    ],
+    image: "/images/home/posters/AI-&-ML-poster-independence-theme-9,16.webp",
+  },
   {
     id: 2,
-    title: "React JS + Next.js Development",
+    title: "Automation Testing",
     duration: "3 Months",
-    description: "Develop high-performance web applications using React and Next.js with modern UI, API integration, and best practices.",
-    image: "/images/courses/poster2.webp",
+    badge: "FREEDOM SALE",
+    description: "Upgrade from Manual to Automation Testing. Build practical automation skills with Java Selenium, Playwright, Maven, and Jenkins.",
+    tools: ["Java Selenium", "Playwright", "Maven", "Jenkins"],
+    highlights: [
+      "Test Smarter. Automate Faster.",
+      "Java Selenium & Playwright",
+      "CI/CD with Maven & Jenkins",
+      "Grow Your Career"
+    ],
+    image: "/images/home/posters/Automation-testing--independence-theme-poster-9,16.webp",
   },
   {
     id: 3,
-    title: "MERN Stack Development",
-    duration: "3 Months",
-    description: "Master MongoDB, Express.js, React, and Node.js to build full-stack applications with real-time project experience.",
-    image: "/images/courses/poster6.webp",
+    title: "AWS + DevOps",
+    duration: "4 Months",
+    badge: "FREEDOM SALE",
+    description: "Building an application is one thing. Deploying and scaling it is another. Learn modern Cloud & DevOps practices with AWS, Docker, and Kubernetes.",
+    tools: ["AWS", "DevOps", "Docker", "Kubernetes"],
+    highlights: [
+      "Master the Cloud",
+      "Automate the Workflow",
+      "Docker & Kubernetes",
+      "Real-world Deployments"
+    ],
+    image: "/images/home/posters/independence-theme-AWS-poster-9,16.webp",
   },
   {
     id: 4,
-    title: "Cloud Data Engineering",
+    title: "Data Analytics",
     duration: "3 Months",
-    description: "Learn Google Cloud, Airflow, MySQL, and Python to build scalable data pipelines and handle real-time data processing.",
-    image: "/images/courses/poster3.webp",
+    badge: "FREEDOM SALE",
+    description: "Data is everywhere. But can you turn it into decisions? Learn to transform raw data into actionable insights using Power BI, Tableau, Databricks, and Matplotlib.",
+    tools: ["Power BI", "Tableau", "Databricks", "Matplotlib"],
+    highlights: [
+      "Data -> Insights -> Better Decisions",
+      "Power BI & Tableau Dashboards",
+      "Real business datasets",
+      "Interview & Placement support"
+    ],
+    image: "/images/home/posters/independence-theme-Data-Analytics-poster-9,16.webp",
   },
-//   {
-//     id: 5,
-//     title: "Data Analyst",
-//     duration: "3 Months",
-//     description: "Analyze and visualize data using Excel, SQL, Power BI, and Python. Work on real-time datasets and business insights.",
-//     image: "/images/courses/poster4.webp",
-//   },
+  {
+    id: 5,
+    title: "Data Engineering",
+    duration: "4 Months",
+    badge: "FREEDOM SALE",
+    description: "Data Analysts need data. But who builds the systems behind it? Learn how modern data platforms are built with Azure, Apache Spark, MySQL, and PySpark.",
+    tools: ["Azure", "Apache Spark", "MySQL", "PySpark"],
+    highlights: [
+      "Build Data Infrastructure",
+      "Azure & Apache Spark",
+      "PySpark & MySQL pipelines",
+      "Modern Business systems"
+    ],
+    image: "/images/home/posters/independence-theme-Data-Engineering-poster-9,16.webp",
+  },
   {
     id: 6,
-    title: ".NET + Angular Development",
-    duration: "3 Months",
-    description: "Combine C# .NET backend with Angular frontend to build scalable enterprise-level web applications.",
-    image: "/images/courses/poster5.webp",
+    title: "MERN Stack Development",
+    duration: "4 Months",
+    badge: "FREEDOM SALE",
+    description: "You know coding. But can you build a complete application? Build modern, real-world web applications with MERN Stack — MongoDB, Express.js, React.js, Node.js.",
+    tools: ["MongoDB", "Express.js", "React.js", "Node.js"],
+    highlights: [
+      "Frontend + Backend + Database",
+      "Full-Stack Skills",
+      "Real-world project builds",
+      "Job-ready portfolio"
+    ],
+    image: "/images/home/posters/MERN-poster-independence-theme-9,16.webp",
   },
-//    {
-//   id: 7,
-//   title: "Generative AI Development",
-//   duration: "3 Months",
-//   description: "Learn to build intelligent AI applications using Generative AI, LLMs, and modern tools like OpenAI, LangChain, and Python. Create chatbots, AI assistants, and real-world AI solutions.",
-//   image: "/images/courses/gen-ai-poster.webp",
-// },
-// {
-//     id: 8,
-//     title: "Mobile App Development (Android & iOS)",
-//     duration: "3 Months",
-//     description: "Build cross-platform mobile apps using React Native. Create real-world applications with a single JavaScript codebase.",
-//     image: "/images/courses/poster1.webp",
+//   {
+//     id: 7,
+//     title: "Power Automate",
+//     duration: "2 Months",
+//     badge: "FREEDOM SALE",
+//     description: "Master Microsoft Power Automate and build real-world workflows that drive productivity. Automate repetitive tasks, build approval workflows, and work with real business use cases.",
+//     tools: ["Power Automate", "Microsoft 365", "Power Apps", "SharePoint"],
+//     highlights: [
+//       "Automate repetitive tasks",
+//       "Build Approval Workflows",
+//       "Work with Real business use cases",
+//       "Microsoft ecosystem integration"
+//     ],
+//     image: null,
+//     comingSoonImage: true,
 //   },
-
- 
-
+//   {
+//     id: 8,
+//     title: ".NET + Angular",
+//     duration: "4 Months",
+//     badge: "FREEDOM SALE",
+//     description: "Combine the power of C# .NET backend with Angular frontend to build scalable enterprise-level web applications used in top MNCs worldwide.",
+//     tools: ["C# .NET", "Angular", "SQL Server", "REST APIs"],
+//     highlights: [
+//       "Enterprise-grade web apps",
+//       "C# .NET + Angular full-stack",
+//       "REST API development",
+//       "MNC-ready skills"
+//     ],
+//     image: null,
+//     comingSoonImage: true,
+//   },
 ];
-
-import Image from 'next/image';
 
 const TrendingCourses = () => {
     const sliderRef = useRef(null);
@@ -186,23 +198,35 @@ const TrendingCourses = () => {
 
                 <div className="trending-scroll-track" ref={sliderRef} onScroll={checkScrollPosition}>
                     {courses.map((course) => (
-                        <div 
-                           key={course.id} 
-                           className={`trending-course-card ${[9, 10].includes(course.id) ? 'special-highlight' : ''}`} 
+                        <div
+                           key={course.id}
+                           className="trending-course-card freedom-highlight"
                            onClick={() => setSelectedCourse(course)}
                         >
-                            {[9, 10].includes(course.id) && (
-                                <div className="special-badge"></div>
-                            )}
+                            <div className="freedom-badge"></div>
+
                             <div className="trending-image-box">
-                                <Image 
-                                    src={course.image} 
-                                    alt={`${course.title} Training in Chennai`} 
-                                    className="trending-image-fg" 
-                                    width={300}
-                                    height={400}
-                                    style={{ objectFit: 'contain' }}
-                                />
+                                {course.image ? (
+                                    <Image
+                                        src={course.image}
+                                        alt={`${course.title} Training in Chennai`}
+                                        className="trending-image-fg"
+                                        width={280}
+                                        height={400}
+                                        style={{ objectFit: 'cover' }}
+                                    />
+                                ) : (
+                                    <div className="coming-soon-placeholder">
+                                        <div className="cs-icon">🎯</div>
+                                        <div className="cs-course-name">{course.title}</div>
+                                        <div className="cs-label">Poster Coming Soon</div>
+                                        <div className="cs-tools">
+                                            {course.tools.map((tool, i) => (
+                                                <span key={i} className="cs-tool-tag">{tool}</span>
+                                            ))}
+                                        </div>
+                                    </div>
+                                )}
                                 <div className="card-hover-overlay">
                                     <span>View Details</span>
                                 </div>
@@ -220,15 +244,24 @@ const TrendingCourses = () => {
                         <button className="trending-modal-close" onClick={() => setSelectedCourse(null)}>&times;</button>
                         <div className="trending-modal-content">
                             <div className="trending-modal-media">
-                                <Image 
-                                    src={selectedCourse.image} 
-                                    alt={`${selectedCourse.title} - Urbancode Edutech`} 
-                                    width={400}
-                                    height={500}
-                                    style={{ objectFit: 'contain', borderRadius: '12px' }}
-                                />
+                                {selectedCourse.image ? (
+                                    <Image
+                                        src={selectedCourse.image}
+                                        alt={`${selectedCourse.title} - Urbancode Edutech`}
+                                        width={400}
+                                        height={600}
+                                        style={{ objectFit: 'cover', borderRadius: '20px 0 0 20px', width: '100%', height: '100%' }}
+                                    />
+                                ) : (
+                                    <div className="modal-cs-placeholder">
+                                        <div className="mcs-icon">🎯</div>
+                                        <div className="mcs-name">{selectedCourse.title}</div>
+                                        <div className="mcs-label">Poster Coming Soon</div>
+                                    </div>
+                                )}
                             </div>
                             <div className="trending-modal-info">
+                                <div className="modal-freedom-tag">&#127470;&#127475; FREEDOM SALE</div>
                                 <h3>{selectedCourse.title}</h3>
                                 {selectedCourse.duration && (
                                   <div className="info-meta">
@@ -236,6 +269,23 @@ const TrendingCourses = () => {
                                   </div>
                                 )}
                                 <p>{selectedCourse.description}</p>
+
+                                {selectedCourse.highlights && (
+                                    <ul className="modal-highlights">
+                                        {selectedCourse.highlights.map((h, i) => (
+                                            <li key={i}><span className="highlight-dot">&#10022;</span> {h}</li>
+                                        ))}
+                                    </ul>
+                                )}
+
+                                {selectedCourse.tools && (
+                                    <div className="modal-tools">
+                                        {selectedCourse.tools.map((tool, i) => (
+                                            <span key={i} className="modal-tool-tag">{tool}</span>
+                                        ))}
+                                    </div>
+                                )}
+
                                 <div className="trending-modal-btns">
                                     <button className="trending-enroll-trigger" onClick={handleEnrollClick}>Enroll Now</button>
                                 </div>
@@ -248,7 +298,7 @@ const TrendingCourses = () => {
             <EnquiryFormModal
                 isOpen={showEnquiry}
                 onClose={() => setShowEnquiry(false)}
-                courseName={selectedCourse?.title || "Trending Course"}
+                courseName={selectedCourse?.title || "Freedom Sale Course"}
             />
         </div>
     );

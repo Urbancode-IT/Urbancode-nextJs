@@ -744,3 +744,12 @@ section.recent-featured {
     margin-left: 0;
   }
 }
+/* Responsive Blog Content Images */
+.content-text img {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  margin: 35px 0;
+  display: block;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}

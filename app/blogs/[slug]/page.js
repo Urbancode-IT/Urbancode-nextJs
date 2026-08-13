@@ -104,7 +104,7 @@ export default async function BlogDetailPage({ params }) {
                 const hasHtml = /<[a-z][\s\S]*>/i.test(paragraph);
                 if (hasHtml) {
                     return (
-                        <p key={index} className="content-text" dangerouslySetInnerHTML={{ __html: paragraph }} />
+                        <div key={index} className="content-text" dangerouslySetInnerHTML={{ __html: paragraph }} />
                     );
                 }
                 return (

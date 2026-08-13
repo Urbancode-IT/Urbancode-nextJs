@@ -228,10 +228,11 @@ export default function FreedomSalePromo() {
               <span className="sale-text" data-text="SALE">SALE</span>
             </h2>
             <div className="freedom-sale-intro-sub">
-              Massive Discounts on All Courses!
+              Massive Discounts on Courses!
             </div>
-            <p className="freedom-sale-intro-desc">Flat <span className="highlight-orange">50% OFF</span> on AI &amp; Full Stack Courses</p>
-          </div>
+<p className="freedom-sale-intro-desc">
+  Exclusive <span className="highlight-orange">Offer</span> on Courses
+</p>          </div>
         </div>
       )}
 
@@ -249,7 +250,7 @@ export default function FreedomSalePromo() {
                   Freedom Sale
                 </div>
                 <p className="freedom-sale-banner-offer">
-                  🎉 Flat 50% OFF on Courses
+                  🎉Exclusive Offers on Courses
                 </p>
               </div>
               <div className="freedom-sale-banner-actions">

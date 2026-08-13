@@ -138,6 +138,14 @@ const InstitutionVideos = () => {
                                                         <div className="play-icon" />
                                                     </div>
                                                 </>
+                                            ) : video.mp4Src ? (
+                                                <video
+                                                    src={video.mp4Src}
+                                                    autoPlay
+                                                    controls
+                                                    className="institution-video-iframe"
+                                                    style={{ zIndex: 3, width: '100%', height: '100%', borderRadius: '24px', objectFit: 'cover' }}
+                                                />
                                             ) : (
                                                 <iframe
                                                     src={`https://www.youtube.com/embed/${video.videoId}?autoplay=1&rel=0&modestbranding=1&autohide=1&showinfo=0`}
