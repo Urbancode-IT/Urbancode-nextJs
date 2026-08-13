@@ -96,38 +96,38 @@ const courses = [
     ],
     image: "/images/home/posters/MERN-poster-independence-theme-9,16.webp",
   },
-//   {
-//     id: 7,
-//     title: "Power Automate",
-//     duration: "2 Months",
-//     badge: "FREEDOM SALE",
-//     description: "Master Microsoft Power Automate and build real-world workflows that drive productivity. Automate repetitive tasks, build approval workflows, and work with real business use cases.",
-//     tools: ["Power Automate", "Microsoft 365", "Power Apps", "SharePoint"],
-//     highlights: [
-//       "Automate repetitive tasks",
-//       "Build Approval Workflows",
-//       "Work with Real business use cases",
-//       "Microsoft ecosystem integration"
-//     ],
-//     image: null,
-//     comingSoonImage: true,
-//   },
-//   {
-//     id: 8,
-//     title: ".NET + Angular",
-//     duration: "4 Months",
-//     badge: "FREEDOM SALE",
-//     description: "Combine the power of C# .NET backend with Angular frontend to build scalable enterprise-level web applications used in top MNCs worldwide.",
-//     tools: ["C# .NET", "Angular", "SQL Server", "REST APIs"],
-//     highlights: [
-//       "Enterprise-grade web apps",
-//       "C# .NET + Angular full-stack",
-//       "REST API development",
-//       "MNC-ready skills"
-//     ],
-//     image: null,
-//     comingSoonImage: true,
-//   },
+  {
+    id: 7,
+    title: "Power Automate",
+    duration: "2 Months",
+    badge: "FREEDOM SALE",
+    description: "Master Microsoft Power Automate and build real-world workflows that drive productivity. Automate repetitive tasks, build approval workflows, and work with real business use cases.",
+    tools: ["Power Automate", "Microsoft 365", "Power Apps", "SharePoint"],
+    highlights: [
+      "Automate repetitive tasks",
+      "Build Approval Workflows",
+      "Work with Real business use cases",
+      "Microsoft ecosystem integration"
+    ],
+    image: "/images/home/posters/independence-theme-Power-Automate-poster-9,16.webp",
+    // comingSoonImage: true,
+  },
+  {
+    id: 8,
+    title: ".NET + Angular",
+    duration: "4 Months",
+    badge: "FREEDOM SALE",
+    description: "Combine the power of C# .NET backend with Angular frontend to build scalable enterprise-level web applications used in top MNCs worldwide.",
+    tools: ["C# .NET", "Angular", "SQL Server", "REST APIs"],
+    highlights: [
+      "Enterprise-grade web apps",
+      "C# .NET + Angular full-stack",
+      "REST API development",
+      "MNC-ready skills"
+    ],
+    image:  "/images/home/posters/independence-theme-.Net-Angular-poster-9,16.webp",
+    // comingSoonImage: true,
+  },
 ];
 
 const TrendingCourses = () => {
