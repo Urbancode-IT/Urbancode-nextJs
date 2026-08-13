@@ -9,7 +9,7 @@ const courses = [
   {
     id: 1,
     title: "AI & Machine Learning",
-    duration: "4 Months",
+    duration: "3 Months",
     badge: "FREEDOM SALE",
     description: "Don't just use AI — learn how AI works. Build the skills behind intelligent applications using Python, Machine Learning, Deep Learning, and NLP.",
     tools: ["Python", "Machine Learning", "Deep Learning", "NLP", "TensorFlow", "Keras"],
@@ -39,7 +39,7 @@ const courses = [
   {
     id: 3,
     title: "AWS + DevOps",
-    duration: "4 Months",
+    duration: "3 Months",
     badge: "FREEDOM SALE",
     description: "Building an application is one thing. Deploying and scaling it is another. Learn modern Cloud & DevOps practices with AWS, Docker, and Kubernetes.",
     tools: ["AWS", "DevOps", "Docker", "Kubernetes"],
@@ -69,7 +69,7 @@ const courses = [
   {
     id: 5,
     title: "Data Engineering",
-    duration: "4 Months",
+    duration: "3 Months",
     badge: "FREEDOM SALE",
     description: "Data Analysts need data. But who builds the systems behind it? Learn how modern data platforms are built with Azure, Apache Spark, MySQL, and PySpark.",
     tools: ["Azure", "Apache Spark", "MySQL", "PySpark"],
@@ -84,7 +84,7 @@ const courses = [
   {
     id: 6,
     title: "MERN Stack Development",
-    duration: "4 Months",
+    duration: "3 Months",
     badge: "FREEDOM SALE",
     description: "You know coding. But can you build a complete application? Build modern, real-world web applications with MERN Stack — MongoDB, Express.js, React.js, Node.js.",
     tools: ["MongoDB", "Express.js", "React.js", "Node.js"],
@@ -115,7 +115,7 @@ const courses = [
   {
     id: 8,
     title: ".NET + Angular",
-    duration: "4 Months",
+    duration: "3 Months",
     badge: "FREEDOM SALE",
     description: "Combine the power of C# .NET backend with Angular frontend to build scalable enterprise-level web applications used in top MNCs worldwide.",
     tools: ["C# .NET", "Angular", "SQL Server", "REST APIs"],
