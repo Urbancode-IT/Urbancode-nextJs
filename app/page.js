@@ -209,11 +209,15 @@ export default function HomePage() {
       <div className="home-section">
         <BannerSlider banners={homeBanners} />
       </div>
-      <div className="home-section">
-        <Carousel />
+       <div id="featured-courses" className="home-section">
+        <TrendingCourses />
       </div>
+     
       <div className="home-section">
         <Courses />
+      </div>
+       <div className="home-section">
+        <Carousel />
       </div>
       <div className="home-section">
         <PlacementTestimonials />
@@ -244,9 +248,7 @@ export default function HomePage() {
       <div className="home-section">
         <FaqBootstrap />
       </div>
-      <div id="featured-courses" className="home-section">
-        <TrendingCourses />
-      </div>
+     
     </>
   );
 }

@@ -228,7 +228,7 @@ export default function FreedomSalePromo() {
               <span className="sale-text" data-text="SALE">SALE</span>
             </h2>
             <div className="freedom-sale-intro-sub">
-              Exclusice Discounts on Course Fees!
+              Exclusive Discounts on Course Fees!
             </div>
 {/* <p className="freedom-sale-intro-desc">
   Exclusive <span className="highlight-orange">Offer</span> on Courses
