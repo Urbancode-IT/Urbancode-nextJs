@@ -5,12 +5,12 @@ export const institutionVideosData = [
         title: "IELTS Training Insights",
         thumbnail: "/images/home/thumbnail/IELTS.webp",
     },
-           {
-        id: 2,
-        videoId: "CV-iIWlcJdA",
-        title: "Node.js Explained in Simple Words 2026",
-      thumbnail: "/images/home/thumbnail/nodejs.webp",
-     },
+    //        {
+    //     id: 2,
+    //     videoId: "CV-iIWlcJdA",
+    //     title: "Node.js Explained in Simple Words 2026",
+    //   thumbnail: "/images/home/thumbnail/nodejs.webp",
+    //  },
     {
         id: 3,
         videoId: "NgCj6AbILw0",
