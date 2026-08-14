@@ -91,26 +91,7 @@ export const metadata = {
 
 export default function HomePage() {
   const homeBanners = [
-    {
-      src: "/images/home/freedom-website-banner.webp",
-      alt: "Freedom Sale",
-      type: "enquiry",
-      courseName: "Freedom Sale Enquiry",
-      customTitle: "Enquire Today",
-      isSelectMode: true,
-      extraOptions: [
-        "Full Stack Development",
-        "Python with AI",
-        "Data Science",
-        "MERN Stack",
-        "Software Testing",
-        "Digital Marketing",
-        "UI/UX Design",
-        "AWS / Cloud Computing",
-        "Cybersecurity",
-        "Help me choose my course"
-      ]
-    },
+   
     {
       src: "/images/home/tvlbanner.png",
       alt: "Urbancode Tirunelveli Branch - Now Open",
@@ -129,6 +110,26 @@ export default function HomePage() {
         "AWS / Cloud Computing",
         "Cybersecurity",
         "Help me choose my course",
+      ]
+    },
+     {
+      src: "/images/home/freedom-website-banner.webp",
+      alt: "Freedom Sale",
+      type: "enquiry",
+      courseName: "Freedom Sale Enquiry",
+      customTitle: "Enquire Today",
+      isSelectMode: true,
+      extraOptions: [
+        "Full Stack Development",
+        "Python with AI",
+        "Data Science",
+        "MERN Stack",
+        "Software Testing",
+        "Digital Marketing",
+        "UI/UX Design",
+        "AWS / Cloud Computing",
+        "Cybersecurity",
+        "Help me choose my course"
       ]
     },
     {
