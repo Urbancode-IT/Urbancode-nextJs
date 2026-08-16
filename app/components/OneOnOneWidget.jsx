@@ -63,6 +63,7 @@ const OneOnOneWidget = () => {
                 isDemoMode={true}
                 isSelectMode={true}
                 customTitle="Book a One on One Session"
+                useExternalCourses={false}
                 extraOptions={[
                     "Study in UK",
                     "Study in USA",

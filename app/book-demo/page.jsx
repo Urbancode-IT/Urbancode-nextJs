@@ -13,6 +13,7 @@ import { Honeypot } from "@/app/components/common/Honeypot";
 import { useEnquiryForm } from "@/app/hooks/useEnquiryForm";
 import { bookDemoSchema } from "@/app/schemas/enquirySchema";
 import { Controller } from "react-hook-form";
+import { normalizeCourses } from "@/lib/api/externalCourses";
 
 const BookDemoContent = () => {
   const searchParams = useSearchParams();
@@ -55,8 +56,7 @@ const BookDemoContent = () => {
         mode: "no-cors",
       });
 
-      // Notify admin and send to external CRM
-      fetch("/api/send-email/course-enquiry", {
+      const enquiryResponse = await fetch("/api/send-email/course-enquiry", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -68,7 +68,12 @@ const BookDemoContent = () => {
           pin: "N/A",
           message: `[DEMO REQUEST] Date: ${data.preferredDate}, Time: ${data.preferredTime}.`,
         }),
-      }).catch(() => {});
+      });
+
+      if (!enquiryResponse.ok) {
+        const errRes = await enquiryResponse.json().catch(() => ({}));
+        throw new Error(errRes.message || "Failed to submit demo request.");
+      }
 
       Swal.fire({
         title: 'Success!',
@@ -90,13 +95,11 @@ const BookDemoContent = () => {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const res = await fetch('/api/courses');
+        const res = await fetch('/api/courses', { cache: 'no-store' });
         const data = await res.json();
-        if (data.courses && Array.isArray(data.courses)) {
-          const mappedCourses = data.courses.map(c => typeof c === 'object' ? c.name || c.course_name || c.course : c);
-          if (mappedCourses.length > 0) {
-            setCourseOptions(mappedCourses);
-          }
+        const mappedCourses = normalizeCourses(data);
+        if (mappedCourses.length > 0) {
+          setCourseOptions(mappedCourses.map((c) => c.course_name));
         }
       } catch (err) {
         console.error("Failed to fetch courses:", err);

@@ -171,7 +171,7 @@ export async function POST(req) {
 </html>
     `;
 
-    await transporter.sendMail({
+    const emailPromise = transporter.sendMail({
       from: `"UrbanCode" <${sender}>`,
       to: recipient,
       replyTo: email,
@@ -189,15 +189,39 @@ export async function POST(req) {
       html: htmlContent,
     });
 
-    // Send lead to external CRM (fire-and-forget, non-blocking)
-    sendExternalEnrollment({
+    const requirements = [
+      mode && mode !== 'Not specified' ? `Mode: ${mode}` : '',
+      pin && pin !== 'N/A' ? `PIN: ${pin}` : '',
+      message && message !== 'No message provided' ? message : '',
+    ].filter(Boolean).join(' | ');
+
+    // Await CRM so Next.js does not kill the request when the response is sent
+    const crmPromise = sendExternalEnrollment({
       name,
       mobile_number: extractMobileNumber(phone),
       email,
       course,
-      requirements: message !== 'No message provided' ? message : '',
+      requirements,
       card_type: 'Training Only',
-    }).catch(() => {});
+    });
+
+    const [emailResult, crmResult] = await Promise.allSettled([emailPromise, crmPromise]);
+
+    if (emailResult.status === 'rejected') {
+      console.error('Course enquiry email error:', emailResult.reason);
+    }
+    if (crmResult.status === 'rejected') {
+      console.error('Course enquiry CRM error:', crmResult.reason);
+    } else if (crmResult.value && !crmResult.value.ok) {
+      console.error('Course enquiry CRM error:', crmResult.value.error);
+    }
+
+    const emailOk = emailResult.status === 'fulfilled';
+    const crmOk = crmResult.status === 'fulfilled' && crmResult.value?.ok;
+
+    if (!emailOk && !crmOk) {
+      throw emailResult.reason || new Error('Failed to submit enquiry to email and CRM.');
+    }
 
     return NextResponse.json({ success: true, message: 'Enquiry submitted successfully.' });
   } catch (error) {

@@ -4,7 +4,7 @@ import { goToThankYou } from "@/lib/navigation/goToThankYou";
 import { FormPhoneInput } from "@/app/components/common/FormPhoneInput";
 import { motion, AnimatePresence } from "framer-motion";
 import Swal from 'sweetalert2';
-import confetti from 'canvas-confetti';
+import { courseOptionLabel, normalizeCourses } from "@/lib/api/externalCourses";
 import "./EnquiryForm.css";
 
 const EnquiryFormModal = ({ 
@@ -20,14 +20,15 @@ const EnquiryFormModal = ({
   isBrochureMode = false,
   isJoinMode = false,
   batchInfo = null,
-  customTitle = null
+  customTitle = null,
+  useExternalCourses = true,
 }) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
     pin: "",
-    course: courseName || "",
+    course: isSelectMode ? "" : (courseName || ""),
     message: "",
     mode: "",
     preferredDate: "",
@@ -37,25 +38,37 @@ const EnquiryFormModal = ({
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState({ type: "", message: "" });
   const [dynamicCourseOptions, setDynamicCourseOptions] = useState([]);
+  const [coursesReady, setCoursesReady] = useState(!useExternalCourses);
 
-  // Fetch courses dynamically
+  // Fetch Zen CRM courses for the dropdown (skip for study-abroad / static lists)
   React.useEffect(() => {
+    if (!useExternalCourses) return;
+
     const fetchCourses = async () => {
       try {
-        const res = await fetch('/api/courses');
+        const res = await fetch('/api/courses', { cache: 'no-store' });
         const data = await res.json();
-        if (data.courses && Array.isArray(data.courses)) {
-          const mappedCourses = data.courses.map(c => typeof c === 'object' ? c.name || c.course_name || c.course : c);
-          if (mappedCourses.length > 0) {
-            setDynamicCourseOptions(mappedCourses);
-          }
+        const mappedCourses = normalizeCourses(data);
+        if (mappedCourses.length > 0) {
+          setDynamicCourseOptions(mappedCourses);
         }
       } catch (err) {
         console.error("Failed to fetch courses:", err);
+      } finally {
+        setCoursesReady(true);
       }
     };
     fetchCourses();
-  }, []);
+  }, [useExternalCourses]);
+
+  const apiCourseNames = dynamicCourseOptions.map((c) =>
+    typeof c === "string" ? c : c.course_name
+  );
+  const selectCourseOptions = (useExternalCourses && dynamicCourseOptions.length > 0)
+    ? dynamicCourseOptions
+    : extraOptions.map((name) => ({ course_id: name, course_name: name, course_type: "" }));
+  const visibleSelectOptions = (useExternalCourses && !coursesReady) ? [] : selectCourseOptions;
+  const showCourseSelect = isSelectMode;
 
   const triggerDownload = (url, index = 0) => {
     setTimeout(() => {
@@ -68,10 +81,12 @@ const EnquiryFormModal = ({
     }, index * 500);
   };
 
-  // Update course when prop changes
   React.useEffect(() => {
-    setFormData(prev => ({ ...prev, course: courseName || "" }));
-  }, [courseName]);
+    setFormData(prev => ({
+      ...prev,
+      course: isSelectMode ? prev.course : (courseName || ""),
+    }));
+  }, [courseName, isSelectMode]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -209,7 +224,7 @@ const EnquiryFormModal = ({
       // Handle Success
       if (isJoinMode) {
         // Notify admin@urbancode.in about the join request
-        fetch("/api/send-email/course-enquiry", {
+        await fetch("/api/send-email/course-enquiry", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -250,7 +265,7 @@ const EnquiryFormModal = ({
         }
 
         // Notify admin@urbancode.in about this brochure download
-        fetch("/api/send-email/course-enquiry", {
+        await fetch("/api/send-email/course-enquiry", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -276,8 +291,8 @@ const EnquiryFormModal = ({
 
         setStatus({ type: "success", message: "Curriculum sent to your email!" });
       } else {
-        // Send branded enquiry notification to admin@urbancode.in
-        fetch("/api/send-email/course-enquiry", {
+        // Await so CRM enrollment finishes before redirect
+        const enquiryResponse = await fetch("/api/send-email/course-enquiry", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -291,7 +306,12 @@ const EnquiryFormModal = ({
               ? `[DEMO REQUEST] Date: ${formData.preferredDate}, Time: ${formData.preferredTime}. Msg: ${formData.message}`
               : formData.message,
           }),
-        }).catch((err) => console.warn("Admin email notification failed:", err));
+        });
+
+        if (!enquiryResponse.ok) {
+          const errRes = await enquiryResponse.json().catch(() => ({}));
+          throw new Error(errRes.message || "Failed to submit enquiry.");
+        }
 
         Swal.fire({
           title: 'Success!',
@@ -425,16 +445,23 @@ const EnquiryFormModal = ({
                     {!isJoinMode && (
                       <>
                         <div className="col-md-6">
-                          {isSelectMode && extraOptions.length > 0 ? (
+                          {showCourseSelect ? (
                             <select
                               className="form-select"
                               name="course"
                               value={formData.course}
                               onChange={handleChange}
+                              disabled={loading || (useExternalCourses && !coursesReady)}
                             >
-                              <option value="">Choose Course</option>
-                              {extraOptions.map((opt, i) => (
-                                <option key={i} value={opt}>{opt}</option>
+                              <option value="">
+                                {useExternalCourses && !coursesReady
+                                  ? "Loading courses..."
+                                  : "Choose Course"}
+                              </option>
+                              {visibleSelectOptions.map((opt, i) => (
+                                <option key={opt.course_id || i} value={opt.course_name}>
+                                  {courseOptionLabel(opt)}
+                                </option>
                               ))}
                             </select>
                           ) : (
@@ -449,7 +476,7 @@ const EnquiryFormModal = ({
                               />
                               <datalist id="courses">
                                 {extraOptions.map((opt, i) => <option key={i} value={opt} />)}
-                                {dynamicCourseOptions.map((opt, i) => <option key={`dyn-${i}`} value={opt} />)}
+                                {apiCourseNames.map((opt, i) => <option key={`dyn-${i}`} value={opt} />)}
                               </datalist>
                             </>
                           )}

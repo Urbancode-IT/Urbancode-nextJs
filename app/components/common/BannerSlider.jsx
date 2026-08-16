@@ -103,6 +103,7 @@ const BannerSlider = ({ banners = [], forceEnquiry = false }) => {
                     extraOptions={selectedBanner.extraOptions}
                     isSelectMode={selectedBanner.isSelectMode}
                     customTitle={selectedBanner.customTitle}
+                    useExternalCourses={selectedBanner.useExternalCourses !== false}
                 />
             )}
         </section>

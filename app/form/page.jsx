@@ -12,6 +12,7 @@ import { Honeypot } from "@/app/components/common/Honeypot";
 import { useEnquiryForm } from "@/app/hooks/useEnquiryForm";
 import { enquiryFormSchema } from "@/app/schemas/enquirySchema";
 import { Controller } from "react-hook-form";
+import { normalizeCourses } from "@/lib/api/externalCourses";
 
 // Courses are now fetched dynamically from /api/courses
 // keeping a small initial set to prevent layout shift before fetch completes
@@ -36,15 +37,12 @@ const EnquiryFormContent = () => {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const res = await fetch('/api/courses');
+        const res = await fetch('/api/courses', { cache: 'no-store' });
         const data = await res.json();
         
-        if (data.courses && Array.isArray(data.courses)) {
-          // Check if data is array of objects {id, name} or array of strings
-          const mappedCourses = data.courses.map(c => typeof c === 'object' ? c.name || c.course_name || c.course : c);
-          if (mappedCourses.length > 0) {
-            setCourseOptions(mappedCourses);
-          }
+        const mappedCourses = normalizeCourses(data);
+        if (mappedCourses.length > 0) {
+          setCourseOptions(mappedCourses.map((c) => c.course_name));
         }
       } catch (err) {
         console.error("Failed to fetch courses for form:", err);

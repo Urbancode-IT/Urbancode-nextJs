@@ -163,7 +163,7 @@ export async function POST(req) {
 </html>
     `;
 
-    await transporter.sendMail({
+    const emailPromise = transporter.sendMail({
       from: `"UrbanCode" <${sender}>`,
       to: recipient,
       replyTo: email,
@@ -180,17 +180,33 @@ export async function POST(req) {
       html: htmlContent,
     });
 
-    // Send lead to external CRM for course-related enquiries (fire-and-forget)
-    if (interest === 'Course Enquiry') {
-      const courseForCRM = selectedCourse || interest;
-      sendExternalEnrollment({
-        name,
-        mobile_number: extractMobileNumber(phone),
-        email,
-        course: courseForCRM,
-        requirements: `Convenient Time: ${convenientTime}`,
-        card_type: 'Training Only',
-      }).catch(() => {});
+    const crmPromise = interest === 'Course Enquiry'
+      ? sendExternalEnrollment({
+          name,
+          mobile_number: extractMobileNumber(phone),
+          email,
+          course: selectedCourse || interest,
+          requirements: `Convenient Time: ${convenientTime}`,
+          card_type: 'Training Only',
+        })
+      : Promise.resolve({ ok: true, skipped: true });
+
+    const [emailResult, crmResult] = await Promise.allSettled([emailPromise, crmPromise]);
+
+    if (emailResult.status === 'rejected') {
+      console.error('Contact email error:', emailResult.reason);
+    }
+    if (crmResult.status === 'rejected') {
+      console.error('Contact CRM error:', crmResult.reason);
+    } else if (crmResult.value && !crmResult.value.ok) {
+      console.error('Contact CRM error:', crmResult.value.error);
+    }
+
+    const emailOk = emailResult.status === 'fulfilled';
+    const crmOk = crmResult.status === 'fulfilled' && crmResult.value?.ok;
+
+    if (!emailOk && !crmOk) {
+      throw emailResult.reason || new Error('Failed to send contact message.');
     }
 
     return NextResponse.json({ success: true, message: 'Message sent successfully.' });

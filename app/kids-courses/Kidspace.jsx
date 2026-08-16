@@ -50,7 +50,8 @@ const Kidz = () => {
         "python with ai": "/curriculum/pythonforkids.pdf"
       },
       extraOptions: ["webdevelopment", "python with ai"],
-      isSelectMode: true
+      isSelectMode: true,
+      useExternalCourses: false
     }
   ];
 
