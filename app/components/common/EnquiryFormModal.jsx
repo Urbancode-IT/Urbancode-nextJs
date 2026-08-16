@@ -36,6 +36,26 @@ const EnquiryFormModal = ({
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState({ type: "", message: "" });
+  const [dynamicCourseOptions, setDynamicCourseOptions] = useState([]);
+
+  // Fetch courses dynamically
+  React.useEffect(() => {
+    const fetchCourses = async () => {
+      try {
+        const res = await fetch('/api/courses');
+        const data = await res.json();
+        if (data.courses && Array.isArray(data.courses)) {
+          const mappedCourses = data.courses.map(c => typeof c === 'object' ? c.name || c.course_name || c.course : c);
+          if (mappedCourses.length > 0) {
+            setDynamicCourseOptions(mappedCourses);
+          }
+        }
+      } catch (err) {
+        console.error("Failed to fetch courses:", err);
+      }
+    };
+    fetchCourses();
+  }, []);
 
   const triggerDownload = (url, index = 0) => {
     setTimeout(() => {
@@ -429,16 +449,7 @@ const EnquiryFormModal = ({
                               />
                               <datalist id="courses">
                                 {extraOptions.map((opt, i) => <option key={i} value={opt} />)}
-                                <option value="Python with AI" />
-                                <option value="webdevelopment" />
-                                <option value="Full Stack Development" />
-                                <option value="Data Science" />
-                                <option value="UI/UX Design" />
-                                <option value="Digital Marketing" />
-                                <option value="Cybersecurity" />
-                                <option value="Cloud Computing" />
-                                <option value="Help me choose my course" />
-                                <option value="Other" />
+                                {dynamicCourseOptions.map((opt, i) => <option key={`dyn-${i}`} value={opt} />)}
                               </datalist>
                             </>
                           )}

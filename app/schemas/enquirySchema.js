@@ -67,6 +67,13 @@ export const contactUsSchema = baseEnquirySchema.extend({
   }
 });
 
+// Schema for /form Google Ads landing page — course is ALWAYS required
+export const enquiryFormSchema = baseEnquirySchema.extend({
+  interest: z.string().min(1, "Please select an interest"),
+  selectedCourse: z.string().min(1, "Please select a course"),
+  convenientTime: z.string().min(1, "Please select a convenient time"),
+});
+
 export const popupSchema = baseEnquirySchema.extend({
   message: z.string().optional()
 });

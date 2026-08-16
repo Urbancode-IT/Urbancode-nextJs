@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { getGmailTransporter, getGmailSender } from '@/lib/mailer/gmailTransporter';
+import { sendExternalEnrollment, extractMobileNumber } from '@/lib/api/externalEnrollment';
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -187,6 +188,16 @@ export async function POST(req) {
       ].join('\n'),
       html: htmlContent,
     });
+
+    // Send lead to external CRM (fire-and-forget, non-blocking)
+    sendExternalEnrollment({
+      name,
+      mobile_number: extractMobileNumber(phone),
+      email,
+      course,
+      requirements: message !== 'No message provided' ? message : '',
+      card_type: 'Training Only',
+    }).catch(() => {});
 
     return NextResponse.json({ success: true, message: 'Enquiry submitted successfully.' });
   } catch (error) {

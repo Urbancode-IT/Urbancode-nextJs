@@ -55,6 +55,21 @@ const BookDemoContent = () => {
         mode: "no-cors",
       });
 
+      // Notify admin and send to external CRM
+      fetch("/api/send-email/course-enquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: data.name.trim(),
+          email: data.email.trim(),
+          phone: data.phone,
+          course: data.course,
+          mode: "Not specified",
+          pin: "N/A",
+          message: `[DEMO REQUEST] Date: ${data.preferredDate}, Time: ${data.preferredTime}.`,
+        }),
+      }).catch(() => {});
+
       Swal.fire({
         title: 'Success!',
         text: 'Your demo session has been scheduled successfully.',
@@ -69,16 +84,26 @@ const BookDemoContent = () => {
     }
   });
 
-  const courseOptions = [
-    "Python with AI",
-    "Full Stack Development",
-    "Data Science",
-    "UI/UX Design",
-    "Software Testing",
-    "Cloud/DevOps",
-    "Digital Marketing",
-    "Other"
-  ];
+  const [courseOptions, setCourseOptions] = useState(["Loading courses..."]);
+
+  // Fetch courses dynamically
+  useEffect(() => {
+    const fetchCourses = async () => {
+      try {
+        const res = await fetch('/api/courses');
+        const data = await res.json();
+        if (data.courses && Array.isArray(data.courses)) {
+          const mappedCourses = data.courses.map(c => typeof c === 'object' ? c.name || c.course_name || c.course : c);
+          if (mappedCourses.length > 0) {
+            setCourseOptions(mappedCourses);
+          }
+        }
+      } catch (err) {
+        console.error("Failed to fetch courses:", err);
+      }
+    };
+    fetchCourses();
+  }, []);
 
   const timeOptions = [
     "Morning (10 AM - 1 PM)",

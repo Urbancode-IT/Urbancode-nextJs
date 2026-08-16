@@ -21,6 +21,7 @@ const ContactUs = ({ redirectUrl = '/thankyou' }) => {
 
   const [activeMap, setActiveMap] = useState(0);
   const [showLoader, setShowLoader] = useState(false);
+  const [courseOptions, setCourseOptions] = useState(["Loading courses..."]);
 
   // alternate maps every 2.5 sec
   useEffect(() => {
@@ -28,6 +29,25 @@ const ContactUs = ({ redirectUrl = '/thankyou' }) => {
       setActiveMap((prev) => (prev + 1) % 3);
     }, 2500);
     return () => clearInterval(interval);
+  }, []);
+
+  // Fetch courses dynamically
+  useEffect(() => {
+    const fetchCourses = async () => {
+      try {
+        const res = await fetch('/api/courses');
+        const data = await res.json();
+        if (data.courses && Array.isArray(data.courses)) {
+          const mappedCourses = data.courses.map(c => typeof c === 'object' ? c.name || c.course_name || c.course : c);
+          if (mappedCourses.length > 0) {
+            setCourseOptions(mappedCourses);
+          }
+        }
+      } catch (err) {
+        console.error("Failed to fetch courses:", err);
+      }
+    };
+    fetchCourses();
   }, []);
 
   const {
@@ -53,6 +73,9 @@ const ContactUs = ({ redirectUrl = '/thankyou' }) => {
         name: data.name.trim(),
         email: data.email.trim(),
         mobile: data.phone,
+        interest: data.interest,
+        selectedCourse: data.interest === 'Course Enquiry' ? data.selectedCourse : '',
+        convenientTime: data.convenientTime,
         message: `Interest: ${data.interest}${data.selectedCourse ? ' - ' + data.selectedCourse : ''} | Convenient Time: ${data.convenientTime}`
       };
       
@@ -83,23 +106,6 @@ const ContactUs = ({ redirectUrl = '/thankyou' }) => {
     "Sponsorship",
     "Bulk Hiring",
     "Career with Urbancode",
-    "Other"
-  ];
-
-  const courseOptions = [
-    "MERN Stack Development",
-    "MEAN Stack Development",
-    "Python Full Stack Development",
-    "Java Full Stack Development",
-    "Software Testing (Selenium & Playwright)",
-    "UI/UX Design",
-    "Data Science & AI",
-    "Digital Marketing",
-    "AWS & DevOps",
-    "CCNA Networking",
-    "React Native Development",
-    "Cyber Security",
-    "Kidspace Coding Courses",
     "Other"
   ];
 

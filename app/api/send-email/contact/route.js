@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { getGmailTransporter, getGmailSender } from '@/lib/mailer/gmailTransporter';
+import { sendExternalEnrollment, extractMobileNumber } from '@/lib/api/externalEnrollment';
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -18,6 +19,7 @@ export async function POST(req) {
     const phone   = toText(body?.phone || body?.mobile || body?.mobileNumber || body?.phoneNumber, '');
     const message = toText(body?.message, 'No message provided');
     const interest = toText(body?.interest, 'Not specified');
+    const selectedCourse = toText(body?.selectedCourse, '');
     const convenientTime = toText(body?.convenientTime, 'Not specified');
 
     if (!name)  return NextResponse.json({ success: false, message: 'Name is required.' }, { status: 400 });
@@ -177,6 +179,19 @@ export async function POST(req) {
       ].join('\n'),
       html: htmlContent,
     });
+
+    // Send lead to external CRM for course-related enquiries (fire-and-forget)
+    if (interest === 'Course Enquiry') {
+      const courseForCRM = selectedCourse || interest;
+      sendExternalEnrollment({
+        name,
+        mobile_number: extractMobileNumber(phone),
+        email,
+        course: courseForCRM,
+        requirements: `Convenient Time: ${convenientTime}`,
+        card_type: 'Training Only',
+      }).catch(() => {});
+    }
 
     return NextResponse.json({ success: true, message: 'Message sent successfully.' });
   } catch (error) {

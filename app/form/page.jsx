@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useEffect, Suspense } from "react";
+import React, { Suspense, useState, useEffect } from "react";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { goToThankYou } from "@/lib/navigation/goToThankYou";
@@ -7,26 +7,60 @@ import Swal from 'sweetalert2';
 import { Send } from "lucide-react";
 import "./FormPage.css";
 
-import { FormInput, FormSelect, FormTextarea, FormButton, FormCard } from "@/app/components/common/FormUI";
 import { FormPhoneInput } from "@/app/components/common/FormPhoneInput";
 import { Honeypot } from "@/app/components/common/Honeypot";
 import { useEnquiryForm } from "@/app/hooks/useEnquiryForm";
-import { contactUsSchema } from "@/app/schemas/enquirySchema";
+import { enquiryFormSchema } from "@/app/schemas/enquirySchema";
 import { Controller } from "react-hook-form";
+
+// Courses are now fetched dynamically from /api/courses
+// keeping a small initial set to prevent layout shift before fetch completes
+const INITIAL_COURSE_OPTIONS = [
+  "Loading courses..."
+];
+
+const TIME_SLOTS = [
+  "09:00 AM - 12:00 PM",
+  "12:00 PM - 03:00 PM",
+  "03:00 PM - 06:00 PM",
+  "06:00 PM - 09:00 PM",
+  "Any Time",
+];
 
 const EnquiryFormContent = () => {
   const searchParams = useSearchParams();
   const courseFromUrl = searchParams.get('course');
+
+  const [courseOptions, setCourseOptions] = useState(INITIAL_COURSE_OPTIONS);
+
+  useEffect(() => {
+    const fetchCourses = async () => {
+      try {
+        const res = await fetch('/api/courses');
+        const data = await res.json();
+        
+        if (data.courses && Array.isArray(data.courses)) {
+          // Check if data is array of objects {id, name} or array of strings
+          const mappedCourses = data.courses.map(c => typeof c === 'object' ? c.name || c.course_name || c.course : c);
+          if (mappedCourses.length > 0) {
+            setCourseOptions(mappedCourses);
+          }
+        }
+      } catch (err) {
+        console.error("Failed to fetch courses for form:", err);
+      }
+    };
+    fetchCourses();
+  }, []);
 
   const {
     register,
     control,
     submitHandler,
     isSubmitting,
-    watch,
     formState: { errors }
   } = useEnquiryForm({
-    schema: contactUsSchema,
+    schema: enquiryFormSchema,
     defaultValues: {
       name: "",
       email: "",
@@ -39,32 +73,47 @@ const EnquiryFormContent = () => {
     onSubmitCallback: async (data, reset) => {
       const scriptURL = "https://script.google.com/macros/s/AKfycbyqhIsaZZb1mvkcRtxrquaDboujLLpts-q5s1ed1JIRiuzt5l76OHeFxuTZPzRWxqh_/exec";
 
-      const payload = {
-        name: data.name.trim(),
-        phone: data.phone,
-        email: data.email.trim(),
-        interest: data.interest,
-        course: data.interest === "Course Enquiry" ? data.selectedCourse : data.interest,
-        time: data.convenientTime,
-        message: "Website Enquiry Form",
-      };
+      // course is always the selected course from the dropdown
+      const resolvedCourse = data.selectedCourse;
 
-      await fetch(scriptURL, {
+      // Send to Google Sheets (no-cors, fire and forget)
+      fetch(scriptURL, {
         method: "POST",
-        headers: {
-          "Content-Type": "text/plain;charset=utf-8",
-        },
-        body: JSON.stringify(payload),
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify({
+          name: data.name.trim(),
+          phone: data.phone,
+          email: data.email.trim(),
+          interest: "Course Enquiry",
+          course: resolvedCourse,
+          time: data.convenientTime,
+          message: "Website Enquiry Form (/form)",
+        }),
         mode: "no-cors",
+      }).catch(() => {});
+
+      // Send to admin email + external CRM (awaited so CRM call is guaranteed)
+      await fetch("/api/send-email/course-enquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: data.name.trim(),
+          email: data.email.trim(),
+          phone: data.phone,
+          course: resolvedCourse,
+          mode: "Not specified",
+          pin: "N/A",
+          message: `Course Enquiry via /form | Time: ${data.convenientTime}`,
+        }),
       });
 
       Swal.fire({
-        title: 'Success!',
-        text: 'Your enquiry has been submitted successfully.',
+        title: 'Enquiry Submitted!',
+        text: `We've received your enquiry for ${resolvedCourse}. Our team will contact you within 24 hours.`,
         icon: 'success',
         confirmButtonColor: '#036c2d'
       });
-      
+
       setTimeout(() => {
         goToThankYou();
         reset();
@@ -72,52 +121,15 @@ const EnquiryFormContent = () => {
     }
   });
 
-  const watchInterest = watch("interest");
-
-  const interestOptions = [
-    "Course Enquiry",
-    "Placement Assistance",
-    "Internship",
-    "Mentorship",
-    "Franchise",
-    "Corporate Training",
-    "Other"
-  ];
-
-  const courseOptions = [
-    "AI Powered Fullstack Development",
-    "MEAN Stack Development",
-    "Python Full Stack Development",
-    "Java Full Stack Development",
-    "Software Testing (Selenium & Playwright)",
-    "UI/UX Design",
-    "Data Science & AI",
-    "Digital Marketing",
-    "AWS & DevOps",
-    "CCNA Networking",
-    "React Native Development",
-    "Cyber Security",
-    "Kidspace Coding Courses",
-    "Other"
-  ];
-
-  const timeSlots = [
-    "09:00 AM - 12:00 PM",
-    "12:00 PM - 03:00 PM",
-    "03:00 PM - 06:00 PM",
-    "06:00 PM - 09:00 PM",
-    "Any Time"
-  ];
-
   return (
     <div className="form-page-wrapper">
       <div className="container" style={{maxWidth: '700px'}}>
         <div className="glass-form-card">
           <div className="text-center mb-4">
-            <Image 
-              src="/images/home/logo.png" 
-              alt="Urban Code Logo" 
-              width={160} 
+            <Image
+              src="/images/home/logo.png"
+              alt="Urban Code Logo"
+              width={160}
               height={38}
               priority
               className="mb-3"
@@ -128,10 +140,14 @@ const EnquiryFormContent = () => {
 
           <form onSubmit={submitHandler} noValidate>
             <Honeypot register={register} />
+            {/* Hidden field: interest is always "Course Enquiry" for this page */}
+            <input type="hidden" {...register("interest")} value="Course Enquiry" />
+
             <div className="row g-3">
+              {/* Full Name */}
               <div className="col-md-6">
                 <div className="modern-input-group">
-                  <label className="modern-label">Full Name</label>
+                  <label className="modern-label">Full Name <span style={{color:'#e53e3e'}}>*</span></label>
                   <input
                     type="text"
                     {...register("name")}
@@ -143,9 +159,10 @@ const EnquiryFormContent = () => {
                 </div>
               </div>
 
+              {/* Email */}
               <div className="col-md-6">
                 <div className="modern-input-group">
-                  <label className="modern-label">Email Address</label>
+                  <label className="modern-label">Email Address <span style={{color:'#e53e3e'}}>*</span></label>
                   <input
                     type="email"
                     {...register("email")}
@@ -157,9 +174,10 @@ const EnquiryFormContent = () => {
                 </div>
               </div>
 
+              {/* Mobile Number */}
               <div className="col-12">
                 <div className="modern-input-group">
-                  <label className="modern-label">Mobile Number</label>
+                  <label className="modern-label">Mobile Number <span style={{color:'#e53e3e'}}>*</span></label>
                   <Controller
                     name="phone"
                     control={control}
@@ -176,56 +194,46 @@ const EnquiryFormContent = () => {
                 </div>
               </div>
 
+              {/* Course — always visible, always required */}
               <div className="col-md-6">
                 <div className="modern-input-group">
-                  <label className="modern-label">Interested In</label>
+                  <label className="modern-label">Select Course <span style={{color:'#e53e3e'}}>*</span></label>
                   <select
-                    {...register("interest")}
-                    className={`modern-select ${errors.interest ? "is-invalid" : ""}`}
+                    {...register("selectedCourse")}
+                    className={`modern-select ${errors.selectedCourse ? "is-invalid" : ""}`}
                     disabled={isSubmitting}
                   >
-                    <option value="" disabled>Select interest</option>
-                    {interestOptions.map(opt => <option key={opt} value={opt}>{opt}</option>)}
+                    <option value="" disabled>Choose a Course</option>
+                    {courseOptions.map(opt => (
+                      <option key={opt} value={opt}>{opt}</option>
+                    ))}
                   </select>
-                  {errors.interest && <span className="form-error">{errors.interest.message}</span>}
+                  {errors.selectedCourse && <span className="form-error">{errors.selectedCourse.message}</span>}
                 </div>
               </div>
 
-              {watchInterest === "Course Enquiry" && (
-                <div className="col-md-6">
-                  <div className="modern-input-group">
-                    <label className="modern-label">Select Course</label>
-                    <select
-                      {...register("selectedCourse")}
-                      className={`modern-select ${errors.selectedCourse ? "is-invalid" : ""}`}
-                      disabled={isSubmitting}
-                    >
-                      <option value="" disabled>Choose Course</option>
-                      {courseOptions.map(opt => <option key={opt} value={opt}>{opt}</option>)}
-                    </select>
-                    {errors.selectedCourse && <span className="form-error">{errors.selectedCourse.message}</span>}
-                  </div>
-                </div>
-              )}
-
-              <div className={watchInterest === "Course Enquiry" ? "col-md-12" : "col-md-6"}>
+              {/* Convenient Time */}
+              <div className="col-md-6">
                 <div className="modern-input-group">
-                  <label className="modern-label">Convenient Time to Call</label>
+                  <label className="modern-label">Convenient Time to Call <span style={{color:'#e53e3e'}}>*</span></label>
                   <select
                     {...register("convenientTime")}
                     className={`modern-select ${errors.convenientTime ? "is-invalid" : ""}`}
                     disabled={isSubmitting}
                   >
                     <option value="" disabled>Select Time</option>
-                    {timeSlots.map(opt => <option key={opt} value={opt}>{opt}</option>)}
+                    {TIME_SLOTS.map(opt => (
+                      <option key={opt} value={opt}>{opt}</option>
+                    ))}
                   </select>
                   {errors.convenientTime && <span className="form-error">{errors.convenientTime.message}</span>}
                 </div>
               </div>
 
+              {/* Submit */}
               <div className="col-12 mt-2 text-center">
-                <button 
-                  type="submit" 
+                <button
+                  type="submit"
                   className="btn-modern-submit"
                   disabled={isSubmitting}
                 >
@@ -252,3 +260,4 @@ export default function EnquiryPage() {
     </Suspense>
   );
 }
+
