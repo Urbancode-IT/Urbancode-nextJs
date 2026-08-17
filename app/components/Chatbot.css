@@ -110,6 +110,11 @@
     border-radius: 16px;
 }
 
+.chatbot-local-shell {
+    overflow: hidden;
+    background: #fff;
+}
+
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
     .chatbot-container {
