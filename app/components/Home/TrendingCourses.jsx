@@ -299,6 +299,7 @@ const TrendingCourses = () => {
                 isOpen={showEnquiry}
                 onClose={() => setShowEnquiry(false)}
                 courseName={selectedCourse?.title || "Freedom Sale Course"}
+                useCourseEnquiryApi={true}
             />
         </div>
     );

@@ -59,6 +59,7 @@ const BookDemoWidget = () => {
                 onClose={() => setIsOpen(false)}
                 isDemoMode={true}
                 isSelectMode={true}
+                useCourseEnquiryApi={true}
                 extraOptions={[
                     "Python with AI",
                     "Full Stack Development",

@@ -317,6 +317,7 @@ export default function NewHeroSection() {
           isOpen={isEnquiryModalOpen} 
           onClose={() => setIsEnquiryModalOpen(false)} 
           isSelectMode={true}
+          useCourseEnquiryApi={true}
           extraOptions={[
             "Full Stack Development",
             "Python with AI",

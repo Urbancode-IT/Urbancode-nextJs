@@ -506,6 +506,7 @@ const NewInternalCourse = ({ data }) => {
                 isOpen={isEnquiryOpen}
                 onClose={() => setIsEnquiryOpen(false)}
                 courseName={heroData.highlightText || "Course"}
+                useCourseEnquiryApi={true}
             />
 
             <EnquiryFormModal
@@ -514,6 +515,7 @@ const NewInternalCourse = ({ data }) => {
                 courseName={heroData.highlightText || "Course"}
                 isBrochureMode={true}
                 downloadUrls={[heroData.brochure || "/brochure.jpg"]}
+                useCourseEnquiryApi={true}
             />
 
             <EnquiryFormModal
@@ -522,6 +524,7 @@ const NewInternalCourse = ({ data }) => {
                 courseName={heroData.highlightText || "Course"}
                 isJoinMode={true}
                 batchInfo={selectedBatch}
+                useCourseEnquiryApi={true}
             />
 
             <Link href="/english-intake" className="btn btn-primary" style={{ backgroundColor: '#036c2d', borderColor: '#036c2d' }}>Fill Intake Form</Link>

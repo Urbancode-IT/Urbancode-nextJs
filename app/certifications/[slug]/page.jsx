@@ -191,6 +191,7 @@ const CertificationDetailPage = () => {
                 isOpen={isEnquiryOpen}
                 onClose={() => setIsEnquiryOpen(false)}
                 courseName={data.title}
+                useCourseEnquiryApi={true}
             />
         </div>
     );

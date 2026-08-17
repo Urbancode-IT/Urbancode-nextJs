@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { getGmailTransporter, getGmailSender } from '@/lib/mailer/gmailTransporter';
 import { sendExternalEnrollment, extractMobileNumber } from '@/lib/api/externalEnrollment';
+import { resolveCrmCourseNameAsync } from '@/lib/api/resolveCrmCourse';
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -21,6 +22,8 @@ export async function POST(req) {
     const mode    = toText(body?.mode, 'Not specified');
     const pin     = toText(body?.pin, 'N/A');
     const message = toText(body?.message, 'No message provided');
+    const card_type = toText(body?.card_type, 'Training Only');
+    const source_page = toText(body?.source_page, '');
 
     if (!name)  return NextResponse.json({ success: false, message: 'Name is required.' }, { status: 400 });
     if (!email || !EMAIL_REGEX.test(email))
@@ -190,19 +193,22 @@ export async function POST(req) {
     });
 
     const requirements = [
+      source_page && source_page !== 'N/A' ? `Source: ${source_page}` : '',
       mode && mode !== 'Not specified' ? `Mode: ${mode}` : '',
       pin && pin !== 'N/A' ? `PIN: ${pin}` : '',
       message && message !== 'No message provided' ? message : '',
     ].filter(Boolean).join(' | ');
+
+    const crmCourse = await resolveCrmCourseNameAsync(course);
 
     // Await CRM so Next.js does not kill the request when the response is sent
     const crmPromise = sendExternalEnrollment({
       name,
       mobile_number: extractMobileNumber(phone),
       email,
-      course,
+      course: crmCourse,
       requirements,
-      card_type: 'Training Only',
+      card_type,
     });
 
     const [emailResult, crmResult] = await Promise.allSettled([emailPromise, crmPromise]);

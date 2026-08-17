@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import EnquiryFormModal from '../components/common/EnquiryFormModal';
+import { KIDS_COURSE_OPTIONS } from '@/lib/data/kidsCourses';
 import './KidsHero.css';
 
 const KidsHero = () => {
@@ -157,7 +158,11 @@ const KidsHero = () => {
         <EnquiryFormModal
           isOpen={showEnquiry}
           onClose={() => setShowEnquiry(false)}
-          courseName="Kids Course Enrollment"
+          isSelectMode={true}
+          isKidsMode={true}
+          useExternalCourses={false}
+          extraOptions={KIDS_COURSE_OPTIONS}
+          useCourseEnquiryApi={true}
         />
       )}
     </section>

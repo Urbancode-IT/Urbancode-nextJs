@@ -2,6 +2,7 @@
 import './Kidz.css';
 import Image from 'next/image';
 import EnquiryFormModal from '../components/common/EnquiryFormModal';
+import { KIDS_COURSE_OPTIONS } from '@/lib/data/kidsCourses';
 import { useState, useEffect } from 'react';
 import KidsLoader from './KidsLoader';
 
@@ -334,6 +335,11 @@ const Kidz = () => {
             isOpen={!!selectedCourse}
             onClose={() => setSelectedCourse(null)}
             courseName={selectedCourse.title}
+            isSelectMode={true}
+            isKidsMode={true}
+            useExternalCourses={false}
+            extraOptions={KIDS_COURSE_OPTIONS}
+            useCourseEnquiryApi={true}
           />
         )}
       </div>
@@ -441,7 +447,11 @@ const Kidz = () => {
                   <EnquiryFormModal
                     isOpen={showEnquiry}
                     onClose={() => setShowEnquiry(false)}
-                    courseName="Kids Courses - Free Demo Class"
+                    isSelectMode={true}
+                    isKidsMode={true}
+                    useExternalCourses={false}
+                    extraOptions={KIDS_COURSE_OPTIONS}
+                    useCourseEnquiryApi={true}
                     onSuccess={() => {
                       if (typeof window !== 'undefined') {
                         localStorage.setItem('kidsPlayZoneUnlocked', 'true');

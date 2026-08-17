@@ -4,7 +4,10 @@ import { goToThankYou } from "@/lib/navigation/goToThankYou";
 import { FormPhoneInput } from "@/app/components/common/FormPhoneInput";
 import { motion, AnimatePresence } from "framer-motion";
 import Swal from 'sweetalert2';
+import { submitEnquiryForm } from "@/lib/api/api";
 import { courseOptionLabel, normalizeCourses } from "@/lib/api/externalCourses";
+import { resolveCrmCourseName } from "@/lib/api/resolveCrmCourse";
+import { getKidsCourseLabel, getKidsCrmCourse } from "@/lib/data/kidsCourses";
 import "./EnquiryForm.css";
 
 const EnquiryFormModal = ({ 
@@ -22,6 +25,8 @@ const EnquiryFormModal = ({
   batchInfo = null,
   customTitle = null,
   useExternalCourses = true,
+  useCourseEnquiryApi = false,
+  isKidsMode = false,
 }) => {
   const [formData, setFormData] = useState({
     name: "",
@@ -64,9 +69,23 @@ const EnquiryFormModal = ({
   const apiCourseNames = dynamicCourseOptions.map((c) =>
     typeof c === "string" ? c : c.course_name
   );
-  const selectCourseOptions = (useExternalCourses && dynamicCourseOptions.length > 0)
-    ? dynamicCourseOptions
-    : extraOptions.map((name) => ({ course_id: name, course_name: name, course_type: "" }));
+  const normalizeOption = (opt) => {
+    if (typeof opt === "string") {
+      return { course_id: opt, course_name: opt, crmCourse: opt, course_type: "" };
+    }
+    return {
+      course_id: opt.course_id || opt.course_name,
+      course_name: opt.course_name,
+      crmCourse: opt.crmCourse || opt.course_name,
+      course_type: opt.course_type || "",
+    };
+  };
+
+  const selectCourseOptions = isKidsMode
+    ? extraOptions.map(normalizeOption)
+    : ((useExternalCourses && dynamicCourseOptions.length > 0)
+      ? dynamicCourseOptions
+      : extraOptions.map(normalizeOption));
   const visibleSelectOptions = (useExternalCourses && !coursesReady) ? [] : selectCourseOptions;
   const showCourseSelect = isSelectMode;
 
@@ -82,11 +101,31 @@ const EnquiryFormModal = ({
   };
 
   React.useEffect(() => {
-    setFormData(prev => ({
+    if (!isOpen) return;
+
+    const options = (useExternalCourses && dynamicCourseOptions.length > 0 && !isKidsMode)
+      ? dynamicCourseOptions
+      : extraOptions.map(normalizeOption);
+
+    let nextCourse = "";
+    if (isSelectMode) {
+      if (courseName) {
+        const matched = options.find(
+          (opt) => opt.course_name.toLowerCase() === courseName.toLowerCase()
+        );
+        nextCourse = isKidsMode
+          ? (matched?.crmCourse || getKidsCrmCourse(courseName, options))
+          : (matched?.course_name || "");
+      }
+    } else {
+      nextCourse = courseName || "";
+    }
+
+    setFormData((prev) => ({
       ...prev,
-      course: isSelectMode ? prev.course : (courseName || ""),
+      course: nextCourse,
     }));
-  }, [courseName, isSelectMode]);
+  }, [isOpen, courseName, isSelectMode, isKidsMode, useExternalCourses, dynamicCourseOptions, extraOptions]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -183,6 +222,229 @@ const EnquiryFormModal = ({
     return Object.keys(newErrors).length === 0;
   };
 
+  const buildEnquiryMessage = () => {
+    if (isJoinMode) {
+      return `[JOIN REQUEST] Request to join ${courseName}${batchInfo ? ` (${batchInfo.name} - ${batchInfo.schedule})` : ""} batch.`;
+    }
+    if (isDemoMode) {
+      return `[DEMO REQUEST] Date: ${formData.preferredDate}, Time: ${formData.preferredTime}. Msg: ${formData.message}`;
+    }
+    if (isKidsMode && formData.course) {
+      const label = getKidsCourseLabel(formData.course, selectCourseOptions);
+      const prefix = `[Kids Enquiry - ${label}]`;
+      return formData.message?.trim() ? `${prefix} ${formData.message.trim()}` : prefix;
+    }
+    return formData.message;
+  };
+
+  const getResolvedCourseName = () => {
+    const rawCourse = isJoinMode
+      ? (courseName || formData.course)
+      : formData.course;
+    if (isKidsMode) {
+      return rawCourse;
+    }
+    return resolveCrmCourseName(rawCourse, selectCourseOptions);
+  };
+
+  const buildSubmitPayload = (resolvedCourse, messageOverride) => ({
+    name: formData.name.trim(),
+    email: formData.email.trim(),
+    phone: formData.phone,
+    course: resolvedCourse,
+    mode: isJoinMode ? "Not specified" : formData.mode,
+    pin: formData.pin || "N/A",
+    message: messageOverride ?? buildEnquiryMessage(),
+    ...(isKidsMode ? { card_type: "Training Only", source_page: "Kids Courses" } : {}),
+  });
+
+  const submitViaCourseApi = async () => {
+    if (isBrochureMode) {
+      const brochureUrl = downloadUrls?.length > 0 ? downloadUrls[0] : "";
+      const emailResponse = await fetch("/api/send-email/send-curriculum", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          course: formData.course,
+          brochureUrl,
+        }),
+      });
+
+      if (!emailResponse.ok) {
+        const errRes = await emailResponse.json().catch(() => ({}));
+        throw new Error(errRes.message || "Failed to send curriculum email.");
+      }
+
+      const resolvedCourse = getResolvedCourseName();
+      const result = await submitEnquiryForm(buildSubmitPayload(
+        resolvedCourse,
+        `[BROCHURE DOWNLOAD] Student downloaded the ${getKidsCourseLabel(formData.course, selectCourseOptions) || formData.course} curriculum/brochure.`
+      ));
+
+      if (!result.success) {
+        throw new Error(result.message || "Failed to submit enquiry.");
+      }
+
+      Swal.fire({
+        title: 'Curriculum Sent!',
+        text: `The curriculum for ${formData.course} has been successfully sent to ${formData.email}. Please check your inbox (and spam folder)!`,
+        icon: 'success',
+        confirmButtonColor: '#036c2d',
+        background: '#ffffff',
+        color: '#2C3E50',
+        iconColor: '#17944d',
+      });
+      setStatus({ type: "success", message: "Curriculum sent to your email!" });
+      return;
+    }
+
+    const resolvedCourse = getResolvedCourseName();
+    const result = await submitEnquiryForm(buildSubmitPayload(resolvedCourse));
+
+    if (!result.success) {
+      throw new Error(result.message || "Failed to submit enquiry.");
+    }
+
+    if (isJoinMode) {
+      Swal.fire({
+        title: 'Request Sent!',
+        text: 'Your request has been sent to the trainer. You will be able to join the class once the trainer approves it.',
+        icon: 'success',
+        confirmButtonColor: '#28a745',
+      });
+      return;
+    }
+
+    Swal.fire({
+      title: 'Success!',
+      text: 'Your enquiry has been submitted successfully.',
+      icon: 'success',
+      confirmButtonColor: '#036c2d',
+    });
+    setStatus({ type: "success", message: "Success! Redirecting..." });
+  };
+
+  const submitViaLegacyFlow = async () => {
+    const scriptURL = "https://script.google.com/macros/s/AKfycbyqhIsaZZb1mvkcRtxrquaDboujLLpts-q5s1ed1JIRiuzt5l76OHeFxuTZPzRWxqh_/exec";
+
+    const payload = {
+      name: formData.name,
+      phone: formData.phone,
+      email: formData.email,
+      course: formData.course,
+      message: buildEnquiryMessage(),
+    };
+
+    const response = await fetch(scriptURL, {
+      method: "POST",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify(payload),
+      mode: "no-cors",
+    });
+
+    if (!response.ok && response.type !== 'opaque') {
+      throw new Error("Failed to submit form");
+    }
+
+    if (isJoinMode) {
+      await fetch("/api/send-email/course-enquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          course: formData.course || courseName,
+          mode: "Not specified",
+          pin: formData.pin || "N/A",
+          message: `[JOIN REQUEST] ${formData.name} wants to join the ${courseName} class.${batchInfo ? ` Batch: ${batchInfo.name} — ${batchInfo.schedule}` : ""}`,
+        }),
+      }).catch((err) => console.warn("Admin join notification failed:", err));
+
+      Swal.fire({
+        title: 'Request Sent!',
+        text: 'Your request has been sent to the trainer. You will be able to join the class once the trainer approves it.',
+        icon: 'success',
+        confirmButtonColor: '#28a745',
+      });
+      return;
+    }
+
+    if (isBrochureMode) {
+      const brochureUrl = downloadUrls?.length > 0 ? downloadUrls[0] : "";
+      const emailResponse = await fetch("/api/send-email/send-curriculum", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          course: formData.course,
+          brochureUrl,
+        }),
+      });
+
+      if (!emailResponse.ok) {
+        const errRes = await emailResponse.json();
+        throw new Error(errRes.message || "Failed to send curriculum email.");
+      }
+
+      await fetch("/api/send-email/course-enquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          course: formData.course,
+          mode: formData.mode || "Not specified",
+          pin: formData.pin || "N/A",
+          message: `[BROCHURE DOWNLOAD] Student downloaded the ${formData.course} curriculum/brochure.`,
+        }),
+      }).catch((err) => console.warn("Admin brochure notification failed:", err));
+
+      Swal.fire({
+        title: 'Curriculum Sent!',
+        text: `The curriculum for ${formData.course} has been successfully sent to ${formData.email}. Please check your inbox (and spam folder)!`,
+        icon: 'success',
+        confirmButtonColor: '#036c2d',
+        background: '#ffffff',
+        color: '#2C3E50',
+        iconColor: '#17944d',
+      });
+      setStatus({ type: "success", message: "Curriculum sent to your email!" });
+      return;
+    }
+
+    const enquiryResponse = await fetch("/api/send-email/course-enquiry", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        course: formData.course,
+        mode: formData.mode,
+        pin: formData.pin,
+        message: buildEnquiryMessage(),
+      }),
+    });
+
+    if (!enquiryResponse.ok) {
+      const errRes = await enquiryResponse.json().catch(() => ({}));
+      throw new Error(errRes.message || "Failed to submit enquiry.");
+    }
+
+    Swal.fire({
+      title: 'Success!',
+      text: 'Your enquiry has been submitted successfully.',
+      icon: 'success',
+      confirmButtonColor: '#036c2d',
+    });
+    setStatus({ type: "success", message: "Success! Redirecting..." });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validateForm()) return;
@@ -190,153 +452,26 @@ const EnquiryFormModal = ({
     setLoading(true);
     setStatus({ type: "loading", message: isJoinMode ? "Sending your request..." : "Sending your enquiry..." });
 
-    const scriptURL = "https://script.google.com/macros/s/AKfycbyqhIsaZZb1mvkcRtxrquaDboujLLpts-q5s1ed1JIRiuzt5l76OHeFxuTZPzRWxqh_/exec";
-
     try {
-      // Prepare payload with requested fields
-      const payload = {
-        name: formData.name,
-        phone: formData.phone,
-        email: formData.email,
-        course: formData.course,
-        message: isJoinMode
-          ? `[JOIN REQUEST] Request to join ${courseName} ${batchInfo ? `(${batchInfo.name} - ${batchInfo.schedule})` : ""} batch.`
-          : (isDemoMode 
-            ? `[DEMO REQUEST] Date: ${formData.preferredDate}, Time: ${formData.preferredTime}. Msg: ${formData.message}` 
-            : formData.message),
-      };
-
-      // Using fetch with 'text/plain' to avoid CORS preflight issues common with Google Apps Script
-      // while still sending a JSON string in the body.
-      const response = await fetch(scriptURL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "text/plain;charset=utf-8",
-        },
-        body: JSON.stringify(payload),
-        mode: "no-cors",
-      });
-
-      if (!response.ok && response.type !== 'opaque') {
-        throw new Error("Failed to submit form");
-      }
-
-      // Handle Success
-      if (isJoinMode) {
-        // Notify admin@urbancode.in about the join request
-        await fetch("/api/send-email/course-enquiry", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            name: formData.name,
-            email: formData.email,
-            phone: formData.phone,
-            course: formData.course || courseName,
-            mode: "Not specified",
-            pin: formData.pin || "N/A",
-            message: `[JOIN REQUEST] ${formData.name} wants to join the ${courseName} class.${batchInfo ? ` Batch: ${batchInfo.name} — ${batchInfo.schedule}` : ""}`,
-          }),
-        }).catch((err) => console.warn("Admin join notification failed:", err));
-
-        Swal.fire({
-          title: 'Request Sent!',
-          text: 'Your request has been sent to the trainer. You will be able to join the class once the trainer approves it.',
-          icon: 'success',
-          confirmButtonColor: '#28a745'
-        });
-      } else if (isBrochureMode) {
-        const brochureUrl = downloadUrls && downloadUrls.length > 0 ? downloadUrls[0] : "";
-        const emailResponse = await fetch("/api/send-email/send-curriculum", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            name: formData.name,
-            email: formData.email,
-            course: formData.course,
-            brochureUrl: brochureUrl
-          })
-        });
-
-        if (!emailResponse.ok) {
-          const errRes = await emailResponse.json();
-          throw new Error(errRes.message || "Failed to send curriculum email.");
-        }
-
-        // Notify admin@urbancode.in about this brochure download
-        await fetch("/api/send-email/course-enquiry", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            name: formData.name,
-            email: formData.email,
-            phone: formData.phone,
-            course: formData.course,
-            mode: formData.mode || "Not specified",
-            pin: formData.pin || "N/A",
-            message: `[BROCHURE DOWNLOAD] Student downloaded the ${formData.course} curriculum/brochure.`,
-          }),
-        }).catch((err) => console.warn("Admin brochure notification failed:", err));
-
-        Swal.fire({
-          title: 'Curriculum Sent!',
-          text: `The curriculum for ${formData.course} has been successfully sent to ${formData.email}. Please check your inbox (and spam folder)!`,
-          icon: 'success',
-          confirmButtonColor: '#036c2d',
-          background: '#ffffff',
-          color: '#2C3E50',
-          iconColor: '#17944d'
-        });
-
-        setStatus({ type: "success", message: "Curriculum sent to your email!" });
+      if (useCourseEnquiryApi) {
+        await submitViaCourseApi();
       } else {
-        // Await so CRM enrollment finishes before redirect
-        const enquiryResponse = await fetch("/api/send-email/course-enquiry", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            name: formData.name,
-            email: formData.email,
-            phone: formData.phone,
-            course: formData.course,
-            mode: formData.mode,
-            pin: formData.pin,
-            message: isDemoMode
-              ? `[DEMO REQUEST] Date: ${formData.preferredDate}, Time: ${formData.preferredTime}. Msg: ${formData.message}`
-              : formData.message,
-          }),
-        });
-
-        if (!enquiryResponse.ok) {
-          const errRes = await enquiryResponse.json().catch(() => ({}));
-          throw new Error(errRes.message || "Failed to submit enquiry.");
-        }
-
-        Swal.fire({
-          title: 'Success!',
-          text: 'Your enquiry has been submitted successfully.',
-          icon: 'success',
-          confirmButtonColor: '#036c2d'
-        });
-        setStatus({ type: "success", message: "Success! Redirecting..." });
+        await submitViaLegacyFlow();
       }
-      
+
       if (onSuccess) onSuccess();
 
-      // Close modal; redirect to thank-you only for non-brochure modes
       setTimeout(() => {
         onClose();
         if (!isBrochureMode && !isJoinMode) {
           goToThankYou();
         }
       }, 1200);
-
     } catch (error) {
       console.error("Enquiry Form Error:", error);
       setStatus({
         type: "error",
-        message: "Something went wrong. Please try again.",
+        message: error.message || "Something went wrong. Please try again.",
       });
     } finally {
       setLoading(false);
@@ -456,11 +591,14 @@ const EnquiryFormModal = ({
                               <option value="">
                                 {useExternalCourses && !coursesReady
                                   ? "Loading courses..."
-                                  : "Choose Course"}
+                                  : (isKidsMode ? "Select Kids Course" : "Choose Course")}
                               </option>
                               {visibleSelectOptions.map((opt, i) => (
-                                <option key={opt.course_id || i} value={opt.course_name}>
-                                  {courseOptionLabel(opt)}
+                                <option
+                                  key={opt.course_id || i}
+                                  value={isKidsMode ? (opt.crmCourse || opt.course_name) : opt.course_name}
+                                >
+                                  {isKidsMode ? opt.course_name : courseOptionLabel(opt)}
                                 </option>
                               ))}
                             </select>

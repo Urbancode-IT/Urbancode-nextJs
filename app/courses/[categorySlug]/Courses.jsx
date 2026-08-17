@@ -527,6 +527,7 @@ export default function Courses({ categorySlug }) {
                   isOpen={!!selectedCourse}
                   onClose={() => setSelectedCourse(null)}
                   courseName={selectedCourse.title}
+                  useCourseEnquiryApi={true}
                 />
               )}
             </Col>

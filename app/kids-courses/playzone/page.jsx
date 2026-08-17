@@ -6,6 +6,7 @@ import {
 } from 'react-icons/fa6';
 import VisualRotationGame from './VisualRotationGame';
 import EnquiryFormModal from '../../components/common/EnquiryFormModal';
+import { KIDS_COURSE_OPTIONS } from '@/lib/data/kidsCourses';
 import MemoryMatchGame from './MemoryMatchGame';
 import MathChallengeGame from './MathChallengeGame';
 import PatternGame from './PatternGame';
@@ -182,7 +183,11 @@ export default function PlayzonePage() {
         <EnquiryFormModal
           isOpen={showEnquiry}
           onClose={() => setShowEnquiry(false)}
-          courseName="Kids Play Zone - Free Demo"
+          isSelectMode={true}
+          isKidsMode={true}
+          useExternalCourses={false}
+          extraOptions={KIDS_COURSE_OPTIONS}
+          useCourseEnquiryApi={true}
           onSuccess={() => {
             if (typeof window !== 'undefined') {
               localStorage.setItem('kidsPlayZoneUnlocked', 'true');
