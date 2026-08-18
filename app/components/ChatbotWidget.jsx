@@ -2,9 +2,8 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import "./Chatbot.css";
+import "./Chatbot.css"; // move your CSS here
 import EnquiryFormModal from "./common/EnquiryFormModal";
-import UrbancodeChatbot from "./Chatbot/UrbancodeChatbot";
 
 const ChatbotWidget = () => {
   const pathname = usePathname();
@@ -120,9 +119,11 @@ const ChatbotWidget = () => {
             />
           </svg>
         </div>
-        <div className="chatbot-iframe chatbot-local-shell">
-          <UrbancodeChatbot />
-        </div>
+        <iframe
+          src="https://uc-chatbot.netlify.app"
+          frameBorder="0"
+          className="chatbot-iframe"
+        ></iframe>
       </div>
 
       <EnquiryFormModal

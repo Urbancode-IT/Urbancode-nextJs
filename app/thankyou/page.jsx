@@ -67,10 +67,10 @@ const ThankYouPage = () => {
             transition={{ delay: 0.4 }}
           >
             <h1 className="thank-you-title">Submission Successful!</h1>
-          <p className="thank-you-message">
-  Thank you for reaching out to Urbancode. <br />
-  Our experts have received your enquiry and will get in touch with you shortly.
-</p>
+            <p className="thank-you-message">
+              Thank you for reaching out to Urban Code. <br />
+              Our experts have received your enquiry and will contact you within <strong>24 hours</strong>.
+            </p>
           </motion.div>
 
           <div className="action-buttons">
@@ -86,7 +86,7 @@ const ThankYouPage = () => {
           </div>
 
           <div className="thank-you-footer">
-            <p>For immediate enquiries, call us at <a href="tel:+919878798797" className="gtm-phone-call" data-gtm-label="thankyou_phone_click">+91 9878798797</a></p>
+            <p>Need urgent help? Call us at <a href="tel:+919878798797" className="gtm-phone-call" data-gtm-label="thankyou_phone_click">+91 9878798797</a></p>
           </div>
         </div>
       </motion.div>
