@@ -4134,7 +4134,7 @@ const coursesData = {
 
         desc: "Lead the data revolution. Master Python, Artificial Intelligence, and Machine Learning algorithms to build predictive models and secure top Data Scientist roles.",
         rating: 5.0,
-        duration: "1 month",
+        duration: "3 month",
         students: "105",
         img: "/images/courses/new/ai-ml.png",
         aboutData: {
@@ -5266,7 +5266,7 @@ const coursesData = {
         title: "R Programming",
         desc: "Master R Programming for data science and statistical analysis. Learn advanced algorithms, data visualization, and predictive modeling for top analytics roles.",
         rating: 5.0,
-        duration: "1 month",
+        duration: "2 month",
         students: "676",
         img: "/images/courses/new/rprogramming.png",
         aboutData: {
@@ -5848,7 +5848,7 @@ const coursesData = {
         curriculumUrls: ["/curriculum/dataengineeringcurriculum .pdf"],
         desc: "Master Data Engineering with hands-on training in Google Cloud, Apache Airflow, MySQL, and Python. Gain industry-ready skills to design, build, and maintain scalable data pipelines for modern applications.",
         rating: 5.0,
-        duration: "1 month",
+        duration: "3 month",
         students: "56",
         img: "/images/courses/dataEng.webp",
         aboutData: {
@@ -9485,7 +9485,7 @@ const coursesData = {
         title: "AI and ML",
         desc: "Discover the amazing world of Artificial Intelligence! Learn how computers recognize images, play games, and think like a human through fun, interactive projects.",
         rating: 5.0,
-        duration: "1 month",
+        duration: "3 month",
         students: "850",
         img: "/images/courses/Kidz_AI_ML.webp",
         aboutData: {
