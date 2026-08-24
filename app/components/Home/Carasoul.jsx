@@ -28,7 +28,7 @@ const Carousel = () => {
                 <div className="company-carousel">
                     <div className="text-center home-section-title-wrap">
                         <h2 className="section-main-title text-shine">
-                            Our students thrive in top MNCs
+                            Our Students Thrive in Top MNCs
                         </h2>
                         {/* <p className="fs1rem text-muted">
                             Empowering students with industry-relevant skills to build successful and lasting professional careers.

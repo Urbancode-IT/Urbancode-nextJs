@@ -362,32 +362,43 @@
   display: none !important;
 }
 
-/* ── CTA Row ─────────────────────────────────────── */
+/* ── CTA Row — match homepage .hero-buttons sizing ── */
 .kh2-cta-row {
   display   : flex;
   align-items: center;
-  gap       : 12px;
-  flex-wrap : wrap;
+  gap       : 16px;
+  flex-wrap : nowrap;
   animation : kh2-slide-up 0.55s ease both 0.22s;
 }
+
+.kh2-btn-primary,
+.kh2-btn-secondary {
+  display        : flex;
+  align-items    : center;
+  justify-content: center;
+  gap            : 8px;
+  flex           : 0 0 auto;
+  padding        : 0 24px;
+  height         : 46px;
+  border-radius  : 9999px;
+  font-size      : 16px;
+  font-weight    : 500;
+  letter-spacing : -0.4px;
+  cursor         : pointer;
+  font-family    : 'Inter', sans-serif;
+  white-space    : nowrap;
+  transition     : transform 0.2s ease;
+}
+
 .kh2-btn-primary {
   position      : relative;
   overflow      : hidden;
   background    : linear-gradient(90deg, #00B56F 0%, #004F30 100%);
   color         : #fff;
   border        : none;
-  padding       : 16px 38px;
-  border-radius : 50px;
-  font-size     : 16px;
-  font-weight   : 700;
-  cursor        : pointer;
   box-shadow    : 0px 4px 10px -2px rgba(0,181,111,0.35),
                   0px 10px 24px -6px rgba(0,181,111,0.55),
                   inset 0px 1px 0px rgba(255,255,255,0.45);
-  transition    : box-shadow 0.2s ease;
-  font-family   : 'Inter', sans-serif;
-  white-space   : nowrap;
-  letter-spacing: -0.01em;
 }
 .kh2-btn-primary::before {
   content: '';
@@ -402,27 +413,16 @@
   pointer-events: none;
   z-index: 1;
 }
-.kh2-btn-primary:hover {
-  box-shadow: 0px 6px 14px -2px rgba(0,181,111,0.45),
-              0px 14px 28px -6px rgba(0,181,111,0.6),
-              inset 0px 1px 0px rgba(255,255,255,0.45);
-}
+.kh2-btn-primary:hover { transform: translateY(-2px); }
 .kh2-btn-primary:active { transform: none; }
 
 .kh2-btn-secondary {
-  background   : transparent;
-  color        : var(--kh2-text);
-  border       : 2px solid #d1d5db;
-  padding      : 14px 30px;
-  border-radius: 50px;
-  font-size    : 16px;
-  font-weight  : 600;
-  cursor       : pointer;
-  transition   : all 0.2s ease;
-  font-family  : 'Inter', sans-serif;
-  white-space  : nowrap;
+  background: transparent;
+  color     : var(--kh2-text);
+  border    : 2px solid #d1d5db;
 }
 .kh2-btn-secondary:hover {
+  transform   : translateY(-2px);
   border-color: var(--kh2-text);
   background  : var(--kh2-text);
   color       : #fff;
@@ -566,8 +566,12 @@
     width         : auto !important;
     order         : unset !important;
   }
-  .kh2-btn-primary   { padding: 12px 28px !important; font-size: 14px !important; }
-  .kh2-btn-secondary { padding: 10px 22px !important; font-size: 14px !important; }
+  .kh2-btn-primary,
+  .kh2-btn-secondary {
+    height    : 42px !important;
+    padding   : 0 16px !important;
+    font-size : 14px !important;
+  }
   .kh2-right {
     order          : 1 !important;
     display        : flex !important;
@@ -651,17 +655,14 @@
     aspect-ratio: 1.5;
   }
 
-  /* Full-width buttons */
+  /* Full-width buttons — same height as homepage hero mobile */
   .kh2-btn-primary,
   .kh2-btn-secondary {
-    width          : 100%;
-    height         : 56px;
-    padding        : 0 24px;
-    border-radius  : 16px;
-    font-size      : 16px;
-    display        : flex;
-    align-items    : center;
-    justify-content: center;
+    width        : 100%;
+    height       : 42px;
+    padding      : 0 16px;
+    border-radius: 9999px;
+    font-size    : 14px;
   }
 
   .kh2-trust-band { display: none; }
@@ -677,6 +678,27 @@
   .kh2-badge-cta-label{ font-size: 11px; }
 }
 
+/* ── Desktop laptop (1025–1439px) — match homepage hero buttons ── */
+@media (min-width: 1025px) and (max-width: 1439px) {
+  .kh2-btn-primary,
+  .kh2-btn-secondary {
+    height   : 41px;
+    padding  : 0 22px;
+    font-size: 14px;
+  }
+}
+
+/* ── Large monitor (≥1440px) — match homepage hero buttons ── */
+@media (min-width: 1440px) {
+  .kh2-btn-primary,
+  .kh2-btn-secondary {
+    height   : 58px;
+    padding  : 0 30px;
+    font-size: 20px;
+    gap      : 10px;
+  }
+}
+
 /* ═══════════════════════════════════════════════════
    SMALL MOBILE (≤ 390px)
    ═══════════════════════════════════════════════════ */
@@ -687,6 +709,13 @@
     width : 98vw;
     height: auto;
     aspect-ratio: 1.5;
+  }
+
+  .kh2-btn-primary,
+  .kh2-btn-secondary {
+    height   : 40px;
+    padding  : 0 12px;
+    font-size: 13px;
   }
 
   .kh2-badge-char     { width: 46px; }

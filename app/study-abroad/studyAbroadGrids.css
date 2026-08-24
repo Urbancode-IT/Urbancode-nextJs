@@ -240,3 +240,44 @@
     display: flex;
   }
 }
+
+/* ── Top Countries for MBBS — equal card height (content must not stretch cards) ── */
+.study-abroad-container .mbbs-unified-track {
+  align-items: stretch;
+}
+
+.study-abroad-container .mbbs-unified-track .mbbs-country-card {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 388px !important;
+  min-height: 388px !important;
+  max-height: 388px !important;
+  flex-shrink: 0;
+}
+
+.study-abroad-container .mbbs-unified-track .mbbs-card-img-box {
+  flex: 0 0 160px !important;
+  height: 160px !important;
+  min-height: 160px !important;
+  max-height: 160px !important;
+}
+
+.study-abroad-container .mbbs-unified-track .mbbs-card-info {
+  flex: 1 1 auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  min-height: 0 !important;
+  justify-content: flex-start !important;
+}
+
+.study-abroad-container .mbbs-unified-track .mbbs-card-fee-text {
+  flex: 1 1 auto !important;
+  min-height: 2.75em !important;
+  margin-bottom: 12px !important;
+  line-height: 1.35 !important;
+}
+
+.study-abroad-container .mbbs-unified-track .mbbs-dest-btn-group {
+  margin-top: auto !important;
+  flex-shrink: 0 !important;
+}

@@ -143,3 +143,25 @@
 .study-abroad-container .test-card:hover .test-avatar {
   filter: brightness(1.03) saturate(1.04);
 }
+
+/* Enquire Now — unified dark green gradient */
+.study-abroad-container .dest-btn-primary,
+.study-abroad-container .dest-btn.dest-btn-primary,
+.study-abroad-container .mbbs-country-card .dest-btn.dest-btn-primary {
+  background: linear-gradient(90deg, #036c2d, #17944d, #002a11, #0b0703) !important;
+  border: none !important;
+  color: #ffffff !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  box-shadow: 0 6px 16px rgba(3, 108, 45, 0.28) !important;
+}
+
+.study-abroad-container .dest-btn-primary:hover,
+.study-abroad-container .dest-btn.dest-btn-primary:hover,
+.study-abroad-container .mbbs-country-card .dest-btn.dest-btn-primary:hover {
+  background: linear-gradient(90deg, #036c2d, #17944d, #002a11, #0b0703) !important;
+  color: #ffffff !important;
+  opacity: 0.92;
+  transform: none !important;
+  box-shadow: 0 8px 20px rgba(3, 108, 45, 0.34) !important;
+}
