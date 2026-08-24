@@ -3,7 +3,7 @@
 import React, { useRef, useState, useCallback } from 'react';
 import './PlacementTestimonials.css';
 import { motion } from 'framer-motion';
-import { Quote, Star, Briefcase, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Quote, Star, Briefcase } from 'lucide-react';
 import Image from 'next/image';
 
 const testimonialsData = [
@@ -152,7 +152,7 @@ const PlacementTestimonials = () => {
 
             <div className="pt-container">
                 <div
-                    className="pt-header"
+                    className="pt-header home-section-title-wrap"
                 >
                     <h2 className="section-main-title text-shine">What Our Alumni Says</h2>
                 </div>
@@ -177,11 +177,11 @@ const PlacementTestimonials = () => {
                     {/* Prev / Next Buttons */}
                     <div className="pt-mobile-nav">
                         <button
-                            className={`pt-mobile-nav-btn ${currentIndex === 0 ? 'pt-nav-disabled' : ''}`}
+                            className={`pt-mobile-nav-btn prev ${currentIndex === 0 ? 'pt-nav-disabled' : ''}`}
                             onClick={handlePrev}
                             aria-label="Previous"
                         >
-                            <ChevronLeft size={20} />
+                            ❮
                         </button>
 
                         {/* Dot Indicators */}
@@ -197,11 +197,11 @@ const PlacementTestimonials = () => {
                         </div>
 
                         <button
-                            className={`pt-mobile-nav-btn ${currentIndex === total - 1 ? 'pt-nav-disabled' : ''}`}
+                            className={`pt-mobile-nav-btn next ${currentIndex === total - 1 ? 'pt-nav-disabled' : ''}`}
                             onClick={handleNext}
                             aria-label="Next"
                         >
-                            <ChevronRight size={20} />
+                            ❯
                         </button>
                     </div>
                 </div>

@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaGraduationCap, FaBriefcase, FaGlobeAmericas, FaUniversity, FaCheckCircle, FaChevronRight, FaBookOpen, FaUserTie, FaCheckDouble, FaMapMarkerAlt, FaMedal, FaPlus, FaMinus, FaChevronLeft } from 'react-icons/fa';
+import { FaGraduationCap, FaBriefcase, FaGlobeAmericas, FaUniversity, FaCheckCircle, FaChevronRight, FaBookOpen, FaUserTie, FaCheckDouble, FaMapMarkerAlt, FaMedal, FaPlus, FaMinus } from 'react-icons/fa';
 import Link from 'next/link';
 import EnquiryFormModal from "@/app/components/common/EnquiryFormModal.jsx";
 import '../StudyAbroad.css';
@@ -288,12 +288,12 @@ const StudyInNEWZEALAND = () => {
                         {totalPages > 1 && (
                             <div className="study-faq-pagination">
                                 <button 
-                                    className="study-faq-nav-btn"
+                                    className="study-faq-nav-btn prev"
                                     onClick={handlePrevFaqPage}
                                     disabled={faqPage === 0}
                                     aria-label="Previous Page"
                                 >
-                                    <FaChevronLeft size={14} />
+                                    ❮
                                 </button>
                                 
                                 <div className="study-faq-dots">
@@ -310,12 +310,12 @@ const StudyInNEWZEALAND = () => {
                                 </div>
 
                                 <button 
-                                    className="study-faq-nav-btn"
+                                    className="study-faq-nav-btn next"
                                     onClick={handleNextFaqPage}
                                     disabled={faqPage === totalPages - 1}
                                     aria-label="Next Page"
                                 >
-                                    <FaChevronRight size={14} />
+                                    ❯
                                 </button>
                             </div>
                         )}

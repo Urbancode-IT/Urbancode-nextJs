@@ -11,13 +11,35 @@
   --bg-neutral-rgb:  249, 249, 249;
   --color-brand:     #198754;
   --color-brand-dark:#036c2d;
+  --color-brand-rgb: 25, 135, 84;
   --color-text:      #1a1a1a;
   --color-muted:     #6c757d;
 
   /* ── Spacing / layout ─────────────────────────────────────────── */
   --site-header-height: 71px;
-  --section-gap: 40px;
-  --section-gap-mobile: 40px;
+
+  /* Homepage — fcfcfc dominant, brand green as whisper accent only */
+  --home-green-whisper: rgba(var(--color-brand-rgb), 0.03);
+  --home-green-soft:    rgba(var(--color-brand-rgb), 0.05);
+  --home-section-surface:
+    radial-gradient(ellipse 110% 55% at 50% -8%, var(--home-green-whisper) 0%, transparent 48%),
+    var(--bg-neutral);
+
+  /* =========================================
+     HOMEPAGE SPACING SYSTEM
+  ========================================= */
+  --home-section-spacing: 48px;
+  --home-section-title-gap: 40px;
+  --home-section-content-gap: 32px;
+
+  /* Hero: gap below header (no banner) or banner→title gap via JS offset */
+  --hero-content-top-gap: 16px;
+  --freedom-banner-title-gap: 10px;
+  --freedom-banner-offset: 0px;
+
+  /* Legacy aliases (homepage wrappers) */
+  --section-gap: var(--home-section-spacing);
+  --section-gap-mobile: var(--home-section-spacing);
 
   /* ── Bootstrap overrides ─────────────────────────────────────── */
   --bs-body-font-family:  var(--font-sans) !important;
@@ -47,7 +69,7 @@
   /* ── Section Title System (shared across all pages) ──────────── */
   /* Change these to update section title style site-wide          */
   --section-title-size:          30px;
-  --section-title-weight:        600;
+  --section-title-weight:        700;
   --section-title-color:         #1a202c;
   --section-title-lh:            1.2;
   --section-title-ls:            -0.5px;
@@ -75,6 +97,10 @@
     --section-title-size:          26px;
     --section-title-margin-top:    0px;
     --section-title-margin-bottom: 20px;
+
+    --home-section-spacing: 32px;
+    --home-section-title-gap: 28px;
+    --home-section-content-gap: 24px;
   }
 }
 
@@ -209,12 +235,55 @@ h1, h2, h3, h4, h5, h6 {
   margin: var(--section-title-margin-top) auto var(--section-title-margin-bottom);
   padding-bottom: 0px;
   max-width: 100%;
+  width: 100%;
   word-wrap: break-word;
   transition: var(--transition-base);
 }
 
+h1.section-main-title,
+h2.section-main-title,
+h3.section-main-title {
+  font-weight: var(--section-title-weight) !important;
+}
+
 .section-main-title + p {
   margin-top: 0 !important;
+}
+
+/* Full-title gradient — same as homepage Featured Courses */
+.section-main-title.text-shine {
+  display: block;
+  width: 100%;
+  color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+  text-shadow: none !important;
+}
+
+/* Kids & Study Abroad — pixel-match homepage section titles */
+.home-section .section-main-title,
+.page-section .section-main-title,
+.kidz-page .section-main-title,
+.study-abroad-container .section-main-title {
+  font-size: var(--section-title-size) !important;
+  font-weight: var(--section-title-weight) !important;
+  line-height: var(--section-title-lh) !important;
+  letter-spacing: var(--section-title-ls) !important;
+}
+
+.home-section .home-section-title-wrap .section-main-title,
+.page-section .home-section-title-wrap .section-main-title,
+.kidz-page .home-section-title-wrap .section-main-title,
+.study-abroad-container .home-section-title-wrap .section-main-title,
+.study-abroad-container .section-header .section-main-title {
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section-main-title:hover {
+  transform: none;
 }
 
 /* ── Eyebrow label — small uppercase tag above section titles ─── */
@@ -231,11 +300,45 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ── Section subtitle — descriptive paragraph below h2 ────────── */
 .section-subtitle {
-  font-size: clamp(0.95rem, 1.5vw, 1.05rem);
-  color: var(--color-muted);
-  line-height: var(--lh-body);
+  font-size: clamp(0.82rem, 1.15vw, 0.9rem);
+  font-weight: 400;
+  color: #64748b;
+  line-height: 1.6;
   max-width: 680px;
-  margin: 8px auto 0;
+  margin: 13px auto 0;
+  text-align: justify;
+  text-align-last: center;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Full description — no line clamp (English proficiency, etc.) */
+.section-subtitle--full,
+.proficiency-title-wrap .section-subtitle {
+  display: block;
+  -webkit-line-clamp: unset;
+  -webkit-box-orient: unset;
+  overflow: visible;
+}
+
+.home-section-title-wrap.text-start .section-subtitle,
+.proficiency-title-wrap .section-subtitle,
+.tech-journey-title-wrap .section-subtitle {
+  margin-left: 0;
+  margin-right: 0;
+  max-width: 100%;
+  text-align: justify;
+  text-align-last: left;
+}
+
+.home-section-title-wrap.text-start .section-main-title.text-shine,
+.proficiency-title-wrap .section-main-title.text-shine,
+.tech-journey-title-wrap .section-main-title.text-shine {
+  text-align: left;
+  margin-left: 0;
+  margin-right: auto;
 }
 
 /* ================================================================
@@ -243,7 +346,7 @@ h1, h2, h3, h4, h5, h6 {
    ================================================================ */
 
 /* Headings — subtle lift on hover */
-h1:hover, h2:hover, h3:hover {
+h1:hover, h2:hover:not(.section-main-title), h3:hover {
   transform: translateY(-1px);
 }
 
@@ -537,41 +640,192 @@ a:hover {
 }
 
 /* ================================================================
-   HOME SECTION SPACING UTILITY
+   PAGE SECTION SPACING SYSTEM (homepage, kids, study abroad)
+   Outer spacing: .home-section / .page-section padding-block
+   Title → content: .home-section-title-wrap / .section-header
    ================================================================ */
-.home-section {
-  margin-top: var(--section-gap) !important;
-  display: block !important;
+
+/* One continuous surface — fcfcfc dominant + minimal green whisper */
+main:has(.home-section),
+main:has(.kidz-page),
+main:has(.study-abroad-container) {
+  background: var(--home-section-surface);
+}
+
+main:has(.home-section) .home-section:last-of-type,
+main:has(.kidz-page) .page-section:last-of-type,
+main:has(.study-abroad-container) .section-padding:last-of-type,
+main:has(.study-abroad-container) .page-section:last-of-type {
+  padding-bottom: calc(var(--home-section-spacing) + 12px);
+  background: linear-gradient(180deg, transparent 78%, rgba(236, 236, 236, 0.65) 100%);
+}
+
+.kidz-page,
+.study-abroad-container {
+  background: transparent;
+}
+
+.study-abroad-container.bg-light {
+  background: transparent !important;
+}
+
+.study-abroad-container .section-padding.bg-light,
+.study-abroad-container section.bg-light {
+  background: transparent !important;
+}
+
+.kidz-page .page-section,
+.study-abroad-container .section-padding,
+.study-abroad-container .page-section,
+.study-abroad-container section:not(.new-hero-section):not(.study-premium-override) {
+  background: transparent !important;
+}
+
+/* Minimal shared ambient green — same brand tone, very low opacity */
+.home-section .glow-circle,
+.page-section .glow-circle {
+  background: radial-gradient(circle, var(--home-green-soft) 0%, transparent 70%) !important;
+}
+
+.home-section .light-streak,
+.page-section .light-streak {
+  background: linear-gradient(90deg, transparent, rgba(var(--color-brand-rgb), 0.06), transparent) !important;
+  opacity: 0.5;
+}
+
+.home-section .pt-motion-blob,
+.page-section .pt-motion-blob {
+  opacity: 0.18 !important;
+}
+
+.home-section .pt-blob-1,
+.page-section .pt-blob-1 {
+  background: rgba(var(--color-brand-rgb), 0.05) !important;
+}
+
+.home-section .pt-blob-2,
+.page-section .pt-blob-2 {
+  background: rgba(var(--color-brand-rgb), 0.04) !important;
+}
+
+.home-section,
+.page-section {
+  padding-block: var(--home-section-spacing);
+  display: block;
+  background: transparent;
+}
+
+.home-section--hero,
+.page-section--hero {
+  padding-block: 0;
+  background: transparent;
+}
+
+.home-section--compact,
+.page-section--compact {
+  padding-block: calc(var(--home-section-spacing) * 0.5);
+}
+
+/* Prevent duplicate vertical spacing on section roots */
+.home-section > section,
+.home-section > div,
+.home-section > article,
+.page-section > section,
+.page-section > div,
+.page-section > article {
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* Title → content gap */
+.home-section .home-section-title-wrap,
+.page-section .home-section-title-wrap,
+.page-section .section-header,
+.study-abroad-container .page-section .section-header,
+.study-abroad-container .section-padding .section-header {
+  margin-top: 0;
+  margin-bottom: var(--home-section-title-gap);
+}
+
+.home-section .home-section-title-wrap .section-main-title,
+.page-section .home-section-title-wrap .section-main-title,
+.page-section .section-header .section-main-title:first-child:last-child,
+.study-abroad-container .section-padding .section-header .section-main-title {
+  margin-bottom: 0;
+}
+
+.home-section .home-section-header,
+.page-section .home-section-header {
+  margin-top: 0;
+  margin-bottom: var(--home-section-title-gap);
+}
+
+.home-section .home-section-header .section-main-title,
+.page-section .home-section-header .section-main-title {
+  margin-bottom: var(--home-section-content-gap);
+}
+
+.home-section > section > .section-main-title:first-child,
+.home-section > div > .section-main-title:first-child,
+.page-section > section > .section-main-title:first-child,
+.page-section > div > .section-main-title:first-child {
+  margin-top: 0;
+  margin-bottom: var(--home-section-title-gap);
+}
+
+.home-section .section-main-title,
+.page-section .section-main-title {
+  margin-top: 0;
+  margin-bottom: var(--home-section-title-gap);
+}
+
+.home-section .home-section-title-wrap .section-main-title,
+.page-section .home-section-title-wrap .section-main-title {
+  margin-bottom: 0;
+}
+
+/* Study abroad — align legacy section-padding with the same system */
+.study-abroad-container .section-padding {
+  padding-block: var(--home-section-spacing) !important;
+  padding-inline: 0;
+}
+
+.study-abroad-container .section-padding.py-3 {
+  padding-block: calc(var(--home-section-spacing) * 0.5) !important;
+}
+
+/* Kids & Study Abroad — title/subtitle spacing */
+.kidz-page .home-section-title-wrap .section-main-title,
+.study-abroad-container .home-section-title-wrap .section-main-title,
+.study-abroad-container .section-header .section-main-title {
+  margin-bottom: 0;
+}
+
+.kidz-page .home-section-title-wrap .section-subtitle,
+.study-abroad-container .home-section-title-wrap .section-subtitle,
+.study-abroad-container .section-header .section-subtitle {
+  margin-top: 13px;
+  margin-bottom: 0;
+  font-size: clamp(0.82rem, 1.15vw, 0.9rem);
+  font-weight: 400;
+  color: #64748b;
+  line-height: 1.6;
+}
+
+.kidz-page .home-section-title-wrap,
+.study-abroad-container .home-section-title-wrap,
+.study-abroad-container .section-header.home-section-title-wrap,
+.study-abroad-container .section-header {
+  margin-bottom: var(--home-section-content-gap);
+  margin-left: 0 !important;
+  text-align: center;
 }
 
 @media (max-width: 768px) {
-  .home-section {
-    margin-top: var(--section-gap-mobile) !important;
+  .home-section--compact,
+  .page-section--compact {
+    padding-block: calc(var(--home-section-spacing) * 0.5);
   }
-}
-
-.home-section:first-of-type {
-  margin-top: 0 !important;
-}
-
-.home-section:last-of-type {
-  margin-bottom: var(--section-gap) !important;
-}
-
-@media (max-width: 768px) {
-  .home-section:last-of-type {
-    margin-bottom: var(--section-gap-mobile) !important;
-  }
-}
-
-/* Force children to shed their large vertical paddings/margins with higher specificity */
-body .home-section > div,
-body .home-section > section,
-body .home-section > article,
-body .home-section > .container,
-body .home-section > .py-5 {
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
 }

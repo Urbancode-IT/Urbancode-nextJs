@@ -1,8 +1,9 @@
 import dynamic from 'next/dynamic';
 import NewHeroSection from './components/Home/NewHeroSection';
 import BannerSlider from './components/common/BannerSlider';
-
-import FreedomSalePromo from './components/FreedomSale/FreedomSalePromoWrapper';
+import './components/Home/homePlayButton.css';
+import './components/Home/homeVideoCarousel.css';
+import InstitutionVideosSkeleton from './components/Home/InstitutionVideosSkeleton';
 
 // Branch announcement popup (client-only, uses sessionStorage)
 const BranchAnnouncement = dynamic(() => import('./components/BranchAnnouncement/BranchAnnouncement'));
@@ -25,20 +26,14 @@ const InDemandTools = dynamic(() => import('./components/Home/InDemandTools'), {
 const FaqBootstrap = dynamic(() => import('./components/Home/Faqs'));
 const Carousel = dynamic(() => import('./components/Home/Carasoul'));
 
-const VideoTestimonials = dynamic(() => import('./components/Home/VideoTestimonials'), {
-  loading: () => <div className="placeholder-skeleton" style={{ height: '400px', background: '#0a0d14', margin: '20px 0', borderRadius: '16px' }} />
-});
+const VideoTestimonials = dynamic(() => import('./components/Home/VideoTestimonials'));
 
-const TestimonialCarousel = dynamic(() => import('./components/Home/TestimonialCarousel'), {
-  loading: () => <div className="placeholder-skeleton" style={{ height: '300px', background: '#08090d', margin: '20px 0', borderRadius: '16px' }} />
-});
+const TestimonialCarousel = dynamic(() => import('./components/Home/TestimonialCarousel'));
 
-const GoogleReviews = dynamic(() => import('./components/GoogleReviews/GoogleReviews'), {
-  loading: () => <div className="placeholder-skeleton" style={{ height: '400px', background: '#0b0f19', margin: '20px 0', borderRadius: '16px' }} />
-});
+const GoogleReviews = dynamic(() => import('./components/GoogleReviews/GoogleReviews'));
 
 const InstitutionVideos = dynamic(() => import('./components/Home/InstitutionVideos'), {
-  loading: () => <div className="placeholder-skeleton" style={{ height: '400px', background: '#0a0d14', margin: '20px 0', borderRadius: '16px' }} />
+  loading: () => <InstitutionVideosSkeleton />,
 });
 
 // const GetCertified = dynamic(() => import('./components/Home/GetCertified'));
@@ -112,26 +107,6 @@ export default function HomePage() {
         "Help me choose my course",
       ]
     },
-     {
-      src: "/images/home/freedom-website-banner.webp",
-      alt: "Freedom Sale",
-      type: "enquiry",
-      courseName: "Freedom Sale Enquiry",
-      customTitle: "Enquire Today",
-      isSelectMode: true,
-      extraOptions: [
-        "Full Stack Development",
-        "Python with AI",
-        "Data Science",
-        "MERN Stack",
-        "Software Testing",
-        "Digital Marketing",
-        "UI/UX Design",
-        "AWS / Cloud Computing",
-        "Cybersecurity",
-        "Help me choose my course"
-      ]
-    },
     {
       src: "/images/home/studyabroad.webp",
       alt: "Study Abroad",
@@ -203,11 +178,10 @@ export default function HomePage() {
         }}
       />
     
-        <FreedomSalePromo />  
-      <div className="home-section">
+      <div className="home-section home-section--hero">
         <NewHeroSection />
       </div>
-      <div className="home-section">
+      <div className="home-section home-section--compact">
         <BannerSlider banners={homeBanners} />
       </div>
        <div id="featured-courses" className="home-section">

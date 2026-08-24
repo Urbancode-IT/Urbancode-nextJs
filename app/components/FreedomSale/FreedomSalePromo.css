@@ -510,7 +510,7 @@
 }
 
 .freedom-sale-banner-spacer {
-  display: none;
+  display: none !important;
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
@@ -521,12 +521,6 @@
 }
 
 @media (max-width: 768px) {
-  .freedom-sale-banner-spacer {
-    display: block !important;
-    height: 105px; /* banner height + margins approx */
-    width: 100%;
-  }
-
   .freedom-sale-banner {
     position: fixed;
     top: var(--site-header-height, 71px) !important;

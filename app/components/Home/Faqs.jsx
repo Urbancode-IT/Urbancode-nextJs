@@ -1,6 +1,6 @@
 'use client';
 import React, { useState, useEffect } from "react";
-import { FaPlus, FaMinus, FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { FaPlus, FaMinus } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 import "./faqs.css";
 
@@ -141,7 +141,7 @@ const Faqs = () => {
 
     return (
         <div 
-            className="faq-section container py-5"
+            className="faq-section container"
         >
             <script
                 type="application/ld+json"
@@ -160,7 +160,7 @@ const Faqs = () => {
                     })
                 }}
             />
-            <div className="text-center mb-5">
+            <div className="text-center home-section-title-wrap">
                 <h2 className="section-main-title text-shine">Let's get you more info</h2>
             </div>
             <div className="row align-items-start g-4">
@@ -215,8 +215,8 @@ const Faqs = () => {
 
                     {/* Pagination Controls */}
                     <div className="faq-pagination mt-4 d-flex align-items-center justify-content-center gap-4">
-                        <button className="faq-nav-btn" onClick={prevSlide} aria-label="Previous Slide">
-                            <FaChevronLeft size={14} />
+                        <button className="faq-nav-btn prev" onClick={prevSlide} aria-label="Previous Slide">
+                            ❮
                         </button>
                         <div className="faq-dots">
                             {[...Array(totalPages)].map((_, i) => (
@@ -230,8 +230,8 @@ const Faqs = () => {
                                 ></span>
                             ))}
                         </div>
-                        <button className="faq-nav-btn" onClick={nextSlide} aria-label="Next Slide">
-                            <FaChevronRight size={14} />
+                        <button className="faq-nav-btn next" onClick={nextSlide} aria-label="Next Slide">
+                            ❯
                         </button>
                     </div>
                 </div>

@@ -423,6 +423,7 @@ const GoogleReviews = () => {
 
     return (
         <section className="google-reviews-section">
+            <div className="home-section-header">
             <h2 className="section-main-title text-shine gr-custom-title">
                 <span className="gr-logo-word">
                     <span className="g">G</span>
@@ -460,6 +461,7 @@ const GoogleReviews = () => {
 
     </div>
 </div>
+            </div>
 
             <div className="gr-main-content">
                 <div
@@ -467,7 +469,7 @@ const GoogleReviews = () => {
                     onMouseEnter={() => setIsPaused(true)}
                     onMouseLeave={() => setIsPaused(false)}
                 >
-                    <button className={`gr-nav-side-btn prev ${isAtStart ? 'is-disabled' : ''}`} onClick={slidePrev}>&lt;</button>
+                    <button className={`gr-nav-side-btn prev ${isAtStart ? 'is-disabled' : ''}`} onClick={slidePrev} aria-label="Previous">❮</button>
 
                     <div className="gr-glass-track-wrapper">
                         <div
@@ -506,7 +508,7 @@ const GoogleReviews = () => {
                         </div>
                     </div>
 
-                    <button className={`gr-nav-side-btn next ${isAtEnd ? 'is-disabled' : ''}`} onClick={slideNext}>&gt;</button>
+                    <button className={`gr-nav-side-btn next ${isAtEnd ? 'is-disabled' : ''}`} onClick={slideNext} aria-label="Next">❯</button>
                 </div>
             </div>
 

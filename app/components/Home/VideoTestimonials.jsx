@@ -1,51 +1,83 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import { motion } from 'framer-motion';
 import { videoData } from '../../data/videoTestimonialsData';
-import OptimizedVideo from '../common/OptimizedVideo';
+import { getOptimizedVideoUrl } from '@/lib/cloudinary';
+import { useHomeVideoCarousel } from './useHomeVideoCarousel';
 import './VideoTestimonials.css';
 
 const VideoTestimonials = () => {
-    const [index, setIndex] = useState(0);
-    const [cardsToShow, setCardsToShow] = useState(3);
+    const sliderRef = useRef(null);
     const videoRefs = useRef([]);
+    const [isAtStart, setIsAtStart] = useState(true);
+    const [isAtEnd, setIsAtEnd] = useState(false);
+    const [isPaused, setIsPaused] = useState(false);
+    const [playingId, setPlayingId] = useState(null);
+    const { cardsVisible, shouldCenter } = useHomeVideoCarousel(videoData.length, sliderRef);
+
+    const checkScrollPosition = () => {
+        if (!sliderRef.current) return;
+        const { scrollLeft, scrollWidth, clientWidth } = sliderRef.current;
+        setIsAtStart(scrollLeft <= 1);
+        setIsAtEnd(Math.ceil(scrollLeft + clientWidth) >= scrollWidth - 1);
+    };
+
+    const getScrollStep = () => {
+        if (!sliderRef.current) return 300;
+        const firstCard = sliderRef.current.querySelector('.home-video-card');
+        if (!firstCard) return 300;
+        const gap = parseInt(getComputedStyle(sliderRef.current).gap, 10) || 16;
+        return firstCard.offsetWidth + gap;
+    };
+
+    const slideNext = () => {
+        if (!sliderRef.current) return;
+        if (isAtEnd) {
+            sliderRef.current.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+            sliderRef.current.scrollBy({ left: getScrollStep(), behavior: 'smooth' });
+        }
+    };
+
+    const slidePrev = () => {
+        if (!sliderRef.current) return;
+        sliderRef.current.scrollBy({ left: -getScrollStep(), behavior: 'smooth' });
+    };
 
     useEffect(() => {
-        const updateCardsToShow = () => {
-            if (window.innerWidth < 576) setCardsToShow(1);
-            else if (window.innerWidth < 768) setCardsToShow(2);
-            else if (window.innerWidth < 1024) setCardsToShow(3);
-            else setCardsToShow(4);
-        };
-        updateCardsToShow();
-        window.addEventListener('resize', updateCardsToShow);
-        return () => window.removeEventListener('resize', updateCardsToShow);
-    }, []);
+        checkScrollPosition();
+        window.addEventListener('resize', checkScrollPosition);
+        return () => window.removeEventListener('resize', checkScrollPosition);
+    }, [cardsVisible, shouldCenter]);
 
     useEffect(() => {
-        videoRefs.current.forEach((videoApi, idx) => {
-            if (!videoApi) return;
-            // ✅ Cards outside visible window: reset to poster via React state
-            if (idx < index || idx >= index + cardsToShow) {
-                videoApi.resetPoster();
-            }
-        });
-    }, [index, cardsToShow]);
+        const interval = setInterval(() => {
+            if (!isPaused) slideNext();
+        }, 3000);
+        return () => clearInterval(interval);
+    }, [isAtEnd, isPaused]);
 
-    const handleNext = () => {
-        if (index < videoData.length - cardsToShow) setIndex((prev) => prev + 1);
+    const handlePlay = (videoId, idx) => {
+        setPlayingId(videoId);
+        setIsPaused(true);
+
+        const videoEl = videoRefs.current[idx];
+        if (!videoEl) return;
+
+        videoEl.controls = true;
+        videoEl.muted = false;
+        const playPromise = videoEl.play();
+        if (playPromise !== undefined) {
+            playPromise.catch(() => {
+                // Fallback: muted autoplay then user can unmute via controls
+                videoEl.muted = true;
+                videoEl.play().catch(() => {});
+            });
+        }
     };
-    const handlePrev = () => {
-        if (index > 0) setIndex((prev) => prev - 1);
-    };
-    const handleDotClick = (dotIndex) => setIndex(dotIndex);
 
     return (
-        <section
-            className="video-testimonials-section py-5"
-        >
-            {/* Cinematic Background Elements */}
+        <section className="video-testimonials-section">
             <div className="cinematic-bg-elements">
                 <div className="glow-circle glow-1" />
                 <div className="glow-circle glow-2" />
@@ -54,76 +86,73 @@ const VideoTestimonials = () => {
             </div>
 
             <div className="container position-relative">
-                <div className="text-center mb-5">
+                <div className="text-center home-section-title-wrap">
                     <h2 className="section-main-title text-shine">Voice that Matters</h2>
                 </div>
 
-                <div className="video-carousel-wrapper">
+                <div
+                    className="home-video-slider-wrapper vt-slider-wrapper"
+                    style={{ '--video-cards-visible': cardsVisible }}
+                    onMouseEnter={() => setIsPaused(true)}
+                    onMouseLeave={() => setIsPaused(false)}
+                >
                     <button
-                        className="nav-btn prev-btn"
-                        onClick={handlePrev}
-                        disabled={index === 0}
-                        style={{ opacity: index === 0 ? 0.5 : 1, cursor: index === 0 ? 'not-allowed' : 'pointer' }}
+                        className={`nav-btn prev-btn prev ${isAtStart ? 'is-disabled' : ''}`}
+                        onClick={slidePrev}
+                        aria-label="Previous videos"
                     >
                         ❮
                     </button>
 
-                    <div className="video-cards-container">
-                        <div
-                            className="video-carousel-track"
-                            style={{ transform: `translateX(-${index * (100 / cardsToShow)}%)` }}
-                        >
-                            {videoData.map((video, idx) => (
-                                <div
-                                    key={video.id}
-                                    className="video-card-slide"
-                                    style={{
-                                        flex: `0 0 calc(${100 / cardsToShow}% - 20px)`,
-                                        margin: '0 10px'
-                                    }}
-                                >
-                                    <OptimizedVideo
-                                        ref={(el) => (videoRefs.current[idx] = el)}
-                                        src={video.src}
-                                        poster={video.poster}
-                                        controls
-                                        autoPlay={false}
-                                        loop={false}
-                                        muted={false}
-                                        playOnVisible={false}
-                                        preload="none"
-                                        className="testimonial-video bg-dark"
-                                    />
+                    <div
+                        className={`home-video-scroll-track${shouldCenter ? ' home-video-scroll-track--center' : ''}`}
+                        ref={sliderRef}
+                        onScroll={checkScrollPosition}
+                    >
+                        {videoData.map((video, idx) => {
+                            const isPlaying = playingId === video.id;
+                            return (
+                                <div key={video.id} className="home-video-card">
+                                    <div className="home-video-media is-media-ready home-testimonial-video-media">
+                                        <video
+                                            ref={(el) => {
+                                                videoRefs.current[idx] = el;
+                                            }}
+                                            className="home-testimonial-video"
+                                            src={getOptimizedVideoUrl(video.src, { format: 'f_mp4' })}
+                                            poster={video.poster}
+                                            playsInline
+                                            preload="metadata"
+                                            controls={isPlaying}
+                                            onPlay={() => setPlayingId(video.id)}
+                                            onPause={() => {
+                                                if (playingId === video.id) setPlayingId(null);
+                                            }}
+                                            onEnded={() => setPlayingId(null)}
+                                        />
+                                        {!isPlaying && (
+                                            <button
+                                                type="button"
+                                                className="play-overlay home-testimonial-play"
+                                                aria-label={`Play ${video.title}`}
+                                                onClick={() => handlePlay(video.id, idx)}
+                                            >
+                                                <span className="video-play-btn-icon" />
+                                            </button>
+                                        )}
+                                    </div>
                                 </div>
-                            ))}
-                        </div>
+                            );
+                        })}
                     </div>
 
                     <button
-                        className="nav-btn next-btn"
-                        onClick={handleNext}
-                        disabled={index >= videoData.length - cardsToShow}
-                        style={{
-                            opacity: index >= videoData.length - cardsToShow ? 0.5 : 1,
-                            cursor: index >= videoData.length - cardsToShow ? 'not-allowed' : 'pointer'
-                        }}
+                        className={`nav-btn next-btn next ${isAtEnd ? 'is-disabled' : ''}`}
+                        onClick={slideNext}
+                        aria-label="Next videos"
                     >
                         ❯
                     </button>
-                </div>
-
-                <div className="carousel-controls mt-4">
-                    <div className="carousel-dots">
-                        {videoData
-                            .slice(0, Math.max(1, videoData.length - cardsToShow + 1))
-                            .map((_, i) => (
-                                <span
-                                    key={i}
-                                    className={`carousel-dot ${i === index ? 'active' : ''}`}
-                                    onClick={() => handleDotClick(i)}
-                                />
-                            ))}
-                    </div>
                 </div>
             </div>
         </section>

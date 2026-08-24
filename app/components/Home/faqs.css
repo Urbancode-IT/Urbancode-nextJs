@@ -1,15 +1,5 @@
-.faqContainer {
-  background-color: #80DAB74D;
-
-}
-
-.faq_main_container {
-  background-color: var(--bg-neutral);
-  opacity: .9;
-}
-
 .faq-section {
-  background-color: var(--bg-neutral);
+  background: transparent;
   position: relative;
   overflow: hidden;
 }

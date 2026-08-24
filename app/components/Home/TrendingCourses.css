@@ -8,9 +8,9 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 30px;
-    padding: 40px 20px;
-    background: linear-gradient(180deg, var(--bg-neutral), rgba(215, 235, 226, .2) 50%, var(--bg-neutral)), linear-gradient(259.47deg, rgba(102, 102, 102, .078) -.37%, rgba(0, 181, 111, .13) 104.31%);
+    gap: 0;
+    padding: 0 20px;
+    background: transparent;
     box-sizing: border-box;
 }
 
@@ -18,7 +18,7 @@
 .trending-header {
     width: 100%;
     text-align: center;
-    margin-bottom: 35px;
+    margin-bottom: 0;
 }
 
 /* ---------- Slider Wrapper ---------- */
@@ -85,8 +85,8 @@
     pointer-events: none;
 }
 
-.nav-side-btn.prev { left: -25px; }
-.nav-side-btn.next { right: -25px; }
+.nav-side-btn.prev { left: -24px; }
+.nav-side-btn.next { right: -24px; }
 
 /* ---------- Course Card ---------- */
 .trending-course-card {
@@ -107,8 +107,29 @@
 }
 
 .trending-course-card:hover {
-    transform: translateY(-6px) scale(1.01);
     box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7), 0 0 0 1.5px rgba(255, 153, 0, 0.35);
+}
+
+.trending-course-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        115deg,
+        transparent 32%,
+        rgba(255, 255, 255, 0.18) 50%,
+        transparent 68%
+    );
+    background-size: 220% 100%;
+    background-position: 130% 0;
+    transition: background-position 0.55s ease;
+    pointer-events: none;
+    border-radius: inherit;
+    z-index: 6;
+}
+
+.trending-course-card:hover::after {
+    background-position: -30% 0;
 }
 
 /* Freedom Sale highlight variant */
@@ -125,7 +146,6 @@
         0 0 0 1.5px rgba(0, 181, 111, 0.3),
         0 16px 40px rgba(0, 0, 0, 0.6),
         0 0 28px rgba(0, 181, 111, 0.2);
-    transform: translateY(-6px) scale(1.02);
 }
 
 /* ---------- Freedom Badge (diagonal ribbon) ---------- */
@@ -187,11 +207,10 @@
     object-position: center top;
     border-radius: 0;
     display: block;
-    transition: transform 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.4s ease;
+    transition: filter 0.4s ease;
 }
 
 .trending-course-card:hover .trending-image-fg {
-    transform: scale(1.05);
     filter: brightness(1.08);
 }
 
@@ -574,7 +593,7 @@
 
 @media (max-width: 650px) {
     .trending-section-container {
-        padding: 40px 0;
+        padding: 0;
         gap: 0;
     }
 
@@ -616,6 +635,6 @@
         font-size: 14px;
     }
 
-    .nav-side-btn.prev { left: 28px; }
-    .nav-side-btn.next { right: 28px; }
+    .nav-side-btn.prev { left: 0; }
+    .nav-side-btn.next { right: 0; }
 }

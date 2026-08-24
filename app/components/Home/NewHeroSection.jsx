@@ -125,14 +125,12 @@ const HeroBottom = ({
       <div className="hero-cards-wrapper" ref={carouselWrapperRef}>
         <button
           type="button"
-          className="hero-cards-nav hero-cards-nav-prev"
+          className="hero-cards-nav hero-cards-nav-prev prev"
           onClick={() => onScrollCards(-1)}
           disabled={!canScrollPrev}
           aria-label="Previous courses"
         >
-          <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12.5 15L7.5 10L12.5 5" stroke="#1C1D22" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
+          ❮
         </button>
 
         <div
@@ -167,14 +165,12 @@ const HeroBottom = ({
 
         <button
           type="button"
-          className="hero-cards-nav hero-cards-nav-next"
+          className="hero-cards-nav hero-cards-nav-next next"
           onClick={() => onScrollCards(1)}
           disabled={!canScrollNext}
           aria-label="Next courses"
         >
-          <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M7.5 5L12.5 10L7.5 15" stroke="#1C1D22" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
+          ❯
         </button>
       </div>
     </div>

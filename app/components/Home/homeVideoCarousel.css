@@ -1,0 +1,221 @@
+/* Shared responsive video carousel — Institution Videos + Video Testimonials */
+
+.institution-videos-section .container,
+.video-testimonials-section .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.institution-videos-section .home-section-title-wrap,
+.video-testimonials-section .home-section-title-wrap {
+  width: 100%;
+  text-align: center;
+}
+
+.institution-videos-section .home-section-title-wrap .section-main-title,
+.video-testimonials-section .home-section-title-wrap .section-main-title {
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.home-video-slider-wrapper {
+  --video-cards-visible: 4;
+  --video-card-gap: 16px;
+  width: 100%;
+  max-width: min(1180px, 100%);
+  position: relative;
+  margin: 0 auto;
+  box-sizing: border-box;
+  display: flex;
+  align-items: stretch;
+  z-index: 1;
+  padding: 0 56px;
+  overflow: visible;
+}
+
+.home-video-scroll-track {
+  display: flex;
+  gap: var(--video-card-gap);
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding-top: 12px;
+  padding-bottom: 20px;
+  min-height: 200px;
+  justify-content: flex-start;
+}
+
+.home-video-scroll-track--center {
+  justify-content: center;
+}
+
+.home-video-scroll-track::-webkit-scrollbar {
+  display: none;
+}
+
+.home-video-card {
+  flex: 0 0 calc(
+    (100% - (var(--video-cards-visible) - 1) * var(--video-card-gap)) / var(--video-cards-visible)
+  );
+  min-width: 0;
+  scroll-snap-align: start;
+  position: relative;
+}
+
+.home-video-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  min-height: 220px;
+  height: auto;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #eef1ef;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.35s ease;
+}
+
+.home-video-card:hover .home-video-media.is-media-ready {
+  box-shadow: 0 16px 36px rgba(25, 135, 84, 0.18);
+}
+
+.home-video-media.is-media-ready::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 32%,
+    rgba(255, 255, 255, 0.22) 50%,
+    transparent 68%
+  );
+  background-size: 220% 100%;
+  background-position: 130% 0;
+  transition: background-position 0.55s ease;
+  pointer-events: none;
+  border-radius: inherit;
+  z-index: 8;
+  opacity: 0;
+}
+
+.home-video-media.is-media-ready:hover::after {
+  background-position: -30% 0;
+  opacity: 1;
+}
+
+.home-video-media .optimized-video-wrapper {
+  position: absolute;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  border-radius: inherit;
+  background: transparent !important;
+}
+
+.home-video-media .optimized-video-wrapper video {
+  border-radius: inherit;
+  object-fit: cover;
+}
+
+.home-video-media .video-poster-overlay {
+  background-color: transparent !important;
+}
+
+.home-video-thumb {
+  position: absolute;
+  inset: 0;
+}
+
+.home-video-thumb img {
+  object-fit: cover;
+}
+
+/* Neat play button — always visible when media ready */
+.home-video-media.is-media-ready .play-overlay {
+  opacity: 1;
+  transform: translate(-50%, -50%);
+}
+
+.home-testimonial-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+  background: #0a0d14;
+  z-index: 1;
+}
+
+.home-testimonial-video-media .home-testimonial-play {
+  z-index: 10;
+  pointer-events: auto;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+}
+
+.home-testimonial-video-media:has(.home-testimonial-video[controls]) .home-testimonial-play {
+  display: none;
+}
+
+/* 5 cards — ultra-wide (testimonials only; institution caps at 4 via JS) */
+@media (min-width: 1500px) {
+  .home-video-slider-wrapper {
+    --video-cards-visible: 5;
+    width: min(1400px, 100%);
+  }
+
+  .institution-videos-section .iv-slider-wrapper {
+    --video-cards-visible: 4;
+  }
+}
+
+/* 4 cards — desktop */
+@media (max-width: 1499px) and (min-width: 1180px) {
+  .home-video-slider-wrapper {
+    --video-cards-visible: 4;
+  }
+}
+
+/* 3 cards — laptop */
+@media (max-width: 1179px) and (min-width: 900px) {
+  .home-video-slider-wrapper {
+    --video-cards-visible: 3;
+    padding: 0 52px;
+  }
+}
+
+/* 2 cards — tablet */
+@media (max-width: 899px) and (min-width: 640px) {
+  .home-video-slider-wrapper {
+    --video-cards-visible: 2;
+    padding: 0 48px;
+  }
+}
+
+/* 1 card — mobile */
+@media (max-width: 639px) {
+  .home-video-slider-wrapper {
+    --video-card-gap: 12px;
+    padding: 0 36px;
+  }
+
+  .home-video-card {
+    scroll-snap-align: center;
+  }
+
+  .home-video-media {
+    min-height: 340px;
+  }
+}

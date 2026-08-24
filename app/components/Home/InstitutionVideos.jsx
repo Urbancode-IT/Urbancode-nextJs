@@ -1,71 +1,72 @@
 'use client';
-import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { institutionVideosData } from '../../data/institutionVideosData';
+import { useHomeVideoCarousel } from './useHomeVideoCarousel';
+import { VideoCardSkeleton } from './InstitutionVideosSkeleton';
 import './InstitutionVideos.css';
 
 const InstitutionVideos = () => {
-    const [index, setIndex] = useState(0);
-    const [cardsToShow, setCardsToShow] = useState(3);
+    const sliderRef = useRef(null);
+    const [isAtStart, setIsAtStart] = useState(true);
+    const [isAtEnd, setIsAtEnd] = useState(false);
     const [isPaused, setIsPaused] = useState(false);
     const [activePlay, setActivePlay] = useState({});
+    const [loadedThumbs, setLoadedThumbs] = useState({});
+    const { cardsVisible, shouldCenter } = useHomeVideoCarousel(
+        institutionVideosData.length,
+        sliderRef,
+        { maxVisible: 4 }
+    );
 
-    useEffect(() => {
-        const updateCardsToShow = () => {
-            if (window.innerWidth < 640) setCardsToShow(1);
-            else if (window.innerWidth < 992) setCardsToShow(2);
-            else if (window.innerWidth < 1280) setCardsToShow(3);
-            else setCardsToShow(4);
-        };
+    const checkScrollPosition = () => {
+        if (!sliderRef.current) return;
+        const { scrollLeft, scrollWidth, clientWidth } = sliderRef.current;
+        setIsAtStart(scrollLeft <= 1);
+        setIsAtEnd(Math.ceil(scrollLeft + clientWidth) >= scrollWidth - 1);
+    };
 
-        updateCardsToShow();
-        window.addEventListener("resize", updateCardsToShow);
-        return () => window.removeEventListener("resize", updateCardsToShow);
-    }, []);
+    const getScrollStep = () => {
+        if (!sliderRef.current) return 300;
+        const firstCard = sliderRef.current.querySelector('.home-video-card');
+        if (!firstCard) return 300;
+        const gap = parseInt(getComputedStyle(sliderRef.current).gap, 10) || 16;
+        return firstCard.offsetWidth + gap;
+    };
 
-    useEffect(() => {
-        if (isPaused) return;
-
-        const timer = setInterval(() => {
-            setIndex((prev) => {
-                const nextIndex = prev + 1;
-                if (nextIndex > institutionVideosData.length - cardsToShow) {
-                    return 0;
-                }
-                return nextIndex;
-            });
-        }, 4000);
-
-        return () => clearInterval(timer);
-    }, [isPaused, cardsToShow, institutionVideosData.length]);
-
-    const handleNext = () => {
-        setIsPaused(true);
-        if (index < institutionVideosData.length - cardsToShow) {
-            setIndex((prev) => prev + 1);
+    const slideNext = () => {
+        if (!sliderRef.current) return;
+        if (isAtEnd) {
+            sliderRef.current.scrollTo({ left: 0, behavior: 'smooth' });
         } else {
-            setIndex(0);
+            sliderRef.current.scrollBy({ left: getScrollStep(), behavior: 'smooth' });
         }
     };
 
-    const handlePrev = () => {
-        setIsPaused(true);
-        if (index > 0) {
-            setIndex((prev) => prev - 1);
-        } else {
-            setIndex(institutionVideosData.length - cardsToShow);
-        }
+    const slidePrev = () => {
+        if (!sliderRef.current) return;
+        sliderRef.current.scrollBy({ left: -getScrollStep(), behavior: 'smooth' });
     };
 
-    const handleDotClick = (dotIndex) => {
-        setIsPaused(true);
-        setIndex(dotIndex);
+    useEffect(() => {
+        checkScrollPosition();
+        window.addEventListener('resize', checkScrollPosition);
+        return () => window.removeEventListener('resize', checkScrollPosition);
+    }, [cardsVisible, shouldCenter]);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            if (!isPaused) slideNext();
+        }, 3000);
+        return () => clearInterval(interval);
+    }, [isAtEnd, isPaused]);
+
+    const markThumbLoaded = (id) => {
+        setLoadedThumbs((prev) => (prev[id] ? prev : { ...prev, [id]: true }));
     };
 
     return (
         <section className="institution-videos-section">
-            {/* Cinematic Background Elements */}
             <div className="cinematic-bg-elements">
                 <div className="glow-circle glow-1" />
                 <div className="glow-circle glow-2" />
@@ -74,113 +75,97 @@ const InstitutionVideos = () => {
             </div>
 
             <div className="container position-relative">
-                <div
-                    className="text-center mb-4"
-                >
+                <div className="text-center home-section-title-wrap">
                     <h2 className="section-main-title text-shine">
                         Trending Course Insights
                     </h2>
                 </div>
 
                 <div
-                    className="video-carousel-wrapper"
+                    className="home-video-slider-wrapper iv-slider-wrapper"
+                    style={{ '--video-cards-visible': cardsVisible }}
                     onMouseEnter={() => setIsPaused(true)}
                     onMouseLeave={() => setIsPaused(false)}
                 >
                     <button
-                        className="nav-btn prev-btn"
-                        onClick={handlePrev}
+                        className={`nav-btn prev-btn prev ${isAtStart ? 'is-disabled' : ''}`}
+                        onClick={slidePrev}
                         aria-label="Previous videos"
-                    >❮</button>
+                    >
+                        ❮
+                    </button>
 
-                    <div className="video-cards-container">
-                        <motion.div
-                            className="video-carousel-track"
-                            animate={{ x: `-${index * (100 / cardsToShow)}%` }}
-                            transition={{ type: "spring", stiffness: 100, damping: 20, mass: 1 }}
-                        >
-                            {institutionVideosData.map((video) => (
+                    <div
+                        className={`home-video-scroll-track${shouldCenter ? ' home-video-scroll-track--center' : ''}`}
+                        ref={sliderRef}
+                        onScroll={checkScrollPosition}
+                    >
+                        {institutionVideosData.map((video, index) => (
+                            <div key={video.id} className="home-video-card">
                                 <div
-                                    key={video.id}
-                                    className="video-card-slide"
-                                    style={{ flex: `0 0 ${100 / cardsToShow}%` }}
+                                    className={`home-video-media video-iframe-wrapper${loadedThumbs[video.id] ? ' is-media-ready' : ' home-video-media--loading'}`}
+                                    onClick={() => {
+                                        if (!activePlay[video.id]) {
+                                            setActivePlay((prev) => ({ ...prev, [video.id]: true }));
+                                            setIsPaused(true);
+                                        }
+                                    }}
+                                    style={{ cursor: activePlay[video.id] ? 'default' : 'pointer' }}
                                 >
-                                    <div className="video-card-inner">
-                                        <div
-                                            className="video-iframe-wrapper"
-                                            onClick={() => {
-                                                if (!activePlay[video.id]) {
-                                                    setActivePlay(prev => ({ ...prev, [video.id]: true }));
-                                                    setIsPaused(true);
-                                                }
-                                            }}
-                                            style={{ cursor: activePlay[video.id] ? 'default' : 'pointer' }}
-                                        >
-                                            {!activePlay[video.id] ? (
-                                                <>
-                                                    <div style={{
-                                                        position: 'relative',
-                                                        width: '100%',
-                                                        height: '100%',
-                                                        borderRadius: '24px',
-                                                        overflow: 'hidden'
-                                                    }}>
-                                                        <Image
-                                                            src={video.thumbnail}
-                                                            alt={video.title}
-                                                            fill
-                                                            sizes="(max-width: 640px) 100vw, (max-width: 992px) 50vw, 33vw"
-                                                            style={{ objectFit: 'cover' }}
-                                                            loading="lazy"
-                                                        />
-                                                    </div>
-                                                    <div className="play-overlay" style={{ opacity: 0.9, zIndex: 2 }}>
-                                                        <div className="play-icon" />
-                                                    </div>
-                                                </>
-                                            ) : video.mp4Src ? (
-                                                <video
-                                                    src={video.mp4Src}
-                                                    autoPlay
-                                                    controls
-                                                    className="institution-video-iframe"
-                                                    style={{ zIndex: 3, width: '100%', height: '100%', borderRadius: '24px', objectFit: 'cover' }}
+                                    {!loadedThumbs[video.id] && <VideoCardSkeleton />}
+
+                                    {!activePlay[video.id] ? (
+                                        <>
+                                            <div className={`home-video-thumb${loadedThumbs[video.id] ? ' is-visible' : ''}`}>
+                                                <Image
+                                                    src={video.thumbnail}
+                                                    alt={video.title}
+                                                    fill
+                                                    sizes="(max-width: 640px) 90vw, (max-width: 900px) 45vw, (max-width: 1200px) 30vw, 20vw"
+                                                    style={{ objectFit: 'cover' }}
+                                                    priority={index < cardsVisible}
+                                                    loading={index < cardsVisible ? 'eager' : 'lazy'}
+                                                    onLoad={() => markThumbLoaded(video.id)}
+                                                    onError={() => markThumbLoaded(video.id)}
                                                 />
-                                            ) : (
-                                                <iframe
-                                                    src={`https://www.youtube.com/embed/${video.videoId}?autoplay=1&rel=0&modestbranding=1&autohide=1&showinfo=0`}
-                                                    title={video.title}
-                                                    frameBorder="0"
-                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                                    allowFullScreen
-                                                    className="institution-video-iframe"
-                                                    style={{ zIndex: 3 }}
-                                                />
+                                            </div>
+                                            {loadedThumbs[video.id] && (
+                                                <div className="play-overlay" aria-hidden="true">
+                                                    <span className="video-play-btn-icon" />
+                                                </div>
                                             )}
-                                        </div>
-                                    </div>
+                                        </>
+                                    ) : video.mp4Src ? (
+                                        <video
+                                            src={video.mp4Src}
+                                            autoPlay
+                                            controls
+                                            className="institution-video-iframe"
+                                            style={{ zIndex: 3, width: '100%', height: '100%', borderRadius: '20px', objectFit: 'cover' }}
+                                        />
+                                    ) : (
+                                        <iframe
+                                            src={`https://www.youtube.com/embed/${video.videoId}?autoplay=1&rel=0&modestbranding=1&autohide=1&showinfo=0`}
+                                            title={video.title}
+                                            frameBorder="0"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                            allowFullScreen
+                                            className="institution-video-iframe"
+                                            style={{ zIndex: 3 }}
+                                        />
+                                    )}
                                 </div>
-                            ))}
-                        </motion.div>
+                            </div>
+                        ))}
                     </div>
 
                     <button
-                        className="nav-btn next-btn"
-                        onClick={handleNext}
+                        className={`nav-btn next-btn next ${isAtEnd ? 'is-disabled' : ''}`}
+                        onClick={slideNext}
                         aria-label="Next videos"
-                    >❯</button>
-                </div>
-
-                <div className="carousel-controls mt-4">
-                    <div className="carousel-dots">
-                        {institutionVideosData.slice(0, Math.max(1, institutionVideosData.length - cardsToShow + 1)).map((_, i) => (
-                            <span
-                                key={i}
-                                className={`carousel-dot ${i === index ? 'active' : ''}`}
-                                onClick={() => handleDotClick(i)}
-                            />
-                        ))}
-                    </div>
+                    >
+                        ❯
+                    </button>
                 </div>
             </div>
         </section>

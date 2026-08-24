@@ -266,7 +266,7 @@ const Courses = () => {
         >
             <div className="jg-courses-main-content">
                 <div 
-                    className="jg-courses-header-container"
+                    className="jg-courses-header-container home-section-header"
                 >
                     <h2 className="section-main-title text-shine">
                         100% Job Guaranteed Courses
@@ -278,7 +278,7 @@ const Courses = () => {
                     onMouseEnter={() => setIsPaused(true)}
                     onMouseLeave={() => setIsPaused(false)}
                 >
-                    <button className={`jg-nav-side-btn prev ${isAtStart ? 'is-disabled' : ''}`} onClick={slidePrev}>&lt;</button>
+                    <button className={`jg-nav-side-btn prev ${isAtStart ? 'is-disabled' : ''}`} onClick={slidePrev} aria-label="Previous">❮</button>
 
                     <div className="jg-courses-glass-track-wrapper">
                         <div
@@ -296,7 +296,7 @@ const Courses = () => {
                         </div>
                     </div>
 
-                    <button className={`jg-nav-side-btn next ${isAtEnd ? 'is-disabled' : ''}`} onClick={slideNext}>&gt;</button>
+                    <button className={`jg-nav-side-btn next ${isAtEnd ? 'is-disabled' : ''}`} onClick={slideNext} aria-label="Next">❯</button>
                 </div>
             </div>
         </div>

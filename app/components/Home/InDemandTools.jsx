@@ -60,7 +60,9 @@ const InDemandTools = () => {
         <section 
             className="idt-in-demand-container"
         >
+            <div className="home-section-title-wrap">
             <h2 className="section-main-title text-shine">In Demand Tools</h2>
+            </div>
 
             <div className="idt-tools-slider-container">
                 {/* Row 1 */}

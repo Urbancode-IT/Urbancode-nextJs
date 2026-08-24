@@ -1,0 +1,154 @@
+/* Shared carousel nav — glass blur + ❮ ❯ chevrons (homepage, kids, study abroad) */
+
+.hero-cards-wrapper .hero-cards-nav,
+.trending-section-container .nav-side-btn,
+.jg-courses-section-wrapper .jg-nav-side-btn,
+.google-reviews-section .gr-nav-side-btn,
+.video-testimonials-section .nav-btn,
+.institution-videos-section .nav-btn,
+.testimonial_main_container .testimonial-nav-btn,
+.faq-section .faq-nav-btn,
+.success-stories-section .slider-nav-btn,
+.pt-mobile-nav-btn,
+.kidz-page .kids-faq-nav-btn,
+.study-abroad-container .hero-cards-nav,
+.study-abroad-container .hero-cards-arrow,
+.study-abroad-container .mbbs-unified-arrow,
+.study-abroad-container .study-faq-nav-btn,
+.study-abroad-container .mbbs-slider-arrow {
+  width: 48px !important;
+  height: 48px !important;
+  min-width: 48px;
+  min-height: 48px;
+  border-radius: 50% !important;
+  background: rgba(255, 255, 255, 0.35) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.45) !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+  color: #333 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: 1 !important;
+  padding: 0 !important;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+  font-size: 1.2rem !important;
+  font-weight: 600;
+}
+
+.hero-cards-wrapper .hero-cards-nav:hover:not(:disabled),
+.trending-section-container .nav-side-btn:hover:not(.is-disabled),
+.jg-courses-section-wrapper .jg-nav-side-btn:hover:not(.is-disabled),
+.google-reviews-section .gr-nav-side-btn:hover:not(.is-disabled),
+.video-testimonials-section .nav-btn:hover:not(:disabled),
+.institution-videos-section .nav-btn:hover:not(:disabled),
+.testimonial_main_container .testimonial-nav-btn:hover:not(:disabled),
+.faq-section .faq-nav-btn:hover:not(:disabled),
+.success-stories-section .slider-nav-btn:hover,
+.pt-mobile-nav-btn:hover:not(.pt-nav-disabled),
+.kidz-page .kids-faq-nav-btn:hover:not(:disabled),
+.study-abroad-container .hero-cards-nav:hover:not(:disabled),
+.study-abroad-container .hero-cards-arrow:hover:not(:disabled),
+.study-abroad-container .mbbs-unified-arrow:hover:not(:disabled),
+.study-abroad-container .study-faq-nav-btn:hover:not(:disabled),
+.study-abroad-container .mbbs-slider-arrow:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.55) !important;
+  color: #198754 !important;
+  border-color: rgba(25, 135, 84, 0.35) !important;
+  box-shadow: 0 6px 20px rgba(25, 135, 84, 0.15) !important;
+  transform: none !important;
+}
+
+.hero-cards-wrapper .hero-cards-nav.prev,
+.trending-section-container .nav-side-btn.prev,
+.jg-courses-section-wrapper .jg-nav-side-btn.prev,
+.google-reviews-section .gr-nav-side-btn.prev,
+.video-testimonials-section .nav-btn.prev-btn,
+.institution-videos-section .nav-btn.prev-btn,
+.faq-section .faq-nav-btn.prev,
+.pt-mobile-nav-btn.prev,
+.kidz-page .kids-faq-nav-btn.prev,
+.study-abroad-container .hero-cards-nav-prev,
+.study-abroad-container .hero-cards-arrow-left,
+.study-abroad-container .hero-cards-arrow.prev,
+.study-abroad-container .mbbs-unified-arrow.prev,
+.study-abroad-container .study-faq-nav-btn.prev,
+.study-abroad-container .mbbs-slider-arrow.prev {
+  padding-right: 3px !important;
+}
+
+.hero-cards-wrapper .hero-cards-nav.next,
+.trending-section-container .nav-side-btn.next,
+.jg-courses-section-wrapper .jg-nav-side-btn.next,
+.google-reviews-section .gr-nav-side-btn.next,
+.video-testimonials-section .nav-btn.next-btn,
+.institution-videos-section .nav-btn.next-btn,
+.faq-section .faq-nav-btn.next,
+.pt-mobile-nav-btn.next,
+.kidz-page .kids-faq-nav-btn.next,
+.study-abroad-container .hero-cards-nav-next,
+.study-abroad-container .hero-cards-arrow-right,
+.study-abroad-container .hero-cards-arrow.next,
+.study-abroad-container .mbbs-unified-arrow.next,
+.study-abroad-container .study-faq-nav-btn.next,
+.study-abroad-container .mbbs-slider-arrow.next {
+  padding-left: 3px !important;
+}
+
+.institution-videos-section .nav-btn.is-disabled,
+.video-testimonials-section .nav-btn.is-disabled,
+.study-abroad-container .hero-cards-nav:disabled,
+.study-abroad-container .hero-cards-arrow:disabled,
+.study-abroad-container .mbbs-unified-arrow:disabled,
+.study-abroad-container .study-faq-nav-btn:disabled,
+.study-abroad-container .mbbs-slider-arrow:disabled {
+  opacity: 0.35 !important;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+.trending-section-container .nav-side-btn.is-disabled,
+.jg-courses-section-wrapper .jg-nav-side-btn.is-disabled,
+.google-reviews-section .gr-nav-side-btn.is-disabled {
+  opacity: 0.35 !important;
+  pointer-events: none;
+}
+
+.study-abroad-container .mbbs-unified-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+
+.study-abroad-container .mbbs-unified-arrow:hover:not(:disabled) {
+  transform: translateY(-50%) !important;
+}
+
+@media (max-width: 768px) {
+  .hero-cards-wrapper .hero-cards-nav,
+  .trending-section-container .nav-side-btn,
+  .jg-courses-section-wrapper .jg-nav-side-btn,
+  .google-reviews-section .gr-nav-side-btn,
+  .video-testimonials-section .nav-btn,
+  .institution-videos-section .nav-btn,
+  .testimonial_main_container .testimonial-nav-btn,
+  .faq-section .faq-nav-btn,
+  .success-stories-section .slider-nav-btn,
+  .pt-mobile-nav-btn,
+  .kidz-page .kids-faq-nav-btn,
+  .study-abroad-container .hero-cards-nav,
+  .study-abroad-container .hero-cards-arrow,
+  .study-abroad-container .mbbs-unified-arrow,
+  .study-abroad-container .study-faq-nav-btn,
+  .study-abroad-container .mbbs-slider-arrow {
+    width: 42px !important;
+    height: 42px !important;
+    min-width: 42px;
+    min-height: 42px;
+    font-size: 1.05rem !important;
+  }
+}

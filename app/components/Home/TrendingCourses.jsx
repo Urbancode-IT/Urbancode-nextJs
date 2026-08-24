@@ -10,7 +10,6 @@ const courses = [
     id: 1,
     title: "AI & Machine Learning",
     duration: "3 Months",
-    badge: "FREEDOM SALE",
     description: "Don't just use AI — learn how AI works. Build the skills behind intelligent applications using Python, Machine Learning, Deep Learning, and NLP.",
     tools: ["Python", "Machine Learning", "Deep Learning", "NLP", "TensorFlow", "Keras"],
     highlights: [
@@ -25,7 +24,6 @@ const courses = [
     id: 2,
     title: "Automation Testing",
     duration: "3 Months",
-    badge: "FREEDOM SALE",
     description: "Upgrade from Manual to Automation Testing. Build practical automation skills with Java Selenium, Playwright, Maven, and Jenkins.",
     tools: ["Java Selenium", "Playwright", "Maven", "Jenkins"],
     highlights: [
@@ -40,7 +38,6 @@ const courses = [
     id: 3,
     title: "AWS + DevOps",
     duration: "3 Months",
-    badge: "FREEDOM SALE",
     description: "Building an application is one thing. Deploying and scaling it is another. Learn modern Cloud & DevOps practices with AWS, Docker, and Kubernetes.",
     tools: ["AWS", "DevOps", "Docker", "Kubernetes"],
     highlights: [
@@ -55,7 +52,6 @@ const courses = [
     id: 4,
     title: "Data Analytics",
     duration: "3 Months",
-    badge: "FREEDOM SALE",
     description: "Data is everywhere. But can you turn it into decisions? Learn to transform raw data into actionable insights using Power BI, Tableau, Databricks, and Matplotlib.",
     tools: ["Power BI", "Tableau", "Databricks", "Matplotlib"],
     highlights: [
@@ -70,7 +66,6 @@ const courses = [
     id: 5,
     title: "Data Engineering",
     duration: "3 Months",
-    badge: "FREEDOM SALE",
     description: "Data Analysts need data. But who builds the systems behind it? Learn how modern data platforms are built with Azure, Apache Spark, MySQL, and PySpark.",
     tools: ["Azure", "Apache Spark", "MySQL", "PySpark"],
     highlights: [
@@ -85,7 +80,6 @@ const courses = [
     id: 6,
     title: "MERN Stack Development",
     duration: "3 Months",
-    badge: "FREEDOM SALE",
     description: "You know coding. But can you build a complete application? Build modern, real-world web applications with MERN Stack — MongoDB, Express.js, React.js, Node.js.",
     tools: ["MongoDB", "Express.js", "React.js", "Node.js"],
     highlights: [
@@ -100,7 +94,6 @@ const courses = [
     id: 7,
     title: "Power Automate",
     duration: "2 Months",
-    badge: "FREEDOM SALE",
     description: "Master Microsoft Power Automate and build real-world workflows that drive productivity. Automate repetitive tasks, build approval workflows, and work with real business use cases.",
     tools: ["Power Automate", "Microsoft 365", "Power Apps", "SharePoint"],
     highlights: [
@@ -116,7 +109,6 @@ const courses = [
     id: 8,
     title: ".NET + Angular",
     duration: "3 Months",
-    badge: "FREEDOM SALE",
     description: "Combine the power of C# .NET backend with Angular frontend to build scalable enterprise-level web applications used in top MNCs worldwide.",
     tools: ["C# .NET", "Angular", "SQL Server", "REST APIs"],
     highlights: [
@@ -185,7 +177,7 @@ const TrendingCourses = () => {
 
     return (
         <div className="trending-section-container">
-            <div className="trending-header text-center mb-5">
+            <div className="trending-header text-center home-section-title-wrap">
                 <h2 className="section-main-title text-shine">Featured Courses</h2>
             </div>
 
@@ -194,17 +186,15 @@ const TrendingCourses = () => {
                 onMouseEnter={() => setIsPaused(true)}
                 onMouseLeave={() => setIsPaused(false)}
             >
-                <button className={`nav-side-btn prev ${isAtStart ? 'is-disabled' : ''}`} onClick={slidePrev}>&lt;</button>
+                <button className={`nav-side-btn prev ${isAtStart ? 'is-disabled' : ''}`} onClick={slidePrev} aria-label="Previous">❮</button>
 
                 <div className="trending-scroll-track" ref={sliderRef} onScroll={checkScrollPosition}>
                     {courses.map((course) => (
                         <div
                            key={course.id}
-                           className="trending-course-card freedom-highlight"
+                           className="trending-course-card"
                            onClick={() => setSelectedCourse(course)}
                         >
-                            <div className="freedom-badge"></div>
-
                             <div className="trending-image-box">
                                 {course.image ? (
                                     <Image
@@ -235,7 +225,7 @@ const TrendingCourses = () => {
                     ))}
                 </div>
 
-                <button className={`nav-side-btn next ${isAtEnd ? 'is-disabled' : ''}`} onClick={slideNext}>&gt;</button>
+                <button className={`nav-side-btn next ${isAtEnd ? 'is-disabled' : ''}`} onClick={slideNext} aria-label="Next">❯</button>
             </div>
 
             {selectedCourse && (
@@ -261,7 +251,6 @@ const TrendingCourses = () => {
                                 )}
                             </div>
                             <div className="trending-modal-info">
-                                <div className="modal-freedom-tag">&#127470;&#127475; FREEDOM SALE</div>
                                 <h3>{selectedCourse.title}</h3>
                                 {selectedCourse.duration && (
                                   <div className="info-meta">

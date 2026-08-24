@@ -21,6 +21,52 @@ export default function FreedomSalePromo() {
   const containerRef = useRef(null);
 
   useEffect(() => {
+    const root = document.documentElement;
+
+    if (phase !== 'banner') {
+      root.classList.remove('freedom-banner-visible');
+      root.style.setProperty('--freedom-banner-offset', '0px');
+      return;
+    }
+
+    root.classList.add('freedom-banner-visible');
+
+    const updateOffset = () => {
+      const bannerEl = bannerRef.current;
+      if (!bannerEl) {
+        root.style.setProperty('--freedom-banner-offset', '0px');
+        return;
+      }
+      const bannerH = bannerEl.offsetHeight;
+      if (bannerH <= 0) {
+        root.style.setProperty('--freedom-banner-offset', '0px');
+        return;
+      }
+      const styles = getComputedStyle(bannerEl);
+      const marginTop = parseFloat(styles.marginTop) || 0;
+      const gap =
+        parseFloat(
+          getComputedStyle(root).getPropertyValue('--freedom-banner-title-gap')
+        ) || 10;
+      // Banner is fixed — offset = margin + banner height + 10px title gap
+      root.style.setProperty('--freedom-banner-offset', `${marginTop + bannerH + gap}px`);
+    };
+
+    updateOffset();
+    const raf = requestAnimationFrame(updateOffset);
+    const timer = setTimeout(updateOffset, 700);
+    window.addEventListener('resize', updateOffset);
+
+    return () => {
+      cancelAnimationFrame(raf);
+      clearTimeout(timer);
+      window.removeEventListener('resize', updateOffset);
+      root.classList.remove('freedom-banner-visible');
+      root.style.setProperty('--freedom-banner-offset', '0px');
+    };
+  }, [phase]);
+
+  useEffect(() => {
     setPhase('intro');
   }, []);
 

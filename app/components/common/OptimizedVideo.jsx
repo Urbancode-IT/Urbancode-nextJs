@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef, useImperativeHandle } from 'react';
 import { useInView } from 'react-intersection-observer';
+import '../Home/homePlayButton.css';
 import { getOptimizedVideoUrl, getVideoPosterUrl } from '@/lib/cloudinary';
 import PropTypes from 'prop-types';
 
@@ -17,6 +18,8 @@ const OptimizedVideo = React.forwardRef(({
     playOnVisible = true,
     preload = 'none',
     rootMargin = '200px 0px',
+    hidePosterPlay = false,
+    forceLoad = false,
     onClick,
     ...props
 }, ref) => {
@@ -78,6 +81,12 @@ const OptimizedVideo = React.forwardRef(({
         : poster;
 
     useEffect(() => {
+        if (forceLoad || autoPlay) {
+            setHasLoaded(true);
+        }
+    }, [forceLoad, autoPlay]);
+
+    useEffect(() => {
         if (inView && !hasLoaded) {
             setHasLoaded(true);
         }
@@ -85,15 +94,21 @@ const OptimizedVideo = React.forwardRef(({
 
     useEffect(() => {
         if (!localVideoRef.current || !hasLoaded) return;
+        if (autoPlay) {
+            localVideoRef.current.play()
+                .then(() => setIsPlaying(true))
+                .catch(() => setIsPlaying(false));
+            return;
+        }
         if (playOnVisible && inView) {
             localVideoRef.current.play()
                 .then(() => setIsPlaying(true))
                 .catch(() => setIsPlaying(false));
-        } else if (!inView) {
+        } else if (!inView && playOnVisible) {
             localVideoRef.current.pause();
             setIsPlaying(false);
         }
-    }, [inView, hasLoaded, playOnVisible]);
+    }, [inView, hasLoaded, playOnVisible, autoPlay]);
 
     const handlePlayClick = (e) => {
         if (onClick) { onClick(e); return; }
@@ -128,8 +143,8 @@ const OptimizedVideo = React.forwardRef(({
             }}
             {...props}
         >
-            {/* Poster overlay — always rendered, hidden only when playing */}
-            {!isPlaying && (
+            {/* Poster overlay — skip when parent supplies its own play UI */}
+            {!isPlaying && !hidePosterPlay && (
                 <div
                     className="video-poster-overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center"
                     style={{
@@ -140,31 +155,23 @@ const OptimizedVideo = React.forwardRef(({
                         zIndex: 2,
                     }}
                 >
-                    <div
-                        className="position-absolute top-0 start-0 w-100 h-100"
-                        style={{ background: 'rgba(10, 13, 20, 0.35)' }}
-                    />
-                    <button
-                        type="button"
-                        onClick={handlePlayClick}
-                        className="btn d-flex align-items-center justify-content-center rounded-circle border-0 shadow-lg play-btn-glow"
-                        style={{
-                            width: '60px',
-                            height: '60px',
-                            background: 'rgba(255, 255, 255, 0.15)',
-                            backdropFilter: 'blur(8px)',
-                            border: '1px solid rgba(255, 255, 255, 0.3)',
-                            color: '#ffffff',
-                            fontSize: '24px',
-                            paddingLeft: '5px',
-                            zIndex: 3,
-                            transition: 'all 0.3s ease',
-                            cursor: 'pointer',
-                        }}
-                        aria-label="Play video"
-                    >
-                        ▶
-                    </button>
+                    {!hidePosterPlay && (
+                        <div
+                            className="position-absolute top-0 start-0 w-100 h-100"
+                            style={{ background: 'rgba(10, 13, 20, 0.35)' }}
+                        />
+                    )}
+                    {!hidePosterPlay && (
+                        <button
+                            type="button"
+                            onClick={handlePlayClick}
+                            className="video-play-btn border-0 play-btn-glow"
+                            style={{ zIndex: 3 }}
+                            aria-label="Play video"
+                        >
+                            <span className="video-play-btn-icon" aria-hidden="true" />
+                        </button>
+                    )}
                 </div>
             )}
 
@@ -174,11 +181,12 @@ const OptimizedVideo = React.forwardRef(({
                     className="w-100 h-100 object-fit-cover position-absolute top-0 start-0"
                     poster={finalPoster}
                     controls={controls}
+                    autoPlay={autoPlay}
                     loop={loop}
-                    muted={muted}
+                    muted={autoPlay ? true : muted}
                     playsInline
                     preload={preload}
-                    style={{ zIndex: 1 }}
+                    style={{ zIndex: isPlaying || hidePosterPlay ? 3 : 1 }}
                     onPlay={() => setIsPlaying(true)}
                     onPause={() => setIsPlaying(false)}
                     onEnded={() => setIsPlaying(false)}
@@ -190,11 +198,6 @@ const OptimizedVideo = React.forwardRef(({
             )}
 
             <style jsx global>{`
-                .play-btn-glow:hover {
-                    transform: scale(1.15);
-                    background: rgba(25, 135, 84, 0.9) !important;
-                    box-shadow: 0 0 20px rgba(25, 135, 84, 0.6) !important;
-                }
                 .optimized-video-wrapper video { outline: none; }
             `}</style>
         </div>
@@ -215,6 +218,8 @@ OptimizedVideo.propTypes = {
     playOnVisible: PropTypes.bool,
     preload: PropTypes.oneOf(['none', 'metadata', 'auto']),
     rootMargin: PropTypes.string,
+    hidePosterPlay: PropTypes.bool,
+    forceLoad: PropTypes.bool,
     onClick: PropTypes.func,
 };
 

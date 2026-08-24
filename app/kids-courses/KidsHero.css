@@ -6,8 +6,8 @@
 
 /* ── CSS Variables ───────────────────────────────── */
 :root {
-  --kh2-green       : #00C16A;
-  --kh2-green-dark  : #009952;
+  --kh2-green       : #00B56F;
+  --kh2-green-dark  : #004F30;
   --kh2-text        : #1A1A1A;
   --kh2-sub         : #4b5563;
   --kh2-bg          : #F8FAF8;
@@ -15,7 +15,7 @@
   --kh2-teal        : #317B74;
 
   --kids-hero-bg    : #F8FAF8;
-  --kids-hero-green : #00C16A;
+  --kids-hero-green : #00B56F;
   --kids-hero-teal  : #317B74;
 }
 
@@ -46,17 +46,21 @@
   to   { opacity: 1; transform: scale(1) translateY(0); }
 }
 @keyframes kh2-badge-attention {
-  0%   { box-shadow: 0 4px 24px rgba(0,193,106,0.18), 0 0 0 0   rgba(0,193,106,0.5); }
-  50%  { box-shadow: 0 4px 24px rgba(0,193,106,0.18), 0 0 0 10px rgba(0,193,106,0); }
-  100% { box-shadow: 0 4px 24px rgba(0,193,106,0.18), 0 0 0 0   rgba(0,193,106,0); }
+  0%   { box-shadow: 0 4px 24px rgba(0,181,111,0.18), 0 0 0 0   rgba(0,181,111,0.5); }
+  50%  { box-shadow: 0 4px 24px rgba(0,181,111,0.18), 0 0 0 10px rgba(0,181,111,0); }
+  100% { box-shadow: 0 4px 24px rgba(0,181,111,0.18), 0 0 0 0   rgba(0,181,111,0); }
+}
+@keyframes kh2-icon-ring {
+  0%, 100% { box-shadow: 0 0 0 0   rgba(0, 181, 111, 0.38); }
+  60%       { box-shadow: 0 0 0 6px rgba(0, 181, 111, 0); }
 }
 @keyframes kh2-arrow-nudge {
   0%, 100% { transform: translateX(0); }
   50%       { transform: translateX(3px); }
 }
-@keyframes kh2-icon-ring {
-  0%, 100% { box-shadow: 0 0 0 0   rgba(0, 193, 106, 0.38); }
-  60%       { box-shadow: 0 0 0 6px rgba(0, 193, 106, 0); }
+@keyframes kh2-btn-shimmer {
+  0% { left: -100%; }
+  100% { left: 200%; }
 }
 
 /* ═══════════════════════════════════════════════════
@@ -144,7 +148,7 @@
   outline      : none;
   background   : #ffffff;
   padding      : 0;
-  box-shadow   : 0 4px 24px rgba(0, 193, 106, 0.18),
+  box-shadow   : 0 4px 24px rgba(0, 181, 111, 0.18),
                  0 1px 4px rgba(0, 0, 0, 0.06);
   animation    : kh2-badge-attention 3s ease-in-out infinite;
   transition   : transform 0.22s ease, box-shadow 0.22s ease;
@@ -152,11 +156,10 @@
 }
 
 .kh2-badge:hover {
-  transform : translateY(-2px) scale(1.02);
-  box-shadow: 0 8px 32px rgba(0, 193, 106, 0.28);
+  box-shadow: 0 8px 32px rgba(0, 181, 111, 0.28);
   animation : none;
 }
-.kh2-badge:active { transform: scale(0.98); }
+.kh2-badge:active { transform: none; }
 
 /* ── Character illustration ── */
 .kh2-badge-char {
@@ -202,7 +205,7 @@
   font-weight   : 800;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color         : #00C16A;
+  color         : #00B56F;
 }
 
 /* ── Mixed-color title ── */
@@ -221,7 +224,7 @@
 .kh2-title-play {
   font-size  : 18px;
   font-weight: 900;
-  color      : #00C16A;
+  color      : #00B56F;
   font-family: 'Inter', sans-serif;
 }
 .kh2-title-zone {
@@ -277,15 +280,15 @@
   gap            : 5px;
   padding        : 0 7px;
   background     : #f3fdf7;
-  border-top     : 1.5px solid rgba(0, 193, 106, 0.15);
-  border-bottom  : 1.5px solid rgba(0, 193, 106, 0.15);
+  border-top     : 1.5px solid rgba(0, 181, 111, 0.15);
+  border-bottom  : 1.5px solid rgba(0, 181, 111, 0.15);
   flex-shrink    : 0;
 }
 .kh2-notch-dot {
   width        : 4px;
   height       : 4px;
   border-radius: 50%;
-  background   : rgba(0, 193, 106, 0.25);
+  background   : rgba(0, 181, 111, 0.25);
 }
 
 /* ── Green CTA pill ── */
@@ -294,13 +297,13 @@
   align-items  : center;
   gap          : 8px;
   padding      : 0 18px 0 16px;
-  background   : linear-gradient(135deg, #00C16A 0%, #009952 100%);
+  background   : linear-gradient(90deg, #00B56F 0%, #004F30 100%);
   border-radius: 0 12px 12px 0;
   flex-shrink  : 0;
   transition   : background 0.18s ease;
 }
 .kh2-badge:hover .kh2-badge-cta {
-  background: linear-gradient(135deg, #009952 0%, #007a3f 100%);
+  background: linear-gradient(90deg, #009960 0%, #003d26 100%);
 }
 .kh2-badge-cta-label {
   font-size     : 12px;
@@ -330,7 +333,7 @@
 .kh2-highlight {
   position              : relative;
   display               : inline-block;
-  background            : linear-gradient(135deg, #00C16A 0%, #009952 100%);
+  background            : linear-gradient(90deg, #00B56F 0%, #004F30 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip       : text;
@@ -368,7 +371,9 @@
   animation : kh2-slide-up 0.55s ease both 0.22s;
 }
 .kh2-btn-primary {
-  background    : linear-gradient(135deg, #00C16A 0%, #009952 100%);
+  position      : relative;
+  overflow      : hidden;
+  background    : linear-gradient(90deg, #00B56F 0%, #004F30 100%);
   color         : #fff;
   border        : none;
   padding       : 16px 38px;
@@ -376,17 +381,33 @@
   font-size     : 16px;
   font-weight   : 700;
   cursor        : pointer;
-  box-shadow    : 0 6px 24px rgba(0,193,106,0.35);
-  transition    : transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow    : 0px 4px 10px -2px rgba(0,181,111,0.35),
+                  0px 10px 24px -6px rgba(0,181,111,0.55),
+                  inset 0px 1px 0px rgba(255,255,255,0.45);
+  transition    : box-shadow 0.2s ease;
   font-family   : 'Inter', sans-serif;
   white-space   : nowrap;
   letter-spacing: -0.01em;
 }
-.kh2-btn-primary:hover {
-  transform : translateY(-2px) scale(1.02);
-  box-shadow: 0 10px 32px rgba(0,193,106,0.45);
+.kh2-btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
+  animation: kh2-btn-shimmer 2s infinite linear;
+  transform: skewX(-20deg);
+  pointer-events: none;
+  z-index: 1;
 }
-.kh2-btn-primary:active { transform: scale(0.98); }
+.kh2-btn-primary:hover {
+  box-shadow: 0px 6px 14px -2px rgba(0,181,111,0.45),
+              0px 14px 28px -6px rgba(0,181,111,0.6),
+              inset 0px 1px 0px rgba(255,255,255,0.45);
+}
+.kh2-btn-primary:active { transform: none; }
 
 .kh2-btn-secondary {
   background   : transparent;
@@ -688,7 +709,7 @@
   align-items  : center;
   gap          : 8px;
   padding      : 0 18px 0 16px;
-  background   : linear-gradient(135deg, #00C16A 0%, #009952 100%);
+  background   : linear-gradient(90deg, #00B56F 0%, #004F30 100%);
   border-radius: 0 12px 12px 0;
   flex-shrink  : 0;
   transition   : background 0.18s ease;

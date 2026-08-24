@@ -1,0 +1,145 @@
+/* Study Abroad — no zoom/lift on card hover; shine sweep instead */
+
+/* ── Kill all card zoom / lift transforms ── */
+.study-abroad-container .destination-card:hover,
+.study-abroad-container .destination-card:hover .destination-img-box,
+.study-abroad-container .destination-card:hover .destination-img-box img,
+.study-abroad-container .service-box:hover,
+.study-abroad-container .service-box:hover .service-icon,
+.study-abroad-container .mbbs-country-card:hover,
+.study-abroad-container .mbbs-country-card:hover .mbbs-card-img-box,
+.study-abroad-container .mbbs-country-card:hover .mbbs-card-flag-img,
+.study-abroad-container .mbbs-why-card:hover,
+.study-abroad-container .mbbs-why-card:hover .mbbs-why-icon,
+.study-abroad-container .study-stat-card:hover,
+.study-abroad-container .test-card:hover,
+.study-abroad-container .test-card:hover .test-avatar,
+.study-abroad-container .hero-feature-card:hover,
+.study-abroad-container .mbbs-ticker-pill:hover,
+.study-abroad-container .mbbs-process-step:hover,
+.study-abroad-container .mbbs-process-step:hover .mbbs-step-icon-wrap,
+.study-abroad-container .course-struct-card:hover,
+.study-abroad-container .showcase-expert-btn:hover {
+  transform: none !important;
+}
+
+/* Keep cert stage centered — do NOT zero transform (uses translateX -50%) */
+.study-abroad-container .proficiency-glass-container .prof-cert-container:hover {
+  transform: translateX(-50%) !important;
+}
+
+/* ── Shine-enabled card shells ── */
+.study-abroad-container .destination-card,
+.study-abroad-container .service-box,
+.study-abroad-container .mbbs-country-card,
+.study-abroad-container .mbbs-why-card,
+.study-abroad-container .study-stat-card,
+.study-abroad-container .test-card,
+.study-abroad-container .hero-feature-card,
+.study-abroad-container .mbbs-ticker-pill,
+.study-abroad-container .mbbs-process-step,
+.study-abroad-container .course-struct-card,
+.study-abroad-container .prof-course-struct-card {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Proficiency tab panel — allow 3D image to overflow, no shine shift */
+.study-abroad-container .proficiency-glass-container .proficiency-content-card {
+  overflow: visible !important;
+  transform: none !important;
+}
+
+.study-abroad-container .proficiency-glass-container .proficiency-content-card:hover {
+  transform: none !important;
+}
+
+/* Shine sweep pseudo-element */
+.study-abroad-container .destination-card::after,
+.study-abroad-container .service-box::after,
+.study-abroad-container .mbbs-country-card::after,
+.study-abroad-container .mbbs-why-card::after,
+.study-abroad-container .study-stat-card::after,
+.study-abroad-container .test-card::after,
+.study-abroad-container .hero-feature-card::after,
+.study-abroad-container .mbbs-ticker-pill::after,
+.study-abroad-container .mbbs-process-step::after,
+.study-abroad-container .course-struct-card::after,
+.study-abroad-container .prof-course-struct-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    125deg,
+    transparent 28%,
+    rgba(255, 255, 255, 0.42) 50%,
+    transparent 72%
+  );
+  background-size: 250% 250%;
+  background-position: 200% 200%;
+  transition: background-position 0.65s ease;
+  pointer-events: none;
+  border-radius: inherit;
+  z-index: 4;
+}
+
+.study-abroad-container .destination-card:hover::after,
+.study-abroad-container .service-box:hover::after,
+.study-abroad-container .mbbs-country-card:hover::after,
+.study-abroad-container .mbbs-why-card:hover::after,
+.study-abroad-container .study-stat-card:hover::after,
+.study-abroad-container .test-card:hover::after,
+.study-abroad-container .hero-feature-card:hover::after,
+.study-abroad-container .mbbs-ticker-pill:hover::after,
+.study-abroad-container .mbbs-process-step:hover::after,
+.study-abroad-container .course-struct-card:hover::after,
+.study-abroad-container .prof-course-struct-card:hover::after {
+  background-position: -50% -50%;
+}
+
+/* Hover feedback — shadow + border only, no movement */
+.study-abroad-container .destination-card:hover,
+.study-abroad-container .service-box:hover,
+.study-abroad-container .mbbs-country-card:hover,
+.study-abroad-container .mbbs-why-card:hover,
+.study-abroad-container .study-stat-card:hover,
+.study-abroad-container .test-card:hover,
+.study-abroad-container .hero-feature-card:hover,
+.study-abroad-container .course-struct-card:hover,
+.study-abroad-container .prof-course-struct-card:hover {
+  box-shadow: 0 16px 40px rgba(0, 79, 48, 0.12), 0 4px 14px rgba(0, 0, 0, 0.06) !important;
+  border-color: rgba(0, 181, 111, 0.28) !important;
+}
+
+.study-abroad-container .mbbs-ticker-pill:hover {
+  box-shadow: 0 8px 22px rgba(0, 79, 48, 0.1) !important;
+  border-color: rgba(0, 181, 111, 0.25) !important;
+  background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%) !important;
+}
+
+.study-abroad-container .mbbs-process-step:hover {
+  box-shadow: 0 12px 28px rgba(0, 79, 48, 0.1) !important;
+}
+
+/* Keep card content above shine */
+.study-abroad-container .service-icon,
+.study-abroad-container .destination-info,
+.study-abroad-container .mbbs-card-info,
+.study-abroad-container .mbbs-why-icon,
+.study-abroad-container .test-card-content {
+  position: relative;
+  z-index: 5;
+}
+
+/* Image inside cards — never scale on hover */
+.study-abroad-container .destination-img-box img,
+.study-abroad-container .mbbs-card-flag-img,
+.study-abroad-container .test-avatar {
+  transition: filter 0.3s ease !important;
+}
+
+.study-abroad-container .destination-card:hover .destination-img-box img,
+.study-abroad-container .mbbs-country-card:hover .mbbs-card-flag-img,
+.study-abroad-container .test-card:hover .test-avatar {
+  filter: brightness(1.03) saturate(1.04);
+}

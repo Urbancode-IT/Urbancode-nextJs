@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { FaStar, FaQuoteLeft, FaCheckCircle, FaAward, FaUniversity, FaSearch, FaStethoscope, FaGlobeAmericas, FaUserMd, FaPlaneDeparture, FaClipboardCheck, FaHospital, FaArrowRight, FaGraduationCap, FaRegClock, FaCalendarAlt, FaChevronLeft, FaChevronRight, FaClipboardList, FaLaptop, FaEdit, FaFileAlt } from 'react-icons/fa';
+import { FaStar, FaQuoteLeft, FaCheckCircle, FaAward, FaUniversity, FaSearch, FaStethoscope, FaGlobeAmericas, FaUserMd, FaPlaneDeparture, FaClipboardCheck, FaHospital, FaArrowRight, FaGraduationCap, FaRegClock, FaCalendarAlt, FaClipboardList, FaLaptop, FaEdit, FaFileAlt } from 'react-icons/fa';
 import { Send } from "lucide-react";
 import { submitEnquiryForm } from "@/lib/api/api";
 import Swal from 'sweetalert2';
@@ -15,6 +15,9 @@ import { destinations, services, testimonials, showcaseData } from './data';
 import '../components/Home/NewHeroSection.css';
 import '../components/CourseLayout/ProgramCohorts.css';
 import './StudyAbroad.css';
+import './studyAbroadGrids.css';
+import './studyAbroadProficiency.css';
+import './studyAbroadHover.css';
 import { FormInput, FormSelect, FormTextarea, FormButton, FormCard } from "@/app/components/common/FormUI";
 
 /* ── Counting animation stats banner for MBBS section ─────────────── */
@@ -244,14 +247,12 @@ const HeroStatMobileCarousel = ({ cards }) => {
         <div className="study-stat-carousel-wrapper" ref={wrapperRef}>
             <button
                 type="button"
-                className="hero-cards-nav hero-cards-nav-prev"
+                className="hero-cards-nav hero-cards-nav-prev prev"
                 onClick={() => handleScrollCards(-1)}
                 disabled={cards.length <= 1}
                 aria-label="Previous stat"
             >
-                <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12.5 15L7.5 10L12.5 5" stroke="#1C1D22" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
+                ❮
             </button>
 
             <div className="study-stat-cards-outer">
@@ -287,14 +288,12 @@ const HeroStatMobileCarousel = ({ cards }) => {
 
             <button
                 type="button"
-                className="hero-cards-nav hero-cards-nav-next"
+                className="hero-cards-nav hero-cards-nav-next next"
                 onClick={() => handleScrollCards(1)}
                 disabled={cards.length <= 1}
                 aria-label="Next stat"
             >
-                <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M7.5 5L12.5 10L7.5 15" stroke="#1C1D22" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
+                ❯
             </button>
         </div>
     );
@@ -430,12 +429,12 @@ const HeroStats = ({ cards }) => {
                 {needsArrows && (
                     <button
                         type="button"
-                        className="hero-cards-arrow hero-cards-arrow-left"
+                        className="hero-cards-arrow hero-cards-arrow-left prev"
                         onClick={goPrev}
                         disabled={index === 0}
                         aria-label="Previous"
                     >
-                        &#8249;
+                        ❮
                     </button>
                 )}
 
@@ -458,12 +457,12 @@ const HeroStats = ({ cards }) => {
                 {needsArrows && (
                     <button
                         type="button"
-                        className="hero-cards-arrow hero-cards-arrow-right"
+                        className="hero-cards-arrow hero-cards-arrow-right next"
                         onClick={goNext}
                         disabled={index === maxIndex}
                         aria-label="Next"
                     >
-                        &#8250;
+                        ❯
                     </button>
                 )}
             </div>
@@ -525,7 +524,7 @@ const StudyAbroadPage = () => {
     const [showBatches, setShowBatches] = useState(false);
 
     const proficiencyData = {
-      IELTS: {
+        IELTS: {
     title: "Achieve 7+ Band in IELTS in just 4 weeks!",
     description: "Join thousands of successful IELTS aspirants who have boosted their scores with Urbancode's expert guidance. Our structured coaching, proven strategies, and personalized study plans help you master all four modules—Listening, Reading, Writing, and Speaking—effectively.",
     highlights: [
@@ -537,7 +536,7 @@ const StudyAbroadPage = () => {
     // bgColor: "linear-gradient(45deg, #804A8A 0%, #3A0353 100%)"
 },
 
-PTE: {
+        PTE: {
     title: "Achieve Your Target PTE Score in 4 weeks!",
     description: "Join successful PTE aspirants who have boosted their scores with our expert guidance. A computer-based English language test for non-native English speakers who want to study abroad.",
     highlights: [
@@ -549,7 +548,7 @@ PTE: {
     // bgColor: "linear-gradient(45deg, #ee0039 0%, #54091b 100%)"
 },
 
-Duolingo: {
+        Duolingo: {
     title: "Master the Duolingo English Test with Ease!",
     description: "A modern, convenient, and affordable English proficiency assessment. You can take the test online, anytime, anywhere in under an hour, with our comprehensive preparation.",
     highlights: [
@@ -584,7 +583,7 @@ Duolingo: {
         setFormStatus({ type: "", message: "" });
 
         const { name, email, phone, country, education, course } = formData;
-
+        
         if (!name.trim() || name.trim().length < 3) {
             Swal.fire({ icon: 'warning', title: 'Validation Error', text: 'Please enter a valid name (min 3 characters).', confirmButtonColor: '#036c2d' });
             return;
@@ -669,7 +668,7 @@ Duolingo: {
                             <span className="hero-title-line1">Design your <span style={{ color: "#000" }}>international</span></span>
                             <br />
                             <span className="hero-title-line2">academic future today</span>
-                        </div>
+                                </div>
                     <p className="new-hero-description">
                         Launch your career on the global stage. Urbancode offers strategic guidance for admissions into leading universities in the US, UK, Canada, and beyond with complete scholarship support.
                     </p>
@@ -694,7 +693,7 @@ Duolingo: {
                                 </defs>
                             </svg>
                         </button>
-                    </div>
+                                </div>
 
                     {isModalOpen && (
                         <div className="study-abroad-modal-overlay" onClick={() => setIsModalOpen(false)}>
@@ -704,38 +703,38 @@ Duolingo: {
                                     <div className="text-center mb-4">
                                         <h3 className="h3 fw-bold mt-3 mb-2 text-dark">Start Your Application</h3>
                                         <p className="small text-muted">Share your details and one of our study abroad experts will contact you quickly.</p>
-                                    </div>
+                                </div>
                                     {formStatus.message && (
                                         <div className={`alert alert-${formStatus.type === 'error' ? 'danger' : 'success'} mb-4 text-center`}>
                                             {formStatus.message}
-                                        </div>
+                        </div>
                                     )}
                                     <form onSubmit={handleFormSubmit}>
                                         <div className="row g-2">
                                             <div className="col-md-6">
                                                 <label className="form-label fw-semibold">Full Name</label>
                                                 <FormInput name="name" placeholder="Enter your full name" required value={formData.name} onChange={handleFormChange} disabled={isSubmitting} />
-                                            </div>
+</div>
                                             <div className="col-md-6">
                                                 <label className="form-label fw-semibold">Email Address</label>
                                                 <FormInput type="email" name="email" placeholder="Enter your email address" required value={formData.email} onChange={handleFormChange} disabled={isSubmitting} />
-                                            </div>
+                                </div>
                                             <div className="col-md-6">
                                                 <label className="form-label fw-semibold">Phone Number</label>
                                                 <FormInput type="tel" name="phone" placeholder="Enter your phone number" required value={formData.phone} onChange={handleFormChange} disabled={isSubmitting} />
-                                            </div>
+                                </div>
                                             <div className="col-md-6">
                                                 <label className="form-label fw-semibold">Preferred Destination</label>
                                                 <FormSelect name="country" placeholder="Choose your destination" options={destinationOptions} required value={formData.country} onChange={handleFormChange} disabled={isSubmitting} />
-                                            </div>
+                                    </div>
                                             <div className="col-md-6">
                                                 <label className="form-label fw-semibold">Highest Qualification</label>
                                                 <FormSelect name="education" placeholder="Select your current qualification" options={educationOptions} required value={formData.education} onChange={handleFormChange} disabled={isSubmitting} />
-                                            </div>
+                                    </div>
                                             <div className="col-md-6">
                                                 <label className="form-label fw-semibold">Course Interest</label>
                                                 <FormInput name="course" placeholder="Preferred course (e.g. MS in CS)" required value={formData.course} onChange={handleFormChange} disabled={isSubmitting} />
-                                            </div>
+                                    </div>
                                             <div className="col-12">
                                                 <label className="form-label fw-semibold">Additional Details</label>
                                                 <FormTextarea name="message" rows="4" placeholder="Tell us about your goals or if you need scholarship support" value={formData.message} onChange={handleFormChange} disabled={isSubmitting} />
@@ -760,45 +759,37 @@ Duolingo: {
                     </div>
                     <div className="hero-cards-desktop-container">
                         <HeroStats cards={heroStatCards} />
+                        </div>
                     </div>
-                </div>
                 </div>
             </section>
 
             {/* Services Section */}
             <section className="section-padding services-section-light">
                 <div className="container">
-                    <div className="section-header">
+                    <div className="section-header home-section-title-wrap">
                         <h2 className="section-main-title text-shine">Our Expert Services</h2>
-                        <p>Comprehensive support from planning to your first day on campus. We handle the complexity so you can focus on your future.</p>
-
-                        <motion.div
-                            className="premium-free-service-banner"
-                            initial={{ opacity: 0, y: 10 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                        >
+                        <p className="section-subtitle">Comprehensive support from planning to your first day on campus. We handle the complexity so you can focus on your future.</p>
+                        
+                        <div className="premium-free-service-banner">
                             <div className="pfsb-content">
                                 <span className="pfsb-icon"><FaAward /></span>
                                 <span className="pfsb-text">100% Free Service for Students*</span>
                                 <span className="pfsb-exception">(Except Germany)</span>
                             </div>
-                        </motion.div>
+                        </div>
                     </div>
-<div
- className={`row g-4 ${
-    showAllServices ? "show-all-mobile" : ""
- }`}
->                        {services.map((service, index) => (
-                            <div className={`col-lg-3 col-md-6 view-all-item ${index >= 3 ? 'extra-mobile-card' : ''}`} key={index}>
-                                <motion.div
-                                    className="service-box"
-                                    whileHover={{ y: -5 }}
-                                >
+                    <div
+                        className={`study-services-grid ${
+                            showAllServices ? "show-all-mobile" : ""
+                        }`}
+                    >                        {services.map((service, index) => (
+                            <div className={`study-services-grid-item view-all-item ${index >= 3 ? 'extra-mobile-card' : ''}`} key={index}>
+                                <div className="service-box">
                                     <div className="service-icon">{service.icon}</div>
                                     <h4>{service.title}</h4>
                                     <p>{service.description}</p>
-                                </motion.div>
+                                </div>
                             </div>
                         ))}
                     </div>
@@ -819,20 +810,14 @@ Duolingo: {
             {/* Destinations Section */}
             <section className="section-padding destinations-section-light">
                 <div className="container">
-                    <div className="section-header">
+                    <div className="section-header home-section-title-wrap">
                         <h2 className="section-main-title text-shine">Top Study Destinations</h2>
-                        <p>Choose your pathway to global excellence. We represent top universities across 8+ major educational hubs worldwide.</p>
+                        <p className="section-subtitle">Choose your pathway to global excellence. We represent top universities across 8+ major educational hubs worldwide.</p>
                     </div>
-                    <div className={`row g-4 view-all-container ${showAllDestinations ? 'show-all-mobile' : ''}`}>
+                    <div className={`study-destinations-grid view-all-container ${showAllDestinations ? 'show-all-mobile' : ''}`}>
                         {destinations.map((dest, index) => (
-                            <div className={`col-lg-3 col-md-6 view-all-item ${index >= 3 ? 'extra-mobile-card' : ''}`} key={index}>
-                                <motion.div
-                                    className="destination-card"
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: index * 0.1 }}
-                                >
+                            <div className={`study-destinations-grid-item view-all-item ${index >= 3 ? 'extra-mobile-card' : ''}`} key={index}>
+                                <div className="destination-card">
                                     <div className="destination-img-box">
                                         <img src={dest.image} alt={dest.country} />
                                     </div>
@@ -847,12 +832,12 @@ Duolingo: {
                                             </Link>
                                         </div>
                                     </div>
-                                </motion.div>
+                                </div>
                             </div>
                         ))}
                     </div>
                     {destinations.length > 3 && (
-                        <div className="view-all-mobile-wrap">
+                        <div className="view-all-mobile-wrap destinations-view-all-wrap">
                             <button
                                 type="button"
                                 className="view-all-mobile-btn"
@@ -866,12 +851,12 @@ Duolingo: {
             </section>
 
             {/* MBBS Abroad Section */}
-            <section className="section-padding mbbs-section">
-                <div className="container">
-                    <div className="section-header">
-                        <h2 className="section-main-title text-shine">Study MBBS Abroad</h2>
-                        <p>Turn your dream of becoming a doctor into reality. Study at NMC-approved, WHO-listed universities across Europe and Central Asia — with English-medium instruction and total costs far below Indian private medical colleges.</p>
-                    </div>
+<section className="section-padding mbbs-section">
+  <div className="container">
+    <div className="section-header home-section-title-wrap">
+      <h2 className="section-main-title text-shine">Study MBBS Abroad</h2>
+                        <p className="section-subtitle">Turn your dream of becoming a doctor into reality. Study at NMC-approved, WHO-listed universities across Europe and Central Asia — with English-medium instruction and total costs far below Indian private medical colleges.</p>
+    </div>
 
                     {/* Stats banner with counting animation */}
                     <MbbsStatsBanner />
@@ -902,8 +887,8 @@ Duolingo: {
                                     {text}
                                 </span>
                             ))}
-                        </div>
-                    </div>
+        </div>
+      </div>
 
                     {/* Why MBBS abroad */}
                     <div className="mbbs-why-grid">
@@ -913,40 +898,32 @@ Duolingo: {
                             { icon: <FaPlaneDeparture />,  title: "End-to-End Support",        desc: "University shortlisting, visa, travel, and pre-departure briefing covered." },
                             { icon: <FaAward />,           title: "Affordable Education",      desc: "Complete MBBS abroad at a fraction of Indian private college fees." },
                         ].map((item, i) => (
-                            <motion.div
+                            <div
                                 className="mbbs-why-card"
                                 key={i}
-                                initial={{ opacity: 0, y: 16 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: i * 0.08 }}
                             >
                                 <div className="mbbs-why-icon">{item.icon}</div>
                                 <h4>{item.title}</h4>
                                 <p>{item.desc}</p>
-                            </motion.div>
+                            </div>
                         ))}
-                    </div>
+              </div>
 
                     {/* Country cards header */}
                     <div className="mbbs-destinations-header mt-5">
                         <h3 className="mbbs-destinations-title">Top Countries for MBBS Abroad</h3>
-                        <p>Choose from trusted destinations with quality medical education and strong FMGE pass records.</p>
+                        <p className="section-subtitle">Choose from trusted destinations with quality medical education and strong FMGE pass records.</p>
                     </div>
 
                     {/* Unified responsive slider (matches home page style) */}
                     <div className="mbbs-unified-slider-container">
                         <button className="mbbs-unified-arrow prev" onClick={() => scrollMbbs(-1)} aria-label="Previous">
-                            <FaChevronLeft />
-                        </button>
+                            ❮
+              </button>
                         
                         <div className="mbbs-unified-track" ref={mbbsScrollRef}>
                             {mbbsCountries.map((c, i) => (
-                                <motion.div className="mbbs-country-card" key={i}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: i * 0.08 }}>
+                                <div className="mbbs-country-card" key={i}>
                                     <div className="mbbs-card-img-box">
                                         <img
                                             src={`https://flagcdn.com/w320/${c.code}.png`}
@@ -968,24 +945,24 @@ Duolingo: {
                                             </button>
                                         </div>
                                     </div>
-                                </motion.div>
+                                </div>
                             ))}
-                        </div>
+        </div>
 
                         <button className="mbbs-unified-arrow next" onClick={() => scrollMbbs(1)} aria-label="Next">
-                            <FaChevronRight />
+                            ❯
                         </button>
-                    </div>
+      </div>
 
-                </div>
-            </section>
+  </div>
+</section>
 
             {/* Dream Country Benefits Showcase Section */}
             <section className="section-padding showcase-section">
                 <div className="container">
-                    <div className="section-header mb-4">
+                    <div className="section-header home-section-title-wrap mb-4">
                         <h2 className="section-main-title text-shine">Benefits of Your Dream Country</h2>
-                        <p className="fs-6">Get a detailed overview of what makes each destination a top choice for international studies, tailored to your career aspirations.</p>
+                        <p className="section-subtitle">Get a detailed overview of what makes each destination a top choice for international studies, tailored to your career aspirations.</p>
                     </div>
 
                     <div
@@ -1004,7 +981,7 @@ Duolingo: {
                                 <div className="showcase-tabs-container position-relative">
                                     <div className="showcase-tabs-bar">
                                         {Object.keys(showcaseData).map((key) => (
-                                            <button
+                                            <button 
                                                 key={key}
                                                 className={`showcase-tab ${activeShowcase === key ? 'active' : ''}`}
                                                 onClick={() => setActiveShowcase(key)}
@@ -1030,15 +1007,15 @@ Duolingo: {
                                         <h2 className="showcase-country-title country-title-handwritten">
                                             {showcaseData[activeShowcase].title}
                                         </h2>
-
+                                        
                                         <h4 className="showcase-country-subtitle fw-bold mb-3">
                                             {showcaseData[activeShowcase].subtitle}
                                         </h4>
 
                                         <ul className="showcase-highlights-list list-unstyled mb-4">
                                             {showcaseData[activeShowcase].highlights.map((highlight, idx) => (
-                                                <motion.li
-                                                    key={idx}
+                                                <motion.li 
+                                                    key={idx} 
                                                     className="d-flex align-items-center mb-2"
                                                     initial={{ opacity: 0, y: 10 }}
                                                     animate={{ opacity: 1, y: 0 }}
@@ -1050,7 +1027,7 @@ Duolingo: {
                                             ))}
                                         </ul>
 
-                                        <button
+                                        <button 
                                             className="showcase-expert-btn px-4 py-2 rounded-pill fw-bold text-white shadow-sm"
                                             style={{
                                                 background: showcaseData[activeShowcase].accentColor,
@@ -1066,7 +1043,7 @@ Duolingo: {
 
                                 <div className="col-lg-5 d-none d-lg-block">
                                     <div className="showcase-graphic-wrap position-relative w-100 d-flex justify-content-center align-items-center" style={{ height: '280px' }}>
-                                        <motion.div
+                                        <motion.div 
                                             key={`flag-${activeShowcase}`}
                                             className="showcase-flag-brush position-absolute"
                                             style={{ backgroundImage: `url(${showcaseData[activeShowcase].flagUrl})` }}
@@ -1074,7 +1051,7 @@ Duolingo: {
                                             animate={{ opacity: 0.8, scale: 1, rotate: -5 }}
                                             transition={{ duration: 0.6 }}
                                         />
-                                        <motion.div
+                                        <motion.div 
                                             key={`landmark-${activeShowcase}`}
                                             className="showcase-landmark-frame position-absolute"
                                             initial={{ opacity: 0, y: 50, scale: 0.9 }}
@@ -1094,14 +1071,16 @@ Duolingo: {
             {/* English Proficiency Section */}
             <section id="english-proficiency" className="section-padding proficiency-section">
                 <div className="container">
-                    <div className="section-header row align-items-center justify-content-center mb-5 text-start" style={{ textAlign: 'left' }}>
+                    <div className="row align-items-center justify-content-center mb-4 proficiency-hero-row">
                         <div className="col-lg-6">
-                            <h2 className="section-main-title text-shine mb-4" style={{ textAlign: 'left' }}>Master Your English Proficiency</h2>
-                            <p className="proficiency-main-desc text-muted" style={{ textAlign: 'left' }}>
-                                English proficiency certifications like <strong>IELTS, PTE, and Duolingo</strong> are essential milestones in your study abroad journey.
-                                At Urbancode, we provide comprehensive, result-oriented training for all these exams.
-                                Master the language under the guidance of experts with over <strong>10+ years of professional experience</strong> and achieve your target score with confidence.
-                            </p>
+                            <div className="home-section-title-wrap text-start proficiency-title-wrap">
+                                <h2 className="section-main-title text-shine">Master Your English Proficiency</h2>
+                                <p className="section-subtitle section-subtitle--full">
+                                    English proficiency certifications like <strong>IELTS, PTE, and Duolingo</strong> are essential milestones in your study abroad journey.
+                                    At Urbancode, we provide comprehensive, result-oriented training for all these exams.
+                                    Master the language under the guidance of experts with over <strong>10+ years of professional experience</strong> and achieve your target score with confidence.
+                                </p>
+                            </div>
                             <Link
                                 href="/study-abroad/evaluation-form"
                                 className="eval-test-btn"
@@ -1109,37 +1088,42 @@ Duolingo: {
                                 <span>Demo class Evaluation form</span>
                             </Link>
                         </div>
-                        <div className="col-lg-6 text-center mt-4 mt-lg-0">
-                            <img src="/images/study-abroad/ielts.png" alt="English Proficiency" className="img-fluid" style={{ maxHeight: '350px', objectFit: 'contain' }} />
+                        <div className="col-lg-6 text-center mt-4 mt-lg-0 proficiency-hero-col">
+                            <img
+                                src="/images/study-abroad/ielts.png"
+                                alt="English Proficiency"
+                                className="img-fluid proficiency-hero-img"
+                            />
                         </div>
                     </div>
 
                     <div className="proficiency-tabs-container">
                         <div className={`proficiency-glass-container prof-bg-${activeProficiency.toLowerCase()}`}>
                             <div className="proficiency-button-parent">
-                            <div className="proficiency-buttons">
-                                {Object.keys(proficiencyData).map((key) => (
-                                    <button
-                                        key={key}
-                                        className={`prof-tab-btn ${activeProficiency === key ? 'active' : ''}`}
-                                        onClick={() => setActiveProficiency(key)}
-                                    >
-                                        {key}
-                                    </button>
-                                ))}
-                            </div>
+                        <div className="proficiency-buttons">
+                            {Object.keys(proficiencyData).map((key) => (
+                                <button 
+                                    key={key}
+                                    className={`prof-tab-btn ${activeProficiency === key ? 'active' : ''}`}
+                                    onClick={() => setActiveProficiency(key)}
+                                >
+                                    {key}
+                                </button>
+                            ))}
+                        </div>
                             </div>
 
-                            <motion.div
-                                key={activeProficiency}
+                        <motion.div 
+                            key={activeProficiency}
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.4 }}
-                                className="proficiency-content-card"
-                            >
-                                <div className="row align-items-center">
+                            transition={{ duration: 0.4 }}
+                            className="proficiency-content-card"
+                        >
+                            <div className="row align-items-center">
                                     <div className="col-lg-5 text-center mb-4 mb-lg-0">
-                                        <div className="prof-cert-container mobile-padded-img">
+                                        <div className="prof-cert-wrap mobile-padded-img">
+                                            <div className="prof-cert-container" aria-hidden="true" />
                                             <img
                                                 src={proficiencyData[activeProficiency].certificateImage}
                                                 alt={`${activeProficiency} Certificate`}
@@ -1147,7 +1131,7 @@ Duolingo: {
                                             />
                                         </div>
                                     </div>
-                                    <div className="col-lg-7">
+                                <div className="col-lg-7">
                                         <h3 className="prof-title prof-glass-title">{proficiencyData[activeProficiency].title}</h3>
                                         <p className="prof-desc prof-glass-desc">{proficiencyData[activeProficiency].description}</p>
                                         <div className="d-flex flex-wrap gap-3 align-items-center">
@@ -1163,7 +1147,7 @@ Duolingo: {
                                             >
                                                 Course Structures
                                             </button>
-                                        </div>
+                                            </div>
                                     </div>
                                 </div>
 
@@ -1202,14 +1186,14 @@ Duolingo: {
                                                         <li className="mb-0 d-flex gap-2 align-items-start"><FaCheckCircle className="mt-1 flex-shrink-0" style={{ color: '#002B5B' }}/> <span>Personalised feedback for continuous improvement</span></li>
                                                     </ul>
                                                     <div className="mt-4 pt-3 border-top text-center" style={{ borderColor: 'rgba(0, 43, 91, 0.1) !important' }}>
-                                                        <button 
+                                    <button 
                                                             className="btn rounded-pill w-100 fw-bold shadow-sm course-enroll-btn py-2" 
                                                             style={{ background: 'linear-gradient(135deg, #001B3B, #004B8B)', color: 'white', letterSpacing: '0.5px' }}
                                                             onClick={() => handleEnquireClick(activeProficiency, `English Proficiency`)}
-                                                        >
+                                    >
                                                             Enroll Now
-                                                        </button>
-                                                    </div>
+                                    </button>
+                                </div>
                                                 </div>
                                             </div>
 
@@ -1323,9 +1307,9 @@ Duolingo: {
                                                         <h6 className="fw-bold mb-2" style={{ fontSize: '13px', color: '#e67e22' }}>MOCK TESTS WITH FEEDBACK</h6>
                                                         <p className="text-muted small mb-0" style={{ fontSize: '12px', lineHeight: '1.4' }}>Regular mock tests will be corrected in detail and personalised feedback will be provided.</p>
                                                     </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                                     </motion.div>
                                 )}
                         </motion.div>
@@ -1374,9 +1358,9 @@ Duolingo: {
                                         <FormTextarea name="message" rows="3" placeholder="Message (Optional) - Tell us about your goals..." value={formData.message} onChange={handleFormChange} disabled={isSubmitting} />
                                     </div>
                                     <div className="col-12 text-center mt-2">
-                                        <FormButton
-                                            type="submit"
-                                            variant="success"
+                                        <FormButton 
+                                            type="submit" 
+                                            variant="success" 
                                             className="px-4 py-2 rounded-pill"
                                             loading={isSubmitting}
                                             style={{ minWidth: '160px', backgroundColor: '#444444', border: 'none' }}
@@ -1392,21 +1376,23 @@ Duolingo: {
             </section> */}
 
             {/* Testimonials Section — Voice That Matters */}
-            
-            <section className="success-stories-section" style={{ paddingTop: '40px', paddingBottom: '40px' }}>
+            <section className="page-section study-voice-section">
                 <div className="container">
-                    <div className="section-header text-center mb-0">
+                    <div className="home-section-title-wrap">
                         <h2 className="section-main-title text-shine">The Voice That Matters</h2>
+                        <p className="section-subtitle">
+                            Real stories from students who secured their visas and university admissions with Urbancode&apos;s end-to-end study abroad guidance.
+                        </p>
                     </div>
+                    <TestimonialCarousel />
                 </div>
-                <TestimonialCarousel />
             </section>
 
             {/* Enquiry Modal */}
-            <EnquiryFormModal
-                isOpen={isModalOpen}
+            <EnquiryFormModal 
+                isOpen={isModalOpen} 
                 onClose={() => { setIsModalOpen(false); setModalTitle(null); }}
-                courseName={`Study Abroad - ${selectedCountry}`}
+                courseName={`Study Abroad - ${selectedCountry}`} 
                 customTitle={modalTitle}
             />
         </div>

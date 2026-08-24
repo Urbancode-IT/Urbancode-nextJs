@@ -1,20 +1,20 @@
 /* GoogleReviews.css */
 
 .google-reviews-section {
-    padding: 60px 0;
-    background-color: #fcfcfc;
+    padding: 0;
+    background: transparent;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
     font-family: 'Inter', sans-serif;
-    overflow: hidden;
+    overflow: visible;
     width: 100%;
 }
 
 .gr-custom-title {
-    margin-bottom: 24px;
+    margin-bottom: var(--home-section-content-gap);
     text-align: center;
 }
 
@@ -41,7 +41,7 @@
     align-items: center;
     justify-content: center;
     gap: 16px;
-    margin-bottom: 36px;
+    margin-bottom: var(--home-section-content-gap);
     flex-wrap: wrap;
     padding: 0 20px;
 }
@@ -140,6 +140,7 @@
     box-sizing: border-box;
     position: relative;
     margin: 0 auto;
+    overflow: visible;
 }
 
 /* ── Slider Wrapper ── */
@@ -150,6 +151,7 @@
     display: flex;
     align-items: center;
     margin: 0 auto;
+    overflow: visible;
 }
 
 /* ── Nav Buttons ── */
@@ -196,9 +198,9 @@
     border: 1.5px solid rgba(0, 181, 111, 0.12);
     box-shadow: 0 12px 48px rgba(0, 181, 111, 0.05);
     border-radius: 28px;
-    padding: 28px 20px;
+    padding: 20px 20px 24px;
     box-sizing: border-box;
-    overflow: hidden;
+    overflow: visible;
 }
 
 /* ── Scroll Track ── */
@@ -207,17 +209,15 @@
     gap: 20px;
     width: 100%;
     overflow-x: auto;
-    overflow-y: visible;
-    padding-top: 20px;
-    padding-bottom: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-top: -15px;
+    overflow-y: hidden;
+    padding: 36px 10px 12px;
+    margin-top: 0;
     scroll-behavior: smooth;
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
     -ms-overflow-style: none;
     justify-content: flex-start;
+    align-items: flex-start;
 }
 
 /* Center cards when 3 or fewer */
@@ -245,7 +245,7 @@
     background: rgba(255, 255, 255, 0.97);
     border: 1px solid rgba(0, 181, 111, 0.12);
     border-radius: 14px;
-    padding: 24px 16px 18px 16px;
+    padding: 28px 16px 18px 16px;
     width: 270px;
     min-width: 270px;
     flex-shrink: 0;
@@ -254,16 +254,38 @@
     align-items: center;
     text-align: center;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
     position: relative;
-    margin-top: 30px;
+    margin-top: 0;
     color: #333333;
     scroll-snap-align: start;
     animation: grCardFadeIn 0.5s ease both;
+    overflow: visible;
+}
+
+.gr-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        115deg,
+        transparent 32%,
+        rgba(255, 255, 255, 0.45) 50%,
+        transparent 68%
+    );
+    background-size: 220% 100%;
+    background-position: 130% 0;
+    transition: background-position 0.55s ease;
+    pointer-events: none;
+    border-radius: inherit;
+    z-index: 2;
+}
+
+.gr-card:hover::after {
+    background-position: -30% 0;
 }
 
 .gr-card:hover {
-    transform: translateY(-4px);
     box-shadow: 0 8px 24px rgba(0, 181, 111, 0.12);
     border-color: rgba(0, 181, 111, 0.28);
 }
@@ -271,10 +293,13 @@
 .gr-profile {
     position: absolute;
     top: -28px;
+    left: 50%;
+    transform: translateX(-50%);
     background: #ffffff;
     padding: 3px;
     border-radius: 50%;
     box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    z-index: 4;
 }
 
 .gr-avatar {
@@ -287,7 +312,7 @@
 }
 
 .gr-author-name {
-    margin-top: 18px;
+    margin-top: 22px;
     font-size: 0.95rem;
     font-weight: 700;
     margin-bottom: 2px;
@@ -336,18 +361,14 @@
 /* ── Scrollable review text wrapper ── */
 .gr-review-text-wrapper {
     width: 100%;
-    max-height: 80px;
+    max-height: 88px;
     overflow-y: auto;
     scrollbar-width: thin;
     scrollbar-color: rgba(0, 181, 111, 0.25) transparent;
-    mask-image: linear-gradient(to bottom, #000 70%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to bottom, #000 70%, transparent 100%);
-    transition: mask-image 0.3s ease;
+    transition: max-height 0.3s ease;
 }
 
 .gr-card:hover .gr-review-text-wrapper {
-    mask-image: none;
-    -webkit-mask-image: none;
     max-height: 120px;
 }
 
@@ -494,7 +515,7 @@
 
 @media (max-width: 650px) {
     .google-reviews-section {
-        padding: 40px 0;
+        padding: 0;
     }
 
     .gr-slider-wrapper {
@@ -525,8 +546,12 @@
     .gr-nav-side-btn.next { right: 30px; }
 
     .gr-glass-track-wrapper {
-        padding: 20px 10px;
+        padding: 16px 10px 20px;
         border-radius: 20px;
+    }
+
+    .gr-scroll-track {
+        padding: 32px 8px 10px;
     }
 
     .gr-branch-tabs {

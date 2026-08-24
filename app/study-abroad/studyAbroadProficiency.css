@@ -1,0 +1,561 @@
+/* ── English Proficiency — Pinterest-inspired soft palette ── */
+
+.study-abroad-container .proficiency-glass-container {
+  overflow: visible !important;
+  border-radius: 20px;
+  padding: clamp(16px, 2.2vw, 24px) clamp(18px, 2.5vw, 28px);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  box-shadow:
+    0 20px 48px rgba(45, 52, 54, 0.07),
+    0 6px 16px rgba(45, 52, 54, 0.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.study-abroad-container .proficiency-glass-container .proficiency-button-parent {
+  margin-bottom: clamp(16px, 2vw, 22px) !important;
+}
+
+.study-abroad-container .proficiency-glass-container .proficiency-buttons {
+  margin-bottom: 0 !important;
+}
+
+.study-abroad-container .proficiency-glass-container::before {
+  opacity: 0.55;
+}
+
+.study-abroad-container .proficiency-glass-container::after {
+  opacity: 0.45;
+}
+
+/* Soft per-test backgrounds */
+.study-abroad-container .proficiency-glass-container.prof-bg-ielts {
+  background:
+    radial-gradient(ellipse 80% 60% at 12% 20%, rgba(255, 255, 255, 0.75) 0%, transparent 55%),
+    linear-gradient(145deg, #dceefb 0%, #b8daf0 42%, #93c5e8 100%);
+  border-color: rgba(255, 255, 255, 0.75);
+  box-shadow:
+    0 24px 56px rgba(91, 155, 213, 0.14),
+    0 8px 20px rgba(91, 155, 213, 0.08);
+}
+
+.study-abroad-container .proficiency-glass-container.prof-bg-ielts::after {
+  background: radial-gradient(circle, rgba(147, 197, 232, 0.35) 0%, transparent 70%);
+}
+
+.study-abroad-container .proficiency-glass-container.prof-bg-pte {
+  background:
+    radial-gradient(ellipse 80% 60% at 12% 20%, rgba(255, 255, 255, 0.75) 0%, transparent 55%),
+    linear-gradient(145deg, #fdeee9 0%, #f5cfc4 42%, #e8b4a8 100%);
+  border-color: rgba(255, 255, 255, 0.75);
+  box-shadow:
+    0 24px 56px rgba(212, 132, 122, 0.14),
+    0 8px 20px rgba(212, 132, 122, 0.08);
+}
+
+.study-abroad-container .proficiency-glass-container.prof-bg-pte::after {
+  background: radial-gradient(circle, rgba(232, 180, 168, 0.35) 0%, transparent 70%);
+}
+
+.study-abroad-container .proficiency-glass-container.prof-bg-duolingo {
+  background:
+    radial-gradient(ellipse 80% 60% at 12% 20%, rgba(255, 255, 255, 0.75) 0%, transparent 55%),
+    linear-gradient(145deg, #e8f5ec 0%, #c8e6d0 42%, #a8d5b5 100%);
+  border-color: rgba(255, 255, 255, 0.75);
+  box-shadow:
+    0 24px 56px rgba(106, 171, 130, 0.14),
+    0 8px 20px rgba(106, 171, 130, 0.08);
+}
+
+.study-abroad-container .proficiency-glass-container.prof-bg-duolingo::after {
+  background: radial-gradient(circle, rgba(168, 213, 181, 0.35) 0%, transparent 70%);
+}
+
+/* Tabs & text on light backgrounds */
+.study-abroad-container .proficiency-glass-container .prof-tab-btn {
+  border: 1px solid rgba(45, 52, 54, 0.12) !important;
+  color: #4a5568 !important;
+  background: rgba(255, 255, 255, 0.45) !important;
+  font-weight: 600;
+}
+
+.study-abroad-container .proficiency-glass-container .prof-tab-btn:hover {
+  background: rgba(255, 255, 255, 0.75) !important;
+  border-color: rgba(45, 52, 54, 0.18) !important;
+  color: #2d3436 !important;
+}
+
+.study-abroad-container .proficiency-glass-container .prof-tab-btn.active {
+  background: #ffffff !important;
+  color: #00875a !important;
+  border-color: rgba(0, 181, 111, 0.25) !important;
+  box-shadow: 0 6px 18px rgba(0, 181, 111, 0.12) !important;
+}
+
+.study-abroad-container .proficiency-glass-container .prof-glass-title,
+.study-abroad-container .proficiency-glass-container .prof-title {
+  color: #1e293b !important;
+  font-size: clamp(1.25rem, 2.2vw, 1.55rem) !important;
+  line-height: 1.35 !important;
+  margin-bottom: 10px !important;
+  padding-bottom: 0 !important;
+}
+
+.study-abroad-container .proficiency-glass-container .prof-glass-desc,
+.study-abroad-container .proficiency-glass-container .prof-desc {
+  color: #475569 !important;
+  font-size: clamp(0.88rem, 1.1vw, 0.95rem) !important;
+  line-height: 1.55 !important;
+  margin-bottom: 14px !important;
+}
+
+.study-abroad-container .proficiency-glass-container .proficiency-content-card .col-lg-5,
+.study-abroad-container .proficiency-glass-container .proficiency-content-card .col-lg-7 {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.study-abroad-container .proficiency-glass-container .proficiency-content-card .row.align-items-center {
+  --bs-gutter-y: 0.75rem;
+}
+
+/* Hero row — compact + image without white box */
+.study-abroad-container .proficiency-section .proficiency-hero-row {
+  margin-bottom: clamp(1.25rem, 3vw, 1.75rem) !important;
+}
+
+.study-abroad-container .proficiency-section .proficiency-hero-col {
+  overflow: visible;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.study-abroad-container .proficiency-hero-img {
+  display: block;
+  width: 100%;
+  max-width: min(100%, 420px);
+  max-height: clamp(200px, 28vw, 280px);
+  height: auto;
+  margin: 0 auto;
+  object-fit: contain;
+  border-radius: 20px;
+  background: transparent;
+  mix-blend-mode: multiply;
+  filter: drop-shadow(0 10px 22px rgba(45, 52, 54, 0.08));
+}
+
+.study-abroad-container .proficiency-glass-container .prof-glass-btn {
+  background: rgba(255, 255, 255, 0.72) !important;
+  border: 1px solid rgba(45, 52, 54, 0.12) !important;
+  color: #1e293b !important;
+}
+
+.study-abroad-container .proficiency-glass-container .prof-glass-btn:hover {
+  background: #ffffff !important;
+  border-color: rgba(0, 181, 111, 0.3) !important;
+  color: #00875a !important;
+}
+
+/* ── 3D character — visible stage card + pop-over image ── */
+.study-abroad-container .proficiency-glass-container .proficiency-content-card {
+  overflow: visible !important;
+}
+
+.study-abroad-container .proficiency-glass-container .prof-cert-wrap {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  min-height: clamp(200px, 26vw, 260px);
+  padding: 0 8px 4px;
+  overflow: visible;
+}
+
+/* Transparent frosted stage — sits behind 3D character */
+.study-abroad-container .proficiency-glass-container .prof-cert-container {
+  position: absolute;
+  z-index: 2;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(88%, 280px);
+  height: clamp(130px, 16vw, 165px);
+  margin: 0;
+  padding: 0 !important;
+  overflow: visible !important;
+  pointer-events: none;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease !important;
+  background: rgba(255, 255, 255, 0.18) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.42) !important;
+  border-radius: 24px !important;
+  box-shadow:
+    0 12px 32px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.55) !important;
+  backdrop-filter: blur(14px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(14px) saturate(140%) !important;
+}
+
+.study-abroad-container .proficiency-glass-container.prof-bg-ielts .prof-cert-container {
+  background: rgba(255, 255, 255, 0.2) !important;
+  border-color: rgba(255, 255, 255, 0.48) !important;
+  box-shadow:
+    0 14px 36px rgba(91, 155, 213, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6) !important;
+}
+
+.study-abroad-container .proficiency-glass-container.prof-bg-pte .prof-cert-container {
+  background: rgba(255, 255, 255, 0.2) !important;
+  border-color: rgba(255, 255, 255, 0.48) !important;
+  box-shadow:
+    0 14px 36px rgba(212, 132, 122, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6) !important;
+}
+
+.study-abroad-container .proficiency-glass-container.prof-bg-duolingo .prof-cert-container {
+  background: rgba(255, 255, 255, 0.2) !important;
+  border-color: rgba(255, 255, 255, 0.48) !important;
+  box-shadow:
+    0 14px 36px rgba(106, 171, 130, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6) !important;
+}
+
+.study-abroad-container .proficiency-glass-container .prof-cert-wrap::after {
+  content: "";
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50%;
+  height: 16px;
+  background: radial-gradient(ellipse, rgba(0, 0, 0, 0.16) 0%, transparent 72%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.study-abroad-container .proficiency-glass-container .prof-cert-container:hover {
+  transform: translateX(-50%) !important;
+  box-shadow:
+    0 12px 32px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.55) !important;
+  border-color: rgba(255, 255, 255, 0.42) !important;
+}
+
+.study-abroad-container .proficiency-glass-container .prof-cert-wrap,
+.study-abroad-container .proficiency-glass-container .prof-cert-wrap:hover,
+.study-abroad-container .proficiency-glass-container .prof-cert-img,
+.study-abroad-container .proficiency-glass-container .prof-cert-img:hover {
+  transform: none !important;
+}
+
+/* 3D character — layered over transparent stage */
+.study-abroad-container .proficiency-glass-container .prof-cert-img {
+  position: relative;
+  z-index: 8;
+  display: block;
+  width: auto;
+  max-width: min(100%, 300px);
+  height: auto;
+  max-height: clamp(240px, 28vw, 320px);
+  margin: 0 auto;
+  object-fit: contain;
+  object-position: bottom center;
+  filter:
+    drop-shadow(0 28px 18px rgba(0, 0, 0, 0.18))
+    drop-shadow(0 10px 24px rgba(0, 79, 48, 0.12));
+  pointer-events: none;
+}
+
+/* ── Course Structures — minimal unified palette ── */
+.study-abroad-container .prof-batches-glass {
+  background: rgba(255, 255, 255, 0.55) !important;
+  border: 1px solid rgba(255, 255, 255, 0.75) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 20px !important;
+}
+
+.study-abroad-container .prof-course-struct-heading {
+  font-size: clamp(1.25rem, 2.5vw, 1.6rem);
+  letter-spacing: 0.5px;
+  color: #1e293b;
+  font-weight: 700;
+}
+
+.study-abroad-container .prof-course-struct-sub {
+  color: #64748b;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.study-abroad-container .prof-course-struct-card {
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(45, 52, 54, 0.08);
+  border-radius: 18px;
+  box-shadow: 0 6px 20px rgba(45, 52, 54, 0.05);
+  transition: box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.study-abroad-container .prof-course-struct-card:hover {
+  border-color: rgba(0, 181, 111, 0.2);
+  box-shadow: 0 10px 28px rgba(45, 52, 54, 0.08);
+}
+
+.study-abroad-container .prof-course-struct-card__head {
+  border-bottom: 1px solid rgba(45, 52, 54, 0.08);
+}
+
+.study-abroad-container .prof-course-badge {
+  background: #f0faf5;
+  color: #0f766e;
+  border: 1px solid rgba(0, 181, 111, 0.18);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+.study-abroad-container .prof-course-hours {
+  width: 52px;
+  height: 52px;
+  border: 1.5px solid rgba(0, 181, 111, 0.35);
+  color: #0f766e;
+  background: #ffffff;
+  font-size: 0.65rem;
+}
+
+.study-abroad-container .prof-course-hours span:first-child {
+  font-size: 1.15rem;
+  line-height: 1;
+  font-weight: 700;
+}
+
+.study-abroad-container .prof-course-icon {
+  color: #0f766e;
+  font-size: 1.75rem;
+}
+
+.study-abroad-container .prof-course-icon-wrap {
+  width: 40px;
+  height: 40px;
+  background: #f0faf5;
+  color: #0f766e;
+  border: 1px solid rgba(0, 181, 111, 0.15);
+}
+
+.study-abroad-container .prof-course-desc {
+  font-size: 0.84rem;
+  line-height: 1.55;
+  color: #475569;
+  font-weight: 500;
+}
+
+.study-abroad-container .prof-course-list {
+  font-size: 0.84rem;
+  color: #475569;
+}
+
+.study-abroad-container .prof-course-check {
+  color: #00b56f;
+  margin-top: 0.15rem;
+  flex-shrink: 0;
+}
+
+.study-abroad-container .prof-course-struct-card__foot {
+  border-top: 1px solid rgba(45, 52, 54, 0.08);
+}
+
+.study-abroad-container .prof-course-enroll-btn {
+  background: linear-gradient(135deg, #004f30 0%, #006b42 48%, #008756 100%);
+  color: #ffffff;
+  letter-spacing: 0.4px;
+  border: none;
+  font-weight: 600;
+  box-shadow: 0 6px 18px rgba(0, 79, 48, 0.32);
+  transition: opacity 0.2s ease, box-shadow 0.2s ease;
+}
+
+.study-abroad-container .prof-course-enroll-btn:hover {
+  opacity: 0.95;
+  box-shadow: 0 10px 24px rgba(0, 79, 48, 0.42);
+  color: #ffffff;
+}
+
+/* Every course includes */
+.study-abroad-container .prof-course-features {
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(45, 52, 54, 0.06);
+  border-radius: 18px;
+}
+
+.study-abroad-container .prof-course-features__divider {
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 0;
+  opacity: 0.08;
+  border-color: #64748b;
+}
+
+.study-abroad-container .prof-course-features__badge {
+  background: #f0faf5;
+  color: #0f766e;
+  border: 1px solid rgba(0, 181, 111, 0.18);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  z-index: 1;
+}
+
+.study-abroad-container .prof-course-feature-icon {
+  width: 48px;
+  height: 48px;
+  background: #f8faf9;
+  border: 1px solid rgba(45, 52, 54, 0.08);
+  color: #0f766e;
+}
+
+.study-abroad-container .prof-course-feature-title {
+  font-size: 0.78rem;
+  color: #1e293b;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+.study-abroad-container .prof-course-feature-desc {
+  font-size: 0.75rem;
+  line-height: 1.45;
+  color: #64748b;
+}
+
+@media (max-width: 991px) {
+  .study-abroad-container .proficiency-glass-container .prof-cert-img {
+    max-width: 120%;
+    margin: -40px auto -4px;
+    max-height: clamp(210px, 48vw, 280px);
+  }
+
+  .study-abroad-container .proficiency-hero-img {
+    max-height: clamp(180px, 42vw, 240px);
+    border-radius: 16px;
+  }
+}
+
+/* Override legacy inline styles — unified minimal course structure palette */
+.study-abroad-container .prof-batches-glass h4.fw-bold {
+  font-size: clamp(1.25rem, 2.5vw, 1.6rem) !important;
+  letter-spacing: 0.5px !important;
+  color: #1e293b !important;
+}
+
+.study-abroad-container .prof-batches-glass .small.fw-bold {
+  color: #64748b !important;
+  font-weight: 500 !important;
+}
+
+.study-abroad-container .prof-batches-glass .course-struct-card {
+  background: rgba(255, 255, 255, 0.88) !important;
+  border: 1px solid rgba(45, 52, 54, 0.08) !important;
+  border-radius: 18px !important;
+  box-shadow: 0 6px 20px rgba(45, 52, 54, 0.05) !important;
+}
+
+.study-abroad-container .prof-batches-glass .course-badge {
+  background: #f0faf5 !important;
+  color: #0f766e !important;
+  border: 1px solid rgba(0, 181, 111, 0.18) !important;
+  font-size: 0.75rem !important;
+}
+
+.study-abroad-container .prof-batches-glass .course-hours {
+  width: 52px !important;
+  height: 52px !important;
+  border: 1.5px solid rgba(0, 181, 111, 0.35) !important;
+  color: #0f766e !important;
+  background: #ffffff !important;
+}
+
+.study-abroad-container .prof-batches-glass .course-hours span:first-child {
+  font-size: 1.15rem !important;
+}
+
+.study-abroad-container .prof-batches-glass .border-bottom,
+.study-abroad-container .prof-batches-glass .border-top {
+  border-color: rgba(45, 52, 54, 0.08) !important;
+}
+
+.study-abroad-container .prof-batches-glass .fs-1 {
+  color: #0f766e !important;
+  font-size: 1.75rem !important;
+}
+
+.study-abroad-container .prof-batches-glass .col-md-4 .rounded-circle[style] {
+  background-color: #f0faf5 !important;
+  color: #0f766e !important;
+  border: 1px solid rgba(0, 181, 111, 0.15) !important;
+  width: 40px !important;
+  height: 40px !important;
+}
+
+.study-abroad-container .prof-batches-glass .fa-check-circle {
+  color: #00b56f !important;
+}
+
+.study-abroad-container .prof-batches-glass .small.text-dark,
+.study-abroad-container .prof-batches-glass ul.small {
+  color: #475569 !important;
+  font-size: 0.84rem !important;
+}
+
+.study-abroad-container .prof-batches-glass .course-enroll-btn {
+  background: linear-gradient(135deg, #004f30 0%, #006b42 48%, #008756 100%) !important;
+  color: #ffffff !important;
+  letter-spacing: 0.4px !important;
+  font-weight: 600 !important;
+  border: none !important;
+  box-shadow: 0 6px 18px rgba(0, 79, 48, 0.32) !important;
+}
+
+.study-abroad-container .prof-batches-glass .course-enroll-btn:hover {
+  opacity: 0.95 !important;
+  box-shadow: 0 10px 24px rgba(0, 79, 48, 0.42) !important;
+  transform: none !important;
+}
+
+.study-abroad-container .prof-batches-glass .features-section {
+  background: rgba(255, 255, 255, 0.72) !important;
+  border: 1px solid rgba(45, 52, 54, 0.06) !important;
+  border-radius: 18px !important;
+}
+
+.study-abroad-container .prof-batches-glass .features-section hr {
+  opacity: 0.08 !important;
+  border-color: #64748b !important;
+}
+
+.study-abroad-container .prof-batches-glass .features-section .badge {
+  background: #f0faf5 !important;
+  color: #0f766e !important;
+  border: 1px solid rgba(0, 181, 111, 0.18) !important;
+  font-size: 0.75rem !important;
+  font-weight: 700 !important;
+}
+
+.study-abroad-container .prof-batches-glass .features-section .col-md-3 .rounded-circle {
+  width: 48px !important;
+  height: 48px !important;
+  background-color: #f8faf9 !important;
+  border: 1px solid rgba(45, 52, 54, 0.08) !important;
+}
+
+.study-abroad-container .prof-batches-glass .features-section h6.fw-bold {
+  font-size: 0.78rem !important;
+  color: #1e293b !important;
+}
+
+.study-abroad-container .prof-batches-glass .features-section .fs-4 {
+  color: #0f766e !important;
+}
+
+.study-abroad-container .prof-batches-glass .features-section .text-muted {
+  color: #64748b !important;
+  font-size: 0.75rem !important;
+}

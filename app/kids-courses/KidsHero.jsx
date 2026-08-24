@@ -44,7 +44,7 @@ const KidsHero = () => {
                 {/* Eyebrow */}
                 <div className="kh2-badge-eyebrow">
                   <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
-                    <path d="M6.5 1L7.8 4.7H11.7L8.5 7L9.8 10.7L6.5 8.4L3.2 10.7L4.5 7L1.3 4.7H5.2L6.5 1Z" fill="#00C16A"/>
+                    <path d="M6.5 1L7.8 4.7H11.7L8.5 7L9.8 10.7L6.5 8.4L3.2 10.7L4.5 7L1.3 4.7H5.2L6.5 1Z" fill="#00B56F"/>
                   </svg>
                   <span className="kh2-live-tag">Free </span>
                 </div>
@@ -62,7 +62,7 @@ const KidsHero = () => {
                 {/* Decorative leaf bottom right of body */}
                 <span className="kh2-badge-leaf-br" aria-hidden="true">
                   <svg width="14" height="14" viewBox="0 0 20 20" fill="none">
-                    <path d="M3 17C3 17 6 10 14 8C14 8 12 15 3 17Z" fill="#4ade80"/>
+                    <path d="M3 17C3 17 6 10 14 8C14 8 12 15 3 17Z" fill="#00B56F"/>
                   </svg>
                 </span>
               </div>
@@ -71,7 +71,7 @@ const KidsHero = () => {
               <div className="kh2-badge-decos" aria-hidden="true">
                 <span className="kh2-deco-leaf-tl">
                   <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
-                    <path d="M3 17C3 17 6 10 14 8C14 8 12 15 3 17Z" fill="#4ade80"/>
+                    <path d="M3 17C3 17 6 10 14 8C14 8 12 15 3 17Z" fill="#00B56F"/>
                   </svg>
                 </span>
                 <span className="kh2-deco-star">
@@ -112,8 +112,8 @@ const KidsHero = () => {
                 fill="none"
                 aria-hidden="true"
               >
-                <path d="M3 10C55 4 140 4 217 10" stroke="#00C16A" strokeWidth="3.5" strokeLinecap="round" />
-                <path d="M10 4C65 -1 145 -1 210 4" stroke="#00C16A" strokeWidth="2.5" strokeLinecap="round" opacity="0.4" />
+                <path d="M3 10C55 4 140 4 217 10" stroke="#00B56F" strokeWidth="3.5" strokeLinecap="round" />
+                <path d="M10 4C65 -1 145 -1 210 4" stroke="#004F30" strokeWidth="2.5" strokeLinecap="round" opacity="0.5" />
               </svg>
             </span>
           </h1>

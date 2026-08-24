@@ -80,7 +80,7 @@ export default function CertificationSection() {
 
   return (
     <section className="cs-section-wrapper">
-      <div className="cs-header">
+      <div className="cs-header home-section-title-wrap">
         <h2 className="section-main-title text-shine">Get Certified</h2>
       </div>
 

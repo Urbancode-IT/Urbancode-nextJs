@@ -26,7 +26,7 @@ const Carousel = () => {
         <div className="mnc_carasoul">
             <div className="company-carousel-container">
                 <div className="company-carousel">
-                    <div className="text-center mt-4 mb-4">
+                    <div className="text-center home-section-title-wrap">
                         <h2 className="section-main-title text-shine">
                             Our students thrive in top MNCs
                         </h2>
