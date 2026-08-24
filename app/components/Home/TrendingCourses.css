@@ -9,7 +9,7 @@
     align-items: center;
     justify-content: center;
     gap: 0;
-    padding: 0 20px;
+    padding: 0 64px;
     background: transparent;
     box-sizing: border-box;
 }
@@ -85,8 +85,8 @@
     pointer-events: none;
 }
 
-.nav-side-btn.prev { left: -24px; }
-.nav-side-btn.next { right: -24px; }
+.nav-side-btn.prev { left: -58px; }
+.nav-side-btn.next { right: -58px; }
 
 /* ---------- Course Card ---------- */
 .trending-course-card {
