@@ -335,8 +335,8 @@
 
 /* ─── Card ─── */
 .hero-card {
-  flex: 0 0 260px;
-  width: 260px;
+  flex: 0 0 var(--hero-card-width, 260px);
+  width: var(--hero-card-width, 260px);
   scroll-snap-align: start;
   position: relative;
   aspect-ratio: auto;
@@ -405,6 +405,10 @@
   letter-spacing: -0.4px;
   color: #FFFFFF;
   margin: 0 0 clamp(4px,0.4vw,7px) 0;
+}
+
+.hero-card-title.course-name-shine-light {
+  color: transparent;
 }
 
 .hero-card-desc {

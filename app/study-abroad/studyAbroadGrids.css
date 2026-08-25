@@ -119,42 +119,34 @@
   line-height: 1.5;
 }
 
-/* ── Top Study Destinations — even columns, max 2 rows on desktop ── */
+/* ── Top Study Destinations — fixed card width; columns adapt to viewport ── */
 .study-abroad-container .destinations-section-light {
   overflow: hidden;
 }
 
 .study-abroad-container .study-destinations-grid {
   display: grid;
-  gap: clamp(0.875rem, 2vw, 1.25rem);
+  gap: 20px;
   width: 100%;
   max-width: 100%;
-  grid-template-columns: repeat(1, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 300px));
+  justify-content: center;
 }
 
-@media (min-width: 576px) {
-  .study-abroad-container .study-destinations-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
+.study-abroad-container .study-destinations-grid-item {
+  width: 300px;
+  max-width: 100%;
+  justify-self: center;
 }
 
 @media (min-width: 768px) {
-  .study-abroad-container .study-destinations-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  /* Tablet/desktop: only 2 full rows (6 cards), rest via View All */
+  /* Tablet/desktop: only 2 full rows visible initially, rest via View All */
   .study-abroad-container .study-destinations-grid:not(.show-all-mobile) .study-destinations-grid-item:nth-child(n + 7) {
     display: none;
   }
 }
 
 @media (min-width: 992px) {
-  .study-abroad-container .study-destinations-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-
-  /* Large desktop/monitor: 2 rows × 4 = 8 cards visible */
   .study-abroad-container .study-destinations-grid:not(.show-all-mobile) .study-destinations-grid-item:nth-child(n + 7) {
     display: block;
   }
@@ -164,16 +156,15 @@
   }
 }
 
-.study-abroad-container .study-destinations-grid-item {
-  min-width: 0;
-}
-
 .study-abroad-container .destinations-section-light .destination-card {
   transform: none !important;
   background: linear-gradient(180deg, #ffffff 0%, #f8fbf9 100%);
   border: 1px solid rgba(0, 100, 70, 0.1);
   box-shadow: 0 8px 22px rgba(15, 61, 40, 0.06);
+  width: min(300px, 100%);
+  max-width: 100%;
   height: 100%;
+  margin-inline: auto;
 }
 
 .study-abroad-container .destinations-section-light .destination-card:hover {
@@ -183,12 +174,22 @@
 }
 
 .study-abroad-container .destinations-section-light .destination-img-box {
-  height: clamp(130px, 18vw, 150px);
+  height: 150px;
   margin: 12px 12px 0;
 }
 
 .study-abroad-container .destinations-section-light .destination-info {
-  padding: clamp(14px, 2vw, 16px) clamp(14px, 2vw, 16px) clamp(16px, 2vw, 20px);
+  padding: 16px 16px 20px;
+}
+
+.study-abroad-container .destinations-section-light .destination-info h3.text-shine {
+  display: inline-block;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+}
+
+.study-abroad-container .destinations-section-light .destination-info h3 {
+  font-size: 1.65rem;
 }
 
 .study-abroad-container .destinations-section-light .destination-card:hover .destination-img-box img {
@@ -208,9 +209,7 @@
   }
 
   .study-abroad-container .study-destinations-grid {
-    grid-template-columns: 1fr;
-    max-width: 360px;
-    margin-inline: auto;
+    grid-template-columns: min(300px, 100%);
   }
 
   .study-abroad-container .study-destinations-grid:not(.show-all-mobile) .study-destinations-grid-item:nth-child(n + 7) {
@@ -241,25 +240,69 @@
   }
 }
 
-/* ── Top Countries for MBBS — equal card height (content must not stretch cards) ── */
+/* ── Top Countries for MBBS — fixed card width; shrink only if one card won't fit ── */
+.study-abroad-container .mbbs-unified-slider-container {
+  padding: 24px 56px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+}
+
+.study-abroad-container .mbbs-unified-viewport {
+  overflow: hidden;
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: 100%;
+}
+
 .study-abroad-container .mbbs-unified-track {
   align-items: stretch;
+  gap: 20px;
+  scroll-snap-type: x mandatory;
+  overflow-x: auto;
 }
 
 .study-abroad-container .mbbs-unified-track .mbbs-country-card {
   display: flex !important;
   flex-direction: column !important;
-  height: 388px !important;
-  min-height: 388px !important;
-  max-height: 388px !important;
-  flex-shrink: 0;
+  flex: 0 0 var(--mbbs-card-width, 280px) !important;
+  width: var(--mbbs-card-width, 280px) !important;
+  min-width: var(--mbbs-card-width, 280px) !important;
+  max-width: var(--mbbs-card-width, 280px) !important;
+  height: var(--mbbs-card-height, 388px) !important;
+  min-height: var(--mbbs-card-height, 388px) !important;
+  max-height: var(--mbbs-card-height, 388px) !important;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 
 .study-abroad-container .mbbs-unified-track .mbbs-card-img-box {
-  flex: 0 0 160px !important;
-  height: 160px !important;
-  min-height: 160px !important;
-  max-height: 160px !important;
+  flex: 0 0 var(--mbbs-img-height, 160px) !important;
+  height: var(--mbbs-img-height, 160px) !important;
+  min-height: var(--mbbs-img-height, 160px) !important;
+  max-height: var(--mbbs-img-height, 160px) !important;
+}
+
+.study-abroad-container .mbbs-unified-track .mbbs-card-country-name.text-shine {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  margin-inline: auto;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+}
+
+@media (max-width: 768px) {
+  .study-abroad-container .mbbs-unified-slider-container {
+    padding: 20px 44px !important;
+  }
+}
+
+@media (max-width: 500px) {
+  .study-abroad-container .mbbs-unified-slider-container {
+    padding: 20px 36px !important;
+  }
 }
 
 .study-abroad-container .mbbs-unified-track .mbbs-card-info {

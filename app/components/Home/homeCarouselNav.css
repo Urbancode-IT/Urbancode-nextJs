@@ -33,10 +33,23 @@
   line-height: 1 !important;
   padding: 0 !important;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease !important;
   flex-shrink: 0;
   font-size: 1.2rem !important;
   font-weight: 600;
+}
+
+/* Side carousel arrows — vertically centered, fixed on hover */
+.hero-cards-wrapper .hero-cards-nav,
+.trending-section-container .nav-side-btn,
+.jg-courses-section-wrapper .jg-nav-side-btn,
+.google-reviews-section .gr-nav-side-btn,
+.video-testimonials-section .nav-btn,
+.institution-videos-section .nav-btn,
+.success-stories-section .slider-nav-btn,
+.study-abroad-container .hero-cards-nav,
+.study-abroad-container .mbbs-unified-arrow {
+  transform: translateY(-50%);
 }
 
 .hero-cards-wrapper .hero-cards-nav:hover:not(:disabled),
@@ -45,14 +58,22 @@
 .google-reviews-section .gr-nav-side-btn:hover:not(.is-disabled),
 .video-testimonials-section .nav-btn:hover:not(:disabled),
 .institution-videos-section .nav-btn:hover:not(:disabled),
+.success-stories-section .slider-nav-btn:hover,
+.study-abroad-container .hero-cards-nav:hover:not(:disabled),
+.study-abroad-container .mbbs-unified-arrow:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.55) !important;
+  color: #198754 !important;
+  border-color: rgba(25, 135, 84, 0.35) !important;
+  box-shadow: 0 6px 20px rgba(25, 135, 84, 0.15) !important;
+  transform: translateY(-50%) !important;
+}
+
+/* Inline / pagination nav — no positional transform */
 .testimonial_main_container .testimonial-nav-btn:hover:not(:disabled),
 .faq-section .faq-nav-btn:hover:not(:disabled),
-.success-stories-section .slider-nav-btn:hover,
 .pt-mobile-nav-btn:hover:not(.pt-nav-disabled),
 .kidz-page .kids-faq-nav-btn:hover:not(:disabled),
-.study-abroad-container .hero-cards-nav:hover:not(:disabled),
 .study-abroad-container .hero-cards-arrow:hover:not(:disabled),
-.study-abroad-container .mbbs-unified-arrow:hover:not(:disabled),
 .study-abroad-container .study-faq-nav-btn:hover:not(:disabled),
 .study-abroad-container .mbbs-slider-arrow:hover:not(:disabled) {
   background: rgba(255, 255, 255, 0.55) !important;
@@ -120,12 +141,7 @@
 .study-abroad-container .mbbs-unified-arrow {
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
   z-index: 10;
-}
-
-.study-abroad-container .mbbs-unified-arrow:hover:not(:disabled) {
-  transform: translateY(-50%) !important;
 }
 
 @media (max-width: 768px) {

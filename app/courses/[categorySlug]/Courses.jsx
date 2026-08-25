@@ -465,7 +465,7 @@ export default function Courses({ categorySlug }) {
                               </div>
 
                               <Card.Body className="p-0 pt-3">
-                                <Card.Title className="card-course-title">
+                                <Card.Title className="card-course-title text-shine">
                                   {course.title}
                                 </Card.Title>
                                 <Card.Text className="text-muted course-desc">

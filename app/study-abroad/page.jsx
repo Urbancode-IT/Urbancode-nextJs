@@ -494,32 +494,75 @@ const StudyAbroadPage = () => {
     const [showAllServices, setShowAllServices] = useState(false);
     const [showAllDestinations, setShowAllDestinations] = useState(false);
 
-    // MBBS slider state
+    // MBBS slider — fixed card size; shrink only when one full card cannot fit
     const mbbsScrollRef = useRef(null);
-    const scrollMbbs = (dir) => {
-        if (mbbsScrollRef.current) {
-            const amount = window.innerWidth > 768 ? 340 : 280;
-            mbbsScrollRef.current.scrollBy({ left: dir * amount, behavior: 'smooth' });
+    const mbbsViewportRef = useRef(null);
+    const MBBS_CARD_MAX = 280;
+    const MBBS_GAP = 20;
+    const MBBS_HEIGHT_RATIO = 388 / 280;
+
+    const [mbbsLayout, setMbbsLayout] = useState({
+        cardWidth: MBBS_CARD_MAX,
+        cardsPerView: 1,
+        viewportWidth: MBBS_CARD_MAX,
+        cardHeight: 388,
+    });
+
+    const computeMbbsLayout = useCallback(() => {
+        const viewport = mbbsViewportRef.current;
+        const container = viewport?.closest('.mbbs-unified-slider-container');
+        if (!viewport || !container) return;
+
+        const styles = getComputedStyle(container);
+        const paddingLeft = parseFloat(styles.paddingLeft) || 0;
+        const paddingRight = parseFloat(styles.paddingRight) || 0;
+        const available = container.clientWidth - paddingLeft - paddingRight;
+
+        let cardWidth = MBBS_CARD_MAX;
+        if (available < MBBS_CARD_MAX) {
+            cardWidth = Math.max(Math.floor(available), 180);
         }
+
+        const cardsPerView = Math.max(1, Math.floor((available + MBBS_GAP) / (cardWidth + MBBS_GAP)));
+        const viewportWidth = Math.min(available, cardsPerView * (cardWidth + MBBS_GAP) - MBBS_GAP);
+        const cardHeight = Math.round(cardWidth * MBBS_HEIGHT_RATIO);
+
+        setMbbsLayout({ cardWidth, cardsPerView, viewportWidth, cardHeight });
+    }, []);
+
+    useEffect(() => {
+        computeMbbsLayout();
+        window.addEventListener('resize', computeMbbsLayout);
+        return () => window.removeEventListener('resize', computeMbbsLayout);
+    }, [computeMbbsLayout]);
+
+    const getMbbsScrollStep = useCallback(() => {
+        return mbbsLayout.cardsPerView * (mbbsLayout.cardWidth + MBBS_GAP);
+    }, [mbbsLayout]);
+
+    const scrollMbbs = (dir) => {
+        const track = mbbsScrollRef.current;
+        if (!track) return;
+        track.scrollBy({ left: dir * getMbbsScrollStep(), behavior: 'smooth' });
     };
 
     useEffect(() => {
         const interval = setInterval(() => {
-            if (mbbsScrollRef.current) {
-                const amount = window.innerWidth > 768 ? 340 : 280;
-                const { scrollLeft, scrollWidth, clientWidth } = mbbsScrollRef.current;
-                
-                if (scrollLeft + clientWidth >= scrollWidth - 10) {
-                    // Reached end, loop back
-                    mbbsScrollRef.current.scrollTo({ left: 0, behavior: 'smooth' });
-                } else {
-                    mbbsScrollRef.current.scrollBy({ left: amount, behavior: 'smooth' });
-                }
+            const track = mbbsScrollRef.current;
+            if (!track) return;
+
+            const step = getMbbsScrollStep();
+            const { scrollLeft, scrollWidth, clientWidth } = track;
+
+            if (scrollLeft + clientWidth >= scrollWidth - 10) {
+                track.scrollTo({ left: 0, behavior: 'smooth' });
+            } else {
+                track.scrollBy({ left: step, behavior: 'smooth' });
             }
         }, 3000);
-        
+
         return () => clearInterval(interval);
-    }, []);
+    }, [getMbbsScrollStep]);
 
     const [showBatches, setShowBatches] = useState(false);
 
@@ -822,7 +865,7 @@ const StudyAbroadPage = () => {
                                         <img src={dest.image} alt={dest.country} />
                                     </div>
                                     <div className="destination-info">
-                                        <h3>{dest.country}</h3>
+                                        <h3 className="text-shine">{dest.country}</h3>
                                         <p>{dest.description}</p>
                                         <span className="uni-count"><FaUniversity className="me-2" />{dest.universities}</span>
                                         <div className="dest-btn-group">
@@ -920,8 +963,21 @@ const StudyAbroadPage = () => {
                         <button className="mbbs-unified-arrow prev" onClick={() => scrollMbbs(-1)} aria-label="Previous">
                             ❮
               </button>
-                        
-                        <div className="mbbs-unified-track" ref={mbbsScrollRef}>
+
+                        <div
+                            className="mbbs-unified-viewport"
+                            ref={mbbsViewportRef}
+                            style={{ width: mbbsLayout.viewportWidth, maxWidth: '100%' }}
+                        >
+                        <div
+                            className="mbbs-unified-track"
+                            ref={mbbsScrollRef}
+                            style={{
+                                '--mbbs-card-width': `${mbbsLayout.cardWidth}px`,
+                                '--mbbs-card-height': `${mbbsLayout.cardHeight}px`,
+                                '--mbbs-img-height': `${Math.round(mbbsLayout.cardWidth * (160 / 280))}px`,
+                            }}
+                        >
                             {mbbsCountries.map((c, i) => (
                                 <div className="mbbs-country-card" key={i}>
                                     <div className="mbbs-card-img-box">
@@ -933,7 +989,7 @@ const StudyAbroadPage = () => {
                                         />
                                     </div>
                                     <div className="mbbs-card-info">
-                                        <h3 className="mbbs-card-country-name">{c.country}</h3>
+                                        <h3 className="mbbs-card-country-name text-shine">{c.country}</h3>
                                         <span className="mbbs-card-uni-count">
                                             <FaStethoscope className="me-2" />{c.duration} · MBBS
                                         </span>
@@ -947,7 +1003,8 @@ const StudyAbroadPage = () => {
                                     </div>
                                 </div>
                             ))}
-        </div>
+                        </div>
+                        </div>
 
                         <button className="mbbs-unified-arrow next" onClick={() => scrollMbbs(1)} aria-label="Next">
                             ❯

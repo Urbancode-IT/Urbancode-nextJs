@@ -14,6 +14,8 @@
 .study-abroad-container .study-stat-card:hover,
 .study-abroad-container .test-card:hover,
 .study-abroad-container .test-card:hover .test-avatar,
+.study-abroad-container .study-voice-section .testimonial-card:hover,
+.study-abroad-container .study-voice-section .testimonial-card.active:hover,
 .study-abroad-container .hero-feature-card:hover,
 .study-abroad-container .mbbs-ticker-pill:hover,
 .study-abroad-container .mbbs-process-step:hover,
@@ -35,6 +37,7 @@
 .study-abroad-container .mbbs-why-card,
 .study-abroad-container .study-stat-card,
 .study-abroad-container .test-card,
+.study-abroad-container .study-voice-section .testimonial-card,
 .study-abroad-container .hero-feature-card,
 .study-abroad-container .mbbs-ticker-pill,
 .study-abroad-container .mbbs-process-step,
@@ -61,6 +64,7 @@
 .study-abroad-container .mbbs-why-card::after,
 .study-abroad-container .study-stat-card::after,
 .study-abroad-container .test-card::after,
+.study-abroad-container .study-voice-section .testimonial-card::after,
 .study-abroad-container .hero-feature-card::after,
 .study-abroad-container .mbbs-ticker-pill::after,
 .study-abroad-container .mbbs-process-step::after,
@@ -89,6 +93,8 @@
 .study-abroad-container .mbbs-why-card:hover::after,
 .study-abroad-container .study-stat-card:hover::after,
 .study-abroad-container .test-card:hover::after,
+.study-abroad-container .study-voice-section .testimonial-card:hover::after,
+.study-abroad-container .study-voice-section .testimonial-card.active:hover::after,
 .study-abroad-container .hero-feature-card:hover::after,
 .study-abroad-container .mbbs-ticker-pill:hover::after,
 .study-abroad-container .mbbs-process-step:hover::after,
@@ -104,6 +110,7 @@
 .study-abroad-container .mbbs-why-card:hover,
 .study-abroad-container .study-stat-card:hover,
 .study-abroad-container .test-card:hover,
+.study-abroad-container .study-voice-section .testimonial-card.active:hover,
 .study-abroad-container .hero-feature-card:hover,
 .study-abroad-container .course-struct-card:hover,
 .study-abroad-container .prof-course-struct-card:hover {
@@ -126,7 +133,8 @@
 .study-abroad-container .destination-info,
 .study-abroad-container .mbbs-card-info,
 .study-abroad-container .mbbs-why-icon,
-.study-abroad-container .test-card-content {
+.study-abroad-container .test-card-content,
+.study-abroad-container .study-voice-section .testimonial-card > * {
   position: relative;
   z-index: 5;
 }
@@ -164,4 +172,57 @@
   opacity: 0.92;
   transform: none !important;
   box-shadow: 0 8px 20px rgba(3, 108, 45, 0.34) !important;
+}
+
+/* ── Voice That Matters — no zoom; shared glass nav buttons ── */
+.study-abroad-container .study-voice-section .testimonial-card.active {
+  transform: scale(1) translateY(0) !important;
+}
+
+.study-abroad-container .study-voice-section .testimonial-card.active:hover {
+  transform: scale(1) translateY(0) !important;
+  border-color: rgba(0, 181, 111, 0.45) !important;
+}
+
+.study-abroad-container .study-voice-section .testimonial-nav-btn {
+  width: 48px !important;
+  height: 48px !important;
+  min-width: 48px;
+  min-height: 48px;
+  border-radius: 50% !important;
+  background: rgba(255, 255, 255, 0.35) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.45) !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+  color: #333 !important;
+  font-size: 1.2rem !important;
+  font-weight: 600;
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.study-abroad-container .study-voice-section .testimonial-nav-btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.55) !important;
+  color: #198754 !important;
+  border-color: rgba(25, 135, 84, 0.35) !important;
+  box-shadow: 0 6px 20px rgba(25, 135, 84, 0.15) !important;
+  transform: none !important;
+}
+
+.study-abroad-container .study-voice-section .testimonial-nav-btn.prev {
+  padding-right: 3px !important;
+}
+
+.study-abroad-container .study-voice-section .testimonial-nav-btn.next {
+  padding-left: 3px !important;
+}
+
+@media (max-width: 768px) {
+  .study-abroad-container .study-voice-section .testimonial-nav-btn {
+    width: 42px !important;
+    height: 42px !important;
+    min-width: 42px;
+    min-height: 42px;
+    font-size: 1.05rem !important;
+  }
 }

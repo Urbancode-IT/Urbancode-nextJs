@@ -137,7 +137,6 @@
 .faq-nav-btn:hover {
   background: #146c43;
   box-shadow: 0 6px 18px rgba(25, 135, 84, 0.3);
-  transform: translateY(-3px) scale(1.05);
 }
 
 .faq-dots {

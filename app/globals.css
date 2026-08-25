@@ -392,6 +392,24 @@ a:hover {
   animation: shine 4.5s linear infinite;
 }
 
+/* Light shimmer for course names on dark / gradient cards */
+.course-name-shine-light {
+  display: inline-block;
+  background: linear-gradient(
+    90deg,
+    #ffffff 0%,
+    rgba(255, 255, 255, 0.72) 22%,
+    #ffffff 44%,
+    rgba(255, 255, 255, 0.78) 66%,
+    #ffffff 100%
+  );
+  background-size: 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 4.5s linear infinite;
+}
+
 /* ── Standardised Form UI System ──────────────────────────────── */
 .form-card-standard {
     max-width: 600px;

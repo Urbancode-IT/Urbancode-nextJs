@@ -1,7 +1,6 @@
 'use client';
 import { useState, useEffect, useRef } from "react";
 import { FaStar } from "react-icons/fa";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import "./testimonials.css";
 
 const testimonials = [
@@ -141,11 +140,12 @@ const TestimonialCarousel = () => {
                         {dots.length > 1 && (
                             <div className="testimonial-pagination">
                                 <button
-                                    className="testimonial-nav-btn"
+                                    type="button"
+                                    className="testimonial-nav-btn prev"
                                     onClick={handlePrev}
                                     aria-label="Previous testimonial"
                                 >
-                                    <FaChevronLeft />
+                                    ❮
                                 </button>
 
                                 <div className="testimonial-dots">
@@ -160,11 +160,12 @@ const TestimonialCarousel = () => {
                                 </div>
 
                                 <button
-                                    className="testimonial-nav-btn"
+                                    type="button"
+                                    className="testimonial-nav-btn next"
                                     onClick={handleNext}
                                     aria-label="Next testimonial"
                                 >
-                                    <FaChevronRight />
+                                    ❯
                                 </button>
                             </div>
                         )}

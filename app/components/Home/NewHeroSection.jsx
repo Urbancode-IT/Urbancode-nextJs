@@ -147,7 +147,7 @@ const HeroBottom = ({
             <Link href={card.link} key={index} className="hero-card" style={{ background: card.gradient, textDecoration: 'none' }}>
               <span className="hero-card-level">{card.level}</span>
               <div className="hero-card-glass">
-                <h3 className="hero-card-title">{card.title}</h3>
+                <h3 className="hero-card-title course-name-shine-light">{card.title}</h3>
                 <p className="hero-card-desc">{card.desc}</p>
               </div>
               <div className="hero-card-footer">
@@ -186,8 +186,44 @@ export default function NewHeroSection() {
   const carouselWrapperRef = React.useRef(null);
   const [isHovered, setIsHovered] = useState(false);
   const [cardsPerView, setCardsPerView] = useState(null);
+  const [heroCardWidth, setHeroCardWidth] = useState(260);
+  const [heroCardGap, setHeroCardGap] = useState(20);
+  const [heroContainerWidth, setHeroContainerWidth] = useState(null);
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(true);
+
+  const getHeroMetrics = React.useCallback(() => {
+    const wrapper = carouselWrapperRef.current;
+    if (!wrapper) return null;
+
+    const width = window.innerWidth;
+    const arrowSpace = width > 1024 ? 104 : 48;
+    const available = wrapper.clientWidth - arrowSpace;
+
+    let defaultCardWidth = 260;
+    let cardGap = 14;
+    if (width >= 1440) {
+      defaultCardWidth = 290;
+      cardGap = 22;
+    } else if (width >= 1025) {
+      defaultCardWidth = 230;
+      cardGap = 16;
+    } else if (width <= 1024) {
+      defaultCardWidth = 260;
+      cardGap = 14;
+    }
+
+    let cardWidth = defaultCardWidth;
+    if (available < defaultCardWidth) {
+      cardWidth = Math.max(Math.floor(available), 180);
+    }
+
+    const rawCount = Math.max(1, Math.floor((available + cardGap) / (cardWidth + cardGap)));
+    const count = width >= 1440 ? Math.min(rawCount, 4) : rawCount;
+    const containerWidth = Math.min(available, count * (cardWidth + cardGap) - cardGap);
+
+    return { cardWidth, cardGap, cardsPerView: count, containerWidth };
+  }, []);
 
   const handleStudyAbroadClick = useCallback(() => {
     setShowFlightOverlay(true);
@@ -204,47 +240,33 @@ export default function NewHeroSection() {
     setCanScrollNext(slider.scrollLeft < slider.scrollWidth - slider.clientWidth - 4);
   }, []);
 
-  // Works out how many WHOLE cards fit in the scrollable area (≤1024px).
-  // Desktop (>1024px) uses CSS grid — no JS needed there.
+  // Whole cards only at every breakpoint; shrink card if one full card cannot fit.
   React.useEffect(() => {
     const computeCardsPerView = () => {
-      const wrapper = carouselWrapperRef.current;
-      const width = window.innerWidth;
+      const metrics = getHeroMetrics();
+      if (!metrics) return;
 
-      if (!wrapper) return;
-      
-      const arrowSpace = width > 1024 ? 104 : 48; // 36px arrow + 16px gap = 52px each side on desktop, 48px padding on mobile
-      const available = wrapper.clientWidth - arrowSpace;
-      const cardWidth = (width >= 1025 && width <= 1439) ? 230 : 290;
-      const cardGap = width > 1024 ? (width <= 1439 ? 16 : 22) : 14;
-      const rawCount = Math.max(1, Math.floor((available + cardGap) / (cardWidth + cardGap)));
-      // On monitor (≥1440px) cap to 4 cards — nav arrows handle the rest
-      const count = width >= 1440 ? Math.min(rawCount, 4) : rawCount;
-      setCardsPerView(count);
+      setCardsPerView(metrics.cardsPerView);
+      setHeroCardWidth(metrics.cardWidth);
+      setHeroCardGap(metrics.cardGap);
+      setHeroContainerWidth(metrics.containerWidth);
       updateScrollButtons();
     };
 
     computeCardsPerView();
     window.addEventListener('resize', computeCardsPerView);
     return () => window.removeEventListener('resize', computeCardsPerView);
-  }, [updateScrollButtons]);
+  }, [getHeroMetrics, updateScrollButtons]);
 
-  // Auto-scroll: advances one card every 3s on mobile + tablet (≤1024px).
-  // Pauses when the user hovers or touches the carousel.
+  // Auto-scroll: advances one page of visible cards every 3s.
   React.useEffect(() => {
     const handleAutoScroll = () => {
       const slider = carouselRef.current;
       if (isHovered || !slider) return;
 
-      const width = window.innerWidth;
-      const cardWidth = (width >= 1025 && width <= 1439) ? 230 : 290;
-      const cardGap = width > 1024 ? (width <= 1439 ? 16 : 22) : 14;
-      
-      // How far each step is — one card width + gap
-      const step = cardWidth + cardGap;
+      const step = (heroCardWidth + heroCardGap) * (cardsPerView || 1);
       const maxScroll = slider.scrollWidth - slider.clientWidth;
 
-      // If we're at (or near) the end, jump back to start
       if (slider.scrollLeft >= maxScroll - 4) {
         slider.scrollTo({ left: 0, behavior: 'smooth' });
       } else {
@@ -256,7 +278,7 @@ export default function NewHeroSection() {
 
     const interval = setInterval(handleAutoScroll, 3000);
     return () => clearInterval(interval);
-  }, [isHovered, updateScrollButtons]);
+  }, [isHovered, updateScrollButtons, heroCardWidth, heroCardGap, cardsPerView]);
 
   const handleCarouselScroll = () => {
     const slider = carouselRef.current;
@@ -267,23 +289,17 @@ export default function NewHeroSection() {
   const handleScrollCards = (direction) => {
     const slider = carouselRef.current;
     if (!slider) return;
-    const width = window.innerWidth;
-    const cardWidth = (width >= 1025 && width <= 1439) ? 230 : 290;
-    const cardGap = width > 1024 ? (width <= 1439 ? 16 : 22) : 14;
-    
-    const amount = (cardWidth + cardGap) * (cardsPerView || 1);
+
+    const amount = (heroCardWidth + heroCardGap) * (cardsPerView || 1);
     slider.scrollBy({ left: direction * amount, behavior: 'smooth' });
     setTimeout(updateScrollButtons, 350);
   };
 
-  // cardsContainerStyle limits the scroll-track width to exactly N whole cards
-  let cardsContainerStyle = undefined;
-  if (cardsPerView != null && typeof window !== 'undefined') {
-    const w = window.innerWidth;
-    const cWidth = (w >= 1025 && w <= 1439) ? 230 : 290;
-    const cGap = w > 1024 ? (w <= 1439 ? 16 : 22) : 14;
-    cardsContainerStyle = { width: cardsPerView * (cWidth + cGap) - cGap };
-  }
+  const cardsContainerStyle = heroContainerWidth != null ? {
+    width: heroContainerWidth,
+    maxWidth: '100%',
+    '--hero-card-width': `${heroCardWidth}px`,
+  } : undefined;
 
   return (
     <>
