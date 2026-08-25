@@ -491,9 +491,30 @@
   letter-spacing: -0.02em;
 }
 
-.courses-wrapper1 .card-title.text-shine {
+.courses-wrapper1 .card-title.course-card-title-shine {
   display: inline-block;
-  color: transparent;
+  color: #1a1a1a;
+  font-weight: 700;
+  background: none;
+  -webkit-background-clip: unset;
+  background-clip: unset;
+  -webkit-text-fill-color: currentColor;
+  animation: none;
+}
+
+.courses-wrapper1 .card:hover .card-title.course-card-title-shine {
+  background: linear-gradient(
+    90deg,
+    #002a11 20%,
+    #0b0703 40%,
+    #17944d 60%,
+    #036c2d 80%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% auto;
+  animation: shine 4.5s linear infinite;
 }
 
 .courses-wrapper1 .card-text {

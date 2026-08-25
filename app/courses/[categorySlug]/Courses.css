@@ -47,8 +47,32 @@
   border-color: rgba(0, 181, 111, 0.2) !important;
 }
 
-.card-course-title.text-shine {
+.card-course-title.course-card-title-shine {
   display: inline-block;
+  color: #1a1a1a;
+  font-weight: 700;
+  background: none;
+  -webkit-background-clip: unset;
+  background-clip: unset;
+  -webkit-text-fill-color: currentColor;
+  animation: none;
+}
+
+.card:hover .card-course-title.course-card-title-shine {
+  background: linear-gradient(
+    90deg,
+    #036c2d,
+    #17944d,
+    #002a11,
+    #0b0703,
+    #17944d,
+    #036c2d
+  );
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-size: 200% auto !important;
+  animation: shine 4.5s linear infinite !important;
 }
 
 .main-title {

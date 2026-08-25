@@ -264,7 +264,7 @@ const CourseCategoryPage = () => {
 
               {/* Text Body */}
               <div className="card-body-inner">
-                <h3 className="card-title text-shine">{course.title}</h3>
+                <h3 className="card-title course-card-title-shine">{course.title}</h3>
                 <p className="card-text">{course.desc}</p>
               </div>
 
