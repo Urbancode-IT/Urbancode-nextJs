@@ -92,7 +92,7 @@ export default function ContactUsPage() {
             "sameAs": [
               "https://www.facebook.com/profile.php?id=61563183054002#",
               "https://www.instagram.com/urbancode_edutech/",
-              "https://www.linkedin.com/company/urbancode-edutech/"
+              "https://www.linkedin.com/company/urbanc0de"
             ]
           }
         `}

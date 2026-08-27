@@ -13,6 +13,7 @@ const BranchAnnouncement = dynamic(() => import('./components/BranchAnnouncement
 
 // Code-splitting below-the-fold sections for massive initial bundle savings
 const TrendingCourses = dynamic(() => import('./components/Home/TrendingCourses'));
+const ProficiencyTrainingSection = dynamic(() => import('./components/Home/ProficiencyTrainingSection'));
 const Courses = dynamic(() => import('./components/Home/Courses'));
 
 const PlacementTestimonials = dynamic(() => import('./components/Home/PlacementTestimonials'), {
@@ -171,7 +172,7 @@ export default function HomePage() {
   "sameAs": [
     "https://www.facebook.com/profile.php?id=61563183054002#",
     "https://www.instagram.com/urbancode_edutech/",
-    "https://www.linkedin.com/company/99156099/admin/dashboard/"
+    "https://www.linkedin.com/company/urbanc0de"
   ]
 }
 `
@@ -187,7 +188,9 @@ export default function HomePage() {
        <div id="featured-courses" className="home-section">
         <TrendingCourses />
       </div>
-     
+      {/* <div id="proficiency-training" className="home-section">
+        <ProficiencyTrainingSection />
+      </div> */}
       <div className="home-section">
         <Courses />
       </div>

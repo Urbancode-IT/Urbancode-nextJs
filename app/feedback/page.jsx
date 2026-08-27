@@ -446,7 +446,7 @@ const FeedbackForm = () => {
                             <a href="https://www.instagram.com/urbancode_edutech/" target="_blank" rel="noopener noreferrer" title="Instagram">
                                 <FaInstagram size={18} />
                             </a>
-                            <a href="https://www.linkedin.com/company/urbanc0de/" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+                            <a href="https://www.linkedin.com/company/urbanc0de" target="_blank" rel="noopener noreferrer" title="LinkedIn">
                                 <FaLinkedin size={18} />
                             </a>
                             <a href="https://www.facebook.com/people/Urbancode/61563183054002/" target="_blank" rel="noopener noreferrer" title="Facebook">

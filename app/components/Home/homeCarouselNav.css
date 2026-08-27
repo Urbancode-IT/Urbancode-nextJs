@@ -9,6 +9,7 @@
 .testimonial_main_container .testimonial-nav-btn,
 .faq-section .faq-nav-btn,
 .success-stories-section .slider-nav-btn,
+.prof-section .prof-nav-btn,
 .pt-mobile-nav-btn,
 .kidz-page .kids-faq-nav-btn,
 .study-abroad-container .hero-cards-nav,
@@ -90,6 +91,8 @@
 .video-testimonials-section .nav-btn.prev-btn,
 .institution-videos-section .nav-btn.prev-btn,
 .faq-section .faq-nav-btn.prev,
+.prof-section .prof-nav-btn.prev,
+.prof-section .prof-nav-btn--side.prev,
 .pt-mobile-nav-btn.prev,
 .kidz-page .kids-faq-nav-btn.prev,
 .study-abroad-container .hero-cards-nav-prev,
@@ -108,6 +111,8 @@
 .video-testimonials-section .nav-btn.next-btn,
 .institution-videos-section .nav-btn.next-btn,
 .faq-section .faq-nav-btn.next,
+.prof-section .prof-nav-btn.next,
+.prof-section .prof-nav-btn--side.next,
 .pt-mobile-nav-btn.next,
 .kidz-page .kids-faq-nav-btn.next,
 .study-abroad-container .hero-cards-nav-next,
@@ -133,7 +138,8 @@
 
 .trending-section-container .nav-side-btn.is-disabled,
 .jg-courses-section-wrapper .jg-nav-side-btn.is-disabled,
-.google-reviews-section .gr-nav-side-btn.is-disabled {
+.google-reviews-section .gr-nav-side-btn.is-disabled,
+.prof-section .prof-nav-btn.is-disabled {
   opacity: 0.35 !important;
   pointer-events: none;
 }
@@ -154,6 +160,7 @@
   .testimonial_main_container .testimonial-nav-btn,
   .faq-section .faq-nav-btn,
   .success-stories-section .slider-nav-btn,
+  .prof-section .prof-nav-btn,
   .pt-mobile-nav-btn,
   .kidz-page .kids-faq-nav-btn,
   .study-abroad-container .hero-cards-nav,

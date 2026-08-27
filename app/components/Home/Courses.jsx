@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect, useCallback } from 'react';
 import './courses.css';
 import { useRouter } from 'next/navigation';
 import { FaRocket, FaLaptopCode, FaHandshake } from 'react-icons/fa';
@@ -95,35 +95,107 @@ const CourseDetailPlaceholder = ({ name }) => {
 };
 
 
+const jobGuaranteedFeatures = [
+    {
+        title: "100+ Placements",
+        Icon: FaRocket,
+        detail: "Top MNCs",
+        accent: 1,
+    },
+    {
+        title: "Live Projects",
+        Icon: FaLaptopCode,
+        detail: "Industry Grade",
+        accent: 2,
+    },
+    {
+        title: "Mock Interviews",
+        Icon: FaHandshake,
+        detail: "Career Ready",
+        accent: 3,
+    },
+];
+
 const FeatureSubtitles = () => {
-    const features = [
-        {
-            title: "100+ Placements",
-            icon: <FaRocket />,
-            detail: "Top MNCs"
-        },
-        {
-            title: "Live Projects",
-            icon: <FaLaptopCode />,
-            detail: "Industry Grade"
-        },
-        {
-            title: "Mock Interviews",
-            icon: <FaHandshake />,
-            detail: "Career Ready"
+    const [activeIndex, setActiveIndex] = useState(0);
+    const [textPhase, setTextPhase] = useState('in');
+    const [isMobile, setIsMobile] = useState(false);
+    const [isPaused, setIsPaused] = useState(false);
+    const transitionRef = useRef(null);
+
+    useEffect(() => {
+        const media = window.matchMedia('(max-width: 768px)');
+        const update = () => setIsMobile(media.matches);
+        update();
+        media.addEventListener('change', update);
+        return () => media.removeEventListener('change', update);
+    }, []);
+
+    const goToNext = useCallback(() => {
+        setTextPhase('out');
+
+        if (transitionRef.current) {
+            clearTimeout(transitionRef.current);
         }
-    ];
+
+        transitionRef.current = window.setTimeout(() => {
+            setActiveIndex((prev) => (prev + 1) % jobGuaranteedFeatures.length);
+            setTextPhase('in');
+        }, 320);
+    }, []);
+
+    useEffect(() => {
+        if (!isMobile || isPaused) return undefined;
+
+        const interval = setInterval(goToNext, 3500);
+        return () => clearInterval(interval);
+    }, [isMobile, isPaused, goToNext]);
+
+    useEffect(() => () => {
+        if (transitionRef.current) clearTimeout(transitionRef.current);
+    }, []);
+
+    const pauseHandlers = {
+        onMouseEnter: () => setIsPaused(true),
+        onMouseLeave: () => setIsPaused(false),
+        onTouchStart: () => setIsPaused(true),
+        onTouchEnd: () => setIsPaused(false),
+    };
+
+    if (isMobile) {
+        const active = jobGuaranteedFeatures[activeIndex];
+        const ActiveIcon = active.Icon;
+
+        return (
+            <div className="jg-features-subtitles" {...pauseHandlers}>
+                <div className="jg-feature-subtitle-item jg-feature-subtitle-item--mobile-ticker">
+                    <div
+                        className={`jg-feature-subtitle-icon-wrapper jg-feature-subtitle-icon-wrapper--accent-${active.accent} jg-feature-subtitle-icon--${textPhase}`}
+                        key={`jg-feature-icon-${activeIndex}`}
+                    >
+                        <ActiveIcon />
+                    </div>
+                    <div className="jg-feature-subtitle-text-viewport">
+                        <div className={`jg-feature-subtitle-text-slide jg-feature-subtitle-text-slide--${textPhase}`}>
+                            <span className="jg-feature-subtitle-title">{active.title}</span>
+                            <span className="jg-feature-subtitle-detail">{active.detail}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div className="jg-features-subtitles">
-            {features.map((feature, idx) => (
-                <div key={idx} className="jg-feature-subtitle-item">
-                    <div className="jg-feature-subtitle-icon-wrapper">
-                        {feature.icon}
+            {jobGuaranteedFeatures.map(({ title, Icon, detail, accent }) => (
+                <div key={title} className="jg-feature-subtitle-item">
+                    <div className={`jg-feature-subtitle-icon-wrapper jg-feature-subtitle-icon-wrapper--accent-${accent}`}>
+                        <Icon />
                     </div>
                     <div className="jg-feature-subtitle-text">
-                        <span className="jg-feature-subtitle-title">{feature.title}</span>
-                        <span className="jg-feature-subtitle-detail">{feature.detail}</span>
+                        <span className="jg-feature-subtitle-title">{title}</span>
+                        <span className="jg-feature-subtitle-detail">{detail}</span>
                     </div>
                 </div>
             ))}

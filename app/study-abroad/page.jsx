@@ -819,8 +819,8 @@ const StudyAbroadPage = () => {
                                 <span className="pfsb-icon"><FaAward /></span>
                                 <span className="pfsb-text">100% Free Service for Students*</span>
                                 <span className="pfsb-exception">(Except Germany)</span>
-                            </div>
-                        </div>
+                    </div>
+                                    </div>
                     </div>
                     <div
                         className={`study-services-grid ${
@@ -940,7 +940,7 @@ const StudyAbroadPage = () => {
                             { icon: <FaStethoscope />,     title: "Clinical Exposure",         desc: "Structured hospital rotations in affiliated teaching hospitals abroad." },
                             { icon: <FaPlaneDeparture />,  title: "End-to-End Support",        desc: "University shortlisting, visa, travel, and pre-departure briefing covered." },
                             { icon: <FaAward />,           title: "Affordable Education",      desc: "Complete MBBS abroad at a fraction of Indian private college fees." },
-                        ].map((item, i) => (
+      ].map((item, i) => (
                             <div
                                 className="mbbs-why-card"
                                 key={i}
@@ -948,21 +948,21 @@ const StudyAbroadPage = () => {
                                 <div className="mbbs-why-icon">{item.icon}</div>
                                 <h4>{item.title}</h4>
                                 <p>{item.desc}</p>
-                            </div>
-                        ))}
-              </div>
+        </div>
+      ))}
+    </div>
 
                     {/* Country cards header */}
                     <div className="mbbs-destinations-header mt-5">
                         <h3 className="mbbs-destinations-title">Top Countries for MBBS Abroad</h3>
                         <p className="section-subtitle">Choose from trusted destinations with quality medical education and strong FMGE pass records.</p>
-                    </div>
+            </div>
 
                     {/* Unified responsive slider (matches home page style) */}
                     <div className="mbbs-unified-slider-container">
                         <button className="mbbs-unified-arrow prev" onClick={() => scrollMbbs(-1)} aria-label="Previous">
                             ❮
-              </button>
+          </button>
 
                         <div
                             className="mbbs-unified-viewport"
@@ -998,18 +998,18 @@ const StudyAbroadPage = () => {
                                             <button className="dest-btn dest-btn-primary"
                                                 onClick={() => handleEnquireClick(`MBBS in ${c.country}`, `Apply for MBBS in ${c.country}`)}>
                                                 Enquire Now
-                                            </button>
+              </button>
                                         </div>
                                     </div>
                                 </div>
-                            ))}
-                        </div>
-                        </div>
+          ))}
+        </div>
+      </div>
 
                         <button className="mbbs-unified-arrow next" onClick={() => scrollMbbs(1)} aria-label="Next">
                             ❯
                         </button>
-      </div>
+    </div>
 
   </div>
 </section>
@@ -1131,12 +1131,12 @@ const StudyAbroadPage = () => {
                     <div className="row align-items-center justify-content-center mb-4 proficiency-hero-row">
                         <div className="col-lg-6">
                             <div className="home-section-title-wrap text-start proficiency-title-wrap">
-                                <h2 className="section-main-title text-shine">Master Your English Proficiency</h2>
+                        <h2 className="section-main-title text-shine">Master Your English Proficiency</h2>
                                 <p className="section-subtitle section-subtitle--full">
-                                    English proficiency certifications like <strong>IELTS, PTE, and Duolingo</strong> are essential milestones in your study abroad journey.
-                                    At Urbancode, we provide comprehensive, result-oriented training for all these exams.
-                                    Master the language under the guidance of experts with over <strong>10+ years of professional experience</strong> and achieve your target score with confidence.
-                                </p>
+                            English proficiency certifications like <strong>IELTS, PTE, and Duolingo</strong> are essential milestones in your study abroad journey. 
+                            At Urbancode, we provide comprehensive, result-oriented training for all these exams. 
+                            Master the language under the guidance of experts with over <strong>10+ years of professional experience</strong> and achieve your target score with confidence.
+                        </p>
                             </div>
                             <Link
                                 href="/study-abroad/evaluation-form"
@@ -1168,7 +1168,7 @@ const StudyAbroadPage = () => {
                                 </button>
                             ))}
                         </div>
-                            </div>
+                        </div>
 
                         <motion.div 
                             key={activeProficiency}
@@ -1440,7 +1440,7 @@ const StudyAbroadPage = () => {
                         <p className="section-subtitle">
                             Real stories from students who secured their visas and university admissions with Urbancode&apos;s end-to-end study abroad guidance.
                         </p>
-                    </div>
+                            </div>
                     <TestimonialCarousel />
                 </div>
             </section>

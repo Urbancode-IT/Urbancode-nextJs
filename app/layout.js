@@ -20,6 +20,11 @@ const inter = Inter({
 export const metadata = {
   title: 'Urbancode | Learn with Experts',
   description: 'Transforming skills into success with expert-led coding courses in Chennai.',
+  alternates: {
+    types: {
+      'application/rss+xml': 'https://www.urbancode.in/rss.xml',
+    },
+  },
   other: {
     "geo.region": "IN-TN",
     "geo.placename": "Chennai",
@@ -93,7 +98,7 @@ export default function RootLayout({ children }) {
                   "sameAs": [
                     "https://www.facebook.com/profile.php?id=61563183054002",
                     "https://www.instagram.com/urbancode_edutech/",
-                    "https://www.linkedin.com/company/urbancode-edutech-solutions/",
+                    "https://www.linkedin.com/company/urbanc0de",
                     "https://www.youtube.com/channel/UC7ngZ5r2ov-qoXJRjaXJGKA"
                   ],
                   "contactPoint": {

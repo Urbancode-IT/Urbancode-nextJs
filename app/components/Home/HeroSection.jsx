@@ -24,7 +24,7 @@
 //     },
 //     {
 //       icon: FaLinkedinIn,
-//       url: "https://www.linkedin.com/company/99156099/admin/dashboard/",
+//       url: "https://www.linkedin.com/company/urbanc0de",
 //     },
 //   ];
 // 

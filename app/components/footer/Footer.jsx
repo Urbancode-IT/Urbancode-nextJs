@@ -22,7 +22,7 @@ function Footer() {
             </div>
             <h4>Social Media</h4>
             <div className="social-icons">
-              <a href="https://www.linkedin.com/company/99156099/admin/dashboard/" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.linkedin.com/company/urbanc0de" target="_blank" rel="noopener noreferrer">
                 <FaLinkedin />
               </a>
               <a href="https://www.facebook.com/profile.php?id=61563183054002#" target="_blank" rel="noopener noreferrer">

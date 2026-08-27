@@ -90,14 +90,17 @@
 }
 
 /* Icon wrapper — unique gradient per pill */
+.jg-feature-subtitle-icon-wrapper--accent-1,
 .jg-feature-subtitle-item:nth-child(1) .jg-feature-subtitle-icon-wrapper {
     background: linear-gradient(135deg, #00b56f 0%, #059669 100%);
     box-shadow: 0 4px 14px rgba(0, 181, 111, 0.35);
 }
+.jg-feature-subtitle-icon-wrapper--accent-2,
 .jg-feature-subtitle-item:nth-child(2) .jg-feature-subtitle-icon-wrapper {
     background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
     box-shadow: 0 4px 14px rgba(14, 165, 233, 0.35);
 }
+.jg-feature-subtitle-icon-wrapper--accent-3,
 .jg-feature-subtitle-item:nth-child(3) .jg-feature-subtitle-icon-wrapper {
     background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
     box-shadow: 0 4px 14px rgba(245, 158, 11, 0.35);
@@ -377,12 +380,91 @@
 
     .jg-features-subtitles {
         gap: 12px;
+        justify-content: center;
+    }
+
+    .jg-feature-subtitle-item--mobile-ticker {
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+    }
+
+    .jg-feature-subtitle-text-viewport {
+        flex: 1;
+        min-width: 0;
+        overflow: hidden;
+    }
+
+    .jg-feature-subtitle-text-slide {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .jg-feature-subtitle-text-slide--out {
+        animation: jg-feature-text-out 0.32s ease forwards;
+    }
+
+    .jg-feature-subtitle-text-slide--in {
+        animation: jg-feature-text-in 0.4s ease forwards;
+    }
+
+    .jg-feature-subtitle-icon--out {
+        animation: jg-feature-icon-out 0.32s ease forwards;
+    }
+
+    .jg-feature-subtitle-icon--in {
+        animation: jg-feature-icon-in 0.4s ease forwards;
+    }
+
+    @keyframes jg-feature-text-out {
+        from {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        to {
+            opacity: 0;
+            transform: translateX(-18px);
+        }
+    }
+
+    @keyframes jg-feature-text-in {
+        from {
+            opacity: 0;
+            transform: translateX(18px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes jg-feature-icon-out {
+        from {
+            opacity: 1;
+            transform: scale(1);
+        }
+        to {
+            opacity: 0;
+            transform: scale(0.88);
+        }
+    }
+
+    @keyframes jg-feature-icon-in {
+        from {
+            opacity: 0;
+            transform: scale(0.88);
+        }
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
     }
 
     .jg-feature-subtitle-item {
         padding: 10px 16px;
-        width: calc(100% - 40px);
-        max-width: 300px;
+        width: 100%;
+        max-width: 100%;
     }
 
     .jg-nav-side-btn {

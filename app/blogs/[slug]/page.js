@@ -22,9 +22,35 @@ export async function generateMetadata({ params }) {
         };
     }
 
+    const title = blog.metaTitle || `${blog.title} | UrbanCode Blogs`;
+    const description = blog.metaDescription || blog.excerpt;
+    const image = blog.image
+        ? `https://www.urbancode.in${blog.image}`
+        : 'https://www.urbancode.in/images/home/og-image.jpg';
+
     return {
-        title: `${blog.title} | UrbanCode Blogs`,
-        description: blog.excerpt,
+        title,
+        description,
+        keywords: blog.keywords,
+        openGraph: {
+            title: blog.metaTitle || blog.title,
+            description,
+            url: `https://www.urbancode.in/blogs/${blog.slug}`,
+            siteName: 'Urbancode Edutech',
+            images: [
+                {
+                    url: image,
+                    width: 1200,
+                    height: 630,
+                    alt: blog.title,
+                },
+            ],
+            type: 'article',
+            locale: 'en_IN',
+        },
+        alternates: {
+            canonical: `https://www.urbancode.in/blogs/${blog.slug}`,
+        },
     };
 }
 
