@@ -2,6 +2,7 @@ import React from 'react';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import '../../components/blog/blog.css';
+import BlogFaq from '../../components/blog/BlogFaq';
 import blogsData from '../../../lib/data/blogsData.json';
 
 // Generate static params for dynamic routes (required for output: export)
@@ -140,6 +141,7 @@ export default async function BlogDetailPage({ params }) {
                 );
             })}
 
+            {blog.faqs && <BlogFaq faqs={blog.faqs} />}
 
             {/* Divider */}
             <div className="divider"></div>
