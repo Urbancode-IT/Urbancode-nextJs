@@ -82,7 +82,7 @@ const ContactUs = ({ redirectUrl = '/thankyou' }) => {
       const response = await sendContactMessage(submissionData);
 
       if (response.success) {
-        Swal.fire({ icon: 'success', title: 'Success!', text: 'Your message has been sent successfully.', confirmButtonColor: '#036c2d' });
+        Swal.fire({ icon: 'success', title: 'Success!', text: 'Your message has been sent successfully.', confirmButtonColor: '#00B56F' });
         goToThankYou(redirectUrl);
         reset();
       } else {
@@ -129,21 +129,20 @@ const ContactUs = ({ redirectUrl = '/thankyou' }) => {
       >
       <div className="contact-header">
         <h2>Contact Us</h2>
-        <div className="header-line"></div>
         <p>
           We'd love to hear from you! Whether you have a question about our
           services, need support, or just want to say hello—our team is always
           ready to help.
         </p>
-        <Link href="/feedback" className="feedback-form-btn">
+        <Link href="/feedback" className="feedback-form-btn contact-btn-shine">
           Share Your Feedback <i className="fas fa-comment-dots"></i>
         </Link>
       </div>
 
       <div className="contact-content">
-        <div className="contact-form-container" style={{ flex: '1.2' }}>
+        <div className="contact-form-container">
           <div className="contact-form-card">
-            <h3 className="form-card-title">Get in Touch</h3>
+            <h3 className="form-card-title contact-block-title">Get in Touch</h3>
             <form onSubmit={submitHandler} noValidate>
               <Honeypot register={register} />
               <div className="row g-3">
@@ -236,7 +235,7 @@ const ContactUs = ({ redirectUrl = '/thankyou' }) => {
                 )}
 
                 <div className="col-12 mt-2 text-center">
-                  <button type="submit" className="btn-modern-submit" disabled={isSubmitting}>
+                  <button type="submit" className="btn-modern-submit contact-btn-shine" disabled={isSubmitting}>
                     {isSubmitting ? "Sending Message..." : "Submit"}
                   </button>
                 </div>
@@ -245,32 +244,32 @@ const ContactUs = ({ redirectUrl = '/thankyou' }) => {
           </div>
 
           <div className="general-details-container">
-            <h3 className="branches-title">Contact Details</h3>
+            <h3 className="contact-block-title">Contact Details</h3>
             <div className="general-details-grid">
               <div className="contact-item">
-                <i className="fas fa-phone"></i>
-                <div>
+                <span className="contact-item-icon"><i className="fas fa-phone"></i></span>
+                <div className="contact-item-body">
                   <h4>Phone</h4>
                   <p>+91 98787 98797</p>
                 </div>
               </div>
               <div className="contact-item">
-                <i className="fas fa-envelope"></i>
-                <div>
+                <span className="contact-item-icon"><i className="fas fa-envelope"></i></span>
+                <div className="contact-item-body">
                   <h4>Email</h4>
                   <p>admin@urbancode.in</p>
                 </div>
               </div>
               <div className="contact-item">
-                <i className="fas fa-building"></i>
-                <div>
+                <span className="contact-item-icon"><i className="fas fa-building"></i></span>
+                <div className="contact-item-body">
                   <h4>Company</h4>
                   <p>Urbancode Edutech Solutions Pvt Ltd</p>
                 </div>
               </div>
               <div className="contact-item">
-                <i className="fas fa-file-invoice"></i>
-                <div>
+                <span className="contact-item-icon"><i className="fas fa-file-invoice"></i></span>
+                <div className="contact-item-body">
                   <h4>GST No</h4>
                   <p>33AADCU726Q1ZR</p>
                 </div>
@@ -300,78 +299,97 @@ const ContactUs = ({ redirectUrl = '/thankyou' }) => {
                 title="Urbancode Velachery"
               ></iframe>
 
-             <iframe
-  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3944.893055021927!2d77.724389!3d8.69871!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b0413c4ce75c0fd%3A0x4e3fe58c93ab7a34!2sUrbancode%20Training%20and%20Solutions!5e0!3m2!1sen!2sin!4v1759989999999!5m2!1sen!2sin"
-  allowFullScreen=""
-  loading="lazy"
-  referrerPolicy="no-referrer-when-downgrade"
-  title="Urbancode Tirunelveli"
-></iframe>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3944.893055021927!2d77.724389!3d8.69871!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b0413c4ce75c0fd%3A0x4e3fe58c93ab7a34!2sUrbancode%20Training%20and%20Solutions!5e0!3m2!1sen!2sin!4v1759989999999!5m2!1sen!2sin"
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Urbancode Tirunelveli"
+              ></iframe>
             </div>
           </div>
 
           <div className="branches-container">
-            <h3 className="branches-title">Our Branches</h3>
+            <h3 className="contact-block-title">Our Branches</h3>
             <div className="branch-cards-grid">
-              
               <div className="branch-card">
-                <div className="branch-header">
-                  <i className="fas fa-map-marker-alt"></i>
-                  <h4>Velachery (Chennai)</h4>
+                <div className="branch-card-inner">
+                  <div className="branch-icon-wrap">
+                    <i className="fas fa-map-marker-alt"></i>
+                  </div>
+                  <div className="branch-content">
+                    <h4>Velachery (Chennai)</h4>
+                    <p className="branch-address">
+                      52/159, Velachery Rd, next to Guru Nanak College,<br />
+                      near Phoenix Marketcity, Anna Garden, Velachery,<br />
+                      Chennai, Tamil Nadu 600042
+                    </p>
+                    <div className="branch-actions">
+                      <a
+                        href="https://www.google.com/maps?cid=9830790481062909186"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="branch-map-link"
+                      >
+                        <i className="fas fa-directions"></i> View on Google Maps
+                      </a>
+                    </div>
+                  </div>
                 </div>
-                <p className="branch-address">
-                  52/159, Velachery Rd, next to Guru Nanak College, near Phoenix Marketcity, Anna Garden, Velachery, Chennai, Tamil Nadu 600042
-                </p>
-                <a 
-                  href="https://www.google.com/maps?cid=9830790481062909186" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="branch-map-link"
-                >
-                  <i className="fas fa-directions"></i> View on Google Maps
-                </a>
               </div>
 
               <div className="branch-card">
-                <div className="branch-header">
-                  <i className="fas fa-map-marker-alt"></i>
-                  <h4>Pallikaranai (Chennai)</h4>
+                <div className="branch-card-inner">
+                  <div className="branch-icon-wrap">
+                    <i className="fas fa-map-marker-alt"></i>
+                  </div>
+                  <div className="branch-content">
+                    <h4>Pallikaranai (Chennai)</h4>
+                    <p className="branch-address">
+                      9/29, 5th St, Kamakoti Nagar,<br />
+                      Pallikaranai, Chennai, Tamil Nadu 600100
+                    </p>
+                    <div className="branch-actions">
+                      <a
+                        href="https://www.google.com/maps?cid=3800681766627067121"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="branch-map-link"
+                      >
+                        <i className="fas fa-directions"></i> View on Google Maps
+                      </a>
+                    </div>
+                  </div>
                 </div>
-                <p className="branch-address">
-                  9/29, 5th St, Kamakoti Nagar, Pallikaranai, Chennai, Tamil Nadu, 600100
-                </p>
-                <a 
-                  href="https://www.google.com/maps?cid=3800681766627067121" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="branch-map-link"
-                >
-                  <i className="fas fa-directions"></i> View on Google Maps
-                </a>
               </div>
 
-              <div className="branch-card new-branch-card">
-                <span className="new-branch-badge"><span className="pulse-dot"></span> NEW BRANCH</span>
-                <div className="branch-header">
-                  <i className="fas fa-map-marker-alt"></i>
-                  <h4>Tirunelveli Branch</h4>
+              <div className="branch-card">
+                <div className="branch-card-inner">
+                  <div className="branch-icon-wrap">
+                    <i className="fas fa-map-marker-alt"></i>
+                  </div>
+                  <div className="branch-content">
+                    <h4>Tirunelveli Branch</h4>
+                    <p className="branch-address">
+                      Fab Sapphire Towers, No.29/5, 4th Floor,<br />
+                      South Bye Pass Road, Tirunelveli – 627005
+                    </p>
+                    <div className="branch-actions">
+                      <a href="tel:+919967699674" className="branch-phone-link">
+                        <i className="fas fa-phone"></i> +91 99676 99674
+                      </a>
+                      <a
+                        href="https://maps.app.goo.gl/6VQpva4Me3jy1QpY6"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="branch-map-link"
+                      >
+                        <i className="fas fa-directions"></i> View on Google Maps
+                      </a>
+                    </div>
+                  </div>
                 </div>
-                <p className="branch-address">
-                  Fab Sapphire Towers, No.29/5, 4th Floor, South Bye Pass Road, Tirunelveli – 627005
-                </p>
-                <a href="tel:+919967699674" className="branch-phone-link">
-                  <i className="fas fa-phone"></i> +91 99676 99674
-                </a>
-                <a 
-                  href="https://maps.app.goo.gl/6VQpva4Me3jy1QpY6" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="branch-map-link"
-                >
-                  <i className="fas fa-directions"></i> View on Google Maps
-                </a>
               </div>
-
             </div>
           </div>
         </div>
