@@ -87,10 +87,11 @@ export default function CertificationSection() {
       <div className="cs-container">
         <div className="cs-left">
           <h3 className="cs-heading">
-            Get certified and get ahead<br className="cs-heading-br" />in your career
+            Get certified and get ahead <br className="cs-heading-br" /> in your career
           </h3>
           <p className="cs-desc">
-            Prep for certifications with comprehensive courses, practice tests, and<br className="cs-heading-br" />special offers on exam vouchers.
+            Prep for certifications with comprehensive courses, practice tests, and{" "}
+            <br className="cs-heading-br" /> special offers on exam vouchers.
           </p>
           <div className="cs-tabs">
             <button

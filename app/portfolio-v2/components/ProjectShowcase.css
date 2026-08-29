@@ -1,0 +1,220 @@
+.project-showcase {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.project-showcase__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: center;
+}
+
+.project-showcase__row--reverse .project-showcase__visual {
+  order: 2;
+}
+
+.project-showcase__row--reverse .project-showcase__details {
+  order: 1;
+}
+
+.project-showcase__visual {
+  position: relative;
+  padding: 14px;
+  border-radius: 14px;
+  background: linear-gradient(145deg, #004f30 0%, #013d26 45%, #060d0a 100%);
+  border: 1px solid rgba(0, 181, 111, 0.22);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+}
+
+.project-showcase__head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+  padding: 0 2px;
+}
+
+.project-showcase__type {
+  flex-shrink: 0;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  background: linear-gradient(90deg, #00b56f 0%, #008f58 100%);
+  box-shadow: 0 2px 8px rgba(0, 181, 111, 0.35);
+}
+
+.project-showcase__head-title {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+}
+
+.project-showcase__visual-inner {
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 181, 111, 0.15);
+  background: #060d0a;
+}
+
+.project-showcase__chrome {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: rgba(0, 0, 0, 0.35);
+  border-bottom: 1px solid rgba(0, 181, 111, 0.12);
+}
+
+.project-showcase__chrome span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.project-showcase__chrome span:nth-child(1) {
+  background: #ff5f57;
+}
+
+.project-showcase__chrome span:nth-child(2) {
+  background: #febc2e;
+}
+
+.project-showcase__chrome span:nth-child(3) {
+  background: #28c840;
+}
+
+.project-showcase__url {
+  flex: 1;
+  margin-left: 6px;
+  font-size: 0.62rem;
+  color: rgba(255, 255, 255, 0.55);
+  padding: 4px 8px;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.25);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.project-showcase__screen {
+  height: 280px;
+  overflow: hidden;
+  background: #060d0a;
+  line-height: 0;
+}
+
+.project-showcase__screen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+.project-showcase__details {
+  padding: 8px 4px;
+}
+
+.project-showcase__details-type {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #00b56f;
+  margin-bottom: 8px;
+}
+
+.project-showcase__title {
+  font-size: clamp(1.25rem, 2.2vw, 1.6rem);
+  font-weight: 700;
+  color: var(--text-h);
+  margin: 0 0 12px;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+}
+
+.project-showcase__desc {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin: 0 0 16px;
+}
+
+.project-showcase__features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 16px;
+  display: grid;
+  gap: 8px;
+}
+
+.project-showcase__features li {
+  position: relative;
+  padding-left: 14px;
+  font-size: 0.8125rem;
+  color: var(--text);
+  line-height: 1.45;
+}
+
+.project-showcase__features li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #00b56f;
+}
+
+.project-showcase__tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 18px;
+}
+
+.project-showcase__tech span {
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 4px;
+  color: #00b56f;
+  background: rgba(0, 181, 111, 0.08);
+  border: 1px solid rgba(0, 181, 111, 0.18);
+}
+
+.project-showcase__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
+
+@media (max-width: 900px) {
+  .project-showcase__row,
+  .project-showcase__row--reverse {
+    grid-template-columns: 1fr;
+  }
+
+  .project-showcase__row--reverse .project-showcase__visual,
+  .project-showcase__row--reverse .project-showcase__details {
+    order: unset;
+  }
+
+  .project-showcase__screen {
+    height: 220px;
+  }
+}

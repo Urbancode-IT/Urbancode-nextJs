@@ -1,0 +1,165 @@
+.tools-section {
+  padding: 80px 0;
+  background: #f8fafc;
+  position: relative;
+  overflow: hidden;
+}
+
+.tools-container {
+  max-width: 100%;
+}
+
+.tools-header {
+  text-align: center;
+  margin-bottom: 50px;
+  padding: 0 20px;
+}
+
+/* ── MARQUEE ROWS ── */
+.tools-marquee-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 25px; /* Gap between rows */
+}
+
+.tools-marquee-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  );
+}
+
+.tools-marquee {
+  display: flex;
+  width: max-content;
+  gap: 25px; /* Gap between cards */
+  padding: 10px 0;
+}
+
+.marquee-left {
+  animation: scrollLeft 40s linear infinite;
+}
+
+.marquee-right {
+  animation: scrollRight 40s linear infinite;
+}
+
+.tools-marquee:hover {
+  animation-play-state: paused;
+}
+
+@keyframes scrollLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scrollRight {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* ── TOOL CARD FRAME (MATCHING GLASSMORTPHISM SS) ── */
+.tool-card {
+  background: rgba(255, 255, 255, 0.6); /* Translucent background */
+  min-width: 110px; /* Reduced for compact size */
+  height: 90px; /* Rectangular shape like SS */
+  border-radius: 20px; /* Slightly less rounded for this specific style */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.03),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.5); /* Inner border for glass feel */
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  flex-shrink: 0;
+  padding: 10px;
+  position: relative;
+}
+
+.tool-card:hover {
+  transform: translateY(-5px) scale(1.03);
+  background: rgba(255, 255, 255, 0.9);
+  border-color: var(--brand-green);
+  box-shadow: 0 15px 30px rgba(27, 122, 54, 0.08);
+}
+
+.tool-logo-wrapper {
+  width: 100%;
+  height: 100%;
+  background: #ffffff; /* Inner white card */
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02); /* Subtle shadow for inner card */
+  padding: 12px;
+}
+
+.tool-logo {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: all 0.4s ease;
+}
+
+.tool-card:hover .tool-logo {
+  transform: scale(1.1);
+}
+
+.tool-card:hover .tool-logo {
+  filter: grayscale(0) opacity(1);
+  transform: scale(1.1);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .tools-section {
+    padding: 60px 0;
+  }
+  
+  .tools-header {
+    margin-bottom: 30px;
+  }
+  
+  .tools-marquee-rows {
+    gap: 15px;
+  }
+
+  .tool-card {
+    min-width: 90px;
+    height: 90px;
+    border-radius: 16px;
+  }
+  
+  .tool-logo-wrapper {
+    width: 45px;
+    height: 45px;
+  }
+  
+  .marquee-left, .marquee-right {
+    animation-duration: 25s;
+  }
+}

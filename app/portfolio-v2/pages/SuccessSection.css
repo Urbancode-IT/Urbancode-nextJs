@@ -1,0 +1,209 @@
+.success {
+  padding: var(--section-gap) 24px;
+  background: var(--bg);
+  position: relative;
+  overflow: hidden;
+  transition: background 0.3s;
+}
+
+.success__container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.success__header h2 {
+  font-size: var(--section-title-size);
+  font-weight: var(--section-title-weight);
+  line-height: var(--section-title-lh);
+  letter-spacing: var(--section-title-ls);
+  color: var(--section-title-color);
+  margin-top: var(--section-title-margin-top);
+  margin-bottom: var(--section-title-margin-bottom);
+}
+
+
+
+.success__desc {
+  font-size: var(--fs-body);
+  color: var(--text);
+  line-height: 1.8;
+  max-width: 700px;
+  margin: 20px auto 48px;
+}
+
+.success__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Reduced from 340px */
+  gap: 24px;
+  perspective: 1200px;
+}
+
+.success__card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 32px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.4s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  position: relative;
+}
+
+.success__card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(27, 122, 54, 0.1);
+  border-color: var(--brand-green);
+}
+
+/* Light green curved background on hover */
+.success__card::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  left: -100%; /* Start off-screen */
+  width: 150%;
+  height: 140%;
+  background: radial-gradient(circle at center, rgba(27, 122, 54, 0.08) 0%, rgba(6, 13, 10, 0.4) 100%);
+  border-radius: 50%;
+  transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.success__card:hover::before {
+  transform: translateX(65%) translateY(10%) rotate(-15deg); /* Slide in as a curve */
+}
+
+/* Ensure card content stays above the hover background */
+.success__card-top, 
+.success__quote, 
+.success__batch, 
+.success__package-row {
+  position: relative;
+  z-index: 1;
+}
+
+.success__card-top {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+  transform: translateZ(20px);
+}
+
+.success__avatar {
+  width: 56px;
+  height: 56px;
+  background: var(--brand-green);
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 800;
+  flex-shrink: 0;
+  box-shadow: 0 5px 15px rgba(27, 122, 54, 0.2);
+}
+
+.success__info {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.company__icon {
+  color: var(--brand-green);
+  font-size: 14px;
+}
+
+.success__name {
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--text);
+  margin: 0;
+}
+
+.success__role {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin: 0;
+  font-weight: 500;
+}
+
+.success__company {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(27, 122, 54, 0.08);
+  color: var(--brand-green);
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  margin-top: 6px;
+}
+
+.success__quote {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text);
+  margin-bottom: 24px;
+  font-style: italic;
+  position: relative;
+  padding-left: 20px;
+}
+
+.quote__mark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 14px;
+  color: var(--brand-green);
+  opacity: 0.6;
+}
+
+.success__batch {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-muted);
+  margin-top: auto;
+  padding-bottom: 16px;
+}
+
+.batch__icon {
+  color: var(--brand-green);
+  font-size: 16px;
+}
+
+.success__package-row {
+  margin-top: auto;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transform: translateZ(25px);
+}
+
+.package__label {
+  font-size: 12px;
+  color: var(--text-sub);
+  font-weight: 500;
+}
+
+.package__value {
+  font-size: 18px;
+  font-weight: 900;
+  color: var(--brand-green);
+  letter-spacing: -0.5px;
+}
+
+@media (max-width: 900px) {
+  .success { padding: 60px 24px; }
+  .success__grid { grid-template-columns: 1fr; }
+}

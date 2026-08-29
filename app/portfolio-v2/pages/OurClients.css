@@ -1,0 +1,81 @@
+.our-clients {
+  padding: 56px 24px;
+  background-color: var(--bg);
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.our-clients-container {
+  max-width: 1100px;
+  width: 100%;
+}
+
+.clients-marquee {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  padding: 28px 0;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+}
+
+.clients-marquee-track {
+  display: flex;
+  align-items: center;
+  gap: 72px;
+  width: max-content;
+  animation: clientsScroll 28s linear infinite;
+}
+
+.clients-marquee:hover .clients-marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes clientsScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-100% / 4)); }
+}
+
+.clients-logo-item {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+}
+
+.clients-logo-img {
+  height: 44px;
+  width: auto;
+  max-width: 160px;
+  object-fit: contain;
+  opacity: 0.85;
+  transition: opacity 0.3s ease;
+}
+
+.clients-logo-img:hover {
+  opacity: 1;
+}
+
+[data-theme="dark"] .clients-logo-img {
+  filter: brightness(1.2) contrast(1.05);
+}
+
+@media (max-width: 768px) {
+  .our-clients {
+    padding: 40px 16px;
+  }
+
+  .clients-marquee-track {
+    gap: 48px;
+    animation-duration: 22s;
+  }
+
+  .clients-logo-img {
+    height: 36px;
+  }
+}

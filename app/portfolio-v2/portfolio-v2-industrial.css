@@ -1,0 +1,96 @@
+/* ── Portfolio industrial UI: shine hover, no zoom/lift ── */
+
+.portfolio-v2-vibe .pf-shine-card {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.portfolio-v2-vibe .pf-shine-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    125deg,
+    transparent 28%,
+    rgba(255, 255, 255, 0.14) 50%,
+    transparent 72%
+  );
+  transform: translateX(-120%);
+  transition: transform 0.65s ease;
+  pointer-events: none;
+  z-index: 3;
+  border-radius: inherit;
+}
+
+.portfolio-v2-vibe .pf-shine-card:hover::after {
+  transform: translateX(120%);
+}
+
+[data-theme="light"] .portfolio-v2-vibe .pf-shine-card::after {
+  background: linear-gradient(
+    125deg,
+    transparent 28%,
+    rgba(0, 181, 111, 0.08) 50%,
+    transparent 72%
+  );
+}
+
+.portfolio-v2-vibe .project__card:hover,
+.portfolio-v2-vibe .project__card:hover .project__card-screenshot,
+.portfolio-v2-vibe .service-card:hover,
+.portfolio-v2-vibe .stat-card:hover,
+.portfolio-v2-vibe .stat-card:hover .stat-icon-wrapper,
+.portfolio-v2-vibe .clients-logo-img:hover,
+.portfolio-v2-vibe .slider-nav-btn:hover,
+.portfolio-v2-vibe .big-tag-container:hover,
+.portfolio-v2-vibe .dot.active {
+  transform: none !important;
+}
+
+.portfolio-v2-vibe .service-card:hover,
+.portfolio-v2-vibe .stat-card:hover,
+.portfolio-v2-vibe .offer-card-industrial:hover {
+  border-color: var(--border);
+  box-shadow: 0 4px 16px rgba(0, 79, 48, 0.035);
+}
+
+[data-theme="dark"] .portfolio-v2-vibe .service-card:hover,
+[data-theme="dark"] .portfolio-v2-vibe .stat-card:hover,
+[data-theme="dark"] .portfolio-v2-vibe .offer-card-industrial:hover {
+  box-shadow: none;
+}
+
+.portfolio-v2-vibe .pf-btn-shine:hover,
+.portfolio-v2-vibe .pf-btn-outline:hover {
+  transform: none;
+}
+
+.portfolio-v2-vibe .pf-btn-shine:hover {
+  box-shadow: 0 8px 28px rgba(0, 181, 111, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+.portfolio-v2-vibe .pf-section-head {
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.portfolio-v2-vibe .pf-section-head h2 {
+  font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 0;
+}
+
+.portfolio-v2-vibe .pf-section-head p {
+  display: none;
+}
+
+.portfolio-v2-vibe .pf-section-head--rich p,
+.portfolio-v2-vibe .digital-future__subheading {
+  display: block;
+}
+
+.portfolio-v2-vibe .pf-section-rule {
+  display: none;
+}
