@@ -67,7 +67,7 @@ const ChatbotWidget = () => {
   return (
     <>
       {/* Chatbot Trigger */}
-      <div id="chatbot-trigger" className="chatbot-trigger">
+      <div id="chatbot-trigger" className="chatbot-trigger" role="button" tabIndex={0} aria-label="Open chat assistant">
         <div className="chatbot-icon">
           <Image
             src="/images/get.png"
@@ -121,8 +121,10 @@ const ChatbotWidget = () => {
         </div>
         <iframe
           src="https://uc-chatbot.netlify.app"
+          title="UrbanCode chat assistant"
           frameBorder="0"
           className="chatbot-iframe"
+          loading="lazy"
         ></iframe>
       </div>
 

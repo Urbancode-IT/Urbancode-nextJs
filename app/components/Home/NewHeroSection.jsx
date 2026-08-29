@@ -144,7 +144,7 @@ const HeroBottom = ({
           onMouseLeave={() => setIsHovered(false)}
         >
           {cardsData.map((card, index) => (
-            <Link href={card.link} key={index} className="hero-card" style={{ background: card.gradient, textDecoration: 'none' }}>
+            <Link href={card.link} key={index} className="hero-card" style={{ background: card.gradient, textDecoration: 'none' }} aria-label={`View ${card.title} course`}>
               <span className="hero-card-level">{card.level}</span>
               <div className="hero-card-glass">
                 <h3 className="hero-card-title course-name-shine-light">{card.title}</h3>
@@ -152,12 +152,12 @@ const HeroBottom = ({
               </div>
               <div className="hero-card-footer">
                 <span className="hero-card-duration">{card.duration}</span>
-                <button className="hero-card-btn">
+                <span className="hero-card-btn" aria-hidden="true">
                   <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M5.83331 14.1667L14.1666 5.83337" stroke="black" strokeWidth="1.66667" strokeLinecap="round" strokeLinejoin="round"/>
                     <path d="M5.83331 5.83337H14.1666V14.1667" stroke="black" strokeWidth="1.66667" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
-                </button>
+                </span>
               </div>
             </Link>
           ))}
@@ -236,8 +236,9 @@ export default function NewHeroSection() {
   const updateScrollButtons = React.useCallback(() => {
     const slider = carouselRef.current;
     if (!slider) return;
-    setCanScrollPrev(slider.scrollLeft > 4);
-    setCanScrollNext(slider.scrollLeft < slider.scrollWidth - slider.clientWidth - 4);
+    const { scrollLeft, scrollWidth, clientWidth } = slider;
+    setCanScrollPrev(scrollLeft > 4);
+    setCanScrollNext(scrollLeft < scrollWidth - clientWidth - 4);
   }, []);
 
   // Whole cards only at every breakpoint; shrink card if one full card cannot fit.

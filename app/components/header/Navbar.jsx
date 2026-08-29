@@ -1,17 +1,19 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import './Navbar.css';
-import ChatbotWidget from '../ChatbotWidget';
 import FloatingWidgets from '../FloatingWidgets';
 import { FiPhoneCall } from 'react-icons/fi';
 import { FaPlane } from 'react-icons/fa';
 import FlightTransition from '../animations/FlightTransition';
 import BookDemoWidget from '../BookDemoWidget';
 import OneOnOneWidget from '../OneOnOneWidget';
+
+const ChatbotWidget = dynamic(() => import('../ChatbotWidget'), { ssr: false });
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isFlying, setIsFlying] = useState(false);

@@ -69,6 +69,9 @@ const CourseCard = ({ course }) => {
                     className="jg-card-img" 
                     width={400}
                     height={300}
+                    sizes="(max-width: 768px) 85vw, 400px"
+                    loading="lazy"
+                    decoding="async"
                     style={{ objectFit: 'cover' }}
                 />
                 <div className="jg-card-glass-overlay">
@@ -213,7 +216,14 @@ const Courses = () => {
     const [isPaused, setIsPaused] = useState(false);
     const [isVisible, setIsVisible] = useState(false);
     const requestRef = useRef();
+    const halfScrollWidthRef = useRef(0);
     const speed = 1.0; // Pixels per frame
+
+    const refreshHalfScrollWidth = useCallback(() => {
+        if (sliderRef.current) {
+            halfScrollWidthRef.current = sliderRef.current.scrollWidth / 2;
+        }
+    }, []);
 
     // Viewport Visibility Observer: Only occupy CPU resources when element is in view!
     useEffect(() => {
@@ -241,6 +251,12 @@ const Courses = () => {
         };
     }, []);
 
+    useEffect(() => {
+        refreshHalfScrollWidth();
+        window.addEventListener('resize', refreshHalfScrollWidth);
+        return () => window.removeEventListener('resize', refreshHalfScrollWidth);
+    }, [refreshHalfScrollWidth, isVisible]);
+
     // Highly optimized frame animation loop
     useEffect(() => {
         if (!isVisible || isPaused) {
@@ -251,15 +267,16 @@ const Courses = () => {
             return;
         }
 
+        refreshHalfScrollWidth();
+
         const animate = () => {
-            if (!sliderRef.current) return;
             const track = sliderRef.current;
-            const scrollWidth = track.scrollWidth;
+            if (!track) return;
 
             track.scrollLeft += speed;
 
-            // Infinite loop scroll resetting
-            if (track.scrollLeft >= (scrollWidth / 2)) {
+            const halfWidth = halfScrollWidthRef.current;
+            if (halfWidth > 0 && track.scrollLeft >= halfWidth) {
                 track.scrollLeft = 0;
             }
 
@@ -274,7 +291,7 @@ const Courses = () => {
                 requestRef.current = null;
             }
         };
-    }, [isVisible, isPaused]);
+    }, [isVisible, isPaused, refreshHalfScrollWidth]);
 
     const checkScrollPosition = () => {
         if (!sliderRef.current) return;

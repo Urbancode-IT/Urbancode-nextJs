@@ -1,5 +1,4 @@
-/* NewHeroSection.css */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+// NewHeroSection.css — Inter via next/font in layout.js (no @import)
 
 /* ═══════════════════════════════════════════════════════════
    FLIGHT OVERLAY — shown when "Study Abroad" is clicked
@@ -56,7 +55,7 @@
 }
 
 .flight-label {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-inter, 'Inter', sans-serif);
   font-size: 15px;
   font-weight: 500;
   color: rgba(28, 29, 34, 0.65);
@@ -73,7 +72,7 @@
   min-height: max(100vh, 600px);
   /* no strict height or max-height so it can grow if content overflows */
   overflow: hidden;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-inter, 'Inter', sans-serif);
   background-color: #fcfcfc;
   display: flex;
   flex-direction: column;
@@ -90,7 +89,7 @@
     linear-gradient(to bottom, rgba(252, 252, 252, 0) 72%, var(--bg-neutral) 100%),
     radial-gradient(circle at center, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0) 80%),
     linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(var(--color-brand-rgb), 0.03) 100%),
-    url('/images/home/home-hero/bg-image-1.png');
+    url('/images/home/home-hero/bg-image-1.webp');
   /* Image at 60% — clearly visible behind middle content */
   background-position: center, center, center, center 60%;
   background-size: cover, cover, cover, contain;
@@ -581,7 +580,7 @@
       linear-gradient(to bottom, rgba(252,252,252,0) 50%, #fcfcfc 100%),
       radial-gradient(circle at center, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0) 80%),
       linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(219,244,235,0.4) 100%),
-      url('/images/home/home-hero/bg-image-1.png');
+      url('/images/home/home-hero/bg-image-1.webp');
     background-position: center, center, center, center 55%;
     background-size: cover, cover, cover, contain;
     background-repeat: no-repeat;
@@ -603,7 +602,7 @@
       linear-gradient(to bottom, rgba(252,252,252,0) 60%, #fcfcfc 100%),
       radial-gradient(circle at center, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 80%),
       linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(219,244,235,0.25) 100%),
-      url('/images/home/home-hero/bg-image-1.png');
+      url('/images/home/home-hero/bg-image-1.webp');
     background-position: center, center, center, center 52%;
     background-size: cover, cover, cover, contain;
     background-repeat: no-repeat;

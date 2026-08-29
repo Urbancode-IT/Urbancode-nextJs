@@ -124,6 +124,7 @@ const VideoTestimonials = () => {
                                             playsInline
                                             preload="metadata"
                                             controls={isPlaying}
+                                            aria-label={`${video.title} testimonial video`}
                                             onPlay={() => setPlayingId(video.id)}
                                             onPause={() => {
                                                 if (playingId === video.id) setPlayingId(null);

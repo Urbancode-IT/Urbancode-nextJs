@@ -38,7 +38,7 @@ const Carousel = () => {
                         {duplicatedCompanies.map((company, index) => (
                             <div key={`${company.id}-${index}`} className="company-slide">
                                 <div className="company-logo object-fit-contain position-relative">
-                                    <Image src={company.logo} fill alt={company.name} />
+                                    <Image src={company.logo} fill alt={`${company.name} logo`} sizes="120px" loading="lazy" />
                                 </div>
                             </div>
                         ))}

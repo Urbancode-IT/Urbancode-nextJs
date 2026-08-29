@@ -203,6 +203,9 @@ const TrendingCourses = () => {
                                         className="trending-image-fg"
                                         width={280}
                                         height={400}
+                                        sizes="(max-width: 768px) 55vw, 280px"
+                                        loading="lazy"
+                                        decoding="async"
                                         style={{ objectFit: 'cover' }}
                                     />
                                 ) : (

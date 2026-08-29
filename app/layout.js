@@ -55,21 +55,14 @@ export default function RootLayout({ children }) {
       <head>
         {/* Explicit viewport — belt-and-suspenders with export const viewport below */}
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-        {/* FontAwesome CDN for reliable icon loading */}
-        <link 
-          rel="stylesheet" 
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" 
-          integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" 
-          crossOrigin="anonymous" 
-          referrerPolicy="no-referrer" 
-        />
-        {/* ✅ Google Ads / GA4 Global Site Tag — MUST be in <head> for Google tag validation */}
+        <link rel="dns-prefetch" href="https://uc-chatbot.netlify.app" />
+        {/* ✅ Google Ads / GA4 — deferred so first paint is not blocked */}
         <Script
           id="google-gtag"
-          strategy="beforeInteractive"
+          strategy="afterInteractive"
           src="https://www.googletagmanager.com/gtag/js?id=G-ZZX212RD85"
         />
-        <Script id="google-gtag-init" strategy="beforeInteractive">
+        <Script id="google-gtag-init" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
@@ -211,7 +204,7 @@ export default function RootLayout({ children }) {
         />
       </head>
 
-      <body>
+      <body className={inter.className}>
         {/* ✅ GTM NoScript — must be FIRST element after <body> per Google's official instructions */}
         <noscript>
           <iframe

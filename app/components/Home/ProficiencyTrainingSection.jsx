@@ -384,6 +384,8 @@ function CardMedia({ item, mediaHeight }) {
             className={`prof-card-image ${useContain ? 'prof-card-image--contain' : ''}`}
             width={288}
             height={mediaHeight}
+            sizes="(max-width: 768px) 45vw, 288px"
+            loading="lazy"
           />
         )}
       </div>
@@ -439,14 +441,16 @@ function HubMedia({ group, mediaHeight }) {
         style={{ height: mediaHeight }}
       >
         {isExternal ? (
-          <img src={src} alt="" className="prof-card-image" loading="lazy" />
+          <img src={src} alt={group.title} className="prof-card-image" loading="lazy" decoding="async" />
         ) : (
           <Image
             src={src}
-            alt=""
+            alt={group.title}
             className={`prof-card-image ${useContain ? 'prof-card-image--contain' : ''}`}
             width={288}
             height={mediaHeight}
+            sizes="(max-width: 768px) 45vw, 288px"
+            loading="lazy"
           />
         )}
       </div>

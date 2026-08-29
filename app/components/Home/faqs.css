@@ -4,10 +4,17 @@
   overflow: hidden;
 }
 
+.faq-section h3.faq-title,
 .faq-section h4 {
   color: #1c2534;
   font-weight: 700;
   font-size: 2rem;
+}
+
+.faq-contact-box h4.faq-contact-heading {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
 }
 
 .faq-section button a {

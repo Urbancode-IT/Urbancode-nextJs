@@ -22,25 +22,25 @@ function Footer() {
             </div>
             <h4>Social Media</h4>
             <div className="social-icons">
-              <a href="https://www.linkedin.com/company/urbanc0de" target="_blank" rel="noopener noreferrer">
-                <FaLinkedin />
+              <a href="https://www.linkedin.com/company/urbanc0de" target="_blank" rel="noopener noreferrer" aria-label="UrbanCode on LinkedIn">
+                <FaLinkedin aria-hidden="true" />
               </a>
-              <a href="https://www.facebook.com/profile.php?id=61563183054002#" target="_blank" rel="noopener noreferrer">
-                <FaFacebookF />
+              <a href="https://www.facebook.com/profile.php?id=61563183054002#" target="_blank" rel="noopener noreferrer" aria-label="UrbanCode on Facebook">
+                <FaFacebookF aria-hidden="true" />
               </a>
-              <a href="https://www.instagram.com/urbancode_edutech/" target="_blank" rel="noopener noreferrer">
-                <FaInstagram />
+              <a href="https://www.instagram.com/urbancode_edutech/" target="_blank" rel="noopener noreferrer" aria-label="UrbanCode on Instagram">
+                <FaInstagram aria-hidden="true" />
               </a>
-              <a href="https://www.youtube.com/channel/UC7ngZ5r2ov-qoXJRjaXJGKA" target="_blank" rel="noopener noreferrer">
-                <FaYoutube />
+              <a href="https://www.youtube.com/channel/UC7ngZ5r2ov-qoXJRjaXJGKA" target="_blank" rel="noopener noreferrer" aria-label="UrbanCode on YouTube">
+                <FaYoutube aria-hidden="true" />
               </a>
               {pathname && pathname.startsWith('/study-abroad') ? (
-                <a href="/study-abroad-redirect?type=whatsapp" rel="noopener noreferrer">
-                  <FaWhatsapp />
+                <a href="/study-abroad-redirect?type=whatsapp" rel="noopener noreferrer" aria-label="Contact UrbanCode on WhatsApp">
+                  <FaWhatsapp aria-hidden="true" />
                 </a>
               ) : (
-                <a href="https://api.whatsapp.com/send/?phone=919878798797&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer">
-                  <FaWhatsapp />
+                <a href="https://api.whatsapp.com/send/?phone=919878798797&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" aria-label="Contact UrbanCode on WhatsApp">
+                  <FaWhatsapp aria-hidden="true" />
                 </a>
               )}
             </div>

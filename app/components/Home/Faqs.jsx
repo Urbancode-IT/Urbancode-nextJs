@@ -167,9 +167,9 @@ const Faqs = () => {
                 {/* Left Section */}
                 <div className="col-lg-4 col-md-12 order-2 order-lg-1 ">
                     <div className="faq-left text-center text-lg-start">
-                        <h4 className="faq-title fw-bold d-none d-md-block">Frequently <br /> Asked Questions</h4>
+                        <h3 className="faq-title fw-bold d-none d-md-block">Frequently <br /> Asked Questions</h3>
                         <div className="faq-contact-box mt-5 p-4 rounded-4 shadow-sm">
-                            <h5 className="fw-semibold">Have a Question?</h5>
+                            <h4 className="fw-semibold faq-contact-heading">Have a Question?</h4>
                             <p className="text-muted small mb-3">
                                 Send us an email and we’ll get back to you as soon as possible!
                             </p>
@@ -193,14 +193,21 @@ const Faqs = () => {
                                 {currentFaqs.map((faq, index) => (
                                     <div key={index} className={`faq-item mb-3 ${isHighlightedByKeyword(faq) ? 'highlighted-faq' : ''}`}>
                                         <button
+                                            type="button"
                                             className={`faq-question ${activeIndex === index ? 'active' : ''}`}
                                             onClick={() => toggleFAQ(index)}
+                                            aria-expanded={activeIndex === index}
+                                            aria-controls={`faq-answer-${currentPage}-${index}`}
+                                            id={`faq-question-${currentPage}-${index}`}
                                         >
                                             <span>{faq.question}</span>
                                             {activeIndex === index ? <FaMinus /> : <FaPlus />}
                                         </button>
                                         <div
+                                            id={`faq-answer-${currentPage}-${index}`}
                                             className="faq-answer"
+                                            role="region"
+                                            aria-labelledby={`faq-question-${currentPage}-${index}`}
                                             style={{
                                                 maxHeight: activeIndex === index ? '400px' : '0px',
                                             }}

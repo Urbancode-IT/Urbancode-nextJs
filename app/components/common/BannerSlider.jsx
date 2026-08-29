@@ -74,9 +74,11 @@ const BannerSlider = ({ banners = [], forceEnquiry = false }) => {
                                 alt={banner.alt || "Promotional Banner"}
                                 width={1920}
                                 height={600}
-                                sizes="100vw"
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
                                 className="banner-img"
                                 priority={index === 0}
+                                loading={index === 0 ? undefined : 'lazy'}
+                                fetchPriority={index === 0 ? 'high' : 'auto'}
                             />
                         </div>
                     ))}

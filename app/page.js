@@ -131,6 +131,12 @@ export default function HomePage() {
 
   return (
     <>
+      <link
+        rel="preload"
+        as="image"
+        href="/images/home/home-hero/bg-image-1.webp"
+        fetchPriority="high"
+      />
       {/* <BranchAnnouncement /> */}
       {/* <ComingSoonPopup /> */}
       <script
@@ -179,55 +185,56 @@ export default function HomePage() {
         }}
       />
     
-      <div className="home-section home-section--hero">
+      <section className="home-section home-section--hero">
         <NewHeroSection />
-      </div>
-      <div className="home-section home-section--compact">
+      </section>
+      <section className="home-section home-section--compact">
         <BannerSlider banners={homeBanners} />
-      </div>
-       <div id="featured-courses" className="home-section">
+      </section>
+       <section id="featured-courses" className="home-section">
         <TrendingCourses />
-      </div>
-       
-<div id="proficiency-training" className="home-section">
-  <ProficiencyTrainingSection />
-</div>
+      </section>
+{/* 
+<section id="proficiency-training" className="home-section"> 
+  <ProficiencyTrainingSection /> 
+</section>
+*/}
 
-      <div className="home-section">
+      <section className="home-section">
         <Courses />
-      </div>
-       <div className="home-section">
+      </section>
+       <section className="home-section">
         <Carousel />
-      </div>
-      <div className="home-section">
+      </section>
+      <section className="home-section">
         <PlacementTestimonials />
-      </div>
-      <div className="home-section">
+      </section>
+      <section className="home-section">
         <InstitutionVideos />
-      </div>
-      <div className="home-section">
+      </section>
+      <section className="home-section">
         <InDemandTools />
-      </div>
-      <div id="certification-section" className="home-section">
+      </section>
+      <section id="certification-section" className="home-section">
         <CertificationSection />
-      </div>
+      </section>
 
       {/* <div className="home-section">
         <GetCertified />
       </div> */}
 
-      <div className="home-section">
+      <section className="home-section">
         <VideoTestimonials />
-      </div>
-      {/* <div className="home-section">
+      </section>
+      {/* <section className="home-section">
         <TestimonialCarousel />
-      </div> */}
-      <div className="home-section">
+      </section> */}
+      <section className="home-section">
         <GoogleReviews />
-      </div>
-      <div className="home-section">
+      </section>
+      <section className="home-section">
         <FaqBootstrap />
-      </div>
+      </section>
      
     </>
   );
