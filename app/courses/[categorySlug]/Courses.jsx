@@ -14,6 +14,7 @@ import Image from "next/image";
 import "./Courses.css";
 import coursesData from "./coursesData";
 import EnquiryFormModal from "@/app/components/common/EnquiryFormModal.jsx";
+import { slugifyCategoryName, slugifyCourseTitle } from "@/lib/courseSlugs";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { Star, Users, Clock } from "lucide-react";
@@ -216,9 +217,9 @@ const faqData = [
   }
 ];
 
-const slugify = (name) => name.toLowerCase().replace(/\s+/g, "-");
+const slugify = slugifyCategoryName;
 const deslugify = (slug) =>
-  categories.find((cat) => slugify(cat) === slug) || categories[0];
+  categories.find((cat) => slugifyCategoryName(cat) === slug) || categories[0];
 
 export default function Courses({ categorySlug }) {
   const [selectedCourse, setSelectedCourse] = useState(null);
@@ -431,9 +432,7 @@ export default function Courses({ categorySlug }) {
                   <Row>
                     {filteredCourses && filteredCourses.length > 0 ? (
                       filteredCourses.map((course, idx) => {
-                        const courseSlug = course.title
-                          .toLowerCase()
-                          .replace(/\s+/g, "-");
+                        const courseSlug = slugifyCourseTitle(course.title);
 
                         return (
                           <Col xs={12} sm={6} lg={6} xl={4} className="mb-4" key={idx}>

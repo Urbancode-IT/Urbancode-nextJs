@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import Swal from 'sweetalert2';
@@ -6,10 +6,16 @@ import Swal from 'sweetalert2';
 export function useEnquiryForm({
   schema,
   defaultValues,
-  onSubmitCallback
+  onSubmitCallback,
+  shouldUnregister = false,
 }) {
   const [loadTime, setLoadTime] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const onSubmitCallbackRef = useRef(onSubmitCallback);
+
+  useEffect(() => {
+    onSubmitCallbackRef.current = onSubmitCallback;
+  }, [onSubmitCallback]);
 
   useEffect(() => {
     setLoadTime(Date.now());
@@ -18,22 +24,20 @@ export function useEnquiryForm({
   const form = useForm({
     resolver: zodResolver(schema),
     defaultValues,
-    mode: 'onChange' // Real-time validation
+    mode: 'onChange',
+    shouldUnregister,
   });
 
   const { handleSubmit, formState: { errors } } = form;
 
-
   const onSubmit = async (data) => {
     if (isSubmitting) return;
 
-    // Honeypot check
     if (data.honeypot) {
       console.warn("Spam detected via honeypot.");
-      return; // Silent failure for bots
+      return;
     }
 
-    // Minimum submission time (2 seconds)
     const timeToSubmit = Date.now() - loadTime;
     if (timeToSubmit < 2000) {
       Swal.fire({
@@ -47,7 +51,7 @@ export function useEnquiryForm({
 
     setIsSubmitting(true);
     try {
-      await onSubmitCallback(data, form.reset);
+      await onSubmitCallbackRef.current(data, form.reset);
     } catch (err) {
       console.error(err);
       Swal.fire({

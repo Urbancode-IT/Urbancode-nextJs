@@ -88,6 +88,9 @@ const EnquiryFormModal = ({
       : extraOptions.map(normalizeOption));
   const visibleSelectOptions = (useExternalCourses && !coursesReady) ? [] : selectCourseOptions;
   const showCourseSelect = isSelectMode;
+  const useZenCourseIds = showCourseSelect && useExternalCourses && !isKidsMode && coursesReady && dynamicCourseOptions.length > 0;
+  const hasPresetCourse = Boolean(courseName) && !isSelectMode && !isJoinMode;
+  const prevOpenRef = React.useRef(false);
 
   const triggerDownload = (url, index = 0) => {
     setTimeout(() => {
@@ -101,31 +104,65 @@ const EnquiryFormModal = ({
   };
 
   React.useEffect(() => {
-    if (!isOpen) return;
+    if (isOpen && !prevOpenRef.current) {
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        pin: "",
+        course: isSelectMode ? "" : (courseName || ""),
+        message: "",
+        mode: "",
+        preferredDate: "",
+        preferredTime: "",
+      });
+      setErrors({});
+      setStatus({ type: "", message: "" });
+    }
+    prevOpenRef.current = isOpen;
+  }, [isOpen]);
+
+  React.useEffect(() => {
+    if (!isOpen || isSelectMode || !courseName) return;
+    setFormData((prev) => (prev.course === courseName ? prev : { ...prev, course: courseName }));
+  }, [isOpen, courseName, isSelectMode]);
+
+  // Pre-fill select-mode course once Zen options load (do not wipe a choice the user already made).
+  React.useEffect(() => {
+    if (!isOpen || !isSelectMode || !courseName) return;
 
     const options = (useExternalCourses && dynamicCourseOptions.length > 0 && !isKidsMode)
       ? dynamicCourseOptions
       : extraOptions.map(normalizeOption);
 
-    let nextCourse = "";
-    if (isSelectMode) {
-      if (courseName) {
-        const matched = options.find(
-          (opt) => opt.course_name.toLowerCase() === courseName.toLowerCase()
-        );
-        nextCourse = isKidsMode
-          ? (matched?.crmCourse || getKidsCrmCourse(courseName, options))
-          : (matched?.course_name || "");
-      }
-    } else {
-      nextCourse = courseName || "";
-    }
+    if (!options.length) return;
 
-    setFormData((prev) => ({
-      ...prev,
-      course: nextCourse,
-    }));
-  }, [isOpen, courseName, isSelectMode, isKidsMode, useExternalCourses, dynamicCourseOptions, extraOptions]);
+    const matched = options.find(
+      (opt) => opt.course_name.toLowerCase() === courseName.toLowerCase()
+    );
+    const resolved = isKidsMode
+      ? (matched?.crmCourse || getKidsCrmCourse(courseName, options))
+      : useZenCourseIds
+        ? (matched?.course_id || "")
+        : (matched?.course_name || resolveCrmCourseName(courseName, options));
+
+    if (!resolved) return;
+
+    setFormData((prev) => {
+      if (prev.course) return prev;
+      if (prev.course === resolved) return prev;
+      return { ...prev, course: resolved };
+    });
+  }, [
+    isOpen,
+    courseName,
+    isSelectMode,
+    isKidsMode,
+    useExternalCourses,
+    dynamicCourseOptions,
+    extraOptions,
+    useZenCourseIds,
+  ]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -237,26 +274,65 @@ const EnquiryFormModal = ({
     return formData.message;
   };
 
-  const getResolvedCourseName = () => {
-    const rawCourse = isJoinMode
-      ? (courseName || formData.course)
-      : formData.course;
-    if (isKidsMode) {
-      return rawCourse;
+  const getSelectedCourseOption = () => {
+    if (!formData.course) return null;
+    if (useZenCourseIds) {
+      return dynamicCourseOptions.find((opt) => opt.course_id === formData.course) || null;
     }
-    return resolveCrmCourseName(rawCourse, selectCourseOptions);
+    return selectCourseOptions.find(
+      (opt) =>
+        opt.course_id === formData.course
+        || opt.course_name === formData.course
+        || opt.crmCourse === formData.course
+    ) || null;
   };
 
-  const buildSubmitPayload = (resolvedCourse, messageOverride) => ({
-    name: formData.name.trim(),
-    email: formData.email.trim(),
-    phone: formData.phone,
-    course: resolvedCourse,
-    mode: isJoinMode ? "Not specified" : formData.mode,
-    pin: formData.pin || "N/A",
-    message: messageOverride ?? buildEnquiryMessage(),
-    ...(isKidsMode ? { card_type: "Training Only", source_page: "Kids Courses" } : {}),
-  });
+  const getCourseDisplayName = () => {
+    const selected = getSelectedCourseOption();
+    if (selected) return courseOptionLabel(selected);
+    return formData.course;
+  };
+
+  const getEnrollmentCourse = () => {
+    if (isKidsMode) {
+      return { course: formData.course, course_id: "" };
+    }
+
+    if (isJoinMode) {
+      const name = courseName || formData.course;
+      return { course: resolveCrmCourseName(name, selectCourseOptions), course_id: "" };
+    }
+
+    const selected = getSelectedCourseOption();
+    if (selected?.course_name) {
+      return {
+        course: selected.course_name,
+        course_id: useZenCourseIds ? (selected.course_id || "") : "",
+      };
+    }
+
+    return {
+      course: resolveCrmCourseName(formData.course, selectCourseOptions),
+      course_id: "",
+    };
+  };
+
+  const getResolvedCourseName = () => getEnrollmentCourse().course;
+
+  const buildSubmitPayload = (resolvedCourse, messageOverride) => {
+    const enrollment = getEnrollmentCourse();
+    return {
+      name: formData.name.trim(),
+      email: formData.email.trim(),
+      phone: formData.phone,
+      course: resolvedCourse || enrollment.course,
+      ...(enrollment.course_id ? { course_id: enrollment.course_id } : {}),
+      mode: isJoinMode ? "Not specified" : formData.mode,
+      pin: formData.pin || "N/A",
+      message: messageOverride ?? buildEnquiryMessage(),
+      ...(isKidsMode ? { card_type: "Training Only", source_page: "Kids Courses" } : {}),
+    };
+  };
 
   const submitViaCourseApi = async () => {
     if (isBrochureMode) {
@@ -289,7 +365,7 @@ const EnquiryFormModal = ({
 
       Swal.fire({
         title: 'Curriculum Sent!',
-        text: `The curriculum for ${formData.course} has been successfully sent to ${formData.email}. Please check your inbox (and spam folder)!`,
+        text: `The curriculum for ${getCourseDisplayName()} has been successfully sent to ${formData.email}. Please check your inbox (and spam folder)!`,
         icon: 'success',
         confirmButtonColor: '#036c2d',
         background: '#ffffff',
@@ -406,7 +482,7 @@ const EnquiryFormModal = ({
 
       Swal.fire({
         title: 'Curriculum Sent!',
-        text: `The curriculum for ${formData.course} has been successfully sent to ${formData.email}. Please check your inbox (and spam folder)!`,
+        text: `The curriculum for ${getCourseDisplayName()} has been successfully sent to ${formData.email}. Please check your inbox (and spam folder)!`,
         icon: 'success',
         confirmButtonColor: '#036c2d',
         background: '#ffffff',
@@ -417,6 +493,7 @@ const EnquiryFormModal = ({
       return;
     }
 
+    const enrollment = getEnrollmentCourse();
     const enquiryResponse = await fetch("/api/send-email/course-enquiry", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -424,7 +501,8 @@ const EnquiryFormModal = ({
         name: formData.name,
         email: formData.email,
         phone: formData.phone,
-        course: formData.course,
+        course: enrollment.course,
+        ...(enrollment.course_id ? { course_id: enrollment.course_id } : {}),
         mode: formData.mode,
         pin: formData.pin,
         message: buildEnquiryMessage(),
@@ -580,7 +658,17 @@ const EnquiryFormModal = ({
                     {!isJoinMode && (
                       <>
                         <div className="col-md-6">
-                          {showCourseSelect ? (
+                          {hasPresetCourse ? (
+                            <input
+                              type="text"
+                              className="form-control"
+                              name="course"
+                              value={formData.course}
+                              readOnly
+                              disabled={loading}
+                              aria-readonly="true"
+                            />
+                          ) : showCourseSelect ? (
                             <select
                               className="form-select"
                               name="course"
@@ -596,7 +684,11 @@ const EnquiryFormModal = ({
                               {visibleSelectOptions.map((opt, i) => (
                                 <option
                                   key={opt.course_id || i}
-                                  value={isKidsMode ? (opt.crmCourse || opt.course_name) : opt.course_name}
+                                  value={
+                                    useZenCourseIds
+                                      ? opt.course_id
+                                      : (isKidsMode ? (opt.crmCourse || opt.course_name) : opt.course_name)
+                                  }
                                 >
                                   {isKidsMode ? opt.course_name : courseOptionLabel(opt)}
                                 </option>

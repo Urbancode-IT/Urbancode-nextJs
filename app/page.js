@@ -188,11 +188,11 @@ export default function HomePage() {
        <div id="featured-courses" className="home-section">
         <TrendingCourses />
       </div>
-      {/* 
+       
 <div id="proficiency-training" className="home-section">
   <ProficiencyTrainingSection />
 </div>
-*/}
+
       <div className="home-section">
         <Courses />
       </div>

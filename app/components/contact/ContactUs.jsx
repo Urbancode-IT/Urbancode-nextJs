@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { sendContactMessage } from "@/lib/api/api";
@@ -14,6 +14,13 @@ import { Honeypot } from "@/app/components/common/Honeypot";
 import { useEnquiryForm } from "@/app/hooks/useEnquiryForm";
 import { contactUsSchema } from "@/app/schemas/enquirySchema";
 import { Controller } from "react-hook-form";
+import {
+  courseOptionLabel,
+  matchZenCourseFromUrl,
+  normalizeCourses,
+  resolveZenCourseSelection,
+  isZenCourseId,
+} from "@/lib/api/externalCourses";
 
 const ContactUs = ({ redirectUrl = '/thankyou' }) => {
   const searchParams = useSearchParams();
@@ -21,7 +28,13 @@ const ContactUs = ({ redirectUrl = '/thankyou' }) => {
 
   const [activeMap, setActiveMap] = useState(0);
   const [showLoader, setShowLoader] = useState(false);
-  const [courseOptions, setCourseOptions] = useState(["Loading courses..."]);
+  const [courseOptions, setCourseOptions] = useState([]);
+  const [coursesReady, setCoursesReady] = useState(false);
+  const courseOptionsRef = useRef([]);
+
+  useEffect(() => {
+    courseOptionsRef.current = courseOptions;
+  }, [courseOptions]);
 
   // alternate maps every 2.5 sec
   useEffect(() => {
@@ -31,20 +44,20 @@ const ContactUs = ({ redirectUrl = '/thankyou' }) => {
     return () => clearInterval(interval);
   }, []);
 
-  // Fetch courses dynamically
+  // Fetch courses dynamically from Zen CRM
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const res = await fetch('/api/courses');
+        const res = await fetch('/api/courses', { cache: 'no-store' });
         const data = await res.json();
-        if (data.courses && Array.isArray(data.courses)) {
-          const mappedCourses = data.courses.map(c => typeof c === 'object' ? c.name || c.course_name || c.course : c);
-          if (mappedCourses.length > 0) {
-            setCourseOptions(mappedCourses);
-          }
+        const mappedCourses = normalizeCourses(data);
+        if (mappedCourses.length > 0) {
+          setCourseOptions(mappedCourses);
         }
       } catch (err) {
         console.error("Failed to fetch courses:", err);
+      } finally {
+        setCoursesReady(true);
       }
     };
     fetchCourses();
@@ -56,9 +69,11 @@ const ContactUs = ({ redirectUrl = '/thankyou' }) => {
     submitHandler,
     isSubmitting,
     watch,
+    setValue,
     formState: { errors }
   } = useEnquiryForm({
     schema: contactUsSchema,
+    shouldUnregister: false,
     defaultValues: {
       name: "",
       email: "",
@@ -69,14 +84,22 @@ const ContactUs = ({ redirectUrl = '/thankyou' }) => {
       honeypot: ""
     },
     onSubmitCallback: async (data, reset) => {
+      const isCourseEnquiry = data.interest === "Course Enquiry";
+      const enrollment = isCourseEnquiry
+        ? resolveZenCourseSelection(data.selectedCourse, courseOptionsRef.current)
+        : { course_name: "", course_id: "", label: "" };
+      const courseId = enrollment.course_id
+        || (isZenCourseId(data.selectedCourse) ? data.selectedCourse : "");
+
       const submissionData = {
         name: data.name.trim(),
         email: data.email.trim(),
-        mobile: data.phone,
+        phone: data.phone,
         interest: data.interest,
-        selectedCourse: data.interest === 'Course Enquiry' ? data.selectedCourse : '',
+        selectedCourse: isCourseEnquiry ? (enrollment.course_name || data.selectedCourse) : "",
+        ...(isCourseEnquiry && courseId ? { course_id: courseId } : {}),
         convenientTime: data.convenientTime,
-        message: `Interest: ${data.interest}${data.selectedCourse ? ' - ' + data.selectedCourse : ''} | Convenient Time: ${data.convenientTime}`
+        message: `Interest: ${data.interest}${enrollment.label ? ` - ${enrollment.label}` : ''} | Convenient Time: ${data.convenientTime}`
       };
       
       const response = await sendContactMessage(submissionData);
@@ -92,6 +115,17 @@ const ContactUs = ({ redirectUrl = '/thankyou' }) => {
   });
 
   const watchInterest = watch("interest");
+
+  useEffect(() => {
+    if (watchInterest !== "Course Enquiry") {
+      setValue("selectedCourse", "");
+    }
+  }, [watchInterest, setValue]);
+
+  useEffect(() => {
+    if (!courseFromUrl || !courseOptions.length) return;
+    setValue("selectedCourse", matchZenCourseFromUrl(courseFromUrl, courseOptions));
+  }, [courseFromUrl, courseOptions, setValue]);
 
   const interestOptions = [
     "Course Enquiry",
@@ -204,6 +238,31 @@ const ContactUs = ({ redirectUrl = '/thankyou' }) => {
                   </div>
                 </div>
 
+                <div
+                  className="col-md-6"
+                  hidden={watchInterest !== "Course Enquiry"}
+                  aria-hidden={watchInterest !== "Course Enquiry"}
+                >
+                  <div className="modern-input-group">
+                    <select
+                      {...register("selectedCourse")}
+                      className={`modern-select ${errors.selectedCourse ? "is-invalid" : ""}`}
+                      disabled={isSubmitting || !coursesReady || watchInterest !== "Course Enquiry"}
+                      tabIndex={watchInterest === "Course Enquiry" ? 0 : -1}
+                    >
+                      <option value="" disabled>
+                        {coursesReady ? "Choose exact course" : "Loading courses..."}
+                      </option>
+                      {courseOptions.map((opt) => (
+                        <option key={opt.course_id} value={opt.course_id}>
+                          {courseOptionLabel(opt)}
+                        </option>
+                      ))}
+                    </select>
+                    {errors.selectedCourse && <span className="form-error">{errors.selectedCourse.message}</span>}
+                  </div>
+                </div>
+
                 <div className="col-md-6">
                   <div className="modern-input-group">
                     <select
@@ -217,22 +276,6 @@ const ContactUs = ({ redirectUrl = '/thankyou' }) => {
                     {errors.convenientTime && <span className="form-error">{errors.convenientTime.message}</span>}
                   </div>
                 </div>
-
-                {watchInterest === "Course Enquiry" && (
-                  <div className="col-12">
-                    <div className="modern-input-group">
-                      <select
-                        {...register("selectedCourse")}
-                        className={`modern-select ${errors.selectedCourse ? "is-invalid" : ""}`}
-                        disabled={isSubmitting}
-                      >
-                        <option value="" disabled>Choose exact course</option>
-                        {courseOptions.map(opt => <option key={opt} value={opt}>{opt}</option>)}
-                      </select>
-                      {errors.selectedCourse && <span className="form-error">{errors.selectedCourse.message}</span>}
-                    </div>
-                  </div>
-                )}
 
                 <div className="col-12 mt-2 text-center">
                   <button type="submit" className="btn-modern-submit contact-btn-shine" disabled={isSubmitting}>

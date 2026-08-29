@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { getGmailTransporter, getGmailSender } from '@/lib/mailer/gmailTransporter';
 import { sendExternalEnrollment, extractMobileNumber } from '@/lib/api/externalEnrollment';
 import { resolveCrmCourseNameAsync } from '@/lib/api/resolveCrmCourse';
+import { isZenCourseId } from '@/lib/api/externalCourses';
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -18,7 +19,13 @@ export async function POST(req) {
     const name    = toText(body?.name, '');
     const email   = toText(body?.email, '');
     const phone   = toText(body?.phone || body?.mobile || body?.phoneNumber || body?.mobileNumber, '');
-    const course  = toText(body?.course || body?.courseName || body?.program, 'Course Enquiry');
+    let course  = toText(body?.course || body?.courseName || body?.program, 'Course Enquiry');
+    let course_id = toText(body?.course_id || body?.courseId, '');
+
+    if (!course_id && isZenCourseId(course)) {
+      course_id = course;
+      course = '';
+    }
     const mode    = toText(body?.mode, 'Not specified');
     const pin     = toText(body?.pin, 'N/A');
     const message = toText(body?.message, 'No message provided');
@@ -199,7 +206,7 @@ export async function POST(req) {
       message && message !== 'No message provided' ? message : '',
     ].filter(Boolean).join(' | ');
 
-    const crmCourse = await resolveCrmCourseNameAsync(course);
+    const crmCourse = await resolveCrmCourseNameAsync(course, course_id);
 
     // Await CRM so Next.js does not kill the request when the response is sent
     const crmPromise = sendExternalEnrollment({
@@ -207,6 +214,7 @@ export async function POST(req) {
       mobile_number: extractMobileNumber(phone),
       email,
       course: crmCourse,
+      course_id: course_id || undefined,
       requirements,
       card_type,
     });

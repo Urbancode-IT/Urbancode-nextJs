@@ -1,5 +1,5 @@
 'use client';
-import React, { Suspense, useState, useEffect } from "react";
+import React, { Suspense, useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { goToThankYou } from "@/lib/navigation/goToThankYou";
@@ -12,13 +12,7 @@ import { Honeypot } from "@/app/components/common/Honeypot";
 import { useEnquiryForm } from "@/app/hooks/useEnquiryForm";
 import { enquiryFormSchema } from "@/app/schemas/enquirySchema";
 import { Controller } from "react-hook-form";
-import { normalizeCourses } from "@/lib/api/externalCourses";
-
-// Courses are now fetched dynamically from /api/courses
-// keeping a small initial set to prevent layout shift before fetch completes
-const INITIAL_COURSE_OPTIONS = [
-  "Loading courses..."
-];
+import { normalizeCourses, courseOptionLabel, matchZenCourseFromUrl, resolveZenCourseSelection, isZenCourseId } from "@/lib/api/externalCourses";
 
 const TIME_SLOTS = [
   "09:00 AM - 12:00 PM",
@@ -32,20 +26,27 @@ const EnquiryFormContent = () => {
   const searchParams = useSearchParams();
   const courseFromUrl = searchParams.get('course');
 
-  const [courseOptions, setCourseOptions] = useState(INITIAL_COURSE_OPTIONS);
+  const [courseOptions, setCourseOptions] = useState([]);
+  const [coursesReady, setCoursesReady] = useState(false);
+  const courseOptionsRef = useRef([]);
+
+  useEffect(() => {
+    courseOptionsRef.current = courseOptions;
+  }, [courseOptions]);
 
   useEffect(() => {
     const fetchCourses = async () => {
       try {
         const res = await fetch('/api/courses', { cache: 'no-store' });
         const data = await res.json();
-        
         const mappedCourses = normalizeCourses(data);
         if (mappedCourses.length > 0) {
-          setCourseOptions(mappedCourses.map((c) => c.course_name));
+          setCourseOptions(mappedCourses);
         }
       } catch (err) {
         console.error("Failed to fetch courses for form:", err);
+      } finally {
+        setCoursesReady(true);
       }
     };
     fetchCourses();
@@ -56,9 +57,11 @@ const EnquiryFormContent = () => {
     control,
     submitHandler,
     isSubmitting,
+    setValue,
     formState: { errors }
   } = useEnquiryForm({
     schema: enquiryFormSchema,
+    shouldUnregister: false,
     defaultValues: {
       name: "",
       email: "",
@@ -70,11 +73,10 @@ const EnquiryFormContent = () => {
     },
     onSubmitCallback: async (data, reset) => {
       const scriptURL = "https://script.google.com/macros/s/AKfycbyqhIsaZZb1mvkcRtxrquaDboujLLpts-q5s1ed1JIRiuzt5l76OHeFxuTZPzRWxqh_/exec";
+      const enrollment = resolveZenCourseSelection(data.selectedCourse, courseOptionsRef.current);
+      const courseId = enrollment.course_id
+        || (isZenCourseId(data.selectedCourse) ? data.selectedCourse : "");
 
-      // course is always the selected course from the dropdown
-      const resolvedCourse = data.selectedCourse;
-
-      // Send to Google Sheets (no-cors, fire and forget)
       fetch(scriptURL, {
         method: "POST",
         headers: { "Content-Type": "text/plain;charset=utf-8" },
@@ -83,14 +85,13 @@ const EnquiryFormContent = () => {
           phone: data.phone,
           email: data.email.trim(),
           interest: "Course Enquiry",
-          course: resolvedCourse,
+          course: enrollment.course_name,
           time: data.convenientTime,
           message: "Website Enquiry Form (/form)",
         }),
         mode: "no-cors",
       }).catch(() => {});
 
-      // Send to admin email + external CRM (awaited so CRM call is guaranteed)
       await fetch("/api/send-email/course-enquiry", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -98,7 +99,8 @@ const EnquiryFormContent = () => {
           name: data.name.trim(),
           email: data.email.trim(),
           phone: data.phone,
-          course: resolvedCourse,
+          course: enrollment.course_name || data.selectedCourse,
+          ...(courseId ? { course_id: courseId } : {}),
           mode: "Not specified",
           pin: "N/A",
           message: `Course Enquiry via /form | Time: ${data.convenientTime}`,
@@ -107,7 +109,7 @@ const EnquiryFormContent = () => {
 
       Swal.fire({
         title: 'Enquiry Submitted!',
-        text: `We've received your enquiry for ${resolvedCourse}. Our team will contact you within 24 hours.`,
+        text: `We've received your enquiry for ${enrollment.label || enrollment.course_name}. Our team will contact you within 24 hours.`,
         icon: 'success',
         confirmButtonColor: '#036c2d'
       });
@@ -118,6 +120,11 @@ const EnquiryFormContent = () => {
       }, 1000);
     }
   });
+
+  useEffect(() => {
+    if (!courseFromUrl || !courseOptions.length) return;
+    setValue("selectedCourse", matchZenCourseFromUrl(courseFromUrl, courseOptions));
+  }, [courseFromUrl, courseOptions, setValue]);
 
   return (
     <div className="form-page-wrapper">
@@ -199,11 +206,15 @@ const EnquiryFormContent = () => {
                   <select
                     {...register("selectedCourse")}
                     className={`modern-select ${errors.selectedCourse ? "is-invalid" : ""}`}
-                    disabled={isSubmitting}
+                    disabled={isSubmitting || !coursesReady}
                   >
-                    <option value="" disabled>Choose a Course</option>
-                    {courseOptions.map(opt => (
-                      <option key={opt} value={opt}>{opt}</option>
+                    <option value="" disabled>
+                      {coursesReady ? "Choose a Course" : "Loading courses..."}
+                    </option>
+                    {courseOptions.map((opt) => (
+                      <option key={opt.course_id} value={opt.course_id}>
+                        {courseOptionLabel(opt)}
+                      </option>
                     ))}
                   </select>
                   {errors.selectedCourse && <span className="form-error">{errors.selectedCourse.message}</span>}

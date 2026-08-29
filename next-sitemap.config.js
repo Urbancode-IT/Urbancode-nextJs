@@ -2,6 +2,7 @@
 import path from "path";
 import { fileURLToPath } from "url";
 import { createRequire } from "module";
+import { slugifyCategoryName, slugifyCourseTitle } from "./lib/courseSlugs.js";
 
 const require = createRequire(import.meta.url);
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -16,14 +17,14 @@ function generateDynamicPaths() {
   const paths = [];
 
   Object.entries(coursesData).forEach(([categoryName, category]) => {
-    const categorySlug = categoryName.toLowerCase().replace(/\s+/g, "-");
+    const categorySlug = slugifyCategoryName(categoryName);
 
     // Category page
     paths.push(`${baseUrl}/courses/${categorySlug}`);
 
     // Course pages
     category.courses.forEach((course) => {
-      const courseSlug = course.title.toLowerCase().replace(/\s+/g, "-");
+      const courseSlug = slugifyCourseTitle(course.title);
       paths.push(`${baseUrl}/courses/${categorySlug}/${courseSlug}`);
     });
   });

@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import { getGmailTransporter, getGmailSender } from '@/lib/mailer/gmailTransporter';
 import { sendExternalEnrollment, extractMobileNumber } from '@/lib/api/externalEnrollment';
+import { resolveCrmCourseNameAsync } from '@/lib/api/resolveCrmCourse';
+import { isZenCourseId } from '@/lib/api/externalCourses';
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -19,7 +21,14 @@ export async function POST(req) {
     const phone   = toText(body?.phone || body?.mobile || body?.mobileNumber || body?.phoneNumber, '');
     const message = toText(body?.message, 'No message provided');
     const interest = toText(body?.interest, 'Not specified');
-    const selectedCourse = toText(body?.selectedCourse, '');
+    let selectedCourse = toText(body?.selectedCourse, '');
+    let course_id = toText(body?.course_id || body?.courseId, '');
+
+    if (!course_id && isZenCourseId(selectedCourse)) {
+      course_id = selectedCourse;
+      selectedCourse = '';
+    }
+
     const convenientTime = toText(body?.convenientTime, 'Not specified');
 
     if (!name)  return NextResponse.json({ success: false, message: 'Name is required.' }, { status: 400 });
@@ -181,14 +190,18 @@ export async function POST(req) {
     });
 
     const crmPromise = interest === 'Course Enquiry'
-      ? sendExternalEnrollment({
-          name,
-          mobile_number: extractMobileNumber(phone),
-          email,
-          course: selectedCourse || interest,
-          requirements: `Convenient Time: ${convenientTime}`,
-          card_type: 'Training Only',
-        })
+      ? (async () => {
+          const crmCourse = await resolveCrmCourseNameAsync(selectedCourse, course_id);
+          return sendExternalEnrollment({
+            name,
+            mobile_number: extractMobileNumber(phone),
+            email,
+            course: crmCourse,
+            course_id: course_id || undefined,
+            requirements: `Convenient Time: ${convenientTime}`,
+            card_type: 'Training Only',
+          });
+        })()
       : Promise.resolve({ ok: true, skipped: true });
 
     const [emailResult, crmResult] = await Promise.allSettled([emailPromise, crmPromise]);

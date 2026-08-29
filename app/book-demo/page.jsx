@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useEffect, Suspense } from "react";
+import React, { useState, useEffect, Suspense, useRef } from "react";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { goToThankYou } from "@/lib/navigation/goToThankYou";
@@ -13,20 +13,29 @@ import { Honeypot } from "@/app/components/common/Honeypot";
 import { useEnquiryForm } from "@/app/hooks/useEnquiryForm";
 import { bookDemoSchema } from "@/app/schemas/enquirySchema";
 import { Controller } from "react-hook-form";
-import { normalizeCourses } from "@/lib/api/externalCourses";
+import { normalizeCourses, matchZenCourseFromUrl, resolveZenCourseSelection, zenCourseSelectOptions, isZenCourseId } from "@/lib/api/externalCourses";
 
 const BookDemoContent = () => {
   const searchParams = useSearchParams();
   const courseFromUrl = searchParams.get('course');
+  const [courseOptions, setCourseOptions] = useState([]);
+  const [coursesReady, setCoursesReady] = useState(false);
+  const courseOptionsRef = useRef([]);
+
+  useEffect(() => {
+    courseOptionsRef.current = courseOptions;
+  }, [courseOptions]);
 
   const {
     register,
     control,
     submitHandler,
     isSubmitting,
+    setValue,
     formState: { errors }
   } = useEnquiryForm({
     schema: bookDemoSchema,
+    shouldUnregister: false,
     defaultValues: {
       name: "",
       email: "",
@@ -38,12 +47,15 @@ const BookDemoContent = () => {
     },
     onSubmitCallback: async (data, reset) => {
       const scriptURL = "https://script.google.com/macros/s/AKfycbyqhIsaZZb1mvkcRtxrquaDboujLLpts-q5s1ed1JIRiuzt5l76OHeFxuTZPzRWxqh_/exec";
+      const enrollment = resolveZenCourseSelection(data.course, courseOptionsRef.current);
+      const courseId = enrollment.course_id
+        || (isZenCourseId(data.course) ? data.course : "");
 
       const payload = {
         name: data.name.trim(),
         phone: data.phone,
         email: data.email.trim(),
-        course: data.course,
+        course: enrollment.course_name,
         message: `[DEMO REQUEST] Date: ${data.preferredDate}, Time: ${data.preferredTime}.`,
       };
 
@@ -63,7 +75,8 @@ const BookDemoContent = () => {
           name: data.name.trim(),
           email: data.email.trim(),
           phone: data.phone,
-          course: data.course,
+          course: enrollment.course_name || data.course,
+          ...(courseId ? { course_id: courseId } : {}),
           mode: "Not specified",
           pin: "N/A",
           message: `[DEMO REQUEST] Date: ${data.preferredDate}, Time: ${data.preferredTime}.`,
@@ -89,9 +102,6 @@ const BookDemoContent = () => {
     }
   });
 
-  const [courseOptions, setCourseOptions] = useState(["Loading courses..."]);
-
-  // Fetch courses dynamically
   useEffect(() => {
     const fetchCourses = async () => {
       try {
@@ -99,14 +109,21 @@ const BookDemoContent = () => {
         const data = await res.json();
         const mappedCourses = normalizeCourses(data);
         if (mappedCourses.length > 0) {
-          setCourseOptions(mappedCourses.map((c) => c.course_name));
+          setCourseOptions(mappedCourses);
         }
       } catch (err) {
         console.error("Failed to fetch courses:", err);
+      } finally {
+        setCoursesReady(true);
       }
     };
     fetchCourses();
   }, []);
+
+  useEffect(() => {
+    if (!courseFromUrl || !courseOptions.length) return;
+    setValue("course", matchZenCourseFromUrl(courseFromUrl, courseOptions));
+  }, [courseFromUrl, courseOptions, setValue]);
 
   const timeOptions = [
     "Morning (10 AM - 1 PM)",
@@ -175,10 +192,10 @@ const BookDemoContent = () => {
                   <FormSelect
                     label="Select Course"
                     {...register("course")}
-                    placeholder="Choose Course"
-                    options={courseOptions}
+                    placeholder={coursesReady ? "Choose Course" : "Loading courses..."}
+                    options={zenCourseSelectOptions(courseOptions)}
                     error={errors.course?.message}
-                    disabled={isSubmitting}
+                    disabled={isSubmitting || !coursesReady}
                   />
                 </div>
 

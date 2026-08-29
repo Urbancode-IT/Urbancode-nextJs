@@ -3,6 +3,7 @@
 import React from "react";
 import { FaChild, FaUserGraduate, FaChalkboardTeacher, FaGamepad, FaLanguage, FaPuzzlePiece, FaLightbulb, FaCertificate } from "react-icons/fa";
 import coursesData from "../coursesData";
+import { findCategoryEntry, findCourseBySlug } from "@/lib/courseSlugs";
 import './styles.css';
 import { newCourseData } from "@/app/data/newCourseData";
 import NewInternalCourse from "@/app/components/CourseLayout/NewInternalCourse";
@@ -278,15 +279,12 @@ const getToolsForCourse = (title) => {
 export default function SingleCoursepage({ params }) {
   const { categorySlug, courseSlug } = params;
 
-  const category = Object.entries(coursesData).find(
-    ([key]) => key.toLowerCase().replace(/\s+/g, "-") === categorySlug
-  )?.[1];
+  const categoryEntry = findCategoryEntry(coursesData, categorySlug);
+  const category = categoryEntry?.[1];
 
   if (!category) return <div>Category not found</div>;
 
-  const course = category.courses.find(
-    (c) => c && c.title && c.title.toLowerCase().replace(/\s+/g, "-") === courseSlug
-  );
+  const course = findCourseBySlug(category, courseSlug);
 
   if (!course) return <div>Course not found</div>;
 

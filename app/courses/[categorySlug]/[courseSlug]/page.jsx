@@ -2,16 +2,22 @@
 import coursesData from "../coursesData";
 import SingleCoursepage from "./SingleCoursepage";
 import { redirect } from "next/navigation";
+import {
+  slugifyCategoryName,
+  slugifyCourseTitle,
+  findCategoryEntry,
+  findCourseBySlug,
+  LEGACY_COURSE_SLUG_REDIRECTS,
+} from "@/lib/courseSlugs";
 
 // Pre-generate all static paths
 export async function generateStaticParams() {
   const params = [];
 
   Object.entries(coursesData).forEach(([categoryName, category]) => {
-    const categorySlug = categoryName.toLowerCase().replace(/\s+/g, "-");
+    const categorySlug = slugifyCategoryName(categoryName);
     category.courses.forEach((course) => {
-      const courseSlug = course.title.toLowerCase().replace(/\s+/g, "-");
-      params.push({ categorySlug, courseSlug });
+      params.push({ categorySlug, courseSlug: slugifyCourseTitle(course.title) });
     });
   });
 
@@ -22,11 +28,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }) {
   const { categorySlug, courseSlug } = await params;
 
-  // Find category and course
-  const categoryEntry = Object.entries(coursesData).find(
-    ([categoryName]) =>
-      categoryName.toLowerCase().replace(/\s+/g, "-") === categorySlug
-  );
+  const categoryEntry = findCategoryEntry(coursesData, categorySlug);
 
   if (!categoryEntry) {
     return {
@@ -36,9 +38,7 @@ export async function generateMetadata({ params }) {
   }
 
   const [categoryName, categoryData] = categoryEntry;
-  const course = categoryData.courses.find(
-    (c) => c.title.toLowerCase().replace(/\s+/g, "-") === courseSlug
-  );
+  const course = findCourseBySlug(categoryData, courseSlug);
 
   if (!course) {
     return {
@@ -56,6 +56,8 @@ export async function generateMetadata({ params }) {
     ? `https://www.urbancode.in${course.image}`
     : `https://www.urbancode.in/images/home/og-image.jpg`;
 
+  const canonicalSlug = slugifyCourseTitle(course.title);
+
   return {
     title,
     description,
@@ -70,7 +72,7 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title,
       description,
-      url: `https://www.urbancode.in/courses/${categorySlug}/${courseSlug}`,
+      url: `https://www.urbancode.in/courses/${categorySlug}/${canonicalSlug}`,
       siteName: "Urbancode Edutech",
       images: [
         {
@@ -84,7 +86,7 @@ export async function generateMetadata({ params }) {
       locale: "en_IN",
     },
     alternates: {
-      canonical: `https://www.urbancode.in/courses/${categorySlug}/${courseSlug}`,
+      canonical: `https://www.urbancode.in/courses/${categorySlug}/${canonicalSlug}`,
     },
   };
 }
@@ -93,6 +95,10 @@ export default async function Coursepage({ params }) {
   const { categorySlug, courseSlug } = await params;
   if (courseSlug === "mern-stack") {
     redirect("/courses/fullstack-development/ai-powered-fullstack");
+  }
+  const legacyTarget = LEGACY_COURSE_SLUG_REDIRECTS[courseSlug];
+  if (legacyTarget) {
+    redirect(`/courses/${categorySlug}/${legacyTarget}`);
   }
   return <SingleCoursepage params={{ categorySlug, courseSlug }} />;
 }
