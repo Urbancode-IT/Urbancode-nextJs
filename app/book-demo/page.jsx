@@ -13,7 +13,8 @@ import { Honeypot } from "@/app/components/common/Honeypot";
 import { useEnquiryForm } from "@/app/hooks/useEnquiryForm";
 import { bookDemoSchema } from "@/app/schemas/enquirySchema";
 import { Controller } from "react-hook-form";
-import { normalizeCourses, matchZenCourseFromUrl, resolveZenCourseSelection, zenCourseSelectOptions, isZenCourseId } from "@/lib/api/externalCourses";
+import { matchZenCourseFromUrl, resolveZenCourseSelection, zenCourseSelectOptions, isZenCourseId } from "@/lib/api/externalCourses";
+import { fetchClientCourses } from "@/lib/api/fetchClientCourses";
 
 const BookDemoContent = () => {
   const searchParams = useSearchParams();
@@ -105,9 +106,7 @@ const BookDemoContent = () => {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const res = await fetch('/api/courses', { cache: 'no-store' });
-        const data = await res.json();
-        const mappedCourses = normalizeCourses(data);
+        const mappedCourses = await fetchClientCourses();
         if (mappedCourses.length > 0) {
           setCourseOptions(mappedCourses);
         }

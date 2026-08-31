@@ -2,13 +2,16 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import Image from 'next/image';
 import EnquiryFormModal from './EnquiryFormModal';
+import FlightTransition from '../animations/FlightTransition';
 import { useRouter } from 'next/navigation';
+import { isStudyAbroadLink, useStudyAbroadFlight } from '@/app/hooks/useStudyAbroadFlight';
 import './BannerSlider.css';
 
 const BannerSlider = ({ banners = [], forceEnquiry = false }) => {
     const [current, setCurrent] = useState(0);
     const [showEnquiry, setShowEnquiry] = useState(false);
     const [selectedBanner, setSelectedBanner] = useState(null);
+    const { isFlying, navigateToStudyAbroad } = useStudyAbroadFlight();
     const timerRef = useRef(null);
     const router = useRouter();
 
@@ -48,6 +51,10 @@ const BannerSlider = ({ banners = [], forceEnquiry = false }) => {
 
     const handleBannerClick = (banner) => {
         if (!forceEnquiry && banner.type === 'link' && banner.link) {
+            if (isStudyAbroadLink(banner.link)) {
+                navigateToStudyAbroad(banner.link);
+                return;
+            }
             router.push(banner.link);
             return;
         }
@@ -56,7 +63,9 @@ const BannerSlider = ({ banners = [], forceEnquiry = false }) => {
     };
 
     return (
-        <section className="banner-slider-section">
+        <>
+            <FlightTransition isAnimating={isFlying} />
+            <section className="banner-slider-section">
             <div className="banner-slider-container">
                 <div
                     className="banner-track"
@@ -109,6 +118,7 @@ const BannerSlider = ({ banners = [], forceEnquiry = false }) => {
                 />
             )}
         </section>
+        </>
     );
 };
 

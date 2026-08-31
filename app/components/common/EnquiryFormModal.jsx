@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Swal from 'sweetalert2';
 import { submitEnquiryForm } from "@/lib/api/api";
 import { courseOptionLabel, normalizeCourses } from "@/lib/api/externalCourses";
+import { fetchClientCourses } from "@/lib/api/fetchClientCourses";
 import { resolveCrmCourseName } from "@/lib/api/resolveCrmCourse";
 import { getKidsCourseLabel, getKidsCrmCourse } from "@/lib/data/kidsCourses";
 import "./EnquiryForm.css";
@@ -51,9 +52,7 @@ const EnquiryFormModal = ({
 
     const fetchCourses = async () => {
       try {
-        const res = await fetch('/api/courses', { cache: 'no-store' });
-        const data = await res.json();
-        const mappedCourses = normalizeCourses(data);
+        const mappedCourses = await fetchClientCourses();
         if (mappedCourses.length > 0) {
           setDynamicCourseOptions(mappedCourses);
         }

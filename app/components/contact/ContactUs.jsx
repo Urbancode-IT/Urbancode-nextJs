@@ -17,10 +17,10 @@ import { Controller } from "react-hook-form";
 import {
   courseOptionLabel,
   matchZenCourseFromUrl,
-  normalizeCourses,
   resolveZenCourseSelection,
   isZenCourseId,
 } from "@/lib/api/externalCourses";
+import { fetchClientCourses } from "@/lib/api/fetchClientCourses";
 
 const ContactUs = ({ redirectUrl = '/thankyou' }) => {
   const searchParams = useSearchParams();
@@ -48,9 +48,7 @@ const ContactUs = ({ redirectUrl = '/thankyou' }) => {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const res = await fetch('/api/courses', { cache: 'no-store' });
-        const data = await res.json();
-        const mappedCourses = normalizeCourses(data);
+        const mappedCourses = await fetchClientCourses();
         if (mappedCourses.length > 0) {
           setCourseOptions(mappedCourses);
         }

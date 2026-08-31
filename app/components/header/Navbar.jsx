@@ -12,11 +12,12 @@ import { FaPlane } from 'react-icons/fa';
 import FlightTransition from '../animations/FlightTransition';
 import BookDemoWidget from '../BookDemoWidget';
 import OneOnOneWidget from '../OneOnOneWidget';
+import { useStudyAbroadFlight } from '@/app/hooks/useStudyAbroadFlight';
 
 const ChatbotWidget = dynamic(() => import('../ChatbotWidget'), { ssr: false });
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isFlying, setIsFlying] = useState(false);
+  const { isFlying, navigateToStudyAbroad } = useStudyAbroadFlight();
   const pathname = usePathname();
   const router = useRouter();
 
@@ -26,21 +27,8 @@ export default function Navbar() {
 
   const handleStudyAbroadClick = (e) => {
     e.preventDefault();
-    console.log("✈ Pilot Initiating 3-Second Snappy Travel Flight...");
-    setIsFlying(true);
-    
-    // Snappy delay for the 3-second journey
-    setTimeout(() => {
-      console.log("✈ Destination reached!");
-      router.push('/study-abroad');
-      
-      // Reset flight state in case the pathname effect misses it (e.g., if already on the page)
-      setTimeout(() => {
-        setIsFlying(false);
-      }, 500);
-
-      setIsOpen(false);
-    }, 3000); 
+    navigateToStudyAbroad('/study-abroad');
+    setIsOpen(false);
   };
 
   const handleKidsSpaceClick = (e) => {
@@ -58,14 +46,8 @@ export default function Navbar() {
     };
 
     window.addEventListener('scroll', handleScroll);
-    
-    // Reset flight state when we reach the page
-    if (pathname === '/study-abroad') {
-      setIsFlying(false);
-    }
-
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [pathname]);
+  }, []);
 
   const isFeedbackPage = pathname.startsWith('/feedback');
 

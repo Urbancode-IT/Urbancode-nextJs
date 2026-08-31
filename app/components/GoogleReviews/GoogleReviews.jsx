@@ -325,7 +325,8 @@ const GoogleReviews = () => {
         const fetchReviews = async () => {
             try {
                 const response = await fetch('/api/google-reviews');
-                if (!response.ok) {
+                const contentType = response.headers.get('content-type') || '';
+                if (!response.ok || !contentType.includes('application/json')) {
                     throw new Error('Failed to fetch reviews');
                 }
                 const data = await response.json();

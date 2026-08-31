@@ -12,7 +12,8 @@ import { Honeypot } from "@/app/components/common/Honeypot";
 import { useEnquiryForm } from "@/app/hooks/useEnquiryForm";
 import { enquiryFormSchema } from "@/app/schemas/enquirySchema";
 import { Controller } from "react-hook-form";
-import { normalizeCourses, courseOptionLabel, matchZenCourseFromUrl, resolveZenCourseSelection, isZenCourseId } from "@/lib/api/externalCourses";
+import { courseOptionLabel, matchZenCourseFromUrl, resolveZenCourseSelection, isZenCourseId } from "@/lib/api/externalCourses";
+import { fetchClientCourses } from "@/lib/api/fetchClientCourses";
 
 const TIME_SLOTS = [
   "09:00 AM - 12:00 PM",
@@ -37,9 +38,7 @@ const EnquiryFormContent = () => {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const res = await fetch('/api/courses', { cache: 'no-store' });
-        const data = await res.json();
-        const mappedCourses = normalizeCourses(data);
+        const mappedCourses = await fetchClientCourses();
         if (mappedCourses.length > 0) {
           setCourseOptions(mappedCourses);
         }
