@@ -109,7 +109,7 @@ export default function HomePage() {
       ]
     },
     {
-      src: "/images/home/studyabroad.webp",
+      src: "/images/home/study-abroad-2027.webp",
       alt: "Study Abroad",
       type: "link",
       link: "/study-abroad"
