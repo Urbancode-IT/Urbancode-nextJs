@@ -433,6 +433,7 @@ function HubMedia({ group, mediaHeight }) {
   const src = group.hubImage;
   const isExternal = src.startsWith('http');
   const useContain = group.hubType === 'training' && src.endsWith('.png');
+  const alt = group.hubTitle || group.hubTag || 'Program preview';
 
   return (
     <div className={`prof-card-media prof-card-media--${group.hubType}`}>
@@ -441,11 +442,11 @@ function HubMedia({ group, mediaHeight }) {
         style={{ height: mediaHeight }}
       >
         {isExternal ? (
-          <img src={src} alt={group.title} className="prof-card-image" loading="lazy" decoding="async" />
+          <img src={src} alt={alt} className="prof-card-image" loading="lazy" decoding="async" />
         ) : (
           <Image
             src={src}
-            alt={group.title}
+            alt={alt}
             className={`prof-card-image ${useContain ? 'prof-card-image--contain' : ''}`}
             width={288}
             height={mediaHeight}

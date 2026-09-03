@@ -5,7 +5,7 @@ export const videoData = [
     { 
         id: 4, 
         src: "/videos/testimonial2.mp4", 
-        poster: "/images/home/test1.png",
+        poster: "/images/home/test1.webp",
         title: "Skills Transformation",
         alumnusName: "Sarah J. Roberts",
         company: "TechNova Solutions",
@@ -14,7 +14,7 @@ export const videoData = [
      { 
         id: 2, 
         src: "/videos/kids-testimonial-video1.mp4", 
-        poster: "/images/home/test4.png",
+        poster: "/images/home/test4.webp",
         title: "Future Tech Leader",
         alumnusName: "Emily Chen",
         company: "Innovate Partners",
@@ -23,7 +23,7 @@ export const videoData = [
     { 
         id: 1, 
         src: "/videos/testimonial3.mp4", 
-        poster: "/images/home/test3.png",
+        poster: "/images/home/test3.webp",
         title: "Placement Success",
         alumnusName: "Alex Thompson",
         company: "CreativeCraft Inc.",
@@ -32,7 +32,7 @@ export const videoData = [
     { 
         id: 3, 
         src: "/videos/testimonial1.mp4", 
-        poster: "/images/home/test2.png",
+        poster: "/images/home/test2.webp",
         title: "Future Tech Leader",
         alumnusName: "Emily Chen",
         company: "Innovate Partners",

@@ -6,6 +6,7 @@ import '../components/Home/homePlayButton.css';
 import '../components/Home/homeVideoCarousel.css';
 
 const VIDEO_SRC = '/videos/kids-testimonial-video1.mp4';
+const VIDEO_POSTER = '/images/home/test4.webp';
 const POPUP_STORAGE_KEY = 'kids-testimonial-popup-v2-dismissed';
 const POPUP_DELAY_MIN_MS = 3000;
 const POPUP_DELAY_MAX_MS = 5000;
@@ -61,6 +62,7 @@ function KidsTestimonialVideoPlayer({ shellClassName = '' }) {
         ref={videoRef}
         className="home-testimonial-video"
         src={VIDEO_SRC}
+        poster={VIDEO_POSTER}
         playsInline
         preload="metadata"
         controls={isPlaying}
