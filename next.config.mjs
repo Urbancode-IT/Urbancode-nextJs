@@ -1,6 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
 
+  outputFileTracingExcludes: {
+    '/api/send-email/send-curriculum': ['./public/**/*'],
+  },
+
   // output: 'export', // 👈 this replaces `next export`
 
   images: {

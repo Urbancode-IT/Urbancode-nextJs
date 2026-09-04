@@ -1,6 +1,4 @@
 import { NextResponse } from 'next/server';
-import fs from 'fs';
-import path from 'path';
 import { getGmailTransporter, getGmailSender } from '@/lib/mailer/gmailTransporter';
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -10,28 +8,6 @@ const toText = (value, fallback = '') => {
   const text = String(value).trim();
   return text || fallback;
 };
-
-function loadBrochureAttachment(brochureUrl, reqUrl) {
-  const cleanUrl = toText(brochureUrl, '').split('?')[0];
-  if (!cleanUrl || cleanUrl.endsWith('.jpg') || cleanUrl.endsWith('.png')) {
-    return null;
-  }
-
-  // Prefer reading from /public — more reliable than HTTP self-fetch in local/dev.
-  if (cleanUrl.startsWith('/')) {
-    const relative = cleanUrl.replace(/^\/+/, '');
-    const filePath = path.join(process.cwd(), 'public', relative);
-    if (fs.existsSync(filePath)) {
-      return {
-        filename: path.basename(filePath),
-        content: fs.readFileSync(filePath),
-        contentType: 'application/pdf',
-      };
-    }
-  }
-
-  return null;
-}
 
 export async function POST(req) {
   try {
@@ -57,7 +33,7 @@ export async function POST(req) {
     let fileFound = false;
     let pdfFileName = '';
 
-    let attachment = loadBrochureAttachment(brochureUrl, req.url);
+    let attachment = null;
 
     // Fallback: HTTP fetch when file is not on local disk (e.g. remote CDN URL)
     if (!attachment && brochureUrl && !brochureUrl.endsWith('.jpg') && !brochureUrl.endsWith('.png')) {
