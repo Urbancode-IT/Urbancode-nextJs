@@ -3,9 +3,9 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import './NewHeroSection.css';
 import EnquiryFormModal from '../common/EnquiryFormModal';
-
 import FlightTransition from '../animations/FlightTransition';
 
 const HeroTop = ({ onEnrollClick, onStudyAbroadClick }) => {
@@ -50,11 +50,20 @@ Explore AI-powered courses with placement guarantee and overseas education consu
 
 const cardsData = [
   {
+    level: 'ADVANCED',
+    title: 'AI Software Engineering(6 Months)',
+    desc: 'Fullstack web + React Native — React, Node.js, MongoDB, and AWS in 6 months.',
+    duration: '6 Months • Fullstack + Mobile',
+    gradient: 'linear-gradient(129.99deg, #001D3A -3.08%, #035CB7 119.93%)',
+    link: '/courses/fullstack-development/ai-software-engineering',
+    isNew: true,
+  },
+  {
     level: 'BEGINNER',
     title: 'AI Powered Fullstack',
     desc: 'Master HTML, CSS and React alongside AI tools to build interactive web applications',
     duration: '12 Weeks • React + AI',
-    gradient: 'linear-gradient(129.99deg, #7A1FCD -3.08%, #CA90FF 119.93%)',
+    gradient: 'linear-gradient(129.99deg, #5B21B6 -3.08%, #A78BFA 119.93%)',
     link: '/courses/fullstack-development/ai-powered-fullstack'
   },
   {
@@ -99,8 +108,6 @@ const cardsData = [
   }
 ];
 
-import Link from 'next/link';
-
 const HeroBottom = ({
   carouselRef,
   carouselWrapperRef,
@@ -143,9 +150,18 @@ const HeroBottom = ({
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
-          {cardsData.map((card, index) => (
-            <Link href={card.link} key={index} className="hero-card" style={{ background: card.gradient, textDecoration: 'none' }} aria-label={`View ${card.title} course`}>
-              <span className="hero-card-level">{card.level}</span>
+          {cardsData.map((card) => (
+            <Link
+              href={card.link}
+              key={card.link}
+              className={`hero-card${card.isNew ? ' hero-card--fresh' : ''}`}
+              style={{ '--hero-card-gradient': card.gradient }}
+              aria-label={`View ${card.title} course`}
+            >
+              <span className="hero-card-level">
+                {card.isNew ? <span className="hero-card-live-dot" aria-hidden="true" /> : null}
+                {card.level}
+              </span>
               <div className="hero-card-glass">
                 <h3 className="hero-card-title course-name-shine-light">{card.title}</h3>
                 <p className="hero-card-desc">{card.desc}</p>

@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server';
 import { getGmailTransporter, getGmailSender } from '@/lib/mailer/gmailTransporter';
 import { sendExternalEnrollment, extractMobileNumber } from '@/lib/api/externalEnrollment';
-import { resolveCrmCourseNameAsync } from '@/lib/api/resolveCrmCourse';
 import { isZenCourseId } from '@/lib/api/externalCourses';
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -199,21 +198,24 @@ export async function POST(req) {
       html: htmlContent,
     });
 
+    const websiteCourse = course;
     const requirements = [
+      websiteCourse && websiteCourse !== 'Course Enquiry' && websiteCourse !== 'N/A'
+        ? `Website course: ${websiteCourse}`
+        : '',
       source_page && source_page !== 'N/A' ? `Source: ${source_page}` : '',
       mode && mode !== 'Not specified' ? `Mode: ${mode}` : '',
       pin && pin !== 'N/A' ? `PIN: ${pin}` : '',
       message && message !== 'No message provided' ? message : '',
     ].filter(Boolean).join(' | ');
 
-    const crmCourse = await resolveCrmCourseNameAsync(course, course_id);
-
     // Await CRM so Next.js does not kill the request when the response is sent
+    // Pass the original website course name — sendExternalEnrollment maps it to a Zen course.
     const crmPromise = sendExternalEnrollment({
       name,
       mobile_number: extractMobileNumber(phone),
       email,
-      course: crmCourse,
+      course: websiteCourse,
       course_id: course_id || undefined,
       requirements,
       card_type,

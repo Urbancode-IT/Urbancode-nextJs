@@ -132,6 +132,21 @@ const NewInternalCourse = ({ data }) => {
                         )}
                         <h1 className="nict-hero-title">
                             {(() => {
+                                const lines = heroData.titleLines;
+                                if (Array.isArray(lines) && lines.length > 0) {
+                                    return lines.map((line, index) => {
+                                        const isLast = index === lines.length - 1;
+                                        return (
+                                            <span
+                                                key={index}
+                                                className={`nict-hero-title-line ${isLast ? "nict-hero-title-shine" : "nict-hero-title-plain"}`}
+                                            >
+                                                {line}
+                                            </span>
+                                        );
+                                    });
+                                }
+
                                 const title = heroData.highlightText || "";
                                 const words = title.split(" ");
                                 if (words.length <= 2) {

@@ -24,7 +24,7 @@ export async function generateStaticParams() {
   return params;
 }
 
-// ✅ Dynamic SEO for each course page
+// ✅ Dynamic SEO for each course
 export async function generateMetadata({ params }) {
   const { categorySlug, courseSlug } = await params;
 
@@ -47,13 +47,12 @@ export async function generateMetadata({ params }) {
     };
   }
 
-  // Course metadata
   const title = `${course.title} Course | Urbancode Edutech Chennai`;
   const description =
     course.shortDesc ||
     `${course.title} training course at Urbancode Edutech Chennai — learn ${categoryName} concepts through hands-on projects and expert mentorship.`;
-  const image = course.image
-    ? `https://www.urbancode.in${course.image}`
+  const image = course.img
+    ? `https://www.urbancode.in${course.img}`
     : `https://www.urbancode.in/images/home/og-image.jpg`;
 
   const canonicalSlug = slugifyCourseTitle(course.title);
@@ -100,5 +99,17 @@ export default async function Coursepage({ params }) {
   if (legacyTarget) {
     redirect(`/courses/${categorySlug}/${legacyTarget}`);
   }
-  return <SingleCoursepage params={{ categorySlug, courseSlug }} />;
+
+  const categoryEntry = findCategoryEntry(coursesData, categorySlug);
+  const category = categoryEntry?.[1] || null;
+  const course = category ? findCourseBySlug(category, courseSlug) : null;
+
+  // Pass a server-resolved course snapshot so SSR HTML and client hydration match
+  // (avoids client re-importing a stale webpack copy of coursesData during HMR).
+  return (
+    <SingleCoursepage
+      params={{ categorySlug, courseSlug }}
+      course={course}
+    />
+  );
 }

@@ -29,8 +29,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
-    padding: 50px 20px 0px;
+    overflow: visible;
+    padding: calc(var(--site-header-height, 72px) + 36px) 20px 0;
     height: auto !important;
 }
 
@@ -67,10 +67,32 @@
     font-size: 2.5rem;
     font-weight: 700;
     color: #1a2b3c;
-    line-height: 1.1;
+    line-height: 1.25;
     margin: 0;
+    padding-top: 0.12em;
     font-family: 'Inter', sans-serif;
     letter-spacing: -0.02em;
+    overflow: visible;
+}
+
+.nict-hero-title-line {
+    display: block;
+}
+
+.nict-hero-title-line.nict-hero-title-shine,
+.nict-hero-title-line.nict-hero-title-plain {
+    display: block;
+}
+
+/* Keep each forced title line on a single row on desktop. */
+@media (min-width: 1025px) {
+    .nict-hero-title-line {
+        white-space: nowrap;
+    }
+
+    .nict-hero-title:has(.nict-hero-title-line) {
+        font-size: clamp(2rem, 2.5vw, 2.55rem);
+    }
 }
 
 /* Plain (dark) portion of the course title */
@@ -263,7 +285,7 @@
 
 @media (max-width: 1024px) {
     .nict-courses-hero {
-        padding-top: 100px;
+        padding-top: calc(var(--site-header-height, 72px) + 40px);
         height: auto;
         min-height: 100vh;
     }

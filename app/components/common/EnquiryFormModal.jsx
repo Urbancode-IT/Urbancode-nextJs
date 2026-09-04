@@ -299,19 +299,21 @@ const EnquiryFormModal = ({
 
     if (isJoinMode) {
       const name = courseName || formData.course;
-      return { course: resolveCrmCourseName(name, selectCourseOptions), course_id: "" };
+      return { course: name, course_id: "" };
     }
 
+    // Zen dropdown selection — send exact CRM course_id + name
     const selected = getSelectedCourseOption();
-    if (selected?.course_name) {
+    if (selected?.course_id && useZenCourseIds) {
       return {
-        course: selected.course_name,
-        course_id: useZenCourseIds ? (selected.course_id || "") : "",
+        course: selected.course_name || formData.course,
+        course_id: selected.course_id,
       };
     }
 
+    // Preset / brochure / free-text — keep website title; server maps to Zen
     return {
-      course: resolveCrmCourseName(formData.course, selectCourseOptions),
+      course: formData.course || courseName || "",
       course_id: "",
     };
   };

@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server';
 import { getGmailTransporter, getGmailSender } from '@/lib/mailer/gmailTransporter';
 import { sendExternalEnrollment, extractMobileNumber } from '@/lib/api/externalEnrollment';
-import { resolveCrmCourseNameAsync } from '@/lib/api/resolveCrmCourse';
 import { isZenCourseId } from '@/lib/api/externalCourses';
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -190,18 +189,15 @@ export async function POST(req) {
     });
 
     const crmPromise = interest === 'Course Enquiry'
-      ? (async () => {
-          const crmCourse = await resolveCrmCourseNameAsync(selectedCourse, course_id);
-          return sendExternalEnrollment({
+      ? sendExternalEnrollment({
             name,
             mobile_number: extractMobileNumber(phone),
             email,
-            course: crmCourse,
+            course: selectedCourse,
             course_id: course_id || undefined,
             requirements: `Convenient Time: ${convenientTime}`,
             card_type: 'Training Only',
-          });
-        })()
+          })
       : Promise.resolve({ ok: true, skipped: true });
 
     const [emailResult, crmResult] = await Promise.allSettled([emailPromise, crmPromise]);

@@ -178,6 +178,23 @@ const getToolsForCourse = (title) => {
             { id: 9, name: "Github", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" }
         ];
     }
+    if (t.includes("ai software engineering")) {
+        return [
+            { id: 1, name: "HTML5", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" },
+            { id: 2, name: "CSS3", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" },
+            { id: 3, name: "Bootstrap", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" },
+            { id: 4, name: "JavaScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
+            { id: 5, name: "React", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+            { id: 6, name: "Node.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
+            { id: 7, name: "Express.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" },
+            { id: 8, name: "MongoDB", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" },
+            { id: 9, name: "JWT", icon: "https://api.iconify.design/simple-icons:jsonwebtokens.svg?color=%23000000" },
+            { id: 10, name: "Postman", icon: "https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg" },
+            { id: 11, name: "Swagger", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/swagger/swagger-original.svg" },
+            { id: 12, name: "AWS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" },
+            { id: 13, name: "React Native", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+        ];
+    }
     if (t.includes("ai powered fullstack")) {
         return [
             { id: 1, name: "HTML5", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" },
@@ -276,17 +293,24 @@ const getToolsForCourse = (title) => {
     return defaultTools;
 };
 
-export default function SingleCoursepage({ params }) {
+export default function SingleCoursepage({ params, course: courseProp = null }) {
   const { categorySlug, courseSlug } = params;
 
+  // Always prefer the server-provided course snapshot so SSR and client match.
+  // Only look up from coursesData when no prop was passed (legacy callers).
   const categoryEntry = findCategoryEntry(coursesData, categorySlug);
   const category = categoryEntry?.[1];
+  const course =
+    courseProp ??
+    (category ? findCourseBySlug(category, courseSlug) : null);
 
-  if (!category) return <div>Category not found</div>;
-
-  const course = findCourseBySlug(category, courseSlug);
-
-  if (!course) return <div>Course not found</div>;
+  if (!course) {
+    return (
+      <div style={{ padding: "100px", textAlign: "center" }}>
+        Course not found
+      </div>
+    );
+  }
 
   // Check if this course should use the directly mapped new layout data
   const newCourseKey = newCourseMapping[courseSlug];
@@ -337,7 +361,8 @@ export default function SingleCoursepage({ params }) {
   const transformedData = {
     heroData: {
       titleTop: "Advanced training in",
-      highlightText: course.title,
+      highlightText: course.pageTitle || course.title,
+      titleLines: course.pageTitleLines || null,
       subtitle: course.aboutData?.content1 || course.desc,
       rating: course.rating || 4.5,
       reviewCount: `${course.students || 500}+`,

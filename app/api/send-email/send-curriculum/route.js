@@ -1,4 +1,6 @@
 import { NextResponse } from 'next/server';
+import fs from 'fs';
+import path from 'path';
 import { getGmailTransporter, getGmailSender } from '@/lib/mailer/gmailTransporter';
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -8,6 +10,28 @@ const toText = (value, fallback = '') => {
   const text = String(value).trim();
   return text || fallback;
 };
+
+function loadBrochureAttachment(brochureUrl, reqUrl) {
+  const cleanUrl = toText(brochureUrl, '').split('?')[0];
+  if (!cleanUrl || cleanUrl.endsWith('.jpg') || cleanUrl.endsWith('.png')) {
+    return null;
+  }
+
+  // Prefer reading from /public — more reliable than HTTP self-fetch in local/dev.
+  if (cleanUrl.startsWith('/')) {
+    const relative = cleanUrl.replace(/^\/+/, '');
+    const filePath = path.join(process.cwd(), 'public', relative);
+    if (fs.existsSync(filePath)) {
+      return {
+        filename: path.basename(filePath),
+        content: fs.readFileSync(filePath),
+        contentType: 'application/pdf',
+      };
+    }
+  }
+
+  return null;
+}
 
 export async function POST(req) {
   try {
@@ -25,23 +49,6 @@ export async function POST(req) {
       return NextResponse.json({ success: false, message: 'Valid email is required.' }, { status: 400 });
     }
 
-    // --- Spam Validation ---
-    const localPart = email.split('@')[0];
-    const dotCount = (localPart.match(/\\./g) || []).length;
-    if (email.toLowerCase().endsWith('@gmail.com') && dotCount >= 3) {
-      return NextResponse.json({ success: false, message: 'Invalid email format.' }, { status: 400 });
-    }
-
-    if (name && !name.includes(' ') && name.length > 15) {
-      return NextResponse.json({ success: false, message: 'Please provide a valid full name.' }, { status: 400 });
-    }
-    
-    const consonantMashRegex = /[bcdfghjklmnpqrstvwxzBCDFGHJKLMNPQRSTVWXZ]{7,}/;
-    if (name && consonantMashRegex.test(name)) {
-      return NextResponse.json({ success: false, message: 'Invalid input detected.' }, { status: 400 });
-    }
-    // -----------------------
-
     const sender = getGmailSender();
     const transporter = getGmailTransporter();
 
@@ -50,7 +57,10 @@ export async function POST(req) {
     let fileFound = false;
     let pdfFileName = '';
 
-    if (brochureUrl && !brochureUrl.endsWith('.jpg') && !brochureUrl.endsWith('.png')) {
+    let attachment = loadBrochureAttachment(brochureUrl, req.url);
+
+    // Fallback: HTTP fetch when file is not on local disk (e.g. remote CDN URL)
+    if (!attachment && brochureUrl && !brochureUrl.endsWith('.jpg') && !brochureUrl.endsWith('.png')) {
       try {
         const origin = new URL(req.url).origin;
         const fullUrl = brochureUrl.startsWith('http')
@@ -60,20 +70,29 @@ export async function POST(req) {
         const response = await fetch(fullUrl);
         if (response.ok) {
           const arrayBuffer = await response.arrayBuffer();
-          const buffer = Buffer.from(arrayBuffer);
-          fileFound = true;
-          pdfFileName = brochureUrl.split('/').pop() || 'curriculum.pdf';
-          attachments.push({
-            filename: pdfFileName,
-            content: buffer,
+          attachment = {
+            filename: brochureUrl.split('/').pop() || 'curriculum.pdf',
+            content: Buffer.from(arrayBuffer),
             contentType: 'application/pdf',
-          });
+          };
         } else {
           console.warn(`Brochure URL returned status: ${response.status}`);
         }
       } catch (fetchErr) {
         console.error('Failed to fetch brochure attachment:', fetchErr);
       }
+    }
+
+    if (attachment) {
+      fileFound = true;
+      pdfFileName = attachment.filename;
+      attachments.push(attachment);
+    } else if (brochureUrl && !brochureUrl.endsWith('.jpg') && !brochureUrl.endsWith('.png')) {
+      console.error(`[send-curriculum] Brochure PDF missing for: ${brochureUrl}`);
+      return NextResponse.json(
+        { success: false, message: 'Curriculum PDF could not be found. Please try again or contact support.' },
+        { status: 500 }
+      );
     }
 
     // Short & sweet html message to attract them to enroll

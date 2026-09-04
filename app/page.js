@@ -195,9 +195,11 @@ export default function HomePage() {
         <TrendingCourses />
       </section>
  
-{/* <section id="proficiency-training" className="home-section"> 
-  <ProficiencyTrainingSection /> 
-</section> */}
+ {/*
+<section id="proficiency-training" className="home-section">
+  <ProficiencyTrainingSection />
+</section>
+*/}
 
 
       <section className="home-section">
