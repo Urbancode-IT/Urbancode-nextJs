@@ -8,7 +8,11 @@ export const STUDY_ABROAD_FLIGHT_MS = 3000;
 const FLIGHT_RESET_MS = 500;
 
 export function isStudyAbroadLink(link = '') {
-  return link === '/study-abroad' || link.startsWith('/study-abroad/');
+  return (
+    link === '/study-abroad' ||
+    link.startsWith('/study-abroad/') ||
+    link.startsWith('/study-abroad#')
+  );
 }
 
 export function useStudyAbroadFlight() {

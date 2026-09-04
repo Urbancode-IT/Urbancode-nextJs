@@ -490,6 +490,32 @@ const StudyAbroadPage = () => {
     const [activeProficiency, setActiveProficiency] = useState("IELTS");
     const [activeShowcase, setActiveShowcase] = useState("Australia");
 
+    // Deep-link from homepage IELTS banner (and similar): /study-abroad#english-proficiency
+    useEffect(() => {
+        if (typeof window === 'undefined') return;
+        const hash = window.location.hash?.replace('#', '');
+        if (!hash) return;
+
+        const scrollToHash = () => {
+            const el = document.getElementById(hash);
+            if (!el) return false;
+            if (hash === 'english-proficiency') {
+                setActiveProficiency('IELTS');
+            }
+            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            return true;
+        };
+
+        if (scrollToHash()) return;
+
+        const t1 = setTimeout(scrollToHash, 100);
+        const t2 = setTimeout(scrollToHash, 600);
+        return () => {
+            clearTimeout(t1);
+            clearTimeout(t2);
+        };
+    }, []);
+
     // Mobile "view all" toggles — each card section shows 3 cards on mobile until expanded
     const [showAllServices, setShowAllServices] = useState(false);
     const [showAllDestinations, setShowAllDestinations] = useState(false);

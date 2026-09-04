@@ -1045,146 +1045,18 @@ const coursesData = {
           "Certification Program (6\u00A0Months)",
         ],
         isNew: true,
-        curriculumUrls: ["/curriculum/AISoftwareEngineering.pdf"],
         desc: "Become a job-ready AI Software Engineer. Master frontend, backend, MongoDB, JWT auth, payments, AWS deployment, and React Native mobile apps across a structured 6-month fullstack program.",
         rating: 4.9,
         duration: "6 months",
         students: "18",
         img: "/images/courses/new/AisoftwareEngineering.webp",
         aboutData: {
-          topic: "AI Software Engineering Curriculum",
+          topic: "About AI Software Engineering",
           content1:
             "Build end-to-end software products from HTML, CSS, and JavaScript foundations through React, Node.js/Express APIs, MongoDB, authentication, payment gateways, AWS deployment, and React Native mobile apps.",
           content2:
             "This 6-month professional program includes weekend mini projects every phase, live REST API development, Stripe and Razorpay integration, cloud deployment on EC2 and S3, and final system-architecture preparation for real-world engineering roles.",
         },
-        courseContentData: [
-          {
-            id: 1,
-            title: "Phase 1: Frontend Fundamentals — HTML",
-            icon: "bi bi-filetype-html",
-            defaultOpen: true,
-            items: [
-              "Week 1 — Day 1–3: Internet, web architecture, HTML overview, structure, tags, attributes, headings, paragraphs, lists, and links",
-              "Week 2 — Day 4–8: Images, tables, forms & input types, form validation, semantic HTML, and HTML revision",
-              "Weekend Mini Project 1: HTML Personal Profile Website",
-            ],
-          },
-          {
-            id: 2,
-            title: "CSS & Responsive Design",
-            icon: "bi bi-filetype-css",
-            items: [
-              "Week 3 — Day 9–13: CSS introduction, selectors, box model, fonts, colors, units, positioning, and Flexbox",
-              "Week 4 — Day 14–18: CSS Grid, responsive design, media queries, CSS best practices, and consolidation",
-              "Weekend Mini Project 2: Responsive Portfolio Website (HTML + CSS)",
-            ],
-          },
-          {
-            id: 3,
-            title: "Bootstrap",
-            icon: "bi bi-bootstrap",
-            items: [
-              "Week 5 — Day 19–23: Bootstrap setup & grid, components, forms & utilities, layouts, and revision",
-              "Weekend Mini Project 3: Bootstrap Business Landing Page",
-            ],
-          },
-          {
-            id: 4,
-            title: "JavaScript Basics",
-            icon: "bi bi-filetype-js",
-            items: [
-              "Week 6 — Day 24–28: Variables, data types, operators & conditions, loops, functions, scope & execution context",
-              "Week 7 — Day 29–33: Arrays, objects, DOM manipulation, events, and JavaScript recap",
-              "Weekend Mini Project 4: JavaScript To-Do Application",
-            ],
-          },
-          {
-            id: 5,
-            title: "Advanced JavaScript",
-            icon: "bi bi-braces",
-            items: [
-              "Week 8 — Day 34–38: ES6 features, arrow functions, destructuring, array & object methods, Promises, and Async/Await",
-              "Weekend Mini Project 5: API-Based Data Viewer (Public API)",
-            ],
-          },
-          {
-            id: 6,
-            title: "Frontend Framework (React)",
-            icon: "bi bi-window-stack",
-            items: [
-              "Week 9 — Day 39–43: React overview & setup, components, JSX, props, and state management",
-              "Week 10 — Day 44–48: Routing, hooks, forms & validation, HTTP API consumption, and frontend final revision",
-              "Weekend Mini Project 6: Frontend CRUD Application",
-            ],
-          },
-          {
-            id: 7,
-            title: "Backend & API Development",
-            icon: "bi bi-server",
-            items: [
-              "Week 11 — Day 49–53: Node.js overview, event loop & architecture, NPM, folder structure, file system, and HTTP server",
-              "Week 12 — Day 54–58: Express setup, routing, middleware, request & response, and error handling",
-              "Weekend Mini Project 7: Basic REST API",
-            ],
-          },
-          {
-            id: 8,
-            title: "MongoDB",
-            icon: "bi bi-database",
-            items: [
-              "Week 13 — Day 59–63: NoSQL & data modeling, MongoDB basics, CRUD operations, Mongoose, and schema design",
-              "Weekend Mini Project 8: REST API with MongoDB",
-            ],
-          },
-          {
-            id: 9,
-            title: "Authentication & Authorization",
-            icon: "bi bi-shield-lock",
-            items: [
-              "Week 14 — Day 64–68: Auth vs authorization, JWT flow, role-based access, password hashing, and securing APIs",
-              "Weekend Mini Project 9: JWT Secure API",
-            ],
-          },
-          {
-            id: 10,
-            title: "API Tools & Payment Integration",
-            icon: "bi bi-credit-card",
-            items: [
-              "Week 15 — Day 69–70: Postman and Swagger documentation",
-              "Weekend Mini Project 10: Swagger Documented APIs",
-              "Week 15 Continued — Day 71–73: Payment concepts, Stripe integration, and Razorpay integration",
-              "Weekend Mini Project 11: Payment Enabled API",
-            ],
-          },
-          {
-            id: 11,
-            title: "AWS Deployment",
-            icon: "bi bi-cloud-upload",
-            items: [
-              "Week 16 — Day 74–78: Cloud basics, AWS overview, EC2 deployment, S3 hosting, environment variables & monitoring",
-              "Weekend Mini Project 12: Live Full-Stack Deployment",
-            ],
-          },
-          {
-            id: 12,
-            title: "Mobile Application (React Native)",
-            icon: "bi bi-phone",
-            items: [
-              "Week 17 — Day 79–83: Mobile architecture, React Native project setup, navigation, UI components, and API integration",
-              "Week 18 — Day 84–88: Authentication, storage, performance, build & release, and mobile recap",
-              "Weekend Mini Project 13: React Native Mobile App with Backend & Payments",
-            ],
-          },
-          {
-            id: 13,
-            title: "Final Professional Preparation",
-            icon: "bi bi-award",
-            items: [
-              "Week 19 — Day 89–92: System architecture, end-to-end flow, security best practices, and full revision",
-            ],
-          },
-        ],
         whatYouLearnData: [
           {
             title: "Master Frontend Engineering",

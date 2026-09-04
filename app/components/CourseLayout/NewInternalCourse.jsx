@@ -51,11 +51,17 @@ const NewInternalCourse = ({ data }) => {
     // ===========================================================================
 
     // --- Curriculum Handling ---
-    const totalCurriculumPages = Math.ceil(curriculumData.length / itemsPerPage);
-    const currentCurriculumItems = curriculumData.slice(
-        curriculumPage * itemsPerPage,
-        (curriculumPage + 1) * itemsPerPage
-    );
+    const hasCurriculum = Array.isArray(curriculumData) && curriculumData.length > 0;
+    const hasBrochure = Boolean(heroData?.brochure);
+    const totalCurriculumPages = hasCurriculum
+        ? Math.ceil(curriculumData.length / itemsPerPage)
+        : 0;
+    const currentCurriculumItems = hasCurriculum
+        ? curriculumData.slice(
+            curriculumPage * itemsPerPage,
+            (curriculumPage + 1) * itemsPerPage
+        )
+        : [];
 
     const toggleCurriculumItem = (index) => {
         setCurriculumActiveIndex(curriculumActiveIndex === index ? null : index);
@@ -196,9 +202,11 @@ const NewInternalCourse = ({ data }) => {
                                     Join Now
                                 </button>
                             )}
-                            <button className="nict-hero-btn secondary" onClick={() => setIsBrochureOpen(true)}>
-                                <FiDownload className="nict-btn-icon" /> Download Brochure
-                            </button>
+                            {hasBrochure && (
+                                <button className="nict-hero-btn secondary" onClick={() => setIsBrochureOpen(true)}>
+                                    <FiDownload className="nict-btn-icon" /> Download Brochure
+                                </button>
+                            )}
                         </div>
                     </div>
 
@@ -347,6 +355,7 @@ const NewInternalCourse = ({ data }) => {
             )}
 
             {/* 4. COURSE CURRICULUM */}
+            {hasCurriculum && (
             <div className="nict-curriculum-section">
                 <section className="nict-course-curriculum">
                     <div className="nict-curriculum-header">
@@ -419,14 +428,17 @@ const NewInternalCourse = ({ data }) => {
                         </button>
                     </div>
 
+                    {hasBrochure && (
                     <div className="nict-brochure-action">
                         <button className="nict-brochure-btn" onClick={() => setIsBrochureOpen(true)}>
                             <FiDownload />
                             Download Brochure
                         </button>
                     </div>
+                    )}
                 </section>
             </div>
+            )}
 
             {/* Program Cohorts (only for non-kids-space) */}
             {!data.isKidsSpace && (
