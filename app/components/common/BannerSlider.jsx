@@ -11,29 +11,41 @@ const BannerSlider = ({ banners = [], forceEnquiry = false }) => {
     const [current, setCurrent] = useState(0);
     const [showEnquiry, setShowEnquiry] = useState(false);
     const [selectedBanner, setSelectedBanner] = useState(null);
+    const [mounted, setMounted] = useState(false);
     const { isFlying, navigateToStudyAbroad } = useStudyAbroadFlight();
     const timerRef = useRef(null);
     const router = useRouter();
 
-    const startTimer = useCallback(() => {
-        if (banners.length <= 1) return;
-        stopTimer();
-        timerRef.current = setInterval(() => {
-            setCurrent((prev) => (prev === banners.length - 1 ? 0 : prev + 1));
-        }, 5000); // Auto-slide every 5 seconds
-    }, [banners.length]);
-
-    const stopTimer = () => {
+    const stopTimer = useCallback(() => {
         if (timerRef.current) {
             clearInterval(timerRef.current);
             timerRef.current = null;
         }
-    };
+    }, []);
+
+    const startTimer = useCallback(() => {
+        stopTimer();
+        if (banners.length <= 1) return;
+        timerRef.current = setInterval(() => {
+            setCurrent((prev) => (prev === banners.length - 1 ? 0 : prev + 1));
+        }, 5000);
+    }, [banners.length, stopTimer]);
 
     useEffect(() => {
+        setMounted(true);
+    }, []);
+
+    useEffect(() => {
+        if (!mounted || banners.length <= 1) return;
         startTimer();
         return () => stopTimer();
-    }, [startTimer]);
+    }, [mounted, banners.length, startTimer, stopTimer]);
+
+    useEffect(() => {
+        if (current >= banners.length) {
+            setCurrent(0);
+        }
+    }, [banners.length, current]);
 
     if (!banners || banners.length === 0) return null;
 
@@ -66,58 +78,74 @@ const BannerSlider = ({ banners = [], forceEnquiry = false }) => {
         <>
             <FlightTransition isAnimating={isFlying} />
             <section className="banner-slider-section">
-            <div className="banner-slider-container">
-                <div
-                    className="banner-track"
-                    style={{ transform: `translateX(-${current * 100}%)` }}
-                >
-                    {banners.map((banner, index) => (
-                        <div
-                            key={index}
-                            className="banner-slide"
-                            onClick={() => handleBannerClick(banner)}
-                            style={{ cursor: 'pointer' }}
-                        >
-                            <Image
-                                src={banner.src}
-                                alt={banner.alt || "Promotional Banner"}
-                                width={1920}
-                                height={600}
-                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
-                                className="banner-img"
-                                priority={index === 0}
-                                loading={index === 0 ? undefined : 'lazy'}
-                                fetchPriority={index === 0 ? 'high' : 'auto'}
-                            />
-                        </div>
-                    ))}
-                </div>
-                {banners.length > 1 && (
-                    <div className="nav-container-sides">
-                        <div className="side-nav-bar prev" onClick={handlePrev} aria-label="Previous slide">
-                            <span className="nav-chevron">❮</span>
-                        </div>
-                        <div className="side-nav-bar next" onClick={handleNext} aria-label="Next slide">
-                            <span className="nav-chevron">❯</span>
-                        </div>
+                <div className="banner-slider-container">
+                    <div
+                        className="banner-track"
+                        style={{ transform: `translateX(-${current * 100}%)` }}
+                    >
+                        {banners.map((banner, index) => (
+                            <div
+                                key={banner.src || index}
+                                className="banner-slide"
+                                onClick={() => handleBannerClick(banner)}
+                                role="button"
+                                tabIndex={0}
+                                onKeyDown={(e) => {
+                                    if (e.key === 'Enter' || e.key === ' ') {
+                                        e.preventDefault();
+                                        handleBannerClick(banner);
+                                    }
+                                }}
+                            >
+                                <Image
+                                    src={banner.src}
+                                    alt={banner.alt || 'Promotional Banner'}
+                                    fill
+                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
+                                    className="banner-img"
+                                    priority={index === 0}
+                                    loading={index === 0 ? undefined : 'lazy'}
+                                    fetchPriority={index === 0 ? 'high' : 'auto'}
+                                />
+                            </div>
+                        ))}
                     </div>
-                )}
-            </div>
+                    {banners.length > 1 && (
+                        <div className="nav-container-sides">
+                            <button
+                                type="button"
+                                className="side-nav-bar prev"
+                                onClick={handlePrev}
+                                aria-label="Previous slide"
+                            >
+                                <span className="nav-chevron">❮</span>
+                            </button>
+                            <button
+                                type="button"
+                                className="side-nav-bar next"
+                                onClick={handleNext}
+                                aria-label="Next slide"
+                            >
+                                <span className="nav-chevron">❯</span>
+                            </button>
+                        </div>
+                    )}
+                </div>
 
-            {selectedBanner && (
-                <EnquiryFormModal
-                    isOpen={showEnquiry}
-                    onClose={() => setShowEnquiry(false)}
-                    courseName={selectedBanner.courseName || "Banner Promotion"}
-                    downloadUrls={selectedBanner.downloadUrls}
-                    dynamicDownloads={selectedBanner.dynamicDownloads}
-                    extraOptions={selectedBanner.extraOptions}
-                    isSelectMode={selectedBanner.isSelectMode}
-                    customTitle={selectedBanner.customTitle}
-                    useExternalCourses={selectedBanner.useExternalCourses !== false}
-                />
-            )}
-        </section>
+                {selectedBanner && (
+                    <EnquiryFormModal
+                        isOpen={showEnquiry}
+                        onClose={() => setShowEnquiry(false)}
+                        courseName={selectedBanner.courseName || 'Banner Promotion'}
+                        downloadUrls={selectedBanner.downloadUrls}
+                        dynamicDownloads={selectedBanner.dynamicDownloads}
+                        extraOptions={selectedBanner.extraOptions}
+                        isSelectMode={selectedBanner.isSelectMode}
+                        customTitle={selectedBanner.customTitle}
+                        useExternalCourses={selectedBanner.useExternalCourses !== false}
+                    />
+                )}
+            </section>
         </>
     );
 };

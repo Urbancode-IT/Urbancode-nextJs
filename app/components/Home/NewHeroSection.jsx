@@ -109,6 +109,33 @@ const cardsData = [
   }
 ];
 
+const defaultHomeBanners = [
+  {
+    src: '/images/home/6-month-program-banner.webp',
+    alt: 'AI Software Engineering Certification Program (6 Months)',
+    type: 'link',
+    link: '/courses/fullstack-development/ai-software-engineering'
+  },
+  {
+    src: '/images/home/studyabroad.webp',
+    alt: 'Study Abroad 2027',
+    type: 'link',
+    link: '/study-abroad'
+  },
+  {
+    src: '/images/home/IELTS Banner.png',
+    alt: 'IELTS Training',
+    type: 'link',
+    link: '/study-abroad#english-proficiency'
+  },
+  {
+    src: '/images/home/data-engineering-with-azure.webp',
+    alt: 'Data Engineering with Microsoft Azure',
+    type: 'link',
+    link: '/courses/data-engineering/data-engineering-with-microsoft-azure'
+  }
+];
+
 const HeroBottom = ({
   carouselRef,
   carouselWrapperRef,
@@ -196,6 +223,7 @@ const HeroBottom = ({
 
 
 export default function NewHeroSection({ banners = [] }) {
+  const visibleBanners = banners.length > 0 ? banners : defaultHomeBanners;
   const router = useRouter();
   const [isEnquiryModalOpen, setIsEnquiryModalOpen] = useState(false);
   const [showFlightOverlay, setShowFlightOverlay] = useState(false);
@@ -330,11 +358,9 @@ export default function NewHeroSection({ banners = [] }) {
             onEnrollClick={() => setIsEnquiryModalOpen(true)}
             onStudyAbroadClick={handleStudyAbroadClick}
           />
-          {banners.length > 0 && (
-            <div className="hero-banner-slot">
-              <BannerSlider banners={banners} />
-            </div>
-          )}
+          <div className="hero-banner-slot">
+            <BannerSlider banners={visibleBanners} />
+          </div>
           <HeroBottom
             carouselRef={carouselRef}
             carouselWrapperRef={carouselWrapperRef}

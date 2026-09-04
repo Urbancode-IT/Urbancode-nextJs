@@ -93,13 +93,13 @@ export default function HomePage() {
       link: "/courses/fullstack-development/ai-software-engineering"
     },
     {
-      src: "/images/home/study-abroad-2027.webp",
+      src: "/images/home/studyabroad.webp",
       alt: "Study Abroad 2027",
       type: "link",
       link: "/study-abroad"
     },
     {
-      src: "/images/home/ielts-banner.webp",
+      src: "/images/home/IELTS Banner.png",
       alt: "IELTS Training",
       type: "link",
       link: "/study-abroad#english-proficiency"

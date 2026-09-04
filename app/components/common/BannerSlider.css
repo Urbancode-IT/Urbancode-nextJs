@@ -1,6 +1,6 @@
 /* BannerSlider.css */
 .banner-slider-section {
-    width: 95%; /* Highly expansive expansive width per user request */
+    width: 95%;
     margin: 0 auto;
     padding: 0;
     line-height: 0;
@@ -8,27 +8,32 @@
     justify-content: center;
     background: transparent;
     position: relative;
-    max-width: 1600px; /* Prevents stretching on ultra-wide screens */
+    max-width: 1600px;
 }
 
 .banner-slider-container {
     width: 100%;
     margin: 0 auto;
     padding: 0;
-    cursor: pointer;
     overflow: hidden;
     line-height: 0;
-    transition: all 0.3s ease;
     position: relative;
-    aspect-ratio: 1920 / 400; /* Sleek widescreen for desktop */
+    aspect-ratio: 1920 / 500;
+    min-height: 120px;
     border-radius: 12px;
+    background: transparent;
+    /* Avoid layout thrash from hover transforms */
+    transform: none;
+    transition: none;
+    isolation: isolate;
 }
 
 .banner-track {
     display: flex;
-    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     width: 100%;
     height: 100%;
+    transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
 }
 
 .banner-slide {
@@ -37,162 +42,125 @@
     height: 100%;
     position: relative;
     overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     cursor: pointer;
+    background: transparent;
 }
 
-
-/* Automatic Shine Effect (reused from RepublicBanner) */
-.banner-slide::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 50%;
-    height: 100%;
-    background: linear-gradient(90deg,
-            rgba(255, 255, 255, 0) 0%,
-            rgba(255, 255, 255, 0.45) 50%,
-            rgba(255, 255, 255, 0) 100%);
-    transform: skewX(-25deg);
-    animation: automatic-shine 2.5s linear infinite;
-    pointer-events: none;
-}
-
-@keyframes automatic-shine {
-    0% {
-        left: -100%;
-    }
-
-    40% {
-        left: 150%;
-    }
-
-    100% {
-        left: 150%;
-    }
+.banner-slide:focus-visible {
+    outline: 2px solid #00b56f;
+    outline-offset: -2px;
 }
 
 .banner-img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: contain; /* Ensure entire artwork is visible */
-    background: transparent;
-    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    object-fit: contain !important;
+    object-position: center center;
 }
 
+/* Soft shine — one pass, not infinite (infinite looked like a glitch) */
+.banner-slide::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        105deg,
+        transparent 40%,
+        rgba(255, 255, 255, 0.18) 50%,
+        transparent 60%
+    );
+    transform: translateX(-120%);
+    animation: banner-shine 4.5s ease-in-out 1.2s 1;
+    pointer-events: none;
+    z-index: 2;
+}
 
-/* Cinematic Side-Glow Navigation */
+@keyframes banner-shine {
+    0% {
+        transform: translateX(-120%);
+    }
+    35%,
+    100% {
+        transform: translateX(120%);
+    }
+}
+
 .nav-container-sides {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none; /* Allow banners behind to be clicked */
-    z-index: 1000;
+    inset: 0;
+    pointer-events: none;
+    z-index: 5;
 }
 
 .side-nav-bar {
     position: absolute;
     top: 0;
     bottom: 0;
-    width: 80px;
+    width: 56px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     pointer-events: auto;
-    transition: all 0.5s ease;
-    opacity: 1; /* Symmetrical visibility */
-    background: transparent;
+    border: none;
+    padding: 0;
+    background: transparent !important;
+    transition: none;
 }
 
 .side-nav-bar.prev {
     left: 0;
-    background: transparent;
 }
 
 .side-nav-bar.next {
     right: 0;
-    background: transparent;
 }
 
 .nav-chevron {
     color: #fff;
-    font-size: 30px;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    font-size: 26px;
+    line-height: 1;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.55);
+    transition: transform 0.25s ease;
 }
 
 .side-nav-bar:hover {
-    opacity: 1;
-    width: 120px; /* Expands outwards on hover */
-}
-
-.side-nav-bar.prev:hover {
-    background: linear-gradient(90deg, rgba(255, 255, 255, 0.2) 0%, transparent 100%);
-}
-
-.side-nav-bar.next:hover {
-    background: linear-gradient(-90deg, rgba(255, 255, 255, 0.2) 0%, transparent 100%);
+    background: transparent !important;
 }
 
 .side-nav-bar:hover .nav-chevron {
-    color: #fff; /* Neutral white chevron */
-    transform: scale(1.3);
-    text-shadow: 0 4px 15px rgba(0,0,0,0.6);
+    transform: scale(1.15);
 }
 
-/* Hover Effect on container */
-.banner-slider-container:hover {
-    transform: translateY(-3px);
-}
-
-/* Full Responsive Optimization */
 @media (max-width: 1200px) {
     .banner-slider-section {
-        width: 95%; /* Maintain wide presence */
+        width: 95%;
     }
 }
 
 @media (max-width: 768px) {
     .banner-slider-section {
         width: 100%;
-        padding: 0;
         margin: 0;
+        padding: 0;
     }
+
     .banner-slider-container {
-        aspect-ratio: 1920 / 600; /* Match original image ratio */
+        aspect-ratio: 16 / 9;
         border-radius: 0;
+        min-height: 140px;
     }
-    .banner-img {
-        object-fit: contain; /* Ensure full width without cropping */
+
+    .side-nav-bar {
+        width: 40px;
+    }
+
+    .nav-chevron {
+        font-size: 20px;
     }
 }
 
 @media (max-width: 480px) {
-    .banner-slider-section {
-        width: 100%; /* Go edge-to-edge for maximum impact */
-        margin: 0;
-        padding: 0;
-    }
     .banner-slider-container {
-        aspect-ratio: 1920 / 600; /* Match original image ratio */
-        min-height: auto; /* Remove min height to prevent vertical stretching/letterboxing */
-        border-radius: 0; /* Full-bleed mobile look is more professional here */
-    }
-    .banner-img {
-        object-fit: contain; /* Show full banner without cropping */
-    }
-    .side-nav-bar {
-        width: 40px;
-        background: rgba(0, 0, 0, 0.1); /* Subtle visibility on mobile */
-    }
-    .nav-chevron {
-        font-size: 20px;
+        aspect-ratio: 16 / 10;
+        min-height: 110px;
     }
 }
