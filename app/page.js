@@ -1,6 +1,5 @@
 import dynamic from 'next/dynamic';
 import NewHeroSection from './components/Home/NewHeroSection';
-import BannerSlider from './components/common/BannerSlider';
 import './components/Home/homePlayButton.css';
 import './components/Home/homeVideoCarousel.css';
 import InstitutionVideosSkeleton from './components/Home/InstitutionVideosSkeleton';
@@ -87,7 +86,12 @@ export const metadata = {
 
 export default function HomePage() {
   const homeBanners = [
-   
+    // {
+    //   src: "/images/home/ai-software-engineering-banner.webp",
+    //   alt: "AI Software Engineering Certification Program (6 Months)",
+    //   type: "link",
+    //   link: "/courses/fullstack-development/ai-software-engineering"
+    // },
     {
       src: "/images/home/tvlbanner.png",
       alt: "Urbancode Tirunelveli Branch - Now Open",
@@ -186,14 +190,9 @@ export default function HomePage() {
       />
     
       <section className="home-section home-section--hero">
-        <NewHeroSection />
+        <NewHeroSection banners={homeBanners} />
       </section>
-      <section className="home-section home-section--compact">
-        <BannerSlider banners={homeBanners} />
-      </section>
-       <section id="featured-courses" className="home-section">
-        <TrendingCourses />
-      </section>
+      
  
  {/*
 <section id="proficiency-training" className="home-section">
@@ -233,6 +232,9 @@ export default function HomePage() {
       </section> */}
       <section className="home-section">
         <GoogleReviews />
+      </section>
+       <section id="featured-courses" className="home-section">
+        <TrendingCourses />
       </section>
       <section className="home-section">
         <FaqBootstrap />

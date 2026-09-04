@@ -7,6 +7,7 @@ import Link from 'next/link';
 import './NewHeroSection.css';
 import EnquiryFormModal from '../common/EnquiryFormModal';
 import FlightTransition from '../animations/FlightTransition';
+import BannerSlider from '../common/BannerSlider';
 
 const HeroTop = ({ onEnrollClick, onStudyAbroadClick }) => {
   return (
@@ -194,7 +195,7 @@ const HeroBottom = ({
 };
 
 
-export default function NewHeroSection() {
+export default function NewHeroSection({ banners = [] }) {
   const router = useRouter();
   const [isEnquiryModalOpen, setIsEnquiryModalOpen] = useState(false);
   const [showFlightOverlay, setShowFlightOverlay] = useState(false);
@@ -329,6 +330,11 @@ export default function NewHeroSection() {
             onEnrollClick={() => setIsEnquiryModalOpen(true)}
             onStudyAbroadClick={handleStudyAbroadClick}
           />
+          {banners.length > 0 && (
+            <div className="hero-banner-slot">
+              <BannerSlider banners={banners} />
+            </div>
+          )}
           <HeroBottom
             carouselRef={carouselRef}
             carouselWrapperRef={carouselWrapperRef}

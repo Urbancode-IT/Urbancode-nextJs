@@ -109,8 +109,9 @@
   flex: 1; /* fills min-height correctly without restricting growth */
   display: flex;
   flex-direction: column;
-  /* space-between pushes hero-top to top area, hero-bottom to bottom */
-  justify-content: space-between;
+  /* Stack headline → banner → AI courses with consistent gaps */
+  justify-content: flex-start;
+  gap: clamp(14px, 2vw, 28px);
   padding-top: calc(var(--site-header-height, 71px) + var(--hero-content-top-gap, 16px));
   padding-bottom: clamp(32px, 4vw, 52px);
   transition: padding-top 0.45s cubic-bezier(0.4, 0, 0.2, 1);
@@ -122,6 +123,27 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
+  margin-top: 0;
+}
+
+/* Banner sits in hero between headline and AI Powered Courses */
+.hero-banner-slot {
+  width: 100%;
+  margin: 0;
+  flex-shrink: 0;
+  order: 0;
+}
+
+.hero-banner-slot .banner-slider-section {
+  width: 100%;
+  max-width: 100%;
+}
+
+.hero-banner-slot .banner-slider-container {
+  border-radius: 14px;
+}
+
+.hero-bottom {
   margin-top: 0;
 }
 

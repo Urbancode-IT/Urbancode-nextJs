@@ -2455,7 +2455,7 @@ box-shadow:
 /* Clips the track so only the fitting cards (+ a peek) are visible */
 .study-abroad-container .hero-cards-viewport {
     width: 100%;
-    overflow: hidden;
+  overflow: hidden;
 }
 
 .study-abroad-container .hero-cards-track {
@@ -2717,10 +2717,10 @@ box-shadow:
 .study-abroad-container .study-stat-card-glass {
     flex: 1;
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
     text-align: center;
     box-sizing: border-box;
     background: rgba(255, 255, 255, 0.14);
@@ -2773,7 +2773,7 @@ box-shadow:
 
 @media (max-width: 768px) {
     .study-abroad-container .study-premium-override .new-hero-content {
-        flex: 1;
+  flex: 1;
         justify-content: flex-start;
         padding-top: calc(var(--site-header-height, 71px) + 20px);
         padding-bottom: 24px;
@@ -3976,7 +3976,7 @@ box-shadow:
 /* Destinations Section Light Theme */
 .destinations-section-light {
     background-color: #ffffff !important;
-    position: relative;
+  position: relative;
 }
 
 /* Destinations Cards Premium Light Style */
