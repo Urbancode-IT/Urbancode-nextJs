@@ -107,7 +107,7 @@ const defaultHomeBanners = [
     link: '/study-abroad'
   },
   {
-    src: '/images/home/IELTS_Banner.webp',
+    src: '/images/home/ieltsbanner.webp',
     alt: 'IELTS Training',
     type: 'link',
     link: '/study-abroad',

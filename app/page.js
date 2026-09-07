@@ -99,7 +99,7 @@ export default function HomePage() {
       link: "/study-abroad"
     },
     {
-      src: "/images/home/IELTS Banner.png",
+      src: "/images/home/ieltsbanner.webp",
       alt: "IELTS Training",
       type: "link",
       link: "/study-abroad#english-proficiency"
