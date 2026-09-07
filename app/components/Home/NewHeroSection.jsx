@@ -107,10 +107,11 @@ const defaultHomeBanners = [
     link: '/study-abroad'
   },
   {
-    src: '/images/home/IELTS Banner.png',
+    src: '/images/home/IELTS_Banner.webp',
     alt: 'IELTS Training',
     type: 'link',
-    link: '/study-abroad#english-proficiency'
+    link: '/study-abroad',
+    useFlightAnimation: true
   },
   {
     src: '/images/home/data-engineering-with-azure.webp',

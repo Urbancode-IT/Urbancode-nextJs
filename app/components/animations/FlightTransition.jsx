@@ -1,11 +1,17 @@
 'use client';
 import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaPlane, FaGraduationCap, FaTrophy, FaStar } from 'react-icons/fa';
 
 const FlightTransition = ({ isAnimating }) => {
   const [destination, setDestination] = useState("UK");
+  const [mounted, setMounted] = useState(false);
   const destinations = ["UK", "USA", "CANADA", "GERMANY", "AUSTRALIA", "IRELAND", "NEWZEALAND", "SINGAPORE"];
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     if (!isAnimating) return;
@@ -18,7 +24,7 @@ const FlightTransition = ({ isAnimating }) => {
     return () => clearInterval(interval);
   }, [isAnimating, destinations]);
 
-  return (
+  const overlay = (
     <AnimatePresence>
       {isAnimating && (
         <motion.div
@@ -198,6 +204,8 @@ const FlightTransition = ({ isAnimating }) => {
       )}
     </AnimatePresence>
   );
+
+  return mounted ? createPortal(overlay, document.body) : null;
 };
 
 export default FlightTransition;

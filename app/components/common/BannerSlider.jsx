@@ -12,6 +12,7 @@ const BannerSlider = ({ banners = [], forceEnquiry = false }) => {
     const [showEnquiry, setShowEnquiry] = useState(false);
     const [selectedBanner, setSelectedBanner] = useState(null);
     const [mounted, setMounted] = useState(false);
+    const [isBannerFlying, setIsBannerFlying] = useState(false);
     const { isFlying, navigateToStudyAbroad } = useStudyAbroadFlight();
     const timerRef = useRef(null);
     const router = useRouter();
@@ -63,6 +64,12 @@ const BannerSlider = ({ banners = [], forceEnquiry = false }) => {
 
     const handleBannerClick = (banner) => {
         if (!forceEnquiry && banner.type === 'link' && banner.link) {
+            if (banner.useFlightAnimation) {
+                stopTimer();
+                setIsBannerFlying(true);
+                window.setTimeout(() => router.push(banner.link), 3000);
+                return;
+            }
             if (isStudyAbroadLink(banner.link)) {
                 navigateToStudyAbroad(banner.link);
                 return;
@@ -76,7 +83,7 @@ const BannerSlider = ({ banners = [], forceEnquiry = false }) => {
 
     return (
         <>
-            <FlightTransition isAnimating={isFlying} />
+            <FlightTransition isAnimating={isFlying || isBannerFlying} />
             <section className="banner-slider-section">
                 <div className="banner-slider-container">
                     <div
