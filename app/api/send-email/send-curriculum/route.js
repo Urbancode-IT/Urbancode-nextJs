@@ -1,4 +1,6 @@
 import { NextResponse } from 'next/server';
+import { readFile } from 'node:fs/promises';
+import path from 'node:path';
 import { getGmailTransporter, getGmailSender } from '@/lib/mailer/gmailTransporter';
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -7,6 +9,34 @@ const toText = (value, fallback = '') => {
   if (value === undefined || value === null) return fallback;
   const text = String(value).trim();
   return text || fallback;
+};
+
+const isImageUrl = (url) => /\.(?:jpg|jpeg|png)$/i.test(url.split('?')[0]);
+
+const getLocalBrochureAttachment = async (brochureUrl) => {
+  if (!brochureUrl || /^https?:\/\//i.test(brochureUrl) || isImageUrl(brochureUrl)) {
+    return null;
+  }
+
+  const pathname = new URL(brochureUrl, 'http://localhost').pathname;
+  if (!pathname.startsWith('/curriculum/')) return null;
+
+  const filename = path.basename(decodeURIComponent(pathname));
+  if (!filename.toLowerCase().endsWith('.pdf')) return null;
+
+  try {
+    const content = await readFile(path.join(process.cwd(), 'public', 'curriculum', filename));
+    return {
+      filename,
+      content,
+      contentType: 'application/pdf',
+    };
+  } catch (error) {
+    if (error?.code !== 'ENOENT') {
+      console.error('[send-curriculum] Failed to read local brochure:', error);
+    }
+    return null;
+  }
 };
 
 export async function POST(req) {
@@ -28,26 +58,25 @@ export async function POST(req) {
     const sender = getGmailSender();
     const transporter = getGmailTransporter();
 
-    // Prepare attachment if file exists
     const attachments = [];
     let fileFound = false;
-    let pdfFileName = '';
 
-    let attachment = null;
+    let attachment = await getLocalBrochureAttachment(brochureUrl);
 
-    // Fallback: HTTP fetch when file is not on local disk (e.g. remote CDN URL)
-    if (!attachment && brochureUrl && !brochureUrl.endsWith('.jpg') && !brochureUrl.endsWith('.png')) {
+    // Fallback for brochures hosted outside this application.
+    if (!attachment && brochureUrl && !isImageUrl(brochureUrl)) {
       try {
         const origin = new URL(req.url).origin;
         const fullUrl = brochureUrl.startsWith('http')
           ? brochureUrl
           : new URL(brochureUrl, origin).toString();
 
-        const response = await fetch(fullUrl);
+        const response = await fetch(fullUrl, { signal: AbortSignal.timeout(10000) });
         if (response.ok) {
           const arrayBuffer = await response.arrayBuffer();
+          const filename = path.basename(new URL(fullUrl).pathname) || 'curriculum.pdf';
           attachment = {
-            filename: brochureUrl.split('/').pop() || 'curriculum.pdf',
+            filename,
             content: Buffer.from(arrayBuffer),
             contentType: 'application/pdf',
           };
@@ -61,9 +90,8 @@ export async function POST(req) {
 
     if (attachment) {
       fileFound = true;
-      pdfFileName = attachment.filename;
       attachments.push(attachment);
-    } else if (brochureUrl && !brochureUrl.endsWith('.jpg') && !brochureUrl.endsWith('.png')) {
+    } else if (brochureUrl && !isImageUrl(brochureUrl)) {
       console.error(`[send-curriculum] Brochure PDF missing for: ${brochureUrl}`);
       return NextResponse.json(
         { success: false, message: 'Curriculum PDF could not be found. Please try again or contact support.' },

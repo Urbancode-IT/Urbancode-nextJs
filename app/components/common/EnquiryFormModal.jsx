@@ -11,6 +11,8 @@ import { resolveCrmCourseName } from "@/lib/api/resolveCrmCourse";
 import { getKidsCourseLabel, getKidsCrmCourse } from "@/lib/data/kidsCourses";
 import "./EnquiryForm.css";
 
+const BROCHURE_REQUEST_TIMEOUT = 30000;
+
 const EnquiryFormModal = ({ 
   isOpen, 
   onClose, 
@@ -91,15 +93,27 @@ const EnquiryFormModal = ({
   const hasPresetCourse = Boolean(courseName) && !isSelectMode && !isJoinMode;
   const prevOpenRef = React.useRef(false);
 
-  const triggerDownload = (url, index = 0) => {
-    setTimeout(() => {
-      const link = document.createElement('a');
-      link.href = url;
-      link.download = url.split('/').pop();
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    }, index * 500);
+  const sendBrochureEmail = async (payload) => {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), BROCHURE_REQUEST_TIMEOUT);
+
+    try {
+      const response = await fetch("/api/send-email/send-curriculum", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+        signal: controller.signal,
+      });
+      const result = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        throw new Error(result.message || "Failed to send curriculum email.");
+      }
+
+      return result;
+    } finally {
+      clearTimeout(timeoutId);
+    }
   };
 
   React.useEffect(() => {
@@ -338,42 +352,40 @@ const EnquiryFormModal = ({
   const submitViaCourseApi = async () => {
     if (isBrochureMode) {
       const brochureUrl = downloadUrls?.length > 0 ? downloadUrls[0] : "";
-      const emailResponse = await fetch("/api/send-email/send-curriculum", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          course: formData.course,
-          brochureUrl,
-        }),
-      });
-
-      if (!emailResponse.ok) {
-        const errRes = await emailResponse.json().catch(() => ({}));
-        throw new Error(errRes.message || "Failed to send curriculum email.");
-      }
-
       const resolvedCourse = getResolvedCourseName();
-      const result = await submitEnquiryForm(buildSubmitPayload(
+      const brochurePayload = {
+        name: formData.name,
+        email: formData.email,
+        course: formData.course,
+        brochureUrl,
+      };
+      const enquiryPayload = buildSubmitPayload(
         resolvedCourse,
         `[BROCHURE DOWNLOAD] Student downloaded the ${getKidsCourseLabel(formData.course, selectCourseOptions) || formData.course} curriculum/brochure.`
-      ));
+      );
 
-      if (!result.success) {
-        throw new Error(result.message || "Failed to submit enquiry.");
+      const [emailResult, enquiryResult] = await Promise.all([
+        sendBrochureEmail(brochurePayload),
+        submitEnquiryForm(enquiryPayload),
+      ]);
+
+      if (!emailResult?.success) {
+        throw new Error(emailResult?.message || "The curriculum email could not be sent.");
+      }
+      if (!enquiryResult?.success) {
+        throw new Error(enquiryResult?.message || "The Zen enquiry card could not be created.");
       }
 
       Swal.fire({
         title: 'Curriculum Sent!',
-        text: `The curriculum for ${getCourseDisplayName()} has been successfully sent to ${formData.email}. Please check your inbox (and spam folder)!`,
+        text: `The curriculum for ${getCourseDisplayName()} was sent to ${formData.email}. Please check your inbox and download the attached PDF.`,
         icon: 'success',
         confirmButtonColor: '#036c2d',
         background: '#ffffff',
         color: '#2C3E50',
         iconColor: '#17944d',
       });
-      setStatus({ type: "success", message: "Curriculum sent to your email!" });
+      setStatus({ type: "success", message: "Curriculum sent to your email." });
       return;
     }
 
@@ -414,6 +426,51 @@ const EnquiryFormModal = ({
       message: buildEnquiryMessage(),
     };
 
+    if (isBrochureMode) {
+      const brochureUrl = downloadUrls?.length > 0 ? downloadUrls[0] : "";
+
+      const emailPromise = sendBrochureEmail({
+        name: formData.name,
+        email: formData.email,
+        course: formData.course,
+        brochureUrl,
+      });
+      const enquiryPromise = fetch("/api/send-email/course-enquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          course: formData.course,
+          mode: formData.mode || "Not specified",
+          pin: formData.pin || "N/A",
+          message: `[BROCHURE DOWNLOAD] Student downloaded the ${formData.course} curriculum/brochure.`,
+        }),
+      });
+
+      const [emailResult, enquiryResponse] = await Promise.all([emailPromise, enquiryPromise]);
+      if (!emailResult?.success) {
+        throw new Error(emailResult?.message || "The curriculum email could not be sent.");
+      }
+      if (!enquiryResponse.ok) {
+        const errorResponse = await enquiryResponse.json().catch(() => ({}));
+        throw new Error(errorResponse.message || "The Zen enquiry card could not be created.");
+      }
+
+      Swal.fire({
+        title: 'Curriculum Sent!',
+        text: `The curriculum for ${getCourseDisplayName()} was sent to ${formData.email}. Please check your inbox and download the attached PDF.`,
+        icon: 'success',
+        confirmButtonColor: '#036c2d',
+        background: '#ffffff',
+        color: '#2C3E50',
+        iconColor: '#17944d',
+      });
+      setStatus({ type: "success", message: "Curriculum sent to your email." });
+      return;
+    }
+
     const response = await fetch(scriptURL, {
       method: "POST",
       headers: { "Content-Type": "text/plain;charset=utf-8" },
@@ -446,51 +503,6 @@ const EnquiryFormModal = ({
         icon: 'success',
         confirmButtonColor: '#28a745',
       });
-      return;
-    }
-
-    if (isBrochureMode) {
-      const brochureUrl = downloadUrls?.length > 0 ? downloadUrls[0] : "";
-      const emailResponse = await fetch("/api/send-email/send-curriculum", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          course: formData.course,
-          brochureUrl,
-        }),
-      });
-
-      if (!emailResponse.ok) {
-        const errRes = await emailResponse.json();
-        throw new Error(errRes.message || "Failed to send curriculum email.");
-      }
-
-      await fetch("/api/send-email/course-enquiry", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          course: formData.course,
-          mode: formData.mode || "Not specified",
-          pin: formData.pin || "N/A",
-          message: `[BROCHURE DOWNLOAD] Student downloaded the ${formData.course} curriculum/brochure.`,
-        }),
-      }).catch((err) => console.warn("Admin brochure notification failed:", err));
-
-      Swal.fire({
-        title: 'Curriculum Sent!',
-        text: `The curriculum for ${getCourseDisplayName()} has been successfully sent to ${formData.email}. Please check your inbox (and spam folder)!`,
-        icon: 'success',
-        confirmButtonColor: '#036c2d',
-        background: '#ffffff',
-        color: '#2C3E50',
-        iconColor: '#17944d',
-      });
-      setStatus({ type: "success", message: "Curriculum sent to your email!" });
       return;
     }
 
@@ -607,7 +619,6 @@ const EnquiryFormModal = ({
                         required
                         minLength="3"
                         maxLength="100"
-                        pattern="^[a-zA-Z\s'-]+$"
                         disabled={loading}
                       />
                       {errors.name && <small className="text-danger">{errors.name}</small>}

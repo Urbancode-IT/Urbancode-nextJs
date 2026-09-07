@@ -4,6 +4,15 @@ import { sendExternalEnrollment, extractMobileNumber } from '@/lib/api/externalE
 import { isZenCourseId } from '@/lib/api/externalCourses';
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const CRM_TIMEOUT_MS = 5000;
+
+const withTimeout = (promise, timeoutMs, message) =>
+  Promise.race([
+    promise,
+    new Promise((_, reject) => {
+      setTimeout(() => reject(new Error(message)), timeoutMs);
+    }),
+  ]);
 
 const toText = (value, fallback = 'N/A') => {
   if (value === undefined || value === null) return fallback;
@@ -211,15 +220,19 @@ export async function POST(req) {
 
     // Await CRM so Next.js does not kill the request when the response is sent
     // Pass the original website course name — sendExternalEnrollment maps it to a Zen course.
-    const crmPromise = sendExternalEnrollment({
-      name,
-      mobile_number: extractMobileNumber(phone),
-      email,
-      course: websiteCourse,
-      course_id: course_id || undefined,
-      requirements,
-      card_type,
-    });
+    const crmPromise = withTimeout(
+      sendExternalEnrollment({
+        name,
+        mobile_number: extractMobileNumber(phone),
+        email,
+        course: websiteCourse,
+        course_id: course_id || undefined,
+        requirements,
+        card_type,
+      }),
+      CRM_TIMEOUT_MS,
+      'CRM request timed out.'
+    );
 
     const [emailResult, crmResult] = await Promise.allSettled([emailPromise, crmPromise]);
 
