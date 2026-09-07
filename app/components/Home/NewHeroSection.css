@@ -1077,7 +1077,66 @@
   }
 }
 
+/* ─── 15.6-inch laptop viewport (1280px–1439px) ─── */
+@media (min-width: 1280px) and (max-width: 1440px) and (min-height: 650px) and (max-height: 950px) {
+  .new-hero-section:not(.study-premium-override) .new-hero-content {
+    max-width: none;
+    padding-inline: 24px;
+    padding-top: calc(var(--site-header-height, 71px) + 25px);
+    padding-bottom: 20px;
+    gap: 14px;
+  }
+
+  .new-hero-section:not(.study-premium-override) .hero-banner-slot {
+    width: calc(100% + 48px);
+    margin: 10px -24px 0;
+  }
+
+  .new-hero-section:not(.study-premium-override) .hero-banner-slot .banner-slider-container {
+    max-height: 250px;
+    transform: none;
+  }
+
+  .new-hero-section:not(.study-premium-override) .hero-banner-slot .side-nav-bar {
+    width: 44px;
+  }
+
+  .new-hero-section:not(.study-premium-override) .hero-banner-slot .side-nav-bar.prev {
+    left: 0;
+    justify-content: flex-start;
+    padding-left: 8px;
+  }
+
+  .new-hero-section:not(.study-premium-override) .hero-banner-slot .side-nav-bar.next {
+    right: 0;
+    justify-content: flex-end;
+    padding-right: 8px;
+  }
+
+  .new-hero-section:not(.study-premium-override) .hero-bottom {
+    margin-top: max(45px, calc(100vh - 595px));
+  }
+}
+
 /* Mobile Responsive */
+/* ─── Desktop banner overflow guard ─── */
+@media (min-width: 1025px) {
+  .new-hero-section:not(.study-premium-override) .hero-banner-slot {
+    width: calc(100% + 80px);
+    max-width: calc(100vw - 30px);
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+  }
+
+  .new-hero-section:not(.study-premium-override) .hero-banner-slot .banner-slider-container {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    transform: none;
+  }
+}
+
 @media (max-width: 768px) {
   .hero-title-line1,
   .hero-title-line2 {
