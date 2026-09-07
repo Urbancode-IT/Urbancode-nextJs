@@ -2,14 +2,12 @@
 'use client';
 
 import React, { useState, useEffect, useCallback } from 'react';
-import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import './NewHeroSection.css';
 import EnquiryFormModal from '../common/EnquiryFormModal';
-import FlightTransition from '../animations/FlightTransition';
 import BannerSlider from '../common/BannerSlider';
 
-const HeroTop = ({ onEnrollClick, onStudyAbroadClick }) => {
+const HeroTop = ({ onEnrollClick }) => {
   return (
     <div className="hero-top">
       <div className="new-hero-title">
@@ -22,26 +20,12 @@ const HeroTop = ({ onEnrollClick, onStudyAbroadClick }) => {
       <p className="new-hero-description">
 Explore AI-powered courses with placement guarantee and overseas education consulting with expert guidance. One place for every path forward!      </p>
       <div className="hero-buttons">
-        {/* Enroll Now first (primary style) */}
+        {/* Enquiry action */}
         <button onClick={onEnrollClick} className="hero-btn-primary">
-          <span>Enroll now</span>
+          <span>Enquire now</span>
           <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M4.58331 10.9997H17.4166" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             <path d="M10.9999 4.58301L17.4166 10.9997L10.9999 17.4163" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-        </button>
-        {/* Study Abroad second (secondary / outline style) */}
-        <button onClick={onStudyAbroadClick} className="hero-btn-secondary">
-          <span>Study Abroad</span>
-          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M4.58331 10.9997H17.4166" stroke="url(#sa_gradient)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            <path d="M10.9999 4.58301L17.4166 10.9997L10.9999 17.4163" stroke="url(#sa_gradient)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            <defs>
-              <linearGradient id="sa_gradient" x1="4.58331" y1="10.9997" x2="17.4166" y2="10.9997" gradientUnits="userSpaceOnUse">
-                <stop stopColor="#00B56F" />
-                <stop offset="1" stopColor="#004F30" />
-              </linearGradient>
-            </defs>
           </svg>
         </button>
       </div>
@@ -224,9 +208,7 @@ const HeroBottom = ({
 
 export default function NewHeroSection({ banners = [] }) {
   const visibleBanners = banners.length > 0 ? banners : defaultHomeBanners;
-  const router = useRouter();
   const [isEnquiryModalOpen, setIsEnquiryModalOpen] = useState(false);
-  const [showFlightOverlay, setShowFlightOverlay] = useState(false);
   const carouselRef = React.useRef(null);
   const carouselWrapperRef = React.useRef(null);
   const [isHovered, setIsHovered] = useState(false);
@@ -269,14 +251,6 @@ export default function NewHeroSection({ banners = [] }) {
 
     return { cardWidth, cardGap, cardsPerView: count, containerWidth };
   }, []);
-
-  const handleStudyAbroadClick = useCallback(() => {
-    setShowFlightOverlay(true);
-    setTimeout(() => {
-      setShowFlightOverlay(false);
-      router.push('/study-abroad');
-    }, 3200);
-  }, [router]);
 
   const updateScrollButtons = React.useCallback(() => {
     const slider = carouselRef.current;
@@ -349,14 +323,12 @@ export default function NewHeroSection({ banners = [] }) {
 
   return (
     <>
-      <FlightTransition isAnimating={showFlightOverlay} />
       <section className="new-hero-section">
         <div className="hero-bg-container"></div>
 
         <div className="new-hero-content">
           <HeroTop
             onEnrollClick={() => setIsEnquiryModalOpen(true)}
-            onStudyAbroadClick={handleStudyAbroadClick}
           />
           <div className="hero-banner-slot">
             <BannerSlider banners={visibleBanners} />

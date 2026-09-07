@@ -96,13 +96,15 @@ const VideoTestimonials = () => {
                     onMouseEnter={() => setIsPaused(true)}
                     onMouseLeave={() => setIsPaused(false)}
                 >
-                    <button
-                        className={`nav-btn prev-btn prev ${isAtStart ? 'is-disabled' : ''}`}
-                        onClick={slidePrev}
-                        aria-label="Previous videos"
-                    >
-                        ❮
-                    </button>
+                    {!shouldCenter && (
+                        <button
+                            className={`nav-btn prev-btn prev ${isAtStart ? 'is-disabled' : ''}`}
+                            onClick={slidePrev}
+                            aria-label="Previous videos"
+                        >
+                            ❮
+                        </button>
+                    )}
 
                     <div
                         className={`home-video-scroll-track${shouldCenter ? ' home-video-scroll-track--center' : ''}`}
@@ -147,13 +149,15 @@ const VideoTestimonials = () => {
                         })}
                     </div>
 
-                    <button
-                        className={`nav-btn next-btn next ${isAtEnd ? 'is-disabled' : ''}`}
-                        onClick={slideNext}
-                        aria-label="Next videos"
-                    >
-                        ❯
-                    </button>
+                    {!shouldCenter && (
+                        <button
+                            className={`nav-btn next-btn next ${isAtEnd ? 'is-disabled' : ''}`}
+                            onClick={slideNext}
+                            aria-label="Next videos"
+                        >
+                            ❯
+                        </button>
+                    )}
                 </div>
             </div>
         </section>

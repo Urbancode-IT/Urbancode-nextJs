@@ -33,7 +33,7 @@
   --home-section-content-gap: 32px;
 
   /* Hero: gap below header (no banner) or banner→title gap via JS offset */
-  --hero-content-top-gap: 16px;
+  --hero-content-top-gap: 25px;
   --freedom-banner-title-gap: 10px;
   --freedom-banner-offset: 0px;
 
