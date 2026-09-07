@@ -1045,6 +1045,7 @@ const coursesData = {
           "Certification Program (6\u00A0Months)",
         ],
         isNew: true,
+        curriculumUrls: ["/curriculum/AI_software_Engineering.pdf"],
         desc: "Become a job-ready AI Software Engineer. Master frontend, backend, MongoDB, JWT auth, payments, AWS deployment, and React Native mobile apps across a structured 6-month fullstack program.",
         rating: 4.9,
         duration: "6 months",
