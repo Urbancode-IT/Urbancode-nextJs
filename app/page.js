@@ -173,16 +173,17 @@ export default function HomePage() {
       </section>
       
  
- {/*
-<section id="proficiency-training" className="home-section">
-  <ProficiencyTrainingSection />
-</section>
-*/}
+ 
+
 
 
       <section className="home-section">
         <Courses />
       </section>
+      {/* <section id="proficiency-training" className="home-section">
+  <ProficiencyTrainingSection />
+</section> */}
+
        <section className="home-section">
         <Carousel />
       </section>

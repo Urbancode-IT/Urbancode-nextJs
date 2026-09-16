@@ -32,8 +32,12 @@ function getCardMetrics(windowWidth, rowWidth = 0) {
     return { cardWidth: 300, cardGap: 16, mediaHeight: 158, arrowWidth: 44 };
   }
 
+  const monitorCardWidth = rowWidth > 0
+    ? Math.floor((rowWidth - (CARD_GAP_DESKTOP * 3)) / 4)
+    : CARD_WIDTH_DESKTOP;
+
   return {
-    cardWidth: CARD_WIDTH_DESKTOP,
+    cardWidth: windowWidth >= 1440 ? monitorCardWidth : CARD_WIDTH_DESKTOP,
     cardGap: CARD_GAP_DESKTOP,
     mediaHeight: MEDIA_HEIGHT_DESKTOP,
     arrowWidth: ARROW_WIDTH,
@@ -90,7 +94,7 @@ function calcWholeCardLayout(containerWidth, itemCount, cardWidth, cardGap) {
   let visibleCount = Math.max(1, Math.floor((containerWidth + cardGap) / cardStep));
 
   if (isMonitor && visibleCount >= 3) {
-    visibleCount = Math.min(3, itemCount);
+    visibleCount = Math.min(4, itemCount);
   }
 
   const maxIndex = Math.max(0, itemCount - visibleCount);
@@ -698,11 +702,9 @@ export default function ProficiencyTrainingSection() {
         <div className="prof-section-header home-section-header">
           <div className="home-section-title-wrap">
             <h2 id="proficiency-training-title" className="section-main-title text-shine">
-              IELTS and Study Abroad Training
+              IELTS, PTE Training and Study Abroad
             </h2>
           </div>
-
-          <FeatureHighlightsRow />
         </div>
 
         <div
@@ -778,14 +780,6 @@ export default function ProficiencyTrainingSection() {
           )}
         </div>
 
-        <div className="prof-section-cta">
-          <Link href="/study-abroad" className="prof-primary-link">
-            Explore Study Abroad Programs
-          </Link>
-          <Link href="/courses/languages" className="prof-secondary-link">
-            View All Language Courses
-          </Link>
-        </div>
       </div>
 
       <EnquiryFormModal

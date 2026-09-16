@@ -246,13 +246,13 @@ const NewInternalCourse = ({ data }) => {
 
 
             {/* 3. TOOLS COVERED */}
-            {!data.isKidsSpace && (
+            {!data.isKidsSpace && toolsData && toolsData.length > 0 && (
                 <div className="nict-tools-section">
                     <section className="nict-tools-covered">
                         <h2 className="nict-tools-main-title">Tools Covered</h2>
 
                         <div className="nict-tools-grid">
-                            {toolsData && toolsData.map((tool, index) => (
+                            {toolsData.map((tool, index) => (
                                 <div className="nict-tool-card" key={tool.id || index}>
                                     <div className="nict-tool-icon-box">
                                         <img src={tool.icon} alt={tool.name} className={tool.icon.startsWith('/') ? 'local-img-large' : ''} />

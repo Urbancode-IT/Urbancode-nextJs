@@ -104,7 +104,37 @@ const getToolsForCourse = (title) => {
             { id: 8, name: "Github", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" }
         ];
     }
-    if (t.includes("ui/ux") || t.includes("ux design") || t.includes("figma") || t.includes("graphic") || t.includes("designing")) {
+    if (t.includes("canva")) {
+        return [];
+    }
+    if (t === "figma" || (t.includes("figma") && !t.includes("graphic"))) {
+        return [
+            { id: 1, name: "Figma", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" },
+            { id: 2, name: "FigJam", icon: "https://api.iconify.design/simple-icons:figma.svg?color=%23F24E1E" },
+            { id: 3, name: "Figma Plugins", icon: "https://api.iconify.design/fluent-emoji-flat:magic-wand.svg" },
+            { id: 4, name: "Photoshop", icon: "https://cdn.jsdelivr.net/npm/simple-icons@10.0.0/icons/adobephotoshop.svg" },
+            { id: 5, name: "Illustrator", icon: "https://cdn.jsdelivr.net/npm/simple-icons@10.0.0/icons/adobeillustrator.svg" }
+        ];
+    }
+    if (t.includes("photoshop")) {
+        return [
+            { id: 1, name: "Photoshop", icon: "https://cdn.jsdelivr.net/npm/simple-icons@10.0.0/icons/adobephotoshop.svg" },
+            { id: 2, name: "Lightroom", icon: "https://api.iconify.design/simple-icons:adobelightroom.svg?color=%2331A8FF" },
+            { id: 3, name: "Photoshop AI", icon: "https://api.iconify.design/simple-icons:adobephotoshop.svg?color=%2331A8FF" },
+            { id: 4, name: "Adobe Camera Raw", icon: "https://api.iconify.design/simple-icons:adobe.svg?color=%23FF0000" },
+            { id: 5, name: "Adobe Bridge", icon: "https://api.iconify.design/simple-icons:adobe.svg?color=%23FF0000" }
+        ];
+    }
+    if (t.includes("graphic design") || t.includes("graphic")) {
+        return [
+            { id: 1, name: "Photoshop", icon: "https://cdn.jsdelivr.net/npm/simple-icons@10.0.0/icons/adobephotoshop.svg" },
+            { id: 2, name: "Illustrator", icon: "https://cdn.jsdelivr.net/npm/simple-icons@10.0.0/icons/adobeillustrator.svg" },
+            { id: 3, name: "Figma", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" },
+            { id: 4, name: "Canva", icon: "https://api.iconify.design/simple-icons:canva.svg?color=%2300C4CC" },
+            { id: 5, name: "InDesign", icon: "https://api.iconify.design/simple-icons:adobeindesign.svg?color=%23FF3366" }
+        ];
+    }
+    if (t.includes("ui/ux") || t.includes("ux design") || t.includes("designing")) {
         return [
             { id: 1, name: "Figma", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" },
             { id: 2, name: "Adobe XD", icon: "https://api.iconify.design/simple-icons:adobexd.svg?color=%23FF61F6" },
