@@ -102,7 +102,8 @@ export default function HomePage() {
       src: "/images/home/ieltsbanner.webp",
       alt: "IELTS Training",
       type: "link",
-      link: "/study-abroad#english-proficiency"
+      link: "/study-abroad#english-proficiency",
+      useFlightAnimation: true
     },
     {
       src: "/images/home/data-engineering-with-azure.webp",
@@ -180,9 +181,9 @@ export default function HomePage() {
       <section className="home-section">
         <Courses />
       </section>
-      {/* <section id="proficiency-training" className="home-section">
+      <section id="proficiency-training" className="home-section">
   <ProficiencyTrainingSection />
-</section> */}
+</section> 
 
        <section className="home-section">
         <Carousel />

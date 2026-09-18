@@ -77,7 +77,8 @@ function calcWholeCardLayout(containerWidth, itemCount, cardWidth, cardGap) {
   const cardStep = cardWidth + cardGap;
   const isMonitor = typeof window !== 'undefined' && window.innerWidth >= 1440;
   const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
-  const totalWidth = itemCount * cardWidth + (itemCount - 1) * cardGap;
+  // Allow 2px tolerance for sub-pixel / floor rounding so 4 fitted cards don't keep arrows
+  const totalWidth = itemCount * cardWidth + Math.max(0, itemCount - 1) * cardGap;
 
   if (isMobile) {
     return {
@@ -87,7 +88,7 @@ function calcWholeCardLayout(containerWidth, itemCount, cardWidth, cardGap) {
     };
   }
 
-  if (totalWidth <= containerWidth) {
+  if (totalWidth <= containerWidth + 2) {
     return { needsArrows: false, visibleCount: itemCount, maxIndex: 0 };
   }
 
@@ -97,8 +98,10 @@ function calcWholeCardLayout(containerWidth, itemCount, cardWidth, cardGap) {
     visibleCount = Math.min(4, itemCount);
   }
 
+  visibleCount = Math.min(visibleCount, itemCount);
   const maxIndex = Math.max(0, itemCount - visibleCount);
-  return { needsArrows: true, visibleCount, maxIndex };
+  // Only show nav when at least one card is off-screen
+  return { needsArrows: maxIndex > 0, visibleCount, maxIndex };
 }
 
 const featureHighlights = [
@@ -501,7 +504,11 @@ function ExpandedGroupPanel({ group, onBack, onEnquire }) {
   const recalcLayout = useCallback(() => {
     if (!rowRef.current) return;
 
-    const contentWidth = rowRef.current.clientWidth;
+    // Measure the full carousel row (parent layout), not the narrowed viewport
+    const layoutEl = rowRef.current.closest('.prof-carousel-layout') || rowRef.current;
+    const fullWidth = layoutEl.clientWidth;
+    // Reserve arrow slots only when deciding fit without currently mounted arrows
+    const contentWidth = Math.max(fullWidth - 2, rowRef.current.clientWidth);
     const layout = calcWholeCardLayout(contentWidth, itemCount, cardWidth, cardGap);
 
     setNeedsArrows(layout.needsArrows);
@@ -557,23 +564,23 @@ function ExpandedGroupPanel({ group, onBack, onEnquire }) {
       </div>
 
       <div
-        className="prof-carousel-layout prof-inner-layout"
+        className={`prof-carousel-layout prof-inner-layout${needsArrows ? '' : ' prof-carousel-layout--no-arrows'}`}
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
         onTouchStart={() => setIsPaused(true)}
         onTouchEnd={() => setIsPaused(false)}
       >
-        <button
-          type="button"
-          className={`prof-nav-btn prof-nav-btn--inline prev ${!needsArrows || index === 0 ? 'is-disabled' : ''}`}
-          onClick={goPrev}
-          disabled={!needsArrows || index === 0}
-          aria-label="Previous program"
-          aria-hidden={!needsArrows}
-          tabIndex={needsArrows ? 0 : -1}
-        >
-          &#10094;
-        </button>
+        {needsArrows && (
+          <button
+            type="button"
+            className={`prof-nav-btn prof-nav-btn--inline prev ${index === 0 ? 'is-disabled' : ''}`}
+            onClick={goPrev}
+            disabled={index === 0}
+            aria-label="Previous program"
+          >
+            &#10094;
+          </button>
+        )}
 
         <div className="prof-inner-row" ref={rowRef}>
           <div
@@ -602,17 +609,17 @@ function ExpandedGroupPanel({ group, onBack, onEnquire }) {
           </div>
         </div>
 
-        <button
-          type="button"
-          className={`prof-nav-btn prof-nav-btn--inline next ${!needsArrows || index >= maxIndex ? 'is-disabled' : ''}`}
-          onClick={goNext}
-          disabled={!needsArrows || index >= maxIndex}
-          aria-label="Next program"
-          aria-hidden={!needsArrows}
-          tabIndex={needsArrows ? 0 : -1}
-        >
-          &#10095;
-        </button>
+        {needsArrows && (
+          <button
+            type="button"
+            className={`prof-nav-btn prof-nav-btn--inline next ${index >= maxIndex ? 'is-disabled' : ''}`}
+            onClick={goNext}
+            disabled={index >= maxIndex}
+            aria-label="Next program"
+          >
+            &#10095;
+          </button>
+        )}
       </div>
     </div>
   );
@@ -653,10 +660,11 @@ export default function ProficiencyTrainingSection() {
   }, []);
 
   const recalcLayout = useCallback(() => {
-    if (!rowRef.current || expandedGroupId) return;
+    if (!shellRef.current || expandedGroupId) return;
 
-    const contentWidth = rowRef.current.clientWidth;
-    const layout = calcWholeCardLayout(contentWidth, groupCount, cardWidth, cardGap);
+    // Use shell width so arrow buttons don't shrink the measure and force themselves on
+    const shellWidth = shellRef.current.clientWidth;
+    const layout = calcWholeCardLayout(shellWidth, groupCount, cardWidth, cardGap);
 
     setNeedsArrows(layout.needsArrows);
     setVisibleCount(layout.visibleCount);
@@ -667,7 +675,7 @@ export default function ProficiencyTrainingSection() {
   useEffect(() => {
     recalcLayout();
     const resizeObserver = new ResizeObserver(recalcLayout);
-    if (rowRef.current) resizeObserver.observe(rowRef.current);
+    if (shellRef.current) resizeObserver.observe(shellRef.current);
     window.addEventListener('resize', recalcLayout);
 
     return () => {
@@ -714,18 +722,18 @@ export default function ProficiencyTrainingSection() {
           onMouseLeave={() => !expandedGroupId && setIsPaused(false)}
         >
           {!expandedGroupId && (
-            <div className="prof-carousel-layout">
-              <button
-                type="button"
-                className={`prof-nav-btn prof-nav-btn--inline prev ${!needsArrows || index === 0 ? 'is-disabled' : ''}`}
-                onClick={goPrev}
-                disabled={!needsArrows || index === 0}
-                aria-label="Previous category"
-                aria-hidden={!needsArrows}
-                tabIndex={needsArrows ? 0 : -1}
-              >
-                &#10094;
-              </button>
+            <div className={`prof-carousel-layout${needsArrows ? '' : ' prof-carousel-layout--no-arrows'}`}>
+              {needsArrows && (
+                <button
+                  type="button"
+                  className={`prof-nav-btn prof-nav-btn--inline prev ${index === 0 ? 'is-disabled' : ''}`}
+                  onClick={goPrev}
+                  disabled={index === 0}
+                  aria-label="Previous category"
+                >
+                  &#10094;
+                </button>
+              )}
 
               <div className="prof-carousel-row" ref={rowRef}>
                 <div
@@ -757,17 +765,17 @@ export default function ProficiencyTrainingSection() {
                 </div>
               </div>
 
-              <button
-                type="button"
-                className={`prof-nav-btn prof-nav-btn--inline next ${!needsArrows || index >= maxIndex ? 'is-disabled' : ''}`}
-                onClick={goNext}
-                disabled={!needsArrows || index >= maxIndex}
-                aria-label="Next category"
-                aria-hidden={!needsArrows}
-                tabIndex={needsArrows ? 0 : -1}
-              >
-                &#10095;
-              </button>
+              {needsArrows && (
+                <button
+                  type="button"
+                  className={`prof-nav-btn prof-nav-btn--inline next ${index >= maxIndex ? 'is-disabled' : ''}`}
+                  onClick={goNext}
+                  disabled={index >= maxIndex}
+                  aria-label="Next category"
+                >
+                  &#10095;
+                </button>
+              )}
             </div>
           )}
 

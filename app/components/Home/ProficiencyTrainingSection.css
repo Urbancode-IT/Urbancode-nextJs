@@ -116,6 +116,15 @@
   width: 100%;
 }
 
+.prof-carousel-layout--no-arrows {
+  gap: 0;
+}
+
+.prof-carousel-layout--no-arrows .prof-carousel-row,
+.prof-carousel-layout--no-arrows .prof-inner-row {
+  width: 100%;
+}
+
 .prof-carousel-layout .prof-nav-btn--inline {
   position: static;
   flex-shrink: 0;

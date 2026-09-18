@@ -144,6 +144,11 @@
   pointer-events: none;
 }
 
+/* When all proficiency cards fit, nav buttons are not rendered — keep CSS defensive */
+.prof-section .prof-carousel-layout--no-arrows .prof-nav-btn {
+  display: none !important;
+}
+
 .study-abroad-container .mbbs-unified-arrow {
   position: absolute;
   top: 50%;

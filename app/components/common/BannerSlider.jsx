@@ -11,7 +11,6 @@ const BannerSlider = ({ banners = [], forceEnquiry = false }) => {
     const [current, setCurrent] = useState(0);
     const [showEnquiry, setShowEnquiry] = useState(false);
     const [selectedBanner, setSelectedBanner] = useState(null);
-    const [mounted, setMounted] = useState(false);
     const [isBannerFlying, setIsBannerFlying] = useState(false);
     const { isFlying, navigateToStudyAbroad } = useStudyAbroadFlight();
     const timerRef = useRef(null);
@@ -33,14 +32,10 @@ const BannerSlider = ({ banners = [], forceEnquiry = false }) => {
     }, [banners.length, stopTimer]);
 
     useEffect(() => {
-        setMounted(true);
-    }, []);
-
-    useEffect(() => {
-        if (!mounted || banners.length <= 1) return;
+        if (banners.length <= 1) return undefined;
         startTimer();
         return () => stopTimer();
-    }, [mounted, banners.length, startTimer, stopTimer]);
+    }, [banners.length, startTimer, stopTimer]);
 
     useEffect(() => {
         if (current >= banners.length) {
