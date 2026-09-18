@@ -710,7 +710,7 @@ export default function ProficiencyTrainingSection() {
         <div className="prof-section-header home-section-header">
           <div className="home-section-title-wrap">
             <h2 id="proficiency-training-title" className="section-main-title text-shine">
-              IELTS, PTE Training and Study Abroad
+            Study Abroad and IELTS, PTE Training
             </h2>
           </div>
         </div>
