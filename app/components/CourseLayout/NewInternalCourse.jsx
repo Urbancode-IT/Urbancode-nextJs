@@ -554,8 +554,6 @@ const NewInternalCourse = ({ data }) => {
                 useCourseEnquiryApi={true}
             />
 
-            <Link href="/english-intake" className="btn btn-primary" style={{ backgroundColor: '#036c2d', borderColor: '#036c2d' }}>Fill Intake Form</Link>
-
             {/* Course Assistant - Active for all courses in this layout */}
             {/* <CourseAssistant courseName={heroData.highlightText} /> */}
         </div>
