@@ -1,33 +1,50 @@
 /* Reset */
 
 
-/* Full-width navbar */
-.navbar {
+/* Full-width site navbar — .site-navbar avoids portfolio / other .navbar CSS clashes */
+.navbar.site-navbar {
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
   position: fixed !important;
-  /* navbar fixed at top */
   top: 0;
   left: 0;
+  right: 0;
   width: 100%;
   height: 71px;
   background: var(--bg-neutral);
   display: flex;
   align-items: center;
-  z-index: 1000;
-  /* stay above content */
+  z-index: 10050;
+  /* above portfolio overlays */
+  border: none;
+  border-radius: 0;
+  max-width: none;
+  box-shadow: none;
+  padding: 0;
+  pointer-events: auto;
+  transition: background-color 0.25s ease;
+  /* Do NOT use transform/isolation here — they break backdrop-filter in Chrome/Safari */
 }
 
-/* Bootstrap-like container */
-.navbar.container {
+/* Inner flex row — must NOT also be .navbar (that made a second fixed layer) */
+.navbar.site-navbar .navbar-inner {
   width: 100%;
   max-width: 1440px;
-  /* default for screens <= 1511px */
   margin: 0 auto;
   padding: 0 55px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
+  top: auto;
+  left: auto;
+  height: 100%;
   background-color: #f9f9f9;
+  z-index: auto;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 }
 
 .navbar-right {
@@ -128,7 +145,7 @@
 /* Tablets */
 /* Tablets and Compact Laptops */
 @media (max-width: 1200px) {
-  .navbar.container {
+  .navbar.site-navbar .navbar-inner {
     padding: 0 15px;
     /* Maximize space */
   }
@@ -262,7 +279,7 @@
 
 /* Extra large screens - above 1511px */
 @media (min-width: 1512px) {
-  .navbar.container {
+  .navbar.site-navbar .navbar-inner {
     max-width: 2600px;
     padding: 0 80px;
   }
@@ -289,7 +306,7 @@
 
 /* Specific fix for 1530px view - centering links parallel to logo */
 @media (min-width: 1500px) and (max-width: 1650px) {
-  .navbar.container {
+  .navbar.site-navbar .navbar-inner {
     max-width: 100% !important;
     justify-content: center !important;
     gap: 120px !important;
@@ -449,26 +466,24 @@
   }
 }
 
-/* Scrolled Navbar Style */
-.navbar.scrolled {
-  background: rgba(var(--bg-neutral-rgb), 0.5);
-  /* Semi-transparent background */
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-
-  /* Safari support */
+/* Scrolled Navbar Style — glass blur on the fixed outer bar only */
+.navbar.site-navbar.scrolled {
+  background: rgba(var(--bg-neutral-rgb), 0.55) !important;
+  backdrop-filter: blur(12px) saturate(1.2) !important;
+  -webkit-backdrop-filter: blur(12px) saturate(1.2) !important;
 }
 
-.navbar.scrolled .navbar.container {
-  background-color: transparent;
-  backdrop-filter: blur(8px) !important;
+.navbar.site-navbar.scrolled .navbar-inner {
+  background-color: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
 }
 
 /* Disable blur when mobile menu is open */
-.navbar.scrolled.menu-open {
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-  background: var(--bg-neutral);
+.navbar.site-navbar.scrolled.menu-open {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  background: var(--bg-neutral) !important;
 }
 
 /* Study Abroad Plane Icon */

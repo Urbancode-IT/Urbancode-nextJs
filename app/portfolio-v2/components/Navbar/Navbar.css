@@ -57,12 +57,9 @@ body {
   pointer-events: none; /* Let clicks pass through the transparent wrapper sides */
 }
 
-.navbar {
-  pointer-events: auto; /* Re-enable clicks exactly on the actual nav bar */
-}
-
-/* ── NAVBAR ── */
-.navbar {
+/* ── NAVBAR (scoped — never style global .navbar; clashes with site header) ── */
+.navbar__wrapper .navbar {
+  pointer-events: auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -76,16 +73,11 @@ body {
   max-width: 1100px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
   transition: all 0.3s;
-}
-
-/* Override potential .navbar styles from other CSS files */
-.navbar__wrapper .navbar {
-  position: relative; /* keep fixed positioning only on the wrapper */
+  position: relative;
   top: auto;
   left: auto;
   right: auto;
   margin: 0 auto;
-  pointer-events: auto;
 }
 
 /* ── LOGO ── */
@@ -226,7 +218,7 @@ body {
     padding: 10px 16px;
   }
 
-  .navbar {
+  .navbar__wrapper .navbar {
     border-radius: 20px;
     height: auto;
     flex-wrap: wrap;

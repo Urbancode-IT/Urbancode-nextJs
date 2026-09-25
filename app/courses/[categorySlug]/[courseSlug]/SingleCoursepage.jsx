@@ -244,6 +244,22 @@ const getToolsForCourse = (title) => {
             { id: 16, name: "Netlify", icon: "https://api.iconify.design/simple-icons:netlify.svg?color=%2300C7B7" },
         ];
     }
+    if (t.includes("gen ai") || t.includes("generative ai") || t.includes("agentic ai")) {
+        return [
+            { id: 1, name: "Python", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
+            { id: 2, name: "LangChain", icon: "/images/courses/tools/langchain-dark.png" },
+            { id: 3, name: "Crew AI", icon: "/images/courses/tools/crewai.svg" },
+            { id: 4, name: "Guardrails AI", icon: "/images/courses/tools/guardrails-ai.svg" },
+            { id: 5, name: "OpenAI", icon: "https://cdn.svgporn.com/logos/openai-icon.svg" },
+            { id: 6, name: "Hugging Face", icon: "https://api.iconify.design/simple-icons:huggingface.svg?color=%23FFD21E" },
+            { id: 7, name: "LlamaIndex", icon: "https://api.iconify.design/mdi:file-tree.svg?color=%235B6CFF" },
+            { id: 8, name: "Gemini", icon: "https://api.iconify.design/simple-icons:googlegemini.svg?color=%238E75B2" },
+            { id: 9, name: "Jupyter", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original.svg" },
+            { id: 10, name: "VS Code", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" },
+            { id: 11, name: "GitHub", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
+            { id: 12, name: "Docker", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" },
+        ];
+    }
     if (t.includes("python for data analyst")) {
         return [
             { id: 1, name: "Python", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
