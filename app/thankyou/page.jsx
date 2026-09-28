@@ -14,6 +14,7 @@ const ThankYouPage = () => {
 
     const pageLocation = window.location.href;
 
+    // Single conversion signal for GTM (do not also call gtag — that double-counts)
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
       event: 'page_view',
@@ -21,14 +22,6 @@ const ThankYouPage = () => {
       page_path: THANK_YOU_PATH,
       page_title: 'Thank You - Form Submission',
     });
-
-    if (typeof window.gtag === 'function') {
-      window.gtag('event', 'page_view', {
-        page_location: pageLocation,
-        page_path: THANK_YOU_PATH,
-        page_title: 'Thank You - Form Submission',
-      });
-    }
   }, []);
 
   return (

@@ -56,18 +56,20 @@ export default function RootLayout({ children }) {
         {/* Explicit viewport — belt-and-suspenders with export const viewport below */}
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
         <link rel="dns-prefetch" href="https://uc-chatbot.netlify.app" />
-        {/* ✅ Google Ads / GA4 — deferred so first paint is not blocked */}
-        <Script
-          id="google-gtag"
-          strategy="afterInteractive"
-          src="https://www.googletagmanager.com/gtag/js?id=G-ZZX212RD85"
-        />
-        <Script id="google-gtag-init" strategy="afterInteractive">
+
+        {/*
+          Google Tag Manager — install ONCE only (head script + body noscript).
+          Do NOT also hardcode gtag/GA4/Ads here: those tags must live inside the
+          GTM container (GTM-MTFL2HHJ). Loading both gtag + GTM double-fires
+          page_view / conversion hits.
+        */}
+        <Script id="google-tag-manager" strategy="afterInteractive">
           {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-ZZX212RD85');
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-MTFL2HHJ');
           `}
         </Script>
 
@@ -205,7 +207,7 @@ export default function RootLayout({ children }) {
       </head>
 
       <body className={inter.className}>
-        {/* ✅ GTM NoScript — must be FIRST element after <body> per Google's official instructions */}
+        {/* GTM noscript — required pair with the head snippet (JS-disabled browsers only) */}
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-MTFL2HHJ"
@@ -214,17 +216,6 @@ export default function RootLayout({ children }) {
             style={{ display: 'none', visibility: 'hidden' }}
           />
         </noscript>
-
-        {/* ✅ Google Tag Manager JS - afterInteractive */}
-        <Script id="google-tag-manager" strategy="afterInteractive">
-          {`
-            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','GTM-MTFL2HHJ');
-          `}
-        </Script>
 
         <BootstrapClient />
         <SmoothScroll>
