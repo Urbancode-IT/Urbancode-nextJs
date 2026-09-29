@@ -12,11 +12,21 @@ const Leads = () => {
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
 
-  const loadLeads = () => {
+  const loadLeads = async () => {
     try {
       const raw = localStorage.getItem(STORAGE_KEY);
-      const parsed = raw ? JSON.parse(raw) : [];
-      setLeads(Array.isArray(parsed) ? parsed : []);
+      const localLeads = raw ? JSON.parse(raw) : [];
+      if (Array.isArray(localLeads) && localLeads.length) {
+        await fetch('/api/compiler/leads', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ leads: localLeads }),
+        });
+      }
+
+      const response = await fetch('/api/compiler/leads', { cache: 'no-store' });
+      const data = await response.json();
+      setLeads(Array.isArray(data?.leads) ? data.leads : []);
     } catch {
       setLeads([]);
     } finally {
@@ -37,20 +47,28 @@ const Leads = () => {
     });
   }, [leads, search]);
 
-  const clearAll = () => {
+  const clearAll = async () => {
+    setLeads([]);
     try {
       localStorage.removeItem(STORAGE_KEY);
+      await fetch('/api/compiler/leads?all=1', { method: 'DELETE' });
     } catch {
       // ignore
     }
-    setLeads([]);
   };
 
-  const deleteLead = (id) => {
-    const next = leads.filter((l) => l.id !== id);
-    setLeads(next);
+  const deleteLead = async (id) => {
+    setLeads((prev) => prev.filter((l) => l.id !== id));
     try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+      const raw = localStorage.getItem(STORAGE_KEY);
+      const localLeads = raw ? JSON.parse(raw) : [];
+      if (Array.isArray(localLeads)) {
+        localStorage.setItem(
+          STORAGE_KEY,
+          JSON.stringify(localLeads.filter((l) => l.id !== id))
+        );
+      }
+      await fetch(`/api/compiler/leads?id=${encodeURIComponent(id)}`, { method: 'DELETE' });
     } catch {
       // ignore
     }

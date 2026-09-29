@@ -2412,7 +2412,7 @@ const coursesData = {
         duration: "2 months",
         students: "584",
         img: "/images/courses/new/python.png",
-        curriculumUrls: ["/curriculum/UC_Python Basic to Advanced Curriculum v1.0.pdf"],
+        curriculumUrls: ["/curriculum/Python_FSD_UC%20Curriculum.pdf"],
         aboutData: {
           topic:
             "Master Python Full Stack Development — Build Complete Web Applications from Scratch!",

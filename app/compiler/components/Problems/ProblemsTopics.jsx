@@ -188,17 +188,17 @@ const ProblemsTopics = () => {
 
     const hasCompletedCompilerLead = () => {
         try {
-            if (localStorage.getItem('uc_compiler_lead_submitted') === 'true') {
-                return true;
-            }
-            const leads = JSON.parse(localStorage.getItem('uc_local_leads') || '[]');
-            return Array.isArray(leads) && leads.some((lead) =>
-                String(lead?.courseName || '').toLowerCase().includes('compiler')
-            );
+            return localStorage.getItem('uc_compiler_lead_submitted_v2') === 'true';
         } catch {
             return false;
         }
     };
+
+    React.useEffect(() => {
+        if (!hasCompletedCompilerLead()) {
+            setLeadModalOpen(true);
+        }
+    }, []);
 
     const handleTopicClick = (topicKey) => {
         if (hasCompletedCompilerLead()) {
@@ -220,7 +220,7 @@ const ProblemsTopics = () => {
         setPendingTopicId(null);
         setPendingTopicTitle('');
         try {
-            localStorage.setItem('uc_compiler_lead_submitted', 'true');
+            localStorage.setItem('uc_compiler_lead_submitted_v2', 'true');
         } catch { }
 
         if (targetId) {
@@ -331,7 +331,9 @@ const ProblemsTopics = () => {
                                                 className="take-quiz-btn"
                                                 onClick={(e) => {
                                                     e.stopPropagation();
-                                                    navigate(`/quiz/${topic.id}/beginner`);
+                                                    setPendingTopicId(topic.id);
+                                                    setPendingTopicTitle(topic.title || '');
+                                                    setLeadModalOpen(true);
                                                 }}
                                             >
                                                 <FaPencilAlt /> Quiz

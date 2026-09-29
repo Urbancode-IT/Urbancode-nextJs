@@ -96,6 +96,16 @@ const LeadCaptureModal = ({
       // ignore
     }
 
+    try {
+      await fetch('/api/compiler/leads', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(localLeadPayload),
+      });
+    } catch {
+      // Admin can still backfill this browser's local copy later.
+    }
+
     // Trigger parent flow immediately (do not block on backend response).
     if (onSuccess && !didTriggerSuccessRef.current) {
       didTriggerSuccessRef.current = true;
@@ -140,6 +150,11 @@ const LeadCaptureModal = ({
               apiError: apiError || null,
             };
             localStorage.setItem(key, JSON.stringify(prev));
+            fetch('/api/compiler/leads', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(prev[idx]),
+            }).catch(() => {});
           }
         } catch {
           // ignore
