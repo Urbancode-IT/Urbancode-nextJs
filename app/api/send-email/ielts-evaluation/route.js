@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server';
 import { getGmailTransporter, getGmailSender } from '@/lib/mailer/gmailTransporter';
-
-const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+import { validateLeadContact } from '@/app/utils/validationUtils';
 const RECIPIENT = 'admin@urbancode.in';
 
 const toText = (value, fallback = 'N/A') => {
@@ -40,32 +39,12 @@ export async function POST(req) {
     const email = toText(body?.email, '');
     const phone = toText(body?.phone, '');
 
-    if (!name || name === 'N/A') {
-      return NextResponse.json({ success: false, message: 'Name is required.' }, { status: 400 });
+    const contactError = (firstName || lastName)
+      ? validateLeadContact({ names: [firstName, lastName], email, phone })
+      : validateLeadContact({ name, email, phone });
+    if (contactError) {
+      return NextResponse.json({ success: false, message: contactError }, { status: 400 });
     }
-    if (!email || !EMAIL_REGEX.test(email)) {
-      return NextResponse.json({ success: false, message: 'Valid email is required.' }, { status: 400 });
-    }
-    if (!phone || phone === 'N/A') {
-      return NextResponse.json({ success: false, message: 'Phone number is required.' }, { status: 400 });
-    }
-
-    // --- Spam Validation ---
-    const localPart = email.split('@')[0];
-    const dotCount = (localPart.match(/\\./g) || []).length;
-    if (email.toLowerCase().endsWith('@gmail.com') && dotCount >= 3) {
-      return NextResponse.json({ success: false, message: 'Invalid email format.' }, { status: 400 });
-    }
-
-    if (name && !name.includes(' ') && name.length > 15) {
-      return NextResponse.json({ success: false, message: 'Please provide a valid full name.' }, { status: 400 });
-    }
-    
-    const consonantMashRegex = /[bcdfghjklmnpqrstvwxzBCDFGHJKLMNPQRSTVWXZ]{7,}/;
-    if (name && consonantMashRegex.test(name)) {
-      return NextResponse.json({ success: false, message: 'Invalid input detected.' }, { status: 400 });
-    }
-    // -----------------------
 
     const sender = getGmailSender();
     const transporter = getGmailTransporter();

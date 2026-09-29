@@ -1,3 +1,49 @@
+.internship-page {
+    overflow-x: hidden;
+}
+
+.internship-page .section-lead {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto;
+    font-size: 16px;
+    line-height: 1.6;
+    font-weight: 400;
+    color: #64748b;
+}
+
+.internship-page .section-main-title {
+    margin-bottom: 12px;
+}
+
+.internship-page .career-form-wrap {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.internship-page .career-form-inner {
+    width: 100%;
+    max-width: 860px;
+}
+
+.internship-page .career-form-card.form-card-standard {
+    max-width: 860px !important;
+    width: 100%;
+    max-height: none !important;
+    overflow: visible !important;
+    margin: 0 auto !important;
+    background: var(--form-bg) !important;
+    border: none;
+    box-shadow: var(--form-shadow);
+    border-radius: var(--form-radius, 16px);
+    scrollbar-width: none;
+}
+
+.internship-page .career-form-card.form-card-standard::-webkit-scrollbar {
+    display: none;
+}
+
 /* Hero Section */
 .internship-page .internship-hero {
     width: 100%;
@@ -214,9 +260,11 @@
 
 .internship-page .section-subtitle {
     font-weight: 400;
-    font-size: 12px;
-    color: #000;
-    margin-top: -5px;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #64748b;
+    text-align: center;
+    margin: 0 auto;
 }
 
 .internship-page .cards-wrapper {
@@ -230,7 +278,8 @@
 
 .internship-page .internship-card {
     width: 306px;
-    height: 182px;
+    height: auto;
+    min-height: 200px;
     background: #fff;
     box-shadow: 0px 0px 7.3px 3px rgba(0, 0, 0, 0.25);
     border-radius: 19px;
@@ -261,9 +310,10 @@
 }
 
 .internship-page .icon {
-    width: 25px;
-    height: 25px;
-    color: white;
+    width: 22px;
+    height: 22px;
+    color: #ffffff;
+    flex-shrink: 0;
 }
 
 .internship-page .card-title {
@@ -278,11 +328,11 @@
 
 .internship-page .card-text {
     font-weight: 400;
-    font-size: 12px;
-    /* line-height: 100%; */
-    letter-spacing: -0.02em;
+    font-size: 14px;
+    line-height: 1.5;
+    letter-spacing: 0;
     text-align: center;
-    color: #000;
+    color: #475569;
 }
 
 /* TRANSFORM SECTION */
@@ -346,16 +396,19 @@
 }
 
 .internship-page .form-title {
-    font-size: 20px;
-    font-weight: 600;
-    color: #2C3E50;
+    font-size: 22px;
+    font-weight: 700;
+    color: #1d2b3a;
+    text-align: center;
 }
 
 .internship-page .form-subtitle {
-    font-size: 13px;
-    color: #000;
-    letter-spacing: -0.02em;
-    margin-bottom: 20px;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #64748b;
+    letter-spacing: 0;
+    margin-bottom: 28px;
+    text-align: center;
 }
 
 .internship-page label {
@@ -442,7 +495,7 @@
     }
 
     .internship-page .cards-wrapper {
-        gap: 180px;
+        gap: 28px;
     }
 
     .internship-page .application-card {
@@ -896,9 +949,8 @@
         grid-template-rows: repeat(2, auto);
         justify-content: center;
         /* centers the whole grid */
-        column-gap: 250px;
-        /* horizontal spacing between cards */
-        row-gap: 60px;
+        column-gap: 28px;
+        row-gap: 28px;
         /* vertical spacing between cards */
     }
 

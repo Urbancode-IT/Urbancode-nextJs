@@ -1,8 +1,6 @@
 ﻿import { NextResponse } from "next/server";
 import { getGmailTransporter, getGmailSender } from "@/lib/mailer/gmailTransporter";
-
-const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const consonantMashRegex = /[bcdfghjklmnpqrstvwxzBCDFGHJKLMNPQRSTVWXZ]{7,}/;
+import { isGibberish, validateLeadContact } from "@/app/utils/validationUtils";
 
 const toText = (value, fallback = "N/A") => {
   if (value === undefined || value === null) return fallback;
@@ -28,13 +26,11 @@ export async function POST(req) {
     const learningMode = toText(body?.learningMode, "N/A");
     const goals        = toText(body?.goals, "Not specified");
 
-    if (!name)  return NextResponse.json({ success: false, message: "Name is required." }, { status: 400 });
-    if (!email || !EMAIL_REGEX.test(email))
-               return NextResponse.json({ success: false, message: "Valid email is required." }, { status: 400 });
-    if (!phone) return NextResponse.json({ success: false, message: "Phone number is required." }, { status: 400 });
-
-    if (consonantMashRegex.test(name) || consonantMashRegex.test(goals))
-               return NextResponse.json({ success: false, message: "Invalid input detected." }, { status: 400 });
+    const contactError = validateLeadContact({ name, email, phone });
+    if (contactError) return NextResponse.json({ success: false, message: contactError }, { status: 400 });
+    if (body?.goals && isGibberish(String(body.goals))) {
+      return NextResponse.json({ success: false, message: "Please enter a valid message." }, { status: 400 });
+    }
 
     const recipient  = process.env.ENQUIRY_TO_EMAIL || "admin@urbancode.in";
     const sender     = getGmailSender();

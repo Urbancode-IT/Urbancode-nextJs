@@ -1,6 +1,5 @@
 import { z } from 'zod';
-import { isGibberish } from '../utils/validationUtils';
-import { parsePhoneNumberWithError } from 'libphonenumber-js';
+import { getEmailError, getPhoneError, isGibberish, isSpamName } from '../utils/validationUtils';
 
 // Base text schema with gibberish and character checking
 export const nameSchema = z.string()
@@ -8,8 +7,8 @@ export const nameSchema = z.string()
   .min(2, "Name must be at least 2 characters")
   .max(50, "Name must be maximum 50 characters")
   .regex(/^[a-zA-Z\s'\-\.]+$/, "Name can contain only letters, spaces, apostrophes, hyphens, and periods")
-  .refine(name => !isGibberish(name), {
-    message: "Invalid pattern."
+  .refine(name => !isSpamName(name), {
+    message: "Please enter a valid name."
   })
   .refine(name => name.trim().length >= 2, {
     message: "Name cannot be just spaces"
@@ -19,7 +18,13 @@ export const emailSchema = z.string()
   .min(1, "Email is required")
   .trim()
   .toLowerCase()
-  .email("Enter a valid email address");
+  .email("Enter a valid email address")
+  .superRefine((value, ctx) => {
+    const error = getEmailError(value);
+    if (error && error !== "Email is required." && error !== "Enter a valid email address.") {
+      ctx.addIssue({ code: z.ZodIssueCode.custom, message: error });
+    }
+  });
 
 export const messageSchema = z.string()
   .min(1, "Message is required")
@@ -33,15 +38,11 @@ export const phoneSchema = z.string({
   required_error: "Phone number is required"
 })
   .min(1, "Phone number is required")
-  .refine((val) => {
-    try {
-      const phoneNumber = parsePhoneNumberWithError(val);
-      return phoneNumber.isValid();
-    } catch (error) {
-      return false;
+  .superRefine((val, ctx) => {
+    const error = getPhoneError(val);
+    if (error && error !== "Phone number is required.") {
+      ctx.addIssue({ code: z.ZodIssueCode.custom, message: error });
     }
-  }, {
-    message: "Enter a valid phone number"
   });
 
 export const baseEnquirySchema = z.object({

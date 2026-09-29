@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server';
 import { getGmailTransporter, getGmailSender } from '@/lib/mailer/gmailTransporter';
-
-const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+import { isGibberish, validateLeadContact } from '@/app/utils/validationUtils';
 
 const toText = (value, fallback = 'N/A') => {
   if (value === undefined || value === null) return fallback;
@@ -19,12 +18,11 @@ export async function POST(req) {
     const experience = toText(body?.experience, 'Not specified');
     const interest   = toText(body?.interest, 'No message provided');
 
-    if (!name)  return NextResponse.json({ success: false, message: 'Name is required.' }, { status: 400 });
-    if (!email || !EMAIL_REGEX.test(email))
-                return NextResponse.json({ success: false, message: 'Valid email is required.' }, { status: 400 });
-    if (!phone) return NextResponse.json({ success: false, message: 'Phone number is required.' }, { status: 400 });
-
-    // Spam Validation removed
+    const contactError = validateLeadContact({ name, email, phone });
+    if (contactError) return NextResponse.json({ success: false, message: contactError }, { status: 400 });
+    if (interest && interest !== 'No message provided' && isGibberish(interest)) {
+      return NextResponse.json({ success: false, message: 'Please enter a valid message.' }, { status: 400 });
+    }
 
     const recipient   = process.env.ENQUIRY_TO_EMAIL || 'admin@urbancode.in';
     const sender      = getGmailSender();

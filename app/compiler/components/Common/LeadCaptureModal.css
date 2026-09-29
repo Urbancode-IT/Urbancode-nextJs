@@ -19,7 +19,7 @@
   background: #ffffff;
   border-radius: 16px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-  overflow: hidden;
+  overflow: visible;
   animation: slideUp 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 

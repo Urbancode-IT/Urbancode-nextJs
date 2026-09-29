@@ -19,6 +19,8 @@ import './studyAbroadGrids.css';
 import './studyAbroadProficiency.css';
 import './studyAbroadHover.css';
 import { FormInput, FormSelect, FormTextarea, FormButton, FormCard } from "@/app/components/common/FormUI";
+import { FormPhoneInput } from "@/app/components/common/FormPhoneInput";
+import { getEmailError, getNameError, getPhoneError } from "@/app/utils/validationUtils";
 
 /* ── Counting animation stats banner for MBBS section ─────────────── */
 function useCountUp(target, duration = 1800, started = false) {
@@ -647,23 +649,29 @@ const StudyAbroadPage = () => {
         setFormData(prev => ({ ...prev, [name]: value }));
     };
 
+    const handlePhoneChange = (value) => {
+        setFormData(prev => ({ ...prev, phone: value || "" }));
+    };
+
     const handleFormSubmit = async (e) => {
         e.preventDefault();
         setFormStatus({ type: "", message: "" });
 
         const { name, email, phone, country, education, course } = formData;
-        
-        if (!name.trim() || name.trim().length < 3) {
-            Swal.fire({ icon: 'warning', title: 'Validation Error', text: 'Please enter a valid name (min 3 characters).', confirmButtonColor: '#036c2d' });
+        const nameError = getNameError(name);
+        const emailError = getEmailError(email);
+        const phoneError = getPhoneError(phone);
+
+        if (nameError) {
+            Swal.fire({ icon: 'warning', title: 'Validation Error', text: nameError, confirmButtonColor: '#036c2d' });
             return;
         }
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-            Swal.fire({ icon: 'warning', title: 'Validation Error', text: 'Please enter a valid email address.', confirmButtonColor: '#036c2d' });
+        if (emailError) {
+            Swal.fire({ icon: 'warning', title: 'Validation Error', text: emailError, confirmButtonColor: '#036c2d' });
             return;
         }
-        const cleanPhone = phone.replace(/\D/g, '');
-        if (cleanPhone.length < 7 || cleanPhone.length > 15) {
-            Swal.fire({ icon: 'warning', title: 'Validation Error', text: 'Please enter a valid 7 to 15 digit mobile number.', confirmButtonColor: '#036c2d' });
+        if (phoneError) {
+            Swal.fire({ icon: 'warning', title: 'Validation Error', text: phoneError, confirmButtonColor: '#036c2d' });
             return;
         }
         if (!country) {
@@ -684,7 +692,7 @@ const StudyAbroadPage = () => {
         const submissionData = {
             name: formData.name.trim(),
             email: formData.email.trim(),
-            phone: cleanPhone,
+            phone: phone.trim(),
             course: `Study Abroad - ${formData.country} (${formData.course})`,
             message: `Education Level: ${formData.education}\nMessage: ${formData.message}`,
             mode: "Online/Offline"
@@ -790,7 +798,7 @@ const StudyAbroadPage = () => {
                                 </div>
                                             <div className="col-md-6">
                                                 <label className="form-label fw-semibold">Phone Number</label>
-                                                <FormInput type="tel" name="phone" placeholder="Enter your phone number" required value={formData.phone} onChange={handleFormChange} disabled={isSubmitting} />
+                                                <FormPhoneInput name="phone" placeholder="Enter your phone number" value={formData.phone} onChange={handlePhoneChange} disabled={isSubmitting} />
                                 </div>
                                             <div className="col-md-6">
                                                 <label className="form-label fw-semibold">Preferred Destination</label>
@@ -1426,7 +1434,7 @@ const StudyAbroadPage = () => {
                                         <FormInput type="email" name="email" placeholder="Email Address" required value={formData.email} onChange={handleFormChange} disabled={isSubmitting} />
                                     </div>
                                     <div className="col-md-6">
-                                        <FormInput type="tel" name="phone" placeholder="Phone Number" required value={formData.phone} onChange={handleFormChange} disabled={isSubmitting} />
+                                        <FormPhoneInput name="phone" placeholder="Phone Number" value={formData.phone} onChange={handlePhoneChange} disabled={isSubmitting} />
                                     </div>
                                     <div className="col-md-6">
                                         <FormSelect name="country" placeholder="Preferred Destination" options={destinationOptions} required value={formData.country} onChange={handleFormChange} disabled={isSubmitting} />

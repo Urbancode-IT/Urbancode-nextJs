@@ -4,8 +4,11 @@ import { goToThankYou } from '@/lib/navigation/goToThankYou'
 import './internship.css'
 import { submitInternshipApplication } from '../../lib/api/api'
 import { Clock } from 'lucide-react'
+import { FaLaptopCode, FaUserGraduate, FaHandsHelping, FaCertificate } from 'react-icons/fa'
 
 import { FormInput, FormSelect, FormTextarea, FormButton, FormCard } from "@/app/components/common/FormUI";
+import { FormPhoneInput } from "@/app/components/common/FormPhoneInput";
+import { getEmailError, getNameError, getPhoneError, isGibberish } from "@/app/utils/validationUtils";
 
 function App() {
   const [formData, setFormData] = useState({
@@ -19,6 +22,11 @@ function App() {
     portfolio: ''
   })
   const [loading, setLoading] = useState(false)
+  const [errors, setErrors] = useState({})
+
+  const clearFieldError = (fieldName) => {
+    setErrors((prev) => ({ ...prev, [fieldName]: '' }))
+  }
 
   const handleInputChange = (e) => {
     const { id, name, value } = e.target
@@ -27,20 +35,39 @@ function App() {
       ...prev,
       [fieldName]: value
     }))
+    clearFieldError(fieldName)
+  }
+
+  const handlePhoneChange = (value) => {
+    setFormData((prev) => ({ ...prev, mobile: value || '' }))
+    clearFieldError('mobile')
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
 
     const { firstName, lastName, email, mobile, program, experience, interest } = formData
+    const nextErrors = {}
+    const firstNameError = getNameError(firstName, 'First name')
+    const lastNameError = getNameError(lastName, 'Last name')
+    const emailError = getEmailError(email)
+    const phoneError = getPhoneError(mobile)
 
-    if (!firstName.trim()) { alert('Please enter your first name.'); return }
-    if (!lastName.trim()) { alert('Please enter your last name.'); return }
-    if (!email.trim()) { alert('Please enter your email.'); return }
-    if (!mobile.trim()) { alert('Please enter your mobile number.'); return }
-    if (!program) { alert('Please select a program.'); return }
-    if (!experience) { alert('Please select your experience.'); return }
-    if (!interest.trim()) { alert('Please tell us why you are interested in this internship.'); return }
+    if (firstNameError) nextErrors.firstName = firstNameError
+    if (lastNameError) nextErrors.lastName = lastNameError
+    if (emailError) nextErrors.email = emailError
+    if (phoneError) nextErrors.mobile = phoneError
+    if (!program) nextErrors.program = 'Please select a program.'
+    if (!experience) nextErrors.experience = 'Please select your experience.'
+    if (!interest.trim()) nextErrors.interest = 'Please tell us why you are interested in this internship.'
+    else if (isGibberish(interest)) nextErrors.interest = 'Please enter a valid message.'
+
+    if (Object.keys(nextErrors).length) {
+      setErrors(nextErrors)
+      return
+    }
+
+    setErrors({})
 
     setLoading(true)
     const result = await submitInternshipApplication(formData);
@@ -58,6 +85,7 @@ function App() {
         interest: '',
         portfolio: ''
       });
+      setErrors({});
     } else {
       alert(`❌ ${result.message}`);
     }
@@ -155,22 +183,22 @@ function App() {
 
   const features = [
     {
-      icon: "fas fa-laptop-code",
+      Icon: FaLaptopCode,
       title: "Real World Projects",
       text: "Build a portfolio with actual projects used by real companies."
     },
     {
-      icon: "fas fa-user-graduate",
+      Icon: FaUserGraduate,
       title: "Mentorship Program",
       text: "Work directly with industry professionals who guide your learning journey."
     },
     {
-      icon: "fas fa-hands-helping",
+      Icon: FaHandsHelping,
       title: "Career Support",
       text: "Lifetime access to career services, resume reviews, and interview prep."
     },
     {
-      icon: "fas fa-briefcase",
+      Icon: FaCertificate,
       title: "Certification",
       text: "Earn industry-recognized certificates to boost your career prospects."
     }
@@ -222,15 +250,15 @@ function App() {
       {/* Why Choose Our Internships Section */}
       <section className="why-internship-section">
         <div className="container">
-          <h2 className="section-title">Why Choose Our Internships?</h2>
-          <p className="section-subtitle">Our comprehensive approach ensures you're job-ready from day one.</p>
+          <h2 className="section-main-title">Why Choose Our Internships?</h2>
+          <p className="section-lead">Our comprehensive approach ensures you're job-ready from day one.</p>
 
           {/* Cards Wrapper */}
           <div className="cards-wrapper">
             {features.map((feature, index) => (
               <div key={index} className="internship-card">
                 <div className="icon-bg">
-                  <i className={`${feature.icon} icon`}></i>
+                  <feature.Icon className="icon" aria-hidden="true" />
                 </div>
                 <div className="card-title">{feature.title}</div>
                 <div className="card-text">{feature.text}</div>
@@ -243,22 +271,10 @@ function App() {
       {/* Application Section */}
       <section id="application" className="application-section">
         <div className="container">
-          <div className="text-center mb-4">
-            <h2 className="section-title">Ready to Apply</h2>
-            <p className="section-subtitle">
-              Submit your application today and join thousands of successful graduates
-              who have transformed their <br></br>careers with us.
-            </p>
-          </div>
-
-          <div className="row justify-content-center">
-            <div className="col-lg-10">
-              <FormCard className="p-4 p-md-5">
-                <h4 className="form-title text-center mb-2">Apply for Internship</h4>
-                <p className="form-subtitle text-center mb-5">
-                  Fill out the form below to apply for one of our internship programs.
-                </p>
-
+          <div className="career-form-wrap">
+            <div className="career-form-inner">
+              <FormCard className="career-form-card p-4 p-md-5">
+                <h2 className="section-main-title">Apply for an Internship</h2>
                 <form onSubmit={handleSubmit}>
                   <div className="row g-4">
                     <div className="col-md-6">
@@ -268,6 +284,7 @@ function App() {
                         placeholder="Enter first name"
                         value={formData.firstName}
                         onChange={handleInputChange}
+                        error={errors.firstName}
                         required
                         disabled={loading}
                       />
@@ -279,6 +296,7 @@ function App() {
                         placeholder="Enter last name"
                         value={formData.lastName}
                         onChange={handleInputChange}
+                        error={errors.lastName}
                         required
                         disabled={loading}
                       />
@@ -291,19 +309,19 @@ function App() {
                         placeholder="Enter your email"
                         value={formData.email}
                         onChange={handleInputChange}
+                        error={errors.email}
                         required
                         disabled={loading}
                       />
                     </div>
                     <div className="col-md-6">
-                      <FormInput
+                      <FormPhoneInput
                         label="Mobile Number"
-                        type="tel"
-                        id="mobile"
+                        name="mobile"
                         placeholder="Enter your mobile number"
                         value={formData.mobile}
-                        onChange={handleInputChange}
-                        required
+                        onChange={handlePhoneChange}
+                        error={errors.mobile}
                         disabled={loading}
                       />
                     </div>
@@ -315,6 +333,7 @@ function App() {
                         options={programOptions}
                         value={formData.program}
                         onChange={handleInputChange}
+                        error={errors.program}
                         required
                         disabled={loading}
                       />
@@ -327,6 +346,7 @@ function App() {
                         options={experienceOptions}
                         value={formData.experience}
                         onChange={handleInputChange}
+                        error={errors.experience}
                         required
                         disabled={loading}
                       />
@@ -339,6 +359,7 @@ function App() {
                         placeholder="Tell us about your goals and what you hope to gain"
                         value={formData.interest}
                         onChange={handleInputChange}
+                        error={errors.interest}
                         required
                         disabled={loading}
                       />

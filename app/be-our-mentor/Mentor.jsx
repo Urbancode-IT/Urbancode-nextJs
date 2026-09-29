@@ -14,6 +14,8 @@ import expertise4 from "@/public/images/mentorImages/mentor4.jpg";
 import mentorHero from "@/public/images/mentorImages/mentorHero.jpg";
 
 import { FormInput, FormSelect, FormTextarea, FormButton, FormCard } from "@/app/components/common/FormUI";
+import { FormPhoneInput } from "@/app/components/common/FormPhoneInput";
+import { getEmailError, getNameError, getPhoneError, isGibberish } from "@/app/utils/validationUtils";
 
 const Mentor = () => {
     const [formData, setFormData] = useState({
@@ -27,23 +29,48 @@ const Mentor = () => {
   const [status, setStatus] = useState("idle"); 
   // "idle" | "sending" | "success" | "error"
   const [message, setMessage] = useState("");
+  const [errors, setErrors] = useState({});
+
+  const clearFieldError = (fieldName) => {
+    setErrors((prev) => ({ ...prev, [fieldName]: "" }));
+  };
 
   const handleInputChange = (e) => {
     const { id, name, value } = e.target;
     const fieldName = id || name;
     setFormData(prev => ({ ...prev, [fieldName]: value }));
+    clearFieldError(fieldName);
+  };
+
+  const handlePhoneChange = (value) => {
+    setFormData((prev) => ({ ...prev, mobile: value || "" }));
+    clearFieldError("mobile");
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const { name, email, mobile, experience, interest } = formData;
+    const nextErrors = {};
+    const nameError = getNameError(name);
+    const emailError = getEmailError(email);
+    const phoneError = getPhoneError(mobile);
 
-    if (!name.trim()) return setStatus("error"), setMessage("Please enter your name.");
-    if (!email.trim()) return setStatus("error"), setMessage("Please enter your email.");
-    if (!mobile.trim()) return setStatus("error"), setMessage("Please enter your mobile number.");
-    if (!experience) return setStatus("error"), setMessage("Please select your experience.");
-    if (!interest.trim()) return setStatus("error"), setMessage("Please enter your message.");
+    if (nameError) nextErrors.name = nameError;
+    if (emailError) nextErrors.email = emailError;
+    if (phoneError) nextErrors.mobile = phoneError;
+    if (!experience) nextErrors.experience = "Please select your experience.";
+    if (!interest.trim()) nextErrors.interest = "Please enter your message.";
+    else if (isGibberish(interest)) nextErrors.interest = "Please enter a valid message.";
+
+    if (Object.keys(nextErrors).length) {
+      setErrors(nextErrors);
+      setStatus("error");
+      setMessage("Please correct the highlighted fields.");
+      return;
+    }
+
+    setErrors({});
 
     setStatus("sending");
     setMessage("Submitting your application...");
@@ -55,6 +82,7 @@ const Mentor = () => {
       setMessage("✅ Application submitted successfully!");
       goToThankYou();
       setFormData({ name: '', email: '', mobile: '', experience: '', interest: '' });
+      setErrors({});
       setTimeout(() => setStatus("idle"), 2500);
     } else {
       setStatus("error");
@@ -229,11 +257,11 @@ const Mentor = () => {
       {/* TRANSFORM SECTION */}
       <section id="mentorform" className="mentorpage-transform-section">
         <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-lg-10">
-              <FormCard className="p-4 p-md-5">
-                <h2 className="text-center mb-2 fw-bold">Ready to Transform Lives?</h2>
-                <p className="text-center mb-5 text-muted">
+          <div className="career-form-wrap">
+            <div className="career-form-inner">
+              <FormCard className="career-form-card p-4 p-md-5">
+                <h2 className="section-main-title">Ready to Transform Lives?</h2>
+                <p className="section-lead">
                   Share your expertise, mentor real projects, and see learners land offers.
                 </p>
 
@@ -245,6 +273,7 @@ const Mentor = () => {
                         placeholder="Enter name"
                         value={formData.name}
                         onChange={handleInputChange}
+                        error={errors.name}
                         required
                         disabled={status === "sending"}
                       />
@@ -256,18 +285,18 @@ const Mentor = () => {
                         placeholder="Enter email"
                         value={formData.email}
                         onChange={handleInputChange}
+                        error={errors.email}
                         required
                         disabled={status === "sending"}
                       />
                     </div>
                     <div className="col-md-6">
-                      <FormInput
-                        type="tel"
-                        id="mobile"
+                      <FormPhoneInput
+                        name="mobile"
                         placeholder="Enter mobile number"
                         value={formData.mobile}
-                        onChange={handleInputChange}
-                        required
+                        onChange={handlePhoneChange}
+                        error={errors.mobile}
                         disabled={status === "sending"}
                       />
                     </div>
@@ -278,6 +307,7 @@ const Mentor = () => {
                         options={experienceOptions}
                         value={formData.experience}
                         onChange={handleInputChange}
+                        error={errors.experience}
                         required
                         disabled={status === "sending"}
                       />
@@ -289,6 +319,7 @@ const Mentor = () => {
                         placeholder="Tell us about your goals"
                         value={formData.interest}
                         onChange={handleInputChange}
+                        error={errors.interest}
                         required
                         disabled={status === "sending"}
                       />

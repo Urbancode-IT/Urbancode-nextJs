@@ -2,8 +2,7 @@ import { NextResponse } from 'next/server';
 import { getGmailTransporter, getGmailSender } from '@/lib/mailer/gmailTransporter';
 import { sendExternalEnrollment, extractMobileNumber } from '@/lib/api/externalEnrollment';
 import { isZenCourseId } from '@/lib/api/externalCourses';
-
-const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+import { validateLeadContact } from '@/app/utils/validationUtils';
 const CRM_TIMEOUT_MS = 5000;
 
 const withTimeout = (promise, timeoutMs, message) =>
@@ -40,12 +39,8 @@ export async function POST(req) {
     const card_type = toText(body?.card_type, 'Training Only');
     const source_page = toText(body?.source_page, '');
 
-    if (!name)  return NextResponse.json({ success: false, message: 'Name is required.' }, { status: 400 });
-    if (!email || !EMAIL_REGEX.test(email))
-                 return NextResponse.json({ success: false, message: 'Valid email is required.' }, { status: 400 });
-    if (!phone) return NextResponse.json({ success: false, message: 'Phone number is required.' }, { status: 400 });
-
-    // Spam Validation removed
+    const contactError = validateLeadContact({ name, email, phone });
+    if (contactError) return NextResponse.json({ success: false, message: contactError }, { status: 400 });
 
     const recipient  = process.env.ENQUIRY_TO_EMAIL || 'admin@urbancode.in';
     const sender     = getGmailSender();

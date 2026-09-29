@@ -2,6 +2,8 @@
 import React, { useState } from "react";
 import Swal from "sweetalert2";
 import { submitEnglishIntakeForm } from "@/lib/api/api";
+import { FormPhoneInput } from "@/app/components/common/FormPhoneInput";
+import { getEmailError, getNameError, getPhoneError, isGibberish } from "@/app/utils/validationUtils";
 import Link from "next/link";
 
 const occupationOptions = ["Student", "Working Professional", "Home maker", "Other"];
@@ -12,7 +14,6 @@ const comfortOptions = ["Very comfortable", "Somewhat comfortable", "A little co
 const hoursOptions = ["2-3 hours", "4-6 hours", "More than 6 hours"];
 const modeOptions = ["Online", "Offline", "Either"];
 const BLANK = { fullName: "", age: "", email: "", phone: "", occupation: "", occupationOther: "", englishLevel: "", reasons: [], focusArea: "", attendedBefore: "", comfortLevel: "", hoursPerWeek: "", learningMode: "", goals: "" };
-const consonantMashRegex = /[bcdfghjklmnpqrstvwxzBCDFGHJKLMNPQRSTVWXZ]{7,}/;
 
 function SectionCard({ number, title, children }) {
   return (
@@ -83,13 +84,13 @@ export default function EnglishIntakeFormPage() {
   };
 
   const validateStep1 = () => {
-    if (!formData.fullName.trim()) return "Full Name is required.";
-    if (consonantMashRegex.test(formData.fullName)) return "Invalid input in Full Name.";
+    const nameError = getNameError(formData.fullName, "Full name");
+    if (nameError) return nameError;
     if (!formData.age) return "Age is required.";
-    if (!formData.email.trim()) return "Email is required.";
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) return "Invalid email address.";
-    const ph = formData.phone.replace(/\D/g, "");
-    if (ph.length < 7 || ph.length > 15) return "Please enter a valid 7 to 15 digit mobile number.";
+    const emailError = getEmailError(formData.email);
+    if (emailError) return emailError;
+    const phoneError = getPhoneError(formData.phone);
+    if (phoneError) return phoneError;
     return null;
   };
 
@@ -102,7 +103,7 @@ export default function EnglishIntakeFormPage() {
     if (!formData.comfortLevel) return "Comfort level is required.";
     if (!formData.hoursPerWeek) return "Select weekly learning hours.";
     if (!formData.learningMode) return "Preferred mode of learning is required.";
-    if (formData.goals && consonantMashRegex.test(formData.goals)) return "Invalid input in goals.";
+    if (formData.goals && isGibberish(formData.goals)) return "Invalid input in goals.";
     return null;
   };
 
@@ -118,7 +119,7 @@ export default function EnglishIntakeFormPage() {
     const err = validateStep2();
     if (err) { Swal.fire({ icon: "warning", title: "Validation Error", text: err, confirmButtonColor: "#036c2d" }); return; }
     setLoading(true);
-    const payload = { name: formData.fullName.trim(), age: formData.age, email: formData.email.trim(), phone: formData.phone.replace(/\D/g, ""), occupation: formData.occupation === "Other" ? "Other: " + formData.occupationOther : formData.occupation, englishLevel: formData.englishLevel, reasons: formData.reasons.join(", "), focusArea: formData.focusArea, attendedBefore: formData.attendedBefore, comfortLevel: formData.comfortLevel, hoursPerWeek: formData.hoursPerWeek, learningMode: formData.learningMode, goals: formData.goals.trim() };
+    const payload = { name: formData.fullName.trim(), age: formData.age, email: formData.email.trim(), phone: formData.phone.trim(), occupation: formData.occupation === "Other" ? "Other: " + formData.occupationOther : formData.occupation, englishLevel: formData.englishLevel, reasons: formData.reasons.join(", "), focusArea: formData.focusArea, attendedBefore: formData.attendedBefore, comfortLevel: formData.comfortLevel, hoursPerWeek: formData.hoursPerWeek, learningMode: formData.learningMode, goals: formData.goals.trim() };
     try {
       const result = await submitEnglishIntakeForm(payload);
       if (result.success) {
@@ -153,7 +154,7 @@ export default function EnglishIntakeFormPage() {
                   <div><label style={lbl}>Full Name *</label><input type="text" name="fullName" style={inp} value={formData.fullName} onChange={handleChange} placeholder="Enter your full name" required /></div>
                   <div><label style={lbl}>Age *</label><input type="number" name="age" style={inp} value={formData.age} onChange={handleChange} min="1" max="99" placeholder="e.g., 22" required /></div>
                   <div><label style={lbl}>Email Address *</label><input type="email" name="email" style={inp} value={formData.email} onChange={handleChange} placeholder="you@email.com" required /></div>
-                  <div><label style={lbl}>Phone Number *</label><input type="tel" name="phone" style={inp} value={formData.phone} onChange={handleChange} placeholder="+91 98765 43210" required /></div>
+                  <div><FormPhoneInput label="Phone Number *" name="phone" value={formData.phone} onChange={(value) => setFormData((prev) => ({ ...prev, phone: value || "" }))} placeholder="Enter phone number" /></div>
                 </div>
               </SectionCard>
               <div style={{ display: "flex", justifyContent: "flex-end" }}>

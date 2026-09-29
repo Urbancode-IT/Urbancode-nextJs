@@ -1,3 +1,51 @@
+.mentorpage {
+  overflow-x: hidden;
+}
+
+.mentorpage .section-lead {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 28px;
+  font-size: 16px;
+  line-height: 1.6;
+  font-weight: 400;
+  color: #64748b;
+}
+
+.mentorpage .section-main-title {
+  margin-bottom: 12px;
+}
+
+.mentorpage .career-form-wrap {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.mentorpage .career-form-inner {
+  width: 100%;
+  max-width: 860px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mentorpage .career-form-card.form-card-standard {
+  max-width: 860px !important;
+  width: 100%;
+  max-height: none !important;
+  height: auto !important;
+  overflow: visible !important;
+  overflow-y: visible !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  background: var(--form-bg) !important;
+  scrollbar-width: none !important;
+}
+
+.mentorpage .career-form-card.form-card-standard::-webkit-scrollbar {
+  display: none;
+}
+
 /* HERO SECTION */
 .mentorpage .mentorpage-hero-section {
   background: linear-gradient(180deg,
@@ -46,10 +94,13 @@
 /* TITLES */
 .mentorpage .mentorpage-section-title,
 .mentorpage .mentorpage-expertise-title {
-  font-weight: 600;
-  font-size: 32px;
-  color: #000;
-  margin-bottom: 20px;
+  font-weight: 700;
+  font-size: var(--section-title-size, 30px);
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+  color: #1a202c;
+  text-align: center;
+  margin-bottom: 12px;
 }
 
 .mentorpage .mentorpage-transform-title {
@@ -63,11 +114,13 @@
 .mentorpage .mentorpage-expertise-subtitle,
 .mentorpage .mentorpage-transform-subtitle {
   font-weight: 400;
-  font-size: 14px;
-  max-width: 790px;
+  font-size: 16px;
+  line-height: 1.6;
+  max-width: 720px;
   margin: 0 auto 40px;
-  color: #000;
-  letter-spacing: -0.02em;
+  color: #64748b;
+  text-align: center;
+  letter-spacing: 0;
 }
 
 /* MENTOR GRID */

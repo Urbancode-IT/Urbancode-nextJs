@@ -2,8 +2,7 @@ import { NextResponse } from 'next/server';
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { getGmailTransporter, getGmailSender } from '@/lib/mailer/gmailTransporter';
-
-const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+import { validateLeadContact } from '@/app/utils/validationUtils';
 
 const toText = (value, fallback = '') => {
   if (value === undefined || value === null) return fallback;
@@ -48,11 +47,9 @@ export async function POST(req) {
     const course = toText(body?.course, 'Course');
     const brochureUrl = toText(body?.brochureUrl, '');
 
-    if (!name) {
-      return NextResponse.json({ success: false, message: 'Name is required.' }, { status: 400 });
-    }
-    if (!email || !EMAIL_REGEX.test(email)) {
-      return NextResponse.json({ success: false, message: 'Valid email is required.' }, { status: 400 });
+    const contactError = validateLeadContact({ name, email, requirePhone: false });
+    if (contactError) {
+      return NextResponse.json({ success: false, message: contactError }, { status: 400 });
     }
 
     const sender = getGmailSender();

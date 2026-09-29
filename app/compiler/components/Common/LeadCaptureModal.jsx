@@ -2,9 +2,9 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { goToThankYou } from '@/lib/navigation/goToThankYou';
 import { submitEnquiryForm } from '../../../../lib/api/api';
+import { FormPhoneInput } from '@/app/components/common/FormPhoneInput';
+import { getEmailError, getNameError, getPhoneError } from '@/app/utils/validationUtils';
 import './LeadCaptureModal.css';
-
-const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const LeadCaptureModal = ({
   isOpen,
@@ -42,27 +42,14 @@ const LeadCaptureModal = ({
     };
   }, []);
 
-  const normalizePhone = (value) => {
-    const digits = (value || '').replace(/\D/g, '');
-    // Handle inputs like "+91 9876543210" => "9876543210"
-    if (digits.startsWith('91') && digits.length === 12) return digits.slice(2);
-    return digits;
-  };
-
   const validate = () => {
     const nextErrors = {};
-    if (!formData.name.trim()) nextErrors.name = 'Name is required.';
-    if (!formData.email.trim()) nextErrors.email = 'Email is required.';
-    else if (!EMAIL_REGEX.test(formData.email.trim())) nextErrors.email = 'Invalid email format.';
-
-    const normalized = normalizePhone(formData.phone);
-    if (!normalized) nextErrors.phone = 'Mobile number is required.';
-    else if (normalized.length < 7 || normalized.length > 15) nextErrors.phone = 'Enter a valid 7 to 15 digit mobile number.';
-
-    const consonantMashRegex = /[bcdfghjklmnpqrstvwxzBCDFGHJKLMNPQRSTVWXZ]{7,}/;
-    if (formData.name && consonantMashRegex.test(formData.name)) {
-      nextErrors.name = 'Invalid input detected.';
-    }
+    const nameError = getNameError(formData.name);
+    const emailError = getEmailError(formData.email);
+    const phoneError = getPhoneError(formData.phone);
+    if (nameError) nextErrors.name = nameError;
+    if (emailError) nextErrors.email = emailError;
+    if (phoneError) nextErrors.phone = phoneError;
 
     setErrors(nextErrors);
     return Object.keys(nextErrors).length === 0;
@@ -84,7 +71,7 @@ const LeadCaptureModal = ({
     setLoading(true);
     setStatus({ type: 'loading', message: 'Submitting enquiry...' });
 
-    const normalizedPhone = normalizePhone(formData.phone);
+    const normalizedPhone = formData.phone.trim();
     const localLeadPayload = {
       id: `${Date.now()}-${Math.random().toString(16).slice(2)}`,
       name: formData.name.trim(),
@@ -222,19 +209,15 @@ const LeadCaptureModal = ({
             {errors.email && <div className="lead-error">{errors.email}</div>}
           </div>
 
-          <div className="lead-field">
-            <label className="lead-label" htmlFor="lead-phone">Mobile Number</label>
-            <input
-              id="lead-phone"
-              className="lead-input"
-              type="tel"
-              value={formData.phone}
-              onChange={(e) => updateField('phone', e.target.value)}
-              placeholder="9876543210"
-              disabled={loading}
-            />
-            {errors.phone && <div className="lead-error">{errors.phone}</div>}
-          </div>
+          <FormPhoneInput
+            label="Mobile Number"
+            name="phone"
+            value={formData.phone}
+            onChange={(value) => updateField('phone', value || '')}
+            error={errors.phone}
+            disabled={loading}
+            placeholder="Enter mobile number"
+          />
 
           {status.message && status.type !== 'loading' && (
             <div

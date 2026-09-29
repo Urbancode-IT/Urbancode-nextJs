@@ -9,6 +9,7 @@ import { courseOptionLabel, normalizeCourses } from "@/lib/api/externalCourses";
 import { fetchClientCourses } from "@/lib/api/fetchClientCourses";
 import { resolveCrmCourseName } from "@/lib/api/resolveCrmCourse";
 import { getKidsCourseLabel, getKidsCrmCourse } from "@/lib/data/kidsCourses";
+import { getEmailError, getNameError, getPhoneError, isGibberish } from "@/app/utils/validationUtils";
 import "./EnquiryForm.css";
 
 const BROCHURE_REQUEST_TIMEOUT = 30000;
@@ -198,41 +199,13 @@ const EnquiryFormModal = ({
 
   const validateForm = () => {
     const newErrors = {};
-    
-    // Name validation
-    const trimmedName = formData.name.trim();
-    if (!trimmedName) {
-      newErrors.name = "Name is required.";
-    } else if (trimmedName.length < 3) {
-      newErrors.name = "Name must be at least 3 characters.";
-    } else if (!/^[a-zA-Z\s'-]+$/.test(trimmedName)) {
-      newErrors.name = "Name can only contain letters, spaces, hyphens, and apostrophes.";
-    } else if (/(.)(\1{3,})/.test(trimmedName)) {
-      // Reject repeated characters like "aaaa" or "bbbbb"
-      newErrors.name = "Please enter a valid name.";
-    } else if (!/[aeiouAEIOU]/.test(trimmedName.replace(/\s/g, ''))) {
-      // Name without any vowels is likely gibberish
-      newErrors.name = "Please enter a valid name.";
-    }
-    
-    // Email validation
-    if (!formData.email) {
-      newErrors.email = "Email is required.";
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = "Invalid email format.";
-    } else if (formData.email.length > 255) {
-      newErrors.email = "Email is too long.";
-    }
-    
-    // Phone validation
-    if (!formData.phone) {
-      newErrors.phone = "Phone number is required.";
-    } else {
-      const cleanPhone = formData.phone.replace(/\D/g, '');
-      if (cleanPhone.length < 7 || cleanPhone.length > 15) {
-        newErrors.phone = "Please enter a valid 7 to 15 digit mobile number.";
-      }
-    }
+    const nameError = getNameError(formData.name);
+    const emailError = getEmailError(formData.email);
+    const phoneError = getPhoneError(formData.phone);
+
+    if (nameError) newErrors.name = nameError;
+    if (emailError) newErrors.email = emailError;
+    if (phoneError) newErrors.phone = phoneError;
     
     // PIN validation
     if (formData.pin && !/^\d{6}$/.test(formData.pin.trim())) {
@@ -259,13 +232,8 @@ const EnquiryFormModal = ({
       }
     }
 
-    // Gibberish validation
-    const consonantMashRegex = /[bcdfghjklmnpqrstvwxzBCDFGHJKLMNPQRSTVWXZ]{7,}/;
-    if (consonantMashRegex.test(formData.name)) {
-      newErrors.name = "Invalid input detected.";
-    }
-    if (consonantMashRegex.test(formData.message)) {
-      newErrors.message = "Invalid input detected.";
+    if (formData.message && isGibberish(formData.message)) {
+      newErrors.message = "Please enter a valid message.";
     }
 
     setErrors(newErrors);

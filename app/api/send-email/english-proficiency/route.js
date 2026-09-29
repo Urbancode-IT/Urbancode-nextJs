@@ -1,8 +1,6 @@
 import { NextResponse } from "next/server";
 import { getGmailTransporter, getGmailSender } from "@/lib/mailer/gmailTransporter";
-
-const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const consonantMashRegex = /[bcdfghjklmnpqrstvwxzBCDFGHJKLMNPQRSTVWXZ]{7,}/;
+import { validateLeadContact } from "@/app/utils/validationUtils";
 
 const toText = (value, fallback = "N/A") => {
   if (value === undefined || value === null) return fallback;
@@ -22,13 +20,8 @@ export async function POST(req) {
     const mode         = toText(body?.mode, "N/A");
     const requirements = toText(body?.requirements, "None");
 
-    if (!name)  return NextResponse.json({ success: false, message: "Name is required." }, { status: 400 });
-    if (!email || !EMAIL_REGEX.test(email))
-               return NextResponse.json({ success: false, message: "Valid email is required." }, { status: 400 });
-    if (!phone) return NextResponse.json({ success: false, message: "Phone number is required." }, { status: 400 });
-
-    if (consonantMashRegex.test(name))
-               return NextResponse.json({ success: false, message: "Invalid input detected." }, { status: 400 });
+    const contactError = validateLeadContact({ name, email, phone });
+    if (contactError) return NextResponse.json({ success: false, message: contactError }, { status: 400 });
 
     const recipient  = process.env.ENQUIRY_TO_EMAIL || "admin@urbancode.in";
     const sender     = getGmailSender();

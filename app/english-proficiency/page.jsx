@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Swal from "sweetalert2";
 import { submitEnrollNowForm } from "@/lib/api/api";
 import { FormPhoneInput } from "@/app/components/common/FormPhoneInput";
+import { getEmailError, getNameError, getPhoneError } from "@/app/utils/validationUtils";
 import Link from "next/link";
 
 const courseOptions = [
@@ -21,7 +22,6 @@ const BLANK = {
   mode: "Online", 
   requirements: "" 
 };
-const consonantMashRegex = /[bcdfghjklmnpqrstvwxzBCDFGHJKLMNPQRSTVWXZ]{7,}/;
 
 export default function EnrollNowPage() {
   const [formData, setFormData] = useState(BLANK);
@@ -37,11 +37,12 @@ export default function EnrollNowPage() {
   };
 
   const validate = () => {
-    if (!formData.fullName.trim()) return "Name is required.";
-    if (consonantMashRegex.test(formData.fullName)) return "Invalid input in Name.";
-    if (!formData.email.trim()) return "Email is required.";
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) return "Invalid email address.";
-    if (!formData.phone || formData.phone.replace(/\D/g, "").length < 7) return "Please enter a valid phone number.";
+    const nameError = getNameError(formData.fullName);
+    if (nameError) return nameError;
+    const emailError = getEmailError(formData.email);
+    if (emailError) return emailError;
+    const phoneError = getPhoneError(formData.phone);
+    if (phoneError) return phoneError;
     if (!formData.pinCode.trim() || !/^\d{6}$/.test(formData.pinCode)) return "Please enter a valid 6-digit pin code.";
     if (!formData.course) return "Please select a course.";
     if (!formData.mode) return "Please select a mode.";

@@ -89,7 +89,7 @@ function Footer() {
             <ul className="list-unstyled">
               <li><Link href="/be-our-mentor"> Mentor</Link></li>
               <li><Link href="/internship"> Internship</Link></li>
-              <li><a href="#"> Job Portal</a></li>
+              <li><Link href="/jobs"> Job Portal</Link></li>
             </ul>
           </div>
 
