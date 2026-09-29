@@ -508,8 +508,8 @@ const AdminDashboard = () => {
                                         <div className="admin-list">
                                             {problems
                                                 .filter(p => p.title.toLowerCase().includes(searchTerm.toLowerCase()))
-                                                .map(prob => (
-                                                    <div key={prob._id} className="admin-list-item">
+                                                .map((prob, index) => (
+                                                    <div key={`${prob._id || prob.id || 'problem'}-${index}`} className="admin-list-item">
                                                         <div className="item-info">
                                                             <h3>{prob.title}</h3>
                                                             <span className={`diff diff-${prob.difficulty}`}>Level {prob.difficulty}</span>

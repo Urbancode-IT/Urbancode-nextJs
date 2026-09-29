@@ -14,6 +14,7 @@ import { enquiryFormSchema } from "@/app/schemas/enquirySchema";
 import { Controller } from "react-hook-form";
 import { courseOptionLabel, matchZenCourseFromUrl, resolveZenCourseSelection, isZenCourseId } from "@/lib/api/externalCourses";
 import { fetchClientCourses } from "@/lib/api/fetchClientCourses";
+import { getLeadSource } from "@/app/utils/leadSource";
 
 const TIME_SLOTS = [
   "09:00 AM - 12:00 PM",
@@ -103,6 +104,7 @@ const EnquiryFormContent = () => {
           mode: "Not specified",
           pin: "N/A",
           message: `Course Enquiry via /form | Time: ${data.convenientTime}`,
+          ...getLeadSource("Ads enquiry page (/form) — enquiry form", "Ads enquiry page (/form) — Submit Enquiry"),
         }),
       });
 

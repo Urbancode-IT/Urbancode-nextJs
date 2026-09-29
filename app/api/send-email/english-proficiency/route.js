@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import { getGmailTransporter, getGmailSender } from "@/lib/mailer/gmailTransporter";
 import { validateLeadContact } from "@/app/utils/validationUtils";
+import { readLeadSource, leadSourceHtmlRows } from "@/app/utils/leadSource";
+import { recordLeadEnquiry } from "@/lib/leadEnquiriesDb";
 
 const toText = (value, fallback = "N/A") => {
   if (value === undefined || value === null) return fallback;
@@ -11,6 +13,7 @@ const toText = (value, fallback = "N/A") => {
 export async function POST(req) {
   try {
     const body = await req.json();
+    const leadSource = readLeadSource(body, toText);
 
     const name         = toText(body?.name, "");
     const email        = toText(body?.email, "");
@@ -68,6 +71,7 @@ export async function POST(req) {
               ${row("📍", "Pin Code", pinCode)}
               ${row("📚", "Course", course)}
               ${row("💻", "Mode", mode)}
+              ${leadSourceHtmlRows(leadSource)}
               <tr>
                 <td style="padding:11px 16px;font-size:13px;font-weight:600;color:#475569;background:#f8fafc;vertical-align:top;">🌟 Requirements</td>
                 <td style="padding:11px 16px;font-size:14px;color:#1a2b3c;">${requirements}</td>
@@ -102,6 +106,18 @@ export async function POST(req) {
       subject: `New English Proficiency: ${name} - ${course}`,
       html: htmlContent,
       replyTo: email,
+    });
+
+    await recordLeadEnquiry({
+      name,
+      email,
+      phone,
+      topic: course,
+      channel: "english-proficiency",
+      sourcePage: leadSource.page,
+      sourceSection: leadSource.section,
+      sourceForm: leadSource.form,
+      sourceButton: leadSource.button,
     });
 
     return NextResponse.json({ success: true, message: "Enrollment form submitted successfully." }, { status: 200 });

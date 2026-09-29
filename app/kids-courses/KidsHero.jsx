@@ -163,6 +163,7 @@ const KidsHero = () => {
           useExternalCourses={false}
           extraOptions={KIDS_COURSE_OPTIONS}
           useCourseEnquiryApi={true}
+          leadPlace="Kids courses page — hero section"
         />
       )}
     </section>

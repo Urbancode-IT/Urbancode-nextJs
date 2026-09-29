@@ -15,6 +15,7 @@ import { bookDemoSchema } from "@/app/schemas/enquirySchema";
 import { Controller } from "react-hook-form";
 import { matchZenCourseFromUrl, resolveZenCourseSelection, zenCourseSelectOptions, isZenCourseId } from "@/lib/api/externalCourses";
 import { fetchClientCourses } from "@/lib/api/fetchClientCourses";
+import { getLeadSource } from "@/app/utils/leadSource";
 
 const BookDemoContent = () => {
   const searchParams = useSearchParams();
@@ -81,6 +82,7 @@ const BookDemoContent = () => {
           mode: "Not specified",
           pin: "N/A",
           message: `[DEMO REQUEST] Date: ${data.preferredDate}, Time: ${data.preferredTime}.`,
+          ...getLeadSource("Book a demo page — demo form", "Book a demo page — Book My Free Demo"),
         }),
       });
 

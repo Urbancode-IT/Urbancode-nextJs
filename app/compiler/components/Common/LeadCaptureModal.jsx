@@ -3,7 +3,8 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { goToThankYou } from '@/lib/navigation/goToThankYou';
 import { submitEnquiryForm } from '../../../../lib/api/api';
 import { FormPhoneInput } from '@/app/components/common/FormPhoneInput';
-import { getEmailError, getNameError, getPhoneError } from '@/app/utils/validationUtils';
+import { getEmailError, getNameError, getPhoneError, validateLeadContact } from '@/app/utils/validationUtils';
+import { getLeadSource } from '@/app/utils/leadSource';
 import './LeadCaptureModal.css';
 
 const LeadCaptureModal = ({
@@ -22,6 +23,7 @@ const LeadCaptureModal = ({
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState({ type: '', message: '' });
+  const [honeypot, setHoneypot] = useState('');
 
   const payloadDefaults = useMemo(() => {
     const courseName = context?.courseName || 'Course Enquiry';
@@ -43,13 +45,26 @@ const LeadCaptureModal = ({
   }, []);
 
   const validate = () => {
+    if (honeypot.trim()) {
+      setStatus({ type: 'error', message: 'Unable to submit this form.' });
+      return false;
+    }
+
     const nextErrors = {};
     const nameError = getNameError(formData.name);
     const emailError = getEmailError(formData.email);
     const phoneError = getPhoneError(formData.phone);
+    const spamError = validateLeadContact({
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+    });
     if (nameError) nextErrors.name = nameError;
     if (emailError) nextErrors.email = emailError;
     if (phoneError) nextErrors.phone = phoneError;
+    if (spamError && !nameError && !emailError && !phoneError) {
+      nextErrors.name = spamError;
+    }
 
     setErrors(nextErrors);
     return Object.keys(nextErrors).length === 0;
@@ -128,6 +143,7 @@ const LeadCaptureModal = ({
       program: payloadDefaults.courseName,
       message: payloadDefaults.message,
       mode: payloadDefaults.mode,
+      ...getLeadSource('Compiler page — lead form', `Compiler page — Submit — ${payloadDefaults.courseName}`),
     })
       .then((result) => {
         if (!result?.success) {
@@ -170,6 +186,7 @@ const LeadCaptureModal = ({
     setStatus({ type: '', message: '' });
     setErrors({});
     setFormData({ name: '', email: '', phone: '' });
+    setHoneypot('');
     if (onClose) onClose();
   };
 
@@ -179,6 +196,7 @@ const LeadCaptureModal = ({
     setStatus({ type: '', message: '' });
     setErrors({});
     setFormData({ name: '', email: '', phone: '' });
+    setHoneypot('');
     didTriggerSuccessRef.current = false;
   }, [isOpen]);
 
@@ -195,6 +213,16 @@ const LeadCaptureModal = ({
         </div>
 
         <form className="lead-modal-form" onSubmit={handleSubmit}>
+          <input
+            type="text"
+            name="company"
+            value={honeypot}
+            onChange={(e) => setHoneypot(e.target.value)}
+            autoComplete="off"
+            tabIndex={-1}
+            aria-hidden="true"
+            style={{ position: 'absolute', left: '-9999px', height: 0, width: 0, opacity: 0 }}
+          />
           <div className="lead-field">
             <label className="lead-label" htmlFor="lead-name">Name</label>
             <input

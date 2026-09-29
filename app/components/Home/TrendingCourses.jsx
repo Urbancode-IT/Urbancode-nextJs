@@ -292,6 +292,7 @@ const TrendingCourses = () => {
                 onClose={() => setShowEnquiry(false)}
                 courseName={selectedCourse?.title || "Freedom Sale Course"}
                 useCourseEnquiryApi={true}
+                leadPlace="Home page trending courses section"
             />
         </div>
     );

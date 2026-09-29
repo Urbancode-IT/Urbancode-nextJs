@@ -1,9 +1,10 @@
-﻿"use client";
+"use client";
 import React, { useState } from "react";
 import Swal from "sweetalert2";
 import { submitEnglishIntakeForm } from "@/lib/api/api";
 import { FormPhoneInput } from "@/app/components/common/FormPhoneInput";
 import { getEmailError, getNameError, getPhoneError, isGibberish } from "@/app/utils/validationUtils";
+import { getLeadSource } from "@/app/utils/leadSource";
 import Link from "next/link";
 
 const occupationOptions = ["Student", "Working Professional", "Home maker", "Other"];
@@ -119,7 +120,7 @@ export default function EnglishIntakeFormPage() {
     const err = validateStep2();
     if (err) { Swal.fire({ icon: "warning", title: "Validation Error", text: err, confirmButtonColor: "#036c2d" }); return; }
     setLoading(true);
-    const payload = { name: formData.fullName.trim(), age: formData.age, email: formData.email.trim(), phone: formData.phone.trim(), occupation: formData.occupation === "Other" ? "Other: " + formData.occupationOther : formData.occupation, englishLevel: formData.englishLevel, reasons: formData.reasons.join(", "), focusArea: formData.focusArea, attendedBefore: formData.attendedBefore, comfortLevel: formData.comfortLevel, hoursPerWeek: formData.hoursPerWeek, learningMode: formData.learningMode, goals: formData.goals.trim() };
+    const payload = { name: formData.fullName.trim(), age: formData.age, email: formData.email.trim(), phone: formData.phone.trim(), occupation: formData.occupation === "Other" ? "Other: " + formData.occupationOther : formData.occupation, englishLevel: formData.englishLevel, reasons: formData.reasons.join(", "), focusArea: formData.focusArea, attendedBefore: formData.attendedBefore, comfortLevel: formData.comfortLevel, hoursPerWeek: formData.hoursPerWeek, learningMode: formData.learningMode, goals: formData.goals.trim(), ...getLeadSource("English intake page — intake form", "English intake page — Submit Form") };
     try {
       const result = await submitEnglishIntakeForm(payload);
       if (result.success) {

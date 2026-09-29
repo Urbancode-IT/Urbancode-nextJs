@@ -210,7 +210,7 @@ const Kidz = () => {
       <KidsHero />
 
       <div className="page-section page-section--compact">
-        <BannerSlider banners={kidsBanners} forceEnquiry={true} />
+        <BannerSlider banners={kidsBanners} forceEnquiry={true} leadPlace="Kids courses page banner section" />
       </div>
 
       <KidsTestimonialBlock pageReady={!isLoading} />
@@ -286,6 +286,7 @@ const Kidz = () => {
             useExternalCourses={false}
             extraOptions={KIDS_COURSE_OPTIONS}
             useCourseEnquiryApi={true}
+            leadPlace="Kids courses page — course card"
           />
         )}
         </div>
@@ -400,6 +401,7 @@ const Kidz = () => {
                     useExternalCourses={false}
                     extraOptions={KIDS_COURSE_OPTIONS}
                     useCourseEnquiryApi={true}
+                    leadPlace="Kids courses page — tech journey section"
                     onSuccess={() => {
                       if (typeof window !== 'undefined') {
                         localStorage.setItem('kidsPlayZoneUnlocked', 'true');

@@ -97,6 +97,7 @@ const FestivePopup = () => {
         isOpen={isEnquiryOpen}
         onClose={() => setIsEnquiryOpen(false)}
         courseName="Tamil New Year Special Offer"
+        leadPlace="Festive offer popup"
       />
     </>
   );

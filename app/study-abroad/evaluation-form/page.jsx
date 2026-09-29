@@ -7,6 +7,7 @@ import {
     FaHashtag, FaUpload, FaKeyboard, FaCheckCircle
 } from 'react-icons/fa';
 import { submitIeltsEvaluationForm } from '@/lib/api/api';
+import { getLeadSource } from '@/app/utils/leadSource';
 import './EvaluationForm.css';
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -240,7 +241,10 @@ export default function EvaluationFormPage() {
         setSubmitError('');
 
         try {
-            const result = await submitIeltsEvaluationForm(data);
+            const result = await submitIeltsEvaluationForm({
+                ...data,
+                ...getLeadSource("Study abroad evaluation page — IELTS / PTE form", "Study abroad evaluation page — Submit"),
+            });
             if (result.success) {
                 setSubmitted(true);
             } else {

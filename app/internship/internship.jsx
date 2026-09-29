@@ -9,6 +9,7 @@ import { FaLaptopCode, FaUserGraduate, FaHandsHelping, FaCertificate } from 'rea
 import { FormInput, FormSelect, FormTextarea, FormButton, FormCard } from "@/app/components/common/FormUI";
 import { FormPhoneInput } from "@/app/components/common/FormPhoneInput";
 import { getEmailError, getNameError, getPhoneError, isGibberish } from "@/app/utils/validationUtils";
+import { getLeadSource } from "@/app/utils/leadSource";
 
 function App() {
   const [formData, setFormData] = useState({
@@ -70,7 +71,10 @@ function App() {
     setErrors({})
 
     setLoading(true)
-    const result = await submitInternshipApplication(formData);
+    const result = await submitInternshipApplication({
+      ...formData,
+      ...getLeadSource("Internship page — application form", "Internship page — Submit Application"),
+    });
     setLoading(false)
 
     if (result.success) {

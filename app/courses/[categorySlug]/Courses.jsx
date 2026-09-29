@@ -527,6 +527,7 @@ export default function Courses({ categorySlug }) {
                   onClose={() => setSelectedCourse(null)}
                   courseName={selectedCourse.title}
                   useCourseEnquiryApi={true}
+                  leadPlace="Course category page — Enroll now"
                 />
               )}
             </Col>

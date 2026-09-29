@@ -2,6 +2,8 @@ import { NextResponse } from 'next/server';
 import { getGmailTransporter, getGmailSender } from '@/lib/mailer/gmailTransporter';
 import { sendExternalEnrollment, extractMobileNumber } from '@/lib/api/externalEnrollment';
 import { isZenCourseId } from '@/lib/api/externalCourses';
+import { readLeadSource, leadSourceHtmlRows, leadSourceTextLines } from '@/app/utils/leadSource';
+import { recordLeadEnquiry } from '@/lib/leadEnquiriesDb';
 import { validateLeadContact } from '@/app/utils/validationUtils';
 const CRM_TIMEOUT_MS = 5000;
 
@@ -37,7 +39,8 @@ export async function POST(req) {
     const pin     = toText(body?.pin, 'N/A');
     const message = toText(body?.message, 'No message provided');
     const card_type = toText(body?.card_type, 'Training Only');
-    const source_page = toText(body?.source_page, '');
+    const leadSource = readLeadSource(body, toText);
+    const source_page = leadSource.page;
 
     const contactError = validateLeadContact({ name, email, phone });
     if (contactError) return NextResponse.json({ success: false, message: contactError }, { status: 400 });
@@ -141,6 +144,7 @@ export async function POST(req) {
                   <td style="padding:13px 16px;font-size:14px;color:#1a2b3c;
                               border-bottom:1px solid #e2e8f0;">${pin}</td>
                 </tr>
+                ${leadSourceHtmlRows(leadSource)}
                 <tr style="background:#f8fafc;">
                   <td style="padding:13px 16px;font-size:13px;font-weight:600;color:#475569;
                               vertical-align:top;">💬 Message</td>
@@ -197,6 +201,7 @@ export async function POST(req) {
         `Course: ${course}`,
         `Mode: ${mode}`,
         `PIN: ${pin}`,
+        ...leadSourceTextLines(leadSource),
         `Message: ${message}`,
       ].join('\n'),
       html: htmlContent,
@@ -207,7 +212,9 @@ export async function POST(req) {
       websiteCourse && websiteCourse !== 'Course Enquiry' && websiteCourse !== 'N/A'
         ? `Website course: ${websiteCourse}`
         : '',
-      source_page && source_page !== 'N/A' ? `Source: ${source_page}` : '',
+      source_page && source_page !== 'Not captured' && source_page !== 'N/A' ? `Page: ${source_page}` : '',
+      leadSource.form && leadSource.form !== 'Not captured' ? `Form: ${leadSource.form}` : '',
+      leadSource.button && leadSource.button !== 'Not captured' ? `Button: ${leadSource.button}` : '',
       mode && mode !== 'Not specified' ? `Mode: ${mode}` : '',
       pin && pin !== 'N/A' ? `PIN: ${pin}` : '',
       message && message !== 'No message provided' ? message : '',
@@ -246,6 +253,18 @@ export async function POST(req) {
     if (!emailOk && !crmOk) {
       throw emailResult.reason || new Error('Failed to submit enquiry to email and CRM.');
     }
+
+    await recordLeadEnquiry({
+      name,
+      email,
+      phone,
+      topic: course,
+      channel: 'course-enquiry',
+      sourcePage: leadSource.page,
+      sourceSection: leadSource.section,
+      sourceForm: leadSource.form,
+      sourceButton: leadSource.button,
+    });
 
     return NextResponse.json({ success: true, message: 'Enquiry submitted successfully.' });
   } catch (error) {

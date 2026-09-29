@@ -133,6 +133,7 @@ const ChatbotWidget = () => {
         onClose={() => setIsDemoModalOpen(false)}
         isDemoMode={true}
         courseName=""
+        leadPlace="Site-wide chatbot"
       />
     </>
   );

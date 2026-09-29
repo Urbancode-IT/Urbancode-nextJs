@@ -60,6 +60,7 @@ const BookDemoWidget = () => {
                 isDemoMode={true}
                 isSelectMode={true}
                 useCourseEnquiryApi={true}
+                leadPlace="Site-wide Book a Demo button"
                 extraOptions={[
                     "Python with AI",
                     "Full Stack Development",

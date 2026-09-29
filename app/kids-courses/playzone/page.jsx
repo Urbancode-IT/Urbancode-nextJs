@@ -188,6 +188,7 @@ export default function PlayzonePage() {
           useExternalCourses={false}
           extraOptions={KIDS_COURSE_OPTIONS}
           useCourseEnquiryApi={true}
+          leadPlace="Playzone page — Book Free Demo"
           onSuccess={() => {
             if (typeof window !== 'undefined') {
               localStorage.setItem('kidsPlayZoneUnlocked', 'true');

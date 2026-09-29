@@ -1,6 +1,8 @@
-﻿import { NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { getGmailTransporter, getGmailSender } from "@/lib/mailer/gmailTransporter";
 import { isGibberish, validateLeadContact } from "@/app/utils/validationUtils";
+import { readLeadSource, leadSourceHtmlRows, leadSourceTextLines } from "@/app/utils/leadSource";
+import { recordLeadEnquiry } from "@/lib/leadEnquiriesDb";
 
 const toText = (value, fallback = "N/A") => {
   if (value === undefined || value === null) return fallback;
@@ -11,6 +13,7 @@ const toText = (value, fallback = "N/A") => {
 export async function POST(req) {
   try {
     const body = await req.json();
+    const leadSource = readLeadSource(body, toText);
 
     const name         = toText(body?.name, "");
     const email        = toText(body?.email, "");
@@ -83,6 +86,7 @@ export async function POST(req) {
               ${row("🗣️", "Comfort Level", comfortLevel)}
               ${row("⏰", "Hours per Week", hoursPerWeek)}
               ${row("💻", "Preferred Mode", learningMode)}
+              ${leadSourceHtmlRows(leadSource)}
               <tr>
                 <td style="padding:11px 16px;font-size:13px;font-weight:600;color:#475569;background:#f8fafc;vertical-align:top;">🌟 Goals</td>
                 <td style="padding:11px 16px;font-size:14px;color:#1a2b3c;">${goals}</td>
@@ -123,9 +127,22 @@ export async function POST(req) {
         `Reasons: ${reasons}`, `Focus Area: ${focusArea}`,
         `Attended Before: ${attendedBefore}`, `Comfort Level: ${comfortLevel}`,
         `Hours/Week: ${hoursPerWeek}`, `Mode: ${learningMode}`,
+        ...leadSourceTextLines(leadSource),
         `Goals: ${goals}`,
       ].join("\n"),
       html: htmlContent,
+    });
+
+    await recordLeadEnquiry({
+      name,
+      email,
+      phone,
+      topic: englishLevel,
+      channel: "english-intake",
+      sourcePage: leadSource.page,
+      sourceSection: leadSource.section,
+      sourceForm: leadSource.form,
+      sourceButton: leadSource.button,
     });
 
     return NextResponse.json({ success: true, message: "Intake form submitted successfully." });

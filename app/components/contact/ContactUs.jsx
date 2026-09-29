@@ -21,6 +21,7 @@ import {
   isZenCourseId,
 } from "@/lib/api/externalCourses";
 import { fetchClientCourses } from "@/lib/api/fetchClientCourses";
+import { getLeadSource } from "@/app/utils/leadSource";
 
 const ContactUs = ({ redirectUrl = '/thankyou' }) => {
   const searchParams = useSearchParams();
@@ -97,7 +98,8 @@ const ContactUs = ({ redirectUrl = '/thankyou' }) => {
         selectedCourse: isCourseEnquiry ? (enrollment.course_name || data.selectedCourse) : "",
         ...(isCourseEnquiry && courseId ? { course_id: courseId } : {}),
         convenientTime: data.convenientTime,
-        message: `Interest: ${data.interest}${enrollment.label ? ` - ${enrollment.label}` : ''} | Convenient Time: ${data.convenientTime}`
+        message: `Interest: ${data.interest}${enrollment.label ? ` - ${enrollment.label}` : ''} | Convenient Time: ${data.convenientTime}`,
+        ...getLeadSource("Contact us page — Get in Touch form", "Contact us page — Submit"),
       };
       
       const response = await sendContactMessage(submissionData);

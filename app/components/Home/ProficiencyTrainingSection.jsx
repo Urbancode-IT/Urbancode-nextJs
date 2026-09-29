@@ -794,6 +794,7 @@ export default function ProficiencyTrainingSection() {
         isOpen={enquiryOpen}
         onClose={() => setEnquiryOpen(false)}
         courseName={enquiryCourse}
+        leadPlace="Home page proficiency training section"
         useExternalCourses={false}
         extraOptions={[
           'IELTS Academic',

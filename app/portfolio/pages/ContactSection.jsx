@@ -8,6 +8,7 @@ import { portfolioProjectFormSchema } from "@/app/schemas/enquirySchema";
 import { Controller } from "react-hook-form";
 import { Honeypot } from "@/app/components/common/Honeypot";
 import { FormPhoneInput } from "@/app/components/common/FormPhoneInput";
+import { getLeadSource } from "@/app/utils/leadSource";
 import "./ContactSection.css";
 
 const ContactSection = () => {
@@ -34,7 +35,8 @@ const ContactSection = () => {
         phone: data.phone,
         service: data.interestedIn, // Mapping to backend expected field
         message: data.message || "No message provided",
-        course: "Portfolio Project Inquiry"
+        course: "Portfolio Project Inquiry",
+        ...getLeadSource("Portfolio page — contact form", "Portfolio page — Send Message"),
       };
 
       const result = await submitProjectEnquiryForm(payload);

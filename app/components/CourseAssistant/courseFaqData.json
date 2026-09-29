@@ -36,15 +36,15 @@
     "Eligibility": "Open to engineers, statisticians, and anyone with a strong analytical mindset. Basic math knowledge is recommended."
   },
   "Python Full Stack Development": {
-    "Fundamental Overview": "Python Full Stack involves using Python (Django/Flask) for the backend and HTML/CSS/JS (React or Angular) for the frontend.",
+    "Fundamental Overview": "Python Full Stack uses HTML, CSS, JavaScript, Bootstrap, and React for the frontend, and Python with Django and Django REST Framework for the backend, with MySQL as the database.",
     "Market Trends": "Python is globally the #1 most loved language. Python full-stack is heavily used in AI startups and rapid web development.",
     "Fresher Salaries": "Freshers typically start around ₹4LPA to ₹7.5LPA.",
     "Professional Salaries": "Senior Python Full Stack engineers can earn ₹14LPA to ₹28LPA.",
-    "Course Duration": "The program lasts 5 months with dedicated project phases.",
+    "Course Duration": "The program is a 3-month industry-oriented training with a capstone project.",
     "Placement Support": "100% placement support with access to our exclusive job portal and hiring partners.",
-    "Hands-on Projects": "Social Media Dashboard, Inventory Management System, and a Blogging Platform.",
+    "Hands-on Projects": "Capstone projects such as an E-Commerce Application, Employee Management System, Learning Management System, Job Portal, or Task Management System.",
     "Certifications": "Urban Code Course Completion Certificate and an Internship Experience Certificate.",
-    "Technology Stack": "Python, Django, Flask, HTML, CSS, JavaScript, React, PostgreSQL.",
+    "Technology Stack": "HTML, CSS, Bootstrap, JavaScript, React, Python, Django, Django REST Framework, MySQL, Git, GitHub, and Postman.",
     "Eligibility": "Anyone can join! It is highly beginner-friendly."
   },
   "UI/UX Designing": {

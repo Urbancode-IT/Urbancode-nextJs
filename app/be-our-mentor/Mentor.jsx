@@ -5,6 +5,7 @@ import "./Mentor.css";
 import { useState } from "react";
 import { goToThankYou } from "@/lib/navigation/goToThankYou";
 import { submitMentorApplication} from "../../lib/api/api";
+import { getLeadSource } from "@/app/utils/leadSource";
 import { motion, AnimatePresence } from "framer-motion";
 // Import static images (auto-optimized by Next.js)
 import expertise1 from "@/public/images/mentorImages/mentor1.jpg";
@@ -75,7 +76,10 @@ const Mentor = () => {
     setStatus("sending");
     setMessage("Submitting your application...");
 
-    const result = await submitMentorApplication(formData);
+    const result = await submitMentorApplication({
+      ...formData,
+      ...getLeadSource("Mentor page — application form", "Mentor page — Start Journey Today"),
+    });
 
     if (result.success) {
       setStatus("success");

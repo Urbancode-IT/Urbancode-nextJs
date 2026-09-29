@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { goToThankYou } from "@/lib/navigation/goToThankYou";
 import "./EnquiryPopup.css";
 import { submitEnquiryForm } from "@/lib/api/api";
+import { getLeadSource } from "@/app/utils/leadSource";
 import Swal from 'sweetalert2';
 import { FormInput, FormTextarea, FormButton } from "@/app/components/common/FormUI";
 import { FormPhoneInput } from "@/app/components/common/FormPhoneInput";
@@ -127,7 +128,8 @@ export default function EnquiryPopup({ delay = 3000 }) {
         phone: data.phone,
         message: data.message ? data.message.trim() : "No message provided",
         course: "Anniversary Flash Sale",
-        mode: "Not specified"
+        mode: "Not specified",
+        ...getLeadSource("Anniversary popup — enquiry form", "Anniversary popup — Enroll now"),
       };
 
       const result = await submitEnquiryForm(formData);

@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import { getGmailTransporter, getGmailSender } from '@/lib/mailer/gmailTransporter';
 import { validateLeadContact } from '@/app/utils/validationUtils';
+import { readLeadSource, leadSourceHtmlRows, leadSourceTextLines } from '@/app/utils/leadSource';
+import { recordLeadEnquiry } from '@/lib/leadEnquiriesDb';
 const RECIPIENT = 'admin@urbancode.in';
 
 const toText = (value, fallback = 'N/A') => {
@@ -32,6 +34,7 @@ const section = (title, rows) => `
 export async function POST(req) {
   try {
     const body = await req.json();
+    const leadSource = readLeadSource(body, toText);
 
     const firstName = toText(body?.firstName, '');
     const lastName = toText(body?.lastName, '');
@@ -133,6 +136,7 @@ export async function POST(req) {
           <tr>
             <td style="padding:24px 24px 10px;">
               <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;border-radius:10px;overflow:hidden;border:1px solid #e2e8f0;">
+                ${leadSourceHtmlRows(leadSource)}
                 ${section('Section 1 — Student Details', section1Rows)}
                 ${section('Section 2 — IELTS Goal & Background', section2Rows)}
                 ${section('Section 3 — English Language Profile', section3Rows)}
@@ -171,6 +175,7 @@ export async function POST(req) {
       `Email: ${email}`,
       `Phone: ${phone}`,
       '',
+      ...leadSourceTextLines(leadSource),
       'See HTML email for full section-wise responses.',
     ].join('\n');
 
@@ -181,6 +186,18 @@ export async function POST(req) {
       subject: `IELTS/PTE Evaluation — ${name}`,
       text: plainText,
       html: htmlContent,
+    });
+
+    await recordLeadEnquiry({
+      name,
+      email,
+      phone,
+      topic: 'IELTS / PTE evaluation',
+      channel: 'ielts-evaluation',
+      sourcePage: leadSource.page,
+      sourceSection: leadSource.section,
+      sourceForm: leadSource.form,
+      sourceButton: leadSource.button,
     });
 
     return NextResponse.json({ success: true, message: 'Evaluation submitted successfully.' });

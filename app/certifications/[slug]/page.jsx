@@ -192,6 +192,7 @@ const CertificationDetailPage = () => {
                 onClose={() => setIsEnquiryOpen(false)}
                 courseName={data.title}
                 useCourseEnquiryApi={true}
+                leadPlace="Certification page — enquiry"
             />
         </div>
     );

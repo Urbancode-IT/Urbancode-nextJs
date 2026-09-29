@@ -434,7 +434,8 @@ const StudyInIRELAND = () => {
             <EnquiryFormModal 
                 isOpen={isModalOpen} 
                 onClose={() => setIsModalOpen(false)} 
-                courseName="Study in Ireland" 
+                courseName="Study in Ireland"
+                leadPlace="Study in Ireland page — enquiry" 
             />
             
             {/* Style handled globally in StudyAbroad.css */}

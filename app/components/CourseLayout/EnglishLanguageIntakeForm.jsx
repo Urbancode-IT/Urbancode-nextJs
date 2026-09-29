@@ -6,6 +6,7 @@ import { englishLanguageIntakeSchema } from '@/app/schemas/enquirySchema';
 import { Controller } from 'react-hook-form';
 import { FormPhoneInput } from '@/app/components/common/FormPhoneInput';
 import { Honeypot } from '@/app/components/common/Honeypot';
+import { getLeadSource } from '@/app/utils/leadSource';
 
 const EnglishLanguageIntakeForm = () => {
   const occupationOptions = ['Student', 'Working Professional', 'Home maker'];
@@ -64,7 +65,8 @@ const EnglishLanguageIntakeForm = () => {
         comfortLevel: data.comfortLevel,
         hoursPerWeek: data.hoursPerWeek,
         learningMode: data.learningMode,
-        goals: data.goals ? data.goals.trim() : ""
+        goals: data.goals ? data.goals.trim() : "",
+        ...getLeadSource("English course page — intake form", "English course page — Submit"),
       };
       const result = await submitProjectEnquiryForm(payload);
       if (result.success) {

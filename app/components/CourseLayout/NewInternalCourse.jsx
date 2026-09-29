@@ -534,6 +534,7 @@ const NewInternalCourse = ({ data }) => {
                 onClose={() => setIsEnquiryOpen(false)}
                 courseName={heroData.highlightText || "Course"}
                 useCourseEnquiryApi={true}
+                leadPlace="Course page hero — Enroll now"
             />
 
             <EnquiryFormModal
@@ -553,6 +554,7 @@ const NewInternalCourse = ({ data }) => {
                 batchInfo={selectedBatch}
                 useCourseEnquiryApi={true}
             />
+                leadPlace="Course page batches — Join class"
 
             {/* Course Assistant - Active for all courses in this layout */}
             {/* <CourseAssistant courseName={heroData.highlightText} /> */}

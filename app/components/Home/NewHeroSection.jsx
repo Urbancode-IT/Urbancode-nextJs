@@ -332,7 +332,7 @@ export default function NewHeroSection({ banners = [] }) {
             onEnrollClick={() => setIsEnquiryModalOpen(true)}
           />
           <div className="hero-banner-slot">
-            <BannerSlider banners={visibleBanners} />
+            <BannerSlider banners={visibleBanners} leadPlace="Home page banner section" />
           </div>
           <HeroBottom
             carouselRef={carouselRef}
@@ -352,6 +352,7 @@ export default function NewHeroSection({ banners = [] }) {
           onClose={() => setIsEnquiryModalOpen(false)} 
           isSelectMode={true}
           useCourseEnquiryApi={true}
+          leadPlace="Home page hero section"
           extraOptions={[
             "Full Stack Development",
             "Python with AI",

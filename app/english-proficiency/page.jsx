@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 import { submitEnrollNowForm } from "@/lib/api/api";
 import { FormPhoneInput } from "@/app/components/common/FormPhoneInput";
 import { getEmailError, getNameError, getPhoneError } from "@/app/utils/validationUtils";
+import { getLeadSource } from "@/app/utils/leadSource";
 import Link from "next/link";
 
 const courseOptions = [
@@ -65,7 +66,8 @@ export default function EnrollNowPage() {
       pinCode: formData.pinCode.trim(),
       course: formData.course,
       mode: formData.mode,
-      requirements: formData.requirements.trim()
+      requirements: formData.requirements.trim(),
+      ...getLeadSource("English proficiency page — enrollment form", "English proficiency page — Submit"),
     };
 
     try {

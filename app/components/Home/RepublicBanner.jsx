@@ -28,6 +28,7 @@ const RepublicBanner = () => {
                 isOpen={showEnquiry}
                 onClose={() => setShowEnquiry(false)}
                 courseName="Republic Day Special Offer"
+                leadPlace="Home page republic banner"
             />
         </section>
     );

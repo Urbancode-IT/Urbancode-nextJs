@@ -2,6 +2,7 @@
 import React from 'react';
 import { useRouter } from 'next/navigation';
 import { submitEnquiryForm } from "@/lib/api/api";
+import { getLeadSource } from "@/app/utils/leadSource";
 import { FormInput, FormSelect, FormTextarea, FormButton, FormCard } from "@/app/components/common/FormUI";
 import { FormPhoneInput } from "@/app/components/common/FormPhoneInput";
 import { Honeypot } from "@/app/components/common/Honeypot";
@@ -46,7 +47,8 @@ export default function StudyAbroadContactPage() {
                 phone: data.phone,
                 course: `Study Abroad - ${data.country} (${data.course})`,
                 message: `Education Level: ${data.education}\nMessage: ${data.message || 'N/A'}`,
-                mode: "Online/Offline" // Default for the handler
+                mode: "Online/Offline",
+                ...getLeadSource("Study abroad form page — Submit Request form", "Study abroad form page — Submit Request"),
             };
 
             const result = await submitEnquiryForm(submissionData);

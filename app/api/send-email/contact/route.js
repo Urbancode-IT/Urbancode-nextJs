@@ -3,6 +3,8 @@ import { getGmailTransporter, getGmailSender } from '@/lib/mailer/gmailTransport
 import { sendExternalEnrollment, extractMobileNumber } from '@/lib/api/externalEnrollment';
 import { isZenCourseId } from '@/lib/api/externalCourses';
 import { validateLeadContact } from '@/app/utils/validationUtils';
+import { readLeadSource, leadSourceHtmlRows, leadSourceTextLines } from '@/app/utils/leadSource';
+import { recordLeadEnquiry } from '@/lib/leadEnquiriesDb';
 
 const toText = (value, fallback = 'N/A') => {
   if (value === undefined || value === null) return fallback;
@@ -13,6 +15,7 @@ const toText = (value, fallback = 'N/A') => {
 export async function POST(req) {
   try {
     const body = await req.json();
+    const leadSource = readLeadSource(body, toText);
 
     const name    = toText(body?.name, '');
     const email   = toText(body?.email, '');
@@ -123,6 +126,7 @@ export async function POST(req) {
                   <td style="padding:13px 16px;font-size:14px;color:#1a2b3c;
                               border-bottom:1px solid #e2e8f0;">${convenientTime}</td>
                 </tr>
+                ${leadSourceHtmlRows(leadSource)}
                 <tr>
                   <td style="padding:13px 16px;font-size:13px;font-weight:600;color:#475569;
                               vertical-align:top;background:#f8fafc;">💬 Message</td>
@@ -178,6 +182,7 @@ export async function POST(req) {
         `Phone: ${phone}`,
         `Interest: ${interest}`,
         `Best Time to Call: ${convenientTime}`,
+        ...leadSourceTextLines(leadSource),
         `Message: ${message}`,
       ].join('\n'),
       html: htmlContent,
@@ -212,6 +217,18 @@ export async function POST(req) {
     if (!emailOk && !crmOk) {
       throw emailResult.reason || new Error('Failed to send contact message.');
     }
+
+    await recordLeadEnquiry({
+      name,
+      email,
+      phone,
+      topic: interest,
+      channel: 'contact',
+      sourcePage: leadSource.page,
+      sourceSection: leadSource.section,
+      sourceForm: leadSource.form,
+      sourceButton: leadSource.button,
+    });
 
     return NextResponse.json({ success: true, message: 'Message sent successfully.' });
   } catch (error) {

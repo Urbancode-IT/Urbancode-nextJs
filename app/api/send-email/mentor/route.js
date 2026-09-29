@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import { getGmailTransporter, getGmailSender } from '@/lib/mailer/gmailTransporter';
 import { isGibberish, validateLeadContact } from '@/app/utils/validationUtils';
+import { readLeadSource, leadSourceHtmlRows, leadSourceTextLines } from '@/app/utils/leadSource';
+import { recordLeadEnquiry } from '@/lib/leadEnquiriesDb';
 
 const toText = (value, fallback = 'N/A') => {
   if (value === undefined || value === null) return fallback;
@@ -11,6 +13,7 @@ const toText = (value, fallback = 'N/A') => {
 export async function POST(req) {
   try {
     const body = await req.json();
+    const leadSource = readLeadSource(body, toText);
 
     const name       = toText(body?.name, '');
     const email      = toText(body?.email, '');
@@ -109,6 +112,7 @@ export async function POST(req) {
                   <td style="padding:13px 16px;font-size:14px;color:#1a2b3c;
                               border-bottom:1px solid #e2e8f0;">${experience}</td>
                 </tr>
+                ${leadSourceHtmlRows(leadSource)}
                 <tr style="background:#f8fafc;">
                   <td style="padding:13px 16px;font-size:13px;font-weight:600;color:#475569;
                               vertical-align:top;">💬 Goals / Message</td>
@@ -163,9 +167,22 @@ export async function POST(req) {
         `Email: ${email}`,
         `Phone: ${phone}`,
         `Experience: ${experience}`,
+        ...leadSourceTextLines(leadSource),
         `Goals / Message: ${interest}`,
       ].join('\n'),
       html: htmlContent,
+    });
+
+    await recordLeadEnquiry({
+      name,
+      email,
+      phone,
+      topic: 'Mentor application',
+      channel: 'mentor',
+      sourcePage: leadSource.page,
+      sourceSection: leadSource.section,
+      sourceForm: leadSource.form,
+      sourceButton: leadSource.button,
     });
 
     return NextResponse.json({ success: true, message: 'Application submitted successfully.' });

@@ -8,6 +8,7 @@ import { motion } from 'framer-motion';
 import { FaStar, FaQuoteLeft, FaCheckCircle, FaAward, FaUniversity, FaSearch, FaStethoscope, FaGlobeAmericas, FaUserMd, FaPlaneDeparture, FaClipboardCheck, FaHospital, FaArrowRight, FaGraduationCap, FaRegClock, FaCalendarAlt, FaClipboardList, FaLaptop, FaEdit, FaFileAlt } from 'react-icons/fa';
 import { Send } from "lucide-react";
 import { submitEnquiryForm } from "@/lib/api/api";
+import { getLeadSource } from "@/app/utils/leadSource";
 import Swal from 'sweetalert2';
 import EnquiryFormModal from "@/app/components/common/EnquiryFormModal.jsx";
 import TestimonialCarousel from '../components/Home/TestimonialCarousel';
@@ -695,7 +696,11 @@ const StudyAbroadPage = () => {
             phone: phone.trim(),
             course: `Study Abroad - ${formData.country} (${formData.course})`,
             message: `Education Level: ${formData.education}\nMessage: ${formData.message}`,
-            mode: "Online/Offline"
+            mode: "Online/Offline",
+            ...getLeadSource(
+              "Study abroad page — counselling form",
+              `Study abroad page — ${(e.nativeEvent?.submitter?.innerText || "Submit").replace(/\s+/g, " ").trim()}`
+            ),
         };
 
         try {
@@ -1485,6 +1490,7 @@ const StudyAbroadPage = () => {
                 onClose={() => { setIsModalOpen(false); setModalTitle(null); }}
                 courseName={`Study Abroad - ${selectedCountry}`} 
                 customTitle={modalTitle}
+                leadPlace="Study abroad page — enquiry popup"
             />
         </div>
     );

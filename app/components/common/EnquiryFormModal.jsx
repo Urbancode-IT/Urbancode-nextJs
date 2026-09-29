@@ -10,6 +10,7 @@ import { fetchClientCourses } from "@/lib/api/fetchClientCourses";
 import { resolveCrmCourseName } from "@/lib/api/resolveCrmCourse";
 import { getKidsCourseLabel, getKidsCrmCourse } from "@/lib/data/kidsCourses";
 import { getEmailError, getNameError, getPhoneError, isGibberish } from "@/app/utils/validationUtils";
+import { getLeadSource } from "@/app/utils/leadSource";
 import "./EnquiryForm.css";
 
 const BROCHURE_REQUEST_TIMEOUT = 30000;
@@ -31,6 +32,7 @@ const EnquiryFormModal = ({
   useExternalCourses = true,
   useCourseEnquiryApi = false,
   isKidsMode = false,
+  leadPlace = "",
 }) => {
   const [formData, setFormData] = useState({
     name: "",
@@ -302,6 +304,25 @@ const EnquiryFormModal = ({
 
   const getResolvedCourseName = () => getEnrollmentCourse().course;
 
+  const leadSourceFields = () => {
+    const formLabel = isKidsMode
+      ? "Kids course form"
+      : isBrochureMode
+        ? "Download brochure form"
+        : isDemoMode
+          ? "Book a demo form"
+          : isJoinMode
+            ? "Join class form"
+            : "Course enquiry form";
+    const buttonLabel = isJoinMode ? "Join Class" : "Submit";
+    const place = String(leadPlace || "").trim();
+    return getLeadSource(
+      place ? `${place} — ${formLabel}` : formLabel,
+      place ? `${place} — ${buttonLabel}` : buttonLabel,
+      place,
+    );
+  };
+
   const buildSubmitPayload = (resolvedCourse, messageOverride) => {
     const enrollment = getEnrollmentCourse();
     return {
@@ -313,7 +334,8 @@ const EnquiryFormModal = ({
       mode: isJoinMode ? "Not specified" : formData.mode,
       pin: formData.pin || "N/A",
       message: messageOverride ?? buildEnquiryMessage(),
-      ...(isKidsMode ? { card_type: "Training Only", source_page: "Kids Courses" } : {}),
+      ...leadSourceFields(),
+      ...(isKidsMode ? { card_type: "Training Only" } : {}),
     };
   };
 
@@ -414,6 +436,7 @@ const EnquiryFormModal = ({
           mode: formData.mode || "Not specified",
           pin: formData.pin || "N/A",
           message: `[BROCHURE DOWNLOAD] Student downloaded the ${formData.course} curriculum/brochure.`,
+          ...leadSourceFields(),
         }),
       });
 
@@ -462,6 +485,7 @@ const EnquiryFormModal = ({
           mode: "Not specified",
           pin: formData.pin || "N/A",
           message: `[JOIN REQUEST] ${formData.name} wants to join the ${courseName} class.${batchInfo ? ` Batch: ${batchInfo.name} — ${batchInfo.schedule}` : ""}`,
+          ...leadSourceFields(),
         }),
       }).catch((err) => console.warn("Admin join notification failed:", err));
 
@@ -487,6 +511,7 @@ const EnquiryFormModal = ({
         mode: formData.mode,
         pin: formData.pin,
         message: buildEnquiryMessage(),
+        ...leadSourceFields(),
       }),
     });
 

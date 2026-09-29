@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation';
 import { isStudyAbroadLink, useStudyAbroadFlight } from '@/app/hooks/useStudyAbroadFlight';
 import './BannerSlider.css';
 
-const BannerSlider = ({ banners = [], forceEnquiry = false }) => {
+const BannerSlider = ({ banners = [], forceEnquiry = false, leadPlace = "Banner section" }) => {
     const [current, setCurrent] = useState(0);
     const [showEnquiry, setShowEnquiry] = useState(false);
     const [selectedBanner, setSelectedBanner] = useState(null);
@@ -145,6 +145,7 @@ const BannerSlider = ({ banners = [], forceEnquiry = false }) => {
                         isSelectMode={selectedBanner.isSelectMode}
                         customTitle={selectedBanner.customTitle}
                         useExternalCourses={selectedBanner.useExternalCourses !== false}
+                        leadPlace={leadPlace}
                     />
                 )}
             </section>

@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { submitProjectEnquiryForm } from "@/lib/api/api";
+import { getLeadSource } from "@/app/utils/leadSource";
 import { goToThankYou } from "@/lib/navigation/goToThankYou";
 import Swal from 'sweetalert2';
 import { useEnquiryForm } from "@/app/hooks/useEnquiryForm";
@@ -34,7 +35,8 @@ const ContactSection = () => {
         phone: data.phone,
         service: data.interestedIn, // Mapping to backend expected field
         message: data.message || "No message provided",
-        course: "Portfolio Project Inquiry"
+        course: "Portfolio Project Inquiry",
+        ...getLeadSource("Portfolio page — contact form", "Portfolio page — Send Message"),
       };
 
       const result = await submitProjectEnquiryForm(payload);
