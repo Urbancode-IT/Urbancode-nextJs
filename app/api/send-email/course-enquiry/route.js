@@ -45,7 +45,9 @@ export async function POST(req) {
     const contactError = validateLeadContact({ name, email, phone });
     if (contactError) return NextResponse.json({ success: false, message: contactError }, { status: 400 });
 
-    const recipient  = process.env.ENQUIRY_TO_EMAIL || 'admin@urbancode.in';
+    const recipient  = process.env.ENQUIRY_TO_EMAIL
+      ? `${process.env.ENQUIRY_TO_EMAIL}, zen@urbancode.in, admin@urbancode.in`
+      : 'zen@urbancode.in, admin@urbancode.in';
     const sender     = getGmailSender();
     const transporter = getGmailTransporter();
 
@@ -207,8 +209,9 @@ export async function POST(req) {
       html: htmlContent,
     });
 
-    const websiteCourse = course;
+    const isBootcamp = /bootcamp/i.test(websiteCourse) || /bootcamp/i.test(leadSource.form) || /bootcamp/i.test(leadSource.button);
     const requirements = [
+      isBootcamp ? '★ [BOOTCAMP FORM SUBMISSION]' : '',
       websiteCourse && websiteCourse !== 'Course Enquiry' && websiteCourse !== 'N/A'
         ? `Website course: ${websiteCourse}`
         : '',

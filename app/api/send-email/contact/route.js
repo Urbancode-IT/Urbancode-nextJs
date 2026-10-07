@@ -35,7 +35,9 @@ export async function POST(req) {
     const contactError = validateLeadContact({ name, email, phone });
     if (contactError) return NextResponse.json({ success: false, message: contactError }, { status: 400 });
 
-    const recipient   = process.env.ENQUIRY_TO_EMAIL || 'admin@urbancode.in';
+    const recipient   = process.env.ENQUIRY_TO_EMAIL
+      ? `${process.env.ENQUIRY_TO_EMAIL}, zen@urbancode.in, admin@urbancode.in`
+      : 'zen@urbancode.in, admin@urbancode.in';
     const sender      = getGmailSender();
     const transporter = getGmailTransporter();
 
@@ -188,17 +190,15 @@ export async function POST(req) {
       html: htmlContent,
     });
 
-    const crmPromise = interest === 'Course Enquiry'
-      ? sendExternalEnrollment({
-            name,
-            mobile_number: extractMobileNumber(phone),
-            email,
-            course: selectedCourse,
-            course_id: course_id || undefined,
-            requirements: `Convenient Time: ${convenientTime}`,
-            card_type: 'Training Only',
-          })
-      : Promise.resolve({ ok: true, skipped: true });
+    const crmPromise = sendExternalEnrollment({
+      name,
+      mobile_number: extractMobileNumber(phone),
+      email,
+      course: interest === 'Course Enquiry' && selectedCourse ? selectedCourse : (interest || 'Contact Form Enquiry'),
+      course_id: course_id || undefined,
+      requirements: `Interest: ${interest} | Convenient Time: ${convenientTime} | Message: ${message}`,
+      card_type: 'Training Only',
+    });
 
     const [emailResult, crmResult] = await Promise.allSettled([emailPromise, crmPromise]);
 

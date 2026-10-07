@@ -1,6 +1,6 @@
-import { notFound } from "next/navigation";
+import { redirect } from "next/navigation";
 
-/** Route disabled. Redesign entry preserved in page.redesign.jsx */
-export default function PortfolioV2HiddenPage() {
-  notFound();
+export default function PortfolioV2Page() {
+  redirect("/portfolio");
 }
+

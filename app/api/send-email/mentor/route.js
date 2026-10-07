@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { getGmailTransporter, getGmailSender } from '@/lib/mailer/gmailTransporter';
+import { sendExternalEnrollment, extractMobileNumber } from '@/lib/api/externalEnrollment';
 import { isGibberish, validateLeadContact } from '@/app/utils/validationUtils';
 import { readLeadSource, leadSourceHtmlRows, leadSourceTextLines } from '@/app/utils/leadSource';
 import { recordLeadEnquiry } from '@/lib/leadEnquiriesDb';
@@ -27,7 +28,9 @@ export async function POST(req) {
       return NextResponse.json({ success: false, message: 'Please enter a valid message.' }, { status: 400 });
     }
 
-    const recipient   = process.env.ENQUIRY_TO_EMAIL || 'admin@urbancode.in';
+    const recipient   = process.env.ENQUIRY_TO_EMAIL
+      ? `${process.env.ENQUIRY_TO_EMAIL}, zen@urbancode.in, admin@urbancode.in`
+      : 'zen@urbancode.in, admin@urbancode.in';
     const sender      = getGmailSender();
     const transporter = getGmailTransporter();
 
@@ -156,7 +159,7 @@ export async function POST(req) {
 </html>
     `;
 
-    await transporter.sendMail({
+    const emailPromise = transporter.sendMail({
       from: `"UrbanCode" <${sender}>`,
       to: recipient,
       replyTo: email,
@@ -172,6 +175,17 @@ export async function POST(req) {
       ].join('\n'),
       html: htmlContent,
     });
+
+    const crmPromise = sendExternalEnrollment({
+      name,
+      mobile_number: extractMobileNumber(phone),
+      email,
+      course: 'Mentorship Application',
+      requirements: `Experience: ${experience} | Goals/Message: ${interest}`,
+      card_type: 'Training Only',
+    });
+
+    await Promise.allSettled([emailPromise, crmPromise]);
 
     await recordLeadEnquiry({
       name,

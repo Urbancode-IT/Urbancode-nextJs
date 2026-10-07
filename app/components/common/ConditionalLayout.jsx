@@ -3,7 +3,7 @@ import { usePathname } from "next/navigation";
 import Navbar from "@/app/components/header/Navbar";
 import Footer from "@/app/components/footer/Footer";
 
-const HIDDEN_ROUTES = ["/english-intake", "/english-proficiency"];
+const HIDDEN_ROUTES = ["/english-intake", "/english-proficiency", "/portfolio", "/portfolio-v2"];
 
 export default function ConditionalLayout({ children }) {
   const pathname = usePathname();

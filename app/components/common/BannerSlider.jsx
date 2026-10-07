@@ -144,6 +144,7 @@ const BannerSlider = ({ banners = [], forceEnquiry = false, leadPlace = "Banner 
                         extraOptions={selectedBanner.extraOptions}
                         isSelectMode={selectedBanner.isSelectMode}
                         customTitle={selectedBanner.customTitle}
+                        hideMode={selectedBanner.hideMode}
                         useExternalCourses={selectedBanner.useExternalCourses !== false}
                         leadPlace={leadPlace}
                     />

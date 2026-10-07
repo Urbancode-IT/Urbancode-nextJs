@@ -87,6 +87,15 @@ export const metadata = {
 export default function HomePage() {
   const homeBanners = [
     {
+      src: "/images/home/SDET Bootcamp.webp",
+      alt: "SDET Offline Bootcamp - 1 Day Intensive Training",
+      type: "modal",
+      courseName: "SDET Offline Bootcamp",
+      customTitle: "Register for SDET 1-Day Offline Bootcamp",
+      hideMode: true,
+      leadPlace: "Hero Banner — SDET Bootcamp"
+    },
+    {
       src: "/images/home/6-month-program-banner.webp",
       alt: "AI Software Engineering Certification Program (6 Months)",
       type: "link",

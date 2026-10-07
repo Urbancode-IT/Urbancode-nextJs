@@ -18,7 +18,7 @@
 
 /* LIGHT MODE — default / first */
 :root[data-theme="light"] {
-  --bg:           #f0faf4;
+  --bg:           #fcfcfc;
   --nav-bg:       rgba(240, 250, 244, 0.92);
   --nav-border:   rgba(27, 122, 54, 0.12);
   --grid-color:   rgba(27, 122, 54, 0.05);

@@ -44,8 +44,8 @@ body {
   --text-h: #1a1a1a;
   --text-muted: #6c757d;
   --text-sub: #94a3b8;
-  --card-bg: #ffffff;
-  --bg: #fff;
+  --card-bg: #fcfcfc;
+  --bg: #fcfcfc;
   --border: #e5e4e7;
   
   /* Transitions */

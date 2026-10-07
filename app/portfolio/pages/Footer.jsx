@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import "./Footer.css";
 
 const Footer = () => {
@@ -8,7 +8,7 @@ const Footer = () => {
       <div className="footer__container">
         <div className="footer__top">
           <div className="footer__compact">
-            <Link to="/" className="footer__logo-link">
+            <Link href="/" className="footer__logo-link">
               <img src="/portfolio/urbancode-logo.png" alt="Urbancode" className="footer__logo" />
             </Link>
 

@@ -1,5 +1,6 @@
 'use client';
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { goToThankYou } from "@/lib/navigation/goToThankYou";
 import { FormPhoneInput } from "@/app/components/common/FormPhoneInput";
 import { motion, AnimatePresence } from "framer-motion";
@@ -32,6 +33,7 @@ const EnquiryFormModal = ({
   useExternalCourses = true,
   useCourseEnquiryApi = false,
   isKidsMode = false,
+  hideMode = false,
   leadPlace = "",
 }) => {
   const [formData, setFormData] = useState({
@@ -220,7 +222,7 @@ const EnquiryFormModal = ({
     }
     
     // Mode validation
-    if (!isJoinMode && !formData.mode) {
+    if (!isJoinMode && !hideMode && !formData.mode) {
       newErrors.mode = "Please select a mode.";
     }
     
@@ -562,7 +564,13 @@ const EnquiryFormModal = ({
     }
   };
 
-  return (
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const modalContent = (
     <AnimatePresence>
       {isOpen && (
         <motion.div
@@ -662,7 +670,7 @@ const EnquiryFormModal = ({
 
                     {!isJoinMode && (
                       <>
-                        <div className="col-md-6">
+                        <div className={hideMode ? "col-12" : "col-md-6"}>
                           {hasPresetCourse ? (
                             <input
                               type="text"
@@ -718,20 +726,22 @@ const EnquiryFormModal = ({
                           {errors.course && <small className="text-danger">{errors.course}</small>}
                         </div>
 
-                        <div className="col-md-6">
-                          <select
-                            className="form-select"
-                            name="mode"
-                            value={formData.mode}
-                            onChange={handleChange}
-                          >
-                            <option value="">Mode</option>
-                            <option value="Online">Online</option>
-                            <option value="Offline">Offline</option>
-                            <option value="lets decide later">Let's decide later</option>
-                          </select>
-                          {errors.mode && <small className="text-danger">{errors.mode}</small>}
-                        </div>
+                        {!hideMode && (
+                          <div className="col-md-6">
+                            <select
+                              className="form-select"
+                              name="mode"
+                              value={formData.mode}
+                              onChange={handleChange}
+                            >
+                              <option value="">Mode</option>
+                              <option value="Online">Online</option>
+                              <option value="Offline">Offline</option>
+                              <option value="lets decide later">Let's decide later</option>
+                            </select>
+                            {errors.mode && <small className="text-danger">{errors.mode}</small>}
+                          </div>
+                        )}
                       </>
                     )}
 
@@ -808,6 +818,9 @@ const EnquiryFormModal = ({
       )}
     </AnimatePresence>
   );
+
+  if (!mounted || typeof window === "undefined") return null;
+  return createPortal(modalContent, document.body);
 };
 
 export default EnquiryFormModal;

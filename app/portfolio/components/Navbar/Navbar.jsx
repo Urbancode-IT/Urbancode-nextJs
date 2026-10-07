@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import "./Navbar.css";
 
 const UcLogo = ({ onNavigateHome }) => (
@@ -28,7 +29,7 @@ const UcLogo = ({ onNavigateHome }) => (
 const Navbar = () => {
   const [menuOpen, setMenuOpen]   = useState(false);
   const [dark, setDark]           = useState(false);
-  const navigate = useNavigate();
+  const router = useRouter();
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
@@ -44,7 +45,7 @@ const Navbar = () => {
   const handleLinkClick = (path) => {
     setMenuOpen(false);
     if (path) {
-      navigate(path);
+      router.push(path);
     }
   };
 

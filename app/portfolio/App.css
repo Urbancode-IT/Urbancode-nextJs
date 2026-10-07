@@ -1,13 +1,13 @@
-.portfolio-vibe,
-.portfolio-vibe *,
-.portfolio-vibe *::before,
-.portfolio-vibe *::after {
+.portfolio-original-root,
+.portfolio-original-root *,
+.portfolio-original-root *::before,
+.portfolio-original-root *::after {
   box-sizing: border-box;
 }
 
-.portfolio-vibe {
+.portfolio-original-root {
   width: 100%;
-  background: var(--bg);
+  background: #fcfcfc;
   color: var(--text);
   -webkit-font-smoothing: antialiased;
   transition: background 0.3s, color 0.3s;
@@ -16,4 +16,42 @@
 
 .app {
   min-height: 100vh;
+}
+
+/* Override section backgrounds to match #fcfcfc */
+.portfolio-original-root .hero-root,
+.portfolio-original-root .glass-about-section,
+.portfolio-original-root .services-offer-section,
+.portfolio-original-root .our-clients-section,
+.portfolio-original-root .digital-future-section,
+.portfolio-original-root .client-services-section,
+.portfolio-original-root .milestones-section {
+  background: #fcfcfc !important;
+}
+
+/* Keep hero section gradient/particle effects but with light bg */
+.portfolio-original-root .hero-section {
+  background: linear-gradient(135deg, #f8fff9 0%, #fcfcfc 100%) !important;
+}
+
+/* Ensure buttons are green */
+.portfolio-original-root .btn-primary,
+.portfolio-original-root .glass-cta,
+.portfolio-original-root button.highlight-btn {
+  background: #198754 !important;
+  color: #fff !important;
+  border-color: #198754 !important;
+}
+
+.portfolio-original-root .btn-primary:hover,
+.portfolio-original-root .glass-cta:hover,
+.portfolio-original-root button.highlight-btn:hover {
+  background: #146c43 !important;
+  color: #fff !important;
+  border-color: #146c43 !important;
+}
+
+/* Add top padding to account for fixed navbar */
+.portfolio-original-root .hero-section {
+  padding-top: 80px;
 }
