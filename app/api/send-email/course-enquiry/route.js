@@ -30,6 +30,7 @@ export async function POST(req) {
     const phone   = toText(body?.phone || body?.mobile || body?.phoneNumber || body?.mobileNumber, '');
     let course  = toText(body?.course || body?.courseName || body?.program, 'Course Enquiry');
     let course_id = toText(body?.course_id || body?.courseId, '');
+    const websiteCourse = course; // capture original human-readable course name before potential Zen ID swap
 
     if (!course_id && isZenCourseId(course)) {
       course_id = course;
