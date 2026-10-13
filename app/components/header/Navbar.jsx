@@ -177,8 +177,8 @@ export default function Navbar() {
       {!isFeedbackPage && (
         <>
           <FloatingWidgets />
-          <ChatbotWidget />
-          <BookDemoWidget />
+          {!pathname.startsWith('/portfolio') && <ChatbotWidget />}
+          {!pathname.startsWith('/portfolio') && <BookDemoWidget />}
           <OneOnOneWidget />
         </>
       )}

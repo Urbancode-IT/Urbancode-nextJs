@@ -3,17 +3,19 @@ import { usePathname } from "next/navigation";
 import Navbar from "@/app/components/header/Navbar";
 import Footer from "@/app/components/footer/Footer";
 
-const HIDDEN_ROUTES = ["/english-intake", "/english-proficiency", "/portfolio", "/portfolio-v2"];
+const HIDE_NAV_AND_FOOTER = ["/english-intake", "/english-proficiency"];
+const HIDE_FOOTER_ONLY = ["/portfolio", "/portfolio-v2"];
 
 export default function ConditionalLayout({ children }) {
   const pathname = usePathname();
-  const hideNavFooter = HIDDEN_ROUTES.some((route) => pathname.startsWith(route));
+  const hideAll = HIDE_NAV_AND_FOOTER.some((route) => pathname.startsWith(route));
+  const hideFooter = hideAll || HIDE_FOOTER_ONLY.some((route) => pathname.startsWith(route));
 
   return (
     <>
-      {!hideNavFooter && <Navbar />}
+      {!hideAll && <Navbar />}
       <main>{children}</main>
-      {!hideNavFooter && <Footer />}
+      {!hideFooter && <Footer />}
     </>
   );
 }

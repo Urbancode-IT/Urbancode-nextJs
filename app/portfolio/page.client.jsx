@@ -1,34 +1,13 @@
 "use client";
 
-import React from "react";
-import HeroSection from "./components/Herosection/HeroSection";
-import AboutUs from "./pages/Aboutus";
-import ProjectsSection from "./pages/ProjectsSection";
-import ServicesOffer from "./pages/ServicesOffer";
-import OurClients from "./pages/OurClients";
-import DigitalFuture from "./pages/DigitalFuture";
-import ClientServices from "./pages/ClientServices";
-import Milestones from "./components/Milestones/Milestones";
-import ContactSection from "./pages/ContactSection";
-import MainNavbar from "@/app/components/header/Navbar";
-import MainFooter from "@/app/components/footer/Footer";
-import "./App.css";
-import "./index.css";
+// Portfolio V2 — active version served at /portfolio
+// V1 backup is preserved in page.client.v1.jsx — restore it here to revert.
+import NewPortfolioDesign from "@/app/portfolio-v2/components/NewPortfolioDesign";
 
-export default function PortfolioClientPage() {
+export default function PortfolioV2ClientPage() {
   return (
-    <div className="portfolio-original-root" style={{ background: "#fcfcfc", minHeight: "100vh" }}>
-      <MainNavbar />
-      <HeroSection />
-      <AboutUs />
-      <ProjectsSection />
-      <ServicesOffer />
-      <OurClients />
-      <DigitalFuture />
-      <ClientServices />
-      <Milestones />
-      <ContactSection />
-      <MainFooter />
+    <div className="portfolio-v2-main-wrapper">
+      <NewPortfolioDesign />
     </div>
   );
 }

@@ -1,11 +1,10 @@
-import PortfolioClientPage from "./page.client";
+import PortfolioV2ClientPage from "./page.client";
 
 export const metadata = {
-  title: "Portfolio | Urbancode Edutech",
-  description: "We engineer excellence through digital innovation — explore Urbancode portfolio, projects, clients, and services.",
+  title: "Portfolio | Urbancode",
+  description: "Websites and digital products designed and built by Urbancode. Explore selected client work, services, and how to start a project.",
 };
 
 export default function PortfolioPage() {
-  return <PortfolioClientPage />;
+  return <PortfolioV2ClientPage />;
 }
-
