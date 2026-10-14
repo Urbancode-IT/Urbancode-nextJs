@@ -187,35 +187,35 @@ const INTERNAL_APPS = [
   {
     id: 1,
     name: "Zen",
-    desc: "A company website for an engineering consultancy working in oil, gas, and industry.",
+    desc: "A CRM for a training institute. It keeps every lead in one place, from the first enquiry through follow-up.",
     img: "/portfolio/projects-thumbnail/zen.webp",
     gif: "/portfolio/portfolio-thumbnail-gif/zen.gif",
   },
   {
     id: 2,
     name: "Seyal",
-    desc: "A company website for an IT consultancy, laid out so services are easy to understand.",
+    desc: "A workspace for managing employee tasks and day-to-day work, so assignments and progress stay visible to the team.",
     img: "/portfolio/projects-thumbnail/seyal.webp",
     gif: "/portfolio/portfolio-thumbnail-gif/seyal.gif",
   },
   {
     id: 3,
     name: "Progz",
-    desc: "A company website for tax consulting and GST services.",
+    desc: "An LMS for the training institute. Learning videos are posted here, and both students and trainers can sign in and use them.",
     img: "/portfolio/projects-thumbnail/progz.webp",
     gif: "/portfolio/portfolio-thumbnail-gif/progzvideo.gif",
   },
   {
     id: 4,
     name: "Jobzenter",
-    desc: "A product website for a platform that connects candidates with employers.",
+    desc: "A portfolio website for a training institute, built to present its programs, work, and results in one place.",
     img: "/portfolio/projects-thumbnail/jobzenter.webp",
     gif: "/portfolio/portfolio-thumbnail-gif/jobzenter.gif",
   },
   {
     id: 6,
     name: "Placetrack",
-    desc: "A product website for a dashboard that keeps candidates and progress in one view.",
+    desc: "An interview scheduling and management website. Teams set interviews, follow candidates, and keep the process in one place.",
     img: "/portfolio/projects-thumbnail/placetrack.webp",
     gif: "/portfolio/portfolio-thumbnail-gif/placetrack.gif",
   },
@@ -226,7 +226,6 @@ const HERO_CAROUSEL_IMAGES = [
   "jobzenter",
   "kattraan",
   "lockzie",
-  "petrokens",
   "synergy",
   "techtrends",
   "vminteriors",
@@ -251,7 +250,6 @@ const ABOUT_IMAGES = {
 };
 
 const CLIENT_LOGOS = [
-  "/portfolio/client/client1.png",
   "/portfolio/client/client2.png",
   "/portfolio/client/client3.png",
   "/portfolio/client/client4.png",
@@ -293,7 +291,7 @@ const SERVICES_LIST = [
 const FAQ_ITEMS = [
   {
     q: "What is a portfolio project?",
-    a: "A portfolio project is a website or digital product we designed and built for a client. Every card in Our Works is a real project, such as Petrokens, Techtrendz, Lockzie, and Craftlogically Me.",
+    a: "A portfolio project is a website or digital product we designed and built for a client. Every card in Our Works is a real project, such as Techtrendz, Lockzie, and Craftlogically Me.",
   },
   {
     q: "What kinds of projects are in this portfolio?",
@@ -316,19 +314,19 @@ const FAQ_ITEMS = [
 const SELECTED_WORKS = [
   {
     id: 1,
-    bannerTitle: "A website for an interior design company.",
+    bannerTitle: "An interior design portfolio website.",
     mockupImg: "/portfolio/projects-thumbnail/vminteriors.webp",
     gif: "/portfolio/portfolio-thumbnail-gif/vminteriors.gif",
-    tags: ["Web Development", "Interior"],
+    tags: ["Web Development", "Portfolio"],
     cardTitle: "VM Plus Interior",
-    cardDesc: "A website that presents interior projects and services in a calm, image-led layout.",
+    cardDesc: "An interior design portfolio website. It presents completed spaces and the projects behind them.",
     bgTheme: "linear-gradient(165deg, #f6f1ec 0%, #e4d9d0 48%, #c9bbb0 100%)",
     link: "",
   },
   {
     id: 2,
     bannerTitle: "An online store for handcrafted jewellery.",
-    tags: ["Web Dev", "E-Commerce"],
+    tags: ["Web Development", "E-Commerce"],
     mockupImg: "/portfolio/projects-thumbnail/craftlogicallly.png",
     gif: "/portfolio/portfolio-thumbnail-gif/craftlogically.gif",
     cardTitle: "Craftlogically Me",
@@ -338,62 +336,51 @@ const SELECTED_WORKS = [
   },
   {
     id: 3,
-    bannerTitle: "A website for a hiring platform.",
-    tags: ["Web Dev", "Portfolio"],
+    bannerTitle: "A portfolio website for a training institute.",
+    tags: ["Web Development", "Portfolio"],
     mockupImg: "/portfolio/projects-thumbnail/jobzenter.webp",
     gif: "/portfolio/portfolio-thumbnail-gif/jobzenter.gif",
     cardTitle: "Jobzenter",
-    cardDesc: "A product website that shows how candidates and employers connect.",
+    cardDesc: "A portfolio website for a training institute, built to present its programs, work, and results in one place.",
     bgTheme: "linear-gradient(165deg, #fff9e4 0%, #ffe7a3 52%, #f5cc62 100%)",
     link: "https://jobzenter.in/",
   },
   {
     id: 11,
-    bannerTitle: "A website for an engineering consultancy.",
-    tags: ["Web Dev", "CRM"],
+    bannerTitle: "A CRM for training-institute leads.",
+    tags: ["Web Development", "CRM"],
     mockupImg: "/portfolio/projects-thumbnail/zen.webp",
     gif: "/portfolio/portfolio-thumbnail-gif/zen.gif",
     cardTitle: "Zen",
-    cardDesc: "A company website for oil, gas, and industrial engineering services.",
+    cardDesc: "A CRM for a training institute. It keeps every lead in one place, from the first enquiry through follow-up.",
     bgTheme: "linear-gradient(165deg, #f4f7fa 0%, #d5dee8 52%, #b4c3d2 100%)",
     link: "",
   },
   {
     id: 9,
-    bannerTitle: "A brand website for hair extensions.",
-    tags: ["Web Dev", "Portfolio"],
+    bannerTitle: "A portfolio website for a hair extension brand.",
+    tags: ["Web Development", "Portfolio"],
     mockupImg: "/portfolio/projects-thumbnail/lockzie.webp",
     cardTitle: "Lockzie",
-    cardDesc: "A brand site where customers can browse styles and send an enquiry.",
+    cardDesc: "A website for a hair extension company. It works as their portfolio, so customers can browse styles and the work in one place.",
     bgTheme: "linear-gradient(165deg, #f5f7f9 0%, #e0e6ec 52%, #c5d0da 100%)",
     link: "",
   },
   {
-    id: 4,
-    bannerTitle: "A website for an oil and gas company.",
-    tags: ["Web Dev", "Portfolio"],
-    mockupImg: "/portfolio/projects-thumbnail/petrokens.webp",
-    gif: "/portfolio/portfolio-thumbnail-gif/petrokens.gif",
-    cardTitle: "Petrokens",
-    cardDesc: "A company website that explains engineering services in a clear, professional layout.",
-    bgTheme: "linear-gradient(165deg, #eef6ff 0%, #c9e0fb 50%, #8fbfef 100%)",
-    link: "https://www.petrokens.com/",
-  },
-  {
     id: 12,
-    bannerTitle: "A website for an IT consultancy.",
-    tags: ["Web Dev", "ERP"],
+    bannerTitle: "A workspace for employee tasks.",
+    tags: ["Web Development", "ERP"],
     mockupImg: "/portfolio/projects-thumbnail/seyal.webp",
     gif: "/portfolio/portfolio-thumbnail-gif/seyal.gif",
     cardTitle: "Seyal",
-    cardDesc: "A service website that explains what the consultancy offers and how to get in touch.",
-    bgTheme: "linear-gradient(165deg, #edfbf4 0%, #c4f0d8 50%, #86d7ae 100%)",
+    cardDesc: "A workspace for managing employee tasks and day-to-day work, so assignments and progress stay visible to the team.",
+    bgTheme: "linear-gradient(165deg, #f7faff 0%, #e4eefb 48%, #c5d8f6 100%)",
     link: "",
   },
   {
     id: 5,
     bannerTitle: "A website for an IT services company.",
-    tags: ["Web Dev", "Portfolio"],
+    tags: ["Web Development", "Portfolio"],
     mockupImg: "/portfolio/projects-thumbnail/techtrends.webp",
     gif: "/portfolio/portfolio-thumbnail-gif/techtrendz.gif",
     cardTitle: "Techtrendz",
@@ -404,7 +391,7 @@ const SELECTED_WORKS = [
   {
     id: 6,
     bannerTitle: "A website for a finance and tax firm.",
-    tags: ["Web Dev", "Portfolio"],
+    tags: ["Web Development", "Portfolio"],
     mockupImg: "/portfolio/projects-thumbnail/synergy.webp",
     gif: "/portfolio/portfolio-thumbnail-gif/synergy.gif",
     cardTitle: "Synergy",
@@ -414,42 +401,43 @@ const SELECTED_WORKS = [
   },
   {
     id: 14,
-    bannerTitle: "A product website for a tracking dashboard.",
-    tags: ["Web Dev", "CRM"],
+    bannerTitle: "An interview scheduling and management website.",
+    tags: ["Web Development", "CRM"],
     mockupImg: "/portfolio/projects-thumbnail/placetrack.webp",
     gif: "/portfolio/portfolio-thumbnail-gif/placetrack.gif",
     cardTitle: "Placetrack",
-    cardDesc: "A product site that shows how candidates and progress stay in one view.",
+    cardDesc: "An interview scheduling and management website. Teams set interviews, follow candidates, and keep the process in one place.",
     bgTheme: "linear-gradient(165deg, #fdf4ff 0%, #f0d4fb 50%, #dba6ef 100%)",
     link: "",
   },
   {
     id: 7,
     bannerTitle: "An online store for floral arrangements.",
-    tags: ["Web Dev", "E-Commerce"],
+    tags: ["Web Development", "E-Commerce"],
     mockupImg: "/portfolio/projects-thumbnail/dryflowers.webp",
     cardTitle: "Dry Flowers",
     cardDesc: "A shop website for fresh and dried flowers, built for browsing and orders.",
-    bgTheme: "linear-gradient(165deg, #fff2f8 0%, #fbcfe3 50%, #f3a4c6 100%)",
+    bgTheme: "linear-gradient(165deg, #fbf8f3 0%, #f3ebe2 48%, #e4d3c4 100%)",
     link: "",
   },
   {
     id: 8,
-    bannerTitle: "A website for an online learning platform.",
-    tags: ["Web Dev", "LMS"],
+    bannerTitle: "An LMS for lessons and learning videos.",
+    tags: ["Web Development", "LMS"],
     mockupImg: "/portfolio/projects-thumbnail/kattraan.webp",
     cardTitle: "Kattraan",
-    cardDesc: "A product website where people can find a program and continue through it.",
-    bgTheme: "linear-gradient(165deg, #f7fee8 0%, #d9f99d 50%, #b4e056 100%)",
+    cardDesc: "An LMS where lessons and learning videos are published, so students can open a course and continue through it.",
+    bgTheme: "linear-gradient(165deg, #a33d4c 0%, #7a2433 52%, #4e121c 100%)",
+    dark: true,
     link: "",
   },
   {
     id: 10,
-    bannerTitle: "A corporate website.",
-    tags: ["Web Dev", "E-Commerce"],
+    bannerTitle: "A website for selling books and writing blogs.",
+    tags: ["Web Development", "E-Commerce"],
     mockupImg: "/portfolio/projects-thumbnail/wepinit.webp",
     cardTitle: "Wepenit",
-    cardDesc: "A company website that presents services and gives visitors a clear next step.",
+    cardDesc: "A book-selling and blog website. Readers can browse books and read writing in the same place.",
     bgTheme: "linear-gradient(165deg, #fff8ea 0%, #ffe4ad 52%, #f0c15c 100%)",
     link: "",
   },
@@ -457,34 +445,28 @@ const SELECTED_WORKS = [
 
 const TESTIMONIALS = [
   {
-    name: "Petrokens",
-    role: "Oil & Gas Engineering",
-    logo: "/portfolio/client/client1.png",
-    text: "Our engineering work now has a clear, professional home online that clients can trust at a glance.",
-  },
-  {
     name: "Synergy",
     role: "Finance & Tax",
     logo: "/portfolio/client/client3.png",
-    text: "Clients find our tax and finance services quickly, and the site explains what we do without the clutter.",
+    text: "Before the website, almost every new client came through a personal introduction. People could not tell what we handled until they called. After the site went live, people started writing in already knowing whether they needed tax help or a finance review. The enquiries we no longer have to chase are the ones that changed the month.",
   },
   {
     name: "Techtrendz",
     role: "IT Services",
     logo: "/portfolio/client/client2.png",
-    text: "The website presents our services clearly, and visitors know exactly how to reach us.",
+    text: "Our services used to live in slide decks and long calls. A prospect had no way to understand the work unless we walked them through it. The website changed the first conversation. Visitors now arrive with a service in mind, and we spend the meeting on the project instead of explaining who we are.",
   },
   {
     name: "Jobzenter",
-    role: "Hiring Platform",
+    role: "Training Institute",
     logo: "/portfolio/client/client5.png",
-    text: "The website explains the platform simply, so candidates and employers know what to do next.",
+    text: "The institute had programs and results, but nothing online that held them together. People heard the name and then had to ask for proof. The portfolio site put the work in one place. Students and partners now open it before they speak to us, and the questions are about joining, not about whether we are real.",
   },
   {
     name: "Lockzie",
     role: "Hair Extensions",
     logo: "/portfolio/client/lockzie.png",
-    text: "Our collections look premium online, and customers can browse styles and book without friction.",
+    text: "Customers used to message us for photos of every style, and many stopped replying before they booked. Once the collections were on the website, people could look through the work on their own. Bookings started coming from visitors who had already chosen a style, and we stopped losing them in that back-and-forth.",
   },
 ];
 
@@ -511,6 +493,7 @@ export default function NewPortfolioDesign() {
   /* three copies of the list so the row can slide forever in either direction */
   const loopedApps = [...INTERNAL_APPS, ...INTERNAL_APPS, ...INTERNAL_APPS];
   const [appJumping, setAppJumping] = useState(false);
+  const [appPaused, setAppPaused] = useState(false);
   const appBusyRef = useRef(false);
   const appTimerRef = useRef(null);
 
@@ -538,6 +521,23 @@ export default function NewPortfolioDesign() {
   };
 
   useEffect(() => () => clearTimeout(appTimerRef.current), []);
+
+  useEffect(() => {
+    if (appPaused) return undefined;
+    const id = setInterval(() => setActiveAppIndex((current) => current + 1), 2200);
+    return () => clearInterval(id);
+  }, [appPaused]);
+
+  useEffect(() => {
+    if (activeAppIndex >= appCount && activeAppIndex < appCount * 2) return undefined;
+    const timer = setTimeout(() => {
+      const normalized = ((activeAppIndex % appCount) + appCount) % appCount + appCount;
+      setAppJumping(true);
+      setActiveAppIndex(normalized);
+      requestAnimationFrame(() => requestAnimationFrame(() => setAppJumping(false)));
+    }, 680);
+    return () => clearTimeout(timer);
+  }, [activeAppIndex, appCount]);
 
   useEffect(() => {
     const el = internalSectionRef.current;
@@ -907,7 +907,7 @@ export default function NewPortfolioDesign() {
             {(showAllWorks ? SELECTED_WORKS : SELECTED_WORKS.slice(0, 6)).map((work) => {
               const card = (
                 <>
-                  <div className="np-work-banner-box" style={{ background: work.bgTheme }}>
+                  <div className={`np-work-banner-box${work.dark ? " is-dark" : ""}`} style={{ background: work.bgTheme }}>
                     <div className="np-work-banner-top">
                       <h3>{work.bannerTitle}</h3>
                       <div className="np-work-tags">
@@ -962,7 +962,11 @@ export default function NewPortfolioDesign() {
       >
         <div className="np-container">
           <h2 className="np-internal-title">Our Internal Applications</h2>
-          <div className="np-internal-stage">
+          <div
+            className="np-internal-stage"
+            onMouseEnter={() => setAppPaused(true)}
+            onMouseLeave={() => setAppPaused(false)}
+          >
             <div
               className={`np-internal-track ${appJumping ? "is-jumping" : ""}`}
               style={{ "--app-index": activeAppIndex }}
@@ -1075,20 +1079,19 @@ export default function NewPortfolioDesign() {
               style={{ "--testi-index": testiIndex }}
             >
               {[0, 1, 2].map((copy) =>
-                TESTIMONIALS.map((item, i) => (
+                TESTIMONIALS.map((item) => (
                   <div className="np-testimonial-card" key={`${copy}-${item.name}`}>
                     <div className="np-testi-top">
+                      <div className="np-testi-user">
+                        <img src={item.logo} alt={`${item.name} logo`} />
+                        <div>
+                          <h4>{item.name}</h4>
+                          <span>{item.role}</span>
+                        </div>
+                      </div>
                       <span className="np-testi-star">★ 5/5</span>
-                      <span className="np-testi-num">{i + 1}/{testiCount}</span>
                     </div>
                     <p className="np-testi-text">{item.text}</p>
-                    <div className="np-testi-user">
-                      <img src={item.logo} alt={`${item.name} logo`} />
-                      <div>
-                        <h4>{item.name}</h4>
-                        <span>{item.role}</span>
-                      </div>
-                    </div>
                   </div>
                 ))
               )}
