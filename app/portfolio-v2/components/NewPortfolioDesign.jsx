@@ -446,27 +446,23 @@ const SELECTED_WORKS = [
 const TESTIMONIALS = [
   {
     name: "Synergy",
-    role: "Finance & Tax",
     logo: "/portfolio/client/client3.png",
-    text: "Before the website, almost every new client came through a personal introduction. People could not tell what we handled until they called. After the site went live, people started writing in already knowing whether they needed tax help or a finance review. The enquiries we no longer have to chase are the ones that changed the month.",
+    text: "“Before our site, almost every new client came through a personal introduction. People could not tell what we handled until they called. After it went live, they started writing in already knowing whether they needed tax help or a finance review. Those enquiries we no longer have to chase are the ones that changed our month.”",
   },
   {
     name: "Techtrendz",
-    role: "IT Services",
     logo: "/portfolio/client/client2.png",
-    text: "Our services used to live in slide decks and long calls. A prospect had no way to understand the work unless we walked them through it. The website changed the first conversation. Visitors now arrive with a service in mind, and we spend the meeting on the project instead of explaining who we are.",
+    text: "“Our services used to live in slide decks and long calls. A prospect had no way to understand the work unless we walked them through it. The website changed our first conversation. Visitors now arrive with a service in mind, and we spend the meeting on the project instead of explaining who we are.”",
   },
   {
     name: "Jobzenter",
-    role: "Training Institute",
     logo: "/portfolio/client/client5.png",
-    text: "The institute had programs and results, but nothing online that held them together. People heard the name and then had to ask for proof. The portfolio site put the work in one place. Students and partners now open it before they speak to us, and the questions are about joining, not about whether we are real.",
+    text: "“We had programs and results, but nothing online that held them together. People heard our name and then had to ask for proof. The portfolio site put our work in one place. Students and partners now open it before they speak to us, and the questions are about joining, not about whether we are real.”",
   },
   {
     name: "Lockzie",
-    role: "Hair Extensions",
     logo: "/portfolio/client/lockzie.png",
-    text: "Customers used to message us for photos of every style, and many stopped replying before they booked. Once the collections were on the website, people could look through the work on their own. Bookings started coming from visitors who had already chosen a style, and we stopped losing them in that back-and-forth.",
+    text: "“Customers used to message us for photos of every style, and many stopped replying before they booked. Once our collections were on the website, people could look through the work on their own. Bookings started coming from visitors who had already chosen a style, and we stopped losing them in that back-and-forth.”",
   },
 ];
 
@@ -569,7 +565,7 @@ export default function NewPortfolioDesign() {
 
   useEffect(() => {
     if (teamPaused) return undefined;
-    const id = setInterval(() => setTeamIndex((current) => current + 1), 4200);
+    const id = setInterval(() => setTeamIndex((current) => current + 1), 3000);
     return () => clearInterval(id);
   }, [teamPaused]);
 
@@ -1084,10 +1080,6 @@ export default function NewPortfolioDesign() {
                     <div className="np-testi-top">
                       <div className="np-testi-user">
                         <img src={item.logo} alt={`${item.name} logo`} />
-                        <div>
-                          <h4>{item.name}</h4>
-                          <span>{item.role}</span>
-                        </div>
                       </div>
                       <span className="np-testi-star">★ 5/5</span>
                     </div>
