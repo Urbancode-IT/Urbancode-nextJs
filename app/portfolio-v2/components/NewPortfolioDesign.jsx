@@ -233,13 +233,13 @@ const HERO_CAROUSEL_IMAGES = [
 ].map((name) => `/portfolio/projects-thumbnail/${name}.webp`);
 
 const TEAM = [
-  { name: "Pushparaj", role: "Developer", img: "/portfolio/our-team/pusparajportfolio.webp" },
-  { name: "Siva Shankar", role: "Developer", img: "/portfolio/our-team/sivashankarportfolio.webp" },
-  { name: "Rohini", role: "Developer", img: "/portfolio/our-team/rohiniportfolio.webp" },
-  { name: "Abinash", role: "Developer", img: "/portfolio/our-team/Abinashportfolio.webp" },
-  { name: "Subiksha", role: "Developer", img: "/portfolio/our-team/subikshaportfolio.webp" },
-  { name: "Suchithra", role: "Developer", img: "/portfolio/our-team/suchithraportfolio.webp" },
-  { name: "Jaswanth", role: "Designer", img: "/portfolio/our-team/jashwanthportfolio.webp" },
+  { name: "Pushparaj", role: "Python / MERN Stack", lead: true, img: "/portfolio/our-team/pusparajportfolio.webp" },
+  { name: "Siva Sankara Pandian", role: "MERN Stack Developer", img: "/portfolio/our-team/sivashankarportfolio.webp" },
+  { name: "Rohini", role: "MERN Stack Developer", img: "/portfolio/our-team/rohiniportfolio.webp" },
+  { name: "Abinash", role: "MERN Stack Developer", img: "/portfolio/our-team/Abinashportfolio.webp" },
+  { name: "Subiksha", role: "MERN Stack Developer", img: "/portfolio/our-team/subikshaportfolio.webp" },
+  { name: "Suchithra", role: "Java Full Stack Developer", img: "/portfolio/our-team/suchithraportfolio.webp" },
+  { name: "Jaswanth", role: "UI/UX Designer", img: "/portfolio/our-team/jashwanthportfolio.webp" },
 ];
 
 const ABOUT_IMAGES = {
@@ -637,7 +637,7 @@ export default function NewPortfolioDesign() {
       <section className="np-hero-section">
         <div className="np-container">
           <h1 className="np-hero-title">
-            <span className="np-hero-line">Designing websites that</span>
+            <span className="np-hero-line">Developing Applications that</span>
             <span className="np-hero-line">help businesses <span className="np-text-green">grow.</span></span>
           </h1>
 
@@ -1036,11 +1036,14 @@ export default function NewPortfolioDesign() {
             >
               {[0, 1, 2].map((copy) =>
                 TEAM.map((member) => (
-                  <div className="np-team-card" key={`${copy}-${member.name}`}>
+                  <div className={`np-team-card${member.lead ? " np-team-card--lead" : ""}`} key={`${copy}-${member.name}`}>
                     <img src={member.img} alt={member.name} />
                     <div className="np-team-info">
                       <h3>{member.name}</h3>
-                      <p>{member.role}</p>
+                      <p>
+                        {member.lead ? <span className="np-team-lead">Team Lead</span> : null}
+                        {member.role}
+                      </p>
                     </div>
                   </div>
                 ))
