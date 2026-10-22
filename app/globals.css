@@ -1,9 +1,10 @@
 /* ================================================================
-   FONT — loaded via next/font/google in layout.js
-   CSS variable: --font-inter is injected on <html>
+   FONT — Inter is self-hosted via @fontsource-variable/inter
+   (imported in layout.js; no Google Fonts fetch at build time)
    ================================================================ */
 :root {
   /* Font stack */
+  --font-inter: 'Inter Variable', 'Inter', system-ui, -apple-system, sans-serif;
   --font-sans: var(--font-inter, 'Inter', system-ui, -apple-system, sans-serif);
 
   /* ── Colour tokens ────────────────────────────────────────────── */

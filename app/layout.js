@@ -3,18 +3,14 @@ import './globals.css';
 import './components/Home/homeCarouselNav.css';
 import './styles/pageShineCards.css';
 import "bootstrap-icons/font/bootstrap-icons.css";
-import { Inter } from 'next/font/google';
+/* Self-hosted Inter (variable, 100–900) — do NOT use next/font/google here:
+   it downloads the font from Google at build time and fails the Vercel
+   build whenever that fetch is blocked/times out. */
+import '@fontsource-variable/inter';
 
 import BootstrapClient from './components/BootstrapClient';
 import ConditionalLayout from './components/common/ConditionalLayout';
 import SmoothScroll from './components/common/SmoothScroll';
-
-const inter = Inter({
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700', '800'], // ✅ fixed (weight, not weights)
-  display: 'swap',
-  variable: '--font-inter',
-});
 
 export const metadata = {
   title: 'Urbancode | Learn with Experts',
@@ -50,7 +46,7 @@ export const viewport = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={inter.variable} suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <head>
         {/* Explicit viewport — belt-and-suspenders with export const viewport below */}
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
@@ -205,7 +201,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         />
       </head>
 
-      <body className={inter.className}>
+      <body>
         {/* GTM noscript — required pair with the head snippet (JS-disabled browsers only) */}
         <noscript>
           <iframe
