@@ -879,8 +879,8 @@
 .np-testi-text { font-size: 14px; color: #7C7C7C; line-height: 1.6; margin-bottom: 24px; }
 .np-testi-user { display: flex; align-items: center; gap: 12px; }
 .np-testi-user img {
-  width: 132px;
-  height: 52px;
+  width: auto;
+  height: 38px;
   border-radius: 0;
   object-fit: contain;
   object-position: left center;
@@ -889,7 +889,14 @@
   padding: 0;
   box-sizing: border-box;
   flex-shrink: 0;
+  display: block;
 }
+/* Shift each logo left by the blank space inside its image file,
+   so the visible logo starts on the same line as the quote text below. */
+.new-portfolio-root .np-testi-logo--synergy { margin-left: -5px; }
+.new-portfolio-root .np-testi-logo--techtrendz { margin-left: -19px; }
+.new-portfolio-root .np-testi-logo--jobzenter { margin-left: -6px; }
+.new-portfolio-root .np-testi-logo--lockzie { margin-left: -2px; }
 
 /* ── FAQ Section ─────────────────────────────────────────────────── */
 .new-portfolio-root .np-faq-section { padding: 90px 0; background: #fcfcfc; }
@@ -1763,7 +1770,11 @@
 }
 @media (max-width: 768px) {
   .new-portfolio-root .np-testi-track { --testi-card: 100cqw; --testi-gap: 16px; }
-  .new-portfolio-root .np-testi-user img { width: 112px; height: 46px; }
+  .new-portfolio-root .np-testi-user img { width: auto; height: 34px; }
+  .new-portfolio-root .np-testi-logo--synergy { margin-left: -4px; }
+  .new-portfolio-root .np-testi-logo--techtrendz { margin-left: -17px; }
+  .new-portfolio-root .np-testi-logo--jobzenter { margin-left: -5px; }
+  .new-portfolio-root .np-testi-logo--lockzie { margin-left: -2px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .new-portfolio-root .np-testi-track { transition: none; }

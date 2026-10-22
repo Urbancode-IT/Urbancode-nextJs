@@ -87,6 +87,16 @@ export const metadata = {
 export default function HomePage() {
   const homeBanners = [
     {
+      src: "/images/home/FSD_TVL_Bootcamp.webp",
+      alt: "Free Zero to Hero Full Stack Development Bootcamp in Tirunelveli on 31 October 2026",
+      type: "modal",
+      courseName: "Full Stack Development Bootcamp - Tirunelveli",
+      customTitle: "Register for Zero to Hero Bootcamp",
+      eventInfo: "Free 4-Hour Full Stack Development Bootcamp • Tirunelveli • Saturday, 31-10-2026",
+      hideMode: true,
+      leadPlace: "Hero Banner — FSD Tirunelveli Bootcamp"
+    },
+    {
       src: "/images/home/6-month-program-banner.webp",
       alt: "AI Software Engineering Certification Program (6 Months)",
       type: "link",

@@ -30,6 +30,7 @@ const EnquiryFormModal = ({
   isJoinMode = false,
   batchInfo = null,
   customTitle = null,
+  eventInfo = null,
   useExternalCourses = true,
   useCourseEnquiryApi = false,
   isKidsMode = false,
@@ -586,15 +587,18 @@ const EnquiryFormModal = ({
             exit={{ scale: 0.8, opacity: 0 }}
           >
             <div className="enquiry-header">
-              <h3>
-                {customTitle 
-                  ? customTitle
-                  : (isJoinMode 
-                    ? "Join Class" 
-                    : (isBrochureMode ? "Get Course Brochure" : (isDemoMode ? "Book a Demo Session" : "Enquire Today"))
-                  )
-                }
-              </h3>
+              <div>
+                <h3>
+                  {customTitle
+                    ? customTitle
+                    : (isJoinMode
+                      ? "Join Class"
+                      : (isBrochureMode ? "Get Course Brochure" : (isDemoMode ? "Book a Demo Session" : "Enquire Today"))
+                    )
+                  }
+                </h3>
+                {eventInfo ? <p className="enquiry-event-info">{eventInfo}</p> : null}
+              </div>
               <button className="close-btn" onClick={onClose}>×</button>
             </div>
 

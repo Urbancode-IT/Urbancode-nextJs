@@ -80,6 +80,14 @@
   margin: 0;
 }
 
+.enquiry-event-info {
+  margin: 6px 0 0;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.45;
+  color: #047857;
+}
+
 .close-btn {
   background: none;
   border: none;
@@ -277,4 +285,4 @@
   color: #d9534f;
   margin-top: 4px;
 }
-
+

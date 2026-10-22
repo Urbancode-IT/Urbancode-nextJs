@@ -238,8 +238,10 @@ const TEAM = [
   { name: "Rohini", role: "MERN Stack Developer", img: "/portfolio/our-team/rohiniportfolio.webp" },
   { name: "Abinash", role: "MERN Stack Developer", img: "/portfolio/our-team/Abinashportfolio.webp" },
   { name: "Subiksha", role: "MERN Stack Developer", img: "/portfolio/our-team/subikshaportfolio.webp" },
+  { name: "Thaya", role: "MERN Stack Developer", img: "/portfolio/our-team/thayaportfolio.webp" },
   { name: "Suchithra", role: "Java Full Stack Developer", img: "/portfolio/our-team/suchithraportfolio.webp" },
   { name: "Jaswanth", role: "UI/UX Designer", img: "/portfolio/our-team/jashwanthportfolio.webp" },
+  { name: "Deivendraraj", role: "Designer", img: "/portfolio/our-team/devaportfolio.webp" },
 ];
 
 const ABOUT_IMAGES = {
@@ -447,21 +449,25 @@ const TESTIMONIALS = [
   {
     name: "Synergy",
     logo: "/portfolio/client/client3.png",
+    logoClass: "np-testi-logo--synergy",
     text: "“Before our site, almost every new client came through a personal introduction. People could not tell what we handled until they called. After it went live, they started writing in already knowing whether they needed tax help or a finance review. Those enquiries we no longer have to chase are the ones that changed our month.”",
   },
   {
     name: "Techtrendz",
     logo: "/portfolio/client/client2.png",
+    logoClass: "np-testi-logo--techtrendz",
     text: "“Our services used to live in slide decks and long calls. A prospect had no way to understand the work unless we walked them through it. The website changed our first conversation. Visitors now arrive with a service in mind, and we spend the meeting on the project instead of explaining who we are.”",
   },
   {
     name: "Jobzenter",
     logo: "/portfolio/client/client5.png",
+    logoClass: "np-testi-logo--jobzenter",
     text: "“We had programs and results, but nothing online that held them together. People heard our name and then had to ask for proof. The portfolio site put our work in one place. Students and partners now open it before they speak to us, and the questions are about joining, not about whether we are real.”",
   },
   {
     name: "Lockzie",
     logo: "/portfolio/client/lockzie.png",
+    logoClass: "np-testi-logo--lockzie",
     text: "“Customers used to message us for photos of every style, and many stopped replying before they booked. Once our collections were on the website, people could look through the work on their own. Bookings started coming from visitors who had already chosen a style, and we stopped losing them in that back-and-forth.”",
   },
 ];
@@ -1082,7 +1088,7 @@ export default function NewPortfolioDesign() {
                   <div className="np-testimonial-card" key={`${copy}-${item.name}`}>
                     <div className="np-testi-top">
                       <div className="np-testi-user">
-                        <img src={item.logo} alt={`${item.name} logo`} />
+                        <img src={item.logo} alt={`${item.name} logo`} className={item.logoClass} />
                       </div>
                       <span className="np-testi-star">★ 5/5</span>
                     </div>
