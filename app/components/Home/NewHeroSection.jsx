@@ -100,7 +100,6 @@ const defaultHomeBanners = [
     type: 'modal',
     courseName: 'Full Stack Development Bootcamp - Tirunelveli',
     customTitle: 'Register for Zero to Hero Bootcamp',
-    eventInfo: 'Free 4-Hour Full Stack Development Bootcamp • Tirunelveli • Saturday, 31-10-2026',
     hideMode: true,
     leadPlace: 'Hero Banner — FSD Tirunelveli Bootcamp'
   },
