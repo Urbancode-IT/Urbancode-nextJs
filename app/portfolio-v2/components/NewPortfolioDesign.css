@@ -129,11 +129,11 @@
 }
 .np-hero-card {
   position: relative;
-  width: 414px;
-  height: 286px;
-  border-radius: 22px;
+  width: 360px;
+  height: 248px;
+  border-radius: 20px;
   overflow: hidden;
-  margin-right: 22px;
+  margin-right: 18px;
   flex-shrink: 0;
   background: transparent;
   line-height: 0;
@@ -151,6 +151,15 @@
 @keyframes npSlideTrack {
   0%   { transform: translateX(0); }
   100% { transform: translateX(-50%); }
+}
+
+@media (min-width: 1440px) {
+  .np-hero-card {
+    width: 460px;
+    height: 318px;
+    border-radius: 22px;
+    margin-right: 22px;
+  }
 }
 
 /* ── Trusted Ticker ─────────────────────────────────────────────── */
@@ -658,7 +667,7 @@
   gap: 28px;
   width: 100%;
   transform: translate3d(calc(var(--app-index, 0) * -1 * (min(36.3%, 418px) + 28px)), 0, 0);
-  transition: transform 0.8s var(--app-ease);
+  transition: transform 0.5s var(--app-ease);
   will-change: transform;
 }
 .new-portfolio-root .np-app-slot {
@@ -667,7 +676,7 @@
   flex-direction: column;
   min-width: 0;
   opacity: 0;
-  transition: width 0.8s var(--app-ease), max-width 0.8s var(--app-ease);
+  transition: width 0.5s var(--app-ease), max-width 0.5s var(--app-ease);
 }
 .new-portfolio-root .np-internal-track.is-jumping,
 .new-portfolio-root .np-internal-track.is-jumping * { transition: none !important; }
@@ -703,7 +712,7 @@
   border-radius: 22px;
   overflow: hidden;
   box-sizing: border-box;
-  transition: height 0.8s var(--app-ease), filter 0.3s ease;
+  transition: height 0.5s var(--app-ease), filter 0.3s ease;
 }
 .new-portfolio-root .np-app-slot.is-featured .np-app-panel { height: 440px; }
 .new-portfolio-root .np-app-slot.is-side .np-app-panel { height: 282px; }
@@ -716,7 +725,7 @@
   border-radius: 14px 0 0 0;
   overflow: hidden;
   background: #fff;
-  transition: width 0.8s var(--app-ease), height 0.8s var(--app-ease);
+  transition: width 0.5s var(--app-ease), height 0.5s var(--app-ease);
 }
 .new-portfolio-root .np-app-slot.is-side .np-app-shot {
   width: 82%;
@@ -1264,7 +1273,7 @@
 
 /* ── Tablet & small laptop ── */
 @media (max-width: 1024px) {
-  .new-portfolio-root .np-hero-card { width: 340px; height: 236px; border-radius: 20px; }
+  .new-portfolio-root .np-hero-card { width: 300px; height: 208px; border-radius: 18px; }
 
   .new-portfolio-root .np-about-section,
   .new-portfolio-root .np-why-section,

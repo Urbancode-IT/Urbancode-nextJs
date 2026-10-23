@@ -519,14 +519,14 @@ export default function NewPortfolioDesign() {
       } else {
         appBusyRef.current = false;
       }
-    }, 840);
+    }, 560);
   };
 
   useEffect(() => () => clearTimeout(appTimerRef.current), []);
 
   useEffect(() => {
     if (appPaused) return undefined;
-    const id = setInterval(() => setActiveAppIndex((current) => current + 1), 2200);
+    const id = setInterval(() => setActiveAppIndex((current) => current + 1), 1400);
     return () => clearInterval(id);
   }, [appPaused]);
 
@@ -537,7 +537,7 @@ export default function NewPortfolioDesign() {
       setAppJumping(true);
       setActiveAppIndex(normalized);
       requestAnimationFrame(() => requestAnimationFrame(() => setAppJumping(false)));
-    }, 680);
+    }, 480);
     return () => clearTimeout(timer);
   }, [activeAppIndex, appCount]);
 
@@ -663,21 +663,21 @@ export default function NewPortfolioDesign() {
               View Work
             </button>
           </div>
+        </div>
 
-          {/* Horizontal Image Carousel Bar */}
-          <div className="np-hero-carousel-wrap">
-            <div className="np-hero-carousel-track">
-              {HERO_CAROUSEL_IMAGES.map((img, idx) => (
-                <div key={idx} className="np-hero-card">
-                  <img src={img} alt={`Work sample ${idx + 1}`} loading="lazy" />
-                </div>
-              ))}
-              {HERO_CAROUSEL_IMAGES.map((img, idx) => (
-                <div key={`dup-${idx}`} className="np-hero-card">
-                  <img src={img} alt={`Work sample ${idx + 1}`} loading="lazy" />
-                </div>
-              ))}
-            </div>
+        {/* Full-bleed horizontal carousel */}
+        <div className="np-hero-carousel-wrap">
+          <div className="np-hero-carousel-track">
+            {HERO_CAROUSEL_IMAGES.map((img, idx) => (
+              <div key={idx} className="np-hero-card">
+                <img src={img} alt={`Work sample ${idx + 1}`} loading="lazy" />
+              </div>
+            ))}
+            {HERO_CAROUSEL_IMAGES.map((img, idx) => (
+              <div key={`dup-${idx}`} className="np-hero-card">
+                <img src={img} alt={`Work sample ${idx + 1}`} loading="lazy" />
+              </div>
+            ))}
           </div>
         </div>
       </section>
