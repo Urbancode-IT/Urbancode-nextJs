@@ -242,6 +242,7 @@ const TEAM = [
   { name: "Suchithra", role: "Java Full Stack Developer", img: "/portfolio/our-team/suchithraportfolio.webp" },
   { name: "Jaswanth", role: "UI/UX Designer", img: "/portfolio/our-team/jashwanthportfolio.webp" },
   { name: "Deivendraraj", role: "Designer", img: "/portfolio/our-team/devaportfolio.webp" },
+  { name: "Harini", role: "Designer", img: "/portfolio/our-team/hariniportfolio.webp" },
 ];
 
 const ABOUT_IMAGES = {
@@ -526,7 +527,7 @@ export default function NewPortfolioDesign() {
 
   useEffect(() => {
     if (appPaused) return undefined;
-    const id = setInterval(() => setActiveAppIndex((current) => current + 1), 1400);
+    const id = setInterval(() => setActiveAppIndex((current) => current + 1), 5500);
     return () => clearInterval(id);
   }, [appPaused]);
 
@@ -648,8 +649,15 @@ export default function NewPortfolioDesign() {
           </h1>
 
           <p className="np-hero-subtitle">
-            A selection of websites and products we designed and built for clients, <br />
-            from brand sites and online stores to web apps.
+            <span className="np-hero-sub-desktop">
+              A selection of websites and products we designed and built for clients,<br />
+              from brand sites and online stores to web apps.
+            </span>
+            <span className="np-hero-sub-mobile">
+              <span className="np-hero-sub-line">A selection of websites and products we designed</span>
+              <span className="np-hero-sub-line">and built for clients, from brand sites and online</span>
+              <span className="np-hero-sub-line">stores to web apps.</span>
+            </span>
           </p>
 
           <div className="np-hero-buttons">
