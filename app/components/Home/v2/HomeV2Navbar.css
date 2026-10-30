@@ -1,0 +1,443 @@
+@import url("https://api.fontshare.com/v2/css?f[]=satoshi@400,500,600,700&display=swap");
+
+/* Home V2 Navbar — Figma node 1090-14451 */
+.home-v2-nav,
+.home-v2-nav h1,
+.home-v2-nav h2,
+.home-v2-nav h3,
+.home-v2-nav h4,
+.home-v2-nav h5,
+.home-v2-nav h6,
+.home-v2-nav p,
+.home-v2-nav span,
+.home-v2-nav a,
+.home-v2-nav label,
+.home-v2-nav button,
+.home-v2-nav input,
+.home-v2-nav textarea,
+.home-v2-nav select,
+.home-v2-nav div,
+.home-v2-nav li {
+  font-family: "Satoshi", -apple-system, BlinkMacSystemFont, sans-serif !important;
+}
+
+.home-v2-nav .bi,
+.home-v2-nav [class^="bi-"]::before,
+.home-v2-nav [class*=" bi-"]::before {
+  font-family: "bootstrap-icons" !important;
+}
+
+.home-v2-nav {
+  font-family: "Satoshi", -apple-system, BlinkMacSystemFont, sans-serif;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 70px;
+  z-index: 10050;
+  background: #e9f8f2;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  transition: background-color 0.25s ease, backdrop-filter 0.25s ease;
+  /* Do NOT use transform/isolation — they break backdrop-filter */
+}
+
+.home-v2-nav.is-scrolled {
+  background: rgba(233, 248, 242, 0.55);
+  backdrop-filter: blur(12px) saturate(1.2);
+  -webkit-backdrop-filter: blur(12px) saturate(1.2);
+}
+
+.home-v2-nav.is-menu-open.is-scrolled {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  background: #e9f8f2;
+}
+
+.home-v2-nav-inner {
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  margin: 0 auto;
+  /* Figma ~92/1440 ≈ 6.4% — scales so large monitors stay filled */
+  padding: 0 clamp(20px, 6.4vw, 92px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(24px, 3.5vw, 48px);
+  box-sizing: border-box;
+}
+
+.home-v2-nav-logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  width: 143px;
+  height: 31px;
+  text-decoration: none;
+}
+
+.home-v2-nav-logo img {
+  width: 143px;
+  height: 31px;
+  object-fit: contain;
+}
+
+/* Logo left · links + CTA clustered on the right (Figma) */
+.home-v2-nav-right {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 32px;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.home-v2-nav-links {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 32px;
+  padding: 0;
+}
+
+.home-v2-nav-link {
+  font-family: "Satoshi", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: #52525c;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
+.home-v2-nav-link:hover {
+  color: #00b56f;
+}
+
+.home-v2-nav-phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.home-v2-nav-phone-icon {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  color: inherit;
+}
+
+.home-v2-nav-study {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  height: 24px;
+  padding: 2px 8px 2px 10px;
+  background: linear-gradient(183.92deg, #00b56f 3.2%, #004f30 139.72%);
+  border-radius: 35px;
+  font-family: "Satoshi", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: #ffffff;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: filter 0.2s ease, transform 0.2s ease;
+}
+
+.home-v2-nav-study:hover {
+  color: #ffffff;
+  filter: brightness(1.05);
+  transform: translateY(-0.5px);
+}
+
+.home-v2-nav-plane {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  flex-shrink: 0;
+  display: block;
+}
+
+.home-v2-nav-demo {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-width: 124.49px;
+  height: 45.5px;
+  padding: 0 14px;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(179.32deg, #00b56f -23.31%, #004f30 99.42%);
+  border-radius: 46.361px;
+  font-family: "Satoshi", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  color: #ffffff;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: filter 0.2s ease, transform 0.2s ease;
+}
+
+.home-v2-nav-demo:hover {
+  filter: brightness(1.06);
+  transform: translateY(-1px);
+}
+
+.home-v2-nav-demo-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 19px;
+  height: 19px;
+}
+
+.home-v2-nav-burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 42px;
+  height: 42px;
+  padding: 9px;
+  border: none;
+  border-radius: 10px;
+  background: transparent;
+  cursor: pointer;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.home-v2-nav-burger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: #004f30;
+  border-radius: 2px;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+  transform-origin: center;
+}
+
+.home-v2-nav-burger.is-active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.home-v2-nav-burger.is-active span:nth-child(2) {
+  opacity: 0;
+}
+
+.home-v2-nav-burger.is-active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.home-v2-nav-scrim {
+  display: none;
+}
+
+/* Wide monitors — pin content to the edges so the bar looks filled */
+@media (min-width: 1600px) {
+  .home-v2-nav-inner {
+    padding: 0 clamp(48px, 4.2vw, 80px);
+  }
+
+  .home-v2-nav-right {
+    gap: clamp(48px, 3vw, 64px);
+  }
+
+  .home-v2-nav-links {
+    gap: clamp(56px, 3.4vw, 72px);
+  }
+
+  .home-v2-nav-link,
+  .home-v2-nav-study,
+  .home-v2-nav-demo {
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .home-v2-nav-inner {
+    padding: 0 clamp(56px, 3.5vw, 72px);
+  }
+
+  .home-v2-nav-right {
+    gap: clamp(56px, 3.2vw, 72px);
+  }
+
+  .home-v2-nav-links {
+    gap: clamp(64px, 3.8vw, 88px);
+  }
+
+  .home-v2-nav-link,
+  .home-v2-nav-study,
+  .home-v2-nav-demo {
+    font-size: 16px;
+  }
+}
+
+/* Large laptop — keep Figma 32px gaps, tighten side padding */
+@media (max-width: 1280px) {
+  .home-v2-nav-inner {
+    padding: 0 48px;
+    gap: 32px;
+  }
+}
+
+/* Mid laptop — scale gaps slightly so the row still fits */
+@media (max-width: 1180px) {
+  .home-v2-nav-inner {
+    padding: 0 32px;
+  }
+
+  .home-v2-nav-right {
+    gap: 24px;
+  }
+
+  .home-v2-nav-links {
+    gap: 22px;
+  }
+
+  .home-v2-nav-demo {
+    min-width: 118px;
+    height: 42px;
+  }
+}
+
+/* Tablet / mobile — hamburger */
+@media (max-width: 1024px) {
+  .home-v2-nav-inner {
+    padding: 0 20px;
+    gap: 16px;
+  }
+
+  .home-v2-nav-logo {
+    width: 128px;
+    height: 28px;
+  }
+
+  .home-v2-nav-logo img {
+    width: 128px;
+    height: 28px;
+  }
+
+  .home-v2-nav-burger {
+    display: flex;
+  }
+
+  .home-v2-nav-scrim {
+    display: block;
+    position: fixed;
+    inset: 70px 0 0 0;
+    border: none;
+    padding: 0;
+    margin: 0;
+    background: rgba(15, 23, 42, 0.28);
+    z-index: 10048;
+    cursor: pointer;
+  }
+
+  .home-v2-nav-right {
+    position: fixed;
+    top: 70px;
+    right: 0;
+    width: min(320px, 86vw);
+    height: calc(100dvh - 70px);
+    margin: 0;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 28px;
+    padding: 28px 24px 32px;
+    background: #e9f8f2;
+    box-shadow: -8px 0 28px rgba(0, 79, 48, 0.08);
+    transform: translateX(105%);
+    transition: transform 0.3s ease;
+    overflow-y: auto;
+    z-index: 10049;
+    box-sizing: border-box;
+  }
+
+  .home-v2-nav-right.is-open {
+    transform: translateX(0);
+  }
+
+  .home-v2-nav-links {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    width: 100%;
+  }
+
+  .home-v2-nav-link {
+    width: 100%;
+    padding: 14px 0;
+    font-size: 16px;
+    line-height: 24px;
+    border-bottom: 1px solid rgba(0, 181, 111, 0.14);
+  }
+
+  .home-v2-nav-study {
+    width: fit-content;
+    height: 32px;
+    margin: 16px 0 8px;
+    padding: 0 14px;
+    font-size: 15px;
+  }
+
+  .home-v2-nav-plane {
+    width: 22px;
+    height: 22px;
+  }
+
+  .home-v2-nav-demo {
+    width: 100%;
+    min-width: 0;
+    height: 48px;
+    margin-top: 8px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-v2-nav {
+    height: 64px;
+  }
+
+  .home-v2-nav-inner {
+    padding: 0 16px;
+  }
+
+  .home-v2-nav-logo {
+    width: 118px;
+    height: 26px;
+  }
+
+  .home-v2-nav-logo img {
+    width: 118px;
+    height: 26px;
+  }
+
+  .home-v2-nav-right {
+    top: 64px;
+    height: calc(100dvh - 64px);
+    width: min(300px, 88vw);
+    padding: 24px 20px 28px;
+  }
+
+  .home-v2-nav-scrim {
+    inset: 64px 0 0 0;
+  }
+
+  .home-v2-nav-burger {
+    width: 40px;
+    height: 40px;
+  }
+}

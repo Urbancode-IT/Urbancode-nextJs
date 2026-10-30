@@ -1,0 +1,56 @@
+@import url("https://api.fontshare.com/v2/css?f[]=satoshi@400,500,600,700,900&display=swap");
+
+.sa-v2-root {
+  font-family: "Satoshi", -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #ffffff;
+  color: #0f172b;
+  min-height: 60vh;
+  padding-top: 0;
+  overflow-x: clip;
+}
+
+/* Beat globals.css Inter on every text node */
+.sa-v2-root,
+.sa-v2-root h1,
+.sa-v2-root h2,
+.sa-v2-root h3,
+.sa-v2-root h4,
+.sa-v2-root h5,
+.sa-v2-root h6,
+.sa-v2-root p,
+.sa-v2-root span,
+.sa-v2-root a,
+.sa-v2-root label,
+.sa-v2-root button,
+.sa-v2-root input,
+.sa-v2-root textarea,
+.sa-v2-root select,
+.sa-v2-root div,
+.sa-v2-root li,
+.sa-v2-root ul,
+.sa-v2-root ol,
+.sa-v2-root small,
+.sa-v2-root strong,
+.sa-v2-root em,
+.sa-v2-root b {
+  font-family: "Satoshi", -apple-system, BlinkMacSystemFont, sans-serif !important;
+}
+
+.sa-v2-root .bi,
+.sa-v2-root [class^="bi-"]::before,
+.sa-v2-root [class*=" bi-"]::before {
+  font-family: "bootstrap-icons" !important;
+}
+
+/* Laptop / mid desktop: scale down oversized Figma desktop sizes */
+@media (min-width: 1024px) and (max-width: 1366px) {
+  .sa-v2-root {
+    zoom: 0.86;
+  }
+}
+
+@media (min-width: 1367px) and (max-width: 1512px) {
+  .sa-v2-root {
+    zoom: 0.92;
+  }
+}

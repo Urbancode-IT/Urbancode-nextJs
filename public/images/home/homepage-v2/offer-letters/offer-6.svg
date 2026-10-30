@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="800" viewBox="0 0 600 800" fill="none">
+  <rect width="600" height="800" fill="#FFFFFF"/>
+  <rect x="40" y="40" width="520" height="720" rx="8" stroke="#E6EBE9" stroke-width="2"/>
+  <rect x="40" y="40" width="12" height="720" fill="#00B56F"/>
+  <text x="80" y="110" fill="#0F1A16" font-family="Arial, sans-serif" font-size="13" font-weight="700">VKNOWLABS PRIVATE LIMITED</text>
+  <text x="80" y="170" fill="#0F1A16" font-family="Arial, sans-serif" font-size="24" font-weight="700">Employment Offer</text>
+  <text x="80" y="230" fill="#0F1A16" font-family="Arial, sans-serif" font-size="14">Candidate: Divyabharathi</text>
+  <text x="80" y="280" fill="#55615C" font-family="Arial, sans-serif" font-size="13">Designation</text>
+  <text x="80" y="310" fill="#008F58" font-family="Arial, sans-serif" font-size="20" font-weight="700">Software Engineer  Trainee</text>
+  <text x="80" y="370" fill="#55615C" font-family="Arial, sans-serif" font-size="13">Offered CTC</text>
+  <text x="80" y="410" fill="#0F1A16" font-family="Arial, sans-serif" font-size="28" font-weight="700">�5.2 LPA</text>
+  <text x="80" y="470" fill="#55615C" font-family="Arial, sans-serif" font-size="13">Shift: General � Full-time</text>
+  <text x="80" y="500" fill="#55615C" font-family="Arial, sans-serif" font-size="13">Notice period: As per policy</text>
+  <text x="80" y="600" fill="#008F58" font-family="Arial, sans-serif" font-size="12" font-weight="700">From classroom to career � Urbancode</text>
+</svg>

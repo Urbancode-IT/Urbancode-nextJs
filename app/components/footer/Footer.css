@@ -1,7 +1,40 @@
+@import url("https://api.fontshare.com/v2/css?f[]=satoshi@400,500,600,700,900&display=swap");
+
+.footer,
+.footer h1,
+.footer h2,
+.footer h3,
+.footer h4,
+.footer h5,
+.footer h6,
+.footer p,
+.footer span,
+.footer a,
+.footer label,
+.footer button,
+.footer input,
+.footer textarea,
+.footer select,
+.footer div,
+.footer li,
+.footer ul,
+.footer ol,
+.footer small,
+.footer strong {
+    font-family: "Satoshi", -apple-system, BlinkMacSystemFont, sans-serif !important;
+}
+
+.footer .bi,
+.footer [class^="bi-"]::before,
+.footer [class*=" bi-"]::before {
+    font-family: "bootstrap-icons" !important;
+}
+
 .footer {
     background: #e8e8e8;
     color: #565151;
     padding: 40px 0 10px;
+    font-family: "Satoshi", -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 .footer-logo img {

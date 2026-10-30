@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="800" viewBox="0 0 600 800" fill="none">
+  <rect width="600" height="800" fill="#FFFFFF"/>
+  <rect x="36" y="36" width="528" height="728" rx="10" fill="#0F1A16"/>
+  <rect x="48" y="48" width="504" height="704" rx="8" fill="#FFFFFF"/>
+  <text x="300" y="110" text-anchor="middle" fill="#008F58" font-family="Arial, sans-serif" font-size="12" font-weight="700" letter-spacing="2">APPOINTMENT LETTER</text>
+  <text x="300" y="160" text-anchor="middle" fill="#0F1A16" font-family="Arial, sans-serif" font-size="22" font-weight="700">Vincilium Softwares</text>
+  <text x="72" y="230" fill="#0F1A16" font-family="Arial, sans-serif" font-size="14">Dear Jayamaheshwari,</text>
+  <text x="72" y="270" fill="#55615C" font-family="Arial, sans-serif" font-size="13">Congratulations! You have been selected as</text>
+  <text x="72" y="310" fill="#00B56F" font-family="Arial, sans-serif" font-size="20" font-weight="700">Software Engineer</text>
+  <rect x="72" y="350" width="200" height="70" rx="10" fill="#E8F8F1"/>
+  <text x="92" y="380" fill="#55615C" font-family="Arial, sans-serif" font-size="11">Compensation</text>
+  <text x="92" y="405" fill="#0F1A16" font-family="Arial, sans-serif" font-size="22" font-weight="700">�6.5 LPA</text>
+  <rect x="288" y="350" width="200" height="70" rx="10" fill="#FFF6E0"/>
+  <text x="308" y="380" fill="#7A5A00" font-family="Arial, sans-serif" font-size="11">Bond</text>
+  <text x="308" y="405" fill="#0F1A16" font-family="Arial, sans-serif" font-size="18" font-weight="700">None</text>
+  <text x="72" y="480" fill="#55615C" font-family="Arial, sans-serif" font-size="13">Reporting: Engineering Manager</text>
+  <text x="72" y="510" fill="#55615C" font-family="Arial, sans-serif" font-size="13">Office: Guindy, Chennai</text>
+  <text x="72" y="600" fill="#55615C" font-family="Arial, sans-serif" font-size="12">Urbancode alumnus � Batch 2026</text>
+</svg>

@@ -1,0 +1,353 @@
+.home-v2-sa {
+  width: 100%;
+  background: #f9f9f9;
+  padding: 56px 24px 64px;
+  box-sizing: border-box;
+  font-family: "Satoshi", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.home-v2-sa-inner {
+  width: 100%;
+  max-width: 1216px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: start;
+  gap: clamp(32px, 4.5vw, 56px);
+}
+
+.home-v2-sa-media {
+  position: relative;
+  width: 100%;
+  max-width: 580px;
+  /* Figma 580 × 493 */
+  aspect-ratio: 580 / 493;
+  border-radius: 24px;
+  overflow: hidden;
+  isolation: isolate;
+  background: #e8eee9;
+  /* Slight drop so image sits mid-aligned with content like Figma */
+  margin-top: clamp(24px, 3.5vw, 56px);
+  justify-self: stretch;
+}
+
+.home-v2-sa-img {
+  object-fit: cover;
+  object-position: center;
+}
+
+.home-v2-sa-glass {
+  position: absolute;
+  left: 14px;
+  bottom: 18px;
+  z-index: 1;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  width: min(276px, calc(100% - 28px));
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.19);
+  border: 0.666667px solid #e6ebe9;
+  box-shadow:
+    0px 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0px 4px 6px -4px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5.7px);
+  -webkit-backdrop-filter: blur(5.7px);
+  border-radius: 16px;
+}
+
+.home-v2-sa-glass-icon {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #00b56f;
+  border-radius: 12px;
+  color: #ffffff;
+  font-size: 20px;
+}
+
+.home-v2-sa-glass-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+}
+
+.home-v2-sa-glass-title {
+  margin: 0;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: #0f1a16;
+  white-space: nowrap;
+}
+
+.home-v2-sa-glass-sub {
+  margin: 0;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: #55615c;
+}
+
+.home-v2-sa-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 580px;
+  min-width: 0;
+  justify-self: end;
+}
+
+.home-v2-sa-eyebrow {
+  margin: 0;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.35px;
+  text-transform: uppercase;
+  color: #008f58;
+}
+
+.home-v2-sa-title {
+  margin: 12px 0 0;
+  font-family: "Satoshi", sans-serif;
+  font-weight: 400;
+  font-size: clamp(28px, 3.4vw, 47.63px);
+  line-height: 1.24;
+  letter-spacing: -2px;
+  color: #0f1a16;
+}
+
+/* Subtitle sits under heading with room before feature cards (Figma ~16px top, then 32px to cards) */
+.home-v2-sa-desc {
+  margin: 20px 0 0;
+  max-width: 580px;
+  font-weight: 400;
+  font-size: clamp(16px, 1.4vw, 18px);
+  line-height: 1.6;
+  color: #55615c;
+}
+
+.home-v2-sa-features {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 16px;
+  list-style: none;
+  margin: 36px 0 0;
+  padding: 0;
+  width: 100%;
+}
+
+.home-v2-sa-feature {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 20px;
+  background: #ffffff;
+  border: 0.666667px solid #e6ebe9;
+  border-radius: 16px;
+}
+
+.home-v2-sa-feature-icon {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #e8f8f1;
+  border-radius: 12px;
+  color: #008f58;
+  font-size: 20px;
+}
+
+.home-v2-sa-feature-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+  flex: 1;
+}
+
+.home-v2-sa-feature-title {
+  margin: 0;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.32px;
+  color: #0f1a16;
+  white-space: nowrap;
+}
+
+.home-v2-sa-feature-desc {
+  margin: 4px 0 0;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #55615c;
+}
+
+.home-v2-sa-actions {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-top: 32px;
+  width: 100%;
+}
+
+.home-v2-sa-btn {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-family: "Satoshi", sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 22px;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.home-v2-sa-btn-primary {
+  background: #00b56f;
+  box-shadow: 0px 6px 20px -8px rgba(0, 181, 111, 0.7);
+  color: #ffffff;
+}
+
+.home-v2-sa-btn-primary:hover {
+  background: #00a363;
+  transform: translateY(-1px);
+}
+
+.home-v2-sa-btn-secondary {
+  box-sizing: border-box;
+  background: #ffffff;
+  border: 0.666667px solid #e6ebe9;
+  color: #0f1a16;
+}
+
+.home-v2-sa-btn-secondary:hover {
+  border-color: #cfd8d4;
+  background: #fafafa;
+}
+
+@media (max-width: 1100px) {
+  .home-v2-sa-media {
+    margin-top: clamp(16px, 2.5vw, 40px);
+  }
+
+  .home-v2-sa-title {
+    font-size: clamp(26px, 3vw, 40px);
+  }
+}
+
+@media (max-width: 900px) {
+  .home-v2-sa {
+    padding: 40px 16px 48px;
+  }
+
+  .home-v2-sa-inner {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .home-v2-sa-media {
+    max-width: 580px;
+    width: 100%;
+    margin: 0 auto;
+    justify-self: center;
+  }
+
+  .home-v2-sa-content {
+    max-width: 580px;
+    margin: 0 auto;
+    justify-self: center;
+  }
+
+  .home-v2-sa-desc {
+    margin-top: 16px;
+    font-size: 16px;
+    line-height: 26px;
+  }
+
+  .home-v2-sa-features {
+    margin-top: 28px;
+  }
+}
+
+@media (max-width: 640px) {
+  .home-v2-sa {
+    padding: 40px 16px 48px;
+  }
+
+  .home-v2-sa-inner {
+    gap: 24px;
+  }
+
+  .home-v2-sa-media {
+    border-radius: 20px;
+    aspect-ratio: 580 / 493;
+  }
+
+  .home-v2-sa-title {
+    font-size: clamp(24px, 7vw, 32px);
+    letter-spacing: -1px;
+  }
+
+  .home-v2-sa-desc {
+    margin-top: 14px;
+  }
+
+  .home-v2-sa-features {
+    margin-top: 24px;
+    gap: 12px;
+  }
+
+  .home-v2-sa-glass {
+    left: 12px;
+    bottom: 12px;
+    padding: 12px;
+  }
+
+  .home-v2-sa-glass-title {
+    font-size: 12px;
+    white-space: normal;
+  }
+
+  .home-v2-sa-feature {
+    padding: 16px;
+  }
+
+  .home-v2-sa-feature-title {
+    white-space: normal;
+  }
+
+  .home-v2-sa-actions {
+    flex-direction: column;
+    align-items: stretch;
+    margin-top: 24px;
+  }
+
+  .home-v2-sa-btn {
+    width: 100%;
+  }
+}

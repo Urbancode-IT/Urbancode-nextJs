@@ -1,0 +1,340 @@
+.sa-v2-mbbs {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 72px 24px 80px;
+  box-sizing: border-box;
+  background: linear-gradient(
+    180deg,
+    rgba(230, 249, 241, 0.52) 0%,
+    rgba(255, 255, 255, 0.52) 100%
+  );
+  font-family: "Satoshi", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.sa-v2-mbbs-glow {
+  position: absolute;
+  width: 480px;
+  height: 480px;
+  right: -80px;
+  top: -160px;
+  background: rgba(139, 227, 191, 0.4);
+  filter: blur(64px);
+  border-radius: 9999px;
+  pointer-events: none;
+}
+
+.sa-v2-mbbs-inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+.sa-v2-mbbs-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 592px) minmax(0, 1fr);
+  gap: 56px;
+  align-items: start;
+}
+
+.sa-v2-mbbs-media {
+  display: grid;
+  grid-template-columns: minmax(0, 1.53fr) minmax(0, 1fr);
+  gap: 16px;
+  min-height: 420px;
+  /* Images sit lower so copy aligns higher, matching Figma */
+  margin-top: 88px;
+}
+
+.sa-v2-mbbs-media-tall {
+  position: relative;
+  min-height: 420px;
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.sa-v2-mbbs-media-side {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+.sa-v2-mbbs-media-small {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 227px;
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.sa-v2-mbbs-img {
+  object-fit: cover;
+}
+
+.sa-v2-mbbs-badge {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  min-height: 148px;
+  padding: 20px;
+  background: #008a55;
+  border-radius: 24px;
+}
+
+.sa-v2-mbbs-badge-icon {
+  width: 24px;
+  height: 24px;
+  color: #ffffff;
+  flex-shrink: 0;
+}
+
+.sa-v2-mbbs-badge-label {
+  margin: 0;
+  font-family: "Satoshi", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #c2f0dc;
+}
+
+.sa-v2-mbbs-badge-value {
+  margin: 0;
+  font-family: "Satoshi", sans-serif;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 36px;
+  color: #ffffff;
+}
+
+.sa-v2-mbbs-copy {
+  min-width: 0;
+  padding-top: 0;
+  margin-top: -24px;
+}
+
+.sa-v2-mbbs-title {
+  margin: 0;
+  font-family: "Satoshi", sans-serif;
+  font-weight: 400;
+  font-size: clamp(28px, 3.4vw, 47.63px);
+  line-height: 1.05;
+  letter-spacing: -2px;
+  color: #0f172b;
+}
+
+.sa-v2-mbbs-desc {
+  margin: 20px 0 0;
+  max-width: 592px;
+  font-family: "Satoshi", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 29px;
+  color: #45556c;
+}
+
+.sa-v2-mbbs-features {
+  margin-top: 32px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.sa-v2-mbbs-feature {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-height: 170px;
+  padding: 20px;
+  background: #ffffff;
+  border: 0.666667px solid #e2e8f0;
+  border-radius: 16px;
+}
+
+.sa-v2-mbbs-feature-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: #e6f9f1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #008a55;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.sa-v2-mbbs-feature-title {
+  margin: 16px 0 0;
+  font-family: "Satoshi", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #0f172b;
+}
+
+.sa-v2-mbbs-feature-desc {
+  margin: 8px 0 0;
+  font-family: "Satoshi", sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 19px;
+  color: #45556c;
+}
+
+.sa-v2-mbbs-stats {
+  margin-top: 56px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+  max-width: 1068px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sa-v2-mbbs-stat {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 146px;
+  padding: 24px 16px;
+  text-align: center;
+  background: linear-gradient(
+    179.72deg,
+    rgba(0, 181, 111, 0.11) 0.24%,
+    rgba(255, 255, 255, 0.11) 114.41%
+  );
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 0px 7.3px rgba(0, 0, 0, 0.09);
+  border-radius: 16px;
+}
+
+.sa-v2-mbbs-stat-value {
+  margin: 0;
+  font-family: "Satoshi", sans-serif;
+  font-weight: 500;
+  font-size: clamp(36px, 3.5vw, 50px);
+  line-height: 1;
+  color: #000000;
+}
+
+.sa-v2-mbbs-stat-label {
+  margin: 0;
+  font-family: "Satoshi", sans-serif;
+  font-weight: 500;
+  font-size: clamp(16px, 1.5vw, 22px);
+  line-height: 28px;
+  letter-spacing: -0.5px;
+  color: rgba(0, 0, 0, 0.78);
+}
+
+@media (max-width: 1100px) {
+  .sa-v2-mbbs-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .sa-v2-mbbs-media {
+    max-width: 592px;
+    margin-top: 0;
+  }
+
+  .sa-v2-mbbs-copy {
+    margin-top: 0;
+  }
+
+  .sa-v2-mbbs-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 767px) {
+  .sa-v2-mbbs {
+    padding: 48px 16px 56px;
+  }
+
+  .sa-v2-mbbs-glow {
+    width: 280px;
+    height: 280px;
+    right: -120px;
+    top: -100px;
+  }
+
+  .sa-v2-mbbs-media {
+    grid-template-columns: 1fr 1fr;
+    min-height: 0;
+    gap: 12px;
+  }
+
+  .sa-v2-mbbs-media-tall {
+    min-height: 280px;
+    border-radius: 18px;
+  }
+
+  .sa-v2-mbbs-media-small {
+    min-height: 140px;
+    border-radius: 18px;
+  }
+
+  .sa-v2-mbbs-badge {
+    min-height: 120px;
+    padding: 16px;
+    border-radius: 18px;
+  }
+
+  .sa-v2-mbbs-badge-value {
+    font-size: 24px;
+    line-height: 30px;
+  }
+
+  .sa-v2-mbbs-title {
+    letter-spacing: -1px;
+  }
+
+  .sa-v2-mbbs-desc {
+    font-size: 15px;
+    line-height: 24px;
+  }
+
+  .sa-v2-mbbs-features {
+    grid-template-columns: 1fr;
+    margin-top: 24px;
+  }
+
+  .sa-v2-mbbs-feature {
+    min-height: 0;
+  }
+
+  .sa-v2-mbbs-stats {
+    margin-top: 36px;
+    gap: 12px;
+  }
+
+  .sa-v2-mbbs-stat {
+    min-height: 120px;
+    padding: 20px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sa-v2-mbbs-media {
+    grid-template-columns: 1fr;
+  }
+
+  .sa-v2-mbbs-media-tall {
+    min-height: 240px;
+  }
+
+  .sa-v2-mbbs-stats {
+    grid-template-columns: 1fr 1fr;
+  }
+}

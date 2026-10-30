@@ -4,8 +4,7 @@
     margin: 0 auto;
     padding: 0;
     line-height: 0;
-    display: flex;
-    justify-content: center;
+    display: block;
     background: transparent;
     position: relative;
     max-width: 1600px;
@@ -92,9 +91,11 @@
 
 .side-nav-bar {
     position: absolute;
-    top: 0;
-    bottom: 0;
+    top: 50%;
+    bottom: auto;
+    transform: translateY(-50%);
     width: 56px;
+    height: 56px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -124,6 +125,7 @@
 
 .side-nav-bar:hover {
     background: transparent !important;
+    transform: translateY(-50%);
 }
 
 .side-nav-bar:hover .nav-chevron {

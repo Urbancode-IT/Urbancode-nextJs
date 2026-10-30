@@ -11,7 +11,6 @@ import { FiPhoneCall } from 'react-icons/fi';
 import { FaPlane } from 'react-icons/fa';
 import FlightTransition from '../animations/FlightTransition';
 import BookDemoWidget from '../BookDemoWidget';
-import OneOnOneWidget from '../OneOnOneWidget';
 import { useStudyAbroadFlight } from '@/app/hooks/useStudyAbroadFlight';
 
 const ChatbotWidget = dynamic(() => import('../ChatbotWidget'), { ssr: false });
@@ -179,7 +178,6 @@ export default function Navbar() {
           <FloatingWidgets />
           {!pathname.startsWith('/portfolio') && <ChatbotWidget />}
           {!pathname.startsWith('/portfolio') && <BookDemoWidget />}
-          <OneOnOneWidget />
         </>
       )}
       <FlightTransition isAnimating={isFlying} />

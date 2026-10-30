@@ -1,6 +1,6 @@
 "use client";
 import { usePathname } from "next/navigation";
-import Navbar from "@/app/components/header/Navbar";
+import MainNavbar from "@/app/components/header/Navbar";
 import Footer from "@/app/components/footer/Footer";
 
 const HIDE_NAV_AND_FOOTER = ["/english-intake", "/english-proficiency"];
@@ -13,7 +13,7 @@ export default function ConditionalLayout({ children }) {
 
   return (
     <>
-      {!hideAll && <Navbar />}
+      {!hideAll && <MainNavbar />}
       <main>{children}</main>
       {!hideFooter && <Footer />}
     </>

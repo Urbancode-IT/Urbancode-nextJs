@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="800" viewBox="0 0 600 800" fill="none">
+  <rect width="600" height="800" fill="#FFFFFF"/>
+  <rect x="40" y="40" width="520" height="720" rx="8" fill="#F9F9F9" stroke="#E6EBE9"/>
+  <rect x="70" y="70" width="460" height="8" rx="4" fill="#00B56F"/>
+  <text x="300" y="140" text-anchor="middle" fill="#0F1A16" font-family="Arial, sans-serif" font-size="20" font-weight="700">First Source Solutions</text>
+  <text x="300" y="170" text-anchor="middle" fill="#55615C" font-family="Arial, sans-serif" font-size="12">Offer Confirmation</text>
+  <text x="90" y="240" fill="#0F1A16" font-family="Arial, sans-serif" font-size="14">Hello Hemalatha,</text>
+  <text x="90" y="280" fill="#55615C" font-family="Arial, sans-serif" font-size="13">We are happy to welcome you as</text>
+  <text x="90" y="320" fill="#008F58" font-family="Arial, sans-serif" font-size="22" font-weight="700">QA Automation Engineer</text>
+  <text x="90" y="380" fill="#55615C" font-family="Arial, sans-serif" font-size="13">Compensation package</text>
+  <text x="90" y="420" fill="#0F1A16" font-family="Arial, sans-serif" font-size="30" font-weight="700">�11 LPA</text>
+  <text x="90" y="480" fill="#55615C" font-family="Arial, sans-serif" font-size="13">Tools: Selenium � Playwright � Java</text>
+  <text x="90" y="510" fill="#55615C" font-family="Arial, sans-serif" font-size="13">Location: Bengaluru / Chennai</text>
+  <rect x="90" y="580" width="180" height="44" rx="22" fill="#E8F8F1" stroke="#00B56F"/>
+  <text x="180" y="607" text-anchor="middle" fill="#008F58" font-family="Arial, sans-serif" font-size="13" font-weight="700">Offer Accepted</text>
+</svg>

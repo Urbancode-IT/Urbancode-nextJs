@@ -108,31 +108,36 @@ const BannerSlider = ({ banners = [], forceEnquiry = false, leadPlace = "Banner 
                                     priority={index === 0}
                                     loading={index === 0 ? undefined : 'lazy'}
                                     fetchPriority={index === 0 ? 'high' : 'auto'}
+                                    unoptimized={
+                                      typeof banner.src === 'string' &&
+                                      (/^https?:\/\//i.test(banner.src) ||
+                                        banner.src.startsWith('/uploads/'))
+                                    }
                                 />
                             </div>
                         ))}
                     </div>
-                    {banners.length > 1 && (
-                        <div className="nav-container-sides">
-                            <button
-                                type="button"
-                                className="side-nav-bar prev"
-                                onClick={handlePrev}
-                                aria-label="Previous slide"
-                            >
-                                <span className="nav-chevron">❮</span>
-                            </button>
-                            <button
-                                type="button"
-                                className="side-nav-bar next"
-                                onClick={handleNext}
-                                aria-label="Next slide"
-                            >
-                                <span className="nav-chevron">❯</span>
-                            </button>
-                        </div>
-                    )}
                 </div>
+                {banners.length > 1 && (
+                    <div className="nav-container-sides">
+                        <button
+                            type="button"
+                            className="side-nav-bar prev"
+                            onClick={handlePrev}
+                            aria-label="Previous slide"
+                        >
+                            <span className="nav-chevron">❮</span>
+                        </button>
+                        <button
+                            type="button"
+                            className="side-nav-bar next"
+                            onClick={handleNext}
+                            aria-label="Next slide"
+                        >
+                            <span className="nav-chevron">❯</span>
+                        </button>
+                    </div>
+                )}
 
                 {selectedBanner && (
                     <EnquiryFormModal
@@ -147,7 +152,7 @@ const BannerSlider = ({ banners = [], forceEnquiry = false, leadPlace = "Banner 
                         eventInfo={selectedBanner.eventInfo}
                         hideMode={selectedBanner.hideMode}
                         useExternalCourses={selectedBanner.useExternalCourses !== false}
-                        leadPlace={leadPlace}
+                        leadPlace={selectedBanner.leadPlace || leadPlace}
                     />
                 )}
             </section>

@@ -19,6 +19,10 @@
 .DS_Store
 *.pem
 
+# Home CMS uploads (kept local / server disk)
+/public/uploads/home-cms/*
+!/public/uploads/home-cms/.gitkeep
+
 # debug
 npm-debug.log*
 yarn-debug.log*
