@@ -292,4 +292,92 @@
       text: 'The AWS and DevOps training at Urbancode exceeded my expectations. The sessions were completely practical and covered AWS services, Docker, Kubernetes, Jenkins, and Terraform. The trainer shared real industry use cases which made learning easier and more relevant.',
       branchName: 'Tirunelveli'
   },
+  {
+      _id: 'tnv_4',
+      authorName: 'Abinash',
+      profilePhotoUrl: 'https://ui-avatars.com/api/?name=A&background=FBBC05&color=fff&size=60',
+      rating: 5,
+      text: 'Excellent Python training by Sakthinaran. The sessions were practical, easy to follow, and helped me build confidence in coding. A great learning experience - highly recommended!',
+      branchName: 'Tirunelveli'
+  },
+  {
+      _id: 'tnv_5',
+      authorName: 'B.Harini Suba Muppidathi',
+      profilePhotoUrl: 'https://ui-avatars.com/api/?name=HS&background=4285F4&color=fff&size=60',
+      rating: 5,
+      text: 'I\'m Harini, a 2026 BE CSE graduate. I completed the AIML course at Urbancode, and it was a great learning experience. My trainer explained every topic clearly and made learning easy and interesting. We also got hands-on experience working on practical projects.',
+      branchName: 'Tirunelveli'
+  },
+  {
+      _id: 'tnv_6',
+      authorName: 'Kalai Laxman',
+      profilePhotoUrl: 'https://ui-avatars.com/api/?name=KL&background=34A853&color=fff&size=60',
+      rating: 5,
+      text: 'My son recently completed C, C++ and Python courses at Urbancode, and he is very happy with the overall experience. The trainer was extremely knowledgeable, patient, and explained complex topics in a simple way.',
+      branchName: 'Tirunelveli'
+  },
+  {
+      _id: 'tnv_7',
+      authorName: 'V.Sushma',
+      profilePhotoUrl: 'https://ui-avatars.com/api/?name=VS&background=EA4335&color=fff&size=60',
+      rating: 5,
+      text: 'I am currently attending an online Digital Marketing course, and my trainer, Yogesh Anna, is an excellent teacher.',
+      branchName: 'Tirunelveli'
+  },
+  {
+      _id: 'tnv_8',
+      authorName: 'Suriya Kumar',
+      profilePhotoUrl: 'https://ui-avatars.com/api/?name=SK&background=FBBC05&color=fff&size=60',
+      rating: 5,
+      text: 'I\'m Suryakumar, a 2022 graduate. UrbanCode has truly been a game-changer in my life.',
+      branchName: 'Tirunelveli'
+  },
+  {
+      _id: 'tnv_9',
+      authorName: 'Parameswari Ganesh',
+      profilePhotoUrl: 'https://ui-avatars.com/api/?name=PG&background=4285F4&color=fff&size=60',
+      rating: 5,
+      text: 'Hello, I am Parameswari. Before taking this FULL STACK DEVELOPMENT course, whenever I used AI tools like ChatGPT or Gemini to build a website, it was extremely difficult to get the exact output I envisioned. In fact, it took me nearly a long time to refine prompts. After Urbancode\'s training, I understand the fundamentals clearly and can guide AI tools effectively to get better results.',
+      branchName: 'Tirunelveli'
+  },
+  {
+      _id: 'tnv_10',
+      authorName: 'Sundar A',
+      profilePhotoUrl: 'https://ui-avatars.com/api/?name=SA&background=34A853&color=fff&size=60',
+      rating: 5,
+      text: 'Good place for career growth',
+      branchName: 'Tirunelveli'
+  },
+  {
+      _id: 'tnv_11',
+      authorName: 'Maharaja Varshini',
+      profilePhotoUrl: 'https://ui-avatars.com/api/?name=MV&background=EA4335&color=fff&size=60',
+      rating: 5,
+      text: 'Urbancode Best institute to Study IT related courses.',
+      branchName: 'Tirunelveli'
+  },
+  {
+      _id: 'tnv_12',
+      authorName: 'Revathi Murugan',
+      profilePhotoUrl: 'https://ui-avatars.com/api/?name=RM&background=FBBC05&color=fff&size=60',
+      rating: 5,
+      text: 'The concepts were explained in a very simple and understandable manner.',
+      branchName: 'Tirunelveli'
+  },
+  {
+      _id: 'tnv_13',
+      authorName: 'Thaya .J',
+      profilePhotoUrl: 'https://ui-avatars.com/api/?name=TJ&background=4285F4&color=fff&size=60',
+      rating: 5,
+      text: 'The Data Analytics training at Urbancode was an excellent learning experience. The sessions covered key technologies such as Power BI, SQL, Snowflake, and Excel, with a strong focus on practical learning and real-world business use cases. The trainer explained complex concepts in a simple and effective way, making it easy to understand data visualization, data analysis, and reporting. The hands-on projects helped me gain confidence in working with data and understand how analytics is used in real-world industries. Overall, it was a valuable experience that helped me strengthen my technical skills and prepare for career opportunities in Data Analytics.',
+      branchName: 'Tirunelveli'
+  },
+  {
+      _id: 'tnv_14',
+      authorName: 'Pradeep M',
+      profilePhotoUrl: 'https://ui-avatars.com/api/?name=PM&background=34A853&color=fff&size=60',
+      rating: 5,
+      text: 'If you\'re looking for quality IT training, Urbancode is the right place. The FSD course is practical and job-oriented. Trainer Thaya explains every topic in a simple way and clears all doubts patiently. The placement team also provides excellent interview support.',
+      branchName: 'Tirunelveli'
+  },
 ];
