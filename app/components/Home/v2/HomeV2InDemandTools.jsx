@@ -3,198 +3,49 @@
 import Link from "next/link";
 import "./HomeV2InDemandTools.css";
 
+const T = "/images/home/tools";
+
 /** Unique tools from legacy InDemandTools (row1 + row2 + row3). */
 const TOOLS = [
-  {
-    name: "Angular",
-    icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/angularjs/angularjs-original.svg",
-    link: "/courses/fullstack-development",
-  },
-  {
-    name: "GitHub",
-    icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/github/github-original.svg",
-    link: "/courses/fullstack-development",
-  },
-  {
-    name: "React",
-    icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg",
-    link: "/courses/fullstack-development",
-  },
-  {
-    name: "Python",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
-    link: "/courses/programming-languages",
-  },
-  {
-    name: "Vue.js",
-    icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/vuejs/vuejs-original.svg",
-    link: "/courses/fullstack-development",
-  },
-  {
-    name: "Figma",
-    icon: "https://www.vectorlogo.zone/logos/figma/figma-icon.svg",
-    link: "/courses/fullstack-development",
-  },
-  {
-    name: "MongoDB",
-    icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original.svg",
-    link: "/courses/database",
-  },
-  {
-    name: "Terraform",
-    icon: "https://www.vectorlogo.zone/logos/terraformio/terraformio-icon.svg",
-    link: "/courses/cloud-and-devops",
-  },
-  {
-    name: "Power Automate",
-    icon: "https://upload.wikimedia.org/wikipedia/commons/4/4d/Microsoft_Power_Automate.svg",
-    link: "/courses/automation",
-  },
-  {
-    name: "Power BI",
-    icon: "https://cdn.svgporn.com/logos/microsoft-power-bi.svg",
-    link: "/courses/ai-and-data-science",
-  },
-  {
-    name: "GraphQL",
-    icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/graphql/graphql-plain.svg",
-    link: "/courses/fullstack-development",
-  },
-  {
-    name: "Kubernetes",
-    icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/kubernetes/kubernetes-plain.svg",
-    link: "/courses/cloud-and-devops",
-  },
-  {
-    name: "AWS",
-    icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-original-wordmark.svg",
-    link: "/courses/cloud-and-devops",
-  },
-  {
-    name: "Azure",
-    icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/azure/azure-original.svg",
-    link: "/courses/cloud-and-devops",
-  },
-  {
-    name: "Jenkins",
-    icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/jenkins/jenkins-original.svg",
-    link: "/courses/cloud-and-devops",
-  },
-  {
-    name: "Docker",
-    icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original.svg",
-    link: "/courses/cloud-and-devops",
-  },
-  {
-    name: "Postman",
-    icon: "https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg",
-    link: "/courses/fullstack-development",
-  },
-  {
-    name: "Tableau",
-    icon: "/images/home/tableau_logo.svg",
-    link: "/courses/ai-and-data-science",
-  },
-  {
-    name: "SharePoint",
-    icon: "/images/home/sharepoint_logo1.png",
-    link: "/courses/fullstack-development",
-  },
-  {
-    name: "Node.js",
-    icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original.svg",
-    link: "/courses/fullstack-development",
-  },
-  {
-    name: "Redis",
-    icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/redis/redis-original.svg",
-    link: "/courses/database",
-  },
-  {
-    name: "Data Engineering",
-    icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/apachespark/apachespark-original.svg",
-    link: "/courses/data-engineering",
-  },
-  {
-    name: "Express",
-    icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/express/express-original.svg",
-    link: "/courses/fullstack-development",
-  },
-  {
-    name: "Tailwind",
-    icon: "https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg",
-    link: "/courses/fullstack-development",
-  },
-  {
-    name: "TensorFlow",
-    icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/tensorflow/tensorflow-original.svg",
-    link: "/courses/ai-and-data-science",
-  },
-  {
-    name: "PyTorch",
-    icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/pytorch/pytorch-original.svg",
-    link: "/courses/ai-and-data-science",
-  },
-  {
-    name: "Flutter",
-    icon: "https://www.vectorlogo.zone/logos/flutterio/flutterio-icon.svg",
-    link: "/courses/fullstack-development",
-  },
-  {
-    name: "Java",
-    icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg",
-    link: "/courses/programming-languages",
-  },
-  {
-    name: "JavaScript",
-    icon: "/images/home/js_logo.jpg",
-    link: "/courses/programming-languages",
-  },
-  {
-    name: "Excel",
-    icon: "/images/home/excel_logo.svg",
-    link: "/courses/ai-and-data-science",
-  },
-  {
-    name: "Selenium",
-    icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/selenium/selenium-original.svg",
-    link: "/courses/fullstack-development",
-  },
-  {
-    name: "LambdaTest KaneAI",
-    icon: "/images/home/tools/lambdatest.svg",
-    link: "/courses/software-testing",
-  },
-  {
-    name: "ContextQA",
-    icon: "/images/home/tools/contextqa.png",
-    link: "/courses/software-testing",
-  },
-  {
-    name: "Katalon",
-    icon: "/images/home/tools/katalon.svg",
-    link: "/courses/software-testing",
-  },
-  {
-    name: "mabl",
-    icon: "/images/home/tools/mabl.png",
-    link: "/courses/software-testing",
-  },
-  {
-    name: "BrowserStack",
-    icon: "/images/home/tools/browserstack.svg",
-    link: "/courses/software-testing",
-  },
-  {
-    name: "AI and ML",
-    icon: "/images/home/aiml_new.svg",
-    link: "/courses/ai-and-data-science",
-  },
-  {
-    name: "Gen AI",
-    icon: "https://cdn.svgporn.com/logos/openai-icon.svg",
-    link: "/courses/ai-and-data-science",
-  },
+  { name: "Angular", icon: `${T}/angular.svg`, link: "/courses/fullstack-development" },
+  { name: "GitHub", icon: `${T}/github.svg`, link: "/courses/fullstack-development" },
+  { name: "React", icon: `${T}/react.svg`, link: "/courses/fullstack-development" },
+  { name: "Python", icon: `${T}/python.svg`, link: "/courses/programming-languages" },
+  { name: "Vue.js", icon: `${T}/vue.svg`, link: "/courses/fullstack-development" },
+  { name: "Figma", icon: `${T}/figma.svg`, link: "/courses/ui-ux-designing" },
+  { name: "MongoDB", icon: `${T}/mongodb.svg`, link: "/courses/fullstack-development" },
+  { name: "Terraform", icon: `${T}/terraform.svg`, link: "/courses/cloud-and-devops" },
+  { name: "Power Automate", icon: `${T}/power-automate.svg`, link: "/courses/ai-and-data-science" },
+  { name: "Power BI", icon: `${T}/power-bi.svg`, link: "/courses/ai-and-data-science" },
+  { name: "GraphQL", icon: `${T}/graphql.svg`, link: "/courses/fullstack-development" },
+  { name: "JSON", icon: `${T}/json.svg`, link: "/courses/fullstack-development" },
+  { name: "Kubernetes", icon: `${T}/kubernetes.svg`, link: "/courses/cloud-and-devops" },
+  { name: "AWS", icon: `${T}/aws.svg`, link: "/courses/cloud-and-devops" },
+  { name: "Azure", icon: `${T}/azure.svg`, link: "/courses/cloud-and-devops" },
+  { name: "Jenkins", icon: `${T}/jenkins.svg`, link: "/courses/cloud-and-devops" },
+  { name: "Docker", icon: `${T}/docker.svg`, link: "/courses/cloud-and-devops" },
+  { name: "Postman", icon: `${T}/postman.svg`, link: "/courses/fullstack-development" },
+  { name: "Tableau", icon: "/images/home/tableau_logo.svg", link: "/courses/ai-and-data-science" },
+  { name: "SharePoint", icon: "/images/home/sharepoint_logo1.png", link: "/courses/fullstack-development" },
+  { name: "Node.js", icon: `${T}/nodejs.svg`, link: "/courses/fullstack-development" },
+  { name: "Redis", icon: `${T}/redis.svg`, link: "/courses/fullstack-development" },
+  { name: "Data Engineering", icon: `${T}/spark.svg`, link: "/courses/data-engineering" },
+  { name: "Express", icon: `${T}/express.svg`, link: "/courses/fullstack-development" },
+  { name: "Tailwind", icon: `${T}/tailwind.svg`, link: "/courses/fullstack-development" },
+  { name: "TensorFlow", icon: `${T}/tensorflow.svg`, link: "/courses/ai-and-data-science" },
+  { name: "PyTorch", icon: `${T}/pytorch.svg`, link: "/courses/ai-and-data-science" },
+  { name: "Flutter", icon: `${T}/flutter.svg`, link: "/courses/app-development" },
+  { name: "Java", icon: `${T}/java.svg`, link: "/courses/programming-languages" },
+  { name: "JavaScript", icon: "/images/home/js_logo.jpg", link: "/courses/programming-languages" },
+  { name: "Excel", icon: "/images/home/excel_logo.svg", link: "/courses/ai-and-data-science" },
+  { name: "Selenium", icon: `${T}/selenium.svg`, link: "/courses/software-testing" },
+  { name: "LambdaTest KaneAI", icon: `${T}/lambdatest.svg`, link: "/courses/software-testing" },
+  { name: "ContextQA", icon: `${T}/contextqa.png`, link: "/courses/software-testing" },
+  { name: "Katalon", icon: `${T}/katalon.svg`, link: "/courses/software-testing" },
+  { name: "mabl", icon: `${T}/mabl.png`, link: "/courses/software-testing" },
+  { name: "BrowserStack", icon: `${T}/browserstack.svg`, link: "/courses/software-testing" },
+  { name: "AI and ML", icon: "/images/home/aiml_new.svg", link: "/courses/ai-and-data-science" },
+  { name: "Gen AI", icon: `${T}/openai.svg`, link: "/courses/ai-and-data-science" },
 ];
 
 const MID = Math.ceil(TOOLS.length / 2);

@@ -29,7 +29,7 @@ export default function HomeV2Navbar() {
   const navRef = useRef(null);
   const pathname = usePathname();
   const router = useRouter();
-  const { isFlying, navigateToStudyAbroad } = useStudyAbroadFlight();
+  const { isFlying, flightOrigin, navigateToStudyAbroad } = useStudyAbroadFlight();
 
   const closeMenu = () => setIsOpen(false);
 
@@ -127,18 +127,23 @@ export default function HomeV2Navbar() {
               </Link>
               <Link
                 href="/study-abroad"
-                className="home-v2-nav-study"
+                className={`home-v2-nav-study${isFlying ? " is-flying" : ""}`}
                 onClick={handleStudyAbroadClick}
               >
                 Study Abroad
-                <Image
-                  src="/images/home/homepage-v2/hero-icons/navbar-flight.webp"
-                  alt=""
-                  width={22}
-                  height={22}
-                  className="home-v2-nav-plane"
+                <span
+                  data-flight-origin
+                  className={`home-v2-nav-plane-wrap${isFlying ? " is-flying" : ""}`}
                   aria-hidden="true"
-                />
+                >
+                  <Image
+                    src="/images/home/homepage-v2/hero-icons/navbar-flight.webp"
+                    alt=""
+                    width={22}
+                    height={22}
+                    className="home-v2-nav-plane"
+                  />
+                </span>
               </Link>
               <Link href="/kids-courses" className="home-v2-nav-link" onClick={handleKidsSpaceClick}>
                 Kids Space
@@ -196,7 +201,7 @@ export default function HomeV2Navbar() {
 
       <FloatingWidgets />
       <ChatbotWidget />
-      <FlightTransition isAnimating={isFlying} />
+      <FlightTransition isAnimating={isFlying} origin={flightOrigin} />
 
       <EnquiryFormModal
         isOpen={demoOpen}

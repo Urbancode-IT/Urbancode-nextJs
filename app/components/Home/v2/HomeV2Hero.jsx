@@ -9,7 +9,7 @@ import FlightTransition from "../../animations/FlightTransition";
 const HERO_ICONS = "/images/home/homepage-v2/hero-icons";
 
 export default function HomeV2Hero() {
-  const { isFlying, navigateToStudyAbroad } = useStudyAbroadFlight();
+  const { isFlying, flightOrigin, navigateToStudyAbroad } = useStudyAbroadFlight();
 
   const handleStudyAbroad = (e) => {
     e.preventDefault();
@@ -18,7 +18,7 @@ export default function HomeV2Hero() {
 
   return (
     <section className="home-v2-hero">
-      <FlightTransition isAnimating={isFlying} />
+      <FlightTransition isAnimating={isFlying} origin={flightOrigin} />
       <div className="home-v2-hero-glow" aria-hidden="true" />
 
       <div className="home-v2-hero-icons" aria-hidden="true">

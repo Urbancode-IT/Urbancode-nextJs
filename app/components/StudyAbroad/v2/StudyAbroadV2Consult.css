@@ -1,0 +1,265 @@
+.sa-v2-consult {
+  width: 100%;
+  background: #ffffff;
+  padding: 72px 24px 96px;
+  box-sizing: border-box;
+  font-family: "Satoshi", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.sa-v2-consult-inner {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+.sa-v2-consult-card {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 40px;
+  align-items: stretch;
+  min-height: 456px;
+  padding: 56px;
+  background: linear-gradient(180deg, #008a55 0%, rgba(0, 181, 111, 0.37) 100%);
+  border-radius: 24px;
+}
+
+.sa-v2-consult-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 544px;
+}
+
+.sa-v2-consult-title {
+  margin: 0;
+  font-family: "Satoshi", sans-serif;
+  font-weight: 500;
+  font-size: clamp(28px, 3vw, 36px);
+  line-height: 40px;
+  letter-spacing: -0.9px;
+  color: #ffffff;
+}
+
+.sa-v2-consult-desc {
+  margin: 16px 0 0;
+  font-family: "Satoshi", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 28px;
+  color: #c2f0dc;
+}
+
+.sa-v2-consult-ghost {
+  box-sizing: border-box;
+  margin-top: 48px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 45px;
+  padding: 12px 24px;
+  border: 1px solid #ffffff;
+  border-radius: 9999px;
+  background: transparent;
+  font-family: "Satoshi", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.sa-v2-consult-ghost:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.sa-v2-consult-form {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 544px;
+  margin-left: auto;
+  padding: 24px;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.14) 0%,
+    rgba(102, 102, 102, 0.105) 100%
+  );
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-radius: 16px;
+}
+
+.sa-v2-consult-field {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  width: 100%;
+}
+
+.sa-v2-consult-label {
+  font-family: "Satoshi", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: #ffffff;
+}
+
+.sa-v2-consult-input {
+  box-sizing: border-box;
+  width: 100%;
+  height: 45px;
+  padding: 0 14px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 0.67px solid #cad5e2;
+  border-radius: 12px;
+  font-family: "Satoshi", sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  color: #ffffff;
+  outline: none;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.sa-v2-consult-input::placeholder {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.sa-v2-consult-input:focus {
+  border-color: #ffffff;
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.sa-v2-consult-input:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.sa-v2-consult-phone {
+  width: 100%;
+  margin: 0;
+}
+
+.sa-v2-consult-phone .form-label-standard {
+  display: none;
+}
+
+.sa-v2-consult-phone .phone-input-custom {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 45px;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  background: rgba(255, 255, 255, 0.15) !important;
+  border: 0.67px solid #cad5e2 !important;
+  border-radius: 12px !important;
+}
+
+.sa-v2-consult-phone .PhoneInputInput {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: #ffffff !important;
+  font-family: "Satoshi", sans-serif;
+  font-size: 14px;
+  outline: none;
+}
+
+.sa-v2-consult-phone .PhoneInputInput::placeholder {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.sa-v2-consult-phone .PhoneInputCountryIcon,
+.sa-v2-consult-phone .PhoneInputCountrySelectArrow {
+  opacity: 0.95;
+}
+
+.sa-v2-consult-phone .form-error-message {
+  color: #ffe4e4;
+}
+
+.sa-v2-consult-submit {
+  box-sizing: border-box;
+  margin-top: 8px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 44px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 9999px;
+  background: linear-gradient(180deg, #ffffff 0%, rgba(0, 181, 111, 0) 220.45%);
+  filter: drop-shadow(0px -1px 8.1px rgba(0, 0, 0, 0.25));
+  font-family: "Satoshi", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  color: #404040;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.sa-v2-consult-submit:hover:not(:disabled) {
+  opacity: 0.95;
+  transform: translateY(-1px);
+}
+
+.sa-v2-consult-submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+@media (max-width: 1000px) {
+  .sa-v2-consult-card {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding: 40px 28px;
+    min-height: 0;
+  }
+
+  .sa-v2-consult-copy,
+  .sa-v2-consult-form {
+    max-width: none;
+    margin-left: 0;
+  }
+
+  .sa-v2-consult-ghost {
+    margin-top: 28px;
+  }
+}
+
+@media (max-width: 767px) {
+  .sa-v2-consult {
+    padding: 48px 16px 64px;
+  }
+
+  .sa-v2-consult-card {
+    padding: 28px 18px;
+    border-radius: 20px;
+  }
+
+  .sa-v2-consult-title {
+    font-size: 28px;
+    line-height: 34px;
+  }
+
+  .sa-v2-consult-desc {
+    font-size: 16px;
+    line-height: 26px;
+  }
+
+  .sa-v2-consult-form {
+    padding: 20px 16px;
+  }
+
+  .sa-v2-consult-ghost {
+    width: 100%;
+  }
+}

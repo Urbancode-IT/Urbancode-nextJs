@@ -5,6 +5,10 @@ import StudyAbroadV2Services from "./StudyAbroadV2Services";
 import StudyAbroadV2Destinations from "./StudyAbroadV2Destinations";
 import StudyAbroadV2Mbbs from "./StudyAbroadV2Mbbs";
 import StudyAbroadV2MbbsCountries from "./StudyAbroadV2MbbsCountries";
+import StudyAbroadV2DreamCountry from "./StudyAbroadV2DreamCountry";
+import StudyAbroadV2Stories from "./StudyAbroadV2Stories";
+import StudyAbroadV2Consult from "./StudyAbroadV2Consult";
+import V2PageReveal from "@/app/components/common/V2PageReveal";
 import "./NewStudyAbroadPage.css";
 
 /**
@@ -13,12 +17,15 @@ import "./NewStudyAbroadPage.css";
  */
 export default function NewStudyAbroadPage() {
   return (
-    <div className="sa-v2-root">
+    <V2PageReveal className="sa-v2-root">
       <StudyAbroadV2Hero />
       <StudyAbroadV2Services />
       <StudyAbroadV2Destinations />
       <StudyAbroadV2Mbbs />
       <StudyAbroadV2MbbsCountries />
-    </div>
+      <StudyAbroadV2DreamCountry />
+      <StudyAbroadV2Stories />
+      <StudyAbroadV2Consult />
+    </V2PageReveal>
   );
 }

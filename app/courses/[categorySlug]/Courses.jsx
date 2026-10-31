@@ -42,7 +42,7 @@ const categoryTools = {
     'https://raw.githubusercontent.com/devicons/devicon/master/icons/github/github-original.svg'
   ],
   "Cloud and DevOps": [
-    'https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-original-wordmark.svg',
+    '/images/home/tools/aws.svg',
     'https://raw.githubusercontent.com/devicons/devicon/master/icons/azure/azure-original.svg',
     'https://raw.githubusercontent.com/devicons/devicon/master/icons/kubernetes/kubernetes-plain.svg',
     'https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original.svg',
@@ -73,7 +73,7 @@ const categoryTools = {
   ],
   "Data Engineering": [
     'https://raw.githubusercontent.com/devicons/devicon/master/icons/apachespark/apachespark-original.svg',
-    'https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-original.svg',
+    '/images/home/tools/aws.svg',
     'https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original.svg',
     'https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg'
   ],

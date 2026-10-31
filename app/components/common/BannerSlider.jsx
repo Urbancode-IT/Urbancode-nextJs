@@ -11,8 +11,7 @@ const BannerSlider = ({ banners = [], forceEnquiry = false, leadPlace = "Banner 
     const [current, setCurrent] = useState(0);
     const [showEnquiry, setShowEnquiry] = useState(false);
     const [selectedBanner, setSelectedBanner] = useState(null);
-    const [isBannerFlying, setIsBannerFlying] = useState(false);
-    const { isFlying, navigateToStudyAbroad } = useStudyAbroadFlight();
+    const { isFlying, flightOrigin, navigateToStudyAbroad } = useStudyAbroadFlight();
     const timerRef = useRef(null);
     const router = useRouter();
 
@@ -59,13 +58,8 @@ const BannerSlider = ({ banners = [], forceEnquiry = false, leadPlace = "Banner 
 
     const handleBannerClick = (banner) => {
         if (!forceEnquiry && banner.type === 'link' && banner.link) {
-            if (banner.useFlightAnimation) {
+            if (banner.useFlightAnimation || isStudyAbroadLink(banner.link)) {
                 stopTimer();
-                setIsBannerFlying(true);
-                window.setTimeout(() => router.push(banner.link), 3000);
-                return;
-            }
-            if (isStudyAbroadLink(banner.link)) {
                 navigateToStudyAbroad(banner.link);
                 return;
             }
@@ -78,7 +72,7 @@ const BannerSlider = ({ banners = [], forceEnquiry = false, leadPlace = "Banner 
 
     return (
         <>
-            <FlightTransition isAnimating={isFlying || isBannerFlying} />
+            <FlightTransition isAnimating={isFlying} origin={flightOrigin} />
             <section className="banner-slider-section">
                 <div className="banner-slider-container">
                     <div

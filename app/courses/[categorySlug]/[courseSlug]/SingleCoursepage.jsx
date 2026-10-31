@@ -94,7 +94,7 @@ const getToolsForCourse = (title) => {
     }
     if (t.includes("devops") || t.includes("aws") || t.includes("cloud") || t.includes("kubernetes") || t.includes("docker")) {
         return [
-            { id: 1, name: "AWS", icon: "https://api.iconify.design/simple-icons:amazonaws.svg?color=%23232F3E" },
+            { id: 1, name: "AWS", icon: "/images/home/tools/aws.svg" },
             { id: 2, name: "Docker", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" },
             { id: 3, name: "Kubernetes", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" },
             { id: 4, name: "Jenkins", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg" },
@@ -218,10 +218,10 @@ const getToolsForCourse = (title) => {
             { id: 6, name: "Node.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
             { id: 7, name: "Express.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" },
             { id: 8, name: "MongoDB", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" },
-            { id: 9, name: "JWT", icon: "https://api.iconify.design/simple-icons:jsonwebtokens.svg?color=%23000000" },
-            { id: 10, name: "Postman", icon: "https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg" },
+            { id: 9, name: "JWT", icon: "/images/home/tools/jwt.svg" },
+            { id: 10, name: "Postman", icon: "/images/home/tools/postman.svg" },
             { id: 11, name: "Swagger", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/swagger/swagger-original.svg" },
-            { id: 12, name: "AWS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" },
+            { id: 12, name: "AWS", icon: "/images/home/tools/aws.svg" },
             { id: 13, name: "React Native", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
         ];
     }

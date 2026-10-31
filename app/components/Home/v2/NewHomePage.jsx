@@ -14,6 +14,7 @@ import HomeV2GetCertified from "./HomeV2GetCertified";
 import HomeV2VoiceVideos from "./HomeV2VoiceVideos";
 import HomeV2GoogleReviews from "./HomeV2GoogleReviews";
 import HomeV2Faq from "./HomeV2Faq";
+import V2PageReveal from "@/app/components/common/V2PageReveal";
 import "./NewHomePage.css";
 
 const FALLBACK_BANNERS = [
@@ -85,7 +86,7 @@ export default function NewHomePage() {
   }, []);
 
   return (
-    <div className="home-v2-root">
+    <V2PageReveal className="home-v2-root">
       <div className="home-v2-above-fold">
         <HomeV2Hero />
 
@@ -118,6 +119,6 @@ export default function NewHomePage() {
       <HomeV2GoogleReviews />
 
       <HomeV2Faq />
-    </div>
+    </V2PageReveal>
   );
 }

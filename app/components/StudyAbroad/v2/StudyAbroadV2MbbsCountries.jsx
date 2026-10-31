@@ -13,47 +13,51 @@ const MOBILE_MQ = "(max-width: 900px)";
 
 const TAGS = ["English-medium options", "Eligibility check", "Visa support"];
 
+/** Georgia + Philippines thumbs reused across all cards until unique art is ready */
+const IMG_GEORGIA = `${MBBS_ASSETS}/mbbs-campus-classic.webp`;
+const IMG_PHILIPPINES = `${MBBS_ASSETS}/mbbs-campus-modern.webp`;
+
 const COUNTRIES = [
   {
     id: "russia",
     name: "Russia",
     desc: "Long-established medical faculties; English-medium options with strong clinical exposure.",
-    image: `${MBBS_ASSETS}/mbbs-campus-grads.webp`,
+    image: IMG_GEORGIA,
     flag: `${FLAG_ASSETS}/russia-flag.webp`,
   },
   {
     id: "georgia",
     name: "Georgia",
     desc: "European-style curricula with English-taught programmes and growing international intake.",
-    image: `${MBBS_ASSETS}/mbbs-campus-classic.webp`,
+    image: IMG_GEORGIA,
     flag: `${FLAG_ASSETS}/georgia-flag.webp`,
   },
   {
     id: "kazakhstan",
     name: "Kazakhstan",
     desc: "Growing number of medical universities admitting international students with clear pathways.",
-    image: `${MBBS_ASSETS}/mbbs-campus-modern.webp`,
+    image: IMG_PHILIPPINES,
     flag: `${FLAG_ASSETS}/Kazakhstan-flag.webp`,
   },
   {
     id: "uzbekistan",
     name: "Uzbekistan",
     desc: "Emerging destination with expanding English-medium MBBS seats and supportive campuses.",
-    image: `${MBBS_ASSETS}/mbbs-campus-grads.webp`,
+    image: IMG_PHILIPPINES,
     flag: `${FLAG_ASSETS}/Uzbekistan-flag.webp`,
   },
   {
     id: "kyrgyzstan",
     name: "Kyrgyzstan",
     desc: "Popular with international students; verify recognition and fee structures before applying.",
-    image: `${MBBS_ASSETS}/mbbs-campus-classic.webp`,
+    image: IMG_GEORGIA,
     flag: `${FLAG_ASSETS}/kyrgyzstan-flag.webp`,
   },
   {
     id: "philippines",
     name: "Philippines",
     desc: "US-influenced medical education system, taught in English with familiar clinical training.",
-    image: `${MBBS_ASSETS}/mbbs-campus-modern.webp`,
+    image: IMG_PHILIPPINES,
     flag: `${FLAG_ASSETS}/philippines-flag.webp`,
   },
 ];

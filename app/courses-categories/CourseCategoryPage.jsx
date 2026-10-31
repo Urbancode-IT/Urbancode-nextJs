@@ -25,6 +25,23 @@ import crmImg from "@/public/images/courses-images/crm-course.webp";
 import appDevImg from "@/public/images/courses-images/app.webp";
 const automationImg = "/images/courses-images/automation.jpg";
 
+/** Deterministic pseudo-random (0..1) so SSR and client match — avoids hydration errors. */
+function starRand(seed) {
+  const x = Math.sin(seed * 12.9898 + 78.233) * 43758.5453;
+  return x - Math.floor(x);
+}
+
+const COSMIC_STARS = Array.from({ length: 60 }, (_, i) => {
+  const a = i + 1;
+  return {
+    left: `${starRand(a) * 100}%`,
+    top: `${starRand(a + 17) * 100}%`,
+    size: `${starRand(a + 31) * 3}px`,
+    delay: `${starRand(a + 47) * 5}s`,
+    duration: `${3 + starRand(a + 61) * 4}s`,
+  };
+});
+
 const toolLogos = [
   { name: 'Angular', logo: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/angularjs/angularjs-original.svg', desc: 'Master Angular to build industry-ready single-page applications. Our curriculum focuses on TypeScript, RxJS, and high-performance front-end architecture.', link: '/courses/fullstack-development' },
   { name: 'GitHub', logo: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/github/github-original.svg', desc: 'Global standard for version control. Learn Git workflows, pull requests, and CI/CD integration to succeed in modern collaborative coding environments.', link: '/courses/software-testing' },
@@ -33,7 +50,7 @@ const toolLogos = [
   { name: 'MongoDB', logo: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original.svg', desc: 'Master NoSQL with MongoDB. Gain expertise in document-based databases, indexing, and aggregation for scalable, data-intensive modern applications.', link: '/courses/database' },
   { name: 'Terraform', logo: 'https://www.vectorlogo.zone/logos/terraformio/terraformio-icon.svg', desc: 'Infrastructure as Code (IaC) with Terraform. Learn to automate cloud infrastructure across AWS and Azure for faster and safer deployments.', link: '/courses/cloud-and-devops' },
   { name: 'Kubernetes', logo: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/kubernetes/kubernetes-plain.svg', desc: 'Orchestrate containers like a pro. Master Kubernetes (K8s) for scaling, managing, and automating containerized applications in production.', link: '/courses/cloud-and-devops' },
-  { name: 'AWS', logo: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-original-wordmark.svg', desc: 'Get certified in AWS Cloud. Learn EC2, S3, Lambda, and cloud security from industry experts to lead cloud transformation projects.', link: '/courses/cloud-and-devops' },
+  { name: 'AWS', logo: '/images/home/tools/aws.svg', desc: 'Get certified in AWS Cloud. Learn EC2, S3, Lambda, and cloud security from industry experts to lead cloud transformation projects.', link: '/courses/cloud-and-devops' },
   { name: 'Azure', logo: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/azure/azure-original.svg', desc: 'Scale with Microsoft Azure. Our training covers cloud solutions architecture, virtual machines, and cloud-native application development.', link: '/courses/cloud-and-devops' },
   { name: 'Jenkins', logo: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/jenkins/jenkins-original.svg', desc: 'Automate your life with Jenkins. Master CI/CD pipelines, build automation, and DevOps integration to speed up software delivery cycles.', link: '/courses/cloud-and-devops' },
   { name: 'Docker', logo: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original.svg', desc: 'Containerization simplified with Docker. Learn to package, ship, and run any application as a portable container for consistent development.', link: '/courses/cloud-and-devops' },
@@ -211,20 +228,20 @@ const CourseCategoryPage = () => {
                    </div>
                 </div>
 
-                {/* Stars/Dust particles */}
+                {/* Stars/Dust particles — fixed seeds so SSR/client HTML matches */}
                 <div className="cosmic-stars">
-                  {[...Array(60)].map((_, i) => (
-                    <div 
-                      key={i} 
-                      className="star" 
-                      style={{ 
-                        '--left': `${Math.random() * 100}%`,
-                        '--top': `${Math.random() * 100}%`,
-                        '--size': `${Math.random() * 3}px`,
-                        '--delay': `${Math.random() * 5}s`,
-                        '--duration': `${3 + Math.random() * 4}s`
+                  {COSMIC_STARS.map((star, i) => (
+                    <div
+                      key={i}
+                      className="star"
+                      style={{
+                        "--left": star.left,
+                        "--top": star.top,
+                        "--size": star.size,
+                        "--delay": star.delay,
+                        "--duration": star.duration,
                       }}
-                    ></div>
+                    />
                   ))}
                 </div>
              </div>

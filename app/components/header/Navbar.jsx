@@ -28,7 +28,7 @@ function rearmBackdropBlur(el) {
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const navRef = useRef(null);
-  const { isFlying, navigateToStudyAbroad } = useStudyAbroadFlight();
+  const { isFlying, flightOrigin, navigateToStudyAbroad } = useStudyAbroadFlight();
   const pathname = usePathname();
   const router = useRouter();
 
@@ -135,7 +135,10 @@ export default function Navbar() {
                 className="study-abroad-link"
               >
                 Study abroad
-                <FaPlane className="plane-icon" />
+                <FaPlane
+                  className={`plane-icon${isFlying ? " is-flying" : ""}`}
+                  data-flight-origin
+                />
               </Link>
               <Link href="/kids-courses" onClick={handleKidsSpaceClick}>Kids space</Link>
               <Link
@@ -180,7 +183,7 @@ export default function Navbar() {
           {!pathname.startsWith('/portfolio') && <BookDemoWidget />}
         </>
       )}
-      <FlightTransition isAnimating={isFlying} />
+      <FlightTransition isAnimating={isFlying} origin={flightOrigin} />
     </>
   );
 }

@@ -38,7 +38,7 @@ const cardsData = [
     level: 'ADVANCED',
     title: 'AI Software Engineering(6 Months)',
     desc: 'Fullstack web + React Native — React, Node.js, MongoDB, and AWS in 6 months.',
-    duration: '6 Months • Fullstack + Mobile',
+    duration: '6 Months • Fullstack+AI',
     gradient: 'linear-gradient(129.99deg, #001D3A -3.08%, #035CB7 119.93%)',
     link: '/courses/fullstack-development/ai-software-engineering',
     isNew: true,
