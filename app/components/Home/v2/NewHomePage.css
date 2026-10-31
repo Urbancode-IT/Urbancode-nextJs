@@ -366,19 +366,21 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: visible;
 }
 
 .home-v2-mnc-logo-img {
-  width: 28px !important;
-  height: 28px !important;
+  width: 36px !important;
+  height: 36px !important;
+  max-width: none;
   object-fit: contain;
 }
 
 .home-v2-mnc-name {
   font-family: "Satoshi", sans-serif;
   font-weight: 700;
-  font-size: 14px;
-  line-height: 20px;
+  font-size: 16px;
+  line-height: 22px;
   color: #55615c;
   white-space: nowrap;
   overflow: hidden;
@@ -416,8 +418,14 @@
     height: 72px;
   }
 
+  .home-v2-mnc-logo-img {
+    width: 32px !important;
+    height: 32px !important;
+  }
+
   .home-v2-mnc-name {
-    font-size: 13px;
+    font-size: 15px;
+    line-height: 20px;
     max-width: 96px;
   }
 }

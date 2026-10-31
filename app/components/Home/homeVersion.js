@@ -6,4 +6,4 @@
  *
  * Flip this flag when asked to unhide the old home page.
  */
-export const USE_LEGACY_HOME = true;
+export const USE_LEGACY_HOME = false;

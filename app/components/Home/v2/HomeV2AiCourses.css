@@ -136,6 +136,20 @@
   overflow: hidden;
   scroll-snap-align: start;
   scroll-snap-stop: always;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.home-v2-ai-card:hover {
+  border-color: #c5ddd2;
+  box-shadow: 0 8px 24px rgba(15, 26, 22, 0.06);
+}
+
+.home-v2-ai-card:hover .home-v2-ai-link {
+  color: #007048;
+  gap: 10px;
 }
 
 .home-v2-ai-card-media {

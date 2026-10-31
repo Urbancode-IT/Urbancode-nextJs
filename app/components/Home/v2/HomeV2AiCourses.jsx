@@ -9,6 +9,9 @@ import "./HomeV2AiCourses.css";
 const AI_BADGE_ICON =
   "/images/home/homepage-v2/AI-powered-icons/aipowered-imageicon.webp";
 
+const AI_THUMBS =
+  "/images/home/homepage-v2/AI-powered-icons/AI-powered-fsd";
+
 /** Same courses as legacy home "AI Powered Courses" (NewHeroSection cardsData). */
 const COURSES = [
   {
@@ -18,7 +21,7 @@ const COURSES = [
     level: "Advanced",
     duration: "6 months",
     tags: ["React", "Node.js", "AWS"],
-    image: "/images/courses/new/AisoftwareEngineering.webp",
+    image: `${AI_THUMBS}/AIsoftwareengineering.webp`,
     link: "/courses/fullstack-development/ai-software-engineering",
   },
   {
@@ -28,7 +31,7 @@ const COURSES = [
     level: "Beginner",
     duration: "12 weeks",
     tags: ["React", "HTML/CSS", "AI Tools"],
-    image: "/images/home/homepage-v2/AI-powered/AIFSD-AP.webp",
+    image: `${AI_THUMBS}/AIpoweredfsd.webp`,
     link: "/courses/fullstack-development/ai-powered-fullstack",
   },
   {
@@ -38,7 +41,7 @@ const COURSES = [
     level: "Advanced",
     duration: "8 weeks",
     tags: ["Python", "ML", "AI"],
-    image: "/images/courses/new/ai-ml.png",
+    image: `${AI_THUMBS}/AIandML.webp`,
     link: "/courses/ai-and-data-science/ai-and-ml",
   },
   {
@@ -48,7 +51,7 @@ const COURSES = [
     level: "Intermediate",
     duration: "10 weeks",
     tags: ["Python", "LLMs", "RAG"],
-    image: "/images/courses/new/geai.png",
+    image: `${AI_THUMBS}/GenAI.webp`,
     link: "/courses/ai-and-data-science/gen-ai",
   },
   {
@@ -58,7 +61,7 @@ const COURSES = [
     level: "Intermediate",
     duration: "14 weeks",
     tags: ["Power Automate", "Flows", "AI Builder"],
-    image: "/images/courses/power-automate.webp",
+    image: `${AI_THUMBS}/MPA.webp`,
     link: "/courses/automation/microsoft-power-automate",
   },
   {
@@ -68,7 +71,7 @@ const COURSES = [
     level: "Advanced",
     duration: "12 weeks",
     tags: ["Azure", "ADF", "Databricks"],
-    image: "/images/courses/new/data_engineering-azure.webp",
+    image: `${AI_THUMBS}/DEwithMAzure.webp`,
     link: "/courses/data-engineering/data-engineering-with-microsoft-azure",
   },
   {
@@ -78,7 +81,7 @@ const COURSES = [
     level: "Advanced",
     duration: "12 weeks",
     tags: ["SQL", "Python", "Power BI"],
-    image: "/images/courses/new/data_analyst_azure.webp",
+    image: `${AI_THUMBS}/DAwithMA.webp`,
     link: "/courses/ai-and-data-science/data-analyst-with-microsoft-azure",
   },
 ];
@@ -194,11 +197,16 @@ export default function HomeV2AiCourses() {
             style={{ "--ai-gap": `${GAP}px`, "--ai-visible": visible }}
           >
             {COURSES.map((course) => (
-              <article key={course.id} className="home-v2-ai-card">
+              <Link
+                key={course.id}
+                href={course.link}
+                className="home-v2-ai-card"
+                aria-label={`View ${course.title} course`}
+              >
                 <div className="home-v2-ai-card-media">
                   <Image
                     src={course.image}
-                    alt={course.title}
+                    alt=""
                     fill
                     sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 390px"
                     className="home-v2-ai-card-img"
@@ -236,12 +244,12 @@ export default function HomeV2AiCourses() {
                     ))}
                   </ul>
 
-                  <Link href={course.link} className="home-v2-ai-link">
+                  <span className="home-v2-ai-link">
                     View Course
                     <FiArrowRight aria-hidden="true" />
-                  </Link>
+                  </span>
                 </div>
-              </article>
+              </Link>
             ))}
           </div>
         </div>

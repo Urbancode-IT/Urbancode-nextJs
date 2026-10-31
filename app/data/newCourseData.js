@@ -1193,7 +1193,7 @@ export const newCourseData = {
             { id: 7, name: "NumPy", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" },
             { id: 8, name: "Matplotlib", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/matplotlib/matplotlib-original.svg" },
             { id: 9, name: "Seaborn", icon: "https://seaborn.pydata.org/_static/logo-wide-lightbg.svg" },
-            { id: 10, name: "Databricks", icon: "https://www.vectorlogo.zone/logos/databricks/databricks-icon.svg" },
+            { id: 10, name: "Databricks", icon: "/images/home/tools/databricks.svg" },
         ],
         faqData: commonFaq,
     },

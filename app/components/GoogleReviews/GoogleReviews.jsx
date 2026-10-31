@@ -16,7 +16,7 @@ const GoogleReviews = () => {
     const writeReviewLinks = {
         'Velachery': 'https://g.page/r/CfH0LR1ZQro0EAE/review',
         'Pallikaranai': 'https://g.page/r/CQI15nsz8W2IEAE/review',
-        'Tirunelveli': 'https://www.google.com/search?sca_esv=47fdd52eba661d26&rlz=1C1ONGR_enIN1082IN1083&sxsrf=APpeQnsPW-Nth2KLEW3ZAskdQ61FRMzs6g:1782982138857&si=APenkKm7iecQ4G6P-TsbSMFKIQtv3EFIqRAFw-i8uEbk55Z-_3FUiqlbF9e4rNiuCQoVGzSERo25DzRGEjXpofXaARMjWSzIXmPyifkoOmv4p1JOGpytj8x-NDrWsrhqby6vkymFi2dqcYmKH7cwKJC-GoRmYKX80euUyzpMStaelkhu-_5idtw%3D&q=Urbancode+Training+and+Solutions+Reviews&sa=X&ved=2ahUKEwjO1ZuIzrOVAxV_wTgGHbaSLGUQ0bkNegQIKxAH&biw=1280&bih=631&dpr=1.5#lrd=0x3b0413c4ce75c0fd:0x4e3fe58c93ab7a34,3,,,,',
+        'Tirunelveli': 'https://www.google.com/search?q=Urbancode+Training+and+Solutions+tirunelveli#lrd=',
     };
     const branches = ['All', 'Velachery', 'Pallikaranai', 'Tirunelveli'];
 

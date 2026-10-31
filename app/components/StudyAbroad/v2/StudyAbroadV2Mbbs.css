@@ -4,24 +4,12 @@
   overflow: hidden;
   padding: 72px 24px 80px;
   box-sizing: border-box;
-  background: linear-gradient(
-    180deg,
-    rgba(230, 249, 241, 0.52) 0%,
-    rgba(255, 255, 255, 0.52) 100%
-  );
+  background: #f8fafc;
   font-family: "Satoshi", -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 .sa-v2-mbbs-glow {
-  position: absolute;
-  width: 480px;
-  height: 480px;
-  right: -80px;
-  top: -160px;
-  background: rgba(139, 227, 191, 0.4);
-  filter: blur(64px);
-  border-radius: 9999px;
-  pointer-events: none;
+  display: none;
 }
 
 .sa-v2-mbbs-inner {
@@ -260,13 +248,6 @@
 @media (max-width: 767px) {
   .sa-v2-mbbs {
     padding: 48px 16px 56px;
-  }
-
-  .sa-v2-mbbs-glow {
-    width: 280px;
-    height: 280px;
-    right: -120px;
-    top: -100px;
   }
 
   .sa-v2-mbbs-media {

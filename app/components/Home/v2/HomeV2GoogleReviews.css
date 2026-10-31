@@ -51,6 +51,22 @@
   color: #0f1a16;
 }
 
+.home-v2-gr-actions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.home-v2-gr-filter {
+  position: relative;
+  display: inline-flex;
+  margin: 0;
+  z-index: 5;
+}
+
 .home-v2-gr-write {
   box-sizing: border-box;
   display: inline-flex;
@@ -72,9 +88,125 @@
   transition: border-color 0.2s ease, background-color 0.2s ease;
 }
 
+.home-v2-gr-filter-trigger {
+  gap: 10px;
+  justify-content: space-between;
+  min-width: 168px;
+}
+
+.home-v2-gr-filter-chevron {
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.home-v2-gr-filter-trigger.is-open .home-v2-gr-filter-chevron {
+  transform: rotate(180deg);
+}
+
 .home-v2-gr-write:hover {
   border-color: #00b56f;
   background: #f6fcf9;
+}
+
+.home-v2-gr-filter-trigger.is-open,
+.home-v2-gr-filter-trigger:focus-visible {
+  border-color: #00b56f;
+  outline: none;
+}
+
+.home-v2-gr-filter-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  left: 0;
+  min-width: 100%;
+  margin: 0;
+  padding: 6px;
+  list-style: none;
+  box-sizing: border-box;
+  border-radius: 12px;
+  border: 0.67px solid rgba(230, 235, 233, 0.85);
+  background: rgba(233, 248, 242, 0.55);
+  backdrop-filter: blur(12px) saturate(1.2);
+  -webkit-backdrop-filter: blur(12px) saturate(1.2);
+  box-shadow: 0 12px 32px rgba(15, 26, 22, 0.1);
+  z-index: 20;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-10px) scale(0.96);
+  filter: blur(4px);
+  transform-origin: top center;
+  transition:
+    opacity 0.34s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.34s cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0.34s;
+}
+
+.home-v2-gr-filter-menu.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+}
+
+.home-v2-gr-filter-menu .home-v2-gr-filter-option {
+  opacity: 0;
+  transform: translateY(-6px);
+  transition:
+    opacity 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.home-v2-gr-filter-menu.is-open .home-v2-gr-filter-option {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.home-v2-gr-filter-menu.is-open li:nth-child(1) .home-v2-gr-filter-option {
+  transition-delay: 0.04s;
+}
+.home-v2-gr-filter-menu.is-open li:nth-child(2) .home-v2-gr-filter-option {
+  transition-delay: 0.08s;
+}
+.home-v2-gr-filter-menu.is-open li:nth-child(3) .home-v2-gr-filter-option {
+  transition-delay: 0.12s;
+}
+.home-v2-gr-filter-menu.is-open li:nth-child(4) .home-v2-gr-filter-option {
+  transition-delay: 0.16s;
+}
+
+.home-v2-gr-filter-option {
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 40px;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  font-family: "Satoshi", sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 21px;
+  color: #0f1a16;
+  text-align: left;
+  cursor: pointer;
+}
+
+.home-v2-gr-filter-option:hover {
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.home-v2-gr-filter-option.is-selected {
+  background: rgba(0, 181, 111, 0.16);
+  color: #008f58;
 }
 
 .home-v2-gr-viewport {
@@ -264,14 +396,13 @@
   position: fixed;
   inset: 0;
   z-index: 1000;
-  background: rgba(15, 26, 22, 0.4);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  background: rgba(15, 26, 22, 0.22);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 24px;
   font-family: "Satoshi", -apple-system, BlinkMacSystemFont, sans-serif;
+  animation: home-v2-gr-overlay-in 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 .home-v2-gr-modal {
@@ -279,15 +410,18 @@
   box-sizing: border-box;
   width: 100%;
   max-width: 400px;
-  background: #ffffff;
-  border: 1px solid #e6ebe9;
+  background: rgba(233, 248, 242, 0.62);
+  backdrop-filter: blur(12px) saturate(1.2);
+  -webkit-backdrop-filter: blur(12px) saturate(1.2);
+  border: 0.67px solid rgba(230, 235, 233, 0.85);
   border-radius: 16px;
   padding: 28px 24px 24px;
-  box-shadow: 0 20px 48px rgba(15, 26, 22, 0.16);
+  box-shadow: 0 20px 48px rgba(15, 26, 22, 0.14);
   display: flex;
   flex-direction: column;
   align-items: stretch;
   gap: 24px;
+  animation: home-v2-gr-modal-in 0.48s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .home-v2-gr-modal-close {
@@ -307,12 +441,15 @@
   line-height: 1;
   cursor: pointer;
   padding: 0;
+  opacity: 0;
   transition: color 0.2s ease, background-color 0.2s ease;
+  animation: home-v2-gr-modal-item-in 0.42s cubic-bezier(0.22, 1, 0.36, 1)
+    0.08s forwards;
 }
 
 .home-v2-gr-modal-close:hover {
   color: #0f1a16;
-  background: #f9f9f9;
+  background: rgba(255, 255, 255, 0.55);
 }
 
 .home-v2-gr-modal-head {
@@ -321,6 +458,9 @@
   align-items: flex-start;
   gap: 8px;
   padding-right: 28px;
+  opacity: 0;
+  animation: home-v2-gr-modal-item-in 0.42s cubic-bezier(0.22, 1, 0.36, 1)
+    0.1s forwards;
 }
 
 .home-v2-gr-modal-head h3 {
@@ -366,7 +506,20 @@
   line-height: 21px;
   text-decoration: none;
   text-align: center;
+  opacity: 0;
   transition: background-color 0.2s ease, transform 0.15s ease;
+  animation: home-v2-gr-modal-item-in 0.4s cubic-bezier(0.22, 1, 0.36, 1)
+    forwards;
+}
+
+.home-v2-gr-modal-branch:nth-child(1) {
+  animation-delay: 0.2s;
+}
+.home-v2-gr-modal-branch:nth-child(2) {
+  animation-delay: 0.26s;
+}
+.home-v2-gr-modal-branch:nth-child(3) {
+  animation-delay: 0.32s;
 }
 
 .home-v2-gr-modal-branch:hover {
@@ -377,10 +530,47 @@
   transform: scale(0.98);
 }
 
+@keyframes home-v2-gr-overlay-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes home-v2-gr-modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(28px) scale(0.92);
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes home-v2-gr-modal-item-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @media (max-width: 900px) {
   .home-v2-gr-head-row {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .home-v2-gr-actions {
+    width: 100%;
   }
 }
 

@@ -39,8 +39,8 @@ export default function HomeV2MncSection() {
                 <Image
                   src={company.logo}
                   alt=""
-                  width={28}
-                  height={28}
+                  width={36}
+                  height={36}
                   className="home-v2-mnc-logo-img"
                 />
               </span>

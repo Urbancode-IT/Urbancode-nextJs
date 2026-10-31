@@ -9,8 +9,10 @@ const WRITE_REVIEW_LINKS = {
   Velachery: "https://g.page/r/CfH0LR1ZQro0EAE/review",
   Pallikaranai: "https://g.page/r/CQI15nsz8W2IEAE/review",
   Tirunelveli:
-    "https://www.google.com/search?q=Urbancode+Training+and+Solutions+Reviews#lrd=0x3b0413c4ce75c0fd:0x4e3fe58c93ab7a34,3",
+    "https://www.google.com/search?q=Urbancode+Training+and+Solutions+tirunelveli#lrd=",
 };
+
+const BRANCHES = ["All", "Velachery", "Pallikaranai", "Tirunelveli"];
 
 const GAP = 20;
 
@@ -42,11 +44,21 @@ export default function HomeV2GoogleReviews() {
   const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(true);
   const [modalOpen, setModalOpen] = useState(false);
+  const [activeBranch, setActiveBranch] = useState("All");
+  const [filterOpen, setFilterOpen] = useState(false);
+  const filterRef = useRef(null);
   const [index, setIndex] = useState(0);
   const [visible, setVisible] = useState(4);
   const [paused, setPaused] = useState(false);
 
-  const maxIndex = Math.max(0, reviews.length - visible);
+  const filteredReviews =
+    activeBranch === "All"
+      ? reviews
+      : reviews.filter(
+          (r) => (r.branchName || "Velachery") === activeBranch
+        );
+
+  const maxIndex = Math.max(0, filteredReviews.length - visible);
   const showNav = maxIndex > 0;
   const canPrev = index > 0;
   const canNext = index < maxIndex;
@@ -88,8 +100,10 @@ export default function HomeV2GoogleReviews() {
     if (!el) return;
     const next = getVisibleCount(el.clientWidth);
     setVisible(next);
-    setIndex((prev) => Math.min(prev, Math.max(0, reviews.length - next)));
-  }, [reviews.length]);
+    setIndex((prev) =>
+      Math.min(prev, Math.max(0, filteredReviews.length - next))
+    );
+  }, [filteredReviews.length]);
 
   const scrollToIndex = useCallback(
     (next) => {
@@ -101,12 +115,40 @@ export default function HomeV2GoogleReviews() {
         parseFloat(getComputedStyle(el).columnGap || getComputedStyle(el).gap) ||
         0;
       const step = card.offsetWidth + gap;
-      const clamped = Math.max(0, Math.min(next, reviews.length - visible));
+      const clamped = Math.max(
+        0,
+        Math.min(next, filteredReviews.length - visible)
+      );
       setIndex(clamped);
       el.scrollTo({ left: clamped * step, behavior: "smooth" });
     },
-    [reviews.length, visible]
+    [filteredReviews.length, visible]
   );
+
+  const handleBranchChange = (branch) => {
+    setActiveBranch(branch);
+    setFilterOpen(false);
+    setIndex(0);
+    requestAnimationFrame(() => {
+      trackRef.current?.scrollTo({ left: 0, behavior: "auto" });
+    });
+  };
+
+  useEffect(() => {
+    if (!filterOpen) return undefined;
+    const onPointerDown = (e) => {
+      if (!filterRef.current?.contains(e.target)) setFilterOpen(false);
+    };
+    const onKeyDown = (e) => {
+      if (e.key === "Escape") setFilterOpen(false);
+    };
+    document.addEventListener("pointerdown", onPointerDown);
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.removeEventListener("pointerdown", onPointerDown);
+      document.removeEventListener("keydown", onKeyDown);
+    };
+  }, [filterOpen]);
 
   useEffect(() => {
     measure();
@@ -147,13 +189,75 @@ export default function HomeV2GoogleReviews() {
               What learners say on Google.
             </h2>
           </div>
-          <button
-            type="button"
-            className="home-v2-gr-write"
-            onClick={() => setModalOpen(true)}
-          >
-            Write a review
-          </button>
+          <div className="home-v2-gr-actions">
+            <div className="home-v2-gr-filter" ref={filterRef}>
+              <button
+                type="button"
+                className={`home-v2-gr-write home-v2-gr-filter-trigger${
+                  filterOpen ? " is-open" : ""
+                }`}
+                aria-haspopup="listbox"
+                aria-expanded={filterOpen}
+                aria-label="Filter reviews by branch"
+                onClick={() => setFilterOpen((open) => !open)}
+              >
+                <span>
+                  {activeBranch === "All" ? "All branches" : activeBranch}
+                </span>
+                <svg
+                  className="home-v2-gr-filter-chevron"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  aria-hidden
+                >
+                  <polyline
+                    points="6 9 12 15 18 9"
+                    stroke="currentColor"
+                    strokeWidth="2.25"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </button>
+              <ul
+                className={`home-v2-gr-filter-menu${
+                  filterOpen ? " is-open" : ""
+                }`}
+                role="listbox"
+                aria-label="Branches"
+                aria-hidden={!filterOpen}
+                inert={!filterOpen ? true : undefined}
+              >
+                {BRANCHES.map((branch) => {
+                  const label = branch === "All" ? "All branches" : branch;
+                  const selected = activeBranch === branch;
+                  return (
+                    <li key={branch} role="option" aria-selected={selected}>
+                      <button
+                        type="button"
+                        tabIndex={filterOpen ? 0 : -1}
+                        className={`home-v2-gr-filter-option${
+                          selected ? " is-selected" : ""
+                        }`}
+                        onClick={() => handleBranchChange(branch)}
+                      >
+                        {label}
+                      </button>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+            <button
+              type="button"
+              className="home-v2-gr-write"
+              onClick={() => setModalOpen(true)}
+            >
+              Write a review
+            </button>
+          </div>
         </div>
 
         <div
@@ -163,13 +267,17 @@ export default function HomeV2GoogleReviews() {
         >
           {loading ? (
             <div className="home-v2-gr-loading">Loading reviews…</div>
+          ) : filteredReviews.length === 0 ? (
+            <div className="home-v2-gr-loading">
+              No reviews for {activeBranch} yet.
+            </div>
           ) : (
             <div
               className="home-v2-gr-track"
               ref={trackRef}
               style={{ "--gr-gap": `${GAP}px`, "--gr-visible": visible }}
             >
-              {reviews.map((review, idx) => (
+              {filteredReviews.map((review, idx) => (
                 <article
                   key={`${review._id || review.googleReviewId || "r"}-${idx}`}
                   className="home-v2-gr-card"

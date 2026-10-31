@@ -36,19 +36,19 @@ const getToolsForCourse = (title) => {
     
     if (t.includes("power automate") || t.includes("automate flow")) {
         return [
-            { id: 1, name: "Power Automate", icon: "https://api.iconify.design/simple-icons:powerautomate.svg?color=%230066FF" },
-            { id: 2, name: "SharePoint", icon: "https://api.iconify.design/simple-icons:microsoftsharepoint.svg?color=%23036C70" },
-            { id: 3, name: "Office 365", icon: "https://api.iconify.design/simple-icons:microsoft.svg?color=%2300A4EF" },
-            { id: 4, name: "MS Teams", icon: "https://api.iconify.design/simple-icons:microsoftteams.svg?color=%236264A7" },
-            { id: 5, name: "AI Builder", icon: "https://api.iconify.design/simple-icons:microsoft.svg?color=%2300A4EF" },
-            { id: 6, name: "Excel Online", icon: "https://api.iconify.design/simple-icons:microsoftexcel.svg?color=%23217346" },
-            { id: 7, name: "Outlook", icon: "https://api.iconify.design/simple-icons:microsoftoutlook.svg?color=%230072C6" }
+            { id: 1, name: "Power Automate", icon: "/images/home/tools/power-automate.svg" },
+            { id: 2, name: "SharePoint", icon: "/images/home/tools/sharepoint.svg" },
+            { id: 3, name: "Office 365", icon: "/images/home/tools/microsoft.svg" },
+            { id: 4, name: "MS Teams", icon: "/images/home/tools/ms-teams.svg" },
+            { id: 5, name: "AI Builder", icon: "/images/home/tools/microsoft.svg" },
+            { id: 6, name: "Excel Online", icon: "/images/home/tools/excel.svg" },
+            { id: 7, name: "Outlook", icon: "/images/home/tools/outlook.svg" }
         ];
     }
     if (t.includes("sharepoint")) {
         return [
-            { id: 1, name: "SharePoint", icon: "https://api.iconify.design/simple-icons:microsoftsharepoint.svg?color=%23036C70" },
-            { id: 2, name: "Power Automate", icon: "https://api.iconify.design/simple-icons:powerautomate.svg?color=%230066FF" },
+            { id: 1, name: "SharePoint", icon: "/images/home/tools/sharepoint.svg" },
+            { id: 2, name: "Power Automate", icon: "/images/home/tools/power-automate.svg" },
             { id: 3, name: "React", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
             { id: 4, name: "TypeScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
             { id: 5, name: "Node.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
@@ -236,12 +236,12 @@ const getToolsForCourse = (title) => {
             { id: 7, name: "MongoDB", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" },
             { id: 8, name: "GitHub", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
             { id: 9, name: "Postman", icon: "https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg" },
-            { id: 10, name: "ChatGPT", icon: "https://cdn.svgporn.com/logos/openai-icon.svg" },
-            { id: 11, name: "GitHub Copilot", icon: "https://api.iconify.design/simple-icons:githubcopilot.svg?color=%23000000" },
-            { id: 12, name: "Cursor", icon: "https://api.iconify.design/simple-icons:cursor.svg?color=%23000000" },
-            { id: 13, name: "Claude", icon: "https://api.iconify.design/simple-icons:anthropic.svg" },
-            { id: 15, name: "Vercel", icon: "https://api.iconify.design/simple-icons:vercel.svg?color=%23000000" },
-            { id: 16, name: "Netlify", icon: "https://api.iconify.design/simple-icons:netlify.svg?color=%2300C7B7" },
+            { id: 10, name: "ChatGPT", icon: "/images/home/tools/openai.svg" },
+            { id: 11, name: "GitHub Copilot", icon: "/images/home/tools/github-copilot.svg" },
+            { id: 12, name: "Cursor", icon: "/images/home/tools/cursor.svg" },
+            { id: 13, name: "Claude", icon: "/images/home/tools/claude.svg" },
+            { id: 15, name: "Vercel", icon: "/images/home/tools/vercel.svg" },
+            { id: 16, name: "Netlify", icon: "/images/home/tools/netlify.svg" },
         ];
     }
     if (t.includes("gen ai") || t.includes("generative ai") || t.includes("agentic ai")) {
@@ -250,10 +250,10 @@ const getToolsForCourse = (title) => {
             { id: 2, name: "LangChain", icon: "/images/courses/tools/langchain-dark.png" },
             { id: 3, name: "Crew AI", icon: "/images/courses/tools/crewai.svg" },
             { id: 4, name: "Guardrails AI", icon: "/images/courses/tools/guardrails-ai.svg" },
-            { id: 5, name: "OpenAI", icon: "https://cdn.svgporn.com/logos/openai-icon.svg" },
-            { id: 6, name: "Hugging Face", icon: "https://api.iconify.design/simple-icons:huggingface.svg?color=%23FFD21E" },
-            { id: 7, name: "LlamaIndex", icon: "https://api.iconify.design/mdi:file-tree.svg?color=%235B6CFF" },
-            { id: 8, name: "Gemini", icon: "https://api.iconify.design/simple-icons:googlegemini.svg?color=%238E75B2" },
+            { id: 5, name: "OpenAI", icon: "/images/home/tools/openai.svg" },
+            { id: 6, name: "Hugging Face", icon: "/images/home/tools/huggingface.svg" },
+            { id: 7, name: "LlamaIndex", icon: "/images/home/tools/llamaindex.svg" },
+            { id: 8, name: "Gemini", icon: "/images/home/tools/gemini.svg" },
             { id: 9, name: "Jupyter", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original.svg" },
             { id: 10, name: "VS Code", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" },
             { id: 11, name: "GitHub", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
@@ -281,19 +281,19 @@ const getToolsForCourse = (title) => {
             { id: 5, name: "Azure Data Factory", icon: "/images/courses/new/adf.webp" },
             { id: 6, name: "Apache Spark", icon: "/images/courses/new/apache.webp" },
             { id: 7, name: "PySpark", icon: "/images/courses/new/pyspark.webp" },
-            { id: 8, name: "Databricks", icon: "https://api.iconify.design/simple-icons:databricks.svg?color=%23FF3621" },
+            { id: 8, name: "Databricks", icon: "/images/home/tools/databricks.svg" },
             { id: 11, name: "Git & GitHub", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
         ];
     }
     if (t.includes("data analyst with microsoft azure")) {
         return [
-            { id: 1, name: "Azure", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/azure/azure-original.svg" },
+            { id: 1, name: "Azure", icon: "/images/home/tools/azure.svg" },
             { id: 2, name: "SQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" },
             { id: 3, name: "Python", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
             { id: 4, name: "Pandas", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" },
-            { id: 5, name: "Power BI", icon: "https://cdn.svgporn.com/logos/microsoft-power-bi.svg" },
+            { id: 5, name: "Power BI", icon: "/images/home/tools/power-bi.svg" },
             { id: 6, name: "ADF", icon: "/images/courses/new/adf.webp" },
-            { id: 7, name: "Excel", icon: "https://api.iconify.design/simple-icons:microsoftexcel.svg?color=%23217346" },
+            { id: 7, name: "Excel", icon: "/images/home/tools/excel.svg" },
             { id: 8, name: "GitHub", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
         ];
     }

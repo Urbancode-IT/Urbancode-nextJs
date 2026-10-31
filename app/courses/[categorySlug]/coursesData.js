@@ -1050,7 +1050,7 @@ const coursesData = {
         rating: 4.9,
         duration: "6 months",
         students: "18",
-        img: "/images/courses/new/AisoftwareEngineering.webp",
+        img: "/images/home/homepage-v2/AI-powered-icons/AI-powered-fsd/AIsoftwareengineering.webp",
         aboutData: {
           topic: "About AI Software Engineering",
           content1:
@@ -1120,7 +1120,7 @@ const coursesData = {
         rating: 4.9,
         duration: "3 months",
         students: "10",
-        img: "/images/courses/new/ai-powered-fullstack.png",
+        img: "/images/home/homepage-v2/AI-powered-icons/AI-powered-fsd/AIpoweredfsd.webp",
         aboutData: {
           topic: "AI Powered Fullstack Curriculum",
           content1:
@@ -4332,7 +4332,7 @@ const coursesData = {
         rating: 5.0,
         duration: "3 month",
         students: "105",
-        img: "/images/courses/new/ai-ml.png",
+        img: "/images/home/homepage-v2/AI-powered-icons/AI-powered-fsd/AIandML.webp",
         aboutData: {
           topic:
             "Master Data Science — From Python Fundamentals to Machine Learning & AI!",
@@ -4454,7 +4454,7 @@ const coursesData = {
         rating: 4.9,
         duration: "3 months",
         students: "250",
-        img: "/images/courses/new/geai.png",
+        img: "/images/home/homepage-v2/AI-powered-icons/AI-powered-fsd/GenAI.webp",
         aboutData: {
           topic: "Master Generative AI — From LLMs to Autonomous Agents!",
           content1:
@@ -5588,7 +5588,7 @@ const coursesData = {
         rating: 4.9,
         duration: "3 months",
         students: "10",
-        img: "/images/courses/new/data_analyst_azure.webp",
+        img: "/images/home/homepage-v2/AI-powered-icons/AI-powered-fsd/DAwithMA.webp",
         aboutData: {
           topic: "Master Data Analytics with Microsoft Azure — From SQL to Power BI Dashboards!",
           content1:
@@ -5823,7 +5823,7 @@ const coursesData = {
         rating: 4.9,
         duration: "3 months",
         students: "12",
-        img: "/images/courses/new/data_engineering-azure.webp",
+        img: "/images/home/homepage-v2/AI-powered-icons/AI-powered-fsd/DEwithMAzure.webp",
         aboutData: {
           topic: "Master Data Engineering with Microsoft Azure — From SQL Foundations to Cloud Pipelines!",
           content1:
@@ -10291,7 +10291,7 @@ const coursesData = {
         rating: 4.9,
         duration: "1.5 months",
         students: "745",
-        img: "/images/courses/power-automate.webp",
+        img: "/images/home/homepage-v2/AI-powered-icons/AI-powered-fsd/MPA.webp",
         aboutData: {
           topic:
             "Master Power Automate — Transform Business Processes with Intelligent Automation!",
