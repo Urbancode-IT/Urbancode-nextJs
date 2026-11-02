@@ -17,16 +17,12 @@ import HomeV2Faq from "./HomeV2Faq";
 import V2PageReveal from "@/app/components/common/V2PageReveal";
 import "./NewHomePage.css";
 
+const isBootcampBanner = (b) =>
+  String(b?.src || "").includes("FSD_TVL_Bootcamp") ||
+  String(b?.courseName || "").toLowerCase().includes("bootcamp") ||
+  String(b?.leadPlace || "").toLowerCase().includes("bootcamp");
+
 const FALLBACK_BANNERS = [
-  {
-    src: "/images/home/FSD_TVL_Bootcamp.webp",
-    alt: "Free Zero to Hero Full Stack Development Bootcamp in Tirunelveli on 31 October 2026",
-    type: "modal",
-    courseName: "Full Stack Development Bootcamp - Tirunelveli",
-    customTitle: "Register for Zero to Hero Bootcamp",
-    hideMode: true,
-    leadPlace: "Home V2 banner — FSD Tirunelveli Bootcamp",
-  },
   {
     src: "/images/home/6-month-program-banner.webp",
     alt: "AI Software Engineering Certification Program (6 Months)",
@@ -71,7 +67,8 @@ export default function NewHomePage() {
         const body = await res.json().catch(() => ({}));
         if (!res.ok || !body?.data || cancelled) return;
         if (Array.isArray(body.data.banners) && body.data.banners.length) {
-          setBanners(body.data.banners);
+          const next = body.data.banners.filter((b) => !isBootcampBanner(b));
+          setBanners(next.length ? next : FALLBACK_BANNERS);
         }
         if (Array.isArray(body.data.voiceVideos) && body.data.voiceVideos.length) {
           setVoiceVideos(body.data.voiceVideos);
