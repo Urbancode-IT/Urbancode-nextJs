@@ -19,17 +19,17 @@ export const metadata = {
     "coding educator Urbancode",
   ],
   alternates: {
-    canonical: "https://urbancode.in/be-our-mentor",
+    canonical: "https://www.urbancode.in/be-our-mentor",
   },
   openGraph: {
     title: "Become a Mentor, Trainer & Educator at Urbancode | Guide Future Tech Professionals",
     description:
       "Empower aspiring developers by joining Urbancode as a mentor, trainer, or educator. Share your knowledge, teach coding, and make a lasting impact in tech education.",
-    url: "https://urbancode.in/be-our-mentor",
+    url: "https://www.urbancode.in/be-our-mentor",
     siteName: "Urbancode Edutech",
     images: [
       {
-        url: "https://urbancode.in/images/mentor-banner.jpg",
+        url: "https://www.urbancode.in/images/mentor-banner.jpg",
         width: 1200,
         height: 630,
         alt: "Become a Mentor, Trainer, or Educator at Urbancode",

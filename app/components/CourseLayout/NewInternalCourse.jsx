@@ -13,6 +13,7 @@ import ProgramCohorts from "./ProgramCohorts";
 
 import EnquiryFormModal from "@/app/components/common/EnquiryFormModal.jsx";
 import CourseAssistant from "@/app/components/CourseAssistant/CourseAssistant";
+import FaqRichText from "@/app/components/common/FaqRichText";
 import KidsMascot    from "./KidsMascot";
 
 const NewInternalCourse = ({ data }) => {
@@ -486,7 +487,9 @@ const NewInternalCourse = ({ data }) => {
                                     </div>
 
                                     <div className="nict-faq-collapse">
-                                        <div className="nict-faq-answer">{item.a}</div>
+                                        <div className="nict-faq-answer">
+                                            <FaqRichText text={item.a} />
+                                        </div>
                                     </div>
                                 </div>
                             ))}

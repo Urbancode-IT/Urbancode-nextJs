@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { FiChevronLeft, FiChevronRight, FiX } from "react-icons/fi";
 import { googleReviewsFallback } from "../../../data/googleReviewsFallback";
+import ScrollHintText from "./ScrollHintText";
 import "./HomeV2GoogleReviews.css";
 
 const WRITE_REVIEW_LINKS = {
@@ -292,11 +293,9 @@ export default function HomeV2GoogleReviews() {
                     </div>
                   </div>
                   <Stars rating={Number(review.rating) || 5} />
-                  <p className="home-v2-gr-text">
-                    {review.text?.length > 140
-                      ? `${review.text.slice(0, 137)}…`
-                      : review.text}
-                  </p>
+                  <ScrollHintText className="home-v2-gr-text">
+                    {review.text}
+                  </ScrollHintText>
                   <span className="home-v2-gr-badge">
                     {review.branchName || "Google"}
                   </span>

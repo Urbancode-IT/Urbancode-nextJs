@@ -4,6 +4,7 @@ import Link from 'next/link';
 export const metadata = {
   title: 'Thank You | Urbancode Study Abroad',
   description: 'Thank you for contacting Urbancode Study Abroad.',
+  robots: { index: false, follow: false },
 };
 
 export default function StudyAbroadThankYou() {

@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
+import ScrollHintText from "./ScrollHintText";
 import "./HomeV2Alumni.css";
 
 const QUOTE_ICON =
@@ -179,9 +180,12 @@ export default function HomeV2Alumni() {
                   />
                 </div>
 
-                <blockquote className="home-v2-alumni-quote">
+                <ScrollHintText
+                  as="blockquote"
+                  className="home-v2-alumni-quote"
+                >
                   {item.quote}
-                </blockquote>
+                </ScrollHintText>
 
                 <figcaption className="home-v2-alumni-caption">
                   <span className="home-v2-alumni-avatar">

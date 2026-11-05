@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { FaPlus, FaMinus } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 import { homeFaqs as faqs } from "../../data/homeFaqs";
+import FaqRichText, { faqAnswerPlainText } from "../common/FaqRichText";
 import "./faqs.css";
 
 const Faqs = () => {
@@ -57,7 +58,7 @@ const Faqs = () => {
                             "name": faq.question,
                             "acceptedAnswer": {
                                 "@type": "Answer",
-                                "text": faq.answer
+                                "text": faqAnswerPlainText(faq.answer)
                             }
                         }))
                     })
@@ -115,7 +116,7 @@ const Faqs = () => {
                                                 maxHeight: activeIndex === index ? '400px' : '0px',
                                             }}
                                         >
-                                            <p>{faq.answer}</p>
+                                            <FaqRichText text={faq.answer} />
                                         </div>
                                     </div>
                                 ))}

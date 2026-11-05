@@ -151,17 +151,28 @@
 
 .home-v2-alumni-quote {
   margin: 16px 0 0;
-  padding: 0;
+  padding: 0 4px 0 0;
   flex: 1 1 auto;
+  min-height: 0;
+  max-height: 120px;
   font-weight: 400;
   font-size: 15px;
   line-height: 24px;
   color: #55615c;
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  outline: none;
 }
+
+.home-v2-alumni-quote::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
 
 .home-v2-alumni-caption {
   box-sizing: border-box;

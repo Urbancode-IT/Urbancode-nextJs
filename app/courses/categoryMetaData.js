@@ -1,52 +1,95 @@
 const categoryMetaData = {
   "programming-languages": {
-    title: " Courses | Urbancode",
+    title: "Programming Language Courses in Chennai, Tamil Nadu | Urbancode",
     description:
-      "Master C, C++, Java, Python, and more with Urbancode’s programming language courses. Build a strong foundation in coding for real-world applications.",
+      "Master Java, Python, C, and C++ at Urbancode Edutech in Chennai, Tamil Nadu. Job-oriented programming courses with live projects and placement support.",
     keywords: [
-      "Programming courses",
-      "C programming",
-      "Python training",
-      "Java development",
-      "Coding bootcamp",
-      "Urbancode Chennai"
+      "Programming courses Chennai",
+      "Python training Tamil Nadu",
+      "Java course Chennai",
+      "C programming institute Chennai",
+      "Coding bootcamp Tamil Nadu",
+      "Urbancode Chennai",
     ],
     image: "/images/courses-images/programming.webp",
   },
   "fullstack-development": {
-    title: "Full Stack Development Courses | Urbancode",
+    title: "Full Stack Development Courses in Chennai, Tamil Nadu | Urbancode",
     description:
-      "Learn to build modern websites and apps using HTML, CSS, JavaScript, React, Node.js, and Express. Step into fullstack development with Urbancode.",
+      "Best Full Stack & AI-Powered Full Stack training in Chennai — React, Next.js, Node.js, MongoDB. Offline in Velachery/Pallikaranai and online across Tamil Nadu.",
     keywords: [
-      "Web development",
-      "React courses",
-      "Next.js",
-      "Fullstack training",
-      "MERN stack",
-      "Urbancode"
+      "Full stack course Chennai",
+      "MERN stack training Tamil Nadu",
+      "Next.js course Chennai",
+      "Web development institute Chennai",
+      "AI powered full stack Chennai",
+      "Urbancode",
     ],
     image: "/images/courses-images/web.webp",
   },
   "ui-ux-designing": {
-    title: "UI UX Designing Courses | Urbancode",
+    title: "UI UX Design Courses in Chennai, Tamil Nadu | Urbancode",
     description:
-      "Design beautiful and user-friendly interfaces. Learn Figma, prototyping, and UX strategy to create impactful digital experiences.",
-    keywords: ["UI design", "UX design", "Figma", "Wireframing", "Urbancode"],
+      "Learn Figma, UX research, and prototyping at Urbancode Chennai. Build a hire-ready UI/UX portfolio with expert mentors in Tamil Nadu.",
+    keywords: [
+      "UI UX course Chennai",
+      "Figma training Tamil Nadu",
+      "UX design institute Chennai",
+      "Wireframing course",
+      "Urbancode",
+    ],
     image: "/images/courses-images/UIUX.webp",
   },
   "cloud-and-devops": {
-    title: "Cloud & DevOps Courses | Urbancode",
+    title: "Cloud & DevOps Courses in Chennai, Tamil Nadu | Urbancode",
     description:
-      "Master cloud platforms, CI/CD pipelines, and automation with our DevOps programs. Learn AWS, Docker, Jenkins, and Kubernetes from experts.",
-    keywords: ["DevOps", "Cloud computing", "AWS", "Docker", "Kubernetes"],
+      "AWS, Docker, Kubernetes, Terraform & Jenkins training in Chennai. Hands-on DevOps labs and placement support for Tamil Nadu learners.",
+    keywords: [
+      "AWS course Chennai",
+      "DevOps training Tamil Nadu",
+      "Cloud computing Chennai",
+      "Docker Kubernetes course",
+      "Urbancode",
+    ],
     image: "/images/courses-images/Cloud.webp",
   },
   "ai-and-data-science": {
-    title: "AI and Data Science Courses | Urbancode",
+    title: "AI, Gen AI & Data Science Courses in Chennai, Tamil Nadu | Urbancode",
     description:
-      "Master AI, Generative AI, machine learning, and data analytics with Urbancode. Dive deep into Python, LLMs, and big data to build intelligent solutions.",
-    keywords: ["AI", "Data Science", "Generative AI", "Machine Learning", "Python", "LLMs", "RAG"],
+      "Learn Generative AI, Machine Learning, and Data Analytics in Chennai with Python, LLMs, RAG, and Power BI — placement-focused training for Tamil Nadu.",
+    keywords: [
+      "AI course Chennai",
+      "Generative AI training Tamil Nadu",
+      "Data Science institute Chennai",
+      "Machine Learning course Chennai",
+      "Data Analytics Chennai",
+      "Urbancode",
+    ],
     image: "/images/courses-images/datascience.webp",
+  },
+  "data-engineering": {
+    title: "Data Engineering Courses in Chennai, Tamil Nadu | Urbancode",
+    description:
+      "Data engineering and analytics pipeline training in Chennai with SQL, cloud data tools, and placement assistance across Tamil Nadu.",
+    keywords: [
+      "Data engineering course Chennai",
+      "Data pipeline training Tamil Nadu",
+      "SQL course Chennai",
+      "Urbancode",
+    ],
+    image: "/images/courses-images/datascience.webp",
+  },
+  "kidz-space": {
+    title: "Coding Courses for Kids in Chennai, Tamil Nadu | Urbancode",
+    description:
+      "Kidz Space at Urbancode — Scratch, Python, junior web, and AI foundations for school students in Chennai and Tamil Nadu.",
+    keywords: [
+      "coding for kids Chennai",
+      "kids programming Tamil Nadu",
+      "Scratch course Chennai",
+      "Urbancode Kidz Space",
+    ],
+    image: "/images/courses-images/programming.webp",
   },
   "database": {
     title: "Database Courses | Urbancode",
@@ -56,10 +99,16 @@ const categoryMetaData = {
     image: "/images/courses-images/database.webp",
   },
   "software-testing": {
-    title: "Software Testing Courses | Urbancode",
+    title: "Software Testing & QA Automation Courses in Chennai | Urbancode",
     description:
-      "Master manual and automation testing with Selenium and advanced QA tools.",
-    keywords: ["Software testing", "QA", "Automation", "Selenium"],
+      "Playwright, Selenium, and API testing course in Chennai, Tamil Nadu with live projects and placement support for freshers and career switchers.",
+    keywords: [
+      "Software testing course Chennai",
+      "Automation testing Tamil Nadu",
+      "Playwright course Chennai",
+      "Selenium training Chennai",
+      "QA course Tamil Nadu",
+    ],
     image: "/images/courses-images/softwaretesting.webp",
   },
   "net-working": {

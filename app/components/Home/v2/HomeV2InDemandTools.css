@@ -4,7 +4,8 @@
   padding: 64px 0;
   box-sizing: border-box;
   font-family: "Satoshi", -apple-system, BlinkMacSystemFont, sans-serif;
-  overflow: hidden;
+  overflow-x: clip;
+  overflow-y: visible;
 }
 
 .home-v2-tools-inner {
@@ -45,12 +46,17 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
-  overflow: hidden;
+  overflow: visible;
+  /* Room for card hover shadow so bottoms aren’t clipped */
+  padding: 10px 0 16px;
 }
 
 .home-v2-tools-marquee {
   width: 100%;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: visible;
+  padding: 6px 0 10px;
+  margin: -6px 0 -10px;
   mask-image: linear-gradient(
     to right,
     transparent,
@@ -111,18 +117,20 @@
   box-sizing: border-box;
   flex: 0 0 141.5px;
   width: 141.5px;
-  height: 141.5px;
+  min-height: 141.5px;
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 12px;
-  padding: 12px 8px;
+  padding: 16px 8px;
   background: #ffffff;
   border: 0.67px solid #e6ebe9;
   border-radius: 16px;
   text-decoration: none;
   color: inherit;
+  overflow: visible;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -176,7 +184,7 @@
   .home-v2-tools-card {
     flex-basis: 128px;
     width: 128px;
-    height: 128px;
+    min-height: 128px;
   }
 }
 
@@ -193,7 +201,7 @@
   .home-v2-tools-card {
     flex-basis: 118px;
     width: 118px;
-    height: 118px;
+    min-height: 118px;
   }
 
   .home-v2-tools-name {

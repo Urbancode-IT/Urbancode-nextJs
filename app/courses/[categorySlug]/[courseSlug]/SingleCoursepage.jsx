@@ -7,6 +7,7 @@ import { findCategoryEntry, findCourseBySlug } from "@/lib/courseSlugs";
 import './styles.css';
 import { newCourseData } from "@/app/data/newCourseData";
 import NewInternalCourse from "@/app/components/CourseLayout/NewInternalCourse";
+import { getCourseFaqList } from "@/app/data/seoCourseFaqs";
 
 const kidsHighlights = [
   { icon: <FaChild />, label: "Age Group", value: "7 - 14 Years" },
@@ -438,7 +439,11 @@ export default function SingleCoursepage({ params, course: courseProp = null }) 
     ),
     curriculumData: mappedCurriculum,
     toolsData: getToolsForCourse(course.title),
-    faqData: newCourseData["mern-stack"]?.faqData || [],
+    faqData: getCourseFaqList({
+      courseSlug,
+      categorySlug,
+      courseTitle: course.title,
+    }),
     locked: course.locked,
     isKidsSpace: categorySlug === "kidz-space",
     batches: course.batches,

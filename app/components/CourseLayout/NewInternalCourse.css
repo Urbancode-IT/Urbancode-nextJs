@@ -1189,6 +1189,21 @@
     transition: opacity 0.3s ease;
 }
 
+.nict-faq-answer p {
+    margin: 0;
+}
+
+.nict-faq-answer .faq-inline-link {
+    color: #008f58;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.nict-faq-answer .faq-inline-link:hover {
+    color: #006b42;
+}
+
 .nict-faq-item.nict-active .nict-faq-answer {
     padding-top: 12px;
     opacity: 1;

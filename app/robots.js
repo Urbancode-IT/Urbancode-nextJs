@@ -1,16 +1,24 @@
+import { SITE_URL } from "../lib/siteConfig";
+
 export default function robots() {
   return {
     rules: [
       {
-        userAgent: '*',
-        allow: '/',
+        userAgent: "*",
+        allow: "/",
         disallow: [
-          '/api/',
-          '/feedback/admin',
-          '/thankyou',
+          "/api/",
+          "/feedback/admin",
+          "/home-admin",
+          "/lead-admin",
+          "/thankyou",
+          "/study-abroad-thankyou",
+          "/study-abroad-redirect",
+          "/study-abroad/evaluation-form",
+          "/form",
         ],
       },
     ],
-    sitemap: 'https://urbancode.in/sitemap.xml',
+    sitemap: `${SITE_URL}/sitemap.xml`,
   };
 }

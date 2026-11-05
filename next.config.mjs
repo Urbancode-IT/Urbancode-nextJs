@@ -43,6 +43,27 @@ const nextConfig = {
   async redirects() {
     return [
       { source: '/thank-you', destination: '/thankyou', permanent: true },
+      // Legacy / thin URLs → canonical course & category pages
+      {
+        source: '/courses/fullstack-development/mern-stack',
+        destination: '/courses/fullstack-development/ai-powered-fullstack',
+        permanent: true,
+      },
+      {
+        source: '/courses/data-science',
+        destination: '/courses/ai-and-data-science',
+        permanent: true,
+      },
+      {
+        source: '/courses/data-visualization/:course*',
+        destination: '/courses/ai-and-data-science',
+        permanent: true,
+      },
+      {
+        source: '/blogs/all',
+        destination: '/blogs',
+        permanent: true,
+      },
     ];
   },
 

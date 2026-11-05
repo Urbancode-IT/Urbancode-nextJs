@@ -34,17 +34,17 @@ export default function HomeV2MncSection() {
             <div
               key={`${company.id}-${index}`}
               className="home-v2-mnc-card"
+              title={company.name}
             >
               <span className="home-v2-mnc-logo">
                 <Image
                   src={company.logo}
-                  alt=""
-                  width={36}
-                  height={36}
+                  alt={company.name}
+                  width={56}
+                  height={56}
                   className="home-v2-mnc-logo-img"
                 />
               </span>
-              <span className="home-v2-mnc-name">{company.name}</span>
             </div>
           ))}
         </div>

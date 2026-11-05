@@ -13,21 +13,27 @@ import ConditionalLayout from './components/common/ConditionalLayout';
 import SmoothScroll from './components/common/SmoothScroll';
 
 export const metadata = {
-  title: 'Urbancode | Learn with Experts',
-  description: 'Transforming skills into success with expert-led coding courses in Chennai.',
-  alternates: {
-    types: {
-      'application/rss+xml': 'https://www.urbancode.in/rss.xml',
-    },
+  metadataBase: new URL('https://www.urbancode.in'),
+  title: 'Urbancode Edutech | IT Training Institute in Chennai, Tamil Nadu',
+  description:
+    'Job-oriented IT & coding courses in Chennai and Tamil Nadu — Full Stack, AI, Testing, Cloud, kids coding, and study abroad guidance with placement support.',
+  openGraph: {
+    type: 'website',
+    locale: 'en_IN',
+    siteName: 'Urbancode Edutech',
+    url: 'https://www.urbancode.in',
+  },
+  twitter: {
+    card: 'summary_large_image',
   },
   other: {
     "geo.region": "IN-TN",
-    "geo.placename": "Chennai",
+    "geo.placename": "Chennai, Tamil Nadu",
     "geo.position": "12.9419;80.2076",
     "ICBM": "12.9419, 80.2076",
-    "DC.title": "Urbancode | Learn with Experts",
-    "DC.description": "Transforming skills into success with expert-led coding courses in Chennai.",
-    "DC.publisher": "Urbancode",
+    "DC.title": "Urbancode Edutech | IT Training Institute in Chennai, Tamil Nadu",
+    "DC.description": "Job-oriented coding courses in Chennai and Tamil Nadu with placement support.",
+    "DC.publisher": "Urbancode Edutech",
     "DC.coverage": "IN-TN",
     "DC.language": "en",
     "target_country": "IN",
@@ -48,8 +54,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/* Explicit viewport — belt-and-suspenders with export const viewport below */}
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+        {/* Viewport comes from `export const viewport` only — duplicate meta tags hurt Lighthouse */}
         <link rel="dns-prefetch" href="https://uc-chatbot.netlify.app" />
 
         {/*
@@ -78,13 +83,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               "@graph": [
                 {
                   "@type": "Organization",
-                  "@id": "https://urbancode.in/#organization",
+                  "@id": "https://www.urbancode.in/#organization",
                   "name": "Urbancode Edutech",
                   "legalName": "Urbancode Edutech Solutions",
-                  "url": "https://urbancode.in",
-                  "logo": "https://urbancode.in/images/home/logo.png",
-                  "image": "https://urbancode.in/images/home/og-image.jpg",
-                  "description": "Premium IT and coding training institute in Chennai providing job-oriented certification courses.",
+                  "url": "https://www.urbancode.in",
+                  "logo": "https://www.urbancode.in/images/home/logo.png",
+                  "image": "https://www.urbancode.in/images/home/og-image.jpg",
+                  "description": "Premium IT and coding training institute in Chennai, Tamil Nadu providing job-oriented certification courses.",
                   "sameAs": [
                     "https://www.facebook.com/profile.php?id=61563183054002",
                     "https://www.instagram.com/urbancode_edutech/",
@@ -102,12 +107,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 {
                   "@type": "EducationalOrganization",
                   "name": "Urbancode - Velachery Branch",
-                  "@id": "https://urbancode.in/#velachery",
-                  "parentOrganization": { "@id": "https://urbancode.in/#organization" },
-                  "url": "https://urbancode.in",
+                  "@id": "https://www.urbancode.in/#velachery",
+                  "parentOrganization": { "@id": "https://www.urbancode.in/#organization" },
+                  "url": "https://www.urbancode.in",
                   "telephone": "+91 9878798797",
                   "priceRange": "₹₹",
-                  "areaServed": "Chennai",
+                  "areaServed": ["Chennai", "Tamil Nadu"],
                   "address": {
                     "@type": "PostalAddress",
                     "streetAddress": "52/159, Velachery Main Rd, next to GURU NANAK COLLEGE, near Phoenix Marketcity, Velachery",
@@ -134,12 +139,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 {
                   "@type": "EducationalOrganization",
                   "name": "Urbancode - Pallikaranai Branch",
-                  "@id": "https://urbancode.in/#pallikaranai",
-                  "parentOrganization": { "@id": "https://urbancode.in/#organization" },
-                  "url": "https://urbancode.in",
+                  "@id": "https://www.urbancode.in/#pallikaranai",
+                  "parentOrganization": { "@id": "https://www.urbancode.in/#organization" },
+                  "url": "https://www.urbancode.in",
                   "telephone": "+91 9429694123",
                   "priceRange": "₹₹",
-                  "areaServed": "Chennai",
+                  "areaServed": ["Chennai", "Tamil Nadu"],
                   "address": {
                     "@type": "PostalAddress",
                     "streetAddress": "9/29, 5th St, Kamakoti Nagar, Pallikaranai",
@@ -166,12 +171,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 {
                   "@type": "EducationalOrganization",
                   "name": "Urbancode - Tirunelveli Branch",
-                  "@id": "https://urbancode.in/#tirunelveli",
-                  "parentOrganization": { "@id": "https://urbancode.in/#organization" },
-                  "url": "https://urbancode.in",
+                  "@id": "https://www.urbancode.in/#tirunelveli",
+                  "parentOrganization": { "@id": "https://www.urbancode.in/#organization" },
+                  "url": "https://www.urbancode.in",
                   "telephone": "+91 9878798797",
                   "priceRange": "₹₹",
-                  "areaServed": "Tirunelveli",
+                  "areaServed": ["Tirunelveli", "Tamil Nadu"],
                   "address": {
                     "@type": "PostalAddress",
                     "streetAddress": "Fab Sapphire Towers, No.29/5, 3rd Floor, South Bye Pass Road",

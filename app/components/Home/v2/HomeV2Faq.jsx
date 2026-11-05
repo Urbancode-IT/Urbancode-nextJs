@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import { homeFaqs } from "../../../data/homeFaqs";
+import FaqRichText, { faqAnswerPlainText } from "../../common/FaqRichText";
 import "./HomeV2Faq.css";
 
 const PAGE_SIZE = 3;
@@ -72,7 +73,7 @@ export default function HomeV2Faq() {
               name: faq.question,
               acceptedAnswer: {
                 "@type": "Answer",
-                text: faq.answer,
+                text: faqAnswerPlainText(faq.answer),
               },
             })),
           }),
@@ -146,7 +147,7 @@ export default function HomeV2Faq() {
                           aria-labelledby={`home-v2-faq-question-${faq.globalIndex}`}
                         >
                           <div className="home-v2-faq-answer-inner">
-                            <p>{faq.answer}</p>
+                            <FaqRichText text={faq.answer} />
                           </div>
                         </div>
                       </div>

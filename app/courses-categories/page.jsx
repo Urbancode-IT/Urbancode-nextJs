@@ -18,17 +18,17 @@ export const metadata = {
     "IT internship and placement courses Chennai",
   ],
   alternates: {
-    canonical: "https://urbancode.in/courses-categories",
+    canonical: "https://www.urbancode.in/courses-categories",
   },
   openGraph: {
     title: "Explore IT Course Categories | Urbancode Edutech Chennai",
     description:
       "Discover Urbancode’s range of IT and software course categories — Web Development, Data Science, Cloud, UI/UX, and more. Learn from expert trainers with internship and placement programs.",
-    url: "https://urbancode.in/courses-categories",
+    url: "https://www.urbancode.in/courses-categories",
     siteName: "Urbancode Edutech",
     images: [
       {
-        url: "https://urbancode.in/images/home/courses-category-banner.jpg",
+        url: "https://www.urbancode.in/images/home/courses-category-banner.jpg",
         width: 1200,
         height: 630,
         alt: "Urbancode Course Categories Overview",

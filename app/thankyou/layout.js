@@ -1,12 +1,8 @@
 export const metadata = {
-  title: 'Thank You | Urbancode',
-  description: 'Your enquiry has been submitted successfully.',
-  robots: {
-    index: false,
-    follow: false,
-  },
+  title: "Thank You | Urbancode",
+  robots: { index: false, follow: false },
 };
 
-export default function ThankYouLayout({ children }) {
+export default function Layout({ children }) {
   return children;
 }

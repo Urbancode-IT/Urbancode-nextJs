@@ -22,24 +22,24 @@ const commonHighlights = [
 
 const commonFaq = [
     {
+        q: "Is this course available in Chennai and across Tamil Nadu?",
+        a: "Yes. Urbancode Edutech offers offline batches in Velachery & Pallikaranai (Chennai) plus live online classes for learners across Tamil Nadu, with Tamil/English mentoring.",
+    },
+    {
         q: "Do you provide live projects?",
-        a: "Yes, we provide multiple real-time live projects to help you gain hands-on experience.",
+        a: "Yes, we provide multiple real-time live projects so you graduate with a portfolio recruiters in Chennai and pan-India roles expect.",
     },
     {
         q: "Do you provide internship opportunities?",
-        a: "Yes, internship opportunities are provided based on performance and availability.",
-    },
-    {
-        q: "How many real-time applications can I develop after this course?",
-        a: "You can develop 5–10 real-world applications by the end of this course.",
+        a: "Yes, internship opportunities (typically 1–3 months) are provided based on performance and availability.",
     },
     {
         q: "Are the trainers working professionals?",
-        a: "Yes, all our trainers are industry experts and working professionals.",
+        a: "Yes, trainers are industry experts and working professionals who coach for Tamil Nadu’s IT hiring market.",
     },
     {
         q: "Do you support placements?",
-        a: "Yes, we provide 100% placement assistance including interview preparation.",
+        a: "Yes, we provide placement assistance including resume prep, mock interviews, and hiring partner referrals.",
     },
 ];
 

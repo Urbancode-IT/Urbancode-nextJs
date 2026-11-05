@@ -19,6 +19,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { Star, Users, Clock } from "lucide-react";
 import { FaPlus, FaMinus, FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { getCategoryFaqList } from "@/app/data/seoCourseFaqs";
+import FaqRichText, { faqAnswerPlainText } from "@/app/components/common/FaqRichText";
 // import CourseAssistant from "@/app/components/CourseAssistant/CourseAssistant";
 
 const categoryTools = {
@@ -139,84 +141,6 @@ const categories = [
   "Languages",
 ];
 
-const faqData = [
-  // Page 1: Full Stack & MERN Stack Development
-  {
-    question: "What makes MERN Stack training in Chennai highly effective for landing full-stack developer jobs in 2026?",
-    answer: "A structured MERN Stack course in Chennai at Urbancode Edutech (https://urbancode.in) focuses on React, Node.js, Express, and MongoDB, teaching you how to build responsive, real-time database-driven web applications. With hands-on mentorship, simulated corporate projects, and dedicated career guidance, freshers and professionals can easily transition into high-paying IT roles.",
-    highlight: true
-  },
-  {
-    question: "Why is Next.js preferred over standard React for modern full-stack web development?",
-    answer: "Next.js brings Server-Side Rendering (SSR), Static Site Generation (SSG), and API routes built-in, offering superior performance, faster loading times, and excellent SEO capabilities out of the box. Urbancode's full-stack program includes Next.js so you master enterprise-ready React frameworks."
-  },
-  {
-    question: "What are the core differences between MEAN Stack and MERN Stack, and which one is more in demand?",
-    answer: "MEAN stack uses Angular for the frontend, whereas MERN stack uses React. MERN Stack is currently more in demand for startup and medium-sized enterprise roles due to React's flexibility and massive community support, while MEAN remains popular in legacy enterprise environments. Urbancode provides dedicated training in both architectures."
-  },
-  {
-    question: "How can I start learning Full Stack Web Development as a complete beginner?",
-    answer: "Start with HTML5, CSS3, and JavaScript basics, then progress to frontend libraries like React, followed by backend environments like Node.js/Express, and database management (SQL/NoSQL). Urbancode's coding bootcamp is designed for beginners, offering step-by-step guidance and 100% placement support."
-  },
-
-  // Page 2: AI-Powered Fullstack Development
-  {
-    question: "What is an AI-powered full-stack developer, and why is this role trending in 2026?",
-    answer: "An AI-powered fullstack developer builds traditional web applications integrated with Generative AI capabilities, such as OpenAI API, Claude, LangChain, vector databases, and Retrieval-Augmented Generation (RAG) models. This role is trending as businesses automate operations and require developers who can seamlessly embed intelligent agents into their products.",
-    highlight: true
-  },
-  {
-    question: "How does Urbancode train developers to integrate LLM APIs and Generative AI into web applications?",
-    answer: "At Urbancode Edutech (https://urbancode.in/courses), our AI-powered Fullstack Development course teaches you Python, Prompt Engineering, API integrations (OpenAI, Gemini), vector databases (ChromaDB, Pinecone), and LangChain. You will build and deploy smart chatbots, recommendation engines, and AI agents."
-  },
-  {
-    question: "Do I need a background in advanced mathematics or machine learning to become an AI Web Developer?",
-    answer: "No. You don't need a PhD or complex machine learning math to build AI-powered apps. You only need solid JavaScript/Python skills and an understanding of how to consume and orchestrate LLM APIs, vector stores, and agentic frameworks. Urbancode guides you through this step-by-step."
-  },
-  {
-    question: "What are the job prospects for developers skilled in AI-Powered Fullstack engineering?",
-    answer: "Job prospects are exceptionally high. Companies are actively refactoring legacy software to include AI features. Developers skilled in both frontend/backend and LLM orchestration command premium salaries and enjoy faster career growth in 2026."
-  },
-
-  // Page 3: Software Testing & QA Automation
-  {
-    question: "Why is Playwright overtaking Selenium as the trending tool for software automation testing?",
-    answer: "Playwright offers faster execution speeds, built-in auto-waiting, native emulation of mobile devices, support for modern web architectures (Shadow DOM, single-page apps), and multi-browser support out-of-the-box. Our Software Testing course at Urbancode Edutech covers both Selenium and Playwright to keep you competitive.",
-    highlight: true
-  },
-  {
-    question: "What does the Software Testing placement training curriculum at Urbancode include?",
-    answer: "Our curriculum covers manual testing fundamentals, automation testing with Selenium (Java) and Playwright (TypeScript/JavaScript), API testing with Postman, mobile testing, and DevOps CI/CD integration using Jenkins and Git, along with real-time project bug tracking."
-  },
-  {
-    question: "How does learning DevOps pipelines benefit a Software Testing professional?",
-    answer: "Modern QA engineers are expected to run test suites automatically within CI/CD pipelines (GitHub Actions, Jenkins). Integrating testing into DevOps ensures bugs are caught early in the development lifecycle, making QA engineers with DevOps skills highly valuable."
-  },
-  {
-    question: "Can a non-IT graduate build a career in software automation testing?",
-    answer: "Yes, software testing is one of the most accessible entry points into the IT industry. With Urbancode's focused training in logical scripting, automation tools, and intensive mock interviews, non-IT graduates routinely secure high-paying QA roles."
-  },
-
-  // Page 4: Data Analyst & Data Science
-  {
-    question: "What are the trending tools and skills required to become a certified Data Analyst in 2026?",
-    answer: "A modern Data Analyst must master SQL for database querying, Python/Pandas for data cleaning, and business intelligence (BI) tools like Power BI and Tableau for interactive dashboard creation. Urbancode's Data Analytics program combines all these with live corporate datasets.",
-    highlight: true
-  },
-  {
-    question: "Is Python or SQL more important for landing an entry-level Data Analyst job?",
-    answer: "SQL is the absolute foundation for any data role since almost all corporate data resides in databases. Python is equally important for advanced analytics, automation, and machine learning. Urbancode covers both extensively to make you a well-rounded candidate."
-  },
-  {
-    question: "How does Urbancode help students build a professional portfolio for Data Analytics?",
-    answer: "We guide students to work on real-world projects such as sales dashboards, financial forecasting models, and customer segmentation analyses. You will document and publish these projects on GitHub and Tableau Public to showcase to recruiters."
-  },
-  {
-    question: "What is the difference between a Data Analyst and a Data Scientist?",
-    answer: "Data Analysts focus on descriptive and diagnostic analytics (what happened and why) using SQL and BI tools. Data Scientists focus on predictive analytics and machine learning models (what will happen) using advanced Python algorithms. Urbancode offers specialized pathways for both careers."
-  }
-];
-
 const slugify = slugifyCategoryName;
 const deslugify = (slug) =>
   categories.find((cat) => slugifyCategoryName(cat) === slug) || categories[0];
@@ -231,14 +155,20 @@ export default function Courses({ categorySlug }) {
   
   // Keep a safe slug for routing
   const currentCategorySlug = categorySlug || slugify(activeCategory);
+  const faqData = getCategoryFaqList(currentCategorySlug);
   const router = useRouter();
   const [search, setSearch] = useState("");
   const [openIndex, setOpenIndex] = useState(null);
   const [currentPage, setCurrentPage] = useState(0);
   const itemsPerPage = 4;
 
-  const totalPages = Math.ceil(faqData.length / itemsPerPage);
+  const totalPages = Math.max(1, Math.ceil(faqData.length / itemsPerPage));
   const currentFaqs = faqData.slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage);
+
+  useEffect(() => {
+    setCurrentPage(0);
+    setOpenIndex(null);
+  }, [currentCategorySlug]);
 
   const nextSlide = () => {
     setCurrentPage((prev) => (prev + 1) % totalPages);
@@ -554,7 +484,7 @@ export default function Courses({ categorySlug }) {
                           "name": faq.question,
                           "acceptedAnswer": {
                               "@type": "Answer",
-                              "text": faq.answer
+                              "text": faqAnswerPlainText(faq.answer)
                           }
                       }))
                   })
@@ -608,7 +538,7 @@ export default function Courses({ categorySlug }) {
                                                   maxHeight: openIndex === index ? '400px' : '0px',
                                               }}
                                           >
-                                              <p>{faq.answer}</p>
+                                              <FaqRichText text={faq.answer} />
                                           </div>
                                       </div>
                                   ))}

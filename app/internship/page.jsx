@@ -18,18 +18,18 @@ export const metadata = {
     "students internship Chennai",
   ],
   alternates: {
-    canonical: "https://urbancode.in/internship",
+    canonical: "https://www.urbancode.in/internship",
   },
   openGraph: {
     title:
       "Internship Opportunities | Urbancode Edutech Chennai",
     description:
       "Join Urbancode Edutech’s internship program in Chennai — hands-on training in full stack development, Python, and data analytics with certification and job support.",
-    url: "https://urbancode.in/internship",
+    url: "https://www.urbancode.in/internship",
     siteName: "Urbancode Edutech",
     images: [
       {
-        url: "https://urbancode.in/images/og/internship.jpg",
+        url: "https://www.urbancode.in/images/og/internship.jpg",
         width: 1200,
         height: 630,
         alt: "Internship at Urbancode Chennai",
@@ -55,8 +55,8 @@ export default function InternshipPage() {
             "provider": {
               "@type": "EducationalOrganization",
               "name": "Urbancode Edutech",
-              "url": "https://urbancode.in",
-              "logo": "https://urbancode.in/images/logo.png",
+              "url": "https://www.urbancode.in",
+              "logo": "https://www.urbancode.in/images/logo.png",
               "address": [
                 {
                   "@type": "PostalAddress",

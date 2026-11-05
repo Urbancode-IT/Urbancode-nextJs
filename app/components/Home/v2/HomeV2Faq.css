@@ -243,6 +243,17 @@
   color: #55615c;
 }
 
+.home-v2-faq-answer .faq-inline-link {
+  color: #008f58;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.home-v2-faq-answer .faq-inline-link:hover {
+  color: #006b42;
+}
+
 @media (max-width: 1024px) {
   .home-v2-faq-inner {
     grid-template-columns: 1fr;

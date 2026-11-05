@@ -206,7 +206,7 @@ export default function HomeV2AiCourses() {
                 <div className="home-v2-ai-card-media">
                   <Image
                     src={course.image}
-                    alt=""
+                    alt={`${course.title} course thumbnail`}
                     fill
                     sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 390px"
                     className="home-v2-ai-card-img"

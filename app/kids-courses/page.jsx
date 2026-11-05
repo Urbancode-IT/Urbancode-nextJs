@@ -18,17 +18,17 @@ export const metadata = {
     "Urbancode Edutech kids course",
   ],
   alternates: {
-    canonical: "https://urbancode.in/kids-courses",
+    canonical: "https://www.urbancode.in/kids-courses",
   },
   openGraph: {
     title: "Kids Coding Courses in Chennai | Urbancode Edutech",
     description:
       "Urbancode offers fun and engaging coding courses for kids in Chennai — covering Scratch, Python, and web design. Build creativity and problem-solving skills early!",
-    url: "https://urbancode.in/kids-courses",
+    url: "https://www.urbancode.in/kids-courses",
     siteName: "Urbancode Edutech",
     images: [
       {
-        url: "https://urbancode.in/images/og/kids-coding.jpg",
+        url: "https://www.urbancode.in/images/og/kids-coding.jpg",
         width: 1200,
         height: 630,
         alt: "Kids coding at Urbancode Chennai",
@@ -53,8 +53,8 @@ export default function KidsCourses() {
             "provider": {
               "@type": "EducationalOrganization",
               "name": "Urbancode Edutech",
-              "url": "https://urbancode.in",
-              "logo": "https://urbancode.in/images/logo.png"
+              "url": "https://www.urbancode.in",
+              "logo": "https://www.urbancode.in/images/logo.png"
             },
             "hasCourseInstance": [
               {

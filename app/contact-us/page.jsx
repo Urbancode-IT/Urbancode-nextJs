@@ -20,17 +20,17 @@ export const metadata = {
     "Internship and placement support Chennai",
   ],
   alternates: {
-    canonical: "https://urbancode.in/contact-us",
+    canonical: "https://www.urbancode.in/contact-us",
   },
   openGraph: {
     title: "Contact Urbancode | IT & Coding Training in Chennai & Tirunelveli",
     description:
       "Reach out to Urbancode Edutech — top IT training institute in Chennai & Tirunelveli with expert trainers, internship programs, and placement support.",
-    url: "https://urbancode.in/contact-us",
+    url: "https://www.urbancode.in/contact-us",
     siteName: "Urbancode Edutech",
     images: [
       {
-        url: "https://urbancode.in/images/og/contact-us.jpg",
+        url: "https://www.urbancode.in/images/og/contact-us.jpg",
         width: 1200,
         height: 630,
         alt: "Contact Urbancode Edutech - Chennai & Tirunelveli IT Institute",
@@ -57,8 +57,8 @@ export default function ContactUsPage() {
             "@context": "https://schema.org",
             "@type": "EducationalOrganization",
             "name": "Urbancode Edutech",
-            "url": "https://urbancode.in/contact-us",
-            "logo": "https://urbancode.in/images/logo.png",
+            "url": "https://www.urbancode.in/contact-us",
+            "logo": "https://www.urbancode.in/images/logo.png",
             "description": "Urbancode Edutech is a leading IT and coding training institute in Chennai & Tirunelveli offering courses in web development, MERN stack, Python, and software testing with placement support.",
             "address": [
               {
