@@ -1,0 +1,44 @@
+/* Realistic Deepavali fireworks overlay (fireworks-js) */
+#ucDeepavaliFireworks,
+.uc-dv-fireworks-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 9998;
+}
+
+#ucDeepavaliFireworks canvas,
+.uc-dv-fireworks-canvas canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  opacity: 0.9;
+}
+
+@media (max-width: 1024px) {
+  #ucDeepavaliFireworks canvas,
+  .uc-dv-fireworks-canvas canvas {
+    opacity: 0.82;
+    transform: scale(0.92);
+    transform-origin: center bottom;
+  }
+}
+
+@media (max-width: 640px) {
+  #ucDeepavaliFireworks canvas,
+  .uc-dv-fireworks-canvas canvas {
+    opacity: 0.75;
+    transform: scale(0.78);
+    transform-origin: center bottom;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #ucDeepavaliFireworks,
+  .uc-dv-fireworks-canvas {
+    display: none;
+  }
+}

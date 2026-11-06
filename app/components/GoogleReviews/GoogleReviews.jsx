@@ -27,6 +27,15 @@ const GoogleReviews = () => {
 
     const fallbackReviews = googleReviewsFallback;
 
+    const mergeBranchReviews = (apiReviews, fallback) => {
+        const list = Array.isArray(apiReviews) ? apiReviews : [];
+        const branchesInApi = new Set(list.map((r) => r.branchName).filter(Boolean));
+        const missingFallback = fallback.filter(
+            (r) => r.branchName && !branchesInApi.has(r.branchName)
+        );
+        return [...list, ...missingFallback];
+    };
+
     useEffect(() => {
         const fetchReviews = async () => {
             try {
@@ -39,7 +48,7 @@ const GoogleReviews = () => {
 
                 let fetchedReviews = [];
                 if (data.success && data.data && data.data.length > 0) {
-                    fetchedReviews = data.data;
+                    fetchedReviews = mergeBranchReviews(data.data, fallbackReviews);
                 } else {
                     fetchedReviews = fallbackReviews;
                 }

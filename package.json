@@ -25,6 +25,7 @@
     "canvas-confetti": "^1.9.4",
     "chart.js": "^4.5.1",
     "cloudinary": "^2.10.0",
+    "fireworks-js": "^2.10.8",
     "framer-motion": "^12.42.2",
     "googleapis": "^173.0.0",
     "gsap": "^3.15.0",

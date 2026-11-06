@@ -157,3 +157,264 @@
     color: #333;
   }
 }
+
+/* ── Deepavali scorecard pop (bottom → top) ───────────────────── */
+.deepavali-popup-overlay {
+  align-items: flex-end;
+  justify-content: center;
+  padding: 24px 16px 28px;
+  perspective: 1400px;
+}
+
+.deepavali-backdrop {
+  background: rgba(10, 6, 2, 0.72);
+  backdrop-filter: blur(8px);
+}
+
+.deepavali-scorecard {
+  position: relative;
+  z-index: 10000;
+  width: min(420px, 100%);
+  margin-bottom: max(8px, env(safe-area-inset-bottom));
+  padding: 28px 24px 22px;
+  border-radius: 22px;
+  overflow: hidden;
+  isolation: isolate;
+  color: #fff7ed;
+  background:
+    radial-gradient(120% 90% at 50% -10%, rgba(251, 191, 36, 0.35) 0%, transparent 55%),
+    linear-gradient(160deg, #1c1208 0%, #3b1d0c 42%, #7c2d12 100%);
+  border: 1px solid rgba(251, 191, 36, 0.35);
+  box-shadow:
+    0 28px 60px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  transform-origin: bottom center;
+}
+
+.deepavali-scorecard-glow {
+  position: absolute;
+  inset: -30% -20% auto;
+  height: 60%;
+  background: radial-gradient(circle, rgba(251, 191, 36, 0.28) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.deepavali-scorecard-shine {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.12) 48%,
+    transparent 62%
+  );
+  transform: translateX(-120%);
+  animation: deepavaliShine 3.8s ease-in-out 0.6s infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes deepavaliShine {
+  0%,
+  35% {
+    transform: translateX(-120%);
+  }
+  55%,
+  100% {
+    transform: translateX(120%);
+  }
+}
+
+.deepavali-sparks {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.deepavali-sparks span {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #fbbf24;
+  box-shadow: 0 0 10px rgba(251, 191, 36, 0.9);
+  animation: deepavaliSpark 2.8s ease-in-out infinite;
+}
+
+.deepavali-sparks span:nth-child(1) {
+  left: 12%;
+  top: 22%;
+  animation-delay: 0s;
+}
+.deepavali-sparks span:nth-child(2) {
+  left: 78%;
+  top: 18%;
+  animation-delay: 0.4s;
+}
+.deepavali-sparks span:nth-child(3) {
+  left: 24%;
+  top: 68%;
+  animation-delay: 0.8s;
+}
+.deepavali-sparks span:nth-child(4) {
+  left: 86%;
+  top: 58%;
+  animation-delay: 1.1s;
+}
+.deepavali-sparks span:nth-child(5) {
+  left: 52%;
+  top: 12%;
+  width: 4px;
+  height: 4px;
+  animation-delay: 1.5s;
+}
+
+@keyframes deepavaliSpark {
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: translateY(0) scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-10px) scale(1.15);
+  }
+}
+
+.deepavali-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 3;
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.25);
+  color: #fff7ed;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.deepavali-close:hover {
+  background: rgba(0, 0, 0, 0.4);
+  transform: rotate(90deg);
+}
+
+.deepavali-eyebrow {
+  position: relative;
+  z-index: 2;
+  margin: 0 0 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #fde68a;
+}
+
+.deepavali-title {
+  position: relative;
+  z-index: 2;
+  margin: 0 0 10px;
+  font-size: clamp(22px, 4vw, 28px);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #fffbeb;
+}
+
+.deepavali-sub {
+  position: relative;
+  z-index: 2;
+  margin: 0 0 18px;
+  font-size: 14px;
+  line-height: 1.55;
+  color: rgba(255, 247, 237, 0.78);
+}
+
+.deepavali-stats {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.deepavali-stats > div {
+  padding: 10px 8px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(251, 191, 36, 0.22);
+  text-align: center;
+}
+
+.deepavali-stats strong {
+  display: block;
+  font-size: 16px;
+  font-weight: 800;
+  color: #fbbf24;
+  margin-bottom: 2px;
+}
+
+.deepavali-stats span {
+  font-size: 11px;
+  color: rgba(255, 247, 237, 0.7);
+  letter-spacing: 0.02em;
+}
+
+.deepavali-cta {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  min-height: 46px;
+  border: none;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: linear-gradient(90deg, #f59e0b 0%, #fbbf24 50%, #fde68a 100%);
+  color: #1c1208;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(245, 158, 11, 0.35);
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.deepavali-cta:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+}
+
+@media (max-width: 480px) {
+  .deepavali-popup-overlay {
+    padding: 12px 10px 16px;
+  }
+
+  .deepavali-scorecard {
+    padding: 24px 18px 18px;
+    border-radius: 18px;
+  }
+
+  .deepavali-title {
+    font-size: 22px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .deepavali-scorecard-shine,
+  .deepavali-sparks span {
+    animation: none;
+  }
+}

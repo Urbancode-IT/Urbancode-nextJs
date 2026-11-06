@@ -389,7 +389,7 @@ export default function Courses({ categorySlug }) {
                                   src={course.img}
                                   alt={course.title}
                                   fill
-                                  className="rounded-3 card-img object-cover"
+                                  className="rounded-3 card-img object-contain"
                                 />
                               </div>
 

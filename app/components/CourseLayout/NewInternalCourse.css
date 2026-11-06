@@ -243,9 +243,11 @@
     align-items: center;
     min-width: 320px;
     max-width: 650px;
-    height: 500px;
+    height: auto;
+    min-height: 320px;
+    max-height: none;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .nict-hero-image {
@@ -257,8 +259,8 @@
 
 .legacy-image-container {
     width: 100%;
-    max-width: 520px;
-    aspect-ratio: 16 / 10;
+    max-width: 560px;
+    aspect-ratio: auto;
     background: transparent;
     border: none;
     padding: 0;
@@ -270,13 +272,15 @@
 .legacy-image-wrapper {
     align-items: center;
     justify-content: center;
+    overflow: visible;
 }
 
 .legacy-image {
-    width: 80%;
-    height: 80%;
+    width: 100%;
+    height: auto;
+    max-height: none;
     border-radius: 18px;
-    object-fit: cover;
+    object-fit: contain;
     object-position: center;
     display: block;
     margin-top: 0 !important;
@@ -347,7 +351,12 @@
     .nict-hero-image-wrapper,
     .nict-hero-mascot-wrapper {
         max-width: 720px;
-        height: 650px;
+        height: auto;
+        min-height: 380px;
+    }
+
+    .legacy-image-container {
+        max-width: 640px;
     }
 }
 

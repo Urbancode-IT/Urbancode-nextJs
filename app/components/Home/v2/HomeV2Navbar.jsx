@@ -167,9 +167,10 @@ export default function HomeV2Navbar() {
                 setDemoOpen(true);
               }}
             >
-              Book a demo
+              <span className="home-v2-nav-demo-shine" aria-hidden="true" />
+              <span className="home-v2-nav-demo-label">Book a demo</span>
               <span className="home-v2-nav-demo-arrow" aria-hidden="true">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
                   <path d="M5 12h14M13 5l7 7-7 7" stroke="#fff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </span>

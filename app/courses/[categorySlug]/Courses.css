@@ -265,6 +265,16 @@
 .img-holder {
   overflow: hidden;
   height: 200px;
+  background: #0b1220;
+}
+
+.img-holder .card-img,
+.img-holder .object-contain {
+  object-fit: contain !important;
+}
+
+.img-holder .object-cover {
+  object-fit: cover !important;
 }
 
 .course-new-badge {

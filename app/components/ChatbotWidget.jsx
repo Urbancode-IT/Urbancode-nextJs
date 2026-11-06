@@ -1,40 +1,71 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect } from "react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import "./Chatbot.css"; // move your CSS here
-import EnquiryFormModal from "./common/EnquiryFormModal";
+import "./Chatbot.css";
+
+function killAssistBubble() {
+  document.querySelectorAll(".premium-notification").forEach((el) => el.remove());
+
+  // Only remove the white assist bubble (both lines together in a small box)
+  document.querySelectorAll("div, aside, section").forEach((el) => {
+    if (el === document.body || el.id === "chatbot-trigger" || el.id === "chatbot-container") {
+      return;
+    }
+    const text = (el.textContent || "").replace(/\s+/g, " ").trim();
+    if (
+      text.includes("How may I assist you today") &&
+      text.includes("Book a demo now") &&
+      text.length < 120
+    ) {
+      el.remove();
+    }
+  });
+}
 
 const ChatbotWidget = () => {
   const pathname = usePathname();
-  const [showPopup, setShowPopup] = useState(false);
-  const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
-  const soundPlayedRef = useRef(false);
 
   useEffect(() => {
-    if (pathname && pathname.startsWith('/study-abroad')) {
-      return;
+    // Inject hard-hide style once
+    const styleId = "uc-hide-assist-bubble";
+    if (!document.getElementById(styleId)) {
+      const style = document.createElement("style");
+      style.id = styleId;
+      style.textContent = `
+        .premium-notification,
+        .premium-notification * {
+          display: none !important;
+          visibility: hidden !important;
+          opacity: 0 !important;
+          pointer-events: none !important;
+          width: 0 !important;
+          height: 0 !important;
+          overflow: hidden !important;
+        }
+      `;
+      document.head.appendChild(style);
     }
-    const timer = setTimeout(() => {
-      setShowPopup(true);
 
-      if (!soundPlayedRef.current) {
-        const audio = new Audio("/sounds/notification.mp3");
-        audio.volume = 0.4;
-        audio.play().catch(() => {});
-        soundPlayedRef.current = true;
-      }
-    }, 2000); // 5 sec delay
+    killAssistBubble();
+    const observer = new MutationObserver(() => killAssistBubble());
+    observer.observe(document.body, { childList: true, subtree: true });
+    const poll = window.setInterval(killAssistBubble, 1500);
 
-    return () => clearTimeout(timer);
+    return () => {
+      observer.disconnect();
+      window.clearInterval(poll);
+    };
   }, []);
 
   useEffect(() => {
+    if (pathname && pathname.startsWith("/study-abroad")) {
+      return;
+    }
+
     const chatbotTrigger = document.getElementById("chatbot-trigger");
     const chatbotContainer = document.getElementById("chatbot-container");
     const chatbotClose = document.querySelector(".chatbot-close");
-    
-
 
     if (!chatbotTrigger || !chatbotContainer || !chatbotClose) return;
 
@@ -43,8 +74,8 @@ const ChatbotWidget = () => {
 
     chatbotTrigger.addEventListener("click", toggleChat);
     chatbotClose.addEventListener("click", closeChat);
-    
-    document.addEventListener("click", (event) => {
+
+    const onDocClick = (event) => {
       if (
         chatbotContainer.classList.contains("active") &&
         !chatbotContainer.contains(event.target) &&
@@ -52,22 +83,29 @@ const ChatbotWidget = () => {
       ) {
         closeChat();
       }
-    });
+    };
+    document.addEventListener("click", onDocClick);
 
     return () => {
       chatbotTrigger.removeEventListener("click", toggleChat);
       chatbotClose.removeEventListener("click", closeChat);
+      document.removeEventListener("click", onDocClick);
     };
-  }, []);
+  }, [pathname]);
 
-  if (pathname && pathname.startsWith('/study-abroad')) {
+  if (pathname && pathname.startsWith("/study-abroad")) {
     return null;
   }
 
   return (
     <>
-      {/* Chatbot Trigger */}
-      <div id="chatbot-trigger" className="chatbot-trigger" role="button" tabIndex={0} aria-label="Open chat assistant">
+      <div
+        id="chatbot-trigger"
+        className="chatbot-trigger"
+        role="button"
+        tabIndex={0}
+        aria-label="Open chat assistant"
+      >
         <div className="chatbot-icon">
           <Image
             src="/images/get.png"
@@ -78,29 +116,8 @@ const ChatbotWidget = () => {
           />
           <span className="chatbot-pulse"></span>
         </div>
-        {showPopup && (
-          <div
-            className="premium-notification"
-            onClick={(e) => {
-              e.stopPropagation();
-              setShowPopup(false);
-              setIsDemoModalOpen(true);
-            }}
-          >
-            {/* <div className="notification-icon">🎁</div> */}
-            <div className="notification-content">
-              <p className="notif-title">How may I assist you today?</p>
-              <p className="notif-link">Book a demo now →</p>
-            </div>
-            <div className="notif-close" onClick={(e) => {
-              e.stopPropagation();
-              setShowPopup(false);
-            }}>×</div>
-          </div>
-        )}
       </div>
 
-      {/* Chatbot Container */}
       <div id="chatbot-container" className="chatbot-container">
         <div className="chatbot-close">
           <svg
@@ -127,14 +144,6 @@ const ChatbotWidget = () => {
           loading="lazy"
         ></iframe>
       </div>
-
-      <EnquiryFormModal
-        isOpen={isDemoModalOpen}
-        onClose={() => setIsDemoModalOpen(false)}
-        isDemoMode={true}
-        courseName=""
-        leadPlace="Site-wide chatbot"
-      />
     </>
   );
 };

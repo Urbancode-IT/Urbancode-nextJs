@@ -1,0 +1,283 @@
+/* Deepavali sky-rocket with bursting flame (previous style) */
+.uc-dv-rocket-fab {
+  position: fixed;
+  right: 18px;
+  bottom: 132px;
+  z-index: 9999;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  cursor: pointer;
+  font-family: "Satoshi", -apple-system, BlinkMacSystemFont, sans-serif;
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.3));
+  transition: transform 0.2s ease;
+}
+
+.uc-dv-rocket-fab:hover {
+  transform: translateY(-4px) scale(1.05);
+}
+
+.uc-dv-rocket-fab:focus-visible {
+  outline: 2px solid #00c875;
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+.uc-dv-skyrocket {
+  position: relative;
+  width: 44px;
+  height: 70px;
+  display: grid;
+  place-items: center;
+  animation: ucDvRocketBob 2.2s ease-in-out infinite;
+}
+
+.uc-dv-skyrocket-svg {
+  width: 40px;
+  height: 60px;
+  display: block;
+  position: relative;
+  z-index: 2;
+}
+
+.uc-dv-fuse-spark {
+  animation: ucDvFuseBlink 0.55s ease-in-out infinite alternate;
+}
+
+/* Side burst sparks (like last rocket style) */
+.uc-dv-skyrocket-burst {
+  position: absolute;
+  left: 50%;
+  bottom: 8px;
+  width: 0;
+  height: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.uc-dv-skyrocket-burst i {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 2px;
+  height: 11px;
+  border-radius: 2px;
+  background: linear-gradient(to top, #ef4444, #fbbf24, transparent);
+  transform-origin: bottom center;
+  animation: ucDvBurstSpark 0.45s ease-in-out infinite alternate;
+}
+
+.uc-dv-skyrocket-burst i:nth-child(1) {
+  transform: rotate(-50deg) translateY(-6px);
+  animation-delay: 0s;
+}
+.uc-dv-skyrocket-burst i:nth-child(2) {
+  transform: rotate(-25deg) translateY(-8px);
+  height: 13px;
+  animation-delay: 0.06s;
+}
+.uc-dv-skyrocket-burst i:nth-child(3) {
+  transform: rotate(-5deg) translateY(-9px);
+  height: 14px;
+  animation-delay: 0.1s;
+}
+.uc-dv-skyrocket-burst i:nth-child(4) {
+  transform: rotate(12deg) translateY(-9px);
+  height: 14px;
+  animation-delay: 0.08s;
+}
+.uc-dv-skyrocket-burst i:nth-child(5) {
+  transform: rotate(32deg) translateY(-8px);
+  height: 12px;
+  animation-delay: 0.12s;
+}
+.uc-dv-skyrocket-burst i:nth-child(6) {
+  transform: rotate(55deg) translateY(-6px);
+  animation-delay: 0.04s;
+}
+
+/* Triple-layer bursting flame */
+.uc-dv-skyrocket-flame {
+  position: absolute;
+  left: 50%;
+  bottom: -4px;
+  width: 18px;
+  height: 22px;
+  margin-left: -9px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.uc-dv-skyrocket-flame-outer,
+.uc-dv-skyrocket-flame-mid,
+.uc-dv-skyrocket-flame-inner {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  border-radius: 50% 50% 40% 40%;
+  transform: translateX(-50%);
+  transform-origin: top center;
+}
+
+.uc-dv-skyrocket-flame-outer {
+  width: 16px;
+  height: 22px;
+  background: linear-gradient(180deg, #fb923c 0%, #ef4444 50%, transparent 100%);
+  filter: blur(0.5px);
+  animation: ucDvFlameBurst 0.28s ease-in-out infinite alternate;
+}
+
+.uc-dv-skyrocket-flame-mid {
+  width: 10px;
+  height: 16px;
+  bottom: 2px;
+  background: linear-gradient(180deg, #fdba74 0%, #f97316 55%, transparent 100%);
+  animation: ucDvFlameBurst 0.24s ease-in-out infinite alternate-reverse;
+}
+
+.uc-dv-skyrocket-flame-inner {
+  width: 5px;
+  height: 11px;
+  bottom: 5px;
+  background: linear-gradient(180deg, #fff7ed 0%, #fde047 55%, transparent 100%);
+  animation: ucDvFlameBurst 0.2s ease-in-out infinite alternate;
+}
+
+.uc-dv-rocket-hint {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  box-shadow: none;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: lowercase;
+  color: #b45309;
+  line-height: 1;
+  white-space: nowrap;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.uc-dv-rocket-fab.is-opened .uc-dv-rocket-hint {
+  color: #047857;
+}
+
+.uc-dv-rocket-fab.is-opened .uc-dv-skyrocket {
+  animation-duration: 0.85s;
+}
+
+.uc-dv-rocket-fab.is-opened .uc-dv-skyrocket-flame-outer {
+  height: 26px;
+  width: 18px;
+}
+
+.uc-dv-rocket-fab.is-opened .uc-dv-skyrocket-burst i {
+  animation-duration: 0.28s;
+}
+
+@keyframes ucDvRocketBob {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-2deg);
+  }
+  50% {
+    transform: translateY(-5px) rotate(2deg);
+  }
+}
+
+@keyframes ucDvFlameBurst {
+  from {
+    transform: translateX(-50%) scaleY(0.8) scaleX(0.85);
+    opacity: 0.8;
+  }
+  to {
+    transform: translateX(-50%) scaleY(1.25) scaleX(1.1);
+    opacity: 1;
+  }
+}
+
+@keyframes ucDvBurstSpark {
+  from {
+    opacity: 0.45;
+    filter: brightness(0.9);
+  }
+  to {
+    opacity: 1;
+    filter: brightness(1.35);
+  }
+}
+
+@keyframes ucDvFuseBlink {
+  from {
+    opacity: 0.55;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 1024px) {
+  .uc-dv-rocket-fab {
+    right: 14px;
+    bottom: 126px;
+  }
+
+  .uc-dv-skyrocket {
+    width: 40px;
+    height: 64px;
+  }
+
+  .uc-dv-skyrocket-svg {
+    width: 36px;
+    height: 54px;
+  }
+}
+
+@media (max-width: 640px) {
+  .uc-dv-rocket-fab {
+    right: 10px;
+    bottom: 122px;
+  }
+
+  .uc-dv-skyrocket {
+    width: 34px;
+    height: 56px;
+  }
+
+  .uc-dv-skyrocket-svg {
+    width: 30px;
+    height: 46px;
+  }
+
+  .uc-dv-rocket-hint {
+    font-size: 8px;
+  }
+
+  .uc-dv-skyrocket-flame {
+    width: 14px;
+    height: 16px;
+    margin-left: -7px;
+  }
+
+  .uc-dv-skyrocket-flame-outer {
+    width: 12px;
+    height: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .uc-dv-skyrocket,
+  .uc-dv-skyrocket-flame-outer,
+  .uc-dv-skyrocket-flame-mid,
+  .uc-dv-skyrocket-flame-inner,
+  .uc-dv-skyrocket-burst i,
+  .uc-dv-fuse-spark {
+    animation: none;
+  }
+}

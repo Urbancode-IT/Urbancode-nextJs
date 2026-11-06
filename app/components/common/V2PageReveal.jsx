@@ -18,12 +18,10 @@ export default function V2PageReveal({ children, className = "" }) {
     root.classList.add("is-ready");
 
     const targets = Array.from(
-      root.querySelectorAll(
-        ":scope > section, :scope > .home-v2-above-fold, section"
-      )
-    );
+      root.querySelectorAll(":scope > section, section")
+    ).filter((el) => !el.closest(".home-v2-above-fold") && !el.classList.contains("home-v2-hero"));
 
-    // De-dupe nested matches (above-fold + its child sections)
+    // De-dupe; keep hero/above-fold static (no reveal zoom/slide on title)
     const unique = [...new Set(targets)];
 
     unique.forEach((el) => el.classList.add("v2-reveal-target"));

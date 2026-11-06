@@ -1067,6 +1067,8 @@ export default function NewPortfolioDesign() {
         </div>
       </section>
 
+      {/* Client Stories hidden for now */}
+
       {/* ── Testimonials Section (Uploaded Image 2) ── */}
       <section className="np-testimonials-section">
         <div className="np-container">

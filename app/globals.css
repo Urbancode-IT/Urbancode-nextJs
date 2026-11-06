@@ -848,3 +848,23 @@ main:has(.study-abroad-container) .page-section:last-of-type {
     padding-block: calc(var(--home-section-spacing) * 0.5);
   }
 }
+/* -- Force-hide chatbot assist / book-demo bubble (bottom-right white widget) -- */
+.premium-notification,
+.premium-notification *,
+.notification-content,
+.notif-title,
+.notif-link,
+.notif-close {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  max-width: 0 !important;
+  max-height: 0 !important;
+  overflow: hidden !important;
+  position: absolute !important;
+  left: -99999px !important;
+  clip: rect(0, 0, 0, 0) !important;
+}

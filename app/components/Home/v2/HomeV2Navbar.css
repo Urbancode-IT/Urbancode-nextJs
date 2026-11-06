@@ -74,14 +74,14 @@
   display: flex;
   align-items: center;
   flex-shrink: 0;
-  width: 143px;
-  height: 31px;
+  width: 172px;
+  height: 38px;
   text-decoration: none;
 }
 
 .home-v2-nav-logo img {
-  width: 143px;
-  height: 31px;
+  width: 172px;
+  height: 38px;
   object-fit: contain;
 }
 
@@ -204,42 +204,142 @@
     visibility: visible;
     filter: none;
   }
+
+  .home-v2-nav-demo,
+  .home-v2-nav-demo-shine,
+  .home-v2-nav-demo-arrow {
+    animation: none !important;
+  }
 }
 
 .home-v2-nav-demo {
+  --demo-shadow: #003926;
+  position: relative;
+  isolation: isolate;
   box-sizing: border-box;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  min-width: 124.49px;
-  height: 45.5px;
-  padding: 0 14px;
+  gap: 5px;
+  min-width: 108px;
+  height: 34px;
+  padding: 0 12px;
   border: none;
   cursor: pointer;
+  overflow: hidden;
   background: linear-gradient(179.32deg, #00b56f -23.31%, #004f30 99.42%);
-  border-radius: 46.361px;
+  border-radius: 999px;
   font-family: "Satoshi", sans-serif;
   font-weight: 500;
-  font-size: 14px;
-  line-height: 21px;
+  font-size: 12.5px;
+  line-height: 1;
   color: #ffffff;
   white-space: nowrap;
   flex-shrink: 0;
-  transition: filter 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 3px 0 var(--demo-shadow), 0 6px 14px rgba(0, 79, 48, 0.22);
+  transform: translateY(0) scale(1, 1);
+  transition: filter 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  animation: home-v2-demo-push 2.6s cubic-bezier(0.34, 1.4, 0.64, 1) infinite;
+}
+
+.home-v2-nav-demo-shine {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    105deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.28) 48%,
+    transparent 62%
+  );
+  transform: translateX(-130%);
+  animation: home-v2-demo-shine 2.6s ease-in-out infinite;
+}
+
+.home-v2-nav-demo-label,
+.home-v2-nav-demo-arrow {
+  position: relative;
+  z-index: 1;
 }
 
 .home-v2-nav-demo:hover {
-  filter: brightness(1.06);
-  transform: translateY(-1px);
+  animation: none;
+  filter: brightness(1.05);
+  transform: translateY(2px) scale(0.985, 0.96);
+  box-shadow: 0 1px 0 var(--demo-shadow), 0 3px 8px rgba(0, 79, 48, 0.18);
+}
+
+.home-v2-nav-demo:hover .home-v2-nav-demo-shine {
+  animation: none;
+  opacity: 0;
+}
+
+.home-v2-nav-demo:active {
+  transform: translateY(3px) scale(0.97, 0.93);
+  box-shadow: 0 0 0 var(--demo-shadow), 0 2px 6px rgba(0, 79, 48, 0.16);
 }
 
 .home-v2-nav-demo-arrow {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 19px;
-  height: 19px;
+  width: 14px;
+  height: 14px;
+  animation: home-v2-demo-arrow 2.6s ease-in-out infinite;
+}
+
+.home-v2-nav-demo:hover .home-v2-nav-demo-arrow {
+  animation: none;
+  transform: translateX(2px);
+}
+
+@keyframes home-v2-demo-push {
+  0%,
+  62%,
+  100% {
+    transform: translateY(0) scale(1, 1);
+    box-shadow: 0 3px 0 var(--demo-shadow), 0 6px 14px rgba(0, 79, 48, 0.22);
+  }
+  70% {
+    transform: translateY(3px) scale(1.02, 0.9);
+    box-shadow: 0 0 0 var(--demo-shadow), 0 2px 8px rgba(0, 79, 48, 0.16);
+  }
+  80% {
+    transform: translateY(-1px) scale(0.99, 1.05);
+    box-shadow: 0 4px 0 var(--demo-shadow), 0 8px 16px rgba(0, 79, 48, 0.24);
+  }
+  90% {
+    transform: translateY(0) scale(1, 1);
+  }
+}
+
+@keyframes home-v2-demo-shine {
+  0%,
+  55% {
+    transform: translateX(-130%);
+  }
+  75%,
+  100% {
+    transform: translateX(130%);
+  }
+}
+
+@keyframes home-v2-demo-arrow {
+  0%,
+  62%,
+  100% {
+    transform: translateX(0);
+  }
+  70% {
+    transform: translateX(0);
+  }
+  80% {
+    transform: translateX(3px);
+  }
+  90% {
+    transform: translateX(0);
+  }
 }
 
 .home-v2-nav-burger {
@@ -348,8 +448,9 @@
   }
 
   .home-v2-nav-demo {
-    min-width: 118px;
-    height: 42px;
+    min-width: 102px;
+    height: 32px;
+    font-size: 12px;
   }
 }
 
@@ -361,13 +462,13 @@
   }
 
   .home-v2-nav-logo {
-    width: 128px;
-    height: 28px;
+    width: 152px;
+    height: 34px;
   }
 
   .home-v2-nav-logo img {
-    width: 128px;
-    height: 28px;
+    width: 152px;
+    height: 34px;
   }
 
   .home-v2-nav-burger {
@@ -442,9 +543,9 @@
   .home-v2-nav-demo {
     width: 100%;
     min-width: 0;
-    height: 48px;
+    height: 40px;
     margin-top: 8px;
-    font-size: 15px;
+    font-size: 14px;
   }
 }
 
@@ -458,13 +559,13 @@
   }
 
   .home-v2-nav-logo {
-    width: 118px;
-    height: 26px;
+    width: 140px;
+    height: 31px;
   }
 
   .home-v2-nav-logo img {
-    width: 118px;
-    height: 26px;
+    width: 140px;
+    height: 31px;
   }
 
   .home-v2-nav-right {

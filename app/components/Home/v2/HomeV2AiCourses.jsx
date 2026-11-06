@@ -21,7 +21,7 @@ const COURSES = [
     level: "Advanced",
     duration: "6 months",
     tags: ["React", "Node.js", "AWS"],
-    image: `${AI_THUMBS}/AIsoftwareengineering.webp`,
+    image: `${AI_THUMBS}/AIsoftwareengineering-v2.webp`,
     link: "/courses/fullstack-development/ai-software-engineering",
   },
   {
@@ -31,7 +31,7 @@ const COURSES = [
     level: "Beginner",
     duration: "12 weeks",
     tags: ["React", "HTML/CSS", "AI Tools"],
-    image: `${AI_THUMBS}/AIpoweredfsd.webp`,
+    image: `${AI_THUMBS}/AIpoweredfsd-v2.webp`,
     link: "/courses/fullstack-development/ai-powered-fullstack",
   },
   {
@@ -41,7 +41,7 @@ const COURSES = [
     level: "Advanced",
     duration: "8 weeks",
     tags: ["Python", "ML", "AI"],
-    image: `${AI_THUMBS}/AIandML.webp`,
+    image: `${AI_THUMBS}/AIandML-v2.webp`,
     link: "/courses/ai-and-data-science/ai-and-ml",
   },
   {
@@ -51,7 +51,7 @@ const COURSES = [
     level: "Intermediate",
     duration: "10 weeks",
     tags: ["Python", "LLMs", "RAG"],
-    image: `${AI_THUMBS}/GenAI.webp`,
+    image: `${AI_THUMBS}/GenAI-v2.webp`,
     link: "/courses/ai-and-data-science/gen-ai",
   },
   {
@@ -61,7 +61,7 @@ const COURSES = [
     level: "Intermediate",
     duration: "14 weeks",
     tags: ["Power Automate", "Flows", "AI Builder"],
-    image: `${AI_THUMBS}/MPA.webp`,
+    image: `${AI_THUMBS}/MPA-v2.webp`,
     link: "/courses/automation/microsoft-power-automate",
   },
   {
@@ -71,7 +71,7 @@ const COURSES = [
     level: "Advanced",
     duration: "12 weeks",
     tags: ["Azure", "ADF", "Databricks"],
-    image: `${AI_THUMBS}/DEwithMAzure.webp`,
+    image: `${AI_THUMBS}/DEwithMAzure-v2.webp`,
     link: "/courses/data-engineering/data-engineering-with-microsoft-azure",
   },
   {
@@ -81,7 +81,7 @@ const COURSES = [
     level: "Advanced",
     duration: "12 weeks",
     tags: ["SQL", "Python", "Power BI"],
-    image: `${AI_THUMBS}/DAwithMA.webp`,
+    image: `${AI_THUMBS}/DAwithMA-v2.webp`,
     link: "/courses/ai-and-data-science/data-analyst-with-microsoft-azure",
   },
 ];

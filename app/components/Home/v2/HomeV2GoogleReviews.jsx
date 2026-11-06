@@ -17,6 +17,18 @@ const BRANCHES = ["All", "Velachery", "Pallikaranai", "Tirunelveli"];
 
 const GAP = 20;
 
+/** Prefer live API reviews; fill missing branches from local fallback. */
+function mergeBranchReviews(apiReviews, fallback) {
+  const list = Array.isArray(apiReviews) ? apiReviews : [];
+  const branchesInApi = new Set(
+    list.map((r) => r.branchName).filter(Boolean)
+  );
+  const missingFallback = fallback.filter(
+    (r) => r.branchName && !branchesInApi.has(r.branchName)
+  );
+  return [...list, ...missingFallback];
+}
+
 function getVisibleCount(width) {
   if (width < 640) return 1;
   if (width < 900) return 2;
@@ -74,7 +86,7 @@ export default function HomeV2GoogleReviews() {
         }
         const data = await response.json();
         if (data.success && data.data?.length) {
-          setReviews(data.data);
+          setReviews(mergeBranchReviews(data.data, googleReviewsFallback));
         } else {
           setReviews(googleReviewsFallback);
         }
