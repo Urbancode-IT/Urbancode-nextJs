@@ -101,15 +101,15 @@ export function leadSourceTextLines(source) {
 }
 
 export function leadSourceHtmlRows(source) {
-  const row = (icon, label, value) => `
+  const row = (label, value) => `
                 <tr>
-                  <td style="padding:13px 16px;font-size:13px;font-weight:600;color:#475569;border-bottom:1px solid #e2e8f0;background:#fff7ed;width:38%;">${icon} ${label}</td>
+                  <td style="padding:13px 16px;font-size:13px;font-weight:600;color:#475569;border-bottom:1px solid #e2e8f0;background:#fff7ed;width:38%;">${label}</td>
                   <td style="padding:13px 16px;font-size:14px;color:#1a2b3c;border-bottom:1px solid #e2e8f0;">${escapeHtml(value)}</td>
                 </tr>`;
   return [
-    row('📄', 'Page', source.page),
-    row('📍', 'Section', source.section || 'Not captured'),
-    row('📝', 'Form', source.form),
-    row('🖱️', 'Button', source.button),
+    row('Page', source.page),
+    row('Section', source.section || 'Not captured'),
+    row('Form', source.form),
+    row('Button', source.button),
   ].join('');
 }

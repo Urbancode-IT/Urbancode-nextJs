@@ -46,11 +46,18 @@ export async function POST(req) {
     const contactError = validateLeadContact({ name, email, phone });
     if (contactError) return NextResponse.json({ success: false, message: contactError }, { status: 400 });
 
-    const recipient  = process.env.ENQUIRY_TO_EMAIL
-      ? `${process.env.ENQUIRY_TO_EMAIL}, zen@urbancode.in, admin@urbancode.in`
-      : 'zen@urbancode.in, admin@urbancode.in';
+    const recipient = [...new Set(
+      (process.env.ENQUIRY_TO_EMAIL
+        ? `${process.env.ENQUIRY_TO_EMAIL}, zen@urbancode.in, admin@urbancode.in`
+        : 'zen@urbancode.in, admin@urbancode.in'
+      )
+        .split(',')
+        .map((part) => part.trim())
+        .filter(Boolean)
+    )].join(', ');
     const sender     = getGmailSender();
     const transporter = getGmailTransporter();
+    const displayCourse = websiteCourse && websiteCourse !== 'N/A' ? websiteCourse : course;
 
     const htmlContent = `
 <!DOCTYPE html>
@@ -76,8 +83,7 @@ export async function POST(req) {
                    width="180"
                    style="display:inline-block;max-width:180px;height:auto;margin-bottom:12px;
                           background:#ffffff;padding:8px 14px;border-radius:10px;" />
-              <p style="margin:0;color:#d4f5e2;font-size:14px;letter-spacing:0.5px;">
-                Training &amp; Solutions
+              <p style="margin:0;color:#d4f5e2;font-size:14px;letter-spacing:0.5px;">Training &amp; Solutions
               </p>
             </td>
           </tr>
@@ -87,8 +93,7 @@ export async function POST(req) {
             <td style="padding:0 30px;">
               <div style="background:#fff8e1;border-left:4px solid #f59e0b;
                           border-radius:0 8px 8px 0;padding:14px 18px;margin-top:28px;">
-                <p style="margin:0;font-size:13px;color:#92400e;font-weight:600;">
-                  🔔 New Enquiry Alert — Action Required
+                <p style="margin:0;font-size:13px;color:#92400e;font-weight:600;">New Enquiry Alert — Action Required
                 </p>
               </div>
             </td>
@@ -97,11 +102,9 @@ export async function POST(req) {
           <!-- BODY -->
           <tr>
             <td style="padding:28px 30px 10px;">
-              <h2 style="margin:0 0 6px;font-size:22px;color:#1a2b3c;">
-                New Course Enquiry
+              <h2 style="margin:0 0 6px;font-size:22px;color:#1a2b3c;">New Course Enquiry
               </h2>
-              <p style="margin:0 0 24px;font-size:14px;color:#64748b;">
-                A prospective student has submitted an enquiry via the website.
+              <p style="margin:0 0 24px;font-size:14px;color:#64748b;">A prospective student has submitted an enquiry via the website.
               </p>
 
               <!-- Details Table -->
@@ -110,20 +113,20 @@ export async function POST(req) {
                             border:1px solid #e2e8f0;">
                 <tr style="background:#f8fafc;">
                   <td style="padding:13px 16px;font-size:13px;font-weight:600;color:#475569;
-                              border-bottom:1px solid #e2e8f0;width:38%;">👤 Name</td>
+                              border-bottom:1px solid #e2e8f0;width:38%;">Name</td>
                   <td style="padding:13px 16px;font-size:14px;color:#1a2b3c;
                               border-bottom:1px solid #e2e8f0;">${name}</td>
                 </tr>
                 <tr>
                   <td style="padding:13px 16px;font-size:13px;font-weight:600;color:#475569;
-                              border-bottom:1px solid #e2e8f0;background:#f8fafc;">📧 Email</td>
+                              border-bottom:1px solid #e2e8f0;background:#f8fafc;">Email</td>
                   <td style="padding:13px 16px;font-size:14px;border-bottom:1px solid #e2e8f0;">
                     <a href="mailto:${email}" style="color:#036c2d;text-decoration:none;font-weight:600;">${email}</a>
                   </td>
                 </tr>
                 <tr style="background:#f8fafc;">
                   <td style="padding:13px 16px;font-size:13px;font-weight:600;color:#475569;
-                              border-bottom:1px solid #e2e8f0;">📞 Phone</td>
+                              border-bottom:1px solid #e2e8f0;">Phone</td>
                   <td style="padding:13px 16px;font-size:14px;color:#1a2b3c;
                               border-bottom:1px solid #e2e8f0;">
                     <a href="tel:${phone}" style="color:#036c2d;text-decoration:none;font-weight:600;">${phone}</a>
@@ -131,26 +134,26 @@ export async function POST(req) {
                 </tr>
                 <tr>
                   <td style="padding:13px 16px;font-size:13px;font-weight:600;color:#475569;
-                              border-bottom:1px solid #e2e8f0;background:#f8fafc;">🎓 Course</td>
+                              border-bottom:1px solid #e2e8f0;background:#f8fafc;">Course</td>
                   <td style="padding:13px 16px;font-size:14px;color:#1a2b3c;
                               border-bottom:1px solid #e2e8f0;font-weight:600;">${course}</td>
                 </tr>
                 <tr style="background:#f8fafc;">
                   <td style="padding:13px 16px;font-size:13px;font-weight:600;color:#475569;
-                              border-bottom:1px solid #e2e8f0;">💻 Mode</td>
+                              border-bottom:1px solid #e2e8f0;">Mode</td>
                   <td style="padding:13px 16px;font-size:14px;color:#1a2b3c;
                               border-bottom:1px solid #e2e8f0;">${mode}</td>
                 </tr>
                 <tr>
                   <td style="padding:13px 16px;font-size:13px;font-weight:600;color:#475569;
-                              border-bottom:1px solid #e2e8f0;background:#f8fafc;">📍 PIN Code</td>
+                              border-bottom:1px solid #e2e8f0;background:#f8fafc;">PIN Code</td>
                   <td style="padding:13px 16px;font-size:14px;color:#1a2b3c;
                               border-bottom:1px solid #e2e8f0;">${pin}</td>
                 </tr>
                 ${leadSourceHtmlRows(leadSource)}
                 <tr style="background:#f8fafc;">
                   <td style="padding:13px 16px;font-size:13px;font-weight:600;color:#475569;
-                              vertical-align:top;">💬 Message</td>
+                              vertical-align:top;">Message</td>
                   <td style="padding:13px 16px;font-size:14px;color:#1a2b3c;">${message}</td>
                 </tr>
               </table>
@@ -163,8 +166,7 @@ export async function POST(req) {
               <a href="mailto:${email}?subject=Re: Your Enquiry for ${encodeURIComponent(course)} at UrbanCode"
                  style="display:inline-block;background:linear-gradient(90deg,#036c2d 0%,#17944d 100%);
                         color:#ffffff;text-decoration:none;padding:13px 32px;border-radius:30px;
-                        font-weight:600;font-size:15px;box-shadow:0 6px 18px rgba(3,108,45,0.3);">
-                Reply to Student
+                        font-weight:600;font-size:15px;box-shadow:0 6px 18px rgba(3,108,45,0.3);">Reply to Student
               </a>
             </td>
           </tr>
@@ -176,8 +178,7 @@ export async function POST(req) {
                 © ${new Date().getFullYear()} UrbanCode Training &amp; Solutions. All rights reserved.
               </p>
               <p style="margin:0;font-size:12px;">
-                <a href="https://www.urbancode.in" style="color:#17944d;text-decoration:none;font-weight:600;">
-                  www.urbancode.in
+                <a href="https://www.urbancode.in" style="color:#17944d;text-decoration:none;font-weight:600;">www.urbancode.in
                 </a>
               </p>
             </td>
@@ -191,17 +192,17 @@ export async function POST(req) {
 </html>
     `;
 
-    const emailPromise = transporter.sendMail({
+    const adminEmailPromise = transporter.sendMail({
       from: `"UrbanCode" <${sender}>`,
       to: recipient,
       replyTo: email,
-      subject: `🔔 New Enquiry: ${course} — ${name}`,
+      subject: `New Enquiry: ${displayCourse} — ${name}`,
       text: [
         'New course enquiry received:',
         `Name: ${name}`,
         `Email: ${email}`,
         `Phone: ${phone}`,
-        `Course: ${course}`,
+        `Course: ${displayCourse}`,
         `Mode: ${mode}`,
         `PIN: ${pin}`,
         ...leadSourceTextLines(leadSource),
@@ -210,9 +211,57 @@ export async function POST(req) {
       html: htmlContent,
     });
 
+    const studentHtml = `
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8" /><title>Enquiry Received</title></head>
+<body style="margin:0;padding:0;background:#f0f4f8;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#f0f4f8;padding:30px 0;">
+    <tr><td align="center">
+      <table width="600" cellpadding="0" cellspacing="0" border="0" style="max-width:600px;width:100%;background:#ffffff;border-radius:16px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,0.08);">
+        <tr>
+          <td style="background:linear-gradient(135deg,#036c2d 0%,#17944d 100%);padding:28px 30px;text-align:center;">
+            <img src="https://www.urbancode.in/images/home/logo.png" alt="UrbanCode" width="160" style="display:inline-block;max-width:160px;height:auto;background:#fff;padding:8px 14px;border-radius:10px;margin-bottom:10px;" />
+            <p style="margin:0;color:#d4f5e2;font-size:14px;">Training &amp; Solutions</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:32px 30px;">
+            <h2 style="margin:0 0 12px;font-size:22px;color:#1a2b3c;">Hi ${name},</h2>
+            <p style="margin:0 0 16px;font-size:15px;line-height:1.7;color:#334155;">
+              Thank you for your enquiry about <strong>${displayCourse}</strong>. Our team has received your details and will contact you shortly.
+            </p>
+            <p style="margin:0 0 16px;font-size:15px;line-height:1.7;color:#334155;">
+              Meanwhile, you can explore more programs on our website or book a free demo session with our counselors.
+            </p>
+            <div style="text-align:center;margin:28px 0 8px;">
+              <a href="https://www.urbancode.in/contact-us" style="display:inline-block;background:linear-gradient(90deg,#036c2d 0%,#17944d 100%);color:#ffffff;text-decoration:none;padding:13px 32px;border-radius:30px;font-weight:600;font-size:15px;">Book a Free Demo</a>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background:#1a2b3c;padding:22px 30px;text-align:center;">
+            <p style="margin:0;color:#94a3b8;font-size:12px;">&copy; ${new Date().getFullYear()} UrbanCode. All rights reserved.</p>
+            <p style="margin:6px 0 0;"><a href="https://www.urbancode.in" style="color:#17944d;text-decoration:none;font-weight:600;">www.urbancode.in</a></p>
+          </td>
+        </tr>
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>`;
+
+    const studentEmailPromise = transporter.sendMail({
+      from: `"UrbanCode" <${sender}>`,
+      to: email,
+      subject: `We received your enquiry for ${displayCourse} | UrbanCode`,
+      text: `Hi ${name},\n\nThank you for your enquiry about ${displayCourse}. Our team has received your details and will contact you shortly.\n\nBook a free demo: https://www.urbancode.in/contact-us\n\nBest regards,\nUrbanCode Team`,
+      html: studentHtml,
+    });
+
     const isBootcamp = /bootcamp/i.test(websiteCourse) || /bootcamp/i.test(leadSource.form) || /bootcamp/i.test(leadSource.button);
     const requirements = [
-      isBootcamp ? '★ [BOOTCAMP FORM SUBMISSION]' : '',
+      isBootcamp ? '[BOOTCAMP FORM SUBMISSION]' : '',
       websiteCourse && websiteCourse !== 'Course Enquiry' && websiteCourse !== 'N/A'
         ? `Website course: ${websiteCourse}`
         : '',
@@ -240,10 +289,17 @@ export async function POST(req) {
       'CRM request timed out.'
     );
 
-    const [emailResult, crmResult] = await Promise.allSettled([emailPromise, crmPromise]);
+    const [adminEmailResult, studentEmailResult, crmResult] = await Promise.allSettled([
+      adminEmailPromise,
+      studentEmailPromise,
+      crmPromise,
+    ]);
 
-    if (emailResult.status === 'rejected') {
-      console.error('Course enquiry email error:', emailResult.reason);
+    if (adminEmailResult.status === 'rejected') {
+      console.error('Course enquiry admin email error:', adminEmailResult.reason);
+    }
+    if (studentEmailResult.status === 'rejected') {
+      console.error('Course enquiry student email error:', studentEmailResult.reason);
     }
     if (crmResult.status === 'rejected') {
       console.error('Course enquiry CRM error:', crmResult.reason);
@@ -251,11 +307,18 @@ export async function POST(req) {
       console.error('Course enquiry CRM error:', crmResult.value.error);
     }
 
-    const emailOk = emailResult.status === 'fulfilled';
+    const adminEmailOk = adminEmailResult.status === 'fulfilled';
+    const studentEmailOk = studentEmailResult.status === 'fulfilled';
+    const emailOk = adminEmailOk || studentEmailOk;
     const crmOk = crmResult.status === 'fulfilled' && crmResult.value?.ok;
 
+    // Prefer delivering mail; do not hide SMTP failures behind CRM success alone.
+    if (!adminEmailOk && !studentEmailOk) {
+      throw adminEmailResult.reason || studentEmailResult.reason || new Error('Failed to send enquiry emails.');
+    }
+
     if (!emailOk && !crmOk) {
-      throw emailResult.reason || new Error('Failed to submit enquiry to email and CRM.');
+      throw adminEmailResult.reason || new Error('Failed to submit enquiry to email and CRM.');
     }
 
     await recordLeadEnquiry({

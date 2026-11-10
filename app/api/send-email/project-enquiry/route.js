@@ -54,8 +54,7 @@ export async function POST(req) {
                    alt="UrbanCode" width="180"
                    style="display:inline-block;max-width:180px;height:auto;margin-bottom:12px;
                           background:#ffffff;padding:8px 14px;border-radius:10px;" />
-              <p style="margin:0;color:#d4f5e2;font-size:14px;letter-spacing:0.5px;">
-                Training &amp; Solutions
+              <p style="margin:0;color:#d4f5e2;font-size:14px;letter-spacing:0.5px;">Training &amp; Solutions
               </p>
             </td>
           </tr>
@@ -65,8 +64,7 @@ export async function POST(req) {
             <td style="padding:0 30px;">
               <div style="background:#fce4ec;border-left:4px solid #c62828;
                           border-radius:0 8px 8px 0;padding:14px 18px;margin-top:28px;">
-                <p style="margin:0;font-size:13px;color:#b71c1c;font-weight:600;">
-                  🚀 New Project Enquiry — Action Required
+                <p style="margin:0;font-size:13px;color:#b71c1c;font-weight:600;">New Project Enquiry — Action Required
                 </p>
               </div>
             </td>
@@ -75,11 +73,9 @@ export async function POST(req) {
           <!-- BODY -->
           <tr>
             <td style="padding:28px 30px 10px;">
-              <h2 style="margin:0 0 6px;font-size:22px;color:#1a2b3c;">
-                Project / Web Development Enquiry
+              <h2 style="margin:0 0 6px;font-size:22px;color:#1a2b3c;">Project / Web Development Enquiry
               </h2>
-              <p style="margin:0 0 24px;font-size:14px;color:#64748b;">
-                A client has submitted a project enquiry via the website.
+              <p style="margin:0 0 24px;font-size:14px;color:#64748b;">A client has submitted a project enquiry via the website.
               </p>
 
               <table width="100%" cellpadding="0" cellspacing="0" border="0"
@@ -87,20 +83,20 @@ export async function POST(req) {
                             border:1px solid #e2e8f0;">
                 <tr style="background:#f8fafc;">
                   <td style="padding:13px 16px;font-size:13px;font-weight:600;color:#475569;
-                              border-bottom:1px solid #e2e8f0;width:38%;">👤 Name</td>
+                              border-bottom:1px solid #e2e8f0;width:38%;">Name</td>
                   <td style="padding:13px 16px;font-size:14px;color:#1a2b3c;
                               border-bottom:1px solid #e2e8f0;">${name}</td>
                 </tr>
                 <tr>
                   <td style="padding:13px 16px;font-size:13px;font-weight:600;color:#475569;
-                              border-bottom:1px solid #e2e8f0;background:#f8fafc;">📧 Email</td>
+                              border-bottom:1px solid #e2e8f0;background:#f8fafc;">Email</td>
                   <td style="padding:13px 16px;font-size:14px;border-bottom:1px solid #e2e8f0;">
                     <a href="mailto:${email}" style="color:#036c2d;text-decoration:none;font-weight:600;">${email}</a>
                   </td>
                 </tr>
                 <tr style="background:#f8fafc;">
                   <td style="padding:13px 16px;font-size:13px;font-weight:600;color:#475569;
-                              border-bottom:1px solid #e2e8f0;">📞 Phone</td>
+                              border-bottom:1px solid #e2e8f0;">Phone</td>
                   <td style="padding:13px 16px;font-size:14px;color:#1a2b3c;
                               border-bottom:1px solid #e2e8f0;">
                     <a href="tel:${phone}" style="color:#036c2d;text-decoration:none;font-weight:600;">${phone}</a>
@@ -108,14 +104,14 @@ export async function POST(req) {
                 </tr>
                 <tr>
                   <td style="padding:13px 16px;font-size:13px;font-weight:600;color:#475569;
-                              border-bottom:1px solid #e2e8f0;background:#f8fafc;">📋 Subject</td>
+                              border-bottom:1px solid #e2e8f0;background:#f8fafc;">Subject</td>
                   <td style="padding:13px 16px;font-size:14px;color:#1a2b3c;
                               border-bottom:1px solid #e2e8f0;font-weight:600;">${subject}</td>
                 </tr>
                 ${leadSourceHtmlRows(leadSource)}
                 <tr style="background:#f8fafc;">
                   <td style="padding:13px 16px;font-size:13px;font-weight:600;color:#475569;
-                              vertical-align:top;">💬 Message</td>
+                              vertical-align:top;">Message</td>
                   <td style="padding:13px 16px;font-size:14px;color:#1a2b3c;">${message}</td>
                 </tr>
               </table>
@@ -128,8 +124,7 @@ export async function POST(req) {
               <a href="mailto:${email}?subject=Re: ${encodeURIComponent(subject)} – UrbanCode"
                  style="display:inline-block;background:linear-gradient(90deg,#036c2d 0%,#17944d 100%);
                         color:#ffffff;text-decoration:none;padding:13px 32px;border-radius:30px;
-                        font-weight:600;font-size:15px;box-shadow:0 6px 18px rgba(3,108,45,0.3);">
-                Reply to Client
+                        font-weight:600;font-size:15px;box-shadow:0 6px 18px rgba(3,108,45,0.3);">Reply to Client
               </a>
             </td>
           </tr>
@@ -141,8 +136,7 @@ export async function POST(req) {
                 © ${new Date().getFullYear()} UrbanCode Training &amp; Solutions. All rights reserved.
               </p>
               <p style="margin:0;font-size:12px;">
-                <a href="https://www.urbancode.in" style="color:#17944d;text-decoration:none;font-weight:600;">
-                  www.urbancode.in
+                <a href="https://www.urbancode.in" style="color:#17944d;text-decoration:none;font-weight:600;">www.urbancode.in
                 </a>
               </p>
             </td>
@@ -160,7 +154,7 @@ export async function POST(req) {
       from: `"UrbanCode" <${sender}>`,
       to: recipient,
       replyTo: email,
-      subject: `🚀 New Project Enquiry: ${subject} — ${name}`,
+      subject: `New Project Enquiry: ${subject} — ${name}`,
       text: [
         'New project enquiry received:',
         `Name: ${name}`,

@@ -175,6 +175,7 @@ export async function POST(req) {
           .feature-item {
             margin-bottom: 8px;
             font-size: 14px;
+            padding-left: 12px;
           }
           .feature-item strong {
             color: #1a2b3c;
@@ -233,11 +234,11 @@ export async function POST(req) {
                 
                 <div class="features">
                   <div class="features-title">Why Students Choose UrbanCode:</div>
-                  <div class="feature-item">📖 <strong>Comprehensive Curriculum:</strong> Learn proven strategies through a well-structured course.</div>
-                  <div class="feature-item">🎯 <strong>Personalized Mentorship:</strong> Receive one-on-one guidance, individual feedback, and focused support from experienced trainers.</div>
-                  <div class="feature-item">📝 <strong>Regular Practice & Mock Tests:</strong> Improve your performance with realistic practice tests, detailed evaluations, and constructive feedback.</div>
-                  <div class="feature-item">💬 <strong>Flexible Learning Options:</strong> Choose between convenient online classes or engaging offline sessions based on your schedule.</div>
-                  <div class="feature-item">🌍 <strong>Practical English Development:</strong> Build the grammar, vocabulary, and communication skills needed not only for exams but also for work, migration, and everyday life.</div>
+                  <div class="feature-item">• <strong>Comprehensive Curriculum:</strong> Learn proven strategies through a well-structured course.</div>
+                  <div class="feature-item">• <strong>Personalized Mentorship:</strong> Receive one-on-one guidance, individual feedback, and focused support from experienced trainers.</div>
+                  <div class="feature-item">• <strong>Regular Practice &amp; Mock Tests:</strong> Improve your performance with realistic practice tests, detailed evaluations, and constructive feedback.</div>
+                  <div class="feature-item">• <strong>Flexible Learning Options:</strong> Choose between convenient online classes or engaging offline sessions based on your schedule.</div>
+                  <div class="feature-item">• <strong>Practical English Development:</strong> Build the grammar, vocabulary, and communication skills needed not only for exams but also for work, migration, and everyday life.</div>
                 </div>
                 `
                 : `
@@ -245,10 +246,10 @@ export async function POST(req) {
                 
                 <div class="features">
                   <div class="features-title">Why Students Choose UrbanCode:</div>
-                  <div class="feature-item">🚀 <strong>Industry-Ready Syllabus:</strong> Learn in-demand skills updated for today's market.</div>
-                  <div class="feature-item">🤝 <strong>1-on-1 Mentorship:</strong> Direct project guidance and reviews from senior developers.</div>
-                  <div class="feature-item">💼 <strong>Placement Assistance:</strong> Real mock interviews, resume reviews, and direct hiring partner referrals.</div>
-                  <div class="feature-item">💻 <strong>Interactive Cohorts:</strong> Choose between flexible online and immersive offline classes.</div>
+                  <div class="feature-item">• <strong>Industry-Ready Syllabus:</strong> Learn in-demand skills updated for today's market.</div>
+                  <div class="feature-item">• <strong>1-on-1 Mentorship:</strong> Direct project guidance and reviews from senior developers.</div>
+                  <div class="feature-item">• <strong>Placement Assistance:</strong> Real mock interviews, resume reviews, and direct hiring partner referrals.</div>
+                  <div class="feature-item">• <strong>Interactive Cohorts:</strong> Choose between flexible online and immersive offline classes.</div>
                 </div>
                 `
             }
@@ -273,7 +274,7 @@ export async function POST(req) {
     await transporter.sendMail({
       from: `"UrbanCode" <${sender}>`,
       to: email,
-      subject: `Your ${course} Course Curriculum from UrbanCode 🚀`,
+      subject: `Your ${course} Course Curriculum from UrbanCode`,
       text: `Hi ${name},\n\n${
         fileFound
           ? `Thank you for your interest in our ${course} program. Your course curriculum is attached to this email.`
