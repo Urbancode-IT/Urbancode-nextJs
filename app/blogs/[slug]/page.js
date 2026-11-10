@@ -28,15 +28,28 @@ export async function generateMetadata({ params }) {
     const image = blog.image
         ? `https://www.urbancode.in${blog.image}`
         : 'https://www.urbancode.in/images/home/og-image.jpg';
+    const url = `https://www.urbancode.in/blogs/${blog.slug}`;
 
     return {
         title,
         description,
         keywords: blog.keywords,
+        authors: [{ name: 'UrbanCode Edutech' }],
+        robots: {
+            index: true,
+            follow: true,
+            googleBot: {
+                index: true,
+                follow: true,
+                'max-image-preview': 'large',
+                'max-snippet': -1,
+                'max-video-preview': -1,
+            },
+        },
         openGraph: {
             title: blog.metaTitle || blog.title,
             description,
-            url: `https://www.urbancode.in/blogs/${blog.slug}`,
+            url,
             siteName: 'Urbancode Edutech',
             images: [
                 {
@@ -48,9 +61,17 @@ export async function generateMetadata({ params }) {
             ],
             type: 'article',
             locale: 'en_IN',
+            publishedTime: blog.date,
+            tags: Array.isArray(blog.keywords) ? blog.keywords.slice(0, 10) : undefined,
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: blog.metaTitle || blog.title,
+            description,
+            images: [image],
         },
         alternates: {
-            canonical: `https://www.urbancode.in/blogs/${blog.slug}`,
+            canonical: url,
         },
     };
 }
@@ -75,6 +96,8 @@ export default async function BlogDetailPage({ params }) {
         if (!text) return null;
 
         const keywordMap = [
+            { name: "webMethods training", link: "/courses/cloud-and-devops/software-ag-webmethods" },
+            { name: "webMethods", link: "/courses/cloud-and-devops/software-ag-webmethods" },
             { name: "React Native", link: "/courses/fullstack-development/react-native" },
             { name: "Flutter", link: "/courses" },
             { name: "Fullstack Development", link: "/courses/fullstack-development" },
@@ -108,8 +131,68 @@ export default async function BlogDetailPage({ params }) {
         });
     };
 
+    const pageUrl = `https://www.urbancode.in/blogs/${blog.slug}`;
+    const pageImage = blog.image
+        ? `https://www.urbancode.in${blog.image}`
+        : 'https://www.urbancode.in/images/home/og-image.jpg';
+
+    const articleSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'BlogPosting',
+        headline: blog.title,
+        description: blog.metaDescription || blog.excerpt,
+        image: [pageImage],
+        datePublished: blog.date,
+        dateModified: blog.date,
+        author: {
+            '@type': 'Organization',
+            name: 'UrbanCode Edutech',
+            url: 'https://www.urbancode.in',
+        },
+        publisher: {
+            '@type': 'Organization',
+            name: 'UrbanCode Edutech',
+            logo: {
+                '@type': 'ImageObject',
+                url: 'https://www.urbancode.in/images/home/logo.png',
+            },
+        },
+        mainEntityOfPage: {
+            '@type': 'WebPage',
+            '@id': pageUrl,
+        },
+        keywords: Array.isArray(blog.keywords) ? blog.keywords.join(', ') : undefined,
+        articleSection: blog.category,
+    };
+
+    const faqSchema = blog.faqs?.length
+        ? {
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: blog.faqs.map((faq) => ({
+                '@type': 'Question',
+                name: faq.question,
+                acceptedAnswer: {
+                    '@type': 'Answer',
+                    text: String(faq.answer || '').replace(/<[^>]*>/g, ' '),
+                },
+            })),
+        }
+        : null;
+
     return (
         <div className="blog-detail-container">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+            />
+            {faqSchema && (
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+                />
+            )}
+
             {/* Category + Date */}
             <div className="category-date">
                 <span className="category">{blog.category}</span>
