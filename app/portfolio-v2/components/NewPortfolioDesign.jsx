@@ -644,7 +644,7 @@ export default function NewPortfolioDesign() {
       <section className="np-hero-section">
         <div className="np-container">
           <h1 className="np-hero-title">
-            <span className="np-hero-line">Developing Applications that</span>
+            <span className="np-hero-line">Developing applications that</span>
             <span className="np-hero-line">help businesses <span className="np-text-green">grow.</span></span>
           </h1>
 

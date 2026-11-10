@@ -34,6 +34,57 @@ const newCourseMapping = {
 const getToolsForCourse = (title) => {
     const t = title.toLowerCase();
     const defaultTools = newCourseData["mern-stack"]?.toolsData || [];
+
+    if (t.includes("sap abap") || t === "sap" || t.includes("abap")) {
+        return [
+            { id: 1, name: "SAP ERP", icon: "/images/courses/tools/sap.svg" },
+            { id: 2, name: "ABAP", icon: "/images/courses/tools/abap.svg" },
+            { id: 3, name: "SAP GUI", icon: "/images/courses/tools/sap-gui.svg" },
+            { id: 4, name: "SE80 Workbench", icon: "/images/courses/tools/se80-workbench.svg" },
+            { id: 5, name: "ABAP Dictionary", icon: "/images/courses/tools/abap-dictionary.svg" },
+            { id: 6, name: "Function Builder", icon: "/images/courses/tools/function-builder.svg" },
+            { id: 7, name: "Class Builder", icon: "/images/courses/tools/class-builder.svg" },
+            { id: 8, name: "Open SQL", icon: "/images/courses/tools/open-sql.svg" },
+            { id: 9, name: "ALV Reports", icon: "/images/courses/tools/alv.svg" },
+            { id: 10, name: "BAdI / BAPI", icon: "/images/courses/tools/badi-bapi.svg" },
+            { id: 11, name: "SAP Fiori", icon: "/images/courses/tools/sap-fiori.svg" },
+            { id: 12, name: "OData / UI5", icon: "/images/courses/tools/odata.svg" },
+        ];
+    }
+
+    if (t.includes("mulesoft") || t.includes("mule soft") || t.includes("anypoint")) {
+        return [
+            { id: 1, name: "MuleSoft", icon: "/images/courses/tools/mulesoft.svg" },
+            { id: 2, name: "Java", icon: "/images/courses/tools/java.svg" },
+            { id: 3, name: "Maven", icon: "/images/courses/tools/maven.png" },
+            { id: 4, name: "Postman", icon: "/images/courses/tools/postman.svg" },
+            { id: 5, name: "JSON", icon: "/images/home/tools/json.svg" },
+            { id: 6, name: "XML", icon: "/images/courses/tools/xml.svg" },
+            { id: 7, name: "MySQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" },
+            { id: 8, name: "Salesforce", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/salesforce/salesforce-original.svg" },
+            { id: 9, name: "Git", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },
+            { id: 10, name: "GitHub", icon: "/images/courses/tools/github.svg" },
+            { id: 11, name: "VS Code", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" },
+            { id: 12, name: "REST / OpenAPI", icon: "/images/courses/tools/openapi.svg" },
+        ];
+    }
+
+    if (t.includes("webmethods") || t.includes("web methods") || t.includes("software ag")) {
+        return [
+            { id: 1, name: "webMethods", icon: "/images/courses/tools/softwareag.svg" },
+            { id: 2, name: "Integration Server", icon: "/images/courses/tools/integration-server.svg" },
+            { id: 3, name: "Designer", icon: "/images/courses/tools/eclipse.svg" },
+            { id: 4, name: "Java", icon: "/images/home/tools/java.svg" },
+            { id: 5, name: "XML", icon: "/images/courses/tools/xml.svg" },
+            { id: 6, name: "JSON", icon: "/images/home/tools/json.svg" },
+            { id: 7, name: "SOAP / WSDL", icon: "/images/courses/tools/soap.svg" },
+            { id: 8, name: "REST / OpenAPI", icon: "/images/courses/tools/openapi.svg" },
+            { id: 9, name: "JDBC / SQL", icon: "/images/courses/tools/oracle.svg" },
+            { id: 10, name: "JMS / Messaging", icon: "/images/courses/tools/activemq.svg" },
+            { id: 11, name: "Postman", icon: "/images/home/tools/postman.svg" },
+            { id: 12, name: "GitHub", icon: "/images/home/tools/github.svg" },
+        ];
+    }
     
     if (t.includes("power automate") || t.includes("automate flow")) {
         return [

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="SAP GUI">
+  <defs>
+    <linearGradient id="guig" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#00B8F1"/>
+      <stop offset="1" stop-color="#1D61BC"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#guig)"/>
+  <rect x="11" y="14" width="42" height="36" rx="5" fill="#FFFFFF"/>
+  <rect x="11" y="14" width="42" height="9" fill="#0854A0"/>
+  <circle cx="16.5" cy="18.5" r="1.4" fill="#FFFFFF"/>
+  <circle cx="21" cy="18.5" r="1.4" fill="#FFFFFF"/>
+  <circle cx="25.5" cy="18.5" r="1.4" fill="#FFFFFF"/>
+  <rect x="15" y="28" width="20" height="3.5" rx="1.5" fill="#1D61BC"/>
+  <rect x="15" y="35" width="28" height="3.5" rx="1.5" fill="#9AD4F2"/>
+  <rect x="15" y="42" width="16" height="3.5" rx="1.5" fill="#9AD4F2"/>
+</svg>

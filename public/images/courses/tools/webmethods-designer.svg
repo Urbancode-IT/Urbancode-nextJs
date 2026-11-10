@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="webMethods Designer">
+  <rect width="64" height="64" rx="14" fill="#0E3A66"/>
+  <rect x="12" y="14" width="40" height="36" rx="4" fill="#FFFFFF"/>
+  <rect x="12" y="14" width="40" height="8" rx="4" fill="#3D8BD4"/>
+  <rect x="12" y="18" width="40" height="4" fill="#3D8BD4"/>
+  <circle cx="17" cy="18" r="1.4" fill="#FFFFFF"/>
+  <circle cx="22" cy="18" r="1.4" fill="#FFFFFF"/>
+  <rect x="16" y="28" width="14" height="3" rx="1.5" fill="#236BB3"/>
+  <rect x="16" y="34" width="20" height="3" rx="1.5" fill="#9CC7EA"/>
+  <rect x="16" y="40" width="12" height="3" rx="1.5" fill="#9CC7EA"/>
+  <path d="M42 30l6 8H36l6-8z" fill="#236BB3"/>
+</svg>

@@ -87,14 +87,14 @@ const courses = [
     desc: "Accelerate your career with our Cloud Computing & DevOps certification. Master AWS, Docker, Kubernetes, and CI/CD pipelines for scalable modern IT infrastructure.",
     img: cloudImg,
     link: "/courses/cloud-and-devops",
-    badge: "7 Courses",
+    badge: "9 Courses",
   },
   {
     title: "Programming Languages",
-    desc: "Build a strong coding foundation with our core programming language courses. Master C, C++, Java, and Python through hands-on logic building and software development.",
+    desc: "Build a strong coding foundation with our core programming language courses. Master C, C++, Java, Python, and SAP ABAP through hands-on logic building and software development.",
     img: programmingImg,
     link: "/courses/programming-languages",
-    badge: "7 Courses",
+    badge: "8 Courses",
   },
   {
     title: "UI/UX Designing",

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="DataWeave">
+  <defs>
+    <linearGradient id="dwBg" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2DD4BF"/>
+      <stop offset="1" stop-color="#0F766E"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#dwBg)"/>
+  <path d="M18 20h10l8 24h-8l-1.5-5H19.5L18 44h-8l8-24zm4.2 13h5.6L25 25.5 22.2 33z" fill="#FFFFFF"/>
+  <path d="M38 20h16v7H46v17h-8V20z" fill="#FFFFFF" opacity="0.9"/>
+</svg>

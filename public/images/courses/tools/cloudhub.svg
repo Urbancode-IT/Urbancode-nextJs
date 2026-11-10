@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="CloudHub">
+  <defs>
+    <linearGradient id="chBg" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#60A5FA"/>
+      <stop offset="1" stop-color="#1D4ED8"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#chBg)"/>
+  <path d="M22 38h22a8 8 0 0 0 0-16 11 11 0 0 0-21.2-2.8A7.5 7.5 0 0 0 22 38z" fill="#FFFFFF"/>
+</svg>

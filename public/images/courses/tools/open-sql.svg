@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Open SQL">
+  <defs>
+    <linearGradient id="sqlg" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#00B8F1"/>
+      <stop offset="1" stop-color="#1D61BC"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#sqlg)"/>
+  <rect x="12" y="16" width="40" height="32" rx="6" fill="#FFFFFF"/>
+  <path d="M20 28h24M20 36h16" stroke="#1D61BC" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="44" cy="36" r="5" fill="#00B8F1"/>
+  <path d="M42.2 36l1.5 1.5 2.8-3" fill="none" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

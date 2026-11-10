@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Function Builder">
+  <defs>
+    <linearGradient id="fnBg" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#5B8DEF"/>
+      <stop offset="1" stop-color="#2B5CB8"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#fnBg)"/>
+  <rect x="12" y="14" width="40" height="36" rx="6" fill="#FFFFFF"/>
+  <rect x="12" y="14" width="40" height="9" fill="#0854A0"/>
+  <text x="32" y="21.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="7" font-weight="700" fill="#FFFFFF">SE37</text>
+  <path d="M22 32h6v14h-6zM36 28h6v18h-6z" fill="#1D61BC"/>
+  <path d="M20 32h10M34 28h10" stroke="#00B8F1" stroke-width="2.5" stroke-linecap="round"/>
+</svg>

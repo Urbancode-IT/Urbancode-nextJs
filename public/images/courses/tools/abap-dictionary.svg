@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="ABAP Dictionary">
+  <defs>
+    <linearGradient id="dictg" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#00B8F1"/>
+      <stop offset="1" stop-color="#1D61BC"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#dictg)"/>
+  <ellipse cx="32" cy="20" rx="15" ry="5.5" fill="#FFFFFF"/>
+  <path d="M17 20v9c0 3 6.7 5.5 15 5.5s15-2.5 15-5.5v-9" fill="#BFDFFF"/>
+  <path d="M17 29v9c0 3 6.7 5.5 15 5.5s15-2.5 15-5.5v-9" fill="#FFFFFF"/>
+  <ellipse cx="32" cy="38" rx="15" ry="5.5" fill="none" stroke="#0854A0" stroke-width="1.2"/>
+  <text x="32" y="52" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="6" font-weight="700" fill="#FFFFFF">SE11</text>
+</svg>

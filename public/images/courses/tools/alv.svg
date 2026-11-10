@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="ALV Reports">
+  <defs>
+    <linearGradient id="alvg" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#00B8F1"/>
+      <stop offset="1" stop-color="#1D61BC"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#alvg)"/>
+  <rect x="12" y="14" width="40" height="36" rx="5" fill="#FFFFFF"/>
+  <rect x="12" y="14" width="40" height="8" fill="#0854A0"/>
+  <rect x="16" y="27" width="8" height="3" rx="1" fill="#1D61BC"/>
+  <rect x="28" y="27" width="18" height="3" rx="1" fill="#9AD4F2"/>
+  <rect x="16" y="34" width="8" height="3" rx="1" fill="#1D61BC"/>
+  <rect x="28" y="34" width="18" height="3" rx="1" fill="#9AD4F2"/>
+  <rect x="16" y="41" width="8" height="3" rx="1" fill="#1D61BC"/>
+  <rect x="28" y="41" width="18" height="3" rx="1" fill="#9AD4F2"/>
+</svg>

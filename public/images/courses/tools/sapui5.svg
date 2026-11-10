@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="SAPUI5">
+  <defs>
+    <linearGradient id="ui5Bg" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#3AA0D9"/>
+      <stop offset="1" stop-color="#0E5A8A"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#ui5Bg)"/>
+  <rect x="13" y="16" width="38" height="32" rx="5" fill="#FFFFFF"/>
+  <rect x="17" y="21" width="12" height="9" rx="2" fill="#0E5A8A"/>
+  <rect x="32" y="21" width="15" height="4" rx="1.5" fill="#9AD4F2"/>
+  <rect x="32" y="28" width="11" height="4" rx="1.5" fill="#9AD4F2"/>
+  <rect x="17" y="34" width="30" height="4" rx="1.5" fill="#3AA0D9"/>
+  <rect x="17" y="40" width="20" height="4" rx="1.5" fill="#9AD4F2"/>
+</svg>

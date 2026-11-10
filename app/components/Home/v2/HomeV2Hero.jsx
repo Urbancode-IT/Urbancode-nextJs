@@ -27,10 +27,9 @@ export default function HomeV2Hero() {
 
         <p className="home-v2-hero-desc">
           <span className="home-v2-hero-desc-desktop">
-            Explore AI-powered courses with placement guarantee and overseas
+            Explore AI-powered courses with placement guarantee and overseas education
             <br />
-            education consulting with expert guidance. One place for every path
-            forward!
+            consulting with expert guidance. One place for every path forward!
           </span>
           <span className="home-v2-hero-desc-mobile">
             <span className="home-v2-hero-desc-line">

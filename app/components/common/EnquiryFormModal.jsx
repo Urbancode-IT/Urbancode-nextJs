@@ -14,7 +14,7 @@ import { getEmailError, getNameError, getPhoneError, isGibberish } from "@/app/u
 import { getLeadSource } from "@/app/utils/leadSource";
 import "./EnquiryForm.css";
 
-const BROCHURE_REQUEST_TIMEOUT = 30000;
+const BROCHURE_REQUEST_TIMEOUT = 120000;
 
 const EnquiryFormModal = ({ 
   isOpen, 
@@ -101,7 +101,10 @@ const EnquiryFormModal = ({
 
   const sendBrochureEmail = async (payload) => {
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), BROCHURE_REQUEST_TIMEOUT);
+    const timeoutId = setTimeout(
+      () => controller.abort(new Error("Curriculum email timed out. Please try again.")),
+      BROCHURE_REQUEST_TIMEOUT
+    );
 
     try {
       const response = await fetch("/api/send-email/send-curriculum", {
@@ -117,6 +120,11 @@ const EnquiryFormModal = ({
       }
 
       return result;
+    } catch (error) {
+      if (error?.name === "AbortError") {
+        throw new Error("Curriculum email timed out. Please try again.");
+      }
+      throw error;
     } finally {
       clearTimeout(timeoutId);
     }
@@ -537,7 +545,14 @@ const EnquiryFormModal = ({
     if (!validateForm()) return;
 
     setLoading(true);
-    setStatus({ type: "loading", message: isJoinMode ? "Sending your request..." : "Sending your enquiry..." });
+    setStatus({
+      type: "loading",
+      message: isJoinMode
+        ? "Sending your request..."
+        : isBrochureMode
+          ? "Sending curriculum to your email. Large PDFs can take up to a minute..."
+          : "Sending your enquiry...",
+    });
 
     try {
       if (useCourseEnquiryApi) {
@@ -556,9 +571,14 @@ const EnquiryFormModal = ({
       }, 1200);
     } catch (error) {
       console.error("Enquiry Form Error:", error);
+      const isAbort =
+        error?.name === "AbortError" ||
+        /aborted without reason|timed out/i.test(String(error?.message || ""));
       setStatus({
         type: "error",
-        message: error.message || "Something went wrong. Please try again.",
+        message: isAbort
+          ? "Request timed out while sending the brochure. Please try again."
+          : (error.message || "Something went wrong. Please try again."),
       });
     } finally {
       setLoading(false);
