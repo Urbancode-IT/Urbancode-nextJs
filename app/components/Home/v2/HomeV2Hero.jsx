@@ -18,7 +18,7 @@ export default function HomeV2Hero() {
 
       <div className="home-v2-hero-inner">
         <h1 className="home-v2-hero-title">
-          <span className="home-v2-hero-line">From Job-ready Tech Skills</span>
+          <span className="home-v2-hero-line">From job ready tech skills</span>
           <span className="home-v2-hero-line">
             to overseas{" "}
             <span className="home-v2-hero-title-accent">education</span>
@@ -27,9 +27,9 @@ export default function HomeV2Hero() {
 
         <p className="home-v2-hero-desc">
           <span className="home-v2-hero-desc-desktop">
-            Explore AI-powered courses with placement guarantee and overseas education
+            Explore AI-powered courses with placement guarantee and 
             <br />
-            consulting with expert guidance. One place for every path forward!
+            overseas education consulting with expert guidance. 
           </span>
           <span className="home-v2-hero-desc-mobile">
             <span className="home-v2-hero-desc-line">
@@ -39,7 +39,7 @@ export default function HomeV2Hero() {
               guarantee and overseas education consulting
             </span>
             <span className="home-v2-hero-desc-line">
-              with expert guidance. One place for every path forward!
+              with expert guidance.
             </span>
           </span>
         </p>

@@ -454,9 +454,19 @@
 }
 
 @media (max-width: 768px) {
-  /* Portfolio mobile: ~64px nav clear + 44px hero pad */
+  /* Keep hero + banner stacked tightly on mobile (no viewport-push gap) */
+  .home-v2-above-fold {
+    min-height: 0;
+  }
+
+  .home-v2-above-fold .home-v2-banners {
+    margin-top: 0;
+    padding-bottom: 0;
+  }
+
+  /* Portfolio mobile: ~64px nav clear + tighter bottom gap before banners */
   .home-v2-hero {
-    padding: 108px 18px 32px;
+    padding: 108px 18px 16px;
   }
 
   .home-v2-hero-title,
@@ -465,15 +475,18 @@
     letter-spacing: -0.6px !important;
     line-height: 1.15 !important;
     margin-bottom: 16px !important;
+    max-width: 100%;
   }
 
   .home-v2-hero-line {
     white-space: nowrap;
   }
 
+  /* Description narrower than title on mobile */
   .home-v2-hero-desc {
-    padding: 0 10px;
-    margin-bottom: 24px;
+    padding: 0;
+    margin: 0 auto 20px;
+    max-width: 78%;
     font-size: 14px;
   }
 
@@ -487,12 +500,25 @@
 
   .home-v2-hero-desc-line {
     display: block;
-    white-space: nowrap;
+    white-space: normal;
   }
 
   .home-v2-hero-actions {
     flex-wrap: wrap;
     gap: 12px;
+  }
+
+  .home-v2-banners {
+    padding: 8px 0 12px;
+  }
+
+  /* Match typical mobile section spacing (AI courses / others ~40px) */
+  .home-v2-mnc {
+    padding: 40px 0 40px;
+  }
+
+  .home-v2-mnc-head {
+    margin-bottom: 20px;
   }
 }
 
@@ -510,11 +536,15 @@
   }
 
   .home-v2-hero {
-    padding: 104px 16px 28px;
+    padding: 104px 16px 12px;
   }
 
   .home-v2-hero-line {
     white-space: normal;
+  }
+
+  .home-v2-hero-desc {
+    max-width: 82%;
   }
 
   .home-v2-hero-desc-line {
@@ -526,15 +556,15 @@
   }
 
   .home-v2-banners {
-    padding: 0 0 12px;
+    padding: 6px 0 8px;
   }
 
   .home-v2-mnc {
-    padding: 20px 0 28px;
+    padding: 40px 0 40px;
   }
 
   .home-v2-mnc-head {
-    margin-bottom: 16px;
+    margin-bottom: 18px;
     padding: 0 16px;
   }
 

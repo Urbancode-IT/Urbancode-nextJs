@@ -175,7 +175,7 @@
 .np-trusted-label {
   font-size: 10px;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 1px;
   color: #7C7C7C;
   margin-bottom: 18px;
   text-transform: uppercase;
@@ -194,7 +194,7 @@
   font-size: 18px;
   font-weight: 700;
   color: #cbd5e1;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.36px;
   padding-right: 72px;
   white-space: nowrap;
   flex-shrink: 0;
@@ -212,7 +212,7 @@
   text-align: center;
   max-width: 900px;
   margin: 0 auto 48px;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.48px;
 }
 .np-about-bento {
   display: grid;
@@ -650,7 +650,7 @@
   font-weight: 500;
   color: #ffffff;
   margin: 0 0 28px;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.68px;
 }
 .new-portfolio-root .np-internal-section { overflow: hidden; }
 .new-portfolio-root .np-internal-section .np-container { position: relative; }
@@ -926,7 +926,7 @@
   font-weight: 400;
   color: #111111;
   margin: 0 0 14px;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.68px;
   white-space: nowrap;
 }
 .new-portfolio-root .np-faq-sub {
@@ -1146,7 +1146,7 @@
 }
 .new-portfolio-root .np-contact-form-card form { position: relative; z-index: 1; }
 .new-portfolio-root .np-contact-left-card h2 {
-  font-size: 46px; font-weight: 500; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 30px; color: #ffffff;
+  font-size: 46px; font-weight: 500; line-height: 1.15; letter-spacing: -0.92px; margin-bottom: 30px; color: #ffffff;
 }
 .new-portfolio-root .np-contact-left-card .np-contact-field-group:nth-of-type(2) { margin-bottom: 52px; }
 .new-portfolio-root .np-contact-title-white { color: #ffffff; }
@@ -1618,7 +1618,7 @@
 .new-portfolio-root .np-bento-bottom-glass h3 {
   font-size: 52px;
   font-weight: 400;
-  letter-spacing: -0.02em;
+  letter-spacing: -1.04px;
   line-height: 1.1;
   color: #fff;
   margin-bottom: 10px;
@@ -1662,7 +1662,7 @@
   padding: 22px 22px 24px;
 }
 .new-portfolio-root .np-bento-sublabel { font-size: 12px; color: #7C7C7C; font-weight: 400; }
-.new-portfolio-root .np-bento-big-stat { font-size: 40px; font-weight: 400; color: #0a0a0a; margin: 6px 0 0; letter-spacing: -0.02em; }
+.new-portfolio-root .np-bento-big-stat { font-size: 40px; font-weight: 400; color: #0a0a0a; margin: 6px 0 0; letter-spacing: -0.8px; }
 .new-portfolio-root .np-bento-foot-text { font-size: 12px; color: #27272a; max-width: 230px; line-height: 1.5; }
 
 .new-portfolio-root .np-bento-city-card { align-items: flex-start; border-radius: 24px; min-height: 0; }
@@ -1683,7 +1683,7 @@
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 .new-portfolio-root .np-dark-stat-inner span { font-size: 17px; font-weight: 400; color: #fff; }
-.new-portfolio-root .np-dark-stat-inner strong { font-size: 36px; font-weight: 400; color: #fff; letter-spacing: -0.02em; }
+.new-portfolio-root .np-dark-stat-inner strong { font-size: 36px; font-weight: 400; color: #fff; letter-spacing: -0.72px; }
 /* Satoshi everywhere on the portfolio page (scoped to this page only) */
 .new-portfolio-root,
 .new-portfolio-root *,
@@ -1860,7 +1860,7 @@
 .new-portfolio-root .np-team-lead {
   font-size: 12px;
   font-weight: 800;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.72px;
   line-height: 1.2;
   text-transform: uppercase;
   color: #c0c0c0;

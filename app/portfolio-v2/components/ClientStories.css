@@ -24,7 +24,7 @@
   font-size: clamp(28px, 3.4vw, 40px);
   font-weight: 500;
   line-height: 1.2;
-  letter-spacing: -0.03em;
+  letter-spacing: -1.02px;
   color: #0f172a;
 }
 
@@ -231,7 +231,7 @@
   font-size: clamp(15px, 1.35vw, 17px);
   font-weight: 400;
   line-height: 1.65;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.16px;
   color: #4b5563;
 }
 
@@ -250,7 +250,7 @@
   font-size: 14px;
   font-weight: 500;
   line-height: 1.5;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.14px;
   color: #334155;
 }
 
@@ -258,7 +258,7 @@
   content: "";
   position: absolute;
   left: 0;
-  top: 0.45em;
+  top: 7.2px;
   width: 8px;
   height: 8px;
   border-radius: 50%;
@@ -287,7 +287,7 @@
   bottom: -18px;
   font-size: clamp(72px, 10vw, 120px);
   font-weight: 700;
-  letter-spacing: -0.05em;
+  letter-spacing: -4.8px;
   line-height: 1;
   color: rgba(42, 39, 36, 0.07);
   pointer-events: none;
@@ -313,7 +313,7 @@
   margin: 0 0 8px;
   font-size: clamp(20px, 2vw, 26px);
   font-weight: 600;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.46px;
   line-height: 1.25;
   color: #1c1917;
 }
@@ -345,7 +345,7 @@
   font-family: "Satoshi", -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 13px;
   font-weight: 600;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.13px;
   white-space: nowrap;
   cursor: pointer;
   box-shadow: 0 6px 16px rgba(28, 25, 23, 0.18);

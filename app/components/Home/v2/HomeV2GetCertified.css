@@ -47,7 +47,7 @@
   font-weight: 400;
   font-size: clamp(28px, 3.4vw, 47.63px);
   line-height: 1.34;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.76px;
   text-transform: capitalize;
   color: #000000;
   max-width: 672px;
@@ -60,7 +60,7 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 22px;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.32px;
   color: #858585;
 }
 
@@ -85,7 +85,7 @@
   font-weight: 500;
   font-size: 16px;
   line-height: 22px;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.48px;
   cursor: pointer;
   border: 1.5px solid transparent;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -222,7 +222,7 @@
   font-weight: 500;
   font-size: 24px;
   line-height: 32px;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.72px;
   color: #000000;
   text-transform: none;
   transition: color 0.3s ease;
@@ -239,7 +239,7 @@
   font-weight: 400;
   font-size: 15px;
   line-height: 20px;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.3px;
   color: rgba(0, 0, 0, 0.6);
 }
 
