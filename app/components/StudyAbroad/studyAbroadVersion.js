@@ -6,4 +6,4 @@
  *
  * Flip this flag when asked to unhide the old Study Abroad page.
  */
-export const USE_LEGACY_STUDY_ABROAD = false;
+export const USE_LEGACY_STUDY_ABROAD = true;

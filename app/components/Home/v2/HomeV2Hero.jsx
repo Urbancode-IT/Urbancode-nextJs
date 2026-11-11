@@ -29,14 +29,14 @@ export default function HomeV2Hero() {
           <span className="home-v2-hero-desc-desktop">
             Explore AI-powered courses with placement guarantee and 
             <br />
-            overseas education consulting with expert guidance. 
+            study abroad consulting with expert guidance. 
           </span>
           <span className="home-v2-hero-desc-mobile">
             <span className="home-v2-hero-desc-line">
               Explore AI-powered courses with placement
             </span>
             <span className="home-v2-hero-desc-line">
-              guarantee and overseas education consulting
+              guarantee and study abroad consulting
             </span>
             <span className="home-v2-hero-desc-line">
               with expert guidance.

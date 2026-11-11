@@ -483,11 +483,11 @@
     white-space: nowrap;
   }
 
-  /* Description narrower than title on mobile */
+  /* Description: exactly 3 fixed lines on mobile */
   .home-v2-hero-desc {
     padding: 0;
     margin: 0 auto 20px;
-    max-width: 78%;
+    max-width: 100%;
     font-size: 14px;
   }
 
@@ -501,12 +501,36 @@
 
   .home-v2-hero-desc-line {
     display: block;
-    white-space: normal;
+    white-space: nowrap;
   }
 
   .home-v2-hero-actions {
     flex-wrap: wrap;
-    gap: 12px;
+    gap: 10px;
+  }
+
+  .home-v2-hero-btn-primary,
+  .home-v2-hero-btn-secondary {
+    font-size: 13px;
+    line-height: 18px;
+    letter-spacing: -0.4px;
+  }
+
+  .home-v2-hero-btn-primary {
+    height: 40px;
+    padding: 0 14px 0 16px;
+    gap: 8px;
+  }
+
+  .home-v2-hero-btn-primary svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .home-v2-hero-btn-secondary {
+    height: 40px;
+    padding: 0 16px;
+    border-width: 1.5px;
   }
 
   .home-v2-banners {
@@ -545,15 +569,38 @@
   }
 
   .home-v2-hero-desc {
-    max-width: 82%;
+    max-width: 100%;
+    font-size: 13px;
   }
 
   .home-v2-hero-desc-line {
-    white-space: normal;
+    white-space: nowrap;
   }
 
   .home-v2-hero-actions {
-    gap: 12px;
+    gap: 8px;
+  }
+
+  .home-v2-hero-btn-primary,
+  .home-v2-hero-btn-secondary {
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  .home-v2-hero-btn-primary {
+    height: 36px;
+    padding: 0 12px 0 14px;
+    gap: 6px;
+  }
+
+  .home-v2-hero-btn-primary svg {
+    width: 13px;
+    height: 13px;
+  }
+
+  .home-v2-hero-btn-secondary {
+    height: 36px;
+    padding: 0 14px;
   }
 
   .home-v2-banners {
