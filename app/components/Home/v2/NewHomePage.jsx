@@ -1,8 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import gsap from "gsap";
-import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import BannerSlider from "../../common/BannerSlider";
 import HomeV2Hero from "./HomeV2Hero";
 import HomeV2MncSection from "./HomeV2MncSection";
@@ -17,13 +15,7 @@ import HomeV2VoiceVideos from "./HomeV2VoiceVideos";
 import HomeV2GoogleReviews from "./HomeV2GoogleReviews";
 import HomeV2Faq from "./HomeV2Faq";
 import V2PageReveal from "@/app/components/common/V2PageReveal";
-import MiniCrackersEffect from "@/app/components/FestivePopup/MiniCrackersEffect";
-import DeepavaliGiftFab from "@/app/components/FestivePopup/DeepavaliGiftFab";
 import "./NewHomePage.css";
-
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollToPlugin);
-}
 
 const isBootcampBanner = (b) =>
   String(b?.src || "").includes("FSD_TVL_Bootcamp") ||
@@ -66,7 +58,6 @@ const FALLBACK_BANNERS = [
 export default function NewHomePage() {
   const [banners, setBanners] = useState(FALLBACK_BANNERS);
   const [voiceVideos, setVoiceVideos] = useState(null);
-  const [deepavaliOpen, setDeepavaliOpen] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
@@ -91,40 +82,8 @@ export default function NewHomePage() {
     };
   }, []);
 
-  const openDeepavaliGift = () => {
-    setDeepavaliOpen(true);
-
-    const target = document.getElementById("home-v2-guarantee");
-    if (!target) return;
-
-    window.setTimeout(() => {
-      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      if (reduce) {
-        target.scrollIntoView({ behavior: "auto", block: "start" });
-        return;
-      }
-
-      gsap.to(window, {
-        duration: 1.55,
-        ease: "power3.inOut",
-        scrollTo: { y: target, offsetY: 72, autoKill: true },
-      });
-    }, 180);
-  };
-
-  const stopDeepavaliGift = () => {
-    setDeepavaliOpen(false);
-  };
-
   return (
     <V2PageReveal className="home-v2-root">
-      <MiniCrackersEffect active={deepavaliOpen} />
-      <DeepavaliGiftFab
-        opened={deepavaliOpen}
-        onOpen={openDeepavaliGift}
-        onStop={stopDeepavaliGift}
-      />
-
       <div className="home-v2-above-fold">
         <HomeV2Hero />
 
@@ -140,7 +99,7 @@ export default function NewHomePage() {
 
       <HomeV2AiCourses />
 
-      <HomeV2GuaranteeSection attentionMode={deepavaliOpen} />
+      <HomeV2GuaranteeSection />
 
       <HomeV2StudyAbroad />
 
