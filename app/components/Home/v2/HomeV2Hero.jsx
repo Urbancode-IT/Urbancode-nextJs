@@ -18,9 +18,9 @@ export default function HomeV2Hero() {
 
       <div className="home-v2-hero-inner">
         <h1 className="home-v2-hero-title">
-          <span className="home-v2-hero-line">From job ready tech skills</span>
+          <span className="home-v2-hero-line"> Gateway to tech careers and</span>
           <span className="home-v2-hero-line">
-            to overseas{" "}
+           overseas{" "}
             <span className="home-v2-hero-title-accent">education</span>
           </span>
         </h1>
