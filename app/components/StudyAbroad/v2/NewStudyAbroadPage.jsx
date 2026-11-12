@@ -6,6 +6,7 @@ import StudyAbroadV2Destinations from "./StudyAbroadV2Destinations";
 import StudyAbroadV2Mbbs from "./StudyAbroadV2Mbbs";
 import StudyAbroadV2MbbsCountries from "./StudyAbroadV2MbbsCountries";
 import StudyAbroadV2DreamCountry from "./StudyAbroadV2DreamCountry";
+import StudyAbroadV2EnglishProficiency from "./StudyAbroadV2EnglishProficiency";
 import StudyAbroadV2Stories from "./StudyAbroadV2Stories";
 import StudyAbroadV2Consult from "./StudyAbroadV2Consult";
 import V2PageReveal from "@/app/components/common/V2PageReveal";
@@ -24,6 +25,7 @@ export default function NewStudyAbroadPage() {
       <StudyAbroadV2Mbbs />
       <StudyAbroadV2MbbsCountries />
       <StudyAbroadV2DreamCountry />
+      <StudyAbroadV2EnglishProficiency />
       <StudyAbroadV2Stories />
       <StudyAbroadV2Consult />
     </V2PageReveal>

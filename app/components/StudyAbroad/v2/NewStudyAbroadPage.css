@@ -6,7 +6,8 @@
   color: #0f172b;
   min-height: 60vh;
   padding-top: 0;
-  overflow-x: clip;
+  /* Avoid overflow-x clipping here — it breaks position:sticky in services */
+  overflow-x: visible;
 }
 
 /* Beat globals.css Inter on every text node */

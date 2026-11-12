@@ -19,9 +19,16 @@ export default function V2PageReveal({ children, className = "" }) {
 
     const targets = Array.from(
       root.querySelectorAll(":scope > section, section")
-    ).filter((el) => !el.closest(".home-v2-above-fold") && !el.classList.contains("home-v2-hero"));
+    ).filter(
+      (el) =>
+        !el.closest(".home-v2-above-fold") &&
+        !el.classList.contains("home-v2-hero") &&
+        /* transform on ancestors breaks position:sticky */
+        !el.classList.contains("sa-v2-services") &&
+        !el.classList.contains("v2-no-reveal")
+    );
 
-    // De-dupe; keep hero/above-fold static (no reveal zoom/slide on title)
+    // De-dupe; keep hero/above-fold/sticky sections static
     const unique = [...new Set(targets)];
 
     unique.forEach((el) => el.classList.add("v2-reveal-target"));

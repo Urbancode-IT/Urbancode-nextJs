@@ -3,13 +3,12 @@
 }
 
 @keyframes v2-page-in {
+  /* Opacity only — a lingering transform on the root breaks position:sticky */
   from {
     opacity: 0.96;
-    transform: translateY(4px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
   }
 }
 

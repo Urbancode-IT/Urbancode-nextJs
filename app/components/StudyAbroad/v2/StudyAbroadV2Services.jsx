@@ -1,220 +1,244 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
-import Link from "next/link";
-import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
-import {
-  HiOutlineHome,
-  HiOutlineClipboardDocumentCheck,
-  HiOutlineIdentification,
-  HiOutlineStar,
-  HiOutlineQueueList,
-  HiOutlineBuildingLibrary,
-  HiOutlinePaperAirplane,
-} from "react-icons/hi2";
-import EnquiryFormModal from "@/app/components/common/EnquiryFormModal";
+import { useEffect, useRef } from "react";
 import "./StudyAbroadV2Services.css";
 
-const GAP = 14;
-const MOBILE_MQ = "(max-width: 767px)";
+const IMG_BASE =
+  "/images/study-abroad/study-abroadv2/study-abroad-services";
 
 const SERVICES = [
   {
+    id: "course-selection",
+    title: "Course Selection",
+    desc: "Expert counseling to help you choose the right course that aligns with your career goals and interests.",
+    image: `${IMG_BASE}/study-abroad-services1.webp`,
+  },
+  {
     id: "university-selection",
     title: "University Selection",
-    desc: "Shortlist universities that match your profile, budget and goals.",
-    href: "#destinations",
-    Icon: HiOutlineHome,
+    desc: "Shortlisting top-ranked universities globally that best fit your academic profile and budget.",
+    image: `${IMG_BASE}/study-abroad-services2.webp`,
   },
   {
-    id: "admission-assistance",
-    title: "Admission Assistance",
-    desc: "Application strategy, SOP reviews and document checks.",
-    href: "#cta",
-    Icon: HiOutlineClipboardDocumentCheck,
+    id: "application-sop",
+    title: "Application & SOP",
+    desc: "End-to-end support for your application, including professional SOP editing and LOR guidance.",
+    image: `${IMG_BASE}/study-abroad-services3.webp`,
   },
   {
-    id: "visa-guidance",
-    title: "Visa Guidance",
-    desc: "Step-by-step help with visa documentation and interview prep.",
-    href: "#cta",
-    Icon: HiOutlineIdentification,
+    id: "loan-application",
+    title: "Loan Application",
+    desc: "Assistance with educational loans through our partner banks to fund your international education.",
+    image: `${IMG_BASE}/study-abroad-services4.webp`,
   },
   {
-    id: "scholarship-assistance",
-    title: "Scholarship Assistance",
-    desc: "Identify scholarships you may be eligible for and apply on time.",
-    href: "#cta",
-    Icon: HiOutlineStar,
+    id: "visa-success",
+    title: "Visa Success",
+    desc: "Expert guidance for visa documentation and mock interview preparation to ensure high success rates.",
+    image: `${IMG_BASE}/study-abroad-services5.webp`,
   },
   {
-    id: "ielts-english-tests",
-    title: "IELTS & English Tests",
-    desc: "Structured preparation for IELTS, TOEFL, PTE and more.",
-    href: "#english-proficiency",
-    Icon: HiOutlineQueueList,
-  },
-  {
-    id: "education-loan-guidance",
-    title: "Education Loan Guidance",
-    desc: "Understand loan options and prepare a clear funding plan.",
-    href: "#cta",
-    Icon: HiOutlineBuildingLibrary,
+    id: "scholarship-guidance",
+    title: "Scholarship Guidance",
+    desc: "Identifying and applying for eligible scholarships to reduce your overall financial burden.",
+    image: `${IMG_BASE}/study-abroad-services6.webp`,
   },
   {
     id: "pre-departure-support",
     title: "Pre-Departure Support",
-    desc: "Accommodation, travel and orientation before you fly.",
-    href: "#cta",
-    Icon: HiOutlinePaperAirplane,
+    desc: "Briefing sessions on culture, lifestyle, and travel essentials before you fly to your destination.",
+    image: `${IMG_BASE}/study-abroad-services7.webp`,
+  },
+  {
+    id: "post-arrival-support",
+    title: "Post-Arrival Support",
+    desc: "Assistance with airport pickup, local accommodation, and settling into your new environment.",
+    image: `${IMG_BASE}/study-abroad-services8.webp`,
   },
 ];
 
-/** Service cards + CTA slide */
-const SLIDE_COUNT = SERVICES.length + 1;
+const DESKTOP_MQ = "(min-width: 768px)";
+const MOBILE_MQ = "(max-width: 767px)";
+const TOP_OFFSET = 110;
+const AUTO_SCROLL_MS = 4200;
 
 export default function StudyAbroadV2Services() {
-  const [consultOpen, setConsultOpen] = useState(false);
+  const sectionRef = useRef(null);
+  const leftRef = useRef(null);
+  const pinRef = useRef(null);
   const trackRef = useRef(null);
-  const indexRef = useRef(0);
-  const timerRef = useRef(null);
-  const [index, setIndex] = useState(0);
-  const [isCarousel, setIsCarousel] = useState(false);
-  const [paused, setPaused] = useState(false);
-
-  const maxIndex = SLIDE_COUNT - 1;
-  const canPrev = index > 0;
-  const canNext = index < maxIndex;
-
-  const scrollToIndex = useCallback((next) => {
-    const el = trackRef.current;
-    if (!el) return;
-    const card = el.querySelector(".sa-v2-services-slide");
-    if (!card) return;
-    const step = card.offsetWidth + GAP;
-    const clamped = Math.max(0, Math.min(next, maxIndex));
-    indexRef.current = clamped;
-    setIndex(clamped);
-    el.scrollTo({ left: clamped * step, behavior: "smooth" });
-  }, [maxIndex]);
 
   useEffect(() => {
-    const mq = window.matchMedia(MOBILE_MQ);
-    const sync = () => {
-      setIsCarousel(mq.matches);
-      if (!mq.matches) {
-        indexRef.current = 0;
-        setIndex(0);
-        trackRef.current?.scrollTo({ left: 0 });
-      }
+    const section = sectionRef.current;
+    const left = leftRef.current;
+    const pin = pinRef.current;
+    if (!section || !left || !pin) return undefined;
+
+    const mq = window.matchMedia(DESKTOP_MQ);
+    let raf = 0;
+
+    const clearPin = () => {
+      pin.classList.remove("is-fixed", "is-bottom");
+      pin.style.width = "";
+      pin.style.left = "";
+      pin.style.top = "";
     };
-    sync();
-    mq.addEventListener("change", sync);
-    return () => mq.removeEventListener("change", sync);
+
+    const update = () => {
+      raf = 0;
+      if (!mq.matches) {
+        clearPin();
+        return;
+      }
+
+      const sectionRect = section.getBoundingClientRect();
+      const leftRect = left.getBoundingClientRect();
+      const pinHeight = pin.offsetHeight || 120;
+      const start = sectionRect.top;
+      const stopFixed = sectionRect.bottom - pinHeight - TOP_OFFSET;
+
+      if (start > TOP_OFFSET) {
+        clearPin();
+        return;
+      }
+
+      if (stopFixed <= 0) {
+        pin.classList.remove("is-fixed");
+        pin.classList.add("is-bottom");
+        pin.style.width = "";
+        pin.style.left = "";
+        pin.style.top = "";
+        return;
+      }
+
+      pin.classList.add("is-fixed");
+      pin.classList.remove("is-bottom");
+      pin.style.width = `${leftRect.width}px`;
+      pin.style.left = `${leftRect.left}px`;
+      pin.style.top = `${TOP_OFFSET}px`;
+    };
+
+    const onScrollOrResize = () => {
+      if (raf) return;
+      raf = window.requestAnimationFrame(update);
+    };
+
+    update();
+    window.addEventListener("scroll", onScrollOrResize, { passive: true });
+    window.addEventListener("resize", onScrollOrResize);
+    mq.addEventListener("change", onScrollOrResize);
+
+    return () => {
+      if (raf) window.cancelAnimationFrame(raf);
+      window.removeEventListener("scroll", onScrollOrResize);
+      window.removeEventListener("resize", onScrollOrResize);
+      mq.removeEventListener("change", onScrollOrResize);
+      clearPin();
+    };
   }, []);
 
+  /* Mobile: slow auto-advance through service cards */
   useEffect(() => {
-    indexRef.current = index;
-  }, [index]);
+    const track = trackRef.current;
+    if (!track) return undefined;
 
-  useEffect(() => {
-    if (!isCarousel || paused) return undefined;
-    timerRef.current = window.setInterval(() => {
-      const current = indexRef.current;
-      scrollToIndex(current >= maxIndex ? 0 : current + 1);
-    }, 4000);
-    return () => window.clearInterval(timerRef.current);
-  }, [isCarousel, paused, maxIndex, scrollToIndex]);
+    const mq = window.matchMedia(MOBILE_MQ);
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let timer = 0;
+    let paused = false;
+    let index = 0;
+
+    const cards = () =>
+      Array.from(track.querySelectorAll(".sa-v2-service-card"));
+
+    const step = () => {
+      const list = cards();
+      if (!list.length || !mq.matches || reduce.matches || paused) return;
+      const card = list[0];
+      const gap =
+        parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap) ||
+        12;
+      const cardStep = card.offsetWidth + gap;
+      index = index + 1 >= list.length ? 0 : index + 1;
+      track.scrollTo({ left: index * cardStep, behavior: "smooth" });
+    };
+
+    const start = () => {
+      window.clearInterval(timer);
+      if (!mq.matches || reduce.matches) return;
+      timer = window.setInterval(step, AUTO_SCROLL_MS);
+    };
+
+    const stop = () => window.clearInterval(timer);
+
+    const pause = () => {
+      paused = true;
+    };
+    const resume = () => {
+      paused = false;
+    };
+
+    start();
+    track.addEventListener("touchstart", pause, { passive: true });
+    track.addEventListener("touchend", resume, { passive: true });
+    track.addEventListener("mouseenter", pause);
+    track.addEventListener("mouseleave", resume);
+    mq.addEventListener("change", start);
+    reduce.addEventListener("change", start);
+
+    return () => {
+      stop();
+      track.removeEventListener("touchstart", pause);
+      track.removeEventListener("touchend", resume);
+      track.removeEventListener("mouseenter", pause);
+      track.removeEventListener("mouseleave", resume);
+      mq.removeEventListener("change", start);
+      reduce.removeEventListener("change", start);
+    };
+  }, []);
 
   return (
     <section
+      ref={sectionRef}
       className="sa-v2-services"
       aria-labelledby="sa-v2-services-title"
       id="services"
     >
       <div className="sa-v2-services-inner">
-        <div className="sa-v2-services-head-row">
-          <div className="sa-v2-services-head">
+        <aside ref={leftRef} className="sa-v2-services-left">
+          <div ref={pinRef} className="sa-v2-services-pin">
             <h2 id="sa-v2-services-title" className="sa-v2-services-title">
               Our expert services
             </h2>
             <p className="sa-v2-services-desc">
-              Practical guidance at every stage — so you can focus on your
+              Practical guidance at every stage, so you can focus on your
               future.
             </p>
           </div>
-
-          <div
-            className="sa-v2-services-nav"
-            hidden={!isCarousel}
-            aria-hidden={!isCarousel}
-          >
-            <button
-              type="button"
-              className="sa-v2-services-arrow"
-              aria-label="Previous service"
-              disabled={!canPrev}
-              onClick={() => scrollToIndex(index - 1)}
-            >
-              <FiArrowLeft />
-            </button>
-            <button
-              type="button"
-              className="sa-v2-services-arrow"
-              aria-label="Next service"
-              disabled={!canNext}
-              onClick={() => scrollToIndex(index + 1)}
-            >
-              <FiArrowRight />
-            </button>
-          </div>
-        </div>
+        </aside>
 
         <div
-          className="sa-v2-services-viewport"
-          onMouseEnter={() => isCarousel && setPaused(true)}
-          onMouseLeave={() => setPaused(false)}
-          onTouchStart={() => isCarousel && setPaused(true)}
-          onTouchEnd={() => setPaused(false)}
+          ref={trackRef}
+          className="sa-v2-services-right"
+          aria-label="Service cards"
         >
-          <div
-            className={`sa-v2-services-grid${isCarousel ? " is-carousel" : ""}`}
-            ref={trackRef}
-            style={{ "--svc-gap": `${GAP}px` }}
-          >
-            {SERVICES.map(({ id, title, desc, href, Icon }) => (
-              <article key={id} className="sa-v2-service-card sa-v2-services-slide">
-                <span className="sa-v2-service-icon" aria-hidden="true">
-                  <Icon />
-                </span>
-                <h3 className="sa-v2-service-title">{title}</h3>
-                <p className="sa-v2-service-desc">{desc}</p>
-                <Link href={href} className="sa-v2-service-link">
-                  Learn More →
-                </Link>
-              </article>
-            ))}
-
-            <article className="sa-v2-service-cta sa-v2-services-slide">
-              <p className="sa-v2-service-cta-title">Not sure where to start?</p>
-              <button
-                type="button"
-                className="sa-v2-service-cta-btn"
-                onClick={() => setConsultOpen(true)}
-              >
-                Talk to an Expert
-              </button>
+          {SERVICES.map(({ id, title, desc, image }) => (
+            <article key={id} className="sa-v2-service-card">
+              <img
+                className="sa-v2-service-img"
+                src={image}
+                alt={title}
+                loading="lazy"
+              />
+              <div className="sa-v2-service-fade" aria-hidden="true" />
+              <div className="sa-v2-service-panel">
+                <h3 className="sa-v2-service-card-title">{title}</h3>
+                <p className="sa-v2-service-card-desc">{desc}</p>
+              </div>
             </article>
-          </div>
+          ))}
         </div>
       </div>
-
-      <EnquiryFormModal
-        isOpen={consultOpen}
-        onClose={() => setConsultOpen(false)}
-        courseName="Study Abroad Consultation"
-        leadPlace="Study Abroad V2 services — Talk to an Expert"
-      />
     </section>
   );
 }

@@ -1,3 +1,8 @@
+/* ══════════════════════════════════════════════
+   Study Abroad V2 — Consultation Section
+   Figma: dark card 1240×650, left copy + right glass form
+   ══════════════════════════════════════════════ */
+
 .sa-v2-consult {
   width: 100%;
   background: #ffffff;
@@ -12,92 +17,285 @@
   margin: 0 auto;
 }
 
+/* ── Main card: gradient 90deg over slate base, rounded 40px ── */
 .sa-v2-consult-card {
+  position: relative;
   box-sizing: border-box;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-columns: 1fr minmax(0, 514px);
   gap: 40px;
-  align-items: stretch;
-  min-height: 456px;
-  padding: 56px;
-  background: linear-gradient(180deg, #008a55 0%, rgba(0, 181, 111, 0.37) 100%);
-  border-radius: 24px;
+  align-items: center;
+  min-height: 650px;
+  padding: 80px 56px;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(2, 6, 24, 0.85) 0%,
+      rgba(2, 6, 24, 0.55) 50%,
+      rgba(2, 6, 24, 0.25) 100%
+    ),
+    #9da0a7;
+  border-radius: 40px;
+  overflow: hidden;
 }
 
+/* Subtle blue radial glow top-left */
+.sa-v2-consult-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 65% 55% at 15% 10%,
+    rgba(100, 140, 220, 0.22) 0%,
+    transparent 65%
+  );
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+/* ── Left: copy ── */
 .sa-v2-consult-copy {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  max-width: 544px;
+  max-width: 566px;
+}
+
+/* "Free 1:1 counselling" pill tag */
+.sa-v2-consult-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 148.8px;
+  height: 32px;
+  padding: 0;
+  margin-bottom: 24px;
+  background: linear-gradient(
+    140deg,
+    rgba(255, 255, 255, 0.7) 3.67%,
+    rgba(255, 255, 255, 0.05) 40.73%,
+    rgba(255, 255, 255, 0.05) 59.27%,
+    rgba(255, 255, 255, 0.45) 96.33%
+  );
+  box-shadow:
+    0px 20px 50px -12px rgba(0, 0, 0, 0.45),
+    inset 0px 1px 0px rgba(255, 255, 255, 0.55),
+    inset 0px -1px 0px rgba(255, 255, 255, 0.12),
+    inset 0px 0px 24px rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-radius: 9999px;
+  font-family: "Satoshi", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #ffffff;
 }
 
 .sa-v2-consult-title {
   margin: 0;
   font-family: "Satoshi", sans-serif;
   font-weight: 500;
-  font-size: clamp(28px, 3vw, 36px);
-  line-height: 40px;
-  letter-spacing: -0.9px;
+  font-size: clamp(32px, 3.5vw, 48px);
+  line-height: 1.1;
+  letter-spacing: -1.2px;
   color: #ffffff;
 }
 
 .sa-v2-consult-desc {
-  margin: 16px 0 0;
+  margin: 20px 0 0;
+  max-width: 448px;
   font-family: "Satoshi", sans-serif;
   font-weight: 400;
   font-size: 18px;
-  line-height: 28px;
-  color: #c2f0dc;
+  line-height: 29px;
+  color: rgba(255, 255, 255, 0.8);
 }
 
+/* Checklist bullets */
+.sa-v2-consult-bullets {
+  list-style: none;
+  margin: 32px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sa-v2-consult-bullet {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: "Satoshi", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.sa-v2-consult-bullet-icon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    140deg,
+    rgba(255, 255, 255, 0.7) 3.67%,
+    rgba(255, 255, 255, 0.05) 40%,
+    rgba(255, 255, 255, 0.05) 60%,
+    rgba(255, 255, 255, 0.45) 96%
+  );
+  box-shadow:
+    0px 20px 50px -12px rgba(0, 0, 0, 0.45),
+    inset 0px 1px 0px rgba(255, 255, 255, 0.55),
+    inset 0px -1px 0px rgba(255, 255, 255, 0.12),
+    inset 0px 0px 24px rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-radius: 9999px;
+  font-size: 13px;
+  line-height: 16px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* "Talk to an Expert" ghost pill button: zero gap between button container start and phone icon */
 .sa-v2-consult-ghost {
   box-sizing: border-box;
-  margin-top: 48px;
+  margin-top: 40px;
   display: inline-flex;
-  justify-content: center;
   align-items: center;
-  min-height: 45px;
-  padding: 12px 24px;
-  border: 1px solid #ffffff;
+  gap: 12px;
+  height: 52px;
+  padding: 8px 24px 8px 8px; /* starts right at 8px with phone circle */
+  background: linear-gradient(
+    140deg,
+    rgba(255, 255, 255, 0.7) 3.67%,
+    rgba(255, 255, 255, 0.05) 40%,
+    rgba(255, 255, 255, 0.05) 60%,
+    rgba(255, 255, 255, 0.45) 96%
+  );
+  box-shadow:
+    0px 20px 50px -12px rgba(0, 0, 0, 0.45),
+    inset 0px 1px 0px rgba(255, 255, 255, 0.55),
+    inset 0px -1px 0px rgba(255, 255, 255, 0.12),
+    inset 0px 0px 24px rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: none;
   border-radius: 9999px;
-  background: transparent;
   font-family: "Satoshi", sans-serif;
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
   color: #ffffff;
   cursor: pointer;
-  transition: background 0.2s ease, color 0.2s ease;
+  transition: opacity 0.2s ease, transform 0.15s ease;
 }
 
 .sa-v2-consult-ghost:hover {
-  background: rgba(255, 255, 255, 0.12);
+  opacity: 0.92;
+  transform: translateY(-1px);
+}
+
+/* White circle phone icon inside ghost button */
+.sa-v2-consult-ghost-ico {
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  border-radius: 9999px;
+  color: #0f172b;
+  flex-shrink: 0;
+  margin: 0;
+}
+
+/* ── Right: glass form wrapper ── */
+.sa-v2-consult-form-wrap {
+  position: relative;
+  z-index: 1;
 }
 
 .sa-v2-consult-form {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
   width: 100%;
-  max-width: 544px;
-  margin-left: auto;
-  padding: 24px;
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0.14) 0%,
-    rgba(102, 102, 102, 0.105) 100%
-  );
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  border-radius: 16px;
+  padding: 32px;
+  background:
+    radial-gradient(120% 80% at 30% 0%, rgba(221, 221, 221, 0.22) 0%, rgba(0, 0, 0, 0) 60%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.06) 100%);
+  box-shadow:
+    0px 20px 50px -12px rgba(0, 0, 0, 0.45),
+    inset 0px 1px 0px rgba(255, 255, 255, 0.55),
+    inset 0px -1px 0px rgba(255, 255, 255, 0.12),
+    inset 0px 0px 24px rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-radius: 32px;
+  position: relative;
+  overflow: hidden;
 }
 
+.sa-v2-consult-form::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    140deg,
+    rgba(166, 166, 166, 0.14) 3.67%,
+    rgba(172, 172, 172, 0.01) 40.73%,
+    rgba(255, 255, 255, 0.01) 59.27%,
+    rgba(255, 255, 255, 0.09) 96.33%
+  );
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+/* Form header */
+.sa-v2-consult-form-head {
+  position: relative;
+  z-index: 1;
+}
+
+.sa-v2-consult-form-title {
+  margin: 0;
+  font-family: "Satoshi", sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 28px;
+  color: #ffffff;
+}
+
+.sa-v2-consult-form-sub {
+  margin: 4px 0 0;
+  font-family: "Satoshi", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Email + Phone row */
+.sa-v2-consult-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* Field wrapper */
 .sa-v2-consult-field {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 4px;
+  gap: 5px;
   width: 100%;
 }
 
@@ -106,39 +304,65 @@
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
+  letter-spacing: -0.4px;
   color: #ffffff;
 }
 
+/* Shared input / select style with #FFFFFF2E */
 .sa-v2-consult-input {
   box-sizing: border-box;
   width: 100%;
   height: 45px;
-  padding: 0 14px;
-  background: rgba(255, 255, 255, 0.15);
-  border: 0.67px solid #cad5e2;
-  border-radius: 12px;
+  padding: 0 20px;
+  background: #ffffff2e;
+  border: 0.667px solid rgba(255, 255, 255, 0.18);
+  box-shadow:
+    inset 0px 1px 2px rgba(0, 0, 0, 0.18),
+    inset 0px -1px 0px rgba(255, 255, 255, 0.15);
+  border-radius: 9999px;
   font-family: "Satoshi", sans-serif;
+  font-weight: 400;
   font-size: 14px;
   line-height: 20px;
+  letter-spacing: -0.2px;
   color: #ffffff;
   outline: none;
+  appearance: none;
+  -webkit-appearance: none;
   transition: border-color 0.2s ease, background 0.2s ease;
 }
 
 .sa-v2-consult-input::placeholder {
-  color: rgba(255, 255, 255, 0.55);
+  color: rgba(255, 255, 255, 0.41);
 }
 
 .sa-v2-consult-input:focus {
-  border-color: #ffffff;
-  background: rgba(255, 255, 255, 0.22);
+  border-color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.32);
 }
 
 .sa-v2-consult-input:disabled {
-  opacity: 0.7;
+  opacity: 0.65;
   cursor: not-allowed;
 }
 
+/* Select-specific */
+.sa-v2-consult-select {
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.6);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='rgba(255,255,255,0.7)' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 18px center;
+  padding-right: 40px;
+}
+
+.sa-v2-consult-select:valid,
+.sa-v2-consult-select option {
+  color: #ffffff;
+  background: #242834;
+}
+
+/* Phone input override with #FFFFFF2E */
 .sa-v2-consult-phone {
   width: 100%;
   margin: 0;
@@ -155,9 +379,12 @@
   display: flex;
   align-items: center;
   padding: 0 10px;
-  background: rgba(255, 255, 255, 0.15) !important;
-  border: 0.67px solid #cad5e2 !important;
-  border-radius: 12px !important;
+  background: #ffffff2e !important;
+  border: 0.667px solid rgba(255, 255, 255, 0.18) !important;
+  border-radius: 9999px !important;
+  box-shadow:
+    inset 0px 1px 2px rgba(0, 0, 0, 0.18),
+    inset 0px -1px 0px rgba(255, 255, 255, 0.15) !important;
 }
 
 .sa-v2-consult-phone .PhoneInputInput {
@@ -171,63 +398,87 @@
 }
 
 .sa-v2-consult-phone .PhoneInputInput::placeholder {
-  color: rgba(255, 255, 255, 0.55);
+  color: rgba(255, 255, 255, 0.41);
 }
 
 .sa-v2-consult-phone .PhoneInputCountryIcon,
 .sa-v2-consult-phone .PhoneInputCountrySelectArrow {
-  opacity: 0.95;
+  opacity: 0.9;
 }
 
 .sa-v2-consult-phone .form-error-message {
   color: #ffe4e4;
 }
 
+/* Submit button — white pill */
 .sa-v2-consult-submit {
+  position: relative;
+  z-index: 1;
   box-sizing: border-box;
   margin-top: 8px;
   display: inline-flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  min-height: 44px;
-  padding: 12px 24px;
+  height: 48px;
   border: none;
   border-radius: 9999px;
-  background: linear-gradient(180deg, #ffffff 0%, rgba(0, 181, 111, 0) 220.45%);
-  filter: drop-shadow(0px -1px 8.1px rgba(0, 0, 0, 0.25));
+  background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.18) 0%,
+      rgba(255, 255, 255, 0.06) 100%
+    ),
+    rgba(255, 255, 255, 0.9);
+  box-shadow:
+    0px 20px 50px -12px rgba(0, 0, 0, 0.45),
+    inset 0px 1px 0px rgba(255, 255, 255, 0.55),
+    inset 0px -1px 0px rgba(255, 255, 255, 0.12),
+    inset 0px 0px 24px rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
   font-family: "Satoshi", sans-serif;
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
-  text-align: center;
-  color: #404040;
+  color: #0f172b;
   cursor: pointer;
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  transition: opacity 0.2s ease, transform 0.15s ease;
 }
 
 .sa-v2-consult-submit:hover:not(:disabled) {
-  opacity: 0.95;
+  opacity: 0.93;
   transform: translateY(-1px);
 }
 
 .sa-v2-consult-submit:disabled {
-  opacity: 0.7;
+  opacity: 0.65;
   cursor: not-allowed;
 }
 
-@media (max-width: 1000px) {
+/* ══════════════════════════════════════════════
+   Responsive
+   ══════════════════════════════════════════════ */
+
+@media (max-width: 1100px) {
+  .sa-v2-consult-card {
+    grid-template-columns: 1fr minmax(0, 460px);
+    padding: 64px 40px;
+    gap: 32px;
+    min-height: 580px;
+  }
+}
+
+@media (max-width: 900px) {
   .sa-v2-consult-card {
     grid-template-columns: 1fr;
-    gap: 28px;
-    padding: 40px 28px;
+    padding: 48px 32px;
+    gap: 36px;
     min-height: 0;
+    border-radius: 32px;
   }
 
-  .sa-v2-consult-copy,
-  .sa-v2-consult-form {
-    max-width: none;
-    margin-left: 0;
+  .sa-v2-consult-copy {
+    max-width: 100%;
   }
 
   .sa-v2-consult-ghost {
@@ -235,19 +486,18 @@
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 640px) {
   .sa-v2-consult {
     padding: 48px 16px 64px;
   }
 
   .sa-v2-consult-card {
-    padding: 28px 18px;
-    border-radius: 20px;
+    padding: 36px 20px;
+    border-radius: 24px;
   }
 
   .sa-v2-consult-title {
-    font-size: 28px;
-    line-height: 34px;
+    font-size: clamp(26px, 7vw, 36px);
   }
 
   .sa-v2-consult-desc {
@@ -255,11 +505,25 @@
     line-height: 26px;
   }
 
+  .sa-v2-consult-row {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
   .sa-v2-consult-form {
-    padding: 20px 16px;
+    padding: 24px 18px;
+    border-radius: 24px;
   }
 
   .sa-v2-consult-ghost {
     width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 400px) {
+  .sa-v2-consult-card {
+    padding: 28px 16px;
+    border-radius: 20px;
   }
 }

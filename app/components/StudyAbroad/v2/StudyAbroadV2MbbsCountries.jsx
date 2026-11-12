@@ -2,62 +2,56 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
+import { FiArrowLeft, FiArrowRight, FiArrowUpRight } from "react-icons/fi";
 import EnquiryFormModal from "@/app/components/common/EnquiryFormModal";
 import "./StudyAbroadV2MbbsCountries.css";
 
-const MBBS_ASSETS = "/images/study-abroad/study-abroadv2/mbbs";
+const MBBS_COUNTRY_ASSETS = "/images/study-abroad/study-abroadv2/mbbs-country";
 const FLAG_ASSETS = "/images/study-abroad/study-abroadv2/hero";
 const GAP = 14;
 const MOBILE_MQ = "(max-width: 900px)";
-
-const TAGS = ["English-medium options", "Eligibility check", "Visa support"];
-
-/** Georgia + Philippines thumbs reused across all cards until unique art is ready */
-const IMG_GEORGIA = `${MBBS_ASSETS}/mbbs-campus-classic.webp`;
-const IMG_PHILIPPINES = `${MBBS_ASSETS}/mbbs-campus-modern.webp`;
 
 const COUNTRIES = [
   {
     id: "russia",
     name: "Russia",
-    desc: "Long-established medical faculties; English-medium options with strong clinical exposure.",
-    image: IMG_GEORGIA,
+    desc: "Long-established medical faculties; English-medium options at selected universities.",
+    image: `${MBBS_COUNTRY_ASSETS}/russia-mbbs.png`,
     flag: `${FLAG_ASSETS}/russia-flag.webp`,
   },
   {
     id: "georgia",
     name: "Georgia",
-    desc: "European-style curricula with English-taught programmes and growing international intake.",
-    image: IMG_GEORGIA,
+    desc: "European-style curricula with English-taught programs available.",
+    image: `${MBBS_COUNTRY_ASSETS}/georgia-mbbs.jpg`,
     flag: `${FLAG_ASSETS}/georgia-flag.webp`,
   },
   {
-    id: "kazakhstan",
-    name: "Kazakhstan",
-    desc: "Growing number of medical universities admitting international students with clear pathways.",
-    image: IMG_PHILIPPINES,
-    flag: `${FLAG_ASSETS}/Kazakhstan-flag.webp`,
+    id: "romania",
+    name: "Romania",
+    desc: "Growing number of medical universities admitting international students.",
+    image: `${MBBS_COUNTRY_ASSETS}/romania-mbbs.png`,
+    flag: `${FLAG_ASSETS}/romania-flag.webp`,
   },
   {
-    id: "uzbekistan",
-    name: "Uzbekistan",
-    desc: "Emerging destination with expanding English-medium MBBS seats and supportive campuses.",
-    image: IMG_PHILIPPINES,
-    flag: `${FLAG_ASSETS}/Uzbekistan-flag.webp`,
+    id: "ukraine",
+    name: "Ukraine",
+    desc: "Emerging destination with expanding English-medium programs.",
+    image: `${MBBS_COUNTRY_ASSETS}/ukraine-mbbs.png`,
+    flag: `${FLAG_ASSETS}/ukraine-flag.webp`,
   },
   {
     id: "kyrgyzstan",
     name: "Kyrgyzstan",
-    desc: "Popular with international students; verify recognition and fee structures before applying.",
-    image: IMG_GEORGIA,
+    desc: "Popular with international students; verify recognition per university.",
+    image: `${MBBS_COUNTRY_ASSETS}/Kyrgyzstan-mbbs.png`,
     flag: `${FLAG_ASSETS}/kyrgyzstan-flag.webp`,
   },
   {
     id: "philippines",
     name: "Philippines",
-    desc: "US-influenced medical education system, taught in English with familiar clinical training.",
-    image: IMG_PHILIPPINES,
+    desc: "Popular with international students; verify recognition per university.",
+    image: `${MBBS_COUNTRY_ASSETS}/philippines-mbbs.png`,
     flag: `${FLAG_ASSETS}/philippines-flag.webp`,
   },
 ];
@@ -183,52 +177,47 @@ export default function StudyAbroadV2MbbsCountries() {
           >
             {COUNTRIES.map((c) => (
               <article key={c.id} className="sa-v2-mbbs-country-card">
-                <div className="sa-v2-mbbs-country-media">
-                  <div className="sa-v2-mbbs-country-media-frame">
-                    <Image
-                      src={c.image}
-                      alt={`${c.name} medical campus`}
-                      fill
-                      sizes="(max-width: 900px) 90vw, 400px"
-                      className="sa-v2-mbbs-country-img"
-                    />
-                    <span
-                      className="sa-v2-mbbs-country-shade"
-                      aria-hidden="true"
-                    />
-                    <span className="sa-v2-mbbs-country-badge">MBBS / MD</span>
-                  </div>
-                  <span className="sa-v2-mbbs-country-flag" aria-hidden="true">
-                    <Image
-                      src={c.flag}
-                      alt=""
-                      width={48}
-                      height={48}
-                      className="sa-v2-mbbs-country-flag-img"
-                    />
-                  </span>
+                <Image
+                  src={c.image}
+                  alt={`${c.name} medical campus`}
+                  fill
+                  sizes="(max-width: 900px) 90vw, 400px"
+                  className="sa-v2-mbbs-country-bg-img"
+                />
+                <span className="sa-v2-mbbs-country-overlay" aria-hidden="true" />
+
+                {/* Round flag top-right */}
+                <div className="sa-v2-mbbs-country-flag">
+                  <Image
+                    src={c.flag}
+                    alt={`${c.name} flag`}
+                    fill
+                    className="sa-v2-mbbs-country-flag-img"
+                  />
                 </div>
 
-                <div className="sa-v2-mbbs-country-body">
-                  <p className="sa-v2-mbbs-country-eyebrow">Study medicine in</p>
+                {/* Glassmorphic info box */}
+                <div className="sa-v2-mbbs-country-glass">
                   <h3 className="sa-v2-mbbs-country-name">{c.name}</h3>
                   <p className="sa-v2-mbbs-country-desc">{c.desc}</p>
                   <div className="sa-v2-mbbs-country-tags">
-                    {TAGS.map((tag) => (
-                      <span key={tag} className="sa-v2-mbbs-country-tag">
-                        {tag}
-                      </span>
-                    ))}
+                    <div className="sa-v2-mbbs-country-tags-row">
+                      <span className="sa-v2-mbbs-country-tag">English-medium options</span>
+                      <span className="sa-v2-mbbs-country-tag">Eligibility check</span>
+                    </div>
+                    <div className="sa-v2-mbbs-country-tags-row">
+                      <span className="sa-v2-mbbs-country-tag">Visa support</span>
+                    </div>
                   </div>
-                  <div className="sa-v2-mbbs-country-cta-wrap">
-                    <button
-                      type="button"
-                      className="sa-v2-mbbs-country-cta"
-                      onClick={() => openDetails(c.name)}
-                    >
-                      View Details
-                    </button>
-                  </div>
+                  <button
+                    type="button"
+                    className="sa-v2-mbbs-country-explore"
+                    onClick={() => openDetails(c.name)}
+                    aria-label={`Explore MBBS in ${c.name}`}
+                  >
+                    <span>Explore now</span>
+                    <FiArrowUpRight className="sa-v2-mbbs-country-explore-icon" />
+                  </button>
                 </div>
               </article>
             ))}

@@ -1,27 +1,52 @@
 .sa-v2-services {
+  position: relative;
   width: 100%;
-  background: #f8fafc;
+  background: #f8f8f8;
   padding: 72px 24px 80px;
   box-sizing: border-box;
   font-family: "Satoshi", -apple-system, BlinkMacSystemFont, sans-serif;
+  /* Keep sticky working — no transform/filter/overflow on this section */
+  overflow: visible;
+  transform: none;
 }
 
 .sa-v2-services-inner {
   width: 100%;
   max-width: 1240px;
   margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(240px, 420px) minmax(0, 1fr);
+  gap: 40px 48px;
+  align-items: stretch;
 }
 
-.sa-v2-services-head-row {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 16px;
+/* Left copy — JS-pinned on desktop (is-fixed / is-bottom) */
+.sa-v2-services-left {
+  position: relative;
+  min-width: 0;
+  width: 100%;
+  z-index: 2;
+  padding-top: 40px;
 }
 
-.sa-v2-services-head {
-  max-width: 756px;
-  flex: 1 1 auto;
+.sa-v2-services-pin {
+  display: block;
+  width: 100%;
+}
+
+.sa-v2-services-pin.is-fixed {
+  position: fixed;
+  z-index: 5;
+  margin: 0;
+}
+
+.sa-v2-services-pin.is-bottom {
+  position: absolute;
+  left: 0;
+  right: auto;
+  bottom: 0;
+  top: auto;
+  width: 100% !important;
 }
 
 .sa-v2-services-title {
@@ -36,7 +61,7 @@
 
 .sa-v2-services-desc {
   margin: 16px 0 0;
-  max-width: 756px;
+  max-width: 419px;
   font-family: "Satoshi", sans-serif;
   font-weight: 400;
   font-size: 18px;
@@ -44,159 +69,90 @@
   color: #45556c;
 }
 
-.sa-v2-services-nav {
-  display: none;
-  align-items: center;
-  gap: 14px;
-  flex-shrink: 0;
-  padding-bottom: 4px;
-}
-
-.sa-v2-services-nav[hidden] {
-  display: none !important;
-}
-
-.sa-v2-services-arrow {
-  width: 33px;
-  height: 33px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border: none;
-  background: transparent;
-  color: #0f172b;
-  font-size: 22px;
-  cursor: pointer;
-  opacity: 1;
-  transition: opacity 0.2s ease;
-  padding: 0;
-}
-
-.sa-v2-services-arrow:disabled {
-  opacity: 0.38;
-  cursor: default;
-}
-
-.sa-v2-services-viewport {
-  width: 100%;
-  margin-top: 48px;
-}
-
-.sa-v2-services-grid {
+/* Right — image cards (this column is taller; page scroll moves it) */
+.sa-v2-services-right {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 20px;
+  gap: 16px;
+  min-width: 0;
+  position: relative;
+  z-index: 1;
 }
 
 .sa-v2-service-card {
+  position: relative;
   box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  min-height: 240px;
-  padding: 24px;
-  background: #ffffff;
-  border: 0.666667px solid #e2e8f0;
-  border-radius: 16px;
+  width: 100%;
+  aspect-ratio: 201 / 303;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #1a1a1a;
 }
 
-.sa-v2-service-icon {
-  width: 48px;
-  height: 48px;
+.sa-v2-service-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.sa-v2-service-fade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180.04deg,
+    rgba(0, 0, 0, 0) 26.74%,
+    #000000 92.92%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.sa-v2-service-panel {
+  position: absolute;
+  left: 6px;
+  right: 6px;
+  bottom: 6px;
+  z-index: 2;
+  box-sizing: border-box;
+  min-height: 110px;
+  padding: 8px 10px 12px;
   border-radius: 12px;
-  background: #e6f9f1;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: #008a55;
-  font-size: 22px;
-  flex-shrink: 0;
-}
-
-.sa-v2-service-title {
-  margin: 20px 0 0;
-  font-family: "Satoshi", sans-serif;
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 28px;
-  color: #0f172b;
-}
-
-.sa-v2-service-desc {
-  margin: 8px 0 0;
-  font-family: "Satoshi", sans-serif;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 23px;
-  color: #45556c;
-  flex: 1 1 auto;
-}
-
-.sa-v2-service-link {
-  margin-top: 20px;
-  font-family: "Satoshi", sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
-  color: #008a55;
-  text-decoration: none;
-  transition: opacity 0.2s ease;
-}
-
-.sa-v2-service-link:hover {
-  opacity: 0.8;
-}
-
-.sa-v2-service-cta {
-  box-sizing: border-box;
+  background: rgba(217, 217, 217, 0.19);
+  -webkit-backdrop-filter: blur(5.85px);
+  backdrop-filter: blur(5.85px);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-start;
-  min-height: 240px;
-  padding: 24px;
-  background: #008a55;
-  border-radius: 16px;
+  justify-content: flex-start;
+  gap: 4px;
 }
 
-.sa-v2-service-cta-title {
+.sa-v2-service-card-title {
   margin: 0;
   font-family: "Satoshi", sans-serif;
   font-weight: 500;
-  font-size: 18px;
-  line-height: 28px;
+  font-size: 16px;
+  line-height: 1.25;
+  letter-spacing: -1px;
   color: #ffffff;
 }
 
-.sa-v2-service-cta-btn {
-  box-sizing: border-box;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  min-height: 44px;
-  margin-top: 24px;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 9999px;
-  background: #ffffff;
+.sa-v2-service-card-desc {
+  margin: 0;
   font-family: "Satoshi", sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
-  color: #006e44;
-  cursor: pointer;
-  transition: transform 0.2s ease, opacity 0.2s ease;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  letter-spacing: -0.3px;
+  color: rgba(255, 255, 255, 0.73);
 }
 
-.sa-v2-service-cta-btn:hover {
-  opacity: 0.95;
-  transform: translateY(-1px);
-}
-
-@media (max-width: 1100px) {
-  .sa-v2-services-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+@media (max-width: 1200px) {
+  .sa-v2-services-right {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
@@ -205,53 +161,71 @@
     padding: 56px 20px 64px;
   }
 
+  .sa-v2-services-inner {
+    grid-template-columns: minmax(200px, 320px) minmax(0, 1fr);
+    gap: 28px 28px;
+  }
+
+  .sa-v2-services-left {
+    padding-top: 12px;
+  }
+
   .sa-v2-services-desc {
     font-size: 16px;
     line-height: 26px;
+  }
+
+  .sa-v2-services-right {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
   }
 }
 
 @media (max-width: 767px) {
   .sa-v2-services {
-    padding: 48px 16px 56px;
+    padding: 40px 0 44px;
   }
 
-  .sa-v2-services-head-row {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 16px;
+  .sa-v2-services-inner {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    max-width: none;
   }
 
-  .sa-v2-services-nav {
-    display: flex;
-    align-self: flex-end;
+  .sa-v2-services-left {
+    position: static;
+    padding: 0 16px;
   }
 
-  .sa-v2-services-nav[hidden] {
-    display: none !important;
+  .sa-v2-services-pin,
+  .sa-v2-services-pin.is-fixed,
+  .sa-v2-services-pin.is-bottom {
+    position: static !important;
+    left: auto !important;
+    top: auto !important;
+    bottom: auto !important;
+    width: 100% !important;
   }
 
   .sa-v2-services-title {
-    font-size: clamp(24px, 7vw, 32px);
+    font-size: clamp(24px, 7vw, 30px);
     letter-spacing: -1px;
   }
 
   .sa-v2-services-desc {
-    font-size: 15px;
-    line-height: 24px;
+    max-width: none;
+    margin-top: 10px;
+    font-size: 14px;
+    line-height: 22px;
   }
 
-  .sa-v2-services-viewport {
-    margin-top: 28px;
-    overflow: hidden;
-  }
-
-  .sa-v2-services-grid.is-carousel {
-    --svc-gap: 14px;
+  /* Horizontal swipe - keeps section short, no tall vertical scroll */
+  .sa-v2-services-right {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    gap: var(--svc-gap);
+    gap: 12px;
+    padding: 0 16px;
     overflow-x: auto;
     overflow-y: hidden;
     scroll-snap-type: x mandatory;
@@ -261,15 +235,35 @@
     -webkit-overflow-scrolling: touch;
   }
 
-  .sa-v2-services-grid.is-carousel::-webkit-scrollbar {
+  .sa-v2-services-right::-webkit-scrollbar {
     display: none;
   }
 
-  .sa-v2-services-grid.is-carousel .sa-v2-services-slide {
-    flex: 0 0 100%;
-    width: 100%;
-    min-height: 220px;
+  .sa-v2-service-card {
+    flex: 0 0 min(78vw, 260px);
+    width: min(78vw, 260px);
+    aspect-ratio: 201 / 280;
+    max-height: 320px;
     scroll-snap-align: start;
     scroll-snap-stop: always;
+  }
+
+  .sa-v2-service-card-title {
+    font-size: 14px;
+    letter-spacing: -0.6px;
+  }
+
+  .sa-v2-service-card-desc {
+    font-size: 12px;
+    line-height: 15px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .sa-v2-service-panel {
+    min-height: 88px;
+    padding: 6px 8px 10px;
   }
 }

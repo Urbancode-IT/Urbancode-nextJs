@@ -2,45 +2,41 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import {
-  HiOutlineBuildingLibrary,
-  HiOutlineClipboardDocumentCheck,
-  HiOutlineGlobeAlt,
-  HiOutlinePaperAirplane,
-  HiOutlineStar,
-} from "react-icons/hi2";
+import { University, SquareCheck, SquareMenu, Star } from "lucide-react";
 import "./StudyAbroadV2Mbbs.css";
 
-const MBBS_ASSETS = "/images/study-abroad/study-abroadv2/mbbs";
+const MBBS_IMAGE =
+  "/images/study-abroad/study-abroadv2/study-abroad-services/study-mbbs-abroad.webp";
 
 const FEATURES = [
   {
     title: "Accredited Universities",
     desc: "WHO-listed and NMC-recognised government & private medical universities.",
-    Icon: HiOutlineBuildingLibrary,
+    Icon: University,
   },
   {
     title: "Clinical Exposure",
     desc: "Structured hospital rotations in affiliated teaching hospitals abroad.",
-    Icon: HiOutlineClipboardDocumentCheck,
+    Icon: SquareCheck,
   },
   {
     title: "End-to-End Support",
     desc: "University shortlisting, visa, travel, and pre-departure briefing covered.",
-    Icon: HiOutlinePaperAirplane,
+    Icon: SquareMenu,
   },
   {
     title: "Affordable Education",
     desc: "Complete MBBS abroad at a fraction of Indian private college fees.",
-    Icon: HiOutlineStar,
+    Icon: Star,
   },
 ];
 
 const STATS = [
-  { end: 6, suffix: "+", label: "MBBS Destinations" },
+  { end: 10, suffix: "+", label: "MBBS Destinations" },
   { end: 50, suffix: "+", label: "Partner Universities" },
-  { end: 6, suffix: " Yrs", label: "Programme Duration" },
+  { end: 6, suffix: "Yrs", label: "Programme Duration" },
   { end: 100, suffix: "%", label: "Admission Support" },
+  { end: 95, suffix: "%", label: "Loan Approval Rate" },
 ];
 
 function useCountUp(target, duration = 1600, started = false) {
@@ -100,62 +96,44 @@ export default function StudyAbroadV2Mbbs() {
 
   return (
     <section className="sa-v2-mbbs" aria-labelledby="sa-v2-mbbs-title" id="mbbs">
-      <div className="sa-v2-mbbs-glow" aria-hidden="true" />
-
       <div className="sa-v2-mbbs-inner">
-        <div className="sa-v2-mbbs-layout">
-          <div className="sa-v2-mbbs-media">
-            <div className="sa-v2-mbbs-media-tall">
-              <Image
-                src={`${MBBS_ASSETS}/mbbs-2.webp`}
-                alt="Medical students in training"
-                fill
-                sizes="(max-width: 900px) 100vw, 349px"
-                className="sa-v2-mbbs-img"
-              />
-            </div>
+        <div className="sa-v2-mbbs-panel">
+          <div className="sa-v2-mbbs-layout">
+            <div className="sa-v2-mbbs-copy">
+              <h2 id="sa-v2-mbbs-title" className="sa-v2-mbbs-title">
+                Study MBBS Abroad
+              </h2>
+              <p className="sa-v2-mbbs-desc">
+                Turn your dream of becoming a doctor into reality. Study at
+                NMC-approved, WHO-listed universities across Europe and Central
+                Asia — with English-medium instruction and total costs far below
+                Indian private medical colleges.
+              </p>
 
-            <div className="sa-v2-mbbs-media-side">
-              <div className="sa-v2-mbbs-media-small">
-                <Image
-                  src={`${MBBS_ASSETS}/mbbs-1.webp`}
-                  alt="Medical study with stethoscope"
-                  fill
-                  sizes="(max-width: 900px) 50vw, 227px"
-                  className="sa-v2-mbbs-img"
-                />
-              </div>
-
-              <div className="sa-v2-mbbs-badge">
-                <HiOutlineGlobeAlt className="sa-v2-mbbs-badge-icon" aria-hidden />
-                <p className="sa-v2-mbbs-badge-label">Destinations covered</p>
-                <p className="sa-v2-mbbs-badge-value">6 countries</p>
+              <div className="sa-v2-mbbs-features">
+                {FEATURES.map(({ title, desc, Icon }) => (
+                  <article key={title} className="sa-v2-mbbs-feature">
+                    <span className="sa-v2-mbbs-feature-icon" aria-hidden>
+                      <Icon size={16} strokeWidth={2} />
+                    </span>
+                    <h3 className="sa-v2-mbbs-feature-title">{title}</h3>
+                    <p className="sa-v2-mbbs-feature-desc">{desc}</p>
+                  </article>
+                ))}
               </div>
             </div>
           </div>
 
-          <div className="sa-v2-mbbs-copy">
-            <h2 id="sa-v2-mbbs-title" className="sa-v2-mbbs-title">
-              Study MBBS Abroad
-            </h2>
-            <p className="sa-v2-mbbs-desc">
-              Turn your dream of becoming a doctor into reality. Study at
-              NMC-approved, WHO-listed universities across Europe and Central
-              Asia — with English-medium instruction and total costs far below
-              Indian private medical colleges.
-            </p>
-
-            <div className="sa-v2-mbbs-features">
-              {FEATURES.map(({ title, desc, Icon }) => (
-                <article key={title} className="sa-v2-mbbs-feature">
-                  <span className="sa-v2-mbbs-feature-icon" aria-hidden>
-                    <Icon />
-                  </span>
-                  <h3 className="sa-v2-mbbs-feature-title">{title}</h3>
-                  <p className="sa-v2-mbbs-feature-desc">{desc}</p>
-                </article>
-              ))}
-            </div>
+          {/* Right medical team image pinned flush to bottom and extending outside on right */}
+          <div className="sa-v2-mbbs-media">
+            <Image
+              src={MBBS_IMAGE}
+              alt="Medical team in teal scrubs"
+              fill
+              sizes="(max-width: 880px) 90vw, (max-width: 1240px) 55vw, 740px"
+              className="sa-v2-mbbs-img"
+              priority
+            />
           </div>
         </div>
 
