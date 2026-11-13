@@ -1,0 +1,490 @@
+/* ==========================================================================
+   Study Abroad V2 — English Proficiency Internal Pages (IELTS, PTE, Duolingo)
+   Single CSS file for all 3 internal pages as requested
+   ========================================================================== */
+
+.sa-v2-internal-root {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #F8FAFC;
+  font-family: 'Satoshi', var(--font-satoshi, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
+  color: #0F172B;
+  overflow-x: hidden;
+  padding-bottom: 60px;
+}
+
+/* --------------------------------------------------------------------------
+   Hero Section & Container
+   -------------------------------------------------------------------------- */
+.sa-v2-internal-hero-wrap {
+  width: 100%;
+  padding: 32px 20px 24px;
+  display: flex;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .sa-v2-internal-hero-wrap {
+    padding: 48px 24px 32px;
+  }
+}
+
+.sa-v2-internal-hero-card {
+  width: 100%;
+  max-width: 1280px;
+  min-height: 525px;
+  border-radius: 32px;
+  padding: 40px 28px;
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+}
+
+@media (min-width: 992px) {
+  .sa-v2-internal-hero-card {
+    padding: 48px;
+  }
+}
+
+.sa-v2-internal-hero-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 36px;
+  align-items: center;
+}
+
+@media (min-width: 992px) {
+  .sa-v2-internal-hero-grid {
+    grid-template-columns: minmax(0, 572px) minmax(0, 572px);
+    justify-content: space-between;
+    gap: 40px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Hero Left Column: Content
+   -------------------------------------------------------------------------- */
+.sa-v2-internal-hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 572px;
+}
+
+/* Breadcrumbs */
+.sa-v2-internal-breadcrumbs {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-family: 'Satoshi', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #45556C;
+  margin-bottom: 24px;
+}
+
+.sa-v2-internal-breadcrumbs a {
+  color: #45556C;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.sa-v2-internal-breadcrumbs a:hover {
+  color: #0F172B;
+  text-decoration: underline;
+}
+
+.sa-v2-internal-breadcrumbs-sep {
+  color: #94A3B8;
+  font-size: 13px;
+  user-select: none;
+}
+
+.sa-v2-internal-breadcrumbs-current {
+  color: #45556C;
+  font-weight: 500;
+}
+
+/* Pill / Tag */
+.sa-v2-internal-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #FFFFFF;
+  border-radius: 9999px;
+  padding: 4px 18px;
+  min-height: 36px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.sa-v2-internal-tag-text {
+  font-family: 'Satoshi', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 28px;
+  letter-spacing: 0.01em;
+}
+
+/* Title */
+.sa-v2-internal-title {
+  font-family: 'Satoshi', sans-serif;
+  font-weight: 500;
+  font-size: clamp(32px, 4.2vw, 48px);
+  line-height: 1.1;
+  letter-spacing: -1.2px;
+  color: #0F172B;
+  margin: 0 0 20px 0;
+  max-width: 572px;
+}
+
+/* Description */
+.sa-v2-internal-desc {
+  font-family: 'Satoshi', sans-serif;
+  font-weight: 400;
+  font-size: clamp(16px, 1.6vw, 18px);
+  line-height: 1.62;
+  color: #314158;
+  margin: 0 0 32px 0;
+  max-width: 512px;
+}
+
+/* CTA Buttons */
+.sa-v2-internal-cta-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  width: 100%;
+}
+
+.sa-v2-internal-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  min-height: 44px;
+  background: #0F172B;
+  color: #FFFFFF;
+  border-radius: 9999px;
+  font-family: 'Satoshi', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  border: 1px solid #0F172B;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(15, 23, 43, 0.15);
+}
+
+.sa-v2-internal-btn-primary:hover {
+  background: #1E293B;
+  border-color: #1E293B;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(15, 23, 43, 0.22);
+}
+
+.sa-v2-internal-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  min-height: 44px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #0F172B;
+  border-radius: 9999px;
+  font-family: 'Satoshi', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.sa-v2-internal-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.95);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+/* --------------------------------------------------------------------------
+   Hero Right Column: Image
+   -------------------------------------------------------------------------- */
+.sa-v2-internal-hero-img-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 572px;
+  height: clamp(260px, 35vw, 429px);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0px 20px 25px -5px rgba(0, 0, 0, 0.1), 0px 8px 10px -6px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.5);
+  margin: 0 auto;
+}
+
+.sa-v2-internal-hero-img {
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.sa-v2-internal-hero-card:hover .sa-v2-internal-hero-img {
+  transform: scale(1.02);
+}
+
+/* --------------------------------------------------------------------------
+   Overview / Key Features Section
+   -------------------------------------------------------------------------- */
+.sa-v2-internal-section {
+  width: 100%;
+  max-width: 1280px;
+  margin: 40px auto 0;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+  .sa-v2-internal-section {
+    padding: 0 24px;
+    margin-top: 60px;
+  }
+}
+
+.sa-v2-internal-sec-head {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 40px;
+}
+
+.sa-v2-internal-sec-title {
+  font-family: 'Satoshi', sans-serif;
+  font-weight: 500;
+  font-size: clamp(26px, 3.2vw, 36px);
+  line-height: 1.2;
+  letter-spacing: -0.8px;
+  color: #0F172B;
+  margin-bottom: 12px;
+}
+
+.sa-v2-internal-sec-desc {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #475569;
+  margin: 0;
+}
+
+/* Features Grid */
+.sa-v2-internal-features-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+@media (min-width: 640px) {
+  .sa-v2-internal-features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .sa-v2-internal-features-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.sa-v2-internal-feature-card {
+  background: #FFFFFF;
+  border-radius: 20px;
+  padding: 28px 24px;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+  border: 1px solid #E2E8F0;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.sa-v2-internal-feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.08);
+}
+
+.sa-v2-internal-feature-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.sa-v2-internal-feature-title {
+  font-family: 'Satoshi', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  color: #0F172B;
+  margin-bottom: 8px;
+}
+
+.sa-v2-internal-feature-desc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #64748B;
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Exam Structure / Modules Section
+   -------------------------------------------------------------------------- */
+.sa-v2-internal-modules-box {
+  background: #FFFFFF;
+  border-radius: 28px;
+  padding: 36px 28px;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
+  border: 1px solid #E2E8F0;
+  margin-top: 40px;
+}
+
+@media (min-width: 768px) {
+  .sa-v2-internal-modules-box {
+    padding: 48px;
+  }
+}
+
+.sa-v2-internal-modules-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  margin-top: 32px;
+}
+
+@media (min-width: 640px) {
+  .sa-v2-internal-modules-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .sa-v2-internal-modules-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.sa-v2-internal-module-item {
+  background: #F8FAFC;
+  border-radius: 18px;
+  padding: 24px;
+  border: 1px solid #EEF2F6;
+}
+
+.sa-v2-internal-module-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin-bottom: 12px;
+}
+
+.sa-v2-internal-module-name {
+  font-family: 'Satoshi', sans-serif;
+  font-weight: 500;
+  font-size: 17px;
+  color: #0F172B;
+  margin-bottom: 8px;
+}
+
+.sa-v2-internal-module-details {
+  font-size: 13px;
+  line-height: 1.55;
+  color: #64748B;
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Other Test Prep Options Bar
+   -------------------------------------------------------------------------- */
+.sa-v2-internal-other-tests {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.sa-v2-internal-other-tests-title {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  color: #0F172B;
+  margin-bottom: 20px;
+}
+
+.sa-v2-internal-other-pills {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.sa-v2-internal-other-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 22px;
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 9999px;
+  font-family: 'Satoshi', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  color: #1E293B;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+}
+
+.sa-v2-internal-other-pill:hover {
+  border-color: #CBD5E1;
+  background: #F1F5F9;
+  transform: translateY(-2px);
+}
+
+/* --------------------------------------------------------------------------
+   Mobile Adjustments
+   -------------------------------------------------------------------------- */
+@media (max-width: 640px) {
+  .sa-v2-internal-hero-card {
+    border-radius: 24px;
+    padding: 24px 18px;
+  }
+
+  .sa-v2-internal-hero-img-wrap {
+    height: 230px;
+    border-radius: 18px;
+  }
+
+  .sa-v2-internal-cta-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .sa-v2-internal-btn-primary,
+  .sa-v2-internal-btn-secondary {
+    width: 100%;
+    text-align: center;
+  }
+}
+

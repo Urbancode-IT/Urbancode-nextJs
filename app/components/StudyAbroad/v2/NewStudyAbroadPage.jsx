@@ -28,11 +28,12 @@ export default function NewStudyAbroadPage() {
     <V2PageReveal className="sa-v2-root">
       <StudyAbroadV2Hero />
       <StudyAbroadV2Services />
+        <StudyAbroadV2EnglishProficiency />
       <StudyAbroadV2Destinations />
       <StudyAbroadV2Mbbs />
       <StudyAbroadV2MbbsCountries />
       <StudyAbroadV2DreamCountry />
-      <StudyAbroadV2EnglishProficiency />
+    
       <StudyAbroadV2Stories />
       <StudyAbroadV2Consult />
     </V2PageReveal>

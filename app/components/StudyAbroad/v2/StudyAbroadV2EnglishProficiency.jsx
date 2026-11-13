@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { FiArrowUpRight } from "react-icons/fi";
 import "./StudyAbroadV2EnglishProficiency.css";
 
@@ -77,20 +78,21 @@ export default function StudyAbroadV2EnglishProficiency() {
         {/* Cards grid */}
         <div className="sa-v2-ep-grid">
           {COURSES.map((c) => (
-            <article
+            <Link
               key={c.id}
+              href={`/study-abroad/${c.id}`}
               className="sa-v2-ep-card"
               style={{ background: c.gradient }}
+              aria-label={`Learn more about ${c.label} preparation`}
             >
-              {/* Arrow button — absolute top-right */}
-              <button
-                type="button"
+              {/* Arrow button badge — absolute top-right */}
+              <span
                 className="sa-v2-ep-card-btn"
                 style={{ background: c.btnGradient }}
-                aria-label={`Explore ${c.label} preparation`}
+                aria-hidden="true"
               >
                 <FiArrowUpRight className="sa-v2-ep-card-btn-icon" />
-              </button>
+              </span>
 
               {/* Top row: label pill only */}
               <div className="sa-v2-ep-card-top">
@@ -119,7 +121,7 @@ export default function StudyAbroadV2EnglishProficiency() {
                   className="sa-v2-ep-card-img"
                 />
               </div>
-            </article>
+            </Link>
           ))}
         </div>
       </div>

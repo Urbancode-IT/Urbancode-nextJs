@@ -94,6 +94,20 @@
   flex-direction: column;
   overflow: hidden;
   min-height: 432px;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+.sa-v2-ep-card:hover {
+  transform: translateY(-4px);
+  filter: drop-shadow(0px 8px 20px rgba(0, 0, 0, 0.16));
+}
+
+.sa-v2-ep-card:hover .sa-v2-ep-card-btn {
+  transform: scale(1.08);
+  opacity: 0.95;
 }
 
 /* ── Top row inside card: pill only ── */
