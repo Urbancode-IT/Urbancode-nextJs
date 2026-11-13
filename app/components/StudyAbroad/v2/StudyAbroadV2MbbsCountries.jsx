@@ -43,14 +43,14 @@ const COUNTRIES = [
   {
     id: "kyrgyzstan",
     name: "Kyrgyzstan",
-    desc: "Popular with international students; verify recognition per university.",
+    desc: "Affordable medical universities recognized globally with English-medium programs.",
     image: `${MBBS_COUNTRY_ASSETS}/Kyrgyzstan-mbbs.png`,
     flag: `${FLAG_ASSETS}/kyrgyzstan-flag.webp`,
   },
   {
     id: "philippines",
     name: "Philippines",
-    desc: "Popular with international students; verify recognition per university.",
+    desc: "US-patterned medical curriculum taught in English with extensive clinical training.",
     image: `${MBBS_COUNTRY_ASSETS}/philippines-mbbs.png`,
     flag: `${FLAG_ASSETS}/philippines-flag.webp`,
   },
@@ -128,7 +128,7 @@ export default function StudyAbroadV2MbbsCountries() {
               id="sa-v2-mbbs-countries-title"
               className="sa-v2-mbbs-countries-title"
             >
-              Top country for MBBS abroad
+              Top countries for MBBS abroad
             </h2>
             <p className="sa-v2-mbbs-countries-desc">
               Recognition, fees and eligibility change frequently. Always verify
@@ -205,19 +205,19 @@ export default function StudyAbroadV2MbbsCountries() {
                       <span className="sa-v2-mbbs-country-tag">English-medium options</span>
                       <span className="sa-v2-mbbs-country-tag">Eligibility check</span>
                     </div>
-                    <div className="sa-v2-mbbs-country-tags-row">
+                    <div className="sa-v2-mbbs-country-tags-row sa-v2-mbbs-country-bottom-row">
                       <span className="sa-v2-mbbs-country-tag">Visa support</span>
+                      <button
+                        type="button"
+                        className="sa-v2-mbbs-country-explore"
+                        onClick={() => openDetails(c.name)}
+                        aria-label={`Explore MBBS in ${c.name}`}
+                      >
+                        <span>Explore now</span>
+                        <FiArrowUpRight className="sa-v2-mbbs-country-explore-icon" />
+                      </button>
                     </div>
                   </div>
-                  <button
-                    type="button"
-                    className="sa-v2-mbbs-country-explore"
-                    onClick={() => openDetails(c.name)}
-                    aria-label={`Explore MBBS in ${c.name}`}
-                  >
-                    <span>Explore now</span>
-                    <FiArrowUpRight className="sa-v2-mbbs-country-explore-icon" />
-                  </button>
                 </div>
               </article>
             ))}

@@ -18,8 +18,8 @@ const STORIES = [
       "Urbancode helped me through every step of my UK student visa process. Their scholarship guidance was a lifesaver!",
   },
   {
-    id: "ashmathi",
-    name: "Ashmathi",
+    id: "ashwathi",
+    name: "Ashwathi",
     university: "Dublin Business School",
     country: "Ireland",
     quote:

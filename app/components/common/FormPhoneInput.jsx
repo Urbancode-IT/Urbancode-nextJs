@@ -18,7 +18,7 @@ const getFlagEmoji = (countryCode) => {
 };
 
 /* ── Custom Country Select with themed dropdown ──────────────── */
-const ThemedCountrySelect = ({ value, onChange, options }) => {
+const ThemedCountrySelect = ({ value, onChange, options, theme = 'light' }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [search, setSearch] = useState('');
   const [coords, setCoords] = useState(null);
@@ -113,7 +113,7 @@ const ThemedCountrySelect = ({ value, onChange, options }) => {
     createPortal(
       <div
         ref={panelRef}
-        className={`themed-country-dropdown themed-country-dropdown--portal${
+        className={`themed-country-dropdown themed-country-dropdown--portal themed-country-dropdown--${theme}${
           coords.openUp ? ' is-up' : ''
         }`}
         style={{
@@ -169,11 +169,11 @@ const ThemedCountrySelect = ({ value, onChange, options }) => {
     );
 
   return (
-    <div className="themed-country-select" ref={rootRef}>
+    <div className={`themed-country-select themed-country-select--${theme}`} ref={rootRef}>
       <button
         ref={triggerRef}
         type="button"
-        className="themed-country-select__trigger"
+        className={`themed-country-select__trigger themed-country-select__trigger--${theme}`}
         onClick={() => setIsOpen((open) => !open)}
         aria-expanded={isOpen}
         aria-haspopup="listbox"
@@ -211,6 +211,9 @@ export const FormPhoneInput = ({
   disabled,
   name,
   placeholder = 'Enter phone number',
+  international = true,
+  theme = 'light',
+  ...rest
 }) => {
   return (
     <div className={`form-group-container ${containerClass}`}>
@@ -220,7 +223,7 @@ export const FormPhoneInput = ({
         </label>
       ) : null}
       <PhoneInput
-        international
+        international={international}
         defaultCountry="IN"
         className={`phone-input-custom ${error ? 'is-invalid' : ''} ${className}`}
         value={value}
@@ -230,6 +233,8 @@ export const FormPhoneInput = ({
         id={name}
         placeholder={placeholder}
         countrySelectComponent={ThemedCountrySelect}
+        countrySelectProps={{ theme }}
+        {...rest}
       />
       {error ? <div className="form-error-message">{error}</div> : null}
     </div>

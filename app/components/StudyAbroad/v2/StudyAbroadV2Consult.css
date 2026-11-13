@@ -6,7 +6,7 @@
 .sa-v2-consult {
   width: 100%;
   background: #ffffff;
-  padding: 72px 24px 96px;
+  padding: 56px 24px 64px;
   box-sizing: border-box;
   font-family: "Satoshi", -apple-system, BlinkMacSystemFont, sans-serif;
 }
@@ -25,8 +25,8 @@
   grid-template-columns: 1fr minmax(0, 514px);
   gap: 40px;
   align-items: center;
-  min-height: 650px;
-  padding: 80px 56px;
+  min-height: 520px;
+  padding: 44px 50px;
   background:
     linear-gradient(
       90deg,
@@ -372,19 +372,60 @@
   display: none;
 }
 
+.sa-v2-consult-phone .themed-country-select {
+  display: flex !important;
+  align-items: center;
+}
+
+.sa-v2-consult-phone .themed-country-select__trigger {
+  background: transparent !important;
+  border: none !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.25) !important;
+  border-radius: 0 !important;
+  padding: 0 8px 0 0 !important;
+  margin-right: 10px;
+  height: 28px;
+  color: #ffffff !important;
+  box-shadow: none !important;
+}
+
+.sa-v2-consult-phone .themed-country-select__trigger:hover {
+  background: transparent !important;
+}
+
+.sa-v2-consult-phone .themed-country-select__code {
+  color: #ffffff !important;
+  font-family: "Satoshi", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.2px;
+}
+
+.sa-v2-consult-phone .themed-country-select__arrow {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
 .sa-v2-consult-phone .phone-input-custom {
   box-sizing: border-box;
   width: 100%;
+  height: 45px;
   min-height: 45px;
   display: flex;
   align-items: center;
-  padding: 0 10px;
+  padding: 0 16px !important;
   background: #ffffff2e !important;
   border: 0.667px solid rgba(255, 255, 255, 0.18) !important;
   border-radius: 9999px !important;
   box-shadow:
     inset 0px 1px 2px rgba(0, 0, 0, 0.18),
     inset 0px -1px 0px rgba(255, 255, 255, 0.15) !important;
+  transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.sa-v2-consult-phone .phone-input-custom.is-invalid {
+  border-color: rgba(255, 120, 120, 0.75) !important;
+  box-shadow: 0 0 0 1px rgba(255, 120, 120, 0.4),
+    inset 0px 1px 2px rgba(0, 0, 0, 0.18) !important;
 }
 
 .sa-v2-consult-phone .PhoneInputInput {
@@ -394,7 +435,9 @@
   color: #ffffff !important;
   font-family: "Satoshi", sans-serif;
   font-size: 14px;
+  width: 100%;
   outline: none;
+  padding: 0 !important;
 }
 
 .sa-v2-consult-phone .PhoneInputInput::placeholder {
@@ -406,8 +449,23 @@
   opacity: 0.9;
 }
 
+/* Inline Form Errors matching dark glassmorphism */
+.sa-v2-consult-error,
 .sa-v2-consult-phone .form-error-message {
-  color: #ffe4e4;
+  display: block;
+  font-family: "Satoshi", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  color: #ffb4b4;
+  margin-top: 4px;
+  padding-left: 8px;
+}
+
+.sa-v2-consult-input.is-invalid {
+  border-color: rgba(255, 120, 120, 0.75) !important;
+  box-shadow: 0 0 0 1px rgba(255, 120, 120, 0.4),
+    inset 0px 1px 2px rgba(0, 0, 0, 0.18) !important;
 }
 
 /* Submit button — white pill */
@@ -462,16 +520,16 @@
 @media (max-width: 1100px) {
   .sa-v2-consult-card {
     grid-template-columns: 1fr minmax(0, 460px);
-    padding: 64px 40px;
+    padding: 40px 36px;
     gap: 32px;
-    min-height: 580px;
+    min-height: 500px;
   }
 }
 
 @media (max-width: 900px) {
   .sa-v2-consult-card {
     grid-template-columns: 1fr;
-    padding: 48px 32px;
+    padding: 38px 24px;
     gap: 36px;
     min-height: 0;
     border-radius: 32px;
@@ -488,11 +546,11 @@
 
 @media (max-width: 640px) {
   .sa-v2-consult {
-    padding: 48px 16px 64px;
+    padding: 40px 16px 56px;
   }
 
   .sa-v2-consult-card {
-    padding: 36px 20px;
+    padding: 30px 18px;
     border-radius: 24px;
   }
 

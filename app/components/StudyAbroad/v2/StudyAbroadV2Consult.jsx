@@ -39,38 +39,53 @@ const BULLETS = [
 export default function StudyAbroadV2Consult() {
   const router = useRouter();
   const [formData, setFormData] = useState(INITIAL);
+  const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+    if (errors[name]) {
+      setErrors((prev) => ({ ...prev, [name]: "" }));
+    }
   };
 
   const handlePhoneChange = (value) => {
     setFormData((prev) => ({ ...prev, phone: value || "" }));
+    if (errors.phone) {
+      setErrors((prev) => ({ ...prev, phone: "" }));
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    let phoneVal = (formData.phone || "").trim();
+    if (phoneVal && !phoneVal.startsWith("+")) {
+      const cleanDigits = phoneVal.replace(/\D/g, "");
+      if (cleanDigits.length === 10) {
+        phoneVal = `+91${cleanDigits}`;
+      } else if (cleanDigits.length > 10) {
+        phoneVal = `+${cleanDigits}`;
+      }
+    }
+
+    const newErrors = {};
     const nameError = getNameError(formData.name);
     const emailError = getEmailError(formData.email);
-    const phoneError = getPhoneError(formData.phone);
+    const phoneError = getPhoneError(phoneVal);
 
-    if (nameError) {
-      Swal.fire({ icon: "warning", title: "Validation Error", text: nameError, confirmButtonColor: "#036c2d" });
-      return;
-    }
-    if (emailError) {
-      Swal.fire({ icon: "warning", title: "Validation Error", text: emailError, confirmButtonColor: "#036c2d" });
-      return;
-    }
-    if (phoneError) {
-      Swal.fire({ icon: "warning", title: "Validation Error", text: phoneError, confirmButtonColor: "#036c2d" });
+    if (nameError) newErrors.name = nameError;
+    if (emailError) newErrors.email = emailError;
+    if (phoneError) newErrors.phone = phoneError;
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
       return;
     }
 
+    setErrors({});
     setIsSubmitting(true);
 
     const buttonLabel = (
@@ -80,7 +95,7 @@ export default function StudyAbroadV2Consult() {
     const submissionData = {
       name: formData.name.trim(),
       email: formData.email.trim(),
-      phone: formData.phone.trim(),
+      phone: phoneVal,
       course: formData.interest || "Study Abroad - Free Consultation",
       message: `Book a Free Consultation. Interested in: ${formData.interest || "Not specified"}`,
       mode: "Online/Offline",
@@ -166,7 +181,7 @@ export default function StudyAbroadV2Consult() {
               <label className="sa-v2-consult-field">
                 <span className="sa-v2-consult-label">Full name</span>
                 <input
-                  className="sa-v2-consult-input"
+                  className={`sa-v2-consult-input ${errors.name ? "is-invalid" : ""}`}
                   type="text"
                   name="name"
                   placeholder="Your name"
@@ -176,6 +191,9 @@ export default function StudyAbroadV2Consult() {
                   disabled={isSubmitting}
                   required
                 />
+                {errors.name && (
+                  <span className="sa-v2-consult-error">{errors.name}</span>
+                )}
               </label>
 
               {/* Email + Phone side-by-side */}
@@ -183,7 +201,7 @@ export default function StudyAbroadV2Consult() {
                 <label className="sa-v2-consult-field">
                   <span className="sa-v2-consult-label">Email</span>
                   <input
-                    className="sa-v2-consult-input"
+                    className={`sa-v2-consult-input ${errors.email ? "is-invalid" : ""}`}
                     type="email"
                     name="email"
                     placeholder="you@example.com"
@@ -193,6 +211,9 @@ export default function StudyAbroadV2Consult() {
                     disabled={isSubmitting}
                     required
                   />
+                  {errors.email && (
+                    <span className="sa-v2-consult-error">{errors.email}</span>
+                  )}
                 </label>
 
                 <div className="sa-v2-consult-field">
@@ -202,9 +223,12 @@ export default function StudyAbroadV2Consult() {
                     value={formData.phone}
                     onChange={handlePhoneChange}
                     disabled={isSubmitting}
+                    international={false}
+                    theme="dark"
                     containerClass="sa-v2-consult-phone"
-                    className="sa-v2-consult-phone-input"
-                    placeholder="+00 000 000 0000"
+                    className={`sa-v2-consult-phone-input ${errors.phone ? "is-invalid" : ""}`}
+                    placeholder="00000 00000"
+                    error={errors.phone}
                   />
                 </div>
               </div>

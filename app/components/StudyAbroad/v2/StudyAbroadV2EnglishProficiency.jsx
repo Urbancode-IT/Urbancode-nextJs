@@ -66,7 +66,7 @@ export default function StudyAbroadV2EnglishProficiency() {
         {/* Header row: title left, desc aligned over Duolingo column */}
         <div className="sa-v2-ep-head">
           <h2 id="sa-v2-ep-title" className="sa-v2-ep-title">
-            Master your english<br />proficiency
+            Master your english<br className="sa-v2-ep-title-br" /> proficiency
           </h2>
           <p className="sa-v2-ep-desc">
             Small batches, expert trainers, and mock tests that mirror the real
@@ -127,7 +127,7 @@ export default function StudyAbroadV2EnglishProficiency() {
       {/* Bottom curved boundary spanning full width */}
       <div className="sa-v2-ep-curve sa-v2-ep-curve-bottom" aria-hidden="true">
         <svg viewBox="0 0 1440 36" fill="none" preserveAspectRatio="none">
-          <path d="M0,0 C480,36 960,36 1440,0 L1440,36 L0,36 Z" fill="#ffffff" />
+          <path d="M0,36 C480,0 960,0 1440,36 L1440,36 L0,36 Z" fill="#ffffff" />
         </svg>
       </div>
     </section>

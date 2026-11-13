@@ -235,3 +235,98 @@
     font-size: 18px;
   }
 }
+
+/* ── Dark Theme Variant (Glassmorphic / Slate) ────────────────── */
+.themed-country-select--dark .themed-country-select__trigger,
+.themed-country-select__trigger--dark {
+  background: transparent;
+  border-right: 1px solid rgba(255, 255, 255, 0.22);
+  color: #ffffff;
+}
+
+.themed-country-select--dark .themed-country-select__trigger:hover,
+.themed-country-select__trigger--dark:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.themed-country-select--dark .themed-country-select__code,
+.themed-country-select__trigger--dark .themed-country-select__code {
+  color: #ffffff;
+}
+
+.themed-country-select--dark .themed-country-select__arrow,
+.themed-country-select__trigger--dark .themed-country-select__arrow {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.themed-country-dropdown--dark {
+  background: #141a29;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.55),
+              0 4px 16px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  color: #ffffff;
+  font-family: "Satoshi", sans-serif;
+}
+
+.themed-country-dropdown--dark .themed-country-dropdown__search-wrap {
+  padding: 10px 12px 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.themed-country-dropdown--dark .themed-country-dropdown__search {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  font-family: "Satoshi", sans-serif;
+}
+
+.themed-country-dropdown--dark .themed-country-dropdown__search::placeholder {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.themed-country-dropdown--dark .themed-country-dropdown__search:focus {
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.15);
+}
+
+.themed-country-dropdown--dark .themed-country-dropdown__item {
+  color: rgba(255, 255, 255, 0.88);
+  font-family: "Satoshi", sans-serif;
+}
+
+.themed-country-dropdown--dark .themed-country-dropdown__item:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+}
+
+.themed-country-dropdown--dark .themed-country-dropdown__item--selected {
+  background: rgba(255, 255, 255, 0.22) !important;
+  color: #ffffff !important;
+  font-weight: 600;
+}
+
+.themed-country-dropdown--dark .themed-country-dropdown__item--selected:hover {
+  background: rgba(255, 255, 255, 0.28) !important;
+}
+
+.themed-country-dropdown--dark .themed-country-dropdown__item-code {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.themed-country-dropdown--dark .themed-country-dropdown__empty {
+  padding: 16px 14px;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 13px;
+  font-family: "Satoshi", sans-serif;
+}
+
+.themed-country-dropdown--dark .themed-country-dropdown__list {
+  scrollbar-color: rgba(255, 255, 255, 0.25) transparent;
+}
+
+.themed-country-dropdown--dark .themed-country-dropdown__list::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.25);
+}

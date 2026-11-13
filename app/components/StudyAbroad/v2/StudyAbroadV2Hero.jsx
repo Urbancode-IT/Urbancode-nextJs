@@ -30,7 +30,7 @@ export default function StudyAbroadV2Hero() {
       <div className="sa-v2-hero-frame">
         <div className="sa-v2-hero-media">
           <Image
-            src={`${HERO_ASSETS}/study-abroad-hero-image.webp`}
+            src={`${HERO_ASSETS}/study-abroad-heroimage.webp`}
             alt="Student dreaming among global landmarks"
             fill
             priority
