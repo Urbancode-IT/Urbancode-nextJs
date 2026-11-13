@@ -166,6 +166,8 @@ export default function StudyAbroadV2DreamCountry() {
   const [modalOpen, setModalOpen] = useState(false);
   const [animKey, setAnimKey] = useState(0);
   const tabRefs = useRef({});
+  const tabsContainerRef = useRef(null);
+  const isFirstRender = useRef(true);
   const active = COUNTRIES.find((c) => c.id === activeId) || COUNTRIES[0];
 
   const selectCountry = (id) => {
@@ -175,12 +177,21 @@ export default function StudyAbroadV2DreamCountry() {
   };
 
   useEffect(() => {
+    // Skip on initial mount so the window does not scroll down from the hero section
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
     const el = tabRefs.current[activeId];
-    if (!el) return;
-    el.scrollIntoView({
+    const container = tabsContainerRef.current;
+    if (!el || !container) return;
+
+    // Scroll only the tabs bar horizontally, never touching the window scroll position
+    const targetLeft =
+      el.offsetLeft - container.offsetWidth / 2 + el.offsetWidth / 2;
+    container.scrollTo({
+      left: Math.max(0, targetLeft),
       behavior: "smooth",
-      inline: "center",
-      block: "nearest",
     });
   }, [activeId]);
 
@@ -222,6 +233,7 @@ export default function StudyAbroadV2DreamCountry() {
 
           <div className="sa-v2-dream-card-content">
             <div
+              ref={tabsContainerRef}
               className="sa-v2-dream-tabs"
               role="tablist"
               aria-label="Dream country"

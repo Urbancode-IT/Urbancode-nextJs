@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import StudyAbroadV2Hero from "./StudyAbroadV2Hero";
 import StudyAbroadV2Services from "./StudyAbroadV2Services";
 import StudyAbroadV2Destinations from "./StudyAbroadV2Destinations";
@@ -17,6 +18,12 @@ import "./NewStudyAbroadPage.css";
  * Add sections here one by one (services, destinations, MBBS, etc.).
  */
 export default function NewStudyAbroadPage() {
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      window.scrollTo(0, 0);
+    }
+  }, []);
+
   return (
     <V2PageReveal className="sa-v2-root">
       <StudyAbroadV2Hero />
