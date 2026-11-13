@@ -19,7 +19,7 @@ const STORIES = [
   },
   {
     id: "ashwathi",
-    name: "Ashwathi",
+    name: "Aswathi",
     university: "Dublin Business School",
     country: "Ireland",
     quote:
