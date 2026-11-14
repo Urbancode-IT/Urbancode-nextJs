@@ -67,7 +67,7 @@ export default function StudyAbroadV2EnglishProficiency() {
         {/* Header row: title left, desc aligned over Duolingo column */}
         <div className="sa-v2-ep-head">
           <h2 id="sa-v2-ep-title" className="sa-v2-ep-title">
-            Master your english<br className="sa-v2-ep-title-br" /> proficiency
+            Master your English<br className="sa-v2-ep-title-br" /> proficiency
           </h2>
           <p className="sa-v2-ep-desc">
             Small batches, expert trainers, and mock tests that mirror the real

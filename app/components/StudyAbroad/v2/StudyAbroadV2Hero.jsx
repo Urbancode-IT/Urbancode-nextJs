@@ -1,9 +1,7 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import EnquiryFormModal from "@/app/components/common/EnquiryFormModal";
 import "./StudyAbroadV2Hero.css";
 
 const HERO_ASSETS = "/images/study-abroad/study-abroadv2/hero";
@@ -22,8 +20,15 @@ const DESTINATIONS = [
 ];
 
 export default function StudyAbroadV2Hero() {
-  const [consultOpen, setConsultOpen] = useState(false);
   const tickerItems = [...DESTINATIONS, ...DESTINATIONS];
+
+  const handleStudyIeltsClick = (e) => {
+    const el = document.getElementById("english-proficiency");
+    if (el) {
+      e.preventDefault();
+      el.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <section className="sa-v2-hero" aria-labelledby="sa-v2-hero-title">
@@ -57,13 +62,13 @@ export default function StudyAbroadV2Hero() {
             <Link href="#destinations" className="sa-v2-hero-btn-primary">
               Explore Study Destinations
             </Link>
-            <button
-              type="button"
+            <Link
+              href="#english-proficiency"
               className="sa-v2-hero-btn-secondary"
-              onClick={() => setConsultOpen(true)}
+              onClick={handleStudyIeltsClick}
             >
-              Book Free Consultation
-            </button>
+              Study IELTS
+            </Link>
           </div>
         </div>
 
@@ -88,27 +93,6 @@ export default function StudyAbroadV2Hero() {
           </div>
         </div>
       </div>
-
-      <EnquiryFormModal
-        isOpen={consultOpen}
-        onClose={() => setConsultOpen(false)}
-        isDemoMode={true}
-        isSelectMode={true}
-        customTitle="Book a Free Consultation"
-        leadPlace="Study Abroad V2 hero — Book Free Consultation"
-        useExternalCourses={false}
-        extraOptions={[
-          "Study in UK",
-          "Study in USA",
-          "Study in Canada",
-          "Study in Australia",
-          "Study in Germany",
-          "Study in Ireland",
-          "Study in New Zealand",
-          "Study in Dubai",
-          "Help me choose",
-        ]}
-      />
     </section>
   );
 }
