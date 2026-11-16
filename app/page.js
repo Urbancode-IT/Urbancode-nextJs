@@ -1,5 +1,3 @@
-import { USE_LEGACY_HOME } from './components/Home/homeVersion';
-import LegacyHomePage from './components/Home/LegacyHomePage';
 import NewHomePage from './components/Home/v2/NewHomePage';
 import { SITE_URL, DEFAULT_OG_IMAGE } from '../lib/siteConfig';
 
@@ -55,10 +53,5 @@ export const metadata = {
 };
 
 export default function HomePage() {
-  // Flip USE_LEGACY_HOME in homeVersion.js to restore the previous home UI
-  if (USE_LEGACY_HOME) {
-    return <LegacyHomePage />;
-  }
-
   return <NewHomePage />;
 }
