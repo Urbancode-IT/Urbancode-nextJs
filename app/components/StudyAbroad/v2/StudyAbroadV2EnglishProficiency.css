@@ -169,7 +169,7 @@
   margin: 0 0 8px;
   font-family: "Satoshi", sans-serif;
   font-weight: 500;
-  font-size: clamp(13.5px, 1.1vw, 16px);
+  font-size: clamp(14.5px, calc(1.1vw + 1px), 18px);
   line-height: 1.45;
   letter-spacing: 0.01em;
   color: #000000;
@@ -180,7 +180,7 @@
   margin: 0 0 20px;
   font-family: "Satoshi", sans-serif;
   font-weight: 400;
-  font-size: clamp(11.5px, 0.95vw, 13px);
+  font-size: clamp(13.5px, calc(0.95vw + 2px), 15px);
   line-height: 1.55;
   letter-spacing: 0.02em;
   color: #000000;

@@ -67,7 +67,7 @@ export default function StudyAbroadV2Hero() {
               className="sa-v2-hero-btn-secondary"
               onClick={handleStudyIeltsClick}
             >
-              Study IELTS
+               IELTS Prep 
             </Link>
           </div>
         </div>
