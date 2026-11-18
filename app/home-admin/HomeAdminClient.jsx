@@ -24,6 +24,7 @@ const EMPTY_BANNER = () => ({
 
 const EMPTY_TRENDING = () => ({
   id: uid("trend"),
+  reelUrl: "",
   videoId: "",
   mp4Src: "",
   title: "",
@@ -448,13 +449,18 @@ export default function HomeAdminClient() {
                     />
                   </div>
                   <div className="home-cms-field">
-                    <label>YouTube video ID</label>
+                    <label>Instagram Reel URL / Video ID</label>
                     <input
-                      value={video.videoId || ""}
-                      onChange={(e) =>
-                        updateList(setTrending, video.id, { videoId: e.target.value })
-                      }
-                      placeholder="e.g. 48za3-k6OkQ"
+                      value={video.reelUrl || video.videoId || ""}
+                      onChange={(e) => {
+                        const val = e.target.value;
+                        const isUrl = val.startsWith("http");
+                        updateList(setTrending, video.id, {
+                          reelUrl: isUrl ? val : (val ? `https://www.instagram.com/reel/${val}/` : ""),
+                          videoId: isUrl ? (val.match(/reel\/([^\/\?]+)/)?.[1] || "") : val,
+                        });
+                      }}
+                      placeholder="https://www.instagram.com/reel/... or reel ID"
                     />
                   </div>
                   <MediaField
