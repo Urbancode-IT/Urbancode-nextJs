@@ -5961,6 +5961,11 @@ const coursesData = {
         duration: "1 month",
         students: "986",
         img: "/images/courses/new/sas.png",
+        hideTools: true,
+        toolsData: [],
+        curriculumUrls: [
+          "/curriculum/UC-VEL_Curriculum_SAS.pdf",
+        ],
         aboutData: {
           topic: "Master SAS — From Data Management to Advanced Analytics!",
           content1:
@@ -5971,66 +5976,184 @@ const coursesData = {
         courseContentData: [
           {
             id: 1,
-            title: "SAS Base Course Curriculum",
+            title: "Module 1 : Introduction to SAS",
             icon: "bi bi-book",
             defaultOpen: true,
             items: [
-              <div key="base-1" className="mb-4">
-                <h6 className="fw-semibold text-dark mb-2">
-                  Module 1: SAS Fundamentals
-                </h6>
-                <ul className="list-disc pl-4">
-                  <li>Introduction to SAS and its applications</li>
-                  <li>Installing and navigating SAS environment</li>
-                  <li>Data types, variables, and datasets</li>
-                  <li>Basic SAS programming syntax</li>
-                  <li>Reading and writing datasets</li>
-                  <li>Debugging and error handling</li>
-                </ul>
-              </div>,
-              <div key="base-2" className="mb-4">
-                <h6 className="fw-semibold text-dark mb-2">
-                  Module 2: Data Management in SAS
-                </h6>
-                <ul className="list-disc pl-4">
-                  <li>Data step basics and data manipulation</li>
-                  <li>Sorting, merging, and concatenating datasets</li>
-                  <li>Creating new variables and functions</li>
-                  <li>Conditional logic and loops in SAS</li>
-                  <li>Working with dates and character variables</li>
-                </ul>
-              </div>,
+              {
+                title: "Introduction to SAS",
+                details: [
+                  "Overview of SAS software and its applications.",
+                  "Understanding the SAS programming environment and interface.",
+                ],
+              },
             ],
           },
           {
             id: 2,
-            title: "SAS Advanced Course Curriculum",
+            title: "Module 2 : SAS Fundamentals",
+            icon: "bi bi-code-slash",
+            items: [
+              {
+                title: "Data Step Programming",
+                details: [
+                  "Data step concepts: Reading and writing data.",
+                  "Understanding variables, data types, and arrays.",
+                ],
+              },
+              {
+                title: "Data Manipulation",
+                details: [
+                  "Data manipulation techniques: combining datasets, conditional processing.",
+                  "Using functions and informats to clean and transform data.",
+                ],
+              },
+            ],
+          },
+          {
+            id: 3,
+            title: "Module 3 : Procedures in SAS",
+            icon: "bi bi-table",
+            items: [
+              {
+                title: "Working with Procedures",
+                details: [
+                  "Utilizing PROC PRINT, PROC SORT, PROC FREQ for basic data analysis.",
+                  "Summary statistics and frequency distributions with PROC MEANS and PROC FREQ.",
+                ],
+              },
+            ],
+          },
+          {
+            id: 4,
+            title: "Module 4 : SAS Programming Techniques",
+            icon: "bi bi-file-earmark-code",
+            items: [
+              {
+                title: "Reading and Writing External Files",
+                details: [
+                  "Importing and exporting data in different formats (CSV, Excel, etc.).",
+                  "Utilizing SAS data steps for file processing.",
+                ],
+              },
+              {
+                title: "SAS Functions",
+                details: [
+                  "Working with SAS functions for data manipulation and transformation.",
+                  "Understanding common functions and their applications.",
+                ],
+              },
+            ],
+          },
+          {
+            id: 5,
+            title: "Module 5 : Advanced SAS Concepts",
+            icon: "bi bi-braces",
+            items: [
+              {
+                title: "SAS Formats and Informats",
+                details: [
+                  "Utilizing SAS formats and informats for data conversion and reporting.",
+                  "Custom formats and informats creation.",
+                ],
+              },
+              {
+                title: "Introduction to Macros",
+                details: [
+                  "Basics of SAS macros, creating and using macros for automation.",
+                  "Understanding macro variables and macro programming.",
+                ],
+              },
+            ],
+          },
+          {
+            id: 6,
+            title: "Module 6 : Advanced SAS Programming Concepts",
             icon: "bi bi-gear",
             items: [
-              <div key="adv-1" className="mb-4">
-                <h6 className="fw-semibold text-dark mb-2">
-                  Module 3: Advanced SAS Programming
-                </h6>
-                <ul className="list-disc pl-4">
-                  <li>SAS Macros for automation</li>
-                  <li>SQL in SAS (PROC SQL)</li>
-                  <li>Arrays, Do loops, and iterative processing</li>
-                  <li>Advanced data manipulation techniques</li>
-                  <li>Error handling and debugging best practices</li>
-                </ul>
-              </div>,
-              <div key="adv-2" className="mb-4">
-                <h6 className="fw-semibold text-dark mb-2">
-                  Module 4: Data Analysis and Reporting
-                </h6>
-                <ul className="list-disc pl-4">
-                  <li>Descriptive statistics and summary reports</li>
-                  <li>PROC MEANS, PROC FREQ, PROC UNIVARIATE</li>
-                  <li>Data visualization using PROC SGPLOT & PROC REPORT</li>
-                  <li>Generating automated reports</li>
-                  <li>Introduction to statistical procedures</li>
-                </ul>
-              </div>,
+              {
+                title: "Review of Base SAS Concepts",
+                details: [
+                  "Brief recap of fundamental SAS programming techniques covered in the Base SAS certification course.",
+                ],
+              },
+              {
+                title: "Advanced Data Manipulation Techniques",
+                details: [
+                  "Complex data merging and manipulation using advanced DATA step programming.",
+                  "Using SQL in SAS for advanced data querying and manipulation.",
+                ],
+              },
+            ],
+          },
+          {
+            id: 7,
+            title: "Module 7 : Advanced Data Step Processing",
+            icon: "bi bi-cpu",
+            items: [
+              {
+                title: "Advanced Data Step Programming",
+                details: [
+                  "Use of advanced array processing techniques for data manipulation.",
+                  "Leveraging hash objects and techniques for efficient data handling.",
+                ],
+              },
+            ],
+          },
+          {
+            id: 8,
+            title: "Module 8 : Advanced PROC SQL",
+            icon: "bi bi-database",
+            items: [
+              {
+                title: "Advanced PROC SQL",
+                details: [
+                  "Complex SQL querying, subqueries, joins, and optimization techniques.",
+                  "Utilizing advanced PROC SQL features for data aggregation and transformation.",
+                ],
+              },
+            ],
+          },
+          {
+            id: 9,
+            title: "Module 9 : SAS Macro Language",
+            icon: "bi bi-terminal",
+            items: [
+              {
+                title: "Advanced Macro Programming",
+                details: [
+                  "In-depth understanding of macro language features and applications.",
+                  "Macro debugging, stored compiled macros, and advanced macro programming.",
+                ],
+              },
+            ],
+          },
+          {
+            id: 10,
+            title: "Module 10 : Efficiency and Optimization",
+            icon: "bi bi-speedometer2",
+            items: [
+              {
+                title: "Performance Tuning and Optimization",
+                details: [
+                  "Techniques for optimizing SAS code and improving performance.",
+                  "Efficient programming methods and resource management.",
+                ],
+              },
+            ],
+          },
+          {
+            id: 11,
+            title: "Module 11 : Integration and Automation",
+            icon: "bi bi-diagram-3",
+            items: [
+              {
+                title: "Integration with External Applications",
+                details: [
+                  "Integrating SAS with other applications and languages.",
+                  "Automation and scheduling using SAS in batch processes.",
+                ],
+              },
             ],
           },
         ],

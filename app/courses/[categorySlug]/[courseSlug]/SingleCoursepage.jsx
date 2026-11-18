@@ -35,6 +35,10 @@ const getToolsForCourse = (title) => {
     const t = title.toLowerCase();
     const defaultTools = newCourseData["mern-stack"]?.toolsData || [];
 
+    if (t === "sas" || /\bsas\b/i.test(t)) {
+        return [];
+    }
+
     if (t.includes("sap abap") || t === "sap" || t.includes("abap")) {
         return [
             { id: 1, name: "SAP ERP", icon: "/images/courses/tools/sap.svg" },
@@ -489,7 +493,7 @@ export default function SingleCoursepage({ params, course: courseProp = null }) 
       h.label === "Duration" ? { ...h, value: course.duration || h.value } : h
     ),
     curriculumData: mappedCurriculum,
-    toolsData: getToolsForCourse(course.title),
+    toolsData: course.hideTools ? [] : (course.toolsData !== undefined ? course.toolsData : getToolsForCourse(course.title)),
     faqData: getCourseFaqList({
       courseSlug,
       categorySlug,
