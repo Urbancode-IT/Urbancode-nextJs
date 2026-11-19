@@ -476,17 +476,17 @@ const coursesData = {
         title: "Core Python",
        curriculumUrls: ["/curriculum/UC_Core_Python v1.0.pdf"],
 
-        desc: "Kickstart your tech career with our comprehensive Core Python programming course. Master fundamental logic, data handling, and OOP concepts to unlock high-demand opportunities in AI and Data Science.",
+        desc: "Master Python programming from syntax fundamentals to real-world applications with our industry-aligned Python course in Chennai. Learn logic building, data handling, and OOP concepts with hands-on labs and placement support.",
         rating: 4.5,
         duration: "3 months",
         students: "956",
         img: "/images/courses/python.webp",
         aboutData: {
-          topic: "Build Strong Python Foundations from Scratch",
+          topic: "Master Python Programming in Chennai — From Core Logic to Real Projects",
           content1:
-            "Learn the fundamentals of Python programming with hands-on exercises and practical examples. Understand syntax, logic building, data structures, and modular programming techniques used in real-world applications.",
+            "Our comprehensive Python course in Chennai provides step-by-step training from syntax fundamentals to advanced object-oriented programming. Designed for beginners, college students, and professionals in Velachery, Pallikaranai, and across Tamil Nadu, this course emphasizes hands-on coding exercises, problem-solving techniques, and real-world script automation.",
           content2:
-            "This course prepares you to move confidently into advanced technologies like web development, automation, data analytics, and AI.",
+            "Build a strong programming foundation to transition seamlessly into high-demand careers in Data Science, Artificial Intelligence, Web Development, and Automation Testing, backed by dedicated placement assistance.",
         },
         courseContentData: [
           {
@@ -574,18 +574,18 @@ const coursesData = {
       },
       {
         title: "Advanced Python",
-        desc: "Become an elite Python Developer. Master Advanced Python training covering APIs, extensive data analysis, web frameworks, and automation scripts to secure top-tier backend engineering positions.",
+        desc: "Advance to enterprise software engineering with our Advanced Python course in Chennai. Master decorators, multithreading, REST APIs, web frameworks like Django and FastAPI, and automated pipelines with placement assistance.",
         rating: 4.5,
         duration: "1 month",
         students: "755",
         img: "/images/courses/advanced-python.webp",
         aboutData: {
           topic:
-            "Master Advanced Python — From Core Concepts to Data Science & Web Development!",
+            "Advanced Python Training in Chennai — APIs, Frameworks & Data Science Integration",
           content1:
-            " Take your Python skills to the next level! Learn advanced programming concepts, data analysis, web development, and real-world project integration. This coursehelps you move from beginner to expert with hands-on exercises and live projects.",
+            "Elevate your programming capabilities with Urbancode's Advanced Python course in Chennai. Learn advanced object-oriented design patterns, decorators, generators, asynchronous programming with asyncio, and robust backend web development using Flask and FastAPI.",
           content2:
-            "The Advanced Python course by Urbancode covers everything from Python fundamentals to complex application development. Starting with essential syntax and OOP principles, you’ll move through advanced concepts like decorators, asynchronous programming, and frameworks such as Flask and Django. The program concludes with expert-level training in Data Science, Deep Learning, and DevOps integration, making you industry-ready.",
+            "Equipped with hands-on projects, database connectivity, and deployment workflows, this advanced program prepares developers and engineers in Chennai and across Tamil Nadu for high-paying roles in backend development, data engineering, and machine learning, backed by dedicated placement support.",
         },
         courseContentData: [
           {
@@ -1539,7 +1539,7 @@ const coursesData = {
 
       {
         title: "Java Full Stack Development",
-        desc: "Accelerate your tech career with our Java Full Stack Development certification. Master Spring Boot, front-end technologies, and MySQL to build scalable web apps with 100% placement support.",
+        desc: "Launch your career with our industry-leading Java Full Stack course in Chennai. Master Core and Advanced Java, Spring Boot microservices, Hibernate, REST APIs, MySQL, and modern frontends with 100% placement support.",
         rating: 4.8,
         duration: "3 months",
         students: "765",
@@ -1547,11 +1547,11 @@ const coursesData = {
         curriculumUrls: ["/curriculum/UC_Java Full Stack v1.0.pdf"],
         aboutData: {
           topic:
-            "Master Java Full Stack Development — Build Scalable Web Applications from Front-End to Back-End!",
+            "Java Full Stack Course in Chennai — Enterprise Development & Placement Support",
           content1:
-            "Learn how to develop complete web applications using Java technologies. This course takes you from the basics of front-end web design to advanced back-end development with Spring Boot and databases, making you a job-ready full stack developer.",
+            "Develop enterprise-grade, high-performance web applications with Urbancode's Java Full Stack course in Chennai. This career-oriented program takes you from foundational Java OOP to production-level microservices architectures with Spring Boot, Spring Data JPA, and secure RESTful web services.",
           content2:
-            "The Java Full Stack Development course by Urbancode combines the power of modern front-end frameworks with robust Java-based back-end systems. You’ll gain expertise in HTML, CSS, JavaScript, Java, JDBC, Hibernate, Spring Boot, REST APIs, and MySQL — along with deployment skills using tools like Docker and AWS.",
+            "Combining responsive frontend interfaces, MySQL and PostgreSQL databases, and modern CI/CD deployment pipelines, our Velachery and Pallikaranai campuses offer immersive practical labs and 100% placement assistance connecting you directly to leading tech employers in Tamil Nadu and across India.",
         },
         courseContentData: [
           {
@@ -3977,18 +3977,18 @@ const coursesData = {
         title: "AWS",
                         curriculumUrls: ["/curriculum/UC_AWS_Curriculum v1.0.pdf"],
 
-        desc: "Launch your cloud computing career with comprehensive AWS training. Master architecture, EC2, S3, and DevOps integration to secure high-paying Cloud Engineer roles.",
+        desc: "Launch your cloud computing career with the best AWS training in Chennai. Master cloud architecture, EC2, S3, VPC, Lambda, and DevOps integration with live lab practice and placement support.",
         rating: 5.0,
         duration: "3 months",
         students: "1,012",
         img: "/images/courses/aws1.png",
         aboutData: {
           topic:
-            "Master AWS — From Cloud Fundamentals to Advanced Architecture & DevOps!",
+            "AWS Training in Chennai — Hands-On Cloud Architecture & DevOps Integration",
           content1:
-            "This AWS course takes you from the basics of cloud computing to advanced infrastructure design, automation, and security. Learn how to build, deploy, and manage scalable cloud applications using Amazon Web Services’ most powerful tools.",
+            "Build deep cloud engineering expertise with Urbancode's hands-on AWS training in Chennai. Whether you attend offline classes in Velachery or Pallikaranai, or join our live interactive online sessions, you will learn infrastructure provisioning, security compliance, high availability design, and cost optimization directly from certified cloud architects.",
           content2:
-            "The AWS course by Urbancode covers a full spectrum of AWS technologies — from EC2, S3, and IAM to Lambda, Kubernetes, and CloudFormation. You’ll gain practical, hands-on experience in cloud architecture, serverless computing, DevOps automation, and cost optimization. By the end of the program, you’ll be ready to take AWS certification exams and excel as a cloud professional.",
+            "From fundamental services like EC2, S3, VPC, and IAM to advanced automation with AWS Lambda, Docker, Kubernetes, and CloudFormation, our industry-tested curriculum prepares graduates and working professionals across Chennai and Tamil Nadu for AWS certifications and high-paying cloud careers, backed by dedicated placement assistance.",
         },
         courseContentData: [
           {
@@ -5070,17 +5070,17 @@ const coursesData = {
         title: "Gen AI",
                curriculumUrls: ["/curriculum/UC_Gen AI curriculum v1.0.pdf"],
 
-        desc: "Master the future of AI with Generative AI. Learn Python, LLMs, RAG, Vector Stores, and Prompt Engineering to build intelligent chatbots and agents.",
+        desc: "Master next-generation artificial intelligence with our practical Generative AI course in Chennai. Learn prompt engineering, LLMs, LangChain, RAG architectures, and vector databases with hands-on live projects and placement support.",
         rating: 4.9,
         duration: "3 months",
         students: "250",
         img: "/images/home/homepage-v2/AI-powered-icons/AI-powered-fsd/GenAI-v2.webp",
         aboutData: {
-          topic: "Master Generative AI — From LLMs to Autonomous Agents!",
+          topic: "Generative AI Course in Chennai — LLMs, LangChain & Autonomous Agents",
           content1:
-            "Dive into the cutting-edge world of Generative AI. Learn to build and deploy applications using Large Language Models (LLMs), LangChain, and Vector Databases. Master RAG (Retrieval-Augmented Generation) and Prompt Engineering to create intelligent systems.",
+            "Step into the frontier of artificial intelligence with Urbancode's specialized Generative AI course in Chennai. Learn to engineer and deploy production-ready applications using state-of-the-art Large Language Models (LLMs), LangChain, and Vector Databases (Pinecone, ChromaDB). Master Retrieval-Augmented Generation (RAG) architectures and advanced prompt engineering to solve complex business problems.",
           content2:
-            "This comprehensive course covers Python foundations, LLM ecosystems (OpenAI, Gemini, Hugging Face), and advanced frameworks like LangChain and CrewAI. You'll gain hands-on experience building chatbots, multi-agent systems, and production-ready AI applications with guardrails and PII masking.",
+            "From Python AI pipelines to multi-model integrations with OpenAI, Gemini, and Claude, this hands-on course empowers students and engineers in Velachery, Pallikaranai, and across Tamil Nadu to build AI chatbots, autonomous agent workflows, and smart SaaS applications with dedicated career guidance and placement assistance.",
         },
         courseContentData: [
           {
@@ -7520,18 +7520,18 @@ const coursesData = {
 
       {
         title: "Selenium",
-        desc: "Master Selenium for web automation testing — learn setup, locators, waits, frameworks, and real-time project implementation from scratch.",
+        desc: "Master Selenium automation testing with our job-oriented Software Testing course in Chennai. Learn WebDriver, locators, TestNG, Page Object Model (POM), and CI/CD pipelines with placement support.",
         rating: 5.0,
         duration: "1 month",
         students: "872",
         img: "/images/courses/new/selenium.png",
         aboutData: {
           topic:
-            "Master Selenium — The Industry Standard for Web Automation Testing!",
+            "Selenium Automation Testing Course in Chennai — Frameworks & Placement Assistance",
           content1:
-            "This course is designed to make you a complete Selenium automation tester. You’ll start with the basics of Selenium WebDriver and gradually move toward building full automation frameworks with TestNG, POM, and CI/CD integration.",
+            "Become a certified QA automation professional with Urbancode's Selenium testing course in Chennai. Designed for freshers, manual testers, and career switchers in Velachery, Pallikaranai, and across Tamil Nadu, this course covers WebDriver architecture, dynamic locators, explicit waits, and robust test execution.",
           content2:
-            "Selenium remains the core tool for browser automation across the QA industry. In this course, you’ll learn everything — from locators, waits, and browser interactions to cross-browser testing, reporting, and integration with build tools. You’ll also get hands-on experience through real-time projects that simulate industry scenarios.",
+            "Build scalable automation frameworks using TestNG, Page Object Model (POM), Maven, and Jenkins CI/CD integration. You will complete real-time live web application testing projects and receive comprehensive placement assistance connecting you to leading QA hiring teams.",
         },
         courseContentData: [
           {
@@ -7641,18 +7641,18 @@ const coursesData = {
 
       {
         title: "Playwright",
-        desc: "Master Playwright end-to-end testing — automate modern web apps with JavaScript/TypeScript, from basics to advanced frameworks.",
+        desc: "Master Playwright automation testing in Chennai. Learn modern cross-browser web and API testing with JavaScript and TypeScript, parallel execution, and CI/CD pipelines with placement assistance.",
         rating: 5.0,
         duration: "1 month",
         students: "11,204",
         img: "/images/courses/new/playwright.png",
         aboutData: {
           topic:
-            "Master Playwright — Modern End-to-End Automation for Web Applications!",
+            "Playwright Automation Testing Course in Chennai — Modern Fast E2E Testing",
           content1:
-            "Learn Playwright from scratch and become an expert in web automation testing using JavaScript or TypeScript. This course teaches you how to automate browsers, handle dynamic elements, perform cross-browser testing, and design scalable test frameworks with ease.",
+            "Master next-generation web automation with Urbancode's Playwright testing course in Chennai. Learn fast, reliable cross-browser test automation across Chromium, Firefox, and WebKit using JavaScript or TypeScript with built-in auto-waiting, network mocking, and multi-tab testing.",
           content2:
-            "The Playwright course by Urbancode covers everything from setup to deployment. You’ll begin with the fundamentals of Playwright, understand its locators, and move on to advanced testing, API automation, parallel execution, and CI/CD integration. By the end, you’ll be able to build robust, maintainable automation frameworks used in real-world QA environments.",
+            "From API automation testing to headless execution, Docker containerization, and GitHub Actions CI/CD pipelines, our Velachery classroom and live online training equips QA engineers across Chennai and Tamil Nadu with the exact skills sought by modern tech product firms, backed by dedicated placement assistance.",
         },
         courseContentData: [
           {

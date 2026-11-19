@@ -10,25 +10,25 @@ const TrainingSection = () => {
         {
             icon: <FaChalkboardTeacher />,
             title: "Personalized Consultation",
-            desc: "Urbancode Edutech trains future-ready professionals in Full Stack, Cloud, AI, ML, Cybersecurity, and more.",
+            desc: "Tailored technical roadmaps and 1-on-1 mentor guidance matching your background and career goals in software engineering.",
             posClass: "node-top-left"
         },
         {
             icon: <FaUserGraduate />,
             title: "Expert Career Guidance",
-            desc: "We empower learners with cutting-edge skills, placement assistance, and career pathways for long-term success.",
+            desc: "Hands-on coding labs, mock technical interviews, and resume building aligned with hiring expectations in Chennai's IT corridor.",
             posClass: "node-top-right"
         },
         {
             icon: <FaCode />,
             title: "Flexible Training Modules",
-            desc: "Our expert programs equip professionals and teams with practical knowledge to excel in their respective fields.",
+            desc: "Weekend and weekday classroom batches at Velachery and Pallikaranai, alongside interactive live online sessions across Tamil Nadu.",
             posClass: "node-bottom-left"
         },
         {
             icon: <FaBriefcase />,
             title: "Global IT Opportunities",
-            desc: "Through placements and industry tie-ups, Urbancode unlocks global career opportunities for every learner.",
+            desc: "Practical curriculum and placement partnerships connecting skilled learners with leading tech startups, product firms, and global MNCs.",
             posClass: "node-bottom-right"
         }
     ];
@@ -48,12 +48,10 @@ const TrainingSection = () => {
                         <span className="text-shine">Expert Training and Instruction</span>
                     </h2>
                     <p className="text-lg">
-                        At Urbancode, we specialize in providing top-notch training and instructional services. 
-                        Our programs are designed to empower professionals and teams with the skills to excel.
+                        At Urbancode, we specialize in deliverable-focused software training and instructional excellence across Chennai and Tamil Nadu. Our intensive curricula are built by working industry professionals to help learners build real, deployable projects.
                     </p>
                     <p className="text-lg">
-                        Offering personalized IT training designed to match individual career goals with 
-                        real-world industry skills and guaranteed placement assistance.
+                        From foundational programming to advanced AI engineering, cloud infrastructure, and automated quality assurance, our job-oriented courses provide practical problem-solving skills backed by dedicated placement assistance.
                     </p>
                 </motion.div>
 

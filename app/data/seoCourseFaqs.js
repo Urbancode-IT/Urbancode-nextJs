@@ -253,9 +253,11 @@ export const categoryFaqs = {
 
 /** Map course slug → FAQ set key inside newCourseData or categoryFaqs */
 const COURSE_FAQ_KEY = {
+  "mern-stack": "fullstack-development",
   "ai-powered-fullstack": "fullstack-development",
   "mean-stack": "fullstack-development",
   "dotnet-angular": "fullstack-development",
+  "java-full-stack-development": "fullstack-development",
   "next-js": "fullstack-development",
   "python-full-stack": "fullstack-development",
   "react-native": "fullstack-development",
@@ -272,6 +274,7 @@ const COURSE_FAQ_KEY = {
   "microsoft-power-automate": "automation",
   "core-java": "programming-languages",
   "core-python": "programming-languages",
+  "advanced-python": "programming-languages",
 };
 
 function toQaPairs(list) {

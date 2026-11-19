@@ -4,6 +4,13 @@
 export const homeFaqs = [
   {
     question:
+      "Why is Urbancode considered the best IT training institute in Chennai with placement?",
+    answer:
+      "[Urbancode Edutech](/) is recognized as the best IT training institute in Chennai with placement due to its industry-aligned curricula, working professional mentors, live project learning, and comprehensive career support. Operating campuses in Velachery and Pallikaranai, Chennai, as well as live online across Tamil Nadu, Urbancode provides dedicated placement assistance, technical mock interviews, and hiring partner drives across Full Stack, Data Analytics, Generative AI, Cloud DevOps, and Software Testing.",
+    highlight: true,
+  },
+  {
+    question:
       "What is AI-Powered Full Stack Development and where can I learn it in Chennai?",
     answer:
       "AI-Powered Full Stack Development combines MERN/Next.js web development with AI tools like GitHub Copilot, OpenAI API, and LangChain integrations. [Urbancode Edutech](/) offers this cutting-edge program in Chennai, teaching students to build intelligent, AI-driven web applications with 100% placement support.",

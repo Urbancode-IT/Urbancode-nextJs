@@ -101,14 +101,20 @@ export default async function BlogDetailPage({ params }) {
             { name: "React Native", link: "/courses/fullstack-development/react-native" },
             { name: "Flutter", link: "/courses" },
             { name: "Fullstack Development", link: "/courses/fullstack-development" },
+            { name: "Java Full Stack", link: "/courses/fullstack-development/java-full-stack-development" },
             { name: "MERN Stack", link: "/courses/fullstack-development/mern-stack" },
             { name: "MEAN Stack", link: "/courses/fullstack-development/mean-stack" },
             { name: "Next.js", link: "/courses/fullstack-development/next.js-development" },
             { name: "Nextjs", link: "/courses/fullstack-development/next.js-development" },
-            { name: "Data Analytics", link: "/courses/data-analytics" },
-            { name: "Data Science", link: "/courses/data-science" },
+            { name: "Data Analytics", link: "/courses/ai-and-data-science/data-analytics" },
+            { name: "Data Science", link: "/courses/ai-and-data-science/ai-and-ml" },
+            { name: "Generative AI", link: "/courses/ai-and-data-science/gen-ai" },
+            { name: "AWS", link: "/courses/cloud-and-devops/aws" },
+            { name: "Python", link: "/courses/programming-languages/core-python" },
             { name: "UI/UX design", link: "/courses/ui-ux-designing" },
             { name: "Software Testing", link: "/courses/software-testing" },
+            { name: "Selenium", link: "/courses/software-testing/selenium" },
+            { name: "Playwright", link: "/courses/software-testing/playwright" },
             { name: "Cloud and DevOps", link: "/courses/cloud-and-devops" }
         ];
 

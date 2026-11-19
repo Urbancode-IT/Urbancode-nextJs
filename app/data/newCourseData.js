@@ -43,6 +43,74 @@ const commonFaq = [
     },
 ];
 
+const mernFaq = [
+    {
+        q: "Why choose Urbancode for a MERN Stack course in Chennai?",
+        a: "Urbancode Edutech offers an intensive, project-driven MERN Stack course in Chennai at our Velachery and Pallikaranai campuses as well as live online. You build complete full-stack web applications with MongoDB, Express.js, React, and Node.js, combined with modern AI coding tools and dedicated placement assistance.",
+    },
+    {
+        q: "Is this MERN Stack course in Chennai suitable for freshers and non-IT graduates?",
+        a: "Yes. Our MERN Stack training is designed for freshers, college students, and professionals switching from non-IT fields. Training starts from HTML, CSS, and modern JavaScript fundamentals before advancing to backend architecture and database management, backed by bilingual Tamil and English mentoring.",
+    },
+    {
+        q: "What live projects will I build during the MERN Stack training?",
+        a: "Learners develop industry-grade web applications including full-scale e-commerce stores, SaaS dashboards, RESTful APIs with JWT authentication, and AI chatbot integrations to build a strong GitHub portfolio for recruiters.",
+    },
+    {
+        q: "Do you offer placement support for MERN Stack developers in Chennai?",
+        a: "Yes. We offer 100% placement support covering resume preparation, GitHub profile reviews, mock technical coding rounds, and direct interview scheduling with hiring partners across Chennai and pan-India.",
+    },
+];
+
+const dataAnalyticsFaq = [
+    {
+        q: "Which is the best Data Analytics course in Chennai with placement?",
+        a: "Urbancode Edutech provides one of the best Data Analytics courses in Chennai with placement assistance. The curriculum covers Advanced Excel, SQL database queries, Power BI interactive dashboards, and Python data visualization with real-world business case studies.",
+    },
+    {
+        q: "Do I need prior coding or mathematical background to learn Data Analytics?",
+        a: "No coding background is required. The course starts with spreadsheet mastery and business reporting concepts, gradually progressing to SQL and beginner-friendly Python data analysis, making it accessible for graduates from any stream.",
+    },
+    {
+        q: "What tools and software are taught in the Data Analytics course?",
+        a: "Students gain practical hands-on proficiency in Microsoft Excel (Power Query, XLOOKUP), MySQL/PostgreSQL, Power BI, Tableau, and Python libraries including Pandas, NumPy, and Matplotlib.",
+    },
+    {
+        q: "What job roles can I apply for after completing Data Analytics training in Chennai?",
+        a: "Graduates are prepared for in-demand roles such as Data Analyst, Business Intelligence (BI) Analyst, MIS Executive, Reporting Analyst, and Operations Data Specialist across IT, finance, healthcare, and retail sectors.",
+    },
+];
+
+const dataScienceFaq = [
+    {
+        q: "Why enroll in Urbancode's Data Science course in Chennai?",
+        a: "Urbancode Edutech's Data Science course in Chennai combines core statistical foundations with hands-on Machine Learning, Deep Learning, and Python data science pipelines. Students work on real-world datasets with mentor guidance in Velachery and Pallikaranai.",
+    },
+    {
+        q: "What are the prerequisites for learning Data Science and AI?",
+        a: "Basic computer familiarity and an analytical mindset are all you need. We teach Python programming from the ground up, followed by data wrangling, exploratory data analysis, and predictive algorithm development.",
+    },
+    {
+        q: "Does the Data Science course include placement assistance in Chennai?",
+        a: "Yes. We provide end-to-end placement assistance including machine learning project reviews, portfolio hosting, mock technical interviews, and hiring referrals for Data Scientist, ML Engineer, and AI Associate positions.",
+    },
+];
+
+const awsDevOpsFaq = [
+    {
+        q: "Where can I get the best AWS training in Chennai with placement?",
+        a: "Urbancode Edutech provides hands-on AWS training in Chennai at our Velachery and Pallikaranai training centers and online. The program covers EC2, S3, VPC, IAM, Lambda, Docker, Kubernetes, Terraform, and CI/CD pipelines with comprehensive placement support.",
+    },
+    {
+        q: "Is this AWS and DevOps course suitable for beginners?",
+        a: "Yes. We start with Linux operating system basics, shell scripting, and core networking fundamentals before moving into AWS cloud architecture, containerization, and automated deployment pipelines.",
+    },
+    {
+        q: "Are offline classroom batches available for AWS training in Velachery, Chennai?",
+        a: "Yes. We conduct regular weekday and weekend classroom batches in Velachery and Pallikaranai, easily accessible for students from Tambaram, Chrompet, Guindy, and OMR, as well as live interactive online classes.",
+    },
+];
+
 const automationFaq = [
     {
         q: "What is Automation Testing and why is it important?",
@@ -248,7 +316,7 @@ export const newCourseData = {
         heroData: {
             titleTop: "Fast track your career growth",
             highlightText: "MERN Stack Development",
-            subtitle: "Master modern web development with MERN Stack. Build real-world projects and get 100% placement support.",
+            subtitle: "Master modern web development with our hands-on MERN Stack course in Chennai. Build full-stack applications with MongoDB, Express.js, React, Node.js, and modern AI developer tools with 100% placement support for freshers and career switchers.",
             rating: 4.8,
             reviewCount: "400+",
             totalStars: 5,
@@ -557,7 +625,7 @@ export const newCourseData = {
             { id: 9, name: "Postman", icon: "https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg" },
             { id: 10, name: "Express.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" },
         ],
-        faqData: commonFaq,
+        faqData: [...mernFaq, ...commonFaq],
     },
     "mean-stack": {
         heroData: {
@@ -1075,7 +1143,7 @@ export const newCourseData = {
         heroData: {
             titleTop: "Drive Business Decisions",
             highlightText: "Data Analytics",
-            subtitle: "Learn to visualize and analyze data using Python, Excel, SQL, and Power BI. From data mining to insights.",
+            subtitle: "Launch your data career with the best Data Analytics course in Chennai. Master Advanced Excel, SQL database querying, Power BI interactive dashboards, and Python data analysis with live business case studies and placement assistance.",
             rating: 4.8,
             reviewCount: "500+",
             totalStars: 5,
@@ -1195,13 +1263,13 @@ export const newCourseData = {
             { id: 9, name: "Seaborn", icon: "https://seaborn.pydata.org/_static/logo-wide-lightbg.svg" },
             { id: 10, name: "Databricks", icon: "/images/home/tools/databricks.svg" },
         ],
-        faqData: commonFaq,
+        faqData: [...dataAnalyticsFaq, ...commonFaq],
     },
     "ai-ml": {
         heroData: {
             titleTop: "Build Intelligent Systems",
             highlightText: "AI & Machine Learning",
-            subtitle: "Master Deep Learning, Neural Networks, and AI algorithms to build the future of technology.",
+            subtitle: "Master Data Science, Machine Learning, and Deep Learning with Python in Chennai. Build predictive models, neural networks, and computer vision pipelines with live project mentoring and placement support.",
             rating: 4.9,
             reviewCount: "300+",
             totalStars: 5,
@@ -1499,13 +1567,13 @@ export const newCourseData = {
             { id: 8, name: "Jupyter", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original.svg" },
             { id: 9, name: "OpenCV", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg" },
         ],
-        faqData: commonFaq,
+        faqData: [...dataScienceFaq, ...commonFaq],
     },
     "automation-testing": {
         heroData: {
             titleTop: "Ensure Quality and Speed",
             highlightText: "Automation Testing",
-            subtitle: "Master Selenium, Java, and modern testing frameworks to automate the software lifecycle.",
+            subtitle: "Kickstart your QA career with our job-oriented Software Testing course in Chennai. Master Manual Testing methodologies, Selenium Java, Playwright TypeScript, API testing, and CI/CD automation pipelines with 100% placement support.",
             rating: 4.7,
             reviewCount: "450+",
             totalStars: 5,
@@ -1639,7 +1707,7 @@ export const newCourseData = {
         heroData: {
             titleTop: "Infrastructure as Code",
             highlightText: "AWS & DevOps",
-            subtitle: "Learn cloud automation, CI/CD, and scaling on Amazon Web Services. Master the DevOps culture.",
+            subtitle: "Become a cloud engineer with our industry-standard AWS training in Chennai. Master AWS infrastructure, Docker containerization, Kubernetes orchestration, Terraform IaC, and CI/CD automation with placement backing.",
             rating: 4.9,
             reviewCount: "600+",
             totalStars: 5,
@@ -1778,6 +1846,6 @@ export const newCourseData = {
             { id: 9, name: "Jenkins", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg" },
             { id: 10, name: "GitHub", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
         ],
-        faqData: commonFaq,
+        faqData: [...awsDevOpsFaq, ...commonFaq],
     }
 };
