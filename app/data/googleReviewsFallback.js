@@ -74,7 +74,7 @@
   },
   {
       _id: 'vlc_10',
-      authorName: 'Manoje S',
+      authorName: 'Manoj S',
       profilePhotoUrl: 'https://ui-avatars.com/api/?name=MS&background=34A853&color=fff&size=60',
       rating: 5,
       text: 'I studied data analytics from Urbancode. They covered MSSQL, PowerBI and Python from scratch. Also they have taken Data Bricks as part of placement support training. I gained practical knowledge and the trainers are very supportive, thanks to all my trainers Sendhil, Raghul and Siva.',
@@ -124,7 +124,7 @@
   },
   {
       _id: 'plk_2',
-      authorName: 'Subhiksga K',
+      authorName: 'Subhiksha K',
       profilePhotoUrl: 'https://ui-avatars.com/api/?name=SK&background=FBBC05&color=fff&size=60',
       rating: 5,
       text: 'I recently completed a 2-month Full Stack Developer internship at Urbancode, which was a highly valuable and insightful experience. I worked on real-time projects such as the Urbancode portfolio and the Jobzenter platform. These projects gave me hands-on experience in building and managing full stack applications.',

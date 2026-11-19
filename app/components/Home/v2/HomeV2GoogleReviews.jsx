@@ -13,11 +13,14 @@ const WRITE_REVIEW_LINKS = {
     "https://www.google.com/search?q=Urbancode+Training+and+Solutions+tirunelveli#lrd=",
 };
 
-const BRANCHES = ["All", "Velachery", "Pallikaranai", "Tirunelveli"];
+const BRANCH_TABS = [
+  { id: "All", label: "All Branches" },
+  { id: "Velachery", label: "Velachery" },
+  { id: "Pallikaranai", label: "Pallikaranai" },
+  { id: "Tirunelveli", label: "Tirunelveli" },
+];
 
-const GAP = 20;
-
-/** Prefer live API reviews; fill missing branches from local fallback. */
+/** Merge API reviews with local fallback for complete branch coverage */
 function mergeBranchReviews(apiReviews, fallback) {
   const list = Array.isArray(apiReviews) ? apiReviews : [];
   const branchesInApi = new Set(
@@ -29,21 +32,65 @@ function mergeBranchReviews(apiReviews, fallback) {
   return [...list, ...missingFallback];
 }
 
-function getVisibleCount(width) {
-  if (width < 640) return 1;
-  if (width < 900) return 2;
-  if (width < 1100) return 3;
-  return 4;
+/** Determine course tag dynamically based on review text if not explicitly provided */
+function getReviewCourse(review) {
+  if (review.course) return review.course;
+  const text = (review.text || "").toLowerCase();
+  if (
+    text.includes("data analyst") ||
+    text.includes("data analytics") ||
+    text.includes("power bi") ||
+    text.includes("powerbi")
+  ) {
+    return "Data Analytics";
+  }
+  if (text.includes("data science") || text.includes("machine learning")) {
+    return "Data Science";
+  }
+  if (text.includes("generative ai") || text.includes("gen ai")) {
+    return "Generative AI";
+  }
+  if (text.includes("ielts")) {
+    return "IELTS Training";
+  }
+  if (text.includes("pte")) {
+    return "PTE Training";
+  }
+  if (
+    text.includes("study abroad") ||
+    text.includes("visa") ||
+    text.includes("overseas")
+  ) {
+    return "Study Abroad";
+  }
+  if (
+    text.includes("testing") ||
+    text.includes("selenium") ||
+    text.includes("automation testing") ||
+    text.includes("sdet")
+  ) {
+    return "Software Testing";
+  }
+  if (text.includes("python")) {
+    return "Python Full Stack";
+  }
+  if (text.includes("sql") || text.includes("database")) {
+    return "SQL & Analytics";
+  }
+  if (text.includes("placement") || text.includes("career")) {
+    return "Career Placement";
+  }
+  return "Full Stack";
 }
 
-function Stars({ rating }) {
+function Stars({ rating = 5 }) {
   return (
     <div className="home-v2-gr-stars" aria-label={`${rating} out of 5 stars`}>
       {Array.from({ length: 5 }, (_, i) => (
         <span
           key={i}
           className={`home-v2-gr-star${i < rating ? " is-filled" : ""}`}
-          aria-hidden
+          aria-hidden="true"
         >
           ★
         </span>
@@ -58,11 +105,9 @@ export default function HomeV2GoogleReviews() {
   const [loading, setLoading] = useState(true);
   const [modalOpen, setModalOpen] = useState(false);
   const [activeBranch, setActiveBranch] = useState("All");
-  const [filterOpen, setFilterOpen] = useState(false);
-  const filterRef = useRef(null);
-  const [index, setIndex] = useState(0);
-  const [visible, setVisible] = useState(4);
-  const [paused, setPaused] = useState(false);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+  const [isPaused, setIsPaused] = useState(false);
 
   const filteredReviews =
     activeBranch === "All"
@@ -70,11 +115,6 @@ export default function HomeV2GoogleReviews() {
       : reviews.filter(
           (r) => (r.branchName || "Velachery") === activeBranch
         );
-
-  const maxIndex = Math.max(0, filteredReviews.length - visible);
-  const showNav = maxIndex > 0;
-  const canPrev = index > 0;
-  const canNext = index < maxIndex;
 
   useEffect(() => {
     const fetchReviews = async () => {
@@ -99,6 +139,7 @@ export default function HomeV2GoogleReviews() {
     fetchReviews();
   }, []);
 
+  // Lock body scroll when branch modal is open
   useEffect(() => {
     if (!modalOpen) return undefined;
     const prev = document.body.style.overflow;
@@ -108,239 +149,258 @@ export default function HomeV2GoogleReviews() {
     };
   }, [modalOpen]);
 
-  const measure = useCallback(() => {
+  const updateScrollState = useCallback(() => {
     const el = trackRef.current;
     if (!el) return;
-    const next = getVisibleCount(el.clientWidth);
-    setVisible(next);
-    setIndex((prev) =>
-      Math.min(prev, Math.max(0, filteredReviews.length - next))
-    );
-  }, [filteredReviews.length]);
+    setCanScrollLeft(el.scrollLeft > 10);
+    setCanScrollRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 10);
+  }, []);
 
-  const scrollToIndex = useCallback(
-    (next) => {
-      const el = trackRef.current;
-      if (!el) return;
-      const card = el.querySelector(".home-v2-gr-card");
-      if (!card) return;
-      const gap =
-        parseFloat(getComputedStyle(el).columnGap || getComputedStyle(el).gap) ||
-        0;
-      const step = card.offsetWidth + gap;
-      const clamped = Math.max(
-        0,
-        Math.min(next, filteredReviews.length - visible)
-      );
-      setIndex(clamped);
-      el.scrollTo({ left: clamped * step, behavior: "smooth" });
-    },
-    [filteredReviews.length, visible]
-  );
+  useEffect(() => {
+    const el = trackRef.current;
+    if (!el) return;
+    updateScrollState();
+    el.addEventListener("scroll", updateScrollState, { passive: true });
+    window.addEventListener("resize", updateScrollState);
+    return () => {
+      el.removeEventListener("scroll", updateScrollState);
+      window.removeEventListener("resize", updateScrollState);
+    };
+  }, [updateScrollState, filteredReviews]);
 
-  const handleBranchChange = (branch) => {
-    setActiveBranch(branch);
-    setFilterOpen(false);
-    setIndex(0);
-    requestAnimationFrame(() => {
-      trackRef.current?.scrollTo({ left: 0, behavior: "auto" });
-    });
+  const handleBranchChange = (branchId) => {
+    setActiveBranch(branchId);
+    if (trackRef.current) {
+      trackRef.current.scrollTo({ left: 0, behavior: "smooth" });
+    }
   };
 
-  useEffect(() => {
-    if (!filterOpen) return undefined;
-    const onPointerDown = (e) => {
-      if (!filterRef.current?.contains(e.target)) setFilterOpen(false);
-    };
-    const onKeyDown = (e) => {
-      if (e.key === "Escape") setFilterOpen(false);
-    };
-    document.addEventListener("pointerdown", onPointerDown);
-    document.addEventListener("keydown", onKeyDown);
-    return () => {
-      document.removeEventListener("pointerdown", onPointerDown);
-      document.removeEventListener("keydown", onKeyDown);
-    };
-  }, [filterOpen]);
+  const scrollByCard = (direction) => {
+    const el = trackRef.current;
+    if (!el) return;
+    const card = el.querySelector(".home-v2-gr-card");
+    const step = card ? card.offsetWidth + 20 : 340;
+    el.scrollBy({ left: direction * step, behavior: "smooth" });
+  };
 
+  // Subtle auto-scroll when not hovered
   useEffect(() => {
-    measure();
-    window.addEventListener("resize", measure);
-    return () => window.removeEventListener("resize", measure);
-  }, [measure]);
-
-  useEffect(() => {
-    if (!showNav || paused || loading) return undefined;
-    const id = window.setInterval(() => {
-      setIndex((current) => {
-        const next = current >= maxIndex ? 0 : current + 1;
-        const el = trackRef.current;
-        const card = el?.querySelector(".home-v2-gr-card");
-        if (el && card) {
-          const gap =
-            parseFloat(
-              getComputedStyle(el).columnGap || getComputedStyle(el).gap
-            ) || 0;
-          el.scrollTo({
-            left: next * (card.offsetWidth + gap),
-            behavior: "smooth",
-          });
-        }
-        return next;
-      });
-    }, 4000);
-    return () => window.clearInterval(id);
-  }, [showNav, paused, loading, maxIndex]);
+    if (isPaused || loading || filteredReviews.length <= 4) return undefined;
+    const timer = setInterval(() => {
+      const el = trackRef.current;
+      if (!el) return;
+      if (el.scrollLeft >= el.scrollWidth - el.clientWidth - 15) {
+        el.scrollTo({ left: 0, behavior: "smooth" });
+      } else {
+        const card = el.querySelector(".home-v2-gr-card");
+        const step = card ? card.offsetWidth + 20 : 340;
+        el.scrollBy({ left: step, behavior: "smooth" });
+      }
+    }, 4500);
+    return () => clearInterval(timer);
+  }, [isPaused, loading, filteredReviews.length]);
 
   return (
     <section className="home-v2-gr" aria-labelledby="home-v2-gr-title">
-      <div className="home-v2-gr-inner">
-        <div className="home-v2-gr-head-row">
+      {/* Background Watermark Logo - positioned high up behind header & cards */}
+      <div className="home-v2-gr-watermark" aria-hidden="true">
+        <img
+          src="/images/home/homepage-v2/google-reviews/google_background.webp"
+          alt=""
+          className="home-v2-gr-watermark-img"
+        />
+      </div>
+
+      <div className="home-v2-gr-container">
+        {/* Header Section */}
+        <div className="home-v2-gr-header">
+          {/* Left Titles */}
           <div className="home-v2-gr-titles">
-            <p className="home-v2-gr-eyebrow">Google Reviews</p>
+            <span className="home-v2-gr-eyebrow">GOOGLE REVIEWS</span>
             <h2 id="home-v2-gr-title" className="home-v2-gr-title">
               What learners say on Google.
             </h2>
           </div>
-          <div className="home-v2-gr-actions">
-            <div className="home-v2-gr-filter" ref={filterRef}>
+
+          {/* Right Column: Rating Card & Branch Filter Tabs */}
+          <div className="home-v2-gr-right-col">
+            {/* Top-Right Google Rating Summary Card */}
+            <div className="home-v2-gr-rating-card">
+              {/* Glass shine and dark tint layers from Figma */}
+              <div className="home-v2-gr-glass-tint" aria-hidden="true" />
+              <div className="home-v2-gr-glass-shine" aria-hidden="true" />
+
+              <div className="home-v2-gr-rating-icon-box">
+                <img
+                  src="/images/home/homepage-v2/google-reviews/google_logo.webp"
+                  alt="Google"
+                  className="home-v2-gr-rating-gicon"
+                  width={27}
+                  height={27}
+                />
+              </div>
+
+              <div className="home-v2-gr-rating-info">
+                <div className="home-v2-gr-rating-score">4.6 / 5</div>
+                <div
+                  className="home-v2-gr-rating-stars-row"
+                  aria-hidden="true"
+                >
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <span key={i} className="home-v2-gr-gold-star">
+                      ★
+                    </span>
+                  ))}
+                </div>
+                <p className="home-v2-gr-rating-subtitle">
+                  All branches · connect Google rating
+                </p>
+              </div>
+
               <button
                 type="button"
-                className={`home-v2-gr-write home-v2-gr-filter-trigger${
-                  filterOpen ? " is-open" : ""
-                }`}
-                aria-haspopup="listbox"
-                aria-expanded={filterOpen}
-                aria-label="Filter reviews by branch"
-                onClick={() => setFilterOpen((open) => !open)}
+                className="home-v2-gr-write-btn"
+                onClick={() => setModalOpen(true)}
               >
-                <span>
-                  {activeBranch === "All" ? "All branches" : activeBranch}
-                </span>
-                <svg
-                  className="home-v2-gr-filter-chevron"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  aria-hidden
-                >
-                  <polyline
-                    points="6 9 12 15 18 9"
-                    stroke="currentColor"
-                    strokeWidth="2.25"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
+                Write a review
               </button>
-              <ul
-                className={`home-v2-gr-filter-menu${
-                  filterOpen ? " is-open" : ""
-                }`}
-                role="listbox"
-                aria-label="Branches"
-                aria-hidden={!filterOpen}
-                inert={!filterOpen ? true : undefined}
-              >
-                {BRANCHES.map((branch) => {
-                  const label = branch === "All" ? "All branches" : branch;
-                  const selected = activeBranch === branch;
-                  return (
-                    <li key={branch} role="option" aria-selected={selected}>
-                      <button
-                        type="button"
-                        tabIndex={filterOpen ? 0 : -1}
-                        className={`home-v2-gr-filter-option${
-                          selected ? " is-selected" : ""
-                        }`}
-                        onClick={() => handleBranchChange(branch)}
-                      >
-                        {label}
-                      </button>
-                    </li>
-                  );
-                })}
-              </ul>
             </div>
-            <button
-              type="button"
-              className="home-v2-gr-write"
-              onClick={() => setModalOpen(true)}
+
+            {/* Filter Tabs by Branch */}
+            <div
+              className="home-v2-gr-tabs-pill"
+              role="tablist"
+              aria-label="Filter reviews by branch"
             >
-              Write a review
-            </button>
+              {/* Glass shine and dark tint layers from Figma */}
+              <div className="home-v2-gr-glass-tint" aria-hidden="true" />
+              <div className="home-v2-gr-glass-shine" aria-hidden="true" />
+
+              {BRANCH_TABS.map((tab) => {
+                const isActive = activeBranch === tab.id;
+                return (
+                  <button
+                    key={tab.id}
+                    type="button"
+                    role="tab"
+                    aria-selected={isActive}
+                    className={`home-v2-gr-tab-btn${isActive ? " is-active" : ""}`}
+                    onClick={() => handleBranchChange(tab.id)}
+                  >
+                    {tab.label}
+                  </button>
+                );
+              })}
+            </div>
           </div>
         </div>
 
+        {/* Carousel & Cards Track Area */}
         <div
-          className="home-v2-gr-viewport"
-          onMouseEnter={() => setPaused(true)}
-          onMouseLeave={() => setPaused(false)}
+          className="home-v2-gr-carousel-wrapper"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
         >
           {loading ? (
             <div className="home-v2-gr-loading">Loading reviews…</div>
           ) : filteredReviews.length === 0 ? (
-            <div className="home-v2-gr-loading">
+            <div className="home-v2-gr-empty">
               No reviews for {activeBranch} yet.
             </div>
           ) : (
-            <div
-              className="home-v2-gr-track"
-              ref={trackRef}
-              style={{ "--gr-gap": `${GAP}px`, "--gr-visible": visible }}
-            >
-              {filteredReviews.map((review, idx) => (
-                <article
-                  key={`${review._id || review.googleReviewId || "r"}-${idx}`}
-                  className="home-v2-gr-card"
-                >
-                  <div className="home-v2-gr-profile">
-                    <span className="home-v2-gr-avatar" aria-hidden>
-                      G
-                    </span>
-                    <div className="home-v2-gr-meta">
-                      <p className="home-v2-gr-name">{review.authorName}</p>
-                      <p className="home-v2-gr-source">Google review</p>
+            <div className="home-v2-gr-track" ref={trackRef}>
+              {filteredReviews.map((review, idx) => {
+                const author = review.authorName || "Reviewer";
+                const initial = author.trim().charAt(0).toUpperCase() || "R";
+                const branch = review.branchName || "Velachery";
+                const course = getReviewCourse(review);
+
+                return (
+                  <article
+                    key={`${review._id || review.googleReviewId || "r"}-${idx}`}
+                    className="home-v2-gr-card"
+                  >
+                    {/* Card Top: Avatar, Name, Source & G Logo */}
+                    <div className="home-v2-gr-card-head">
+                      <div className="home-v2-gr-card-profile">
+                        <div className="home-v2-gr-avatar" aria-hidden="true">
+                          {initial}
+                        </div>
+                        <div className="home-v2-gr-user-info">
+                          <h3 className="home-v2-gr-author-name">{author}</h3>
+                          <span className="home-v2-gr-source-label">
+                            Posted on Google
+                          </span>
+                        </div>
+                      </div>
+
+                      <img
+                        src="/images/home/homepage-v2/google-reviews/google_logo.webp"
+                        alt="Google"
+                        className="home-v2-gr-card-gicon"
+                        width={20}
+                        height={20}
+                      />
                     </div>
-                  </div>
-                  <Stars rating={Number(review.rating) || 5} />
-                  <ScrollHintText className="home-v2-gr-text">
-                    {review.text}
-                  </ScrollHintText>
-                  <span className="home-v2-gr-badge">
-                    {review.branchName || "Google"}
-                  </span>
-                </article>
-              ))}
+
+                    {/* Card Rating Stars */}
+                    <Stars rating={Number(review.rating) || 5} />
+
+                    {/* Card Review Content with Invisible Mini Scroller */}
+                    <div className="home-v2-gr-card-body">
+                      <ScrollHintText className="home-v2-gr-card-quote">
+                        “{review.text}”
+                      </ScrollHintText>
+                    </div>
+
+                    {/* Card Footer Badges: Branch Pin + Course */}
+                    <div className="home-v2-gr-card-footer">
+                      <span className="home-v2-gr-branch-pill">
+                        <img
+                          src="/images/home/homepage-v2/google-reviews/location_icon.webp"
+                          alt=""
+                          className="home-v2-gr-pin-icon"
+                          width={12}
+                          height={12}
+                          aria-hidden="true"
+                        />
+                        {branch}
+                      </span>
+                      <span className="home-v2-gr-course-pill">{course}</span>
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+          )}
+
+          {/* Navigation Controls */}
+          {filteredReviews.length > 4 && (
+            <div className="home-v2-gr-nav" aria-label="Reviews navigation">
+              <button
+                type="button"
+                className="home-v2-gr-nav-btn"
+                aria-label="Previous reviews"
+                disabled={!canScrollLeft}
+                onClick={() => scrollByCard(-1)}
+              >
+                <FiChevronLeft strokeWidth={2.25} />
+              </button>
+              <button
+                type="button"
+                className="home-v2-gr-nav-btn"
+                aria-label="Next reviews"
+                disabled={!canScrollRight}
+                onClick={() => scrollByCard(1)}
+              >
+                <FiChevronRight strokeWidth={2.25} />
+              </button>
             </div>
           )}
         </div>
-
-        {showNav && (
-          <div className="home-v2-gr-nav" aria-label="Reviews navigation">
-            <button
-              type="button"
-              className="home-v2-gr-nav-btn"
-              aria-label="Previous reviews"
-              disabled={!canPrev}
-              onClick={() => scrollToIndex(index - 1)}
-            >
-              <FiChevronLeft strokeWidth={2.25} />
-            </button>
-            <button
-              type="button"
-              className="home-v2-gr-nav-btn"
-              aria-label="Next reviews"
-              disabled={!canNext}
-              onClick={() => scrollToIndex(index + 1)}
-            >
-              <FiChevronRight strokeWidth={2.25} />
-            </button>
-          </div>
-        )}
       </div>
 
+      {/* Write a Review Branch Modal */}
       {modalOpen && (
         <div
           className="home-v2-gr-modal-overlay"

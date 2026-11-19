@@ -103,7 +103,7 @@ export default function NewHomePage() {
 
       <HomeV2StudyAbroad />
 
-      <HomeV2Alumni />
+      {/* <HomeV2Alumni /> */}
 
       <HomeV2TrendingInsights />
 
