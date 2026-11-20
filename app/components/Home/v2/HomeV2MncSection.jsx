@@ -25,7 +25,7 @@ export default function HomeV2MncSection() {
   return (
     <section className="home-v2-mnc" aria-label="Hiring partners">
       <div className="home-v2-mnc-head">
-        <h2 className="home-v2-mnc-title">Our Students Thrive in Top MNCs.</h2>
+        <h2 className="home-v2-mnc-title">Our students thrive in top MNCs</h2>
       </div>
 
       <div className="home-v2-mnc-viewport">

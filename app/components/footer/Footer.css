@@ -54,7 +54,27 @@
     font-weight: 500;
     margin-bottom: 15px;
     color: #484848;
-    ;
+}
+
+/* Mobile: Study Abroad stacks under Career on the right column */
+.footer-career-study {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.footer-career-study-block {
+    min-width: 0;
+}
+
+/* Desktop: Career and Study Abroad sit side by side like other columns */
+@media (min-width: 992px) {
+    .footer-career-study {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 40px;
+        width: auto;
+    }
 }
 
 .footer a {

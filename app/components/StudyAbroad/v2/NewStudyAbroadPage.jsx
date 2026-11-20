@@ -19,21 +19,42 @@ import "./NewStudyAbroadPage.css";
  */
 export default function NewStudyAbroadPage() {
   useEffect(() => {
-    if (typeof window !== "undefined") {
+    if (typeof window === "undefined") return undefined;
+
+    const hash = window.location.hash?.replace(/^#/, "");
+    if (!hash) {
       window.scrollTo(0, 0);
+      return undefined;
     }
+
+    const scrollToHash = () => {
+      const el = document.getElementById(hash);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+        return true;
+      }
+      return false;
+    };
+
+    if (scrollToHash()) return undefined;
+
+    const t1 = window.setTimeout(scrollToHash, 150);
+    const t2 = window.setTimeout(scrollToHash, 450);
+    return () => {
+      window.clearTimeout(t1);
+      window.clearTimeout(t2);
+    };
   }, []);
 
   return (
     <V2PageReveal className="sa-v2-root">
       <StudyAbroadV2Hero />
       <StudyAbroadV2Services />
-        <StudyAbroadV2EnglishProficiency />
+      <StudyAbroadV2EnglishProficiency />
       <StudyAbroadV2Destinations />
       <StudyAbroadV2Mbbs />
       <StudyAbroadV2MbbsCountries />
       <StudyAbroadV2DreamCountry />
-    
       <StudyAbroadV2Stories />
       <StudyAbroadV2Consult />
     </V2PageReveal>

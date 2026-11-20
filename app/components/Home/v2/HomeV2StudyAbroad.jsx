@@ -64,7 +64,7 @@ export default function HomeV2StudyAbroad() {
         <div className="home-v2-sa-content">
           <p className="home-v2-sa-eyebrow">Study abroad</p>
           <h2 className="home-v2-sa-title">
-            Study Abroad and IELTS, PTE Training.
+            Study abroad and IELTS | PTE training
           </h2>
           <p className="home-v2-sa-desc">
             Plan your international education with expert counselling and

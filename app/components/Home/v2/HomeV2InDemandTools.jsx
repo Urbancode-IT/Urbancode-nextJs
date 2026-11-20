@@ -104,7 +104,7 @@ export default function HomeV2InDemandTools() {
       <div className="home-v2-tools-inner">
         <header className="home-v2-tools-head">
           <h2 id="home-v2-tools-title" className="home-v2-tools-title">
-            In-Demand Tools You’ll Master.
+            In-demand tools you’ll master
           </h2>
         </header>
 

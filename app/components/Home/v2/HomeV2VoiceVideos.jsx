@@ -107,7 +107,7 @@ export default function HomeV2VoiceVideos({ videos = null }) {
           <div className="home-v2-voice-titles">
             <p className="home-v2-voice-eyebrow">Video testimonials</p>
             <h2 id="home-v2-voice-title" className="home-v2-voice-title">
-              Voices That Matter.
+              Voices that matter
             </h2>
             <p className="home-v2-voice-desc">
               Hear directly from learners about their experience with Urbancode.

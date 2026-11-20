@@ -11,6 +11,7 @@
   box-sizing: border-box;
   font-family: "Satoshi", -apple-system, BlinkMacSystemFont, sans-serif;
   overflow: hidden;
+  scroll-margin-top: 96px;
 }
 
 /* Full-width curved edge dividers */

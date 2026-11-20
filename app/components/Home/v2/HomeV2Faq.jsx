@@ -84,7 +84,7 @@ export default function HomeV2Faq() {
         <div className="home-v2-faq-head">
           <p className="home-v2-faq-eyebrow">FAQ</p>
           <h2 id="home-v2-faq-title" className="home-v2-faq-title">
-            Frequently asked questions.
+            Frequently asked questions
           </h2>
           <p className="home-v2-faq-desc">
             Can&apos;t find what you&apos;re looking for? Our advisors are happy

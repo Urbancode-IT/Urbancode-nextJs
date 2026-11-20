@@ -218,7 +218,7 @@ export default function HomeV2GoogleReviews() {
           <div className="home-v2-gr-titles">
             <span className="home-v2-gr-eyebrow">GOOGLE REVIEWS</span>
             <h2 id="home-v2-gr-title" className="home-v2-gr-title">
-              What learners say on Google.
+              What learners say on Google
             </h2>
           </div>
 

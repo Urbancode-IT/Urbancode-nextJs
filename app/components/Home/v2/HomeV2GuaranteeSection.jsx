@@ -162,7 +162,7 @@ export default function HomeV2GuaranteeSection({ attentionMode = false }) {
           </span>
 
           <h2 className="home-v2-guarantee-title">
-            Courses backed by our 100% guarantee.
+            Courses backed by our 100% guarantee
           </h2>
 
           <p className="home-v2-guarantee-desc">

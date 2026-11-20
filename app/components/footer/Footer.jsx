@@ -83,14 +83,26 @@ function Footer() {
             </ul>
           </div>
 
-          {/* Career */}
-          <div className="col-6 col-md-6 col-lg-auto col-xl-auto">
-            <h4>Career</h4>
-            <ul className="list-unstyled">
-              <li><Link href="/be-our-mentor"> Mentor</Link></li>
-              <li><Link href="/internship"> Internship</Link></li>
-              <li><Link href="/jobs"> Job Portal</Link></li>
-            </ul>
+          {/* Career + Study Abroad: stacked on mobile (right of Kids), side-by-side on desktop */}
+          <div className="col-6 col-md-6 col-lg-auto col-xl-auto footer-career-study">
+            <div className="footer-career-study-block">
+              <h4>Career</h4>
+              <ul className="list-unstyled">
+                <li><Link href="/be-our-mentor"> Mentor</Link></li>
+                <li><Link href="/internship"> Internship</Link></li>
+                <li><Link href="/jobs"> Job Portal</Link></li>
+              </ul>
+            </div>
+
+            <div className="footer-career-study-block">
+              <h4>Study Abroad</h4>
+              <ul className="list-unstyled">
+                <li><Link href="/study-abroad"> Admissions</Link></li>
+                <li>
+                  <Link href="/study-abroad#english-proficiency"> IELTS | PTE</Link>
+                </li>
+              </ul>
+            </div>
           </div>
 
           {/* Policies */}

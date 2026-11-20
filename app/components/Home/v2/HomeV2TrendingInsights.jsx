@@ -132,7 +132,7 @@ export default function HomeV2TrendingInsights() {
           <div className="home-v2-trending-titles">
             <p className="home-v2-trending-eyebrow">Trending on Instagram</p>
             <h2 id="home-v2-trending-title" className="home-v2-trending-title">
-              Trending Course Insights.
+              Trending course insights
             </h2>
           </div>
           <div className="home-v2-trending-actions">
