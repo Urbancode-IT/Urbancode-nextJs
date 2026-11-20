@@ -240,9 +240,15 @@ const TEAM = [
   { name: "Subiksha", role: "MERN Stack Developer", img: "/portfolio/our-team/subikshaportfolio.webp" },
   { name: "Thaya", role: "MERN Stack Developer", img: "/portfolio/our-team/thayaportfolio.webp" },
   { name: "Suchithra", role: "Java Full Stack Developer", img: "/portfolio/our-team/suchithraportfolio.webp" },
-  { name: "Jaswanth", role: "UI/UX Designer", img: "/portfolio/our-team/jashwanthportfolio.webp" },
+  { name: "Jaswanth", role: "Designer", img: "/portfolio/our-team/jashwanthportfolio.webp" },
   { name: "Deivendraraj", role: "Designer", img: "/portfolio/our-team/devaportfolio.webp" },
   { name: "Harini", role: "Designer", img: "/portfolio/our-team/hariniportfolio.webp" },
+  {
+    name: "Aarumugam",
+    role: "Designer",
+    img: "/portfolio/our-team/Aarumugam_portfolio.webp",
+    objectPosition: "center 18%",
+  },
 ];
 
 const ABOUT_IMAGES = {
@@ -1051,7 +1057,15 @@ export default function NewPortfolioDesign() {
               {[0, 1, 2].map((copy) =>
                 TEAM.map((member) => (
                   <div className={`np-team-card${member.lead ? " np-team-card--lead" : ""}`} key={`${copy}-${member.name}`}>
-                    <img src={member.img} alt={member.name} />
+                    <img
+                      src={member.img}
+                      alt={member.name}
+                      style={
+                        member.objectPosition
+                          ? { objectPosition: member.objectPosition }
+                          : undefined
+                      }
+                    />
                     <div className="np-team-info">
                       <h3>{member.name}</h3>
                       <p>

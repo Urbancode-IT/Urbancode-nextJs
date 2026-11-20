@@ -95,9 +95,9 @@ export default function NewHomePage() {
         </section>
       </div>
 
-      <HomeV2MncSection />
-
       <HomeV2AiCourses />
+
+      <HomeV2MncSection />
 
       <HomeV2GuaranteeSection />
 

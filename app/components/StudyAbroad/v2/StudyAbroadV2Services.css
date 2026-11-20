@@ -79,6 +79,12 @@
   min-width: 0;
   position: relative;
   z-index: 1;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.sa-v2-services-right::-webkit-scrollbar {
+  display: none;
 }
 
 .sa-v2-service-card {
@@ -120,7 +126,9 @@
   bottom: 8px;
   z-index: 2;
   box-sizing: border-box;
-  min-height: 122px;
+  height: 128px;
+  min-height: 128px;
+  max-height: 128px;
   padding: 12px 12px 14px;
   border-radius: 14px;
   background: rgba(217, 217, 217, 0.19);
@@ -130,26 +138,33 @@
   flex-direction: column;
   justify-content: flex-start;
   gap: 8px;
+  overflow: hidden;
 }
 
 .sa-v2-service-card-title {
   margin: 0;
+  flex-shrink: 0;
   font-family: "Satoshi", sans-serif;
   font-weight: 500;
   font-size: 16px;
   line-height: 1.3;
   letter-spacing: -0.4px;
-  color: #ffffff;
+  color: #00b56f;
 }
 
 .sa-v2-service-card-desc {
   margin: 0;
+  flex: 1 1 auto;
   font-family: "Satoshi", sans-serif;
   font-weight: 400;
   font-size: 13px;
   line-height: 1.5;
   letter-spacing: normal;
   color: rgba(255, 255, 255, 0.85);
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 /* Large monitors (≥ 1440px) */
@@ -174,6 +189,9 @@
   }
 
   .sa-v2-service-panel {
+    height: 132px;
+    min-height: 132px;
+    max-height: 132px;
     padding: 14px 14px 16px;
     gap: 9px;
   }
@@ -299,6 +317,7 @@
     font-size: 14.5px;
     letter-spacing: -0.4px;
     line-height: 1.3;
+    color: #00b56f;
   }
 
   .sa-v2-service-card-desc {
@@ -312,7 +331,9 @@
   }
 
   .sa-v2-service-panel {
-    min-height: 94px;
+    height: 102px;
+    min-height: 102px;
+    max-height: 102px;
     padding: 8px 10px 10px;
     gap: 6px;
   }

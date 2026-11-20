@@ -1,278 +1,337 @@
-.sa-v2-stories {
+.sa-v2-alumni {
+  --alumni-orange: #ff6a2b;
+  --alumni-green: #00b56f;
+  --alumni-blue: #2f8cff;
+  --alumni-card-h: clamp(360px, 52vw, 480px);
+  --alumni-overlap: clamp(72px, 10vw, 120px);
+
   width: 100%;
-  background: #f8fafc;
-  padding: 112px 20px;
+  background: #000000;
+  padding: clamp(48px, 6vw, 81px) 0 clamp(48px, 5vw, 80px);
   box-sizing: border-box;
   font-family: "Satoshi", -apple-system, BlinkMacSystemFont, sans-serif;
+  overflow: hidden;
 }
 
-.sa-v2-stories-inner {
+.sa-v2-alumni-inner {
+  position: relative;
   width: 100%;
-  max-width: 1240px;
+  max-width: min(1328px, 100%);
   margin: 0 auto;
+  padding: 0 clamp(16px, 3vw, 32px);
+  box-sizing: border-box;
 }
 
-.sa-v2-stories-head-row {
+/* Title sits behind cards */
+.sa-v2-alumni-head {
+  position: relative;
+  z-index: 0;
   display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 16px;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  pointer-events: none;
 }
 
-.sa-v2-stories-head {
-  max-width: 672px;
-  flex: 1 1 auto;
-}
-
-.sa-v2-stories-eyebrow {
+.sa-v2-alumni-eyebrow {
   margin: 0;
   font-family: "Satoshi", sans-serif;
   font-weight: 500;
-  font-size: 14px;
+  font-size: clamp(12px, 1.2vw, 14px);
   line-height: 20px;
-  letter-spacing: 1.4px;
+  letter-spacing: 2.8px;
   text-transform: uppercase;
-  color: #008a55;
+  color: #ffffff;
 }
 
-.sa-v2-stories-title {
-  margin: 12px 0 0;
+.sa-v2-alumni-title {
+  margin: 8px 0 0;
   font-family: "Satoshi", sans-serif;
   font-weight: 400;
-  font-size: clamp(28px, 3.4vw, 47.63px);
-  line-height: 1.05;
-  letter-spacing: -2px;
-  color: #0f172b;
+  font-size: clamp(64px, 16vw, 208px);
+  line-height: 0.85;
+  letter-spacing: clamp(-6px, -1.2vw, -18px);
+  text-align: center;
+  background: linear-gradient(
+    180deg,
+    #ffffff 30%,
+    rgba(255, 255, 255, 0.35) 70%,
+    rgba(104, 104, 104, 0) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  user-select: none;
 }
 
-.sa-v2-stories-desc {
-  margin: 16px 0 0;
-  max-width: 557px;
-  font-family: "Satoshi", sans-serif;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 29px;
-  color: #45556c;
-}
-
-.sa-v2-stories-nav {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  flex-shrink: 0;
-  padding-bottom: 4px;
-}
-
-.sa-v2-stories-nav[hidden] {
-  display: none !important;
-}
-
-.sa-v2-stories-arrow {
-  width: 33px;
-  height: 33px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border: none;
-  background: transparent;
-  color: #0f172b;
-  font-size: 22px;
-  cursor: pointer;
-  padding: 0;
-  transition: opacity 0.2s ease;
-}
-
-.sa-v2-stories-arrow:disabled {
-  opacity: 0.38;
-  cursor: default;
-}
-
-.sa-v2-stories-viewport {
+/* Cards pull up over the fading “Alumni” type */
+.sa-v2-alumni-stage {
+  position: relative;
+  z-index: 1;
   width: 100%;
-  margin-top: 48px;
+  margin-top: calc(var(--alumni-overlap) * -1);
+  padding-top: clamp(28px, 4vw, 40px);
 }
 
-.sa-v2-stories-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--story-gap, 24px);
-}
-
-.sa-v2-story-card {
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  min-height: 186px;
-  padding: 24px;
-  background: #ffffff;
-  border: 0.67px dashed #cad5e2;
-  border-radius: 16px;
-}
-
-.sa-v2-story-profile {
+.sa-v2-alumni-track {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  gap: 12px;
-  width: 100%;
+  justify-content: flex-start;
+  gap: var(--alumni-gap, 28px);
+  overflow-x: auto;
+  overflow-y: visible;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding: clamp(28px, 4vw, 36px) 0 clamp(8px, 1.5vw, 16px);
 }
 
-.sa-v2-story-avatar {
+.sa-v2-alumni-stage--static .sa-v2-alumni-track {
+  justify-content: center;
+  overflow-x: hidden;
+  scroll-snap-type: none;
+}
+
+.sa-v2-alumni-track::-webkit-scrollbar {
+  display: none;
+}
+
+/* ── Card ── */
+.sa-v2-alumni-card {
+  --alumni-accent: var(--alumni-orange);
+  --alumni-accent-rgb: 255, 106, 43;
+
+  position: relative;
+  z-index: 1;
   box-sizing: border-box;
-  flex-shrink: 0;
-  width: 48px;
-  height: 48px;
+  flex: 0 0 min(var(--alumni-card-w, 380px), 86vw);
+  width: min(var(--alumni-card-w, 380px), 86vw);
+  min-width: min(var(--alumni-card-w, 380px), 86vw);
+  min-height: var(--alumni-card-h);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: clamp(52px, 6vw, 64px) clamp(20px, 3vw, 32px) clamp(24px, 3vw, 32px);
+  background: linear-gradient(
+    180deg,
+    rgba(var(--alumni-accent-rgb), 0.18) 0%,
+    rgba(var(--alumni-accent-rgb), 0.063) 35%,
+    rgba(var(--alumni-accent-rgb), 0) 75%
+  );
+  border: 0.666667px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+.sa-v2-alumni-card--orange {
+  --alumni-accent: #ff6a2b;
+  --alumni-accent-rgb: 255, 106, 43;
+}
+
+.sa-v2-alumni-card--green {
+  --alumni-accent: #00b56f;
+  --alumni-accent-rgb: 0, 181, 111;
+}
+
+.sa-v2-alumni-card--blue {
+  --alumni-accent: #2f8cff;
+  --alumni-accent-rgb: 47, 140, 255;
+}
+
+.sa-v2-alumni-icon {
+  position: absolute;
+  top: clamp(-32px, -4vw, -36px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: clamp(56px, 7vw, 72px);
+  height: clamp(56px, 7vw, 72px);
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  background: #111111;
+  border: 0.666667px solid rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0px 0px 30px -8px rgba(var(--alumni-accent-rgb), 0.6),
+    inset 0px 1px 0px rgba(255, 255, 255, 0.08);
   border-radius: 9999px;
-  background: rgba(0, 138, 85, 0.12);
-  font-family: "Satoshi", sans-serif;
-  font-weight: 500;
-  font-size: 15px;
-  line-height: 1;
-  letter-spacing: 0.3px;
-  color: #008a55;
+  color: var(--alumni-accent);
+  font-size: clamp(22px, 2.5vw, 28px);
+  z-index: 2;
 }
 
-.sa-v2-story-meta {
+.sa-v2-alumni-quote {
+  margin: 0;
+  max-width: 316px;
+  font-family: "Satoshi", sans-serif;
+  font-weight: 500;
+  font-size: clamp(16px, 1.8vw, 24px);
+  line-height: 1.4;
+  letter-spacing: -0.24px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.sa-v2-alumni-foot {
+  margin-top: auto;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
+  width: 100%;
+  max-width: 208px;
+  padding-top: clamp(24px, 3vw, 40px);
+}
+
+.sa-v2-alumni-name {
+  margin: 0;
+  font-family: "Satoshi", sans-serif;
+  font-weight: 500;
+  font-size: clamp(14px, 1.4vw, 15px);
+  line-height: 22px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.sa-v2-alumni-program {
+  margin: 2px 0 0;
+  font-family: "Satoshi", sans-serif;
+  font-weight: 400;
+  font-size: clamp(12px, 1.3vw, 14px);
+  line-height: 20px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.sa-v2-alumni-line {
+  display: block;
+  width: 100%;
+  max-width: 208px;
+  height: 1px;
+  margin-top: 20px;
+  background: linear-gradient(
+    90deg,
+    rgba(var(--alumni-accent-rgb), 0) 0%,
+    var(--alumni-accent) 50%,
+    rgba(var(--alumni-accent-rgb), 0) 100%
+  );
+}
+
+/* ── Controls: only rendered when scroll is needed ── */
+.sa-v2-alumni-controls {
+  display: flex;
+  align-items: center;
+  gap: clamp(12px, 2vw, 24px);
+  margin-top: clamp(16px, 2.5vw, 24px);
+  width: 100%;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sa-v2-alumni-progress {
+  position: relative;
+  flex: 1 1 auto;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.26);
+  border-radius: 9999px;
+  overflow: hidden;
   min-width: 0;
 }
 
-.sa-v2-story-name {
-  margin: 0;
-  font-family: "Satoshi", sans-serif;
-  font-weight: 500;
+.sa-v2-alumni-progress-fill {
+  display: block;
+  height: 100%;
+  background: #ffffff;
+  border-radius: 9999px;
+  transition: width 0.35s ease;
+}
+
+.sa-v2-alumni-nav {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.sa-v2-alumni-arrow {
+  box-sizing: border-box;
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0.666667px solid rgba(255, 255, 255, 0.47);
+  border-radius: 9999px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.9);
   font-size: 16px;
-  line-height: 24px;
-  color: #0f172b;
+  cursor: pointer;
+  padding: 0;
+  transition: opacity 0.2s ease, background 0.2s ease;
 }
 
-.sa-v2-story-place {
-  margin: 0;
-  font-family: "Satoshi", sans-serif;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 20px;
-  color: #62748e;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 100%;
+.sa-v2-alumni-arrow:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.06);
 }
 
-.sa-v2-story-quote {
-  margin: 20px 0 0;
-  font-family: "Satoshi", sans-serif;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 23px;
-  color: #62748e;
+.sa-v2-alumni-arrow:disabled {
+  opacity: 0.1;
+  cursor: default;
 }
 
+/* Tablet: slightly tighter cards so 2–3 can fit */
 @media (max-width: 1100px) {
-  .sa-v2-stories-grid:not(.is-carousel) {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .sa-v2-alumni {
+    --alumni-overlap: clamp(56px, 9vw, 96px);
+  }
+
+  .sa-v2-alumni-card {
+    flex-basis: min(340px, 78vw);
+    width: min(340px, 78vw);
+    min-width: min(340px, 78vw);
   }
 }
 
 @media (max-width: 900px) {
-  .sa-v2-stories {
-    padding: 64px 16px 72px;
+  .sa-v2-alumni {
+    --alumni-card-h: clamp(340px, 70vw, 420px);
+    --alumni-overlap: clamp(48px, 12vw, 80px);
   }
 
-  .sa-v2-stories-head-row {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .sa-v2-stories-head {
-    max-width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .sa-v2-stories-desc {
-    max-width: 100%;
-    font-size: 15px;
-    line-height: 24px;
-  }
-
-  .sa-v2-stories-nav:not([hidden]) {
-    display: flex;
-    justify-content: center;
-    order: 2;
-    width: 100%;
-    margin-top: 28px;
-    padding-bottom: 0;
-  }
-
-  .sa-v2-stories-viewport {
-    margin-top: 16px;
-    overflow: hidden;
-  }
-
-  .sa-v2-stories-grid.is-carousel {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    gap: var(--story-gap, 24px);
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
-
-  .sa-v2-stories-grid.is-carousel::-webkit-scrollbar {
-    display: none;
-  }
-
-  .sa-v2-stories-grid.is-carousel .sa-v2-story-card {
-    flex: 0 0 calc(100% - 12px);
-    max-width: calc(100% - 12px);
-    scroll-snap-align: start;
+  .sa-v2-alumni-title {
+    font-size: clamp(56px, 18vw, 120px);
   }
 }
 
-@media (max-width: 767px) {
-  .sa-v2-stories-title {
-    font-size: clamp(24px, 7vw, 32px);
-    letter-spacing: -1px;
+@media (max-width: 640px) {
+  .sa-v2-alumni {
+    padding: 40px 0 40px;
+    --alumni-overlap: clamp(40px, 14vw, 64px);
+    --alumni-card-h: 360px;
   }
 
-  .sa-v2-stories-grid.is-carousel .sa-v2-story-card {
-    flex-basis: 100%;
-    max-width: 100%;
-  }
-}
-
-/* Desktop overflow carousel when more than 3 cards */
-@media (min-width: 901px) {
-  .sa-v2-stories-grid.is-carousel {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    gap: var(--story-gap, 24px);
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-    scrollbar-width: none;
+  .sa-v2-alumni-title {
+    letter-spacing: -4px;
   }
 
-  .sa-v2-stories-grid.is-carousel::-webkit-scrollbar {
-    display: none;
+  .sa-v2-alumni-controls {
+    flex-wrap: wrap;
   }
 
-  .sa-v2-stories-grid.is-carousel .sa-v2-story-card {
-    flex: 0 0 calc((100% - 2 * var(--story-gap, 24px)) / 3);
-    max-width: calc((100% - 2 * var(--story-gap, 24px)) / 3);
-    scroll-snap-align: start;
+  .sa-v2-alumni-nav {
+    margin-left: auto;
+  }
+
+  .sa-v2-alumni-quote {
+    font-size: 17px;
+    line-height: 26px;
+  }
+
+  .sa-v2-alumni-card {
+    flex-basis: min(320px, 88vw);
+    width: min(320px, 88vw);
+    min-width: min(320px, 88vw);
   }
 }

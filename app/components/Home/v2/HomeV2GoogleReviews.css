@@ -224,7 +224,7 @@
   padding: 8.53763px 13.6602px;
   width: 107.32px;
   height: 35.08px;
-  background: #0F1A16;
+  background: linear-gradient(179.32deg, #00b56f -23.31%, #004f30 99.42%);
   border-radius: 1.90983e+07px;
   font-family: 'Satoshi', sans-serif;
   font-style: normal;
@@ -235,12 +235,12 @@
   border: none;
   white-space: nowrap;
   cursor: pointer;
-  transition: background 0.2s ease, transform 0.15s ease;
+  transition: filter 0.2s ease, transform 0.15s ease, opacity 0.2s ease;
   flex-shrink: 0;
 }
 
 .home-v2-gr-write-btn:hover {
-  background: #008F58;
+  filter: brightness(1.08);
   transform: translateY(-1px);
 }
 
