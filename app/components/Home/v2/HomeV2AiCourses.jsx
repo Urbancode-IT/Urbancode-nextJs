@@ -239,7 +239,7 @@ export default function HomeV2AiCourses() {
             <div className="home-v2-ai-head">
               <p className="home-v2-ai-eyebrow">AI-powered courses</p>
               <h2 className="home-v2-ai-title">
-                Learn the skills shaping the future of tech.
+                Learn the skills shaping the future of tech
               </h2>
             </div>
           </div>
