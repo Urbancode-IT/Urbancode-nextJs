@@ -14,7 +14,7 @@ const COUNTRIES = [
     shortName: "Australia",
     eyebrow: "Study in Australia",
     headline: "Your gateway to innovation and growth",
-    btnText: "Talk to an Australia expert",
+    btnText: "Talk to our Australia expert",
     flag: `${FLAG_ASSETS}/autralia-flag.webp`,
     bgImage: `${DREAM_ASSETS}/BDC-main.webp`,
     secondaryImage: `${DREAM_ASSETS}/BDC-secondary.webp`,
@@ -31,7 +31,7 @@ const COUNTRIES = [
     shortName: "USA",
     eyebrow: "Study in USA",
     headline: "The ultimate destination for tech & research",
-    btnText: "Talk to a USA expert",
+    btnText: "Talk to our USA expert",
     flag: `${FLAG_ASSETS}/us-flag.webp`,
     bgImage:
       "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?auto=format&fit=crop&q=80&w=1200",
@@ -50,7 +50,7 @@ const COUNTRIES = [
     shortName: "UK",
     eyebrow: "Study in UK",
     headline: "Accelerated learning in a historic academic hub",
-    btnText: "Talk to a UK expert",
+    btnText: "Talk to our UK expert",
     flag: `${FLAG_ASSETS}/uk-flag.webp`,
     bgImage:
       "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&q=80&w=1200",
@@ -69,7 +69,7 @@ const COUNTRIES = [
     shortName: "Canada",
     eyebrow: "Study in Canada",
     headline: "Diverse culture, quality education, and PR focus",
-    btnText: "Talk to a Canada expert",
+    btnText: "Talk to our Canada expert",
     flag: `${FLAG_ASSETS}/canada-flag.webp`,
     bgImage:
       "https://images.unsplash.com/photo-1507608869274-d3177c8bb4c7?auto=format&fit=crop&q=80&w=1200",
@@ -88,7 +88,7 @@ const COUNTRIES = [
     shortName: "Ireland",
     eyebrow: "Study in Ireland",
     headline: "Europe’s tech capital for aspiring minds",
-    btnText: "Talk to an Ireland expert",
+    btnText: "Talk to our Ireland expert",
     flag: `${FLAG_ASSETS}/ireland-flag.webp`,
     bgImage:
       "https://images.unsplash.com/photo-1590089415225-401ed6f9db8e?auto=format&fit=crop&q=80&w=1200",
@@ -107,7 +107,7 @@ const COUNTRIES = [
     shortName: "Germany",
     eyebrow: "Study in Germany",
     headline: "Zero tuition fees and engineering leadership",
-    btnText: "Talk to a Germany expert",
+    btnText: "Talk to our Germany expert",
     flag: `${FLAG_ASSETS}/germany-flag.webp`,
     bgImage:
       "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?auto=format&fit=crop&q=80&w=1200",
@@ -126,7 +126,7 @@ const COUNTRIES = [
     shortName: "France",
     eyebrow: "Study in France",
     headline: "Culinary, business, and tech innovation hub",
-    btnText: "Talk to a France expert",
+    btnText: "Talk to our France expert",
     flag: `${FLAG_ASSETS}/france-flag.webp`,
     bgImage:
       "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&q=80&w=1200",
@@ -145,7 +145,7 @@ const COUNTRIES = [
     shortName: "Singapore",
     eyebrow: "Study in Singapore",
     headline: "Global financial hub & academic excellence",
-    btnText: "Talk to a Singapore expert",
+    btnText: "Talk to our Singapore expert",
     flag: `${FLAG_ASSETS}/singapore-flag.webp`,
     bgImage:
       "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?auto=format&fit=crop&q=80&w=1200",

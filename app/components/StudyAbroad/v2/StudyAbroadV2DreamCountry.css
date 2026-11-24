@@ -206,12 +206,12 @@
 .sa-v2-dream-eyebrow {
   margin: 0;
   font-family: "Satoshi", sans-serif;
-  font-weight: 500;
+  font-weight: 700;
   font-size: 14px;
   line-height: 20px;
-  letter-spacing: 1.4px;
+  letter-spacing: 0.35px;
   text-transform: uppercase;
-  color: #1fc685;
+  color: #00b56f;
 }
 
 .sa-v2-dream-headline {

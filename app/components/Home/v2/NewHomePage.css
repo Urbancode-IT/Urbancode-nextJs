@@ -91,10 +91,15 @@
   padding: 0;
 }
 
+/* Match portfolio pixel speed: portfolio 8 cards @ 48s → home 5 cards @ 30s */
 .home-v2-hero-carousel-track {
   display: flex;
   width: max-content;
-  animation: home-v2-hero-slide 72s linear infinite;
+  animation: home-v2-hero-slide 30s linear infinite;
+}
+
+.home-v2-hero-carousel-wrap:hover .home-v2-hero-carousel-track {
+  animation-play-state: paused;
 }
 
 .home-v2-hero-card {

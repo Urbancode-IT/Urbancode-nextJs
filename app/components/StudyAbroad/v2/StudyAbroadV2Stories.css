@@ -36,12 +36,12 @@
 .sa-v2-alumni-eyebrow {
   margin: 0;
   font-family: "Satoshi", sans-serif;
-  font-weight: 500;
+  font-weight: 700;
   font-size: clamp(12px, 1.2vw, 14px);
   line-height: 20px;
-  letter-spacing: 2.8px;
+  letter-spacing: 0.35px;
   text-transform: uppercase;
-  color: #ffffff;
+  color: #00b56f;
 }
 
 .sa-v2-alumni-title {
