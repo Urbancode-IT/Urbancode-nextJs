@@ -4,13 +4,70 @@ import Link from "next/link";
 import { useStudyAbroadFlight } from "@/app/hooks/useStudyAbroadFlight";
 import FlightTransition from "../../animations/FlightTransition";
 
+const BANNER_BASE = "/images/home/homepage-v2/small-banners";
+
+/** Home hero scroller — small-banners with course/page links. */
+const HERO_BANNERS = [
+  {
+    id: "software-engineering",
+    src: `${BANNER_BASE}/HomeSoftwareEngineeringbanner.webp`,
+    alt: "AI Software Engineering — 6-Months Certification Program",
+    href: "/courses/fullstack-development/ai-software-engineering",
+  },
+  {
+    id: "data-engineering",
+    src: `${BANNER_BASE}/homeDEbanner.webp`,
+    alt: "Data Engineering with Microsoft Azure",
+    href: "/courses/data-engineering/data-engineering-with-microsoft-azure",
+  },
+  {
+    id: "sas",
+    src: `${BANNER_BASE}/homeSasbanner.webp`,
+    alt: "SAS course",
+    href: "/courses/ai-and-data-science/sas",
+  },
+  {
+    id: "study-abroad",
+    src: `${BANNER_BASE}/homeStudyAbroadbanner.webp`,
+    alt: "Study Abroad",
+    href: "/study-abroad",
+    useFlight: true,
+  },
+  {
+    id: "ielts",
+    src: `${BANNER_BASE}/homeieltsbanner.webp`,
+    alt: "IELTS Training",
+    href: "/study-abroad#english-proficiency",
+    useFlight: true,
+  },
+];
+
 export default function HomeV2Hero() {
   const { isFlying, flightOrigin, navigateToStudyAbroad } = useStudyAbroadFlight();
 
-  const handleStudyAbroad = (e) => {
+  const handleStudyAbroadCta = (e) => {
     e.preventDefault();
     navigateToStudyAbroad("/study-abroad");
   };
+
+  const handleBannerClick = (e, banner) => {
+    if (!banner.useFlight) return;
+    e.preventDefault();
+    navigateToStudyAbroad(banner.href);
+  };
+
+  const renderBanner = (banner, key) => (
+    <Link
+      key={key}
+      href={banner.href}
+      className="home-v2-hero-card"
+      aria-label={banner.alt}
+      onClick={(e) => handleBannerClick(e, banner)}
+    >
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={banner.src} alt={banner.alt} loading="lazy" />
+    </Link>
+  );
 
   return (
     <section className="home-v2-hero">
@@ -64,10 +121,19 @@ export default function HomeV2Hero() {
           <Link
             href="/study-abroad"
             className="home-v2-hero-btn-secondary"
-            onClick={handleStudyAbroad}
+            onClick={handleStudyAbroadCta}
           >
             Plan Study Abroad
           </Link>
+        </div>
+      </div>
+
+      <div className="home-v2-hero-carousel-wrap" aria-label="Featured programs">
+        <div className="home-v2-hero-carousel-track">
+          {HERO_BANNERS.map((banner) => renderBanner(banner, banner.id))}
+          {HERO_BANNERS.map((banner) =>
+            renderBanner(banner, `${banner.id}-dup`)
+          )}
         </div>
       </div>
     </section>
