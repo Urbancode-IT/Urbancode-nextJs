@@ -361,9 +361,7 @@
   min-height: 271px;
   background: rgba(255, 255, 255, 0.35);
   border: 0.672314px solid rgba(255, 255, 255, 0.7);
-  box-shadow: 0px 20.1694px 50.4235px -24.2033px rgba(15, 26, 22, 0.35),
-              inset 0px 1.00847px 0px rgba(255, 255, 255, 0.9),
-              inset 0px -1.00847px 0px rgba(255, 255, 255, 0.25);
+  box-shadow: 0 2px 10px rgba(15, 26, 22, 0.08);
   backdrop-filter: blur(40.3388px);
   -webkit-backdrop-filter: blur(40.3388px);
   border-radius: 26px;
@@ -378,8 +376,7 @@
 
 .home-v2-gr-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0px 24px 56px -20px rgba(15, 26, 22, 0.42),
-              inset 0px 1.00847px 0px rgba(255, 255, 255, 0.95);
+  box-shadow: 0 4px 14px rgba(15, 26, 22, 0.1);
 }
 
 .home-v2-gr-card-head {

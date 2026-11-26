@@ -91,41 +91,82 @@ export default async function BlogDetailPage({ params }) {
         .filter(b => b.id !== blog.id)
         .slice(0, 3);
 
+    const DE_COURSE =
+        "/courses/data-engineering/data-engineering-with-microsoft-azure";
+
+    const keywordMap = [
+        { name: "Data Engineering with Microsoft Azure", link: DE_COURSE },
+        { name: "Azure Data Engineering Course", link: DE_COURSE },
+        { name: "Azure Data Factory Training", link: DE_COURSE },
+        { name: "Data Engineering Course", link: DE_COURSE },
+        { name: "Data Engineering Training", link: DE_COURSE },
+        { name: "Data Engineer Course", link: DE_COURSE },
+        { name: "Cloud Data Engineering", link: DE_COURSE },
+        { name: "Python for Data Engineering", link: DE_COURSE },
+        { name: "Data Engineering with Azure", link: DE_COURSE },
+        { name: "SQL and Python Training", link: DE_COURSE },
+        { name: "Azure Synapse Analytics", link: DE_COURSE },
+        { name: "Azure Data Factory", link: DE_COURSE },
+        { name: "Apache Spark Training", link: DE_COURSE },
+        { name: "Databricks Training", link: DE_COURSE },
+        { name: "PySpark Training", link: DE_COURSE },
+        { name: "Data Engineering", link: DE_COURSE },
+        { name: "Apache Spark", link: DE_COURSE },
+        { name: "Databricks", link: DE_COURSE },
+        { name: "PySpark", link: DE_COURSE },
+        { name: "Microsoft Azure", link: DE_COURSE },
+        { name: "webMethods training", link: "/courses/cloud-and-devops/software-ag-webmethods" },
+        { name: "webMethods", link: "/courses/cloud-and-devops/software-ag-webmethods" },
+        { name: "React Native", link: "/courses/fullstack-development/react-native" },
+        { name: "Fullstack Development", link: "/courses/fullstack-development" },
+        { name: "Full Stack Development", link: "/courses/fullstack-development" },
+        { name: "Java Full Stack", link: "/courses/fullstack-development/java-full-stack-development" },
+        { name: "MERN Stack", link: "/courses/fullstack-development/mern-stack" },
+        { name: "MEAN Stack", link: "/courses/fullstack-development/mean-stack" },
+        { name: "Next.js", link: "/courses/fullstack-development/next.js-development" },
+        { name: "Nextjs", link: "/courses/fullstack-development/next.js-development" },
+        { name: "AI Software Engineering", link: "/courses/ai-and-data-science/ai-software-engineering" },
+        { name: "Data Analytics", link: "/courses/ai-and-data-science/data-analytics" },
+        { name: "Data Science", link: "/courses/ai-and-data-science/ai-and-ml" },
+        { name: "Machine Learning", link: "/courses/ai-and-data-science/ai-and-ml" },
+        { name: "Generative AI", link: "/courses/ai-and-data-science/gen-ai" },
+        { name: "Artificial Intelligence", link: "/courses/ai-and-data-science" },
+        { name: "Cloud and DevOps", link: "/courses/cloud-and-devops" },
+        { name: "Core Python", link: "/courses/programming-languages/core-python" },
+        { name: "MySQL Database", link: "/courses/database/mysql-database" },
+        { name: "Power BI", link: "/courses/ai-and-data-science/power-bi" },
+        { name: "Kubernetes", link: "/courses/cloud-and-devops/kubernetes" },
+        { name: "Jenkins", link: "/courses/cloud-and-devops/jenkins" },
+        { name: "AWS", link: "/courses/cloud-and-devops/aws" },
+        { name: "Python", link: "/courses/programming-languages/core-python" },
+        { name: "MySQL", link: "/courses/database/mysql-database" },
+        { name: "SQL", link: "/courses/database/mysql-database" },
+        { name: "UI/UX design", link: "/courses/ui-ux-designing" },
+        { name: "Software Testing", link: "/courses/software-testing" },
+        { name: "Selenium", link: "/courses/software-testing/selenium" },
+        { name: "Playwright", link: "/courses/software-testing/playwright" },
+        { name: "UrbanCode Edutech", link: "/" },
+    ];
+
+    const sortedKeywords = [...keywordMap].sort(
+        (a, b) => b.name.length - a.name.length
+    );
+    const keywordSource = `(${sortedKeywords
+        .map((kw) => kw.name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"))
+        .join("|")})`;
+    const makeKeywordPattern = () => new RegExp(keywordSource, "gi");
+
+    const findKeywordLink = (part) =>
+        keywordMap.find((kw) => kw.name.toLowerCase() === part.toLowerCase());
+
     // Helper function to render text with clickable keyword links
     const renderParagraphWithLinks = (text) => {
         if (!text) return null;
 
-        const keywordMap = [
-            { name: "webMethods training", link: "/courses/cloud-and-devops/software-ag-webmethods" },
-            { name: "webMethods", link: "/courses/cloud-and-devops/software-ag-webmethods" },
-            { name: "React Native", link: "/courses/fullstack-development/react-native" },
-            { name: "Flutter", link: "/courses" },
-            { name: "Fullstack Development", link: "/courses/fullstack-development" },
-            { name: "Java Full Stack", link: "/courses/fullstack-development/java-full-stack-development" },
-            { name: "MERN Stack", link: "/courses/fullstack-development/mern-stack" },
-            { name: "MEAN Stack", link: "/courses/fullstack-development/mean-stack" },
-            { name: "Next.js", link: "/courses/fullstack-development/next.js-development" },
-            { name: "Nextjs", link: "/courses/fullstack-development/next.js-development" },
-            { name: "Data Analytics", link: "/courses/ai-and-data-science/data-analytics" },
-            { name: "Data Science", link: "/courses/ai-and-data-science/ai-and-ml" },
-            { name: "Generative AI", link: "/courses/ai-and-data-science/gen-ai" },
-            { name: "AWS", link: "/courses/cloud-and-devops/aws" },
-            { name: "Python", link: "/courses/programming-languages/core-python" },
-            { name: "UI/UX design", link: "/courses/ui-ux-designing" },
-            { name: "Software Testing", link: "/courses/software-testing" },
-            { name: "Selenium", link: "/courses/software-testing/selenium" },
-            { name: "Playwright", link: "/courses/software-testing/playwright" },
-            { name: "Cloud and DevOps", link: "/courses/cloud-and-devops" }
-        ];
-
-        // Sort keywords from longest to shortest to avoid partial matches
-        const sortedKeywords = [...keywordMap].sort((a, b) => b.name.length - a.name.length);
-        const pattern = new RegExp(`(${sortedKeywords.map(kw => kw.name.replace(/[.*+?^${}()|[\]\\]/g, '\\\\$&')).join('|')})`, 'gi');
-
-        const parts = text.split(pattern);
+        const parts = text.split(makeKeywordPattern());
 
         return parts.map((part, i) => {
-            const match = keywordMap.find(kw => kw.name.toLowerCase() === part.toLowerCase());
+            const match = findKeywordLink(part);
             if (match) {
                 return (
                     <Link key={i} href={match.link} className="keyword-link">
@@ -136,6 +177,28 @@ export default async function BlogDetailPage({ params }) {
             return part;
         });
     };
+
+    // Linkify course keywords inside HTML blocks (skip existing <a> tags)
+    const linkifyHtmlContent = (html) => {
+        if (!html) return html;
+        const pattern = makeKeywordPattern();
+        const segments = html.split(/(<a\b[^>]*>[\s\S]*?<\/a>)/gi);
+        return segments
+            .map((segment) => {
+                if (/^<a\b/i.test(segment)) return segment;
+                return segment.replace(pattern, (matched) => {
+                    const link = findKeywordLink(matched)?.link;
+                    if (!link) return matched;
+                    return `<a href="${link}" class="keyword-link">${matched}</a>`;
+                });
+            })
+            .join("");
+    };
+
+    const faqsWithLinks = blog.faqs?.map((faq) => ({
+        ...faq,
+        answer: linkifyHtmlContent(faq.answer),
+    }));
 
     const pageUrl = `https://www.urbancode.in/blogs/${blog.slug}`;
     const pageImage = blog.image
@@ -220,7 +283,13 @@ export default async function BlogDetailPage({ params }) {
                 const hasHtml = /<[a-z][\s\S]*>/i.test(paragraph);
                 if (hasHtml) {
                     return (
-                        <div key={index} className="content-text" dangerouslySetInnerHTML={{ __html: paragraph }} />
+                        <div
+                            key={index}
+                            className="content-text"
+                            dangerouslySetInnerHTML={{
+                                __html: linkifyHtmlContent(paragraph),
+                            }}
+                        />
                     );
                 }
                 return (
@@ -230,7 +299,7 @@ export default async function BlogDetailPage({ params }) {
                 );
             })}
 
-            {blog.faqs && <BlogFaq faqs={blog.faqs} />}
+            {faqsWithLinks && <BlogFaq faqs={faqsWithLinks} />}
 
             {/* Divider */}
             <div className="divider"></div>
