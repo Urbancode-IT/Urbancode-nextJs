@@ -16,12 +16,16 @@ function getVisibleCount(width) {
   return 4;
 }
 
+const AUTO_MS = 4000;
+
 export default function HomeV2VoiceVideos({ videos = null }) {
   const trackRef = useRef(null);
   const videoRefs = useRef([]);
+  const indexRef = useRef(0);
   const [playingId, setPlayingId] = useState(null);
   const [index, setIndex] = useState(0);
   const [visible, setVisible] = useState(4);
+  const [paused, setPaused] = useState(false);
 
   const VIDEOS =
     Array.isArray(videos) && videos.length
@@ -38,8 +42,24 @@ export default function HomeV2VoiceVideos({ videos = null }) {
     if (!el) return;
     const next = getVisibleCount(el.clientWidth);
     setVisible(next);
-    setIndex((prev) => Math.min(prev, Math.max(0, VIDEOS.length - next)));
+    setIndex((prev) => {
+      const clamped = Math.min(prev, Math.max(0, VIDEOS.length - next));
+      indexRef.current = clamped;
+      return clamped;
+    });
   }, [VIDEOS.length]);
+
+  const resetVideoToPoster = useCallback((el) => {
+    if (!el) return;
+    el.pause();
+    el.controls = false;
+    try {
+      el.currentTime = 0;
+    } catch {
+      /* ignore seek errors before metadata */
+    }
+    el.load();
+  }, []);
 
   const scrollToIndex = useCallback(
     (next) => {
@@ -52,18 +72,14 @@ export default function HomeV2VoiceVideos({ videos = null }) {
         0;
       const step = card.offsetWidth + gap;
       const clamped = Math.max(0, Math.min(next, VIDEOS.length - visible));
+      indexRef.current = clamped;
       setIndex(clamped);
       el.scrollTo({ left: clamped * step, behavior: "smooth" });
 
-      videoRefs.current.forEach((v) => {
-        if (v) {
-          v.pause();
-          v.controls = false;
-        }
-      });
+      videoRefs.current.forEach((v) => resetVideoToPoster(v));
       setPlayingId(null);
     },
-    [visible, VIDEOS.length]
+    [visible, VIDEOS.length, resetVideoToPoster]
   );
 
   useEffect(() => {
@@ -72,12 +88,23 @@ export default function HomeV2VoiceVideos({ videos = null }) {
     return () => window.removeEventListener("resize", measure);
   }, [measure]);
 
+  useEffect(() => {
+    indexRef.current = index;
+  }, [index]);
+
+  useEffect(() => {
+    if (maxIndex === 0 || paused || playingId) return undefined;
+    const id = window.setInterval(() => {
+      const current = indexRef.current;
+      scrollToIndex(current >= maxIndex ? 0 : current + 1);
+    }, AUTO_MS);
+    return () => window.clearInterval(id);
+  }, [maxIndex, paused, playingId, scrollToIndex]);
+
   const handlePlay = (videoId, idx) => {
+    // Pause every other clip and force its poster thumbnail back
     videoRefs.current.forEach((el, i) => {
-      if (el && i !== idx) {
-        el.pause();
-        el.controls = false;
-      }
+      if (el && i !== idx) resetVideoToPoster(el);
     });
 
     setPlayingId(videoId);
@@ -95,11 +122,17 @@ export default function HomeV2VoiceVideos({ videos = null }) {
     }
   };
 
+  const handleStopPlaying = (videoId, idx) => {
+    if (playingId !== videoId) return;
+    resetVideoToPoster(videoRefs.current[idx]);
+    setPlayingId(null);
+  };
+
   if (!VIDEOS.length) return null;
 
   return (
     <section
-      className="home-v2-voice"
+      className="home-v2-voice v2-no-reveal"
       aria-labelledby="home-v2-voice-title"
     >
       <div className="home-v2-voice-inner">
@@ -137,7 +170,13 @@ export default function HomeV2VoiceVideos({ videos = null }) {
           )}
         </div>
 
-        <div className="home-v2-voice-viewport">
+        <div
+          className="home-v2-voice-viewport"
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+          onTouchStart={() => setPaused(true)}
+          onTouchEnd={() => setPaused(false)}
+        >
           <div
             className="home-v2-voice-gallery"
             ref={trackRef}
@@ -149,7 +188,40 @@ export default function HomeV2VoiceVideos({ videos = null }) {
                 video.alumnusName || video.title || `Student video ${idx + 1}`;
               return (
                 <article key={video.id} className="home-v2-voice-tile">
-                  <div className="home-v2-voice-media">
+                  <div
+                    className={`home-v2-voice-media${isPlaying ? " is-playing" : ""}`}
+                    role="button"
+                    tabIndex={0}
+                    aria-label={
+                      isPlaying ? `Stop ${label}` : `Play ${label}`
+                    }
+                    onClick={(e) => {
+                      if (!isPlaying) {
+                        handlePlay(video.id, idx);
+                        return;
+                      }
+                      // Ignore taps on the native progress/control strip
+                      const rect = e.currentTarget.getBoundingClientRect();
+                      const y = e.clientY - rect.top;
+                      if (y > rect.height - 56) return;
+                      handleStopPlaying(video.id, idx);
+                    }}
+                    onKeyDown={(e) => {
+                      if (e.key !== "Enter" && e.key !== " ") return;
+                      e.preventDefault();
+                      if (isPlaying) handleStopPlaying(video.id, idx);
+                      else handlePlay(video.id, idx);
+                    }}
+                  >
+                    {video.poster && (
+                      <img
+                        className="home-v2-voice-poster"
+                        src={video.poster}
+                        alt=""
+                        aria-hidden="true"
+                        draggable={false}
+                      />
+                    )}
                     <video
                       ref={(el) => {
                         videoRefs.current[idx] = el;
@@ -162,19 +234,31 @@ export default function HomeV2VoiceVideos({ videos = null }) {
                       playsInline
                       preload="metadata"
                       controls={isPlaying}
+                      controlsList="nodownload noplaybackrate"
                       aria-label={`${label} testimonial video`}
-                      onPlay={() => setPlayingId(video.id)}
-                      onPause={() => {
-                        if (playingId === video.id) setPlayingId(null);
+                      onPlay={() => {
+                        videoRefs.current.forEach((el, i) => {
+                          if (el && i !== idx) resetVideoToPoster(el);
+                        });
+                        setPlayingId(video.id);
                       }}
-                      onEnded={() => setPlayingId(null)}
+                      onPause={(e) => {
+                        // Keep progress bar usable — only reset when truly stopped
+                        if (e.currentTarget.seeking) return;
+                        handleStopPlaying(video.id, idx);
+                      }}
+                      onEnded={() => handleStopPlaying(video.id, idx)}
                     />
                     {!isPlaying && (
                       <button
                         type="button"
                         className="home-v2-voice-play"
                         aria-label={`Play ${label}`}
-                        onClick={() => handlePlay(video.id, idx)}
+                        tabIndex={-1}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handlePlay(video.id, idx);
+                        }}
                       >
                         <span className="home-v2-voice-play-icon" aria-hidden>
                           <span className="home-v2-voice-play-triangle" />

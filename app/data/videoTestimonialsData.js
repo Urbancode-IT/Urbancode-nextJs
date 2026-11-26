@@ -1,8 +1,11 @@
+const THUMB =
+  "/images/home/homepage-v2/testimonial-thumbnail";
+
 export const videoData = [
   {
     id: 1,
     src: "/videos/testimonial2.mp4",
-    poster: "/images/home/test1.webp",
+    poster: `${THUMB}/testimonial1.webp`,
     title: "Skills Transformation",
     alumnusName: "Sarah J. Roberts",
     company: "TechNova Solutions",
@@ -11,8 +14,8 @@ export const videoData = [
   },
   {
     id: 2,
-    src: "/videos/kids-testimonial-video1.mp4",
-    poster: "/images/home/test4.webp",
+    src: "/videos/testimonial1.mp4",
+    poster: `${THUMB}/testimonial2.webp`,
     title: "Future Tech Leader",
     alumnusName: "Emily Chen",
     company: "Innovate Partners",
@@ -21,22 +24,22 @@ export const videoData = [
   },
   {
     id: 3,
-    src: "/videos/testimonial3.mp4",
-    poster: "/images/home/test3.webp",
-    title: "Placement Success",
-    alumnusName: "Alex Thompson",
-    company: "CreativeCraft Inc.",
-    feedback:
-      "Urbancode provided me with more than just coding skills; they gave me the confidence to ace my interviews. Within months of completing the MERN stack course, I landed my dream job. Truly a transformative experience!",
-  },
-  {
-    id: 4,
-    src: "/videos/testimonial1.mp4",
-    poster: "/images/home/test2.webp",
+    src: "/videos/kids-testimonial-video1.mp4",
+    poster: `${THUMB}/testimonial3.webp`,
     title: "Future Tech Leader",
     alumnusName: "Emily Chen",
     company: "Innovate Partners",
     feedback:
       "The quality of instruction at Urbancode is unmatched. Each session was insightful and the real-world scenarios we handled prepared me for actual industry challenges. Highly recommend for any aspiring developer!",
+  },
+  {
+    id: 4,
+    src: "/videos/testimonial3.mp4",
+    poster: `${THUMB}/testimonial4.webp`,
+    title: "Placement Success",
+    alumnusName: "Alex Thompson",
+    company: "CreativeCraft Inc.",
+    feedback:
+      "Urbancode provided me with more than just coding skills; they gave me the confidence to ace my interviews. Within months of completing the MERN stack course, I landed my dream job. Truly a transformative experience!",
   },
 ];

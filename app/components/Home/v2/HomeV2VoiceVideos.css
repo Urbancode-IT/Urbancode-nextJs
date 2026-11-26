@@ -1,14 +1,47 @@
+/* Parent shell — exact match to Study Abroad English Proficiency (.sa-v2-ep) */
+/* Curves via ::before/::after (same SVG paths as .sa-v2-ep-curve) so they always paint */
+
 .home-v2-voice {
+  position: relative;
   width: 100%;
-  background: #0f1a16;
-  padding: 64px 24px 72px;
+  background: rgba(174, 201, 247, 0.24);
+  padding: 110px 24px 124px;
   box-sizing: border-box;
   font-family: "Satoshi", -apple-system, BlinkMacSystemFont, sans-serif;
+  overflow: hidden;
+  margin: 0;
+}
+
+.home-v2-voice::before,
+.home-v2-voice::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 56px;
+  pointer-events: none;
+  z-index: 1;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+/* Top curve — same angle as sa-v2-ep, deeper scoop (white into Get Certified) */
+.home-v2-voice::before {
+  top: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 56' fill='none' preserveAspectRatio='none'%3E%3Cpath d='M0,56 C480,0 960,0 1440,56 L1440,0 L0,0 Z' fill='%23ffffff'/%3E%3C/svg%3E");
+}
+
+/* Bottom curve — white gap into the space before Google Reviews */
+.home-v2-voice::after {
+  bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 56' fill='none' preserveAspectRatio='none'%3E%3Cpath d='M0,56 C480,0 960,0 1440,56 L1440,56 L0,56 Z' fill='%23ffffff'/%3E%3C/svg%3E");
 }
 
 .home-v2-voice-inner {
+  position: relative;
+  z-index: 2;
   width: 100%;
-  max-width: 1216px;
+  max-width: 1240px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -40,7 +73,7 @@
   line-height: 20px;
   letter-spacing: 0.35px;
   text-transform: uppercase;
-  color: #008f58;
+  color: #00b56f;
 }
 
 .home-v2-voice-title {
@@ -50,7 +83,7 @@
   font-size: clamp(28px, 3.4vw, 47.63px);
   line-height: 1.05;
   letter-spacing: -2px;
-  color: #ffffff;
+  color: #0f172b;
 }
 
 .home-v2-voice-desc {
@@ -58,7 +91,7 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 28px;
-  color: #a8b5af;
+  color: #45556c;
 }
 
 .home-v2-voice-nav {
@@ -79,7 +112,7 @@
   justify-content: center;
   border: none;
   background: transparent;
-  color: #ffffff;
+  color: #0f1a16;
   font-size: 22px;
   cursor: pointer;
   padding: 0;
@@ -87,7 +120,7 @@
 }
 
 .home-v2-voice-arrow:disabled {
-  color: #55615c;
+  color: #c8c8c8;
   cursor: default;
 }
 
@@ -136,27 +169,70 @@
   width: 100%;
   border-radius: 22px;
   overflow: hidden;
-  background: #000000;
+  background: #ffffff;
+  border: none;
+  outline: none;
+  box-shadow: none;
   line-height: 0;
   aspect-ratio: 9 / 16;
+  cursor: pointer;
 }
 
+.home-v2-voice-media.is-playing {
+  cursor: pointer;
+}
+
+/* Poster: pull up slightly to remove empty top padding in assets; crop bottom */
+.home-v2-voice-poster {
+  position: absolute;
+  top: -5%;
+  left: -4%;
+  width: 108%;
+  height: 112%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  background: transparent;
+  border: none;
+  z-index: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Video fills the frame exactly so native progress controls stay visible */
 .home-v2-voice-video {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   object-position: center center;
   display: block;
   background: #000000;
+  border: none;
+  z-index: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.home-v2-voice-media.is-playing .home-v2-voice-poster {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.home-v2-voice-media.is-playing .home-v2-voice-video {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 2;
 }
 
 .home-v2-voice-play {
   position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  left: 14px;
+  bottom: 14px;
+  top: auto;
+  right: auto;
+  transform: none;
   z-index: 2;
   width: 64px;
   height: 64px;
@@ -164,21 +240,27 @@
   flex-shrink: 0;
   box-sizing: border-box;
   padding: 0;
-  border: none;
+  border: 1.5px solid rgba(255, 255, 255, 0.7);
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.95);
-  box-shadow:
-    0 14px 20px -4px rgba(0, 0, 0, 0.1),
-    0 5px 8px -5px rgba(0, 0, 0, 0.1);
+  /* Backside circle: fully transparent (no solid fill) */
+  background: transparent;
+  background-color: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  box-shadow: none;
+  appearance: none;
+  -webkit-appearance: none;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
 .home-v2-voice-play:hover {
-  transform: translate(-50%, -50%) scale(1.05);
+  transform: scale(1.05);
+  border-color: rgba(255, 255, 255, 0.95);
+  background: transparent;
 }
 
 .home-v2-voice-play-icon {
@@ -186,6 +268,8 @@
   flex: none;
   width: 27.27px;
   height: 27.27px;
+  background: transparent;
+  border-radius: 50%;
 }
 
 .home-v2-voice-play-triangle {
@@ -194,11 +278,20 @@
   right: 20.85%;
   top: 22.92%;
   bottom: 22.92%;
-  background: #008f58;
+  background: #ffffff;
   clip-path: polygon(0 0, 100% 50%, 0 100%);
 }
 
 @media (max-width: 900px) {
+  .home-v2-voice {
+    padding: 92px 20px 104px;
+  }
+
+  .home-v2-voice::before,
+  .home-v2-voice::after {
+    height: 44px;
+  }
+
   .home-v2-voice-head-row {
     display: flex;
     flex-direction: column;
@@ -220,9 +313,15 @@
   }
 }
 
+/* Same mobile breakpoint as Trending Course Insights */
 @media (max-width: 767px) {
   .home-v2-voice {
-    padding: 40px 16px 48px;
+    padding: 80px 16px 92px;
+  }
+
+  .home-v2-voice::before,
+  .home-v2-voice::after {
+    height: 34px;
   }
 
   .home-v2-voice-title {
@@ -242,7 +341,8 @@
   }
 
   .home-v2-voice-viewport {
-    margin-top: 24px;
+    /* Push video cards down a bit on mobile (titles stay put) */
+    margin-top: 40px;
   }
 
   .home-v2-voice-gallery {
@@ -255,16 +355,47 @@
     max-width: 100%;
   }
 
+  /* Match Trending Course Insights mobile card size exactly */
   .home-v2-voice-media {
-    width: min(58vw, 220px);
-    max-width: 220px;
+    width: min(64vw, 248px);
+    max-width: 248px;
     aspect-ratio: 9 / 16;
-    max-height: 48vh;
+    max-height: min(56vh, 440px);
     margin: 0 auto;
-    border-radius: 16px;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #ffffff;
+    border: none;
+    box-shadow: none;
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+  }
+
+  .home-v2-voice-poster {
+    /* Remove empty top space; keep name/stars; crop bottom */
+    top: -7%;
+    left: -4%;
+    width: 108%;
+    height: 114%;
+    object-fit: cover;
+    object-position: top center;
+  }
+
+  .home-v2-voice-video {
+    /* Full frame on mobile so progress bar is not clipped */
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+  }
+
+  .home-v2-voice-media.is-playing {
+    -webkit-mask-image: none;
   }
 
   .home-v2-voice-play {
+    left: 12px;
+    bottom: 12px;
     width: 48px;
     height: 48px;
   }

@@ -58,8 +58,8 @@ export default function StudyAbroadV2EnglishProficiency() {
     >
       {/* Top curved boundary spanning full width */}
       <div className="sa-v2-ep-curve sa-v2-ep-curve-top" aria-hidden="true">
-        <svg viewBox="0 0 1440 36" fill="none" preserveAspectRatio="none">
-          <path d="M0,36 C480,0 960,0 1440,36 L1440,0 L0,0 Z" fill="#ffffff" />
+        <svg viewBox="0 0 1440 56" fill="none" preserveAspectRatio="none">
+          <path d="M0,56 C480,0 960,0 1440,56 L1440,0 L0,0 Z" fill="#ffffff" />
         </svg>
       </div>
 
@@ -128,8 +128,8 @@ export default function StudyAbroadV2EnglishProficiency() {
 
       {/* Bottom curved boundary spanning full width */}
       <div className="sa-v2-ep-curve sa-v2-ep-curve-bottom" aria-hidden="true">
-        <svg viewBox="0 0 1440 36" fill="none" preserveAspectRatio="none">
-          <path d="M0,36 C480,0 960,0 1440,36 L1440,36 L0,36 Z" fill="#ffffff" />
+        <svg viewBox="0 0 1440 56" fill="none" preserveAspectRatio="none">
+          <path d="M0,56 C480,0 960,0 1440,56 L1440,56 L0,56 Z" fill="#ffffff" />
         </svg>
       </div>
     </section>

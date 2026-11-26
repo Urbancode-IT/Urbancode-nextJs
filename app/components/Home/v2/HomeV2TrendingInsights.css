@@ -445,7 +445,7 @@
   }
 
   .home-v2-trending-viewport {
-    margin-top: 24px;
+    margin-top: 40px;
   }
 
   .home-v2-trending-gallery {
@@ -459,12 +459,21 @@
   }
 
   .home-v2-trending-media {
-    width: min(58vw, 220px);
-    max-width: 220px;
+    width: min(64vw, 248px);
+    max-width: 248px;
     aspect-ratio: 9 / 16;
-    max-height: 48vh;
+    max-height: min(56vh, 440px);
     margin: 0 auto;
-    border-radius: 16px;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #f4f4f4;
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+  }
+
+  .home-v2-trending-thumb-img {
+    object-fit: cover;
+    object-position: center center;
+    border-radius: 20px;
   }
 
   .home-v2-trending-play {
@@ -477,5 +486,22 @@
     right: 12px;
     bottom: 12px;
     font-size: 14px;
+    line-height: 1.3;
+    max-height: none;
+    overflow: visible;
+    display: block;
+    -webkit-line-clamp: unset;
+  }
+
+  .home-v2-trending-bottom-bar {
+    min-height: 110px;
+    padding: 14px 12px 12px;
+  }
+
+  .home-v2-trending-bar-title {
+    font-size: 12.5px;
+    line-height: 1.35;
+    overflow: visible;
+    white-space: normal;
   }
 }
