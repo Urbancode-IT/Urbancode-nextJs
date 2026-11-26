@@ -345,6 +345,40 @@ section.recent-featured {
   color: #008f59;
 }
 
+.blog-comparison-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  margin: 8px 0 28px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.blog-comparison-table {
+  width: 100%;
+  min-width: 560px;
+  border-collapse: collapse;
+  font-size: 16px;
+  line-height: 1.45;
+  color: #333;
+}
+
+.blog-comparison-table th,
+.blog-comparison-table td {
+  border: 1px solid #e4e8ec;
+  padding: 12px 14px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.blog-comparison-table th {
+  background: #f4f7f5;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.blog-comparison-table tbody tr:nth-child(even) td {
+  background: #fafbfa;
+}
+
 .divider {
   width: 100%;
   height: 2px;

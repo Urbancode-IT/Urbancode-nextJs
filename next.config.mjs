@@ -64,6 +64,11 @@ const nextConfig = {
         destination: '/blogs',
         permanent: true,
       },
+      {
+        source: '/blogs/data-engineering-course-sql-python-azure-databricks',
+        destination: '/blogs/data-engineering-course-microsoft-azure',
+        permanent: true,
+      },
     ];
   },
 
